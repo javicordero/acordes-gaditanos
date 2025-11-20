@@ -8,8 +8,24 @@
 
 @media (max-width: 640px) {
   body {
-    min-width: min-content;
+    /* min-width: min-content; */
   }
+}
+
+body {
+  background-color: var(--color-bg);
+  overflow-y: scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
 
 .d-none {
@@ -26,12 +42,5 @@
 @media (min-width: 640px) {
   .container-layout {
     width: 95%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container-layout {
-    column-gap: 16px;
-    width: 90%;
   }
 }

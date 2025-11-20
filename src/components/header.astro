@@ -158,21 +158,32 @@
 </style>
 
 <script>
-  const burguer = document.querySelector('.hamburger-lines');
+  function initHeader() {
+    const burguer = document.querySelector('.hamburger-lines');
+    const menu = document.querySelector('.menu-items');
+    const logo = document.querySelector('.logo');
 
-  burguer?.addEventListener('click', () => {
-    if (!document.querySelector('.menu-items')?.classList.contains('displayed')) {
-      document.querySelector('.menu-items')?.classList.add('displayed');
-      document.querySelector('.line1')?.classList.add('line-displayed');
-      document.querySelector('.line2')?.classList.add('line-displayed');
-      document.querySelector('.line3')?.classList.add('line-displayed');
-      document.querySelector('.logo')?.classList.add('d-none');
-    } else {
-      document.querySelector('.menu-items')?.classList.remove('displayed');
-      document.querySelector('.logo')?.classList.remove('d-none');
-      document.querySelector('.line1')?.classList.remove('line-displayed');
-      document.querySelector('.line2')?.classList.remove('line-displayed');
-      document.querySelector('.line3')?.classList.remove('line-displayed');
-    }
-  });
+    if (!burguer || !menu || !logo) return;
+
+    burguer.onclick = () => {
+      const isOpen = menu.classList.contains('displayed');
+
+      if (!isOpen) {
+        menu.classList.add('displayed');
+        logo.classList.add('d-none');
+        document.querySelector('.line1')?.classList.add('line-displayed');
+        document.querySelector('.line2')?.classList.add('line-displayed');
+        document.querySelector('.line3')?.classList.add('line-displayed');
+      } else {
+        menu.classList.remove('displayed');
+        logo.classList.remove('d-none');
+        document.querySelector('.line1')?.classList.remove('line-displayed');
+        document.querySelector('.line2')?.classList.remove('line-displayed');
+        document.querySelector('.line3')?.classList.remove('line-displayed');
+      }
+    };
+  }
+
+  // Inicializa en la primera carga y en cada navegación con ClientRouter
+  document.addEventListener('astro:page-load', initHeader);
 </script>

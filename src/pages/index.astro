@@ -4,7 +4,27 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/card.astro';
 import Header from '../components/header.astro';
 
-const acordes = await getCollection('acordes');
+function parseSpanishDate(str: string) {
+  const [d, m, y] = str.split(/[-/]/).map(Number);
+  return new Date(y, m - 1, d); // Date(year, monthIndex, day)
+}
+let acordes = await getCollection('acordes');
+
+acordes = acordes.sort((a, b) => {
+  const yearA = a.data.year;
+  const yearB = b.data.year;
+
+  // Primero ordenamos por año descendente
+  if (yearA !== yearB) {
+    return yearB - yearA;
+  }
+
+  // Luego por fecha española descendente
+  const dateA = parseSpanishDate(a.data.date);
+  const dateB = parseSpanishDate(b.data.date);
+
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <Layout title='Acordes Gaditanos' description='Colección de acordes de piezas gaditanas'>
@@ -35,15 +55,6 @@ const acordes = await getCollection('acordes');
 </Layout>
 
 <style>
-  main {
-    margin-top: 100px;
-  }
-  .container-layout {
-    width: 90%;
-    margin: auto;
-    max-width: 1280px;
-  }
-
   .section {
     margin: 120px auto;
     display: grid;
