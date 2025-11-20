@@ -1,11 +1,83 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/card.astro';
+import Header from '../components/header.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const acordes = await getCollection('acordes');
 ---
 
-<Layout>
-	<Welcome />
+<Layout title='Acordes Gaditanos' description='Colección de acordes de piezas gaditanas'>
+  <div></div>
+  <Header />
+  <main class='container-layout'>
+    <section class='section'>
+      {
+        acordes.map((acorde: { slug: any; data: any }) => {
+          const { slug, data } = acorde;
+          const { pieza, agrupacion, musica, letra, img, year } = data;
+
+          return (
+            <Card
+              pieza={pieza}
+              agrupacion={agrupacion}
+              musica={musica}
+              letra={letra}
+              img={img}
+              year={year}
+              slug={slug}
+            />
+          );
+        })
+      }
+    </section>
+  </main>
 </Layout>
+
+<style>
+  main {
+    margin-top: 100px;
+  }
+  .container-layout {
+    width: 90%;
+    margin: auto;
+    max-width: 1280px;
+  }
+
+  .section {
+    margin: 120px auto;
+    display: grid;
+    row-gap: 40px;
+    /* por defecto 2 columnas en pantallas pequeñas */
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
+
+  /* tablet: 3 columnas intermedias */
+  @media (min-width: 640px) {
+    .section {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 12px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      column-gap: 16px;
+    }
+  }
+
+  /* pantallas grandes: 4 columnas */
+  @media (min-width: 1440px) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 16px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .section {
+      column-gap: 8px;
+    }
+  }
+</style>

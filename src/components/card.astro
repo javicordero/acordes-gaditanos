@@ -1,0 +1,228 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
+---
+
+<article class='card'>
+  <a href={`/${slug}`}>
+    <header class='card-img'>
+      <img transition:name={`img-${slug}`} src={img} alt={pieza} />
+    </header>
+    <main>
+      <h2 transition:name={`title-${slug}`} class='title'>{pieza} {agrupacion}</h2>
+      <div>
+        <div class='autor'>
+          <span>&</span>
+          <span transition:name={`musica-${slug}`} class='musica'>{musica}</span>
+        </div>
+        <div class='autor'>
+          <span>&</span>
+          <span transition:name={`letra-${slug}`} class='musica'>{letra}</span>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>Ver mas...</p>
+    </footer>
+  </a>
+</article>
+<style>
+  :root {
+  }
+
+  .card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .card {
+    background-color: var(--card-background-color);
+    width: auto;
+    height: 290px;
+    border-radius: 8px;
+    border: 1px solid var(--card-primary-color);
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    transition: all 0.5s ease;
+    transform: translateY(0) scale(1);
+  }
+
+  .card header {
+    position: relative;
+    top: -16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card header a,
+  .card header img {
+    height: 150px;
+    width: 90%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: transform 0.5s ease;
+    transform: scale(1); /* estado inicial */
+  }
+
+  .card main {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    top: -8px;
+  }
+
+  .card footer {
+    position: absolute;
+    bottom: 8px;
+    padding: 0 16px;
+    font-size: 0.9rem;
+    color: var(--card-secondary-color);
+  }
+
+  .card .title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.25em;
+    color: var(--card-primary-color);
+  }
+
+  .card .autor {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--card-secondary-color);
+  }
+
+  .card:has(:hover, :focus) {
+    transform: scale(1.05);
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 30px 60px -10px,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    border: 1px solid var(--card-primary-contrast-color);
+  }
+
+  .card:has(:hover, :focus) header img {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 1440px) {
+    .card {
+      max-width: 470px;
+      height: 290px;
+    }
+
+    .card header img {
+      height: 160px;
+      width: calc(100% - 32px);
+    }
+
+    .card main {
+      gap: 6px;
+    }
+
+    .card .title {
+      font-size: 1.25rem;
+    }
+    .card .musica {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .card {
+      max-width: 380px;
+      height: 280px;
+    }
+
+    .card header {
+      top: -14px;
+    }
+
+    .card header img {
+      height: 150px;
+      width: calc(100% - 24px);
+    }
+
+    .card main {
+      gap: 4px;
+      padding: 0 12px;
+    }
+
+    .card footer {
+      padding: 0 12px;
+    }
+
+    .card .title {
+      font-size: 1.1rem;
+    }
+
+    .card .musica {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .card {
+      max-width: 315px;
+      width: auto;
+      height: 260px;
+    }
+
+    .card header {
+      top: -12px;
+    }
+
+    .card header img {
+      height: 140px;
+      width: calc(100% - 16px);
+    }
+    .card main {
+      padding: 4px 8px;
+      gap: 4px;
+    }
+
+    .card footer {
+      padding: 0 8px;
+    }
+
+    .card .title {
+      font-size: 1.04rem;
+    }
+
+    .card .musica {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      max-width: 230px;
+      width: auto;
+      height: 260px;
+    }
+
+    .card header img {
+      height: 110px;
+      width: calc(100% - 16px);
+    }
+
+    .card:has(:hover, :focus) {
+      transform: scale(1.025);
+    }
+
+    .card:has(:hover, :focus) header img {
+      transform: scale(1.025);
+    }
+
+    .card .title {
+      font-size: 1.025rem;
+    }
+
+    .card .musica {
+      font-size: 0.7rem;
+    }
+  }
+</style>

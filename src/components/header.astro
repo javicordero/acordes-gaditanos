@@ -1,0 +1,178 @@
+<nav>
+  <div class='nav-bar-container container-layout'>
+    <div class='burguer-menu'>
+      <div class='hamburger-lines'>
+        <span class='line line1'></span>
+        <span class='line line2'></span>
+        <span class='line line3'></span>
+      </div>
+    </div>
+
+    <div class='logo'>
+      <a href='/'>Acordes Gaditanos</a>
+    </div>
+  </div>
+
+  <div class='menu-items'>
+    <li><a href='/'>Inicio</a></li>
+    <li><a href='#'>about</a></li>
+    <li><a href='#'>blogs</a></li>
+    <li><a href='#'>portfolio</a></li>
+    <li><a href='#'>contact</a></li>
+  </div>
+</nav>
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  nav {
+    height: 62px;
+    width: 100%;
+    box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-bg);
+  }
+
+  .nav-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  nav .checkbox {
+    display: block;
+    height: 32px;
+    width: 32px;
+    position: relative;
+    left: 20px;
+    z-index: 5;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  nav .hamburger-lines {
+    display: block;
+    height: 26px;
+    width: 32px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  nav .hamburger-lines .line {
+    display: block;
+    height: 4px;
+    width: 100%;
+    border-radius: 10px;
+    background: var(--card-primary-color);
+  }
+
+  nav .hamburger-lines .line1 {
+    transform-origin: 0% 0%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  nav .hamburger-lines .line2 {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  nav .hamburger-lines .line3 {
+    transform-origin: 0% 100%;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  nav input[type='checkbox']:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+
+  .line1.line-displayed {
+    transform: rotate(45deg);
+  }
+
+  .line2.line-displayed {
+    transform: scaleY(0);
+  }
+
+  .line3.line-displayed {
+    transform: rotate(-45deg);
+  }
+
+  nav input[type='checkbox']:checked ~ .hamburger-lines .line2 {
+    transform: scaleY(0);
+  }
+
+  nav input[type='checkbox']:checked ~ .hamburger-lines .line3 {
+    transform: rotate(-45deg);
+  }
+
+  .logo a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--card-primary-color);
+    font-weight: bold;
+  }
+
+  nav .menu-items {
+    padding-top: 120px;
+    background-color: var(--color-bg);
+    height: 100vh;
+    width: 100%;
+    transform: translate(-150%);
+    /* transform: translate(0); */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+  }
+
+  nav input[type='checkbox']:checked ~ .menu-items {
+    transform: translateX(0);
+  }
+
+  .displayed {
+    transform: translateX(0) !important;
+  }
+
+  .menu-items a {
+    text-decoration: none;
+    color: var(--card-primary-color);
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 0.7rem;
+  }
+
+  .menu-items a:hover {
+    font-weight: bolder;
+  }
+
+  nav input[type='checkbox']:checked ~ .logo {
+    display: none;
+  }
+</style>
+
+<script>
+  const burguer = document.querySelector('.hamburger-lines');
+
+  burguer?.addEventListener('click', () => {
+    if (!document.querySelector('.menu-items')?.classList.contains('displayed')) {
+      document.querySelector('.menu-items')?.classList.add('displayed');
+      document.querySelector('.line1')?.classList.add('line-displayed');
+      document.querySelector('.line2')?.classList.add('line-displayed');
+      document.querySelector('.line3')?.classList.add('line-displayed');
+      document.querySelector('.logo')?.classList.add('d-none');
+    } else {
+      document.querySelector('.menu-items')?.classList.remove('displayed');
+      document.querySelector('.logo')?.classList.remove('d-none');
+      document.querySelector('.line1')?.classList.remove('line-displayed');
+      document.querySelector('.line2')?.classList.remove('line-displayed');
+      document.querySelector('.line3')?.classList.remove('line-displayed');
+    }
+  });
+</script>
