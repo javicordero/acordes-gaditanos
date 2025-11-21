@@ -71,7 +71,7 @@
     height: 4px;
     width: 100%;
     border-radius: 10px;
-    background: var(--card-primary-color);
+    background: var(--primary-color);
   }
 
   nav .hamburger-lines .line1 {
@@ -115,7 +115,7 @@
   .logo a {
     text-decoration: none;
     font-size: 1.5rem;
-    color: var(--card-primary-color);
+    color: var(--primary-color);
     font-weight: bold;
   }
 
@@ -142,7 +142,7 @@
 
   .menu-items a {
     text-decoration: none;
-    color: var(--card-primary-color);
+    color: var(--primary-color);
     font-weight: 500;
     font-size: 1.2rem;
     padding: 0.7rem;
@@ -154,6 +154,12 @@
 
   nav input[type='checkbox']:checked ~ .logo {
     display: none;
+  }
+
+  @media (max-width: 640px) {
+    .nav-bar-container {
+      width: 95%;
+    }
   }
 </style>
 

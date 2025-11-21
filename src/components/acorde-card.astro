@@ -1,0 +1,158 @@
+---
+import { render } from 'astro:content';
+import MusicaSvg from './musica-svg.astro';
+import LetraSvg from './letra-svg.astro';
+
+const { acorde } = Astro.props;
+const { data, slug } = acorde;
+const { pieza, agrupacion, musica, img, year, letra } = data;
+const { Content } = await render(acorde);
+---
+
+<section class='acordes-container'>
+  <header>
+    <div class='title'>
+      <h1 transition:name={`title-${slug}`}>
+        {pieza}
+        {agrupacion}
+      </h1>
+    </div>
+    <img transition:name={`img-${slug}`} src={img} alt={pieza} />
+
+    <div class='autores'>
+      <div class='autor musica'>
+        <div class='svg'>
+          <MusicaSvg width='15px' height='27px' color='var(--primary-color)' />
+        </div>
+        <span>{musica}</span>
+      </div>
+      <div class='autor letra'>
+        <div class='svg'>
+          <LetraSvg width='15px' height='30px' color='var(--primary-color)' />
+        </div>
+        <span>{letra}</span>
+      </div>
+    </div>
+  </header>
+  <main>
+    <Content />
+  </main>
+</section>
+
+<style>
+  .acordes-container {
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    display: grid;
+    place-items: center;
+    flex: 1;
+  }
+
+  .acordes-container > header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 16px;
+  }
+
+  .acordes-container > header > .title h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+  }
+
+  .acordes-container .autores {
+    width: 60%;
+    margin: auto;
+  }
+
+  .acordes-container .autor {
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .autor.letra > .svg {
+    position: relative;
+    top: 1.5px;
+  }
+
+  .acordes-container > header img {
+    height: auto;
+    border-radius: 8px;
+    width: 60%;
+    margin: auto;
+  }
+
+  .acordes-container > main {
+    max-width: inherit;
+    overflow-x: auto;
+    padding: 0 4px;
+    position: relative;
+    bottom: 16px;
+  }
+
+  .acordes-container > main :global(pre) {
+    margin: 0;
+  }
+
+  .acordes-container > main :global(pre a) {
+    color: var(--acorde-color);
+  }
+
+  @media (min-width: 640px) {
+    .acordes-container {
+      min-width: max-content;
+    }
+
+    .acordes-container > header {
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .acordes-container > header > .title h1 {
+      font-size: 1.4rem;
+    }
+
+    .acordes-container .autor {
+      gap: 8px;
+    }
+
+    .acordes-container > main :global(pre) {
+      font-size: 0.95rem;
+      line-height: 1.25rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .acordes-container .autor {
+      font-size: 0.92rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .acordes-container > main :global(pre) {
+      font-size: 0.8rem;
+      line-height: 1.15rem;
+    }
+  }
+
+  @media (max-width: 392px) {
+    .acordes-container > main :global(pre) {
+      font-size: 0.73rem;
+      line-height: 1.1rem;
+    }
+  }
+
+  @media (max-width: 367px) {
+    .acordes-container > main :global(pre) {
+      font-size: 0.7rem;
+      line-height: 1rem;
+    }
+  }
+</style>

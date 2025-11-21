@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+import AcordeCard from '../../components/acorde-card.astro';
+import Header from '../../components/header.astro';
+import YoutubeCard from '../../components/youtube-card.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const acordes = await getCollection('acordes');
+  return acordes.map((acorde: { slug: any }) => ({
+    params: { id: acorde.slug },
+    props: { acorde },
+  }));
+}
+
+const { acorde } = Astro.props;
+const { data, slug } = acorde;
+const { pieza, agrupacion, musica, img, year, letra } = data;
+---
+
+<Layout title={`${pieza} - ${agrupacion}`} description={`Acordes ${pieza} ${musica}`}>
+  <Header />
+
+  <main class='container-layout'>
+    <AcordeCard acorde={acorde} />
+    <YoutubeCard />
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin-top: 96px;
+    display: flex;
+    justify-content: space-between;
+    row-gap: 16px;
+    column-gap: 32px;
+  }
+
+  @media (max-width: 640px) {
+    main {
+      flex-direction: column;
+    }
+  }
+</style>

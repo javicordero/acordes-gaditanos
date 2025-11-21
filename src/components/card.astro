@@ -1,46 +1,56 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LetraSvg from './letra-svg.astro';
+import MusicaSvg from './musica-svg.astro';
 
 const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
 ---
 
-<article class='card'>
-  <a href={`/${slug}`}>
-    <header class='card-img'>
-      <img transition:name={`img-${slug}`} src={img} alt={pieza} />
-    </header>
-    <main>
-      <h2 transition:name={`title-${slug}`} class='title'>{pieza} {agrupacion}</h2>
-      <div>
-        <div class='autor'>
-          <span>&</span>
-          <span transition:name={`musica-${slug}`} class='musica'>{musica}</span>
+<div class='card-container'>
+  <a href={`/acordes/${slug}`}>
+    <article class='card'>
+      <header '>
+        <img transition:name={`img-${slug}`} src={img} alt={pieza} />
+      </header>
+      <main>
+        <div class='title'>
+          <h2 class='title pieza'>{pieza}</h2>
+          <h2 transition:name={`title-${slug}`} class='title'>{agrupacion}</h2>
         </div>
-        <div class='autor'>
-          <span>&</span>
-          <span transition:name={`letra-${slug}`} class='musica'>{letra}</span>
+        <div>
+          <div class='autor musica'>
+            <div class='svg'>
+              <MusicaSvg width='15px' height='27px' color='var(--primary-color)' />
+            </div>
+            <span transition:name={`musica-${slug}`}>{musica}</span>
+          </div>
+          <div class='autor letra'>
+            <div class='svg'>
+              <LetraSvg width='15px' height='30px' color='var(--primary-color)' />
+            </div>
+            <span transition:name={`letra-${slug}`}>{letra}</span>
+          </div>
         </div>
-      </div>
-    </main>
-    <footer>
-      <p>Ver mas...</p>
-    </footer>
+      </main>
+    </article>
   </a>
-</article>
-<style>
-  :root {
-  }
+</div>
 
-  .card a {
+<style>
+  .card-container {
+    height: 100%;
+  }
+  a {
     text-decoration: none;
     color: inherit;
+    height: inherit;
   }
+
   .card {
     background-color: var(--card-background-color);
     width: auto;
-    height: 290px;
+    height: inherit;
     border-radius: 8px;
-    border: 1px solid var(--card-primary-color);
+    border: 1px solid var(--primary-color);
     box-shadow:
       rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -63,11 +73,35 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     border-radius: 8px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     transition: transform 0.5s ease;
-    transform: scale(1); /* estado inicial */
+    transform: scale(1);
+  }
+
+  .card .title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--primary-color);
+  }
+
+  .card .autor {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 1rem;
+  }
+
+  .card .autor.letra > .svg {
+    position: relative;
+    top: 1.5px;
+  }
+
+  .card .autor span {
+    font-size: 1rem;
+    color: var(--secondary-color);
   }
 
   .card main {
-    padding: 0 16px;
+    padding: 4px 16px 0 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -75,66 +109,21 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     top: -8px;
   }
 
-  .card footer {
-    position: absolute;
-    bottom: 8px;
-    padding: 0 16px;
-    font-size: 0.9rem;
-    color: var(--card-secondary-color);
-  }
-
-  .card .title {
-    margin: 0;
-    font-weight: 500;
-    font-size: 1.25em;
-    color: var(--card-primary-color);
-  }
-
-  .card .autor {
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    color: var(--card-secondary-color);
-  }
-
   .card:has(:hover, :focus) {
     transform: scale(1.05);
     box-shadow:
       rgba(50, 50, 93, 0.25) 0px 30px 60px -10px,
       rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    border: 1px solid var(--card-primary-contrast-color);
+    border: 1px solid var(--primary-contrast-color);
   }
 
   .card:has(:hover, :focus) header img {
     transform: scale(1.05);
   }
 
-  @media (max-width: 1440px) {
-    .card {
-      max-width: 470px;
-      height: 290px;
-    }
-
-    .card header img {
-      height: 160px;
-      width: calc(100% - 32px);
-    }
-
-    .card main {
-      gap: 6px;
-    }
-
-    .card .title {
-      font-size: 1.25rem;
-    }
-    .card .musica {
-      font-size: 1rem;
-    }
-  }
-
   @media (max-width: 1024px) {
     .card {
       max-width: 380px;
-      height: 280px;
     }
 
     .card header {
@@ -167,8 +156,6 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
   @media (max-width: 640px) {
     .card {
       max-width: 315px;
-      width: auto;
-      height: 260px;
     }
 
     .card header {
@@ -176,11 +163,11 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     }
 
     .card header img {
-      height: 140px;
+      height: 100px;
       width: calc(100% - 16px);
     }
     .card main {
-      padding: 4px 8px;
+      padding: 0 8px;
       gap: 4px;
     }
 
@@ -189,40 +176,11 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     }
 
     .card .title {
-      font-size: 1.04rem;
+      font-size: 1.08rem;
     }
 
-    .card .musica {
-      font-size: 0.8rem;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .card {
-      max-width: 230px;
-      width: auto;
-      height: 260px;
-    }
-
-    .card header img {
-      height: 110px;
-      width: calc(100% - 16px);
-    }
-
-    .card:has(:hover, :focus) {
-      transform: scale(1.025);
-    }
-
-    .card:has(:hover, :focus) header img {
-      transform: scale(1.025);
-    }
-
-    .card .title {
-      font-size: 1.025rem;
-    }
-
-    .card .musica {
-      font-size: 0.7rem;
+    .card .autor span {
+      font-size: 0.9rem;
     }
   }
 </style>
