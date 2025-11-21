@@ -1,7 +1,11 @@
+---
+const { link } = Astro.props;
+---
+
 <section class='card-container'>
   <div class='iframe-container'>
     <iframe
-      src='https://www.youtube.com/embed/pm79P9BHtco?si=ronvZsojCsh3z6xn'
+      src={link}
       title='YouTube video player'
       frameborder='0'
       allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
@@ -20,7 +24,6 @@
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     display: grid;
     place-items: center;
-
     flex: 1;
   }
 
@@ -48,11 +51,11 @@
     .card-container {
       min-height: 300px;
     }
+  }
 
-    @media (max-width: 480px) {
+  @media (max-width: 480px) {
     .card-container {
       min-height: 250px;
-      
     }
   }
 </style>

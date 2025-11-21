@@ -16,7 +16,7 @@ const { Content } = await render(acorde);
         {agrupacion}
       </h1>
     </div>
-    <img transition:name={`img-${slug}`} src={img} alt={pieza} />
+    <img transition:name={`img-${slug}`} src={img} alt={`${pieza} ${agrupacion}`} />
 
     <div class='autores'>
       <div class='autor musica'>

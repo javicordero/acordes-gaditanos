@@ -5,6 +5,7 @@ import Header from '../../components/header.astro';
 import YoutubeCard from '../../components/youtube-card.astro';
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/footer.astro';
+import SitiosDeInteresCard from '../../components/sitios-de-interes-card.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
-const { pieza, agrupacion, musica, img, year, letra } = data;
+const { pieza, agrupacion, musica, img, year, letra, video, video2 } = data;
 ---
 
 <Layout title={`${pieza} - ${agrupacion}`} description={`Acordes ${pieza} ${musica}`}>
@@ -24,7 +25,13 @@ const { pieza, agrupacion, musica, img, year, letra } = data;
 
   <main class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
-    <YoutubeCard />
+
+    <div class='right-column'>
+      <YoutubeCard link={video} />
+
+      {video2 && <YoutubeCard link={video2} />}
+      <SitiosDeInteresCard />
+    </div>
   </main>
 
   <Footer />
@@ -38,6 +45,11 @@ const { pieza, agrupacion, musica, img, year, letra } = data;
     column-gap: 32px;
   }
 
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
   @media (max-width: 640px) {
     main {
       flex-direction: column;

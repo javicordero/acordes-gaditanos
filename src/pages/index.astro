@@ -26,39 +26,90 @@ acordes = acordes.sort((a, b) => {
 
   return dateB.getTime() - dateA.getTime();
 });
+
+// Agrupar por año (se mantiene el orden interno ya ordenado)
+const grouped = acordes.reduce((acc: Record<string, any[]>, item) => {
+  const y = String(item.data.year ?? 'Sin año');
+  if (!acc[y]) acc[y] = [];
+  acc[y].push(item);
+  return acc;
+}, {});
+
+// Obtener años ordenados descendente (numéricamente cuando sea posible)
+const years = Object.keys(grouped).sort((a, b) => {
+  const na = Number(a);
+  const nb = Number(b);
+  if (isNaN(na) || isNaN(nb)) return b.localeCompare(a);
+  return nb - na;
+});
 ---
 
 <Layout title='Acordes Gaditanos' description='Colección de acordes de piezas gaditanas'>
   <div></div>
   <Header />
   <main class='main-container container-layout'>
-    <section class='section'>
-      {
-        acordes.map((acorde: { slug: any; data: any }) => {
-          const { slug, data } = acorde;
-          const { pieza, agrupacion, musica, letra, img, year } = data;
+    {
+      years.map((year) => {
+        const items = grouped[year];
+        return (
+          <section class='year-group' key={year}>
+            <header>
+              <h2 class='year-header'>{year}</h2>
+            </header>
+            <div class='section'>
+              {items.map((acorde: { slug: any; data: any }) => {
+                const { slug, data } = acorde;
+                const { pieza, agrupacion, musica, letra, img, year: y } = data;
 
-          return (
-            <Card
-              pieza={pieza}
-              agrupacion={agrupacion}
-              musica={musica}
-              letra={letra}
-              img={img}
-              year={year}
-              slug={slug}
-            />
-          );
-        })
-      }
-    </section>
+                return (
+                  <Card
+                    pieza={pieza}
+                    agrupacion={agrupacion}
+                    musica={musica}
+                    letra={letra}
+                    img={img}
+                    year={y}
+                    slug={slug}
+                  />
+                );
+              })}
+            </div>
+          </section>
+        );
+      })
+    }
   </main>
   <Footer />
 </Layout>
 
 <style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .year-group {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .year-group:not(:first-of-type) {
+    /* border-top: 1px solid var(--secondary-color); */
+    /* padding-top: 8px; */
+  }
+
+  .year-group header {
+    /* text-align: end; */
+    padding: 0 8px;
+  }
+
+  .year-group header h2 {
+    color: var(--secondary-color);
+  }
+
   .section {
-    margin: 16px auto;
     display: grid;
     row-gap: 40px;
     /* por defecto 2 columnas en pantallas pequeñas */
@@ -89,6 +140,12 @@ acordes = acordes.sort((a, b) => {
   }
 
   @media (max-width: 640px) {
+    .year-group {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
     .section {
       row-gap: 24px;
       column-gap: 4px;
