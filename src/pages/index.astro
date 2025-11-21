@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/card.astro';
 import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
 
 function parseSpanishDate(str: string) {
   const [d, m, y] = str.split(/[-/]/).map(Number);
@@ -30,7 +31,7 @@ acordes = acordes.sort((a, b) => {
 <Layout title='Acordes Gaditanos' description='Colección de acordes de piezas gaditanas'>
   <div></div>
   <Header />
-  <main class='container-layout'>
+  <main class='main-container container-layout'>
     <section class='section'>
       {
         acordes.map((acorde: { slug: any; data: any }) => {
@@ -52,11 +53,12 @@ acordes = acordes.sort((a, b) => {
       }
     </section>
   </main>
+  <Footer />
 </Layout>
 
 <style>
   .section {
-    margin: 88px auto;
+    margin: 16px auto;
     display: grid;
     row-gap: 40px;
     /* por defecto 2 columnas en pantallas pequeñas */

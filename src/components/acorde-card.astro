@@ -1,7 +1,6 @@
 ---
 import { render } from 'astro:content';
-import MusicaSvg from './musica-svg.astro';
-import LetraSvg from './letra-svg.astro';
+import { Icon } from 'astro-icon/components';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -22,13 +21,13 @@ const { Content } = await render(acorde);
     <div class='autores'>
       <div class='autor musica'>
         <div class='svg'>
-          <MusicaSvg width='15px' height='27px' color='var(--primary-color)' />
+          <Icon name='clave-de-sol' width={15} height={27} />
         </div>
         <span>{musica}</span>
       </div>
       <div class='autor letra'>
         <div class='svg'>
-          <LetraSvg width='15px' height='30px' color='var(--primary-color)' />
+          <Icon name='lapiz' width={15} height={30} />
         </div>
         <span>{letra}</span>
       </div>
@@ -61,7 +60,7 @@ const { Content } = await render(acorde);
 
   .acordes-container > header > .title h1 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: var(--acorde-card-header-font-size-sm);
     color: var(--primary-color);
   }
 
@@ -71,7 +70,7 @@ const { Content } = await render(acorde);
   }
 
   .acordes-container .autor {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     display: flex;
     align-items: center;
     gap: 4px;
@@ -116,7 +115,7 @@ const { Content } = await render(acorde);
     }
 
     .acordes-container > header > .title h1 {
-      font-size: 1.4rem;
+      font-size: var(--acorde-card-header-font-size-xl);
     }
 
     .acordes-container .autor {

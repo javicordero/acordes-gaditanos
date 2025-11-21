@@ -1,6 +1,5 @@
 ---
-import LetraSvg from './letra-svg.astro';
-import MusicaSvg from './musica-svg.astro';
+import { Icon } from 'astro-icon/components';
 
 const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
 ---
@@ -19,13 +18,13 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
         <div>
           <div class='autor musica'>
             <div class='svg'>
-              <MusicaSvg width='15px' height='27px' color='var(--primary-color)' />
+              <Icon name='clave-de-sol' width={15} height={27} />
             </div>
             <span transition:name={`musica-${slug}`}>{musica}</span>
           </div>
           <div class='autor letra'>
             <div class='svg'>
-              <LetraSvg width='15px' height='30px' color='var(--primary-color)' />
+              <Icon name='lapiz' width={15} height={30} />
             </div>
             <span transition:name={`letra-${slug}`}>{letra}</span>
           </div>
@@ -181,6 +180,14 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
 
     .card .autor span {
       font-size: 0.9rem;
+    }
+
+    .card:has(:hover, :focus) {
+      transform: scale(1.02);
+    }
+
+    .card:has(:hover, :focus) header img {
+      transform: scale(1.02);
     }
   }
 </style>
