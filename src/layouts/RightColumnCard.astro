@@ -1,0 +1,87 @@
+---
+const { title } = Astro.props;
+---
+
+<section class='screen screen-card'>
+  <div class='screen-body'>
+    <header class='app-title'>
+      <h3>{title}</h3>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </div>
+</section>
+
+<style>
+  .screen-card {
+    position: relative;
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    box-shadow: rgba(50, 50, 93, 0.12) 0px 30px 60px -20px;
+    padding: 16px;
+    z-index: 0;
+  }
+
+  .screen-card:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+    z-index: -1;
+  }
+
+  .screen-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .app-title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: fit-content;
+  }
+
+  .app-title h3 {
+    font-size: inherit;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .app-title:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -4px;
+    width: 90%;
+    height: 3px;
+    background: var(--primary-contrast-color);
+    border-radius: 2px;
+  }
+
+  .screen-card main {
+    /* El contenido principal se estilizará según el uso dentro del slot */
+  }
+
+  footer {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .app-title {
+      font-size: var(--acorde-card-header-font-size-sm);
+    }
+  }
+</style>

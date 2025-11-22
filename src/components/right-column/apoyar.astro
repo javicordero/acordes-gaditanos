@@ -1,0 +1,95 @@
+---
+import { Icon } from 'astro-icon/components';
+import RightColumnCard from '../../layouts/RightColumnCard.astro';
+---
+
+<RightColumnCard title='APOYAR'>
+  <article>
+    <p>
+      ¿Quieres <strong>apoyar</strong> el proyecto? Puedes hacerlo <strong>donando</strong> vía Buy Me
+      a Coffee o PayPal.
+    </p>
+
+    <div class='botones'>
+      <a
+        href='https://www.buymeacoffee.com/AcordesGaditanos'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='bmc-button'
+        aria-label='Apóyame en Buy Me a Coffee'>
+        <span class='btn-icon'>
+          <Icon name='buy-me-a-coffee' width={20} height={28} />
+        </span>
+        <span class='btn-custom-text'>Buy me a coffee</span>
+      </a>
+
+      <a
+        href='https://www.paypal.me/TU_USUARIO'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='bmc-button paypal-button'
+        aria-label='Donar por PayPal'>
+        <span class='btn-icon'>
+          <Icon name='paypal' width={20} height={20} />
+        </span>
+        <span class='btn-custom-text'>Paypal</span>
+      </a>
+    </div>
+  </article>
+</RightColumnCard>
+
+<style>
+  /* Layout */
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .botones {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .bmc-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--card-background-color);
+    background-color: var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    min-height: 44px;
+    flex: 1;
+  }
+
+  .paypal-button {
+    background-color: var(--primary-contrast-color);
+    color: var(--primary-color);
+  }
+
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    line-height: 1;
+    font-size: 18px;
+  }
+
+  .btn-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .btn-custom-text {
+    font-size: 14px;
+    letter-spacing: 1.25px;
+  }
+</style>

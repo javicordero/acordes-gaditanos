@@ -1,0 +1,49 @@
+---
+import RightColumnCard from '../../layouts/RightColumnCard.astro';
+---
+
+<RightColumnCard title='SITIOS DE INTERÉS'>
+  <ul class='sitios-de-interes-list'>
+    <li>
+      <a href='https://www.acordes-gaditanos.com' target='_blank' rel='noopener'>Antiguo blog</a>
+    </li>
+    <li>
+      <a href='https://www.facebook.com/acordesgaditanos' target='_blank' rel='noopener'
+        >Guitarra de Gades</a
+      >
+    </li>
+    <li>
+      <a href='https://twitter.com/acordesgaditano' target='_blank' rel='noopener'
+        >Letras desde el paraíso</a
+      >
+    </li>
+    <li>
+      <a href='https://www.instagram.com/acordesgaditanos/' target='_blank' rel='noopener'
+        >Instagram</a
+      >
+    </li>
+  </ul></RightColumnCard
+>
+
+<style>
+  .sitios-de-interes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sitios-de-interes-list li a {
+    color: var(--primary-color);
+    /* color: var(--link-color); */
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .sitios-de-interes-list li a:hover {
+    color: var(--link-hover-color);
+    color: var(--acorde-color);
+  }
+</style>

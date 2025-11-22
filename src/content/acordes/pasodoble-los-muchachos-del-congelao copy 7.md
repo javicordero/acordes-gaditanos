@@ -1,11 +1,11 @@
 ---
 pieza: Pasodoble
 agrupacion: Los muchachos del congelao
-year: 2022
+year: 2025
 musica: Raúl Cabrera
 letra: El Canijo
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifvhW8CYkLi6OoaPq_npbUS6wKCyUb6Fr8jpiBqTW-hxFGyGw02H5Xzcbh1lDwoUBtp4oUDw_fU-4g3hZKi07XzHMi2vER_TLpMjp4SADxnsrAoPVbu3mFxnCTMlujWGqvXnd4A9zmvHyNFjWYfC66l7b3w8ofJgYVYNyglmFD4eDkUN6754D6xnD8vAH1/s320/muchachos.webp
-date: "20/01/2025"
+date: "20/01/2028"
 video: 'https://www.youtube.com/embed/4A44HlY0hIQ?si=aZjOz3SS0z-gd4OD'
 
 ---

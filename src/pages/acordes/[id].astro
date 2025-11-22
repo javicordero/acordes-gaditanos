@@ -2,10 +2,12 @@
 import { getCollection, render } from 'astro:content';
 import AcordeCard from '../../components/acorde-card.astro';
 import Header from '../../components/header.astro';
-import YoutubeCard from '../../components/youtube-card.astro';
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/footer.astro';
-import SitiosDeInteresCard from '../../components/sitios-de-interes-card.astro';
+import YoutubeCard from '../../components/right-column/youtube-card.astro';
+import SitiosDeInteresCard from '../../components/right-column/sitios-de-interes-card.astro';
+import Apoyar from '../../components/right-column/apoyar.astro';
+import ApareceAqui from '../../components/right-column/aparece-aqui.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -28,8 +30,9 @@ const { pieza, agrupacion, musica, img, year, letra, video, video2 } = data;
 
     <div class='right-column'>
       <YoutubeCard link={video} />
-
       {video2 && <YoutubeCard link={video2} />}
+      <ApareceAqui />
+      <Apoyar />
       <SitiosDeInteresCard />
     </div>
   </main>

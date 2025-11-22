@@ -12,8 +12,14 @@ const { Content } = await render(acorde);
   <header class='card-header'>
     <div class='left-col'>
       <div class='app-title'>
-        <span transition:name={`pieza-${slug}`} class='pieza'>{pieza}</span>
-        <span transition:name={`agrupacion-${slug}`} class='agrupacion'>{agrupacion}</span>
+        <h2>
+          <span transition:name={`pieza-${slug}`} class='pieza'>
+            {pieza}
+          </span>
+          <span transition:name={`agrupacion-${slug}`} class='agrupacion'>
+            {agrupacion}
+          </span>
+        </h2>
       </div>
 
       <div class='autores'>
@@ -101,18 +107,16 @@ const { Content } = await render(acorde);
 
   .app-title {
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-title h2 {
     color: var(--primary-color);
     font-size: 1.625rem;
     font-weight: 700;
-    display: flex;
-    flex-direction: column;
     line-height: 1.79rem;
-  }
-
-  .app-title .agrupacion {
-    font-size: inherit;
-    font-weight: 700;
-    color: var(--secondary-color);
   }
 
   /* raya amarilla justo debajo del título/agrupacion (fluye en el document) */
@@ -195,10 +199,6 @@ const { Content } = await render(acorde);
         clamp(min, preferred, max) — preferencia basada en viewport para adaptarse */
       max-width: clamp(600px, calc(580px + 5vw), 960px); /* entre 600px y 960px */
     }
-  }
-
-  .acordes-container > header > .title h1 {
-    font-size: var(--acorde-card-header-font-size-xl);
   }
 
   .acordes-container .autor {
