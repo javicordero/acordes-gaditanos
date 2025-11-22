@@ -18,7 +18,7 @@
     <li><a href='#'>about</a></li>
     <li><a href='#'>blogs</a></li>
     <li><a href='#'>portfolio</a></li>
-    <li><a href='/contacto'>contact</a></li>
+    <li><a href='/contacto'>contacto</a></li>
   </div>
 </nav>
 
@@ -130,6 +130,7 @@
     flex-direction: column;
     transition: transform 0.5s ease-in-out;
     text-align: center;
+    gap: 16px;
   }
 
   nav input[type='checkbox']:checked ~ .menu-items {
@@ -143,13 +144,32 @@
   .menu-items a {
     text-decoration: none;
     color: var(--primary-color);
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding: 0.7rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    position: relative;
+    display: inline-block;
   }
 
-  .menu-items a:hover {
-    font-weight: bolder;
+  /* línea animada que crece de izquierda a derecha */
+  .menu-items a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 3px;
+    width: 100%;
+    background: var(--primary-contrast-color);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .menu-items a:hover::after,
+  .menu-items a:focus::after {
+    transform: scaleX(1);
   }
 
   nav input[type='checkbox']:checked ~ .logo {
