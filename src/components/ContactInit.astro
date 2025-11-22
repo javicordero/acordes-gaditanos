@@ -1,0 +1,204 @@
+---
+
+---
+
+<div style='display:none' aria-hidden='true'></div>
+
+<script type='module'>
+  // Inicializador del formulario de contacto (mismo comportamiento que antes)
+  (function () {
+    console.debug('[contact] ContactInit script loaded');
+    function initContactForm() {
+      const form = document.getElementById('contact-form');
+      if (!form) return false;
+      if (form.dataset.contactInit === '1') return true;
+      form.dataset.contactInit = '1';
+
+      const fields = {
+        name: document.getElementById('name'),
+        email: document.getElementById('email'),
+        message: document.getElementById('message'),
+      };
+
+      function validateEmail(value) {
+        return /\S+@\S+\.\S+/.test(value);
+      }
+
+      function validateField(key) {
+        const el = fields[key];
+        if (!el) return false;
+        let valid = true;
+        const val = el.value.trim();
+
+        if (key === 'email') {
+          valid = val.length > 0 && validateEmail(val);
+        } else {
+          valid = val.length > 0;
+        }
+
+        const errEl = document.getElementById('error-' + key);
+
+        if (!valid) {
+          el.classList.add('invalid');
+          el.setAttribute('aria-invalid', 'true');
+          if (errEl) {
+            errEl.classList.add('active');
+            errEl.setAttribute('aria-hidden', 'false');
+          }
+        } else {
+          el.classList.remove('invalid');
+          el.removeAttribute('aria-invalid');
+          if (errEl) {
+            errEl.classList.remove('active');
+            errEl.setAttribute('aria-hidden', 'true');
+          }
+        }
+
+        return valid;
+      }
+
+      // Blur & input validation
+      Object.keys(fields).forEach((k) => {
+        const el = fields[k];
+        if (!el) return;
+        el.addEventListener('blur', () => validateField(k));
+        el.addEventListener('input', () => {
+          validateField(k);
+          const submitButton = form.querySelector('button[type="submit"]');
+          if (submitButton) {
+            submitButton.classList.remove('invalid');
+          }
+        });
+      });
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        // Validate all
+        const results = Object.keys(fields).map((k) => validateField(k));
+        const ok = results.every(Boolean);
+        if (!ok) {
+          // focus first invalid
+          const firstInvalid = form.querySelector('.form-control.invalid');
+          if (firstInvalid) firstInvalid.focus();
+
+          // feedback on the submit button: red border + shake
+          if (submitButton) {
+            submitButton.classList.add('invalid');
+            submitButton.classList.add('shake');
+            // remove shake after animation
+            setTimeout(() => submitButton.classList.remove('shake'), 500);
+            // keep invalid state visible briefly
+            setTimeout(() => submitButton.classList.remove('invalid'), 2500);
+          }
+
+          return;
+        }
+
+        // All valid — enviar al endpoint del servidor
+        const payload = {
+          name: fields.name.value.trim(),
+          email: fields.email.value.trim(),
+          message: fields.message.value.trim(),
+        };
+
+        if (submitButton) submitButton.disabled = true;
+
+        function showStatus(msg, type = 'error', timeout = 3000) {
+          const el = document.getElementById('form-status');
+          if (!el) return;
+          el.textContent = msg;
+          el.classList.remove('success', 'error');
+          el.classList.add(type);
+          if (timeout > 0) {
+            setTimeout(() => {
+              el.textContent = '';
+              el.classList.remove('success', 'error');
+            }, timeout);
+          }
+        }
+
+        try {
+          // Usar siempre el endpoint que pegues en data-endpoint (Formspree).
+          const endpoint = (form.dataset.endpoint || '').trim();
+          if (!endpoint) {
+            if (submitButton) submitButton.disabled = false;
+            showStatus('No está configurado el endpoint del formulario.', 'error', 8000);
+            return;
+          }
+
+          const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          if (!res.ok) {
+            const data = await res.json().catch(() => ({}));
+            if (submitButton) submitButton.disabled = false;
+            showStatus(
+              'Error al enviar el formulario: ' + (data.error || res.statusText),
+              'error',
+              8000
+            );
+            return;
+          }
+
+          // éxito
+          form.reset();
+          // limpiar estados visuales
+          Object.keys(fields).forEach((k) => {
+            const f = fields[k];
+            if (!f) return;
+            f.classList.remove('invalid');
+            f.removeAttribute('aria-invalid');
+            const err = document.getElementById('error-' + k);
+            if (err) {
+              err.classList.remove('active');
+              err.setAttribute('aria-hidden', 'true');
+            }
+          });
+          showStatus('Mensaje enviado. Muchas gracias.', 'success', 6000);
+        } catch (err) {
+          showStatus('Ocurrió un error al enviar. Intenta de nuevo.', 'error', 8000);
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+        }
+      });
+
+      return true;
+    }
+
+    // Init now if form is present
+    if (initContactForm()) {
+      console.debug('[contact] initContactForm: initialized on load');
+      return;
+    }
+
+    // Watch for client-side navigation (ClientRouter) that injects the form later
+    const mo = new MutationObserver((mutations, obs) => {
+      if (document.getElementById('contact-form')) {
+        initContactForm();
+        obs.disconnect();
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    // Polling fallback: algunos routers inyectan el contenido sin disparar
+    // mutaciones observables en ciertos flujos; comprobamos periódicamente
+    // durante unos segundos para asegurar la inicialización.
+    let attempts = 0;
+    const maxAttempts = 17; // ~5s a 300ms
+    const poll = setInterval(() => {
+      attempts++;
+      if (initContactForm() || attempts >= maxAttempts) {
+        clearInterval(poll);
+        try {
+          mo.disconnect();
+        } catch (e) {}
+      }
+    }, 300);
+  })();
+</script>

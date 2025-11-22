@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
+import ContactInit from '../components/ContactInit.astro';
 ---
 
 <!doctype html>
@@ -15,5 +16,6 @@ import { ClientRouter } from 'astro:transitions';
   </head>
   <body>
     <slot />
+    <ContactInit client:idle />
   </body>
 </html>
