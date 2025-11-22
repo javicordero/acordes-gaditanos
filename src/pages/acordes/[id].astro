@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
-const { pieza, agrupacion, musica, img, year, letra, video, video2 } = data;
+const { pieza, agrupacion, musica, img, year, letra, video, cover } = data;
 ---
 
 <Layout title={`${pieza} - ${agrupacion}`} description={`Acordes ${pieza} ${musica}`}>
@@ -30,9 +30,12 @@ const { pieza, agrupacion, musica, img, year, letra, video, video2 } = data;
 
     <div class='right-column'>
       <YoutubeCard link={video} />
-      {video2 && <YoutubeCard link={video2} />}
-      <ApareceAqui />
+
+      {cover && <YoutubeCard link={cover} title='Cover de Juan' />}
+      {!cover && <ApareceAqui />}
+
       <Apoyar />
+
       <SitiosDeInteresCard />
     </div>
   </main>

@@ -2,9 +2,33 @@
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
 ---
 
-<RightColumnCard title='APARECE AQUÍ'>
-  <p>
-    ¿Tienes algún video tocando esta copla con tu guitarra? Envíanos el enlace y te mostraremos
-    aquí.
-  </p>
+<RightColumnCard title='APARECE CON TU GUITARRA'>
+  <main>
+    <p>
+      ¿Tienes algún <strong>video tocando</strong> esta copla con <strong>tu guitarra</strong>?
+      <a href='/contacto'>Envíanos el enlace</a> y te aparecerás aquí.
+    </p>
+    <p class='note'>
+      Puede ser un video acompañando a la agrupación, cantando tú mismo/a o con algún amigo/a.
+    </p>
+  </main>
 </RightColumnCard>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .note {
+    font-size: 0.9em;
+    color: var(--text-secondary-color);
+    font-style: italic;
+  }
+
+  a {
+    color: var(--acorde-color);
+    text-decoration: none;
+  }
+</style>

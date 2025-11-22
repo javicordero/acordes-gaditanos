@@ -10,7 +10,7 @@ const acordes = defineCollection({
     year: z.number().transform((n) => n.toString()),
     date: z.string().regex(/^\d{2}[-/]\d{2}[-/]\d{4}$/),
     video: z.string().optional(),
-    video2: z.string().optional(),
+    cover: z.string().optional(),
   }),
 });
 
