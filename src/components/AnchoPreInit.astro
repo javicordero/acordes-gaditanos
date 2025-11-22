@@ -1,0 +1,202 @@
+---
+
+---
+
+<script type='module' client:load>
+  // AnchoPreInit: centraliza el ajuste de <pre> dentro de .acordes-container
+  // Diseñado para ejecutarse en carga inicial y al navegar en la SPA.
+  (function () {
+    const DEBUG = true;
+    if (DEBUG) console.debug('[AnchoPreInit] init');
+
+    // No limitar la reducción: reducir tanto como haga falta para que quepa
+    const MIN_REM = 0;
+
+    function getRootPx() {
+      return parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    }
+
+    async function waitForSectionLayout(section) {
+      // esperar un par de frames
+      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      // esperar a las fuentes si están pendientes
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (e) {}
+      }
+      // esperar imágenes de la sección (limitado a 300ms)
+      const imgs = Array.from(section.querySelectorAll('img'));
+      if (imgs.length) {
+        await Promise.race([
+          Promise.all(
+            imgs.map((img) =>
+              img.complete
+                ? Promise.resolve()
+                : new Promise((res) => {
+                    img.addEventListener('load', res, { once: true });
+                    img.addEventListener('error', res, { once: true });
+                  })
+            )
+          ),
+          new Promise((r) => setTimeout(r, 300)),
+        ]);
+      }
+      // último frame
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+
+    function adjustPreInSection(section) {
+      if (!section) return;
+      const main = section.querySelector('main');
+      if (!main) return;
+      const pre = main.querySelector('pre');
+      if (!pre) return;
+
+      // guardar original si no existe
+      const computed = getComputedStyle(pre);
+      const rootPx = getRootPx();
+      if (!pre.dataset.originalFontRem) {
+        const origPx = parseFloat(computed.fontSize) || 14;
+        pre.dataset.originalFontRem = (origPx / rootPx).toString();
+        let linePx = parseFloat(computed.lineHeight);
+        if (!linePx || isNaN(linePx)) linePx = origPx * 1.2;
+        pre.dataset.originalLineHeightRatio = (linePx / origPx).toString();
+      }
+
+      // medir y aplicar escala conservadora (una pasada)
+      (async () => {
+        try {
+          await waitForSectionLayout(section);
+        } catch (e) {}
+
+        const origRem = parseFloat(pre.dataset.originalFontRem);
+
+        // reintentar un par de veces si las mediciones todavía no están estabilizadas
+        const retries = [0, 50, 150, 350];
+        let attempt = 0;
+
+        const doAdjustAttempt = () => {
+          // restaurar al original antes de medir
+          pre.style.fontSize = origRem + 'rem';
+          const ratio = parseFloat(pre.dataset.originalLineHeightRatio) || 1.2;
+          pre.style.lineHeight = +(origRem * ratio).toFixed(4) + 'rem';
+
+          const mainWidth = Math.max(0, main.clientWidth - 4);
+          const preWidth = pre.scrollWidth;
+
+          if (preWidth <= mainWidth) {
+            if (DEBUG)
+              console.debug(
+                '[AnchoPreInit] no change needed',
+                section.querySelector('.app-title')?.textContent?.trim()
+              );
+            return;
+          }
+
+          const targetScale = mainWidth / preWidth;
+          const boundedScale = Math.min(1, targetScale);
+          // permitir reducción completa hasta que el contenido quepa
+          const scale = boundedScale;
+          const newRem = +(origRem * scale).toFixed(4);
+          pre.style.fontSize = newRem + 'rem';
+          pre.style.lineHeight = +(newRem * ratio).toFixed(4) + 'rem';
+
+          if (!section.dataset.acordeAdjusted) {
+            section.dataset.acordeAdjusted = '1';
+            if (DEBUG)
+              console.debug(
+                '[AnchoPreInit] adjusted pre for',
+                section.querySelector('.app-title')?.textContent?.trim()
+              );
+          }
+
+          // si sigue habiendo overflow y quedan reintentos, programar uno más
+          const mainWidthAfter = Math.max(0, main.clientWidth - 4);
+          const preWidthAfter = pre.scrollWidth;
+          if (preWidthAfter > mainWidthAfter && attempt < retries.length - 1) {
+            attempt++;
+            setTimeout(doAdjustAttempt, retries[attempt]);
+          }
+        };
+
+        doAdjustAttempt();
+      })();
+    }
+
+    function initAdjustments() {
+      const list = Array.from(document.querySelectorAll('.acordes-container'));
+      if (DEBUG) console.debug('[AnchoPreInit] initAdjustments', list.length);
+      list.forEach((s) => adjustPreInSection(s));
+    }
+
+    // observer ligero para detectar cuando el router inyecta contenido
+    let observerTimeout = null;
+    const bodyObserver = new MutationObserver(() => {
+      if (observerTimeout) clearTimeout(observerTimeout);
+      observerTimeout = setTimeout(() => {
+        initAdjustments();
+      }, 80);
+    });
+
+    function startObserver() {
+      try {
+        bodyObserver.observe(document.body, { childList: true, subtree: true });
+        setTimeout(() => bodyObserver.disconnect(), 4000);
+      } catch (e) {}
+    }
+
+    // parche de history para detectar navegación client-side
+    function patchHistory() {
+      if (window.__ancho_history_patched) return;
+      try {
+        const origPush = history.pushState;
+        const origReplace = history.replaceState;
+        history.pushState = function (...args) {
+          const res = origPush.apply(this, args);
+          window.dispatchEvent(new Event('acorde:locationchange'));
+          return res;
+        };
+        history.replaceState = function (...args) {
+          const res = origReplace.apply(this, args);
+          window.dispatchEvent(new Event('acorde:locationchange'));
+          return res;
+        };
+        window.addEventListener('popstate', () =>
+          window.dispatchEvent(new Event('acorde:locationchange'))
+        );
+        window.__ancho_history_patched = true;
+      } catch (e) {}
+    }
+
+    const debounced = (() => {
+      let t;
+      return () => {
+        clearTimeout(t);
+        t = setTimeout(() => initAdjustments(), 80);
+      };
+    })();
+
+    // marcar presencia para evitar duplicidades si hay scripts por componente
+    try {
+      window.__AnchoPreInit_present = true;
+    } catch (e) {}
+
+    // arrancar
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        initAdjustments();
+        startObserver();
+        patchHistory();
+        window.addEventListener('acorde:locationchange', () => setTimeout(initAdjustments, 50));
+        window.addEventListener('resize', debounced, { passive: true });
+      });
+    } else {
+      initAdjustments();
+      startObserver();
+      patchHistory();
+      window.addEventListener('acorde:locationchange', () => setTimeout(initAdjustments, 50));
+      window.addEventListener('resize', debounced, { passive: true });
+    }
+  })();
+</script>

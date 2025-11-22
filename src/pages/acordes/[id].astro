@@ -40,7 +40,6 @@ const { pieza, agrupacion, musica, img, year, letra, video, video2 } = data;
 <style>
   main {
     display: flex;
-    justify-content: space-between;
     row-gap: 16px;
     column-gap: 32px;
   }
@@ -49,6 +48,16 @@ const { pieza, agrupacion, musica, img, year, letra, video, video2 } = data;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    /* La columna derecha crecerá para rellenar el espacio restante dentro del contenedor hasta un máximo razonable */
+    flex: 1 1 clamp(220px, 22vw, 380px);
+    min-width: 0;
+  }
+
+  /* Mantener la card izquierda con su anchura natural (el componente controla su propio max-width)
+     y dejar que la columna derecha tome el espacio sobrante */
+  main > .acordes-container {
+    flex: 0 0 auto;
+    min-width: 0;
   }
 
   @media (max-width: 780px) {
@@ -57,9 +66,24 @@ const { pieza, agrupacion, musica, img, year, letra, video, video2 } = data;
     }
   }
 
+  /* Para resoluciones intermedias (tablet → pequeño desktop) hacemos la card más estrecha */
+  @media (min-width: 640px) and (max-width: 1024px) {
+    main > .acordes-container {
+      /* Reducir anchura y fijar base para que no ocupe tanto espacio */
+      max-width: 576px;
+      min-width: 0;
+    }
+  }
+
   @media (max-width: 640px) {
     main {
       flex-direction: column;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .right-column {
+      flex: 1 1 clamp(260px, 20vw, 480px);
     }
   }
 </style>

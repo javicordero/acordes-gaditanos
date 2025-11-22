@@ -68,9 +68,16 @@ const { Content } = await render(acorde);
     box-shadow:
       rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    /* Limitar ancho para que no sobrepase el container-layout en la página */
+    width: 100%;
+    max-width: 600px; /* 600px base */
+    box-sizing: border-box;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    /* Evitar que la card crezca más allá de su max-width en layouts flex padres */
+    flex: 0 1 auto;
+    gap: 8px;
   }
 
   /* Header: left column (title + autores) and right column (imagen). Use flex
@@ -99,7 +106,7 @@ const { Content } = await render(acorde);
     font-weight: 700;
     display: flex;
     flex-direction: column;
-    line-height: 1.1;
+    line-height: 1.79rem;
   }
 
   .app-title .agrupacion {
@@ -153,11 +160,10 @@ const { Content } = await render(acorde);
   .acordes-container > header img.card-image {
     height: auto;
     border-radius: 8px;
-    width: 180px;
+    width: 200px;
     max-width: 100%;
     object-fit: cover;
     display: block;
-    flex: 0 0 180px;
   }
 
   .acordes-container > main {
@@ -175,34 +181,45 @@ const { Content } = await render(acorde);
     color: var(--acorde-color);
   }
 
-  @media (min-width: 640px) {
+  /* Intermedio: reducir anchura de la card en tablets / pantallas pequeñas de desktop */
+  @media (min-width: 640px) and (max-width: 1023.98px) {
     .acordes-container {
-      /* min-width: max-content; */
+      max-width: 576px; /* 36rem ≈ 576px */
     }
+  }
 
-    .acordes-container > header > .title h1 {
-      font-size: var(--acorde-card-header-font-size-xl);
+  /* Grandes pantallas: aplicar el comportamiento clamp() para permitir crecimiento controlado */
+  @media (min-width: 1024px) {
+    .acordes-container {
+      /* En pantallas de escritorio la card puede crecer, pero con límites.
+        clamp(min, preferred, max) — preferencia basada en viewport para adaptarse */
+      max-width: clamp(600px, calc(580px + 5vw), 960px); /* entre 600px y 960px */
     }
+  }
 
-    .acordes-container .autor {
-      gap: 8px;
-      min-width: max-content;
-    }
+  .acordes-container > header > .title h1 {
+    font-size: var(--acorde-card-header-font-size-xl);
+  }
 
-    .acordes-container > main :global(pre) {
-      font-size: 0.95rem;
-      line-height: 1.25rem;
-    }
-    /* Desktop: hacer la imagen más grande y limitar la columna izquierda */
-    .acordes-container > header .autores-imagen {
-      width: 200px;
-      flex: 0 0 200px;
-      max-width: 100%;
-    }
+  .acordes-container .autor {
+    gap: 8px;
+    min-width: max-content;
+  }
 
-    .left-col {
-      max-width: calc(100% - 224px); /* deja espacio para imagen (200px) + gap (24px) */
-    }
+  .acordes-container > main :global(pre) {
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+  }
+  /* Desktop: hacer la imagen más grande y limitar la columna izquierda */
+  .acordes-container > header .autores-imagen {
+    /* width: 200px;
+    flex: 0 0 200px; */
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .left-col {
+    max-width: calc(100% - 224px); /* deja espacio para imagen (200px) + gap (24px) */
   }
 
   @media (max-width: 780px) {
@@ -234,12 +251,17 @@ const { Content } = await render(acorde);
       width: 100%;
     }
 
+    .left-col {
+      max-width: 100%;
+    }
+
     .autores-imagen .autores {
       display: flex !important;
       flex-direction: row;
       justify-content: space-between;
       max-width: 280px;
       margin: auto;
+      flex-wrap: wrap;
     }
 
     .card-image {
