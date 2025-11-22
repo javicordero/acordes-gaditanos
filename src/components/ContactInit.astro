@@ -180,11 +180,45 @@
     // Watch for client-side navigation (ClientRouter) that injects the form later
     const mo = new MutationObserver((mutations, obs) => {
       if (document.getElementById('contact-form')) {
+        console.debug('[contact] MO detected contact-form in DOM');
         initContactForm();
-        obs.disconnect();
+        try {
+          obs.disconnect();
+        } catch (e) {}
       }
     });
     mo.observe(document.body, { childList: true, subtree: true });
+
+    // Robust fallback: detect client-side navigations via History API.
+    // Some routers update the view without producing childList mutations
+    // observable for our observer; wrap pushState/replaceState to emit
+    // a custom event and listen for it to re-run init.
+    try {
+      if (!window.__contactInit_historyPatched) {
+        const wrap = (type) => {
+          const orig = history[type];
+          history[type] = function () {
+            const res = orig.apply(this, arguments);
+            window.dispatchEvent(new Event('locationchange'));
+            return res;
+          };
+        };
+        wrap('pushState');
+        wrap('replaceState');
+        window.addEventListener('popstate', () =>
+          window.dispatchEvent(new Event('locationchange'))
+        );
+        window.__contactInit_historyPatched = true;
+      }
+
+      window.addEventListener('locationchange', () => {
+        console.debug('[contact] locationchange event — trying initContactForm');
+        // give the router a tick to render
+        setTimeout(() => initContactForm(), 50);
+      });
+    } catch (e) {
+      console.debug('[contact] history patch failed', e);
+    }
 
     // Polling fallback: algunos routers inyectan el contenido sin disparar
     // mutaciones observables en ciertos flujos; comprobamos periódicamente
@@ -193,7 +227,16 @@
     const maxAttempts = 17; // ~5s a 300ms
     const poll = setInterval(() => {
       attempts++;
-      if (initContactForm() || attempts >= maxAttempts) {
+      const ok = initContactForm();
+      if (ok) {
+        console.debug('[contact] poll: initContactForm succeeded on attempt', attempts);
+        clearInterval(poll);
+        try {
+          mo.disconnect();
+        } catch (e) {}
+        return;
+      }
+      if (attempts >= maxAttempts) {
         clearInterval(poll);
         try {
           mo.disconnect();
