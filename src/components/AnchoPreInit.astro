@@ -82,7 +82,13 @@
           const ratio = parseFloat(pre.dataset.originalLineHeightRatio) || 1.2;
           pre.style.lineHeight = +(origRem * ratio).toFixed(4) + 'rem';
 
-          const mainWidth = Math.max(0, main.clientWidth - 4);
+          // dejar 4px de padding a ambos lados para que el <pre> no quede pegado
+          try {
+            pre.style.padding = '0 4px';
+            pre.style.boxSizing = 'border-box';
+          } catch (e) {}
+
+          const mainWidth = Math.max(0, main.clientWidth - 8); // 4px por cada lado
           const preWidth = pre.scrollWidth;
 
           if (preWidth <= mainWidth) {
@@ -112,7 +118,7 @@
           }
 
           // si sigue habiendo overflow y quedan reintentos, programar uno más
-          const mainWidthAfter = Math.max(0, main.clientWidth - 4);
+          const mainWidthAfter = Math.max(0, main.clientWidth - 8);
           const preWidthAfter = pre.scrollWidth;
           if (preWidthAfter > mainWidthAfter && attempt < retries.length - 1) {
             attempt++;
