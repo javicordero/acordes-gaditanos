@@ -12,8 +12,8 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
       </header>
       <main>
         <div class='title'>
-          <h2 class='title pieza'>{pieza}</h2>
-          <h2 transition:name={`title-${slug}`} class='title'>{agrupacion}</h2>
+          <h2 transition:name={`pieza-${slug}`} class='title pieza'>{pieza}</h2>
+          <h2 transition:name={`agrupacion-${slug}`} class='title'>{agrupacion}</h2>
         </div>
         <div>
           <div class='autor musica'>

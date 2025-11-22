@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Los muchachos del congelao
+agrupacion: Los prisioneros
 year: 2022
 musica: Raúl Cabrera
 letra: El Canijo

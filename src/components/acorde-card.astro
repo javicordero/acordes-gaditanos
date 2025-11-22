@@ -9,28 +9,50 @@ const { Content } = await render(acorde);
 ---
 
 <section class='acordes-container'>
-  <header>
-    <div class='title'>
-      <h1 transition:name={`title-${slug}`}>
-        {pieza}
-        {agrupacion}
-      </h1>
-    </div>
-    <img transition:name={`img-${slug}`} src={img} alt={`${pieza} ${agrupacion}`} />
+  <header class='card-header'>
+    <div class='left-col'>
+      <div class='app-title'>
+        <span transition:name={`pieza-${slug}`} class='pieza'>{pieza}</span>
+        <span transition:name={`agrupacion-${slug}`} class='agrupacion'>{agrupacion}</span>
+      </div>
 
-    <div class='autores'>
-      <div class='autor musica'>
-        <div class='svg'>
-          <Icon name='clave-de-sol' width={15} height={27} />
+      <div class='autores'>
+        <div class='autor musica'>
+          <div class='svg'>
+            <Icon name='clave-de-sol' width={15} height={27} />
+          </div>
+          <span>{musica}</span>
         </div>
-        <span>{musica}</span>
-      </div>
-      <div class='autor letra'>
-        <div class='svg'>
-          <Icon name='lapiz' width={15} height={30} />
+        <div class='autor letra'>
+          <div class='svg'>
+            <Icon name='lapiz' width={15} height={30} />
+          </div>
+          <span>{letra}</span>
         </div>
-        <span>{letra}</span>
       </div>
+    </div>
+
+    <div class='autores-imagen'>
+      <div class='autores'>
+        <div class='autor musica'>
+          <div class='svg'>
+            <Icon name='clave-de-sol' width={15} height={27} />
+          </div>
+          <span>{musica}</span>
+        </div>
+        <div class='autor letra'>
+          <div class='svg'>
+            <Icon name='lapiz' width={15} height={30} />
+          </div>
+          <span>{letra}</span>
+        </div>
+      </div>
+      <img
+        transition:name={`img-${slug}`}
+        class='card-image'
+        src={img}
+        alt={`${pieza} ${agrupacion}`}
+      />
     </div>
   </header>
   <main>
@@ -46,16 +68,53 @@ const { Content } = await render(acorde);
     box-shadow:
       rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
     flex: 1;
   }
 
-  .acordes-container > header {
+  /* Header: left column (title + autores) and right column (imagen). Use flex
+     so widths son controlables sin overflow tricks. */
+  .acordes-container > header.card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px 32px 0 32px;
+    box-sizing: border-box;
+    text-transform: uppercase;
+  }
+
+  .left-col {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 8px 16px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .app-title {
+    position: relative;
+    color: var(--primary-color);
+    font-size: 1.625rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .app-title .agrupacion {
+    font-size: inherit;
+    font-weight: 700;
+    color: var(--secondary-color);
+  }
+
+  /* raya amarilla justo debajo del título/agrupacion (fluye en el document) */
+  .app-title:after {
+    content: '';
+    display: block;
+    width: 89%;
+    height: 4px;
+    background: var(--primary-contrast-color);
   }
 
   .acordes-container > header > .title h1 {
@@ -65,8 +124,9 @@ const { Content } = await render(acorde);
   }
 
   .acordes-container .autores {
-    width: 60%;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-transform: none;
   }
 
   .acordes-container .autor {
@@ -74,30 +134,41 @@ const { Content } = await render(acorde);
     display: flex;
     align-items: center;
     gap: 4px;
+    font-size: 0.95rem;
   }
 
+  .autores-imagen .autores {
+    display: none;
+  }
+
+  .autor.letra {
+    position: relative;
+    bottom: 8px;
+  }
   .autor.letra > .svg {
     position: relative;
     top: 1.5px;
   }
 
-  .acordes-container > header img {
+  .acordes-container > header img.card-image {
     height: auto;
     border-radius: 8px;
-    width: 60%;
-    margin: auto;
+    width: 180px;
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    flex: 0 0 180px;
   }
 
   .acordes-container > main {
-    max-width: inherit;
-    overflow-x: auto;
     padding: 0 4px;
-    position: relative;
-    bottom: 16px;
+    display: grid;
+    place-items: center;
   }
 
   .acordes-container > main :global(pre) {
     margin: 0;
+    letter-spacing: normal;
   }
 
   .acordes-container > main :global(pre a) {
@@ -106,12 +177,7 @@ const { Content } = await render(acorde);
 
   @media (min-width: 640px) {
     .acordes-container {
-      min-width: max-content;
-    }
-
-    .acordes-container > header {
-      gap: 16px;
-      padding: 16px;
+      /* min-width: max-content; */
     }
 
     .acordes-container > header > .title h1 {
@@ -120,17 +186,73 @@ const { Content } = await render(acorde);
 
     .acordes-container .autor {
       gap: 8px;
+      min-width: max-content;
     }
 
     .acordes-container > main :global(pre) {
       font-size: 0.95rem;
       line-height: 1.25rem;
     }
+    /* Desktop: hacer la imagen más grande y limitar la columna izquierda */
+    .acordes-container > header .autores-imagen {
+      width: 200px;
+      flex: 0 0 200px;
+      max-width: 100%;
+    }
+
+    .left-col {
+      max-width: calc(100% - 224px); /* deja espacio para imagen (200px) + gap (24px) */
+    }
+  }
+
+  @media (max-width: 780px) {
+    .acordes-container > header.card-header {
+      gap: 16px;
+      padding: 16px 16px 0 16px;
+    }
   }
 
   @media (max-width: 640px) {
-    .acordes-container .autor {
-      font-size: 0.92rem;
+    .acordes-container > header.card-header {
+      flex-direction: column;
+      gap: 8px;
+      padding: 32px 32px 0 32px;
+    }
+
+    .acordes-container > header img.card-image {
+      max-width: 280px;
+      width: 100%;
+      margin: 8px auto auto auto;
+    }
+    .app-title:after {
+      width: 240px;
+      height: 3px;
+      bottom: -3px;
+    }
+
+    .autores-imagen {
+      width: 100%;
+    }
+
+    .autores-imagen .autores {
+      display: flex !important;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 280px;
+      margin: auto;
+    }
+
+    .card-image {
+      width: 100%;
+      max-width: none;
+    }
+
+    .acordes-container .autores {
+      display: none;
+    }
+
+    .autor.letra {
+      bottom: 0;
     }
   }
 
@@ -138,6 +260,14 @@ const { Content } = await render(acorde);
     .acordes-container > main :global(pre) {
       font-size: 0.8rem;
       line-height: 1.15rem;
+    }
+
+    .acordes-container > header img.card-image {
+      max-width: 240px;
+    }
+
+    .autores-imagen .autores {
+      max-width: 240px;
     }
   }
 

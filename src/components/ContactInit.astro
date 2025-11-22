@@ -81,8 +81,8 @@
         const ok = results.every(Boolean);
         if (!ok) {
           // focus first invalid
-          const firstInvalid = form.querySelector('.form-control.invalid');
-          if (firstInvalid) firstInvalid.focus();
+          //   const firstInvalid = form.querySelector('.form-control.invalid');
+          //   if (firstInvalid) firstInvalid.focus();
 
           // feedback on the submit button: red border + shake
           if (submitButton) {
@@ -107,17 +107,17 @@
         if (submitButton) submitButton.disabled = true;
 
         function showStatus(msg, type = 'error', timeout = 3000) {
-          const el = document.getElementById('form-status');
-          if (!el) return;
-          el.textContent = msg;
-          el.classList.remove('success', 'error');
-          el.classList.add(type);
-          if (timeout > 0) {
-            setTimeout(() => {
-              el.textContent = '';
-              el.classList.remove('success', 'error');
-            }, timeout);
-          }
+          //   const el = document.getElementById('form-status');
+          //   if (!el) return;
+          //   el.textContent = msg;
+          //   el.classList.remove('success', 'error');
+          //   el.classList.add(type);
+          //   if (timeout > 0) {
+          //     setTimeout(() => {
+          //       el.textContent = '';
+          //       el.classList.remove('success', 'error');
+          //     }, timeout);
+          //   }
         }
 
         try {

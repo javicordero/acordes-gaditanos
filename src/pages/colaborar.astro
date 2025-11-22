@@ -1,0 +1,213 @@
+---
+import Footer from '../components/footer.astro';
+import Header from '../components/header.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title='Colaborar - Acordes Gaditanos'
+  description='Formas de colaborar con Acordes Gaditanos'>
+  <Header />
+  <main class='main-container container-layout'>
+    <div class='screen'>
+      <div class='screen-body'>
+        <section class='screen-body-item left'>
+          <header class='app-title'>
+            <span>COLABORAR</span>
+          </header>
+        </section>
+
+        <section class='screen-body-item'>
+          <article class='card-content'>
+            <header>
+              <p>
+                ¿Quieres <strong>apoyar</strong> el proyecto o <strong>aparecer en la web</strong>?
+              </p>
+              <p>Te contamos las distintas formas:</p>
+            </header>
+            <main>
+              <ul class='ways-list'>
+                <li>
+                  <strong>Video cover:</strong> Manda un video con tu guitarra y aparecerás en la página
+                  de acordes de esa copla.
+                </li>
+                <li>
+                  <strong>Enviar acordes:</strong> Si has sacado los acordes de alguna copla o encuentras
+                  mejoras en los nuestros, no dudes en enviárnoslo.
+                </li>
+
+                <li>
+                  <strong>Donar:</strong> Si quieres apoyarnos económicamente puedes donar vía <a
+                    href='https://www.paypal.com/paypalme/acordesgaditanos'
+                    target='_blank'
+                    rel='noopener'>PayPal</a
+                  >.
+                </li>
+                <li>
+                  <strong>Publicidad:</strong> Si quieres anunciar tu producto o servicio, contáctanos
+                  y buscaremos el espacio idóneo en la web.
+                </li>
+                <li>
+                  <strong>Compartir en redes:</strong> Comparte nuestros acordes en redes sociales para
+                  que más gente nos encuentre.
+                </li>
+              </ul>
+            </main>
+
+            <footer>
+              <p class='note'>
+                Dejamos el enlace a la página de <a href='/contacto'>contacto</a>.
+              </p>
+              <p class='note'>
+                Si se te ocurre alguna otra forma de colaborar, no dudes en contactarnos.
+              </p>
+            </footer>
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<Footer />
+
+<style>
+  button,
+  input,
+  textarea,
+  .main-container {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+  }
+
+  .screen {
+    position: relative;
+    background: var(--card-background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+  }
+
+  .screen:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    z-index: -1;
+  }
+
+  .screen-body {
+    display: flex;
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .screen a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .screen a:hover {
+    color: var(--link-hover-color);
+  }
+
+  .screen-body-item {
+    flex: 1;
+  }
+
+  .screen-body-item.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    flex: 0;
+  }
+
+  .app-title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: var(--primary-color);
+    font-size: 1.625rem;
+  }
+
+  .app-title:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 170px;
+    height: 4px;
+    background: var(--primary-contrast-color);
+  }
+
+  .app-contact {
+    /* font-size: 0.95rem; */
+    color: var(--primary-color);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* separaciones internas en px según preferencia */
+    font-weight: 400;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  .ways-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* espacio entre elementos de la lista */
+    margin: 0;
+    padding-left: 16px;
+  }
+
+  .ways-list li {
+    margin: 0; /* gap gestiona la separación */
+    font-size: 0.95rem;
+  }
+
+  .note {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+  }
+
+  @media screen and (max-width: 640px) {
+    .screen-body {
+      flex-direction: column;
+      gap: 16px;
+      padding: 32px;
+    }
+
+    .app-title {
+      flex-direction: row;
+    }
+
+    .app-title:after {
+      /* display: none; */
+      height: 3px;
+      bottom: -3px;
+    }
+
+    .screen-body-item {
+      padding: 0;
+    }
+
+    .screen-body-item.left {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+  }
+</style>

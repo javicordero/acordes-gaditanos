@@ -3,8 +3,15 @@
   --card-background-color: #ffffff;
   --primary-color: #000000;
   --secondary-color: #14213d;
+  --text-color: #222;
   --primary-contrast-color: #fca311;
+  /* Variables para enlaces (elige la que uses por defecto) */
+
   --acorde-color: #04c;
+
+  /* --link-color: #0b5fff; */
+  --link-color: var(--acorde-color);
+  --link-hover-color: #0736d1;
 
   --app-max-width: 900px;
 
@@ -25,6 +32,8 @@ body {
   background-color: var(--color-bg);
   overflow-y: scroll;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1.4px;
 }
 
 h1,
