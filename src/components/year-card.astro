@@ -1,0 +1,133 @@
+---
+import Card from './card.astro';
+const { year, acordes } = Astro.props;
+---
+
+<section class='year-group screen'>
+  <div class='screen-body'>
+    <header class='app-title'>
+      <span>{year}</span>
+    </header>
+
+    <div class='section'>
+      {
+        acordes.map((acorde) => {
+          const { slug, data } = acorde;
+          const { pieza, agrupacion, musica, letra, img, year: y } = data;
+          return (
+            <Card
+              pieza={pieza}
+              agrupacion={agrupacion}
+              musica={musica}
+              letra={letra}
+              img={img}
+              year={y}
+              slug={slug}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Estilo estructural similar a las páginas principales (colaborar/contacto) */
+  .year-group.screen {
+    position: relative;
+    background: var(--card-background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .year-group.screen:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    z-index: -1;
+  }
+
+  .year-group .screen-body {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .app-title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: var(--primary-color);
+    font-size: 1.625rem;
+    /* Match colaborar/contacto title styling */
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+  }
+
+  .app-title:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-contrast-color);
+  }
+
+  .section {
+    display: grid;
+    row-gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch; /* allow cards to stretch so footer lands at bottom */
+  }
+
+  @media (min-width: 640px) {
+    .section {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 12px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      column-gap: 16px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 16px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .year-group .screen-body {
+      gap: 24px;
+    }
+
+    .year-group.screen {
+      padding: 8px;
+    }
+
+    .section {
+      row-gap: 24px;
+      column-gap: 8px;
+    }
+
+    .app-title:after {
+      /* display: none; */
+      height: 3px;
+      bottom: -3px;
+    }
+  }
+</style>

@@ -15,21 +15,19 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
           <h2 transition:name={`pieza-${slug}`} class='title pieza'>{pieza}</h2>
           <h2 transition:name={`agrupacion-${slug}`} class='title'>{agrupacion}</h2>
         </div>
-        <div>
-          <div class='autor musica'>
-            <div class='svg'>
-              <Icon name='clave-de-sol' width={15} height={27} />
-            </div>
-            <span>{musica}</span>
-          </div>
-          <div class='autor letra'>
+      </main>
+      <footer class='autor musica'>
+        <div class='svg'>
+          <Icon name='clave-de-sol' width={15} height={27} color={'var(--secondary-color)'} />
+        </div>
+        <span>{musica}</span>
+      </footer>
+      <!-- <div class='autor letra'>
             <div class='svg'>
               <Icon name='lapiz' width={15} height={30} />
             </div>
             <span>{letra}</span>
-          </div>
-        </div>
-      </main>
+          </div> -->
     </article>
   </a>
 </div>
@@ -45,14 +43,17 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
   }
 
   .card {
+    background-color: var(--secondary-color);
     background-color: var(--card-background-color);
     width: auto;
     height: inherit;
+    display: flex;
+    flex-direction: column;
     border-radius: 8px;
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--secondary-color);
     box-shadow:
-      rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+      rgba(50, 50, 93, 0.15) 0px 50px 100px -8px,
+      rgba(0, 0, 0, 0.25) 0px 30px 60px -40px;
     transition: all 0.5s ease;
     transform: translateY(0) scale(1);
   }
@@ -78,8 +79,22 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
   .card .title {
     margin: 0;
     font-weight: 500;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
+    /* color: var(--color-bg); */
     color: var(--primary-color);
+    line-height: 1.1;
+    /* font-weight: 600; */
+    /* color: var(--primary-color); */
+  }
+  .card main:after {
+    content: '';
+    display: block;
+    width: 70%;
+    height: 3px;
+    background: var(--primary-contrast-color);
+    border-radius: 2px;
+    position: relative;
+    top: -6px;
   }
 
   .card .autor {
@@ -97,6 +112,7 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
   .card .autor span {
     font-size: 1rem;
     color: var(--secondary-color);
+    /* color: var(--card-background-color); */
   }
 
   .card main {
@@ -104,6 +120,13 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    flex: 1 1 auto;
+    position: relative;
+    top: -12px;
+  }
+  .card footer {
+    padding: 0 16px 0 16px;
+    margin-top: auto;
     position: relative;
     top: -8px;
   }
@@ -140,7 +163,7 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     }
 
     .card footer {
-      padding: 0 12px;
+      padding: 0 12px 8px 12px;
     }
 
     .card .title {
@@ -168,10 +191,23 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     .card main {
       padding: 0 8px;
       gap: 4px;
+      top: -8px;
+    }
+
+    .card main:after {
+      content: '';
+      display: block;
+      width: 70%;
+      height: 2px;
+      background: var(--primary-contrast-color);
+      border-radius: 2px;
+      position: relative;
+      top: -4px;
     }
 
     .card footer {
-      padding: 0 8px;
+      padding: 0 8px 6px 8px;
+      top: -4px;
     }
 
     .card .title {
