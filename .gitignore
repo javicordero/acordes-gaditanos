@@ -25,4 +25,4 @@ pnpm-debug.log*
 .idea/
 
 # Refactor guide (local working copy)
-REFRACTOR_GUIDE.md
+REFACTOR_GUIDE.md
