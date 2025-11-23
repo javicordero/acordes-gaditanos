@@ -3,59 +3,59 @@ import { Icon } from 'astro-icon/components';
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
 ---
 
-<RightColumnCard title='APOYAR'>
-  <article>
+<RightColumnCard title='APOYAR' headingId='apoyar-title'>
+  <section aria-labelledby='apoyar-title'>
     <p>
       ¿Quieres <strong>apoyar</strong> económicamente el proyecto? Puedes hacerlo <strong
         >donando</strong
       > vía Buy Me a Coffee o PayPal.
     </p>
 
-    <div class='botones'>
+    <div class='actions' role='group' aria-label='Opciones de apoyo'>
       <a
         href='https://www.buymeacoffee.com/AcordesGaditanos'
         target='_blank'
         rel='noopener noreferrer'
-        class='bmc-button'
+        class='btn'
         data-ga-event='support_bmc_click'
         data-ga-params='{"method":"buymeacoffee"}'>
-        <span class='btn-icon'>
+        <span class='btn__icon'>
           <Icon name='buy-me-a-coffee' width={20} height={28} />
         </span>
-        <span class='btn-custom-text'>Buy me a coffee</span>
+        <span class='btn__text'>Buy me a coffee</span>
       </a>
 
       <a
         href='https://www.paypal.com/donate?business=acordesgaditanos@gmail.com&currency_code=EUR'
         target='_blank'
         rel='noopener noreferrer'
-        class='bmc-button paypal-button'
+        class='btn btn--paypal'
         data-ga-event='support_paypal_click'
         data-ga-params='{"method":"paypal","currency":"EUR"}'>
-        <span class='btn-icon'>
+        <span class='btn__icon'>
           <Icon name='paypal' width={20} height={20} />
         </span>
-        <span class='btn-custom-text'>Paypal</span>
+        <span class='btn__text'>Paypal</span>
       </a>
     </div>
-  </article>
+  </section>
 </RightColumnCard>
 
 <style>
   /* Layout */
-  article {
+  section {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
-  .botones {
+  .actions {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
   }
 
-  .bmc-button {
+  .btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -68,31 +68,30 @@ import RightColumnCard from '../../layouts/RightColumnCard.astro';
     font-weight: 600;
     min-height: 44px;
     flex: 1;
-  }
 
-  .paypal-button {
-    background-color: var(--primary-contrast-color);
-    color: var(--primary-color);
-  }
+    &.btn--paypal {
+      background-color: var(--primary-contrast-color);
+      color: var(--primary-color);
+    }
 
-  .btn-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    line-height: 1;
-    font-size: 18px;
-  }
+    &__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      line-height: 1;
+      font-size: 18px;
 
-  .btn-icon svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
+      & svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
-  .btn-custom-text {
-    font-size: 14px;
-    letter-spacing: 1.25px;
+    &__text {
+      font-size: 14px;
+      letter-spacing: 1.25px;
+    }
   }
 </style>

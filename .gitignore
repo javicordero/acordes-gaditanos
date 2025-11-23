@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Refactor guide (local working copy)
+REFRACTOR_GUIDE.md

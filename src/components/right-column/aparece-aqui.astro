@@ -2,8 +2,8 @@
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
 ---
 
-<RightColumnCard title='APARECE CON TU GUITARRA'>
-  <main>
+<RightColumnCard title='APARECE CON TU GUITARRA' headingId='aparece-aqui-title'>
+  <section aria-labelledby='aparece-aqui-title'>
     <p>
       ¿Tienes algún <strong>video tocando</strong> esta copla con <strong>tu guitarra</strong>?
       <a href='/contacto'>Envíanos el enlace</a> y te aparecerás aquí.
@@ -11,24 +11,24 @@ import RightColumnCard from '../../layouts/RightColumnCard.astro';
     <p class='note'>
       Puede ser un video acompañando a la agrupación, cantando tú mismo/a o con algún amigo/a.
     </p>
-  </main>
+  </section>
 </RightColumnCard>
 
 <style>
-  main {
+  section {
     display: flex;
     flex-direction: column;
     gap: 12px;
+
+    & a {
+      color: var(--acorde-color);
+      text-decoration: none;
+    }
   }
 
   .note {
     font-size: 0.9em;
-    color: var(--text-secondary-color);
+    color: var(--secondary-color);
     font-style: italic;
-  }
-
-  a {
-    color: var(--acorde-color);
-    text-decoration: none;
   }
 </style>

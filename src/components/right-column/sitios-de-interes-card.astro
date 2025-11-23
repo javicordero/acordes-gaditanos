@@ -2,43 +2,45 @@
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
 ---
 
-<RightColumnCard title='SITIOS DE INTERÉS'>
-  <ul class='sitios-de-interes-list'>
-    <li>
-      <a href='https://acordesgaditanos.blogspot.com/' target='_blank' rel='noopener'
-        >Acordes Gaditanos (Blog Antiguo)</a
-      >
-    </li>
-    <li>
-      <a href='https://www.guitarradegades.com/' target='_blank' rel='noopener'>Guitarra de Gades</a
-      >
-    </li>
-    <li>
-      <a href='https://letrasdesdeelparaiso.blogspot.com/' target='_blank' rel='noopener'
-        >Letras desde el paraíso</a
-      >
-    </li>
-  </ul>
+<RightColumnCard title='SITIOS DE INTERÉS' headingId='sitios-de-interes-title'>
+  <section aria-labelledby='sitios-de-interes-title'>
+    <ul>
+      <li>
+        <a href='https://acordesgaditanos.blogspot.com/' target='_blank' rel='noopener'
+          >Acordes Gaditanos (Blog Antiguo)</a
+        >
+      </li>
+      <li>
+        <a href='https://www.guitarradegades.com/' target='_blank' rel='noopener'
+          >Guitarra de Gades</a
+        >
+      </li>
+      <li>
+        <a href='https://letrasdesdeelparaiso.blogspot.com/' target='_blank' rel='noopener'
+          >Letras desde el paraíso</a
+        >
+      </li>
+    </ul>
+  </section>
 </RightColumnCard>
 
 <style>
-  .sitios-de-interes-list {
+  ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
-  }
 
-  .sitios-de-interes-list li a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
+    & li a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
 
-  .sitios-de-interes-list li a:hover {
-    color: var(--link-hover-color);
-    color: var(--acorde-color);
+      &:hover {
+        color: var(--acorde-color);
+      }
+    }
   }
 </style>

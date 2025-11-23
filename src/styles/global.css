@@ -24,6 +24,9 @@
   --error-color: #ea1d6f;
 }
 
+/* Custom media queries (global) */
+@custom-media --mq-sm (max-width: 640px);
+
 * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
