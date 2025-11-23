@@ -17,7 +17,8 @@ import RightColumnCard from '../../layouts/RightColumnCard.astro';
         target='_blank'
         rel='noopener noreferrer'
         class='bmc-button'
-        aria-label='Apóyame en Buy Me a Coffee'>
+        data-ga-event='support_bmc_click'
+        data-ga-params='{"method":"buymeacoffee"}'>
         <span class='btn-icon'>
           <Icon name='buy-me-a-coffee' width={20} height={28} />
         </span>
@@ -29,7 +30,8 @@ import RightColumnCard from '../../layouts/RightColumnCard.astro';
         target='_blank'
         rel='noopener noreferrer'
         class='bmc-button paypal-button'
-        aria-label='Donar por PayPal'>
+        data-ga-event='support_paypal_click'
+        data-ga-params='{"method":"paypal","currency":"EUR"}'>
         <span class='btn-icon'>
           <Icon name='paypal' width={20} height={20} />
         </span>

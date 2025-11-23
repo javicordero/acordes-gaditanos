@@ -40,11 +40,17 @@ import Layout from '../layouts/Layout.astro';
                   <strong>Donar:</strong> Si quieres apoyarnos económicamente puedes donar vía <a
                     href='https://www.buymeacoffee.com/AcordesGaditanos'
                     target='_blank'
-                    rel='noopener'>Buy Me a Coffee</a
+                    rel='noopener'
+                    data-ga-event='support_bmc_click_colaborar'
+                    data-ga-params='{"method":"buymeacoffee"}'>
+                    Buy Me a Coffee</a
                   > o vía <a
                     href='https://www.paypal.com/donate?business=acordesgaditanos@gmail.com&currency_code=EUR'
                     target='_blank'
-                    rel='noopener'>Paypal</a
+                    rel='noopener'
+                    data-ga-event='support_paypal_click_colaborar'
+                    data-ga-params='{"method":"paypal","currency":"EUR"}'>
+                    Paypal</a
                   >.
                 </li>
                 <li>
