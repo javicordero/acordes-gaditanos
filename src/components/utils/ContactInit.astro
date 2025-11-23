@@ -7,7 +7,8 @@
 <script type='module'>
   // Inicializador del formulario de contacto (mismo comportamiento que antes)
   (function () {
-    console.debug('[contact] ContactInit script loaded');
+    const DEBUG = false;
+    if (DEBUG) console.debug('[contact] ContactInit script loaded');
     function initContactForm() {
       const form = document.getElementById('contact-form');
       if (!form) return false;
@@ -173,14 +174,14 @@
 
     // Init now if form is present
     if (initContactForm()) {
-      console.debug('[contact] initContactForm: initialized on load');
+      if (DEBUG) console.debug('[contact] initContactForm: initialized on load');
       return;
     }
 
     // Watch for client-side navigation (ClientRouter) that injects the form later
     const mo = new MutationObserver((mutations, obs) => {
       if (document.getElementById('contact-form')) {
-        console.debug('[contact] MO detected contact-form in DOM');
+        if (DEBUG) console.debug('[contact] MO detected contact-form in DOM');
         initContactForm();
         try {
           obs.disconnect();
@@ -212,12 +213,12 @@
       }
 
       window.addEventListener('locationchange', () => {
-        console.debug('[contact] locationchange event — trying initContactForm');
+        if (DEBUG) console.debug('[contact] locationchange event — trying initContactForm');
         // give the router a tick to render
         setTimeout(() => initContactForm(), 50);
       });
     } catch (e) {
-      console.debug('[contact] history patch failed', e);
+      if (DEBUG) console.debug('[contact] history patch failed', e);
     }
 
     // Polling fallback: algunos routers inyectan el contenido sin disparar
@@ -229,7 +230,7 @@
       attempts++;
       const ok = initContactForm();
       if (ok) {
-        console.debug('[contact] poll: initContactForm succeeded on attempt', attempts);
+        if (DEBUG) console.debug('[contact] poll: initContactForm succeeded on attempt', attempts);
         clearInterval(poll);
         try {
           mo.disconnect();
