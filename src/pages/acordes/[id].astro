@@ -1,13 +1,13 @@
 ---
 import { getCollection, render } from 'astro:content';
 import AcordeCard from '../../components/acorde-card.astro';
-import Header from '../../components/header.astro';
-import Layout from '../../layouts/Layout.astro';
-import Footer from '../../components/footer.astro';
 import YoutubeCard from '../../components/right-column/youtube-card.astro';
 import SitiosDeInteresCard from '../../components/right-column/sitios-de-interes-card.astro';
 import Apoyar from '../../components/right-column/apoyar.astro';
 import ApareceAqui from '../../components/right-column/aparece-aqui.astro';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/layout/header.astro';
+import Footer from '../../components/layout/footer.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
