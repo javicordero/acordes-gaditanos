@@ -8,12 +8,12 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
   <a href={`/acordes/${slug}`}>
     <article class='card'>
       <header '>
-        <img transition:name={`img-${slug}`} src={img} alt={pieza} />
+        <img transition:name={`img-${slug}`} src={img} alt={pieza} loading='lazy' />
       </header>
       <main>
         <div class='title'>
-          <h2 transition:name={`pieza-${slug}`} class='title pieza'>{pieza}</h2>
-          <h2 transition:name={`agrupacion-${slug}`} class='title'>{agrupacion}</h2>
+          <h3 transition:name={`pieza-${slug}`} class='title pieza'>{pieza}</h3>
+          <h3 transition:name={`agrupacion-${slug}`} class='title'>{agrupacion}</h3>
         </div>
       </main>
       <footer class='autor musica'>
