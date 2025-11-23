@@ -43,19 +43,25 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
   }
 
   .card {
-    background-color: var(--secondary-color);
     background-color: var(--card-background-color);
     width: auto;
     height: inherit;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
-    border: 1px solid var(--secondary-color);
+    border: 2px solid var(--secondary-color);
     box-shadow:
       rgba(50, 50, 93, 0.15) 0px 50px 100px -8px,
       rgba(0, 0, 0, 0.25) 0px 30px 60px -40px;
     transition: all 0.5s ease;
     transform: translateY(0) scale(1);
+  }
+  .card:has(:hover, :focus) {
+    transform: scale(1.05);
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 30px 60px -10px,
+      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    border-color: var(--primary-contrast-color);
   }
 
   .card header {
@@ -76,25 +82,31 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     transform: scale(1);
   }
 
+  .card:has(:hover, :focus) header img {
+    transform: scale(1.05);
+  }
+
   .card .title {
     margin: 0;
     font-weight: 500;
     font-size: 1.25rem;
-    /* color: var(--color-bg); */
     color: var(--primary-color);
     line-height: 1.1;
-    /* font-weight: 600; */
-    /* color: var(--primary-color); */
   }
   .card main:after {
     content: '';
     display: block;
-    width: 70%;
+    width: 50%;
     height: 3px;
     background: var(--primary-contrast-color);
     border-radius: 2px;
     position: relative;
     top: -6px;
+    transition: all 0.3s ease;
+  }
+
+  .card:has(:hover, :focus) main:after {
+    width: 90%;
   }
 
   .card .autor {
@@ -129,18 +141,6 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     margin-top: auto;
     position: relative;
     top: -8px;
-  }
-
-  .card:has(:hover, :focus) {
-    transform: scale(1.05);
-    box-shadow:
-      rgba(50, 50, 93, 0.25) 0px 30px 60px -10px,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    border: 1px solid var(--primary-contrast-color);
-  }
-
-  .card:has(:hover, :focus) header img {
-    transform: scale(1.05);
   }
 
   @media (max-width: 1024px) {
@@ -195,13 +195,7 @@ const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
     }
 
     .card main:after {
-      content: '';
-      display: block;
-      width: 70%;
       height: 2px;
-      background: var(--primary-contrast-color);
-      border-radius: 2px;
-      position: relative;
       top: -4px;
     }
 

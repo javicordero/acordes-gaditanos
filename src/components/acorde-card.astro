@@ -192,12 +192,9 @@ const { Content } = await render(acorde);
     }
   }
 
-  /* Grandes pantallas: aplicar el comportamiento clamp() para permitir crecimiento controlado */
   @media (min-width: 1024px) {
     .acordes-container {
-      /* En pantallas de escritorio la card puede crecer, pero con límites.
-        clamp(min, preferred, max) — preferencia basada en viewport para adaptarse */
-      max-width: clamp(600px, calc(580px + 5vw), 960px); /* entre 600px y 960px */
+      max-width: 650px;
     }
   }
 

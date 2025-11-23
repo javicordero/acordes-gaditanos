@@ -22,7 +22,7 @@
 
 <style>
   nav {
-    height: 62px;
+    height: 48px;
     width: 100%;
     box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
     position: fixed;
@@ -40,7 +40,7 @@
 
   nav .checkbox {
     display: block;
-    height: 32px;
+    height: 24px;
     width: 32px;
     position: relative;
     left: 20px;
@@ -51,13 +51,19 @@
 
   nav .hamburger-lines {
     display: block;
-    height: 26px;
+    height: 24px;
     width: 32px;
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+    transform: scaleX(1);
+    transition: all 0.5s ease;
+  }
+
+  nav .hamburger-lines:hover {
+    transform: scale(1.08);
   }
 
   nav .hamburger-lines .line {
@@ -111,6 +117,30 @@
     font-size: 1.5rem;
     color: var(--primary-color);
     font-weight: bold;
+  }
+
+  /* línea amarilla bajo el logo (igual que en los items del menú) */
+  .logo {
+    position: relative;
+    display: inline-block;
+  }
+
+  .logo a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 3px;
+    width: 100%;
+    background: var(--primary-contrast-color);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .logo a:hover::after,
+  .logo a:focus::after {
+    transform: scaleX(1);
   }
 
   nav .menu-items {
