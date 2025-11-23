@@ -9,72 +9,71 @@ import Layout from '../layouts/Layout.astro';
   description='Formas de colaborar con Acordes Gaditanos'>
   <Header />
 
-  <section
-    class='colaborar-card main-container container-layout'
-    aria-labelledby='colaborar-title'
-    role='main'>
-    <header>
-      <h2 id='colaborar-title'>COLABORAR</h2>
-    </header>
-
-    <div class='colaborar-body' role='region' aria-labelledby='colaborar-title'>
+  <div class='main-container'>
+    <section class='colaborar-card container-layout' aria-labelledby='colaborar-title' role='main'>
       <header>
-        <p>
-          ¿Quieres <strong>apoyar</strong> el proyecto o <strong>aparecer en la web</strong>?
-        </p>
-        <p>Te contamos las distintas formas:</p>
+        <h2 id='colaborar-title'>COLABORAR</h2>
       </header>
 
-      <ul>
-        <li>
-          <strong>Video cover:</strong> Manda un video con tu guitarra y aparecerás en la página de acordes
-          de esa copla.
-        </li>
-        <li>
-          <strong>Enviar acordes:</strong> Si has sacado los acordes de alguna copla o encuentras mejoras
-          en los nuestros, no dudes en enviárnoslo.
-        </li>
+      <div class='colaborar-body' role='region' aria-labelledby='colaborar-title'>
+        <header>
+          <p>
+            ¿Quieres <strong>apoyar</strong> el proyecto o <strong>aparecer en la web</strong>?
+          </p>
+          <p>Te contamos las distintas formas:</p>
+        </header>
 
-        <li>
-          <strong>Donar:</strong> Si quieres apoyarnos económicamente puedes donar vía
-          <a
-            href='https://www.buymeacoffee.com/AcordesGaditanos'
-            target='_blank'
-            rel='noopener'
-            data-ga-event='support_bmc_click_colaborar'
-            data-ga-params='{"method":"buymeacoffee"}'>Buy Me a Coffee</a
-          >
-          o vía
-          <a
-            href='https://www.paypal.com/donate?business=acordesgaditanos@gmail.com&currency_code=EUR'
-            target='_blank'
-            rel='noopener'
-            data-ga-event='support_paypal_click_colaborar'
-            data-ga-params='{"method":"paypal","currency":"EUR"}'>Paypal</a
-          >
-          .
-        </li>
-        <li>
-          <strong>Publicidad:</strong> Si quieres anunciar tu producto o servicio, contáctanos y buscaremos
-          el espacio idóneo en la web.
-        </li>
-        <li>
-          <strong>Compartir en redes:</strong> Comparte nuestros acordes en redes sociales para que más
-          gente nos encuentre.
-        </li>
-      </ul>
+        <ul>
+          <li>
+            <strong>Video cover:</strong> Manda un video con tu guitarra y aparecerás en la página de
+            acordes de esa copla.
+          </li>
+          <li>
+            <strong>Enviar acordes:</strong> Si has sacado los acordes de alguna copla o encuentras mejoras
+            en los nuestros, no dudes en enviárnoslo.
+          </li>
 
-      <footer>
-        <p class='note'>
-          Si se te ocurre alguna otra forma de colaborar, no dudes en contactarnos.
-        </p>
-        <p class='note'>Dejamos el enlace a la página de <a href='/contacto'>contacto</a>.</p>
-      </footer>
-    </div>
-  </section>
+          <li>
+            <strong>Donar:</strong> Si quieres apoyarnos económicamente puedes donar vía
+            <a
+              href='https://www.buymeacoffee.com/AcordesGaditanos'
+              target='_blank'
+              rel='noopener'
+              data-ga-event='support_bmc_click_colaborar'
+              data-ga-params='{"method":"buymeacoffee"}'>Buy Me a Coffee</a
+            >
+            o vía
+            <a
+              href='https://www.paypal.com/donate?business=acordesgaditanos@gmail.com&currency_code=EUR'
+              target='_blank'
+              rel='noopener'
+              data-ga-event='support_paypal_click_colaborar'
+              data-ga-params='{"method":"paypal","currency":"EUR"}'>Paypal</a
+            >
+            .
+          </li>
+          <li>
+            <strong>Publicidad:</strong> Si quieres anunciar tu producto o servicio, contáctanos y buscaremos
+            el espacio idóneo en la web.
+          </li>
+          <li>
+            <strong>Compartir en redes:</strong> Comparte nuestros acordes en redes sociales para que
+            más gente nos encuentre.
+          </li>
+        </ul>
+
+        <footer>
+          <p class='note'>
+            Si se te ocurre alguna otra forma de colaborar, no dudes en contactarnos.
+          </p>
+          <p class='note'>Dejamos el enlace a la página de <a href='/contacto'>contacto</a>.</p>
+        </footer>
+      </div>
+    </section>
+  </div>
+
+  <Footer />
 </Layout>
-
-<Footer />
 
 <style>
   .colaborar-card {
