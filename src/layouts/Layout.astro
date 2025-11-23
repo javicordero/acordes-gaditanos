@@ -3,7 +3,6 @@ import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import ContactInit from '../components/utils/ContactInit.astro';
 import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
-import AnalyticsInit from '../components/AnalyticsInit.astro';
 ---
 
 <!doctype html>
@@ -20,6 +19,5 @@ import AnalyticsInit from '../components/AnalyticsInit.astro';
     <slot />
     <ContactInit client:load />
     <AnchoPreInit client:load />
-    <AnalyticsInit />
   </body>
 </html>
