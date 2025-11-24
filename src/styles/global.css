@@ -24,8 +24,13 @@
   --error-color: #ea1d6f;
 }
 
-/* Custom media queries (global) */
-@custom-media --mq-sm (max-width: 640px);
+@font-face {
+  font-family: 'Bodoni';
+  src: url('/fonts/bodoni-72-oldstyle-book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 * {
   -webkit-tap-highlight-color: transparent;
@@ -87,6 +92,7 @@ body {
 
 .main-container {
   margin-top: calc(var(--nav-height) + 32px);
+  /* padding-top: 32px; */
   padding-bottom: 32px;
   flex: 1 0 auto;
   min-height: 0;

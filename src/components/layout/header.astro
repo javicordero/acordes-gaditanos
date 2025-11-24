@@ -1,137 +1,126 @@
-<header role='banner'>
-  <div class='nav-bar-container container-layout'>
-    <div class='burguer-menu'>
-      <button
-        class='hamburger-lines'
-        aria-expanded='false'
-        aria-controls='primary-menu'
-        aria-label='Abrir menú'>
-        <span class='line line1'></span>
-        <span class='line line2'></span>
-        <span class='line line3'></span>
-      </button>
-    </div>
+---
+import Logo from '../../../public/icons/logo.svg';
+---
 
-    <div class='logo'>
-      <h1 class='brand'><a href='/'>Acordes Gaditanos</a></h1>
+<header role='banner'>
+  <div class='container-layout nav-bar-container'>
+    <button
+      class='menu-toggle'
+      aria-expanded='false'
+      aria-controls='primary-menu'
+      aria-label='Abrir menú'>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class='branding'>
+      <h1><a href='/'>Acordes Gaditanos</a></h1>
+      <a href='/' aria-label='Inicio'>
+        <img src={Logo.src} alt='Acordes Gaditanos logo' transition:persist />
+      </a>
     </div>
   </div>
 
-  <nav id='primary-menu' class='menu-items' aria-label='Main navigation'>
+  <nav id='primary-menu' aria-label='Main navigation'>
     <ul>
       <li><a href='/'>Inicio</a></li>
-      <li><a href='/colaborar'>colaborar</a></li>
-      <li><a href='/contacto'>contacto</a></li>
+      <li><a href='/colaborar'>Colaborar</a></li>
+      <li><a href='/contacto'>Contacto</a></li>
     </ul>
   </nav>
 </header>
 
 <style>
   header {
-    height: 48px;
+    height: 56px;
     width: 100%;
-    box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
     position: fixed;
     top: 0;
     z-index: 10;
-    background-color: var(--color-bg);
+    background-color: var(--primary-color);
   }
 
-  /* Top of the HTML: nav-bar-container (burger + logo) */
   .nav-bar-container {
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    padding: 0 4px;
   }
 
-  /* burger control */
-  .burguer-menu {
-    & .hamburger-lines {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 32px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    z-index: 2;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    & span {
       display: block;
-      height: 24px;
-      width: 32px;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      transform: scaleX(1);
-      transition: all 0.5s ease;
-      appearance: none;
-      -webkit-appearance: none;
-      border: 0;
-      background: transparent;
-      padding: 0;
+      height: 4px;
+      width: 100%;
+      border-radius: 10px;
+      background: var(--primary-contrast-color);
+      transition: transform 0.4s ease-in-out;
+    }
 
-      &:hover {
-        transform: scale(1.1);
-      }
+    & span:nth-child(1) {
+      transform-origin: 0% 0%;
+    }
 
-      & .line {
-        display: block;
-        height: 4px;
-        width: 100%;
-        border-radius: 10px;
-        background: var(--primary-color);
-      }
+    & span:nth-child(2) {
+      transition: transform 0.2s ease-in-out;
+    }
 
-      & .line1 {
-        transform-origin: 0% 0%;
-        transition: transform 0.4s ease-in-out;
-      }
-
-      & .line2 {
-        transition: transform 0.2s ease-in-out;
-      }
-
-      & .line3 {
-        transform-origin: 0% 100%;
-        transition: transform 0.4s ease-in-out;
-      }
+    & span:nth-child(3) {
+      transform-origin: 0% 100%;
     }
   }
 
-  /* logo  */
-  .logo {
-    position: relative;
-    display: inline-block;
+  .branding {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
 
-    & .brand {
-      margin: 0;
+    & h1 {
+      position: relative;
+      bottom: 1px;
+      font-family: 'Bodoni', serif;
+      font-style: italic;
+    }
 
-      & a {
-        text-decoration: none;
-        font-size: 1.5rem;
-        color: var(--primary-color);
-        font-weight: bold;
-        display: inline-block;
-        position: relative;
+    & h1 a {
+      text-decoration: none;
+      font-size: 1.5rem;
+      color: var(--primary-contrast-color);
+      font-weight: bold;
+    }
 
-        &::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          bottom: -3px;
-          height: 3px;
-          width: 100%;
-          background: var(--primary-contrast-color);
-          transform-origin: left;
-          transform: scaleX(0);
-          transition: transform 0.3s ease;
-        }
-
-        &:hover::after {
-          transform: scaleX(1);
-        }
-      }
+    & img {
+      border-radius: 40px;
+      height: 40px;
+      width: auto;
+      background-color: var(--primary-contrast-color);
     }
   }
 
-  /* menu */
-  .menu-items {
+  nav {
     padding-top: 120px;
-    background-color: var(--color-bg);
+    background-color: var(--primary-color);
     height: 100vh;
     width: 100%;
     transform: translate(-150%);
@@ -148,12 +137,11 @@
       flex-direction: column;
       gap: 16px;
       align-items: center;
-      width: 100%;
     }
 
     & a {
       text-decoration: none;
-      color: var(--primary-color);
+      color: var(--primary-contrast-color);
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       letter-spacing: 1.4px;
@@ -161,85 +149,102 @@
       font-size: 1.6rem;
       position: relative;
       display: inline-block;
-    }
 
-    & a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      height: 3px;
-      width: 100%;
-      background: var(--primary-contrast-color);
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-    }
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        height: 3px;
+        width: 100%;
+        background: var(--primary-contrast-color);
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
 
-    & a:hover::after {
-      transform: scaleX(1);
+      &:hover::after {
+        transform: scaleX(1);
+      }
     }
   }
 
-  & input[type='checkbox']:checked ~ .menu-items {
+  nav.is-open {
     transform: translateX(0);
   }
 
-  .displayed {
-    transform: translateX(0) !important;
-  }
-
-  /* classes that animate the burger into a cross */
-  .line1.line-displayed {
+  .menu-toggle.is-open span:nth-child(1) {
     transform: rotate(45deg);
   }
 
-  .line2.line-displayed {
+  .menu-toggle.is-open span:nth-child(2) {
     transform: scaleY(0);
   }
 
-  .line3.line-displayed {
+  .menu-toggle.is-open span:nth-child(3) {
     transform: rotate(-45deg);
   }
 
+  .branding.is-hidden {
+    visibility: hidden;
+  }
+
   @media (max-width: 640px) {
+    header {
+      height: 48px;
+    }
+
     .nav-bar-container {
       width: 95%;
+      padding: 0;
+    }
+
+    .menu-toggle {
+      height: 20px;
+      width: 28px;
+
+      & span {
+        height: 3px;
+      }
+    }
+
+    .branding h1 {
+      bottom: 2px;
+      & a {
+        font-size: 1.2rem;
+      }
+    }
+
+    .branding img {
+      height: 32px;
+      border-radius: 32px;
     }
   }
 </style>
 
 <script>
   function initHeader() {
-    const burguer = document.querySelector('.hamburger-lines');
-    const menu = document.querySelector('#primary-menu');
-    const logo = document.querySelector('.logo');
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('#primary-menu');
+    const branding = document.querySelector('.branding');
 
-    if (!burguer || !menu || !logo) return;
+    if (!toggle || !nav || !branding) return;
 
-    burguer.onclick = () => {
-      const isOpen = menu.classList.contains('displayed');
-
-      if (!isOpen) {
-        menu.classList.add('displayed');
-        menu.setAttribute('aria-hidden', 'false');
-        burguer.setAttribute('aria-expanded', 'true');
-        logo.classList.add('d-none');
-        document.querySelector('.line1')?.classList.add('line-displayed');
-        document.querySelector('.line2')?.classList.add('line-displayed');
-        document.querySelector('.line3')?.classList.add('line-displayed');
+    toggle.onclick = () => {
+      const isOpen = nav.classList.contains('is-open');
+      if (isOpen) {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        nav.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
       } else {
-        menu.classList.remove('displayed');
-        menu.setAttribute('aria-hidden', 'true');
-        burguer.setAttribute('aria-expanded', 'false');
-        logo.classList.remove('d-none');
-        document.querySelector('.line1')?.classList.remove('line-displayed');
-        document.querySelector('.line2')?.classList.remove('line-displayed');
-        document.querySelector('.line3')?.classList.remove('line-displayed');
+        nav.classList.add('is-open');
+        toggle.classList.add('is-open');
+        nav.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
       }
     };
   }
 
-  // Inicializa en la primera carga y en cada navegación con ClientRouter
   document.addEventListener('astro:page-load', initHeader);
 </script>
