@@ -23,7 +23,13 @@ const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
     </h2>
 
     <figure>
-      <img transition:name={`img-${slug}`} src={img} alt={altText} />
+      <img
+        transition:name={`img-${slug}`}
+        src={img}
+        alt={altText}
+        loading='lazy'
+        decoding='async'
+      />
       <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
         {musica}
       </figcaption>
@@ -99,6 +105,9 @@ const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
     width: 100%;
     object-fit: cover;
     display: block;
+    /* Optimizaciones de performance */
+    content-visibility: auto;
+    contain-intrinsic-size: 360px 480px;
   }
 
   figcaption {
