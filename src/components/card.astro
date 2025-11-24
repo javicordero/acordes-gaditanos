@@ -24,7 +24,7 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
     </header>
 
     <footer>
-      <span class='badge' transition:name={`musica-${slug}`}>{musica}</span>
+      <span class='badge'>{musica}</span>
     </footer>
   </a>
 </article>
@@ -101,7 +101,7 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
 
   header > .badge {
     border-radius: 0 6px 0 6px;
-    font-size: 16px;
+    font-size: 17px;
     padding: 6px 10px;
 
     &[data-pieza-type='presentacion'] {
@@ -129,7 +129,7 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
       border-radius: 0 6px 0 6px;
       color: var(--autor-color);
       background-color: var(--autor-bg);
-      font-size: 12px;
+      font-size: 13px;
       padding: 4px 8px;
     }
   }
