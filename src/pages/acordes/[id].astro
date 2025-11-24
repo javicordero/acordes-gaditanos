@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
-const { pieza, agrupacion, musica, img, year, letra, video, cover } = data;
+const { pieza, agrupacion, musica, img, year, letra, video, cover, cejilla } = data;
 ---
 
 <Layout title={`${pieza} - ${agrupacion}`} description={`Acordes ${pieza} ${musica}`}>

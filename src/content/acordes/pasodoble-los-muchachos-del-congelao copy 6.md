@@ -4,6 +4,7 @@ agrupacion: Los del otro barrio
 year: 2025
 musica: El Tomate
 letra: El Canijo
+cejilla: 2
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBhR3Tmn3Haps638t1GFxT4COOVxwE_4nEvMf_d5phqhE9rI98nSO5x-R051ofWcfvKdN67pLdpR906kffa5IBkE81482OYSwoeac9HKvgc-ZqpoNxh5MgUqdCnQ90ckVbG2nR_lJrTEIXkv3TdjrCJh3kl-WQ8ihuQjdoGJELBdaL2sjkD2KRAqcLNFcR/s320/otrobarrio2.jpg
 date: "20/01/2025"
 video: 'https://www.youtube.com/embed/4A44HlY0hIQ?si=aZjOz3SS0z-gd4OD'
