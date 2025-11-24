@@ -49,14 +49,14 @@ const years = Object.keys(grouped).sort((a, b) => {
   description='La mayor colección de acordes y letras del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
   <div></div>
   <Header />
-  <main class='main-container container-layout'>
+  <div class='main-container container-layout'>
     {
       years.map((year) => {
         const acordes = grouped[year];
         return <YearCard year={year} acordes={acordes} key={year} />;
       })
     }
-  </main>
+  </div>
   <Footer />
 </Layout>
 

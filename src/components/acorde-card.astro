@@ -9,11 +9,14 @@ const { Content } = await render(acorde);
 
 // Generar texto ALT descriptivo para SEO
 const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
+
+// ID para accesibilidad
+const headingId = `acorde-${slug}`;
 ---
 
 <article class='acorde-card'>
   <header>
-    <h2>
+    <h2 id={headingId}>
       <span transition:name={`pieza-${slug}`} class='pieza'>
         {pieza}
       </span>
@@ -39,13 +42,13 @@ const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
     </figure>
   </header>
 
-  <main>
+  <section class='acorde-content' role='region' aria-labelledby={headingId}>
     <div class='acorde-meta'>
       <Icon name='cejilla' width={22} height={22} />
       <span>{cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
     <Content />
-  </main>
+  </section>
 </article>
 
 <style>
@@ -136,7 +139,7 @@ const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
     border-radius: 6px 0 6px 0;
   }
 
-  main {
+  .acorde-content {
     padding: 0 4px;
     display: grid;
     place-items: center;
@@ -153,7 +156,7 @@ const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
-  main :global(pre) {
+  .acorde-content :global(pre) {
     margin: 0;
     letter-spacing: normal;
     font-size: 0.95rem;
@@ -207,7 +210,7 @@ const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
   }
 
   @media (max-width: 480px) {
-    main :global(pre) {
+    .acorde-content :global(pre) {
       font-size: 0.8rem;
       line-height: 1.15rem;
     }
@@ -218,14 +221,14 @@ const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
   }
 
   @media (max-width: 392px) {
-    main :global(pre) {
+    .acorde-content :global(pre) {
       font-size: 0.73rem;
       line-height: 1.1rem;
     }
   }
 
   @media (max-width: 367px) {
-    main :global(pre) {
+    .acorde-content :global(pre) {
       font-size: 0.7rem;
       line-height: 1rem;
     }

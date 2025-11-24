@@ -63,7 +63,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   />
   <Header />
 
-  <main class='main-container container-layout'>
+  <div class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
 
     <div class='right-column'>
@@ -89,13 +89,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
       <SitiosDeInteresCard />
     </div>
-  </main>
+  </div>
 
   <Footer />
 </Layout>
 
 <style>
-  main {
+  .main-container {
     display: flex;
     row-gap: 16px;
     column-gap: 16px;
@@ -112,20 +112,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
   /* Mantener la card izquierda con su anchura natural (el componente controla su propio max-width)
      y dejar que la columna derecha tome el espacio sobrante */
-  main > .acordes-container {
+  .main-container > .acordes-container {
     flex: 0 0 auto;
     min-width: 0;
   }
 
   @media (max-width: 780px) {
-    main {
+    .main-container {
       column-gap: 16px;
     }
   }
 
   /* Para resoluciones intermedias (tablet → pequeño desktop) hacemos la card más estrecha */
   @media (min-width: 640px) and (max-width: 1024px) {
-    main > .acordes-container {
+    .main-container > .acordes-container {
       /* Reducir anchura y fijar base para que no ocupe tanto espacio */
       max-width: 576px;
       min-width: 0;
@@ -133,7 +133,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   }
 
   @media (max-width: 640px) {
-    main {
+    .main-container {
       flex-direction: column;
     }
   }
