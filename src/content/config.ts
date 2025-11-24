@@ -8,6 +8,7 @@ const acordes = defineCollection({
     letra: z.string(),
     img: z.string(),
     year: z.number().transform((n) => n.toString()),
+    modalidad: z.string().optional(),
     cejilla: z
       .number()
       .transform((n) => n.toString())
@@ -15,6 +16,7 @@ const acordes = defineCollection({
     date: z.string().regex(/^\d{2}[-/]\d{2}[-/]\d{4}$/),
     video: z.string().optional(),
     cover: z.string().optional(),
+    coverAuthor: z.string().optional(),
   }),
 });
 

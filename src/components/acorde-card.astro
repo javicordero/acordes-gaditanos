@@ -4,13 +4,16 @@ import { Icon } from 'astro-icon/components';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
-const { pieza, agrupacion, musica, img, year, letra, cejilla } = data;
+const { pieza, agrupacion, musica, img, year, letra, cejilla, modalidad } = data;
 const { Content } = await render(acorde);
+
+// Generar texto ALT descriptivo para SEO
+const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
 ---
 
-<section class='acordes-container'>
-  <header class='card-header'>
-    <h2 class='app-title'>
+<article class='acorde-card'>
+  <header>
+    <h2>
       <span transition:name={`pieza-${slug}`} class='pieza'>
         {pieza}
       </span>
@@ -19,52 +22,45 @@ const { Content } = await render(acorde);
       </span>
     </h2>
 
-    <picture class='image-container'>
-      <img
-        transition:name={`img-${slug}`}
-        class='card-image'
-        src={img}
-        alt={`${pieza} ${agrupacion}`}
-      />
-      <div class='badge-overlay badge-overlay-left'>
-        <span class='badge badge-musica' transition:name={`musica-${slug}`}>{musica}</span>
-      </div>
-      <div class='badge-overlay badge-overlay-right'>
-        <span class='badge badge-letra'>{letra}</span>
-      </div>
-    </picture>
+    <figure>
+      <img transition:name={`img-${slug}`} src={img} alt={altText} />
+      <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
+        {musica}
+      </figcaption>
+      <figcaption class='badge badge--letra'>
+        {letra}
+      </figcaption>
+    </figure>
   </header>
+
   <main>
-    <div class='cejilla'>
+    <div class='acorde-meta'>
       <Icon name='cejilla' width={22} height={22} />
       <span>{cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
     <Content />
   </main>
-</section>
+</article>
 
 <style>
-  .acordes-container {
+  article {
     background-color: var(--card-background-color);
     border-radius: 8px;
     border: 1px solid var(--primary-color);
     box-shadow:
       rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
       rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    /* Limitar ancho para que no sobrepase el container-layout en la página */
     width: 100%;
-    max-width: 600px; /* 600px base */
+    max-width: 600px;
     box-sizing: border-box;
     margin: 0;
     display: flex;
     flex-direction: column;
-    /* Evitar que la card crezca más allá de su max-width en layouts flex padres */
     flex: 0 1 auto;
     gap: 8px;
   }
 
-  /* Header: titulo arriba, imagen abajo centrada */
-  .acordes-container > header.card-header {
+  header {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -73,63 +69,31 @@ const { Content } = await render(acorde);
     text-transform: uppercase;
   }
 
-  .app-title {
+  h2 {
     color: var(--primary-color);
     font-size: 1.625rem;
     font-weight: 700;
     line-height: 1.79rem;
     max-width: fit-content;
-  }
-  /* raya amarilla justo debajo del título/agrupacion (fluye en el document) */
-  .app-title:after {
-    content: '';
-    display: block;
-    width: 92%;
-    height: 4px;
-    background: var(--primary-contrast-color);
-  }
-
-  .acordes-container > header > .title h1 {
     margin: 0;
-    font-size: var(--acorde-card-header-font-size-sm);
-    color: var(--primary-color);
+
+    &::after {
+      content: '';
+      display: block;
+      width: 92%;
+      height: 4px;
+      background: var(--primary-contrast-color);
+    }
   }
 
-  .acordes-container .autores {
-    display: flex;
-    flex-direction: column;
-    text-transform: none;
-  }
-
-  .acordes-container .autor {
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.95rem;
-  }
-
-  .autores-imagen .autores {
-    display: none;
-  }
-
-  .autor.letra {
-    position: relative;
-    bottom: 8px;
-  }
-  .autor.letra > .svg {
-    position: relative;
-    top: 1.5px;
-  }
-
-  .image-container {
+  figure {
     position: relative;
     width: 360px;
     max-width: 100%;
     margin: 0 auto;
   }
 
-  .acordes-container > header img.card-image {
+  img {
     height: auto;
     border-radius: 8px;
     width: 100%;
@@ -137,24 +101,9 @@ const { Content } = await render(acorde);
     display: block;
   }
 
-  .badge-overlay {
+  figcaption {
     position: absolute;
     bottom: 0;
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .badge-overlay-left {
-    left: 0;
-    justify-content: flex-start;
-  }
-
-  .badge-overlay-right {
-    right: 0;
-    justify-content: flex-end;
-  }
-
-  .badge {
     font-family: 'Raleway', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.1px;
@@ -164,25 +113,27 @@ const { Content } = await render(acorde);
     padding: 6px 8px;
   }
 
-  .badge-musica {
+  .badge--musica {
+    left: 0;
     border-radius: 0 6px 0 6px;
     color: var(--primary-color);
     background-color: var(--primary-contrast-color);
   }
 
-  .badge-letra {
+  .badge--letra {
+    right: 0;
     color: var(--primary-contrast-color);
     background-color: var(--primary-color);
     border-radius: 6px 0 6px 0;
   }
 
-  .acordes-container > main {
+  main {
     padding: 0 4px;
     display: grid;
     place-items: center;
   }
 
-  .cejilla {
+  .acorde-meta {
     display: flex;
     align-items: center;
     gap: 2px;
@@ -193,101 +144,79 @@ const { Content } = await render(acorde);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
-  .acordes-container > main :global(pre) {
+  main :global(pre) {
     margin: 0;
     letter-spacing: normal;
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+
+    & :global(a) {
+      color: var(--acorde-color);
+    }
   }
 
-  .acordes-container > main :global(pre a) {
-    color: var(--acorde-color);
-  }
-
-  /* Intermedio: reducir anchura de la card en tablets / pantallas pequeñas de desktop */
   @media (min-width: 640px) and (max-width: 1023.98px) {
-    .acordes-container {
-      max-width: 576px; /* 36rem ≈ 576px */
+    article {
+      max-width: 576px;
     }
   }
 
   @media (min-width: 1024px) {
-    .acordes-container {
+    article {
       max-width: 650px;
     }
   }
 
-  .acordes-container .autor {
-    gap: 8px;
-    min-width: max-content;
-  }
-
-  .acordes-container > main :global(pre) {
-    font-size: 0.95rem;
-    line-height: 1.25rem;
-  }
-
   @media (max-width: 780px) {
-    .acordes-container > header.card-header {
+    header {
       gap: 16px;
       padding: 16px 16px 0 16px;
     }
   }
 
   @media (max-width: 640px) {
-    .acordes-container > header.card-header {
+    header {
       flex-direction: column;
       gap: 8px;
       padding: var(--card-padding-sm) var(--card-padding-sm) 0 var(--card-padding-sm);
     }
 
-    .image-container {
+    figure {
       max-width: 280px;
       width: 100%;
       margin: 8px auto auto auto;
     }
 
-    .app-title:after {
+    h2::after {
       height: 3px;
-      bottom: -3px;
     }
 
-    .left-col {
-      max-width: 100%;
-    }
-
-    .acordes-container .autores {
-      display: none;
-    }
-
-    .autor.letra {
-      bottom: 0;
-    }
-
-    .badge {
+    figcaption {
       font-size: 13px;
       padding: 4px 8px;
     }
   }
 
   @media (max-width: 480px) {
-    .acordes-container > main :global(pre) {
+    main :global(pre) {
       font-size: 0.8rem;
       line-height: 1.15rem;
     }
 
-    .image-container {
+    figure {
       max-width: 240px;
     }
   }
 
   @media (max-width: 392px) {
-    .acordes-container > main :global(pre) {
+    main :global(pre) {
       font-size: 0.73rem;
       line-height: 1.1rem;
     }
   }
 
   @media (max-width: 367px) {
-    .acordes-container > main :global(pre) {
+    main :global(pre) {
       font-size: 0.7rem;
       line-height: 1rem;
     }

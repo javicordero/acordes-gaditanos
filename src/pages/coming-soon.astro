@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout title='Próximamente - Acordes Gaditanos' noindex={true}>
+  <div class='coming-soon-page'>
+    <div class='content'>
+      <div class='main-section'>
+        <h1>Estamos de mudanza</h1>
+        <p class='subtitle'>Síguenos en redes para enterarte de las novedades</p>
+        <div class='social-links'>
+          <a
+            href='https://twitter.com/acordesgaditano'
+            target='_blank'
+            rel='noopener noreferrer'
+            class='social-link'
+            aria-label='Twitter'>
+            <Icon name='x' width={28} height={28} />
+          </a>
+          <a
+            href='https://www.youtube.com/@acordesgaditanos1145'
+            target='_blank'
+            rel='noopener noreferrer'
+            class='social-link'
+            aria-label='YouTube'>
+            <Icon name='youtube' width={28} height={28} />
+          </a>
+        </div>
+      </div>
+
+      <div class='blog-section'>
+        <p class='message'>Mientras tanto puedes seguir con tu guitarra en el blog antiguo</p>
+        <a
+          href='https://acordesgaditanos.blogspot.com'
+          target='_blank'
+          rel='noopener noreferrer'
+          class='blog-link'>
+          acordesgaditanos.blogspot.com
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .coming-soon-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+    text-align: center;
+    padding: 0 32px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary-contrast-color);
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 0.5px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .blog-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .message {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.5px;
+  }
+
+  .blog-link {
+    font-size: 1.125rem;
+    color: var(--primary-contrast-color);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .social-link {
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: var(--primary-contrast-color);
+      transform: scale(1.15);
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+    }
+
+    .message {
+      font-size: 1rem;
+    }
+
+    .blog-link {
+      font-size: 1rem;
+    }
+
+    .social-links {
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .content {
+      gap: 48px;
+      padding: 0 24px;
+    }
+
+    .main-section {
+      gap: 24px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
+    .message {
+      font-size: 0.9375rem;
+    }
+
+    .blog-link {
+      font-size: 0.9375rem;
+    }
+
+    .social-links {
+      gap: 16px;
+    }
+
+    .social-link [data-icon] {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>

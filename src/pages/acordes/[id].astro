@@ -19,19 +19,57 @@ export async function getStaticPaths() {
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
-const { pieza, agrupacion, musica, img, year, letra, video, cover, cejilla } = data;
+const {
+  pieza,
+  agrupacion,
+  musica,
+  img,
+  year,
+  letra,
+  video,
+  cover,
+  coverAuthor,
+  cejilla,
+  modalidad,
+} = data;
+
+// Generar texto de autoría
+const autores = musica === letra ? `de ${musica}` : `de ${letra} y ${musica}`;
+
+// Generar descripción completa
+const description = `Acordes ${pieza} ${agrupacion} ${modalidad} ${autores}. La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
+
+// Generar keywords específicas
+const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, ${agrupacion}, ${letra}, ${musica}`;
 ---
 
-<Layout title={`${pieza} - ${agrupacion}`} description={`Acordes ${pieza} ${musica}`}>
+<Layout
+  title={`Acordes ${pieza} ${agrupacion}`}
+  description={description}
+  keywords={keywords}
+  image={img}>
   <Header />
 
   <main class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
 
     <div class='right-column'>
-      <YoutubeCard link={video} />
+      <YoutubeCard
+        link={video}
+        iframeTitle={`Video oficial de ${pieza} - ${agrupacion} - Carnaval de Cádiz ${year}`}
+      />
 
-      {cover && <YoutubeCard link={cover} title='Cover de Juan' />}
+      {
+        cover && (
+          <YoutubeCard
+            link={cover}
+            title={coverAuthor ? `Cover de ${coverAuthor}` : 'Cover'}
+            iframeTitle={
+              coverAuthor ? `Cover por ${coverAuthor}` : `Cover de ${pieza} - ${agrupacion}`
+            }
+          />
+        )
+      }
       {!cover && <ApareceAqui />}
 
       <Apoyar />

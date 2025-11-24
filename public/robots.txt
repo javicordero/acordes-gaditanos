@@ -1,0 +1,10 @@
+# Acordes Gaditanos - Robots.txt
+User-agent: *
+Allow: /
+
+# Bloquear páginas temporales
+Disallow: /coming-soon
+Disallow: /en-construccion
+
+# Sitemap
+Sitemap: https://acordesgaditanos.com/sitemap-index.xml

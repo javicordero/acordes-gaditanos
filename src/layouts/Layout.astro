@@ -4,16 +4,79 @@ import { ClientRouter } from 'astro:transitions';
 import ContactInit from '../components/utils/ContactInit.astro';
 import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
 import GoogleAnalytics from '../components/utils/GoogleAnalytics.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  keywords?: string;
+}
+
+const {
+  title = 'Acordes Gaditanos - Acordes y Letras del Carnaval de Cádiz',
+  description = 'La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.',
+  image = '/og-image.png',
+  noindex = false,
+  keywords = 'carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const imageURL = new URL(image, Astro.site);
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='es'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link rel='sitemap' href='/sitemap-index.xml' />
+    <link rel='canonical' href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name='title' content={title} />
+    <meta name='description' content={description} />
+    <meta name='keywords' content={keywords} />
+    <meta name='author' content='Acordes Gaditanos' />
     <meta name='generator' content={Astro.generator} />
-    <title>Acordes Gaditanos</title>
+    {noindex && <meta name='robots' content='noindex, nofollow' />}
+
+    <!-- Open Graph / Facebook -->
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={canonicalURL} />
+    <meta property='og:title' content={title} />
+    <meta property='og:description' content={description} />
+    <meta property='og:image' content={imageURL} />
+    <meta property='og:locale' content='es_ES' />
+    <meta property='og:site_name' content='Acordes Gaditanos' />
+
+    <!-- Twitter -->
+    <meta name='twitter:card' content='summary_large_image' />
+    <meta name='twitter:url' content={canonicalURL} />
+    <meta name='twitter:title' content={title} />
+    <meta name='twitter:description' content={description} />
+    <meta name='twitter:image' content={imageURL} />
+
+    <!-- Structured Data (Schema.org) -->
+    <script
+      type='application/ld+json'
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'Acordes Gaditanos',
+        url: Astro.site,
+        description: 'Acordes y letras del Carnaval de Cádiz',
+        inLanguage: 'es-ES',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: `${Astro.site}?q={search_term_string}`,
+          'query-input': 'required name=search_term_string',
+        },
+      })}
+    />
+
     <ClientRouter />
   </head>
   <body>
