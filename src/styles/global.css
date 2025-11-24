@@ -14,7 +14,11 @@
   --link-hover-color: #0736d1;
 
   --app-max-width: 1050px;
-  --nav-height: 48px;
+  --nav-height: 56px;
+  --main-container-gap: 32px;
+  --main-container-gap-sm: 16px;
+  --card-padding: 24px;
+  --card-padding-sm: 16px;
 
   /* --acorde-card-header-font-size-xl: 1.4rem; */
   --acorde-card-header-font-size-sm: 1.25rem;
@@ -91,9 +95,16 @@ body {
 }
 
 .main-container {
-  margin-top: calc(var(--nav-height) + 32px);
+  margin-top: calc(var(--nav-height) + var(--main-container-gap));
   /* padding-top: 32px; */
-  padding-bottom: 32px;
+  padding-bottom: var(--main-container-gap);
   flex: 1 0 auto;
   min-height: 0;
+}
+
+@media (max-width: 640px) {
+  .main-container {
+    margin-top: calc(var(--nav-height) + var(--main-container-gap-sm));
+    padding-bottom: var(--main-container-gap-sm);
+  }
 }

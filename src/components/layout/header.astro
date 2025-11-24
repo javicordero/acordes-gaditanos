@@ -15,10 +15,12 @@ import Logo from '../../../public/icons/logo.svg';
     </button>
 
     <div class='branding'>
-      <h1><a href='/'>Acordes Gaditanos</a></h1>
-      <a href='/' aria-label='Inicio'>
-        <img src={Logo.src} alt='Acordes Gaditanos logo' transition:persist />
-      </a>
+      <h1 transition:persist><a href='/'>Acordes Gaditanos</a></h1>
+      <picture>
+        <a href='/' aria-label='Inicio'>
+          <img src={Logo.src} alt='Acordes Gaditanos logo' transition:persist />
+        </a>
+      </picture>
     </div>
   </div>
 
@@ -33,7 +35,7 @@ import Logo from '../../../public/icons/logo.svg';
 
 <style>
   header {
-    height: 56px;
+    height: var(--nav-height);
     width: 100%;
     position: fixed;
     top: 0;
@@ -110,9 +112,13 @@ import Logo from '../../../public/icons/logo.svg';
       font-weight: bold;
     }
 
+    & picture {
+      position: relative;
+      top: 2px;
+    }
     & img {
       border-radius: 40px;
-      height: 40px;
+      height: 32px;
       width: auto;
       background-color: var(--primary-contrast-color);
     }
@@ -216,8 +222,7 @@ import Logo from '../../../public/icons/logo.svg';
     }
 
     .branding img {
-      height: 32px;
-      border-radius: 32px;
+      height: 28px;
     }
   }
 </style>

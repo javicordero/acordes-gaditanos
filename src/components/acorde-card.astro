@@ -92,7 +92,7 @@ const { Content } = await render(acorde);
     display: flex;
     align-items: flex-start;
     gap: 24px;
-    padding: 32px 32px 0 32px;
+    padding: var(--card-padding) var(--card-padding) 0 var(--card-padding);
     box-sizing: border-box;
     text-transform: uppercase;
   }
@@ -117,6 +117,8 @@ const { Content } = await render(acorde);
     font-size: 1.625rem;
     font-weight: 700;
     line-height: 1.79rem;
+    display: flex;
+    flex-direction: column;
   }
 
   /* raya amarilla justo debajo del título/agrupacion (fluye en el document) */
@@ -164,7 +166,7 @@ const { Content } = await render(acorde);
   .acordes-container > header img.card-image {
     height: auto;
     border-radius: 8px;
-    width: 200px;
+    width: 220px;
     max-width: 100%;
     object-fit: cover;
     display: block;
@@ -230,7 +232,7 @@ const { Content } = await render(acorde);
     .acordes-container > header.card-header {
       flex-direction: column;
       gap: 8px;
-      padding: 32px 32px 0 32px;
+      padding: var(--card-padding-sm) var(--card-padding-sm) 0 var(--card-padding-sm);
     }
 
     .acordes-container > header img.card-image {
@@ -238,6 +240,7 @@ const { Content } = await render(acorde);
       width: 100%;
       margin: 8px auto auto auto;
     }
+
     .app-title:after {
       width: 240px;
       height: 3px;

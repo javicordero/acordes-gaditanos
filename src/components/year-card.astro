@@ -38,7 +38,7 @@ const { year, acordes } = Astro.props;
     background: var(--card-background-color);
     border: 1px solid var(--primary-color);
     border-radius: 8px;
-    padding: 16px;
+    padding: var(--card-padding);
   }
 
   .year-group.screen:after {
@@ -57,7 +57,7 @@ const { year, acordes } = Astro.props;
   .year-group .screen-body {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 24px;
   }
 
   .app-title {
@@ -86,7 +86,7 @@ const { year, acordes } = Astro.props;
   .section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 16px;
   }
 
   @media (max-width: 1024px) {
@@ -101,12 +101,11 @@ const { year, acordes } = Astro.props;
     }
 
     .year-group.screen {
-      padding: 16px;
+      padding: var(--card-padding-sm);
     }
 
     .section {
-      row-gap: 16px;
-      column-gap: 16px;
+      gap: 12px;
       grid-template-columns: repeat(2, 1fr);
       align-items: stretch; /* allow cards to stretch so footer lands at bottom */
     }

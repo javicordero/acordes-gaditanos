@@ -118,7 +118,7 @@ import Layout from '../layouts/Layout.astro';
     .screen-body {
       display: flex;
       gap: 32px;
-      padding: 32px;
+      padding: var(--card-padding);
     }
 
     .screen-body-item {
@@ -309,8 +309,8 @@ import Layout from '../layouts/Layout.astro';
     @media screen and (max-width: 640px) {
       .screen-body {
         flex-direction: column;
-        gap: 24px;
-        padding: 32px;
+        gap: 16px;
+        padding: var(--card-padding-sm);
       }
 
       .app-title {

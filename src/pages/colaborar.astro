@@ -84,7 +84,7 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     max-height: max-content;
     gap: 64px;
-    padding: 32px;
+    padding: var(--card-padding);
 
     &::after {
       content: '';
@@ -164,7 +164,7 @@ import Layout from '../layouts/Layout.astro';
     .colaborar-card {
       flex-direction: column;
       gap: 16px;
-      padding: 24px;
+      padding: var(--card-padding-sm);
 
       & > header {
         flex: none;
