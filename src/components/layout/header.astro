@@ -56,6 +56,8 @@ import Logo from '../../../public/icons/logo.svg';
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+    --bar-h: 4px;
     height: 24px;
     width: 32px;
     cursor: pointer;
@@ -72,23 +74,28 @@ import Logo from '../../../public/icons/logo.svg';
 
     & span {
       display: block;
-      height: 4px;
+      position: absolute;
+      left: 0;
       width: 100%;
+      height: var(--bar-h);
       border-radius: 10px;
       background: var(--primary-contrast-color);
-      transition: transform 0.4s ease-in-out;
+      transition:
+        transform 0.4s ease-in-out,
+        top 0.3s ease-in-out;
+      transform-origin: center;
     }
 
     & span:nth-child(1) {
-      transform-origin: 0% 0%;
+      top: 0;
     }
 
     & span:nth-child(2) {
-      transition: transform 0.2s ease-in-out;
+      top: calc(50% - var(--bar-h) / 2);
     }
 
     & span:nth-child(3) {
-      transform-origin: 0% 100%;
+      top: calc(100% - var(--bar-h));
     }
   }
 
@@ -180,14 +187,16 @@ import Logo from '../../../public/icons/logo.svg';
   }
 
   .menu-toggle.is-open span:nth-child(1) {
+    top: calc(50% - var(--bar-h) / 2);
     transform: rotate(45deg);
   }
 
   .menu-toggle.is-open span:nth-child(2) {
-    transform: scaleY(0);
+    transform: scaleX(0);
   }
 
   .menu-toggle.is-open span:nth-child(3) {
+    top: calc(50% - var(--bar-h) / 2);
     transform: rotate(-45deg);
   }
 
@@ -208,10 +217,7 @@ import Logo from '../../../public/icons/logo.svg';
     .menu-toggle {
       height: 20px;
       width: 28px;
-
-      & span {
-        height: 3px;
-      }
+      --bar-h: 3px;
     }
 
     .branding h1 {
