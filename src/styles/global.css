@@ -41,6 +41,12 @@
   box-sizing: border-box;
 }
 
+body,
+html {
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
 body {
   background-color: var(--color-bg);
   overflow-y: scroll;
