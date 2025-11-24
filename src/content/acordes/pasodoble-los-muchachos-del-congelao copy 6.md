@@ -1,10 +1,10 @@
 ---
-pieza: Pasodoble
-agrupacion: Los prisioneros
-year: 2022
-musica: Raúl Cabrera
+pieza: Final popurrí
+agrupacion: Los del otro barrio
+year: 2025
+musica: El Tomate
 letra: El Canijo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifvhW8CYkLi6OoaPq_npbUS6wKCyUb6Fr8jpiBqTW-hxFGyGw02H5Xzcbh1lDwoUBtp4oUDw_fU-4g3hZKi07XzHMi2vER_TLpMjp4SADxnsrAoPVbu3mFxnCTMlujWGqvXnd4A9zmvHyNFjWYfC66l7b3w8ofJgYVYNyglmFD4eDkUN6754D6xnD8vAH1/s320/muchachos.webp
+img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBhR3Tmn3Haps638t1GFxT4COOVxwE_4nEvMf_d5phqhE9rI98nSO5x-R051ofWcfvKdN67pLdpR906kffa5IBkE81482OYSwoeac9HKvgc-ZqpoNxh5MgUqdCnQ90ckVbG2nR_lJrTEIXkv3TdjrCJh3kl-WQ8ihuQjdoGJELBdaL2sjkD2KRAqcLNFcR/s320/otrobarrio2.jpg
 date: "20/01/2025"
 video: 'https://www.youtube.com/embed/4A44HlY0hIQ?si=aZjOz3SS0z-gd4OD'
 

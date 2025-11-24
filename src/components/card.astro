@@ -1,224 +1,165 @@
 ---
-import { Icon } from 'astro-icon/components';
-
 const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
+const headingId = `acordes-${slug}`;
+
+// Determinar el tipo de pieza para aplicar colores diferentes
+const piezaLower = pieza?.toLowerCase() || '';
+let piezaType = 'default';
+
+if (piezaLower.includes('presentación') || piezaLower.includes('presentacion')) {
+  piezaType = 'presentacion';
+} else if (piezaLower.includes('pasodoble')) {
+  piezaType = 'pasodoble';
+}
 ---
 
-<div class='card-container'>
+<article
+  class='card'
+  style={`background-image: url('${img}');`}
+  transition:name={`img-${slug}`}
+  aria-labelledby={headingId}>
   <a href={`/acordes/${slug}`}>
-    <article class='card'>
-      <header '>
-        <img transition:name={`img-${slug}`} src={img} alt={pieza} loading='lazy' />
-      </header>
-      <main>
-        <div class='title'>
-          <h3 transition:name={`pieza-${slug}`} class='title pieza'>{pieza}</h3>
-          <h3 transition:name={`agrupacion-${slug}`} class='title'>{agrupacion}</h3>
-        </div>
-      </main>
-      <footer class='autor musica'>
-        <div class='svg'>
-          <Icon name='clave-de-sol' width={15} height={27} color={'var(--secondary-color)'} />
-        </div>
-        <span>{musica}</span>
-      </footer>
-      <!-- <div class='autor letra'>
-            <div class='svg'>
-              <Icon name='lapiz' width={15} height={30} />
-            </div>
-            <span>{letra}</span>
-          </div> -->
-    </article>
+    <header>
+      <span class='badge' data-pieza-type={piezaType}>{pieza}</span>
+    </header>
+
+    <footer>
+      <span class='badge' transition:name={`musica-${slug}`}>{musica}</span>
+    </footer>
   </a>
-</div>
+</article>
 
 <style>
-  .card-container {
-    height: 100%;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-    height: inherit;
+  :root {
+    --pieza-presentacion-color: var(--primary-color);
+    --pieza-presentacion-bg: #87ceeb;
+
+    --pieza-pasodoble-color: var(--primary-color);
+    --pieza-pasodoble-bg: #ffa07a;
+
+    --pieza-default-color: var(--primary-color);
+    --pieza-default-bg: #98fb98;
+
+    --autor-color: var(--primary-color);
+    --autor-bg: var(--primary-contrast-color);
   }
 
   .card {
     background-color: var(--card-background-color);
-    width: auto;
-    height: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+    transition:
+      transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      box-shadow 0.5s ease;
+
+    &:hover {
+      transform: scale(1.05) translateY(-12px) rotateZ(-1deg);
+      box-shadow:
+        0 40px 80px -20px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(255, 255, 255, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      z-index: 10;
+    }
+
+    &:hover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
-    border: 2px solid var(--secondary-color);
-    box-shadow:
-      rgba(50, 50, 93, 0.15) 0px 50px 100px -8px,
-      rgba(0, 0, 0, 0.25) 0px 30px 60px -40px;
-    transition: all 0.5s ease;
-    transform: translateY(0) scale(1);
-  }
-  .card:has(:hover) {
-    transform: scale(1.05);
-    box-shadow:
-      rgba(50, 50, 93, 0.25) 0px 30px 60px -10px,
-      rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    border-color: var(--primary-contrast-color);
+    height: 100%;
+    justify-content: space-between;
   }
 
-  .card header {
-    position: relative;
-    top: -16px;
+  header {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: flex-start;
   }
 
-  .card header a,
-  .card header img {
-    height: 150px;
-    width: 90%;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    transition: transform 0.5s ease;
-    transform: scale(1);
-  }
-
-  .card:has(:hover) header img {
-    transform: scale(1.05);
-  }
-
-  .card .title {
-    margin: 0;
+  .badge {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
     font-weight: 500;
-    font-size: 1.25rem;
-    color: var(--primary-color);
-    line-height: 1.1;
-  }
-  .card main:after {
-    content: '';
-    display: block;
-    width: 50%;
-    height: 3px;
-    background: var(--primary-contrast-color);
-    border-radius: 2px;
-    position: relative;
-    top: -6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
+    max-width: 95%;
   }
 
-  .card:has(:hover) main:after {
-    width: 90%;
+  header > .badge {
+    border-radius: 0 6px 0 6px;
+    font-size: 16px;
+    padding: 6px 10px;
+
+    &[data-pieza-type='presentacion'] {
+      color: var(--pieza-presentacion-color);
+      background-color: var(--pieza-presentacion-bg);
+    }
+
+    &[data-pieza-type='pasodoble'] {
+      color: var(--pieza-pasodoble-color);
+      background-color: var(--pieza-pasodoble-bg);
+    }
+
+    &[data-pieza-type='default'] {
+      color: var(--pieza-default-color);
+      background-color: var(--pieza-default-bg);
+    }
   }
 
-  .card .autor {
+  footer {
     display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 1rem;
-  }
+    justify-content: flex-start;
+    align-items: flex-end;
 
-  .card .autor.letra > .svg {
-    position: relative;
-    top: 1.5px;
-  }
-
-  .card .autor span {
-    font-size: 1rem;
-    color: var(--secondary-color);
-    /* color: var(--card-background-color); */
-  }
-
-  .card main {
-    padding: 4px 16px 0 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1 1 auto;
-    position: relative;
-    top: -12px;
-  }
-  .card footer {
-    padding: 0 16px 0 16px;
-    margin-top: auto;
-    position: relative;
-    top: -8px;
-  }
-
-  @media (max-width: 1024px) {
-    .card {
-      max-width: 380px;
-    }
-
-    .card header {
-      top: -14px;
-    }
-
-    .card header img {
-      height: 150px;
-      width: calc(100% - 24px);
-    }
-
-    .card main {
-      gap: 4px;
-      padding: 0 12px;
-    }
-
-    .card footer {
-      padding: 0 12px 8px 12px;
-    }
-
-    .card .title {
-      font-size: 1.1rem;
-    }
-
-    .card .musica {
-      font-size: 0.9rem;
+    & > .badge {
+      border-radius: 0 6px 0 6px;
+      color: var(--autor-color);
+      background-color: var(--autor-bg);
+      font-size: 12px;
+      padding: 4px 8px;
     }
   }
 
   @media (max-width: 640px) {
     .card {
-      max-width: 315px;
+      transition: none;
+      min-height: 180px;
+
+      &:hover {
+        transform: none;
+        box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+        filter: none;
+        z-index: auto;
+      }
     }
 
-    .card header {
-      top: -12px;
+    .badge {
+      transition: none;
+      letter-spacing: 0.1px;
     }
 
-    .card header img {
-      height: 100px;
-      width: calc(100% - 16px);
-    }
-    .card main {
-      padding: 0 8px;
-      gap: 4px;
-      top: -8px;
+    header > .badge {
+      font-size: 15px;
+      padding: 4px 8px;
     }
 
-    .card main:after {
-      height: 2px;
-      top: -4px;
-      width: 70%;
-    }
-
-    .card footer {
-      padding: 0 8px 6px 8px;
-      top: -4px;
-    }
-
-    .card .title {
-      font-size: 1.08rem;
-    }
-
-    .card .autor span {
-      font-size: 0.9rem;
-    }
-
-    .card:has(:hover, ) {
-      transform: scale(1.02);
-    }
-
-    .card:has(:hover) header img {
-      transform: scale(1.02);
+    footer > .badge {
+      font-size: 11px;
+      padding: 4px 8px;
     }
   }
 </style>

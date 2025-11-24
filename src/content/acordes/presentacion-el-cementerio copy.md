@@ -2,9 +2,9 @@
 pieza: Presentación
 agrupacion: El cementerio
 year: 2025
-musica: Jonathan Pérez
+musica: Raúl Cabrera
 letra: Jonathan Pérez Ginel
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJqi1uQbkeNRNKfRA16CYdMfzCrtLSh4CJ4nolCGyBSz5I6hRnrGd7I9A_bTjITgd__h7yYTKQFzNH3N9tdNABqGjcvfRJz7871JB-AgFsu-U4CGzcsL7JgFFuoj2owmCnFlUyGQd7bWVhTOhd98ku6r4UKXZnbCstPNg56CkMHkAk68m6AZ1eKdepkIBR/s320/cementerio2.jpg
+img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3Ii8QZl2d_aCnsqsSZ9SaaozfH03thW-4ERjw14ClczizDyfBHFvzYBDYn957yZ85KkdHjl7mT7ML8NQkBrHOQs0rdClQF5HnGxIy0WzUPnDRIyIJ-zcwYM74b7X_ibCl63hBW5FHKk3CLCF5gKCQT0xRNOk_FrnpX1-GmVtHErC74vM7aEqbPhQBHbiB/s320/tribu.webp
 date: "20/01/2025"
 video: 'https://youtu.be/4A44HlY0hIQ?si=a1WG1sPcFSBUSRVN'
 

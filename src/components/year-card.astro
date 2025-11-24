@@ -57,7 +57,7 @@ const { year, acordes } = Astro.props;
   .year-group .screen-body {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
   }
 
   .app-title {
@@ -66,10 +66,10 @@ const { year, acordes } = Astro.props;
     position: relative;
     color: var(--primary-color);
     font-size: 1.625rem;
-    /* Match colaborar/contacto title styling */
     font-family: 'Montserrat', sans-serif;
     letter-spacing: 1.4px;
     font-weight: 700;
+    max-width: fit-content;
   }
 
   .app-title:after {
@@ -77,51 +77,38 @@ const { year, acordes } = Astro.props;
     display: block;
     position: absolute;
     left: 0;
-    bottom: -10px;
-    width: 60px;
+    bottom: -6px;
+    width: 90%;
     height: 4px;
     background: var(--primary-contrast-color);
   }
 
   .section {
     display: grid;
-    row-gap: 40px;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: stretch; /* allow cards to stretch so footer lands at bottom */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
   }
 
-  @media (min-width: 640px) {
+  @media (max-width: 1024px) {
     .section {
       grid-template-columns: repeat(3, 1fr);
-      column-gap: 12px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .section {
-      column-gap: 16px;
-    }
-  }
-
-  @media (min-width: 1440px) {
-    .section {
-      grid-template-columns: repeat(4, 1fr);
-      column-gap: 16px;
     }
   }
 
   @media (max-width: 640px) {
     .year-group .screen-body {
-      gap: 24px;
+      gap: 16px;
     }
 
     .year-group.screen {
-      padding: 8px;
+      padding: 16px;
     }
 
     .section {
-      row-gap: 24px;
-      column-gap: 8px;
+      row-gap: 16px;
+      column-gap: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: stretch; /* allow cards to stretch so footer lands at bottom */
     }
 
     .app-title:after {

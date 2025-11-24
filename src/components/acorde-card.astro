@@ -27,7 +27,7 @@ const { Content } = await render(acorde);
           <div class='svg'>
             <Icon name='clave-de-sol' width={15} height={27} />
           </div>
-          <span>{musica}</span>
+          <span transition:name={`musica-${slug}`}>{musica}</span>
         </div>
         <div class='autor letra'>
           <div class='svg'>
