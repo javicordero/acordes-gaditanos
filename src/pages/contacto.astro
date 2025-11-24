@@ -7,102 +7,125 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title='Contacto - Acordes Gaditanos' description='Página de contacto de Acordes Gaditanos'>
   <Header />
-  <main class='main-container container-layout'>
-    <div class='screen'>
-      <div class='screen-body'>
-        <section class='screen-body-item left'>
-          <header class='app-title'>
-            <span>CONTACTO</span>
-          </header>
-          <div class='app-contact'>
-            <p class='note'>
-              Puedes contactarnos rellenando el siguiente formulario de contacto o, si lo prefieres,
-              mediante <a href='mailto:acordesgaditanos@gmail.com'>correo electrónico</a> o <a
-                href='https://twitter.com/acordesgaditano'
-                target='_blank'
-                rel='noopener'>Twitter</a
-              >.
-            </p>
-            <p class='email'>
-              EMAIL: <a href='mailto:acordesgaditanos@gmail.com'> acordesgaditanos@gmail.com </a>
-            </p>
-            <p class='twitter'>
-              <Icon name='x' width={16} height={16} />:
-              <a href='https://twitter.com/acordesgaditano' target='_blank' rel='noopener'>
-                @acordesgaditano
-              </a>
-            </p>
-          </div>
-        </section>
-        <div class='screen-body-item'>
-          <form
-            id='contact-form'
-            class='form'
-            method='post'
-            novalidate
-            data-endpoint='https://formspree.io/f/xdkjawaj'>
-            <div class='form-group'>
-              <input
-                name='name'
-                id='name'
-                class='form-control'
-                placeholder='NOMBRE'
-                aria-label='Nombre'
-              />
-              <div class='error' id='error-name' aria-hidden='true'>Rellena este campo</div>
-            </div>
+  <div class='main-container container-layout'>
+    <article class='contact-page'>
+      <section class='contact-info' aria-labelledby='contact-heading'>
+        <header>
+          <h2 id='contact-heading'>Contacto</h2>
+        </header>
 
-            <div class='form-group'>
-              <input
-                name='email'
-                id='email'
-                class='form-control'
-                placeholder='EMAIL'
-                aria-label='Email'
-              />
-              <div class='error' id='error-email' aria-hidden='true'>Introduce un email válido</div>
-            </div>
-
-            <div class='form-group'>
-              <textarea
-                name='message'
-                id='message'
-                class='form-control'
-                placeholder='MENSAJE'
-                rows='1'
-                aria-label='Mensaje'></textarea>
-              <div class='error' id='error-message' aria-hidden='true'>Rellena este campo</div>
-            </div>
-
-            <div class='form-group buttons'>
-              <button type='submit' class='form-button'>ENVIAR</button>
-            </div>
-          </form>
+        <div class='contact-methods'>
+          <p class='intro-text'>
+            Puedes contactarnos rellenando el siguiente formulario de contacto o, si lo prefieres,
+            mediante <a href='mailto:acordesgaditanos@gmail.com'>correo electrónico</a> o <a
+              href='https://twitter.com/acordesgaditano'
+              target='_blank'
+              rel='noopener'>Twitter</a
+            >.
+          </p>
+          <p class='contact-method contact-method--email'>
+            EMAIL: <a href='mailto:acordesgaditanos@gmail.com'>acordesgaditanos@gmail.com</a>
+          </p>
+          <p class='contact-method contact-method--twitter'>
+            <Icon name='x' width={16} height={16} />
+            <span>:</span>
+            <a href='https://twitter.com/acordesgaditano' target='_blank' rel='noopener'>
+              @acordesgaditano
+            </a>
+          </p>
         </div>
-      </div>
-    </div>
-  </main>
+      </section>
+
+      <section class='contact-form-section' aria-labelledby='form-heading'>
+        <h3 id='form-heading' class='visually-hidden'>Formulario de contacto</h3>
+        <form
+          id='contact-form'
+          method='post'
+          novalidate
+          data-endpoint='https://formspree.io/f/xdkjawaj'>
+          <div class='form-group'>
+            <label for='name' class='visually-hidden'>Nombre</label>
+            <input
+              name='name'
+              id='name'
+              class='form-control'
+              placeholder='NOMBRE'
+              aria-label='Nombre'
+            />
+            <div class='error' id='error-name' aria-hidden='true'>Rellena este campo</div>
+          </div>
+
+          <div class='form-group'>
+            <label for='email' class='visually-hidden'>Email</label>
+            <input
+              name='email'
+              id='email'
+              type='email'
+              class='form-control'
+              placeholder='EMAIL'
+              aria-label='Email'
+            />
+            <div class='error' id='error-email' aria-hidden='true'>Introduce un email válido</div>
+          </div>
+
+          <div class='form-group'>
+            <label for='message' class='visually-hidden'>Mensaje</label>
+            <textarea
+              name='message'
+              id='message'
+              class='form-control'
+              placeholder='MENSAJE'
+              rows='1'
+              aria-label='Mensaje'></textarea>
+            <div class='error' id='error-message' aria-hidden='true'>Rellena este campo</div>
+          </div>
+
+          <div class='form-actions'>
+            <button type='submit' class='btn btn--submit'>Enviar</button>
+          </div>
+        </form>
+      </section>
+    </article>
+  </div>
 
   <Footer />
+</Layout>
 
-  <style>
-    button,
-    input,
-    textarea,
-    .main-container {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      letter-spacing: 1.4px;
-    }
+<style>
+  /* Global form elements */
+  button,
+  input,
+  textarea,
+  .main-container {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+  }
 
-    .screen {
-      position: relative;
-      background: var(--card-background-color);
-      border: 1px solid var(--primary-color);
-      border-radius: 8px;
-    }
+  /* Utility: visually hidden */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 
-    .screen:after {
+  /* Article container */
+  .contact-page {
+    position: relative;
+    background: var(--card-background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: var(--card-padding);
+    display: flex;
+    gap: 32px;
+
+    &::after {
       content: '';
       display: block;
       position: absolute;
@@ -114,242 +137,216 @@ import Layout from '../layouts/Layout.astro';
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       z-index: -1;
     }
+  }
 
-    .screen-body {
-      display: flex;
-      gap: 32px;
-      padding: var(--card-padding);
+  /* Contact info section (left) */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    flex: 0 0 auto;
+
+    & header {
+      & h2 {
+        position: relative;
+        color: var(--primary-color);
+        font-size: 1.625rem;
+        margin: 0;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+          width: 140px;
+          height: 4px;
+          background: var(--primary-contrast-color);
+        }
+      }
     }
+  }
 
-    .screen-body-item {
-      flex: 1;
-    }
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-color);
+    line-height: 1.2rem;
 
-    .screen-body-item.left {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 16px;
-      flex: 0;
-    }
-
-    .app-title {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      color: var(--primary-color);
-      font-size: 1.625rem;
-    }
-
-    .app-title:after {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      width: 140px;
-      height: 4px;
-      background: var(--primary-contrast-color);
-    }
-
-    .app-contact {
-      font-size: 0.75rem;
-      display: flex;
-      font-weight: 500;
-      flex-direction: column;
-      gap: 8px;
-      font-weight: 400;
-      color: var(--text-color);
-      line-height: 1.2rem;
-    }
-
-    .app-contact a {
+    & a {
       color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--link-color);
+      }
     }
 
-    .app-contact .note {
+    & .intro-text {
       display: none;
     }
 
-    .app-contact .email {
-      min-width: max-content;
-    }
-
-    .app-contact .email,
-    .app-contact .twitter {
+    & .contact-method {
       font-weight: 600;
-    }
 
-    .app-contact .twitter {
-      display: flex;
-      align-items: center;
-    }
+      &--email {
+        min-width: max-content;
+      }
 
-    /* Añade espacio entre elementos excepto antes del primer hijo */
-    .app-contact .twitter > * + * {
-      margin-left: 6px; /* ajusta el valor según necesites */
+      &--twitter {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
     }
+  }
 
-    .app-contact a {
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+  /* Form section (right) */
+  .contact-form-section {
+    flex: 1 1 auto;
 
-    .app-contact a:hover {
-      color: var(--link-color);
-    }
-
-    .form {
+    & form {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
+  }
 
-    .form-group {
-      margin-bottom: 0;
-    }
+  .form-group {
+    margin-bottom: 0;
+  }
 
-    .form-group.message {
-      margin-top: 40px; /* 40px */
-    }
+  .form-control {
+    width: 100%;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--placeholder-color);
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.2s;
 
-    .form-group.buttons {
-      text-align: right;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 10px 0;
-      background: none;
-      border: none;
-      border-bottom: 1px solid var(--placeholder-color);
-      color: var(--primary-color);
-      font-size: 0.875rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-control::placeholder {
+    &::placeholder {
       color: var(--placeholder-color);
     }
 
-    .form-control.invalid {
-      border-bottom-color: var(--error-color);
-    }
-
-    .error {
-      color: var(--error-color);
-      font-size: 0.75rem;
-      margin-top: 6px;
-      min-height: 18px; /* reserva espacio para una línea de error */
-      visibility: hidden;
-      opacity: 0;
-      transition:
-        opacity 160ms ease,
-        visibility 160ms ease;
-    }
-
-    .error.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    /* Mensajes de estado del formulario (success / error) */
-
-    .form-control:focus {
+    &:focus {
       border-bottom-color: var(--primary-contrast-color);
     }
 
-    .form-button {
-      background: none;
-      border: 1px solid var(--primary-color);
-      border-radius: 8px;
-      padding: 16px 24px;
-      color: var(--primary-color);
-      font-size: 0.875rem;
-      cursor: pointer;
-      outline: none;
-      transition: all 0.5s ease;
+    &.invalid {
+      border-bottom-color: var(--error-color);
     }
+  }
 
-    .form-button:hover {
+  .error {
+    color: var(--error-color);
+    font-size: 0.75rem;
+    margin-top: 6px;
+    min-height: 18px;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+      opacity 160ms ease,
+      visibility 160ms ease;
+
+    &.active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .form-actions {
+    text-align: right;
+  }
+
+  .btn {
+    background: none;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 16px 24px;
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.5s ease;
+
+    &:hover {
       border-color: var(--primary-contrast-color);
       transform: scale(1.05);
     }
 
-    /* Feedback visual en el botón cuando el formulario es inválido */
-    .form-button.invalid {
+    &.invalid {
       border-color: var(--error-color);
       color: var(--error-color);
       transform: none;
     }
 
-    @keyframes button-shake {
-      0% {
-        transform: translateX(0);
-      }
-      25% {
-        transform: translateX(-6px);
-      }
-      50% {
-        transform: translateX(6px);
-      }
-      75% {
-        transform: translateX(-4px);
-      }
-      100% {
-        transform: translateX(0);
-      }
-    }
-
-    .form-button.shake {
+    &.shake {
       animation: button-shake 420ms ease;
     }
+  }
 
-    @media screen and (max-width: 640px) {
-      .screen-body {
-        flex-direction: column;
-        gap: 16px;
-        padding: var(--card-padding-sm);
-      }
+  @keyframes button-shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-6px);
+    }
+    50% {
+      transform: translateX(6px);
+    }
+    75% {
+      transform: translateX(-4px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 
-      .app-title {
-        flex-direction: row;
-      }
+  /* Media queries */
+  @media screen and (max-width: 640px) {
+    .contact-page {
+      flex-direction: column;
+      gap: 16px;
+      padding: var(--card-padding-sm);
+    }
 
-      .app-title:after {
-        /* display: none; */
-        height: 3px;
-        bottom: -3px;
+    .contact-info {
+      & header {
+        & h2 {
+          &::after {
+            height: 3px;
+            bottom: -3px;
+          }
+        }
       }
+    }
 
-      .screen-body-item {
-        padding: 0;
-      }
+    .contact-methods {
+      font-size: 0.85rem;
 
-      .screen-body-item.left {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .app-contact {
-        font-size: 0.85rem;
-      }
-      .app-contact .note {
+      & .intro-text {
+        display: block;
         font-size: 0.9rem;
         color: var(--primary-color);
-        display: block;
       }
 
-      .app-contact a {
+      & a {
         color: var(--link-color);
       }
 
-      .app-contact .twitter,
-      .app-contact .email {
+      & .contact-method--email,
+      & .contact-method--twitter {
         display: none;
       }
     }
-  </style>
-</Layout>
+  }
+</style>
