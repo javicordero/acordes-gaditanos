@@ -293,15 +293,21 @@ const acordesData = acordes.map((acorde) => ({
     const pendingSearch = sessionStorage.getItem('pendingSearch');
     if (pendingSearch) {
       sessionStorage.removeItem('pendingSearch');
-      searchInput.value = pendingSearch;
       performSearch(pendingSearch);
 
-      // Asegurar que el input de búsqueda esté visible
+      // Cerrar el input de búsqueda
       const searchWrapper = document.querySelector('.search-wrapper');
       const searchToggle = document.querySelector('.search-toggle');
-      if (searchWrapper && searchToggle) {
-        searchWrapper.classList.remove('collapsed');
-        searchToggle.classList.add('hidden');
+      const brandingTitle = document.querySelector('.branding-title');
+
+      if (searchWrapper) {
+        searchWrapper.classList.add('collapsed');
+      }
+      if (searchToggle) {
+        searchToggle.classList.remove('hidden');
+      }
+      if (window.innerWidth <= 640 && brandingTitle) {
+        brandingTitle.classList.remove('is-hidden');
       }
     }
   }
