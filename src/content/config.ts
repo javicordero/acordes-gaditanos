@@ -4,7 +4,7 @@ const acordes = defineCollection({
   schema: z.object({
     pieza: z.string(),
     agrupacion: z.string(),
-    musica: z.string(),
+    musica: z.string().optional(),
     letra: z.string().optional(),
     img: z.string(),
     year: z.number().transform((n) => n.toString()),
