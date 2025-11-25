@@ -2,8 +2,20 @@
 const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
 const headingId = `acordes-${slug}`;
 
-// Determinar el tipo de pieza para aplicar colores diferentes
-const piezaLower = pieza?.toLowerCase() || '';
+// Limpiar "Cuarteta" y comillas si es necesario
+let piezaDisplay = pieza;
+if (pieza) {
+  // Patrón: "Cuarteta" seguido de espacio y texto entre comillas
+  const cuartetaMatch = pieza.match(/^Cuarteta\s+"(.+)"$/i);
+  if (cuartetaMatch) {
+    piezaDisplay = cuartetaMatch[1]; // Extraer solo el contenido entre comillas
+  }
+
+  // Patrón: "final de popurrí/popurri" → "final popurrí" (siempre con acento)
+  piezaDisplay = piezaDisplay.replace(/\bfinal\s+de\s+popur(?:rí|ri)/gi, 'final popurrí');
+}
+
+const piezaLower = piezaDisplay?.toLowerCase() || '';
 let piezaType = 'default';
 
 if (piezaLower.includes('presentación') || piezaLower.includes('presentacion')) {
@@ -24,7 +36,7 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
       class='card-image'
     />
     <header>
-      <span class='badge' data-pieza-type={piezaType}>{pieza}</span>
+      <span class='badge' data-pieza-type={piezaType}>{piezaDisplay}</span>
     </header>
 
     <footer>
