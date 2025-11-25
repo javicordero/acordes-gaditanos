@@ -1,0 +1,152 @@
+---
+export const prerender = false;
+
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import YearCard from '../../components/year-card.astro';
+
+const { query } = Astro.params;
+
+if (!query) {
+  return Astro.redirect('/');
+}
+
+// Obtener todos los acordes
+const allAcordes = await getCollection('acordes');
+
+// Normalizar función para búsqueda (quitar acentos, minúsculas)
+function normalizeText(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+}
+
+const normalizedQuery = normalizeText(query);
+
+// Filtrar acordes que coincidan con la búsqueda
+const resultados = allAcordes.filter((acorde) => {
+  const { pieza, agrupacion, musica, letra } = acorde.data;
+
+  // Buscar en pieza, agrupación, música y letra
+  const searchableText = normalizeText(
+    `${pieza || ''} ${agrupacion || ''} ${musica || ''} ${letra || ''}`
+  );
+
+  return searchableText.includes(normalizedQuery);
+});
+
+// Título para mostrar
+const searchTitle = `Resultados para: "${query}"`;
+const noResults = resultados.length === 0;
+---
+
+<Layout
+  title={`Búsqueda: ${query} - Acordes Gaditanos`}
+  description={`Resultados de búsqueda para "${query}" en Acordes Gaditanos. Encuentra acordes y letras del Carnaval de Cádiz.`}>
+  <div class='main-container container-layout'>
+    {
+      noResults ? (
+        <article class='no-results' role='region' aria-labelledby='no-results-heading'>
+          <header>
+            <h2 id='no-results-heading'>No se encontraron resultados</h2>
+          </header>
+          <p>
+            No se encontraron acordes que coincidan con <strong>"{query}"</strong>.
+          </p>
+          <p>
+            Intenta con otros términos de búsqueda o <a href='/'>vuelve al inicio</a>.
+          </p>
+        </article>
+      ) : (
+        <YearCard year={searchTitle} acordes={resultados} />
+      )
+    }
+  </div>
+</Layout>
+
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  .no-results {
+    background: var(--card-background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: var(--card-padding);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+    & header {
+      margin-bottom: 16px;
+
+      & h2 {
+        position: relative;
+        color: var(--primary-color);
+        font-size: 1.625rem;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 1.4px;
+        font-weight: 700;
+        max-width: fit-content;
+        margin: 0;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -6px;
+          width: 90%;
+          height: 4px;
+          background: var(--primary-contrast-color);
+        }
+      }
+    }
+
+    & p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      margin: 8px 0;
+
+      & strong {
+        color: var(--primary-color);
+      }
+
+      & a {
+        color: var(--link-color);
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--link-hover-color);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .main-container {
+      gap: var(--main-container-gap-sm);
+    }
+
+    .no-results {
+      padding: var(--card-padding-sm);
+
+      & header h2 {
+        font-size: 1.4rem;
+
+        &::after {
+          height: 3px;
+          bottom: -3px;
+        }
+      }
+
+      & p {
+        font-size: 0.95rem;
+      }
+    }
+  }
+</style>

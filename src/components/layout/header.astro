@@ -1,26 +1,48 @@
 ---
 import Logo from '../../../public/icons/logo.svg';
+import { Icon } from 'astro-icon/components';
 ---
 
 <header role='banner' transition:name='site-header'>
   <div class='container-layout nav-bar-container'>
-    <button
-      class='menu-toggle'
-      aria-expanded='false'
-      aria-controls='primary-menu'
-      aria-label='Abrir menú'>
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
     <div class='branding'>
-      <h1 transition:persist><a href='/'>Acordes Gaditanos</a></h1>
       <picture>
         <a href='/' aria-label='Inicio'>
           <img src={Logo.src} alt='Acordes Gaditanos logo' transition:persist decoding='async' />
         </a>
       </picture>
+      <h1 transition:persist><a href='/'>Acordes Gaditanos</a></h1>
+    </div>
+
+    <div class='right-controls'>
+      <div class='search-container'>
+        <button class='search-toggle' aria-label='Abrir búsqueda' type='button'>
+          <Icon name='lupa' width={30} height={30} />
+        </button>
+
+        <div class='search-wrapper collapsed'>
+          <input
+            type='text'
+            id='header-search'
+            placeholder='Buscar acordes...'
+            aria-label='Buscar acordes'
+            autocomplete='off'
+          />
+          <button class='clear-search' aria-label='Borrar búsqueda' type='button' hidden>
+            <Icon name='cruz' width={24} height={24} />
+          </button>
+        </div>
+      </div>
+
+      <button
+        class='menu-toggle'
+        aria-expanded='false'
+        aria-controls='primary-menu'
+        aria-label='Abrir menú'>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
 
@@ -34,6 +56,7 @@ import Logo from '../../../public/icons/logo.svg';
 </header>
 
 <style>
+  /* Header principal */
   header {
     height: var(--nav-height);
     width: 100%;
@@ -43,15 +66,165 @@ import Logo from '../../../public/icons/logo.svg';
     background-color: var(--primary-color);
   }
 
+  /* Container principal del nav-bar */
   .nav-bar-container {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     padding: 0 4px;
   }
 
+  /* Branding (logo y título) */
+  .branding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    & picture {
+      position: relative;
+      top: 2px;
+    }
+
+    & img {
+      border-radius: 40px;
+      height: 32px;
+      width: auto;
+      background-color: var(--primary-contrast-color);
+    }
+
+    & h1 {
+      position: relative;
+      bottom: 1px;
+      font-family: 'Bodoni', serif;
+      font-style: italic;
+      margin: 0;
+
+      & a {
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: var(--primary-contrast-color);
+        font-weight: bold;
+      }
+    }
+  }
+
+  .branding.is-hidden {
+    visibility: hidden;
+  }
+
+  /* Controles de la derecha (búsqueda + menú) */
+  .right-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Container de búsqueda */
+  .search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Botón de lupa */
+  .search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.5s ease;
+    color: var(--primary-contrast-color);
+    opacity: 1;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  .search-toggle.hidden {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    padding: 0;
+  }
+
+  /* Wrapper del input de búsqueda */
+  .search-wrapper {
+    position: relative;
+    width: 250px;
+    overflow: hidden;
+    transition:
+      width 0.3s ease,
+      opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  .search-wrapper.collapsed {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Input de búsqueda */
+  #header-search {
+    width: 100%;
+    padding: 8px 36px 8px 12px;
+    font-size: 0.9rem;
+    border: 2px solid var(--primary-contrast-color);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-color);
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: none;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
+    }
+
+    &::placeholder {
+      color: var(--text-secondary-color);
+      opacity: 0.7;
+    }
+  }
+
+  /* Botón de limpiar búsqueda (cruz) */
+  .clear-search {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--text-secondary-color);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
+  .clear-search[hidden] {
+    display: none;
+  }
+
+  /* Botón menú hamburguesa */
   .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -99,38 +272,7 @@ import Logo from '../../../public/icons/logo.svg';
     }
   }
 
-  .branding {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: 8px;
-
-    & h1 {
-      position: relative;
-      bottom: 1px;
-      font-family: 'Bodoni', serif;
-      font-style: italic;
-    }
-
-    & h1 a {
-      text-decoration: none;
-      font-size: 1.5rem;
-      color: var(--primary-contrast-color);
-      font-weight: bold;
-    }
-
-    & picture {
-      position: relative;
-      top: 2px;
-    }
-    & img {
-      border-radius: 40px;
-      height: 32px;
-      width: auto;
-      background-color: var(--primary-contrast-color);
-    }
-  }
-
+  /* Navegación principal */
   nav {
     padding-top: 120px;
     background-color: var(--primary-color);
@@ -182,6 +324,7 @@ import Logo from '../../../public/icons/logo.svg';
     }
   }
 
+  /* Estados del menú hamburguesa abierto */
   nav.is-open {
     transform: translateX(0);
   }
@@ -200,10 +343,7 @@ import Logo from '../../../public/icons/logo.svg';
     transform: rotate(-45deg);
   }
 
-  .branding.is-hidden {
-    visibility: hidden;
-  }
-
+  /* Media queries - Responsive */
   @media (max-width: 640px) {
     .nav-bar-container {
       width: 95%;
@@ -226,6 +366,30 @@ import Logo from '../../../public/icons/logo.svg';
     .branding img {
       height: 28px;
     }
+
+    .right-controls {
+      gap: 8px;
+    }
+
+    .search-wrapper {
+      width: 150px;
+    }
+
+    .search-wrapper.collapsed {
+      width: 0;
+    }
+
+    .search-toggle {
+      & svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    #header-search {
+      padding: 6px 32px 6px 10px;
+      font-size: 0.85rem;
+    }
   }
 </style>
 
@@ -240,6 +404,10 @@ import Logo from '../../../public/icons/logo.svg';
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('#primary-menu');
     const branding = document.querySelector('.branding');
+    const searchInput = document.querySelector('#header-search');
+    const clearButton = document.querySelector('.clear-search');
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchWrapper = document.querySelector('.search-wrapper');
 
     if (!toggle || !nav || !branding) return;
 
@@ -257,6 +425,98 @@ import Logo from '../../../public/icons/logo.svg';
         toggle.setAttribute('aria-expanded', 'true');
       }
     };
+
+    // Toggle del buscador con botón de lupa
+    if (searchToggle && searchWrapper && searchInput) {
+      searchToggle.addEventListener('click', () => {
+        const isCollapsed = searchWrapper.classList.contains('collapsed');
+        if (isCollapsed) {
+          searchWrapper.classList.remove('collapsed');
+          searchToggle.classList.add('hidden');
+          setTimeout(() => searchInput.focus(), 100);
+          searchToggle.setAttribute('aria-label', 'Cerrar búsqueda');
+        } else {
+          searchWrapper.classList.add('collapsed');
+          searchToggle.classList.remove('hidden');
+          searchInput.value = '';
+          searchToggle.setAttribute('aria-label', 'Abrir búsqueda');
+          if (clearButton) {
+            clearButton.setAttribute('hidden', '');
+          }
+        }
+      });
+    }
+
+    // Sistema de búsqueda
+    if (searchInput && clearButton) {
+      // Mostrar/ocultar botón de limpiar según el contenido
+      const toggleClearButton = () => {
+        if (searchInput.value.trim()) {
+          clearButton.removeAttribute('hidden');
+        } else {
+          clearButton.setAttribute('hidden', '');
+        }
+      };
+
+      searchInput.addEventListener('input', toggleClearButton);
+
+      // Inicializar estado del botón
+      toggleClearButton();
+
+      // Cerrar al perder el focus
+      searchInput.addEventListener('blur', () => {
+        // Delay para permitir clic en botón X
+        setTimeout(() => {
+          if (searchWrapper && !searchWrapper.contains(document.activeElement)) {
+            searchWrapper.classList.add('collapsed');
+            searchInput.value = '';
+            toggleClearButton();
+            if (searchToggle) {
+              searchToggle.classList.remove('hidden');
+            }
+          }
+        }, 150);
+      });
+
+      // Limpiar búsqueda al hacer clic en X
+      clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        toggleClearButton();
+        if (searchWrapper) {
+          searchWrapper.classList.add('collapsed');
+        }
+        if (searchToggle) {
+          searchToggle.classList.remove('hidden');
+        }
+      });
+
+      // Buscar al pulsar Enter
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const query = searchInput.value.trim();
+          if (query) {
+            import('astro:transitions/client').then(({ navigate }) => {
+              navigate(`/search/${encodeURIComponent(query)}`);
+            });
+          } else {
+            import('astro:transitions/client').then(({ navigate }) => {
+              navigate('/');
+            });
+          }
+        }
+      });
+
+      // Detectar cuando se limpia el input (botón X nativo del navegador)
+      searchInput.addEventListener('search', () => {
+        toggleClearButton();
+        if (!searchInput.value.trim()) {
+          import('astro:transitions/client').then(({ navigate }) => {
+            navigate('/');
+          });
+        }
+      });
+    }
   }
 
   document.addEventListener('astro:page-load', initHeader);
