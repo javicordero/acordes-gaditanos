@@ -1,8 +1,10 @@
 ---
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
+
+const { class: className } = Astro.props;
 ---
 
-<RightColumnCard title='SITIOS DE INTERÉS' headingId='sitios-de-interes-title'>
+<RightColumnCard title='SITIOS DE INTERÉS' headingId='sitios-de-interes-title' class={className}>
   <section aria-labelledby='sitios-de-interes-title'>
     <ul>
       <li>
@@ -22,25 +24,25 @@ import RightColumnCard from '../../layouts/RightColumnCard.astro';
       </li>
     </ul>
   </section>
-</RightColumnCard>
 
-<style>
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
 
-    & li a {
-      color: var(--primary-color);
-      text-decoration: none;
-      transition: all 0.3s ease;
+      & li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
 
-      &:hover {
-        color: var(--acorde-color);
+        &:hover {
+          color: var(--acorde-color);
+        }
       }
     }
-  }
-</style>
+  </style>
+</RightColumnCard>

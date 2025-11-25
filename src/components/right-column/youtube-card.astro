@@ -1,14 +1,14 @@
 ---
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
 
-const { link, title, headingId, iframeTitle } = Astro.props;
+const { link, title, headingId, iframeTitle, class: className } = Astro.props;
 
 // Use an explicit, human-friendly id by default so other nodes can reference it.
 const headingIdFinal = headingId ?? 'youtube-title';
 const iframeTitleText = iframeTitle ?? 'Video de la agrupación del Carnaval de Cádiz';
 ---
 
-<RightColumnCard title={title ?? 'VIDEO AGRUPACIÓN'} headingId={headingIdFinal}>
+<RightColumnCard title={title ?? 'VIDEO AGRUPACIÓN'} headingId={headingIdFinal} class={className}>
   <section aria-labelledby={headingIdFinal}>
     <iframe
       src={link}

@@ -67,6 +67,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       <YoutubeCard
         link={video}
         iframeTitle={`Video oficial de ${pieza} - ${agrupacion} - Carnaval de Cádiz ${year}`}
+        class='video-oficial'
       />
 
       {
@@ -77,14 +78,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
             iframeTitle={
               coverAuthor ? `Cover por ${coverAuthor}` : `Cover de ${pieza} - ${agrupacion}`
             }
+            class='video-cover'
           />
         )
       }
-      {!cover && <ApareceAqui />}
+      {!cover && <ApareceAqui class='aparece-aqui' />}
 
-      <Apoyar />
+      <Apoyar class='apoyar' />
 
-      <SitiosDeInteresCard />
+      <SitiosDeInteresCard class='sitios-interes' />
     </div>
   </div>
 </Layout>
@@ -107,7 +109,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
   /* Mantener la card izquierda con su anchura natural (el componente controla su propio max-width)
      y dejar que la columna derecha tome el espacio sobrante */
-  .main-container > .acordes-container {
+  .main-container > :global(.acorde-card) {
     flex: 0 0 auto;
     min-width: 0;
   }
@@ -120,7 +122,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
   /* Para resoluciones intermedias (tablet → pequeño desktop) hacemos la card más estrecha */
   @media (min-width: 640px) and (max-width: 1024px) {
-    .main-container > .acordes-container {
+    .main-container > :global(.acorde-card) {
       /* Reducir anchura y fijar base para que no ocupe tanto espacio */
       max-width: 576px;
       min-width: 0;
@@ -130,6 +132,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
   @media (max-width: 640px) {
     .main-container {
       flex-direction: column;
+    }
+
+    /* Reordenar visualmente en móvil: Apoyar primero */
+    .right-column > :global(.apoyar) {
+      order: -1;
+    }
+
+    /* El resto mantiene orden natural (order: 0 por defecto) */
+    .right-column > :global(.video-oficial) {
+      order: 0;
+    }
+
+    .right-column > :global(.video-cover),
+    .right-column > :global(.aparece-aqui) {
+      order: 1;
+    }
+
+    .right-column > :global(.sitios-interes) {
+      order: 2;
     }
   }
 

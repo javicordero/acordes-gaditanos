@@ -1,10 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
+
+const { class: className } = Astro.props;
 ---
 
-<RightColumnCard title='APOYAR' headingId='apoyar-title'>
-  <section aria-labelledby='apoyar-title'>
+<RightColumnCard title='APOYAR' headingId='apoyar-title' class={className}>
+  <section class:list={['card', className]} aria-labelledby='apoyar-heading'>
     <p>
       ¿Quieres <strong>apoyar</strong> económicamente el proyecto? Puedes hacerlo <strong
         >donando</strong
