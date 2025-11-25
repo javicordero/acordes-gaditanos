@@ -84,6 +84,9 @@ p {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --nav-height: 48px;
+  }
   .container-layout {
     width: 98%;
   }
