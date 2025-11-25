@@ -1,0 +1,160 @@
+---
+import RightColumnCard from '../../../layouts/RightColumnCard.astro';
+
+const { class: className } = Astro.props;
+
+// Libros de Amazon sobre carnaval
+const productos = [
+  {
+    titulo: 'El pasodoble interminable',
+    autor: 'Juan Carlos Aragón',
+    imagen: 'https://m.media-amazon.com/images/I/61ZarQGAiNL._SY522_.jpg',
+    url: 'https://amzn.to/48dgg8V',
+  },
+
+  {
+    titulo: 'Juan Carlos Aragón: El Carnaval con mayúsculas',
+    autor: 'Jaime Cedillo',
+    imagen: 'https://m.media-amazon.com/images/I/612iOqw3piL._SY522_.jpg',
+    url: 'https://amzn.to/4oZmpg1',
+  },
+
+  {
+    titulo: 'Historias del Carnaval de Cádiz que nunca te contaron',
+    autor: 'David Franco Monthiel',
+    imagen: 'https://m.media-amazon.com/images/I/71jfKjBr7WL._SY522_.jpg',
+    url: 'https://amzn.to/3Kr244l',
+  },
+
+  {
+    titulo: 'Carnaval de Cádiz y Educación',
+    autor: 'Álvaro Pérez García',
+    imagen: 'https://m.media-amazon.com/images/I/71W8Tj0xfSL._SY522_.jpg',
+    url: 'https://amzn.to/4inguz8',
+  },
+];
+---
+
+<RightColumnCard title='PARA TU ESTANTERÍA' headingId='libros-carnavaleros-title' class={className}>
+  <ul>
+    {
+      productos.map((producto) => (
+        <li>
+          <a href={producto.url} target='_blank' rel='noopener noreferrer'>
+            <figure>
+              <img
+                src={producto.imagen}
+                alt={`${producto.titulo} - ${producto.autor}`}
+                loading='lazy'
+                decoding='async'
+              />
+            </figure>
+            <div class='book-info'>
+              <strong class='book-title'>{producto.titulo}</strong>
+              <span class='book-author'>{producto.autor}</span>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <style>
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    li {
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateX(2px);
+      }
+    }
+
+    li a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: rgba(218, 165, 32, 0.08);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    figure {
+      width: 60px;
+      height: 85px;
+      margin: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: var(--card-background-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .book-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 8px;
+    }
+
+    .book-title {
+      font-size: 1.1rem;
+      line-height: 1.3;
+      color: var(--primary-color);
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .book-author {
+      font-size: 0.85rem;
+      line-height: 1.2;
+      color: var(--secondary-color);
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      figure {
+        width: 50px;
+        height: 75px;
+      }
+
+      .book-title {
+        font-size: 0.95rem;
+      }
+
+      .book-author {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</RightColumnCard>

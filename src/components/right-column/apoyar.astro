@@ -70,6 +70,12 @@ const { class: className } = Astro.props;
     font-weight: 600;
     min-height: 44px;
     flex: 1;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transform: scale(1.05);
+    }
 
     &.btn--paypal {
       background-color: var(--primary-contrast-color);

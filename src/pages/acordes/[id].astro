@@ -7,6 +7,8 @@ import Apoyar from '../../components/right-column/apoyar.astro';
 import ApareceAqui from '../../components/right-column/aparece-aqui.astro';
 import Layout from '../../layouts/Layout.astro';
 import MusicCompositionSchema from '../../components/utils/MusicCompositionSchema.astro';
+import AnunciosGuitarra from '../../components/right-column/anuncios/anuncios-guitarra.astro';
+import AnunciosLibros from '../../components/right-column/anuncios/anuncios-libros.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -86,77 +88,89 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
       <Apoyar class='apoyar' />
 
+      <AnunciosLibros class='anuncios-libros' />
+
+      <AnunciosGuitarra class='anuncios-guitarra' />
+
       <SitiosDeInteresCard class='sitios-interes' />
     </div>
-  </div>
-</Layout>
 
-<style>
-  .main-container {
-    display: flex;
-    row-gap: 16px;
-    column-gap: 16px;
-  }
+    <style>
+      .main-container {
+        display: flex;
+        row-gap: 16px;
+        column-gap: 16px;
+      }
 
-  .right-column {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    /* La columna derecha crecerá para rellenar el espacio restante dentro del contenedor hasta un máximo razonable */
-    flex: 1 1 clamp(220px, 22vw, 380px);
-    min-width: 0;
-  }
+      .right-column {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        /* La columna derecha crecerá para rellenar el espacio restante dentro del contenedor hasta un máximo razonable */
+        flex: 1 1 clamp(220px, 22vw, 380px);
+        min-width: 0;
+      }
 
-  /* Mantener la card izquierda con su anchura natural (el componente controla su propio max-width)
+      /* Mantener la card izquierda con su anchura natural (el componente controla su propio max-width)
      y dejar que la columna derecha tome el espacio sobrante */
-  .main-container > :global(.acorde-card) {
-    flex: 0 0 auto;
-    min-width: 0;
-  }
+      .main-container > :global(.acorde-card) {
+        flex: 0 0 auto;
+        min-width: 0;
+      }
 
-  @media (max-width: 780px) {
-    .main-container {
-      column-gap: 16px;
-    }
-  }
+      @media (max-width: 780px) {
+        .main-container {
+          column-gap: 16px;
+        }
+      }
 
-  /* Para resoluciones intermedias (tablet → pequeño desktop) hacemos la card más estrecha */
-  @media (min-width: 640px) and (max-width: 1024px) {
-    .main-container > :global(.acorde-card) {
-      /* Reducir anchura y fijar base para que no ocupe tanto espacio */
-      max-width: 576px;
-      min-width: 0;
-    }
-  }
+      /* Para resoluciones intermedias (tablet → pequeño desktop) hacemos la card más estrecha */
+      @media (min-width: 640px) and (max-width: 1024px) {
+        .main-container > :global(.acorde-card) {
+          /* Reducir anchura y fijar base para que no ocupe tanto espacio */
+          max-width: 576px;
+          min-width: 0;
+        }
+      }
 
-  @media (max-width: 640px) {
-    .main-container {
-      flex-direction: column;
-    }
+      @media (max-width: 640px) {
+        .main-container {
+          flex-direction: column;
+        }
 
-    /* Reordenar visualmente en móvil: Apoyar primero */
-    .right-column > :global(.apoyar) {
-      order: -1;
-    }
+        /* Reordenar visualmente en móvil: Apoyar primero */
+        .right-column > :global(.apoyar) {
+          order: -1;
+        }
 
-    /* El resto mantiene orden natural (order: 0 por defecto) */
-    .right-column > :global(.video-oficial) {
-      order: 0;
-    }
+        /* El resto mantiene orden natural (order: 0 por defecto) */
+        .right-column > :global(.video-oficial) {
+          order: 0;
+        }
 
-    .right-column > :global(.video-cover),
-    .right-column > :global(.aparece-aqui) {
-      order: 1;
-    }
+        .right-column > :global(.video-cover),
+        .right-column > :global(.aparece-aqui) {
+          order: 1;
+        }
 
-    .right-column > :global(.sitios-interes) {
-      order: 2;
-    }
-  }
+        .right-column > :global(.anuncios-libros) {
+          order: 2;
+        }
 
-  @media (min-width: 900px) {
-    .right-column {
-      flex: 1 1 clamp(260px, 20vw, 480px);
-    }
-  }
-</style>
+        .right-column > :global(.anuncios-guitarra) {
+          order: 3;
+        }
+
+        .right-column > :global(.sitios-interes) {
+          order: 4;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .right-column {
+          flex: 1 1 clamp(260px, 20vw, 480px);
+        }
+      }
+    </style>
+  </div></Layout
+>
