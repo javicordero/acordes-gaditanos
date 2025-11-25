@@ -19,7 +19,6 @@ Perdona nuestras coplas ,como también nosotros
 perdonamos a los que nos ofenden
 No nos dejes perder esta tradición y líbranos del 
 mal, amén
-
 <a>Mim</a>
 Todo aquel que nace en el sur lleva en su 
                     <a>Re</a>
@@ -108,6 +107,4 @@ La ciudad del cementerio (Que me he tenido que
     <a>Re</a>            <a>Do</a> S
 vestir de sepulturero)
                      <a>Mim</a>
-<a>La</a> <a>ciudad</a> <a>del</a> <a>cementerio</a>
-
-      </pre>
+<a>La</a> <a>ciudad</a> <a>del</a> <a>cementerio</a></pre>

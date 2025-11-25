@@ -107,5 +107,4 @@ arranquen las caretas que más tarde o más temprano
                         <a>Mim</a>  <a>Lam7</a>      <a>Si7</a>
 Se romperán nuestras cadenas se romperán nuestras 
      <a>Mim</a>    <a>Lam7</a>      <a>Si7</a>
-cadenas se romperán nuestras cadenas.
-      </pre>
+cadenas se romperán nuestras cadenas.</pre>

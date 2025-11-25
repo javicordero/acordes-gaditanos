@@ -65,5 +65,4 @@ coplillas donde premian la amistad.
   <a>Re</a>         <a>Mi7</a>           <a>La</a>   <a>Sim7</a>
 Será que gaditano me parieron Y me sobran los te 
   <a>Mi7</a>                     <a>La</a>
-quiero Pa cantarte en Carnaval
-      </pre>
+quiero Pa cantarte en Carnaval</pre>

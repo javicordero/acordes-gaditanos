@@ -66,5 +66,4 @@ aquí solo existe un mes ¡Febrero en cada esquina!
 Tututututu tuttutututu To mi casa está enfoscá con 
                        <a>Re7</a>
 lapa y burgaillos se desconcha una pared y llueven 
-papelillos
-</pre>
+papelillos</pre>

@@ -56,7 +56,6 @@ La vida es como una película que rueda
 Que a veces finaliza antes de lo que esperas
 <a>Fa</a>                               <a>Do</a> <a>Dom</a>
 Y es de obligación vivirla a tu manera.
-
 Que la rutina mata y sobran las escenas.
    <a>Sol</a>                                  <a>Mim</a>
 Elige el personaje que mejor te venga, Cambia tu 
@@ -87,6 +86,4 @@ Es el momento de triunfar y de brillar
            <a>Do</a>              <a>Dom</a>       <a>Re</a>
 Con esta historia que hoy narran mis coplas por 
      <a>Sol</a>  <a>Re</a>       <a>Sol</a>  <a>Re</a>       <a>Sol</a>
-carnaval, por carnaval, por carnaval.
-
-</pre>
+carnaval, por carnaval, por carnaval.</pre>

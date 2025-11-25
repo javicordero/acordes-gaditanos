@@ -9,8 +9,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/XSOTISLxlQE?si=BMmFG3lK7eVpenaF'
 
 ---
-<pre>
-<a>LaM7</a>               <a>Mi7</a>         <a>LaM7</a>
+<pre><a>LaM7</a>               <a>Mi7</a>         <a>LaM7</a>
 Cuando llegan a la clase tan pequeñas, con sus tres 
                     <a>Mi7</a>
 primaveritas en la piel
@@ -51,5 +50,4 @@ Que en cada baile haya sembrado o recogido
             <a>Re</a>               <a>LaM7</a>
 Niñas de mi alma, el mejor elenco que me dio el 
                 <a>Dom#m7</a> <a>Sim7</a>   <a>Mi7</a>   <a>LaM7</a>
-flamenco para ser maestra del movimiento
-</pre>
+flamenco para ser maestra del movimiento</pre>

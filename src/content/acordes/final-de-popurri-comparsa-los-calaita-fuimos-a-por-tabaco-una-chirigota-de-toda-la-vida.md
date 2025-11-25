@@ -53,11 +53,11 @@ Preso de la impotencia de ver Una sociedad que
                 <a>Mim</a>
 apesta Faltan valores Faltan cojones Falta empatía 
 Y falta decencia
-      Fa             Do                           
-Rem                Lam                              
- Fa   Sim7/5  Mi7  Sol7
+      <a>Fa</a>             <a>Do</a>
 Falta más humanidad Para un mundo mejor Mientras 
+ <a>Rem</a>                <a>Lam</a>
 tanto solo queda Combatir Nuestras tragedias Con la 
+  <a>Fa</a>   <a>Sim7/5</a>  <a>Mi7</a>
 palabra Y el humor
 <a>Do</a>                                                M
 Ríe Aunque no sea conmigo Ríete de todo en la vida 
@@ -94,5 +94,4 @@ Si tuviera que elegir Un lugar donde morir Para ser
          <a>Mi7</a>             <a>La7</a>
 feliz Al menos Mi último día Esa es la tierra De la 
     <a>Sol</a>
-alegría
-      </pre>
+alegría</pre>

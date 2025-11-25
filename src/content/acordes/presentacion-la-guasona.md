@@ -6,6 +6,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwJA0C2pGKCsymSc
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HaFk-MwNCo8?si=ASS9aJkZWJh0TLiI'
+musica: Alba Fernández
 
 ---
 <pre>  <a>Rem</a>      <a>Solm7</a>    <a>La7</a>
@@ -77,5 +78,4 @@ Vamos Cádiz, la canalla, que no venzas la batalla
       <a>Rem</a>        <a>Lam7</a>    <a>Solm7</a>              <a>La7</a>
 Ay mi Cádiz, la guasona, tu ríe, tu riete de ellos 
                                <a>Rem</a>
-que ellos no se reirán de tí, ahora 
-</pre>
+que ellos no se reirán de tí, ahora </pre>

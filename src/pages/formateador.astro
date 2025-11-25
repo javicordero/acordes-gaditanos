@@ -145,9 +145,15 @@
     <button type='button' class='cf-btn cf-btn-secondary' id='cf-btn-download'>
       Descargar .md
     </button>
+    <button type='button' class='cf-btn' id='cf-btn-batch'> Procesar todas las URLs </button>
 
     <span class='cf-small'>Ancho fijo: 54 columnas (sin partir palabras si hay espacio cerca).</span
     >
+  </div>
+
+  <div id='cf-progress' style='display: none;'>
+    <progress id='cf-progress-bar' max='100' value='0' style='width: 100%;'></progress>
+    <p id='cf-progress-text' style='font-size: 0.85rem; margin: 0.5rem 0;'></p>
   </div>
 
   <div class='cf-row'>
@@ -176,7 +182,7 @@
   function isChordToken(token) {
     const t = token.trim();
     if (!t) return false;
-    const re = /^(do|re|mi|fa|sol|la|si|c|d|e|f|g|a|b)(#|b)?[a-z0-9#]*$/i;
+    const re = /^(do|re|mi|fa|sol|la|si|c|d|e|f|g|a|b)(#|b)?[a-z0-9#/]*$/i;
     return re.test(t);
   }
 
@@ -393,6 +399,8 @@
         const patterns = [
           'presentacion',
           'pasodoble',
+          'popurrí',
+          'popurri',
           'final de popurri',
           'final del popurri',
           'tango',
@@ -621,15 +629,123 @@
     URL.revokeObjectURL(url);
   }
 
+  async function processBatchUrls() {
+    setError('');
+    const progressContainer = document.getElementById('cf-progress');
+    const progressBar = document.getElementById('cf-progress-bar');
+    const progressText = document.getElementById('cf-progress-text');
+
+    try {
+      // Cargar el JSON con las URLs
+      const res = await fetch('/redirects-from.json');
+      if (!res.ok) throw new Error('No se pudo cargar redirects-from.json');
+
+      const urls = await res.json();
+
+      if (!Array.isArray(urls) || urls.length === 0) {
+        throw new Error('El archivo redirects-from.json está vacío o no es un array');
+      }
+
+      // Mostrar barra de progreso
+      if (progressContainer) progressContainer.style.display = 'block';
+      if (progressBar) progressBar.max = urls.length;
+
+      let successCount = 0;
+      let errorCount = 0;
+
+      for (let i = 0; i < urls.length; i++) {
+        const path = urls[i];
+        const fullUrl = `https://acordesgaditanos.blogspot.com${path}`;
+
+        if (progressText) {
+          progressText.textContent = `Procesando ${i + 1}/${urls.length}: ${path}`;
+        }
+
+        try {
+          // Fetch de la URL
+          const proxy = `/api/fetch-url?url=${encodeURIComponent(fullUrl)}`;
+          const response = await fetch(proxy);
+          const html = await response.text();
+
+          if (!response.ok) {
+            console.error(`Error ${response.status} en ${fullUrl}`);
+            errorCount++;
+            continue;
+          }
+
+          // Procesar y descargar
+          const meta = extractMetaFromHtml(html);
+          const blocks = extractPreBlocksFromHtml(html);
+
+          let processedPre = '';
+          if (blocks.length > 0) {
+            const processedBlocks = blocks.map((inner) => {
+              const processedInner = processPreBlock(inner);
+              return '<pre>' + processedInner + '</pre>';
+            });
+            processedPre = processedBlocks.join('\n\n');
+          } else {
+            const processedAll = processPreBlock(html);
+            processedPre = '<pre>' + processedAll + '</pre>';
+          }
+
+          const fm = buildFrontmatter(meta);
+          const content = fm + '\n' + processedPre;
+
+          // Generar nombre de archivo
+          let baseName = 'acordes';
+          if (meta && (meta.pieza || meta.agrupacion)) {
+            const parts = [];
+            if (meta.pieza) parts.push(meta.pieza);
+            if (meta.agrupacion) parts.push(meta.agrupacion);
+            baseName = slugify(parts.join(' '));
+          }
+
+          // Descargar archivo
+          const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = baseName + '.md';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          successCount++;
+
+          // Pequeña pausa para no saturar
+          await new Promise((resolve) => setTimeout(resolve, 300));
+        } catch (err) {
+          console.error(`Error procesando ${fullUrl}:`, err);
+          errorCount++;
+        }
+
+        // Actualizar barra
+        if (progressBar) progressBar.value = i + 1;
+      }
+
+      // Resultado final
+      if (progressText) {
+        progressText.textContent = `✅ Completado: ${successCount} exitosos, ${errorCount} errores`;
+      }
+    } catch (err) {
+      console.error(err);
+      setError('Error al procesar batch: ' + (err && err.message ? err.message : String(err)));
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const btnFetch = document.getElementById('cf-btn-fetch');
     const btnProcess = document.getElementById('cf-btn-process');
     const btnCopy = document.getElementById('cf-btn-copy');
     const btnDownload = document.getElementById('cf-btn-download');
+    const btnBatch = document.getElementById('cf-btn-batch');
 
     if (btnFetch) btnFetch.addEventListener('click', fetchFromUrl);
     if (btnProcess) btnProcess.addEventListener('click', processCurrentInput);
     if (btnCopy) btnCopy.addEventListener('click', copyOutput);
     if (btnDownload) btnDownload.addEventListener('click', downloadMarkdown);
+    if (btnBatch) btnBatch.addEventListener('click', processBatchUrls);
   });
 </script>

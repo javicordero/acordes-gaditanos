@@ -1,0 +1,55 @@
+---
+pieza: pasodoble
+agrupacion: Los Indiana Jones de lo callejones
+year: 2017
+musica: Kike Remolino
+letra: Kike Remolino
+img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxnlRmQBskGJQzICW_cgqUdDK5jyp1TQGczbiq69RCU7XFv2Is-_PX8T63l7Ug0T7C3WyEmdXZvkG9ntYPseRtavNU6y4ySnNG0NZsrlWX1OyIoxKp4MALjoneIBgJ9-03oIxO2A07Mpdo/s320/Indiana-Jones-callejones_1108399170_65004324_667x375.jpg
+cejilla: 0
+date: "25/11/2025"
+video: 'https://www.youtube.com/embed/ACWW7pRYYJY?feature=player_embedded'
+
+---
+<pre>Los gaditanos carnavaleros que se quedan en casa
+<a>Rem </a>             <a>Do </a>                     <a>Sib</a>
+Cuando no ensayan les falta el aire, les llora el 
+alma.
+<a>Rem </a>             <a> Do </a>                       <a> Sib</a>
+Y se ven sometidos a febreros callados a cárcel sin 
+barrotes
+<a>Rem </a>                           <a>Do</a>
+Que hasta sus cinco sentidos se les quedan 
+dormidos
+        <a>Do </a>           <a> Sib</a>
+Y lo peor es la carita de carajotes
+<a>Rem </a>                       <a>Lam</a>
+Porque no te cantan, no les dicen ole
+<a>Sib </a>                         <a> Do</a>
+Sin disfraz en la calle no les reconocen
+<a>Fa </a>                       <a> Lam</a>
+No tienen te quiero para piropearte
+<a>Sib</a>
+Y no se comprende hasta que uno lo sufre en sus 
+carnes
+  <a>Re </a>           <a> La7 </a>   <a> Re</a>
+Y yo lo que peor llevaba fue cuando pensaba
+Que este ratito entre los dos, cago en mis castas
+Cago en mis castas, me los perdía
+A un clavo ardiendo me aferraba
+                    <a> La7 </a>             <a> Mim</a>
+Gracias plaza Mina, tú ya sabías que volvería
+Que volvería
+    <a> Re7 </a>             <a>Sol </a>   <a> La7</a>
+El susurro del invierno y el calorcito del verano
+<a>Si7 </a>                         <a>Mim </a>       <a> La7</a>
+Me devolvieron a mi niña, disfrútamela paisano
+<a>Re7 </a>                       <a> Sol</a>
+Que vaya añito más largo sin tu amor
+Borracho de melancolía
+                                    <a> Si7</a>
+Sin los aplausos de este teatro, entrañas mías
+        <a> Sib </a>               <a> La7 </a>       <a> Sib</a>
+Cádiz toma esta chirigota, sin ella no sé qué 
+haría
+Te la debí, debí, debí, debía
+                                <a>Re</a></pre>

@@ -44,5 +44,4 @@ desmonta todos los problemas que pueda encontra
 ¿Quién sería el creador que en su triste batalla no 
 contó con las damas
                   <a>Fa</a>
-Que abrieron las puertas de mi libertad?
-</pre>
+Que abrieron las puertas de mi libertad?</pre>
