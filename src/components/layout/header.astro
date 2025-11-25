@@ -82,6 +82,9 @@ import { Icon } from 'astro-icon/components';
     flex-direction: row;
     align-items: center;
     gap: 8px;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
 
     & picture {
       position: relative;
@@ -112,7 +115,9 @@ import { Icon } from 'astro-icon/components';
   }
 
   .branding.is-hidden {
+    opacity: 0;
     visibility: hidden;
+    pointer-events: none;
   }
 
   /* Controles de la derecha (búsqueda + menú) */
@@ -127,6 +132,15 @@ import { Icon } from 'astro-icon/components';
     display: flex;
     align-items: center;
     position: relative;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .search-container.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 
   /* Botón de lupa */
@@ -404,6 +418,7 @@ import { Icon } from 'astro-icon/components';
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('#primary-menu');
     const branding = document.querySelector('.branding');
+    const searchContainer = document.querySelector('.search-container');
     const searchInput = document.querySelector('#header-search');
     const clearButton = document.querySelector('.clear-search');
     const searchToggle = document.querySelector('.search-toggle');
@@ -418,11 +433,15 @@ import { Icon } from 'astro-icon/components';
         toggle.classList.remove('is-open');
         nav.setAttribute('aria-hidden', 'true');
         toggle.setAttribute('aria-expanded', 'false');
+        branding.classList.remove('is-hidden');
+        if (searchContainer) searchContainer.classList.remove('is-hidden');
       } else {
         nav.classList.add('is-open');
         toggle.classList.add('is-open');
         nav.setAttribute('aria-hidden', 'false');
         toggle.setAttribute('aria-expanded', 'true');
+        branding.classList.add('is-hidden');
+        if (searchContainer) searchContainer.classList.add('is-hidden');
       }
     };
 
