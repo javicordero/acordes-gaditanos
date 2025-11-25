@@ -11,7 +11,7 @@ import { Icon } from 'astro-icon/components';
           <img src={Logo.src} alt='Acordes Gaditanos logo' transition:persist decoding='async' />
         </a>
       </picture>
-      <h1 transition:persist><a href='/'>Acordes Gaditanos</a></h1>
+      <h1 class='branding-title' transition:persist><a href='/'>Acordes Gaditanos</a></h1>
     </div>
 
     <div class='right-controls'>
@@ -85,6 +85,11 @@ import { Icon } from 'astro-icon/components';
     transition:
       opacity 0.3s ease,
       visibility 0.3s ease;
+    &.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
 
     & picture {
       position: relative;
@@ -103,7 +108,15 @@ import { Icon } from 'astro-icon/components';
       bottom: 1px;
       font-family: 'Bodoni', serif;
       font-style: italic;
-      margin: 0;
+      white-space: nowrap;
+      max-width: 20px;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      &.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
 
       & a {
         text-decoration: none;
@@ -112,12 +125,6 @@ import { Icon } from 'astro-icon/components';
         font-weight: bold;
       }
     }
-  }
-
-  .branding.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
   }
 
   /* Controles de la derecha (búsqueda + menú) */
@@ -386,7 +393,7 @@ import { Icon } from 'astro-icon/components';
     }
 
     .search-wrapper {
-      width: 150px;
+      width: 250px;
     }
 
     .search-wrapper.collapsed {
@@ -418,6 +425,7 @@ import { Icon } from 'astro-icon/components';
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('#primary-menu');
     const branding = document.querySelector('.branding');
+    const brandingTitle = document.querySelector('.branding-title');
     const searchContainer = document.querySelector('.search-container');
     const searchInput = document.querySelector('#header-search');
     const clearButton = document.querySelector('.clear-search');
@@ -446,18 +454,26 @@ import { Icon } from 'astro-icon/components';
     };
 
     // Toggle del buscador con botón de lupa
-    if (searchToggle && searchWrapper && searchInput) {
+    if (searchToggle && searchWrapper && searchInput && brandingTitle) {
       searchToggle.addEventListener('click', () => {
         const isCollapsed = searchWrapper.classList.contains('collapsed');
         if (isCollapsed) {
           searchWrapper.classList.remove('collapsed');
           searchToggle.classList.add('hidden');
+          // Ocultar título en móvil
+          if (window.innerWidth <= 640) {
+            brandingTitle.classList.add('is-hidden');
+          }
           setTimeout(() => searchInput.focus(), 100);
           searchToggle.setAttribute('aria-label', 'Cerrar búsqueda');
         } else {
           searchWrapper.classList.add('collapsed');
           searchToggle.classList.remove('hidden');
           searchInput.value = '';
+          // Mostrar título en móvil
+          if (window.innerWidth <= 640) {
+            brandingTitle.classList.remove('is-hidden');
+          }
           searchToggle.setAttribute('aria-label', 'Abrir búsqueda');
           if (clearButton) {
             clearButton.setAttribute('hidden', '');
@@ -482,21 +498,6 @@ import { Icon } from 'astro-icon/components';
       // Inicializar estado del botón
       toggleClearButton();
 
-      // Cerrar al perder el focus
-      searchInput.addEventListener('blur', () => {
-        // Delay para permitir clic en botón X
-        setTimeout(() => {
-          if (searchWrapper && !searchWrapper.contains(document.activeElement)) {
-            searchWrapper.classList.add('collapsed');
-            searchInput.value = '';
-            toggleClearButton();
-            if (searchToggle) {
-              searchToggle.classList.remove('hidden');
-            }
-          }
-        }, 150);
-      });
-
       // Limpiar búsqueda al hacer clic en X
       clearButton.addEventListener('click', () => {
         searchInput.value = '';
@@ -506,6 +507,10 @@ import { Icon } from 'astro-icon/components';
         }
         if (searchToggle) {
           searchToggle.classList.remove('hidden');
+        }
+        // Mostrar título en móvil
+        if (window.innerWidth <= 640 && brandingTitle) {
+          brandingTitle.classList.remove('is-hidden');
         }
         // Disparar evento para limpiar búsqueda
         document.dispatchEvent(new CustomEvent('searchCleared'));
@@ -518,6 +523,17 @@ import { Icon } from 'astro-icon/components';
           const query = searchInput.value.trim();
 
           if (query) {
+            // Cerrar el input
+            if (searchWrapper) {
+              searchWrapper.classList.add('collapsed');
+            }
+            if (searchToggle) {
+              searchToggle.classList.remove('hidden');
+            }
+            if (window.innerWidth <= 640 && brandingTitle) {
+              brandingTitle.classList.remove('is-hidden');
+            }
+
             // Guardar el término de búsqueda en sessionStorage
             sessionStorage.setItem('pendingSearch', query);
 
