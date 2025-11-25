@@ -7,7 +7,6 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyOToy4Dva7GNiZ2
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/nNON_XtbUzg?si=7vUw6GzxnPLs3iU7'
-musica: Salvador Gómez
 ---
 <pre><a>Lam</a>              <a>Mim</a>        <a>Fa</a>       <a>Sol7</a>
 La risa es una turbulencia, un clavo que saca otra 
