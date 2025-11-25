@@ -5,7 +5,7 @@ const acordes = defineCollection({
     pieza: z.string(),
     agrupacion: z.string(),
     musica: z.string(),
-    letra: z.string(),
+    letra: z.string().optional(),
     img: z.string(),
     year: z.number().transform((n) => n.toString()),
     modalidad: z.string().optional(),
