@@ -10,52 +10,60 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/I-sGXVxkAPY?si=jduhYEmU-_eR8WEV'
 
 ---
-<pre>       <a>Sol</a>                                          <a>Mi7</a>
-He guardao' para el último tema un atardecer en La Caleta
+<pre>       <a>Sol</a>
+He guardao' para el último tema un atardecer en La 
+ <a>Mi7</a>
+Caleta
             <a>Lam7</a>                                 <a>Do</a>
-Que es la herencia que llevo en mis venas El compás de mi 
-                         <a>Re7</a>
-padre que marcaban sus baquetas.
+Que es la herencia que llevo en mis venas El compás 
+                               <a>Re7</a>
+de mi padre que marcaban sus baquetas.
        <a>Sol</a>         <a>Re7</a>      <a>Sol</a>      <a>Si7</a>
-He guardao' para el último tema El mayor de todos mis te 
-  <a>Do</a>
-quiero
-         <a>Dom7</a>                                  <a>Sol</a>  <a>Mi7</a>
-Hoy te traigo para ti la melodía Que es la alegría, que sale 
-    <a>Lam7</a> <a>Re7</a>              <a>Sol</a>
-del alma, que suena a mi abuelo.
+He guardao' para el último tema El mayor de todos 
+         <a>Do</a>
+mis te quiero
+         <a>Dom7</a>                                  <a>Sol</a>
+Hoy te traigo para ti la melodía Que es la alegría, 
+<a>Mi7</a>          <a>Lam7</a> <a>Re7</a>              <a>Sol</a>
+que sale del alma, que suena a mi abuelo.
      <a>Sol</a>
-Nos vemos en El Corralón también en los callejones, te 
-     <a>Mim</a>
-cantaré la presentación
+Nos vemos en El Corralón también en los callejones, 
+        <a>Mim</a>
+te cantaré la presentación
                                 <a>Do</a>
-En la calle de La Palma mi pasodoble que va por Sol
+En la calle de La Palma mi pasodoble que va por 
+Sol
                                      <a>Re</a>
-Como el sol de mi Caleta que estos acordes me regaló.
+Como el sol de mi Caleta que estos acordes me 
+regaló.
    <a>Mim</a>
-Si quieres escuchar un cuplé se lo robaré a los duendes y en 
-        <a>Sim7</a>
-la Cruz Verde lo cantaré
+Si quieres escuchar un cuplé se lo robaré a los 
+                     <a>Sim7</a>
+duendes y en la Cruz Verde lo cantaré
                                       <a>Do</a>
-Las cuerdas de mi guitarra por tus rincones desangraré
+Las cuerdas de mi guitarra por tus rincones 
+desangraré
                                         <a>Re</a>
-Que no hay forma más bonita pa demostrarte Cai mi querer.
-          <a>Sol</a>                                  <a>Sim</a>
-Será que tengo el acento de plata la piel de escamas 
-alimentada con sal
+Que no hay forma más bonita pa demostrarte Cai mi 
+querer.
+          <a>Sol</a>
+Será que tengo el acento de plata la piel de 
+  <a>Sim</a>
+escamas alimentada con sal
            <a>Do</a>
-Tengo mil nanas cantadas por tanguillos desde que era un 
-  <a>Re7</a>                          M
-chiquillo me acunaban en tu mar.
+Tengo mil nanas cantadas por tanguillos desde que 
+         <a>Re7</a>                          M
+era un chiquillo me acunaban en tu mar.
             <a>La</a>                             <a>Do#m</a>
-Será que cuando al llegar febrerillo es primavera en mi bella 
-ciudad
-             <a>Re</a>                                       <a>Mi7</a>
-Que por mis venas navegan papelillos y un millón de coplillas 
-donde premian la amistad.
+Será que cuando al llegar febrerillo es primavera 
+en mi bella ciudad
+             <a>Re</a>
+Que por mis venas navegan papelillos y un millón de 
+  <a>Mi7</a>
+coplillas donde premian la amistad.
 <a>La</a> <a>Do#m</a> <a>Re</a> <a>Mi7</a>
-  <a>Re</a>         <a>Mi7</a>           <a>La</a>   <a>Sim7</a>               <a>Mi7</a>
-Será que gaditano me parieron Y me sobran los te quiero Pa 
-                <a>La</a>
-cantarte en Carnaval
+  <a>Re</a>         <a>Mi7</a>           <a>La</a>   <a>Sim7</a>
+Será que gaditano me parieron Y me sobran los te 
+  <a>Mi7</a>                     <a>La</a>
+quiero Pa cantarte en Carnaval
       </pre>
