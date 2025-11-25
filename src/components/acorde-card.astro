@@ -164,12 +164,15 @@ const headingId = `acorde-${slug}`;
 
   .acorde-content :global(pre) {
     margin: 0;
-    letter-spacing: -0.2px;
+    letter-spacing: -0.3px;
+    word-spacing: -0.3px;
     font-size: 0.95rem;
     line-height: 1.25rem;
 
     & :global(a) {
       color: var(--acorde-color);
+      position: relative;
+      left: 7px;
     }
   }
 
