@@ -488,21 +488,29 @@ import { Icon } from 'astro-icon/components';
         if (searchToggle) {
           searchToggle.classList.remove('hidden');
         }
+        // Disparar evento para limpiar búsqueda
+        document.dispatchEvent(new CustomEvent('searchCleared'));
       });
 
-      // Buscar al pulsar Enter
+      // Buscar al pulsar Enter - redirigir al index con el término
       searchInput.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
           e.preventDefault();
           const query = searchInput.value.trim();
+
           if (query) {
-            import('astro:transitions/client').then(({ navigate }) => {
-              navigate(`/search/${encodeURIComponent(query)}`);
-            });
-          } else {
-            import('astro:transitions/client').then(({ navigate }) => {
-              navigate('/');
-            });
+            // Guardar el término de búsqueda en sessionStorage
+            sessionStorage.setItem('pendingSearch', query);
+
+            // Si no estamos en el index, navegar allí
+            if (window.location.pathname !== '/') {
+              import('astro:transitions/client').then(({ navigate }) => {
+                navigate('/');
+              });
+            } else {
+              // Si ya estamos en el index, disparar evento de búsqueda
+              document.dispatchEvent(new CustomEvent('performSearch', { detail: { query } }));
+            }
           }
         }
       });
@@ -510,11 +518,6 @@ import { Icon } from 'astro-icon/components';
       // Detectar cuando se limpia el input (botón X nativo del navegador)
       searchInput.addEventListener('search', () => {
         toggleClearButton();
-        if (!searchInput.value.trim()) {
-          import('astro:transitions/client').then(({ navigate }) => {
-            navigate('/');
-          });
-        }
       });
     }
   }
