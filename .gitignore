@@ -28,3 +28,7 @@ pnpm-debug.log*
 REFACTOR_GUIDE.md
 SEO_GUIDE.md
 
+# Formateadores y APIs (no necesarios para producción)
+src/pages/formateador.astro
+src/pages/formateador-2.astro
+src/pages/api/

@@ -1,8 +1,5 @@
 import type { APIRoute } from 'astro';
 
-// 🔴 Muy importante: que NO se prerenderice
-export const prerender = false;
-
 export const GET: APIRoute = async ({ request }) => {
   // request.url es la URL completa: http://localhost:4321/api/fetch-url?url=...
   const { searchParams } = new URL(request.url);
