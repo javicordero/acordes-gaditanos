@@ -1,0 +1,925 @@
+---
+/**
+ * Componente Astro "ChordFormatter"
+ *
+ * - Pega HTML con <pre> o indica una URL de Blogger.
+ * - Ancho fijo: 54 columnas.
+ * - Los acordes pertenecen a la línea de texto inmediatamente inferior.
+ * - Al cortar texto, los acordes se recolocan conservando columna lógica.
+ * - Al usar URL, la salida es SOLO los <pre> procesados.
+ */
+---
+
+<style>
+  :global(body) {
+    font-family:
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      sans-serif;
+  }
+
+  .cf-wrapper {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: #f5f5f5;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+  }
+
+  .cf-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .cf-note {
+    font-size: 0.85rem;
+    color: #555;
+  }
+
+  .cf-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .cf-col {
+    /* flex: 1 1 300px; */
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+
+  .cf-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .cf-textarea {
+    width: 100%;
+    min-height: 220px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    background: #fff;
+    white-space: pre;
+  }
+
+  .cf-input-url {
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+  }
+
+  .cf-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .cf-btn {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+
+  .cf-btn:hover {
+    background: #444;
+  }
+
+  .cf-btn-secondary {
+    background: #fff;
+    color: #222;
+  }
+
+  .cf-btn-secondary:hover {
+    background: #eee;
+  }
+
+  .cf-small {
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  .cf-error {
+    font-size: 0.85rem;
+    color: #b00020;
+  }
+</style>
+
+<div class='cf-wrapper'>
+  <h2 class='cf-title'>Formateador de acordes (54 columnas)</h2>
+
+  <div class='cf-col' style='gap: 0.3rem;'>
+    <label class='cf-label' for='cf-url'>Cargar desde URL (Blogger)</label>
+    <input
+      id='cf-url'
+      class='cf-input-url'
+      type='text'
+      placeholder='https://acordesgaditanos.blogspot.com/...'
+    />
+  </div>
+
+  <div class='cf-controls'>
+    <button type='button' class='cf-btn' id='cf-btn-fetch'>Cargar URL</button>
+    <button type='button' class='cf-btn' id='cf-btn-process'> Procesar entrada </button>
+    <button type='button' class='cf-btn cf-btn-secondary' id='cf-btn-copy'> Copiar salida </button>
+    <button type='button' class='cf-btn cf-btn-secondary' id='cf-btn-download'>
+      Descargar .md
+    </button>
+    <button type='button' class='cf-btn' id='cf-btn-batch'> Procesar todas las URLs </button>
+
+    <span class='cf-small'>Ancho fijo: 54 columnas (sin partir palabras si hay espacio cerca).</span
+    >
+  </div>
+
+  <div id='cf-progress' style='display: none;'>
+    <progress id='cf-progress-bar' max='100' value='0' style='width: 100%;'></progress>
+    <p id='cf-progress-text' style='font-size: 0.85rem; margin: 0.5rem 0;'></p>
+  </div>
+
+  <div class='cf-row'>
+    <div class='cf-col'>
+      <label class='cf-label' for='cf-input'> Entrada (HTML completo o solo &lt;pre&gt;) </label>
+      <textarea id='cf-input' class='cf-textarea' spellcheck='false'></textarea>
+    </div>
+    <div class='cf-col'>
+      <label class='cf-label' for='cf-output'> Salida (solo &lt;pre&gt; procesado) </label>
+      <textarea id='cf-output' class='cf-textarea' spellcheck='false'></textarea>
+    </div>
+  </div>
+
+  <p id='cf-error' class='cf-error'></p>
+</div>
+
+<script is:inline>
+  const MAX_COLS = 50;
+  let lastMeta = null;
+
+  function setError(msg) {
+    const el = document.getElementById('cf-error');
+    if (el) el.textContent = msg || '';
+  }
+
+  // -------------------------------
+  // DETECCIÓN DE ACORDES / LÍNEAS
+  // -------------------------------
+
+  function isChordToken(token) {
+    const t = token.trim();
+    if (!t) return false;
+    const re = /^(do|re|mi|fa|sol|la|si|c|d|e|f|g|a|b)(#|b)?[a-z0-9#/]*$/i;
+    return re.test(t);
+  }
+
+  function isChordLine(line) {
+    const trimmed = line.trim();
+    if (!trimmed) return false;
+    const tokens = trimmed.split(/\s+/);
+    if (!tokens.every(isChordToken)) return false;
+    if (tokens.length === 0) return false;
+    if (tokens.length > 20) return false;
+    return true;
+  }
+
+  // Envuelve cada acorde en <a>...</a> sin tocar espacios
+  function wrapChordLineWithAnchors(line) {
+    let res = '';
+    let i = 0;
+    while (i < line.length) {
+      const ch = line[i];
+      if (ch === ' ') {
+        res += ch;
+        i++;
+        continue;
+      }
+      let j = i;
+      while (j < line.length && line[j] !== ' ') j++;
+      const token = line.slice(i, j);
+      if (isChordToken(token)) {
+        res += `<a>${token}</a>`;
+      } else {
+        res += token;
+      }
+      i = j;
+    }
+    return res;
+  }
+
+  function breakTextLine(line) {
+    const chunks = [];
+    const len = line.length;
+    let start = 0;
+
+    while (start < len) {
+      const remaining = len - start;
+      if (remaining <= MAX_COLS) {
+        chunks.push(line.slice(start));
+        break;
+      }
+
+      const hardLimit = start + MAX_COLS;
+      const softLimit = start + MAX_COLS + 2;
+      let cutIndex = -1;
+      const maxSearch = Math.min(softLimit, len);
+
+      for (let i = maxSearch; i > start; i--) {
+        const prev = i - 1;
+        if (prev >= start && line[prev] === ' ') {
+          cutIndex = i; // cortamos después del espacio
+          break;
+        }
+      }
+
+      if (cutIndex === -1) {
+        cutIndex = hardLimit;
+      }
+
+      chunks.push(line.slice(start, cutIndex));
+      start = cutIndex;
+    }
+
+    return chunks;
+  }
+
+  function wrapChordLyricsPair(chordLine, lyricLine) {
+    const lyricChunks = breakTextLine(lyricLine);
+    const result = [];
+
+    if (chordLine == null) {
+      for (const chunk of lyricChunks) {
+        result.push({ chord: null, lyric: chunk });
+      }
+      return result;
+    }
+
+    const paddedChord = chordLine.padEnd(lyricLine.length, ' ');
+    let start = 0;
+
+    for (const chunk of lyricChunks) {
+      const cut = start + chunk.length;
+      let chordChunk = paddedChord.slice(start, cut);
+      chordChunk = chordChunk.replace(/\s+$/g, '');
+      result.push({ chord: chordChunk, lyric: chunk });
+      start = cut;
+    }
+
+    return result;
+  }
+
+  // Devuelve string del bloque <pre> procesado (con <a> en acordes)
+  function processPreBlock(preContent) {
+    // 1) Partimos en líneas y eliminamos las completamente vacías
+    //    Esto evita los "dobles saltos" raros entre acordes y letra.
+    const rawLines = preContent.split('\n');
+    const lines = rawLines.filter((l) => l.trim().length > 0);
+
+    const out = [];
+    let i = 0;
+
+    while (i < lines.length) {
+      const line = lines[i];
+
+      // Usamos la versión sin etiquetas para detectar si es línea de acordes
+      const textOnly = line.replace(/<[^>]+>/g, '');
+      const thisIsChord = isChordLine(textOnly);
+
+      // pareja acordes (arriba) + texto (debajo)
+      if (thisIsChord && i + 1 < lines.length) {
+        const nextLine = lines[i + 1];
+        const nextTextOnly = nextLine.replace(/<[^>]+>/g, '');
+        const nextIsChord = isChordLine(nextTextOnly);
+
+        // Si la de abajo NO es de acordes, la consideramos letra y las emparejamos
+        if (!nextIsChord && nextTextOnly.trim().length > 0) {
+          const pairs = wrapChordLyricsPair(textOnly, nextTextOnly);
+          for (const p of pairs) {
+            if (p.chord != null && p.chord !== '') {
+              out.push({ text: p.chord, isChord: true });
+            }
+            out.push({ text: p.lyric, isChord: false });
+          }
+          i += 2;
+          continue;
+        }
+      }
+
+      // Si no es línea de acordes, solo la troceamos por longitud
+      if (!thisIsChord) {
+        const chunks = breakTextLine(textOnly);
+        for (const c of chunks) {
+          out.push({ text: c, isChord: false });
+        }
+      } else {
+        // Línea de acordes tal cual (texto limpio)
+        out.push({ text: textOnly, isChord: true });
+      }
+
+      i++;
+    }
+
+    // 2) Aplicamos los <a> SOLO a las líneas de acordes
+    return out
+      .map((item) => (item.isChord ? wrapChordLineWithAnchors(item.text) : item.text))
+      .join('\n');
+  }
+
+  // -------------------------------
+  // NUEVO: envolver sección de .post-body.entry-content en <pre>
+  // -------------------------------
+
+  function wrapPostBodySectionIntoPre(html) {
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+
+      const postBody = doc.querySelector('.post-body.entry-content');
+      if (!postBody) return html;
+
+      // Si ya hay <pre> dentro de post-body, no tocamos nada
+      if (postBody.querySelector('pre')) {
+        return html;
+      }
+
+      const children = Array.from(postBody.children);
+      if (!children.length) return html;
+
+      // Busca índice de hijo cuyo textContent contenga cierto texto
+      const findIndexByText = (needle) => {
+        const needleLower = needle.toLowerCase();
+        for (let i = 0; i < children.length; i++) {
+          const text = (children[i].textContent || '').toLowerCase();
+          if (text.includes(needleLower)) return i;
+        }
+        return -1;
+      };
+
+      const idxCejilla = findIndexByText('cejilla al');
+      const idxAcordes = findIndexByText('acordes usados');
+      const idxAlAire = findIndexByText('al aire');
+
+      let metaIdx = -1;
+
+      // Prioridad:
+      //   1) Cejilla
+      //   2) Acordes usados
+      //   3) Al aire (como cejilla 0)
+      if (idxCejilla !== -1) {
+        metaIdx = idxCejilla;
+      } else if (idxAcordes !== -1) {
+        metaIdx = idxAcordes;
+      } else if (idxAlAire !== -1) {
+        metaIdx = idxAlAire;
+      }
+
+      // Si no encontramos nada, no tocamos el HTML (luego entrará autoWrapChords)
+      if (metaIdx === -1 || metaIdx >= children.length - 1) {
+        return html;
+      }
+
+      // El bloque de acordes empieza en el hijo siguiente al meta (cejilla/acordes/al aire)
+      const startIdx = metaIdx + 1;
+
+      // Buscamos el hijo donde empieza el vídeo (iframe)
+      let endIdx = children.length;
+      for (let i = startIdx; i < children.length; i++) {
+        if (children[i].querySelector && children[i].querySelector('iframe')) {
+          endIdx = i; // terminamos justo antes de este hijo
+          break;
+        }
+      }
+
+      if (endIdx <= startIdx) {
+        // Nada que envolver
+        return html;
+      }
+
+      // Construimos el <pre> con todos los hijos desde startIdx hasta endIdx-1
+      const pre = doc.createElement('pre');
+      const fragmentParts = [];
+      for (let i = startIdx; i < endIdx; i++) {
+        fragmentParts.push(children[i].outerHTML || '');
+      }
+      pre.innerHTML = fragmentParts.join('\n');
+
+      // Eliminamos esos hijos del post-body (de atrás hacia delante para no romper índices)
+      for (let i = endIdx - 1; i >= startIdx; i--) {
+        postBody.removeChild(children[i]);
+      }
+
+      // Insertamos el <pre> en la misma posición donde estaba el primer hijo envuelto
+      const refNode = postBody.children[startIdx] || null;
+      postBody.insertBefore(pre, refNode);
+
+      // Devolvemos el HTML completo modificado
+      return doc.documentElement.outerHTML || html;
+    } catch (e) {
+      console.error('wrapPostBodySectionIntoPre error', e);
+      return html;
+    }
+  }
+
+  // -------------------------------
+  // auto-crear <pre> si no hay (fallback genérico)
+  // -------------------------------
+
+  function autoWrapChords(html) {
+    // Si ya hay <pre>, no tocamos nada
+    if (/<pre[\s>]/i.test(html)) return html;
+
+    // Normalizamos saltos de línea a partir de <br> y </p>
+    const withNewlines = html.replace(/<br\s*\/?>/gi, '\n').replace(/<\/p>/gi, '\n</p>');
+
+    const lines = withNewlines.split('\n');
+
+    const resultParts = [];
+    let currentPreLines = [];
+    let inChordBlock = false;
+
+    for (const line of lines) {
+      const textOnly = line.replace(/<[^>]+>/g, '');
+      const chord = isChordLine(textOnly);
+
+      if (chord) {
+        if (!inChordBlock) {
+          inChordBlock = true;
+          currentPreLines.push('<pre>');
+        }
+        currentPreLines.push(textOnly); // guardamos solo texto limpio dentro del <pre>
+      } else {
+        if (inChordBlock) {
+          // Cerramos bloque de acordes
+          currentPreLines.push('</pre>');
+          resultParts.push(currentPreLines.join('\n'));
+          currentPreLines = [];
+          inChordBlock = false;
+        }
+        resultParts.push(line);
+      }
+    }
+
+    if (inChordBlock) {
+      currentPreLines.push('</pre>');
+      resultParts.push(currentPreLines.join('\n'));
+    }
+
+    return resultParts.join('\n');
+  }
+
+  function ensurePre(html) {
+    // 1) Si ya hay <pre> en cualquier parte, no hacemos nada
+    if (/<pre[\s>]/i.test(html)) return html;
+
+    // 2) Intentamos envolver el bloque de la pieza dentro de .post-body.entry-content
+    const wrappedHtml = wrapPostBodySectionIntoPre(html);
+    if (/<pre[\s>]/i.test(wrappedHtml)) {
+      return wrappedHtml;
+    }
+
+    // 3) Si seguimos sin <pre>, usamos el auto-detector línea a línea
+    return autoWrapChords(html);
+  }
+
+  // -------------------------------
+  // HTML → <pre> blocks
+  // -------------------------------
+
+  function extractPreBlocksFromHtml(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const pres = Array.from(doc.querySelectorAll('pre'));
+    return pres.map((pre) => pre.textContent || '');
+  }
+
+  // ---- META / FRONTMATTER ----
+
+  function extractMetaFromHtml(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const meta = {
+      pieza: '',
+      agrupacion: '',
+      year: '',
+      musica: '',
+      letra: '',
+      img: '',
+      cejilla: '',
+      date: '',
+      video: '',
+    };
+
+    // ---------- TÍTULO → pieza + agrupacion ----------
+    const titleEl =
+      doc.querySelector('h3.post-title, h3.post-title.entry-title') || doc.querySelector('h3');
+
+    if (titleEl) {
+      const rawTitle = titleEl.textContent.trim();
+
+      let t = rawTitle.replace(/^\s*Acordes\s+/i, '').trim();
+
+      const tNorm = t
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+
+      if (tNorm.startsWith('cuarteta')) {
+        let pieceEnd = t.length;
+        const firstQuote = t.indexOf('"');
+        if (firstQuote !== -1) {
+          const secondQuote = t.indexOf('"', firstQuote + 1);
+          if (secondQuote !== -1) {
+            pieceEnd = secondQuote + 1;
+          } else {
+            pieceEnd = 'cuarteta'.length;
+          }
+        } else {
+          pieceEnd = 'cuarteta'.length;
+        }
+        meta.pieza = t.slice(0, pieceEnd).trim();
+        meta.agrupacion = t.slice(pieceEnd).trim();
+      } else {
+        const patterns = [
+          'presentacion',
+          'pasodoble',
+          'popurrí',
+          'popurri',
+          'final de popurri',
+          'final del popurri',
+          'tango',
+        ];
+
+        for (const p of patterns) {
+          if (tNorm.startsWith(p)) {
+            meta.pieza = t.slice(0, p.length).trim();
+            meta.agrupacion = t.slice(p.length).trim();
+            break;
+          }
+        }
+
+        if (!meta.pieza) {
+          meta.agrupacion = t;
+        }
+      }
+    }
+
+    // ---------- ETIQUETAS → year ----------
+    const labelLinks = Array.from(doc.querySelectorAll('a')).filter(
+      (a) => a.href && a.href.includes('/search/label/')
+    );
+    const labels = labelLinks.map((a) => a.textContent.trim());
+    const yearLabel = labels.find((l) => /^\d{4}$/.test(l));
+    if (yearLabel) meta.year = yearLabel;
+
+    // ---------- TEXTO → Autor / Cejilla ----------
+    const bodyText = doc.body ? doc.body.textContent || '' : '';
+
+    const autorMatch = bodyText.match(/Autor:\s*([^\n\r]+)/i);
+    if (autorMatch) {
+      meta.musica = autorMatch[1].trim();
+      meta.letra = meta.musica;
+    }
+
+    const cejillaMatch = bodyText.match(/Cejilla\s+al\s+(\d+)/i);
+    if (cejillaMatch) {
+      meta.cejilla = cejillaMatch[1].trim();
+    }
+
+    // Tratar "Al aire" como cejilla 0 si no hay cejilla numérica
+    if (!meta.cejilla && /al aire/i.test(bodyText)) {
+      meta.cejilla = '0';
+    }
+
+    // ---------- IMAGEN ----------
+    // Prioridad:
+    //   1) Cualquier <img> dentro de .post-body.entry-content
+    //   2) <img class="imgEntrada">
+    //   3) cualquier <img> dentro de un contenedor .imgEntrada
+    //   4) primer <img> del documento (fallback)
+    let imgEl =
+      doc.querySelector('.post-body.entry-content img') ||
+      doc.querySelector('img.imgEntrada') ||
+      doc.querySelector('.imgEntrada img') ||
+      doc.querySelector('img');
+
+    if (imgEl && imgEl.src) {
+      meta.img = imgEl.src;
+    }
+
+    // ---------- VÍDEO → primer iframe de YouTube ----------
+    const iframe = doc.querySelector("iframe[src*='youtube.com'], iframe[src*='youtu.be']");
+    if (iframe && iframe.src) {
+      meta.video = iframe.src;
+    }
+
+    // ---------- FECHA HOY ----------
+    const d = new Date();
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const yyyy = String(d.getFullYear());
+    meta.date = `${dd}/${mm}/${yyyy}`;
+
+    if (!meta.year) meta.year = yyyy;
+
+    return meta;
+  }
+
+  function buildFrontmatter(meta) {
+    const lines = [];
+    lines.push('---');
+    if (meta.pieza) lines.push(`pieza: ${meta.pieza}`);
+    if (meta.agrupacion) lines.push(`agrupacion: ${meta.agrupacion}`);
+    if (meta.year) lines.push(`year: ${meta.year}`);
+    if (meta.musica) lines.push(`musica: ${meta.musica}`);
+    if (meta.letra) lines.push(`letra: ${meta.letra}`);
+    if (meta.img) lines.push(`img: ${meta.img}`);
+    if (meta.cejilla) lines.push(`cejilla: ${meta.cejilla}`);
+    if (meta.date) lines.push(`date: "${meta.date}"`);
+    if (meta.video) lines.push(`video: '${meta.video}'`);
+    lines.push('');
+    lines.push('---');
+    return lines.join('\n');
+  }
+
+  function slugify(str) {
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .replace(/-+/g, '-');
+  }
+
+  // -------------------------------
+  // NÚCLEO: procesar documento
+  // -------------------------------
+
+  function processDocumentString(input) {
+    const meta = extractMetaFromHtml(input);
+    lastMeta = meta;
+
+    const htmlWithPre = ensurePre(input);
+    const blocks = extractPreBlocksFromHtml(htmlWithPre);
+
+    let processedPre = '';
+    if (blocks.length > 0) {
+      const processedBlocks = blocks.map((inner) => {
+        const processedInner = processPreBlock(inner);
+        return '<pre>' + processedInner + '</pre>';
+      });
+      processedPre = processedBlocks.join('\n\n');
+    } else {
+      const processedAll = processPreBlock(htmlWithPre);
+      processedPre = '<pre>' + processedAll + '</pre>';
+    }
+
+    const fm = buildFrontmatter(meta);
+    return fm + '\n' + processedPre;
+  }
+
+  // -------------------------------
+  // FETCH / UI
+  // -------------------------------
+
+  async function fetchFromUrl() {
+    setError('');
+    const urlInput = document.getElementById('cf-url');
+    const inputArea = document.getElementById('cf-input');
+    const outputArea = document.getElementById('cf-output');
+    if (!urlInput || !inputArea) return;
+
+    const url = urlInput.value.trim();
+    if (!url) {
+      setError('Introduce primero una URL.');
+      return;
+    }
+
+    try {
+      const proxy = `/api/fetch-url?url=${encodeURIComponent(url)}`;
+      const res = await fetch(proxy);
+      const text = await res.text();
+
+      if (!res.ok) {
+        console.error('Respuesta API fetch-url no OK:', res.status, text);
+        throw new Error(`No se pudo descargar la página (status ${res.status}): ${text}`);
+      }
+
+      const html = text;
+      const htmlWithPre = ensurePre(html);
+      const blocks = extractPreBlocksFromHtml(htmlWithPre);
+
+      if (blocks.length > 0) {
+        inputArea.value = blocks.map((inner) => '<pre>' + inner + '</pre>').join('\n\n');
+      } else {
+        inputArea.value = html;
+        setError(
+          'No se encontraron acordes ni etiquetas <pre> en la página, se ha pegado el HTML completo.'
+        );
+      }
+
+      if (outputArea) {
+        outputArea.value = processDocumentString(html);
+        downloadMarkdown();
+      }
+    } catch (err) {
+      console.error(err);
+      setError('Error al cargar la URL: ' + (err && err.message ? err.message : String(err)));
+    }
+  }
+
+  function processCurrentInput() {
+    setError('');
+    const inputArea = document.getElementById('cf-input');
+    const outputArea = document.getElementById('cf-output');
+    if (!inputArea || !outputArea) return;
+    const text = inputArea.value;
+    if (!text.trim()) {
+      setError('No hay contenido de entrada para procesar.');
+      return;
+    }
+    const processed = processDocumentString(text);
+    outputArea.value = processed;
+  }
+
+  function copyOutput() {
+    const outputArea = document.getElementById('cf-output');
+    if (!outputArea) return;
+    outputArea.focus();
+    outputArea.select();
+    try {
+      const ok = document.execCommand('copy');
+      if (!ok && navigator.clipboard) {
+        navigator.clipboard.writeText(outputArea.value);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  function downloadMarkdown() {
+    const outputArea = document.getElementById('cf-output');
+    if (!outputArea) return;
+
+    const content = outputArea.value;
+    if (!content.trim()) {
+      setError('No hay contenido para descargar.');
+      return;
+    }
+
+    let baseName = 'acordes';
+
+    if (lastMeta && (lastMeta.pieza || lastMeta.agrupacion)) {
+      const parts = [];
+      if (lastMeta.pieza) parts.push(lastMeta.pieza);
+      if (lastMeta.agrupacion) parts.push(lastMeta.agrupacion);
+      baseName = slugify(parts.join(' '));
+    }
+
+    const blob = new Blob([content], {
+      type: 'text/markdown;charset=utf-8',
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = baseName + '.md';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // -------------------------------
+  // BATCH: /redirects-from.json
+  // -------------------------------
+
+  async function processBatchUrls() {
+    setError('');
+    const progressContainer = document.getElementById('cf-progress');
+    const progressBar = document.getElementById('cf-progress-bar');
+    const progressText = document.getElementById('cf-progress-text');
+
+    try {
+      const res = await fetch('/redirects-from.json');
+      if (!res.ok) throw new Error('No se pudo cargar redirects-from.json');
+
+      const urls = await res.json();
+
+      if (!Array.isArray(urls) || urls.length === 0) {
+        throw new Error('El archivo redirects-from.json está vacío o no es un array');
+      }
+
+      if (progressContainer) progressContainer.style.display = 'block';
+      if (progressBar) progressBar.max = urls.length;
+
+      let successCount = 0;
+      let errorCount = 0;
+
+      for (let i = 0; i < urls.length; i++) {
+        const path = urls[i];
+        const fullUrl = `https://acordesgaditanos.blogspot.com${path}`;
+
+        if (progressText) {
+          progressText.textContent = `Procesando ${i + 1}/${urls.length}: ${path}`;
+        }
+
+        try {
+          const proxy = `/api/fetch-url?url=${encodeURIComponent(fullUrl)}`;
+          const response = await fetch(proxy);
+          const htmlOriginal = await response.text();
+
+          if (!response.ok) {
+            console.error(`Error ${response.status} en ${fullUrl}`);
+            errorCount++;
+            continue;
+          }
+
+          const htmlWithPre = ensurePre(htmlOriginal);
+          const meta = extractMetaFromHtml(htmlOriginal);
+          const blocks = extractPreBlocksFromHtml(htmlWithPre);
+
+          let processedPre = '';
+          if (blocks.length > 0) {
+            const processedBlocks = blocks.map((inner) => {
+              const processedInner = processPreBlock(inner);
+              return '<pre>' + processedInner + '</pre>';
+            });
+            processedPre = processedBlocks.join('\n\n');
+          } else {
+            const processedAll = processPreBlock(htmlWithPre);
+            processedPre = '<pre>' + processedAll + '</pre>';
+          }
+
+          const fm = buildFrontmatter(meta);
+          const content = fm + '\n' + processedPre;
+
+          let baseName = 'acordes';
+          if (meta && (meta.pieza || meta.agrupacion)) {
+            const parts = [];
+            if (meta.pieza) parts.push(meta.pieza);
+            if (meta.agrupacion) parts.push(meta.agrupacion);
+            baseName = slugify(parts.join(' '));
+          }
+
+          const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = baseName + '.md';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          successCount++;
+
+          await new Promise((resolve) => setTimeout(resolve, 300));
+        } catch (err) {
+          console.error(`Error procesando ${fullUrl}:`, err);
+          errorCount++;
+        }
+
+        if (progressBar) progressBar.value = i + 1;
+      }
+
+      if (progressText) {
+        progressText.textContent = `✅ Completado: ${successCount} exitosos, ${errorCount} errores`;
+      }
+    } catch (err) {
+      console.error(err);
+      setError('Error al procesar batch: ' + (err && err.message ? err.message : String(err)));
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnFetch = document.getElementById('cf-btn-fetch');
+    const btnProcess = document.getElementById('cf-btn-process');
+    const btnCopy = document.getElementById('cf-btn-copy');
+    const btnDownload = document.getElementById('cf-btn-download');
+    const btnBatch = document.getElementById('cf-btn-batch');
+
+    if (btnFetch) btnFetch.addEventListener('click', fetchFromUrl);
+    if (btnProcess) btnProcess.addEventListener('click', processCurrentInput);
+    if (btnCopy) btnCopy.addEventListener('click', copyOutput);
+    if (btnDownload) btnDownload.addEventListener('click', downloadMarkdown);
+    if (btnBatch) btnBatch.addEventListener('click', processBatchUrls);
+  });
+</script>
