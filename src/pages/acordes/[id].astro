@@ -6,8 +6,6 @@ import SitiosDeInteresCard from '../../components/right-column/sitios-de-interes
 import Apoyar from '../../components/right-column/apoyar.astro';
 import ApareceAqui from '../../components/right-column/aparece-aqui.astro';
 import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/layout/header.astro';
-import Footer from '../../components/layout/footer.astro';
 import MusicCompositionSchema from '../../components/utils/MusicCompositionSchema.astro';
 
 export async function getStaticPaths() {
@@ -61,7 +59,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     modalidad={modalidad}
     url={canonicalURL}
   />
-  <Header />
 
   <div class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
@@ -90,8 +87,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       <SitiosDeInteresCard />
     </div>
   </div>
-
-  <Footer />
 </Layout>
 
 <style>

@@ -2,8 +2,6 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import YearCard from '../components/year-card.astro';
-import Footer from '../components/layout/footer.astro';
-import Header from '../components/layout/header.astro';
 
 function parseSpanishDate(str: string) {
   const [d, m, y] = str.split(/[-/]/).map(Number);
@@ -47,8 +45,6 @@ const years = Object.keys(grouped).sort((a, b) => {
 <Layout
   title='Acordes Gaditanos - Acordes y Letras del Carnaval de Cádiz'
   description='La mayor colección de acordes y letras del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
-  <div></div>
-  <Header />
   <div class='main-container container-layout'>
     {
       years.map((year) => {
@@ -57,7 +53,6 @@ const years = Object.keys(grouped).sort((a, b) => {
       })
     }
   </div>
-  <Footer />
 </Layout>
 
 <style>
