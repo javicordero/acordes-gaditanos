@@ -9,6 +9,7 @@ import Layout from '../../layouts/Layout.astro';
 import MusicCompositionSchema from '../../components/utils/MusicCompositionSchema.astro';
 import AnunciosGuitarra from '../../components/right-column/anuncios/anuncios-guitarra.astro';
 import AnunciosLibros from '../../components/right-column/anuncios/anuncios-libros.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -60,6 +61,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     year={year}
     modalidad={modalidad}
     url={canonicalURL}
+  />
+
+  <Breadcrumb
+    year={year}
+    agrupacion={agrupacion}
+    agrupacionSlug={data.agrupacionSlug}
+    pieza={pieza}
   />
 
   <div class='main-container container-layout'>
