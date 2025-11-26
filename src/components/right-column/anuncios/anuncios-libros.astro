@@ -3,55 +3,101 @@ import RightColumnCard from '../../../layouts/RightColumnCard.astro';
 
 const { class: className } = Astro.props;
 
-// Libros de Amazon sobre carnaval
-const productos = [
-  {
-    titulo: 'El pasodoble interminable',
-    autor: 'Juan Carlos Aragón',
-    imagen: 'https://m.media-amazon.com/images/I/61ZarQGAiNL._SY522_.jpg',
-    url: 'https://amzn.to/48dgg8V',
-  },
+interface Book {
+  title: string;
+  author: string;
+  image: string;
+  url: string;
+  always?: boolean;
+}
 
+// Libros de Amazon sobre carnaval
+const books: Book[] = [
   {
-    titulo: 'Juan Carlos Aragón: El Carnaval con mayúsculas',
-    autor: 'Jaime Cedillo',
-    imagen: 'https://m.media-amazon.com/images/I/612iOqw3piL._SY522_.jpg',
+    title: 'El pasodoble interminable',
+    author: 'Juan Carlos Aragón',
+    image: 'https://m.media-amazon.com/images/I/61ZarQGAiNL._SY522_.jpg',
+    url: 'https://amzn.to/48dgg8V',
+    always: true,
+  },
+  {
+    title: 'Juan Carlos Aragón: El Carnaval con mayúsculas',
+    author: 'Jaime Cedillo',
+    image: 'https://m.media-amazon.com/images/I/612iOqw3piL._SY522_.jpg',
     url: 'https://amzn.to/4oZmpg1',
   },
-
   {
-    titulo: 'Historias del Carnaval de Cádiz que nunca te contaron',
-    autor: 'David Franco Monthiel',
-    imagen: 'https://m.media-amazon.com/images/I/71jfKjBr7WL._SY522_.jpg',
+    title: 'Historias del Carnaval de Cádiz que nunca te contaron',
+    author: 'David Franco Monthiel',
+    image: 'https://m.media-amazon.com/images/I/71jfKjBr7WL._SY522_.jpg',
     url: 'https://amzn.to/3Kr244l',
   },
-
   {
-    titulo: 'Carnaval de Cádiz y Educación',
-    autor: 'Álvaro Pérez García',
-    imagen: 'https://m.media-amazon.com/images/I/71W8Tj0xfSL._SY522_.jpg',
+    title: 'Carnaval de Cádiz y Educación',
+    author: 'Álvaro Pérez García',
+    image: 'https://m.media-amazon.com/images/I/71W8Tj0xfSL._SY522_.jpg',
     url: 'https://amzn.to/4inguz8',
   },
+  {
+    title: 'El carnaval de Cádiz (Arte y patrimonio)',
+    author: 'Moisés Camacho Ortega',
+    image: 'https://m.media-amazon.com/images/I/711ulr18EEL._SY522_.jpg',
+    url: 'https://amzn.to/4inuj0d',
+  },
+  {
+    title: 'Historia general del Carnaval de Cádiz',
+    author: 'David Monthiel',
+    image: 'https://m.media-amazon.com/images/I/71Bh-P1a+2L._SY522_.jpg',
+    url: 'https://amzn.to/4imMYt2',
+  },
+  {
+    title: 'Las Coplas Del Carnaval De Cádiz durante La Segunda República (1932-1936)',
+    author: 'Santiago Moreno Tello ',
+    image: 'https://m.media-amazon.com/images/I/61ioXVCMKaL._SY522_.jpg',
+    url: 'https://amzn.to/4p6vILt',
+  },
 ];
+
+// Seleccionar 4 libros, algunos fijos y el resto aleatorios
+function getRandomBooks(arr: Book[], n: number): Book[] {
+  const fixed = arr.filter((p) => p.always);
+  const rest = arr.filter((p) => !p.always);
+  const missing = Math.max(0, n - fixed.length);
+  const selected = [
+    ...fixed,
+    ...rest
+      .map((item) => ({ item, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .slice(0, missing)
+      .map(({ item }) => item),
+  ];
+  // Shuffle the final result
+  return selected
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+}
+
+const randomBooks = getRandomBooks(books, 4);
 ---
 
 <RightColumnCard title='PARA TU ESTANTERÍA' headingId='libros-carnavaleros-title' class={className}>
   <ul>
     {
-      productos.map((producto) => (
+      randomBooks.map((book) => (
         <li>
-          <a href={producto.url} target='_blank' rel='noopener noreferrer'>
+          <a href={book.url} target='_blank' rel='noopener noreferrer'>
             <figure>
               <img
-                src={producto.imagen}
-                alt={`${producto.titulo} - ${producto.autor}`}
+                src={book.image}
+                alt={`${book.title} - ${book.author}`}
                 loading='lazy'
                 decoding='async'
               />
             </figure>
             <div class='book-info'>
-              <strong class='book-title'>{producto.titulo}</strong>
-              <span class='book-author'>{producto.autor}</span>
+              <strong class='book-title'>{book.title}</strong>
+              <span class='book-author'>{book.author}</span>
             </div>
           </a>
         </li>

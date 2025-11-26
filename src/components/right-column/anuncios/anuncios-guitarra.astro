@@ -3,41 +3,90 @@ import RightColumnCard from '../../../layouts/RightColumnCard.astro';
 
 const { class: className } = Astro.props;
 
+interface Product {
+  name: string;
+  image: string;
+  url: string;
+  always?: boolean;
+}
+
 // Productos de Amazon para guitarras
-const productos = [
+const products: Product[] = [
   {
-    nombre: 'Cejilla metálica',
-    imagen: 'https://m.media-amazon.com/images/I/61PYWd6mVuL._AC_SX679_.jpg',
+    name: 'Cejilla metálica',
+    image: 'https://m.media-amazon.com/images/I/61PYWd6mVuL._AC_SX679_.jpg',
     url: 'https://amzn.to/4pstLsj',
   },
   {
-    nombre: 'Afinador de pinza',
-    imagen: 'https://m.media-amazon.com/images/I/710EIwj4oRL._AC_SX679_.jpg',
+    name: 'Afinador de pinza',
+    image: 'https://m.media-amazon.com/images/I/710EIwj4oRL._AC_SX679_.jpg',
     url: 'https://amzn.to/3XRjLNw',
   },
   {
-    nombre: 'Cejilla de madera',
-    imagen: 'https://m.media-amazon.com/images/I/51fxFmlGsQL._AC_SX679_.jpg',
+    name: 'Cejilla de madera',
+    image: 'https://m.media-amazon.com/images/I/51fxFmlGsQL._AC_SX679_.jpg',
     url: 'https://amzn.to/4p77lgA',
   },
   {
-    nombre: "Cuerdas D'Addario",
-    imagen: 'https://m.media-amazon.com/images/I/8169k0GrNyL._AC_SX679_.jpg',
+    name: "Cuerdas D'Addario",
+    image: 'https://m.media-amazon.com/images/I/8169k0GrNyL._AC_SX679_.jpg',
     url: 'https://amzn.to/4ioVPuD',
   },
+  {
+    name: 'Funda acolchada',
+    image: 'https://m.media-amazon.com/images/I/61zTQVs3vxL._AC_SX679_.jpg',
+    url: 'https://amzn.to/48xhLjH',
+  },
+  {
+    name: 'Estuche rígido',
+    image: 'https://m.media-amazon.com/images/I/81cOIPsTcLL._AC_SX679_.jpg',
+    url: 'https://amzn.to/43U2GpM',
+  },
+  {
+    name: 'Púas con caja metálica',
+    image: 'https://m.media-amazon.com/images/I/719n0LcSC-L._AC_SX522_.jpg',
+    url: 'https://amzn.to/4prKSKS',
+  },
+  {
+    name: 'Soporte para guitarra',
+    image: 'https://m.media-amazon.com/images/I/61V2DtVXbqL._AC_SX679_.jpg',
+    url: 'https://amzn.to/4pt1v8V',
+  },
 ];
+
+// Seleccionar 4 productos, algunos fijos y el resto aleatorios
+function getRandomProducts(arr: Product[], n: number): Product[] {
+  const fixed = arr.filter((p) => p.always);
+  const rest = arr.filter((p) => !p.always);
+  const missing = Math.max(0, n - fixed.length);
+  const selected = [
+    ...fixed,
+    ...rest
+      .map((item) => ({ item, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .slice(0, missing)
+      .map(({ item }) => item),
+  ];
+  // Shuffle the final result
+  return selected
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+}
+
+const randomProducts = getRandomProducts(products, 4);
 ---
 
 <RightColumnCard title='PARA TU GUITARRA' headingId='para-tu-guitarra-title' class={className}>
   <ul>
     {
-      productos.map((producto) => (
+      randomProducts.map((product) => (
         <li>
-          <a href={producto.url} target='_blank' rel='noopener noreferrer'>
+          <a href={product.url} target='_blank' rel='noopener noreferrer'>
             <figure>
-              <img src={producto.imagen} alt={producto.nombre} loading='lazy' decoding='async' />
+              <img src={product.image} alt={product.name} loading='lazy' decoding='async' />
             </figure>
-            <span class='product-name'>{producto.nombre}</span>
+            <span class='product-name'>{product.name}</span>
           </a>
         </li>
       ))
