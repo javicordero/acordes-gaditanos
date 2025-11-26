@@ -13,7 +13,14 @@ import GoogleAnalytics from '../components/utils/GoogleAnalytics.astro';
     <meta name='generator' content={Astro.generator} />
     <meta name='google-site-verification' content='rcKUCESBALVUqnlrzW0AnQh8FqUzluPR9L1zex9eMw0' />
     <title>Acordes Gaditanos</title>
-    <GoogleAnalytics measurementId={'G-CTX6DK49K4'} />
+
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src='https://static.cloudflareinsights.com/beacon.min.js'
+      data-cf-beacon='{"token": "69575422c7ad4587aad9e1a1b02a5b43", "spa": true}'
+    ></script><!-- End Cloudflare Web Analytics -->
+
     <ClientRouter />
   </head>
   <body>
