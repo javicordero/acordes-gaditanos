@@ -6,6 +6,7 @@ import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
 import GoogleAnalytics from '../components/utils/GoogleAnalytics.astro';
 import Header from '../components/layout/header.astro';
 import Footer from '../components/layout/footer.astro';
+import AcceptCookies from '../components/AcceptCookies.astro';
 
 interface Props {
   title?: string;
@@ -17,7 +18,7 @@ interface Props {
 
 const {
   title = 'Acordes Gaditanos - Acordes y Letras del Carnaval de Cádiz',
-  description = 'La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.',
+  description = 'La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar...',
   image = '/og-image.png',
   noindex = false,
   keywords = 'carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval',
@@ -45,7 +46,7 @@ const imageURL = new URL(image, Astro.site);
     <meta name='generator' content={Astro.generator} />
     {noindex && <meta name='robots' content='noindex, nofollow' />}
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property='og:type' content='website' />
     <meta property='og:url' content={canonicalURL} />
     <meta property='og:title' content={title} />
@@ -61,7 +62,7 @@ const imageURL = new URL(image, Astro.site);
     <meta name='twitter:description' content={description} />
     <meta name='twitter:image' content={imageURL} />
 
-    <!-- Structured Data (Schema.org) -->
+    <!-- Structured Data -->
     <script
       type='application/ld+json'
       set:html={JSON.stringify({
@@ -79,6 +80,10 @@ const imageURL = new URL(image, Astro.site);
       })}
     />
 
+    {/* GA + Partytown */}
+    <GoogleAnalytics measurementId='G-CTX6DK49K4' />
+
+    {/* View transitions / SPA router */}
     <ClientRouter />
   </head>
   <body>
@@ -87,5 +92,6 @@ const imageURL = new URL(image, Astro.site);
     <Footer />
     <ContactInit />
     <AnchoPreInit />
+    <AcceptCookies />
   </body>
 </html>
