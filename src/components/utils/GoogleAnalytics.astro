@@ -1,68 +1,75 @@
 ---
-// GoogleAnalytics.astro — sin Partytown, carga dinámica y tracking SPA solo con consentimiento
-
 type Props = { measurementId: string };
-const { measurementId } = Astro.props as Props;
+const props = Astro.props as Props;
+const measurementId = props.measurementId;
 ---
 
-<script is:inline data-mid={measurementId}>
-  (function () {
-    const MID = document.currentScript.dataset.mid;
+<script type='text/partytown' src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+></script>
+<script type='text/partytown' data-ga-measurement-id={measurementId} id='ga-init'>
+  const measurementId = document.getElementById('ga-init').getAttribute('data-ga-measurement-id');
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments); // eslint-disable-line
+  }
+  gtag('js', new Date());
+  gtag('config', measurementId);
+</script>
 
-    if (!document.cookie.includes('cookiesAccepted=true')) {
-      console.log('[GA] Sin consentimiento, no cargo GA');
-      return;
-    }
+<script client:load>
+  (() => {
+    // Simple, robust SPA page_view sender:
+    // - dedup by lastPath (sessionStorage)
+    // - small debounce to avoid duplicate sends on very fast navigations
+    let lastPath = sessionStorage.getItem('ga_last_path') || '';
 
-    console.log('[GA] Consent OK, cargando GA (' + MID + ')');
-
-    // Cargar gtag.js
-    const s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + MID;
-    document.head.appendChild(s);
-
-    // Inicializar gtag
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    window.gtag = gtag;
-
-    gtag('js', new Date());
-    gtag('config', MID, { send_page_view: false });
-
-    // ---- TRACKING SPA ----
-    function sendPageView() {
-      if (typeof window.gtag !== 'function') {
-        setTimeout(sendPageView, 200);
-        return;
-      }
-      const path = location.pathname + location.search;
+    function sendPageView(path) {
+      if (!path) path = location.pathname + location.search;
+      if (path === lastPath) return;
+      lastPath = path;
+      try {
+        sessionStorage.setItem('ga_last_path', lastPath);
+      } catch (e) {}
       const payload = {
         page_path: path,
         page_location: location.href,
         page_title: document.title,
       };
-      console.log('[GA] page_view enviado:', payload);
-      window.gtag('event', 'page_view', payload);
+      if (typeof window.gtag === 'function') {
+        try {
+          window.gtag('event', 'page_view', payload);
+        } catch (e) {
+          /* ignore */
+        }
+      } else if (window.dataLayer) {
+        try {
+          window.dataLayer.push({ event: 'page_view', ...payload });
+        } catch (e) {
+          /* ignore */
+        }
+      } else {
+        (window.__ga_event_queue = window.__ga_event_queue || []).push(payload);
+      }
     }
-    // Primera carga
-    setTimeout(sendPageView, 300);
-    // Navegaciones SPA del ClientRouter
+
+    // Minimal SPA navigation detection
     const wrapHistory = (method) => {
-      const orig = history[method];
-      history[method] = function () {
-        const res = orig.apply(this, arguments);
-        window.dispatchEvent(new Event('acorde:locationchange'));
-        return res;
-      };
+      try {
+        const orig = history[method];
+        history[method] = function () {
+          const res = orig.apply(this, arguments);
+          window.dispatchEvent(new Event('acorde:locationchange'));
+          return res;
+        };
+      } catch (e) {}
     };
     wrapHistory('pushState');
     wrapHistory('replaceState');
     window.addEventListener('popstate', () =>
       window.dispatchEvent(new Event('acorde:locationchange'))
     );
+
+    // Debounce navigation handling (100ms)
     let navTimer = null;
     window.addEventListener('acorde:locationchange', () => {
       if (navTimer) clearTimeout(navTimer);
@@ -71,5 +78,19 @@ const { measurementId } = Astro.props as Props;
         navTimer = null;
       }, 100);
     });
+
+    // Flush queued events when gtag is available
+    const flushInterval = setInterval(() => {
+      if (typeof window.gtag === 'function' && Array.isArray(window.__ga_event_queue)) {
+        try {
+          window.__ga_event_queue.forEach((p) => window.gtag('event', 'page_view', p));
+        } catch (e) {}
+        window.__ga_event_queue = [];
+        clearInterval(flushInterval);
+      }
+    }, 500);
+
+    // Initial page_view (small delay to allow title/popstate settle)
+    setTimeout(() => sendPageView(), 60);
   })();
 </script>
