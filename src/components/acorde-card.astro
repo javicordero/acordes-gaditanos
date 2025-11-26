@@ -4,7 +4,8 @@ import { Icon } from 'astro-icon/components';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
-const { pieza, agrupacion, musica, img, year, letra, cejilla, modalidad } = data;
+const { pieza, agrupacion, musica, img, year, letra, cejilla, modalidad, musicaSlug, letraSlug } =
+  data;
 const { Content } = await render(acorde);
 
 // Generar texto ALT descriptivo para SEO
@@ -25,6 +26,28 @@ const headingId = `acorde-${slug}`;
       </span>
     </h2>
 
+    <section class='autores'>
+      {
+        letra && (
+          <p>
+            <strong>Letra:</strong>
+            <a href={`/autor/letra/${letraSlug}`} rel='noopener'>
+              {letra}
+            </a>
+          </p>
+        )
+      }
+      {
+        musica && (
+          <p>
+            <strong>Música:</strong>
+            <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>
+              {musica}
+            </a>
+          </p>
+        )
+      }
+    </section>
     <figure>
       <img
         transition:name={`img-${slug}`}
@@ -95,6 +118,26 @@ const headingId = `acorde-${slug}`;
     }
   }
 
+  .autores {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    text-transform: none;
+
+    & a {
+      color: var(--link-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+        color: var(--link-hover-color);
+      }
+    }
+  }
+
   figure {
     position: relative;
     width: 360px;
@@ -130,6 +173,7 @@ const headingId = `acorde-${slug}`;
   }
 
   .badge--musica {
+    display: none;
     left: 0;
     border-radius: 0 6px 0 6px;
     color: var(--primary-color);
@@ -200,6 +244,9 @@ const headingId = `acorde-${slug}`;
       flex-direction: column;
       gap: 8px;
       padding: var(--card-padding-sm) var(--card-padding-sm) 0 var(--card-padding-sm);
+    }
+    .autores {
+      font-size: 0.9rem;
     }
 
     figure {
