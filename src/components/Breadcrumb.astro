@@ -72,7 +72,7 @@ const {
     gap: 8px;
     flex-wrap: nowrap;
     font-size: 0.9rem;
-    color: var(--text-secondary-color);
+    color: var(--secondary-color);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -90,7 +90,7 @@ const {
       }
     }
     & .separator {
-      color: var(--text-secondary-color);
+      color: var(--secondary-color);
       user-select: none;
     }
     & .breadcrumb-piece {
@@ -103,17 +103,17 @@ const {
   @media (max-width: 640px) {
     .breadcrumb-container {
       top: calc(var(--nav-height) + 8px);
-      height: 16px;
+      /* height: 16px; */
     }
     .breadcrumb {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       gap: 4px;
       & a {
-        max-width: 120px;
+        max-width: 540px;
       }
 
-      .breadcrumb-piece {
-        max-width: 100px;
+      & .breadcrumb-piece {
+        max-width: 145px;
       }
     }
   }
