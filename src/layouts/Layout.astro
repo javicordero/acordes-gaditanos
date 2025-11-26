@@ -79,6 +79,13 @@ const imageURL = new URL(image, Astro.site);
       })}
     />
 
+    <!-- Cloudflare Web Analytics -->
+    <script
+      defer
+      src='https://static.cloudflareinsights.com/beacon.min.js'
+      data-cf-beacon='{"token": "69575422c7ad4587aad9e1a1b02a5b43"}'
+    ></script><!-- End Cloudflare Web Analytics -->
+
     <ClientRouter />
   </head>
   <body>
