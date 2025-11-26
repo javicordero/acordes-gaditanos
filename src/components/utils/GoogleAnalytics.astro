@@ -67,8 +67,7 @@ const { measurementId } = Astro.props as Props;
     window.addEventListener('acorde:locationchange', () => {
       if (navTimer) clearTimeout(navTimer);
       navTimer = setTimeout(() => {
-        // Esperar a que el título y el DOM estén actualizados
-        setTimeout(sendPageView, 200);
+        sendPageView();
         navTimer = null;
       }, 100);
     });
