@@ -64,6 +64,10 @@ p {
   letter-spacing: 0.5px;
 }
 
+.is-title-minus {
+  letter-spacing: 1px;
+}
+
 h1,
 h2,
 h3,
@@ -98,6 +102,9 @@ p {
   }
   .container-layout {
     width: 98%;
+  }
+  .is-title-minus {
+    letter-spacing: 0.7px;
   }
 }
 

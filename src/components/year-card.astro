@@ -8,7 +8,7 @@ const headingId = `year-${year}`;
 
 <article class='year-group' aria-labelledby={headingId}>
   <header>
-    <h2 id={headingId}>{year}</h2>
+    <h2 id={headingId} class='is-title-minus'>{year}</h2>
   </header>
 
   <div class='acordes-grid' role='region' aria-labelledby={headingId}>
@@ -63,7 +63,6 @@ const headingId = `year-${year}`;
       color: var(--primary-color);
       font-size: 1.625rem;
       font-family: 'Montserrat', sans-serif;
-      letter-spacing: 1.4px;
       font-weight: 700;
       max-width: fit-content;
       margin: 0;

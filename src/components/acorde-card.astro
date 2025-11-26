@@ -17,7 +17,7 @@ const headingId = `acorde-${slug}`;
 
 <article class='acorde-card'>
   <header>
-    <h2 id={headingId}>
+    <h2 id={headingId} class='is-title-minus'>
       <span transition:name={`pieza-${slug}`} class='pieza'>
         {pieza}
       </span>
@@ -108,6 +108,7 @@ const headingId = `acorde-${slug}`;
     line-height: 1.79rem;
     max-width: fit-content;
     margin: 0;
+    text-transform: none;
 
     &::after {
       content: '';
