@@ -1,25 +1,25 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
-import YearCard from '../../../components/YearCard.astro';
+import YearCard from '../../../components/CardsGroup.astro';
 
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
 
-  // Recopilar solo autores de música
+  // Recopilar solo autores de letra
   const autoresMap = new Map<string, { nombre: string; acordes: any[] }>();
 
   acordes.forEach((acorde) => {
-    if (acorde.data.musica && acorde.data.musicaSlug) {
-      if (!autoresMap.has(acorde.data.musicaSlug)) {
-        autoresMap.set(acorde.data.musicaSlug, {
-          nombre: acorde.data.musica,
+    if (acorde.data.letra && acorde.data.letraSlug) {
+      if (!autoresMap.has(acorde.data.letraSlug)) {
+        autoresMap.set(acorde.data.letraSlug, {
+          nombre: acorde.data.letra,
           acordes: [],
         });
       }
-      autoresMap.get(acorde.data.musicaSlug)!.acordes.push(acorde);
+      autoresMap.get(acorde.data.letraSlug)!.acordes.push(acorde);
     }
   });
 
@@ -53,15 +53,15 @@ const acordesOrdenados = acordes.sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
-const title = `${authorName} (Música) - Acordes del Carnaval de Cádiz`;
-const description = `Todos los acordes con música de ${authorName} del Carnaval de Cádiz. Explora todas las agrupaciones y piezas de este autor.`;
+const title = `${authorName} (Letra) - Acordes del Carnaval de Cádiz`;
+const description = `Todos los acordes con letra de ${authorName} del Carnaval de Cádiz. Explora todas las agrupaciones y piezas de este autor.`;
 ---
 
 <Layout title={title} description={description}>
-  <Breadcrumb autor={authorName} autorSlug={acordes[0]?.data.musicaSlug} tipoAutor='musica' />
+  <Breadcrumb autor={authorName} autorSlug={acordes[0]?.data.letraSlug} tipoAutor='letra' />
   <div class='main-container container-layout'>
     <article>
-      <YearCard year={`${authorName} - Música`} acordes={acordesOrdenados} />
+      <YearCard year={`${authorName} - Letra`} acordes={acordesOrdenados} />
     </article>
   </div>
 </Layout>

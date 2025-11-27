@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import YearCard from '../components/YearCard.astro';
+import YearCard from '../components/CardsGroup.astro';
 
 function parseSpanishDate(str: string) {
   const [d, m, y] = str.split(/[-/]/).map(Number);
@@ -192,7 +192,7 @@ const acordesData = acordes.map((acorde) => ({
       }
     });
 
-    // Guardar una referencia al template del YearCard.astro
+    // Guardar una referencia al template del CardsGroup.astro
     const originalYearCard = resultsContainer.querySelector('.year-group')?.cloneNode(true);
 
     // Función para normalizar texto (quitar acentos)
@@ -233,7 +233,7 @@ const acordesData = acordes.map((acorde) => ({
         });
 
         if (matchingCards.length > 0 && originalYearCard) {
-          // Clonar el YearCard.astro template
+          // Clonar el CardsGroup.astro template
           const newYearCard = originalYearCard.cloneNode(true);
           const heading = newYearCard.querySelector('h2');
           if (heading) {
