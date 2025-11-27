@@ -10,65 +10,68 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tDirBCb5Vw4?feature=player_embedded'
 
 ---
-<pre>Lam Si7 Mi7 (x5) Lam Mi7
-<a>Lam</a>
-Involución, d
-estrucción de una raza q
-ue camina descalza b
-ajo la tierra
-Involución, f
-in de la inteligencia q
-ue agotó la paciencia d
-e este planeta azul
-    <a> Solm</a>
-Que se quedó sin luz, q
-ue se quedó sin cielo q
-ue murió de hambre y de sed
-<a>Lam </a>                     <a>Si7</a>
-Y yo esperaba tras las ramas la ocasión f
-rotándome las manos cual mudo heredero
-<a>Lam </a>                       <a> Si7</a>
-Viendo desmoronarse con la sinrazón l
-os muros y pilares de tu imperio
-<a>Rem </a>           <a> Sol</a>
-Borrachera de poder y de ambición q
-ue te hizo tragar tu propio anzuelo
-                                  <a> Si7</a>
-Cuando el bípedo se arrodilló en el suelo d
-e la sombra yo salí para reinar de nuevo
-<a>Lam</a>
-Involución, i
-nvolución, i
-nvolución  
-<a>Lam</a>
-Mío, mío, mío, mío 
-Mío, mío, mío, mío 
+<pre>
+Lam Si7 Mi7 (x5) Lam Mi7
+<a>Lam</a>                         <a>Fa</a>
+Involución, destrucción de una raza que camina
+    <a>Sol</a>           <a>Lam</a>
+descalza bajo la tierra
+                               <a>Fa</a>
+Involución, fin de la inteligencia que agotó la
+             <a>Sol</a>          <a>Do</a>
+paciencia de este planeta azul
+  <a>Solm</a>                        <a>Fa</a>   <a>Mi7</a>  <a>Lam</a>
+Que se quedó sin luz, que se quedó sin cielo que
+                    <a>Mi7</a>
+murió de hambre y de sed
+<a>Lam</a>             <a>Si7</a>                <a>Mi7</a>
+Y yo esperaba tras las ramas la ocasión frotándome
+       <a>Lam</a>            <a>Mi7</a>
+las manos cual mudo heredero
+<a>Lam</a>                  <a>Si7</a>              <a>Mi7</a>
+Viendo desmoronarse con la sinrazón los muros y
+            <a>Lam</a> <a>La7</a>
+pilares de tu imperio
+<a>Rem</a>       <a>Sol</a>                      <a>Si7</a>
+Borrachera de poder y de ambición que te hizo
+                    <a>Fa</a>
+tragar tu propio anzuelo
+                        <a>Si7</a>          <a>Mi7</a>
+Cuando el bípedo se arrodilló en el suelo de la
+<a>Lam</a>       <a>Mim</a>       <a>Fa</a>         <a>Sol</a>
+sombra yo salí para reinar de nuevo
+<a>Lam</a>   <a>Fa</a>      <a>Sol</a>     <a>Mi7</a>  <a>LamFaSol</a>
+Involución, involución, involución  
+<a>Lam</a>                     <a>Fa</a>
+Mío, mío, mío, mío Mío, mío, mío, mío Mío, mío,
+   <a>Sol</a>
+mío, mío
+<a>Lam</a>                 <a>Fa</a>         <a>Sol</a>
+Todo esto que ves aquí es mío, como lo fue en un
+    <a>Lam</a>
+principio
+                  <a>Fa</a>           <a>Sol</a>
+Y tras millones de años perdidos vuelve otra vez a
+    <a>Mi7</a>
+su sitio
+<a>Lam</a>               <a>Fa</a>        <a>Sol</a>              <a>Lam</a>
+Todo esto que ves aquí es mío, recuperé mi legado
+                    <a>Fa</a>            <a>Sol</a>  <a>Mi7</a>
+El día que el ser humano dejó de ser humano
+<a>Fa</a>            <a>Mi7</a>              <a>Fa</a>            <a>Mi7</a>
+Del sur del campo del sur, la caleta y el poniente
+<a>Lam</a>         <a>Rem</a>             <a>Fa</a>
+Del norte de Cádiz norte al este con sus dos
+  <a>Mi7</a>
+puentes
+<a>Rem</a>                                    <a>Lam</a>
+Todo este mundo que ves y si allende del mar, hay
+   <a>Fa</a>          <a>Mi7</a>
+más mundo escondido
+            <a>Lam</a>                          <a>Fa</a>
+Todo es mío, mío, mío, mío Mío, mío, mío, mío
+<a>Sol</a>           <a>Mi7</a>
 Mío, mío, mío, mío
-<a>Lam </a>                       <a>Fa</a>
-Todo esto que ves aquí es mío, c
-omo lo fue en un principio
-                          <a> Fa</a>
-Y tras millones de años perdidos v
-uelve otra vez a su sitio
-<a>Lam </a>                       <a>Fa</a>
-Todo esto que ves aquí es mío, r
-ecuperé mi legado
-El día que el ser humano d
-ejó de ser humano
-<a>Fa </a>             <a>Mi7</a>
-Del sur del campo del sur, l
-a caleta y el poniente
-<a>Lam </a>           <a> Rem</a>
-Del norte de Cádiz norte a
-l este con sus dos puentes
-<a>Rem</a>
-Todo este mundo que ves y
- si allende del mar, h
-ay más mundo escondido
-Todo es mío
-, mío, mío, mío 
-Mío, mío, mío, mío
-<a>Sol</a>
-Mío, mío, mío, mío
 <a>Lam</a>
- Mío</pre>
+ Mío
+</pre>

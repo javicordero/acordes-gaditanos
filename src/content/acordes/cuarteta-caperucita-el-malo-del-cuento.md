@@ -1,5 +1,5 @@
 ---
-pieza: cuarteta "Caperucita"
+pieza: Cuarteta "Caperucita"
 agrupacion: El Malo del cuento
 year: 2016
 musica: Jonathan Pérez Ginel
@@ -10,60 +10,66 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/eB-ROxMxE64?feature=player_embedded'
 
 ---
-<pre>                  <a> Mi</a>
-La de Caperucita fue la historia más bella y más 
-    <a>Sol#m7 </a>         <a> Sol#7 </a>             <a>Do#m7</a>
-bonita que este lobo vivió,                    
- Sol#m7                                   La
-Una historia prohibida de amor, una historia de 
+<pre>
+             <a>Mi</a>                          <a>Sol#m7</a>
+La de Caperucita fue la historia más bella y más
+     <a>Sol#7</a>           <a>Do#m7</a>
+bonita que este lobo vivió,
+               <a>Sol#m7</a>
+Una historia prohibida de amor, una historia de
+<a>La</a>
 esas
-                          <a>Mi</a>
-Que te dejan marcao pa' toa la via y esconden 
-          <a> La</a>
+                     <a>Mi</a>
+Que te dejan marcao pa' toa la via y esconden
+  <a>La</a>                               <a>Lam7</a>
 sentimientos que ya nunca más se olvidan.
-          <a> Mi </a>                           <a> Sol#7</a>
-Fue mi bosque el fiel testigo mudo del romance que 
-                              <a>Do#m7</a>
-nunca contarán,                                  
-Sol#m7                          Lam7
-Porque hasta en estos tiempos en que vivimos 
-existen los prejuicios,       Sol#m7                
-    Fa#m7                    Sol#7 
-Y un lobo como yo es muy poquita cosa para un 
-cuento de amor.Do#m7                       Sol#m7  
-                    La                              
-      Sol#7
-Juntitos compartimos el miedo y la ilusión, 
-juntitos descubrimos el placer de la pasión,Do#m7  
-                                         Sol#m7
-Tan solo ella podido amansar a esta fieraLa        
-                                   Fa#              
-       Si7
-Y tan solo por ella pasaría una vida de noches en 
-vela.                   Mi                          
-           Sol#7
-Contando las estrellas cubiertos por un manto       
-                                                    
-                                                    
-             Do#m7
+      <a>Mi</a>                      <a>Sol#7</a>
+Fue mi bosque el fiel testigo mudo del romance que
+         <a>Do#m7</a>
+nunca contarán,
+                               <a>Sol#m7</a>
+Porque hasta en estos tiempos en que vivimos
+                 <a>Lam7</a>
+existen los prejuicios,
+     <a>Sol#m7</a>                  <a>Fa#m7</a>
+Y un lobo como yo es muy poquita cosa para un
+       <a>Sol#7</a>
+cuento de amor.
+<a>Do#m7</a>                  <a>Sol#m7</a>
+Juntitos compartimos el miedo y la ilusión,
+    <a>La</a>                               <a>Sol#7</a>
+juntitos descubrimos el placer de la pasión,
+<a>Do#m7</a>                             <a>Sol#m7</a>
+Tan solo ella podido amansar a esta fiera
+<a>La</a>                              <a>Fa#</a>
+Y tan solo por ella pasaría una vida de noches en
+<a>Si7</a>
+vela.
+                                                   M
+Contando las estrellas cubiertos por un manto
+i
+
+    <a>Sol#7</a>
+             Do#m7
 Entre besos y abrazos a la luz de una hoguera,
-                        <a>Sol#m7</a>
-Robándole un te quiero al son de la lunita llena, 
-        <a>La</a>
+                  <a>Sol#m7</a>                      <a>La</a>
+Robándole un te quiero al son de la lunita llena,
+                    <a>Sol#m</a>
 la niña de la capa colorá,
-      <a>La</a>
+  <a>La</a>                         <a>Fa#</a>     <a>Si7</a>
 El cuento más bonito que no quisieron contar,
-        <a>Mi</a>
-Que pena que hasta en los corazones pongan 
- <a>Sol#7</a>
-condiciones y pinten fronteras,                    
-<a>Do#m7</a>
-            Mi7                                    
-                     La
-Cuando un amor tan puro no entiende de pueblos, 
-reyes ni banderas,                            Mi    
-                      Fa#m          Fa#7            
-                     Si7
-Que solamente entiende de pasión, por eso sigo 
-aullándole a la luna esta canción                  
-Mi</pre>
+    <a>Mi</a>                         <a>Sol#7</a>
+Que pena que hasta en los corazones pongan
+                         <a>Do#m7</a>
+condiciones y pinten fronteras,
+                    <a>Mi7</a>
+Cuando un amor tan puro no entiende de pueblos,
+              <a>La</a>
+reyes ni banderas,
+                  <a>Mi</a>                   <a>Fa#m</a>
+Que solamente entiende de pasión, por eso sigo
+  <a>Fa#7</a>                       <a>Si7</a>
+aullándole a la luna esta canción
+             <a>Mi</a>
+Pensando en ella.
+</pre>

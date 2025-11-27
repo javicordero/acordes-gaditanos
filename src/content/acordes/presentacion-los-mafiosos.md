@@ -10,62 +10,63 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JF2ICP4ZMyU?feature=player_embedded'
 
 ---
-<pre>        <a>Mim </a>                       <a> Re</a>
-Parapapa, parapapa paraparaparaparpapa              
-<a> Mim</a>
-                          Re              Mim
+<pre>
+   <a>Mim</a>                <a>Re</a>          <a>Mim</a>
 Parapapa, parapapa paraparaparaparpapa
-Si tú eres la libre en la cuna a donde te toco 
-caer                                                
-                               Lam7
-Y a ir descalzo por la calle se acostumbraron tus 
+                        <a>Re</a>        <a>Mim</a>
+Parapapa, parapapa paraparaparaparpapa
+Si tú eres la libre en la cuna a donde te toco
+caer
+                                                 L
+Y a ir descalzo por la calle se acostumbraron tus
+<a>am7</a>
 pies
-Si eres más fuerte que el dolor y el negro te 
-                                  <a> Si7 </a> <a>Lam7</a>
-sienta bien                                        
-                     Si7
-Si tienes duro el corazón y te resbala la piel      
-                Mim
-Si te gusta la acústica del silencio y de la bala
-Y las cicatrices llenan las paredes de tu almaSol  
-                               Re
-Ya puedes convertirte en uno mas                    
-    Lam7                              Si7
+Si eres más fuerte que el dolor y el negro te
+   <a>Si7Lam7</a>
+sienta bien
+                                          <a>Si7</a>
+Si tienes duro el corazón y te resbala la piel
+                                          <a>Mim</a>
+Si te gusta la acústica del silencio y de la bala
+Y las cicatrices llenan las paredes de tu alma
+<a>Sol</a>                         <a>Re</a>
+Ya puedes convertirte en uno mas
+                  <a>Lam7</a>                       <a>Si7</a>
 De la honorable sociedad de esta terrible comparsa
-Pero que sepas compañero que aquí nadie nunca ha 
-entrado por dinero               Lam7              
-                   Si7
-Que lo primero es el carnaval jajajaja jajajaja    
-Mim            
-El mundo se divide en dos, el mundo se divide en 
-dos             Si7                     Mim        
-            Si7                         Mim
-Los que viven como dios manda y los que mandan 
-viven como Dios                                    
-   Sol             Mim      Sol  La7 Si7
-Parapapa, parapapa paraparaparaparpapa              
-             Fa#m                                  
- La
-No se te olvide mafioso que el carnaval es del 
-pueblo                                    Fa#m      
-                      Mi 
-Voy a intentarlo a tu manera a ver si así se lo 
+Pero que sepas compañero que aquí nadie nunca ha
+entrado por dinero
+           <a>Lam7</a>                           <a>Si7</a>
+Que lo primero es el carnaval jajajaja jajajaja
+         <a>Mim</a>
+El mundo se divide en dos, el mundo se divide en
+dos
+       <a>Si7</a>             <a>Mim</a>             <a>Si7</a>
+Los que viven como dios manda y los que mandan
+           <a>Mim</a>
+viven como Dios
+                 <a>Sol</a>     <a>Mim</a>  <a>SoLaSi7</a>
+Parapapa, parapapa paraparaparaparpapa
+                   <a>Fa#m</a>
+No se te olvide mafioso que el carnaval es del
+  <a>La</a>
+pueblo
+                          <a>Fa#m</a>
+Voy a intentarlo a tu manera a ver si así se lo
+   <a>Mi</a>
 devuelvo
-Que el carnaval es lo poco que ya le queda a mi 
-tierra                                              
-            Re
-Y para mi es lo único que me vale una guerra        
-                                                    
-        Sim7
-No se te olvide mafioso que el carnaval es mi vida  
-                                   Re              
-     Do#7
+Que el carnaval es lo poco que ya le queda a mi
+tierra
+                                        <a>Re</a>
+Y para mi es lo único que me vale una guerra
+                                             <a>Sim7</a>
+No se te olvide mafioso que el carnaval es mi vida
+                         <a>Re</a>              <a>Do#7</a>
 Y si la pierdo por el la daré por bien perdida
-No se te olvide mafioso que el carnaval es del 
-pueblo                                              
-                             Fa#m
-Voy a intentarlo a tu manera a ver si así se lo 
-devuelvo                                            
-La   Do#7  Fa#m
-Parapapa, parapapa paraparaparaparpapa p
-<a>arapapa</a></pre>
+No se te olvide mafioso que el carnaval es del
+pueblo
+Voy a intentarlo a tu manera a ver si así se lo
+   <a>Fa#m</a>
+devuelvo
+                                 <a>La</a>  <a>Do#7</a> <a>Fa#m</a>
+Parapapa, parapapa paraparaparaparpapa parapapa
+</pre>

@@ -10,52 +10,55 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Z3t_LYyeGX4?feature=player_embedded'
 
 ---
-<pre><a>LaM7 </a>   <a>Mi7 </a>           <a>LaM7</a> <a>Fa#7</a>
-Que envidia a mí me da ver cómo los catalanes, 
-   <a>Sim7 </a> <a>Mi7</a>
-aunque los llamen rufianes 
-<a>Fa#7 </a>                 <a>Sim7 </a>   <a>Mi7</a>
-Condicionan los planes del gobierno centralLaM7    
-<a> LaM7</a> <a>Mi7</a>
-  Mi7          LaM7 La7                       Re
-Que envidia de verdad ver tantos parlamentariosMi7  
-                         Do#m7 Dom7  Sim7          
-              Mi7                     Lam
-Vascos, gallegos, canarios              
- representando a su tierra allí en la 
-capital(Sorda)               
+<pre>
+<a>LaM7Mi7</a>         <a>LaM7Fa#7</a>             <a>Sim7</a> <a>Mi7</a>
+Que envidia a mí me da ver cómo los catalanes,
+                   <a>Do#m7</a>
+aunque los llamen rufianes
+<a>Fa#7</a>          <a>Sim7</a> <a>Mi7</a>             <a>LaM7Mi7</a>
+Condicionan los planes del gobierno central
+<a>LaM7</a>  <a>Mi7</a>        <a>LaM7La7</a>                   <a>Re</a>
+Que envidia de verdad ver tantos parlamentarios
+<a>Mi7</a>                     <a>Do#m7</a> <a>Dom7</a> <a>Sim7</a>
+Vascos, gallegos, canarios
+                  <a>Mi7</a>                  <a>Lam</a>
+representando a su tierra allí en la capital
+(Sorda)
 Fíjese que hasta Teruel allí tiene un diputado
-En qué coño hemos fallado y si no dígame ustedLam  
-                                        Sol
-Donde están los andaluces allí, donde esta nuestra 
-presenciaFa                          Mi7  Sim7      
- Mi7         LaM7
-Que somos ocho millones y nadie nos representa
-Si hubiera un grupo de gente enseñando los dientes 
-por AndalucíaDo#m7                                  
-                                              Dom7
-Peleando por la sangre, la pena y el hambre de la 
-tierra mía 
-<a>Sim7 </a>                             <a>Fa#7</a>
-Empuñando la arbonaida y despojao de complejo      
-         <a>Sim7</a>
-                                                    
-Si7                           Mi7 
-Ocupando en el congreso los sitios que hoy no nos 
-sirven de naRe                                      
- 
-Si defendieran mi tierra, mi habla, mis cunas, mis 
+En qué coño hemos fallado y si no dígame usted
+<a>Lam</a>
+Donde están los andaluces allí, donde esta nuestra
+   <a>Sol</a>
+presencia
+<a>Fa</a>                 <a>Mi7</a> <a>Sim7</a>     <a>Mi7</a>      <a>LaM7</a>
+Que somos ocho millones y nadie nos representa
+Si hubiera un grupo de gente enseñando los dientes
+por Andalucía
+<a>Do#m7</a>
+Peleando por la sangre, la pena y el hambre de la
+      <a>Dom7</a>
+tierra mía
+<a>Sim7</a>                  <a>Fa#7</a>              <a>Sim7</a>
+Empuñando la arbonaida y despojao de complejo
+                                     <a>Si7</a>
+Ocupando en el congreso los sitios que hoy no nos
+       <a>Mi7</a>
+sirven de na
+<a>Re</a>
+Si defendieran mi tierra, mi habla, mis cunas, mis
 males y mi gente
 <a>Do#7</a>
-Y en Madrid por fin tuvieran a Blas Infante 
-                  <a> Fa#m</a>
-presenteRem                     Mi7                
-       LaM7 Re                        Mi7
-Si por fin se reclamara que nuestra región también 
+Y en Madrid por fin tuvieran a Blas Infante
+   <a>Fa#m</a>
+presente
+<a>Rem</a>             <a>Mi7</a>                 <a>LaM7Re</a>
+Si por fin se reclamara que nuestra región también
+        <a>Mi7</a>
 es una nación
 (Sorda)
-Seguro que el congreso de miedo temblaría 
-<a>Mi7 </a>                 <a> Sim7</a>
-Si se escuchara allí callarse que ahora aquí va a 
-    <a> Mi7</a>
-hablar Andalucía</pre>
+Seguro que el congreso de miedo temblaría
+<a>Mi7</a>           <a>Sim7</a>                     <a>Mi7</a>
+Si se escuchara allí callarse que ahora aquí va a
+           <a>LaM7</a>
+hablar Andalucía
+</pre>

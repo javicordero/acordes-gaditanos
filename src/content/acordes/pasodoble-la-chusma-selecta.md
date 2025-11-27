@@ -10,59 +10,65 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pyS_fPM68AU?feature=player_embedded'
 
 ---
-<pre>Este teatrillo es insano, zafio tedioso, inhumano, 
-no tiene pies ni cabeza    Mi7                      
-  LaM7                                La7          
-                    Re 
-Hace años que este concurso parece un final de 
-curso brillo, confeti, ilusion                    
-Do#m7        Sim7    Mi7                      LaM7
-Que hay que ganarse el derecho para abrir estas 
-cortinas                          Fa                
-     Mi7     LaM7
-Qué bonito quedaría aquí una hermosa guillotina    
-                                                    
-         Fa#7                      Sim7            
-Fa#7
-Que corte de un tajo autores mediocres, peleas de 
-castrati, murgas de colega     Sim7                
-        Mi7                  Sim7                  
-Mi7               LaM7
-Fantoches sin gracia, coristas a sueldo, tobuses de 
-pueblo, viñeros de pegaLam                          
-Sol                           Fa       Sim7/5    
- Mi7
-Promesas viejunas, todos campeones, cuarteteros con 
-depresión   Rem          Mi7  Lam                  
-      Mi7                      LaM7
-La roja paloma atrae más romero la chusma quiere 
-diversión                                          
-                                                    
-          Sim7 Fa#7 Sim7
-Tan solo vemos negocio el olor a dinero, olvidando 
+<pre>
+<a>LaM7</a>
+Señores carnavaleros de este certamen plebeyo
+ <a>Fa#7</a>          <a>Sim7</a>
+quitémonos la careta
+                    <a>Mi7</a>                           S
+Este teatrillo es insano, zafio tedioso, inhumano,
+im7  <a>Mi7</a>          <a>LaM7</a>
+no tiene pies ni cabeza
+ <a>Mi7</a>                 <a>LaM7</a>
+Hace años que este concurso parece un final de
+ <a>La7</a>                      <a>Re</a>
+curso brillo, confeti, ilusion
+              <a>Do#m7</a>     <a>Sim7</a>   <a>Mi7</a>
+Que hay que ganarse el derecho para abrir estas
+   <a>LaM7</a>
+cortinas
+                  <a>Fa</a>                <a>Mi7</a>   <a>LaM7</a>
+Qué bonito quedaría aquí una hermosa guillotina
+                                          <a>Fa#7</a>
+Que corte de un tajo autores mediocres, peleas de
+          <a>Sim7</a>       <a>Fa#7</a>
+castrati, murgas de colega
+  <a>Sim7</a>                 <a>Mi7</a>             <a>Sim7</a>
+Fantoches sin gracia, coristas a sueldo, tobuses de
+    <a>Mi7</a>           <a>LaM7</a>
+pueblo, viñeros de pega
+<a>Lam</a>                <a>Sol</a>                    <a>Fa</a>    <a>Sim7</a>
+Promesas viejunas, todos campeones, cuarteteros con
+/5   <a>Mi7</a>
+depresión
+<a>Rem</a>       <a>Mi7</a> <a>Lam</a>                 <a>Mi7</a>
+La roja paloma atrae más romero la chusma quiere
+    <a>LaM7</a>
+diversión
+Tan solo vemos negocio el olor a dinero, olvidando
+             <a>SimFa#Sim7</a>
 las coplas lo más sagrao
-Gracias a todo un patronato y a un Kichi ciclista 
-                                                  <a>Mi</a>
-que de aquí a tres años punta jurado                
-7              <a>LaM7</a>
-                                 Sim7  Mi7
-A mi esos líos cortesanos me dan ansiedad 
-Que yo por ley exento estoy de un control de 
-                           <a>LaM7</a>
-calidad                                            
-                                          La7      
-          Rem
-Si de verdad son sagradas las tablas del Falla 
-llegar ya sería un primer premio                    
-                          Lam
-Dejemos la hipocresía, preselección por decreto    
-              Mi7                                  
- Lam
-Y en menos de tres febreros mas calidad y más 
+Gracias a todo un patronato y a un Kichi ciclista
+                   <a>Mi7</a>         <a>LaM7</a>
+que de aquí a tres años punta jurado
+                                 <a>Sim7</a> <a>Mi7</a>
+A mi esos líos cortesanos me dan ansiedad
+Que yo por ley exento estoy de un control de
+  <a>LaM7</a>
+calidad
+Si de verdad son sagradas las tablas del Falla
+              <a>La7</a>           <a>Rem</a>
+llegar ya sería un primer premio
+                                          <a>Lam</a>
+Dejemos la hipocresía, preselección por decreto
+              <a>Mi7</a>
+Y en menos de tres febreros mas calidad y más
+  <a>Lam</a>
 respeto
-<a>La7 </a>             <a> Rem </a>           <a> Mi7 </a>         <a> LaM7</a>
-Pende de un hilo la fiesta nuestro folcloreDo#m7    
-  Dom7     Sim7                                    
-                   Sim7 Mi7      LaM7
-Hay que matar a la bestia antes que crezca antes 
-que crezca ayy y nos devore</pre>
+<a>La7</a>          <a>Rem</a>          <a>Mi7</a>         <a>LaM7</a>
+Pende de un hilo la fiesta nuestro folclore
+<a>Do#m7</a>  <a>Dom7</a>   <a>Sim7</a>
+Hay que matar a la bestia antes que crezca antes
+           <a>Sim7Mi7</a>    <a>LaM7</a>
+que crezca ayy y nos devore
+</pre>

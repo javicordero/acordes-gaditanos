@@ -9,31 +9,31 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MR8BLf8Nf44?feature=player_embedded'
 
 ---
-<pre>                  <a>Lam </a>                 <a> Mi7</a>
+<pre>
+            <a>Lam</a>             <a>Mi7</a>           <a>Lam</a>
 Muy buenas noches tengan ustedes los gaditanos
-              <a>La7</a>
+       <a>La7</a>                         <a>Rem</a>
 Hemos venido por eso mismo estamos aquí
-              <a>Sol7</a>
-Vamos pa Cádiz dijimos un día y aquí estamos
-            <a> Fa</a>
+         <a>Sol7</a>                           <a>Do</a>
+Vamos pa Cádiz dijimos un día y aquí estamos
+       <a>Fa</a>                              <a>Mi7</a>
 A ver la fiesta y nos quedamos aluego allí.
-                      Lam             Mi7          
-            LamYa me habían dicho to lo bonita que 
-era esta tierra
-             La7                              RemY 
-sus mujeres lo reteguapa y resalá
-            Sol7                                
- DoPor algo dijo en una copla cierto poeta
-                  Mi7                              
-              LaDespués de Cádiz el Non Plus Ultra 
-ya no va más.
-                Sim                        
- LaViéndote a ti bella ciudad marinera
-                             Mi7                    
-               LaTengo que decir de vera que bien 
-puede presumir
-              Sim                                  
-    La   Le juro usted que como encuentre trabajo
-                            Mi7                    
-             LaMe vuelvo más gaditano que el 
-mismísmo Moret</pre>
+               <a>Lam</a>         <a>Mi7</a>
+Ya me habían dicho to lo bonita que era esta
+ <a>Lam</a>
+tierra
+       <a>La7</a>                     <a>Rem</a>
+Y sus mujeres lo reteguapa y resalá
+       <a>Sol7</a>                        <a>Do</a>
+Por algo dijo en una copla cierto poeta
+           <a>Mi7</a>                              <a>La</a>
+Después de Cádiz el Non Plus Ultra ya no va más.
+          <a>Sim</a>                  <a>La</a>
+Viéndote a ti bella ciudad marinera
+                  <a>Mi7</a>                      <a>La</a>
+Tengo que decir de vera que bien puede presumir
+       <a>Sim</a>                        <a>La</a>
+Le juro usted que como encuentre trabajo
+                 <a>Mi7</a>                    <a>La</a>
+Me vuelvo más gaditano que el mismísmo Moret
+</pre>

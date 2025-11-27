@@ -10,53 +10,54 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Aq24zf77eFM?feature=player_embedded'
 
 ---
-<pre><a>Lam </a>                     <a>Mim </a>                           <a>Fa </a>     <a> Mi7 </a>            
-<a>Cu</a>
-ando s
-alta el Levante, a
-garrando mis manos, m
-e saca a bailar
-<a>Rem </a>                         <a> Sol7 </a>           <a>D</a>
-Y en medio de un vals, como un amante besa mis 
-o      <a>Rem </a>                       <a> Mi7</a>
-labios y me lleva me lleva a volarRem              
- Sol7             Do      Mi7                  
- Lam   La7 
-Y por las calles sigue a tu cuerpo para disolver 
-veneno             Rem             Sol7          
-Do 
-Y a cada pasito que das sientes que todo cambioFa  
-                                                    
-  Mim                    
-Todo lo miras distinto porque aquí me tienes a 
-solas contigo                Rem  Fa Rem   Fa      
-                  Mi7
-No puedes huir me tienes otra vez dentro de tiLam  
-     Mim                        Fa  Sim7/5  Mi7
-Soy la locura que llama a tu puerta,      CádizLam  
-     Mim                      Fa                    
-            Rem       Sol7                     Do
-Soy la locura que pinta tus calles, tu alma, tu 
+<pre>
+<a>Lam</a>              <a>Mim</a>                     <a>Fa</a>     M
+Cuando salta el Levante, agarrando mis manos, me
+i7
+saca a bailar
+<a>Rem</a>                        <a>Sol7</a>           <a>Do</a>
+Y en medio de un vals, como un amante besa mis
+  <a>Rem</a>                        <a>Mi7</a>
+labios y me lleva me lleva a volar
+<a>Rem</a>        <a>Sol7</a>         <a>Do</a>   <a>Mi7</a>             <a>Lam</a>
+Y por las calles sigue a tu cuerpo para disolver
+ <a>La7</a>
+veneno
+           <a>Rem</a>              <a>Sol7</a>          <a>Do</a>
+Y a cada pasito que das sientes que todo cambio
+<a>Fa</a>                                       <a>Mim</a>
+Todo lo miras distinto porque aquí me tienes a
+solas contigo
+          <a>Rem</a> <a>Fa</a> <a>Rem</a> <a>Fa</a>                  <a>Mi7</a>
+No puedes huir me tienes otra vez dentro de ti
+<a>Lam</a>    <a>Mim</a>                     <a>Fa</a>  <a>Sim7/5</a> <a>Mi7</a>
+Soy la locura que llama a tu puerta,      Cádiz
+<a>Lam</a>   <a>Mim</a>                  <a>Fa</a>
+Soy la locura que pinta tus calles, tu alma, tu
+       <a>Rem</a>     <a>Sol7</a>                <a>Do</a>
 piel ,niña del viento que abre tus ojos
-       Rem                                  Mim    
-                           Fa                  
- Rem             Mi7Y te saca de la realidad y te 
-dice que puedes volar y te llena tu alma tu vida de 
-carnavalLam                               Fa
+   <a>Rem</a>                         <a>Mim</a>
+Y te saca de la realidad y te dice que puedes volar
+     <a>Fa</a>              <a>Rem</a>         <a>Mi7</a>
+y te llena tu alma tu vida de carnaval
+<a>Lam</a>                                     <a>Fa</a>
 Cai amor, aquí me tienes átame y me retienes
-    <a>Rem </a>                                     <a> F</a>
+ <a>Rem</a>                              <a>Fa</a>      <a>Mi7</a>
 La locura que hay en tu interior vuelve, vuelve
-Lam                                  Fa            
-                       Rem                        
- Mi7Otra vez llamo a tu puerta otra vez abro tus 
-velas el levante te atrapo y vuelas
-<a>Lam </a>                             <a> Fa</a>
-Cai amor, aquí me tienes átame y me retienes
-    <a>Rem </a>                                     <a> F</a>
+<a>Lam</a>                       <a>Fa</a>
+Otra vez llamo a tu puerta otra vez abro tus velas
+   <a>Rem</a>                  <a>Mi7</a>
+el levante te atrapo y vuelas
+<a>Lam</a>                                     <a>Fa</a>
+Cai amor, aquí me tienes átame y me retienes
+ <a>Rem</a>                              <a>Fa</a>      <a>Mi7</a>
 La locura que hay en tu interior vuelve, vuelve
-Rem              Sol7              Do      Mi7      
-       LamPa que olvides tu cordura, pa alegrarte 
-el corazón
-Fa               Rem                           Mi7  
-                       LamVuelven tus niñas Tacita 
-porque tú eres mi locura de amor</pre>
+<a>Rem</a>         <a>Sol7</a>          <a>Do</a>     <a>Mi7</a>         <a>Lam</a>
+Pa que olvides tu cordura, pa alegrarte el corazón
+<a>Fa</a>        <a>Rem</a>                   <a>Mi7</a>
+Vuelven tus niñas Tacita porque tú eres mi locura
+   <a>Lam</a>
+de amor
+            <a>Fa</a>              <a>RemMi7</a>       <a>Lam</a>
+Locura de amor locura de amor, locura de amor
+</pre>

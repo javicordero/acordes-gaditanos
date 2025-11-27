@@ -10,35 +10,37 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/mYyK29S4zJM?feature=player_embedded'
 
 ---
-<pre><a>Lam </a>                   <a>Mi7</a>
-La Luna vino a la fragua con su polisón de 
-             <a> Lam</a>
-nardos,Sol7                 Do                      
-       Fa                              Mi7
-El niño la mira mira, el niño la mira mira, el niño 
-la está mirando. La7                       Rem  
-Sol7                     Do
+<pre>
+<a>Lam</a>              <a>Mi7</a>                         <a>Lam</a>
+La Luna vino a la fragua con su polisón de nardos,
+<a>Sol7</a>          <a>Do</a>                       <a>Fa</a>
+El niño la mira mira, el niño la mira mira, el niño
+           <a>Mi7</a>
+la está mirando.
+<a>La7</a>                 <a>Rem</a> <a>Sol7</a>                 <a>Do</a>
 Niño, mira que te traigo, un martillito de plata;
-<a>La7 </a>                         <a>Rem</a>
-Luna, no quiero martillo, Luna no quiero martillo, 
-           <a> Fa </a>                 <a>Sim7/5</a>
-dale un duende a mi garganta,      Rem              
-<a>Mi7</a>
-               Lam             Mi7                  
-         LaM7
-Y la Luna se lo dio, bendita sea, y el chiquillo se 
-durmió, ea la ea.              Mi7                  
-      LaM7
+<a>La7</a>                 <a>Rem</a>                      <a>Fa</a>
+Luna, no quiero martillo, Luna no quiero martillo,
+         <a>Sim7/5</a>         <a>Mi7</a>
+dale un duende a mi garganta,
+   <a>Rem</a>                      <a>Lam</a>         <a>Mi7</a>
+Y la Luna se lo dio, bendita sea, y el chiquillo se
+            <a>LaM7</a>
+durmió, ea la ea.
+            <a>Mi7</a>                       <a>LaM7</a>
 Duende, pa tu garganta los duendes, duendes,
-Pa el corazón del gitano yunque, clavos y 
+Pa el corazón del gitano yunque, clavos y
+      <a>Mi7</a>
 alcayatas;
-Muerte, qué vienes buscando, muerte, deja tranquilo 
-al hermano, déjalo no seas ingrata.La7              
-                    <a>LaM7</a>
-               Rem                                  
-     Lam
-Hoy la fragua huele a muerte, y a tu tumba otra vez 
-vengo;     Fa                      Mi7              
-                                        LaM7
-Ya sé que no puedo verte, vengo a partirme la 
-camisita que tengo.</pre>
+Muerte, qué vienes buscando, muerte, deja tranquilo
+                              <a>LaM7</a>
+al hermano, déjalo no seas ingrata.
+<a>La7</a>                   <a>Rem</a>
+Hoy la fragua huele a muerte, y a tu tumba otra vez
+  <a>Lam</a>
+vengo;
+  <a>Fa</a>               <a>Mi7</a>
+Ya sé que no puedo verte, vengo a partirme la
+              <a>LaM7</a>
+camisita que tengo.
+</pre>

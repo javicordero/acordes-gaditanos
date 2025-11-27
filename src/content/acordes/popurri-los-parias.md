@@ -10,168 +10,179 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pjc0FHRKZRA?feature=player_embedded'
 
 ---
-<pre><a>Lam</a>
-Yo sé que algún día la calle, el reino de la calle 
-donde di mi palabra                           Sol  
-                     
-No tendrá más gobierno que la libertad, ja, jaLam
-Los reyes tendrán su castigo canallas y mendigos 
-mis amigos rebeldes                       Sol      
-                     Lam
-Clavaran la bandera de la libertaRe                
-                                         Lam
+<pre>
+<a>Lam</a>
+Yo sé que algún día la calle, el reino de la calle
+donde di mi palabra
+                     <a>Sol</a>
+No tendrá más gobierno que la libertad, ja, ja
+<a>Lam</a>
+Los reyes tendrán su castigo canallas y mendigos
+mis amigos rebeldes
+           <a>Sol</a>               <a>Lam</a>
+Clavaran la bandera de la liberta
+<a>Re</a>                                         <a>Lam</a>
 Y los esclavos y los pobres pisaran tierra santa
 <a>Re</a>
-Y se fundirán todas las razas, todas menos la 
-        <a> Lam</a>
-blancaDo                                            
-Sol
-El sueño del universo ganara la partida finalFa    
-                                          Mi7
-Y todos los diamantes del fondo de la tierraDo      
-                                                
-Sol
-Como si fueran coronas sobre nuestra cabeza 
-caeránFa                                      Mi7
+Y se fundirán todas las razas, todas menos la
+ <a>Lam</a>
+blanca
+<a>Do</a>                                      <a>Sol</a>
+El sueño del universo ganara la partida final
+<a>Fa</a>                                     <a>Mi7</a>
+Y todos los diamantes del fondo de la tierra
+<a>Do</a>                                           <a>Sol</a>
+Como si fueran coronas sobre nuestra cabeza caerán
+<a>Fa</a>                                     <a>Mi7</a>
 Y apagara en un océano el fuego de la guerra
-<a>Rem </a> <a>Mi7 </a> <a>Rem</a> <a>Mi7</a>
-<a>Ahh</a> <a>ahh </a> <a>ahhh</a> <a>ahh</a>
-<a>Lam </a>                   <a>Sol</a>
-Oh revolución de la humanidadLam                    
-      Sol                               
-Oh revolución eres la última esperanza de los 
-parias y sé que algún día llegara             Lam  
-                            Sol
-A caballo de la ley de la desobediencia            
-       Lam                                 Sol
-Como un huracán que sale de los corazones          
-                  Lam                              
-                                   Sol
-De la infinita resistencia la voz pasiva de la 
-violencia de nuestras vocesLam                      
-           Sol
-La sangre de los poderosos es la venganza de los 
-pobresLam                                Sol
-La sangre de los poderosos es la venganza de los 
+<a>RemMi7</a>  <a>Rem</a> <a>Mi7</a>  
+<a>Ahh</a> <a>ahh</a>  <a>ahhh</a> <a>ahh</a>
+<a>Lam</a>                     <a>Sol</a>
+Oh revolución de la humanidad
+<a>Lam</a>                               <a>Sol</a>
+Oh revolución eres la última esperanza de los
+parias y sé que algún día llegara
+        <a>Lam</a>                       <a>Sol</a>
+A caballo de la ley de la desobediencia
+           <a>Lam</a>                       <a>Sol</a>
+Como un huracán que sale de los corazones
+                   <a>Lam</a>
+De la infinita resistencia la voz pasiva de la
+                       <a>Sol</a>
+violencia de nuestras voces
+<a>Lam</a>
+La sangre de los poderosos es la venganza de los
+<a>Sol</a>
 pobres
-<a>Lam </a>                               <a>Sol</a>
-La sangre de los poderosos es la venganza de los 
+<a>Lam</a>
+La sangre de los poderosos es la venganza de los
+<a>Sol</a>
 pobres
-<a>Lam </a>                 <a> Sol</a>
-Oh revolución de la humanidadLam                    
-      Sol
-Oh revolución eres la última esperanza de los 
-parias y sé que un día llegara
+<a>Lam</a>
+La sangre de los poderosos es la venganza de los
+<a>Sol</a>
+pobres
+<a>Lam</a>                     <a>Sol</a>
+Oh revolución de la humanidad
+<a>Lam</a>
+Oh revolución eres la última esperanza de los
+                      <a>Sol</a>
+parias y sé que un día llegara
 __________________________________________________
 _
-Lam   Fa   Sol               Lam  Fa       Sol      
-         Lam   Fa          Sol           Lam Fa 
-Mi7Tengo una duda compañero, a ver si alguien con 
-dinero sabe decirme porquéLam                      
-   Sol                                      Fa
-La plata te arruina el alma la soledad no te 
-abandonaRem               Fa                        
-               Mi7
-Se te retira la calma y te hace malvada personaLam 
-Sol   Fa   Sol          Lam Sol  Fa          Sol    
-         Lam Sol Fa Sol                 Lam Fa Mi7
-Ricos y son pobres convencidos de que el llanto y 
-el olvido        nunca le retorceránLam            
-                    Sol                            
-         Fa
-Y mientras los cuernos le salen como la mayor de 
-sus joyas 
-<a>Rem </a>                       <a> Fa</a>
-Aprenden desde chavales a ser formales 
-                     <a> MI7</a>
-gilipollasLam           Sol Fa                      
- Mi7
-Chai lailailailai si voy a ser como ellos 
-<a>Lam </a>     <a>Sol </a>       <a>Fa</a>
+<a>LaFa</a>  <a>Sol</a>         <a>Lam</a> <a>Fa</a>    <a>Sol</a>          <a>Lam</a> <a>Fa</a>
+Tengo una duda compañero, a ver si alguien con
+       <a>Sol</a>       <a>LaFa</a> <a>Mi7</a>
+dinero sabe decirme porqué
+<a>Lam</a>                <a>Sol</a>
+La plata te arruina el alma la soledad no te
+    <a>Fa</a>
+abandona
+<a>Rem</a>         <a>Fa</a>                            <a>Mi7</a>
+Se te retira la calma y te hace malvada persona
+LSol  Fa  Sol        LamSol Fa        Sol
+LamSolFa Sol             LamFaMi7  
+Ricos y son pobres convencidos de que el llanto y
+el olvido        nunca le retorcerán
+<a>Lam</a>                      <a>Sol</a>
+Y mientras los cuernos le salen como la mayor de
+      <a>Fa</a>
+sus joyas
+<a>Rem</a>                <a>Fa</a>                       <a>MI7</a>
+Aprenden desde chavales a ser formales gilipollas
+<a>Lam</a>        <a>SolFa</a>                     <a>Mi7</a>
+Chai lailailailai si voy a ser como ellos
+<a>Lam</a>   <a>Sol</a>      <a>Fa</a>                  <a>Mi7</a>
 Chai lailailailai morirme pobre prefiero
 __________________________________________________
 ______
-Mim                 Re                 Mim          
-    Re                Mim  Re Mim ReDesde siempre 
-llevo a donde voy como mi segunda banderaMim        
-   Re              Mim           Re                
-  Mim        Re Mim Re
-Al primero de los continentes, el nuevo para los de 
-afueraSol                          Re       La7    
-                   Mim
-Donde aprendí la palabra, donde nació la 
-canciónSol                           Re      La7    
-             Mim  Re Mim Re
-Donde Sandino y Guevara, donde la revoluciónMim    
-     Re             Mim  Re Mim      Re        Mim 
-Re Mim Re
-Donde el calor se derrama, donde tomaban caféSol    
-                       Re      La7                  
-      Mim 
-Entre la selva y la habana negros iguales que 
-ustedMim             Re            Mim         Re  
-           Mim  Re Mim Re 
-Cinco siglos lleva Sudamérica bailándole al 
-tiranoMim         Re                 Mim            
-         Re         Mim  Re Mim Re
-Si los españoles fueron crueles, peores los 
-norteamicanosSim
+<a>Mim</a>       <a>Re</a>          <a>Mim</a>        <a>Re</a>         <a>MimR</a>
+Desde siempre llevo a donde voy como mi segunda
+<a>eMiRe</a>
+bandera
+<a>Mim</a>     <a>Re</a>         <a>Mim</a>      <a>Re</a>            <a>Mim</a>     <a>Re</a>
+Al primero de los continentes, el nuevo para los de
+<a>MiRe</a>
+afuera
+<a>Sol</a>                          <a>Re</a>       <a>La7</a>
+Donde aprendí la palabra, donde nació la canción
+<a>Sol</a>                           <a>Re</a>      <a>La7</a>
+Donde Sandino y Guevara, donde la revolución
+<a>Mim</a>   <a>Re</a>        <a>MimReMim</a>   <a>Re</a>     <a>MimReMiRe</a>
+Donde el calor se derrama, donde tomaban café
+<a>Sol</a>                 <a>Re</a>    <a>La7</a>
+Entre la selva y la habana negros iguales que
+<a>Mim</a>
+usted
+<a>Mim</a>      <a>Re</a>        <a>Mim</a>     <a>Re</a>        <a>Mim</a> <a>ReMimRe</a>
+Cinco siglos lleva Sudamérica bailándole al tirano
+<a>Mim</a>    <a>Re</a>           <a>Mim</a>              <a>Re</a>
+Si los españoles fueron crueles, peores los
+ <a>MimReMimRe</a>
+norteamicanos
+<a>Sim</a>
 Va por el Gaucho, va por la Pamba
-Va por el rio del Amazonas, va por Neruda y va por 
-MartíMi
+Va por el rio del Amazonas, va por Neruda y va por
+Martí
+<a>Mi</a>
 Va por Allende, por Santiago
-Va por el indio, por el mestizo, va por el Boca y 
+                                         <a>Sol</a>
+Va por el indio, por el mestizo, va por el Boca y
+      <a>Sim</a>
 el Guaraní
-<a>Re </a>                       <a> La7 </a> <a>Mi</a>
-Va por el rio de la Plata y va por su plata y 
-              <a>Sim</a>
-marRe                      La7  Mi7                
-   Lam
-Y va por cada mulata y va por su libertad
+<a>Re</a>                 <a>La7</a> <a>Mi</a>                   <a>Sim</a>
+Va por el rio de la Plata y va por su plata y mar
+<a>Re</a>              <a>La7</a> <a>Mi7</a>             <a>Lam</a>
+Y va por cada mulata y va por su libertad
 __________________________________________________
 ________
-Lam                     Sol                        
-  LamEsta comparsa cantó lo que le sale del alma    
-                          Sol                      
-   Lam
-Con letra, música y voz ha fabricado sus armasLam  
-                    Sol                            
-           Lam
-Y así por cada corazón que haya abierto con mi 
-cantoLam                         Sol                
-                             Lam
-Habrá valido esta revolución más que lo que estoy 
-cantandoLam                         Sol            
-           Fa                       Do
-Cuando las palabras pasen a la historia será la 
-memoria revolucionaria    Rem               Lam    
-                Sol                    Fa
-La que solidaria con toda su gloria reconocerá la 
-victoria a los pariasLam                          
-Sol                              Lam
-Mientras no llega es igual los parias ponen el 
-almaLam                      Sol                    
-         Lam
-Porque esto es Carnaval y más allá de las 
-palmasLam                             Sol          
-                  Lam                     
-Y más allá del premio y mas allá de todo lo que 
-hayLam                             Sol              
-                    Lam
-Lo que queremos es cantar ay ay estas cositas de 
-CaiLam             Sol         Fa      Lam        
- Sol          Fa
-Los que esta lucha batallen que no la den por 
-perdidaLam           Sol             Fa      Lam    
-      Sol           Fa
-Que hagan ruido en la calle, que hagan ruido en la 
+<a>Lam</a>             <a>Sol</a>                   <a>Lam</a>
+Esta comparsa cantó lo que le sale del alma
+                     <a>Sol</a>                  <a>Lam</a>
+Con letra, música y voz ha fabricado sus armas
+<a>Lam</a>             <a>Sol</a>
+Y así por cada corazón que haya abierto con mi
+ <a>Lam</a>
+canto
+<a>Lam</a>               <a>Sol</a>
+Habrá valido esta revolución más que lo que estoy
+    <a>Lam</a>
+cantando
+<a>Lam</a>                   <a>Sol</a>                    <a>Fa</a>
+Cuando las palabras pasen a la historia será la
+                  <a>Do</a>
+memoria revolucionaria
+  <a>Rem</a>               <a>Lam</a>                     <a>Sol</a>
+La que solidaria con toda su gloria reconocerá la
+                 <a>Fa</a>
+victoria a los parias
+<a>Lam</a>                  <a>Sol</a>                      L
+Mientras no llega es igual los parias ponen el
+<a>am</a>
+alma
+<a>Lam</a>               <a>Sol</a>                      <a>Lam</a>
+Porque esto es Carnaval y más allá de las palmas
+<a>Lam</a>              <a>Sol</a>               <a>Lam</a>
+Y más allá del premio y mas allá de todo lo que
+hay
+<a>Lam</a>                  <a>Sol</a>                        L
+Lo que queremos es cantar ay ay estas cositas de
+<a>am</a>
+Cai
+<a>Lam</a>        <a>Sol</a>       <a>Fa</a>     <a>Lam</a>       <a>Sol</a>
+Los que esta lucha batallen que no la den por
+   <a>Fa</a>
+perdida
+<a>Lam</a>      <a>Sol</a>           <a>Fa</a>    <a>Lam</a>        <a>Sol</a>
+Que hagan ruido en la calle, que hagan ruido en la
+<a>Fa</a>
 vida
-<a>Sim </a> <a>La </a> <a>Sol </a> <a>Sim </a> <a>La </a> <a>Sol</a>
-<a>Ahh</a> <a>ahh</a> <a>ahh</a> <a>ahh </a> <a>ahh</a> <a>ahh</a>
-<a>Sim </a>       <a>La </a>       <a> Sol </a>   <a> Sim </a>       <a>La</a>
-Para que siga cantando contigo junto los dosSim    
-  <a>Sol</a>
-  La          Sol                              
- Sim  La       Sim 
-Para si hay un final que lo hagamos tú y yo,      
-tú y yo</pre>
+<a>SimLa</a> <a>Sol</a>  <a>Sim</a> <a>La</a>  <a>Sol</a>  
+<a>Ahh</a> <a>ahh</a> <a>ahh</a> <a>ahh</a>  <a>ahh</a> <a>ahh</a>
+<a>Sim</a>   <a>La</a>       <a>Sol</a>   <a>Sim</a>     <a>La</a>        <a>Sol</a>
+Para que siga cantando contigo junto los dos
+<a>Sim</a>  <a>La</a>       <a>Sol</a>                        <a>Sim</a> <a>La</a>
+Para si hay un final que lo hagamos tú y yo,
+  <a>Sim</a>
+tú y yo
+</pre>

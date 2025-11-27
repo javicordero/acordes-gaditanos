@@ -10,58 +10,58 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/AGuj8wGrJvE?feature=player_embedded'
 
 ---
-<pre><a>Mim </a>                             <a>Si7</a>
-Llevo escuchando hace tiempo la chirigota está en 
-                      <a>Mim</a>
-crisis                             Re              
-                              Do    Lam7            
-           Si7
-Que pasa malos momentos, que no hay Fletillas 
-modernos, que está la cosa difícil                  
-                                                
-Mim
-Que esté desgadinizandose y perdiéndose la gracia
-<a>Lam </a>                         <a>Mim </a>              S
-Cuando de verdad la crisis quien la tiene es la 
-i7                <a>Mim</a>
-comparsa          Si7          Mim                  
-         Sol
+<pre>
+<a>Mim</a>                    <a>Si7</a>
+Llevo escuchando hace tiempo la chirigota está en
+  <a>Mim</a>
+crisis
+                   <a>Re</a>
+Que pasa malos momentos, que no hay Fletillas
+      <a>Do</a>  <a>Lam7</a>                <a>Si7</a>
+modernos, que está la cosa difícil
+                                             <a>Mim</a>
+Que esté desgadinizandose y perdiéndose la gracia
+<a>Lam</a>                  <a>Mim</a>            <a>Si7</a>
+Cuando de verdad la crisis quien la tiene es la
+   <a>Mim</a>
+comparsa
+     <a>Si7</a>       <a>Mim</a>                   <a>Sol</a>
 La comparsa gaditana ya no sabe ni cantar
-Esos quejios no son carnaval son Marife de Triana  
-               <a> Re</a>
-                                                    
-                   Sol
-No, no hay un mensaje social de los que llegan al 
-alma                                  Do   Lam7    
-                   Si7
-Cádiz tes quiero y ya está y enfermedades muy 
-rarasLam                        Mim  Si7            
-                 Mi
-Cádiz tes quiero y ya está y enfermedades muy 
+                                             <a>Re</a>
+Esos quejios no son carnaval son Marife de Triana
+No, no hay un mensaje social de los que llegan al
+<a>Sol</a>
+alma
+                       <a>Do</a>  <a>Lam7</a>
+Cádiz tes quiero y ya está y enfermedades muy
+ <a>Si7</a>
 raras
-La rodilla pa fuera y ajín torcía una mano en el 
-                     <a> Si7</a>
-pecho y la otra escondía                            
-<a>Mi</a>
- Do#7               Fa#m                            
-                         Si7
-Postura que no son propias de carnavales, porque si 
-tu no respeta la ergonomía 
-Lo único que propicia es la aparición de hernias 
-                           <a>Mi</a>
-discalesMim                           Si7          
-                      Mim
-Remember aquellos bigotes remember la porpurina    
-                           Si7                      
- Mim
-Remember la gracia fina,Paco Alba la creóMi7        
-           Lam                                      
-                             Mim
-Y después degeneró en una pelea de gallo y ahora 
-todos tienen barbaLam                              
-                         Si7
-Por eso flipe el día que se hundió el vaporcito    
-                                                    
-                               Mim
-Porque la culpa repito, porque la culpa repito fue 
-de Paco Alba</pre>
+<a>Lam</a>                <a>Mim</a> <a>Si7</a>
+Cádiz tes quiero y ya está y enfermedades muy
+ <a>Mi</a>
+raras
+                                                S
+La rodilla pa fuera y ajín torcía una mano en el
+i7                  <a>Mi</a>
+pecho y la otra escondía
+                   <a>Do#7</a>          <a>Fa#m</a>
+Postura que no son propias de carnavales, porque si
+                       <a>Si7</a>
+tu no respeta la ergonomía
+Lo único que propicia es la aparición de hernias
+    <a>Mi</a>
+discales
+<a>Mim</a>                           <a>Si7</a>
+Remember aquellos bigotes remember la porpurina
+                               <a>Si7</a>
+Remember la gracia fina,Paco Alba la creó
+<a>Mi7</a>          <a>Lam</a>
+Y después degeneró en una pelea de gallo y ahora
+              <a>Mim</a>
+todos tienen barba
+<a>Lam</a>                                       <a>Si7</a>
+Por eso flipe el día que se hundió el vaporcito
+Porque la culpa repito, porque la culpa repito fue
+        <a>Mim</a>
+de Paco Alba
+</pre>

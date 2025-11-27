@@ -10,39 +10,43 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/f6oBEVNV_aE?feature=player_embedded'
 
 ---
-<pre><a>Do</a>
-La música suena en nuestros corazones llevando el 
-compás que mantiene la vida,                        
-          <a>Rem</a>
-                 Sol7                            
- Fa            Sol7        Do
-La música es fruto de las ilusiones y en muchas 
-canciones las penas se olvidan.                    
-                                 Mi7                
-               Lam
-Valió la alegría de las emociones y guarda un 
-espíritu de libertad,                   Sol7        
-           Do                       Mi7            
-                  Lam
-La música es culto de las religiones de tantas 
-naciones que pueblan el mundo,                Fa    
-                            Sol7
-Pasado y futuro como idioma universal.Do            
-     Mim                   Fa                 Sol7
-Cai, vengan a Cai, para que entiendan tanta 
-importancia,Do                         Mim          
-       Rem         Sol7
-Miren cómo a esta tierra le dio la música su 
-elegancia.Fa                         Sol7          
-                Do                     La7          
-                 Rem
-Sientan como el flamenco sin más se desborda y el 
-Amor Brujo que en Falla se encierra                
-Sol7                         Do
-Que te envenena a la vez que enamoraMi7            
-           Lam   Sol7                      Do      
-Fa              Sol7                  Do
-La música en esta tierra quiso dejar su gran obra, 
-y los instrumentos hasta le sobran,                
-            Sol7     Fa         Sol7  Fa Sol7 Do
-Porque esa música suena con el vaivén de las olas.</pre>
+<pre>
+<a>Do</a>
+La música suena en nuestros corazones llevando el
+                        <a>Rem</a>
+compás que mantiene la vida,
+                              <a>Sol7</a>
+La música es fruto de las ilusiones y en muchas
+       <a>Fa</a>         <a>Sol7</a>     <a>Do</a>
+canciones las penas se olvidan.
+                                     <a>Mi7</a>
+Valió la alegría de las emociones y guarda un
+                 <a>Lam</a>
+espíritu de libertad,
+            <a>Sol7</a>             <a>Do</a>
+La música es culto de las religiones de tantas
+ <a>Mi7</a>                      <a>Lam</a>
+naciones que pueblan el mundo,
+         <a>Fa</a>                      <a>Sol7</a>
+Pasado y futuro como idioma universal.
+<a>Do</a>             <a>Mim</a>                <a>Fa</a>
+Cai, vengan a Cai, para que entiendan tanta
+      <a>Sol7</a>
+importancia,
+<a>Do</a>                    <a>Mim</a>              <a>Rem</a>
+Miren cómo a esta tierra le dio la música su
+    <a>Sol7</a>
+elegancia.
+<a>Fa</a>                <a>Sol7</a>                   <a>Do</a>
+Sientan como el flamenco sin más se desborda y el
+        <a>La7</a>                    <a>Rem</a>
+Amor Brujo que en Falla se encierra
+          <a>Sol7</a>                  <a>Do</a>
+Que te envenena a la vez que enamora
+<a>Mi7</a>                <a>Lam</a>  <a>Sol7</a>                 <a>Do</a>
+La música en esta tierra quiso dejar su gran obra,
+<a>Fa</a>           <a>Sol7</a>              <a>Do</a>
+y los instrumentos hasta le sobran,
+                    <a>Sol7</a>   <a>Fa</a>      <a>Sol7</a> <a>FaSol7Do</a>
+Porque esa música suena con el vaivén de las olas.
+</pre>

@@ -10,52 +10,61 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/UCuUwb2FjLQ?feature=player_embedded'
 
 ---
-<pre>-Al aire.
-<a>Do </a>                         <a> Mim</a>
-Lo bonito del destino es que no tiene quien lo 
-pareRem                           Sol7
+<pre>
+<a>Do</a>                                           <a>Mi</a>
+Lo bonito del destino es que no tiene quien lo
+m
+pare
+<a>Rem</a>                                     <a>Sol7</a>
 Y mi destino y el tuyo se cruzan por carnavales
-<a>Do </a>                             <a>Mim</a>
-El destino del destino solamente es 
-sorprenderteRem                                
-Sol7
-Y mi destino está escrito que mi destino es 
-quererteLam                              Mim
-Porque Cádiz tu destino no es tragarte las 
-verdadesRem                                 Sol7
-Es gritárselas a los vientos cuando llegan 
-carnavalesLam                              Mim
-Porque Cádiz tu destino es donde vaya la prisaRem  
-                               Sol7
-Y maquillar tus problemas dibujando una sonrisaDo  
-                              Mim                  
-                     Rem                            
-   Sol7
-Cádiz dime cual es el destino pa no perderme en el 
-camino que me lleve junto a tiDo                    
-            Mim                                
- Rem                        Sol7
-Cádiz dime cual es el destino para volver a lo que 
-fuimos, el vivir para reírLam                      
-     Mim
-No le temas al destino yo sé bien lo que me 
-digoRem                                            
-  Sol7
-Que, aunque a veces es caprichoso, elige el mejor 
-caminoLam                             Mim
-El destino te sorprende por cada rutina flotaRem    
-                                  Sol7
+<a>Do</a>                                        <a>Mim</a>
+El destino del destino solamente es sorprenderte
+<a>Rem</a>
+Y mi destino está escrito que mi destino es
+ <a>Sol7</a>
+quererte
+<a>Lam</a>
+Porque Cádiz tu destino no es tragarte las
+  <a>Mim</a>
+verdades
+<a>Rem</a>
+Es gritárselas a los vientos cuando llegan
+   <a>Sol7</a>
+carnavales
+<a>Lam</a>                                     <a>Mim</a>
+Porque Cádiz tu destino es donde vaya la prisa
+<a>Rem</a>                                     <a>Sol7</a>
+Y maquillar tus problemas dibujando una sonrisa
+<a>Do</a>                    <a>Mim</a>
+Cádiz dime cual es el destino pa no perderme en el
+ <a>Rem</a>                     <a>Sol7</a>
+camino que me lleve junto a ti
+<a>Do</a>                      <a>Mim</a>
+Cádiz dime cual es el destino para volver a lo que
+<a>Rem</a>                  <a>Sol7</a>
+fuimos, el vivir para reír
+<a>Lam</a>                                       <a>Mim</a>
+No le temas al destino yo sé bien lo que me digo
+<a>Rem</a>
+Que, aunque a veces es caprichoso, elige el mejor
+<a>Sol7</a>
+camino
+<a>Lam</a>                                    <a>Mim</a>
+El destino te sorprende por cada rutina flota
+<a>Rem</a>                                       <a>Sol7</a>
 Y hace que dos Comparsistas saquen una chirigota
-<a>Do </a>                               <a>Mim</a>
-Cádiz dime cual es el destino pa no perderme en el 
-                        <a> Rem</a>
-camino que me lleve junto a tiDo                    
-      <a> Sol7</a>
-            Mim                                
- Rem                        Sol7
-Cádiz dime cual es el destino para volver a lo que 
-fuimos, el vivir para reírDo                        
-        Sol7                                Sol#
-Cádiz dime cual es el destino que me lleve junto a 
-tiSol7                         Do
-Que me lleve junto a ti</pre>
+<a>Do</a>                    <a>Mim</a>
+Cádiz dime cual es el destino pa no perderme en el
+ <a>Rem</a>                     <a>Sol7</a>
+camino que me lleve junto a ti
+<a>Do</a>                      <a>Mim</a>
+Cádiz dime cual es el destino para volver a lo que
+<a>Rem</a>                  <a>Sol7</a>
+fuimos, el vivir para reír
+<a>Do</a>                    <a>Sol7</a>                      <a>Sol</a>
+Cádiz dime cual es el destino que me lleve junto a
+#
+ti
+<a>Sol7</a>               <a>Do</a>
+Que me lleve junto a ti
+</pre>

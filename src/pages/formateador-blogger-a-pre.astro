@@ -1,0 +1,230 @@
+---
+
+---
+
+<style>
+  .chords-tool {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+    margin: 1rem 0;
+  }
+
+  .chords-tool__column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .chords-tool textarea {
+    width: 100%;
+    min-height: 260px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .chords-tool pre {
+    margin: 0;
+    padding: 0.5rem;
+    background: #111;
+    color: #f8f8f2;
+    font-family: monospace;
+    font-size: 0.9rem;
+    white-space: pre;
+    overflow-x: auto;
+    border-radius: 4px;
+    min-height: 260px;
+  }
+
+  .chords-tool button {
+    align-self: flex-start;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+
+  .chords-tool__label {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+</style>
+
+<h1>Formateador Blogger → &lt;pre&gt; acordes</h1>
+
+<div class='chords-tool'>
+  <div class='chords-tool__column'>
+    <label class='chords-tool__label' for='blogger-input'> HTML crudo de Blogger (entrada) </label>
+    <textarea id='blogger-input'></textarea>
+    <button id='blogger-format-btn' type='button'> Convertir a &lt;pre&gt; (con escalado) </button>
+  </div>
+
+  <div class='chords-tool__column'>
+    <label class='chords-tool__label' for='blogger-output'>
+      Resultado (&lt;pre&gt; listo para copiar)
+    </label>
+    <textarea id='blogger-output' readonly></textarea>
+
+    <label class='chords-tool__label'> Vista previa del &lt;pre&gt; </label>
+    <pre id='blogger-preview'></pre>
+  </div>
+</div>
+
+<script>
+  // ====== PARÁMETROS AJUSTABLES ======
+  const SCALE = 1; // ya has visto que con 1 te cuadra guay
+  const SHIFT = -1; // y este -2 también
+
+  // Acordes en español: Do, Re, Mi, Fa, Sol, La, Si con sus cosas (m, 7, #, b, etc.)
+  const chordTokenRegex = /^(Do|Re|Mi|Fa|Sol|La|Si)[#b]?[a-zA-Z0-9º°/+]*$/i;
+
+  function looksLikeChordLine(line) {
+    const trimmed = line.trim();
+    if (!trimmed) return false;
+    const tokens = trimmed.split(/\s+/);
+    if (!tokens.length) return false;
+
+    let chordish = 0;
+    for (const t of tokens) {
+      if (chordTokenRegex.test(t)) chordish++;
+    }
+    return chordish >= Math.max(1, Math.floor(tokens.length * 0.5));
+  }
+
+  // HTML -> líneas de texto
+  function htmlToPlainLines(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(`<body>${html}</body>`, 'text/html');
+    const body = doc.body;
+
+    let out = '';
+
+    function walk(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        out += node.textContent;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        const tag = node.tagName;
+
+        if (tag === 'BR') {
+          out += '\n';
+        }
+
+        for (const child of node.childNodes) {
+          walk(child);
+        }
+
+        if (tag === 'DIV' || tag === 'P') {
+          out += '\n';
+        }
+      }
+    }
+
+    walk(body);
+    // &nbsp; -> espacio normal
+    out = out.replace(/\u00A0/g, ' ');
+    return out.split('\n');
+  }
+
+  // Recoloca los acordes de una línea según la longitud de la letra
+  function reflowChordsLine(chordsLine, lyricLine) {
+    const lenA = chordsLine.length || 1;
+    const lenL = lyricLine.length || 1;
+
+    const chords = [];
+    let i = 0;
+    while (i < lenA) {
+      if (chordsLine[i] === ' ') {
+        i++;
+        continue;
+      }
+      let j = i;
+      while (j < lenA && chordsLine[j] !== ' ') j++;
+      const token = chordsLine.slice(i, j);
+      if (chordTokenRegex.test(token)) {
+        chords.push({ token, col: i });
+      }
+      i = j;
+    }
+
+    if (!chords.length) return chordsLine;
+
+    const maxOld = lenA - 1 || 1;
+    const maxNew = lenL - 1 || 1;
+    const outArr = Array(lenL).fill(' ');
+
+    for (const { token, col } of chords) {
+      const norm = maxOld > 0 ? col / maxOld : 0;
+      const scaledNorm = Math.min(1, Math.max(0, norm * SCALE));
+      let newCol = Math.round(scaledNorm * maxNew) + SHIFT;
+
+      if (newCol < 0) newCol = 0;
+      if (newCol >= lenL) newCol = lenL - 1;
+
+      for (let k = 0; k < token.length && newCol + k < lenL; k++) {
+        outArr[newCol + k] = token[k];
+      }
+    }
+
+    return outArr.join('');
+  }
+
+  function processLinesWithReflow(lines) {
+    const out = [];
+    let i = 0;
+
+    // Metadatos hasta el primer acorde
+    while (i < lines.length && !looksLikeChordLine(lines[i])) {
+      out.push(lines[i]);
+      i++;
+    }
+
+    for (; i < lines.length; i++) {
+      const line = lines[i];
+
+      if (looksLikeChordLine(line)) {
+        const chordLine = line;
+        const nextLine = lines[i + 1] ?? '';
+
+        if (nextLine && !looksLikeChordLine(nextLine)) {
+          const newChordLine = reflowChordsLine(chordLine, nextLine);
+          out.push(newChordLine);
+          out.push(nextLine);
+          i++;
+        } else {
+          out.push(line);
+        }
+      } else {
+        out.push(line);
+      }
+    }
+
+    return out;
+  }
+
+  function htmlToPreText(rawHtml) {
+    const lines = htmlToPlainLines(rawHtml);
+    const processed = processLinesWithReflow(lines);
+    const preBody = processed.join('\n');
+    const preText = `<pre>\n${preBody}\n</pre>`;
+    return { preText, preBody };
+  }
+
+  // ✅ Aquí NO usamos DOMContentLoaded porque el script está después del HTML
+  const inputEl = document.getElementById('blogger-input');
+  const outputEl = document.getElementById('blogger-output');
+  const previewEl = document.getElementById('blogger-preview');
+  const btn = document.getElementById('blogger-format-btn');
+
+  if (inputEl && outputEl && previewEl && btn) {
+    function runFormat() {
+      const raw = inputEl.value ?? '';
+      const { preText, preBody } = htmlToPreText(raw);
+      outputEl.value = preText;
+      previewEl.textContent = preBody;
+    }
+
+    btn.addEventListener('click', runFormat);
+  }
+</script>

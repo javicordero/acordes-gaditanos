@@ -10,51 +10,61 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/z-_XcCu3kw0?feature=player_embedded'
 
 ---
-<pre>Cuando la chispa de un rayo de un nubarrón 
-repentino                             Mi7          
-                  La7
-Me detuvo en el camino y me bajo del caballoRe      
-                Sim                              
- Fa#m
+<pre>
+<a>Re</a>                  <a>La7</a>       <a>Mim</a>          <a>Fa#m</a>
+Era una noche de invierno iba yo con mi guitarra
+    <a>Sol</a>       <a>La7</a>
+caminito del ensayo
+<a>Fa#</a>                   <a>Sim</a>
+Cuando la chispa de un rayo de un nubarrón
+     <a>Sol</a>
+repentino
+                  <a>Mi7</a>                   <a>La7</a>
+Me detuvo en el camino y me bajo del caballo
+<a>Re</a>             <a>Sim</a>                      <a>Fa#m</a>
 Allí busque de repente esquivando la tormenta
-                            <a>Sol </a>     <a> La7</a>
+                  <a>Sol</a>    <a>La7</a>                  <a>Re</a>
 El refugio de una puerta donde a salvo me escondía
-          <a> Fa# </a>         <a>Sol </a>             <a>Mi7</a>
-De la agüita que llovía por diciembre y sin 
-                    <a>La7</a>
-desmayoRe                            La7            
-   Mim            Fa#m         La7          Sol    
-     Re
-Era una noche de invierno que iba yo con mi 
-guitarra y la lluvia pal ensayo                  
+      <a>Fa#</a>       <a>Sol</a>          <a>Mi7</a>
+De la agüita que llovía por diciembre y sin
+  <a>La7</a>
+desmayo
+<a>Re</a>                       <a>La7</a>             <a>Mim</a>
+Era una noche de invierno que iba yo con mi
+           <a>Fa#m</a>        <a>La7</a>        <a>Sol</a>        <a>Re</a>
+guitarra y la lluvia pal ensayo
 <a>La7</a>
-Y en el resplando que el rayo dejaba alumbrando el 
-                          <a> Sim</a>
-cieloFa#m                        Fa#7              
- La7
-Vi la silueta de mi Tacita resplandeciendoFa#      
-                                      Fa#7          
-          Sim
-Como un recortable que me enseñaba de cuerpo 
-entero                         Fa#m                
-              Mim
-Sus techitos de papel donde a Cádiz pude ver        
-                          Fa#m                 La7  
-             Sol
-Que es bonita hasta lloviendo que es bonita hasta 
-lloviendoSol                                        
-                               Re
-Cuando todo se calmó y la lluvia del cielo se 
-despejaba                                          
-     Mim  La7                                  
- Sim
-Con los últimos restos de chaparrón por la calle 
+Y en el resplando que el rayo dejaba alumbrando el
+ <a>Sim</a>
+cielo
+<a>Fa#m</a>                        <a>Fa#7</a>
+Vi la silueta de mi Tacita resplandeciendo
+<a>Fa#</a>                           <a>Fa#7</a>
+Como un recortable que me enseñaba de cuerpo
+  <a>Sim</a>
+entero
+                <a>Fa#m</a>                    <a>Mim</a>
+Sus techitos de papel donde a Cádiz pude ver
+                        <a>Fa#m</a>             <a>La7</a>
+Que es bonita hasta lloviendo que es bonita hasta
+    <a>Sol</a>
+lloviendo
+<a>Sol</a>
+Cuando todo se calmó y la lluvia del cielo se
+     <a>Re</a>
+despejaba
+                                   <a>Mim</a> <a>La7</a>
+Con los últimos restos de chaparrón por la calle
+                   <a>Sim</a>
 brillante ya me marchaba
 <a>Sol</a>
-Y así terminaba yo un bonito camino que se hizo 
-                         <a> Re</a>
-eterno                                              
-La7   Sol                    La7
-La puerta del ensayo se me abrió y Cádiz me 
-acompañó                             Sol   La7 Re
-En una noche de invierno</pre>
+Y así terminaba yo un bonito camino que se hizo
+  <a>Re</a>
+eterno
+                            <a>La7</a> <a>Sol</a>
+La puerta del ensayo se me abrió y Cádiz me
+    <a>La7</a>
+acompañó
+               <a>SolLaRe</a>
+En una noche de invierno
+</pre>

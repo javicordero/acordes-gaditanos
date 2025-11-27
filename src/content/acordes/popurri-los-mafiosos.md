@@ -10,211 +10,235 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ba__Js82ZQw?feature=player_embedded'
 
 ---
-<pre>Nuestra leyenda
-es real tanto que debo
-mentir 
-Si es que deseo
-que al fin me tomen con
-seriedad
-<a>Mi7</a>
-Tu sabes bien
-como yo que esto no es
-una comparsa
-Y que en el
-mundo la mafia gira alrededor
-Y si estas
-dentro no puedes salir y si no estás lo
-siento ay pobre de ti 
-O conmigo o
-<a>contra</a> <a>mi</a>
-que por tu
-cuenta y riesgo
-Eres hombre
-muerto que no, que no, que si
-     <a>Do</a>
-Y ahora voy a contarte
-mi historia a ti
-                  <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7    </a> <a>Lam</a> <a>Sol</a> <a>Fa</a> M
-Huérfano sentí            que lo escolar         
-Era igual que
-mentir               y adoctrinar
-<a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7           </a> <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
-Y en la calle aprendí              a hacer el mal  
-           <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7        </a> <a>Lam</a>
-Quise decir                  a sortear
-                 <a>Lam</a>
-Todas las mieles que la vida va
-poniéndote en la selva de la sociedad
-       <a>Lam</a>
-Y el capo nos
-hizo llevar la canción y a cantarla en
-cualquier calle, bar o vagón
-<a>Lam</a>      <a>Sol</a>
-Se detenía la
-gente al pasar y al oírla nos
-daba su voluntad
-      <a>Lam      </a> <a>Sol</a>
-Cual si la canción fuera la
-mercancía
-<a>Lam</a>                So
-Que el mundo necesita
-estos días
-<a>Lam</a>      So
-Una canción
-contra la tiranía, una canción que
-siempre repetía                     
-                     <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
-Viendo como está                la situación
-                 <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
-De la sociedad                   no hay solución
-                   <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
-Un día llegará                    con esta canción
-             <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
-La necesidad              de la revolución
-           <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7         </a> <a>Lam</a> So
-Revolución                revolución     
-            <a>Lam</a>
-Revolución! Que levante la
-mano
-<a>Lam          </a> <a>Sol</a>
-Revolución! El que odie al
-tirano
-           <a>Lam          </a> <a>Sol</a>
+<pre>
+<a>Mim</a>                                       <a>Lam</a>
+Nuestra leyenda es real tanto que debo mentir
+                     <a>Si7</a>  <a>Ladim7</a>            <a>Mim</a>
+Si es que deseo que al fin me tomen con seriedad
+<a>Mi7</a>               <a>Lam</a>                        <a>Mim</a>
+Tu sabes bien como yo que esto no es una comparsa
+                   <a>Sol</a>  <a>Si7</a>     <a>LadimSi7</a>
+Y que en el mundo la mafia gira alrededor
+           <a>Mim</a> <a>Sol</a>           <a>Si7</a>                  M
+Y si estas dentro no puedes salir y si no estás lo
+im  <a>Sol</a>          <a>Si7</a>
+siento ay pobre de ti
+                   <a>Sol</a>                      <a>Si7</a>
+O conmigo o contra mi que por tu cuenta y riesgo
+              <a>Mim</a>     <a>Sol</a>   <a>Ladmi7</a>   <a>Mim</a>
+Eres hombre muerto que no, que no, que si
+  <a>Do</a>                         <a>Si7</a>   <a>Mim</a>
+Y ahora voy a contarte mi historia a ti
+            <a>LamSolFaMi7</a>    <a>LamSolFaMi7</a>
+Huérfano sentí            que lo escolar
+                <a>LaSolFa</a> <a>Mi7</a>        <a>LaSolFa</a> <a>Mi7</a>
+Era igual que mentir               y adoctrinar
+                    <a>LamSoFaMi7</a>        <a>LamSolFaMi7</a>
+Y en la calle aprendí              a hacer el mal
+      <a>LamSol</a> <a>FaMi7</a>      <a>LamSolFaMi7</a>
+Quise decir                 a sortear
+          <a>Lam</a>       <a>Sol</a>        <a>Fa</a>           <a>Mi7</a>
+Todas las mieles que la vida va poniéndote en la
+        <a>LamSolFaMi7</a>
+selva de la sociedad
+   <a>Lam</a>      <a>Sol</a>    <a>Fa</a>         <a>Mi7</a>         <a>Lam</a>
+Y el capo nos hizo llevar la canción y a cantarla
+     <a>Sol</a>          <a>Fa</a>      <a>Mi7</a>
+en cualquier calle, bar o vagón
+<a>Lam</a>  <a>Sol</a>    <a>Fa</a>         <a>Mi7</a>      <a>Lam</a>      <a>Sol</a>  <a>Fa</a>
+Se detenía la gente al pasar y al oírla nos daba su
+   <a>Mi7</a>
+voluntad
+      <a>Lam</a>       <a>Sol</a>           <a>Fa</a>
+Cual si la canción fuera la mercancía
+<a>Lam</a>         <a>Sol</a>       <a>Fa</a>   <a>Mi7</a>
+Que el mundo necesita estos días
+<a>Lam</a>    <a>Sol</a>             <a>Fa</a>        <a>Mi7</a> <a>Lam</a>      S
+Una canción contra la tiranía, una canción que
+ol          <a>Fa</a>                <a>Mi7</a>
+siempre repetía
+              <a>LamSolFaMi7</a>      <a>LamSolFaMi7</a>
+Viendo como está                la situación
+          <a>LamSolFa</a> <a>Mi7</a>             <a>LamSolFa</a> <a>Mi7</a>
+De la sociedad                   no hay solución
+            <a>LamSolFa</a> <a>Mi7</a>             <a>LamSolFaMi7</a>
+Un día llegará                    con esta canción
+             <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
+La necesidad              de la revolución
+       <a>LamSolFa</a> <a>Mi7</a>       <a>Lam</a> <a>SolFaMi7</a>
+Revolución                revolución
+      <a>Lam</a>       <a>Sol</a>      <a>FaMi7</a>
+Revolución! Que levante la mano
+        <a>Lam</a>       <a>Sol</a>     <a>Fa</a> <a>Mi7</a>
+Revolución! El que odie al tirano
+     <a>Lam</a>       <a>Sol</a>    <a>FaMi7</a>
 Revolución! Se de una manera
-           <a>Lam          </a> So
-Revolución!Que convierte en
-primera
-          <a>Lam      </a> <a>Fa</a>
+       <a>Lam</a>         <a>Sol</a>      <a>FaMi7</a>
+Revolución!Que convierte en primera
+      <a>Lam</a>     <a>Fa</a>   <a>Mi7</a>
 Necesidad l a revolución
-Veras que pronto
-te das cuenta que también las
+         <a>Lam</a>           <a>Sol</a>           <a>Fa</a>
+Veras que pronto te das cuenta que también las
+     <a>Mi7</a>
 tienes tú
-                 <a>Lam            </a> <a>Sol             </a> <a>Fa            </a> <a>Mi7</a>
-<a>Cuando</a> <a>descubras</a>
-<a>el</a> <a>miste</a>
-juventud
-                      <a>Lam</a>
-Que esta escondido dentro de lo que
-te digo y al final de mi
-canción
-<a>Lam   </a> <a>Fa#</a>
-Ohhhh Ohhh  Ohh
+          <a>Lam</a>         <a>Sol</a>          <a>Fa</a>         <a>Mi7</a>
+Cuando descubras el misterio de la eterna juventud
+            <a>Lam</a>        <a>Sol</a>        <a>Fa</a>        <a>Mi7</a>
+Que esta escondido dentro de lo que te digo y al
+       <a>LamSolFaMi7</a>
+final de mi canción
+<a>LamFa#</a>    <a>Sim</a>
+Ohhhh Ohhh  Ohh
 <a>Sim</a>
-Y es por eso que
-el capo nos fue
-convenciendo para hacer un
-plan
+Y es por eso que el capo nos fue convenciendo para
+       <a>Fa#m</a>
+hacer un plan
 <a>Sim</a>
-Si lleváis
-adelante canciones así ellos intentaran que no 
-hagan
-ruido
-<a>Sol</a>
-Y contra tanto y
-tan poderoso enemigo
-<a>Mi                                           </a> <a>Fa#</a>
-<a>Solamente</a>
-cantando no vale luchar
-Hay que usar, además, otro oscuro
-<a>camino </a>
+Si lleváis adelante canciones así ellos intentaran
+          <a>Fa#m</a>
+que no hagan ruido
+<a>Sol</a>                              <a>Re</a>
+Y contra tanto y tan poderoso enemigo
+<a>Mi</a>                           <a>Fa#</a>
+Solamente cantando no vale luchar
+Hay que usar, además, otro oscuro camino
 <a>Sim</a>
-Una mafia jamás se limita a su círculo
-para conseguir su fin
-<a>Sim</a>
-Una mafia no es
-mas que una gran
-sociedad
-Dentro de un
-universo de mafias rivales 
-<a>Sol</a>
-Para llegar al
-fin todos los medios
-valen
+Una mafia jamás se limita a su círculo para
+        <a>Fa#m</a>
+conseguir su fin
+<a>Sim</a>                                 <a>Fa#m</a>
+Una mafia no es mas que una gran sociedad
+Dentro de un universo de mafias rivales
+<a>Sol</a>                                  <a>Re</a>
+Para llegar al fin todos los medios valen
 <a>Mi</a>
-Y entre tantos
-puñales para sobrevivir es preciso el
-instinto de los criminales
-   <a>Sim</a>
-Preciso para
-liberar a mi pueblo del
-futuro negro y la esperanza
-rota
-    <a>Sim</a>
-Preciso para
-liberarlo de un águila que se nos ha
-<a>convertido</a> <a>en</a> <a>gaviota</a>
-    <a>Sim</a>
-Preciso para
-poder sobrevivir con nuestra independencia y sin el 
-agua al
-<a>cuello</a>
-     <a>Mim</a>
-Preciso pero no para irnos
-nosotros, sino para que se vayan ellos
-      <a>Mim</a>
-Preciso pero no para irnos
-nosotros, sino para que se vayan ellos
-<a>Lam</a>
-Y ahora estoy y
-yo jugando a quien quien será el
+Y entre tantos puñales para sobrevivir es preciso
+                       <a>Fa#</a>
+el instinto de los criminales
+<a>Sim</a>             <a>La</a>                     <a>Sol</a>
+Preciso para liberar a mi pueblo del futuro negro y
+            <a>Fa#7</a>
+la esperanza rota
+  <a>Sim</a>           <a>La</a>                      <a>Sol</a>
+Preciso para liberarlo de un águila que se nos ha
+               <a>Fa#7</a>
+convertido en gaviota
+  <a>Sim</a>                    <a>La</a>
+Preciso para poder sobrevivir con nuestra
+   <a>Sol</a>                         <a>Fa#7</a>
+independencia y sin el agua al cuello
+  <a>Mim</a>              <a>Sim</a>                <a>Sol</a>       <a>Fa#</a>
+Preciso pero no para irnos nosotros, sino para que
+7        <a>Sim</a>
+se vayan ellos
+   <a>Mim</a>            <a>Sim</a>              <a>Sol</a>         <a>Fa#7</a>
+Preciso pero no para irnos nosotros, sino para que
+         <a>Sim</a>
+se vayan ellos
+<a>Lam</a>                          <a>Mi7</a>
+Y ahora estoy y yo jugando a quien quien será el
+           <a>Lam</a>
 próximo en caer
-Quien, quien,
-quien, quien será el
-próximo caer
-Y tú fuiste
-aquel, farsante que prometió
-que no iba a recortar
-Y se cargó la
-dependencia, la educación y
-la sanidad
-Y como a ti no
-te importa que la gente se
-muera
-En una lista de
-espera tu espera será más
-<a>corta</a>
-<a>Lam</a>
-Y ahora estoy y
-yo jugando a quien quien será el
+               <a>Mi7</a>                        <a>LaM7</a>
+Quien, quien, quien, quien será el próximo caer
+Y tú fuiste aquel, farsante que prometió que no iba
+a recortar
+                                    <a>La7</a>
+Y se cargó la dependencia, la educación y la
+   <a>Re</a>
+sanidad
+                     <a>Mi7</a>  <a>LaM7</a>            <a>Fa#7</a>
+Y como a ti no te importa que la gente se muera
+               <a>Sim</a>     <a>Mi7</a>                <a>Lam</a>
+En una lista de espera tu espera será más corta
+<a>Lam</a>                          <a>Mi7</a>
+Y ahora estoy y yo jugando a quien quien será el
+           <a>Lam</a>
 próximo en caer
-Quien, quien,
-quien, quien será el
-próximo caer
-Y tú fuiste
-aquel ilustre
-magistrado que metiste en prisión
-A todo el mundo menos a los del
-gobierno de esta nación
-Pues ahora ponte
-la toga, pero quítate el
-<a>birrete</a>
-Y al retirar el
-taburete quede apretada
-la soga
-<a>Lam</a>
-Y ahora estoy y
-yo jugando a quien quien será el
+               <a>Mi7</a>                        <a>LaM7</a>
+Quien, quien, quien, quien será el próximo caer
+Y tú fuiste aquel ilustre magistrado que metiste en
+prisión
+                                            <a>La7</a>
+A todo el mundo menos a los del gobierno de esta
+  <a>Re</a>
+nación
+                     <a>Mi7</a>   <a>LaM7</a>             <a>Fa#7</a>
+Pues ahora ponte la toga, pero quítate el birrete
+              <a>Sim</a>      <a>Mi7</a>                <a>Lam</a>
+Y al retirar el taburete quede apretada la soga
+<a>Lam</a>                          <a>Mi7</a>
+Y ahora estoy y yo jugando a quien quien será el
+           <a>Lam</a>
 próximo en caer
-Quien, quien,
-quien, quien será el
-próximo caer
-Y tú fuiste
-aquel usurero banquero que se fundió
+               <a>Mi7</a>                        <a>LaM7</a>
+Quien, quien, quien, quien será el próximo caer
+Y tú fuiste aquel usurero banquero que se fundió
 sin piedad
-Con lo de las preferentes, los ahorros de la
-gente de la tercera
-<a>edad</a>
-Y encima has
-dado motivos pa cerrar otra
-cuenta pendiente
-Pues con los
-tipos preferentes yo soy muy poco
-<a>ahorrativo</a>
-<a>Lam</a>
-Y ahora estoy y
-yo jugando a quien quien será el
+Con lo de las preferentes, los ahorros de la gente
+  <a>La7</a>         <a>Re</a>
+de la tercera edad
+                    <a>Mi7</a>    <a>LaM7</a>
+Y encima has dado motivos pa cerrar otra cuenta
+ <a>Fa#7</a>
+pendiente
+                  <a>Sim</a>        <a>Mi7</a>
+Pues con los tipos preferentes yo soy muy poco
+      <a>Lam</a>
+ahorrativo
+<a>Lam</a>                          <a>Mi7</a>
+Y ahora estoy y yo jugando a quien quien será el
+           <a>Lam</a>
 próximo en caer
-Quien, quien,
-quien, quien será el
-próximo caer
-       <a>Sim7/5 </a> <a>Lam  </a> <a>Mi7                              </a> <a>Lam</a></pre>
+               <a>Mi7</a>                         <a>Lam</a>
+Quien, quien, quien, quien será el próximo caer
+    <a>Sim7/5</a> <a>Lam</a>  <a>Mi7</a>                         <a>Lam</a>
+Caer, caer,   caer, quien será el próximo en caer
+<a>Lam</a>                <a>Sol</a>            <a>Lam</a>
+Está acabando la entrega de la mercancía, es tan
+              <a>Sol</a>         <a>Lam</a>
+autentica y pura de fabricación
+<a>Rem</a>                 <a>Mi7</a>             <a>Lam</a>
+Que cuando pruebas la dosis el alma se agita
+        <a>Sib7</a>          <a>Lam</a>               <a>Mi7</a>
+Y se resucita en tu corazón un deseo infinito de
+     <a>Lam</a>
+revolución
+<a>Do</a>
+Los poderosos no tienen siquiera rostro ni alma, ni
+               <a>Sol</a>
+principios ni final
+Dioses, amores ni amigos, ni pecho para abrazarse,
+                         <a>Do</a>
+ni hombro sobre el que llorar
+                                <a>Do7</a>       <a>Fa</a>
+De cadáveres y llantos van sembrando los caminos
+                 <a>Do</a>                     <a>Re</a>
+Pero como el carnaval a mí me da para tanto
+<a>Do</a>                  <a>Sol</a>   <a>Si7</a>             <a>Mim</a>
+Sueño que los elimino con lo bonito de mi canto
+<a>Do</a>              <a>Sol</a>            <a>Re</a>         <a>Sol</a>
+Sueño que los elimino con lo bonito de mi canto
+   <a>Lam</a>                                             L
+Ojala que mi canto algún día además de una historia
+<a>am</a>
+real
+            <a>Mim</a>
+Sirva para quitarle la mascara a toda la mafia
+                     <a>Si7</a>
+escondida bajo su disfraz
+                                  <a>MimDo</a>
+Y que bajo el disfraz se pasa la vida, como si la
+    <a>Si7</a>       <a>Mim</a>
+vida fuera carnaval
+<a>Do</a>              <a>Si7</a>        <a>MimDo</a>               S
+Como si la vida fuera carnaval, como si la vida
+i7       <a>Mim</a>
+fuera carnaval
+<a>Do</a>              <a>Si7</a>      <a>Mim</a>
+Como si la vida fuera carnaval
+    <a>Mim</a>                       <a>Re</a>          <a>Mim</a>
+Parapapa parapapa parapaparapapaparapaparapa
+   <a>Si7</a>    <a>Mim</a>
+parapaparapapa
+</pre>

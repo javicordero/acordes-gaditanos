@@ -10,59 +10,59 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Q_mRLH--ppE?feature=player_embedded'
 
 ---
-<pre><a>Rem</a>
-Si se pierde carmeluchi, el recuerdo de la Uchi, el 
-                                         <a> La7</a>
-Rosarillo y Carmela                          
- <a>Sib</a> <a>La7</a>
- Solm7                              La7            
-                  Rem
-Si se pierde el borderio, bien tirao y con poderío 
-de chirigotas gamberras                            
-   Re7                                              
-                              Solm
-Si se pierde como hablamos, ya mismo subtitulamos 
-y que nos puedan entender                          
-          Rem                          La7          
-                     Rem
-Ay, si se pierde un picha mía, si se pierde la 
+<pre>
+<a>Rem</a>
+Si se pierde carmeluchi, el recuerdo de la Uchi, el
+         <a>La7SibLa7</a>
+Rosarillo y Carmela
+                  <a>Solm7</a>                      <a>La7</a>
+Si se pierde el borderio, bien tirao y con poderío
+                  <a>Rem</a>
+de chirigotas gamberras
+                  <a>Re7</a>
+Si se pierde como hablamos, ya mismo subtitulamos y
+                  <a>Solm</a>
+que nos puedan entender
+                         <a>Rem</a>
+Ay, si se pierde un picha mía, si se pierde la
+ <a>La7</a>                      <a>Rem</a>
 ironía porque es difícil de ver
-<a>Do7 </a>                               <a>Fa</a>
-Si se pierde los pitos de caña, si se pierde 
-    <a> Do7 </a>                                       <a> Fa</a>
-nuestra gracias en los cuplés   Sib                
-               La7                                
- Solm                                 La7
-Y cambia a humor de pachanga, más propio de 
-Telecinco que del Peña o Requeté           Re      
-       La7                Re                        
-                           Si7            Mim
-Si ya Loreto o al balón no se le canta, no se canta 
+<a>Do7</a>                      <a>Fa</a>         <a>Do7</a>
+Si se pierde los pitos de caña, si se pierde
+                         <a>Fa</a>
+nuestra gracias en los cuplés
+<a>Sib</a>                    <a>La7</a>
+Y cambia a humor de pachanga, más propio de
+   <a>Solm</a>                     <a>La7</a>
+Telecinco que del Peña o Requeté
+      <a>Re</a>          <a>La7</a>           <a>Re</a>
+Si ya Loreto o al balón no se le canta, no se canta
+                     <a>Si7</a>        <a>Mim</a>
 al astillero que el teatro no levanta
-                    <a>La7 </a>                     <a>Mim</a>
-Si el Falla es coja para las televisiones y fuera 
-                          <a>La7</a>
-los pasodobles los llamáramos cancionesLa7          
-           <a> Re</a>
- Re             La7                Re              
-             Fa#7                                
- Sim7
-Si el gallinero irrumpe con gritos orteras si se 
-pierde la cantera y no hay Esto es carnaval
-                <a>Solm</a>
-Si se ha perdido el respeto a quien por ti su alma 
-                           <a> Re</a>
-ha dejado                                          
-     Si7                     Mim     La7            
-              Re             
-Pisoteando nuestra esencia y la raiz, la que 
+             <a>La7</a>                <a>Mim</a>
+Si el Falla es coja para las televisiones y fuera
+      <a>La7</a>                          <a>Re</a>
+los pasodobles los llamáramos canciones
+<a>La7</a>      <a>Re</a>          <a>La7</a>           <a>Re</a>
+Si el gallinero irrumpe con gritos orteras si se
+         <a>Fa#7</a>                         <a>Sim7</a>
+pierde la cantera y no hay Esto es carnaval
+          <a>Solm</a>
+Si se ha perdido el respeto a quien por ti su alma
+     <a>Re</a>
+ha dejado
+                             <a>Si7</a>
+Pisoteando nuestra esencia y la raiz, la que
+<a>Mim</a>  <a>La7</a>                <a>Re</a>
 heredamos, como tus hijos y hermanos
-<a>Solm </a>                       <a>Rem</a>
-Si en los repertorios casi no se habla de las cosas 
-                   <a> La7</a>
-nuestras                                            
-                   Sib                              
-   La7
-Si se pierde Cádiz, si se pierde Cádiz, ay, si se 
+<a>Solm</a>                <a>Rem</a>
+Si en los repertorios casi no se habla de las cosas
+   <a>La7</a>
+nuestras
+                                            <a>Sib</a>
+Si se pierde Cádiz, si se pierde Cádiz, ay, si se
+                    <a>La7</a>
 pierde Cádiz en carnaval
-Que coño queda</pre>
+     <a>RemLaRem</a>
+Que coño queda
+</pre>

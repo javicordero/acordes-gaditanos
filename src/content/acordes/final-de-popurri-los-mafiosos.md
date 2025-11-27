@@ -10,48 +10,52 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/naJsn6oO3dU?feature=player_embedded'
 
 ---
-<pre><a>Lam </a>                       <a> Sol </a>                L
-Está acabando la entrega de la mercancía, es tan 
-<a>am </a>                                 <a>Sol</a>
-autentica y pura de fabricaciónRem                  
- <a>Lam</a>
-           Mi7                    Lam      
+<pre>
+<a>Lam</a>                <a>Sol</a>            <a>Lam</a>
+Está acabando la entrega de la mercancía, es tan
+              <a>Sol</a>         <a>Lam</a>
+autentica y pura de fabricación
+<a>Rem</a>                 <a>Mi7</a>             <a>Lam</a>
 Que cuando pruebas la dosis el alma se agita
-            <a> Sib7 </a>             <a>Lam</a>
-Y se resucita en tu corazón un deseo infinito de 
-     <a>Mi7 </a>             <a> Lam</a>
-revoluciónDo                                        
-                                                    
- Sol
-Los poderosos no tienen siquiera rostro ni alma, ni 
-principios ni final                                
-                                                    
-                                Do
-Dioses, amores ni amigos, ni pecho para abrazarse, 
-ni hombro sobre el que llorar                      
-                         Do7            Fa    
-De cadáveres y llantos van sembrando los caminos 
-                          <a>Do</a>
-Pero como el carnaval a mí me da para tanto 
-<a>Do </a>                     <a>Sol </a> <a> Si7 </a>             <a> Mim</a>
-Sueño que los elimino con lo bonito de mi cantoDo  
-                    Sol                 Re          
-   Sol
-Sueño que los elimino con lo bonito de mi canto    
-Lam                                       Lam
-Ojala que mi canto algún día además de una historia 
-real                    Mim                        
-                                                  
- Si7
-Sirva para quitarle la mascara a toda la mafia 
-escondida bajo su disfraz                          
-                     Mim  Do                    
-Si7           Mim
-Y que bajo el disfraz se pasa la vida, como si la 
-vida fuera carnavalDo                     Si7      
-     Mim Do                    Si7           Mim
-Como si la vida fuera carnaval, como si la vida 
-fuera carnavalDo                     Si7        
- Mim
+        <a>Sib7</a>          <a>Lam</a>               <a>Mi7</a>
+Y se resucita en tu corazón un deseo infinito de
+     <a>Lam</a>
+revolución
+<a>Do</a>
+Los poderosos no tienen siquiera rostro ni alma, ni
+               <a>Sol</a>
+principios ni final
+Dioses, amores ni amigos, ni pecho para abrazarse,
+                         <a>Do</a>
+ni hombro sobre el que llorar
+                                <a>Do7</a>       <a>Fa</a>
+De cadáveres y llantos van sembrando los caminos
+                 <a>Do</a>                     <a>Re</a>
+Pero como el carnaval a mí me da para tanto
+<a>Do</a>                  <a>Sol</a>   <a>Si7</a>             <a>Mim</a>
+Sueño que los elimino con lo bonito de mi canto
+<a>Do</a>              <a>Sol</a>            <a>Re</a>         <a>Sol</a>
+Sueño que los elimino con lo bonito de mi canto
+   <a>Lam</a>                                             L
+Ojala que mi canto algún día además de una historia
+<a>am</a>
+real
+            <a>Mim</a>
+Sirva para quitarle la mascara a toda la mafia
+                     <a>Si7</a>
+escondida bajo su disfraz
+                                  <a>MimDo</a>
+Y que bajo el disfraz se pasa la vida, como si la
+    <a>Si7</a>       <a>Mim</a>
+vida fuera carnaval
+<a>Do</a>              <a>Si7</a>        <a>MimDo</a>               S
+Como si la vida fuera carnaval, como si la vida
+i7       <a>Mim</a>
+fuera carnaval
+<a>Do</a>              <a>Si7</a>      <a>Mim</a>
 Como si la vida fuera carnaval
-        <a> Mim </a>                                   <a>Re </a>               <a>Mim </a>     <a>Si7 </a>     <a> Mim</a></pre>
+    <a>Mim</a>                       <a>Re</a>          <a>Mim</a>
+Parapapa parapapa parapaparapapaparapaparapa
+   <a>Si7</a>    <a>Mim</a>
+parapaparapapa
+</pre>

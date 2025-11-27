@@ -10,65 +10,71 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/v6Ft81c7uUI?feature=player_embedded'
 
 ---
-<pre><a>Mi/add9 </a>                 <a>Sol#m7 </a>         <a>Sol#7</a>
-Entre la orilla y la muralla en la arenita de la 
-     <a> Do#m7</a>
-playa                           La                  
-              Lam7                         
-<a>Si</a>
-Las olas por compañera el carpintero de ribera 
-tiene su viejo tallerMi/add9               Sol#m7  
-     Sol#7             Do#m7
-Con la sierra y el cepillo, la escofina y su 
-martillo                          La                
-                Fa#m7       Fa#7          Si
-La bubia más marinera esculpiendo las maderas, un 
-oficio del ayerLa                      Si7  Sol#7  
-                          Do#m7
-Como David a Goliat echándole un pulso a los 
-tiemposLa                                          
-                                                    
-          Si
-Aquí sigo mi camino aunque sea a base de palos 
-y aunque soplen otros vientosMi                    
-  Sol#m7                   La                      
-              Si
-Tengo un encargo, un viejo barco, la nave más 
-antigua de occidenteMi                     Sol#m7  
-                           La                      
-                    Si
-Que sus maderas, son tan antiguas, que es hora ya 
-que alguien se la remiende                La        
-                     Si7                  Sol#7    
-                             Do#m7
-Quiero ser yo tu carpintero de ribera, quiero ser 
-yo quien ponga guapas tus maderas          La      
-                                                    
-                                                Si
-Para ponerte diez cañones en la proa pa acabar con 
+<pre>
+<a>Mi/add9</a>             <a>Sol#m7</a>         <a>Sol#7</a>       <a>Do</a>
+Entre la orilla y la muralla en la arenita de la
+#m7
+playa
+                  <a>La</a>                       <a>Lam7</a>
+Las olas por compañera el carpintero de ribera
+                 <a>Si</a>
+tiene su viejo taller
+<a>Mi/add9</a>           <a>Sol#m7</a>      <a>Sol#7</a>
+Con la sierra y el cepillo, la escofina y su
+ <a>Do#m7</a>
+martillo
+                 <a>La</a>                       <a>Fa#m7</a>
+La bubia más marinera esculpiendo las maderas, un
+ <a>Fa#7</a>      <a>Si</a>
+oficio del ayer
+<a>La</a>               <a>Si7Sol#7</a>
+Como David a Goliat echándole un pulso a los
+ <a>Do#m7</a>
+tiempos
+<a>La</a>
+Aquí sigo mi camino aunque sea a base de palos y
+                       <a>Si</a>
+aunque soplen otros vientos
+<a>Mi</a>              <a>Sol#m7</a>            <a>La</a>
+Tengo un encargo, un viejo barco, la nave más
+                <a>Si</a>
+antigua de occidente
+<a>Mi</a>             <a>Sol#m7</a>                   <a>La</a>
+Que sus maderas, son tan antiguas, que es hora ya
+                      <a>Si</a>
+que alguien se la remiende
+          <a>La</a>                     <a>Si7</a>             S
+Quiero ser yo tu carpintero de ribera, quiero ser
+ol#7                       <a>Do#m7</a>
+yo quien ponga guapas tus maderas
+     <a>La</a>
+Para ponerte diez cañones en la proa pa acabar con
+                                <a>Si</a>
 los piratas que te tienen en barrena
-(Mi/add9  Sol#m7  Do#m7  La  Si  Mi/add9  Sol#m7  
-Do#m7  La  Si)
-                  <a>La</a>
+(Mi/add9  Sol#m7  Do#m7  La  Si  Mi/add9  Sol#m7  
+Do#m7  La  Si)
+          <a>La</a>                       <a>Si7</a>
 No hay una barca mas bonita en la bahía
-                <a> Sol#7</a>
-No hay una barca mas bonita en tos los mares del 
-       <a> Do#m7</a>
-sur   La                                  Sol#m7    
-           La                Si
-Digamos que se llama Andalucía, que es mi madre y 
-eres túDo#m                                        
-          Sol#m7
-Vamos todo el mundo manos a la obra, vamos a 
-cambiar de rumbo mi tierraLa                        
-              Sol#m7                                
- La
-Vamos a volver a ser lo que fuimos, a lo que un día 
-construimos                                      
-Si
-Vamos de nuevo a dar guerraLa                      
-   Sol#m7 Sol#7                 La
-Que duras tienen que ser, tus maderas marineras    
-                               Si              Mi  
-Si7  Mi
-Que siempre a base de palos, navegas</pre>
+            <a>Sol#7</a>                             <a>Do#</a>
+No hay una barca mas bonita en tos los mares del
+m7
+sur
+<a>La</a>                        <a>Sol#m7</a>         <a>La</a>
+Digamos que se llama Andalucía, que es mi madre y
+   <a>Si</a>
+eres tú
+<a>Do#m</a>
+Vamos todo el mundo manos a la obra, vamos a
+                 <a>Sol#m7</a>
+cambiar de rumbo mi tierra
+<a>La</a>                           <a>Sol#m7</a>
+Vamos a volver a ser lo que fuimos, a lo que un día
+       <a>La</a>
+construimos
+                       <a>Si</a>
+Vamos de nuevo a dar guerra
+<a>La</a>                  <a>Sol#mSol#7</a>             <a>La</a>
+Que duras tienen que ser, tus maderas marineras
+                  <a>Si</a>       <a>Mi</a> <a>SiMi</a>
+Que siempre a base de palos, navegas
+</pre>

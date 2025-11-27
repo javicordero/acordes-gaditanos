@@ -10,46 +10,48 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/GLMmRisDIGA?feature=player_embedded'
 
 ---
-<pre>    <a> Sol </a>                       <a>Do</a>
+
+<pre>
+  <a>Sol</a>                  <a>Do</a>         <a>Re7</a>    <a>Sol</a>
 Con la maldición de vivir siempre en la Caleta
-                                    <a> Sol7</a>
-Sabiendo que no puedo estar nunca lejos del mar
-                              <a>Lam7</a>
-Le eché agallas a la cosa y con cuatro letras    
-     <a>Re7</a>
-Do                      Re7                      
- Sol
-Pa sacarme una espinita te vuelvo a cantar 
-Que si, que te vuelvo a cantar                      
-                     Do           Re7         Sol
-Y aunque yo aprendiera a nadar en este mar de 
-coplas                                     Sol7    
-                         Do
-Ahora que veo que este mar se ha convertido en río  
-                              Re7   Sol            
-                    Sim7 Lam7              Re7      
-      Sol Sol7
-Yo me siento tan extraño aquí, extranjero en mi 
-propio país, en un concurso desconocido     Do      
-       Re7      Sol   Mi7           Lam7  Re7      
-    Sol
-En donde el sabor gaditano o se ha olvidado o se ha 
-perdido                                            
-                                Mi7       Lam7
-Pero es que siento una cosita cuando yo escucho 
-esta musiquita                         Do          
-               Re7             Do          Re7    
- Sol
-Que aunque los males me rompan el alma la chirigota 
-en mi resucita                          
-                                <a>Re7 </a>       <a>Sol</a>
-Y no me importa si algunos critican que soy antiguo 
-             So
+                       <a>Sol7</a>                <a>Do</a>
+Sabiendo que no puedo estar nunca lejos del mar
+                      <a>Lam7</a>              <a>Re7</a>
+Le eché agallas a la cosa y con cuatro letras
+ <a>Do</a>                <a>Re7</a>                 <a>Sol</a>
+Pa sacarme una espinita te vuelvo a cantar
+Que si, que te vuelvo a cantar
+                             <a>Do</a>        <a>Re7</a>
+Y aunque yo aprendiera a nadar en este mar de
+  <a>Sol</a>
+coplas
+                        <a>Sol7</a>                  <a>Do</a>
+Ahora que veo que este mar se ha convertido en río
+                     <a>Re7</a>  <a>Sol</a>
+Yo me siento tan extraño aquí, extranjero en mi
+   <a>Sim7Lam7</a>         <a>Re7</a>        <a>SolSol7</a>
+propio país, en un concurso desconocido
+  <a>Do</a>           <a>Re7</a>    <a>Sol</a>  <a>Mi7</a>         <a>Lam7</a> <a>Re7</a>
+En donde el sabor gaditano o se ha olvidado o se ha
+  <a>Sol</a>
+perdido
+Pero es que siento una cosita cuando yo escucho
+  <a>Mi7</a>    <a>Lam7</a>
+esta musiquita
+                       <a>Do</a>                          R
+Que aunque los males me rompan el alma la chirigota
+<a>e7</a>             <a>Do</a>          <a>Re7</a>     <a>Sol</a>
+en mi resucita
+                      <a>Re7</a>     <a>Sol</a>              <a>Sol7</a>
+Y no me importa si algunos critican que soy antiguo
+           <a>Do</a>
 y muy localista
-                    <a> Re7 </a>     <a> Sol </a>           <a>Mi7</a>
-Si el público cambia y los gustos cambian que me 
-              <a>Lam7</a>
+              <a>Re7</a>    <a>Sol</a>         <a>Mi7</a>         <a>Lam7</a>
+Si el público cambia y los gustos cambian que me
+         <a>Re7</a>     <a>Sol</a>
 manden a hacer puñetas
-      <a>Do </a>                     <a>Re7</a>
-Que yo te seguiré cantando en la orillita, en la 
-orillita de la Caleta</pre>
+   <a>Do</a>                 <a>Re7</a>
+Que yo te seguiré cantando en la orillita, en la
+            <a>Re7</a> <a>Sol</a>
+orillita de la Caleta
+</pre>
