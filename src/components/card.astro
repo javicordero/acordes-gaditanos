@@ -22,6 +22,8 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
   piezaType = 'presentacion';
 } else if (piezaLower.includes('pasodoble')) {
   piezaType = 'pasodoble';
+} else if (piezaLower.includes('tango')) {
+  piezaType = 'tango';
 }
 ---
 
@@ -52,6 +54,9 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
 
     --pieza-pasodoble-color: var(--primary-color);
     --pieza-pasodoble-bg: #ffa07a;
+
+    --pieza-tango-color: var(--primary-color);
+    --pieza-tango-bg: #e6c800;
 
     --pieza-default-color: var(--primary-color);
     --pieza-default-bg: #98fb98;
@@ -146,6 +151,10 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
       background-color: var(--pieza-pasodoble-bg);
     }
 
+    &[data-pieza-type='tango'] {
+      color: var(--pieza-tango-color);
+      background-color: var(--pieza-tango-bg);
+    }
     &[data-pieza-type='default'] {
       color: var(--pieza-default-color);
       background-color: var(--pieza-default-bg);
