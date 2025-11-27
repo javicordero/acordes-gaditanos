@@ -100,7 +100,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
       <AnunciosGuitarra class='anuncios-guitarra' />
 
-      <SitiosDeInteresCard class='sitios-interes' />
+      <!-- <SitiosDeInteresCard class='sitios-interes' /> -->
     </div>
 
     <style>
@@ -153,20 +153,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
         /* El resto mantiene orden natural (order: 0 por defecto) */
         .right-column > :global(.video-oficial) {
-          order: 0;
+          order: 3;
         }
 
         .right-column > :global(.video-cover),
         .right-column > :global(.aparece-aqui) {
-          order: 1;
+          order: 0;
         }
 
         .right-column > :global(.anuncios-libros) {
-          order: 2;
+          order: 1;
         }
 
         .right-column > :global(.anuncios-guitarra) {
-          order: 3;
+          order: 2;
         }
 
         .right-column > :global(.sitios-interes) {
