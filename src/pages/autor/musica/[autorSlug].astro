@@ -24,7 +24,7 @@ export async function getStaticPaths() {
   });
 
   return Array.from(autoresMap.entries()).map(([slug, data]) => ({
-    params: { authorSlug: slug },
+    params: { autorSlug: slug },
     props: {
       authorName: data.nombre,
       acordes: data.acordes,
