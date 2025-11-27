@@ -10,9 +10,6 @@ musica: Juan Carlos Aragón
 
 ---
 <pre>
-1ªCuarteta
-Acordes usados: Lam, Rem, Mi7.
-Cejilla al 4.
 <a>Lam</a>                    <a>Rem</a>
 Araka es la murga compañera, allende el charco
  <a>Mi7</a>

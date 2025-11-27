@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnMbAc0NU3I18sSB
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6ehfMOea1ps'
-
+fraseClave: Por fuera un osito desmembrao
 ---
 <pre>    <a>Lam</a>       <a>Mi7</a>        <a>Lam</a>      <a>Sim/5</a>      <a>Mi</a>
 Por fuera un osito desmembrao cachondeo garantizao 

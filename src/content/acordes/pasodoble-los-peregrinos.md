@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMxp7fSkokLsgc4R
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HADOQEZ91_Y?feature=player_embedded'
-
+fraseClave: Tú vente conmigo que sobra futuro
 ---
 <pre>
  <a>Mim</a>     <a>Do</a>       <a>Si7</a>    <a>Mim</a>              <a>Si7</a>

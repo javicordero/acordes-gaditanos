@@ -2,13 +2,13 @@
 pieza: Pasodoble
 agrupacion: Los Listos
 year: 2020
-musica: El Noly.
-letra: El Noly.
+musica: El Noly
+letra: El Chapa
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9Yc0LOdOP_wdqyS4aeRlEpjOJ4-fUh1-twMNg7zdHfwlz8w8gPActgLG-ROpHYR6F1BTecz6ZXac4ucqrZEVHEhtKy0iP6iJ3GELxNGbTCbPouSUW-SqKvUz4MO3NEItnfta07Oz0UE-S/s400/Comparsa-Los-Listos.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/38nvh6usYew?feature=player_embedded'
-
+fraseClave: Y cuando yo era un tonto
 ---
 <pre>
 <a>Do</a>

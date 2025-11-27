@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: Después de Cádiz ni hablar
 year: 2022
-musica: El Tomate y El Piru
-letra: El Tomate y El Piru
+musica: El Tomate
+letra: El Piru
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGYSL4M_hZ--i86tngoGcfoNLkUOCnIUZH6ktTGQmpmPf0w-G5OHS79K-CjdpPbBtZyWIkDTdyMSiCk2ypGdCz4T0bY3oKsie22lqDJQygbsqjqZEMRWmWSHDHuXhgtADDG0_3Wk1aT7PSwddUszPwMPCrz5KvgXZ5cqA8rdhf5_1jg0ctRtTdHO1ovA/s320/despues-cai%281%29.jpg
 cejilla: 2
 date: "25/11/2025"

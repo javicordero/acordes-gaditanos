@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0i9qS0Yh52tMZ-v
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4v0YM0xstmA?feature=player_embedded'
-
+fraseClave: No es que la luna lunera
 ---
 <pre>
 <a>Do</a>                 <a>Sol7</a>                 <a>Do</a>

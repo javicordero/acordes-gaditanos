@@ -8,7 +8,7 @@ img: https://cdn2.rtva.interactvty.com/content_cards/d9f39e5fd6954d3b9cf674a16e2
 cejilla: 2
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/yVnLGn_CCTY?si=BzN0vno692lwAE6t'
-
+fraseClave: Carnecita de gallina
 ---
 
 

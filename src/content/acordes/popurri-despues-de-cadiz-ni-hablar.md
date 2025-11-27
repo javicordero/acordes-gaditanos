@@ -2,13 +2,13 @@
 pieza: Popurrí
 agrupacion: Después de Cádiz ni hablar
 year: 2022
-musica: El Tomate y El Piru
-letra: El Tomate y El Piru
+musica: El Tomate
+letra: Piru
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuEY0mXZYcVI7LvNP9-8NIlJyRUvSJYEgehcnbNOVmk-rWcdj_3bVA-iR2v4ApGLbtYTBz4QenBjtpyUSrMYD6MEI-CK1sa6OfnRz1C_CUqN0ZCyOB_-l-yvUkgY7O6ETCg1zqO6AD2Td5hMkm2VvDQmY3oa4zK6XL9SCDxji5Kzfet4D_-etMKnOPng/s320/Despu%C3%A9s%20de%20C%C3%A1diz%20ni%20hablar%200001.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/wEgaAr_AFz8'
-
+fraseClave: Cai! Yo era el típico
 ---
 <pre>Cejilla al 3 
      <a>Si7</a>       <a>Mi</a>                    <a>Sol#7</a>
