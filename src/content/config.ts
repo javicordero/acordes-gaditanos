@@ -30,7 +30,7 @@ const acordes = defineCollection({
       date: z.string().regex(/^\d{2}[-/]\d{2}[-/]\d{4}$/),
       video: z.string().optional(),
       cover: z.string().optional(),
-      coverAuthor: z.string().optional(),
+      autorCover: z.string().optional(),
     })
     .transform((data) => ({
       ...data,

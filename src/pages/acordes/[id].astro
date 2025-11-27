@@ -30,7 +30,7 @@ const {
   letra,
   video,
   cover,
-  coverAuthor,
+  autorCover,
   cejilla,
   modalidad,
 } = data;
@@ -84,10 +84,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         cover && (
           <YoutubeCard
             link={cover}
-            title={coverAuthor ? `Cover de ${coverAuthor}` : 'Cover'}
-            iframeTitle={
-              coverAuthor ? `Cover por ${coverAuthor}` : `Cover de ${pieza} - ${agrupacion}`
-            }
+            title={`${autorCover} a la guitarra`}
+            iframeTitle={`${autorCover} a la guitarra`}
             class='video-cover'
           />
         )
