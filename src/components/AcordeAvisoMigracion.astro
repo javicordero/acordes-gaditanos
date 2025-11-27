@@ -3,29 +3,33 @@
 ---
 
 <section id='aviso-section'>
-  <header>
-    <span class='icono'>
-      <svg
-        width='24'
-        height='24'
-        viewBox='0 0 28 28'
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'>
-        <circle cx='14' cy='14' r='13' fill='#fffbe6' stroke='#e6c800' stroke-width='2'></circle>
-        <path d='M14 8v7' stroke='#e6c800' stroke-width='2' stroke-linecap='round'></path>
-        <circle cx='14' cy='19' r='1.5' fill='#e6c800'></circle>
-      </svg>
-    </span>
-    <h3>ATENCIÓN</h3>
-    <button aria-label='Cerrar aviso' class='close'>&times;</button>
-  </header>
-  <p>
-    Los acordes han sido migrados automáticamente desde el blog antiguo. Puede haber errores de
-    acordes cortados, fuera de sitio o perdidos. Si detectas alguno, <a href='/contacto'>
-      avísanos</a
-    >.
-  </p>
-
+  <input type='checkbox' id='aviso-cerrar' style='display:none;' />
+  <div class='aviso-content'>
+    <header>
+      <span class='icono'>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 28 28'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'>
+          <circle cx='14' cy='14' r='13' fill='#fffbe6' stroke='#e6c800' stroke-width='2'></circle>
+          <path d='M14 8v7' stroke='#e6c800' stroke-width='2' stroke-linecap='round'></path>
+          <circle cx='14' cy='19' r='1.5' fill='#e6c800'></circle>
+        </svg>
+      </span>
+      <h3>ATENCIÓN</h3>
+      <label for='aviso-cerrar' class='close' aria-label='Cerrar aviso' tabindex='0' role='button'
+        >&times;</label
+      >
+    </header>
+    <p>
+      Los acordes han sido migrados automáticamente desde el blog antiguo. Puede haber errores de
+      acordes cortados, fuera de sitio o perdidos. Si detectas alguno, <a href='/contacto'>
+        avísanos</a
+      >.
+    </p>
+  </div>
   <style>
     section {
       position: absolute;
@@ -45,11 +49,13 @@
       gap: 4px;
     }
 
+    #aviso-section:has(#aviso-cerrar:checked) {
+      display: none !important;
+    }
     header {
       display: flex;
       align-items: center;
       gap: 8px;
-
       font-size: 1rem;
       font-weight: bold;
       color: #e6c800;
@@ -90,14 +96,3 @@
     }
   </style>
 </section>
-<script>
-  window.addEventListener('DOMContentLoaded', function () {
-    var closeBtn = document.querySelector('.close');
-    var aviso = document.querySelector('#aviso-section');
-    if (closeBtn && aviso) {
-      closeBtn.addEventListener('click', function () {
-        aviso.style.display = 'none';
-      });
-    }
-  });
-</script>
