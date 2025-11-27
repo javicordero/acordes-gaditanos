@@ -3,7 +3,7 @@ pieza: Presentación
 agrupacion: Y seguimos cantando
 year: 2024
 musica: El Tomate
-letra: El Tomate
+letra: El Piru
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqRYZc6gQJWCcLmz_KQtjMVCTnlWz35-OvxYhXcTsQXvbMIVxxba87LP3yjYLCOLXf55T484DJWGSOP4nAlpTej0CJzw5msWGwE64Qus61qU099lLzZkNFfvASZ1I9meoyhuVijD5TClOsGzWgVA4IwBWP35dPHUkJkVjS4KAvH2h1aUvoDItM0eF-zjmF/s320/seguimoscantando.webp
 cejilla: 5
 date: "25/11/2025"

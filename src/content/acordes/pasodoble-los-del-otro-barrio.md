@@ -7,6 +7,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iXoyBUQvGEs?si=oXgpEu0-z4J0qeYH'
 musica: El Tomate
+letra: El Piru
 ---
 <pre><a>Lam</a>                <a>Mi7</a> <a>Fa</a> <a>Mi7</a>             <a>Lam</a>
 Cuando me dice un malage  Que ya no somos cantera Y 

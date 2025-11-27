@@ -2,8 +2,8 @@
 pieza: Presentación
 agrupacion: El Cementerio
 year: 2025
-musica: El Jona
-letra: El Jona
+musica: Jonathan Pérez Ginel
+letra: Jonathan Pérez Ginel
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjJqi1uQbkeNRNKfRA16CYdMfzCrtLSh4CJ4nolCGyBSz5I6hRnrGd7I9A_bTjITgd__h7yYTKQFzNH3N9tdNABqGjcvfRJz7871JB-AgFsu-U4CGzcsL7JgFFuoj2owmCnFlUyGQd7bWVhTOhd98ku6r4UKXZnbCstPNg56CkMHkAk68m6AZ1eKdepkIBR/s320/cementerio2.jpg
 cejilla: 5
 date: "25/11/2025"

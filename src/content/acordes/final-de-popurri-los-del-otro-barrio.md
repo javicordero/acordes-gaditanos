@@ -3,7 +3,7 @@ pieza: Final de Popurrí
 agrupacion: Los del otro barrio
 year: 2025
 musica: El Tomate
-letra: El Tomate
+letra: El Piru
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBhR3Tmn3Haps638t1GFxT4COOVxwE_4nEvMf_d5phqhE9rI98nSO5x-R051ofWcfvKdN67pLdpR906kffa5IBkE81482OYSwoeac9HKvgc-ZqpoNxh5MgUqdCnQ90ckVbG2nR_lJrTEIXkv3TdjrCJh3kl-WQ8ihuQjdoGJELBdaL2sjkD2KRAqcLNFcR/s320/otrobarrio2.jpg
 cejilla: 3
 date: "25/11/2025"

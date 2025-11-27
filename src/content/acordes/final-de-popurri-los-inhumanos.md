@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Los Inhumanos
 musica: Víctor Jurado
+letra: Víctor Jurado
 year: 2025
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEho7x2i6WQ3awdCV_pSmGdve4h4-GIAqFmd253g83RAWSI9dxjQuKtO7sRwGTFoj_kvHCiBE7iV49mRvQdsigcFVAq_NelMxAXcPO9PledgktuOmWg3TX_Z02W-YkzAEq_PiiNhXPYYXpiAnINpAkFSsvRhW4QGIRF1VvEcvafYc1Rz_8SJLP1mNF7b4J9l/s320/inhumanos.jpg
 cejilla: 0

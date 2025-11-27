@@ -2,8 +2,8 @@
 pieza: Cuarteta "Me llevo a la tumba"
 agrupacion: El cementerio
 year: 2025
-musica: El Jona
-letra: El Jona
+musica: Jonathan Pérez Ginel
+letra: Jonathan Pérez Ginel
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrv9FzPG7Qirun6sie4Y0fBvus1dRTAXRJBn5wNBW6dBPuV0-jLxcpQ7XyRaTYcac0HamjAdlQgbehX5oLda3SCyFoCcu5wWpnNSRPOZlq5I-7Fyup_fEN-vrX33NXsaJE7qbO5SmsMXgmA9bVRsPkSkQ7oeVx4D696ii1W0BSFKWF587z6fmFveaCp2zG/s320/cementerio.jpg
 cejilla: 2
 date: "25/11/2025"

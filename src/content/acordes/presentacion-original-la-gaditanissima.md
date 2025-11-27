@@ -1,7 +1,7 @@
 ---
-pieza: Presentación
-agrupacion: Original La Gaditaníssima
-year: 2025
+pieza: Presentación Original
+agrupacion: La Gaditaníssima
+year: 2020
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2mchMW8BbEDi-XZmqKdGRE2ieauOACyYxnQSturpmnlaiCtqr11us1DxFZh94dG7vFJMDgnJ75y9xmVq_xFtFk-fhs0AtUFQmWRR-BZo3OEhKNHlkcXy-XA1VME2p5SNdrsQVwP-USqlE/s400/eterna.jpg

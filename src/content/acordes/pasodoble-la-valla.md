@@ -3,6 +3,7 @@ pieza: Pasodoble
 agrupacion: La Valla
 year: 2025
 musica: Mar Muñoz
+letra: Mar Muñoz
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8kSbJIqHQWd9ahM7fxyoBbb8iHA-12f0TGUDVXyCFbaaVCzrIpMQ_lKB40WmZ_LfihmT6Dx3bTYS6xJRTsv-N7z6_tOgReSQ7dxXzHbGYMcUDT3kobcOb3qRBS2iD3PSj-XtV1M7dcoX6vnBulzhAH2T6oFvmCMiaqnkSC926AGWeeWzji8Smsvh8zN9u/s320/lavalla.webp
 cejilla: 4
 date: "25/11/2025"

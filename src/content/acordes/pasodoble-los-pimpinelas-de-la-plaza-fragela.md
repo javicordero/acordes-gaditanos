@@ -7,6 +7,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Jy0YXF0kJWo?si=gUmGlmpm8Zl6t4FC'
 musica: El Molina
+letra: El Molina
 
 ---
 <pre><a>Sol</a>                 <a>Re7</a>         <a>Sol</a>    <a>Do</a>

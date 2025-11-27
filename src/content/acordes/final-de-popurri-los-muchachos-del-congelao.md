@@ -3,7 +3,7 @@ pieza: Final de popurrí
 agrupacion: Los Muchachos del congelao
 year: 2025
 musica: Raúl Cabrera
-letra: Raúl Cabrera
+letra: El Canijo
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-X-f-XzyfyMS27pcUyeBzt4Ee73Es1A5mlsGKDfl0F8wWpHfeiimvtQqYnnIK0xEyTySIgFRaCM9XT0E__DjOYP5vn7mCj235I4fvEnKn-IX9BIqTzf63xRq6MhBmIpxsIYrYMmqduWKsbCPB41CndB0PbHaKjMRRPn74L_nzqIKS77XPqpv-vvFtRLf4/s320/muchachos.webp
 cejilla: 2
 date: "25/11/2025"

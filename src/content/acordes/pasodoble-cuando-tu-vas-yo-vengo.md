@@ -3,6 +3,7 @@ pieza: Pasodoble
 agrupacion: Cuando tu vas yo vengo
 year: 2025
 musica: Carlitos Pérez
+letra: Carlitos Pérez
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi70sP81A5rGCjb_8VYgaJ8JI3u6KDH3U0nt4E6Z4dS1xahpAhmteQvwK3a6HNnQJMsyN54S5PtZVg15yqOK4U4SAxtIND8VekTb5pNkFrOPkUexmFy5l4cPRhPjI2nAHI6hpYRhZEaLcigzsFh1jbhtkgswI4E6QBG6gv5WnzCo8UTvlB48J3RSBosMUHY/s320/cuandotuvas.jpg
 cejilla: 0
 date: "25/11/2025"

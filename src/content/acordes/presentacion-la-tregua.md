@@ -7,6 +7,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/nNON_XtbUzg?si=7vUw6GzxnPLs3iU7'
 musica: Salvador Gómez
+letra: Salvador Gómez
 
 ---
 <pre><a>Mim</a>                                    <a>Do</a>

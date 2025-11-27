@@ -3,6 +3,7 @@ pieza: Pasodoble
 agrupacion: La Resistencia
 year: 2025
 musica: David Carapapa
+letra: David Carapapa
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_sA7GVIFG97PKzbs_CD71hwcR-WSxCILNekyUXLRWhlE2cJRBqWjz4JmQkycpNnrkT5r8LB0JL1otVnJsIvXWsNrK5xk6JaNQ1vV1JE1UCVxUSX0ZRza8mCF4MU1I3JYtT4PNaoHte1MH14sLcvk9l5so2rBgv0h8DrkIz9qeAGdFwu93s65uZXdM4HKu/s320/laresistencia.jpg
 cejilla: 2
 date: "25/11/2025"

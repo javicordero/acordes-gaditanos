@@ -7,6 +7,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/KJFxI9y1o-o?si=a6JkwNZLPM5XWXLJ'
 musica: Raúl Cabrera
+letra: El Chapa
 
 ---
 <pre>- Cejilla al 4
