@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoSF17ox9nCQvk7R
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/f6oBEVNV_aE?feature=player_embedded'
+fraseClave: "La música suena en nuestros"
 
 ---
 <pre>

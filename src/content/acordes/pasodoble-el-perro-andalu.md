@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsVRvfrmCYO61ems
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/UPobm_dDcrs?feature=player_embedded'
+fraseClave: "Venia pa acá a cantarte"
 
 ---
 <pre>

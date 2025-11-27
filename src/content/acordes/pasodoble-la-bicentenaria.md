@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKyKD-RX-L9g2J0V
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/zYWVy398stA?si=0Q99MRRCuO0Bfrup'
+fraseClave: "Hierve en la cocina encima"
 
 ---
 <pre><a>La</a>                   <a>Mi7</a>        <a>Fa#m7</a>

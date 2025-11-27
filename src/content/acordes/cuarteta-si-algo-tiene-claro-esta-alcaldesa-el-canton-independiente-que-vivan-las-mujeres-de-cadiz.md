@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHRaXcTxTmJ1h7yp
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vmgeVynOI-U'
-
+fraseClave: "Si algo tiene claro esta"
 ---
 <pre><a>LaM7</a>           <a>Mi</a>            <a>Fa#m</a>          <a>Do#m7</a>
 Si algo tiene claro esta alcaldesa es que encima de 

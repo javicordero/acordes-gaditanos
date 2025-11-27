@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaLPc6xWcwbIa_e4
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/VYQ57KkDVXc'
-
+fraseClave: "Las olitas del mar y"
 ---
 <pre><a>Mim</a>           <a>Lam7</a> <a>Si7</a>              <a>Mim</a>
 Las olitas del mar y la sal y los vientos

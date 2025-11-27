@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyFJyo1oAe8oGdA2
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pyS_fPM68AU?feature=player_embedded'
+fraseClave: "Señores carnavaleros de este"
 
 ---
 <pre>

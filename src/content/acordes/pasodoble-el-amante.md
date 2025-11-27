@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGp5iJEHqHZBgdVI
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pAPC37_wCEs?feature=player_embedded'
+fraseClave: "El amor es un cuchillo afilado"
 
 ---
 <pre>

@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiealtsrqltHxmbYm
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vmgeVynOI-U'
+fraseClave: "Con los recuerdos de aquella"
 
 ---
 <pre><a>Do</a>                     <a>Sol7</a>          <a>Do</a>

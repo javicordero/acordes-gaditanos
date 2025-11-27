@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSNomq2W2GhSmnTj
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/r2iCo10ZbEU?feature=player_embedded'
+fraseClave: "Perdón, quiero pedirles perdón,"
 
 ---
 <pre>

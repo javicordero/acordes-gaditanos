@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLrV9KDVIJcDLeH3
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/QtKQq7ElO1M?feature=player_embedded'
+fraseClave: "Yo te nía un buen amigo,"
 
 ---
 <pre>

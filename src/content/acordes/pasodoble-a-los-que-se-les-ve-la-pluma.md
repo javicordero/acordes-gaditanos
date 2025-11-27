@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgugjHPAX5Gul2fay
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bTk8TX4FJlQ?feature=player_embedded'
+fraseClave: "Sentado a divisar el horizonte,"
 
 ---
 <pre>

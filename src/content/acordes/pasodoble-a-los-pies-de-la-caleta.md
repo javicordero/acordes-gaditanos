@@ -7,6 +7,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbZmWh1ly7MgaRW0
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NFrDqSF41tk'
+fraseClave: "Con la ropa de trabajo"
 
 ---
 <pre><a>Mi</a>         <a>Si7</a>              <a>Mi</a>

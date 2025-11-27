@@ -31,6 +31,7 @@ const acordes = defineCollection({
       video: z.string().optional(),
       cover: z.string().optional(),
       autorCover: z.string().optional(),
+      fraseClave: z.string().optional(),
     })
     .transform((data) => ({
       ...data,

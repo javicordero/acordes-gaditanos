@@ -7,6 +7,7 @@ letra: Juanma Romero Bey
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiPWpqqZOqFL4S8KjPRyiCDElE0OHQ6zHDPfAuKZyVMJmlMdc3J9JXLuwLkYLODr9K7d2IMciRVUKanCu-wTGSAFwzNsTRdAAoXqD_y3ca0S6blSnCyVdE7PqrEbze72dJ8jbcOZrhcNAb/s400/comparsa_cadizcadabra_las_brujas.jpg
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/f75c6LUqdlc?feature=player_embedded'
+fraseClave: "Acabo de acabar, la"
 cejilla: 0
 
 ---

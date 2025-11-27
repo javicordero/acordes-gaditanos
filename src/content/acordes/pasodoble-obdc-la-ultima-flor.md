@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkS3PrwolS5c6q2V
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/S9Zcb4ebkHU?feature=player_embedded'
+fraseClave: "Bajo la sombra en la penumbra"
 
 ---
 <pre>

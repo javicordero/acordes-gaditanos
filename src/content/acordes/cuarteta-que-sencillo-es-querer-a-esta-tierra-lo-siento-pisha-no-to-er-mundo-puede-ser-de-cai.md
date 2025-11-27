@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvtIFn68BQs-1IPz
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/eW_NCC5dqNU?si=UHEFikLSHkI3O690'
-
+fraseClave: "Que sencillo es querer a"
 ---
 <pre><a>Re</a>                                               <a>Sim</a>
 Que sencillo es querer a esta tierra veinte días al 

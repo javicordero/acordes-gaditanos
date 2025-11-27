@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizbI3Jlz1Yf9l0iL
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/aB5g7ke760U?feature=player_embedded'
+fraseClave: "Por la Alameda van a pasear,"
 
 ---
 <pre>

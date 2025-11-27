@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMdXzZW2Hjo_f32Z
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/23eSN-eBwW4?si=Zfmrz306DIHV9Utz'
+fraseClave: "Destroce La maldita alambrada"
 
 ---
 <pre>     <a>Lam7</a>                        <a>Rem7</a>      <a>Mi7</a>

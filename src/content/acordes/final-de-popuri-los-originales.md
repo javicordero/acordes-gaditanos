@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXrwhsTbc8HyZV7v
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iap5lRmMha0?si=6DpredvZhEq5bx04'
+fraseClave: "No no todo tiene un precio"
 
 ---
 <pre><a>Sol</a>                   <a>Do9</a>                <a>Sol</a>

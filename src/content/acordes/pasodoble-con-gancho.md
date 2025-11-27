@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgT2bIoRkpoBMcZBG
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/q4jYI3V6Ky8'
+fraseClave: "Entra y ponte decente que"
 
 ---
 <pre><a>Lam</a>     <a>Mi7</a>     <a>Lam</a>                           <a>Sol</a>

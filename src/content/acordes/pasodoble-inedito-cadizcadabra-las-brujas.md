@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-qZlGMuIfZtL_Xw
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/r043uPQUzVM?feature=player_embedded'
+fraseClave: "La playita de Santa María"
 
 ---
 <pre>

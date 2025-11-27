@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXnUuoCrfpzzkimF
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/oxjKgb3DrMg?feature=player_embedded'
-
+fraseClave: "Y quise dejarte ir, disfruté"
 ---
 <pre><a>Mi </a>                                           <a>Do#m7</a>
 Y quise dejarte ir, disfruté la nostalgia de verte 

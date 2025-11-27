@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2e-AvtCF1AVVSVa
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/DxQBrOV6XF4?feature=player_embedded'
-
+fraseClave: "Creo en ti, oh todopoderoso"
 ---
 <pre>
 LSol7Do Sol                               Lam  

@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqaOXPAk5oGhL3Kr
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/o8gbW1mHU7g?feature=player_embedded'
-
+fraseClave: "Yo tengo la Viña, yo"
 ---
 <pre>
   <a>Do</a>                   <a>Mim</a>               <a>Rem</a>

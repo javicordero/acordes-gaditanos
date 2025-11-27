@@ -1,14 +1,14 @@
 ---
 import { getCollection, render } from 'astro:content';
-import AcordeCard from '../../components/acorde-card.astro';
-import YoutubeCard from '../../components/right-column/youtube-card.astro';
-import SitiosDeInteresCard from '../../components/right-column/sitios-de-interes-card.astro';
-import Apoyar from '../../components/right-column/apoyar.astro';
-import ApareceAqui from '../../components/right-column/aparece-aqui.astro';
+import AcordeCard from '../../components/AcordeCard.astro';
+import YoutubeCard from '../../components/right-column/YoutubeCard.astro';
+import SitiosDeInteresCard from '../../components/right-column/SitiosDeInteresCard.astro';
+import Apoyar from '../../components/right-column/Apoyar.astro';
+import ApareceAqui from '../../components/right-column/ApareceAqui.astro';
 import Layout from '../../layouts/Layout.astro';
 import MusicCompositionSchema from '../../components/utils/MusicCompositionSchema.astro';
-import AnunciosGuitarra from '../../components/right-column/anuncios/anuncios-guitarra.astro';
-import AnunciosLibros from '../../components/right-column/anuncios/anuncios-libros.astro';
+import AnunciosGuitarra from '../../components/right-column/anuncios/AnunciosGuitarra.astro';
+import AnunciosLibros from '../../components/right-column/anuncios/AnunciosLibros.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 
 export async function getStaticPaths() {
@@ -33,23 +33,24 @@ const {
   autorCover,
   cejilla,
   modalidad,
+  fraseClave,
 } = data;
 
 // Generar texto de autoría
 const autores = musica === letra ? `de ${musica}` : `de ${letra} y ${musica}`;
 
 // Generar descripción completa
-const description = `Acordes ${pieza} ${agrupacion} ${modalidad} ${autores}. La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
+const description = `Acordes ${pieza} ${agrupacion} ${modalidad} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
 
 // Generar keywords específicas
-const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, ${agrupacion}, ${letra}, ${musica}`;
+const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}, ${letra}, ${musica}, ${pieza}, ${modalidad}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
 
 // Generar URL canónica
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 ---
 
 <Layout
-  title={`Acordes ${pieza} ${agrupacion}`}
+  title={`Acordes ${pieza} ${agrupacion} - Carnaval ${year} - Acordes Gaditanos`}
   description={description}
   keywords={keywords}
   image={img}>

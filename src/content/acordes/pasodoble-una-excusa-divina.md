@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIRWG86cvYey-6TW
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/1FqhyRhs0Yc'
+fraseClave: "Así de sencillo empieza este"
 
 ---
 <pre>(Sorda)                                  Fa         

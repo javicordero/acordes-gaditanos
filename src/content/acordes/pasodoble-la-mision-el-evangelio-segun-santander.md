@@ -8,6 +8,8 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjchPtW9wJQ2KA_VF
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qQj6nQGdwxM'
+fraseClave: Aquí llegan estos majaretas
+
 
 ---
 <pre><a>La7M</a>               <a>Sim7</a>    <a>Mi7</a>

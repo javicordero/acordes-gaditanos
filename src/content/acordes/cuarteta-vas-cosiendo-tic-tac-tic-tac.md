@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPfSLU8OIqsJe6aF
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/VWOr5cihJMw'
-
+fraseClave: "Vas cosiendo los días hora"
 ---
 <pre>      <a>La</a>                     <a>Mi</a>          <a>Fa#m</a>
 Vas cosiendo los días hora a hora con el hilo gris 

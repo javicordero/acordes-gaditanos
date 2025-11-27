@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7TmCbyEYNCACeMz
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/H4Sa9aFMKmI'
-
+fraseClave: "Defensor del costalero nos vais"
 ---
 <pre><a>Mim</a>               <a>Si7</a>                <a>Mim</a>
 Defensor del costalero nos vais a comer los huevos

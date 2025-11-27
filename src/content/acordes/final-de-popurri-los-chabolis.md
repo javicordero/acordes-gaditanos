@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkuyYaet1gz1L0sm
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/fF55zwK5TEc?si=kNY_obHl8CrnznCb'
-
+fraseClave: "Ahora quiero invitarte a mi Casa"
 ---
 <pre><a>Sol</a>              <a>Re7</a>        <a>Sol</a>
 Ahora quiero invitarte a mi Casa alquilá por la 

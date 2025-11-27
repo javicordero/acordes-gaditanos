@@ -8,6 +8,8 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYrMr8EOysMzSTjW
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/23eSN-eBwW4?si=-woJ-sL7utajzYMV'
+fraseClave: Me llamo Pedro Romero, pluma
+
 
 ---
 <pre><a>Re</a>               <a>La7</a>             <a>Re</a>

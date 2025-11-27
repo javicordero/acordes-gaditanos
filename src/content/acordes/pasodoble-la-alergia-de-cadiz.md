@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9zXzdF2t0PesofP
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MWxjDKo-f7w?si=MPFZrZsZaPqMnWO6'
+fraseClave: "Bendita suerte pal aficionao"
 
 ---
 <pre><a>LaM7</a>                     <a>Mi7</a>               <a>Sim7</a>

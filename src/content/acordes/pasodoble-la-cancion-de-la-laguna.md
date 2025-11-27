@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZpM3-nQLk9rAtUB
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/hAHI_mpR19Q?feature=player_embedded'
+fraseClave: "Cuando el verano se rinde"
 
 ---
 ---

@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1umLmExYglkM5nZ
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tNNXjlGJFew?feature=player_embedded'
+fraseClave: "En un brazo los números rojos,"
 
 ---
 <pre>

@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpnIYfx9CYq6QIN8
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/yU36-52l9uE'
+fraseClave: "Tan arrogante y tan necio"
 
 ---
 <pre><a>Re</a>                   <a>La</a>                    <a>Sol</a>

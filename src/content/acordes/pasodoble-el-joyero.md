@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxsswsXKbeO0dw4V
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/p-0H0KFVJ9s?si=YdAYi8ZsuQEXmQz9'
+fraseClave: "Si tu mare es gaditana"
 
 ---
 <pre><a>Mim</a>        <a>Si7</a>    <a>Mim</a>              <a>La7</a>     <a>Re</a>

@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNpJpb1tdR33Xxrt
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/I-sGXVxkAPY?si=Cg82_o1Zms2C-Eiu'
+fraseClave: "Cuando cojimos este disfraz,"
 
 ---
 <pre><a>Mim</a>                     <a>Mim</a>

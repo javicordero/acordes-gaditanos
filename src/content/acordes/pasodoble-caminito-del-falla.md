@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMnigeI8WQq7iKC0
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rQf4RBQPvxs'
-
+fraseClave: "Hoy me senté al borde"
 ---
 <pre><a>Re</a>                    <a>La7</a>    <a>Re</a>
 Hoy me senté al borde de mi senda vi el caminito 

@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEB66LwJ-iTdgoig
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/OJml_gdcRNc?feature=player_embedded'
+fraseClave: "Entramos por tus butacas,"
 
 ---
 <pre>

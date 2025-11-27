@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_exVciZfn9-Kobd
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=84BDvb3S5ZY2rE5T'
+fraseClave: "Por más que te encuentres sumidita"
 
 ---
 <pre><a>LaM7</a>                          <a>Fa#7</a>          <a>Sim7</a>

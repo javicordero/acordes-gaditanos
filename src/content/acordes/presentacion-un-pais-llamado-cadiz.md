@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhe_ja4gnuY2nxE3o
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/hny13dKLEJE'
-
+fraseClave: "De tanto querete Cádiz soñé"
 ---
 <pre><a>Do</a>   <a>Mim</a>  <a>Lam</a>  <a>Mim</a>  <a>Fa</a>   <a>Sol</a>  <a>Do</a>
 Uhhh uhhh uhhh uhhh uhhh uhhh uhhh 

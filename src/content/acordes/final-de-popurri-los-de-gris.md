@@ -8,6 +8,8 @@ img: https://blogger.googleusercontent.com/img/a/AVvXsEjiNPd0UVGMW_Y9wVcu9OFr0Yq
 cejilla: 6
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ld0PTV1Dlxc'
+fraseClave: Si pasas por la Viña un
+
 
 ---
 <pre><a>Sol</a>                         <a>Re7</a>           <a>Do</a>

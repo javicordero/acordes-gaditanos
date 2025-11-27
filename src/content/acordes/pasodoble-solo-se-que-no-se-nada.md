@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgl8Qe4SX6MHQYwhc
 cejilla: 6
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/mfXFf3fYUiI'
+fraseClave: "Hoy yo le pido permiso"
 
 ---
 <pre>                   <a>Do</a>                    <a>Sol7</a>

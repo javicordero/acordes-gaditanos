@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaOwg-dMnkY4MZCF
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/mYyK29S4zJM?feature=player_embedded'
+fraseClave: "La Luna vino a la fragua"
 
 ---
 <pre>

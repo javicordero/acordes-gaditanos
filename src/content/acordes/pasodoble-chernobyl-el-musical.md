@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0-qD1C4LZ-qgL89
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/DId047PTPkU?feature=player_embedded'
+fraseClave: "Chernóbil es igual que Cádiz"
 
 ---
 

@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBHPieESUiJrhlRE
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Kx_R68flzoI?feature=player_embedded'
+fraseClave: "Fuera corona porque este perro"
 
 ---
 <pre>

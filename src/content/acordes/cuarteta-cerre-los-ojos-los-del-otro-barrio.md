@@ -8,6 +8,8 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjO4Cwb98apjhV4M
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iXoyBUQvGEs?si=Ze6c2_fCsghVILUy'
+fraseClave: Cerre los ojos, pa
+
 
 ---
 <pre>   <a>Re</a>                                <a>Fa#7</a>

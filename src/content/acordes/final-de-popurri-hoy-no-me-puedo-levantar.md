@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinWBCR0GNpM9QVtb
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/LnoGsmFQ8ew?si=v0wC6MTdBEqWh2DJ'
+fraseClave: "El día que yo tuviera"
 
 ---
 <pre>   <a>Sol</a>                   <a>Sim7</a>    <a>Do</a>          <a>Lam7</a>

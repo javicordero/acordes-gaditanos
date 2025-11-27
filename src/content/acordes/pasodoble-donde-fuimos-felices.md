@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAD4ZlqM1eb_LGsp
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4AnmLJvFI7k?si=XzHTKSz9LRLeu23Q'
+fraseClave: "Muy buenos días princesa, hurgando estoy en"
 
 ---
 <pre><a>Mi/add9</a>            <a>Sol#m7</a> <a>La</a>          <a>Si7</a>

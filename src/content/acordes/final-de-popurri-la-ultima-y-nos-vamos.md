@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixRdm2BI0VpE6_VS
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Qzs_uLHx8cg?si=vXP_ShN_0fyZ-Rc7'
-
+fraseClave: "Y si voy a morir prefiero"
 ---
 <pre><a>Do</a>                   <a>Mi7</a>                <a>Fa</a>
 Y si voy a morir prefiero que me coja tocando

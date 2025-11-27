@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhszrZLWnSdGVPsPw
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HC-wkM_W7Ds'
+fraseClave: "Si fuera Cádiz una ventana"
 
 ---
 <pre><a>Mi/add9</a>  <a>Fa9</a>         <a>Mi/add9</a>     <a>Fa9</a>        <a>Mi/add9</a>

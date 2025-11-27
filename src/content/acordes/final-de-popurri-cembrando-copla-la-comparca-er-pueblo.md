@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSR4Sr2vabRXQSx-
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/aHqFL-kpkoU'
-
+fraseClave: "Siento que se me termina"
 ---
 <pre><a>Do</a>                           <a>Lam</a>
 Siento que se me termina el tiempo y que ahora es 

@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhTGycdJtoj1FTnwN
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tQwsJq2MFPw'
+fraseClave: "Que no, que no, que no"
 
 ---
 <pre>    <a>La</a>

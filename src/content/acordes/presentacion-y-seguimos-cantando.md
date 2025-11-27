@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqRYZc6gQJWCcLmz
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/If4hR1dfB8s?si=41HBe58Uy7xnoFZW'
-
+fraseClave: "Convertimos nuestra tierra en"
 ---
 <pre><a>Fa</a> <a>Mi</a>
                                         <a>Fa</a>

@@ -7,6 +7,7 @@ letra: Jesús Bienvenido
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7rBbjbpxrV4Rbx7wBH75fUg1LJoTolXi9Y2clPUZfJyQAK2zUQeHsPt4ojSlo0D87TpknHwNCseBDIGp8tdFuersjt0cjOg3YEqeCjk1YhKnuDWLUkC4zOhjPqWgsZrbIgjg9-AGDJYOT/s320/irracionales.jpg
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4zDOYXFpKV0?feature=player_embedded'
+fraseClave: "Por volverte a enamorar, al"
 
 ---
 <pre>

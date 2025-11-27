@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgO7ilD88VJPYnNar
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NFBC3HS-U_8?si=QyjqLj5hhxb7XCQh'
+fraseClave: "Quien sería el creador que"
 
 ---
 <pre>  <a>Do9</a>

@@ -9,6 +9,8 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NbYS5gt5C2c?si=ZiVpzZxFz7gyObOn'
 
+fraseClave: "Dicen de la chirigota que"
+
 ---
 <pre><a>Sol</a>             <a>Lam7</a>     <a>Re7</a>      <a>Sol</a>
 Dicen de la chirigota que algo le pasa que se 

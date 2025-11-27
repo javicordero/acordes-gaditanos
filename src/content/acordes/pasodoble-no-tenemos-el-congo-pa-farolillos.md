@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYd1DcqJVpkcCxeA
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MukynhdiJdo'
+fraseClave: "Naciste con el siglo del"
 
 ---
 <pre> <a>Re</a>             <a>La7</a>              <a>Re</a>

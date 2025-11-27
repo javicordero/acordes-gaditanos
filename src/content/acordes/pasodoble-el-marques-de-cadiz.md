@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3cTuIxCDR7CfNjQ
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/avP_XroRzmg?feature=player_embedded'
+fraseClave: "No tengo fortuna ninguna tampoco"
 
 ---
 <pre>

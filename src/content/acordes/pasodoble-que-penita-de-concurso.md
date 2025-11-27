@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfPpQB9HjPrVp7x9
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/FPWRc8BjAxY?feature=player_embedded'
+fraseClave: "Ya estamos todos contentos, ya"
 
 ---
 <pre>

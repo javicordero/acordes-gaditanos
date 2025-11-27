@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGYSL4M_hZ--i86t
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qsMTh2bXSIY'
+fraseClave: "Hambriento de carnaval echaba la vista atrás y"
 
 ---
 <pre><a>Mi</a>                                      <a>Do#7</a>

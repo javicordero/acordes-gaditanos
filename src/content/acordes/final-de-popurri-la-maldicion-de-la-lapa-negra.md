@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRYKitASQ6A2wAlH
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/KU8dlbes1Is?feature=player_embedded'
-
+fraseClave: "Ya me voy que sube"
 ---
 <pre>-Al aire.
             <a>Re </a>       <a> La7 </a>       <a>Re </a>              R
@@ -51,4 +51,4 @@ voy
 Ya me voy pa la Caleta, si, que pa la Caleta ya me 
 voy
 <a>Re </a>             <a> Sol</a> <a>La7</a>
-Pa la caleta voy, bendita maldición </pre>
+Pa la caleta voy, bendita maldición</pre>

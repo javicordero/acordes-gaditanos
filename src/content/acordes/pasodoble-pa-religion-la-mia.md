@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxi8na_e4ucck2yL
 cejilla: 6
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ANXzz3Q4GqU?feature=player_embedded'
+fraseClave: "Igual que cada martes, entraron"
 
 ---
 <pre>

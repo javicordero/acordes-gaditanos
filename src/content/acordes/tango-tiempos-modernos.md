@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinVc_FapPoUrXny5
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cC7V-XV6f6E?feature=player_embedded'
-
+fraseClave: "Sé que alguna gente dice"
 ---
 <pre>
 <a>Mi/add9</a>                        <a>Sol#m</a>            <a>F</a>

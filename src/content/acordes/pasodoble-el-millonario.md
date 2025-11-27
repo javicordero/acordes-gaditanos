@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB9M0ZoEHEMRpcTN
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/D1WEpOGgcGc?si=2g7Z4XJAzt3flbU3'
+fraseClave: "Como yo he tenido tiempo,"
 
 ---
 <pre><a>Do</a>           <a>Sol7</a>   <a>Do</a>

@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGDUpNmwAmIbmaw9
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/I_Ff7pfjhuw'
+fraseClave: "Qué bonito es escuchar justo"
 
 ---
 <pre><a>Re</a>    <a>La7</a>          <a>Re</a>        <a>La7</a>         <a>Re</a>

@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiMbo7oCZvSe5Tllz
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/a7eB2YwxAbc?feature=player_embedded'
-
+fraseClave: "Tú, mi trenecito que nunca"
 ---
 <pre>
 <a>La</a>       <a>Mi7</a>             <a>Re</a> <a>Mi7</a>    <a>La</a>

@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqoaNWmhsRt9C8cT
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Sj4px-mOP6E'
-
+fraseClave: "Vuelve a empezar hijo de Adán"
 ---
 <pre><a>Mim</a>  <a>Fa</a>   <a>Mim</a>  <a>Fa</a>   <a>Mim</a>
 <a>Ahhh</a> <a>ahhh</a> <a>ahhh</a> <a>ahhh</a> <a>ahhh</a> 

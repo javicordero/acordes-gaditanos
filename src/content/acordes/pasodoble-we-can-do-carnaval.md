@@ -7,6 +7,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6Y4mm2Qg_6c'
 musica: Mar Muñoz
+fraseClave: "Hoy me quite todos los miedos"
 ---
 <pre><a>Do</a>
 Hoy me quite todos los miedos y me dije que yo 

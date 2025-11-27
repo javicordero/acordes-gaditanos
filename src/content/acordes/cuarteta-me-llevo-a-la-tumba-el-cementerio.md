@@ -8,7 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrv9FzPG7Qirun6s
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=H5WaOLCTOtpU7KGS'
-
+fraseClave: "Cerquita de la caleta he"
 ---
 <pre><a>Do9</a>                   <a>Lam</a>                    <a>Rem</a>
 Cerquita de la caleta he reservado un sitito para 

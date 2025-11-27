@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisVO3M4Xx9ijzSAw
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/z8r1_tlTMhA?feature=player_embedded'
+fraseClave: "Surgido de un buen platillazo,"
 
 ---
 <pre>
