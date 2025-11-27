@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: Los luceros
 year: 2019
-musica: El Noly-
-letra: El Noly-
+musica: El Noly
+letra: El Chapa
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0i9qS0Yh52tMZ-vHLFqfJjA_Z3nHWS4sac7pI9wkcma9n2HWPnLQ7JA0IKpOWWusyV3L7vVxTXXpFjnqZtG-tn-r1CNJfa2OFo7hURAF7veEKVL85XjKaeWWJUibPdNqWFRbuz71-euG3/s400/comparsa-los-luceros.jpg
 cejilla: 3
 date: "25/11/2025"
