@@ -13,11 +13,11 @@ fraseClave: "No no todo tiene un precio"
 ---
 <pre><a>Sol</a>                   <a>Do9</a>                <a>Sol</a>
 No no todo tiene un precio no que lo que no se 
-      <a>Re/Fa#7</a>       <a>Do9</a>           <a>Re/</a>
+      <a>Re/Fa#</a>       <a>Do9</a>           <a>Re/Fa#</a>
 vende no lo compra ni el mejor postor
 <a>Sol</a>                  <a>Do9</a>                  <a>Sol</a>
 No no todo tiene un precio no que no hay dinero que 
-  <a>Re/Fa#</a>           <a>Do9</a>          <a>Re/</a>
+  <a>Re/Fa#</a>           <a>Do9</a>          <a>Re/Fa#</a>
 suplante a lo que siente un corazón
 <a>Sol</a>                                        <a>Mim</a>
 Al vaivén de las barquillas entre las piedras al 
@@ -41,7 +41,7 @@ El fondo norte y santa bandera tangos fluyendo por
 las bateas horquillas vivas que me desgarran la 
 <a>Re</a>
 piel
-<a>Sol</a>    <a>Re/Fa#</a>          <a>Do9</a>       <a>Re/Fa#</a>     <a>Sol</a>
+<a>Sol</a>    <a>Re/Fa#</a>          <a>Do9</a>       <a>Re/Fa#</a>     <a>Sol7</a>
 Son memorias de una historia que nunca acabara 
                                      <a>Sol</a>
 mientras que haya una Lolita la piconera
@@ -61,11 +61,11 @@ tus niños y niñas sigan yendo a mariscar
 De que sirve el dinero si vendes tu tierra tus 
                 <a>Re/Fa#</a>                 <a>Do9</a>
 costumbres, tus barrios y tu forma de hablar
-<a>Sol</a>                <a>Re/Fa#</a>             <a>Do9</a>   <a>Re/</a>
+<a>Sol</a>                <a>Re/Fa#</a>             <a>Do9</a>   <a>Re/Fa#</a>
 De qué sirve si un día el espejo te enseña que 
-<a>Fa#</a>             <a>Do9</a>           <a>Sol</a>
+                <a>Do9</a>           <a>Sol</a>
 perdiste tu origen y tu identidad
-<a>Do</a>                <a>Re/Fa#</a>           <a>Sol</a> <a>Dom7</a>
+<a>Do9</a>                <a>Re/Fa#</a>           <a>Sol</a> <a>Dom7</a>
 Que perdiste tu origen y tu identidad que perdiste 
                       <a>Sol</a>
 tu origen y tu identidad</pre>
