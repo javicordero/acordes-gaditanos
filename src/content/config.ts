@@ -29,8 +29,8 @@ const acordes = defineCollection({
         .optional(),
       date: z.string().regex(/^\d{2}[-/]\d{2}[-/]\d{4}$/),
       video: z.string().optional(),
-      cover: z.string().optional(),
-      autorCover: z.string().optional(),
+      cover: z.string().optional().nullable(),
+      autorCover: z.string().optional().nullable(),
       fraseClave: z.string().optional(),
     })
     .transform((data) => ({
