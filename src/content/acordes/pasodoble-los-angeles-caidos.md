@@ -8,7 +8,7 @@ modalidad: Comparsa
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/96a0a6ddfd7b5861a3f0e5107.jpg
 cejilla: 2
 video: https://www.youtube.com/embed/eJ4ltG-NQUE?si=cACRL8mGicPqj8k7
-cover: nulll
+cover: null
 autorCover: null
 date: 02/12/2025
 fraseClave: Yo no le temo al castigo
