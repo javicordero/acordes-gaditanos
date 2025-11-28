@@ -80,16 +80,18 @@ let autores = await getCollection('autores');
         years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
       />
 
-      {
-        Array.from(new Set(acordes.map((acorde) => acorde.data.year)))
-          .sort((a, b) => b - a)
-          .map((year) => (
-            <CardsGroup
-              year={year}
-              acordes={acordes.filter((acorde) => acorde.data.year === year)}
-            />
-          ))
-      }
+      <div id='all-cards-groups' style='display: none;'>
+        {
+          Array.from(new Set(acordes.map((acorde) => acorde.data.year)))
+            .sort((a, b) => b - a)
+            .map((year) => (
+              <CardsGroup
+                year={year}
+                acordes={acordes.filter((acorde) => acorde.data.year === year)}
+              />
+            ))
+        }
+      </div>
     </div>
   </div>
 </Layout>
@@ -105,6 +107,10 @@ let autores = await getCollection('autores');
     display: flex;
     flex-direction: column;
     gap: var(--main-container-gap);
+  }
+
+  #all-cards-groups {
+    display: none;
   }
 
   /* Card de sin resultados */
