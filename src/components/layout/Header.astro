@@ -7,11 +7,13 @@ import { Icon } from 'astro-icon/components';
   <div class='container-layout nav-bar-container'>
     <div class='branding'>
       <picture>
-        <a href='/' aria-label='Inicio'>
+        <a href='/' aria-label='Inicio' id='logo-link'>
           <img src={Logo.src} alt='Acordes Gaditanos logo' transition:persist decoding='async' />
         </a>
       </picture>
-      <h1 class='branding-title' transition:persist><a href='/'>Acordes Gaditanos</a></h1>
+      <h1 class='branding-title' transition:persist>
+        <a href='/' id='title-link'>Acordes Gaditanos</a>
+      </h1>
     </div>
 
     <div class='right-controls'>
@@ -558,4 +560,14 @@ import { Icon } from 'astro-icon/components';
   }
 
   document.addEventListener('astro:page-load', initHeader);
+
+  // Limpiar filtro al volver al inicio
+  function clearSearchOnHomeClick(e) {
+    sessionStorage.removeItem('pendingSearch');
+    document.dispatchEvent(new CustomEvent('searchCleared'));
+  }
+  const logoLink = document.getElementById('logo-link');
+  const titleLink = document.getElementById('title-link');
+  if (logoLink) logoLink.addEventListener('click', clearSearchOnHomeClick);
+  if (titleLink) titleLink.addEventListener('click', clearSearchOnHomeClick);
 </script>

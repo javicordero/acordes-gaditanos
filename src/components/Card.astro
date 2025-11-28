@@ -1,5 +1,5 @@
 ---
-const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
+const { pieza, agrupacion, musica, letra, img, year, slug, transitionKey } = Astro.props;
 const headingId = `acordes-${slug}`;
 
 // Limpiar "Cuarteta" y comillas si es necesario
@@ -34,7 +34,7 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
       alt={`${agrupacion} - ${pieza} - Carnaval de Cádiz ${year}`}
       loading='lazy'
       decoding='async'
-      transition:name={`img-${slug}`}
+      transition:name={`img-${slug}-${transitionKey}`}
       class='card-image'
     />
     <header>

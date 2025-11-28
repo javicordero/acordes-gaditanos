@@ -30,26 +30,24 @@ const headingId = `acorde-${slug}`;
     </h2>
 
     <section class='autores'>
-      {
-        letra && (
-          <p>
-            <strong>Letra:</strong>
-            <a href={`/autor/letra/${letraSlug}`} rel='noopener'>
-              {letra}
-            </a>
-          </p>
-        )
-      }
-      {
-        musica && (
-          <p>
-            <strong>Música:</strong>
-            <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>
-              {musica}
-            </a>
-          </p>
-        )
-      }
+      <p>
+        <strong>Año:</strong>
+        <a href={`/carnaval/${year}`} rel='noopener'>
+          {year}
+        </a>
+      </p>
+      <p>
+        <strong>Letra:</strong>
+        <a href={`/autor/letra/${letraSlug}`} rel='noopener'>
+          {letra}
+        </a>
+      </p>
+      <p>
+        <strong>Música:</strong>
+        <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>
+          {musica}
+        </a>
+      </p>
     </section>
     <figure>
       <img
@@ -195,7 +193,7 @@ const headingId = `acorde-${slug}`;
   }
 
   .acorde-content {
-    padding: 0 4px;
+    padding: 0 4px 4px 4px;
     display: grid;
     place-items: center;
     gap: 16px;
@@ -259,6 +257,10 @@ const headingId = `acorde-${slug}`;
       max-width: 260px;
       width: 100%;
       margin: 8px auto auto auto;
+
+      & img {
+        min-height: 170px;
+      }
     }
 
     h2::after {

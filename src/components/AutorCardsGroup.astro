@@ -1,34 +1,19 @@
 ---
-import Card from './Card.astro';
-const { year, acordes } = Astro.props;
-
-// Generar ID estable para accesibilidad
-const headingId = `year-${year}`;
+import AutorCard from './AutorCard.astro';
+const { autores, heading = 'AUTORES DESTACADOS' } = Astro.props;
+const headingId = `autores-group`;
 ---
 
 <article class='year-group' aria-labelledby={headingId}>
   <header>
-    <h2 id={headingId} class='is-title-minus'>{year}</h2>
+    <h2 id={headingId} class='is-title-minus'>{heading}</h2>
   </header>
 
   <div class='acordes-grid' role='region' aria-labelledby={headingId}>
     {
-      acordes.map((acorde, idx) => {
-        const { slug, data } = acorde;
-        const { pieza, agrupacion, musica, letra, img, year: y } = data;
-        return (
-          <Card
-            pieza={pieza}
-            agrupacion={agrupacion}
-            musica={musica}
-            letra={letra}
-            img={img}
-            year={y}
-            slug={slug}
-            transitionKey={`${year}-${idx}`}
-          />
-        );
-      })
+      [...autores]
+        .sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999))
+        .map((autor) => <AutorCard autor={autor.data} />)
     }
   </div>
 </article>
@@ -87,7 +72,6 @@ const headingId = `year-${year}`;
     gap: 16px;
   }
 
-  /* Media queries */
   @media (max-width: 1024px) {
     .acordes-grid {
       grid-template-columns: repeat(3, 1fr);

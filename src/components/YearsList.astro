@@ -1,0 +1,123 @@
+---
+const { years, heading = 'TODOS LOS CARNAVALES', headingId = 'years-list-title' } = Astro.props;
+---
+
+<article class='years-list' aria-labelledby={headingId}>
+  <header>
+    <h2 id={headingId}>{heading}</h2>
+  </header>
+  <ul>
+    {
+      years.map((year) => (
+        <li key={year}>
+          <a href={`/carnaval/${year}`}>{year}</a>
+        </li>
+      ))
+    }
+  </ul>
+</article>
+
+<style>
+  .years-list {
+    background: var(--card-background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  header h2 {
+    position: relative;
+    color: var(--primary-color);
+    font-size: 1.625rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    max-width: fit-content;
+    margin: 0;
+  }
+  header h2::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 90%;
+    height: 4px;
+    background: var(--primary-contrast-color);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+  li {
+    background: var(--primary-contrast-color);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition:
+      box-shadow 0.2s,
+      transform 0.2s;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+  }
+
+  li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 14px 14px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    transition: 0.3s ease;
+    font-size: 1.08rem;
+  }
+
+  li:hover,
+  li:focus {
+    background: var(--primary-color);
+    color: var(--primary-contrast-color);
+    outline: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px) scale(1.03);
+    transition: all 0.3s ease;
+  }
+
+  li:hover a,
+  li:focus a {
+    color: var(--primary-contrast-color);
+  }
+
+  @media (max-width: 640px) {
+    .years-list {
+      gap: 12px;
+      padding: var(--card-padding-sm);
+    }
+    ul {
+      gap: 6px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    header h2 {
+      font-size: 1.4rem;
+    }
+    header h2::after {
+      height: 3px;
+      bottom: -3px;
+    }
+    li a {
+      padding: 12px 16px;
+      font-size: 0.95rem;
+    }
+  }
+</style>
