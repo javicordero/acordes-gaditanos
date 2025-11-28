@@ -13,7 +13,7 @@ const headingId = `year-${year}`;
 
   <div class='acordes-grid' role='region' aria-labelledby={headingId}>
     {
-      acordes.map((acorde) => {
+      acordes.map((acorde, idx) => {
         const { slug, data } = acorde;
         const { pieza, agrupacion, musica, letra, img, year: y } = data;
         return (
@@ -25,6 +25,7 @@ const headingId = `year-${year}`;
             img={img}
             year={y}
             slug={slug}
+            transitionKey={`${year}-${idx}`}
           />
         );
       })
