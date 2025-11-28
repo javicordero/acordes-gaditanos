@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title='404 - Página no encontrada'>
+  <div class='error-page'>
+    <div class='error-content'>
+      <h1 class='error-code'>404</h1>
+      <h2 class='error-message'>Página no encontrada</h2>
+      <a href='/' class='btn-home'>Volver al inicio</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .error-page {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  }
+
+  .error-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+  .error-code {
+    font-size: 10rem;
+    font-weight: 700;
+    color: var(--primary-contrast-color);
+    margin: 0;
+    letter-spacing: 4px;
+    line-height: 1;
+  }
+
+  .error-message {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+
+  .error-description {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    max-width: 500px;
+    line-height: 1.6;
+  }
+
+  .btn-home {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    margin-top: 1rem;
+    background-color: var(--primary-contrast-color);
+    color: #0a0a0a;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      /* background-color: #ffffff; */
+      /* transform: translateY(-2px); */
+      transform: scale(1.04);
+      box-shadow: 0 8px 20px rgba(252, 163, 17, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .error-code {
+      font-size: 7rem;
+    }
+
+    .error-message {
+      font-size: 2rem;
+    }
+
+    .error-description {
+      font-size: 1.125rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .error-code {
+      font-size: 5rem;
+      letter-spacing: 2px;
+    }
+
+    .error-message {
+      font-size: 1.5rem;
+    }
+
+    .error-description {
+      font-size: 1rem;
+    }
+
+    .btn-home {
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
+    }
+  }
+</style>
