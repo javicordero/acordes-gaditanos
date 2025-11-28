@@ -161,11 +161,11 @@ let autores = await getCollection('autores');
 
   @media (max-width: 640px) {
     .main-container {
-      gap: var(--main-container-gap-sm);
+      gap: calc(var(--main-container-gap-sm) - 16px);
     }
 
     .results-container {
-      gap: var(--main-container-gap-sm);
+      gap: calc(var(--main-container-gap-sm) - 16px);
     }
 
     .no-results {
