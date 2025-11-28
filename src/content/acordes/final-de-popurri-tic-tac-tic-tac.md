@@ -12,9 +12,9 @@ video: 'https://www.youtube.com/embed/3F6QTRxOrTI?feature=player_embedded'
 ---
 <pre>
 <a>Fa9</a>
-  <a>Mi/add9</a>        <a>Do#m</a>              <a>La</a>              M
+  <a>Mi/add9</a>        <a>Do#m</a>              <a>La</a>
 Media vida colgado de un reloj, media vida tejiendo
-i/add9
+<a>Mi/add9</a>
 comparsas
     <a>Sol#7</a>             <a>Do#m</a>             <a>La</a>      <a>Si7</a>
 Media vida temiendo esta canción, con el vello de

@@ -53,9 +53,9 @@ de versos
 pensaba en la familia pensaba en tu regalo en forma
    <a>Mi</a>  <a>Mi7</a>
 de consejo.
-   <a>La</a>       <a>Si7</a>                                  S
+   <a>La</a>       <a>Si7</a>
 Oye Tino, por más vueltas que le sigas dando a tu
-ol#m7
+<a>Sol#m7</a>
 anillo
   <a>Do#7</a>                                  <a>Fa#m7</a>
 No pienses que Cádiz va a echarte en el olvido
@@ -67,9 +67,9 @@ Ay, compay y si te llama la guitarra para que
 vuelvas
 <a>Do#7</a>                              <a>Fa#m7</a>
 La coges cuando tu alma esté con fuerzas
-                            <a>Si7</a>   <a>La</a>          <a>Mi/ad</a>
+                            <a>Si7</a>   <a>La</a>          <a>Mi/add9</a>
 Cuando llegue ese día recuerda que estará el Falla
-<a>dDo#7</a>  <a>Fa#m7</a>
+<a>Do#7</a>  <a>Fa#m7</a>
 de par en par
         <a>Si7</a>      <a>Mi/add9</a>
 Con las puertas abiertas.

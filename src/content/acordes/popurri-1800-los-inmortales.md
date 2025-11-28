@@ -33,6 +33,9 @@ mande,
 Las cruces pa’ San Antonio y la plata pa’ quien te 
   <a>Mi7</a>       <a>Fa</a>    <a>Mi7</a>   <a>Lam</a>
 quiera. Y a ti chupa la sangre.
+
+
+
 <a>Mim</a>                            <a>Re</a>
 La sangre que aquí me han dado, ha sido sangre del 
   <a>Mim</a>
@@ -65,6 +68,9 @@ cuello los bocaos.
 Y lo que hagan conmigo me da igual, porque la 
             <a>Re</a>             <a>Do</a>
 sangre del pueblo es inmortal.
+
+
+
 <a>Mim</a>
 Resistiré las tentaciones delante de los 
 fanfarrones, porque a mi no me da la gana que nos 
@@ -91,6 +97,9 @@ palabras, me entre por los dos oídos y por ninguno
 me salga,
 <a>Mim</a>
 Resistiré las tentaciones.
+
+
+
 <a>Sol</a>                                        <a>Mim</a>
 Recuerdo que no quedaba dos lunas pa’ primavera, 
                     <a>Sol</a> <a>Mim</a>                <a>Re</a>
@@ -115,6 +124,9 @@ Que con Lolita y la Pepa, que con la Pepa y la
 Lolita, no harían falta las Puertas de Tierra en la 
  <a>Mim</a>
 Tacita.
+
+
+
 <a>Mim</a>                        <a>Re</a>
 Para ser inmortal no hace falta ser un hombre 
    <a>Mim</a>                          <a>Re</a>
@@ -160,6 +172,9 @@ mi palabra de carnavalero mi comparsa no te olvida.
 Aún sabiendo que antes del día le espera la 
 <a>Mim</a>
 fábrica.
+
+
+
       <a>Mim</a>
 Ya te dije que la claridad, la única que no me 
                   <a>Re</a>
@@ -173,10 +188,9 @@ bonita.
 La del mar, la claridad, la que me grita, la vida 
          <a>Re</a>
 que resucita junto a ti cada mañana.
-   Do                                       Mim     
-                                   Re               
-         (Subida de tono)
+  <a>Do</a>                                       <a>Mim</a>
 Te dije que la plata en tu ventana, la del mar, la 
+                                  <a>Re</a>
 claridad de la Tacita, es la que me resucita mi 
 bonita gaditana.
   <a>Fa#m</a>

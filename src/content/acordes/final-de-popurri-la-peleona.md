@@ -50,8 +50,8 @@ contá"
 Perdón, quiero pedirles perdón, por si a alguno os
    <a>Mim</a>
 molesté
-                   <a>Do</a> <a>Re7</a>                 <a>SolDoR</a>
+                   <a>Do</a> <a>Re7</a>                 <a>Sol Do </a>
 Pero me pudo el querer y me pudo el corazón, el
-<a>e7</a> <a>Sol</a>
+<a>Re7</a> <a>Sol</a>
 corazón
 </pre>

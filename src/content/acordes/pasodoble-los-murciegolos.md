@@ -38,9 +38,9 @@ Y ten cuidao con esta parte, no me pegues un
 traspiés
 Dosifica bien el aire, no lo sueltes de una vez
 Échale un montón de arte que se entere Cai entero
-     <a>Mi7</a>            <a>Lam</a>            <a>Mi7</a>            L
+     <a>Mi7</a>            <a>Lam</a>            <a>Mi7</a>
 De que estamos en el trío, si de que estamos en el
-<a>am</a>
+<a>Lam</a>
 trío
                   <a>Re7</a>                        <a>Lam</a>
 Donde todo sabe a poco y el compás se vuelve loco

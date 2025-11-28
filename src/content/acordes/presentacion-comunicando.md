@@ -14,9 +14,9 @@ letra: Tomy Alemania
 Uhh uhh uuh uuh uuh
                   <a>Do</a>                        <a>Sol</a>
 Comunicando con mi radio una emisora yo encontré
-                    <a>Rem</a>                       S
+                    <a>Rem</a>
 Que me trajera a este momento directamente del
-ol7
+<a>Sol7</a>
 ayer
                     <a>Do</a>     <a>Mi7</a>               <a>Lam</a>
 Donde los niños en la calle sin miedo podían jugar

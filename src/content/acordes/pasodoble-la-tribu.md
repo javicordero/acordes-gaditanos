@@ -65,7 +65,7 @@ casa
 Y con mi tribu, mis viejos amigos, temblando 
                        <a>Mi7</a>
 contigo, te vuelvo a cantar
-                                            L
+                                            
 Con mi comparsa, con mi comparsa, ay, con mi 
-<a>aM7</a>
+<a>LaM7</a>
 comparsa</pre>

@@ -28,11 +28,11 @@ enseñaos
 Vienen desde la misma caleta, y el salitre en la 
            <a>La7M</a>
 sangre impregnao
-Sorda                           La7M       Fa#7     
-   Sim7            Mi7       La7M
+<a>(Sorda)                                 La7M    Fa#7     </a>
 La orillita del templo bendito, que nos presta este 
+   <a>Sim7</a>            <a>Mi7</a>       <a>La7M</a>
 saborcito, De escollera y bajamar
-La7M (solo 5 y 6 cuerda)
+<a>La7M</a> 
 Y como en los carnavales, faltaba tu compas, 
 aquí estamos los chavales pa deci bibibibi bibibibi 
 bibibibi,
@@ -53,9 +53,9 @@ lo mucho que yo te quiero
 y vuelvo pa traer, y vuelvo a defender, tu legado 
                     <a>La7M</a>
 tus compases y tus notas,
-    <a>Rem</a>                         <a>La7M</a>           <a>Fa#</a>
+    <a>Rem</a>                         <a>La7M</a>           <a>Fa7#</a>
 y aquí vuelvo con todos tus compañeros, pa que te 
-7                   <a>Si</a>
+                   <a>Sim7</a>
 llegue hasta el cielo,
            <a>Mi7</a>        <a>Re</a>     <a>Mi7</a>   <a>La7M</a>
 tu chirigota, tu chirigota tu chirigota</pre>

@@ -27,9 +27,9 @@ Que suenan todas igual sin competir, ni ganar
 Y que se mezclan en su universal y especial 
     <a>La</a>
 melodía
-(Sorda)                           Fa#m Si7        
-Mi
+<a>(Sorda)</a>                           <a>Fa#m</a> <a>Si7</a>
 Voces puras, voces limpias, voces claras y 
+<a>Mi</a>
 transparentes
 <a>La</a>     <a>Si7</a>     <a>Mi</a>     <a>La</a>        <a>Si7</a>     <a>Mi</a>
 Cuando seamos mayores sueño con que únicamente

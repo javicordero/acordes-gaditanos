@@ -11,85 +11,86 @@ video: 'https://www.youtube.com/embed/5NGjRINKDAM?feature=player_embedded'
 
 ---
 <pre><a>Mim</a>
-Oh capitán, Oh capitán, Oh capitán, Oh capitán      
-                                                    
-                  Re
-Tú que quiebras mis cadenas, tú que me haces 
-tiritar                                            
-                    Do
-Tú mi patria sin bandera, tus mis alas pa volar    
-                            Lam7                    
-         Lam7/Sib
+Oh capitán, Oh capitán, Oh capitán, Oh capitán
+Tú que quiebras mis cadenas, tú que me haces 
+<a> Re </a>
+tiritar
+                                        <a>Do</a>
+Tú mi patria sin bandera, tus mis alas pa volar
+                 <a>Lam7</a>
 Tú mi desgarro de anhelos, tu la voz de mis 
-desvelo                                Si7
-Tú mi ausente tempestad          Lam7 Si7      
- Mim              Lam7 Si7   Do  Mim
-Devuélveme la libertad, devuélveme la libertadMim  
-                                  SIm7   Do        
-                        Si7
-Tu que desenredas nuestra sombra, tú que resucitas 
+ <a>Lam7/Sib</a>
+desvelo                                
+                   <a>Si7</a>
+Tú mi ausente tempestad          
+    <a>Lam7 Si7    Mim </a>            <a>Lam7 Si7   Do  Mim</a>
+Devuélveme la libertad, devuélveme la libertad
+<a>Mim                          SIm7   Do</a>
+Tu que desenredas nuestra sombra, tú que resucitas 
+    <a>Si7</a>
 mi compás
-<a>Mim </a>                                     <a> Re </a> <a> Do</a>
-Tú luchando al frente de los míos, tú mi más febril 
+<a>Mim </a>                          <a> Re </a> <a> Do</a>
+Tú luchando al frente de los míos, tú mi más febril 
+    <a>Si7</a>
 debilidad
-<a>Mim </a>                             <a> Re </a>     <a>Do</a>
-Tu mi planetario de canciones, tú mi gaditano 
-                          <a>Si7</a>
-despertarMim                                  Re    
-                                             Do    
-               
-Tú mi trono en piedra ostionera, tú el que manda en 
-mi trinchera                                        
- Si7
-Tú mi vicio y mi pecado más mortal     Lam          
-                     Re7           Sol              
-                      Mim
+<a>Mim </a>                    <a> Re </a>     <a>Do</a>
+Tu mi planetario de canciones, tú mi gaditano 
+                         <a>Si7</a>
+despertar
+<a>Mim</a>                       <a>Re</a>    
+Tú mi trono en piedra ostionera, tú el que manda en 
+         <a>Do</a>
+mi trinchera  
+                             <a>Si7</a> 
+Tu mi vicio y mi pecado más mortal
+    <a>Lam                     Re7           Sol</a>
 Mi realidad más pura y más bonita de diez a doce 
-encerrao en un local   Lam                          
- Re             Sol                                
-Mim  Mi7
+                <a>Mim</a>
+encerrao en un local
+<a>   Lam                Re            Sol</a>
 Allí donde mis sueños cobran vida allí donde me 
-haces especial     Lam                              
-                                                    
-    Mim
-Soñando con que abras cortinas y otra vez contigo 
-y otra vez mi hogar    Lam                          
-          Si7              Do  Si7      Mim
+        <a>  Mim  Mi7</a>
+haces especial     
+Lam
+Soñando con que abras cortinas y otra vez contigo 
+            <a> Mim </a>
+<a>Lam                          Si7              Do  Si7    </a>
 Soñando con venirte aquí a cantar, Oh capitán, mi 
+<a>Mim</a>
 capitán
-<a>Mim </a>                   <a>Re </a>                 <a>Do</a>
+<a>Mim </a>               <a>Re </a>                 <a>Do</a>
 Oh capitán eres música y letra, un estribillo un 
-          <a> Si7</a>
-trabalenguasMim                   Lam7              
-   Re7                                   Sol
-Y eres piñata, disfraz y canción y eres guitarra 
-y mi clave de solLam                    Mim        
-            SI7 
+          <a> Si7</a>
+trabalenguas
+<a>Mim               Lam7              Re7      </a>
+Y eres piñata, disfraz y canción y eres guitarra 
+            <a>Sol</a>
+y mi clave de sol
+<a>Lam               Mim              Si7</a>
 Y eres tanguillo, bombo y platillo, faro de 
-presentaciónLam                     Mim            
-         Si7           Do           Si7
-Y eres papelillos y eres serpentinas y eres plumero 
+<a>Lam</a>                 <a>Mim</a>            <a>Si7</a>        <a>Do</a>
+Y eres papelillos y eres serpentinas y eres plumero 
+    <a>Si7</a>
 y pregón
 <a>Lam </a>                         <a>Mim</a>
 Y eres un tachin tatachin tretoreto tachin 
-       <a>Si7 </a>                 <a>Mim</a>
-a nudillo y pulgónLam                          Mim  
-                 Si7                       Mim
+     <a>Si7 </a>    <a>Mim</a>
+a nudillo y pulgón
+<a>Lam </a>                  <a>Mim </a>        <a>Si7</a>
 Y eres gaditana y los Duros Antiguos y Antonio 
+        <a> Mim</a>
 cantando Charlot
-<a>Lam </a>                     <a> Mim </a>                  S
+<a>Lam </a>            <a>  Mim </a>               <a>Si7</a>
 Y eres el Carota y Fletilla, el Sopa y el Peña y 
-i7
+            <a>Mim</a>
 Agüillo y Pepón
-<a>Lam </a>                       <a>Mim</a>
+<a>Lam </a>                 <a>Mim</a>                 <a> Si7</a>
 Y eres la magia del caos la más pura anarquía de la 
-    <a> Si7</a>
 creación
 Oh capitán, Oh capitán, Oh capitán, Oh capitán
-          <a>Lam </a> <a>Si7 </a>       <a>Mim </a>           <a> Lam</a> <a>Si7</a>
+       <a>Lam </a><a>Si7 </a> <a>Mim </a>        <a> Lam</a> <a>Si7</a>  <a>Mim</a>
 Oh capitán mi carnaval, Oh carnaval mi capitán      
- <a>Mim</a>
-    Lam Si7        Mim            Lam      Si7
-Oh capitán mi carnaval, Oh capitán                
- Mim   Do  Si7  Mi  Si7  Mi
+       <a>Lam </a><a>Si7 </a> <a>Mim </a>        <a> Lam</a> <a>Si7</a> 
+Oh capitán mi carnaval, Oh carnaval 
+          <a> Mim   Do  Si7  Mi  Si7  Mi</a>
 Tú, mi carnaval</pre>

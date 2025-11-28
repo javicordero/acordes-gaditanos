@@ -10,7 +10,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6ehfMOea1ps'
 fraseClave: Por fuera un osito desmembrao
 ---
-<pre>    <a>Lam</a>       <a>Mi7</a>        <a>Lam</a>      <a>Sim/5</a>      <a>Mi</a>
+<pre>    <a>Lam</a>       <a>Mi7</a>        <a>Lam</a>      <a>Sim/5</a>      <a>Mi7</a>
 Por fuera un osito desmembrao cachondeo garantizao 
        <a>Fa</a>            <a>Mi7</a>
 para abrir los noticieros
@@ -33,9 +33,9 @@ monigotes enganchaos al carnaval
 Por dentro el convenio se respeta resistir la mano 
   <a>Fa</a>         <a>Sim7/5</a>   <a>Mi7</a>
 abierta de la nazi nacional
-         <a>Sim7</a>     <a>Mi7</a>     <a>LaM7</a>   <a>Fa#7</a>        <a>Sim</a>
+         <a>Sim7</a>     <a>Mi7</a>     <a>LaM7</a>   <a>Fa#7</a>        <a>Sim7</a>
 Por fuera picha, chocho, cojones por dentro los 
-7      <a>Mi7</a>   <a>LaM</a>
+       <a>Mi7</a>   <a>LaM</a>
 gritos del metal
 Por fuera los porritos y las copitas, los chapu y 
                <a>Mi7</a>            <a>LaM7</a>  <a>Fa#7</a>

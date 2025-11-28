@@ -48,6 +48,6 @@ Que te envenena a la vez que enamora
 La música en esta tierra quiso dejar su gran obra,
 <a>Fa</a>           <a>Sol7</a>              <a>Do</a>
 y los instrumentos hasta le sobran,
-                    <a>Sol7</a>   <a>Fa</a>      <a>Sol7</a> <a>FaSol7Do</a>
+                    <a>Sol7</a>   <a>Fa</a>      <a>Sol7</a> <a>Fa Sol7 Do</a>
 Porque esa música suena con el vaivén de las olas.
 </pre>

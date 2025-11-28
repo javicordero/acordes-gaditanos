@@ -59,6 +59,6 @@ La playita de Santa María que da al occidente
 Es la que hace bonita la silueta bendita de mi
       <a>Fa</a> <a>Fam</a>
 hermosa tacita
-<a>Sol</a>         <a>DoLaFaSolDo</a>
+<a>Sol</a>         <a>Do Lam Fa Sol Do</a>
 Con cada sol de poniente
 </pre>

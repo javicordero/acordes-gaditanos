@@ -53,11 +53,11 @@ Cai la tienen ya en los huesos, ay en los huesos
 Niña, líbrame de esta condena de tener que verte un 
 <a>Do</a>                     <a>Si7</a>
 día sepultá bajo las piedras
-                Mim                      Re         
-               Do                     Si7  (Mim Re 
-Do Si7)x2
+                <a>Mim</a>                      <a>Re</a>         
 Pero que mira, niña, líbrame de esta condena de 
+                     <a>Do</a>                     <a>Si7</a> 
 tener que verte un día sepultá bajo las piedras
+<a>(Mim</a> <a>Re</a> <a>Do</a> <a>Si7)x2</a>
         <a>Mim</a>            <a>Re</a>
 Carnavalero, va siendo hora de alejarse del 
  <a>Mim</a>
@@ -104,7 +104,7 @@ La ciudad del cementerio (Me he tenío que vestir de
 sepulturero)
                         <a>Mim</a>
 La ciudad del cementerio (Que me he tenido que 
-    <a>Re</a>            <a>Do</a> S
+    <a>Re</a>            <a>Do</a> <a>Si7</a>
 vestir de sepulturero)
-                     <a>Mim</a>
-<a>La</a> <a>ciudad</a> <a>del</a> <a>cementerio</a></pre>
+                <a>Mim</a>
+La ciudad del cementerio</pre>

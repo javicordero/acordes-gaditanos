@@ -10,7 +10,7 @@ musica: Raúl Cabrera
 letra: El Chapa
 
 ---
-<pre>- Cejilla al 4
+<pre>
   <a>Sol</a>
 Y tú que estas escuchando desde alli abajo a 
                   <a>Re</a>
@@ -67,7 +67,9 @@ Y ahora que llego el carnaval he soñado que en esta
 nube puedo el ancla lanzar de nuevo para cantarle a 
       <a>Do</a>
 mi pueblo
-- Al aire
+
+<strong>- Al aire</strong>
+
 <a>Lam</a>             <a>Mim</a>        <a>Fa</a>
 Turbulencias cuidado timonel los malos vientos 
 <a>Mi7</a>
@@ -130,9 +132,9 @@ Paco Alba pa dentro y Pemán a la mierda
 Y tu cara pa dentro y tus máscaras fuera y tus 
 <a>Do#m</a>
 besos pa dentro y las uñas pa fuera
-        <a>La</a>                                      <a>Fa#m</a>
+        <a>La</a>                                      <a>Fa#m7</a>
 Ya ganamos altura y en el hueco que queda la pasión 
-7                <a>Si7</a>                       <a>Mi</a> <a>Lam7</a>
+                <a>Si7</a>                       <a>Mi</a> <a>Lam7</a>
 y el calor de mi gente que se suban cuando quieran
 <a>Mi</a>                                  <a>Do#m</a>
 Estrellita que marcais el camino en mitad de esta 
@@ -231,15 +233,17 @@ parad
 Menos mal que del mundo mi Cádiz ha echado a volar 
             <a>Lam</a> <a>Do</a> <a>Mi7</a> <a>Lam</a>                 <a>Lam</a>
 y no va a estaaaaaaaaaaaar arriba capitán ahhhh
-- Cejilla al 1
+
+<strong>- Cejilla al 1 </strong>
+
    <a>Mi</a>                           <a>La</a>
 No pienses que aquí se acaba mi copla y mi travesía 
 <a>Mi</a>                                    <a>La</a>
 amigo levanta el ancla que hay que seguir esta 
 fantasía
-<a>Mi</a>                         <a>La</a>                 M
+<a>Mi</a>                         <a>La</a>                 <a>Mi</a>
 Pongo rumbo hacia otro lugar porque de momento 
-i                     <a>La</a>
+                      <a>La</a>
 devolveros esta ciudad yo no os la devuelvo
     <a>Mi</a>                    <a>Si</a>
 Que nos quedaremos Cádiz hasta que se la quiera 
@@ -247,17 +251,16 @@ Que nos quedaremos Cádiz hasta que se la quiera
 como a Cádiz hay que quererla y sea el mundo digno 
      <a>Mi</a>
 de tenerla
-           <a>Si</a>                <a>La</a>                So
+           <a>Si</a>                <a>La</a>                
 Una tierra libre, una tierra abierta, una tierra 
-l#
+<a>Sol#</a>
 nueva
 <a>Do#m</a>       <a>La</a>             <a>Mi</a>
 Cádiz mío, Cádiz nuestro, este es todo, mi 
 <a>Si</a>
 juramento
-<a>Do#m</a>          <a>La</a>             <a>Mi</a>              <a>Sol</a>
+<a>Do#m</a>          <a>La</a>             <a>Mi</a>              <a>Sol#7</a>
 Por la luna, por los cielos, vuela libre que yo 
-#7
 cuido tu sueño
 <a>Mi</a>                          <a>Si</a>
 Y yo al mundo te devolveré cuando te dejen de 

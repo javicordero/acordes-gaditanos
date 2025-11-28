@@ -29,9 +29,9 @@ Bilbao o Andalucía
 Orgullo de cantar sin tregua a mi modo feminista 
       <a>Mi</a>           <a>LaM7</a>
 las cositas de mi tierra
-        La/add9    La(sus9)    La/add9  La(sus9)    
-  La/add9                    Mi
+        <a>La/add9</a>    <a>La(sus9)</a>    <a>La/add9</a>  <a>La(sus9)</a>    
 Qué más da que en este concurso raso yo ya intuya 
+<a>La/add9</a>                    <a>Mi</a>
 mi fracaso si el discurso tiene aquí mi función
         <a>Sim</a>
 Qué más da las mentiras y obviedades si a las 
@@ -41,9 +41,9 @@ universidades mi palabra fue y allí se quedó
 Qué más da si mi copla te ha quedao ha transcendido 
        <a>LaM7</a>          <a>La7</a>         <a>Re</a>
 y ha llegado Hasta lo alto el Ateneo
-                      <a>Do#m</a>       <a>Fa#</a>      <a>Sim</a>  <a>Mi</a>
+                      <a>Do#m</a>       <a>Fa#</a>      <a>Sim</a>  <a>Mi7</a>
 Que más dan las puntuaciones, las difamaciones y 
-7         <a>LaM7</a>
+         <a>LaM7</a>
 los menosprecios
              <a>Rem</a>                    <a>Do#m</a>
 No podrán callar mi boca ni mi esperanza de 

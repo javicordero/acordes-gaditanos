@@ -69,9 +69,9 @@ allá
 Me escapo de la guerra, la tregua es mi final, mi 
    <a>Fa</a>                     <a>Sol</a>
 avión se escapa y vuela y siempre volará
-La(Sus2)                             FaMaj7         
-         Sol                Fa
+<a>La(Sus2)</a>                             <a>FaMaj7</a>         
 Disparé el avión porque sin ti no sé volar y 
+        <a>Sol</a>                <a>Fa</a>
 necesito una canción y necesito un carnaval
     <a>Lam</a>                <a>Sol</a>
 Tripulantes, no hay destino, se hace camino al 

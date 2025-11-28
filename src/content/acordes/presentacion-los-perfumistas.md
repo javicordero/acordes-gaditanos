@@ -13,7 +13,7 @@ video: 'https://www.youtube.com/embed/1-sQYtq5vZo?feature=player_embedded'
 <pre>
 <a>Lam</a>                  <a>Sol</a>                    <a>Rem</a>
 Por fin fondeo en tu orilla ¡Ay! Cádiz la prometida
-        <a>Mi7</a>      <a>LamSol7</a>
+        <a>Mi7</a>      <a>Lam Sol7</a>
 , del perfumista, la Roma
 <a>Do</a>                  <a>Sol</a>
 Que tienes pan y sentencia por cada calle una
@@ -25,7 +25,7 @@ Por cada esquina un suspiro, por cada barrio un
 aroma.
 <a>Rem</a>
 Yo que vine pa robarte los aromas de tus cosas y
-       <a>Mi7</a>           <a>LamSol7</a>
+       <a>Mi7</a>           <a>Lam Sol7</a>
 ahora entiendo que no puedo.
 <a>Do</a>                  <a>Sol</a>
 Porque resulta que al verme enredao en tu
@@ -53,7 +53,7 @@ Huele a pimienta y a sal, huele a romero en abril;
 Huele a tabaco de Falla, geranios y rama de noches
    <a>Mi7</a>
 y abril.
-(Sorda)
+<a>(Sorda)</a>
 Huele a escolleras para los caleteros, huele a
 caballas pa los que pregonan.
 Huele a promesa, huele a desengaño y huele a

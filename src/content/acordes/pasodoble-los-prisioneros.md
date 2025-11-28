@@ -33,9 +33,9 @@ pobres que pobreza
 Con más barquillitas que con libertad, Cádiz con
                     <a>Mi7</a>
 más chanclas que jardines
-<a>Sim7</a>            <a>Mi7</a>           <a>Sim7</a>               M
+<a>Sim7</a>            <a>Mi7</a>           <a>Sim7</a>
 Con más agujeros que adoquines, con más amistades
-i7        <a>LaM7</a>
+<a>Mi7</a>        <a>LaM7</a>
 que con amistad
               <a>Rem</a>               <a>LaM7</a>
 Más sol que luz, más tu que yo, más fe que santo y

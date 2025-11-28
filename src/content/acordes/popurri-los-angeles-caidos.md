@@ -57,8 +57,9 @@ Fuera del cielo y devuelve la espada
 Aquí tienes tu espada, tu reino, que yo el mío lo
           <a>Mi7</a>
 tengo, mi amada
-2ªCuarteta:
--Acordes usados: Fa#m, Sim, Mi7, La, Do#7, Re, Mi
+
+
+
 <a>Fa#m</a>               <a>Sim</a>                       <a>Mi7</a>
 Dios no es todopoderoso y se bien de lo que hablo
                      <a>La</a>  <a>Do#7</a>             <a>Fa#m</a>
@@ -83,8 +84,9 @@ habrá quien le rece
 Ni tierra tanta, ni tantas guerras, ni santa
 <a>Re</a>                 <a>Mi</a>
 tierra, ni guerra santa
-3ªCuarteta:
--Acordes usados: Lam, Re, Do, Sol, Lam7, Mi7
+
+
+
 <a>Lam</a>
 Historia de capitanes ,de religiones enterradas
                     <a>Re</a>         <a>Do</a>         <a>Lam</a>
@@ -92,7 +94,8 @@ Si en algo reconozco el rostro de Dios padre es en
  <a>Sol</a>
 el agua de los mares
 <a>Lam7</a>
- <a>la</a>               <a>la</a>        <a>la</a>           <a>la</a> <a>miseri</a>
+En la perfección de la calma, la espuma en 
+la misericordia
 En la justicia como el alma de sus misterios como
 <a>cordia</a>
 su fondo
@@ -119,8 +122,9 @@ robé
 Yo tengo el original que no es la costilla de Adán,
                  <a>Lam</a>
 sino la costilla de él
-4ªCuarteta:
--Acordes usados: Lam, Mi7, Sol7, Do, Fa
+
+
+
 <a>Lam</a>                                          <a>Mi7</a>
 Y si me gusta la Tierra es por culpa de tus besos
                                      <a>LamSol7</a>
@@ -144,12 +148,12 @@ noches, y noches de amnistía y libertad.
 Yo quiero ser tu compañero y cuando digas cruz por
          <a>Lam</a> <a>Sol7</a>
 mí, por ti primero
-<a>Do</a>     <a>Sol</a>           <a>Lam</a>          <a>Fa</a>              M
+<a>Do</a>     <a>Sol</a>           <a>Lam</a>          <a>Fa</a>
 Yo quiero ser tu compañero y cuando digas cruz por
-i7
+<a>Mi7</a>
 mí…
-5ªCuarteta:
--Acordes usados: Lam, Sol, Fa, Mi7, La7, Re
+
+
           <a>Lam</a>
 Y primero es el Juicio Final y el final es el
 Juicio Primero.
@@ -166,9 +170,9 @@ provocan la ira.
 Los que en su nombre construyen y adoran becerros
 <a>Fa</a> <a>Mi7</a>
 de oro.
-            <a>Lam</a>                  <a>Sol</a>              L
+            <a>Lam</a>                  <a>Sol</a>
 Los que en su nombre hacen las catedrales y fundan
-<a>am</a>  <a>Sol7</a>
+<a>Lam</a>  <a>Sol7</a>
 imperios.
              <a>Do</a>                    <a>Sol</a>
 Los que en su nombre provocan la guerra y derraman
@@ -178,13 +182,13 @@ la sangre.
 Y en su nombre bendicen demonios que inventan sus
   <a>Mi7</a>
 leyes.
-            <a>Lam</a>               <a>Sol</a>           L
+            <a>Lam</a>               <a>Sol</a>
 Los que en su nombre predican pobreza de oro
-<a>am</a> <a>Fa</a> <a>Mi7</a>
+<a>lam</a> <a>Fa</a> <a>Mi7</a>
 cubiertos.
-             <a>Lam</a>             <a>Sol</a>                  <a>La</a>
+             <a>Lam</a>             <a>Sol</a>
 Los que en su nombre asustan al hombre abrazando al
-m <a>Sol7</a>
+ <a>Lam</a><a>Sol7</a>
 Estado.
              <a>Do</a>                    <a>Sol</a>
 Los que en su nombre quebrantan la vida civil con
@@ -212,8 +216,9 @@ gente.
 (castigo divino): y no irán a Conil una noche de
        <a>Lam</a> <a>La7</a>     <a>Re</a>
 primavera, de primavera
-6ªCuarteta:
--Acordes usados: Re, Sim, La7, La, Sol
+
+
+
 <a>Re</a>                             <a>Sim</a>
 Y con el alma en la mano, ay la paz que vengo a
   <a>La7</a>

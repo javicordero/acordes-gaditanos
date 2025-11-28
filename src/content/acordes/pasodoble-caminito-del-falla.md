@@ -29,8 +29,7 @@ de mi compañera
 Que mas me da si en el horizonte se ve el destino
         <a>Sol</a>           <a>La</a>         <a>Re</a>
 Si lo bonito en esta vida hace camino
-            Fa#                           Sol   
-Som7
+            <a>Fa#</a>                           <a>Sol</a>    <a>Solm7</a>
 Y aunque no todo haya sido siempre como quisiera
                         <a>Mim</a>
 Y hoy que miro atrás te digo que, aunque a veces me 

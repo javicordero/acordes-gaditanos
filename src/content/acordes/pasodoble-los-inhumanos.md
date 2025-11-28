@@ -14,9 +14,9 @@ video: 'https://www.youtube.com/embed/oIB6AMdRXBU?si=PypXVI_z7-OfP5Xf'
 La negra, tenemos encima la negra, lo de nuestra 
      <a>Do</a>                     <a>Si7</a>
 chirigota no tiene pies ni cabeza
-<a>Mim</a>                        <a>Re</a>                      <a>D</a>
+<a>Mim</a>                        <a>Re</a>                      <a>Do</a>
 Ucrania, lo de la guerra de Ucrania, es un patio de 
-o                           <a>Si7</a>
+                           <a>Si7</a>
 colegio pa lo que ha pasao en mi casa
            <a>Re</a>                          <a>Re7</a>
 Somos conscientes que la vida es complicada, que la 
@@ -35,7 +35,7 @@ Todo el que ame a un familiar y que lo quiera
 conservar le aconsejamos que no salga con nosotros
                                   <a>Si7</a>
 Que dos cuartetas llevo ya en homenaje al que se va 
-                                           <a>Mi</a>   M
+                                          <a>Mi</a> <a>Mi7</a>
 y hay tantas muertes que esto es juego de tronos 
            <a>La</a> <a>Si7</a>                       <a>Sol#m</a> <a>Do#7</a>
 Tenemos a cuatro que le han echao del trabaaaaajo y 

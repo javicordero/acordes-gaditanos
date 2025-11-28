@@ -76,7 +76,7 @@ Aunque tu tipo tenga ya cuatro febreros
 Y qué más da si ahora se cantan coplas a toito el 
       <a>LaM7</a>
 mundo entero
-              Fa~7                      Sim7
+              <a>Fa#7</a>                      <a>Sim7</a>
 A tos menos a Cai porque no lo entienden lejos
 <a>Mi7</a>                <a>Sim7</a>                  <a>Mi7</a>
 Que mas que sea en mayo en septiembre en enero

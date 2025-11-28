@@ -53,7 +53,7 @@ regalando la palabra por la calle
 Y no es patrimonio de la humanidad y no es
     <a>Re</a>     <a>La</a>         <a>Mi</a>
 patrimonio de la humanidad
--Cejilla al 3.
+<strong> -Cejilla al 3.</strong>
 <a>Lam</a>                          <a>Sol</a>
 Mánchame mis manos con las tuyas con tu cara dura y
           <a>Fa</a>
@@ -95,8 +95,10 @@ Vestidos con lentejuelas mientras espera mi pueblo
                 <a>Mim</a>
 y de tanto que espera desespera
 <a>Re</a>  <a>Do</a> <a>Si7</a>  
-<a>Ahhh</a> <a>ahh</a> <a>ahh</a>
--Cejilla al 3.
+Ahhh ahhh ahh
+
+<strong>-Cejilla al 3.</strong>
+
 <a>Mim</a>
 Ay mi libertad ay mi libertad que ningún gobierno
 me la va a quitar
@@ -139,7 +141,9 @@ Con el trabajito que costo que vuelva un gobierno
 <a>Si7</a>                  <a>Mim</a>
 mierda nos la va a quitar
 Ay mi libertad
--Cejilla al 4.
+
+<strong>-Cejilla al 4. </strong>
+
           <a>Sol</a>                   <a>Mim</a>
 Cuando el viejo ve complejo su sustento y el
 infante va tirante de alimento
@@ -184,8 +188,10 @@ saber que significan las palabras
 Que levante la mano, que levante la mano, que
      <a>Do</a>               <a>Sol</a>
 levante la mano la guitarra
--Cejilla al 4.
-<a>LaDo</a> <a>Re</a>          <a>Mi7</a>
+
+
+
+<a>Lam Do</a> <a>Re</a>          <a>Mi7</a>
 Y es tan Gaditanissima
 <a>Lam</a>        <a>Do</a>            <a>Re</a>              <a>Mi7</a>
 Es Gaditanissima la mala educación del Levante
@@ -211,7 +217,7 @@ Es Gaditanissima la caballa y el fideo juntos
 Y la puesta del sol en la Caleta cual si acabara el
 <a>Mi7</a>
 mundo
-<a>LaDo</a> <a>Re</a>           <a>Mi7</a>  <a>Fa#</a>
+<a>Lam Do</a> <a>Re</a>           <a>Mi7</a>  <a>Fa#</a>
 Y es tan Gaditanissima  ahhh
 <a>Sim</a>          <a>Re</a>         <a>Mi</a>             <a>Fa#7</a>
 Es Gaditanissima su talla de una sola piedra
@@ -237,10 +243,10 @@ Es Gaditanissima la manera de librarnos del mal
 Llorando por los rincones, mientras cantamos
            <a>Sol</a>    <a>Fa#</a>
 nuestras canciones de carna
-<a>SimRe</a>   <a>Mi</a>      <a>Fa#7</a> <a>Sim</a>  <a>Re</a>  <a>Mi</a> <a>Fa#7</a>
+<a>Sim Re</a>   <a>Mi</a>      <a>Fa#7</a> <a>Sim</a>  <a>Re</a>  <a>Mi</a> <a>Fa#7</a>
 Y es tan Gaditanissima  ahhh ahhh
 <a>Sim</a>   <a>Re</a>   <a>Mi</a>       <a>Fa#7</a>   <a>Sim</a>     <a>Re</a>   <a>Mi</a>       <a>Fa#7</a>  
-<a>Gaditanissima</a> <a>Gaditanissima</a> <a>Gaditanissima</a> <a>Gaditanissima</a>
+Gaditanissima Gaditanissima Gaditanissima Gaditanissima
          <a>Sim</a>
-<a>Gaditanissima</a>
+Gaditanissima
 </pre>

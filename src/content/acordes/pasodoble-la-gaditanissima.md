@@ -29,7 +29,7 @@ Necesitaba empezar un año ya mis coplillas con esta
 tradicional primera letra sencilla
                  <a>Si7</a>                    <a>Mim</a>
 Que dijera que vuelvo o y siguiera que fui y
-               <a>DoLam7</a>              <a>Si7</a>
+               <a>Do Lam7</a>              <a>Si7</a>
 acabara algo así que a morir por febrero
 <a>Mim</a>
 Que dijera tierra mía que las alegrías de los
@@ -49,7 +49,7 @@ a toas horitas del día
                  <a>Si7</a>               <a>Mi/add9</a>
 Igual que un adolescente Gaditanissima mía
 Y aunque se que no se debe para que mi amor se
-   <a>MiMaj7Mi7</a>               <a>La</a>
+   <a>MiMaj7 Mi7</a>               <a>La</a>
 quede en tu sangre y en tu piel
                                          <a>Sol#7</a>
 De locura hasta pinté tu nombre por las paredes

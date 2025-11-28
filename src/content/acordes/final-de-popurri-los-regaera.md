@@ -49,7 +49,7 @@ Loco por Cádiz, que me tienes loco y amarraíto pa
 siempre a tu vera
 <a>Sol</a>            <a>Re</a>           <a>Mi</a>               <a>La</a>
 Pasé mi vida sembrando piropos y terminé como una
-             <a>SolLa</a>
+             <a>Sol La</a>
 regaera una regaera…
 <a>Re</a>                      <a>La</a>
 Perdona que me marche perdona que me vaya como una

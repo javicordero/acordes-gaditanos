@@ -11,9 +11,9 @@ video: 'https://www.youtube.com/embed/IK3DzVdec-s?feature=player_embedded'
 
 ---
 <pre>
-            <a>Sol</a>       <a>Re</a>         <a>Mim</a>           <a>Sim</a>
+            <a>Sol</a>       <a>Re</a>         <a>Mim</a>           <a>Sim7</a>
 Como yo en Cádiz he nacido y he crecido siendo un
-7   <a>DoLam7</a>
+   <a>DoLam7</a>
 niño gaditano
                           <a>Sim7</a>  <a>Re</a>
 Que en Cádiz tuve mi infancia con las primeras
@@ -47,7 +47,7 @@ Perdóname si con Cádiz ya llego a cansarte
 Pero no es más que un contratiempo que ha surgido
  <a>Sol</a>
 en mi guitarra
-  <a>Lam</a>                                     <a>Sim7Re</a>
+  <a>Lam</a>                                     <a>Sim7 Re</a>
 Que yo la cojo y siento Cádiz en cada traste, por
        <a>Do</a>
 cada traste

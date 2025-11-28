@@ -33,9 +33,9 @@ se me va la razón
 Porque en mis venas te llevo metío que mi mare
          <a>SolSol7</a>
 gaditano me parió
-<a>Dom7</a>     <a>Sol</a>                      <a>Mi7</a>         <a>La</a>
+<a>Dom7</a>     <a>Sol</a>                      <a>Mi7</a>         <a>Lam</a>
 Vengo a disfrutar de este carnaval, donde ahora
-m              <a>Re</a>          <a>Sol</a> <a>Sol7</a>
+               <a>Re</a>          <a>Sol</a> <a>Sol7</a>
 reina la vanidad, falsos y traidores
 <a>Dom7</a>  <a>Sol</a>    <a>Mi7</a>                 <a>Lam</a>    <a>Do</a>
 Yo te necesito tacita de mis amores y sabes que

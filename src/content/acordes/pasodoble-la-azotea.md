@@ -46,9 +46,9 @@ Me seducía con sus encantos
 Si me veía desesperando
       <a>Fa#m</a>                <a>Si7</a>
 Venga que Cai me está esperando
-        <a>Mi/add9</a>    <a>Si7</a>       <a>Mi/add9</a>     <a>Si7</a>    <a>Mi</a>
+        <a>Mi/add9</a>    <a>Si7</a>       <a>Mi/add9</a>     <a>Si7</a>
 Con mi guitarra, las musas, mi hermano, la vela y
-/add9
+<a>Mi/add9</a>
 la luna
                   <a>Mi/add9</a>
 Son elementos más que suficientes
@@ -58,9 +58,9 @@ Para que me caliente y se arranque mi pluma
 Un pasodoble bonito y sencillo hacerte quería
          <a>La/add9</a>       <a>Si7</a>          <a>Mi/add9</a>
 De los que quean en la azotea pa toa la vida
-        <a>Mi/add9</a>    <a>Si7</a>        <a>Mi/add9</a>     <a>Si7</a>   <a>Mi</a>
+        <a>Mi/add9</a>    <a>Si7</a>        <a>Mi/add9</a>     <a>Si7</a>
 Con mi guitarra, las musas, mi hermano, la vela y
-/add9
+<a>Mi/add9</a>
 la luna
                  <a>Mi7</a>            <a>Mi7M</a>
 Si encima en la tacita una molondrita a mí me

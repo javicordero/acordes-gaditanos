@@ -35,8 +35,11 @@ Y todos los diamantes del fondo de la tierra
 Como si fueran coronas sobre nuestra cabeza caerán
 <a>Fa</a>                                     <a>Mi7</a>
 Y apagara en un océano el fuego de la guerra
-<a>RemMi7</a>  <a>Rem</a> <a>Mi7</a>  
-<a>Ahh</a> <a>ahh</a>  <a>ahhh</a> <a>ahh</a>
+<a>Rem Mi7</a>  <a>Rem</a> <a>Mi7</a>  
+Ahhh ahh    ahhh ahh
+
+
+
 <a>Lam</a>                     <a>Sol</a>
 Oh revolución de la humanidad
 <a>Lam</a>                               <a>Sol</a>
@@ -68,35 +71,37 @@ Oh revolución de la humanidad
 Oh revolución eres la última esperanza de los
                       <a>Sol</a>
 parias y sé que un día llegara
-__________________________________________________
-_
-<a>LaFa</a>  <a>Sol</a>         <a>Lam</a> <a>Fa</a>    <a>Sol</a>          <a>Lam</a> <a>Fa</a>
+
+
+
+<a>Lam Fa</a>  <a>Sol</a>         <a>Lam</a> <a>Fa</a>    <a>Sol</a>          
 Tengo una duda compañero, a ver si alguien con
-       <a>Sol</a>       <a>LaFa</a> <a>Mi7</a>
+ <a>Lam</a> <a>Fa</a>      <a>Sol</a>       <a>Lam Fa</a> <a>Mi7</a>
 dinero sabe decirme porqué
-<a>Lam</a>                <a>Sol</a>
+<a>Lam</a>                   <a>Sol</a>
 La plata te arruina el alma la soledad no te
     <a>Fa</a>
 abandona
 <a>Rem</a>         <a>Fa</a>                            <a>Mi7</a>
 Se te retira la calma y te hace malvada persona
-LSol  Fa  Sol        LamSol Fa        Sol
-LamSolFa Sol             LamFaMi7  
+<a>Lam</a> <a>Sol</a>  <a>Fa</a>  <a>Sol</a>        <a>Lam</a> <a>Sol</a> <a>Fa</a>        <a>Sol</a>
 Ricos y son pobres convencidos de que el llanto y
+<a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Sol</a>             <a>Lam</a> <a>Fa</a> <a>Mi7</a>  
 el olvido        nunca le retorcerán
 <a>Lam</a>                      <a>Sol</a>
 Y mientras los cuernos le salen como la mayor de
       <a>Fa</a>
 sus joyas
-<a>Rem</a>                <a>Fa</a>                       <a>MI7</a>
+<a>Rem</a>                <a>Fa</a>                       <a>Mi7</a>
 Aprenden desde chavales a ser formales gilipollas
-<a>Lam</a>        <a>SolFa</a>                     <a>Mi7</a>
+<a>Lam</a>        <a>Sol Fa</a>                     <a>Mi7</a>
 Chai lailailailai si voy a ser como ellos
 <a>Lam</a>   <a>Sol</a>      <a>Fa</a>                  <a>Mi7</a>
 Chai lailailailai morirme pobre prefiero
-__________________________________________________
-______
-<a>Mim</a>       <a>Re</a>          <a>Mim</a>        <a>Re</a>         <a>MimR</a>
+
+
+
+<a>Mim</a>       <a>Re</a>          <a>Mim</a>        <a>Re</a>         <a>Mim Re</a>
 Desde siempre llevo a donde voy como mi segunda
 <a>eMiRe</a>
 bandera
@@ -108,17 +113,17 @@ afuera
 Donde aprendí la palabra, donde nació la canción
 <a>Sol</a>                           <a>Re</a>      <a>La7</a>
 Donde Sandino y Guevara, donde la revolución
-<a>Mim</a>   <a>Re</a>        <a>MimReMim</a>   <a>Re</a>     <a>MimReMiRe</a>
+<a>Mim</a>   <a>Re</a>        <a>Mim Re Mim</a>   <a>Re</a>     <a>Mim Re Mim Re</a>
 Donde el calor se derrama, donde tomaban café
 <a>Sol</a>                 <a>Re</a>    <a>La7</a>
 Entre la selva y la habana negros iguales que
 <a>Mim</a>
 usted
-<a>Mim</a>      <a>Re</a>        <a>Mim</a>     <a>Re</a>        <a>Mim</a> <a>ReMimRe</a>
+<a>Mim</a>      <a>Re</a>        <a>Mim</a>     <a>Re</a>        <a>Mim</a> <a>Re Mim Re</a>
 Cinco siglos lleva Sudamérica bailándole al tirano
 <a>Mim</a>    <a>Re</a>           <a>Mim</a>              <a>Re</a>
 Si los españoles fueron crueles, peores los
- <a>MimReMimRe</a>
+ <a>Mim Re Mim Re</a>
 norteamicanos
 <a>Sim</a>
 Va por el Gaucho, va por la Pamba
@@ -134,8 +139,9 @@ el Guaraní
 Va por el rio de la Plata y va por su plata y mar
 <a>Re</a>              <a>La7</a> <a>Mi7</a>             <a>Lam</a>
 Y va por cada mulata y va por su libertad
-__________________________________________________
-________
+
+
+
 <a>Lam</a>             <a>Sol</a>                   <a>Lam</a>
 Esta comparsa cantó lo que le sale del alma
                      <a>Sol</a>                  <a>Lam</a>
@@ -156,18 +162,18 @@ memoria revolucionaria
 La que solidaria con toda su gloria reconocerá la
                  <a>Fa</a>
 victoria a los parias
-<a>Lam</a>                  <a>Sol</a>                      L
+<a>Lam</a>                  <a>Sol</a>
 Mientras no llega es igual los parias ponen el
-<a>am</a>
+<a>Lam</a>
 alma
 <a>Lam</a>               <a>Sol</a>                      <a>Lam</a>
 Porque esto es Carnaval y más allá de las palmas
 <a>Lam</a>              <a>Sol</a>               <a>Lam</a>
 Y más allá del premio y mas allá de todo lo que
 hay
-<a>Lam</a>                  <a>Sol</a>                        L
+<a>Lam</a>                  <a>Sol</a>
 Lo que queremos es cantar ay ay estas cositas de
-<a>am</a>
+<a>Lam</a>
 Cai
 <a>Lam</a>        <a>Sol</a>       <a>Fa</a>     <a>Lam</a>       <a>Sol</a>
 Los que esta lucha batallen que no la den por
@@ -177,8 +183,8 @@ perdida
 Que hagan ruido en la calle, que hagan ruido en la
 <a>Fa</a>
 vida
-<a>SimLa</a> <a>Sol</a>  <a>Sim</a> <a>La</a>  <a>Sol</a>  
-<a>Ahh</a> <a>ahh</a> <a>ahh</a> <a>ahh</a>  <a>ahh</a> <a>ahh</a>
+<a>SimLa</a> <a>Sol</a>  <a>Sim</a> <a>La</a>  <a>Sol</a>
+Ahh ahh ahh ahh    ahh ahh   
 <a>Sim</a>   <a>La</a>       <a>Sol</a>   <a>Sim</a>     <a>La</a>        <a>Sol</a>
 Para que siga cantando contigo junto los dos
 <a>Sim</a>  <a>La</a>       <a>Sol</a>                        <a>Sim</a> <a>La</a>

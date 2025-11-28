@@ -12,7 +12,7 @@ fraseClave: "Igual que cada martes, entraron"
 
 ---
 <pre>
-<a>SolRe7</a>       <a>Sol</a>            <a>Sol7</a>      <a>Do</a>
+<a>Sol Re7</a>       <a>Sol</a>            <a>Sol7</a>      <a>Do</a>
 Igual que cada martes, entraron por la puerta
 <a>Lam7</a>         <a>Sol</a>                      <a>Re7</a>
 La siete de la tarde y un hijo con su padre
@@ -57,6 +57,6 @@ y se vaya a olvidar de todo esto un ratito
 El martes, nuevamente, volverá
                <a>Mi7</a>           <a>Lam7</a>
 con su niño Manuel a su rinconcito
-      <a>Re7</a>        <a>Do</a>  <a>Re7</a>   <a>SolRe7Sol</a>
+      <a>Re7</a>        <a>Do</a>  <a>Re7</a>   <a>Sol Re7 Sol</a>
 Popopopo pa que le cante su vaporcito
 </pre>

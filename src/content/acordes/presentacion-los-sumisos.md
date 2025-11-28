@@ -36,9 +36,9 @@ la fiesta al pueblo
 <a>Mim</a>                                       <a>Sim7</a>
 Este palacio, no sé  me recuerda a una comparsa, su 
 puesta en escena
-           <a>Do</a>                 <a>Si7</a>             M
+           <a>Do</a>                 <a>Si7</a>
 Hace algunos años cuando éramos libres era por 
-im
+<a>Mim</a>
 febrero
 <a>Mi7</a>    <a>Lam7</a>             <a>Re7</a>                  <a>Sol</a>
 Cai mi Cai Mi tierra bendita te he echao de menos

@@ -18,9 +18,9 @@ musiquilla en mi barquita,
 Viene casi a escondías y oliendo a pieras sólo pa
      <a>Mi7</a>             <a>LaM7</a>
 enamorarte, blanca Tacita,
-<a>Rem</a>          <a>Fa</a>   <a>Mi7</a>        <a>LaM7Sim</a>          <a>Mi</a>
+<a>Rem</a>          <a>Fa</a>   <a>Mi7</a>        <a>LaM7Sim</a>
 Sólo pa enamorarte, blanca Tacita, y decirte al
-7              <a>LaM7</a>
+<a>Mi7</a>             <a>LaM7</a>
 oído que eres bonita.
       <a>Mi7</a>             <a>LaM7</a>           <a>Mi7</a>
 Eres bonita, porque lo eres, eres princesa de la

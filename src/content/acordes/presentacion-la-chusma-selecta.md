@@ -11,15 +11,15 @@ video: 'https://www.youtube.com/embed/0WPwGX_qfQ8?feature=player_embedded'
 
 ---
 <pre>
-                                <a>Lam</a>
+       <a>Lam</a>
 Por el castillo del Falla corre un rumor
-                                 <a>Sol</a>
+          <a>Sol</a>
 Un triste duelo se escucha desde el salón
         <a>Re</a>            <a>Fa</a> <a>Mi7</a>
 Vienen a miles los Peregrinos
-                                <a>Lam</a>
+         <a>Lam</a>
 El rey ha muerto Su verso caliente esta
-                           <a>Sol</a>
+    <a>Sol</a>
 Su funeral con honores de carnavales
       <a>Re</a>            <a>Fa</a> <a>mI7</a>
 Hoy el rebelde ya es divino
@@ -91,7 +91,7 @@ Dale al compás ,tu bendito compás, otra vez por
 febrero
 <a>Lam</a>               <a>Sol</a>        <a>Fa</a>             <a>Mi7</a>
 Que Cádiz no tiene reyes solo poetas de carnaval
-               <a>LamMi7</a>   <a>Lam</a>  <a>Mi7</a>   <a>LamMi7</a>
+               <a>Lam Mi7</a>   <a>Lam</a>  <a>Mi7</a>   <a>Lam Mi7</a>
 Y pa poeta, poeta, mi capitán, mi capitán, mi
   <a>Lam</a>
 capitán

@@ -26,13 +26,13 @@ arena
 Le vamos a hacer a mamá el piso que no le dan y con
        <a>Sol</a> <a>Re7</a> <a>Sol</a>
 el que tanto sueña.
-                         <a>Re7Do</a>            <a>Re7</a>
+                         <a>Re7 Do</a>            <a>Re7</a>
 Le vamos a poné un balcón pa que al fresquito se
   <a>Sol</a>
 siente,
-               <a>Re7Do</a>       <a>Re7</a>          <a>Sol</a>
+               <a>Re7 Do</a>       <a>Re7</a>          <a>Sol</a>
 Una cocina chiquita y un cuarto baño decente.
-                    <a>Re7Do</a>   <a>Re7</a>           <a>Sol</a>
+                    <a>Re7 Do</a>   <a>Re7</a>           <a>Sol</a>
 Nuestro dormitorio aquí y en esta esquina su
  <a>Sol7</a>
 alcoba

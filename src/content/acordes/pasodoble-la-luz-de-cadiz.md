@@ -70,7 +70,7 @@ Y piensa para mi to lo que significa cantar contigo
 en la Plaza Mina
 <a>MiLa</a>                                <a>Si7</a>
 Dale duro papa y venga que ya la espera me
-      <a>Sol#mDo#7</a>                 <a>Fa#m</a>
+      <a>Sol#m Do#7</a>                 <a>Fa#m</a>
 desespera que por ti oigo una campana
 Bañá por la Luz de Cai y el alma me hace que
 sienta

@@ -58,9 +58,9 @@ profundidades
 La libertad no se necesita porque eres libre en
          <a>Sim7</a>
 aguas benditas
-<a>Re</a>                                           M
+<a>Re</a>
 Cuenta, si de verdad están viviendo allí como
-i7          <a>LaM7</a> <a>La7</a>
+<a>Mi7</a>          <a>LaM7</a> <a>La7</a>
 reinas las mojarritas
            <a>Re</a>                  <a>Mi7</a>
 Déjame perderme, como en el idilio de un

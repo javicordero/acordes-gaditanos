@@ -56,6 +56,6 @@ Que yo sin ti no sería un creador y no tendría
 canción,
                <a>La</a>          <a>Fa#m</a>  <a>Si7</a>
 Y callaría mi voz, y perdería mi flow,
-                       LFa#SiMi  
+                 <a>La</a> <a>Fa#m</a> <a>Si7</a> <a>Mi</a>  
 Que yo sin ti no sería un creador
 </pre>

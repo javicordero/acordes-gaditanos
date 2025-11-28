@@ -20,9 +20,9 @@ cuerpo.
 Que despierte a gaviotas, mojarras y caballitas
 <a>Dom</a>                 <a>Re7</a>                   <a>Sol</a>
 Y su guerra diaria de amor con los dos vientos.
-<a>Sol</a>          <a>Re7</a>               <a>Sol</a>            L
+<a>Sol</a>          <a>Re7</a>               <a>Sol</a>
 Que bautice sus piedras y les de sus nombres y
-<a>amSimDom</a>
+<a>Lam Sim Dom</a>
 apellidos.
 <a>Sol</a>
 Que levante palmeras y blanquee los torreones.
@@ -41,10 +41,9 @@ Nada es lo que parece y te aseguro que lo es.
 Llegó el primer viajero. ¡Bienvenido a tu ciudad!
 <a>Re7</a>                             <a>Sol</a>
 Tú cuenta tres por cuatro… ¡Sígueme!
-__________________________________________________
-_______________________________________
-2ªCuarteta
--Cejilla al 1.
+
+<strong>-Cejilla al 1.</strong>
+
 <a>Sol#m</a>
 Lo suyo es que me presente primero.
                                        <a>Do#7</a>
@@ -99,10 +98,9 @@ Almas antiguas, tu gente, te están reclamando.
 Siémbrate y crece compañero y recuerda
       <a>Do#m7/5</a>         <a>Mi7</a>       <a>LaRe</a>  <a>La7ReLaRe</a>
 A quien dejaste llorando y llorando en la tierra.
-__________________________________________________
-________________________________________
-3ªCuarteta
--Cejilla al 1.
+
+
+
 Te buscaré por los mundos perdidos de la
 eternidad.
 Te buscaré con mi triste figura vagando entre la
@@ -114,9 +112,9 @@ sé.
 Tanto te echo de menos que ya no me duele el
  <a>La7</a>
 dolor.
-<a>Re</a>              <a>La7</a>        <a>Re</a>                    L
+<a>Re</a>              <a>La7</a>        <a>Re</a>
 Duele este inmenso vacío de uno que un día fueron
-<a>a7</a>
+<a>La7</a>
 dos.
 <a>Mim</a>
 Cuando más falta me hacías volaste, eso sí,
@@ -159,17 +157,16 @@ encontraré.
 <a>La7</a>
 Te buscaré por los mundos perdidos de la
 eternidad…
-__________________________________________________
-____________________________________________
-4ªCuarteta
--Cejilla al 1.
-<a>Rem</a>                                              <a>Lam</a>
+
+
+
+<a>Rem</a>
 Tu vasta historia te contempla en una esquinita del
-7
+<a>Lam7</a>
 sur.
-<a>Sib</a>                                       <a>Do</a>      <a>La</a>
+<a>Sib</a>                                       <a>Do</a>
 Te pongo al día caminante para que sepas quién eres
-7
+<a>La7</a>
 tú.
 <a>Rem</a>
 Eres múltiplo de arena, el vaso de la marea siempre
@@ -229,10 +226,9 @@ Ese eres tú, ese eres tú en una, en una, en una
 esquinita del sur.
        <a>Solm7</a>      <a>Lam7</a>      <a>Sib7La7</a>
 Ese eres tú, ese eres tú, caminante, eres tú.
-__________________________________________________
-________________________________________
-5ªCuarteta
--Cejilla al 2
+
+<strong>- Cejilla al 2</strong>
+
 <a>Re</a>         <a>Mi7</a>          <a>LaM7</a>
 Mira, mira, mira, mira, mira…
                            <a>Do#</a>
@@ -271,10 +267,9 @@ Que ya anuncian que eres uno más
 Y que gozas de la libertad eterna, eterna, eterna,
     <a>Mi7</a>   <a>Solm</a> <a>Sol#Lam</a>
 eterna, eterna, eterna…
-__________________________________________________
-________________________________________________
-6ªCuarteta
--Cejilla al 2.
+
+<strong>- Cejilla al 2.</strong>
+
 <a>Lam</a>
 (Ole, ole mi Cai y lo digo a boca llena y el que no
 diga ole que se le seque la hierbabuena)
@@ -297,7 +292,7 @@ Cerremos pa los restos las herías.
 Quedad en la memoria. Por cierto, ya es febrero y
 <a>a</a>               <a>Sim7/5</a>      <a>Mi7</a>
 estamos en la gloria, compañeros.
-<a>La</a>                                 <a>Sim7Mi7</a>   <a>La</a>
+<a>La</a>                                 <a>Sim7 Mi7</a>   <a>La</a>
 Mañana será otro mañana y despertarás. Revivirás.
 <a>La</a>
 Mañana traeré a tus niños a la inmortalidad.
@@ -315,9 +310,9 @@ Revivirás.
 Mañana, mi barca, el espejo lo atravesará.
 <a>Sim7Mi7</a>
 Revivirás.
-                                             <a>Mi</a>
+                                             <a>Mi7</a>
 Mañana, cariño, mañana, ahora descansa en paz.
-7       <a>Sim7Mi7</a>
+        <a>Sim7 Mi7</a>
 Revivirás. Revivirás.
 <a>La</a>
 Invoco el alma de la tierra más antigua y más

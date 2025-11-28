@@ -46,7 +46,7 @@ tierra
 Si se enciende la llama y vuelve la alegría
                  <a>La</a>                      <a>Si7</a>
 Pierdete en la caleta y buscar entre las pozas esas 
-   <a>Mi</a>  M
+   <a>Mi</a>  <a>Mi7</a>
 melodías
             <a>La</a>  <a>Si7</a>             <a>Sol#m7</a>   <a>Do#7</a>
 Y vuelve a abrir el tarro de las esencias y rebusca 

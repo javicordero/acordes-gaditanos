@@ -74,6 +74,6 @@ cama,
 No te guardes un te quiero, no lo dejes pa' mañana,
                        <a>La</a>
 no te quedes con las ganas.
-<a>SiLa</a>    <a>Sol</a> <a>La7</a>                        <a>Re</a>
+<a>Sim La</a>    <a>Sol</a> <a>La7</a>                        <a>Re</a>
 Aaah Aaah Aaah  No te quedes con las ganas.
 </pre>

@@ -14,9 +14,9 @@ fraseClave: "Entramos por tus butacas,"
 <pre>
 <a>Sol</a>  <a>Sol7</a>              <a>Do</a>           <a>Lam7</a>
 Entramos por tus butacas, entramos por tu telón
-             <a>Re7</a>                           <a>Do</a>    R
+             <a>Re7</a>                           <a>Do</a>
 Pero ya necesitamos cantarte Cádiz para robarte a
-<a>e7</a>       <a>Sol</a>
+<a>Re7</a>       <a>Sol</a>
 ti el corazón
 <a>Sol</a>    <a>Re7</a>           <a>Sol</a>
 Ay mi diosa del plumero otra vez vuelvo,

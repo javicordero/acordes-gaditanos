@@ -1,5 +1,5 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: Los Julianes
 year: 1958
 musica: Paco Alba
@@ -24,7 +24,7 @@ Ni romerías ni ferias en esta tierra
 Es verda que no tienen los gaditanos
                                    <a>Fa</a>
 Pero que vengan muchos y se den cuentan
-              <a>Mi7</a>        <a>LaMi7Lam</a>
+              <a>Mi7</a>        <a>La Mi7 Lam</a>
 Que Cádiz está de fiesta todo el verano
 <a>Sol7</a>
 Si no es campero es porque es andaluz fino y
@@ -58,6 +58,6 @@ señorial
 Aquí se puso el Non Plus Ultra que traducido
    <a>Mi7</a>
 resulta
-                  <a>LaMiLa</a>
+                      <a>La Mi La</a>
 Despues de Cádiz ni hablar
 </pre>

@@ -29,7 +29,7 @@ Y cante pasodoble de nudillos y me puse contento
 cual chiquillo
      <a>Sim7</a>                 <a>Mi7</a>
 Al mirar que esta mi vocación a la que entregue mi 
- <a>Sim7</a>      <a>Mi7</a>          <a>LaM7</a>  L
+ <a>Sim7</a>      <a>Mi7</a>          <a>LaM7</a>  <a>La7</a>
 amor sigue viva en mis adentros
  <a>Re</a>          <a>Mi7</a>        <a>LaM7</a>       <a>Fa#7</a>        <a>Sim7</a>
 Asi es que nacio este compas que mecido por la mar 
@@ -57,7 +57,7 @@ Que me curas mi dolor aunque tenga el alma rota
 Y aquí estoy dispuesto a volverte a cantar
                                  <a>Fa#7</a>         <a>Sim7</a>
 Pa que la gente del barrio se me vuelva medio loca
-                            <a>Mi7</a>                    S
+                            <a>Mi7</a> 
 Y a decirte otra vez por febrero carnaval cuanto te 
-im7       <a>Mi7</a>           <a>LaM7</a>
+<a>Sim7</a>       <a>Mi7</a>           <a>LaM7</a>
 quiero aquí con mi chirigota</pre>

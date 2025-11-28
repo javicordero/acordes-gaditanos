@@ -48,9 +48,9 @@ Y lloro con su marea, ya, ya cuando escucho
 carnaval
 Desde el castillo a San Carlos de la Viña a San 
 Francisco
-                                        <a>Fa#7</a> S
+                                        <a>Fa#7</a> <a>Sim7</a>
 Tengo tos los pasadizos, de ti clavaos a fuego
-                         <a>Mi7</a>
+                           <a>Mi7</a>
 De Candelaria hasta extramuros del Populo a la 
  <a>Sim7</a>
 Caleta

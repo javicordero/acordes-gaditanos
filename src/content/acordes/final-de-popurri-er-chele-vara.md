@@ -68,5 +68,5 @@ los gaditanos
      <a>Mi7</a>                            <a>Lam</a>
 Me refiero a los gaditanos y a los demás
   <a>Lam7</a>             <a>Rem</a>              <a>Mi7</a>           <a>Lam</a>
-<a>Lalalala</a> <a>lala</a> <a>lalalala</a> <a>lala</a> <a>lalalala</a> <a>lala</a> <a>lalalala</a>
+Lalalala lala lalalala lala lalalala lala lalalala
 </pre>

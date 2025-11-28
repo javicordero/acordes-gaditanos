@@ -67,5 +67,5 @@ No hay mayor castigo ni puñal que el que me clava
         <a>Si7</a>
 la nostalgia
                                            <a>Mi</a>
-<a>Del</a> <a>amor</a> <a>en</a> <a>la</a> <a>distancia</a> <a>del</a> <a>amor</a> <a>en</a> <a>la</a> <a>distancia</a>
+Del amor en la distancia del amor en la distancia
 </pre>

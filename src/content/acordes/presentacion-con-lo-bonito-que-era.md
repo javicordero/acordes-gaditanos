@@ -46,9 +46,8 @@ platillo nació esta canción
 Y archivé en mi memoria por siempre todos los 
   <a>Fa</a>        <a>Re7</a>        <a>Sol7</a>
 recuerdos de esos carnavales
-<a>Do</a>             <a>Sol7</a>         <a>Lam</a>              <a>Mi</a>
+<a>Do</a>             <a>Sol7</a>         <a>Lam</a>              <a>Mim</a>
 Quién despertó a este robot, quien encendió mi 
-m
 ordenador
 <a>Fa</a>               <a>Do</a>              <a>Re7</a>
 Quien programó en mi terminal que hoy yo tuviera 
@@ -66,7 +65,7 @@ Pillo diciendo Cai cuanto de menos lo echamos
 Con lo bonito que era sentirse siempre arropao con 
               <a>Fa</a>                     <a>Sol7</a>
 los gritos de María que Falla más gaditano
-                  <a>Do</a> <a>Sol7</a>                     So
+                   <a>Do</a> <a>Sol7</a>                   <a>Sol7</a>
 Con lo bonito que era cantar en este teatro (mi 
-l7    <a>Do</a>
+    <a>Do</a>
 ordenador)</pre>

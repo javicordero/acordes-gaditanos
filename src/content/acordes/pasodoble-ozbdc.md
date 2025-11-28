@@ -64,6 +64,6 @@ nuestras
 Si se pierde Cádiz, si se pierde Cádiz, ay, si se
                     <a>La7</a>
 pierde Cádiz en carnaval
-     <a>RemLaRem</a>
+        <a>Rem La7 Rem</a>
 Que coño queda
 </pre>

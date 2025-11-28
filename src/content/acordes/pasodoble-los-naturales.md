@@ -22,9 +22,9 @@ este año mi chirigota
 Si mi robot no funciono porque los cables se le 
                   <a>Re</a>
 enredaron en la maraña
-          <a>Rem</a>             <a>LaM7</a>    <a>Sim7</a>     <a>Mi7</a>     L
+          <a>Rem</a>             <a>LaM7</a>    <a>Sim7</a>     <a>Mi7</a>
 Este año vengo a cantarte Cádiz desnudo en cuerpo y 
-<a>aM7</a>
+<a>LaM7</a>
 alma
                <a>Mi7</a>       <a>LaM7</a>
 Despojadi qui qui qui qui to, despojadito de malos 

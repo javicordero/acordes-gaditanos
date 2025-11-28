@@ -16,9 +16,9 @@ Mi Cádiz es un camaleón porque muda su tragedia y
 remienda su miseria 
                 <a>La7</a>                <a>Rem</a>
 Ocultando su agonía en el pan de cada día. 
-                           <a>Fam</a>                     <a>D</a>
+                           <a>Fam</a>
 Y echando al sol se vuelve copla y la escupa por la 
-o
+<a>Do</a>
 boca,
                       <a>Re</a>   <a>Sol7</a>           <a>Do</a>
 Y se adapta y se transforma en locura y rebeldía.
@@ -26,9 +26,9 @@ Y se adapta y se transforma en locura y rebeldía.
 Y se despierta de dolor, por febrero son legiones 
              <a>Mim</a>
 de niños camaleones
-                       <a>La7</a>                   <a>Re</a>
+                       <a>La7</a>
 Que en su honor de minetiza se enmascaran y se 
-m
+<a>Rem</a>
 hechizan.
                   <a>Fam</a>                    <a>Do</a>
 Disfrazando sus horrores con guitarras y tambores

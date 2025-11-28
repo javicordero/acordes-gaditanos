@@ -2,19 +2,19 @@
 pieza: Presentación
 agrupacion: Los Equilibristas
 year: 2017
-musica: Nene Cheza
-letra: Nene Cheza
+musica: José Manuel Aranda
+letra: El Chapa
 img: https://blogger.googleusercontent.com/img/a/AVvXsEiHZWoluBBxjvV84VqxnrFbyp0lACurCXBlgkA5O89JqdIO9VtsJcXRFGw_DUW-Vwi7IZO47jHwBGa9aRW0Hsqdr2yeaI_hJV1AUIE58_g1poO-Pl-FKHDLgu2nHGQEjImrsXhdOsQDBpUr0qBnvU6aFC12J6RNVKadcWyuROtTcWgy3Y-dANV80Atdxg=s750
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/9Et0t_2T46Y'
 
 ---
-<pre><a>Mim</a>          <a>Lam7</a>  <a>Si7</a> <a>Mim</a>           <a>Lam</a>
+<pre><a>Mim</a>          <a>Lam7</a>  <a>Si7</a> <a>Mim</a>           <a>Lam7</a>
 Pa, parara, papa, parara, papa Parapapa 
-7  <a>Si7</a> <a>Mim</a>
+   <a>Si7</a> <a>Mim</a>
 pararararara
-  <a>Mim</a>                <a>Lam7</a> <a>Si7</a>               <a>Mim</a>  L
+  <a>Mim</a>                <a>Lam7</a> <a>Si7</a>               <a>Mim</a>  <a>Lam</a> <a>Si7</a>
 Volar, que yo no sé volar, pero ando sobre el aire
   <a>Mim</a>                 <a>Re</a>               <a>Sol</a>
 Bailar, contra la gravedad, desde mi alambre
@@ -35,9 +35,8 @@ Quien tenga vértigo que baje, que yo seguiré
 Ven a mi función pongan atención, miren al 
        <a>Si7</a>
 equilibrista
-                                                M
 Míralo cantar, oyelo temblar, en el centro de la 
-im
+<a>Mim</a>
 pista
 <a>Lam</a>              <a>Mim</a>           <a>Re7</a>
 Se oye alrededor su respiración, esto no es ninguna 
@@ -70,9 +69,9 @@ abismo
 El riesgo está aquí y el público ahí y siempre lo 
 <a>Sol</a>
 mismo
-               <a>Fa</a>    <a>Mi7</a>        <a>Lam</a>                <a>D</a>
+               <a>Fa</a>    <a>Mi7</a>        <a>Lam</a>
 Los sueños te van aumentando el peligro y aquí sigo 
-o          <a>Lam7</a>                  <a>Si7</a>
+<a>Do</a>          <a>Lam7</a>                  <a>Si7</a>
 yo con mi corazón haciendo equilibrio
               <a>Mim</a>               <a>Mi7</a>
 Que pongan la luz, los brazos en cruz, las carnes 
@@ -88,7 +87,7 @@ aterra
 Pero escúchame yo tengo los pies pegados a la 
 <a>Si7</a>
 tierra
-(SORDA)
+<a>(Sorda)</a>
 Ven a mi función pongan atención, miren al 
 equilibrista
 Míralo cantar, oyelo temblar, en el centro de la 

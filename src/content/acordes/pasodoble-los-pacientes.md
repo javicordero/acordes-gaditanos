@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/yiQ8_EO0jG8?feature=player_embedded'
 
 ---
 <pre>
-                <a>LamMi7</a>                <a>Lam</a>
+                <a>Lam Mi7</a>                <a>Lam</a>
 Dios hizo la marea, la lluvia y el relente,
 Dios hizo la paciencia para que los hombres todo lo
         <a>Mi7</a>
@@ -47,11 +47,11 @@ Hoy ya creció ese niño, ¡ya no busca en ríos, hoy
 pesca en el mar!
 Y en el jardín de las aguas benditas, planta su
 caña de noche y de día,
-                                                  <a>Fa</a>
+                                                  <a>Fa#7</a>
 El oficio más noble, va tirando pasodobles, aaaay a
-#7      <a>Sim</a>
+        <a>Sim</a>
 ver si pican.
-                               <a>Mi7</a>   <a>Sim</a>
+                               <a>Mi7</a>   <a>Sim7</a>
 Ya no le pide permiso a la historia, ni a las
                           <a>Mi7</a>
 estrellas que exigen su gloria,

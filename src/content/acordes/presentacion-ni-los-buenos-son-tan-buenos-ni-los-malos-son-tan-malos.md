@@ -12,7 +12,7 @@ video: 'https://www.youtube.com/embed/_j1KYd8RwNk?si=kYYWr4rPl7U7uVKU'
 ---
 <pre>
                            <a>Lam</a> <a>Sol</a>    <a>Fa</a>    <a>Mi7</a>
-<a>Aaaah</a> <a>Aaaah</a> <a>Aaaah</a> <a>Aaaah</a> <a>Aaaah</a> <a>Aaaah</a> <a>Aaaah</a> <a>Aaaah</a>
+Aaaah Aaaah Aaaah Aaaah Aaaah Aaaah Aaaah Aaaah
    <a>Lam</a>
 Yo soy el principio del fin, yo soy el final del
 <a>Sol</a>
@@ -29,9 +29,8 @@ vernos
 Yo soy el que te va a mandar para el cielo o el
    <a>Mi7</a>
 infierno
-<a>Rem</a>                                            <a>La</a>
+<a>Rem</a>                                            <a>Lam</a>
 Está bien no hacer el mal y está mal no hacer el
-m
 bien
 <a>Mi7</a>                               <a>Lam</a>
 Pero eso no te valdrá para pisar el Edén
@@ -90,6 +89,6 @@ Que esto son dos días y pronto se terminan
 Y con el tiempo solamente tengo claro que ni los
  <a>Rem</a>            <a>Mi7</a>
 buenos son tan buenos
-             <a>LaSolFaMiLam</a>
+             <a>Lam Sol Fa Mi7 Lam</a>
 Ni los malos son tan malos
 </pre>

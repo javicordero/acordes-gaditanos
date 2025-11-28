@@ -36,11 +36,9 @@ Y Araka, solidaria y verdadera, viene para que a tu
 vera,
                  <a>Lam</a>
 florezca la libertad
-__________________________________________________
-______________
-2ªCuarteta
-Acordes usados: Lam, Sol, Fa, Mi7, Do, Mim, Rem.
-Cejilla al 4.
+
+
+
 <a>Lam</a>                           <a>Sol</a>
 En nuestra ciudad Montevideo natal,
 <a>Fa</a>                             <a>Mi7</a>
@@ -78,11 +76,9 @@ y gane quien gane todos sabemos bien
 <a>Fa</a>                                  <a>Mi7</a>
 que el premio real siempre será el que te de el
 pueblo
-__________________________________________________
-______________
-3ªCuarteta
-Acordes usados: Sol, Lam, Do, Re7, Mi7.
-Cejilla al 4.
+
+
+
     <a>Sol</a>                               <a>Lam</a>
 Ay gurí que no me lo creo, ay gurí que no me lo
 creo,
@@ -131,9 +127,8 @@ si llego a saberlo antes de venir me quedo en
 Montevideo.
                      <a>Sol</a>                    <a>Lam</a>
 También me contó la gente de la Tacita de Plata,
-                    <a>Do</a>         <a>Re7</a>           So
+                    <a>Do</a>         <a>Re7</a>           <a>Sol</a>
 en el Carnaval de Cádiz no vayas a perderte la
-l
 cabalgata,
 que es igual que la que vos tenéis cerquita allá en
    <a>Do</a>
@@ -160,11 +155,9 @@ creo,
 si llego a saberlo antes de venir me quedo en
   <a>Re7</a> <a>Sol</a>
 Montevideo.
-__________________________________________________
-______________
-4ªCuarteta
-Acordes usados: Re, La, Fa#7, Sol, Sim.
-Cejilla al 4.
+
+
+
 <a>Re</a>                        <a>La</a>
 También me cuenta la gente que aquí durante el
       <a>Fa#7</a>
@@ -194,14 +187,11 @@ pero por nuestros carnavales,
 la voz del pueblo fue del pueblo y ahora ya más que
   <a>Sim</a>
 nunca,
-                            <a>La</a>                <a>Sim</a>
-<a>solitos</a>                                     <a>las</a>
-__________________________________________________
-______________
-5ªCuarteta
-Acordes usados: Lam, Mi7, Do, Rem, La7, Fa, Sol,
-Fa#7, Sim, Re, Mim, Si7
-Cejilla al 6.
+                     <a>La</a>          <a>Sim</a>
+solitos sabemos quitarnos las cadenas
+
+<strong>- Cejilla al 6.</strong>
+
 <a>Lam</a>        <a>Mi7</a>         <a>Lam</a>   <a>Do</a>
 Éste es el pueblo presente, la gente del Carnaval,
 <a>Rem</a>   <a>La7</a>       <a>Rem</a>    <a>Fa</a>

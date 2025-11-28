@@ -31,13 +31,13 @@ Cai, Cai, Cai         me tienes loco perdío,
 contemplando como un niño tu playa tu cielo, tu 
  <a>La7</a>    <a>Rem</a>
 cielo divino
-     So7  Rem Sol7              Fa         Sol7     
-    Do  Do7
+   <a>So7</a>  <a>Rem</a> <a>Sol7</a>              <a>Fa</a>         <a>Sol7</a>     
 Cai, Cai, Cai vivo por tus carnavales y tu bendita 
+   <a>Do</a>  <a>Do7</a>
 afición
      (Sorda)                                        
-              Sol7
 Sigo soñando despierto, sigo vivo no me he muerto 
+                <a>Sol7</a>
 si no lo digo reviento
 Con mi chirigota, seguimos jugando, y tu pregonero, 
                       <a>Do</a>

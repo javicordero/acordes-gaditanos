@@ -35,9 +35,9 @@ conmigo se venían
 Y en el paso de los años esos dos brillos extraños 
         <a> Re</a>
 que a mi me dieron cobijo
-<a> Mim </a>                 <a> Sim </a>                     L
+<a> Mim </a>                 <a> Sim </a>
 Hoy resulta con orgullo que los dos ojitos tuyos 
-<a>am7</a>
+<a>Lam7</a>
 son dos faros pa mis hijos
 <a>Mim </a>                       <a>Do</a>
 Y no importa que la vida ya le ponga a sus pupilas 

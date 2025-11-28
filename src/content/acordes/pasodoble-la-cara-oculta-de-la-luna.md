@@ -12,17 +12,17 @@ fraseClave: "Yo te nía un buen amigo,"
 
 ---
 <pre>
-RFa#m Sim La7 Sol Fa#m Mim La7                  Re
-Sim Mim La7 Re                       Fa#m  
+<a>Re</a> <a>Fa#m</a> <a>Sim</a> <a>La7</a> <a>Sol</a> <a>Fa#m</a> <a>Mim</a> <a>La7</a>                  <a>Re</a>
 Yo   te    nía  un  buen        yo tenía un buen
+<a>Sim</a> <a>Mim</a> <a>La7</a> <a>Re</a>                       <a>Fa#m</a>  
 amigo,                 un amigo de los buenos
-   <a>Fam</a>           <a>Mim</a> <a>La7</a>                 <a>MimLa7</a>
+   <a>Fam</a>           <a>Mim</a> <a>La7</a>                   <a>Mim La7</a>
 Que nació de los venenos de este carnaval divino
                                 <a>Mim</a>
 Más que amigo, más que un buen amigo, un amigo
     <a>La7</a>
 compañero
-      <a>Sol</a>          <a>Fa#m</a>        <a>MimMi7</a>
+      <a>Sol</a>          <a>Fa#m</a>          <a>Mim Mi7</a>
 De febreros que duraba el año entero y el resto del
        <a>La7</a>
 tiempo amigo
@@ -34,7 +34,7 @@ que iban a muerte con el
 Y tan a muerte que así lo juraban, aunque a veces
      <a>Sol</a>      <a>Fa#m</a>        <a>Mim</a>
 lo mataran y luego resucitara
-   <a>Sol</a>
+<a>Sol</a>
 Que tuvo que hacer distinciones entre amigos y
                       <a>La7</a>
 hermanos pa darse a querer
@@ -58,7 +58,7 @@ ausentes
 Pero guardo unos acordes de algo que quedo
      <a>La7</a>
 pendiente
-                        <a>SolSolm</a>              <a>Re</a>
+                        <a>Sol Solm</a>              <a>Re</a>
 Y cuando me llegue el día de cruzar el mar eterno
 <a>Sim</a>                 <a>Mim</a>                    <a>La7</a>
 Iré en busca de mi amigo pa decirle estoy contigo,
@@ -66,7 +66,7 @@ Iré en busca de mi amigo pa decirle estoy contigo,
 quillo tenemos que vernos
 <a>La7</a>               <a>Mim</a>                            <a>La7</a>
 Que vamos a pegarle unas cuantas vueltas a esa idea
-        <a>SolSolm</a>
+        <a>Sol Solm</a>
 del payaso negro
                    <a>ReLa7Re</a>
 A esa idea del Payaso Negro

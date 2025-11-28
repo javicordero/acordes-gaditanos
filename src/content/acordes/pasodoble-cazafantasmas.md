@@ -23,9 +23,9 @@ ha crecido.
 Abuelo siéntate conmigo porque quiero que me
      <a>Mim</a>        <a>Mi7</a>          <a>Lam</a>
 expliques que pasaba por tu mente
-            <a>Re7</a>    <a>Sol</a>                           <a>D</a>
+            <a>Re7</a>    <a>Sol</a>
 Cuando empeñaste mi futuro dando tu voto a los de
-o          <a>Lam7</a>     <a>Re7</a>    <a>Si7</a>
+ <a>Do</a>          <a>Lam7</a>     <a>Re7</a>    <a>Si7</a>
 siempre de siempre, de siempre.
          <a>Mim</a>
 Que no te duele que haya luchao por tener mi
@@ -39,7 +39,7 @@ una camarera.
 Mírame y dime por qué lo has hecho tú que siempre
         <a>Si7</a>                    <a>Mi</a>
 me decías que era tu ojito derecho.
- <a>Mi</a> <a>Si7Mi</a>                  <a>Sol#m</a>
+ <a>Mi</a> <a>Si7 Mi</a>                  <a>Sol#m</a>
 ¿Por qué das tu voto al sinvergüenza que amordaza
       <a>Do#m7</a>
 mis derechos

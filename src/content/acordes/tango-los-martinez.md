@@ -60,7 +60,7 @@ nunca acabar
 Ese cuento de que te quiero y de que me quieres un 
         <a>Si7</a>
 poquito mas
-(Sorda)
+<a>(Sorda)</a>
 Las olitas del mar las olitas del mar
                  <a>Lam7</a>            <a>Si7</a>
 En la orilla un regalo fueron dejando

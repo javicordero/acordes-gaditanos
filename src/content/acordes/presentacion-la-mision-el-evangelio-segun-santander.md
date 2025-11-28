@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/qQj6nQGdwxM'
 
 ---
 <pre><a>Do</a>  <a>Si7</a>   <a>Do</a>  <a>Si7</a>  <a>Lam</a>   <a>Mim</a>  <a>Do</a>  <a>Si7</a>
-<a>Ahhhhhhh</a>  <a>Ahhhhhhh</a>  <a>Ahh</a>  <a>Ahh</a>  <a>Ahh</a> <a>Ahh</a>
+Ahhhhhhh  Ahhhhhhh  Ahh  Ahh  Ahh Ahh
 <a>Mim</a>                                            <a>Lam</a>
 Esta es la misión señores que el profeta nos mandó 
                   <a>Re7</a>                        <a>Do</a>
@@ -79,9 +79,8 @@ repartiendo alegría
 Y olé y olé y así paso mi vida cantando carnavales 
                 <a>Si7</a>
 repartiendo alegría 
-<a>Mi</a>                                          <a>Sol#</a>
+<a>Mi</a>                                          <a>Sol#m</a>
 Y a todo el que intente meternos en la ruina le 
-m
 vamos a atacar con un cañón de las esquinas 
 <a>La</a>                                              <a>Si7</a>
 Y vamos a enseñarle a todos los chiquillos que aquí 

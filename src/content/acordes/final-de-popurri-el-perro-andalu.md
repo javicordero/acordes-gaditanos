@@ -1,6 +1,6 @@
 ---
 pieza: Final de popurrí
-agrupacion: de El perro andalú
+agrupacion: El perro andalú
 year: 2018
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares

@@ -12,9 +12,9 @@ video: 'https://www.youtube.com/embed/W9u3qLBbgmc'
 ---
 <pre><a>Lam</a>                  <a>Mi7</a>                     <a>Lam</a>
 Dicen que siempre se vuelve a donde fuimos felices
-                            <a>Sol</a>           <a>Fa</a>      S
+                            <a>Sol</a>           <a>Fa</a>
 Y hoy me han devuelto mis pasos al viejo teatro de 
-im7/5    <a>Mi</a>
+<a>Sim7/5</a>   <a>Mi7</a>
 donde partí
                       <a>Mi7</a>
 Con recuerdos que florecen como en un jardín y en 
@@ -41,9 +41,8 @@ De un carnaval de rebeldía y juventud, de emoción y
      <a>LaM7</a>
 de quereles
 En este mismo escenario me despedí de un amigo
-                                                 <a>F</a>
 Y he visto como su pueblo lo vestía de inmortal y 
-<a>a#7</a>         <a>Sim7</a>
+<a>Fa#7</a>         <a>Sim7</a>
 lo lloraba conmigo
                    <a>Mi7</a>                      <a>Sim7</a>
 Regreso porque los vientos han avivado mis brasas

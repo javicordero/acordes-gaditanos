@@ -10,13 +10,13 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/W9u3qLBbgmc'
 
 ---
-<pre>Cejilla al 1
+<pre>
 <a>Re</a>                                       <a>Sim7</a>
 Sabes que la vida nunca, nunca se detiene es como 
 una rueda que en el fuego está girando
-<a>Sol</a>                                               L
+<a>Sol</a>                                           
 Gira, vuelve, cambia, se transforma nace y muere y 
-<a>a</a>
+<a>La</a>
 hoy es la semilla que mañana será un árbol
 <a>Re</a>                                            <a>Sim7</a>
 Nunca se detiene el sol cruzando por el cielo, ni 
@@ -34,9 +34,9 @@ No para la hierba cuando brota de la tierra, ni se
 paran los amores, ni la arruga de tu piel, ni los 
                 <a>La</a>
 chiquillos que juegan
-     <a>Re</a>                                           S
+     <a>Re</a> 
 Todo gira y todo vuela, todo corre sin freno, todo 
-im7                                           <a>Sol</a>
+<a>Sim7</a>                                           <a>Sol</a>
 pasa y todo queda que este año por fin ya reventó 
 la primavera
 Y ahora Cádiz es de color porque nada permanece, 
@@ -62,9 +62,9 @@ bien
 <a>Lam</a>
 Es escarlata porque hay fuego en todas partes fuego 
 en el cielo si el crepúsculo renace
-  <a>Re</a>                      <a>Mi7</a>                    <a>D</a>
+  <a>Re</a>                      <a>Mi7</a>
 Fuego si las nubes arden detrás de San Sebastián, 
-o#m7                                  <a>Fa#m</a>
+ <a>Do#m7</a>                                <a>Fa#m</a>
 fuegos blancos si la luna viene a enjuagarse en el 
 mar
     <a>Re</a>                  <a>Sim7</a>     <a>Si7</a>
@@ -216,9 +216,9 @@ La vida siempre la vida con sus dos manos en
 llamas, olvida todo lo que queda atrás y vente 
            <a>Do#7</a>
 conmigo a volar
-<a>Fa#m</a> <a>La</a>     <a>Mi</a>                                <a>Re</a>   <a>F</a>
+<a>Fa#m</a> <a>La</a>     <a>Mi</a>                                <a>Re</a> 
 Vida nueva, que estalla como el fuego de un volcán, 
-<a>a#m</a> <a>La</a>     <a>Mi</a>                                R
+<a>Fa#m</a> <a>La</a>     <a>Mi</a>                                <a>Re</a>
 primavera, para que el fénix vuele en libertad
         <a>Fa#m</a>                         <a>Mi</a>
 Y si de lo que queda atrás yo guardo algo, 

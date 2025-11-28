@@ -25,7 +25,7 @@ Temiendo que algún día mis fechorías me lleven a
 sufrir la puñetera pena de acabar en la trena 
 <a>Lam</a>
 Desde que nací la sociedad podría de hipocresía fue 
-                So
+                 <a>Sol</a>
 la que me hizo así
 Un marginal ratero, un bandolero de incierto 
      <a>Fa</a>

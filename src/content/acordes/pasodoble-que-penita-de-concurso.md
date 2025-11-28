@@ -1,5 +1,5 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: Qué penita de concurso
 year: 2017
 musica: Miguel Choza
@@ -44,9 +44,9 @@ Hasta en la gloria donde huele a Hierbabuena
 Ya por fin le pondremos una calle
                          <a>Sol#m</a>
 Estando en vida a Antonio Martin
-                   <a>Do#7</a>                        <a>Fa#</a>
+                   <a>Do#7</a>                        
 Ya somos todos iguales ya los nombres no pesan al
-m
+<a>Fa#m</a>
 fin
                         <a>Si7</a>
 Ya puede ganar el concurso una de Cádiz o de Villa

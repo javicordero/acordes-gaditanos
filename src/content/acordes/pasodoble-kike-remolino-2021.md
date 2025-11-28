@@ -15,24 +15,23 @@ fraseClave: "Que no, que no, que no"
 Que no, que no, que no , que no , que no , que no, 
                        <a>Sim7</a>
 que no  me quedo sin cantarte
-    <a>Mi7</a>                                           S
+    <a>Mi7</a>
 Que no, que no, que no , que no , que no , que no, 
-im7/5      <a>La</a>
+<a>Sim7/5</a>      <a>La</a>
 como voy a faltarte
 Que no, que no, que no , que no , que no , que no, 
   <a>La7</a>           <a>Re</a>
 me quedo yo en mi casa
-   <a>Rem</a>    <a>La</a> <a>Fa#7</a>            <a>Sim7</a>  <a>Mi7</a>         <a>LaM</a>
+   <a>Rem</a>    <a>La</a> <a>Fa#7</a>            <a>Sim7</a>  <a>Mi7</a>         <a>LaM7</a>
 Que no, o si, ya veremos qué pasa, ya veremos qué 
-7
 pasa
            <a>Mi7</a>                   <a>LaM7</a>
 De momento Septiembre con la melancolía  de tirar 
           <a>Mi7</a>                  <a>LaM7</a>
 para el ensayo con la mirada perdía
-<a>La7</a>               <a>Re</a>   <a>Rem</a>                <a>La</a>   <a>Fa</a>
+<a>La7</a>               <a>Re</a>   <a>Rem</a>                <a>La</a>   <a>Fa#7</a>
 Luego vi entrar Octubre con sus días tan grises, 
-#7           <a>Sim7</a>     <a>Mi7</a>         <a>LaM7</a>
+           <a>Sim7</a>     <a>Mi7</a>         <a>LaM7</a>
 qué pena mi guitarra, nunca la ví tan triste
 Que no, que no, que no , que no , que no , que no , 
                       <a>Sim7</a>

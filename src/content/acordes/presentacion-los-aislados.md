@@ -76,9 +76,8 @@ tarde
 <a>Do9</a>
 Soy mordisco en la manzana, ante los dioses y el
 pecao
-                                             R
+      <a>Re</a>
 Soy un beso sin complejo en cada amor que han
-<a>e</a>
 censurao
 <a>Si7</a>                              <a>Mim</a>
 Soy el punto de partida y el destino del que en

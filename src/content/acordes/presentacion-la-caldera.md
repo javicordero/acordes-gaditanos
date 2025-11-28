@@ -3,7 +3,7 @@ pieza: Presentación
 agrupacion: La Caldera
 year: 2006
 musica: Nene Cheza
-letra: Nene Cheza
+letra: Joaquín Quiñones
 img: https://blogger.googleusercontent.com/img/a/AVvXsEg45FPTiBiAX6maq42BBwvILO23l9bkYNtiVB31q8C4yoc0S3JotME3L1k6HhcN1jpkIjHzimeIt8s0B02T-KY-unnMa_U26IwbKF7QKiBB8UapT9m44OxNKp7Dw5srlAF0Vsdiw1cm3adA5T7aNVaRzHauyB2uWaHIsljn02KkEa-eWXarG-BX63Juyg=s420
 cejilla: 0
 date: "25/11/2025"
@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/TUIiSaIxCDs'
 
 ---
 <pre><a>Mim</a>
-<a>Dejame</a> <a>algun</a> <a>recoldo</a> <a>de</a> <a>cualquier</a> <a>barricada</a>
+Déjame algun rescoldo de cualquier barricada
 Que poquito a poquito en cuanto entre el levantito 
                     <a>Re</a>
 le vamos a ver las llamas

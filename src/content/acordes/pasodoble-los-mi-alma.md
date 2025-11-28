@@ -62,5 +62,5 @@ corazones
 Y no tocare la gloria pero en más de una memoria yo 
     <a>Re</a>         <a>Sol</a>
 me quedare a vivir
-      <a>Mi7</a>         <a>Lam</a> <a>Re</a>                    So
+      <a>Mi7</a>         <a>Lam</a> <a>Re</a>                    <a>Sol</a>
 Por eso vuelvo ti Cai pa que te acuerdes de mi</pre>

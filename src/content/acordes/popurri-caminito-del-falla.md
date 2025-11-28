@@ -5,12 +5,12 @@ year: 2023
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUNb1oqSrvjIUGmdrgThG8aBBHJsJyD0fDeR18Ybcx-MA6F-RiO-xzG1Gl4J8zr8GIbCuXT1gKZ5OPYjGuhPD_lnl1CmCHPmAsf5NmpnF6oVZ9IjZiwEXEXkNi1cfE0JKXKBvedeYtLOA46RAUGJSXENA6ZMc3ijmCAVZvgA6vW0bdfupcyuTyC-m_3A/s320/caminito2.jpeg
-cejilla: 3
+cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rQf4RBQPvxs'
 
 ---
-<pre>- Cejjilla al 2
+<pre>
           <a>Re</a>                           <a>Fa#m</a>
 Ay tirititran Tiritititi Tiritiritirittran Tritran, 
              <a>Sol</a>          <a>La7</a>
@@ -62,7 +62,9 @@ Y asi cantiñeando as cuartetas que metimos ayer por
 el Caminito al Falla dejan huellas mis pies, (mis 
 <a>Re#</a>
 pies)
-- Cejilla al 3
+
+<strong>- Cejilla al 3</strong>
+
 <a>Re</a>      <a>Fa#m</a>        <a>Sol</a> <a>La7</a> <a>Re</a>         <a>Fa#</a>
 Papapapapa papapapapapa     papapapapappa 
 m        <a>Sol</a>
@@ -123,7 +125,9 @@ Del camino que me enamoré caminando contigo
 Y el que pretenda juzgarme por la senda que he 
    <a>La7</a>                                 <a>Re</a>
 seguido yo le presto mis zapatos del camino
-- Al aire
+
+<strong>- Al aire</strong>
+
 Es un lugar que no es tu hogar pero te sientes como 
 en casa
 Que no es ni patria ni país pero tu himno allí lo 

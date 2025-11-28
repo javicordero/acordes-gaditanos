@@ -17,14 +17,14 @@ Muy buenas noches señores, como en años anteriores,
 se presenta esta comparsa
                   <a>Si7</a>
 Somos quince criminales que al llegar los
-    <a>Fa#m</a>    <a>Si7</a>     <a>Mi</a>          <a>Si7Mi</a>
+    <a>Fa#m</a>    <a>Si7</a>                   <a>Mi</a> <a>Si7 Mi</a>
 carnivales con sus letrillas te atrapan
 Atrás quedo el barroquismo. tres mil motivos en el
 <a>Mi7</a>                     <a>La</a>
 tipo, la extrema complejidad
-<a>Si7</a>                 <a>Sol#mDo#7</a>                  <a>Fa</a>
-Y rebuscando en la esencia del arbolr de nuestra
-#m    <a>Si7</a>                 <a>Mim</a>
+<a>Si7</a>                 <a>Sol#m Do#7</a>                  <a>Fa#m</a>
+Y rebuscando en la esencia del arbol de nuestra
+      <a>Si7</a>                   <a>Mim</a>
 herencia, hemos copiado sin mas
                                         <a>Re</a>
 El compás puro y añejo de Don Antonio Martin
@@ -36,7 +36,7 @@ Esa pluma hecha poesía, marca de Pedro Romero
 Su mijita de nostalgia, de chirigota un cuarto de
      <a>Lam7</a>         <a>Si7</a>
 guasa, to en el caldero
-<a>LaSi7</a>              <a>Sol#m</a> <a>SolmFa#m</a>   <a>Si7</a>
+<a>LaSi7</a>              <a>Sol#m</a> <a>Solm Fa#m</a>   <a>Si7</a>
 Ojalá les guste el guiso          y que se chupen
      <a>Mi</a>
 los dedos

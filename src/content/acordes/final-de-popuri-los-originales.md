@@ -67,5 +67,5 @@ De qué sirve si un día el espejo te enseña que
 perdiste tu origen y tu identidad
 <a>Do</a>                <a>Re/Fa#</a>           <a>Sol</a> <a>Dom7</a>
 Que perdiste tu origen y tu identidad que perdiste 
-                      So
+                      <a>Sol</a>
 tu origen y tu identidad</pre>

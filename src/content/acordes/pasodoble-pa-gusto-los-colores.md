@@ -15,7 +15,7 @@ fraseClave: "Si cuando dan cortinas se"
 Si cuando dan cortinas se seca tu garganta,
                  <a>Sol</a>
 Sudas más de la cuenta y sientes que los focos 
-            <a>Mim</a> M
+          <a>Mim</a> <a>Mi7</a>
 nublan tu mirada.
                                         <a>Fa</a>
 Si por más que respiras no dejas de temblar
@@ -34,9 +34,8 @@ fuego llevo desde niño,
 No pude comer, no pude dormir y hace ya unos días 
                 <a>Do7</a>                    <a>Fa</a>
 que frente al espejo me he probado el tipo.
-                                                  S
 Mientras pienso que no te fallaré y que este es el 
-ol                   <a>Fa</a>                   <a>Mi7</a>
+<a>Sol</a>                   <a>Fa</a>                   <a>Mi7</a>
 año en que daré a mi gente lo que han merecido.
            <a>Do</a>                            <a>Sol</a>
 En mi interior siento un dolor que me castiga, pero 

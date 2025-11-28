@@ -41,7 +41,7 @@ Sean viernes los domingos sin nostalgia ni verdad
 Carcajada en el sofá amamantando la hoguera
                      <a>Lam7</a>         <a>Si7</a>        <a>Mi</a>
 Y deshojando en su vientre una infinita primavera
-(Sorda)
+<a>(Sorda)</a>
 Que me borre la soledad y la desconfianza
                        <a>Do#7</a>        <a>Fa#m</a>
 Me baje al suelo para desplegar mis alas

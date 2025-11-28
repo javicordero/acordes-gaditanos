@@ -27,11 +27,11 @@ duele
 Y si yo blando una espada o levanto alguna lanza
 <a>Si7</a>                                         <a>Do</a>
 Es mirando a la esperanza que defiende mi futuro
-<a>Lam7</a>              <a>Mim</a>    <a>Re7</a>             <a>Sol</a>    L
+<a>Lam7</a>              <a>Mim</a>    <a>Re7</a>             <a>Sol</a>
 Y si me pongo un escudo es pa frenar las ofensas
-<a>am7</a>                  <a>Si7</a>
+<a>Lam7</a>                  <a>Si7</a>
 del que no tenga vergüenza
-          <a>Do7Si7</a>                 <a>MimDoRe</a>
+          <a>Do7 Si7</a>                 <a>Mim Do Re</a>
 Y a mi Cádiz        me la tenga maltratada
 <a>Sol</a>
 Y en medio de esta aventura que suena tan triste
@@ -53,7 +53,7 @@ escudo y mi lanza
 Y el arte carnavalesco contra los entuertos y las
           <a>Mi</a>
 malas andanzas
-<a>Do#7</a>                                       <a>Fa#Re</a>
+<a>Do#7</a>                                       <a>Fa#m Re</a>
 Y que se entere la gente que el Cádiz presente en
                     <a>Mi</a>
 el mundo no es la mancha

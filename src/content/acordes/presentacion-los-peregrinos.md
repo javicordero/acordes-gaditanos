@@ -88,5 +88,5 @@ El caminito del Falla, el caminito del Falla, el
      <a>Sol</a> <a>Lam</a>  <a>Mi7</a>
 caminito del Falla
                 <a>Lam</a>  
-<a>El</a> <a>caminito</a> <a>del</a> <a>Falla</a>
+El caminito del Falla
 </pre>

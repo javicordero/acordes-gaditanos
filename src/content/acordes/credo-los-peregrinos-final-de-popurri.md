@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/DxQBrOV6XF4?feature=player_embedded'
 fraseClave: "Creo en ti, oh todopoderoso"
 ---
 <pre>
-LSol7Do Sol                               Lam  
+<a>Lam</a> <a>Sol7</a> <a>Do</a> <a>Sol</a>                               <a>Lam</a>  
 Creo en   ti, oh todopoderoso Carnaval de Cádiz
 <a>Sol</a>                            <a>Lam</a>  <a>Sol</a>
 Creador del cielo inmenso de los pobres y creador

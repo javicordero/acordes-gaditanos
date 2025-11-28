@@ -68,7 +68,7 @@ Entre las ramas, rampando, vivo solo, me escapé de
 la jaula, me escapé de la jaula, me escapé de la 
  <a>Do</a>
 jaula 
-                         Re7 Si7  (Sorda)           
-        Re7                       Sol  
+                        <a>Re7</a> <a>Si7</a> <a>(Sorda)</a>     
 Compañera mía, prometo bajar     Parapapapa 
+      <a>Re7</a>                       <a>Sol</a> 
 parapapapa Parapapapa para asomarme a tus ojos</pre>

@@ -6,7 +6,7 @@ musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrv9FzPG7Qirun6sie4Y0fBvus1dRTAXRJBn5wNBW6dBPuV0-jLxcpQ7XyRaTYcac0HamjAdlQgbehX5oLda3SCyFoCcu5wWpnNSRPOZlq5I-7Fyup_fEN-vrX33NXsaJE7qbO5SmsMXgmA9bVRsPkSkQ7oeVx4D696ii1W0BSFKWF587z6fmFveaCp2zG/s320/cementerio.jpg
 cejilla: 2
-date: "25/11/2025"
+date: "20/11/2025"
 video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=H5WaOLCTOtpU7KGS'
 fraseClave: "Cerquita de la caleta he"
 ---
@@ -37,9 +37,9 @@ prohibidos de las casapuertas
 Mis coplas rabiando por Plaza Fragela, el sabor del 
  <a>Sol</a>           <a>Fa</a>              <a>Sol</a>
 puchero y las croquetas de mi abuela
-           <a>Do</a>                                 L
+           <a>Do</a>                           
 Paisajes y libros de la carretera, consejos de 
-<a>am</a>
+<a>Lam</a>
 amigos, miradas que queman
               <a>Fa</a>
 Mi niña en la cuna pidiéndome guerra, a Camarón y 
@@ -51,7 +51,7 @@ Sueños y fracasos, un miedo que hiela, cosechas de
 abrazos, risa y borracheras
             <a>Fa</a>
 Las puestas de soles, tu amor tatuao, a mi mare 
- <a>Sol</a>            <a>Fa</a>                 So
+<a>Sol</a>            <a>Fa</a>                 <a>Sol</a>
 cosiendo las heridas que me han dejao
     <a>Fa</a>                     <a>Sol</a>          <a>Mi7</a>
 Son las pequeñas cosas que no ves, las que nos 

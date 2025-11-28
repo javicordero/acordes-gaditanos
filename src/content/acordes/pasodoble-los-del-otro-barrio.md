@@ -53,7 +53,7 @@ Les robas el poco dinero Que pueden guardar Para
 volver otro año Para pagarse el disfraz
      <a>Rem</a>                          <a>LaM7</a>
 Y a toda esa panda de chuflas Y mangantes Que se 
-              <a>Mi7</a>                  <a>LaM7</a>  L
+            <a>Mi7</a>                       <a>LaM7</a>  <a>La7</a>
 pongan por delante A mi me van a encontrar
       <a>Rem</a>          <a>Mi7</a>                 <a>LaM7</a>
 Porque esta Aunque haya muchos que les duela 

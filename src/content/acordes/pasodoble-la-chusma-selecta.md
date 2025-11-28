@@ -16,9 +16,8 @@ fraseClave: "Señores carnavaleros de este"
 Señores carnavaleros de este certamen plebeyo
  <a>Fa#7</a>          <a>Sim7</a>
 quitémonos la careta
-                    <a>Mi7</a>                           S
-Este teatrillo es insano, zafio tedioso, inhumano,
-im7  <a>Mi7</a>          <a>LaM7</a>
+                    <a>Mi7</a>
+<a>Sim7</a>  <a>Mi7</a>          <a>LaM7</a>
 no tiene pies ni cabeza
  <a>Mi7</a>                 <a>LaM7</a>
 Hace años que este concurso parece un final de

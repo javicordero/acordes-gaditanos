@@ -32,9 +32,9 @@ trio, san pedro válgame dios
 Llego el quejio, su quejio, su quejiiiio
 <a>Do</a>                <a>Re7</a>            <a>Do</a>
 Ve bailando cada frase déjate llevar
-                     <a>Re7</a>             <a>Do</a>        R
+                     <a>Re7</a>             <a>Do</a> 
 Cierra los ojos y disfruta de su paladar que te 
-<a>e7</a>            <a>Sol</a>
+<a>Re7</a>            <a>Sol</a>
 empape de alegría
 <a>Dom7</a>                  <a>Sol</a>     <a>Dom7</a>
 Vamos acelerando el final con garra y que sea 

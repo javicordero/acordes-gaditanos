@@ -11,15 +11,15 @@ video: 'https://www.youtube.com/embed/Ck3TOVT8fuI?feature=player_embedded'
 
 ---
 <pre>
-<a>Mi</a>                <a>Fa#m7Si7</a>
+<a>Mi</a>                <a>Fa#m7 Si7</a>
 Tú, ¿dónde te va a poner Tú, ¿pa dónde va a
 <a>Sol#m7</a>
 lanzar?
-<a>Do#7</a>             <a>Fa#m7Si7</a>
+<a>Do#7</a>             <a>Fa#m7 Si7</a>
 Tú, ¿dónde te va a poner Tú, ¿pa dónde va a
   <a>Mi</a>
 lanzar?
-<a>Mi</a>                 <a>Fa#m7Si7</a>
+<a>Mi</a>                 <a>Fa#m7 Si7</a>
 Buenas noches, gaditanos, aquí estamos Los
    <a>Sol#m7</a>
 Pacientes,
@@ -31,9 +31,9 @@ esperar.
 Una vez tirás las cañas, con el permiso de
  <a>Sol#m7</a>
 ustedes,
-<a>Do#7</a>                <a>Fa#m7</a>    <a>Si7</a>              M
+<a>Do#7</a>                <a>Fa#m7</a>    <a>Si7</a>
 Me via sentá aquí un ratito, antes que esto se
-i
+<a>Mi</a>
 caliente.
 <a>Mi</a>                 <a>Fa#mSi7</a>                 <a>Sol#m7</a>
 Y aquí yo sueño a diario que hoy me toca triunfar,
@@ -73,9 +73,9 @@ mío, has triunfao.
 Cuando vaya al otro barrio, ¡que me quiten lo
 <a>Sol#m7</a>
 bailao!
-<a>Do#7</a>                  <a>Fa#mSi7</a>                    S
+<a>Do#7</a>                  <a>Fa#mSi7</a>
 Me iré sin más que yo mismo, e iré sin más que yo
-ol#m7
+<a>Sol#m7</a>
 mismo,
                                <a>Do#7</a>
 Sin la prisa del reloj, sin dolor y sin rencor,
@@ -86,7 +86,7 @@ vergüenza,
 Sin un cargo de conciencia, sin la envidia al
      <a>Fa#m7</a>
 triunfador,
-<a>Si7</a>                <a>Sol#m7Do#7</a>
+<a>Si7</a>                <a>Sol#m7 Do#7</a>
 Sin hundir al perdedor, sin un duro en el
    <a>Fa#m7</a>
 bolsillo,

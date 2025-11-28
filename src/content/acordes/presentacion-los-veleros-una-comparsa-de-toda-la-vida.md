@@ -43,9 +43,9 @@ sueños marineros
 Y es que, aunque digan de los marineros que en cada 
             <a>Mim</a>
 puerto le espera una cita
-<a>Fa</a>                 <a>Do</a>           <a>Fa</a>                 S
+<a>Fa</a>                 <a>Do</a>           <a>Fa</a>
 El corazón de este viejo velero late tan solo en el 
-ol7
+<a>Sol7</a>
 de la tacita
 <a>Do</a>                                       <a>Mim</a>
 Porque tu llevas mi suerte en tus manos, porque 

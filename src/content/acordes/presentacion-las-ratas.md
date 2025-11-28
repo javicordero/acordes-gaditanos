@@ -6,7 +6,7 @@ musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqkAI7b0RR2-jALjMtS5YQQfO-nXg5da8C7c9dKKzXhysl9j5PyfreGBfDFjNoi5geU746yEQb2xWkbf4LtEo3bHqkEt54itdrWrFlJCA7dUBhHZmGEAtZNqGQiW2VyaFL57fDKh99p5Eqd5XA8P94puEFyi02n3xQFpv-lbJKjKIGpGxPRVqNDPnY7WhT/s320/ratas2.jpg
 cejilla: 2
-date: "25/11/2025"
+date: "27/11/2025"
 video: 'https://www.youtube.com/embed/zpAP3fNLL5Q?si=LypGaLiUJFH4PqyE'
 
 ---
@@ -116,7 +116,7 @@ Las rata Tata, tata, tata Sobran las ratatatata,
 Ratatata, ratatatata
          <a>Rem</a>         <a>Mi7</a>   <a>Lam</a>          <a>Rem</a>
 Somos la rata Tata, tata, tata Somos la ratatatata, 
-   <a>Mi7</a>                <a>Fa</a> M
+   <a>Mi7</a>                <a>Fa</a> <a>Mi7</a>
 Ratatata, ratatatata  Rata
          <a>Lam</a> <a>Sol</a>
 Somos la rata   </pre>

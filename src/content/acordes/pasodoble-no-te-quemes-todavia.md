@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/g44Exbn6vhU?feature=player_embedded'
 
 ---
 <pre>
-<a>Mim</a>       <a>Si7</a>       <a>Mim</a> <a>Si7Mim</a>     <a>Si7</a>      <a>Mim</a>
+<a>Mim</a>       <a>Si7</a>       <a>Mim</a> <a>Si7 Mim</a>     <a>Si7</a>      <a>Mim</a>
 Pensé que no iba a gustar na y por poquito al final
                            <a>Si7</a>
 no estoy yo todavía de entierro.

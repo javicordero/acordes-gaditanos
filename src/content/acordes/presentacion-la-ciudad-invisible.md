@@ -31,9 +31,9 @@ definido un mapa
 De la ciudad invisible y ermitaña que reposa en sus 
   <a>Lam7/Sib</a>                  <a>Si7</a>
 entrañas la otra Tacita de Plata
-<a>Mim</a>                         <a>La</a>                   <a>D</a>
+<a>Mim</a>                         <a>La</a>                   <a>Do</a>
 Oh carnaval, oh carnaval, barrote de mis penas mi 
-o          <a>Si7</a>          <a>Mim</a>
+           <a>Si7</a>          <a>Mim</a>
 cadena, mi prisión, mi libertad
 <a>Mi7</a>               <a>Lam7</a>            <a>Re7</a>
 Ahí escondido te añoro, Cai de mi vida, entre tus 
@@ -66,13 +66,13 @@ Por eso les duele tanto, las cositas que digo
 Otra historia de amor hoy empiezo a escribir
       <a>Do</a>                    <a>Lam7</a>   <a>Lam7/Sib</a>     <a>Si</a>
 Ya los oigo de acercan, ya vienen, vienen a por mi
-<a>Mim</a>                         <a>La</a>                   <a>D</a>
+<a>Mim</a>                         <a>La</a>
 Oh carnaval, oh carnaval, barrote de mis penas mi 
-o          <a>Si7</a>         <a>Mim</a>
+ <a>Do</a>          <a>Si7</a>         <a>Mim</a>
 cadena, mi prisión, mi libertad
-<a>Mim</a>             <a>La</a>                     <a>Do</a>         S
+<a>Mim</a>             <a>La</a>                       <a>Do</a>       
 Oh carnaval, aquí espero en la cueva la llamada de 
-i7         <a>Mim</a>
+<a>Si7</a>         <a>Mim</a>
 febrero en libertad
 Ay lerelere, ya está aquí febrero, ¿Qué voy a 
 hacer?

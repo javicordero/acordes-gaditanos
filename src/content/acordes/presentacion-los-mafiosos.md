@@ -17,12 +17,11 @@ Parapapa, parapapa paraparaparaparpapa
 Parapapa, parapapa paraparaparaparpapa
 Si tú eres la libre en la cuna a donde te toco
 caer
-                                                 L
 Y a ir descalzo por la calle se acostumbraron tus
-<a>am7</a>
+<a>Lam7</a>
 pies
 Si eres más fuerte que el dolor y el negro te
-   <a>Si7Lam7</a>
+   <a>Si7 Lam7</a>
 sienta bien
                                           <a>Si7</a>
 Si tienes duro el corazón y te resbala la piel

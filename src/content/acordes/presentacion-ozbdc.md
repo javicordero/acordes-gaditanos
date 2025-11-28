@@ -11,22 +11,22 @@ video: 'https://www.youtube.com/embed/FSprO0hfAZM?feature=player_embedded'
 
 ---
 <pre>
-<a>MiSiDo#mLa</a> <a>Mi/adSiDo#mLaDo</a>
+<a>Mi Si Do#m La</a> <a>Mi/add9 Si Do#m La Do</a>
 Ooh         Ooh Oooooooh   Ooh         Ooh
 Oooooooh
-<a>Mi/add9</a>  <a>Si</a>                                   <a>Do#m</a>
+<a>Mi/add9</a>  <a>Si</a>                                   <a>Do#m7</a>
 Yo tuve el bonito sueño de volver a casa y anduve
-7                   <a>Mi/add9</a>        <a>Si</a>
+                   <a>Mi/add9</a>        <a>Si7</a>
 el camino de arena que lleva a la playa
-<a>Mi/aSi9</a>                <a>Do#m7</a>              <a>Do</a>
+<a>Mi/add9 Si7</a>                <a>Do#m7</a>              <a>Do</a>
 Una     bruja del norte expatrió mi morada y me
                          <a>Si7</a>
 arrastró a la turbia oscuridad
-<a>Do#m</a>          <a>Sol#m</a>                   <a>La</a>  <a>Si7</a>
+<a>Do#m</a>          <a>Sol#m</a>                         <a>La</a>  <a>Si7</a>
 Agarré todos mis miedos, fuera paja del cerebro y
-            <a>MiSol#m</a>
+             <a>Mi Sol#m</a>
 escuché a mi corazón
-<a>Do#m</a>        <a>Sol#m</a>                       <a>La</a>
+<a>Do#m</a>           <a>Sol#m</a>                       <a>La</a>
 Arcoiris ya no quiero, emigrante que regresa a la
                <a>Do</a>
 tierra de los besos
@@ -56,9 +56,9 @@ Uuuuh  uuhhhh uhhh
  volar volé, hacia un cielo azul, solo con mis
                   <a>La</a>
 pies, dirección al sur
-       <a>Do</a>                   <a>Mi</a>                  <a>F</a>
+       <a>Do</a>                   <a>Mi</a>
 Se quedó mi paz, donde vive el sol, allí está mi
-<a>a#m</a>              <a>Si7</a>
+<a>Fa#m</a>              <a>Si7</a>
 hogar y quien me parió
 <a>Mi/add9</a>          <a>Sol#m</a>               <a>Mi7</a>
 Tanto te busqué en la multitud, tanto te extrañé,

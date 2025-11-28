@@ -56,6 +56,9 @@ Y cuando tienes el veneno tan dentro de tí sólo te
 queda volver a nacer o morir
 <a>Sim</a>           <a>La</a>       <a>Sim</a>
 Tututu tututut tututu tutut
+
+
+
 <a>Mim</a>
 El mar, la mar,  el mar de Cádiz es la pasión pura 
   <a>Re</a>
@@ -91,6 +94,9 @@ sol y sal
 Bendita el agua y su importancia que es el veneno 
            <a>Si7</a>
 de la mar, que es el veneno
+
+
+
 <a>Mi</a>                       <a>La</a>
 Recuerdo que me contaron la historia de Jesucristo
 <a>Mi</a>                       <a>La</a>
@@ -116,6 +122,9 @@ Ese que iba en el paso era el alcalde perpetuo
 Coño  con el Nazareno que me clavó en la retina
 <a>Re#</a>                 <a>La#</a>                    <a>Fa</a>
 Su gran corona de espinas como un divino veneno
+
+
+
 <a>Sol</a>                 <a>Re</a>
 Nunca pierdo la esperanza porque el Estadio 
   <a>Do</a>                   <a>Sol</a>
@@ -164,6 +173,8 @@ reguindó a las alturas del cuello
 Diciéndome este es mi amor, Capitán veneno, veneno, 
     <a>Mim</a>
 carnaval
+
+
 <a>Mim</a>
 Llévalo contigo y anda que en la plaza hay una 
                       <a>Re</a>
@@ -202,9 +213,9 @@ herida
 Y en cada golpe de platillo deje un golpe de mi 
     <a>La</a>
 vida carnavalera
-Re?                       La                      
-Sol                       Fa#7
+<a>Re                       <a>La
 Nunca te dire, oh, tierra mía volveré, porque el 
+<a>Sol</a>                       <a>Fa#7</a>
 veneno me encadena y de tu vera no me voy
 <a>Sim</a>                  <a>La</a>
 Y como yo soy el capitán, y este veneno es mi 

@@ -11,9 +11,9 @@ video: 'https://www.youtube.com/embed/1FqhyRhs0Yc'
 fraseClave: "Así de sencillo empieza este"
 
 ---
-<pre>(Sorda)                                  Fa         
-      Sol7                 Do
+<pre><a>(Sorda)</a>                                  <a>Fa</a>
 Así de sencillo empieza este Pasodoble y así les 
+    <a>Sol7</a>                 <a>Do</a>
 damos a ustedes nuestra bienvenida
     <a>Fa</a>                 <a>Sol7</a>     <a>Mim</a>
 de nuestro pueblo tan noble al templo de la 

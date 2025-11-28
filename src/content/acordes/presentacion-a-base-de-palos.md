@@ -11,9 +11,9 @@ video: 'https://www.youtube.com/embed/v6Ft81c7uUI?feature=player_embedded'
 
 ---
 <pre>
-<a>Mi/add9</a>             <a>Sol#m7</a>         <a>Sol#7</a>       <a>Do</a>
+<a>Mi/add9</a>             <a>Sol#m7</a>         <a>Sol#7</a>
 Entre la orilla y la muralla en la arenita de la
-#m7
+<a>Do#m7</a>
 playa
                   <a>La</a>                       <a>Lam7</a>
 Las olas por compañera el carpintero de ribera
@@ -43,21 +43,21 @@ antigua de occidente
 Que sus maderas, son tan antiguas, que es hora ya
                       <a>Si</a>
 que alguien se la remiende
-          <a>La</a>                     <a>Si7</a>             S
+          <a>La</a>                     <a>Si7</a>
 Quiero ser yo tu carpintero de ribera, quiero ser
-ol#7                       <a>Do#m7</a>
+<a>Sol#7</a>                       <a>Do#m7</a>
 yo quien ponga guapas tus maderas
      <a>La</a>
 Para ponerte diez cañones en la proa pa acabar con
                                 <a>Si</a>
 los piratas que te tienen en barrena
-(Mi/add9  Sol#m7  Do#m7  La  Si  Mi/add9  Sol#m7  
-Do#m7  La  Si)
-          <a>La</a>                       <a>Si7</a>
+<a>Mi/add9</a>  <a>Sol#m7</a>  <a>Do#m7</a>  <a>La</a>  <a>Si</a>  <a>Mi/add9</a>  <a>Sol#m7</a>  
+<a>Do#m7</a>  <a>La</a>  <a>Si</a>
+         <a>La</a>                       <a>Si7</a>
 No hay una barca mas bonita en la bahía
-            <a>Sol#7</a>                             <a>Do#</a>
+            <a>Sol#7</a>
 No hay una barca mas bonita en tos los mares del
-m7
+<a>Do#m7</a>
 sur
 <a>La</a>                        <a>Sol#m7</a>         <a>La</a>
 Digamos que se llama Andalucía, que es mi madre y
@@ -73,7 +73,7 @@ Vamos a volver a ser lo que fuimos, a lo que un día
 construimos
                        <a>Si</a>
 Vamos de nuevo a dar guerra
-<a>La</a>                  <a>Sol#mSol#7</a>             <a>La</a>
+<a>La</a>                  <a>Sol#m Sol#7</a>             <a>La</a>
 Que duras tienen que ser, tus maderas marineras
                   <a>Si</a>       <a>Mi</a> <a>SiMi</a>
 Que siempre a base de palos, navegas

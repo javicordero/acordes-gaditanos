@@ -1,5 +1,5 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: Los Hombres del mar
 year: 1965
 musica: Paco Alba
@@ -10,13 +10,13 @@ video: 'https://www.youtube.com/embed/2moZDBc0Hks?feature=player_embedded'
 
 ---
 <pre>
-<a>Lam</a>         <a>Sim7b5</a>       <a>Mi7</a>                     L
+<a>Lam</a>         <a>Sim7b5</a>       <a>Mi7</a>
 Viene a esta tierra un barquito, más típico no lo
-<a>am</a>
+<a>Lam</a>
 hay,
-<a>Lam</a>                  <a>Mi7</a>                         L
+<a>Lam</a>                  <a>Mi7</a>
 más blanco, ni más bonito, en toito' el muelle de
-<a>am</a>
+<a>Lam</a>
 Cai.
 <a>Lam</a>                 <a>Mi7</a>
 Mire usted si ese barquito tiene una gracia

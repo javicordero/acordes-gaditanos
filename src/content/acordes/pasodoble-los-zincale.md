@@ -11,9 +11,9 @@ video: 'https://www.youtube.com/embed/yuoxLd21JbA?feature=player_embedded'
 
 ---
 <pre>
-<a>Sol</a>                                              <a>Do</a>
+<a>Sol</a>
 No le grites a papa y mama, no te subas encima del
-9
+ <a>Do9</a>
 sofá
 <a>Re7</a>                          <a>Sol</a>            <a>Mi7</a>
 No me andes descalzo ponte los zapatos, no dejes
@@ -27,20 +27,20 @@ el cole palabrotas
 Que yo no te lo vuelva a repetir, que no puedes
                 <a>Sol</a>
 comer con esas manos
- <a>Mi7</a>                           <a>Lam</a>               R
+ <a>Mi7</a>                           <a>Lam</a>
 No le tires de los pelos a tu hermano, no me seas
-<a>e7</a>               <a>Sol</a>
+<a>Re7</a>               <a>Sol</a>
 malo, no me seas malo
-     <a>Re7</a>                <a>Sol</a>                      <a>Re</a>
+     <a>Re7</a>                <a>Sol</a>                      <a>Re7</a>
 Y otro no cuando son más grandes, no me bebas y no
-7            <a>Sol</a>
+           <a>Sol</a>
 me faltes a clase
 No hables así, no te metas en líos con tus amigos y
                          <a>Do</a>
 por favor no me llegues tarde
-                              <a>Re7</a>              <a>La</a>
+                              <a>Re7</a>              <a>Lam</a>
 Ese no que tantas veces repetimos pa que quedara
-m <a>Re7</a>      <a>Sol</a>
+<a>Re7</a>      <a>Sol</a>
 claro el mensaje
      <a>Do</a>                                        <a>Sol</a>
 Por eso yo lo que no logro comprender es porque no

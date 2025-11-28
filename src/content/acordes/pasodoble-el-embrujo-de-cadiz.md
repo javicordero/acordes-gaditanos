@@ -39,9 +39,9 @@ Es que se hagan grandes en nuestras calles y cuando
 el mundo les falle
                   <a>Solm</a>                    <a>La7</a>
 En sus gargantas estalle la rabia por carnaval
-(Sorda)                                             
-                  Si7                     Mim
+  <a>(Sorda)</a>
 A un niño carnavalero hay que llevarle a las rocas 
+                  <a>Si7</a>                     <a>Mim</a>
 y que aprendan al caerse como duele la derrota
                  <a>La7</a>                       <a>Mim</a>
 Las niñas carnavaleras deben criarse en su barrio 
@@ -51,7 +51,7 @@ pa que el arte no le falte al subirse a este
 escenario
 <a>La7</a>              <a>Re</a>                        <a>Re7</a>
 A un niño carnavalero hay que enseñarle a reírse de 
-                    So
+                    <a>Sol</a>
 uno mismo antes que na
                             <a>La7</a>
 Niñas carnavaleras molestan igual que las verdades 

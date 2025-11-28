@@ -54,7 +54,7 @@ Será que tengo el acento de plata la piel de
 escamas alimentada con sal
            <a>Do</a>
 Tengo mil nanas cantadas por tanguillos desde que 
-         <a>Re7</a>                          M
+        <a>Re7</a>                          <a>Mi7</a>
 era un chiquillo me acunaban en tu mar.
             <a>La</a>                             <a>Do#m</a>
 Será que cuando al llegar febrerillo es primavera 

@@ -72,9 +72,9 @@ Lo que me hiciste sentir si tuviera que pagarlo no
 existiría tanto dinero
 <a>Fa#7</a>                                 <a>Sim7</a>
 Porque desde niño me impregne de tu veneno
-                       <a>Mi7</a>         <a>Sim7</a>            M
+                       <a>Mi7</a>         <a>Sim7</a>
 Por eso aquí vuelvo de nuevo para decirte cai de mi
-i7
+<a>Mi7</a>
 vía
                          <a>LaM7</a>
 Te quiero, te quiero ,te quiero

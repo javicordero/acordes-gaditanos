@@ -23,9 +23,9 @@ el cuello.
 Canta y grita, grita y canta, canta y grita, grita
                               <a>Mim</a>
 y canta y grita la misma canción.
-         <a>SolLam</a>          <a>Si7Mim</a>       <a>Sol</a>          L
+         <a>SolLam</a>          <a>Si7 Mim</a>       <a>Sol</a>
 Yo soy tu voz, la voz que espera el torpe sueño que
-<a>am</a>         <a>SI7Mim</a>
+<a>Lam</a>         <a>Si7 Mim</a>
 el futuro prometió.
          <a>Sol</a>                  <a>Lam</a>
 Yo soy la voz de la clase obrera, de la clase
@@ -75,7 +75,7 @@ santo patrón.
 No te quedes ahí sentado agarrotado ven y sube aquí
    <a>LaM7</a>
 a mi lado
-               <a>Fa#m</a>    <a>Sim7</a>            <a>Fa</a> <a>Mi7LaM7</a>
+               <a>Fa#m</a>    <a>Sim7</a>            <a>Fa</a> <a>Mi7 LaM7</a>
 A mi lado, a mi lado que cuántos más mucho mejor.
         <a>Sim</a>             <a>Do#m</a>      <a>Re7</a> <a>Fa</a>   <a>Mi7</a>
 Pasen y vean que en mi circo se pasea lo mejor.

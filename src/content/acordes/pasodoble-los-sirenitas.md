@@ -52,6 +52,6 @@ escapaba mi vida
 Pensaba en el día ni no ni no ni no ni no ni
 <a>Sol7</a>
 De venir a cantarte sentrañas mías sentrañas mías
-      <a>FaSol7Do</a>
+      <a>Fa Sol7 Do</a>
 Sentrañitas mías
 </pre>

@@ -39,9 +39,9 @@ Que con humildad y paciencia van haciendo el
 caminito
 <a>Fa#</a>                <a>SiM7</a>  <a>Re#7</a>            <a>Sol#m</a>
 Y aunque se hayan caio y las sentencie Pilatos
-<a>Sol#</a>                <a>Do#m7</a>                       <a>F</a>
+<a>Sol#</a>                <a>Do#m7</a> 
 Las columnas se han partido para que no falte un 
-<a>a#</a>
+<a>Fa#</a>
 plato
 (Subida de tono)
 <a>Do#M7</a>          <a>Fa7</a>            <a>La#m</a>        <a>Fam</a>

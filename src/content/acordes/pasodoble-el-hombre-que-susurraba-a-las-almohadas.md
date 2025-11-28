@@ -12,7 +12,7 @@ fraseClave: "Años, cuarenta y pico de"
 
 ---
 <pre>
-<a>RemLa7</a>               <a>Rem</a>
+<a>Rem La7</a>               <a>Rem</a>
 Años, cuarenta y pico de años que me he llevao
             <a>Sol7</a>             <a>Do7</a>
 hincando el pespunte la almohada.

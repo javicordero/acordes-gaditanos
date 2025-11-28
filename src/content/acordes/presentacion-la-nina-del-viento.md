@@ -11,9 +11,9 @@ video: 'https://www.youtube.com/embed/Aq24zf77eFM?feature=player_embedded'
 
 ---
 <pre>
-<a>Lam</a>              <a>Mim</a>                     <a>Fa</a>     M
+<a>Lam</a>              <a>Mim</a>                     <a>Fa</a>
 Cuando salta el Levante, agarrando mis manos, me
-i7
+<a>Mi7</a>
 saca a bailar
 <a>Rem</a>                        <a>Sol7</a>           <a>Do</a>
 Y en medio de un vals, como un amante besa mis
@@ -58,6 +58,6 @@ Pa que olvides tu cordura, pa alegrarte el corazón
 Vuelven tus niñas Tacita porque tú eres mi locura
    <a>Lam</a>
 de amor
-            <a>Fa</a>              <a>RemMi7</a>       <a>Lam</a>
+            <a>Fa</a>              <a>Rem Mi7</a>       <a>Lam</a>
 Locura de amor locura de amor, locura de amor
 </pre>

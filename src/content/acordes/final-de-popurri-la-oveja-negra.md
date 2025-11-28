@@ -35,9 +35,9 @@ huesos los tendones
 A morir matando si hace falta que si algo nos sobra 
       <a>Fa</a>
 es la rabia
-<a>Lam7</a>          <a>Mim7</a>      <a>Rem7</a> <a>Lam</a>       <a>Mim7</a>    R
+<a>Lam7</a>          <a>Mim7</a>      <a>Rem7</a> <a>Lam</a>       <a>Mim7</a>    
 La marca del hierro me quema en el horizonte la 
-<a>em7</a>
+<a>Rem7</a>
 mar
 <a>Lam7</a>           <a>Mim7</a>       <a>Rem7</a>  <a>Fa</a>
 Acoge niña a esta ovejita negra abreme las 

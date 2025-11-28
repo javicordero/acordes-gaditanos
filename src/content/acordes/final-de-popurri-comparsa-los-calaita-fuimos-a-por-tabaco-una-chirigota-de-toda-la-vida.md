@@ -34,9 +34,9 @@ Que todo tiene un final
 Me despido de esta tierra Con el alma en pena De 
              <a>Mim</a>                    <a>Fa</a>
 sentir a un pueblo Inmerso en su condena
-                  <a>Do</a>  <a>La7</a>                  <a>Rem</a>    R
+                  <a>Do</a>  <a>La7</a>                  <a>Rem</a>
 Sometido a tanta mafia Y de ver como no hacen nada 
-<a>e7</a>             <a>Sol</a>
+<a>Re7</a>             <a>Sol</a>
 Para su rumbo cambiar
 <a>Lam</a>
 Mientras el ignorante no se revela Y sigue cantando 
@@ -59,9 +59,9 @@ Falta más humanidad Para un mundo mejor Mientras
 tanto solo queda Combatir Nuestras tragedias Con la 
   <a>Fa</a>   <a>Sim7/5</a>  <a>Mi7</a>
 palabra Y el humor
-<a>Do</a>                                                M
+<a>Do</a>                                                <a>Mi7</a>
 Ríe Aunque no sea conmigo Ríete de todo en la vida 
-i7 <a>Lam</a>
+ <a>Lam</a>
 Y canta
                                                <a>Fa</a>
 Rodéate de amigos Y seres queridos Perdona y avanza 
@@ -72,9 +72,9 @@ Jamás te olvides de ti
 Cuando esto se acabe No te arrepientas De ver la 
        <a>Sol</a>
 vida pasar
-<a>Re</a>                                   <a>Fa#7</a>          S
+<a>Re</a>                                   <a>Fa#7</a>
 Vive Tu que aun estas vivo Aprovecha cada segundo Y 
-im
+<a>Sim</a>
 ama
 Enséñales a tus hijos Que no hay barreras Ni miedo 
   <a>Fa#m</a>

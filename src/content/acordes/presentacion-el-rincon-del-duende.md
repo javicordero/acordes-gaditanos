@@ -79,9 +79,8 @@ Y en los cojones de los obreros cortando el puente
 Soy parlamento de cuatro sabios en una esquina
                                 <a>Sol#m</a>
 Puente canal cuando el mar se sube para comer
-                                        <a>Fa#</a>
+                                        <a>Fa#m</a>
 Soy el silencio que rompe el llanto de las
-m
 horquillas
       <a>Fa#7</a>                                 <a>Si7</a>
 Y la verdad que siempre descubre tu mala suerte
@@ -104,7 +103,7 @@ Yo soy la esencia que no se enseña, que no se
   <a>Si7</a>
 aprende
 Y cádiz es el rincón
-LSol#m
+<a>La Sol#m</a>
 (pito)
      <a>Do</a>             <a>Lam7</a>       <a>Mi</a>
 Del duende, del duende, del duende.

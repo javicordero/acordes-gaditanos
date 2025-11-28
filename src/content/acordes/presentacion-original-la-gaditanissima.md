@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/BRQJFOL-5RQ?feature=player_embedded'
 
 ---
 <pre>
-<a>DoLa</a>   <a>Mi</a>                <a>Si</a>   <a>Do#m</a>
+<a>Do#m La</a>   <a>Mi</a>                <a>Si</a>   <a>Do#m</a>
 Ahhhh ahhh Si caminito del Falla el corazón te
 <a>La</a>   <a>Mi</a>                  <a>Si</a>
 palpita de esa manera canalla
@@ -30,7 +30,7 @@ una Tacita de plata
 <a>Mi</a>           <a>Si</a>          <a>La</a>     <a>Mi</a>           <a>Si</a>
 Para que los poetas nunca digan aquí tienen un
                <a>La</a>
-hombre tal como esç
+hombre tal como es
 <a>Mi</a>                   <a>Si</a>        <a>La</a>   <a>Mi</a>
 Quien dice un hombre dice una mujer quien dice una
  <a>Si</a>           <a>Do#m</a>
@@ -62,7 +62,7 @@ primera que mi tierra me enseñó
 Ay a mi Gaditanissima manera que es la única y
  <a>Si7</a>                       <a>Mim</a>
 primera que mi tierra me enseñó
-(sorda)
+<a> (sorda) </a>
 Que la Gaditanissima no es mas que una comparsa de
 arlequines
 Que le canta a su tierra libre cuando llega el

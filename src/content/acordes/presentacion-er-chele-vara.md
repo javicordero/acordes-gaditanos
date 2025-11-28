@@ -41,7 +41,7 @@ Vara
 La peñita del Fidel Chano y la peñita del Chele
 i7
 Vara
-<a>Re</a>  <a>SolRe</a>      <a>Sol</a> <a>Si7</a>   <a>MimSi7</a> <a>Mim</a>
+<a>Re</a>  <a>Sol Re</a>      <a>Sol</a> <a>Si7</a>   <a>Mim Si7</a> <a>Mim</a>
 Y salió    sin querer esta revolución
        <a>Si7</a>                <a>Mim</a>              <a>Si7</a>
 Y si triunfamos, como tu soñaste, Cádiz será solo y

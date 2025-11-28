@@ -54,11 +54,11 @@ pusieron color de verdín
                      <a>Rem</a>
 Y cuando ya estaba el barco completo los ángeles de 
 la alegría
-            <a>Fa</a>          <a>Mi7</a>          <a>LaM7</a>    <a>Fa#</a>
+            <a>Fa</a>          <a>Mi7</a>          <a>LaM7</a>    <a>Fa#7</a>
 Pusieron su obra en la orilla de una playa y se 
-7         <a>Sim7</a>     <a>Mi7</a>           <a>Lam</a>
+         <a>Sim7</a>     <a>Mi7</a>           <a>Lam</a>
 quedaron mirando subidos a las murallas
-     Sol7?      Fa             Sim7/5         Mi7
+      <a>Sol</a>         <a>Fa</a>             <a>Sim7/5</a>     <a>Mi7</a>
 Y pensaron en silencio después de esto no hay nada
            <a>Sim7</a>                      <a>Mi7</a>
 Esto os lo cuento por si aún os preguntais y no 

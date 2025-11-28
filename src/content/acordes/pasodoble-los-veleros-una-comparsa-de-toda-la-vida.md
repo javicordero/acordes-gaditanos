@@ -41,11 +41,11 @@ encendía
 Te traigo el compás de un chiquillo del barrio 
    <a>Mi7</a>             <a>Lam</a>
 bendito de Santa María
-    <a>Do</a>                    <a>Re</a>      <a>Do</a>   <a>Re7</a>      So
+    <a>Do</a>                    <a>Re</a>      <a>Do</a>   <a>Re7</a>      <a>Sol</a>
 Con letras desde un rinconcito sagrado de tu bahía
           <a>Re7</a>        <a>Sol</a>    <a>Sol7</a>              <a>Do</a>
 Y dándote mi pellizquito te juro que quiero namas
-(Sorda)
+<a>(Sorda)</a>
 Que suene a cañón, a orilla y a sal a besos de amor 
 y al puente canal
     <a>Dom7</a>                      <a>Sol</a>

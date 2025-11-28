@@ -55,18 +55,16 @@ solo lo sé yo
 Y canto, y canto, y canto desde mi rincón y le
          <a>Mim</a>
 canto al mundo
-              <a>Rem</a>            <a>Fa</a>               <a>Mi</a>
+              <a>Rem</a>            <a>Fa</a>               <a>Mi7</a>
 Lo que quiero yo que pa cantar no me tiembla la
-7
 voz
                <a>Lam</a>                   <a>Fa</a>
 Mis raíces las nubes, tus raíces tu suelo
                                           <a>Rem</a>
 Tu mueres por tu tierra, yo muero por mi cielo
 Tu muy tranquilo fuera pintando una frontera
-                                                   M
 Y yo encerrao dentro tu siempre callaito, echándole
-im
+<a>Mim</a>
 el ratito
               <a>Do</a>
 Y yo aquí encerrao me dejo la vida y la vida

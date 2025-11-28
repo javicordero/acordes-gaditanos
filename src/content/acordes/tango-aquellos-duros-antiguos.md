@@ -1,12 +1,12 @@
 ---
 pieza: Tango
 agrupacion: Los Anticuarios
-year: 2025
+year: 1905
 musica: El Tío de la Tiza
 letra: El Tío de la Tiza
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAhIdcyLm9Lggwa2GbgNOmVvzMP4hDxefWyw&s
 cejilla: 0
-date: "25/11/2025"
+date: "28/11/2025"
 video: 'https://www.youtube.com/embed/I-sGXVxkAPY?si=jduhYEmU-_eR8WEV'
 fraseClave: "Aquellos duros antiguos que"
 

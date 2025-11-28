@@ -44,9 +44,9 @@ Y por encima de todo Nos dio sus cánticos y sus
 voces Y fue el regalo más grande Que nos hicieron 
     <a>Mi7</a>
 los dioses
-<a>Lam</a>                  <a>Sol</a>  <a>Fa</a>               <a>Mi7</a>  R
+<a>Lam</a>                  <a>Sol</a>  <a>Fa</a>               <a>Mi7</a>  
 Porque dentro de ese barco Encontramos un tesoro 
-<a>em</a>                <a>Lam</a>                    <a>Si7</a>   <a>Fa</a>
+<a>Rem</a>                <a>Lam</a>                    <a>Si7</a>   <a>Fa</a>
 Letras, músicas y coplas De una cultura remota De 
                   <a>Mi7</a>
 la que aprendimos todo

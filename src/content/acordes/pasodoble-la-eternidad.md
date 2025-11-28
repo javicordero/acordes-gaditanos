@@ -70,9 +70,9 @@ porque me he llevao treinta años
 llevándole a mi hermana revistas
                                     <a>MimSol7</a>
 pa que recortara papelillos pa la cabalgata.
-<a>Fa#7</a>   <a>Si7</a>        <a>Mim</a> <a>Sol7Fa#7</a> <a>Si7</a>       M
+<a>Fa#7</a>   <a>Si7</a>        <a>Mim</a> <a>Sol7 Fa#7</a> <a>Si7</a>
 Tiene balcones plateados, ay, ladrillitos
-im <a>Sol7</a>
+<a>Mim</a> <a>Sol7</a>
 coloraos.
 <a>Fa#7Si7</a>                        <a>Mi7</a>
 Cuéntame tus penas a mí. ¡Oh, Cádiz!
@@ -82,7 +82,7 @@ La biblia de los gaditanos, historias cantás por su
 gente.
 <a>Lam</a>  <a>Do</a>              <a>Si7</a>
 No están en ningún museo,
-<a>DoSi7</a>
+<a>Do Si7</a>
 (Pito)
 <a>Lam7</a>          <a>Si7</a>
 Pero yo las tarareo

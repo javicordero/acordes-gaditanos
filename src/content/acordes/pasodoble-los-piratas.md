@@ -16,7 +16,7 @@ fraseClave: Carnecita de gallina
 <a>La</a>              <a>Sim7</a>       <a>Mi7</a>     <a>La</a>
 Carnecita de gallina se me puso esa mañana 
                         <a>Sim7</a>
-<a>cuando</a> vi que en sus mejillas una agüita cristalina 
+cuando vi que en sus mejillas una agüita cristalina 
          <a>Mi7</a>       <a>La</a>   <a>Sim7/5</a> <a>Mi7</a> <a>La</a>    
 hasta su boca resbalaba.            La sonrisa en las 
 <a>Sim7</a> <a>Mi7</a>           <a>La</a>   <a>Re</a>    <a>Mi7</a>           <a>La</a>

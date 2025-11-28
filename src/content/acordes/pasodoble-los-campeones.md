@@ -21,9 +21,9 @@ te quiero
 Cogí a unos amigos y chirigoteando tuvimos unas
       <a>Do</a>
 palabritas
-         Re7
-SoRe7Sol
+        <a>Re7</a>
 Y mira por donde charlando y charlando nació esta
+<a>Re7</a> <a>Sol</a> 
 musiquita
                   <a>Re7</a>
 Si salió de la caleta no lo sé, o salió de la

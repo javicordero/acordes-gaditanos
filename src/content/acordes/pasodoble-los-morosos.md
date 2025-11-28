@@ -39,15 +39,15 @@ muero
 O haces que me caliente y diga cosas que no quiero
                                            <a>Re7</a>
 Y si me lo quitas todo y en la calle me quedara
-                    <a>Do</a>            <a>Re7</a>      <a>Sol</a> S
+                    <a>Do</a>            <a>Re7</a>      <a>Sol</a>
 Seré el más feliz del mundo por ver cada día tu
-ol7
+<a>Sol7</a>
 cara
           <a>Do</a>   <a>Re7</a>                           <a>Sim7</a>
 Vengo a pagar tirándole papelillos a los metepatas
 <a>Mi7</a>                              <a>Lam7</a>   <a>Re</a>
 Enrollando serpentina al que te maltrata,
-7                               <a>Sol</a> <a>Sol7</a>
+                                <a>Sol</a> <a>Sol7</a>
 cantándole a los malages un par de cuplés
           <a>Dom</a>
 Y es que mi Cai, ojú, si tengo que pedir yo pa

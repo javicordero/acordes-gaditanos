@@ -11,9 +11,9 @@ video: 'https://www.youtube.com/embed/9LgBEE3uymE?feature=player_embedded'
 
 ---
 <pre>
-<a>LaM7</a>               <a>Mi7</a>                        L
+<a>LaM7</a>               <a>Mi7</a>
 Si hay alguno que pensó que me iba a callar la
-<a>aM7</a>
+<a>LaM7</a>
 boca
 <a>LaM7</a>            <a>Mi7</a>                   <a>LaM7</a>
 Otra vez se equivocó y aquí está mi chirigota
@@ -23,11 +23,11 @@ Otra vez me ha dado el mar esa sal que necesito
 Y en verano me vuelvo a transformar
 <a>Mi7</a>                      <a>Do#m7</a>
 Y aunque dije que nunca vuelvo más
-<a>LaM7</a>                 M
+<a>LaM7</a>                 <a>Mi7</a>
 Las olas de la caleta
           <a>Sim7</a>              <a>Mi7</a>
 Me fueron dando este empujoncito
-<a>Re</a>            <a>Mi7</a>       <a>LaM7Sim7Mi7</a>
+<a>Re</a>            <a>Mi7</a>       <a>LaM7 Sim7 Mi7</a>
 Y otra vez sin darme cuenta otra vez vuelvo
   <a>LaM7</a>
 loquito
@@ -54,6 +54,6 @@ Ya lo se
 Porque después contigo me enveneno y me cabreo
 <a>Sim7</a>         <a>Mi7</a>          <a>LaM7</a>
 Pero es que ya no soy un hombre
-<a>Sim7</a>     <a>Mi7</a> <a>LaMMiLaM7</a>
+<a>Sim7</a>     <a>Mi7</a> <a>LaM7 Mi7 LaM7</a>
 Solo soy un chirigotero
 </pre>

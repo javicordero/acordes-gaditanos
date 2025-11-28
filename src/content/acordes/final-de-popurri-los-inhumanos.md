@@ -17,13 +17,13 @@ brillando la luna
 Me perdí por un momento, de pronto me encuentro una 
         <a>Re</a>
 calle oscura
-       <a>Fa#m</a>                     <a>Do#m7</a>           <a>Fa#m</a>
+       <a>Fa#m</a>                     <a>Do#m7</a>           <a>Fa#m7</a>
 Suenan pitos, suenan voces y mil te quieros delante 
-7                            <a>Do#m7</a>
+                              <a>Do#m7</a>
 de mi el carnaval más puro y sincero
- <a>Re</a>                    <a>Mi7</a>       <a>Do#7</a>          <a>F</a>
+ <a>Re</a>                    <a>Mi7</a>       <a>Do#7</a>         
 Y en cuanto más me adentraba, más se llenaba mi 
-<a>a#m</a>    <a>Sim7</a>        <a>Si7</a>         <a>Mi</a>
+<a>Fa#m</a>    <a>Sim7</a>        <a>Si7</a>         <a>Mi</a>
 alma, cuando en la calle de La Palma
                           <a>La</a>
 De pronto me encontré cantando en un tablao a una 

@@ -10,7 +10,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iMr_gmISLdk'
 
 ---
-<pre>Cejilla al 1
+<pre>
 <a>Mim</a>
 Mayo, hemos vuelto al mes de mayo, el de las 
 romerías, de las cruces, los caballos,
@@ -24,7 +24,7 @@ Mayo, de moritos y cristianos, los trucos y los
 tratos, el castigo del solano,
                  <a>Si7</a>                   <a>Re7</a>
 La muerte pinta cuernos  y la vida crea patios,
-                                        <a>Dpo</a>
+                                        <a>Do</a>
 La calle del infierno, esos ojos, esos cuerpos de 
 las pavas y los gallos
 <a>Mim</a>                   <a>La</a>           <a>Mim</a>
@@ -102,7 +102,9 @@ Juan Miguel, Adolfito ya está al caer
 Mariví, que la jambre, la jambre, la jambre, la 
           <a>Do7</a>        <a>Si7</a>       <a>Mi</a>
 jambre, la vamos, la vamos a sentir
-Cejilla al 3
+
+<strong>- Cejilla al 3</strong>
+
 <a>La</a>
 Máscara, te vas como viniste a este mundo con tu 
  <a>Sol</a>
@@ -177,7 +179,9 @@ no ha cambiao
 Que se acaba el popurrit y antes te quiero contar
 una cosita picante que te va a gustar, carnal, 
 sexual, chachachá
-Cejilla al 3
+
+<strong>- Cejilla al 3</strong>
+
         <a>Lam</a>                  <a>Mim</a>          <a>Lam</a>
 Cómo me gusta ir al cuarto oscuro de la Caleta en 
      <a>Mim</a>

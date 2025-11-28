@@ -21,9 +21,8 @@ Caleta
 Dios te salve a ti, que viene y va, mojarrita de
  <a>Mi7</a>
 piedra
-     <a>Sol</a>                      <a>Mi7</a>           <a>LaSo</a>
+     <a>Sol</a>                      <a>Mi7</a>           <a>Lam Sol</a>
 Viene y va, como el viento va, tan libre por el
-l
 mar
    <a>Fa</a>                               <a>Mi7</a>
 Buscando entre las olas, soñando libertad

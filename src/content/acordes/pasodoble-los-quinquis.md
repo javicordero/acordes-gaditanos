@@ -32,9 +32,9 @@ No se da en ninguna escuela, ay,ni en ninguna
 facultad como acariciar la mano a un ser humano que 
   <a>Mi7</a>
 se va
-                                                <a>Sol</a>
+                                                <a>Sol7</a>
 Y no existen los diplomas que puedan certificar la 
-7               <a>Do</a>
+                <a>Do</a>
 tremenda humanidad 
                   <a>Do7</a>                     <a>Fa</a>
 De ese gremio sanitario público y profesional 

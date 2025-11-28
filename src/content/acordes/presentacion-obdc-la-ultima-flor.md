@@ -15,13 +15,13 @@ video: 'https://www.youtube.com/embed/sUGn95RVP1E?feature=player_embedded'
 Yo soy la última gota de un océano sin agua
         <a>Mi7</a>                   <a>La</a>
 El último verso soy la última palabra
-<a>Mi</a>       <a>LamLSolFaSi7</a>
+<a>Mi</a>       <a>Lam La Sol#m Fa#m Si7</a>
 Yo soy la última bala.
    <a>Mi</a>             <a>Sol#m</a>                    <a>Do#m7</a>
 Yo soy el último humano que habita en esta tierra
          <a>Mi7</a>                 <a>La</a>
 No sé si fue suerte o solamente mi condena
-      <a>Mi</a>                    <a>Re</a> <a>Si7</a>
+      <a>Mi</a>                      <a>Re</a> <a>Si7</a>
 No hay más, ya no hay marcha atrás.
                         <a>La</a>
 Aún quedan razones pa luchar
@@ -41,9 +41,9 @@ Camino y camino porque te pienso encontrar
 Porque tan solo te siento
              <a>La</a>
 Porque te veo en el viento
-     <a>Lam</a>       <a>Si7</a> <a>Do#SolLa</a>
+     <a>Lam</a>       <a>Si7</a> <a>Do#m Sol#m La</a>
 Porque llevo clavado tu olor.
-<a>Sol#m</a>       <a>Do#Sol#La</a>
+<a>Sol#m</a>       <a>Do#m Sol#m La</a>
 Tu eres mi última flor.
            <a>Mi</a>                       <a>Sol#m</a>
 Como me atruena este silencio insoportable
@@ -72,6 +72,6 @@ Porque tan solo es mi ultima flor
 Tan solo es mi última flor
                       <a>Si7</a>
 Tan solo es mi útlima flor
-         <a>MiSolLSi7</a>
+         <a>Mi Sol#m La Si7</a>
 Una canción de amor
 </pre>

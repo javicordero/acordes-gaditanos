@@ -77,8 +77,8 @@ rebeldía
 Aquí arriba es donde nace la comparsa y para que
 <a>Fa#</a>     <a>Sol</a>
 usted lo vea
-<a>Fa#7</a>               <a>Sim</a> <a>SolFa#7</a>            <a>Sim</a> So
+<a>Fa#7</a>               <a>Sim</a> <a>SolFa#7</a>            <a>Sim</a>
 Bienvenido a la Azotea, bienvenido a la Azotea,
-lFa#7             <a>Sim</a>
+<a>Sol</a> <a>Fa#7</a>         <a>Sim</a>
 bienvenido a la Azotea.
 </pre>

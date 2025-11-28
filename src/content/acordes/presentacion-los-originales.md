@@ -41,9 +41,9 @@ balanza
 Echando lejos a mi gente y poniendo precio a 
         <a>Re</a>
 nuestras casas
-     <a>Sol</a>                      <a>Mim</a>                <a>D</a>
+     <a>Sol</a>                      <a>Mim</a>                <a>Do</a>
 Original, original, como el levante y la madrugá, 
-o                         <a>Re</a>
+                          <a>Re</a>
 como las barquitas de mi caleta
     <a>Sol</a>                    <a>Mim</a>                <a>Do</a>
 Original, original, como La Pepa y la catedral, 
@@ -78,17 +78,17 @@ febrero
     <a>Re</a>                                 <a>Mi7</a>
 Se planta con su guitarra y se enfrenta a toito el 
 mundo entero
-     <a>La</a>                       <a>Fa#m</a>               <a>Si</a>
+     <a>La</a>                       <a>Fa#m</a>               <a>Sim7</a>
 Original, original, como el levante y la balustrá, 
-m7                      <a>Mi</a>
+                        <a>Mi</a>
 como las barquitas de mi caleta
-     <a>La</a>                     <a>Fa#m</a>               S
+     <a>La</a>                     <a>Fa#m</a>               <a>Sim7</a>
 Original, original, como La Pepa y la catedral, 
-im7                       <a>Mi7</a>
+                         <a>Mi7</a>
 como la mismita piedra ostionera
-   <a>Re</a>             <a>Mi7</a>        <a>Do#7</a>              <a>F</a>
+   <a>Re</a>             <a>Mi7</a>        <a>Do#7</a>
 Heredero de la estirpe, non plus ultra y mas no 
-<a>a#m</a>
+<a>Fa#m</a>
 hay
     <a>Sim7</a>          <a>Re</a> <a>Mi7</a>      <a>Re</a>  <a>Mi7</a>   <a>La</a>  <a>Sim7</a>
 Denominación de origen con el sello cai cai, con el 

@@ -11,9 +11,9 @@ video: 'https://www.youtube.com/embed/dJ1Dn0Yy_Kk?feature=player_embedded'
 
 ---
 <pre>
-<a>Rem</a>                                            <a>La</a>
+<a>Rem</a>
 Antes de que la cera consuma la vela y apague su
-m
+<a>Lam</a>
 luz
         <a>Solm7</a>               <a>Sib</a>            <a>La7</a>
 Espero haberte colmado de amor, dinero y salud.

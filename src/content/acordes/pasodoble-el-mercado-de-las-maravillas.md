@@ -1,5 +1,5 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: El mercado de las maravillas
 year: 2008
 musica: El Noly
@@ -26,9 +26,9 @@ que se me ha vuelto a enamorar
 de tu carnaval, de tu carnaval.
        <a>Si7</a>          <a>Mi</a>         <a>Do#7</a>        <a>Fa#m</a>
 Con pasión y mil amores, te dedico esta letrilla
-                   <a>Si7</a>                             L
+                   <a>Si7</a>
 porque me sobran razones mientras que te arranca un
-<a>a</a>
+<a>La</a>
 ole
  <a>Si7</a>             <a>Mi</a>
 esta musica sencilla.

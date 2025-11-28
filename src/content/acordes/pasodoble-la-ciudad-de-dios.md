@@ -30,9 +30,9 @@ Las coplas de este grupo no son aptas para ti
 Esta no es tu comparsa no vengas a ladrarme ni a
      <a>La7</a>        <a>Re</a>
 llamarme intolerante
-                      <a>Do</a>           <a>Lam7</a>        <a>Si</a>
+                      <a>Do</a>           <a>Lam7</a>       
 Que el respeto mucho antes se te había olvidao a
-7
+<a>Si7</a>
 ti
                      <a>Mi</a>             <a>Si7</a>
 Ni se te ocurra aplaudir mis coplas cuando la
@@ -50,9 +50,9 @@ defiende al que maltrata
 Y cuando ella denuncia siempre encuentra la excusa
             <a>Mi</a>
 pa llamarla loca
-<a>Mi7</a>                      <a>La</a>                        S
+<a>Mi7</a>                      <a>La</a>                        <a>Si7</a>
 Que yo no quiero emocionar al mismo que en la tumba
-i7                  <a>Sol#m</a>
+                    <a>Sol#m</a>
 de Franco se pone a llorar
               <a>Do#7</a>
 Al que se escandaliza si ve que dos hombres se

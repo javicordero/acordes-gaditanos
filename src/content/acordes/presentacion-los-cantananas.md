@@ -10,9 +10,9 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vkrW30aatrc'
 
 ---
-<pre>                    <a>Do9</a> <a>Sol7</a>            <a>Lam</a>      <a>Mi</a>
+<pre>                    <a>Do9</a> <a>Sol7</a>            <a>Lam</a>      <a>Mim</a>
 Cuando la luna se asoma por tus torres miradores y 
-m                <a>Fa</a>   <a>Re7</a>                <a>Sol7</a>
+                 <a>Fa</a>   <a>Re7</a>                <a>Sol7</a>
 el silencio le susurra a tus calles y rincones
                     <a>Do9</a> <a>Sol7</a>              <a>Lam</a>    <a>Mim</a>
 Cuando la luna se adueña de tus miles de temores es 
@@ -50,7 +50,7 @@ Soy el reflejo de una noche en la Caleta, soy las
 costumbres más añejas gaditanas
          <a>Mi7</a>
 Soy tu pasado que en mi nana se hizo letra soy tu 
-       <a>Fa</a>         <a>Sol</a>  <a>Lam</a>   <a>Mim</a>   <a>Fa</a> So
+      <a>Fa</a>         <a>Sol</a>  <a>Lam</a>   <a>Mim</a>   <a>Fa</a> <a>Sol</a>
 son tu cantananas ahhh ahhhh ahhhh ahhhh
           <a>Fa</a>
 Tu cantananas</pre>

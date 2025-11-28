@@ -14,7 +14,7 @@ video: 'https://www.youtube.com/embed/xzkmIue8GpQ?feature=player_embedded'
 <a>Lam</a>
 Tacita… las despedidas son tan amargas,
 mejor lo hablamos en otra comparsa
-<a>Fa</a>              <a>Mi7</a>     <a>LaMi7Lam</a>
+<a>Fa</a>              <a>Mi7</a>     <a>Lam Mi7 Lam</a>
 Cádiz, tenemos toda la eternidad.
 <a>Lam</a>         <a>Sol</a>        <a>Fa</a>        <a>Do</a>
 Cuando un gaditano da su último aliento
@@ -32,17 +32,17 @@ con mi traje de gala de siglos y de estrellas
 Me da a cambio un recuerdo, una reliquia de amor
                <a>Fa</a>      <a>Fa7</a>    <a>Mi7</a>
 Y entre nubes de mojarras nos vamos los dos
-<a>LamLam</a>     <a>Sib</a>   <a>Sib</a>    <a>Lam</a> <a>Lam</a> <a>LamLam</a>  
-<a>Aah</a> <a>aah</a> <a>Aah</a> <a>aah</a> <a>Aah</a> <a>aah</a> <a>Aah</a> <a>aah</a> <a>Aah</a> <a>aah</a>
-<a>SibSib</a>       <a>Mi7</a>   <a>Mi7</a>     <a>Lam</a> <a>LamLam</a>
-<a>Aah</a> <a>aah</a> <a>Aah</a> <a>aah</a> <a>Aah</a> <a>aah</a> <a>Aah</a> <a>aah</a> <a>Aah</a> <a>aah</a>
+<a>LamLam</a>     <a>Sib</a>   <a>Sib</a>    <a>Lam</a> <a>Lam</a> <a>Lam Lam</a>  
+Aah aah Aah aah Aah aah Aah aah Aah aah
+<a>Sib Sib</a>       <a>Mi7</a>   <a>Mi7</a>     <a>Lam</a> <a>Lam Lam</a>
+Aah aah Aah aah Aah aah Aah aah Aah aah
 <a>Lam</a>                       <a>Fa</a>
 Ahí está la Tacita, la Tacita del cielo, traigo un
       <a>Rem</a>
 alma perdía
-                                        <a>Fa</a>        <a>Fa</a>
+                                        <a>Fa</a>        <a>Fa7</a>
 ¡Abre al barquero! ¡Abre al barquero!¡Ay ! ¡Abre al
-7    <a>Mi7</a>
+     <a>Mi7</a>
 barquero!
 <a>Lam</a>                          <a>Fa</a>
 Ohh Ooh Ooh Oooh Ohh Ooh Ooh Oooh

@@ -11,15 +11,15 @@ video: 'https://www.youtube.com/embed/ZIRdsQbSZH8?feature=player_embedded'
 
 ---
 <pre>
-<a>Mi/add9</a>                                    <a>Fa#m</a>
+<a>Mi/add9</a>                                 <a>Fa#m</a>
 Como dicen que es más rico el que menos necesita
-    <a>Sol#m</a>       <a>Fa#m</a>        <a>Si7</a>            <a>Mi/ad</a>
+    <a>Sol#m</a>         <a>Fa#m</a>           <a>Si7</a>          
 Yo naita necesito, por eso soy el marques de la
-<a>FaSi7Mi/adFa#Si7</a>
+         <a>Miadd/9 Fa9 Si7 Mi/add9 Fa#m Si7</a>
 tierra más bonita
-<a>Mi/add9</a>     <a>Fa#m</a>          <a>Si7</a>          <a>Mi/add9Fa</a>
+<a>Mi/add9</a>     <a>Fa#m</a>          <a>Si7</a>
 Por la gloria de Cotón y por la salud de la tía
-#mSi7
+ <a>Mi/add9 Fa#m Si7</a>
 Norica
 Vísteme despacio que tengo prisa que está
     <a>Do#7</a>        <a>Fa#m</a>
@@ -28,29 +28,28 @@ esperándome la Tacita
 Que llegó otra vez como un torbellino el mes chico
         <a>Fa#m</a>
 del almanaque
-                <a>Si7</a>                         M
+                <a>Si7</a>
 Y yo con el alma en vilo y el corazón con un
-i/addFa9Si7
+<a>Mi/add9</a> <a>Fa9</a> <a>Si7</a>
 triquitraque
-<a>Mi/add9</a>      <a>Fa#m</a>   <a>Si7</a>           <a>Mi/addFa#Si7</a>
+<a>Mi/add9</a>         <a>Fa#m</a>   <a>Si7</a>           <a>Mi/adda Fa#m Si7</a>
 Yo tengo unas murallitas y moraita en mi bander
                                  <a>Do#7</a>       <a>Fa#m</a>
 Soy taratatara sobrino de Lola Lolita la Piconera
                                             <a>La</a>
 De la tierra bendita de los milagros donde las
-               <a>D</a>
+<a>Do#7</a>       <a>Fa#m</a>
 coplas resucitan
-                       <a>Si7</a>                        M
+                       <a>Si7</a>
 Yo soy el marqués de un reino donde son reinas las
-i/addMi7
+  <a>Mi/add9</a> <a>Mi7</a>
 mojarritas
     <a>La</a>                     <a>Sol#m</a>
 El Marques del Tiro riro, un bohemio del montón,
-<a>Fa#m</a>         <a>Si7</a>     <a>Mi/addMi7</a>
+<a>Fa#m</a>         <a>Si7</a>     <a>Mi/add9 Mi7</a>
 optimista empedernido y soñador
-               <a>Lam</a>                        <a>Mi/a</a>
+         <a>Lam</a>                        <a>Mi/add9</a>
 Hay quien dice que estoy loco, no lo descarto
-<a>dd9</a>
 tampoco
       <a>Do</a>                                      <a>Si7</a>
 Si estoy loco qué más da, si a mí me da por cantar
@@ -77,13 +76,12 @@ musulmana
 Mitad flamenca, mitad gitana y una mijita
     <a>Fa#m</a>
 carnavalera
-                                           S
+                                    <a>Si7</a>
 Mi padrino fue Pericón, mi madrina María la
-i7       <a>Mi/add9</a> <a>Mi7</a>
+     <a>Mi/add9</a> <a>Mi7</a>
 Hierbabuena
-       <a>La</a>                                    S
+    <a>La</a>                                <a>Sol#m</a>
 Hay quien dice que estoy loco, no lo descarto
-ol#m
 tampoco
        <a>Fa#m</a>                                   <a>Si7</a>
 Si estoy loco qué más da, si a mí me da por cantar
@@ -104,6 +102,6 @@ Y como dicen que es el más rico el que menos
 necesita
                 <a>Si7</a>                    <a>Mi/add9</a>
 Por eso soy el marques, el Marques de la Tacita
-<a>Fa#mSi7</a>        <a>Mi/add9Fa#m</a>              <a>Mi/add9</a>
+<a>Fa#m  Si7</a>        <a>Mi/add9  Fa#m</a>              <a>Mi/add9</a>
 El Marques de la Tacita, el Marques de la Tacita
 </pre>

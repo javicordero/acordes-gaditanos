@@ -10,72 +10,75 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/IyBzZV74oYQ?feature=player_embedded'
 
 ---
-<pre><a>La</a>
-Bajo una luna de cristal y mil barquillas encallá  
-                                                  
- Sim7
-Vino de pronto esta canción a mi cabeza            
-     Mi7
-Y aunque corrí lejos de ti y aunque intentaba 
+<pre>
+<a>La</a>
+Bajo una luna de cristal y mil barquillas encallá
+                                  <a>Sim7</a>
+Vino de pronto esta canción a mi cabeza
+           <a>Mi7</a>
+Y aunque corrí lejos de ti y aunque intentaba
 resistir
+                                       <a>La</a>   <a>Sim7 Mi7</a>
 Supe que allí pusiste fin a nuestra tregua
-                  <a>La</a>
-Se me encogía el corazón cuando entendí que la 
-razón              La7                              
-         Re
-Era el motivo de encontrarme en tu Caleta          
-                                Mi7                
-  Do#m7
-Con los mismo que un buen dia ya viniera aquí      
-                     Fa#7                     Sim7
-Ofreciéndote mis coplas como un juvenil            
-                            Mi7                    
-                        Lam         
-Con los nervios que en tus tablas otra noche 
-volvemos a sentir                             Mi7  
-                           Lam
+      <a>La</a>
+Se me encogía el corazón cuando entendí que la
+
+razón
+        <a>La7</a>                          <a>Re</a>
+Era el motivo de encontrarme en tu Caleta
+                          <a>Mi7</a>          <a>Do#m7</a>
+Con los mismo que un buen dia ya viniera aquí
+                 <a>Fa#7</a>             <a>Sim7</a>
+Ofreciéndote mis coplas como un juvenil
+                             <a>Mi7</a>
+Con los nervios que en tus tablas otra noche
+             <a>Lam</a>
+volvemos a sentir
+                  <a>Mi7</a>                    <a>Lam</a>
 Puede que fuera el ego, puede que la avaricia
-                                  Sol           Do  
-             FaPuede que el propio miedo a pensar 
-que mis coplas
-      Sim7/5  Mi7    Rem     Lam          Sim7/5    
-Mi7  LaSon poco pa ti, ay Cai, ay Cai, perdóname 
-por ser así                                        
-Mi7                         La
-Y es por eso que este año rebusque entre mis 
+                       <a>Sol</a>       <a>Do</a>          <a>Fa</a>
+Puede que el propio miedo a pensar que mis coplas
+   <a>Sim7/5</a>  <a>Mi7</a>   <a>Rem</a>    <a>Lam</a>         <a>Sim7/5</a>   <a>Mi7</a>
+Son poco pa ti, ay Cai, ay Cai, perdóname por ser
+<a>La</a>
+así
+                            <a>Mi7</a>
+Y es por eso que este año rebusque entre mis
+   <a>La</a>
 redaños
-Y como un equilibrista salgo al centro de la pista  
-                                Fa#7                
- Sim7
-Sin perder esta sonrisa y sin temor al fracaso 
-                                  <a>Mi7</a>
-Y es por eso que en febrero vuelvo a ser un 
-                     <a> Sim7</a>
-prisionero                             Mi7          
-                        Sim7
-De las coplas y los celos del concurso los te 
+Y como un equilibrista salgo al centro de la pista
+                         <a>Fa#7</a>             <a>Sim7</a>
+Sin perder esta sonrisa y sin temor al fracaso
+                        <a>Mi7</a>
+Y es por eso que en febrero vuelvo a ser un
+     <a>Sim7</a>
+prisionero
+                    <a>Mi7</a>
+De las coplas y los celos del concurso los te
+  <a>Sim7</a>
 quieros
-        <a>Mi7 </a>               <a> La </a>     <a>La7</a>
-Y el calor de tus aplausos                Re        
-                Mi7
-Gracias a cada Lucero al que oí decir              
-   La                       Fa#7
-Suerte y valor compañero no dejes de insistir      
-            Sim7                           Mi7      
-                               La   La7
-Que el carnaval es tan rápido es fugaz que se 
+   <a>Mi7</a>          <a>La</a>    <a>La7</a>
+Y el calor de tus aplausos
+           <a>Re</a>                   <a>Mi7</a>
+Gracias a cada Lucero al que oí decir
+               <a>La</a>                      <a>Fa#7</a>
+Suerte y valor compañero no dejes de insistir
+           <a>Sim7</a>                 <a>Mi7</a>
+Que el carnaval es tan rápido es fugaz que se
+              <a>La</a>  <a>La7</a>
 escapa entre tus dedos
-            <a> Re </a>                           <a>Rem</a>
-Por eso esa misma noche en aquel lugar              
- La                            Fa#7                
-               Sim7
-Bajo el cristal de tu luna y mil barcas te compuse 
+         <a>Re</a>                      <a>Rem</a>
+Por eso esa misma noche en aquel lugar
+         <a>La</a>                     <a>Fa#7</a>
+Bajo el cristal de tu luna y mil barcas te compuse
+        <a>Sim7</a>
 esta coplilla
-Con mi Cádiz por bandera y al compás de un 
-mostrador                                          
-                         Sim7
-Cantaito por mis niños que es como suena mejor      
-                                  Mi7              
-            La
-Pa que te llegue, pa que te llegue hasta el 
-corazón</pre>
+Con mi Cádiz por bandera y al compás de un
+mostrador
+                                         <a>Sim7</a>
+Cantaito por mis niños que es como suena mejor
+                           <a>Mi7</a>
+Pa que te llegue, pa que te llegue hasta el
+   <a>La</a>
+corazón
+</pre>

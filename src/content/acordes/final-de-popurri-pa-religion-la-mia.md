@@ -49,16 +49,15 @@ templo hay que nacer o morir
 No es pasodoble si no eriza la piel, los
                            <a>Sol7</a>
 mandamientos que de chico aprendí
-<a>Do</a>                    <a>Lam</a>                    <a>Re</a>
+<a>Do</a>                    <a>Lam</a>                    <a>Rem</a>
 Cádiz, ya se va el chirigotero, predicando por
-m
 febrero
 Volveré porque te quiero, porque te quiero, porque
 <a>Sol7</a>
 te quiero
-<a>Do</a>                    <a>Lam</a> <a>La7</a>                   R
+<a>Do</a>                    <a>Lam</a> <a>La7</a>
 Cai ya se marcha tu devoto, que por ti se volvió
-<a>em</a>                       <a>Sol7</a>
+<a>Rem</a>                       <a>Sol7</a>
 loco hasta el día que se muera
         <a>Fa</a>
 Ya nos vamos a seguir predicando la religión del

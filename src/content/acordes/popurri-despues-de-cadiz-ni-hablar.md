@@ -10,7 +10,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/wEgaAr_AFz8'
 fraseClave: Cai! Yo era el típico
 ---
-<pre>Cejilla al 3 
+<pre>
      <a>Si7</a>       <a>Mi</a>                    <a>Sol#7</a>
 Cai! Yo era el típico jartible que de chico se 
                <a>Do#m7</a>                 <a>Si</a>
@@ -23,11 +23,11 @@ al McGregor, al Caracol y al Catalán
 Esta de moda que le canten pasodobles a los novios 
      <a>Do#m7</a>                     <a>Sim</a>
 en la boda mientras le tiran arroz
-<a>Mi7</a>       <a>La</a>                        <a>Mi</a>          <a>Do#</a>
+<a>Mi7</a>       <a>La</a>                        <a>Mi</a>          <a>Do#7</a>
 Lo que no saben es que en eso fui pionero que a mi 
-7             <a>Fa#m</a>          <a>Fa#7</a>       <a>Si7</a>
+             <a>Fa#m</a>          <a>Fa#7</a>       <a>Si7</a>
 me cantó el Fernandi en mi primera comunión
-            <a>Mi</a>        <a>Sol#m7</a>      <a>Do#m7</a>       <a>Sol#</a>
+            <a>Mi</a>        <a>Sol#m7</a>      <a>Do#m7</a>       <a>Sol#m7</a>
 Yo era un fanático, lunático carnavalero y soñador
         <a>La</a>                    <a>Sol#m</a>
 Y mis tesoros eran cintas de finales que guardaba 
@@ -57,8 +57,10 @@ Que yo no vengo aquí a dar una lección que vengo
 simplemente a mostrarles mi pasión
          <a>Mi</a>      <a>Lam</a>        <a>Mi</a>
 El carnaval, carnaval, carnaval
-- Cejilla al 4
-(Sorda)
+
+<strong>- Cejilla al 4</strong>
+
+<a>(Sorda)</a>
 Lo digo tal como lo siento que Cádiz es un 
 sentimiento
 <a>Mim</a>           <a>Lam7</a>                 <a>Mim</a>
@@ -107,7 +109,7 @@ tocándote los ¡quillo!
 Que no vale pa na, no, que no, que no que no vale 
   <a>Mim</a>                <a>Si7</a>
 pa na que los carnavaleros somos
-(Sorda)
+<a>(Sorda)</a>
 Y canta hasta que no queden más canciones qe 
 cantando en nuestra tierra se hacen las 
 revoluciones
@@ -201,7 +203,9 @@ Shailalala, Shailalala
 Que el Carnaval es de Cádiz Y Cádiz es del 
     <a>Lam</a>
 carnaval
-- Cejilla al 3
+
+<strong>- Cejilla al 3</strong>
+
 <a>Re/Fa#</a>                                     <a>Solm</a>
 Es el embrujo sobrenatural de esa diosa del mar
           <a>Re/Fa#</a>
@@ -210,7 +214,7 @@ Que adormecida en su soledad se va haciendo
 inmortal
    <a>Re/Fa#</a>                                 <a>Fa#m</a>
 Bendito ese rincón donde las musas se revelan y 
-       <a>Fa#7</a>           S
+    <a>Fa#7</a>           <a>Sim7</a>
 juegan con la cantinela
                          <a>Sol</a>     <a>La7</a>
 Mientras compongo una canción de amor
@@ -261,7 +265,9 @@ inmortal
 La musa de los poetas, donde hasta el sol viene a 
   <a>Mi</a>
 morir
-- Cejilla al 2
+
+<strong>- Cejilla al 2</strong>
+
 <a>Do</a>
 Cuando el requiem anuncie el adiós de los poetas
     <a>Lam</a>
@@ -326,7 +332,7 @@ me cantaba mi abuelo y su abuelo le cantó
 Y si quieres saber mas no lo pienses ni un segundo 
                   <a>Sol7</a>
 que mi Cai es pequeñito
-                  <a>Do</a>  <a>Fa</a> <a>Sol</a>                   <a>Do</a>  <a>F</a>
+                  <a>Do</a>  <a>Fa</a> <a>Sol</a>                   <a>Do</a>  <a>Fa</a>
 Pero cabe todo el mundo     pero cabe todo el mundo 
-<a>a</a> <a>Sol</a>                     <a>Do</a>
-      pero cabe todo el mundo</pre>
+ <a>Sol</a>              <a>Do</a>
+pero cabe todo el mundo</pre>

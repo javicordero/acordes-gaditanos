@@ -36,21 +36,21 @@ Pero como el carnaval a mí me da para tanto
 Sueño que los elimino con lo bonito de mi canto
 <a>Do</a>              <a>Sol</a>            <a>Re</a>         <a>Sol</a>
 Sueño que los elimino con lo bonito de mi canto
-   <a>Lam</a>                                             L
+   <a>Lam</a>
 Ojala que mi canto algún día además de una historia
-<a>am</a>
+<a>Lam</a>
 real
             <a>Mim</a>
 Sirva para quitarle la mascara a toda la mafia
                      <a>Si7</a>
 escondida bajo su disfraz
-                                  <a>MimDo</a>
+                                  <a>Mim Do</a>
 Y que bajo el disfraz se pasa la vida, como si la
     <a>Si7</a>       <a>Mim</a>
 vida fuera carnaval
-<a>Do</a>              <a>Si7</a>        <a>MimDo</a>               S
+<a>Do</a>              <a>Si7</a>        <a>Mim Do</a>
 Como si la vida fuera carnaval, como si la vida
-i7       <a>Mim</a>
+<aSi7></a>       <a>Mim</a>
 fuera carnaval
 <a>Do</a>              <a>Si7</a>      <a>Mim</a>
 Como si la vida fuera carnaval

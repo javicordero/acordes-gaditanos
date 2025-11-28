@@ -41,9 +41,9 @@ mareas
 Y sin embargo tiene un latido recién nacido en las
     <a>Do</a>
 azoteas.
-                 <a>Sol7</a>       <a>Do</a>                L
+                 <a>Sol7</a>       <a>Do</a>
 Suena al pasado, suena al presente, suena a la
-<a>a7</a>               <a>Rem</a>
+<a>La7</a>               <a>Rem</a>
 gente que ya no está.
 <a>Fa</a>
 Óyela, que se calle aquí el poeta que su voz se

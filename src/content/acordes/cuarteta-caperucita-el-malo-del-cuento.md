@@ -45,14 +45,12 @@ Tan solo ella podido amansar a esta fiera
 Y tan solo por ella pasaría una vida de noches en
 <a>Si7</a>
 vela.
-                                                   M
+              <a>Mi</a>
 Contando las estrellas cubiertos por un manto
-i
 
-    <a>Sol#7</a>
-             Do#m7
+       <a>Sol#7</a>                           <a>Do#m7</a>
 Entre besos y abrazos a la luz de una hoguera,
-                  <a>Sol#m7</a>                      <a>La</a>
+                  <a>Sol#m7</a>                    <a>La</a>
 Robándole un te quiero al son de la lunita llena,
                     <a>Sol#m</a>
 la niña de la capa colorá,

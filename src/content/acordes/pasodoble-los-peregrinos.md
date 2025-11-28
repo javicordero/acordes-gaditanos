@@ -13,7 +13,7 @@ fraseClave: Tú vente conmigo que sobra futuro
 <pre>
  <a>Mim</a>     <a>Do</a>       <a>Si7</a>    <a>Mim</a>              <a>Si7</a>
 Tú vente conmigo que sobra futuro, te voy a enseñar
-            <a>Si7Lam7Si7</a>
+            <a>Si7 Lam7 Si7</a>
 sin pamplina ni escuela
 A hacer carnaval a la vieja manera y ten por seguro
              <a>Mim</a>
@@ -81,6 +81,6 @@ Que se contagia como una enfermedad en cuanto que
 se canta de esta manera
 <a>Mi7</a>          <a>Lam7Do</a>              <a>Si7</a>
 Con estos carnavales seguro que en los chavales
-        <a>MimSi7</a> <a>Mim</a>
+        <a>Mim Si7</a> <a>Mim</a>
 nunca falta cantera
 </pre>

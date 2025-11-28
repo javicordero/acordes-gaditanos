@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/12wpFWXAueE?feature=player_embedded'
 
 ---
 <pre>
-<a>Mi</a>     <a>Do#7</a>     <a>Fa#mSi7</a>             <a>Do#mDo#m7</a>
+<a>Mi</a>     <a>Do#7</a>     <a>Fa#m Si7</a>             <a>Do#m Do#m7</a>
 Que va a ser de mi niño deja ya los carnavales
          <a>Fa#m</a>
 No te das cuenta que tu madre va pa vieja estate
@@ -46,7 +46,7 @@ Mare si yo con mi guitarra paro el tiempo en un
 segundo
                  <a>Si7</a>                      <a>Sol#m</a>
 Y escribiéndole a Cai yo me olvido de este mundo
-       <a>Fa#mSi7</a>      <a>Mi</a>    <a>La</a>
+       <a>Fa#m Si7</a>      <a>Mi</a>    <a>La</a>
 Ya no lo dejo lo siento mucho ay dios mío que esto
      <a>Sol#m</a>
 ya se acabe

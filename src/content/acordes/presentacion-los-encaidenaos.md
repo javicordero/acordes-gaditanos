@@ -18,9 +18,9 @@ sueldan
 Y el cordón que le une su madre se convierte en 
   <a>Mi7</a>
 cadenas
-  <a>Lam</a>                   <a>Mim</a>      <a>Lam</a>              M
+  <a>Lam</a>                   <a>Mim</a>      <a>Lam</a>
 Se van entrelazando eslabones de llanto, de risa y 
-im
+<a>Mim</a>
 sangre
       <a>Fa</a>                       <a>Do</a>    <a>Rem</a>
 Se arraigan a las piedras ostioneras siendo 
@@ -73,9 +73,8 @@ su cadena
 Que por ti mare hasta después de muerto mare me 
 <a>Mi7</a>
 veo
-(SORDA)                                             
-            Mi7
+            <a>Mi7</a>
 Encadenao a Cai, a Cai, a Cai, a Cai, a Cai, a Cai, 
 encadenao
-<a>Lam</a>  <a>Sol</a>  <a>Fa</a>    <a>Mi7</a>        <a>Lam</a>
-<a>Ehhh</a> <a>ehhh</a> <a>ehhhh</a> <a>ehhhh</a> <a>encadenao</a></pre>
+<a>Lam</a>  <a>Sol</a>  <a>Fa</a>    <a>Mi7</a>    <a>Lam</a>
+Ehhh ehh ehhh ehhhh encadenao</pre>

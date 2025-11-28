@@ -39,10 +39,9 @@ y yo con el alma rota sentaita en gallinero
 Y hoy te devuelvo esa copla que cantó tu chirigota, 
                         <a>Sol7</a>             <a>Do</a>
 pero en cambio hoy es tu niña la que te dice te 
-quiere
-So7                Do                               
-               Do7                           Fa
+<a>Sol7</a>                <a>Do</a>
 Yo sentaita en gallinero y tu sentaito en el cielo 
+            <a>Do7</a>                           <a>Fa</a>
 y los dos en el paraíso que es donde solemos estar
      <a>Fam</a>
 Y yo siento a mi padre aquí al lao y entre los 
@@ -52,13 +51,13 @@ suspiros del afincionao
 Y es que a veces lo siento cantando en el Barrio la 
 <a>Do</a>
 Viña
-Do7       Fa    So7                   Do   Sol7     
-       Do
+<a>Do7</a>       <a>Fa</a>    <a>Sol7</a>                   <a>Do</a>   <a>Sol7</a>     
 Hoy está aquí yo se que el anda por aquí con su 
+      <a>Do</a>
 risa de canalla
-            <a>Fa</a>                 <a>Rem</a>             S
+            <a>Fa</a>                 <a>Rem</a>             
 Que un Santander no se va a perder, por primera 
-ol7
+<a>Sol7</a>
 vez
                                        <a>Fa</a>     <a>Sol7</a>
 A su niña en el Falla, a su niña en el Falla, como 

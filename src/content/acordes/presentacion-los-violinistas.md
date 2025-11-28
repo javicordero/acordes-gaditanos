@@ -28,9 +28,9 @@ Pero con Cádiz delante hay que ponerse elegante eso
 lo sabe tór mundo. 
 <a>Do </a>     <a>Re</a>
 Permiteme que me presente.
-<a>Sol </a>                                     <a> Re </a>    M
+<a>Sol </a>                                     <a> Re </a>
 En mi imaginación de comparsista yo me imagino al 
-im
+<a>Mim</a>
 viento violinista 
                                   <a>Re </a>   <a> Sol</a>
 Que silbando en las paredes con la composición que 

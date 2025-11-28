@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/bg9I1bfy9ws?feature=player_embedded'
 
 ---
 <pre>
-<a>LaM7Mim</a> <a>La7</a>  <a>Re</a>  <a>Mi7</a> <a>LaM7</a>  <a>MimLa7</a> <a>Re</a>  <a>Mi7</a>
+<a>LaM7 Mim</a> <a>La7</a>  <a>Re</a>  <a>Mi7</a> <a>LaM7</a>  <a>Mim La7</a> <a>Re</a>  <a>Mi7</a>
 Pararara Parara Pararara Pararara Parara Parara
 <a>LaM7</a>                               <a>Fa#m</a>
 La vida es como el andén de una estación que
@@ -53,7 +53,7 @@ Quien dijo que la felicidad es imposible de
 alcanzar
                                       <a>LaM7</a>
 Es porque no ha conocido este hermoso lugar
-<a>LaM7Mim</a> <a>La7</a>  <a>Re</a>  <a>Mi7</a> <a>LaM7</a>  <a>MimLa7</a> <a>Re</a>  <a>Mi7</a>
+<a>LaM7 Mim</a> <a>La7</a>  <a>Re</a>  <a>Mi7</a> <a>LaM7</a>  <a>Mim La7</a> <a>Re</a>  <a>Mi7</a>
 Pararara Parara Pararara Pararara Parara Parara
 Soy ese niño que aprendí desde pequeño tantas
               <a>Fa#m</a>          <a>Do#m7</a>
@@ -85,9 +85,9 @@ alcanzar
 Es porque no ha conocido este hermoso lugar
 <a>Mim</a> <a>La7</a> <a>Re</a> <a>Mi7</a>      <a>LaM7</a>
 Parara este hermoso lugar
-<a>MimLa7</a> <a>Re</a>         <a>Mi7</a>               <a>LaM7</a>
+<a>Mim La7</a> <a>Re</a>         <a>Mi7</a>               <a>LaM7</a>
 Es porque no ha conocido este hermoso lugar
-MLa7Re  Mi7LaM7MiLaRMi7  
+<a>Mim</a> <a>La7</a> <a>Re</a>  <a>Mi7</a> <a>LaM7</a> <a>Mi</a> <a>La</a> <a>Re</a> <a>Mi7</a>  
 Parara este hermoso lugar
 Por suerte nuestra felicidad no es imposible de
     <a>La</a>

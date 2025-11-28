@@ -90,10 +90,14 @@ Que por el mundo yo voy predicando que por el mundo
 yo me voy cantando, Que ya lo dijo en su día el 
  <a>Mi7</a>
 poeta
-   <a>Lam</a>                                  <a>Sol</a>                                   
-<a>Cuchibiri</a> <a>cuchibiri</a> <a>cuchibiri</a> <a>chi</a> <a>chi</a> <a>Cuchibiri</a> <a>cuchibiri</a> <a>cuchibiri</a> <a>chi</a> <a>chi</a>
-   <a>Lam</a>                                  <a>Sol</a>                                   
-<a>Cuchibiri</a> <a>cuchibiri</a> <a>cuchibiri</a> <a>chi</a> <a>chi</a> <a>Cuchibiri</a> <a>cuchibiri</a> <a>cuchibiri</a> <a>chi</a> <a>chi</a>
+   <a>Lam</a>
+Cuchibiri cuchibiri cuchibiri chi chi
+    <a>Sol</a>
+Cuchibiri cuchibiri cuchibiri chi chi
+   <a>Lam</a>
+Cuchibiri cuchibiri cuchibiri chi chi
+    <a>Sol</a>
+Cuchibiri cuchibiri cuchibiri chi chi
 <a>Lam</a>                   <a>Sim7/5</a>       <a>Mi7</a>
 Y si tú quieres ser feliz ay vente conmigo a la 
 <a>Lam</a>                         <a>Sim7/5</a>       <a>Mi7</a>
@@ -105,7 +109,7 @@ En la luna cantaremos mil coplas de carnaval que ya
                       <a>Mi7</a>
 lo dijo en su día el poeta
 <a>Lam</a>             <a>Sol</a>      <a>Fa</a>             <a>Mi7</a>
-<a>Cheilole</a> <a>chaleiloleilole</a> <a>Cheilole</a> <a>chaleilola</a>
+Cheilole chaleiloleilole Cheilole chaleilola
 <a>Lam</a>  <a>Sim7/5</a>   <a>Mi7</a>        <a>Lam</a>   <a>Sim7/5</a>    <a>Mi7</a>
     Después de Cádiz ni hablar, después de Cádiz ni 
   <a>Lam</a>

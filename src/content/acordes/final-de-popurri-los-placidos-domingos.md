@@ -22,9 +22,9 @@ viene
 A pesar de que de estas cosas no he vendido 
    <a>Do</a>
 ninguna
-               <a>Fa</a>                                 S
+               <a>Fa</a>                                 
 Pero es que yo tengo el horario de siete y media a 
-ol7
+<a>Sol7</a>
 una
            <a>Fa</a>                                <a>Fam</a>
 Así que sintiéndolo en nuestra alma vamos a dejarno 
@@ -75,7 +75,7 @@ quita lo que siento en estas tablas
 Pasan los años y creo que más de mojarme tacita de 
       <a>Sol7</a>
 mis entrañas
-(Sorda)
+<a>(Sorda)</a>
 Los papelillos están lloviendo por febrero, Paquito 
 y Willy están cantando desde el cielo
         <a>Fa</a>                                   <a>Re7</a>

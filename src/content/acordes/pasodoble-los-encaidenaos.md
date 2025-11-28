@@ -10,7 +10,8 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ZL-HltnVYI8'
 
 ---
-<pre>(SORDA)
+<pre>
+<a>(SORDA)</a>
 Me ha pedido de tu boca una dulce musiquilla
                                              <a>LaM7</a>
 Que alimente al pasodoble y que quede por sencilla
@@ -20,7 +21,7 @@ Lo escuchamos de tus labios aquí la traigo ya
 sabes
 <a>Fa#7</a>                <a>Sim7</a>               <a>Mi7</a>
 Siéntela como el pellizco que en los cachetes te da 
-   <a>LaM7</a> M
+   <a>LaM7</a>
 una madre
          <a>Mi7</a>        <a>LaM7</a>
 Piénsala como el vaivén ay de las olas, ay de las 

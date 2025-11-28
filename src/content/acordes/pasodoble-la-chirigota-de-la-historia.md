@@ -14,9 +14,9 @@ fraseClave: "Yo siempre me he preguntado"
 <pre>
 <a>Sol</a>                    <a>Re</a>                 <a>Mim</a>
 Yo siempre me he preguntado mirando a Febrero,
-                <a>Do</a>                     <a>Re7</a>        S
+                <a>Do</a>                     <a>Re7</a>
 Por qué soy chirigotero y no he sido, con respeto,
-ol <a>DoRe7Sol</a>
+      <a>Sol</a> <a>Do</a> <a>Re7</a> <a>Sol</a>
 comparsista,
 <a>Sol</a>       <a>Si7</a>           <a>Mim</a>
 Y siempre me han contestao los cuatro

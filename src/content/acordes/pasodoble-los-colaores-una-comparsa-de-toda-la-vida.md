@@ -33,9 +33,9 @@ chirigota callejera
 Que suene a verdín y cangrejo, Mariana Cornejo, 
   <a>Sol7</a>                 <a>Do</a>
 Viyuela bailando en la mar
-(Sorda)                                             
-              Do     Re7       Sol Sol7
+<a>(Sorda)</a>     
 Ay, que suene a bombazo y plumero, Villegas y a 
+            <a>Do</a>     <a>Re7</a>       <a>Sol</a> <a>Sol7</a>
 Pedro Romero, al Beni compas y alegría
      <a>Dom</a>                <a>Sol</a>           <a>Mi7</a>
 Que suene otra vez a mi barrio, barrio de 

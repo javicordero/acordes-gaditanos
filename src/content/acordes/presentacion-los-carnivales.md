@@ -31,9 +31,8 @@ ingente invasión
 Doce meses soñando pero la espera acabó, salimos de
        <a>Si7</a>        <a>Mim</a>
 nuestra cueva, vámonos
-                                            <a>Do#m7</a>
+                                            <a>Do#m7/5</a>
 No te fíes de la apariencia y las hechuras de la
-/5
 ropa
     <a>Fa#7/5</a>                               <a>Fa7/5</a>
 Todos estos son trofeos de muchas victimas, su

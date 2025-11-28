@@ -17,7 +17,7 @@ Pararara paraparaparapa pa pa param
 Pararara paraparaparapa pa pa param
 <a>Lam</a>
 De mi agujero yo salgo de noche
-                       <a>Si7</a>
+     <a>Si7</a>
 Que de noche lo veo todo más claro
   <a>Mi7</a>
 Si aquí quieres sobrevivir tienes que estar
@@ -33,21 +33,19 @@ Así que espabila o ya estás muerto
 Y más que mi astucia confió en mi olfato
 <a>Si7</a>                                 <a>Mi7</a>
 En vez de buscarle los tres pies al gato
-        <a>Lam</a>
+        <a>Lam</a>                        <a>Si7</a>
 Que la luna es como un queso y la noche es una
- <a>Si7</a>
 trampa
-           <a>Mi7</a>
+       <a>Mi7</a>
 Y aquí llegan los listos del barrio y aquí está mi
-          <a>Lam</a>
-banda
 <a>Lam</a>
+banda
+<a>Lam</a>                                <a>Si7</a>
 Que la luna es como un queso y la noche es una
-           <a>Si7</a>
 trampa
 <a>Mi7</a>                                       <a>Lam</a>
 Y aquí está este pequeño ratón y aquí está mi
- <a>Si7Mi7</a>
+ <a>Si7 Mi7</a>
 comparsa
 <a>Lam</a>
 Y no te confundas conmigo cuidao a mi no es tan
@@ -83,9 +81,8 @@ Hay ciudad de roedores, ratoneras hechas de plata
 Que unas veces me has dado la vida pero otras me
 <a>Lam</a>
 matas
-        <a>Lam</a>                                   S
+        <a>Lam</a>                  <a>Si7</a>
 Que la luna es como un queso y la noche es una
-i7
 trapa
        <a>Mi7</a>
 Y aquí está esté ratón corazón y aquí está mi

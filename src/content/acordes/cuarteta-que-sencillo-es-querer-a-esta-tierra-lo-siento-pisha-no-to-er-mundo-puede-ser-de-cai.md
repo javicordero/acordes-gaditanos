@@ -20,9 +20,9 @@ verano.
 Que sencillo es cruzar la Bahía al sol de un 
   <a>Sim</a>
 crucero,
-        <a>Sol</a>                    <a>Mi</a>             L
+        <a>Sol</a>                    <a>Mi</a>
 y que difícil es vivir en la Bahía con el agua 
-<a>a7</a>
+<a>La7</a>
 hasta el cuello.
          <a>Re</a>
 Y que sencillo es venir a defenderte en el mes de 

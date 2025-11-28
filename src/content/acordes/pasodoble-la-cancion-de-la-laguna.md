@@ -34,9 +34,9 @@ melodía este soniquete
 Faltan cuatro lunas y ya el pasodoble suena en la
 <a>Sol#7</a>
 laguna
-<a>La</a>                                           S
+<a>La</a>
 Allí donde nunca va nadie me siento el eterno
-ol#m
+<a>Sol#m</a>
 aprendiz
 <a>Fa#m</a>                                  <a>Fa#7</a>
 Cantando siempre se hace tarde y to me sabe a poco
@@ -50,9 +50,9 @@ que nubla el sentio
 Y en otoño tu cielo violeta vuelve a los poetas
 <a>Si7</a>      <a>Mi/add9</a>
 loquitos perdios
-                          <a>Mi7</a>                   L
+                          <a>Mi7</a>
 Porque tu eres la rosa del viento y la reina del
-<a>a</a>
+<a>La</a>
 mar
                         <a>Si7</a>            <a>Mi/add9</a>
 Porque fuiste mi cuna y la cuna de la libertad

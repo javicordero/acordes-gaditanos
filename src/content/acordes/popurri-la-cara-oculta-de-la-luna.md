@@ -39,18 +39,15 @@ cargaitos de aroma y salitre del mar
 Mi destino es la cuna, la cama y la tumba de las
       <a>La</a>
 libertades
-                                               S
 Que por carnavales se enciende y se quema en la
-ol
+<a>Sol</a>
 hoguera
 <a>La7</a>
 De las coplas que prenden que arrasan que abrasan
 que nadie quisiera apagar
-__________________________________________________
-______________________
-2ªCuarteta
--Acordes usados: Re, Fa#, Sim, Lam, Re7, Sol, Fa#m,
-Mim, La7
+
+
+
 <a>Re</a>                   <a>Fa#</a>                     <a>Sim</a>
 Y encontrará, la rama negra su destino encontrará
 <a>Lam</a>             <a>Re7</a>          <a>Sol</a>
@@ -123,11 +120,9 @@ Y encotrará, la rama negra su destino encontrará
 que la lunita le prestó su oscuridad
            <a>Fa#m</a>          <a>Mim</a>           <a>La7</a>
 Lo encontrará, lo encontrará, lo encontrará
-__________________________________________________
-________________________
-3ªCuarteta
--Acordes usados: Mi, Fa#m, Sol#m, Si7, Do#m, La,
-Lam, Mim, Fa#, Do#7
+
+
+
 <a>Mi</a>                                      <a>Fa#m</a>
 Ay que ya los duros de la vida viene de antigüo
            <a>Sol#m</a>                           <a>Fa#m</a>
@@ -170,18 +165,17 @@ La Sandra es morena teñía ¿Yo?
 Y aunque cantando me coja con la humedad media
     <a>Si7</a>
 pulmonía
-   <a>La</a>              <a>Sol#m</a>        <a>Fa#m</a>            S
+   <a>La</a>              <a>Sol#m</a>        <a>Fa#m</a>
 Me pego unos carnavales como la vía que son tres
-i7
+<a>Si7</a>
 días
-    <a>La</a>               <a>Sol#m</a>            <a>Fa#m</a>   <a>Si</a>
+    <a>La</a>               <a>Sol#m</a>            <a>Fa#m</a>   <a>Si7</a>
 Y en el patio de las malvas siga escarbando mi
-7          <a>Fa#mSi7</a>     <a>Mi</a>
+         <a>Fa#mSi7</a>     <a>Mi</a>
 tumba cien años más todavía
-__________________________________________________
-__________________
-4ªCuarteta
--Acordes usados: Rem, Solm, La7, Sib, Do
+
+
+
              <a>Rem</a>                          <a>Solm</a>
 Ojala que mi hora, cuando me llegue, me llegue
 <a>La7</a>                 <a>Rem</a>
@@ -221,11 +215,10 @@ Y ojalá que mi hora, cuando me llegue, me llegue
                    <a>Solm</a>
 cerquita de estas arenas
                     <a>Do</a>   <a>La7</a>                 <a>Re</a>  
-<a>Cerquita</a> <a>de</a> <a>estas</a> <a>arenas</a> <a>cerquita</a> <a>de</a> <a>estas</a> <a>arenas</a>
-__________________________________________________
-_________________
-5ªCuarteta
--Acordes usados: Re, Sim, Mim, La7, Fa#
+Cerquita de estas arenas cerquita de estas arenas
+
+
+
 <a>Re</a>                              <a>Sim</a>        <a>Mim</a>
 Pozos profundos que dan miedito, la cara oculta de
           <a>La7</a>
@@ -279,10 +272,10 @@ tililan, tililan, tililan
 Tililan, tililan, tililan, tililan
 Tili tili, tili tili, tili tili, tili tili, tili
 tili, tililaan
-__________________________________________________
-__________________
-6ªCuarteta
--Acordes usados: Re, Fa#m, La7, Mim, Sol, Fa#, Sim
+
+
+
+
 <a>Re</a>                                        <a>Fa#m</a>
 Con la mano en el pecho dile tu a esta gitana si te
         <a>La7</a>

@@ -58,7 +58,7 @@ veneno, veneno, rincón del veneno,
 Quise hacerte un pasodoble de lo que fuera tu casa, 
                   <a>Fa</a>                 <a>Mi7</a>
 perdon Pepe picha mía pero me sobra veneno
-                      <a>Lam</a>  <a>Sol</a>               <a>Lam</a>  So
+                     <a>Lam</a>  <a>Sol</a>               <a>Lam</a>  <a>Sol</a>
 pa escribirte esta comparsa, veneno de mi comparsa, 
-l               <a>Lam</a>
+               <a>Lam</a>
 veneno de mi comparsa</pre>

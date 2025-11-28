@@ -29,9 +29,9 @@ Y con mi copla quiero más que nunca sentirme
 viñero
          <a>Do</a> <a>Lam7</a>        <a>Si7</a>
 Como mi padre, como mi abuelo
-       <a>Mim</a>                                      <a>Si</a>
+       <a>Mim</a>                                      
 Por esas calles que a la chirigota perseguí en su
-m7
+<a>Sim7</a>
 día
                   <a>Sibm7</a>   <a>Lam7</a>
 Y sus pasodobles me los aprendía, subirme a la

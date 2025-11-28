@@ -12,7 +12,7 @@ video: 'https://www.youtube.com/embed/UIj5chFTNxI?feature=player_embedded'
 ---
 <pre>
 ¡Buenos días, Princesa!
-<a>Sol</a> <a>Re7</a> <a>Si7Mim</a> <a>Sol</a> <a>Re</a>  <a>Do</a>  <a>Re7</a>
+<a>Sol</a> <a>Re7</a> <a>Si7 Mim</a> <a>Sol</a> <a>Re</a>  <a>Do</a>  <a>Re7</a>
 Uuuh Uuh Uuuh Uuh Uuuh Uuh Uuuh
 <a>Sol</a>                                <a>Re7</a>
 Sentados a la sombra de una guerra santa donde la

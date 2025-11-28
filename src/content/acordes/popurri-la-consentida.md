@@ -10,7 +10,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/7W4aPNvgGwA?si=xNVOYS-Mrsji0KI7'
 
 ---
-<pre>Cejilla al 3
+<pre>
 <a>Re</a>                           <a>Sim</a>
 La luz primera de la mañana despierta el ruido de 
 las persianas
@@ -92,7 +92,9 @@ Y el final del arcoíris un orgullo mi bandera
 La que señala el camino al tesoro de la tierra
 <a>Lam</a>            <a>Sol</a>        <a>Mi</a>           <a>Lam</a>
 Al amor en libertad sin colores ni etiquetas
+
 Cejilla al 4
+
 <a>La</a>
 Cuando tul legaste al mundo yo ya estaba en la 
 ventana
@@ -150,21 +152,24 @@ Que no hay mundo al otro lado que ya no seremos
 nada solo abono pa otro ramo
                         <a>La</a>
 Y otro llanto en la ventana
+
 Cejilla al 5
+
 <a>Do</a>                                       <a>La7</a>
 Y ahora nos vamos a arrancar y ahora nos vamos a 
-       R
+  <a>Rem</a>
 arrancar
-                    <a>Sol7</a>                         <a>D</a>
+                    <a>Sol7</a>                         <a>Do</a>
 Las flores por alegrías ahora nos vamos a arrancar
                                     <a>La7</a>
 Balcones, jardines y patios sin mi son el mismo 
+<a>Rem</a>
 infierno
                          <a>Do</a>
 Balcones jardines y patios donde te ataca el 
   <a>Sol7</a>        <a>Fa</a> <a>Sol</a>         <a>Do</a>
 Lorenzo y te asfixia sin reparo
-                    <a>Sol7</a>         <a>Fa</a> <a>Sol</a>         <a>D</a>
+                    <a>Sol7</a>         <a>Fa</a> <a>Sol</a>         <a>Do</a>
 Donde te ataca el Lorenzo y te asfixia sin reparo
                                             <a>Sol7</a>
 Conmigo se hace un vergel de fresco y sombra de 
@@ -172,7 +177,9 @@ aromas de claveles, jazmín y rosa
                                   <a>Fa</a>  <a>Sol</a>
 Baja jilguero y bebe del agua fría se cobra de la 
 fuente su melodía
+
 Cejilla al 3
+
 <a>Rem</a>
 Se cubre el sol del ocaso con un abrigo de 
 estrellas

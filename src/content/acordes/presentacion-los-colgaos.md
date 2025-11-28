@@ -9,9 +9,9 @@ video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'
 musica: Raúl Cabrera
 letra: El Chapa
 ---
-<pre><a>Lam</a>                       <a>Do</a>         <a>Re</a>       <a>Mi7</a>  L
+<pre><a>Lam</a>                       <a>Do</a>         <a>Re</a>       <a>Mi7</a>
 Ahh que nos están robando Cádiz y le van a arrancar 
-<a>am</a>                 <a>Do</a>           <a>Sol</a>       <a>Fa</a>
+<a>Lam</a>                 <a>Do</a>           <a>Sol</a>       <a>Fa</a>
 su juventud y sus tesoros su alegría y su pan
     <a>Rem</a>                           <a>Sol7</a>
 Su futuro, sus industrias, sus viviendas sus 
@@ -23,13 +23,13 @@ Y pa que no se la quede gente extraña po mejor la
 robo yo 
 <a>Lam</a>              <a>Sim/5</a> <a>Lam</a>                 <a>Sim7/5</a>
 Y un grupo de gaditanos que estamos medio colgaos 
-<a>Rem</a>    <a>Sol7</a>      <a>Do</a>    <a>Fa</a>          <a>Sim7/5</a>     M
+<a>Rem</a>    <a>Sol7</a>      <a>Do</a>    <a>Fa</a>          <a>Sim7/5</a>
 hartitos ya nos dijimos cucha hasta aquí hemos 
-i7
+<a>Mi7</a>
 llegao
-<a>Lam</a>              <a>Sim/5</a> <a>Lam</a>                 <a>Sim7/5</a> R
+<a>Lam</a>              <a>Sim/5</a> <a>Lam</a>                 <a>Sim7/5</a> 
 y nos volvimos majaras por cumplir un plan maestro 
-<a>em</a>     <a>Sol7</a>        <a>Do</a>  <a>Fa</a>         <a>Sim7/5</a>    <a>Mi7</a>
+<a>Rem</a>     <a>Sol7</a>        <a>Do</a>  <a>Fa</a>         <a>Sim7/5</a>    <a>Mi7</a>
 vamos a llevarnos a Cai que pa eso Cádiz es nuestro 
 <a>Sol7</a>                                   <a>Do</a>     <a>Rem</a>
 Y a la ciudad enterita de la luna la colgamos que 

@@ -19,9 +19,9 @@ Si es que deseo que al fin me tomen con seriedad
 Tu sabes bien como yo que esto no es una comparsa
                    <a>Sol</a>  <a>Si7</a>     <a>LadimSi7</a>
 Y que en el mundo la mafia gira alrededor
-           <a>Mim</a> <a>Sol</a>           <a>Si7</a>                  M
+           <a>Mim</a> <a>Sol</a>           <a>Si7</a>
 Y si estas dentro no puedes salir y si no estás lo
-im  <a>Sol</a>          <a>Si7</a>
+<a>Mim</a>  <a>Sol</a>          <a>Si7</a>
 siento ay pobre de ti
                    <a>Sol</a>                      <a>Si7</a>
 O conmigo o contra mi que por tu cuenta y riesgo
@@ -29,17 +29,20 @@ O conmigo o contra mi que por tu cuenta y riesgo
 Eres hombre muerto que no, que no, que si
   <a>Do</a>                         <a>Si7</a>   <a>Mim</a>
 Y ahora voy a contarte mi historia a ti
-            <a>LamSolFaMi7</a>    <a>LamSolFaMi7</a>
+
+
+
+            <a>Lam Sol Fa Mi7</a>    <a>Lam Sol Fa Mi7</a>
 Huérfano sentí            que lo escolar
-                <a>LaSolFa</a> <a>Mi7</a>        <a>LaSolFa</a> <a>Mi7</a>
+                <a>La Sol Fa</a> <a>Mi7</a>        <a>La Sol Fa</a> <a>Mi7</a>
 Era igual que mentir               y adoctrinar
-                    <a>LamSoFaMi7</a>        <a>LamSolFaMi7</a>
+                    <a>Lam Sol Fa Mi7</a>        <a>Lam Sol Fa Mi7</a>
 Y en la calle aprendí              a hacer el mal
-      <a>LamSol</a> <a>FaMi7</a>      <a>LamSolFaMi7</a>
+      <a>Lam Sol</a> <a>Fa Mi7</a>      <a>Lam Sol Fa Mi7</a>
 Quise decir                 a sortear
           <a>Lam</a>       <a>Sol</a>        <a>Fa</a>           <a>Mi7</a>
 Todas las mieles que la vida va poniéndote en la
-        <a>LamSolFaMi7</a>
+        <a>Lam Sol Fa Mi7</a>
 selva de la sociedad
    <a>Lam</a>      <a>Sol</a>    <a>Fa</a>         <a>Mi7</a>         <a>Lam</a>
 Y el capo nos hizo llevar la canción y a cantarla
@@ -57,15 +60,15 @@ Que el mundo necesita estos días
 Una canción contra la tiranía, una canción que
 ol          <a>Fa</a>                <a>Mi7</a>
 siempre repetía
-              <a>LamSolFaMi7</a>      <a>LamSolFaMi7</a>
+              <a>Lam Sol Fa Mi7</a>      <a>Lam Sol Fa Mi7</a>
 Viendo como está                la situación
-          <a>LamSolFa</a> <a>Mi7</a>             <a>LamSolFa</a> <a>Mi7</a>
+          <a>Lam Sol Fa</a> <a>Mi7</a>             <a>Lam Sol Fa</a> <a>Mi7</a>
 De la sociedad                   no hay solución
-            <a>LamSolFa</a> <a>Mi7</a>             <a>LamSolFaMi7</a>
+            <a>Lam Sol Fa</a> <a>Mi7</a>             <a>Lam SolFa Mi7</a>
 Un día llegará                    con esta canción
              <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
 La necesidad              de la revolución
-       <a>LamSolFa</a> <a>Mi7</a>       <a>Lam</a> <a>SolFaMi7</a>
+       <a>Lam Sol Fa</a> <a>Mi7</a>       <a>Lam</a> <a>Sol Fa Mi7</a>
 Revolución                revolución
       <a>Lam</a>       <a>Sol</a>      <a>FaMi7</a>
 Revolución! Que levante la mano
@@ -87,8 +90,11 @@ Cuando descubras el misterio de la eterna juventud
 Que esta escondido dentro de lo que te digo y al
        <a>LamSolFaMi7</a>
 final de mi canción
+
+
 <a>LamFa#</a>    <a>Sim</a>
 Ohhhh Ohhh  Ohh
+
 <a>Sim</a>
 Y es por eso que el capo nos fue convenciendo para
        <a>Fa#m</a>
@@ -127,14 +133,17 @@ convertido en gaviota
 Preciso para poder sobrevivir con nuestra
    <a>Sol</a>                         <a>Fa#7</a>
 independencia y sin el agua al cuello
-  <a>Mim</a>              <a>Sim</a>                <a>Sol</a>       <a>Fa#</a>
+  <a>Mim</a>              <a>Sim</a>                <a>Sol</a>       <a>Fa#7</a>
 Preciso pero no para irnos nosotros, sino para que
-7        <a>Sim</a>
+         <a>Sim</a>
 se vayan ellos
    <a>Mim</a>            <a>Sim</a>              <a>Sol</a>         <a>Fa#7</a>
 Preciso pero no para irnos nosotros, sino para que
          <a>Sim</a>
 se vayan ellos
+
+
+
 <a>Lam</a>                          <a>Mi7</a>
 Y ahora estoy y yo jugando a quien quien será el
            <a>Lam</a>
@@ -194,6 +203,9 @@ próximo en caer
 Quien, quien, quien, quien será el próximo caer
     <a>Sim7/5</a> <a>Lam</a>  <a>Mi7</a>                         <a>Lam</a>
 Caer, caer,   caer, quien será el próximo en caer
+
+
+
 <a>Lam</a>                <a>Sol</a>            <a>Lam</a>
 Está acabando la entrega de la mercancía, es tan
               <a>Sol</a>         <a>Lam</a>
@@ -219,9 +231,9 @@ Pero como el carnaval a mí me da para tanto
 Sueño que los elimino con lo bonito de mi canto
 <a>Do</a>              <a>Sol</a>            <a>Re</a>         <a>Sol</a>
 Sueño que los elimino con lo bonito de mi canto
-   <a>Lam</a>                                             L
+   <a>Lam</a> 
 Ojala que mi canto algún día además de una historia
-<a>am</a>
+<a>Lam</a>
 real
             <a>Mim</a>
 Sirva para quitarle la mascara a toda la mafia
@@ -231,9 +243,9 @@ escondida bajo su disfraz
 Y que bajo el disfraz se pasa la vida, como si la
     <a>Si7</a>       <a>Mim</a>
 vida fuera carnaval
-<a>Do</a>              <a>Si7</a>        <a>MimDo</a>               S
+<a>Do</a>              <a>Si7</a>        <a>MimDo</a>
 Como si la vida fuera carnaval, como si la vida
-i7       <a>Mim</a>
+<a>Si7</a>       <a>Mim</a>
 fuera carnaval
 <a>Do</a>              <a>Si7</a>      <a>Mim</a>
 Como si la vida fuera carnaval

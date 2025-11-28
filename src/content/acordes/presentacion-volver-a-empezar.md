@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/Sj4px-mOP6E'
 fraseClave: "Vuelve a empezar hijo de Adán"
 ---
 <pre><a>Mim</a>  <a>Fa</a>   <a>Mim</a>  <a>Fa</a>   <a>Mim</a>
-<a>Ahhh</a> <a>ahhh</a> <a>ahhh</a> <a>ahhh</a> <a>ahhh</a> 
+Ahhh ahhh ahhh ahhh ahhh
 <a>Mim</a>
 Vuelve a empezar hijo de Adán padre de la 
 humanidad.
@@ -22,9 +22,9 @@ humanidad.
 Cómo borrar del camino la huella de tu destino, 
                 <a>Re7</a>                    <a>Sol</a>
 cómo olvidar lo vivido dándolo tó por perdido,
-                    <a>Re</a>                           <a>Si</a>
+                    <a>Re</a>
 como el salvaje que habita sin dogma ni vicio, sin 
-7       <a>Mim</a>
+<a>Si7</a>     <a>Mim</a>
 fe ni perjuicio,
                    <a>Lam</a>                     <a>Do</a>
 sin conocer que está bien y que mal hoy yo quiero 
@@ -42,11 +42,11 @@ como los novios que vuelven, como las aves de paso
 quiero volver a empezar,
       <a>Do</a>               <a>Re</a>             <a>Si7</a>
 como si nunca me hubiese ido, como el primero del 
- <a>Mim</a>            <a>Do</a>       <a>Si7</a>       <a>Mim</a> <a>Si</a>
+ <a>Mim</a>            <a>Do</a>       <a>Si7</a>       <a>Mim</a> <a>Si7</a>
 paraiso quiero volver y volver a empezar.
-                     <a>Si7</a>        <a>Mim</a>               S
+                     <a>Si7</a>        <a>Mim</a>
 Déjame que invente de nuevo mi historia déjame que 
-ol                <a>Re</a>
+<a>Sol</a>                <a>Re</a>
 vuelva a partir de cero
            <a>Do</a>                <a>Lam</a>
 déjame que escriba mi primera copla que quiero 
@@ -56,9 +56,9 @@ decirte mi primer te quiero,
 que bendita locura si tú me quisieses besar 
         <a>Sol</a>             <a>Mi7</a> <a>Lam7</a>
 olvidarlo todo y empezar de nuevo,
-        <a>Do</a>              <a>Lam7</a>            <a>Do</a>    <a>La</a>
+        <a>Do</a>              <a>Lam7</a>            <a>Do</a>   
 dejaría atrás ataduras y celos dejaría el odio, 
-m7       <a>Si7</a>
+<a>Lam7</a>     <a>Si7</a>
 dejaría el miedo.
          <a>Mim</a>
 Vuelve a nacer hijo de Adán padre de la humanidad,

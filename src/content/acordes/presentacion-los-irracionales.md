@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/tDirBCb5Vw4?feature=player_embedded'
 
 ---
 <pre>
-Lam Si7 Mi7 (x5) Lam Mi7
+<a>Lam</a> <a>Si7</a> <a>Mi7</a> (x5) <a>Lam</a> <a>Mi7</a>
 <a>Lam</a>                         <a>Fa</a>
 Involución, destrucción de una raza que camina
     <a>Sol</a>           <a>Lam</a>

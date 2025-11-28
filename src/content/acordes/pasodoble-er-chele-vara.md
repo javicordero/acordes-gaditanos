@@ -41,9 +41,8 @@ raras
 Cádiz tes quiero y ya está y enfermedades muy
  <a>Mi</a>
 raras
-                                                S
 La rodilla pa fuera y ajín torcía una mano en el
-i7                  <a>Mi</a>
+<a>Si7</a>                  <a>Mi</a>
 pecho y la otra escondía
                    <a>Do#7</a>          <a>Fa#m</a>
 Postura que no son propias de carnavales, porque si

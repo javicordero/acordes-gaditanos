@@ -11,19 +11,19 @@ video: 'https://www.youtube.com/embed/Z3t_LYyeGX4?feature=player_embedded'
 
 ---
 <pre>
-<a>LaM7Mi7</a>         <a>LaM7Fa#7</a>             <a>Sim7</a> <a>Mi7</a>
+<a>LaM7 Mi7</a>         <a>LaM7 Fa#7</a>             <a>Sim7</a> <a>Mi7</a>
 Que envidia a mí me da ver cómo los catalanes,
                    <a>Do#m7</a>
 aunque los llamen rufianes
-<a>Fa#7</a>          <a>Sim7</a> <a>Mi7</a>             <a>LaM7Mi7</a>
+<a>Fa#7</a>          <a>Sim7</a> <a>Mi7</a>             <a>LaM7 Mi7</a>
 Condicionan los planes del gobierno central
-<a>LaM7</a>  <a>Mi7</a>        <a>LaM7La7</a>                   <a>Re</a>
+<a>LaM7</a>  <a>Mi7</a>        <a>LaM7 La7</a>                   <a>Re</a>
 Que envidia de verdad ver tantos parlamentarios
 <a>Mi7</a>                     <a>Do#m7</a> <a>Dom7</a> <a>Sim7</a>
 Vascos, gallegos, canarios
                   <a>Mi7</a>                  <a>Lam</a>
 representando a su tierra allí en la capital
-(Sorda)
+<a>(Sorda)</a>
 Fíjese que hasta Teruel allí tiene un diputado
 En qué coño hemos fallado y si no dígame usted
 <a>Lam</a>
@@ -55,7 +55,7 @@ presente
 Si por fin se reclamara que nuestra región también
         <a>Mi7</a>
 es una nación
-(Sorda)
+<a>(Sorda)</a>
 Seguro que el congreso de miedo temblaría
 <a>Mi7</a>           <a>Sim7</a>                     <a>Mi7</a>
 Si se escuchara allí callarse que ahora aquí va a
