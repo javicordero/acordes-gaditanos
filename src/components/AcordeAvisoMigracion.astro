@@ -1,0 +1,119 @@
+---
+
+---
+
+<section id='aviso-section'>
+  <input type='checkbox' id='aviso-cerrar' style='display:none;' />
+  <div class='aviso-content'>
+    <header>
+      <span class='icono'>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 28 28'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'>
+          <circle cx='14' cy='14' r='13' fill='#fffbe6' stroke='#e6c800' stroke-width='2'></circle>
+          <path d='M14 8v7' stroke='#e6c800' stroke-width='2' stroke-linecap='round'></path>
+          <circle cx='14' cy='19' r='1.5' fill='#e6c800'></circle>
+        </svg>
+      </span>
+      <h3>ATENCIÓN</h3>
+      <label for='aviso-cerrar' class='close' aria-label='Cerrar aviso' tabindex='0' role='button'
+        >&times;</label
+      >
+    </header>
+    <p>
+      Los acordes han sido migrados automáticamente desde el blog antiguo. Puede haber errores de
+      acordes cortados, fuera de sitio o perdidos. Si detectas alguno, <a href='/contacto'>
+        avísanos</a
+      >.
+    </p>
+  </div>
+  <style>
+    section {
+      display: none !important;
+      position: absolute;
+      top: 16px;
+      right: 12px;
+      z-index: 20;
+      max-width: 340px;
+      background: #fffbe6;
+      color: #7a5c00;
+      border: 1px solid #ffe58f;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      padding: 12px 40px 12px 16px;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    #aviso-section:has(#aviso-cerrar:checked) {
+      display: none !important;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #e6c800;
+      margin: 0 0 2px 0;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      & .icono {
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #7a5c00;
+      line-height: 1.1;
+
+      & a {
+        color: var(--link-color);
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--link-hover-color);
+        }
+      }
+    }
+    .close {
+      background: none;
+      border: none;
+      color: #7a5c00;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      line-height: 1;
+      padding: 0;
+    }
+
+    @media (max-width: 480px) {
+      section {
+        max-width: 220px;
+        top: 6px;
+        right: 6px;
+        padding: 12px;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+      header {
+        font-size: 0.9rem;
+      }
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</section>

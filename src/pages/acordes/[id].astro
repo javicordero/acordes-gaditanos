@@ -1,0 +1,183 @@
+---
+import { getCollection, render } from 'astro:content';
+import AcordeCard from '../../components/AcordeCard.astro';
+import YoutubeCard from '../../components/right-column/YoutubeCard.astro';
+import SitiosDeInteresCard from '../../components/right-column/SitiosDeInteresCard.astro';
+import ApareceAqui from '../../components/right-column/ApareceAqui.astro';
+import Layout from '../../layouts/Layout.astro';
+import MusicCompositionSchema from '../../components/utils/MusicCompositionSchema.astro';
+import AnunciosGuitarra from '../../components/right-column/anuncios/AnunciosGuitarra.astro';
+import AnunciosLibros from '../../components/right-column/anuncios/AnunciosLibros.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import Apoyar from '../../components/right-column/Apoyar.astro';
+
+export async function getStaticPaths() {
+  const acordes = await getCollection('acordes');
+  return acordes.map((acorde: { slug: any }) => ({
+    params: { id: acorde.slug },
+    props: { acorde },
+  }));
+}
+
+const { acorde } = Astro.props;
+const { data, slug } = acorde;
+const {
+  pieza,
+  agrupacion,
+  musica,
+  img,
+  year,
+  letra,
+  video,
+  cover,
+  autorCover,
+  cejilla,
+  modalidad,
+  fraseClave,
+} = data;
+
+// Generar texto de autoría
+const autores = musica === letra ? `de ${musica}` : `de ${letra} y ${musica}`;
+
+// Generar descripción completa
+const description = `Acordes ${pieza} ${agrupacion} ${modalidad} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
+
+// Generar keywords específicas
+const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}, ${letra}, ${musica}, ${pieza}, ${modalidad}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
+
+// Generar URL canónica
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<Layout
+  title={`Acordes ${pieza} ${agrupacion} - Carnaval ${year} - Acordes Gaditanos`}
+  description={description}
+  keywords={keywords}
+  image={img}>
+  <MusicCompositionSchema
+    pieza={pieza}
+    agrupacion={agrupacion}
+    musica={musica}
+    letra={letra}
+    year={year}
+    modalidad={modalidad}
+    url={canonicalURL}
+  />
+
+  <Breadcrumb
+    year={year}
+    agrupacion={agrupacion}
+    agrupacionSlug={data.agrupacionSlug}
+    pieza={pieza}
+  />
+
+  <div class='main-container container-layout'>
+    <AcordeCard acorde={acorde} />
+
+    <div class='right-column'>
+      <YoutubeCard
+        link={video}
+        iframeTitle={`Video oficial de ${pieza} - ${agrupacion} - Carnaval de Cádiz ${year}`}
+        class='video-oficial'
+      />
+
+      {
+        cover && (
+          <YoutubeCard
+            link={cover}
+            title={`${autorCover} a la guitarra`}
+            iframeTitle={`${autorCover} a la guitarra`}
+            class='video-cover'
+          />
+        )
+      }
+      {!cover && <ApareceAqui class='aparece-aqui' />}
+
+      <Apoyar class='apoyar' />
+
+      <AnunciosLibros class='anuncios-libros' />
+
+      <AnunciosGuitarra class='anuncios-guitarra' />
+
+      <!-- <SitiosDeInteresCard class='sitios-interes' /> -->
+    </div>
+
+    <style>
+      .main-container {
+        display: flex;
+        row-gap: 16px;
+        column-gap: 16px;
+      }
+
+      .right-column {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        /* La columna derecha crecerá para rellenar el espacio restante dentro del contenedor hasta un máximo razonable */
+        flex: 1 1 clamp(220px, 22vw, 380px);
+        min-width: 0;
+      }
+
+      /* Mantener la card izquierda con su anchura natural (el componente controla su propio max-width)
+     y dejar que la columna derecha tome el espacio sobrante */
+      .main-container > :global(.acorde-card) {
+        flex: 0 0 auto;
+        min-width: 0;
+      }
+
+      @media (max-width: 780px) {
+        .main-container {
+          column-gap: 16px;
+        }
+      }
+
+      /* Para resoluciones intermedias (tablet → pequeño desktop) hacemos la card más estrecha */
+      @media (min-width: 640px) and (max-width: 1024px) {
+        .main-container > :global(.acorde-card) {
+          /* Reducir anchura y fijar base para que no ocupe tanto espacio */
+          max-width: 576px;
+          min-width: 0;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .main-container {
+          flex-direction: column;
+        }
+
+        /* Reordenar visualmente en móvil: Apoyar primero */
+        .right-column > :global(.apoyar) {
+          order: -1;
+        }
+
+        /* El resto mantiene orden natural (order: 0 por defecto) */
+        .right-column > :global(.video-oficial) {
+          order: 3;
+        }
+
+        .right-column > :global(.video-cover),
+        .right-column > :global(.aparece-aqui) {
+          order: 0;
+        }
+
+        .right-column > :global(.anuncios-libros) {
+          order: 1;
+        }
+
+        .right-column > :global(.anuncios-guitarra) {
+          order: 2;
+        }
+
+        .right-column > :global(.sitios-interes) {
+          order: 4;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .right-column {
+          flex: 1 1 clamp(260px, 20vw, 480px);
+        }
+      }
+    </style>
+  </div></Layout
+>

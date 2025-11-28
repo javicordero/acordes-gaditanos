@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import YearCard from '../../../components/CardsGroup.astro';
+
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+export async function getStaticPaths() {
+  const acordes = await getCollection('acordes');
+
+  // Recopilar solo autores de música
+  const autoresMap = new Map<string, { nombre: string; acordes: any[] }>();
+
+  acordes.forEach((acorde) => {
+    if (acorde.data.musica && acorde.data.musicaSlug) {
+      if (!autoresMap.has(acorde.data.musicaSlug)) {
+        autoresMap.set(acorde.data.musicaSlug, {
+          nombre: acorde.data.musica,
+          acordes: [],
+        });
+      }
+      autoresMap.get(acorde.data.musicaSlug)!.acordes.push(acorde);
+    }
+  });
+
+  return Array.from(autoresMap.entries()).map(([slug, data]) => ({
+    params: { autorSlug: slug },
+    props: {
+      authorName: data.nombre,
+      acordes: data.acordes,
+    },
+  }));
+}
+
+const { authorName, acordes } = Astro.props;
+
+// Ordenar acordes por año descendente y fecha
+function parseSpanishDate(str: string) {
+  const [d, m, y] = str.split(/[-/]/).map(Number);
+  return new Date(y, m - 1, d);
+}
+
+const acordesOrdenados = acordes.sort((a, b) => {
+  const yearA = Number(a.data.year);
+  const yearB = Number(b.data.year);
+
+  if (yearA !== yearB) {
+    return yearB - yearA;
+  }
+
+  const dateA = parseSpanishDate(a.data.date);
+  const dateB = parseSpanishDate(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
+const title = `${authorName} (Música) - Acordes del Carnaval de Cádiz`;
+const description = `Todos los acordes con música de ${authorName} del Carnaval de Cádiz. Explora todas las agrupaciones y piezas de este autor.`;
+---
+
+<Layout title={title} description={description}>
+  <Breadcrumb autor={authorName} autorSlug={acordes[0]?.data.musicaSlug} tipoAutor='musica' />
+  <div class='main-container container-layout'>
+    <article>
+      <YearCard year={`${authorName} - Música`} acordes={acordesOrdenados} />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  @media (max-width: 640px) {
+    .main-container {
+      gap: var(--main-container-gap-sm);
+    }
+  }
+</style>

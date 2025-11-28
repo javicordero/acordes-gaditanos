@@ -16,7 +16,7 @@
   --app-max-width: 1050px;
   --nav-height: 56px;
   --main-container-gap: 32px;
-  --main-container-gap-sm: 16px;
+  --main-container-gap-sm: 32px;
   --card-padding: 24px;
   --card-padding-sm: 16px;
 
@@ -52,7 +52,20 @@ body {
   /* overflow-y: scroll; */
   margin: 0;
   font-family: 'Montserrat', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
   letter-spacing: 1.4px;
+}
+p {
+  letter-spacing: 0.5px;
+}
+
+.is-title-minus {
+  letter-spacing: 1px;
 }
 
 h1,
@@ -84,8 +97,14 @@ p {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --nav-height: 48px;
+  }
   .container-layout {
     width: 98%;
+  }
+  .is-title-minus {
+    letter-spacing: 0.7px;
   }
 }
 

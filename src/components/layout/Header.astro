@@ -1,0 +1,561 @@
+---
+import Logo from '../../../public/icons/logo.svg';
+import { Icon } from 'astro-icon/components';
+---
+
+<header role='banner' transition:name='site-header'>
+  <div class='container-layout nav-bar-container'>
+    <div class='branding'>
+      <picture>
+        <a href='/' aria-label='Inicio'>
+          <img src={Logo.src} alt='Acordes Gaditanos logo' transition:persist decoding='async' />
+        </a>
+      </picture>
+      <h1 class='branding-title' transition:persist><a href='/'>Acordes Gaditanos</a></h1>
+    </div>
+
+    <div class='right-controls'>
+      <div class='search-container'>
+        <button class='search-toggle' aria-label='Abrir búsqueda' type='button'>
+          <Icon name='lupa' width={30} height={30} />
+        </button>
+
+        <div class='search-wrapper collapsed'>
+          <input
+            type='text'
+            id='header-search'
+            placeholder='Buscar acordes...'
+            aria-label='Buscar acordes'
+            autocomplete='off'
+          />
+          <button class='clear-search' aria-label='Borrar búsqueda' type='button' hidden>
+            <Icon name='cruz' width={24} height={24} />
+          </button>
+        </div>
+      </div>
+
+      <button
+        class='menu-toggle'
+        aria-expanded='false'
+        aria-controls='primary-menu'
+        aria-label='Abrir menú'>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav id='primary-menu' aria-label='Main navigation'>
+    <ul>
+      <li><a href='/'>Inicio</a></li>
+      <li><a href='/colaborar'>Colaborar</a></li>
+      <li><a href='/contacto'>Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  /* Header principal */
+  header {
+    height: var(--nav-height);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: var(--primary-color);
+  }
+
+  /* Container principal del nav-bar */
+  .nav-bar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 4px;
+  }
+
+  /* Branding (logo y título) */
+  .branding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    &.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    & picture {
+      position: relative;
+      top: 2px;
+    }
+
+    & img {
+      border-radius: 40px;
+      height: 32px;
+      padding: 3px;
+      width: auto;
+      background-color: var(--primary-contrast-color);
+    }
+
+    & h1 {
+      position: relative;
+      bottom: 1px;
+      font-family: 'Bodoni', serif;
+      white-space: nowrap;
+      max-width: 20px;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+      &.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      & a {
+        text-decoration: none;
+        font-size: 1.5rem;
+        color: var(--primary-contrast-color);
+        font-weight: bold;
+      }
+    }
+  }
+
+  /* Controles de la derecha (búsqueda + menú) */
+  .right-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Container de búsqueda */
+  .search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .search-container.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Botón de lupa */
+  .search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    height: max-content;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.5s ease;
+    color: var(--primary-contrast-color);
+    opacity: 1;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  .search-toggle.hidden {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+    padding: 0;
+  }
+
+  /* Wrapper del input de búsqueda */
+  .search-wrapper {
+    position: relative;
+    width: 250px;
+    overflow: hidden;
+    transition:
+      width 0.3s ease,
+      opacity 0.3s ease;
+    opacity: 1;
+  }
+
+  .search-wrapper.collapsed {
+    width: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Input de búsqueda */
+  #header-search {
+    width: 100%;
+    padding: 8px 36px 8px 12px;
+    font-size: 0.9rem;
+    border: 2px solid var(--primary-contrast-color);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-color);
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: none;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
+    }
+
+    &::placeholder {
+      color: var(--text-secondary-color);
+      opacity: 0.7;
+    }
+  }
+
+  /* Botón de limpiar búsqueda (cruz) */
+  .clear-search {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--text-secondary-color);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--text-color);
+    }
+  }
+
+  .clear-search[hidden] {
+    display: none;
+  }
+
+  /* Botón menú hamburguesa */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    --bar-h: 4px;
+    height: 24px;
+    width: 32px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    z-index: 2;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    & span {
+      display: block;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: var(--bar-h);
+      border-radius: 10px;
+      background: var(--primary-contrast-color);
+      transition:
+        transform 0.4s ease-in-out,
+        top 0.3s ease-in-out;
+      transform-origin: center;
+    }
+
+    & span:nth-child(1) {
+      top: 0;
+    }
+
+    & span:nth-child(2) {
+      top: calc(50% - var(--bar-h) / 2);
+    }
+
+    & span:nth-child(3) {
+      top: calc(100% - var(--bar-h));
+    }
+  }
+
+  /* Navegación principal */
+  nav {
+    padding-top: 120px;
+    background-color: var(--primary-color);
+    height: 100vh;
+    width: 100%;
+    transform: translate(-150%);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+
+    & ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    & a {
+      text-decoration: none;
+      color: var(--primary-contrast-color);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        height: 3px;
+        width: 100%;
+        background: var(--primary-contrast-color);
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  /* Estados del menú hamburguesa abierto */
+  nav.is-open {
+    transform: translateX(0);
+  }
+
+  .menu-toggle.is-open span:nth-child(1) {
+    top: calc(50% - var(--bar-h) / 2);
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle.is-open span:nth-child(2) {
+    transform: scaleX(0);
+  }
+
+  .menu-toggle.is-open span:nth-child(3) {
+    top: calc(50% - var(--bar-h) / 2);
+    transform: rotate(-45deg);
+  }
+
+  /* Media queries - Responsive */
+  @media (max-width: 640px) {
+    .nav-bar-container {
+      width: 95%;
+      padding: 0;
+    }
+
+    .menu-toggle {
+      height: 20px;
+      width: 28px;
+      --bar-h: 3px;
+    }
+
+    .branding h1 {
+      bottom: 2px;
+      & a {
+        font-size: 1.2rem;
+      }
+    }
+
+    .branding img {
+      height: 28px;
+    }
+
+    .right-controls {
+      gap: 8px;
+    }
+
+    .search-wrapper {
+      width: 250px;
+    }
+
+    .search-wrapper.collapsed {
+      width: 0;
+    }
+
+    .search-toggle {
+      & svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    #header-search {
+      padding: 6px 32px 6px 10px;
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+<style is:global>
+  ::view-transition-group(site-header) {
+    z-index: 9999;
+  }
+</style>
+
+<script>
+  function initHeader() {
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('#primary-menu');
+    const branding = document.querySelector('.branding');
+    const brandingTitle = document.querySelector('.branding-title');
+    const searchContainer = document.querySelector('.search-container');
+    const searchInput = document.querySelector('#header-search');
+    const clearButton = document.querySelector('.clear-search');
+    const searchToggle = document.querySelector('.search-toggle');
+    const searchWrapper = document.querySelector('.search-wrapper');
+
+    if (!toggle || !nav || !branding) return;
+
+    toggle.onclick = () => {
+      const isOpen = nav.classList.contains('is-open');
+      if (isOpen) {
+        nav.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        nav.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-expanded', 'false');
+        branding.classList.remove('is-hidden');
+        if (searchContainer) searchContainer.classList.remove('is-hidden');
+      } else {
+        nav.classList.add('is-open');
+        toggle.classList.add('is-open');
+        nav.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-expanded', 'true');
+        branding.classList.add('is-hidden');
+        if (searchContainer) searchContainer.classList.add('is-hidden');
+      }
+    };
+
+    // Toggle del buscador con botón de lupa
+    if (searchToggle && searchWrapper && searchInput && brandingTitle) {
+      searchToggle.addEventListener('click', () => {
+        const isCollapsed = searchWrapper.classList.contains('collapsed');
+        if (isCollapsed) {
+          searchWrapper.classList.remove('collapsed');
+          searchToggle.classList.add('hidden');
+          // Ocultar título en móvil
+          if (window.innerWidth <= 640) {
+            brandingTitle.classList.add('is-hidden');
+          }
+          setTimeout(() => searchInput.focus(), 100);
+          searchToggle.setAttribute('aria-label', 'Cerrar búsqueda');
+        } else {
+          searchWrapper.classList.add('collapsed');
+          searchToggle.classList.remove('hidden');
+          searchInput.value = '';
+          // Mostrar título en móvil
+          if (window.innerWidth <= 640) {
+            brandingTitle.classList.remove('is-hidden');
+          }
+          searchToggle.setAttribute('aria-label', 'Abrir búsqueda');
+          if (clearButton) {
+            clearButton.setAttribute('hidden', '');
+          }
+        }
+      });
+    }
+
+    // Sistema de búsqueda
+    if (searchInput && clearButton) {
+      // Mostrar/ocultar botón de limpiar según el contenido
+      const toggleClearButton = () => {
+        if (searchInput.value.trim()) {
+          clearButton.removeAttribute('hidden');
+        } else {
+          clearButton.setAttribute('hidden', '');
+        }
+      };
+
+      searchInput.addEventListener('input', toggleClearButton);
+
+      // Inicializar estado del botón
+      toggleClearButton();
+
+      // Limpiar búsqueda al hacer clic en X
+      clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        toggleClearButton();
+        if (searchWrapper) {
+          searchWrapper.classList.add('collapsed');
+        }
+        if (searchToggle) {
+          searchToggle.classList.remove('hidden');
+        }
+        // Mostrar título en móvil
+        if (window.innerWidth <= 640 && brandingTitle) {
+          brandingTitle.classList.remove('is-hidden');
+        }
+        // Disparar evento para limpiar búsqueda
+        document.dispatchEvent(new CustomEvent('searchCleared'));
+      });
+
+      // Buscar al pulsar Enter - redirigir al index con el término
+      searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const query = searchInput.value.trim();
+
+          if (query) {
+            // Cerrar el input
+            if (searchWrapper) {
+              searchWrapper.classList.add('collapsed');
+            }
+            if (searchToggle) {
+              searchToggle.classList.remove('hidden');
+            }
+            if (window.innerWidth <= 640 && brandingTitle) {
+              brandingTitle.classList.remove('is-hidden');
+            }
+
+            // Guardar el término de búsqueda en sessionStorage
+            sessionStorage.setItem('pendingSearch', query);
+
+            // Si no estamos en el index, navegar allí
+            if (window.location.pathname !== '/') {
+              import('astro:transitions/client').then(({ navigate }) => {
+                navigate('/');
+              });
+            } else {
+              // Si ya estamos en el index, disparar evento de búsqueda
+              document.dispatchEvent(new CustomEvent('performSearch', { detail: { query } }));
+            }
+          }
+        }
+      });
+
+      // Detectar cuando se limpia el input (botón X nativo del navegador)
+      searchInput.addEventListener('search', () => {
+        toggleClearButton();
+      });
+    }
+  }
+
+  document.addEventListener('astro:page-load', initHeader);
+</script>

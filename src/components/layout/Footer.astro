@@ -1,0 +1,191 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  github?: string;
+  linkedin?: string;
+  repo?: string;
+  blog?: string;
+}
+
+export let github: string = 'https://github.com/javicordero';
+export let linkedin: string = 'https://www.linkedin.com/in/javier-cordero-toscano';
+export let repo: string = 'https://github.com/javicordero/acordes-gaditanos';
+export let blog: string = 'https://acordesgaditanos.blogspot.com/';
+export let youtube: string = 'https://www.youtube.com/@acordesgaditanos1145';
+export let twitter: string = 'https://x.com/acordesgaditano';
+---
+
+<footer role='contentinfo'>
+  <div class='wrap container-layout brand-social'>
+    <header>
+      <h3 class='brand'>Acordes Gaditanos</h3>
+      <p>
+        <a href={blog}>Blog Antiguo</a>
+      </p>
+    </header>
+
+    <nav aria-label='Redes sociales'>
+      <h3 class='brand'>Redes sociales</h3>
+      <div class='social-icons'>
+        <a class='social' href={twitter} target='_blank' rel='noopener noreferrer' aria-label='X'>
+          <Icon name='x' width={20} height={20} />
+        </a>
+
+        <!-- <a
+          class='social'
+          href='https://www.instagram.com/javicordero'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Instagram'>
+          <Icon name='instagram' width={21} height={21} />
+        </a> -->
+
+        <a
+          class='social'
+          href={youtube}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='YouTube'>
+          <Icon name='youtube' width={23} height={23} />
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <address class='wrap container-layout'>
+    <p class='small'>Desarrollado por Javier Cordero Toscano</p>
+    <div class='author-links'>
+      <a
+        class='social'
+        href={linkedin}
+        target='_blank'
+        rel='noopener noreferrer'
+        aria-label='LinkedIn'>
+        <Icon name='linkedin' width={20} height={20} />
+      </a>
+
+      <a class='social' href={github} target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
+        <Icon name='github' width={20} height={20} />
+      </a>
+    </div>
+  </address>
+
+  <div class='wrap container-layout bottom'>
+    <p>© {new Date().getFullYear()} Acordes Gaditanos</p>
+  </div>
+</footer>
+
+<style>
+  :root {
+    --footer-bg: #0f1724;
+    --footer-text: #e6eef8;
+    --muted: #98a2b3;
+    --accent: #60a5fa;
+  }
+
+  footer {
+    background: var(--primary-color);
+    color: var(--footer-text);
+    padding: 32px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  .brand-social {
+    display: flex;
+    column-gap: 72px;
+    row-gap: 16px;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    & > header {
+      & a {
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      & a:hover {
+        color: var(--primary-contrast-color);
+      }
+    }
+
+    & > header,
+    & > nav {
+      flex: 1;
+    }
+
+    & > nav {
+      & .social-icons {
+        display: flex;
+        justify-content: flex-start;
+        gap: 8px;
+        align-items: center;
+      }
+    }
+  }
+
+  h3.brand {
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+    margin: 0;
+  }
+
+  .social {
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.5s ease;
+    transform: scale(1);
+  }
+
+  .social:has(:hover) {
+    color: var(--primary-contrast-color);
+    outline: none;
+    transform: scale(1.25);
+  }
+
+  .author-links {
+    display: flex;
+    gap: 8px;
+  }
+
+  address {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-style: normal;
+    & p.small {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0;
+    }
+  }
+
+  .bottom p {
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  /* @media (--mq-sm) { */
+  @media (max-width: 640px) {
+    footer {
+      padding: 16px 0;
+      row-gap: 12px;
+    }
+
+    .wrap {
+      padding: 0 4px;
+    }
+
+    .brand-social {
+      flex-direction: column;
+      row-gap: 12px;
+    }
+  }
+</style>

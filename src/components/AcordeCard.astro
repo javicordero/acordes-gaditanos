@@ -1,0 +1,307 @@
+---
+import { render } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
+
+const { acorde } = Astro.props;
+const { data, slug } = acorde;
+const { pieza, agrupacion, musica, img, year, letra, cejilla, modalidad, musicaSlug, letraSlug } =
+  data;
+const { Content } = await render(acorde);
+
+// Generar texto ALT descriptivo para SEO
+const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
+
+// ID para accesibilidad
+const headingId = `acorde-${slug}`;
+---
+
+<article class='acorde-card'>
+  <!-- <AcordeAvisoMigracion /> -->
+
+  <header>
+    <h2 id={headingId} class='is-title-minus'>
+      <span transition:name={`pieza-${slug}`} class='pieza'>
+        {pieza}
+      </span>
+      <span transition:name={`agrupacion-${slug}`} class='agrupacion'>
+        {agrupacion}
+      </span>
+    </h2>
+
+    <section class='autores'>
+      {
+        letra && (
+          <p>
+            <strong>Letra:</strong>
+            <a href={`/autor/letra/${letraSlug}`} rel='noopener'>
+              {letra}
+            </a>
+          </p>
+        )
+      }
+      {
+        musica && (
+          <p>
+            <strong>Música:</strong>
+            <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>
+              {musica}
+            </a>
+          </p>
+        )
+      }
+    </section>
+    <figure>
+      <img
+        transition:name={`img-${slug}`}
+        src={img}
+        alt={altText}
+        loading='lazy'
+        decoding='async'
+      />
+      <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
+        {musica}
+      </figcaption>
+      <figcaption class='badge badge--letra'>
+        {letra}
+      </figcaption>
+    </figure>
+  </header>
+
+  <section class='acorde-content' role='region' aria-labelledby={headingId}>
+    <div class='acorde-meta'>
+      <Icon name='cejilla' width={22} height={22} />
+      <span>{cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
+    </div>
+    <Content />
+  </section>
+</article>
+
+<style>
+  article {
+    background-color: var(--card-background-color);
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    box-shadow:
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+    gap: 8px;
+    position: relative; /* TODO: quitar cuando quitemos el aviso de migración */
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: var(--card-padding) var(--card-padding) 0 var(--card-padding);
+    box-sizing: border-box;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    color: var(--primary-color);
+    font-size: 1.625rem;
+    font-weight: 700;
+    line-height: 1.79rem;
+    max-width: fit-content;
+    margin: 0;
+    text-transform: none;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 92%;
+      height: 4px;
+      background: var(--primary-contrast-color);
+    }
+  }
+
+  .autores {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    text-transform: none;
+
+    & a {
+      color: var(--link-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+        color: var(--link-hover-color);
+      }
+    }
+  }
+
+  figure {
+    position: relative;
+    width: 360px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  img {
+    height: auto;
+    border-radius: 8px;
+    width: 100%;
+    min-height: 225px;
+    object-fit: cover;
+    display: block;
+    /* Optimizaciones de performance */
+    content-visibility: auto;
+    contain-intrinsic-size: 360px 480px;
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 0;
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+
+  .badge {
+    max-width: 80%;
+  }
+
+  .badge--musica {
+    display: none;
+    left: 0;
+    border-radius: 0 6px 0 6px;
+    color: var(--primary-color);
+    background-color: var(--primary-contrast-color);
+  }
+
+  .badge--letra {
+    display: none;
+    right: 0;
+    color: var(--primary-contrast-color);
+    background-color: var(--primary-color);
+    border-radius: 6px 0 6px 0;
+  }
+
+  .acorde-content {
+    padding: 0 4px;
+    display: grid;
+    place-items: center;
+    gap: 16px;
+  }
+
+  .acorde-meta {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    padding: 4px 6px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .acorde-content :global(pre) {
+    margin: 0;
+    letter-spacing: -0.3px;
+    word-spacing: -0.3px;
+    font-size: 0.95rem;
+    line-height: 1.25rem;
+
+    & :global(a) {
+      color: var(--acorde-color);
+      position: relative;
+      left: 7px;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023.98px) {
+    article {
+      max-width: 576px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    article {
+      max-width: 650px;
+    }
+  }
+
+  @media (max-width: 780px) {
+    header {
+      gap: 16px;
+      padding: 16px 16px 0 16px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    header {
+      flex-direction: column;
+      gap: 8px;
+      padding: var(--card-padding-sm) var(--card-padding-sm) 0 var(--card-padding-sm);
+    }
+    .autores {
+      font-size: 0.9rem;
+    }
+
+    figure {
+      max-width: 260px;
+      width: 100%;
+      margin: 8px auto auto auto;
+    }
+
+    h2::after {
+      height: 3px;
+    }
+
+    figcaption {
+      font-size: 13px;
+      padding: 4px 8px;
+    }
+
+    .acorde-meta {
+      & svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .acorde-content :global(pre) {
+      font-size: 0.8rem;
+      line-height: 1.15rem;
+    }
+
+    figure {
+      max-width: 240px;
+    }
+  }
+
+  @media (max-width: 392px) {
+    .acorde-content :global(pre) {
+      font-size: 0.73rem;
+      line-height: 1.1rem;
+    }
+  }
+
+  @media (max-width: 367px) {
+    .acorde-content :global(pre) {
+      font-size: 0.7rem;
+      line-height: 1rem;
+    }
+  }
+</style>

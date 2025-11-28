@@ -1,0 +1,105 @@
+---
+import { Icon } from 'astro-icon/components';
+import RightColumnCard from '../../layouts/RightColumnCard.astro';
+
+const { class: className } = Astro.props;
+---
+
+<RightColumnCard title='APOYAR' headingId='apoyar-title' class={className}>
+  <section class:list={['card', className]} aria-labelledby='apoyar-heading'>
+    <p>
+      ¿Quieres <strong>apoyar</strong> económicamente el proyecto? Puedes hacerlo <strong
+        >donando</strong
+      > vía Buy Me a Coffee o PayPal.
+    </p>
+
+    <div class='actions' role='group' aria-label='Opciones de apoyo'>
+      <a
+        href='https://www.buymeacoffee.com/AcordesGaditanos'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='btn'
+        data-ga-event='support_bmc_click'
+        data-ga-params='{"method":"buymeacoffee"}'>
+        <span class='btn__icon'>
+          <Icon name='buy-me-a-coffee' width={20} height={28} />
+        </span>
+        <span class='btn__text'>Buy me a coffee</span>
+      </a>
+
+      <a
+        href='https://www.paypal.com/donate?business=acordesgaditanos@gmail.com&currency_code=EUR'
+        target='_blank'
+        rel='noopener noreferrer'
+        class='btn btn--paypal'
+        data-ga-event='support_paypal_click'
+        data-ga-params='{"method":"paypal","currency":"EUR"}'>
+        <span class='btn__icon'>
+          <Icon name='paypal' width={20} height={20} />
+        </span>
+        <span class='btn__text'>Paypal</span>
+      </a>
+    </div>
+  </section>
+</RightColumnCard>
+
+<style>
+  /* Layout */
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--card-background-color);
+    background-color: var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    min-height: 44px;
+    flex: 1;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transform: scale(1.05);
+    }
+
+    &.btn--paypal {
+      background-color: var(--primary-contrast-color);
+      color: var(--primary-color);
+    }
+
+    &__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      line-height: 1;
+      font-size: 18px;
+
+      & svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__text {
+      font-size: 14px;
+      letter-spacing: 1.25px;
+    }
+  }
+</style>

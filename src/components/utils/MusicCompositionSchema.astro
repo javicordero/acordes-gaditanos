@@ -1,0 +1,41 @@
+---
+interface Props {
+  pieza: string;
+  agrupacion: string;
+  musica: string;
+  letra: string;
+  year: string;
+  modalidad: string;
+  url: string;
+}
+
+const { pieza, agrupacion, musica, letra, year, modalidad, url } = Astro.props;
+
+// Generar estructura de datos para Schema.org
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MusicComposition',
+  name: `${pieza} - ${agrupacion}`,
+  composer: {
+    '@type': 'Person',
+    name: musica,
+  },
+  lyricist:
+    musica === letra
+      ? undefined
+      : {
+          '@type': 'Person',
+          name: letra,
+        },
+  datePublished: year,
+  genre: 'Carnaval de Cádiz',
+  inLanguage: 'es-ES',
+  about: `${modalidad} del Carnaval de Cádiz ${year}`,
+  url: url,
+};
+
+// Eliminar campos undefined
+const cleanSchema = JSON.parse(JSON.stringify(schema));
+---
+
+<script type='application/ld+json' set:html={JSON.stringify(cleanSchema)} />

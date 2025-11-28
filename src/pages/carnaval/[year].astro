@@ -1,0 +1,98 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import YearCard from '../../components/CardsGroup.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+
+export async function getStaticPaths() {
+  const acordes = await getCollection('acordes');
+
+  // Obtener todos los años únicos
+  const years = [...new Set(acordes.map((acorde) => acorde.data.year))];
+
+  return years.map((year) => {
+    // Filtrar acordes de este año
+    const acordesDelYear = acordes.filter((acorde) => acorde.data.year === year);
+
+    return {
+      params: { year },
+      props: { year, acordes: acordesDelYear },
+    };
+  });
+}
+
+const { year, acordes } = Astro.props;
+
+// Ordenar acordes por fecha
+function parseSpanishDate(str: string) {
+  const [d, m, y] = str.split(/[-/]/).map(Number);
+  return new Date(y, m - 1, d);
+}
+
+const acordesOrdenados = acordes.sort((a, b) => {
+  const dateA = parseSpanishDate(a.data.date);
+  const dateB = parseSpanishDate(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
+const title = `Carnaval de Cádiz ${year} - Acordes y Letras`;
+const description = `Todos los acordes y letras del Carnaval de Cádiz ${year}. Encuentra acordes de chirigotas, comparsas, cuartetos y coros del año ${year}.`;
+---
+
+<Layout title={title} description={description}>
+  <Breadcrumb year={year} />
+  <div class='main-container container-layout'>
+    <article>
+      <YearCard year={year} acordes={acordesOrdenados} />
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1.4px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .subtitle {
+    color: var(--text-secondary-color);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .main-container {
+      gap: var(--main-container-gap-sm);
+    }
+
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>

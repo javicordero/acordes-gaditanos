@@ -1,5 +1,5 @@
 ---
-const { title, headingId } = Astro.props;
+const { title, headingId, class: className } = Astro.props;
 // Build a stable id from the explicit `headingId` prop or the title.
 const headingIdFinal =
   headingId ??
@@ -9,7 +9,7 @@ const headingIdFinal =
     .replace(/(^-|-$)/g, '');
 ---
 
-<section aria-labelledby={headingIdFinal}>
+<section class:list={[className]} aria-labelledby={headingIdFinal}>
   <header>
     <h3 id={headingIdFinal}>{title}</h3>
   </header>

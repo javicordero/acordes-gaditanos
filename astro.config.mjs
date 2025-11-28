@@ -6,16 +6,16 @@ export default defineConfig({
   site: 'https://acordesgaditanos.com',
   integrations: [
     icon({
-      iconDir: 'src/icons', // o la ruta donde tengas tus SVGs
+      iconDir: 'src/icons',
     }),
     sitemap({
-      filter: (page) => !page.includes('/coming-soon'),
+      filter: (page) => !page.includes('/coming-soon') && !page.includes('/en-construccion'),
     }),
   ],
 
   vite: {
     server: {
-      allowedHosts: ['af66b9db8db4.ngrok-free.app'],
+      allowedHosts: [],
     },
   },
 });

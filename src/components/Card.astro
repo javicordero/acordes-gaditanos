@@ -1,0 +1,208 @@
+---
+const { pieza, agrupacion, musica, letra, img, year, slug } = Astro.props;
+const headingId = `acordes-${slug}`;
+
+// Limpiar "Cuarteta" y comillas si es necesario
+let piezaDisplay = pieza;
+if (pieza) {
+  // Patrón: "Cuarteta" seguido de espacio y texto entre comillas
+  const cuartetaMatch = pieza.match(/^Cuarteta\s+"(.+)"$/i);
+  if (cuartetaMatch) {
+    piezaDisplay = cuartetaMatch[1]; // Extraer solo el contenido entre comillas
+  }
+
+  // Patrón: "final de popurrí/popurri" → "final popurrí" (siempre con acento)
+  piezaDisplay = piezaDisplay.replace(/\bfinal\s+de\s+popur(?:rí|ri)/gi, 'final popurrí');
+}
+
+const piezaLower = piezaDisplay?.toLowerCase() || '';
+let piezaType = 'default';
+
+if (piezaLower.includes('presentación') || piezaLower.includes('presentacion')) {
+  piezaType = 'presentacion';
+} else if (piezaLower.includes('pasodoble')) {
+  piezaType = 'pasodoble';
+} else if (piezaLower.includes('tango')) {
+  piezaType = 'tango';
+}
+---
+
+<article class='card' aria-labelledby={headingId}>
+  <a href={`/acordes/${slug}`}>
+    <img
+      src={img}
+      alt={`${agrupacion} - ${pieza} - Carnaval de Cádiz ${year}`}
+      loading='lazy'
+      decoding='async'
+      transition:name={`img-${slug}`}
+      class='card-image'
+    />
+    <header>
+      <span class='badge' data-pieza-type={piezaType}>{piezaDisplay}</span>
+    </header>
+
+    <footer>
+      <span class='badge'>{musica}</span>
+    </footer>
+  </a>
+</article>
+
+<style>
+  :root {
+    --pieza-presentacion-color: var(--primary-color);
+    --pieza-presentacion-bg: #87ceeb;
+
+    --pieza-pasodoble-color: var(--primary-color);
+    --pieza-pasodoble-bg: #ffa07a;
+
+    --pieza-tango-color: var(--primary-color);
+    --pieza-tango-bg: #e6c800;
+
+    --pieza-default-color: var(--primary-color);
+    --pieza-default-bg: #98fb98;
+
+    --autor-color: var(--primary-color);
+    --autor-bg: var(--primary-contrast-color);
+  }
+
+  .card {
+    background-color: var(--card-background-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+    position: relative;
+    transition:
+      transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      box-shadow 0.5s ease;
+    /* Optimizaciones de performance */
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 200px;
+    will-change: transform;
+
+    &:hover {
+      transform: scale(1.05) translateY(-12px) rotateZ(-1deg);
+      box-shadow:
+        0 40px 80px -20px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(255, 255, 255, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      z-index: 10;
+    }
+
+    &:hover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+  }
+
+  .card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+  }
+
+  .badge {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    max-width: 95%;
+  }
+
+  header > .badge {
+    border-radius: 6px 0 6px 0;
+    font-size: 17px;
+    padding: 6px 10px;
+
+    &[data-pieza-type='presentacion'] {
+      color: var(--pieza-presentacion-color);
+      background-color: var(--pieza-presentacion-bg);
+    }
+
+    &[data-pieza-type='pasodoble'] {
+      color: var(--pieza-pasodoble-color);
+      background-color: var(--pieza-pasodoble-bg);
+    }
+
+    &[data-pieza-type='tango'] {
+      color: var(--pieza-tango-color);
+      background-color: var(--pieza-tango-bg);
+    }
+    &[data-pieza-type='default'] {
+      color: var(--pieza-default-color);
+      background-color: var(--pieza-default-bg);
+    }
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+
+    & > .badge {
+      border-radius: 0 6px 0 6px;
+      color: var(--autor-color);
+      background-color: var(--autor-bg);
+      font-size: 13px;
+      padding: 4px 8px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .card {
+      transition: none;
+      min-height: 180px;
+
+      &:hover {
+        transform: none;
+        box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+        filter: none;
+        z-index: auto;
+      }
+    }
+
+    .badge {
+      transition: none;
+      letter-spacing: 0.1px;
+    }
+
+    header > .badge {
+      font-size: 15px;
+      padding: 4px 8px;
+    }
+
+    footer > .badge {
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+  }
+</style>
