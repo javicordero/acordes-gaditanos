@@ -29,26 +29,30 @@ const headingId = `acorde-${slug}`;
       </span>
     </h2>
 
-    <section class='autores'>
-      <p>
-        <strong>Año:</strong>
+    <section class='autores-year'>
+      <div class='autores'>
+        <p>
+          <strong>Letra:</strong>
+          <a href={`/autor/letra/${letraSlug}`} rel='noopener'>
+            {letra}
+          </a>
+        </p>
+        <p>
+          <strong>Música:</strong>
+          <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>
+            {musica}
+          </a>
+        </p>
+      </div>
+      <div class='year'>
         <a href={`/carnaval/${year}`} rel='noopener'>
-          {year}
+          <p>
+            {year}
+          </p>
         </a>
-      </p>
-      <p>
-        <strong>Letra:</strong>
-        <a href={`/autor/letra/${letraSlug}`} rel='noopener'>
-          {letra}
-        </a>
-      </p>
-      <p>
-        <strong>Música:</strong>
-        <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>
-          {musica}
-        </a>
-      </p>
+      </div>
     </section>
+
     <figure>
       <img
         transition:name={`img-${slug}`}
@@ -121,6 +125,27 @@ const headingId = `acorde-${slug}`;
     }
   }
 
+  .autores-year {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .year {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: none;
+
+    & a {
+      color: var(--link-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: none;
+        color: var(--link-hover-color);
+      }
+    }
+  }
+
   .autores {
     display: flex;
     flex-direction: column;
@@ -129,6 +154,7 @@ const headingId = `acorde-${slug}`;
     color: var(--secondary-color);
     font-weight: 500;
     text-transform: none;
+    position: relative;
 
     & a {
       color: var(--link-color);
@@ -251,6 +277,10 @@ const headingId = `acorde-${slug}`;
     }
     .autores {
       font-size: 0.9rem;
+    }
+
+    .year {
+      font-size: 1.1rem;
     }
 
     figure {
