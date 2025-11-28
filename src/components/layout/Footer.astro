@@ -12,6 +12,8 @@ export let github: string = 'https://github.com/javicordero';
 export let linkedin: string = 'https://www.linkedin.com/in/javier-cordero-toscano';
 export let repo: string = 'https://github.com/javicordero/acordes-gaditanos';
 export let blog: string = 'https://acordesgaditanos.blogspot.com/';
+export let youtube: string = 'https://www.youtube.com/@acordesgaditanos1145';
+export let twitter: string = 'https://x.com/acordesgaditano';
 ---
 
 <footer role='contentinfo'>
@@ -26,12 +28,7 @@ export let blog: string = 'https://acordesgaditanos.blogspot.com/';
     <nav aria-label='Redes sociales'>
       <h3 class='brand'>Redes sociales</h3>
       <div class='social-icons'>
-        <a
-          class='social'
-          href='https://x.com/javicordero'
-          target='_blank'
-          rel='noopener noreferrer'
-          aria-label='X'>
+        <a class='social' href={twitter} target='_blank' rel='noopener noreferrer' aria-label='X'>
           <Icon name='x' width={20} height={20} />
         </a>
 
@@ -46,7 +43,7 @@ export let blog: string = 'https://acordesgaditanos.blogspot.com/';
 
         <a
           class='social'
-          href='https://www.youtube.com/@javicordero'
+          href={youtube}
           target='_blank'
           rel='noopener noreferrer'
           aria-label='YouTube'>
