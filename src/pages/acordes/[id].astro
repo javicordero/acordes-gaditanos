@@ -9,7 +9,7 @@ import MusicCompositionSchema from '../../components/utils/MusicCompositionSchem
 import AnunciosGuitarra from '../../components/right-column/anuncios/AnunciosGuitarra.astro';
 import AnunciosLibros from '../../components/right-column/anuncios/AnunciosLibros.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import Apoyar from '../../components/right-column/Apoyar.astro';
+// import Apoyar from '../../components/right-column/Apoyar.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -93,7 +93,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
       }
       {!cover && <ApareceAqui class='aparece-aqui' />}
 
-      <Apoyar class='apoyar' />
+      <!-- <Apoyar class='apoyar' /> -->
 
       <AnunciosLibros class='anuncios-libros' />
 
