@@ -1,12 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import YearCard from '../components/CardsGroup.astro';
+import CardsGroup from '../components/CardsGroup.astro';
+import YearsList from '../components/YearsList.astro';
+import AutorCardsGroup from '../components/AutorCardsGroup.astro';
 
 function parseSpanishDate(str: string) {
   const [d, m, y] = str.split(/[-/]/).map(Number);
   return new Date(y, m - 1, d); // Date(year, monthIndex, day)
 }
+
 let acordes = await getCollection('acordes');
 
 acordes = acordes.sort((a, b) => {
@@ -25,21 +28,19 @@ acordes = acordes.sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
-// Agrupar por año (se mantiene el orden interno ya ordenado)
-const grouped = acordes.reduce((acc: Record<string, any[]>, item) => {
-  const y = String(item.data.year ?? 'Sin año');
-  if (!acc[y]) acc[y] = [];
-  acc[y].push(item);
-  return acc;
-}, {});
+// Filtrar solo los acordes destacados y ordenar por date descendente
+function parseSpanishDate(str) {
+  const [d, m, y] = str.split(/[-/]/).map(Number);
+  return new Date(y, m - 1, d);
+}
 
-// Obtener años ordenados descendente (numéricamente cuando sea posible)
-const years = Object.keys(grouped).sort((a, b) => {
-  const na = Number(a);
-  const nb = Number(b);
-  if (isNaN(na) || isNaN(nb)) return b.localeCompare(a);
-  return nb - na;
-});
+const destacadas = acordes
+  .filter((acorde) => acorde.data.destacada === true || acorde.data.destacada === 'true')
+  .sort((a, b) => {
+    const dateA = parseSpanishDate(a.data.date);
+    const dateB = parseSpanishDate(b.data.date);
+    return dateB.getTime() - dateA.getTime();
+  });
 
 // Serializar acordes para JavaScript (solo datos necesarios para búsqueda)
 const acordesData = acordes.map((acorde) => ({
@@ -50,6 +51,8 @@ const acordesData = acordes.map((acorde) => ({
   musica: acorde.data.musica || '',
   letra: acorde.data.letra || '',
 }));
+
+let autores = await getCollection('autores');
 ---
 
 <Layout
@@ -71,12 +74,11 @@ const acordesData = acordes.map((acorde) => ({
 
     <!-- Contenedor de resultados original -->
     <div class='results-container'>
-      {
-        years.map((year) => {
-          const acordesDelYear = grouped[year];
-          return <YearCard year={year} acordes={acordesDelYear} key={year} />;
-        })
-      }
+      <CardsGroup year={'DESTACANDO'} acordes={destacadas} />
+      <AutorCardsGroup autores={autores} />
+      <YearsList
+        years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
+      />
     </div>
   </div>
 </Layout>

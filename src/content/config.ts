@@ -32,6 +32,7 @@ const acordes = defineCollection({
       cover: z.string().optional().nullable(),
       autorCover: z.string().optional().nullable(),
       fraseClave: z.string().optional(),
+      destacada: z.boolean().optional().nullable(),
     })
     .transform((data) => ({
       ...data,
@@ -42,6 +43,21 @@ const acordes = defineCollection({
     })),
 });
 
+const autores = defineCollection({
+  schema: z
+    .object({
+      nombre: z.string(),
+      img: z.string(),
+      destacado: z.boolean().optional().nullable(),
+      order: z.number().optional(),
+    })
+    .transform((data) => ({
+      ...data,
+      autorSlug: generateSlug(data.nombre),
+    })),
+});
+
 export const collections = {
   acordes: acordes,
+  autores: autores,
 };

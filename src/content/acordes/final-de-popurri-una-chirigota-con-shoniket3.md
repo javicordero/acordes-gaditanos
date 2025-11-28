@@ -10,6 +10,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/I-sGXVxkAPY?si=jduhYEmU-_eR8WEV'
 cover: 'https://www.youtube.com/embed/ZzdJmVHaUfw?si=4og60KJaSa6j5xtu'
 autorCover: Caro Vargas
+destacada: true
 
 ---
 <pre>       <a>Sol</a>

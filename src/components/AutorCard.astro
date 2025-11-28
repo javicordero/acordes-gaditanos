@@ -1,0 +1,125 @@
+---
+const { autor } = Astro.props;
+const headingId = `autor-${autor.autorSlug}`;
+---
+
+<article class='card' aria-labelledby={headingId}>
+  <a href={`autor/musica/${autor.autorSlug}`}>
+    <img
+      src={autor.img}
+      alt={`${autor.nombre} - Carnaval de Cádiz`}
+      loading='lazy'
+      decoding='async'
+      class='card-image'
+    />
+    <footer>
+      <span class='badge'>{autor.nombre}</span>
+    </footer>
+  </a>
+</article>
+
+<style>
+  .card {
+    background-color: var(--card-background-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+    position: relative;
+    transition:
+      transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+      box-shadow 0.5s ease;
+    /* Optimizaciones de performance */
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 200px;
+    will-change: transform;
+
+    &:hover {
+      transform: scale(1.05) translateY(-12px) rotateZ(-1deg);
+      box-shadow:
+        0 40px 80px -20px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(255, 255, 255, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+      z-index: 10;
+    }
+
+    &:hover::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+  }
+
+  .card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    z-index: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    pointer-events: none;
+  }
+
+  .badge {
+    position: relative;
+    pointer-events: auto;
+  }
+
+  .badge {
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 0.2px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+    color: var(--primary-contrast-color);
+    background-color: var(--primary-color);
+    border-radius: 0 6px 0 0;
+    font-size: 1.2rem;
+    padding: 6px 10px;
+  }
+
+  @media (max-width: 640px) {
+    .card {
+      transition: none;
+      min-height: 180px;
+
+      &:hover {
+        transform: none;
+        box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+        filter: none;
+        z-index: auto;
+      }
+    }
+
+    .badge {
+      font-size: 0.9rem;
+      padding: 4px 4px;
+    }
+  }
+</style>
