@@ -7,11 +7,14 @@ const { class: className } = Astro.props;
 
 <RightColumnCard title='APOYAR' headingId='apoyar-title' class={className}>
   <section class:list={['card', className]} aria-labelledby='apoyar-heading'>
-    <p>
-      ¿Quieres <strong>apoyar</strong> económicamente el proyecto? Puedes hacerlo <strong
-        >donando</strong
-      > vía Buy Me a Coffee o PayPal.
-    </p>
+    <div>
+      <p>
+        Si estos acordes te han servido para echar un ratito, puedes echarnos una manita <strong
+          >donando</strong
+        > con los botones de abajo.
+      </p>
+      <p>¡Gracias por ayudar a que siga subiendo más coplas! 💜</p>
+    </div>
 
     <div class='actions' role='group' aria-label='Opciones de apoyo'>
       <a
