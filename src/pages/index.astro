@@ -79,6 +79,17 @@ let autores = await getCollection('autores');
       <YearsList
         years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
       />
+
+      {
+        Array.from(new Set(acordes.map((acorde) => acorde.data.year)))
+          .sort((a, b) => b - a)
+          .map((year) => (
+            <CardsGroup
+              year={year}
+              acordes={acordes.filter((acorde) => acorde.data.year === year)}
+            />
+          ))
+      }
     </div>
   </div>
 </Layout>
