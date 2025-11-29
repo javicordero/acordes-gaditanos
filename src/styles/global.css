@@ -94,6 +94,9 @@ p {
   .container-layout {
     width: 95%;
   }
+  html {
+    overflow-y: scroll;
+  }
 }
 
 @media (max-width: 640px) {
