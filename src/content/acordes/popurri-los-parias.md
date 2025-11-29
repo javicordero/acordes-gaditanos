@@ -4,10 +4,10 @@ agrupacion: Los Parias
 year: 2006
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRldfgOpqE_mqMGRoY3KwLyk1SduRF0Jr0xvg&s
+img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6rf5Czxsar0iQ46IU6pHlZMsIbV813W4oGoQc6FPwosHMOWFGCvOlSEGi-I5x6EYdlPZlwn0s-7K9viwIznA5WM-rQKxE9k5_CKUj15actcpfg8FO_UV7nY9IHY111buKY16NwUOmzmU2/s320/losparias.jpg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/Kmz6jADMW-U?si=2D-xxxUu8q1Ou3UV'
+video: 'https://www.youtube.com/embed/pjc0FHRKZRA?feature=player_embedded'
 
 ---
 <pre>
