@@ -4,7 +4,7 @@ agrupacion: Araka La Kana
 year: 2007
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://letrasdecarnaval.com/assets/images/agrupaciones/08ffed1a9dca4c1c9923407fd.jpg
+img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnBEi4lB6Y2BkkSmnO1f9Uz38KXSe8Cgc9DjrIMujTiLv9iNTtACQyo3ZWH7OptODO6Xi1wiJudWvADlkzyReBMnSD6XSeHo5H4rFCMHOXegj1pyZiu-sTDQOSPGQrnvC1NLb2hKgqimcx/s1600/araka.jpg
 cejilla: 0
 date: "25/11/2025"
 video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
