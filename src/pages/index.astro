@@ -15,24 +15,13 @@ let acordes = await getCollection('acordes');
 acordes = acordes.sort((a, b) => {
   const yearA = a.data.year;
   const yearB = b.data.year;
-
-  // Primero ordenamos por año descendente
   if (yearA !== yearB) {
     return yearB - yearA;
   }
-
-  // Luego por fecha española descendente
   const dateA = parseSpanishDate(a.data.date);
   const dateB = parseSpanishDate(b.data.date);
-
   return dateB.getTime() - dateA.getTime();
 });
-
-// Filtrar solo los acordes destacados y ordenar por date descendente
-function parseSpanishDate(str) {
-  const [d, m, y] = str.split(/[-/]/).map(Number);
-  return new Date(y, m - 1, d);
-}
 
 const destacadas = acordes
   .filter((acorde) => acorde.data.destacada === true || acorde.data.destacada === 'true')
@@ -42,16 +31,6 @@ const destacadas = acordes
     return dateB.getTime() - dateA.getTime();
   });
 
-// Serializar acordes para JavaScript (solo datos necesarios para búsqueda)
-const acordesData = acordes.map((acorde) => ({
-  id: acorde.id,
-  slug: acorde.slug,
-  pieza: acorde.data.pieza || '',
-  agrupacion: acorde.data.agrupacion || '',
-  musica: acorde.data.musica || '',
-  letra: acorde.data.letra || '',
-}));
-
 let autores = await getCollection('autores');
 ---
 
@@ -59,40 +38,11 @@ let autores = await getCollection('autores');
   title='Acordes Gaditanos - Acordes y Letras del Carnaval de Cádiz'
   description='La mayor colección de acordes y letras del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
   <div class='main-container container-layout'>
-    <!-- Mensaje de sin resultados (oculto por defecto) -->
-    <article
-      class='no-results'
-      role='region'
-      aria-labelledby='no-results-heading'
-      style='display: none;'>
-      <header>
-        <h2 id='no-results-heading'>No se encontraron resultados</h2>
-      </header>
-      <p>No se encontraron acordes que coincidan con <strong class='search-query'></strong>.</p>
-      <p>Intenta con otros términos de búsqueda.</p>
-    </article>
-
-    <!-- Contenedor de resultados original -->
-    <div class='results-container'>
-      <CardsGroup year={'DESTACANDO'} acordes={destacadas} />
-      <AutorCardsGroup autores={autores} />
-      <YearsList
-        years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
-      />
-
-      <div id='all-cards-groups' style='display: none;'>
-        {
-          Array.from(new Set(acordes.map((acorde) => acorde.data.year)))
-            .sort((a, b) => b - a)
-            .map((year) => (
-              <CardsGroup
-                year={year}
-                acordes={acordes.filter((acorde) => acorde.data.year === year)}
-              />
-            ))
-        }
-      </div>
-    </div>
+    <CardsGroup year={'DESTACANDO'} acordes={destacadas} />
+    <AutorCardsGroup autores={autores} />
+    <YearsList
+      years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
+    />
   </div>
 </Layout>
 
@@ -103,233 +53,9 @@ let autores = await getCollection('autores');
     gap: var(--main-container-gap);
   }
 
-  .results-container {
-    display: flex;
-    flex-direction: column;
-    gap: var(--main-container-gap);
-  }
-
-  #all-cards-groups {
-    display: none;
-  }
-
-  /* Card de sin resultados */
-  .no-results {
-    background: var(--card-background-color);
-    border: 1px solid var(--primary-color);
-    border-radius: 8px;
-    padding: var(--card-padding);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-
-    & header {
-      margin-bottom: 16px;
-
-      & h2 {
-        position: relative;
-        color: var(--primary-color);
-        font-size: 1.625rem;
-        font-family: 'Montserrat', sans-serif;
-        letter-spacing: 1.4px;
-        font-weight: 700;
-        max-width: fit-content;
-        margin: 0;
-
-        &::after {
-          content: '';
-          display: block;
-          position: absolute;
-          left: 0;
-          bottom: -6px;
-          width: 90%;
-          height: 4px;
-          background: var(--primary-contrast-color);
-        }
-      }
-    }
-
-    & p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text-color);
-      margin: 8px 0;
-
-      & strong {
-        color: var(--primary-color);
-      }
-    }
-  }
-
   @media (max-width: 640px) {
     .main-container {
       gap: calc(var(--main-container-gap-sm) - 16px);
     }
-
-    .results-container {
-      gap: calc(var(--main-container-gap-sm) - 16px);
-    }
-
-    .no-results {
-      padding: var(--card-padding-sm);
-
-      & header h2 {
-        font-size: 1.4rem;
-
-        &::after {
-          height: 3px;
-          bottom: -3px;
-        }
-      }
-
-      & p {
-        font-size: 0.95rem;
-      }
-    }
   }
 </style>
-
-<script define:vars={{ acordesData }}>
-  function initSearch() {
-    const searchInput = document.querySelector('#header-search');
-    if (!searchInput) return;
-
-    const noResults = document.querySelector('.no-results');
-    const resultsContainer = document.querySelector('.results-container');
-    const searchQueryElement = noResults?.querySelector('.search-query');
-    if (!resultsContainer) return;
-
-    // Guardar el HTML original y crear un mapa de todas las cards
-    const originalContent = resultsContainer.innerHTML;
-    const allCardsMap = new Map();
-
-    // Guardar todas las cards originales indexadas por slug
-    resultsContainer.querySelectorAll('a[href^="/acordes/"]').forEach((link) => {
-      const href = link.getAttribute('href');
-      const slug = href.replace('/acordes/', '');
-      const card = link.closest('article.card');
-      if (card) {
-        allCardsMap.set(slug, card.cloneNode(true));
-      }
-    });
-
-    // Guardar una referencia al template del CardsGroup.astro
-    const originalYearCard = resultsContainer.querySelector('.year-group')?.cloneNode(true);
-
-    // Función para normalizar texto (quitar acentos)
-    function normalizeText(text) {
-      return text
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '');
-    }
-
-    // Función de búsqueda
-    function performSearch(query) {
-      if (!query.trim()) {
-        // Restaurar contenido original
-        resultsContainer.innerHTML = originalContent;
-        if (noResults) noResults.style.display = 'none';
-        return;
-      }
-
-      const normalizedQuery = normalizeText(query);
-
-      // Filtrar acordes usando los datos serializados
-      const resultados = acordesData.filter((acorde) => {
-        const searchableText = normalizeText(
-          `${acorde.pieza} ${acorde.agrupacion} ${acorde.musica} ${acorde.letra}`
-        );
-        return searchableText.includes(normalizedQuery);
-      });
-
-      if (resultados.length > 0) {
-        // Obtener las cards desde el mapa guardado
-        const matchingCards = [];
-        resultados.forEach((resultado) => {
-          const card = allCardsMap.get(resultado.slug);
-          if (card) {
-            matchingCards.push(card.cloneNode(true));
-          }
-        });
-
-        if (matchingCards.length > 0 && originalYearCard) {
-          // Clonar el CardsGroup.astro template
-          const newYearCard = originalYearCard.cloneNode(true);
-          const heading = newYearCard.querySelector('h2');
-          if (heading) {
-            heading.textContent = `Resultados para: "${query}"`;
-            heading.id = 'search-results-heading';
-          }
-
-          newYearCard.setAttribute('aria-labelledby', 'search-results-heading');
-          const grid = newYearCard.querySelector('.acordes-grid');
-          if (grid) {
-            grid.setAttribute('aria-labelledby', 'search-results-heading');
-            grid.innerHTML = '';
-            matchingCards.forEach((card) => {
-              grid.appendChild(card);
-            });
-          }
-
-          resultsContainer.innerHTML = '';
-          resultsContainer.appendChild(newYearCard);
-          if (noResults) noResults.style.display = 'none';
-        }
-      } else {
-        // Sin resultados
-        resultsContainer.innerHTML = '';
-        if (searchQueryElement) {
-          searchQueryElement.textContent = `"${query}"`;
-        }
-        if (noResults) noResults.style.display = 'block';
-      }
-    }
-
-    // Escuchar Enter en el input
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        const query = searchInput.value;
-        performSearch(query);
-      }
-    });
-
-    // Limpiar búsqueda cuando se cierra el buscador
-    document.addEventListener('searchCleared', () => {
-      performSearch('');
-      searchInput.value = '';
-    });
-
-    // Escuchar evento personalizado de búsqueda desde el header
-    document.addEventListener('performSearch', (e) => {
-      const query = e.detail.query;
-      if (query) {
-        searchInput.value = query;
-        performSearch(query);
-      }
-    });
-
-    // Verificar si hay una búsqueda pendiente al cargar la página
-    const pendingSearch = sessionStorage.getItem('pendingSearch');
-    if (pendingSearch) {
-      sessionStorage.removeItem('pendingSearch');
-      performSearch(pendingSearch);
-
-      // Cerrar el input de búsqueda
-      const searchWrapper = document.querySelector('.search-wrapper');
-      const searchToggle = document.querySelector('.search-toggle');
-      const brandingTitle = document.querySelector('.branding-title');
-
-      if (searchWrapper) {
-        searchWrapper.classList.add('collapsed');
-      }
-      if (searchToggle) {
-        searchToggle.classList.remove('hidden');
-      }
-      if (window.innerWidth <= 640 && brandingTitle) {
-        brandingTitle.classList.remove('is-hidden');
-      }
-    }
-  }
-
-  document.addEventListener('astro:page-load', initSearch);
-</script>
