@@ -539,14 +539,14 @@ import { Icon } from 'astro-icon/components';
             // Guardar el término de búsqueda en sessionStorage
             sessionStorage.setItem('pendingSearch', query);
 
-            // Si no estamos en el index, navegar allí
-            if (window.location.pathname !== '/') {
+            // Navegar a la página de búsqueda sin queryParams
+            if (window.location.pathname !== '/buscar') {
               import('astro:transitions/client').then(({ navigate }) => {
-                navigate('/');
+                navigate('/buscar');
               });
             } else {
-              // Si ya estamos en el index, disparar evento de búsqueda
-              document.dispatchEvent(new CustomEvent('performSearch', { detail: { query } }));
+              // Si ya estamos en /buscar, recargar la página
+              window.location.reload();
             }
           }
         }

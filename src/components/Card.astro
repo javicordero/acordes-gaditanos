@@ -128,17 +128,20 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
 
   .badge {
     font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
     letter-spacing: 0.2px;
     font-weight: 500;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     max-width: 95%;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 
   header > .badge {
     border-radius: 6px 0 6px 0;
-    font-size: 17px;
+    font-size: 1.25rem;
     padding: 6px 10px;
 
     &[data-pieza-type='presentacion'] {
@@ -172,7 +175,7 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
       border-radius: 0 6px 0 6px;
       color: var(--autor-color);
       background-color: var(--autor-bg);
-      font-size: 13px;
+      font-size: 1.1rem;
       padding: 4px 8px;
     }
   }
@@ -196,12 +199,12 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
     }
 
     header > .badge {
-      font-size: 15px;
+      font-size: 1.1rem;
       padding: 4px 8px;
     }
 
     footer > .badge {
-      font-size: 11px;
+      font-size: 0.85rem;
       padding: 4px 8px;
     }
   }
