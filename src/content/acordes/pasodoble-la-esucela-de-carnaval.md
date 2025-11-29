@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: La esucela de carnaval
+agrupacion: La escuela de carnaval
 year: 2008
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
