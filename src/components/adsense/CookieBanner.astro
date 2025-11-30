@@ -11,9 +11,8 @@ const CONSENT_KEY = 'ag_cookie_consent';
   <div class='cookie-banner__inner'>
     <div class='cookie-banner__title'><strong>🍪 Usamos cookies</strong></div>
     <p>
-      En <strong>acordesgaditanos.com</strong> utilizamos cookies propias y de terceros (como Google
-      AdSense) para mostrar anuncios personalizados y analizar el tráfico. Puedes aceptar o rechazar
-      las cookies. Más info en nuestra
+      En <strong>acordesgaditanos.com</strong> utilizamos cookies propias y de terceros para mostrar
+      anuncios personalizados y analizar el tráfico. Más info en nuestra
       <a href='/politica-de-cookies'>Política de Cookies</a>.
     </p>
     <div class='cookie-banner__actions'>
@@ -55,7 +54,6 @@ const CONSENT_KEY = 'ag_cookie_consent';
   }
 
   .cookie-banner__actions {
-    margin-top: 8px;
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
@@ -115,10 +113,10 @@ const CONSENT_KEY = 'ag_cookie_consent';
 <script>
   const CONSENT_KEY = 'ag_cookie_consent';
   const SESSION_KEY = CONSENT_KEY + '_session';
+  const BANNER_INITIALIZED_ATTR = 'data-ag-cookie-banner-initialized';
 
   function getAcceptedConsent() {
     try {
-      // Solo miramos si hay "accepted" persistente
       const cookieMatch = document.cookie
         .split('; ')
         .find((row) => row.startsWith(CONSENT_KEY + '='));
@@ -150,9 +148,7 @@ const CONSENT_KEY = 'ag_cookie_consent';
 
   function clearPersistentConsent() {
     try {
-      // Borrar cookie (caducada)
       document.cookie = `${CONSENT_KEY}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax`;
-      // Borrar localStorage
       localStorage.removeItem(CONSENT_KEY);
     } catch (e) {
       console.error('Error limpiando consentimiento persistente', e);
@@ -176,43 +172,60 @@ const CONSENT_KEY = 'ag_cookie_consent';
     }
   }
 
+  function updateBannerVisibility(banner) {
+    const accepted = getAcceptedConsent() === 'accepted';
+    const rejectedSession = hasRejectedThisSession();
+
+    // - Si hay "accepted" → no mostrar banner
+    // - Si hay "rechazado en esta sesión" → no mostrar banner
+    // - Si nada → mostrar banner SIEMPRE
+    if (!accepted && !rejectedSession) {
+      banner.style.display = 'block';
+    } else {
+      banner.style.display = 'none';
+    }
+  }
+
   function initCookieBanner() {
     const banner = document.getElementById('cookie-banner');
     const acceptBtn = document.getElementById('accept-cookies');
     const rejectBtn = document.getElementById('reject-cookies');
     if (!banner || !acceptBtn || !rejectBtn) return;
 
-    const accepted = getAcceptedConsent() === 'accepted';
-    const rejectedSession = hasRejectedThisSession();
-
-    // 🔥 Lógica:
-    // - Si hay "accepted" → no mostrar banner
-    // - Si hay "rechazado en esta sesión" → no mostrar banner
-    // - Si nada → mostrar banner
-    if (!accepted && !rejectedSession) {
-      banner.style.display = 'block';
+    // Evitar duplicar listeners cuando hay varias navegaciones SPA
+    if (banner.getAttribute(BANNER_INITIALIZED_ATTR) === 'true') {
+      updateBannerVisibility(banner);
+      return;
     }
+    banner.setAttribute(BANNER_INITIALIZED_ATTR, 'true');
+
+    updateBannerVisibility(banner);
 
     acceptBtn.addEventListener('click', () => {
-      setAcceptedConsent(); // Persistente
-      sessionStorage.removeItem(SESSION_KEY); // Por si acaso
+      setAcceptedConsent(); // persistente
+      sessionStorage.removeItem(SESSION_KEY);
       banner.style.display = 'none';
       window.dispatchEvent(new CustomEvent('ag:cookies-accepted'));
     });
 
     rejectBtn.addEventListener('click', () => {
-      clearPersistentConsent(); // Nos aseguramos de NO persistir el rechazo
-      setRejectedThisSession(); // Solo esta sesión
+      clearPersistentConsent(); // nos aseguramos de no persistir rechazo
+      setRejectedThisSession(); // solo esta sesión
       banner.style.display = 'none';
       window.dispatchEvent(new CustomEvent('ag:cookies-rejected'));
     });
 
-    // Reabrir banner desde Política de Cookies
+    // Reabrir banner desde enlace o botón
     window.addEventListener('ag:open-cookie-banner', () => {
-      banner.style.display = 'block';
+      updateBannerVisibility(banner);
     });
   }
 
+  // 🔥 Clave con ClientRouter:
+  // se dispara en la primera carga y en cada navegación interna
+  document.addEventListener('astro:page-load', initCookieBanner);
+
+  // Por compatibilidad si algún día quitas ClientRouter:
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCookieBanner);
   } else {
