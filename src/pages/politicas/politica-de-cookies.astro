@@ -1,0 +1,195 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const PAGE_TITLE = 'Política de Cookies | Acordes Gaditanos';
+---
+
+<Layout title={PAGE_TITLE} description='Política de cookies de acordesgaditanos.com'>
+  <div class='main-container'>
+    <article class='colaborar-card container-layout' aria-labelledby='cookies-title'>
+      <header>
+        <h2 id='cookies-title'>POLÍTICA DE COOKIES</h2>
+      </header>
+      <div class='colaborar-body' role='region' aria-labelledby='cookies-title'>
+        <header>
+          <p><strong>Última actualización:</strong> 30/11/2025</p>
+        </header>
+        <p>
+          En <strong>acordesgaditanos.com</strong> utilizamos cookies y tecnologías similares para mejorar
+          la experiencia del usuario, analizar el tráfico y mostrar anuncios personalizados mediante
+          Google AdSense.
+        </p>
+
+        <h3>1. ¿Qué son las cookies?</h3>
+        <p>
+          Las cookies son pequeños archivos de texto que se almacenan en tu navegador cuando visitas
+          determinadas páginas web. Sirven para recordar información sobre tu visita, como tus
+          preferencias o si ya has iniciado sesión.
+        </p>
+
+        <h3>2. Tipos de cookies que utilizamos</h3>
+
+        <h4>2.1. Cookies técnicas (necesarias)</h4>
+        <p>
+          Son aquellas imprescindibles para el funcionamiento de la web y la prestación de los
+          servicios ofrecidos. No requieren tu consentimiento.
+        </p>
+
+        <h4>2.2. Cookies de análisis</h4>
+        <p>
+          Permiten cuantificar el número de usuarios y realizar la medición y análisis estadístico
+          de la utilización que hacen los usuarios del servicio (por ejemplo, páginas más visitadas,
+          tiempo de permanencia, etc.).
+        </p>
+
+        <h4>2.3. Cookies de publicidad (Google AdSense)</h4>
+        <p>
+          Utilizadas por Google AdSense para mostrar anuncios relevantes para ti, en función de tu
+          navegación y tu perfil. Estas cookies requieren tu consentimiento expreso antes de ser
+          instaladas.
+        </p>
+        <p>
+          Google puede usar identificadores únicos, cookies propias y de terceros para personalizar
+          los anuncios y medir su rendimiento. Más información en la{' '}
+          <a
+            href='https://policies.google.com/technologies/ads'
+            target='_blank'
+            rel='noopener noreferrer'>
+            política de tecnologías publicitarias de Google
+          </a>.
+        </p>
+
+        <h3>3. Gestión de cookies</h3>
+        <p>
+          En el banner de cookies puedes <strong>aceptar</strong> o <strong>rechazar</strong> las cookies
+          de forma sencilla. También puedes modificar tu elección en cualquier momento borrando las cookies
+          de tu navegador o usando el siguiente enlace:
+        </p>
+
+        <p>
+          <a
+            href='/'
+            onclick="event.preventDefault(); window.dispatchEvent(new CustomEvent('ag:open-cookie-banner'));">
+            Cambiar preferencias de cookies
+          </a>
+        </p>
+
+        <h3>4. Revocación del consentimiento</h3>
+        <p>
+          Puedes cambiar o retirar tu consentimiento en cualquier momento, configurando de nuevo tus
+          preferencias o eliminando las cookies almacenadas en tu navegador.
+        </p>
+
+        <h3>5. Responsable del tratamiento</h3>
+        <p>
+          <strong>Responsable:</strong> Javier Cordero Toscano<br />
+          <strong>Email de contacto:</strong> acordesgaditanos@gmail.com<br />
+          <strong>Sitio web:</strong> https://acordesgaditanos.com
+        </p>
+      </div>
+    </article>
+  </div>
+  <style>
+    .colaborar-card {
+      position: relative;
+      background: var(--card-background-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      max-height: max-content;
+      gap: 32px;
+      padding: var(--card-padding);
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        z-index: -1;
+      }
+    }
+
+    header {
+      & h2 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 1.625rem;
+        position: relative;
+        max-width: fit-content;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+          width: 90%;
+          height: 4px;
+          background: var(--primary-contrast-color);
+        }
+      }
+    }
+
+    .colaborar-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-weight: 400;
+      color: var(--text-color);
+      line-height: 1.6rem;
+
+      & ul {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 0;
+        padding-left: 16px;
+
+        & li {
+          margin: 0;
+          font-size: 0.95rem;
+        }
+      }
+
+      & a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      & a:hover {
+        color: var(--link-hover-color);
+      }
+    }
+
+    footer {
+      & .note {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .colaborar-card {
+        flex-direction: column;
+        gap: 16px;
+        padding: var(--card-padding-sm);
+
+        & > header {
+          flex: none;
+        }
+
+        & > header h2::after {
+          height: 3px;
+          bottom: -3px;
+        }
+      }
+    }
+  </style>
+</Layout>

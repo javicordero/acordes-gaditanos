@@ -1,0 +1,239 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const PAGE_TITLE = 'Política de Privacidad | Acordes Gaditanos';
+---
+
+<Layout title={PAGE_TITLE} description='Política de privacidad de acordesgaditanos.com'>
+  <div class='main-container'>
+    <article class='privacidad-card container-layout' aria-labelledby='privacidad-title'>
+      <header>
+        <h2 id='privacidad-title'>POLÍTICA DE PRIVACIDAD</h2>
+      </header>
+
+      <p class='note'><strong>Última actualización:</strong> 30/11/2025</p>
+      <div class='privacidad-body' role='region' aria-labelledby='privacidad-title'>
+        <section>
+          <h3>1. Responsable del tratamiento</h3>
+          <p>
+            <strong>Responsable:</strong> Javier Cordero Toscano<br />
+            <strong>Email de contacto:</strong> acordesgaditanos@gmail.com<br />
+            <strong>Actividad:</strong> Programador web (Epígrafe 763)<br />
+            <strong>Web:</strong> https://acordesgaditanos.com
+          </p>
+        </section>
+
+        <section>
+          <h3>2. Datos que recopilamos</h3>
+          <h4>2.1. Datos de navegación</h4>
+          <p>
+            De forma automática, se recoge información relacionada con la navegación: dirección IP
+            (que puede ser anonimizida por los proveedores), tipo de dispositivo, navegador
+            utilizado, páginas visitadas y tiempo de permanencia.
+          </p>
+
+          <h4>2.2. Cookies y tecnologías similares</h4>
+          <p>
+            La web utiliza cookies propias y de terceros para recordar tus preferencias, analizar
+            tráfico y mostrar anuncios personalizados (Google AdSense). Puedes obtener más
+            información en nuestra
+            <a href='/politicas/politica-de-cookies'>Política de Cookies</a>.
+          </p>
+
+          <h4>2.3. Formularios de contacto o comentarios</h4>
+          <p>
+            Si contactas por correo u otros formularios, podremos recoger tu nombre, email y el
+            contenido de tu mensaje, únicamente para responder a tu consulta.
+          </p>
+        </section>
+
+        <section>
+          <h3>3. Finalidad del tratamiento</h3>
+          <ul>
+            <li>Permitir el funcionamiento y mantenimiento de la web.</li>
+            <li>Analizar el tráfico y uso del sitio para mejorar contenidos.</li>
+            <li>
+              Mostrar anuncios personalizados a través de Google AdSense (cuando exista
+              consentimiento).
+            </li>
+            <li>Responder a las consultas realizadas por los usuarios.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>4. Legitimación del tratamiento</h3>
+          <ul>
+            <li>
+              <strong>Ejecución de un contrato / prestación de servicio:</strong> en el caso de responder
+              a tus consultas.
+            </li>
+            <li>
+              <strong>Interés legítimo:</strong> mantener la seguridad y el correcto funcionamiento de
+              la web (cookies técnicas).
+            </li>
+            <li>
+              <strong>Consentimiento:</strong> para el uso de cookies de análisis y publicidad (Google
+              AdSense).
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>5. Cesión de datos y terceros</h3>
+          <p>
+            Tus datos podrán ser tratados por terceros proveedores que ofrecen servicios necesarios
+            para el funcionamiento de la web, como:
+          </p>
+          <ul>
+            <li>Proveedor de hosting.</li>
+            <li>Google Ireland Limited, para servicios de publicidad y analítica.</li>
+          </ul>
+          <p>
+            Google actúa como proveedor de servicios de publicidad (AdSense) y puede tratar datos
+            personales según sus propias políticas de privacidad:
+            <a href='https://policies.google.com/privacy' target='_blank' rel='noopener noreferrer'>
+              https://policies.google.com/privacy
+            </a>
+          </p>
+        </section>
+
+        <section>
+          <h3>6. Conservación de los datos</h3>
+          <p>
+            Los datos se conservan durante el tiempo necesario para cumplir la finalidad para la que
+            se recogieron o hasta que solicites su supresión, así como el tiempo requerido para
+            cumplir con obligaciones legales.
+          </p>
+        </section>
+
+        <section>
+          <h3>7. Derechos de los usuarios</h3>
+          <p>Puedes ejercer tus derechos de:</p>
+          <ul>
+            <li>Acceso</li>
+            <li>Rectificación</li>
+            <li>Supresión</li>
+            <li>Limitación</li>
+            <li>Oposición</li>
+            <li>Portabilidad</li>
+          </ul>
+          <p>
+            Enviando una solicitud al email: acordesgaditanos@gmail.com, indicando claramente qué
+            derecho quieres ejercer. También tienes derecho a presentar una reclamación ante la
+            Agencia Española de Protección de Datos (AEPD).
+          </p>
+        </section>
+
+        <section>
+          <h3>8. Medidas de seguridad</h3>
+          <p>
+            Se han adoptado medidas técnicas y organizativas razonables para proteger los datos
+            personales frente a pérdida, uso indebido, acceso no autorizado, divulgación, alteración
+            y destrucción.
+          </p>
+        </section>
+      </div>
+    </article>
+  </div>
+
+  <style>
+    .privacidad-card {
+      position: relative;
+      background: var(--card-background-color);
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      max-height: max-content;
+      gap: 24px;
+      padding: var(--card-padding);
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 8px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        z-index: -1;
+      }
+    }
+
+    header {
+      & h2 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 1.625rem;
+        position: relative;
+        max-width: fit-content;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -10px;
+          width: 90%;
+          height: 4px;
+          background: var(--primary-contrast-color);
+        }
+      }
+      & .note {
+        font-size: 0.9rem;
+        color: var(--secondary-color);
+        margin-top: 0.5rem;
+      }
+    }
+
+    .privacidad-body {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      font-weight: 400;
+      color: var(--text-color);
+      line-height: 1.7;
+
+      & section {
+        margin-bottom: 0.5rem;
+      }
+
+      & ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin: 0;
+        padding-left: 16px;
+      }
+
+      & a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      & a:hover {
+        color: var(--link-hover-color);
+      }
+    }
+
+    @media screen and (max-width: 640px) {
+      .privacidad-card {
+        flex-direction: column;
+        gap: 16px;
+        padding: var(--card-padding-sm);
+
+        & > header {
+          flex: none;
+        }
+
+        & > header h2::after {
+          height: 3px;
+          bottom: -3px;
+        }
+      }
+    }
+  </style>
+</Layout>
