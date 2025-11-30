@@ -4,16 +4,16 @@ agrupacion: Araka La Kana
 year: 2007
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://letrasdecarnaval.com/assets/images/agrupaciones/08ffed1a9dca4c1c9923407fd.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2021/02/carnaval-2007-imagenes-cadiz-fotografias-15.jpg
 cejilla: 0
-date: "25/11/2025"
+date: "03/12/2025"
 video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
 
 ---
 <pre>
 <a>Mim</a>                                               <a>Si7</a>
 Hoy cambio la forma a esta comparsa triste y a su son
-                      <a>Mim</a>
+                                            <a>Mim</a>
 Tam también cambio otra vez de grupo el Aragón,
                    <a>Mi7</a>   <a>Lam</a>
 Y en la vida que es una canción
@@ -28,12 +28,12 @@ que se le hace al alma, y a su corazón
 Ay tierra que sin ti jamás hubiera habido Carnavales
    <a>Re</a>           <a>Mim</a>
 en mi ciudad Sin ti jamás.
-                        <a>Re</a>
+                                <a>Re</a>
 No hubiera nacido la Murga Compañera
                 <a>Do</a>
 la que nos da la vida y nos libera
   <a>Re</a>                        <a>Do</a>
-cuando llega Febrero y se aparca el tiempo
+cuando llega Febrero y se aparca el tiempoñ
   <a>Re</a>                         <a>Do</a>
 y solo suena nuestra voz que siempre grita
                 <a>Re</a>    <a>Do</a>
@@ -65,6 +65,6 @@ También tuvo la culpa el dolor que en mi alma
                 <a>Mim</a>
 dejara el amor de aquella Gaditana
      <a>Si7</a>                          <a>Mim</a> <a>Do</a> <a>Si7</a> <a>Mim</a>
-de la que nació, Araka, Araka la Kana
+de la que nació, Araka, Araka la Kana ahhh ahhhh
 </pre>
 </pre>

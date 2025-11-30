@@ -4,9 +4,9 @@ agrupacion: 1800 Los Inmortales
 year: 2004
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQafUw5mqPhjwK8X7MMC6K7pXxUH59IThXfABcDlIBYDU-WfIFOgngA7aoekQaVmym8-6IZXjE1sRqsoussaoRqioM9dFEhXXEkxcgJo6Nt992KeU9Hm3gCv_5Vm8vw64M77K1II5uhc53XnnxhA2nZkgifz4iTYx-DXtwtB6wurS0XujnMS7r4kQl0FSR/s320/1800_Los_inmortales.jpg
-cejilla: 2
-date: "25/11/2025"
+img: https://www.torrenet.xyz/spotycai/media/Juan%20Carlos%20Aragon/Comparsas/2004%201800%20Los%20Inmortales/Cover.jpg
+cejilla: 1
+date: "03/12/2025"
 video: 'https://www.youtube.com/embed/MQE7wRVr3Eg?si=Prn0X80kz7cvgAYM'
 
 ---

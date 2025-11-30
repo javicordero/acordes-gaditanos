@@ -6,7 +6,7 @@ musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://static.grupojoly.com/clip/747cc167-f904-46c6-8ba5-013ad1b042ad_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
-date: "25/11/2025"
+date: "03/12/2025"
 video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
 
 ---
