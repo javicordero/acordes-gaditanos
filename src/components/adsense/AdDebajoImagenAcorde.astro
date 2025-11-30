@@ -1,0 +1,59 @@
+<!-- Contenedor del anuncio -->
+<div class='ad-container'>
+  <!-- <h2 class='visually-hidden'>Anuncio</h2> -->
+  <!-- Contenedor del anuncio (sin script, legal antes de aceptar cookies) -->
+
+  <ins
+    class='adsbygoogle'
+    style='display:block; text-align:center;'
+    data-ad-client='ca-pub-3280015847198273'
+    data-ad-slot='8580444586'
+    data-ad-layout='in-article'
+    data-ad-format='fluid'></ins>
+</div>
+
+<style>
+  .ad-container {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script is:inline>
+  function loadAdsenseScript() {
+    if (document.getElementById('adsense-script')) return;
+
+    const s = document.createElement('script');
+    s.async = true;
+    s.src =
+      'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3280015847198273';
+    s.crossOrigin = 'anonymous';
+    s.id = 'adsense-script';
+    document.head.appendChild(s);
+  }
+
+  function initAllAds() {
+    if (localStorage.getItem('ag_cookie_consent') !== 'accepted') return;
+
+    loadAdsenseScript();
+
+    window.adsbygoogle = window.adsbygoogle || [];
+
+    document.querySelectorAll('ins.adsbygoogle').forEach((ins) => {
+      // Este atributo lo añade AdSense cuando ya ha pintado ese bloque
+      if (!ins.getAttribute('data-adsbygoogle-status')) {
+        window.adsbygoogle.push({});
+      }
+    });
+  }
+
+  // Al cargar la página
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAllAds);
+  } else {
+    initAllAds();
+  }
+
+  // Cuando el usuario acepta las cookies
+  window.addEventListener('ag:cookies-accepted', initAllAds);
+</script>

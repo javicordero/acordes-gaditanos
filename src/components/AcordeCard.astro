@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
+import AdDebajoImagenAcorde from './adsense/AdDebajoImagenAcorde.astro';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -61,6 +62,7 @@ const headingId = `acorde-${slug}`;
         loading='lazy'
         decoding='async'
       />
+
       <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
         {musica}
       </figcaption>
@@ -69,6 +71,10 @@ const headingId = `acorde-${slug}`;
       </figcaption>
     </figure>
   </header>
+
+  <!-- <section class='ad-wrapper'>
+    <AdDebajoImagenAcorde />
+  </section> -->
 
   <section class='acorde-content' role='region' aria-labelledby={headingId}>
     <div class='acorde-meta'>
@@ -198,6 +204,15 @@ const headingId = `acorde-${slug}`;
     padding: 6px 8px;
   }
 
+  .ad-wrapper {
+    margin: auto;
+    margin-top: 8px;
+    margin-bottom: 0;
+    width: 420px;
+    height: 180px;
+    background-color: red;
+  }
+
   .badge {
     max-width: 80%;
   }
@@ -275,6 +290,10 @@ const headingId = `acorde-${slug}`;
       gap: 8px;
       padding: var(--card-padding-sm) var(--card-padding-sm) 0 var(--card-padding-sm);
     }
+
+    h2::after {
+      height: 3px;
+    }
     .autores {
       font-size: 0.9rem;
     }
@@ -284,17 +303,20 @@ const headingId = `acorde-${slug}`;
     }
 
     figure {
-      max-width: 260px;
+      max-width: 270px;
       width: 100%;
       margin: 8px auto auto auto;
 
       & img {
-        min-height: 170px;
+        min-height: 185px;
       }
     }
 
-    h2::after {
-      height: 3px;
+    .ad-wrapper {
+      width: 320px;
+      width: 85%;
+      max-width: 420px;
+      height: 120px;
     }
 
     figcaption {
@@ -316,10 +338,6 @@ const headingId = `acorde-${slug}`;
     .acorde-content :global(pre) {
       font-size: 0.8rem;
       line-height: 1.15rem;
-    }
-
-    figure {
-      max-width: 240px;
     }
   }
 

@@ -43,7 +43,12 @@ const description = `Todos los acordes y letras del Carnaval de Cádiz ${year}. 
   <Breadcrumb year={year} />
   <div class='main-container container-layout'>
     <article>
-      <YearCard year={year} acordes={acordesOrdenados} />
+      <YearCard
+        year={year}
+        acordes={acordesOrdenados}
+        showAdEsquinaSupDerecha={true}
+        isYearPage={true}
+      />
     </article>
   </div>
 </Layout>

@@ -1,6 +1,7 @@
 ---
+import AdEsquinaCard from './adsense/AdEsquinaCard.astro';
 import Card from './Card.astro';
-const { year, acordes } = Astro.props;
+const { year, acordes, showAdEsquinaSupDerecha, isYearPage } = Astro.props;
 
 // Generar ID estable para accesibilidad
 const headingId = `year-${year}`;
@@ -8,7 +9,17 @@ const headingId = `year-${year}`;
 
 <article class='year-group' aria-labelledby={headingId}>
   <header>
-    <h2 id={headingId} class='is-title-minus'>{year}</h2>
+    <div class='title-wrapper'>
+      <h2 id={headingId} class='is-title-minus'>{year}</h2>
+    </div>
+
+    {
+      showAdEsquinaSupDerecha && (
+        <div class={`ad-wrapper${isYearPage ? ' year-card' : ''}`}>
+          <AdEsquinaCard />
+        </div>
+      )
+    }
   </header>
 
   <div class='acordes-grid' role='region' aria-labelledby={headingId}>
@@ -34,6 +45,10 @@ const headingId = `year-${year}`;
 </article>
 
 <style>
+  :root {
+    --ad-width-md: 234px;
+    --ad-width-sm: 170px;
+  }
   .year-group {
     position: relative;
     background: var(--card-background-color);
@@ -59,6 +74,11 @@ const headingId = `year-${year}`;
   }
 
   header {
+    position: relative;
+
+    & .title-wrapper {
+      max-width: calc(100% - var(--ad-width-md));
+    }
     & h2 {
       position: relative;
       color: var(--primary-color);
@@ -78,6 +98,17 @@ const headingId = `year-${year}`;
         height: 4px;
         background: var(--primary-contrast-color);
       }
+    }
+
+    & .ad-wrapper {
+      position: absolute;
+      top: -16px;
+      right: 0;
+
+      width: var(--ad-width-md); /* tamaño que definiste */
+      flex-shrink: 0; /* evita que se reduzca */
+      height: 60px;
+      background-color: red;
     }
   }
 
@@ -110,6 +141,26 @@ const headingId = `year-${year}`;
       & h2::after {
         height: 3px;
         bottom: -3px;
+      }
+
+      & .title-wrapper {
+        max-width: calc(100% - var(--ad-width-sm) + 6px);
+      }
+
+      & .ad-wrapper {
+        top: -12px;
+        right: -12px;
+        width: var(--ad-width-sm);
+        height: 60px;
+        min-height: 50px;
+        max-height: 60px;
+        height: -webkit-fill-available;
+      }
+
+      & .year-card {
+        width: 234px;
+        height: 50px;
+        right: 0;
       }
     }
   }
