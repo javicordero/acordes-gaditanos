@@ -8,7 +8,7 @@ img: https://letrasdecarnaval.com/assets/images/agrupaciones/bbcc87c7dc2b474dd16
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/zw-NrqhwiJs?si=dC04Slv5vvJJOBYP'
-
+fraseClave: Cállate, guarda tu condena
 ---
 <pre>
 <a>Sol</a>                               <a>Re7</a>      <a>Sol</a>

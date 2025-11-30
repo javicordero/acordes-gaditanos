@@ -7,7 +7,7 @@ letra: Juan Carlos Aragón
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRldfgOpqE_mqMGRoY3KwLyk1SduRF0Jr0xvg&s
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/pjc0FHRKZRA?feature=player_embedded'
+video: 'https://www.youtube.com/embed/Kmz6jADMW-U?si=2D-xxxUu8q1Ou3UV'
 
 ---
 <pre>
