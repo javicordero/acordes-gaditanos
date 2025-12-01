@@ -62,8 +62,8 @@ const headingId = `acorde-${slug}`;
         loading='lazy'
         decoding='async'
         transition:name={`img-${slug}`}
-        width={360}
-        height={480}
+        width={480}
+        height={320}
       />
 
       <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
@@ -184,11 +184,12 @@ const headingId = `acorde-${slug}`;
     border-radius: 8px;
     width: 100%;
     min-height: 225px;
+    max-height: 240px;
     object-fit: cover;
     display: block;
     /* Optimizaciones de performance */
     content-visibility: auto;
-    contain-intrinsic-size: 360px 480px;
+    contain-intrinsic-size: 482px 320px;
   }
 
   figcaption {
@@ -289,12 +290,18 @@ const headingId = `acorde-${slug}`;
     }
 
     figure {
-      max-width: 260px;
+      max-width: 340px;
+      height: 100%;
       width: 100%;
       margin: 8px auto auto auto;
 
       & img {
-        min-height: 170px;
+        min-height: 150px;
+        max-height: 170px;
+        /* width: 250px;
+        max-height: 200px;
+        max-height: 170px;
+          /* min-height: 170px; */
       }
     }
 
