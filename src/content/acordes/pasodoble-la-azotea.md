@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: La Azotea
 year: 2017
-musica: Hermanos Carapapas
-letra: Hermanos Carapapas
+musica: Los Carapapa
+letra: Los Carapapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/nico-garcia-la-azotea.jpeg
 cejilla: 3
 date: "25/11/2025"

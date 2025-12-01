@@ -2,8 +2,8 @@
 pieza: Final de Popurrí
 agrupacion: Los muñecos de Cádiz
 year: 2011
-musica: Hermanos Carapapas
-letra: Hermanos Carapapas
+musica: Los Carapapa
+letra: Los Carapapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1299832509-munecos.jpeg
 cejilla: 0
 date: "25/11/2025"
