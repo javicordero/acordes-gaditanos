@@ -4,7 +4,7 @@ agrupacion: Las Ratas
 year: 2025
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://static.grupojoly.com/clip/a8b61531-6c35-44d1-bfcf-42efbc6f5efc_source-aspect-ratio_1600w_0.jpg
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/03/05/ratas-R0eL5wy91ngmWwGP4ms8iYK-1200x840@abc.jpg
 cejilla: 1
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/zpAP3fNLL5Q?si=LypGaLiUJFH4PqyE'

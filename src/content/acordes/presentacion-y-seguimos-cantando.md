@@ -4,7 +4,7 @@ agrupacion: Y seguimos cantando
 year: 2024
 musica: El Tomate
 letra: El Piru
-img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/25/25012024-yseguimoscantando-041.jpg
+img: https://static.grupojoly.com/clip/23abf22b-3b83-4968-bee0-24119b912229_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/If4hR1dfB8s?si=41HBe58Uy7xnoFZW'

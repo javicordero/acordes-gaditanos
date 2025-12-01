@@ -4,7 +4,7 @@ agrupacion: Carretera y manta
 year: 2021
 musica: David Carapapa
 letra: David Carapapa
-img: https://static.grupojoly.com/clip/02908232-1f2a-4f4e-8c34-3d4be70709c3_source-aspect-ratio_1600w_0.jpg
+img: https://www.lavozdelsur.es/uploads/s1/78/44/34/david-carapapa.jpeg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/OZOQ1jyV8vY'

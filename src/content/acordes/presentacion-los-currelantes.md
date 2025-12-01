@@ -4,7 +4,7 @@ agrupacion: Los Currelantes
 year: 2011
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comparsa_8de91ccecaa259579f4184ce2f632609.jpeg
+img: https://static.grupojoly.com/clip/1f89f490-9f4f-438a-8145-c577a042d573_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/51qUCrFAGG4?feature=player_embedded'

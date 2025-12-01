@@ -4,7 +4,7 @@ agrupacion: Los Viajantes
 year: 2022
 musica: José Luis Bustelo
 letra: José Luis Bustelo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPLH9Gh-_0_Ocws2w4mP7-XhjfWQIry-BHEX2a97-n6QPnmxBOdiAZwHyDodTJjHvoh3wxOxHUNyWR7YfLLuXOUFvSbjzBaIjjiXbYeJqWRoN2ON2wneicP8J6Gvc9_-RM2PAi_KNWUoozmejNNGYhR0eBbpELFi8E7qE4DYzYTDRtyZnJD17JCwj1dg/s320/viajantes.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/24052022-los-viajantes-080-scaled.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qouI91bo7eI'

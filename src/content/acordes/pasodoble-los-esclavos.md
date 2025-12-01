@@ -4,7 +4,7 @@ agrupacion: Los Esclavos
 year: 2023
 musica: Raúl Cabrera
 letra: Raúl Cabrera
-img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/01022023-los-esclavos-095-scaled.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/17022023-los-esclavos-041-scaled.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/k_kKNVmFaIA'

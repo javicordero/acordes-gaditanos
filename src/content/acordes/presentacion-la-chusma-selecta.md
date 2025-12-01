@@ -4,7 +4,7 @@ agrupacion: La chusma selecta
 year: 2020
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://static.grupojoly.com/clip/24b6502e-b51d-4425-9912-24d567b5f4bd_source-aspect-ratio_1600w_0.jpg
+img: https://ondacadiz.es/sites/default/files/styles/webp/public/noticias/2020-03/imagenes/la%20chusma%20selecta-036.jpg.webp?itok=uwKtOjS0
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/0WPwGX_qfQ8?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: Las Maleducadas
 year: 2025
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://static.grupojoly.com/clip/ba8a8766-a743-409a-8086-a05da93c4f20_source-aspect-ratio_1600w_0.jpg
+img: https://cadiznoticias.es/wp-content/uploads/2025/01/LAS-MALEDUCADAS-GABINETE-DE-PRENSA-DEL-AYUNTAMIENTO-DE-CADIZ-Foto-Reyna-12-1024x683.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/3_GRFI-KXn8?si=MoxCIrulIIzuuwPr'

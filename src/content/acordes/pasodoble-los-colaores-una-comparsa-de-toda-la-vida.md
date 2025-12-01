@@ -4,7 +4,7 @@ agrupacion: Los Colaores, una comparsa de toda la vida
 year: 2023
 musica: Nene Cheza
 letra: Nene Cheza
-img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/02022023-los-colaores-086-scaled.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/16022023-los-colaores-010-scaled.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/maeE5d51OaY'

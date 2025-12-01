@@ -4,7 +4,7 @@ agrupacion: Los mi alma
 year: 2023
 musica: El Bizcocho
 letra: El Bizcocho
-img: https://elrincondelcarnaval.com/wp-content/uploads/2023/01/24012023-los-mi-alma-066-scaled.jpg
+img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/02/18/alma(3)-U21246645120PKu-1200x840@abc.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/g1OK_EWgi3s'

@@ -4,7 +4,7 @@ agrupacion: Frente talibán de la republica irreverente de Kadi Kadistan
 year: 2023
 musica: Vera Luque
 letra: Vera Luque
-img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/03022023-frente-taliban-064-scaled.jpg
+img: https://www.codigocarnaval.com/wp-content/uploads/2022/11/chirigota-frente-taliban-de-la-republica-irreverente-de-kadikadistan.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/jwrgDkn016k?si=ikGHhthAF1dHtLsl'

@@ -4,7 +4,7 @@ agrupacion: Una comparsa divina
 year: 2020
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://www.larinconada.es/contenidos/noticias/20/10244-001-7-1.jpg
+img: https://www.espectaculosvertigo.com/wp-content/uploads/06-La-Eterna-Banda.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/UMV720MQxNY?si=dCMLgStFyDaxkNUi'

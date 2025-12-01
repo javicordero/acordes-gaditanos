@@ -2,7 +2,7 @@
 pieza: Presentación
 agrupacion: Los Colgaos
 year: 2024
-img: https://ondacadiz.es/sites/default/files/styles/webp/public/noticias/2024-02/imagenes/31012024-los%20colgaos-103.jpg.webp?itok=pLNnvgm-
+img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/10/10022024-loscolgaos-027-R4b6JsDCMWX5I28A4xxfMkK-1200x840@abc.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'

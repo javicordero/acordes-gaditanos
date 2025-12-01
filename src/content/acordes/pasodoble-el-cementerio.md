@@ -4,7 +4,7 @@ agrupacion: El Cementerio
 year: 2025
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://ondacadiz.es/sites/default/files/styles/webp/public/noticias/2025-02/imagenes/ComparsaElcementerio13.jpg.webp?itok=brHQWfHf
+img: https://www.canalsur.es/resources/archivos_offline/2025/3/1/1740788050784ComparsaElCementerio_1024x576.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=84BDvb3S5ZY2rE5T'

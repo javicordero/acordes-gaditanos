@@ -4,7 +4,7 @@ agrupacion: Los Cantananas
 year: 2022
 musica: José Antonio Cheza
 letra: José Antonio Cheza
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2022/Comparsa%20los%20cantananas%200008.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2022/Comparsa%20los%20cantananas%200012.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vkrW30aatrc'

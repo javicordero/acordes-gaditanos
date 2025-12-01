@@ -4,7 +4,7 @@ agrupacion: Los buscadores
 year: 2019
 musica: Fran Quintana
 letra: Fran Quintana
-img: https://static.grupojoly.com/clip/2974bd27-31fb-4a53-b9bf-8873c3dc138d_source-aspect-ratio_1600w_0.jpg
+img: https://static.grupojoly.com/clip/0791eaf9-0428-4435-889c-152fe4c8271d_source-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/5lCo-f5AL5g?feature=player_embedded'

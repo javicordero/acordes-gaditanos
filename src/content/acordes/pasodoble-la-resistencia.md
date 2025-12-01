@@ -4,7 +4,7 @@ agrupacion: La Resistencia
 year: 2025
 musica: David Carapapa
 letra: David Carapapa
-img: https://static.grupojoly.com/clip/787c3a30-9f7c-4db3-b770-59584d44c3a1_source-aspect-ratio_1600w_0.jpg
+img: https://cadiznoticias.es/wp-content/uploads/2025/01/05-Comparsa-La-resistencia-Comparsa-de-David-Carapapa-GABINETE-DE-PRENSA-DEL-AYUNTAMENTO-DE-CADIZ-Foto-Reyna-9-1024x683.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/aGXdeGWhhGk?si=CLtKju9nsT8UxT-K'

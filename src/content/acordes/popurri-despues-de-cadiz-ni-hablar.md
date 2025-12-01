@@ -4,7 +4,7 @@ agrupacion: Después de Cádiz ni hablar
 year: 2022
 musica: El Tomate
 letra: Piru
-img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/17052022-despue%CC%81s-de-ca%CC%81diz-ni-hablar-020-scaled.jpg
+img: https://s2.abcstatics.com/media/MM/2022/05/28/v/Despues%20de%20Cadiz%20(1).jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/wEgaAr_AFz8'

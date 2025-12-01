@@ -4,7 +4,7 @@ agrupacion: Las del tacatá
 year: 2023
 musica: David Castro
 letra: David Castro
-img: https://elrincondelcarnaval.com/wp-content/uploads/2023/01/30012023-las-del-tacata-052-scaled.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/09022023-las-del-tacata-064-scaled.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/AjpUdP8QWmg'

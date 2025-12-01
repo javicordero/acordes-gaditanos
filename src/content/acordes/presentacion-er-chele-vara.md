@@ -4,7 +4,7 @@ agrupacion: Er chele vara
 year: 2019
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://static.grupojoly.com/clip/fc0f13d0-411d-42a7-a79f-77278d562e4b_source-aspect-ratio_1600w_0.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/er-chele-vara-2.jpg
 cejilla: 4
 date: "26/11/2025"
 video: 'https://www.youtube.com/embed/Yw9-6UhA1fE?feature=player_embedded'

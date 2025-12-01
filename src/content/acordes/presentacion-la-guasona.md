@@ -2,7 +2,7 @@
 pieza: Presentación
 agrupacion: La Guasona
 year: 2023
-img: https://elrincondelcarnaval.com/wp-content/uploads/2023/01/31012023-la-guasona-035-scaled.jpg
+img: https://static.grupojoly.com/clip/e183282f-2c22-44cf-8e36-ef7454f45500_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HaFk-MwNCo8?si=ASS9aJkZWJh0TLiI'

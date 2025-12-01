@@ -4,7 +4,7 @@ agrupacion: La Valla
 year: 2025
 musica: Mar Muñoz
 letra: Mar Muñoz
-img: https://letrasdecarnaval.com/assets/images/agrupaciones/d3f45e0a4f1295f9794c3c506.jpg
+img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/01/31/03ComparsaLavallaGABINETEDEPRENSADELAYUNTAMIENTODECDIZ-FotoReyna-13-Rej89HXJ9Jf47pp0gbo52OI-1200x840@abc.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/loEI4Cm17mY?si=eDZcNoJDX7Hj5yDO'

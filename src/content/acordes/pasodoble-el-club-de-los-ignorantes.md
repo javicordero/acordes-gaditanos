@@ -4,7 +4,7 @@ agrupacion: El Club de los ignorantes
 year: 2022
 musica: Fran Quintana
 letra: Fran Quintana
-img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/16052022-el-club-de-los-ignorantes-044-scaled.jpg
+img: https://s3.abcstatics.com/media/provincia/2022/04/04/v/1ignorantes-kjKC--1248x698@abc.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HC-wkM_W7Ds'

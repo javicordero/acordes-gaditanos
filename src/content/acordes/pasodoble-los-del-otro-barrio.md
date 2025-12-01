@@ -2,7 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los del otro barrio
 year: 2025
-img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/20/barrio(1)-U33070681630ZcT-1200x840@abc.jpg
+img: https://www.cope.es/files/og_thumbnail/uploads/2025/02/20/67b67cf778770.jpeg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iXoyBUQvGEs?si=oXgpEu0-z4J0qeYH'

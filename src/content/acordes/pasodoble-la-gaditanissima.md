@@ -4,7 +4,7 @@ agrupacion: La gaditaníssima
 year: 2019
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://static.grupojoly.com/clip/e5d52d7a-540d-41a7-987e-2b9dbbd8508c_source-aspect-ratio_1600w_0.jpg
+img: https://www.canalsur.es/resources/archivos_offline/2019/2/6/1550743445135la_gaditanisima_1024x576.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/mndWpO0Kakg?feature=player_embedded'

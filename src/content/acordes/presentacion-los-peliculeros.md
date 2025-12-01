@@ -4,7 +4,7 @@ agrupacion: Los Peliculeros
 year: 2023
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/03/03/peliculeros(5)-RtWgcQQz8J4F8bDieRWQ4vN-1200x840@abc.jpg
+img: https://static.grupojoly.com/clip/684263ee-6200-4598-8231-99026c01db51_source-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/DugGO5xh5wA?si=qzlxbzBTueBatr98'

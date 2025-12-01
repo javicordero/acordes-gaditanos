@@ -4,7 +4,7 @@ agrupacion: La ciudad invisible
 year: 2023
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://i0.wp.com/efe.com/wp-content/uploads/2023/02/rss-efe7ab3ebacdfaa016d877b6d3b4ea78e5d98b737ebw-1024x683.jpg?resize=980%2C654&ssl=1
+img: https://i.ytimg.com/vi/tpI4FrOW2JM/maxresdefault.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tpI4FrOW2JM'
