@@ -4,7 +4,7 @@ agrupacion: Los desvelaos
 year: 2018
 musica: Fran Quintana
 letra: Fran Quintana
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgcbDRtjnRX8mUFPT856AobuwrHjbGhhR4zxj1z99W1zpVLnEGzUTCQeVkojvj2yMqHP-Zr0uXbJkC2bb2cAs0gyVzxG4PJ4jvUbCYQWclhiixia4nQyKeFa6kgAsjFVjNTfkQj25viJft8/s400/Los-Desvelaos-1.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/los-desvelaos-5.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/L9WVE2zwZvE?feature=player_embedded'

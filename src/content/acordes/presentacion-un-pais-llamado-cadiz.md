@@ -4,7 +4,7 @@ agrupacion: Un país llamado Cádiz
 year: 2016
 musica: Pepito Martínez
 letra: Pepito Martínez
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhe_ja4gnuY2nxE3oDPENxuG-_5teSsoatUCZb2g0USpmNBTnWa_rp2z0qMy8YgO2kb0AMcr-zqPwWlFALPOXgtvy1azab1Zfgvvg8IYotzuuxNFO-PS4y7oRndHLVQPAdc86gLA2XS7qFbmB9mGnTgqUdJErVF-_80xH6i4ZCCVPU8GrKUtkOLCNy69g/s320/unpais.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/paisllamadocadiz-comparsa-rivas.jpeg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/hny13dKLEJE'

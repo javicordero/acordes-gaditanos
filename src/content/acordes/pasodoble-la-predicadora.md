@@ -4,7 +4,7 @@ agrupacion: La predicadora
 year: 2022
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigJ56x045FkodaZ9PWSuhaLZK7eZ7r3-9uJyrcq-7K2OKFU_eF0OO7YNHzS6OrYuX9eXs87QYhRFTX6WoD4Hd-5Lebsetkw92va_mMa5HrA_Guftybx7_AW5TA6NrSHQ74Qdc8dDZivHp0G620tuWAxkgX_dXZcdX0zT3ci3Pr8_YV28E23OoRmDZncA/s320/predicadora.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/19052022-la-predicadora-019-scaled.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/46yCMAikAW4'

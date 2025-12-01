@@ -4,7 +4,7 @@ agrupacion: OBDC! La vida es bella
 year: 2016
 musica: Germán Rendón.
 letra: Germán Rendón.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgpHOctvV4p27kAUlodVfqiaL0DgV1k3zH33AHJLjg6AZC4Sd1UpK6Z2oZl5gFHIYlx-AfYPsyN_966MQ1xmzDfMSB2SJyz6kdGBc68qYxHGZvqNJw2_O8cupHNB6YxZJdvv2JSXMT-aOjR/s400/la+vida+es+bella.jpg
+img: https://static-1.ivoox.com/audios/0/5/2/4/8301453824250_XXL.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/UIj5chFTNxI?feature=player_embedded'

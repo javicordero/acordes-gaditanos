@@ -4,7 +4,7 @@ pieza: Pasodoble
 year: 2019
 musica: El Lacio
 letra: El Lacio
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZz1DnxidaNR-8v0tt8n7_-WWKl0jIXDYJ1WINLsWk_1C9boizCgqMpU6GYA63uRlCXqo6REZ-IOYXK8qtOCKN-gG7wvSQX6kZr1-rCdcGtUdIUp827hzr8jGPatCcb3CbUC5A376DVlQp/s400/Chirigota-Daddy-Cadi.jpg
+img: https://static.grupojoly.com/clip/1102ae78-4c42-4d53-84ed-8596f4a82a84_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/oy-Vm_1sgsk?feature=player_embedded'

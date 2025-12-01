@@ -3,7 +3,8 @@ pieza: Pasodoble
 agrupacion: A los pies de la Caleta
 year: 2022
 musica: Rubén Vallejo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbZmWh1ly7MgaRW0v7-qBF1OT6WF47biAx0mIeeMoi_i30M5IEqDzTFsA4RluPjZXP5hLq3eyr2VEXWG0EtNILiq8ScJ6kUghW4KfqXgZltWLNx-Rb0Cuq-RQYTwRx2B_BSMfJab9BxekBIcNldxl2eQ7sEMae6adPLCaa8BRwFYjZBAuAyFgqBCVlGg/s320/alospies.jpg
+letra: Rubén Vallejo
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/14052022-a-los-pies-de-la-caleta-1-013-scaled.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NFrDqSF41tk'

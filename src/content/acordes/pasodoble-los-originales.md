@@ -4,7 +4,7 @@ agrupacion: Los Originales
 year: 2022
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_n5iZPh2ou2BoqddTr99859OhCOaxxQmpzSeNs9NC7Gok4fWsGXIJp-h_BT1k5DVsqysR58JlZLRtfGx_77LQMF5XhD_8M3yN94ifraObu5fLGdg1mzQLVsUV-9Ii83gyEVOyE0WukvmcJRkDPyQlTEyg17IIYpPeungCgjUn0xMfUbbu1pVTd7svAg/s320/orginiales2.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/19052022-los-originales-014-scaled.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ACszzsYB7nM'

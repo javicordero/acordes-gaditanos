@@ -4,7 +4,7 @@ agrupacion: Los Sacrificaos
 year: 2024
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgO7ilD88VJPYnNar-twn7OosYlzs1jcb9zTw-ITGF17dof7cKJsNJaQAgotefx1AyVU7N5hoCOmi0fafMMMRBmNwqhhKnxbDAi5bW6EPFlA_fx2IMZoKukW7B4T3ulj2mzDPCefFYUBbkMvMdDgt06DEjASaRt7gS7nF79U4ki0fa_k_3_3SqYkY9g7Jp8/s320/20012024-lossacrificaos-195-U11233528768jom-1200x840@abc.webp
+img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/09/09022024-lossacrificaos-064-RoRkpPy9DAvIZSC8AkHEdPK-1200x840@abc.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NFBC3HS-U_8?si=QyjqLj5hhxb7XCQh'

@@ -4,7 +4,7 @@ agrupacion: Que corgaera
 year: 2017
 musica: Iván Romero
 letra: Iván Romero
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilyXYtsybQ5Vm5egnF5UnfAa1trt96NZMOFhxB79EdCwCj3f8uJtBHrAi8zMiADaCNFKcBMWgQh4fGOudsgal8gwCK5-W980wEiDest_Geql9JB4k2z8LSDWVGPl2sPeUt9gs3o0DQWxpc/s400/06-Que+corgaera+%25289%2529_0.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comparsa-que-corgaera.jpeg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/D6PebBw8eKE?feature=player_embedded'

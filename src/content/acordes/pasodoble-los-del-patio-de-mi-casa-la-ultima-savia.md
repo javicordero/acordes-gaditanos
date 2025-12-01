@@ -4,7 +4,7 @@ agrupacion: Los del patio de mi casa (La última savia)
 year: 2023
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXCEbSCgMc6MvuJBu3cTCl-ApNVWsWfBSceciLjI5K33BH8wxdE_AIBaaTHgddJjowCxA2VJMlxvkNJKTP7BYRBw3cU_Oxrp7KLPaXwaHaew9Wz_HpWURYR-vc2fjEvfPtWlDRgWFS-WH4rGqkBu8YSW9o_lKDSI6z_SgNxTLDr3LUWTsju_zQ8Y5LDA/s320/patio.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/fed485049f264d85e32985829.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/t72JfNHZHSE'

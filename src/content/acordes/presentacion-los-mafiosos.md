@@ -4,7 +4,7 @@ agrupacion: Los mafiosos
 year: 2018
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQgSCxbZF4I3OPPIXDTZK4DUfFXkf-evqNBeTsm6yIo-fH6K3Zqwd-YK5pupr-CWgav-Ol5rd2D9YpQOrZD2IYZNXZ1AsfJB7hBhsQJNGsGYuVwIcpoTDGWm2Z0EN7BHEBo4MYaKYnuHjX/s400/comparsa-mafiosos_1211888846_79856129_667x375.jpg
+img: https://www.giglon.com/documents/10180/30003/3-8504x0-kw9dl.jpg/b7bc82eb-95bc-4cc1-98d6-4f298e67ee43
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JF2ICP4ZMyU?feature=player_embedded'

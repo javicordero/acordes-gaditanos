@@ -4,7 +4,7 @@ agrupacion: Los Muchachos del congelao
 year: 2025
 musica: Raúl Cabrera
 letra: El Canijo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-X-f-XzyfyMS27pcUyeBzt4Ee73Es1A5mlsGKDfl0F8wWpHfeiimvtQqYnnIK0xEyTySIgFRaCM9XT0E__DjOYP5vn7mCj235I4fvEnKn-IX9BIqTzf63xRq6MhBmIpxsIYrYMmqduWKsbCPB41CndB0PbHaKjMRRPn74L_nzqIKS77XPqpv-vvFtRLf4/s320/muchachos.webp
+img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/16/07CHIRIGOTALosmuchachosdelcongelao-GABINETEDEPRENSADELAYUNTAMIENTODECDIZ-FotoReynaCuartoFinal-15-Rlk0LbqkTUAUoaxYDHzGnrN-1200x840@abc.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4A44HlY0hIQ?si=Ixqv0RXWJYE8hefW'

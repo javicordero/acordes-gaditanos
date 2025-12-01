@@ -4,7 +4,7 @@ agrupacion: La cara oculta de la luna
 year: 2018
 musica: Juanma Romero Bey
 letra: Juanma Romero Bey
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLrV9KDVIJcDLeH3R9au6vdCy3TPtuI0VOw_drWIwiRCTW5P_xaerbE0oWqW6DzjG961C4OJkgfxlL2y3XzI2WFRldY2OibQnX3IgFqWlGfXUnUIJBgWPs_AM6_f-qiHooe0PW7At583G7/s400/la+cara+oculta.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/3ae03fee1b0101228a395b364.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/QtKQq7ElO1M?feature=player_embedded'

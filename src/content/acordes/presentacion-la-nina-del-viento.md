@@ -4,7 +4,7 @@ agrupacion: La niña del viento
 year: 2018
 musica: Faly Pastrana
 letra: Faly Pastrana
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijoTeYONyf_i8L_WSe7_EIQXOZWQgebkxSsXiYDDLzCc4RwbAyYv1Rz_N_e-mYltjI0e9QUYwIQ5ZSEwemsO4RqM9LeR_HMgdxre3A8Jt_zoHy46KlLPZdpgyYJ5-FSQnzKyeJrNniaFXp/s400/ni%25C3%25B1adelviento.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/01/nina-viento-preliminares-coac.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Aq24zf77eFM?feature=player_embedded'

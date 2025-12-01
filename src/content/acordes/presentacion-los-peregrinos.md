@@ -4,7 +4,7 @@ agrupacion: Los peregrinos
 year: 2017
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgeTNKFcrt-RYTRAcUcg9RVylI7GXicdayvFLnwLrB1b4vVbXh91x9ucRekmViFkXKt4_wLasvmYU3wdy9h5EPCSZZWqjBaOKw8Z5kSpB2MaYlr4PlLC3-AnrWeFFxUkxYz41B22PuXj104/s400/los+peregrinos.jpg
+img: https://static.grupojoly.com/clip/e714dd50-c964-4ab3-b7c0-0aac6bf011dc_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/opO94rdmLmE?feature=player_embedded'

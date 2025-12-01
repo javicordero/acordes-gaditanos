@@ -4,7 +4,7 @@ agrupacion: OBDC! La última flor
 year: 2017
 musica: Germán Rendón.
 letra: Germán Rendón.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkS3PrwolS5c6q2VUThieA0XZS2DxOq6ZPl4xQwAWiqIzC1VlVBqYLutL27_AjuIFeC6yet6utw9cPHLwFE1YfmG7ukiYdHz0eCuCwA0ZU4dlJOt82tvyqpoCaMSc6cVw9yXBdilCryXZZ/s400/obdc-la-ultima-flor-kxAD--620x349%2540abc.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/OBDClaultimaflor-1.jpeg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/S9Zcb4ebkHU?feature=player_embedded'

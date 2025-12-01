@@ -4,7 +4,7 @@ agrupacion: Los Irracionales
 year: 2017
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiB7B4U-PQSO2yoE-_eq-IZC7Dn-bvPSwWbKhkc3AKTVf5RulOJCxDy7embVy0bkJwOyrZ01wgNnsqBtG0jpYOOUgO5j4Xus1yiDwNaQ0VxXY91g0Vpkwk_wj2TKOGthvvxabBbjZmaDe0f/s400/Los-irracionales.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/irracionales.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tDirBCb5Vw4?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: Los Sumisos
 year: 2022
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnMbAc0NU3I18sSBhsOcRr56MRd1wHf9HqY81oIspatvzDX1k7aMMk7p8n4mfBecOeVC-qzo33jHx-zKj4nJ-vehTKl_snO64E7fU3iXTFJuoxHXaqbAGJaPNfmJM5XD8HKQhBF1K--ZaQfJslvfW-6NyueawBkWKVB1o-J8stfZDY-GLfcEOVwGlrbQ/s320/sumisos2.jpg
+img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjam6L89qw1Qp8GnxyPbZZoMNw5BuP-SIjWHFMDuWLUOLyRFs3gz20NNxukNgxd9fqK306K-Rz0f7ZFmUAkd5E23XZPbJahRsJT-9p_pbzzzWzZjUT3f4gjkDV_YNcAP6wzcF0XtWE1wFWq-0YPEAniTkX2Qjn10RUOKdiGel4JSozPEMmszFRP_z_DUQ/s1350/sumisos.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6ehfMOea1ps'

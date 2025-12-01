@@ -4,7 +4,7 @@ agrupacion: Juana la loca
 year: 2011
 musica: Tino Tovar.
 letra: Tino Tovar.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisMOv12QXYex-hAwk7pDJjKpaNd-PaJagtZqNVbVttw8sNXnvkstH4TsizcjWvW3kUWJIikA1shkBZqEhSJIFDhII51GUtMMYYn_MqzoVrix-D2q_b3Te8I6uTUXeLKB_OcsRZo4nX96tn/s400/Juana_la_loca_1.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1298012614-juana.jpeg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/dyVclXWbmCI?feature=player_embedded'

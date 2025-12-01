@@ -4,7 +4,7 @@ agrupacion: Los Hombres del mar
 year: 1965
 musica: Paco Alba
 letra: Paco Alba
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5Ix-LJbVd-GTX00ahXGYr-5h5cH_87xRq3kt10H_DrpTr-T9WhSE8WgV-7GaXS2IoB8DKrIqO9UpkYhN-RJ50jftUIugmgSek04Dw7aI-reSRzl3CDsT1zAjtFjNDgFmfZHwGHmrftoGK/s1600/Los+Hombres+del+Mar.png
+img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/07/1965-los-hombres-del-mar-3.jpg
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/2moZDBc0Hks?feature=player_embedded'
 

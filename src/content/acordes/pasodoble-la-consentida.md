@@ -4,7 +4,7 @@ agrupacion: La consentida
 year: 2024
 musica: David Castro
 letra: David Castro
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6HTVVRLTOYu25S43dDcPJAtJKi8PJNYV4WkNQ7fERjgNj2R2yUC-9lj5wfsY5TrEzaWl8NPkx2WfuTOvb3gtbbHmD6dvGjAy6rNj9zDB4WZ1PrrgNH9D6B5vpNeG10M3luSMhar9q1j1w2dfHWPpOj4xz5cQhyIWUcWJ5YyeyWtl51is_VPhuYOtaEoDQ/s320/consentida.webp
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/19012024-la%20consentida-010.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/7W4aPNvgGwA?si=xNVOYS-Mrsji0KI7'

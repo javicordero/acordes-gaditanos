@@ -4,7 +4,7 @@ agrupacion: Caminito del falla
 year: 2023
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhUNb1oqSrvjIUGmdrgThG8aBBHJsJyD0fDeR18Ybcx-MA6F-RiO-xzG1Gl4J8zr8GIbCuXT1gKZ5OPYjGuhPD_lnl1CmCHPmAsf5NmpnF6oVZ9IjZiwEXEXkNi1cfE0JKXKBvedeYtLOA46RAUGJSXENA6ZMc3ijmCAVZvgA6vW0bdfupcyuTyC-m_3A/s320/caminito2.jpeg
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/02/08/caminito-falla-RwA2cvP63kIZXz5DrCj4YaJ-1200x840@abc.jpeg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rQf4RBQPvxs'

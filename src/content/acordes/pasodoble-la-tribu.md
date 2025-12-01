@@ -4,7 +4,7 @@ agrupacion: La Tribu
 year: 2025
 musica: Raúl Cabrera
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimuntyxmKmWlDBB5grx2OvdG4heNd0DJQUbSHA0FFfUdZ30pFvhuXUfIZ9YLZoRiLRN5axoZSCUF_NCMeRcUWsoZF5lXsTY8CRw_dpM2P4-ae4_x_ztVwRPZv6hS4j-CdgGXRxbTx-lXkSK8PCo-DVI-xXLcTY6U-GsT9xpTjoJmNOnimUxc4g3K41C1vF/s320/latribu.webp
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/01/27/tribu-comparsa-chapa(3)-RolNgNTX4Whz8piSUqvF50L-1200x840@abc.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/A8lJkL3i8vw?si=VRxRRSm0iR3N8f_r'

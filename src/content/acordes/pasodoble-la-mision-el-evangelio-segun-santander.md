@@ -4,7 +4,7 @@ agrupacion: La misión, el evangelio según Santander
 year: 2022
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjchPtW9wJQ2KA_VFLJJoRVreDS6CkXZIJezTSU-gd1ybBCzgfoeWPhP-hMYg98PeHS8ivzx05j2PnJYCO91Aqv6cIX-FhTOX-yTLjSgMr5qr9g3bJE8r1zKUaNCuZbhE0za_ZYl74BYnCQleeFg42T267HEpUvMzcuyiSrb3LrCEDP0pccxXBruY7swA/s320/lamision.jpg
+img: https://s2.abcstatics.com/media/carnaval/2022/06/04/v/mision-evangelio-kI4H--1248x698@abc.jpeg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qQj6nQGdwxM'

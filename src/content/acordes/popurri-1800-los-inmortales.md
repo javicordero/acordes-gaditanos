@@ -4,7 +4,7 @@ agrupacion: 1800 Los Inmortales
 year: 2004
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQafUw5mqPhjwK8X7MMC6K7pXxUH59IThXfABcDlIBYDU-WfIFOgngA7aoekQaVmym8-6IZXjE1sRqsoussaoRqioM9dFEhXXEkxcgJo6Nt992KeU9Hm3gCv_5Vm8vw64M77K1II5uhc53XnnxhA2nZkgifz4iTYx-DXtwtB6wurS0XujnMS7r4kQl0FSR/s320/1800_Los_inmortales.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/4ed574a1c395c2019e0218b79.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/zw-NrqhwiJs?si=dC04Slv5vvJJOBYP'

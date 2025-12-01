@@ -4,7 +4,7 @@ agrupacion: La canción de la laguna
 year: 2020
 musica: David Carapapa
 letra: David Carapapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZpM3-nQLk9rAtUB99h0vtHGYXTs0bcnjNCueBAWUVV_Ck0NXnGhQ3sZvMAX09nFft-HpT45SHDk9gVx49sC8Z96avE_wAXA9DjH3c-IJEtxkLJPsVmqNJZ1p3nEXOkTdyQPR1j-UfEKEi/s400/laguna.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-canci-n-de-la-laguna-6.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/hAHI_mpR19Q?feature=player_embedded'

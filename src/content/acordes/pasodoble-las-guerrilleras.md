@@ -4,7 +4,7 @@ agrupacion: Las guerrilleras
 year: 2018
 musica: Borja Romero
 letra: Borja Romero
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhL8EiHSH5ehzmY-cBAr5jEQgVwTgsYZJGhHVdgVjjOuszg9XGBCmzGOIhR8GP3DgmdjhDTfSCy6h5-AKWN3fXwObjqqXDC-_n_DzRgRAnOgTwGxY_VNJYSwpLZPw1FcKc4CPWOqCLEeR8L/s400/guerrilleras.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22916.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/12wpFWXAueE?feature=player_embedded'

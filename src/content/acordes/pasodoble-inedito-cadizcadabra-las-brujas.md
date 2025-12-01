@@ -4,7 +4,7 @@ agrupacion: Cadizcadabra! Las brujas
 year: 2014
 musica: Juanma Romero Bey
 letra: Juanma Romero Bey
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg-qZlGMuIfZtL_Xw81XLCaYa-Nf4xC5SjPudzsSyiNYCJ_qd4_VNz1UuSOrwHA5wca8TJ1DOBBwqDgyEwyyWu5Ll9VZdcfiRa56zQPXe1N7F-v0wOXhyphenhyphenwq4V42HftypEzPrPZl55F8A01W/s400/comparsa_cadizcadabra_las_brujas.jpg
+img: https://static.grupojoly.com/clip/d046d8da-8e89-4042-9eeb-c982b4e57d1c_facebook-aspect-ratio_default_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/r043uPQUzVM?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: Los Condenaos
 year: 2001
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiriw86J833WahidVFsWan_jAlYSCGTtFsERvA4T9Hmc_xtFWldYym44yulSIajPNCs_noMX0fPdG1upK2KlFnkyrzN9-eV_3zIIg_PbRVeXO7TVbnNsYrV1x7v4-iIP3IiL_LFhRshnw0r/s1189/2001los-condenaos-2.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/ff36867c8530075d1cca1842c.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/9QCdqrlVzGs'

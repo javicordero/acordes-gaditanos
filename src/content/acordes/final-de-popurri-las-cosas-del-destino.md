@@ -4,7 +4,7 @@ agrupacion: Las cosas del destino
 year: 2019
 musica: Iván Romero.
 letra: Iván Romero.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhn1wwYYEBqRs2Hg6EAWfVy5VYe8OAHF6I2rL2qzGY-oxwG-yfewx-ICAGns88v0ApdsyEeRi6G7U0SNFow-q1TqaFva79nEeUPSX-eRUk12eY-fTui4uLTKDmE60wEXa3PPQyQZjncWzj3/s400/descarga.jpg
+img: https://www.codigocarnaval.com/wp-content/uploads/2020/04/Chirigota-Las-Cosas-del-destino.jpg.webp
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/UCuUwb2FjLQ?feature=player_embedded'

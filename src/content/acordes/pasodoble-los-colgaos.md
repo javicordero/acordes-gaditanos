@@ -2,7 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Colgaos
 year: 2024
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizsQkeVxx7TvGkQ38qlrmWoMZ-gJ1ryVSXEG4PuAc90LlVWGKZvBBQ217o6SW0m0l8KQRN6ecDdg4nyX7ciHyv6QpRU06O9cDtfBruzErhFZuZQlIQxALt5FwUbWTiafbQmj6medqHnrqeKRQsIHLK32WkQaFWsEsGE09qKnleUoSDQC5OJW2EIcJbaQg4/s320/colgaos2.webp
+img: https://ondacadiz.es/sites/default/files/styles/webp/public/noticias/2024-02/imagenes/31012024-los%20colgaos-103.jpg.webp?itok=pLNnvgm-
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'

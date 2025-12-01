@@ -4,7 +4,7 @@ agrupacion: El mercado de las maravillas
 year: 2008
 musica: El Noly
 letra: Joaquín Quiñones
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZlde9ErC7Nb2xFhR0CB20VrTNZJ9KSQfMDWhsQPgjHseRccovMpqPn0tLC1GrlUhTtfFczq5w8bqCRpUQKu-QphCn4zYsVPLrjGVPTeVBgk2a7HE8un0TiPGci360A4Q21lRwUhwAdqPK/s320/El_mercado_de_las_maravillas_4.jpg
+img: https://static.grupojoly.com/clip/78243340-a687-4510-8491-e91cecb48c13_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bDiqGnJhwN8?feature=player_embedded'

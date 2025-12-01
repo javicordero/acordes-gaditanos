@@ -1,5 +1,5 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: Los Belloteros
 year: 1975
 musica: Paco Alba

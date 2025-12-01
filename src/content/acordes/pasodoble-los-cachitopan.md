@@ -4,7 +4,7 @@ agrupacion: Los Cachitopan
 year: 2019
 musica: Kike Remolino.
 letra: Kike Remolino.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtfYYBUA0pFTXoGXxcjeE0osM9gsVFc2NN0KcLVAVeysO5F3cIYOUqKLKpuLySyL5xEzx71aWi0W2ahOC8V0Lzw4x5mNt4pu0_XcLByTfJWhWqIeTRwYjdkuqdMx1M9u6IZ3L-cnXWUfgS/s400/cachitopan+%25289%2529_xoptimizadax.jpg
+img: https://s1.abcstatics.com/media/MM/2019/01/26/v/cachitopan%20(8)_xoptimizadax.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/f4Sa8bsRito?feature=player_embedded'

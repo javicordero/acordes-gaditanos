@@ -4,7 +4,7 @@ agrupacion: La Tierra de la alegría
 year: 2020
 musica: José Luis Bustelo
 letra: José Luis Bustelo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzdD6B9-5h4QL7AuWe_VQG5Ag3QbUf0Ho2qQXMbopR8KpSqAxUg3lZk2qNA9FGVhxKd8iX7Z7yFlCE7tiDF9_ew0Qo7JWyhtrPrOSBa9SxVn_FBIuqwk3V-LwQJ6AiCOUzKuL9Rytqh-0o/s400/tierra.jpg
+img: https://s2.abcstatics.com/media/MM/2020/02/06/v/tierra-alegria(5)_xoptimizadax-koGI--1064x800@abc-Home.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/IK3DzVdec-s?feature=player_embedded'

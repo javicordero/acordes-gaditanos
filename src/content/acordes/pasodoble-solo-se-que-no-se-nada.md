@@ -4,7 +4,7 @@ agrupacion: Solo sé que no sé nada
 year: 2020
 musica: Borja Romero
 letra: Borja Romero
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgl8Qe4SX6MHQYwhc53_QPZA2JgzqdUDLvz5yHNz4koNMEzaZlhlfNA5WJA2_hbOLJsTI4oZl054iIq_NozLjMNHxEvXZSTp17G4mXOGyu1m1uckMyOJ_TYZT1QEKb06f5sXBMTuOiM9BzC/s1000/Comparsa-Solo-se-que-no-se-nada.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/9f47329d4e0d231920e58de71.jpg
 cejilla: 6
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/mfXFf3fYUiI'

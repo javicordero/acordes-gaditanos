@@ -4,7 +4,7 @@ agrupacion: La ciudad de Dios
 year: 2020
 musica: El Tomate
 letra: El Tomate
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjf2OVJJYSDgI696dSRlyvXcP-Ru7zpzYRpN0iUP8pibMDzTSFkMPVhTv6Tv3-gRGW-4mqp32FcHeZj_2pF0sGL18JVpuKX5n8xrqsSbR4X8tjRhtbkD1w5lVGDGb6EyQLBu3r1Rm2rNtBj/s400/ciudaddedios.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-ciudad-de-dios-1.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/nYJWdOxQPHc?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: Una excusa divina
 year: 2023
 musica: Juan Fernández
 letra: Juan Fernández
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIRWG86cvYey-6TWyqXy1f0xGMFgkt2RWWH0jG8tqSO9QRMcCOxifUyIN_afK5IlLF29lsLJiErilLjjf5OWIcI_HFWsjvmJvZ4tTawkRrzO0JGjBxeNcCFo2eeX69Lf7MezgGV7X8AqGlOsgPgfZbEeQpwdg8IbSa96Na3-5ehm9M5CmuufdCsNidrA/s320/excusa.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/01/29012023-una-excusa-divina-002-scaled.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/1FqhyRhs0Yc'

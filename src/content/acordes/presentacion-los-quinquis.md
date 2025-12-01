@@ -4,7 +4,7 @@ agrupacion: Los Quinquis
 year: 2022
 musica: Vera Luque
 letra: Vera Luque
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_fGo4vaTj6IekN3D8WUBVErT6j9qITWrluEsr5yzjppBIRAQv0EsJDkP_5F9Ig1XpsPPQJpHSfj1_dnFXw64Xr0YHJPO9agNAnbYFZNU9RQkfzcomFPeG5U6vsTcUYAAQQNPCHlRTDDR5Ky8u3p2moOsD12XnUt0NDEtw2qnSQk_vUXh2sz4TdfJ_QA/s320/losquinquis-comparsa%284%29.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/31052022-los-quinquis-014-scaled.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rbdtTcmUshY'

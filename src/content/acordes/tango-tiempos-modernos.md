@@ -4,7 +4,7 @@ agrupacion: Tiempos modernos
 year: 2018
 musica: Tino Tovar
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinVc_FapPoUrXny5gRqYQQNcZhzwEppxrSz-peuN7aOWn_Vr6Cg5-xIaPsBe1FAkJfr3dGYMSCbJ8ebVXbuxmZAiCiNI8qq_TvxEZuVaAgcCbaZ1h7smEYxyiFpBX3Fl3EekbvjIhzJqG2/s400/coro-tiempos-modernos-coac2018.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22897.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cC7V-XV6f6E?feature=player_embedded'

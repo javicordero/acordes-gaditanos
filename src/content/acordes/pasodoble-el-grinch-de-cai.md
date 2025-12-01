@@ -4,7 +4,7 @@ agrupacion: El Grinch de Cai
 year: 2024
 musica: El Sheriff
 letra: El Sheriff
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnrtHeFPN8724LxuCPW8GeYkc6CGXMNTXhMVugw8d1x7dy4oDBA4Xt_G4eS3XHzIdRLwR7cqC8RveRZg11B1fhYjNLmZRnoTky9B_hv_maEqAo-sXOlg9g54E7h5MPpj4nXB06QwHaM2Hxnn01FE_e2U1sRcdcFs6Ff0K8WSqIMY52TNmO5TzNNnhsG2T4/s320/grinch2.jpg
+img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/09/09012024-elgrinchdecai-004-U20232513182uzK-1200x840@abc.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Yxf365RspM4?si=ojFTQhO8WLyOORi1'

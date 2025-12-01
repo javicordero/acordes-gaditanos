@@ -4,7 +4,7 @@ agrupacion: Chernobyl, el musical
 year: 2020
 musica: Jesús Bienvenido
 letra: El Canijo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0-qD1C4LZ-qgL89idtyuy8vu-tGoCm7IQkLs3eRWEdN7stQ94OFPnRAYa67m7tZhraY8NBDQo7Aj7850YReL-GOVDm73sNKiU4DzDOvkW2EU4j5WXVnqHIFS9UTEJkPXF9mm23Vc_ZZls/s400/chernobyl.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/24137.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/DId047PTPkU?feature=player_embedded'

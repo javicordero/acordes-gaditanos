@@ -4,7 +4,7 @@ agrupacion: El embrujo de Cádiz
 year: 2023
 musica: El Tomate
 letra: El Tomate
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGDUpNmwAmIbmaw9M5SiFSFkizpA4qV0No5sACI2x1VRggPeFQEzzk-OyELyc8QDxsuucCCNYplTOyYyaseYkZ7MgiT6WMVEKOQCqgHZnZoWAgFWckCu7RZzdNDWGJTdENourw8OLEIgnX1mDuJay-1M-RKisyZgqj2CnTU52clwVpvzqNFOEs9cmrhA/s320/embrujo.jpg
+img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/02/22/embrujo(4)-RFBW91rrZVxsb1WuPZw6lYM-1200x840@abc.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/I_Ff7pfjhuw'

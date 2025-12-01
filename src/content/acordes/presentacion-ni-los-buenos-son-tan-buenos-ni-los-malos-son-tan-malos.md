@@ -4,7 +4,7 @@ agrupacion: Ni los buenos son tan buenos, ni los malos son tan malos
 year: 2018
 musica: Iván Romero
 letra: Iván Romero
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEqSOIgIJMum0TZY7Ga8fpWuGAPurJc37xOYVPONTmtP_Wn9_ah3ZsK9PT4FtMy2jRuAQcp0OaQBJPUHX40vpvG5ObItCXRN2wCdUJW9-pvJWa9m9G0UQm5_8sLN3ZLj7ivzgnsTj4KJG1/s400/comparsa-ni-los-buenos-son-tan-buenos-ni-los-malos-son-tan-malos.jpg
+img: https://imagenes.cope.es/files/microformat_image/uploads/2024/07/10/668dc5edca53a.jpeg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/_j1KYd8RwNk?si=kYYWr4rPl7U7uVKU'

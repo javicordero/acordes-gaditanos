@@ -4,7 +4,7 @@ agrupacion: Pa religión, la mía
 year: 2017
 musica: Lolo Molina
 letra: Lolo Molina
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLnPOuL6KmAdjOAkjB7KorWeuekvytFWu0op-bL33EpbyehGlCZqCiP5H3-puI7Du9fpK1Z2d7HXn2buySx7AvsULxVlIJUTJTb2sAialjjYspiLBdpf0Mhaq9C7Mq-U6hhpj3LPgjRULH/s320/08-Pa+religi%25C3%25B3n%252C+la+m%25C3%25ADa+%25287%2529_0.JPG
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/chirigota-pa-religion-la-mia(5).jpeg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/B9Utf8Cjaas?feature=player_embedded'

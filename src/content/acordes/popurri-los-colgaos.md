@@ -2,7 +2,7 @@
 pieza: Popurrí
 agrupacion: Los Colgaos
 year: 2024
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN5xjK73t5nvNfKrTu0vcr4svl6l_2IREHGjhGTqQ6vfXw-SMbf3wMFL7Nf5iqYRQAkH48-ZoLGuY79ZaPfBq4XG11comhXyZguc6PwbSYNnu2ZNM0df2vfRsALdojsLH1AQTKgpiMPETKaQvvbFL7tTy981I1bB3zcSIFyBcPQajHlUbGNN3zibhfoOvX/s320/colgaos3.webp
+img: https://ondacadiz.es/sites/default/files/styles/webp/public/noticias/2024-02/imagenes/31012024-los%20colgaos-103.jpg.webp?itok=pLNnvgm-
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/KJFxI9y1o-o?si=a6JkwNZLPM5XWXLJ'

@@ -4,7 +4,7 @@ agrupacion: Los niños sin nombre
 year: 2019
 musica: El Tomate
 letra: El Piru
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmTvbKi_ich8mBgSDEBePvolqoL3m8bhxNb8Vopn4B0fEB2SJr1OAVdIlBevJQ1M7K1IECsgMwAyxphHtgM0kvebt0CcqLI7mFOUt4kjcvKCKaWTijSzz2J1u5bEm5PEQitFfwrZf8oJ-l/s400/comparsa-ninos-nombre-actuacion-noche_1323177732_94212472_667x375.jpg
+img: https://static.grupojoly.com/clip/379453f2-2837-4ebc-bc6a-babe8121bd04_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bg9I1bfy9ws?feature=player_embedded'

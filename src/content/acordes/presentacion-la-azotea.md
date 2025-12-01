@@ -4,7 +4,7 @@ agrupacion: La Azotea
 year: 2017
 musica: Hermanos carapapas.
 letra: Hermanos carapapas.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1qrY0X2Hzs7i7OC_prIP15A1jgQ13GREggK32qr8Cyux018RleCTqYAiyb535AbJqXKu4pzPuio_wdxou2a4dcOw7V9_uORbZmdse6P4G3FJccrlOQi6wlHtyod6MjnHSeI5dtFvjg5XX/s400/descarga.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/nico-garcia-la-azotea.jpeg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/byuOY3ffkpc?feature=player_embedded'

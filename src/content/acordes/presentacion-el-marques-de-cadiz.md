@@ -4,7 +4,7 @@ agrupacion: El marqués de Cádiz
 year: 2019
 musica: David Carapapa
 letra: David Carapapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi0FNFEvoUgO_t-pF6uadG0lfCMMwUW_w6WZyqAynjbZMeX5TW5PH20V7UCJbciqWSxYhEmVwzXJ8dLx0HIiMEA9gaIF59wV9bf57BrF0DcC3EdZ1owJqedM10tzCoEsXir3YDjscAQa9tK/s400/Comparsa-marques-Cadiz_1327977196_95525095_667x375.jpg
+img: https://www.codigocarnaval.com/wp-content/uploads/2020/04/Comparsa-El-Marques-de-Cadiz.jpg.webp
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ZIRdsQbSZH8?feature=player_embedded'

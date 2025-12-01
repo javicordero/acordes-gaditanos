@@ -4,7 +4,7 @@ agrupacion: Los violinistas
 year: 2011
 musica: José Luis Bustelo
 letra: José Luis Bustelo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLJal6ObA4z3k4W33O_iSVY8YYZ0iiXz_sQBOaERVl79RiTnAwtpNwuWqWXxaICwi4IahWb_Be6onyZGipNw1nQwE-r94F7WjIcCZpvqqdwYV36mB9yAboSXZ601WC_155E_AurL1bllS_/s400/Los_violinistas_1.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/losviolinistas.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/dsdbHJirKKI?feature=player_embedded'

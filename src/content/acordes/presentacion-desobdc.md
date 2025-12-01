@@ -4,7 +4,7 @@ agrupacion: DESOBDC !!!!
 year: 2025
 musica: German Rendón
 letra: German Rendón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7cJ2f1Wo4YPlLTsCH1usD2phs-trFuh0N5eNjkZoGhvB8IA4hxYOuSdYbFhSCPltaoAN1iCo6MdmvvScCXYI71Zs6aKgROksrPJeCnQd3Qew8eZ9qBTp5bIDV9wmKda-UbZHtKGdh4ekbphKEgj16IujfikDLtw-6E0ZX4jeJF3mVZgEc74moz4pHcaAL/s320/desobdc.jpg
+img: https://static.grupojoly.com/clip/f502b996-90e1-437a-a5f1-0292c1f6f113_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JG7HRTvK3d0?si=JnbwsuuNv5A5-3_W'

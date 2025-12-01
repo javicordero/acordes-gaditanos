@@ -4,7 +4,7 @@ agrupacion: La banda del Capitán Veneno
 year: 2008
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/a/AVvXsEj1fAQBSwiWYF7lT__inWCqyQt8m6T1cyXsIHrcmma4B4ZFyZhwoGiOT9qsJPhb8uLDIwA_dGa4f92cBc8mOqAXEl2QN59q9ZYmWsabiPRzKA4s4MYrW1ocGdS38Hk59M_obRqkf72hp2jFipAPXZ2ORJUK3f_QExpWAas2uXx06DoUXVJjXRx9Sb_Evg=s420
+img: https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/uynGARRr0M0'

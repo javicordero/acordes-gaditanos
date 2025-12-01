@@ -4,7 +4,7 @@ agrupacion: Los Acuarelas
 year: 2005
 musica: José Luis Bustelo
 letra: José Luis Bustelo
-img: https://blogger.googleusercontent.com/img/a/AVvXsEiSG623IsDg19nKb1lFylHUQR-NtLCikI-RSkULNw4U_-V2YnBAQhGWLIz5shsSjixvpvgqr_-pAtPlwzRbZtJhG7eyg-XnpGJUFM661jEUYHpeGBSt5MWpt5Jen_HXKVubaeUd4Zvx8jxg63URgNFFXfwn3ngbW1IlA_NqZFsbDVUokapknycSrXeWNw=s420
+img: https://static.grupojoly.com/clip/563620d3-9769-4511-93c6-fb3ed096715c_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/LSPfxfnujKM'

@@ -4,7 +4,7 @@ agrupacion: La Tregua
 year: 2025
 musica: Salvador Gómez
 letra: Salvador Gómez
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyOToy4Dva7GNiZ23OeOWzLffDQaK0TfWslJ1HrDIy6Ne8XFpU70UpLvR8UltkFJjlYdwZocscqDUom-bd3QDqd_cB2krcWKUL1OVR40YMRFqr45CNRxoilZ5Nx7l9olSVJndEXO3Nbq0oXp4Dnxt6AnVwXa5bEyHpD2P18wcL3m7WEfzmOlAPZKWjdkRV/s320/tregua1.webp
+img: https://static.grupojoly.com/clip/e78f8930-aef6-41e7-a3dc-5c86f9f65454_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/nNON_XtbUzg?si=7vUw6GzxnPLs3iU7'

@@ -4,9 +4,9 @@ agrupacion: Lo siento pisha, No to er mundo puede ser de Cai
 year: 2013
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvtIFn68BQs-1IPz66QL6Z8hOGgJeUVG4fcN0gugUbQG0iO_2TvXEOh-oDQGTQ2hl26q3Lb3z8qusVhWyyZZBINvtBFP0d7KNyPo90dpXhXt5PpFzgUzxMh5w00IYDtAWq4vhb56sV05G8uk7ENrdHTf-fhaSthtOLLLDYjSj45404G_PUT5iVHK_DTjqB/s320/losientopisha.jpg
+img: https://static.grupojoly.com/clip/54bc7a40-0877-4180-9401-89a3f06377dd_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
-date: "25/11/2025"
+date: "26/11/2025"
 video: 'https://www.youtube.com/embed/eW_NCC5dqNU?si=UHEFikLSHkI3O690'
 fraseClave: "Que sencillo es querer a"
 ---

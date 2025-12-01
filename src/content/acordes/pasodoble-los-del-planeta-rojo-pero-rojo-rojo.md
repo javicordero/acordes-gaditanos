@@ -4,7 +4,7 @@ agrupacion: Los del planeta rojo, pero rojo, rojo
 year: 2017
 musica: Vera Luque
 letra: Vera Luque
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmCfweicwp2Trg-Q6uxSkpbWbCpL4WKV7zQ1JhBKDM3VXVyXvp87TrhFCN8dTa2dw4W8awwEFbqOAahq9d466wgVMyj-zgUlk5gbo4CHaQt2YZbCMAA0THn5HkdmIqzMKgbkIeQXBA8YoX/s667/planetarojo.jpg
+img: https://media.cnn.com/api/v1/images/stellar/prod/cnne-384908-maarcianos-venezolanos-los-de-planeta-rojo-pero-rojo-rojo-rojo-carnaval-cadiz-cnn.jpg?c=16x9&q=h_833,w_1480,c_fill
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NZsjfGhVTZo'

@@ -6,7 +6,7 @@ musica: El Tío de la Tiza
 letra: El Tío de la Tiza
 img: https://i.ytimg.com/vi/2QV9o4_5qZM/mqdefault.jpg
 cejilla: 0
-date: "28/11/2025"
+date: "24/11/2025"
 video: 'https://www.youtube.com/embed/I-sGXVxkAPY?si=jduhYEmU-_eR8WEV'
 fraseClave: "Aquellos duros antiguos que"
 

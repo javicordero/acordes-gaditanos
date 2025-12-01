@@ -2,11 +2,12 @@
 pieza: Popurrí
 agrupacion: Araka La Kana
 year: 2007
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnBEi4lB6Y2BkkSmnO1f9Uz38KXSe8Cgc9DjrIMujTiLv9iNTtACQyo3ZWH7OptODO6Xi1wiJudWvADlkzyReBMnSD6XSeHo5H4rFCMHOXegj1pyZiu-sTDQOSPGQrnvC1NLb2hKgqimcx/s1600/araka.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2021/02/carnaval-2007-imagenes-cadiz-fotografias-15.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/G5tg5uyyA9o?feature=player_embedded'
 musica: Juan Carlos Aragón
+letra: Juan Carlos Aragón
 
 ---
 <pre>

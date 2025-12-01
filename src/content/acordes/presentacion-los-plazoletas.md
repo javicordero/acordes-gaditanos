@@ -2,9 +2,9 @@
 pieza: Presentación
 agrupacion: Los plazoletas
 year: 2007
-musica: Jonatan Pérez Ginel
-letra: Jonatan Pérez Ginel
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGi3E2HD3bn84Nq8XkCT4NHxo1KzhAnp7faYHP8O2C5U5o0YWlva2YI9L49wwfnL4ilOl-bE9iuxE_1sVknpIjBqn0ZPRUgBLiUrS5QzJV6r58AbrywYO5GgDqNidoFq730KAnrw3iM57S/s400/300px-comparsa-los-plazoletas.jpg
+musica: Jonathan Pérez Ginel
+letra: Jonathan Pérez Ginel
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/179d99eee95c4590f3ae38520.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/8Ac5Mr_qZpA?feature=player_embedded'

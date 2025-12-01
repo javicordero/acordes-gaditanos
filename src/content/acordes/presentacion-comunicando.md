@@ -2,7 +2,7 @@
 pieza: Presentación
 agrupacion: Comunicando
 year: 2020
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqUTucoebxM5Vw_W54bW2S4L5wBAfeBZWku6HM1ZD3ysvtpNmMT81gYPxPGHtbpXTVeMO4_AHwDnqCDWNVF-s_l-HO1-SMDHrkfxkHalqSeY91CIkN1693S8LgprssHEaR0ru5x-gXupHs/s400/comunicancdo.jpg
+img: https://s3.abcstatics.com/media/MM/2020/02/14/v/comparsajuvenil(7)-k1I--1348x900@abc.JPG
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/oGMmkoq-W2o?feature=player_embedded'

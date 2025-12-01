@@ -4,7 +4,7 @@ agrupacion: Qué penita de concurso
 year: 2017
 musica: Miguel Choza
 letra: Miguel Choza
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfPpQB9HjPrVp7x9lqpXoJFaWRbi1GNYgC_R3VHisW9YdOIXKxIzIuDpzOoFwiOSnqOWEDvrqC9e7nXOJ953FHPrFDUMmm1jYFwzbWt7CC43bUK6gTYhHPsIUtqHGQft8yto1oF3RSiv5m/s320/qu-penita-de-concurso-y-qu-alegra-de-chirigota.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/quepenitadeconcurso_.jpeg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/FPWRc8BjAxY?feature=player_embedded'

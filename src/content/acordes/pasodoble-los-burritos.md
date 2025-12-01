@@ -4,7 +4,7 @@ agrupacion: Los burritos
 year: 2020
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijhh08vbHwXQjcxgno8vbthhyLEn69x46xUcGoAddYcOsFzm7TXaulaWsx9DQLgtQYdX6BqMgECZEO7970i2W4bwbNFaIJMYwIwBcAV6BrWH8rQEmgrhhMRMNY0mAvuvChyg3cSmbCpZDc/s400/losburritos.jpg
+img: https://static.grupojoly.com/clip/59458108-2ac2-4bb6-9bff-3e7230b738c2_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/300bvt038Qo?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: Frente talibán de la republica irreverente de Kadi Kadistan
 year: 2023
 musica: Vera Luque
 letra: Vera Luque
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5-3bdJJV55PFeHFp-czUyk2tgTyWs5w1YbuLlMslop1Uuul9I3cYo1TuzeyQ0ltaSA7E2c3_YchDKOkmihplTP0Ll1PSpvMJgTxuirz1qrUIe56vyHPsfYwWdLP9XRQy66OgwXQw3WwixePAysjaJrHThT5yAlNqy1An4jZPZizl3EOxag3lftoJGx6_a/s320/frente%20taliban.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/03022023-frente-taliban-064-scaled.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/jwrgDkn016k?si=ikGHhthAF1dHtLsl'

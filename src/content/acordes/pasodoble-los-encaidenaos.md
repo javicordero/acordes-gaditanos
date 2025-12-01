@@ -4,7 +4,7 @@ agrupacion: Los encaidenaos
 year: 2020
 musica: Kike Remolino
 letra: Kike Remolino
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZapVzTpH8YzDt-2vOxJZIaH84pKG90qH-NN0ahvYCrNZfoatvK2S41GiHPZmcQpXLaxJwl1onRaDEYocFZJt87HCZI8TErWoLNr8J4ml19gIYHT9nJ0X3tmbyqn4sxWToe1Q3tmSEkoLF/s1910/encaidenaos2.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2020/02/comparsa-los-encaidenaos.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ZL-HltnVYI8'

@@ -4,7 +4,7 @@ agrupacion: Los Indomables
 year: 2022
 musica: David Carapapa
 letra: David Carapapa
-img: https://blogger.googleusercontent.com/img/a/AVvXsEhjml8x3jlbpcltymBcu_jpYnBa0_M5CKzIArXwbaBoYC9sNm0bFfoT5_cX0N9hMvTz21CYDM9yVCGhn7UCj3UPOJcEq-H1V9WNligw41jFeaarPN_WFql8axzSkmJwvCEY2p8aJUILMWoNX2HzmERKYqffVP2nTJV4XT69vpdCqlC306FalwncFVH2ZA=s880
+img: https://static.grupojoly.com/clip/c22c418f-3653-4adc-9b04-8b4ba04772fd_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JCXwB1cV4ZA'

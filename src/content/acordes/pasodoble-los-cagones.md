@@ -4,7 +4,7 @@ agrupacion: Los Cagones
 year: 2025
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSoT_5ovKGBbrheKSg3Php0oxsa9AbTTEJWUdyTg5ifKZs4PzuohKuAysUaFVr21gesT0PnLKBlUnOJOEGe95sM5rwowLZCl-fDFYejSw4eBjG1cN1OApoWFU9E4fttbNYgRMCVQIi12EQDnxcxMYk0S2rlBsYgeDsFgokLpM94ty0pqwQszQi-yMCgEJ6/s320/cagones.webp
+img: https://static.grupojoly.com/clip/1db5cf3f-81ea-408d-8885-b357af9d8ae6_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/_SvHuxnRTto?si=3hD1__8t2nAVjXg6'

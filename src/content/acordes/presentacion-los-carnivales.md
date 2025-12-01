@@ -4,7 +4,7 @@ agrupacion: Los carnívales
 year: 2019
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjl5gznjlW_Dtloc12AfdkxiC2ZDuyX9KLXUO5fDkfJIPl1gqSCVaJykB1ZkDHkbJxtHT1d-ivDxoHnI7wMcPmPhrkaWZl0_dEush6ruiZWXsibn98_nKV12K2h7ccgnWgAJGX06mTF8N-J/s400/comparsa-Martinez-Ares-carnivales_1325277461_94522993_667x375.jpg
+img: https://static.grupojoly.com/clip/5bff8306-6102-4ba1-8d0a-376d05f22ee7_source-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/uu0kVzrb3aE?feature=player_embedded'

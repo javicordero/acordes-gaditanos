@@ -4,7 +4,7 @@ agrupacion: Los Okupas de la luna
 year: 2021
 musica: El Tomate
 letra: El Piru
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsBsDk6RuW7euDopsMtsxutTtHkvktzMDGJzxZx2AeeQkDRuhdwtTJepgBJ2gaPq89VU6y9eXMRMfGoGRPcW2VdXHDkQ8p881IideDJ0_yvoNKtWPrm1L_hizTtH7L9IfgsV4hIVCLnPh2/s1200/okupas.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/7f9c1fb34bcd6a33fff6562df.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/gdQFGYMRs7s'

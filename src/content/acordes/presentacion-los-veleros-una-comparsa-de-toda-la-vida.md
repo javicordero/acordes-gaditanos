@@ -4,7 +4,7 @@ agrupacion: Los Veleros, una comparsa de toda la vida
 year: 2022
 musica: Nene Cheza
 letra: Nene Cheza
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkznam8rud0T6PlKopQdoDoVirdPuGkNKdvxruyL3_VB-81_Sr-DYoDIfK434XXhhMAwjoG4Afqg44HJve106r_H459fO3HKlzrIHuG22icU3Eu3fWzuQ-uacNgW7E1daQTLVW8pgY7IdVx7FjnfOb1kK4Xt1sWk2uicx15rRKy0rsjO5Y4fayCv7adw/s320/veleros2.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/20052022-los-veleros-031-scaled.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qkJByXdm7mg'

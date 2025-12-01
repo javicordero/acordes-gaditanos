@@ -4,7 +4,7 @@ agrupacion: Los campaneros
 year: 2018
 musica: Kike Remolino
 letra: Kike Remolino
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8ZXawq2ZoizB95PG0d7XP74LtjumG4j5B978UP9AQyoZ0HmIdnqTP91WNu2s-Pl5nRXqrrmdLEwds0lF4n2rHRyp6jcXV6JoQhKYPhm0iQn18igCvtr-_0EDHxDtsruZOqFsRrfjkxY-F/s400/los+campaneros.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/los-campaneros-3.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/KJdF-MBfOdM?feature=player_embedded'

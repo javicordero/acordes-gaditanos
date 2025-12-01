@@ -4,7 +4,7 @@ agrupacion: El hombre que susurraba a las almohadas
 year: 2017
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuHWM7ZmCC-CCFJPg_0ZrQuJga54KFaQjgSvZUKNvpisv4BHYh5XZhKL3Lk1Rz8JINa56VLuYIoOVdXkMolwJye3GMvgCAc567eNs7cfAJUkiBLbI5IHBTxsF10XKjzOE-_q7MCeEpvUta/s400/05-El+hombre+que+susurraba+a+las+almohadas+%25283%2529_0.jpg
+img: https://static.grupojoly.com/clip/84e6b03a-80b0-4237-ad09-0f20341e551a_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/xmleph61hGo?feature=player_embedded'

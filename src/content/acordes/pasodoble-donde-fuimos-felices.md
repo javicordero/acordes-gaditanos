@@ -4,7 +4,7 @@ agrupacion: Donde fuimos felices
 year: 2024
 musica: Germán Rendón
 letra: Germán Rendón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAD4ZlqM1eb_LGsphxRE5CdBRgkKlKpy2nrYNcxfihBB_DsL7Ata_2uh6-sH3gbIW4YpHONhMi3QBvd5K8_cfOGeY17s9X0g2o8Zc5YdEYoIRH7L-C5kT-nx3ct9qoJMjR50eNJH6GXjMOZcZvRXQz4rPi72W23iezolLzTlqqycLIg046p3wMgMpX_ILz/s320/dondefuimosfelices.jpg
+img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/23/23012024-dondefuimosfelices-106-RNkueAi4etG8jAUFgXCoNHI-1200x840@abc.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4AnmLJvFI7k?si=XzHTKSz9LRLeu23Q'

@@ -4,7 +4,7 @@ agrupacion: Los equilibristas
 year: 2017
 musica: José Manuel Aranda
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi1umLmExYglkM5nZx-OnJm52dYi4jmtnDgtAVuGE18ATT8BwhXB5MzCRoT9tEgtXyNy7TuAlAXmijaEKmsRsSJgBWqfYdt5jZWJBEdbcysKI2tBjFyh-dVySP6MrxGqqpVyp8ToWzmvD5F/s400/05-Los+equilibristas+-+cuartos+%25281%2529.jpg
+img: https://static.grupojoly.com/clip/28578471-9223-41da-92ab-599d72164bf0_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tNNXjlGJFew?feature=player_embedded'

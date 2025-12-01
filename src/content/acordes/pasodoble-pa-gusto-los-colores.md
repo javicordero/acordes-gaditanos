@@ -4,7 +4,7 @@ agrupacion: Pa gusto los colores
 year: 2011
 musica: Jona
 letra: Jona
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXftFGDstaaKO3y568x7i22OeSHtalNVP4IqHeBintuF0MF2bV8TPx9uO0aOLA00Y8MQ3uyfRMqCY3Rv73eBES_BS37P7tvio02KO-MBtHcBpbcUXXdEFpAvpA2JRQyHlSgSgEUGL8D2YxS2qBO_lj7yvooxV7uaM3lquEREluo35MGAU4weBUhczi3A/s320/pagustoloscolores.jpeg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/pagustoloscolores.jpeg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/li9KINpXNoQ'

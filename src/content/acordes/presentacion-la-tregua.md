@@ -2,7 +2,7 @@
 pieza: Presentación
 agrupacion: La Tregua
 year: 2025
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQT-neFOKfvgGtnaH5yjg_UVjXafkUM9ehnVNwnwuxM9o21eA4ezcUH_Se4aWxiMFAA7blUH5DDe3-H3fqUNFWCcOnYiqWJcjfvsOvuGgjzL7hYCgkBLP3v18Vz_47bAR7Fif7umvLWrVGA1ecrPbff_Rj4lY2mMwZVqZ0poU-PgQ0xt3XDpM14ez_xrwz/s320/tregua2.jpg
+img: https://static.grupojoly.com/clip/e78f8930-aef6-41e7-a3dc-5c86f9f65454_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/nNON_XtbUzg?si=7vUw6GzxnPLs3iU7'

@@ -4,7 +4,7 @@ agrupacion: El Balsero
 year: 2020
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWHIqvrB4A63JtaRiDYTc8Uuok7njK8L2NX2v3enZQosc24FiyuMtKLuaWvgYjpCwhPPWHnGJxzBGL0TUxnxYMHSvWGya9njb_kD-qwLotq3BHKQU2RYOV6RTHiIR8DUtafB7mRoJXlfbe/s400/balsero.jpg
+img: https://s1.ppllstatics.com/ideal/ubeda/multimedia/202104/18/media/cortadas/ARV_bienvenido-kyIF-U14091974550VgB-1248x770@Ideal.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/kayAOTJMW_Y?feature=player_embedded'

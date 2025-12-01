@@ -4,7 +4,7 @@ agrupacion: Los luceros
 year: 2019
 musica: El Noly
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0i9qS0Yh52tMZ-vHLFqfJjA_Z3nHWS4sac7pI9wkcma9n2HWPnLQ7JA0IKpOWWusyV3L7vVxTXXpFjnqZtG-tn-r1CNJfa2OFo7hURAF7veEKVL85XjKaeWWJUibPdNqWFRbuz71-euG3/s400/comparsa-los-luceros.jpg
+img: https://static.grupojoly.com/clip/0aa6a594-a9ed-4fd2-824a-86339774f3f0_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4v0YM0xstmA?feature=player_embedded'

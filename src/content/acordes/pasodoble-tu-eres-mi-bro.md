@@ -4,7 +4,7 @@ agrupacion: Tú eres mi bro
 year: 2019
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicboABdmF1WXK8f-Ai2Iv0ddrZGtP1ETQsYrnhlI-OsMJ8i2T_dPrRYT5lBDkVwzBTjiikPk0355ZfBqZKBvot6s7KjAkNbrQn574nJ53Q6VZJpfkiYzXwQjY5BMlc3gO2b5qISlMdtN1L/s400/chirigota-tu-eres-mi-bro.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/tu-eres-mi-bro-2.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/TB6-AYau1Oc?feature=player_embedded'

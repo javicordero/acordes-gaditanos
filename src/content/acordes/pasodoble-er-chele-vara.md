@@ -4,7 +4,7 @@ agrupacion: Er Chele Vara
 year: 2019
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2sOTqaF4c0Mj941vAzFDxnUx04Zc3gGNE3KwGtYeu-qrbjBO_S057-IbwLbVMYG0CRXw2GE2SrS6Gz6RH1t_ou0C60mSbZqVXlopNCZ_RsdLaHN7xivw1EGxCftNsKDbtOSRtEa1d7r_O/s400/chirigota-er-chele-vara.jpg
+img: https://static.grupojoly.com/clip/fc0f13d0-411d-42a7-a79f-77278d562e4b_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/AGuj8wGrJvE?feature=player_embedded'

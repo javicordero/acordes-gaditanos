@@ -2,7 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Plácidos Domigos
 year: 2024
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIENalgmX7ZJ8hq9-VQkalO1As5bBO8aJWMw5IFgibszslbX3b9qlB3GDqbSP6KZRUAUiB_pVrPwYIToK3ly85q4oaO_b0eBzDnE61elS_9rX6uv2CECaYoCoXTpxslBbhaRUiS_fd1uOzqwrejeh7Vrxj0JUbhl4fdnoyHyDI_YMfJwr8XB_IUf4BZLyi/s320/placidos.webp
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/06/carmelo3-RsErzlG5kQv8Oz7t0TLs7sK-1200x840@abc.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/g5UhmY7oasM?si=yJ073f0NvOHuX1i1'

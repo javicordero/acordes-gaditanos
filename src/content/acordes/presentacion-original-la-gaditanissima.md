@@ -4,7 +4,7 @@ agrupacion: La Gaditaníssima
 year: 2020
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg2mchMW8BbEDi-XZmqKdGRE2ieauOACyYxnQSturpmnlaiCtqr11us1DxFZh94dG7vFJMDgnJ75y9xmVq_xFtFk-fhs0AtUFQmWRR-BZo3OEhKNHlkcXy-XA1VME2p5SNdrsQVwP-USqlE/s400/eterna.jpg
+img: https://www.espectaculosvertigo.com/wp-content/uploads/06-La-Eterna-Banda.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/BRQJFOL-5RQ?feature=player_embedded'

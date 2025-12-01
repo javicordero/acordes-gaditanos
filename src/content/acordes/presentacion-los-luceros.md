@@ -4,7 +4,7 @@ agrupacion: Los Luceros
 year: 2019
 musica: José Manuel Aranda
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEglxZzzV3OCnWfini4B9L0wcPXZsH4cXUDFDbjyGCU5XSpJJ7yXoFCa-iDp4nZEQ2QCS1c24lKHmxTxcmjB_QkJ1aFpjx1GnCnfjxDF6ASDAiLZ-irewO3tH-pIVn1fZS1bon5_R5CK26Ox/s400/comparsa-los-luceros.jpg
+img: https://static.grupojoly.com/clip/0aa6a594-a9ed-4fd2-824a-86339774f3f0_source-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/atOTSD3UwdM?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: Los conquistadores
 year: 2022
 musica: Germán Rendón
 letra: Germán Rendón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD5Klc6TwLf3h97F1DQ2RYOqPPUKdjRmFI2PGtBYM_QFU-7f9CdG3rgFyIZAowBl6H7IORYFuMWIvNc5suFw_GXRJUp9qlRJUeoyn9EfTLcZcXUzjKU1aYMfO7qphR_P4zdr-IkR19lk_29DLyyypFElq1YpRKcOR6skkaiDHm8YHtqHMAhMjtfiKEhA/s320/conquistadores.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/24052022-los-conquistadores-039-scaled.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/CKO17BTghBc'

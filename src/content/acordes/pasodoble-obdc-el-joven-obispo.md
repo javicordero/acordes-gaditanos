@@ -4,7 +4,7 @@ agrupacion: OBDC El joven obispo
 year: 2018
 musica: Germán Rendón
 letra: Germán Rendón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFI2yDTaAFjJOisVsD8ZeBRCLlz6czsHb04kk6dIN9B6PXlKY7wopE6Q6pywY2Ozb49QEEBM_oggnKEKxdjd0IehacfTwFqXj0Xp52FjZ19BNBtQakyz6GmIMa3-sjvaXIJKYJWkCCZiSL/s400/OBDC-joven-obispo_1211288860_79744890_667x375.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/15c0f1a31819b8902ada8b2cc.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/3gxK8Qpgk3w?feature=player_embedded'
