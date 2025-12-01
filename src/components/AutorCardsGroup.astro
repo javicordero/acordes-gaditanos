@@ -69,7 +69,7 @@ const headingId = `autores-group`;
   .acordes-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: var(--card-padding);
   }
 
   @media (max-width: 1024px) {
@@ -80,7 +80,7 @@ const headingId = `autores-group`;
 
   @media (max-width: 640px) {
     .year-group {
-      gap: 16px;
+      gap: var(--card-padding-sm);
       padding: var(--card-padding-sm);
     }
 
