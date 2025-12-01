@@ -1,7 +1,7 @@
 ---
 pieza: Pasodoble
 agrupacion: La Guayabera
-year: 2014
+year: 2016
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
@@ -11,7 +11,7 @@ video: https://www.youtube.com/embed/Jgup12Il-_E?si=4aEXVJFk4fXNZ0ao
 cover: null
 autorCover: null
 date: 02/12/2025
-fraseClave: Al final va a resultar
+fraseClave: Yo no soy libre ni soy esclavo
 ---
 
 <pre>

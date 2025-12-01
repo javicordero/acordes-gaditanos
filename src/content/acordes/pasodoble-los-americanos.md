@@ -5,7 +5,7 @@ year: 2003
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://i.ytimg.com/vi/o9MPUfX3bCU/maxresdefault.jpg
+img: 'https://i.ytimg.com/vi/qEdKOfNiu0I/maxresdefault.jpg'
 cejilla: 2
 video: https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm
 cover: null
