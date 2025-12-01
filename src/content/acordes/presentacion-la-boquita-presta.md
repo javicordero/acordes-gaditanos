@@ -4,7 +4,7 @@ agrupacion: La boquita prestá
 year: 2022
 musica: Kike Remolino
 letra: Kike Remolino
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdUUf5Fp-cssLdUY1P6IKbOvEe86c6OvfJzzfz8D6CaApLMeJdc2kRjA7eoc8XBBYDmtdjGJS2JYBVyAP8AdhsQQXlnFHUKVTYJ_qSsMx4sZEd8oKyz9RPmXZHNuDL780LyZlLo1fUD08r8aI8OCL2hv8Fpy-VMtcv3zEh4a93Ikn6_7lpAyigaIPu6g/s320/boquita.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/23052022-la-boquita-presta-071-scaled.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/zrh6-oX6QpA'

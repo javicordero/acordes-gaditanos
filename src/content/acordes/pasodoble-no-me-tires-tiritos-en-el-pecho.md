@@ -4,7 +4,7 @@ agrupacion: No me tires tiritos en el pecho
 year: 2019
 musica: Antoñito Molina
 letra: Antoñito Molina
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHQV-5z7_fVENirM2M8yKBvnTM8BmftXtiwc6-cgSRVAfp_aIDHNRE4M795SQ0brpjiKT0jPnXAPFkv9dtH_MIYzruu36C9WU8YXmJKpEGqgNkqtDg6lSBUqdp2F7LDvG0iiVlla6w7ldq/s400/No+me+tires+tiritos+en+el+pecho+-+preliminar+%25281%2529.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23538.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/j4mTEz1CIDc?feature=player_embedded'

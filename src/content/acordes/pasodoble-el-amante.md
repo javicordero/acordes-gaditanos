@@ -4,7 +4,7 @@ agrupacion: El Amante
 year: 2015
 musica: Juanma Romero Bey
 letra: Juanma Romero Bey
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGp5iJEHqHZBgdVIjHFa7z4f8aKwz5tydRzzcxzZ0hRIemMFyobSggQTUE2UShDA0QILQWXNoYpRggJVe6gCyXqKIwrkfIM9Z2D5v38PT5GZvredgjhTuWCq77qSz4nQnGTl2aEZH4ua-c/s400/comparsa-amante-romerobey.jpeg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2015/el-amante-1.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pAPC37_wCEs?feature=player_embedded'

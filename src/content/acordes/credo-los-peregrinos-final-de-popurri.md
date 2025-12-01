@@ -4,7 +4,7 @@ pieza: Credo
 year: 2017
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2e-AvtCF1AVVSVa9OrAYiwnCt0zOB6LHIFgtm6VXTRgtPM8WNBbU8aq1Gepg82NTUd2E1LvUSrmEPP9JKTEKoBoezVu7xt3HLZM2XTJAMdJD9V3N82LpSwvsCFiPzXRb1mGexzYjcnvQt/s400/06-Los+peregrinos+-+cuartos+%25286%2529_0.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/comparsa-los-peregrinos-1.JPG
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/DxQBrOV6XF4?feature=player_embedded'

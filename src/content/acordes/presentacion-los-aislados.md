@@ -4,7 +4,7 @@ agrupacion: Los Aislados
 year: 2020
 musica: Jonathan Pérez Ginel.
 letra: Jonathan Pérez Ginel.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Gjj13ja07eIGeGifOLwoiQwqotetTvA_rb1sLohRqowQjSRop7EFo6gf8WicDM-4alE9Gk8MBTNQnafBL8ch9KIxfKzbuGqgj27UhGYVMqt5f0DNGMX31c-beKk2qfZ8D4fFrr6ycS0D/s400/asilados.jpg
+img: https://static.grupojoly.com/clip/119692aa-f30b-42d5-8170-78495489808f_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NkdDvr0bhnI?feature=player_embedded'

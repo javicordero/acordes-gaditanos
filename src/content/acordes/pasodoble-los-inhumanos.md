@@ -4,7 +4,7 @@ agrupacion: Los inhumanos
 year: 2025
 musica: Víctor Jurado
 letra: Víctor Jurado
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsscAtNsflpxIOLfsk9kC-Fg7-CeWFx9Kwg58w4YW_gvt8aRhlrNVRKidnKWYuLbvjIYtk2pIR7wzfeywzSBiV1hyphenhyphenMTot38yIn5TyL8OgtuKoOAsc2x9n_l6xXRz5ix78ArdnVFoxdCzDhHQ6Ec71CCQ2YqpMz3axhIGTB6p7hIXxjWK7CojcooIAaDiKB/s320/inhumanos.webp
+img: https://static.grupojoly.com/clip/5ce80485-065b-404e-913d-04156e8db305_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/oIB6AMdRXBU?si=PypXVI_z7-OfP5Xf'

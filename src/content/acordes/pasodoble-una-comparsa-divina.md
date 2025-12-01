@@ -1,10 +1,10 @@
 ---
-pieza: Pasodoble
+pieza: Pasodoble Inédito
 agrupacion: Una comparsa divina
 year: 2020
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVoHBBQH4j8rZxFmaGpn2xM8tDrBuGRGx_lZfDW0Q4OPmFSAeU8SwOPKjt7_AJJMKN-fiL3jEJWhMuCgZDYrogvNnujGbX2DWrxF0hJnjhyphenhyphennPmzQP3A2LICLgeFYT7kCnDKZj3o4BfzMqx/s400/loco.jpg
+img: https://www.espectaculosvertigo.com/wp-content/uploads/06-La-Eterna-Banda.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/UMV720MQxNY?si=dCMLgStFyDaxkNUi'

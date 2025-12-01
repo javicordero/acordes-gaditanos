@@ -2,7 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Colgaos
 year: 2024
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizsQkeVxx7TvGkQ38qlrmWoMZ-gJ1ryVSXEG4PuAc90LlVWGKZvBBQ217o6SW0m0l8KQRN6ecDdg4nyX7ciHyv6QpRU06O9cDtfBruzErhFZuZQlIQxALt5FwUbWTiafbQmj6medqHnrqeKRQsIHLK32WkQaFWsEsGE09qKnleUoSDQC5OJW2EIcJbaQg4/s320/colgaos2.webp
+img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/10/10022024-loscolgaos-027-R4b6JsDCMWX5I28A4xxfMkK-1200x840@abc.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'

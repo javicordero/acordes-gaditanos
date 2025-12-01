@@ -4,7 +4,7 @@ agrupacion: El último escuadrón
 year: 2008
 musica: Nene Cheza
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizbI3Jlz1Yf9l0iLxjA_qz9Q8LZqVPOlocHccS5p1aNgAYd7zQzeI24aOBklcNTc7cvB0hbYWor7aedFmEgnzfhBJQNKPRcSJpHaC8mqBuZkBqho4gWRtU6FFkmbyTpgO6J_ZLO81K5HXV/s400/el+ultimo+escuadron.jpg
+img: https://static.grupojoly.com/clip/d9e17efa-8600-4832-8cfd-2d08a38af4f3_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/aB5g7ke760U?feature=player_embedded'

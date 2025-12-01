@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 const { pieza, agrupacion, musica, letra, img, year, slug, transitionKey } = Astro.props;
 const headingId = `acordes-${slug}`;
 
@@ -29,14 +31,17 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
 
 <article class='card' aria-labelledby={headingId}>
   <a href={`/acordes/${slug}`}>
-    <img
+    <Image
+      class='card-image'
       src={img}
       alt={`${agrupacion} - ${pieza} - Carnaval de Cádiz ${year}`}
       loading='lazy'
       decoding='async'
+      width={480}
+      height={640}
       transition:name={`img-${slug}-${transitionKey}`}
-      class='card-image'
     />
+
     <header>
       <span class='badge' data-pieza-type={piezaType}>{piezaDisplay}</span>
     </header>

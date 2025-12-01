@@ -1,10 +1,10 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: Al borde del precipicio, Los rancios
 year: 2017
 musica: El Noly
 letra: El Noly
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisVO3M4Xx9ijzSAwc3qQEtRdFm_N0s69PhQFexM2qA5x8OhmyvCHOFGwyhRWmTgLTd2Bhm-Iia9kgAlqiULTWh1QGKqCXMBQdIYIbvxJ7wnQx4ZsxKnGejF8LOEy9tEWWxERBk2aDUdL98/s320/05-Al+borde+del+precipicio...los+rancios+%25282%2529_0.JPG
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/Albordedelprecipicio_.jpeg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/z8r1_tlTMhA?feature=player_embedded'

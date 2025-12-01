@@ -1,10 +1,10 @@
 ---
-pieza: Presentación
-agrupacion: alternativa Los Cobardes
+pieza: Presentación Original
+agrupacion: Los Cobardes
 year: 2016
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqzahnjAuGQPOsY-YlBy6VmTREd7yMA6pGMsxjKHXlOynCjynSTlC_5GQjLtFOUfyRXkb931UAW7ObXVDJaxm_qjpLygtjpHe9MtCUflDK8aRiRyIyfmc6RPErXHt_03jux0jSNzVgpuDb/s320/cobardes.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2016/los-cobardes-5.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Xh72ScnkIpg'

@@ -4,9 +4,9 @@ agrupacion: Los del otro barrio
 year: 2025
 musica: El Tomate
 letra: El Piru
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjO4Cwb98apjhV4MGTXRE7W5JfXdCJzUx1p2zwWed1T0V9Y_BATaCiYJ0h4TzGC8uDBiNItOdbbCsbeTp2t37FubVaTRS6AgERVqCMyQCPRXvYzEv7W7sSBgX7z6QeI5s-lLwJY0trmYhSuFhBbFbTZF1qABiWbJFhd48nNG8sfiBidi4Rbyn2lkENvblX/s320/otro4.jpg
+img: https://www.cope.es/files/og_thumbnail/uploads/2025/02/20/67b67cf778770.jpeg
 cejilla: 3
-date: "15/11/2025"
+date: "29/11/2025"
 video: 'https://www.youtube.com/embed/iXoyBUQvGEs?si=Ze6c2_fCsghVILUy'
 fraseClave: Cerre los ojos, pa
 

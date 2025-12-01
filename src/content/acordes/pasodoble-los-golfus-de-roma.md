@@ -4,7 +4,7 @@ agrupacion: Los golfus de Roma
 year: 2005
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/a/AVvXsEhPDQEoGwCw-HO_zy0TOZuhZw9RGWdJEArza7dfLYePoF6l4Wt_1YGakOpr3jJaD9UKZ-U6DaDLUaI0_GYCQkePRPn5uW_XAY6OgrP8k9N3oJZscQ-fJVlk4MhC17dCRkOJVNL5GuV5TCEOM5noBy_I-bZc_q1A644x5xziX-ilJGx1FqfKRjjSJwFrqg=s600
+img: https://static.grupojoly.com/clip/8e6dfa86-6596-4d94-b07a-5a1e7f07f738_16-9-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rbcpEZJ33OU'

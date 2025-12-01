@@ -4,7 +4,7 @@ agrupacion: Los Pacientes
 year: 2020
 musica: Fran Quintana
 letra: Fran Quintana
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhnoYErzrCDE5utCGQTeJe2WSG-HHDiCEqDZQFh3Uzz4fV-IkxgmfvnGxVtKjXeWhYaw2ZIDhXoKduvmRNdfIAydwhcJzqy8vXribJnXTX3ixd0Bq7E1MI01ztBS5aR_HfizS-GCiQzjXx4/s400/pacientes.jpg
+img: https://s1.abcstatics.com/media/MM/2020/02/03/v/pacientes(7)_xoptimizadax-kyg--1248x698@abc-Home.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Ck3TOVT8fuI?feature=player_embedded'

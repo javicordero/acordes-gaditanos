@@ -4,7 +4,7 @@ agrupacion: La Cárcel Vieja
 year: 2004
 musica: El Noly
 letra: Joaquín Quiñones
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEutN_vA11I4D-M-ssuOX7D14mReV0SHJ01EwsMHLkGQ-kHch9oV47PNZjIeVtVNdxo5KsxfzTRTp7-5u2lpLNRsF8islX4Pbi22RkCheiLRZ1gZWAXpMcUX9_5M8cLvaZKc84I5otQuLo/s400/la+carcel+vieja.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/402e97cb0f0953d27bf9a94cb.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/GbMfHj6T8gk?feature=player_embedded'

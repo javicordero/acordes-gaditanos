@@ -4,7 +4,7 @@ agrupacion: Las que viven como reinas
 year: 2012
 musica: Faly Pastrana
 letra: Faly Pastrana
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEG_zI0lWhUmARTL3OFFFaBzyR58mfY5eJR43Q234O2z6KrNAOpDpJhHF_o4STFLETV8DqejW6RkmhVVtbsSlpPX0LpMJRPAon7gyrnOxy1pId0Bh0k7cw0nqAqpObGTUOT7gFLcfK8Ygy/s400/Las_que_viven_como_reinas_1.jpg
+img: https://static.grupojoly.com/clip/396ecced-7645-497e-a6db-823498c40acf_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/onH4CXBzN8U?feature=player_embedded'

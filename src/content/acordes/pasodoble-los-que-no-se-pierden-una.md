@@ -4,7 +4,7 @@ agrupacion: Los que no se pierden una
 year: 2019
 musica: José Luis Bustelo
 letra: José Luis Bustelo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQyADOMARfJokORV9eqmGkR2t_2BFqEJd3oDH9DCKZzzkpM4pNMizKbg_AUaduWBUO3ikmPLve_BrjNediYxH4SmnOZ44M_KIpvRA7od7R28T1vBjbLGQOz9OSic8T9rUbl3XMhx7BnLGV/s400/1549357858737losquenosepierdenuna_preliminares.jpg
+img: https://static.grupojoly.com/clip/55ebe345-f4c3-44e2-ac53-a603bea7954a_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/z-_XcCu3kw0?feature=player_embedded'

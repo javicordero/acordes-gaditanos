@@ -4,7 +4,7 @@ agrupacion: El cantón independiente (Que vivan las mujeres de Cádiz)
 year: 2023
 musica: Pablo Cuartokilo
 letra: Pablo Cuartokilo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHRaXcTxTmJ1h7ypxzVE034CNd4nClU1UkWJgaeQMOGGR272ctfS7S5Bd-ZRSyBB0jlEiXmvQ-kaPVKrbtLVN1nuzKwmkMs4VeeX2_8zLB9TlSOcw6hk-fhdYaNAlbxosnKCigh6WlZfmEu6k74LEQcFoQn-W7AGMT16BLQnUFcxZL0M0zLaB3qSYXNw/s320/el%20canton.jpeg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/15022023-el-canton-independiente-033-scaled.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vmgeVynOI-U'

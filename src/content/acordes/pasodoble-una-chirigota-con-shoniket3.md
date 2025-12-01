@@ -4,7 +4,7 @@ agrupacion: Una chirigota con shoniket3
 year: 2025
 musica: Alejandro Sánchez Helmo
 letra: Alejandro Sánchez Helmo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNpJpb1tdR33XxrtS1nCEWASJDN5oeUiUX7LlftHhh8aCTCM-LlVw49EONt5rTMnvNruPOl9D2tVGn_MsWIQfU4kVgJru9BXvxZC0z1a3xG21LR4WJ7YKFw41W2UR_4ZpMAdrnVmfg2MBjuYwLeBoxBsVga9iMjPXivIXvgr9DnICsycu9CPAEXbGF0AI2/s320/shoni.webp
+img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/19/DSC_5811.jpg
 cejilla: 1
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/I-sGXVxkAPY?si=Cg82_o1Zms2C-Eiu'

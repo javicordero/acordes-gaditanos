@@ -4,7 +4,7 @@ agrupacion: La chirigota de la historia
 year: 2013
 musica: José Luis Bustelo
 letra: José Luis Bustelo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipCSIeVEsgC1P7qQsdgXfW6KNnrYjEA2Bcr5kOm9WgH0-nFDJOPObxFezU8q9ARUXc8UINHGY5JDZ1-qM9vRZHSPb1agqxj5sTC4beuGgDW6xhxnf9fuW5k1SNOzHAf1lR-8NdZHNcsHn5/s400/chirigota-la-chirigota-de-la-historia.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2013/la-chirigota-de-la-historia-7.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/OwfRx5yP_6Q?feature=player_embedded'

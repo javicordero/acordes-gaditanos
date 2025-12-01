@@ -4,7 +4,7 @@ agrupacion: Los Resilientes
 year: 2020
 musica: Germán García Rendón
 letra: Germán García Rendón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhNXEphnC9o8btXM9XHxY8q0afudBFe8XrpF986Anxgk4DUowQ28D5hRo9TWIixd-4I7kNpDTdjawRS_Jaeq_z_BGJLI8VZl1MUFVM3bTQZ5r4d1Aj9Cnae1WkOhppyxb7ULocza-QsRhq/s400/resilientes.jpg
+img: https://www.codigocarnaval.com/wp-content/uploads/2019/10/comparsa-los-resilientes.jpg.webp
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/sAcQPn2bTQI?feature=player_embedded'

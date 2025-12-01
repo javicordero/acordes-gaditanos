@@ -4,7 +4,7 @@ agrupacion: Hoy no me puedo levantar
 year: 2014
 musica: El Lacio
 letra: El Lacio
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinWBCR0GNpM9QVtb-fXt4IHdXbcYqajbUlyPWVLrMtKve8YGZD9EATwpQ5j2wZOFMmQQtvCOoWVziGLU6CvSV_ezypi4t0dKxHEM4i6rr96ulyweoyPPp-794-bUBDNeTS_Xh8HdoiluG61ze-91DhPctbiAJSxo3sylFv2XCx5zF7Q4S__XYcEfVNBjWs/s320/hoynomepuedo.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2014/hoy-no-me-puedo-levantar-1.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/LnoGsmFQ8ew?si=v0wC6MTdBEqWh2DJ'

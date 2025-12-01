@@ -4,7 +4,7 @@ agrupacion: Los peregrinos
 year: 2017
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMxp7fSkokLsgc4Rt5eI-Y-6IYAoJYKTSjKSSs-Z3xLcrlXTAEMez-7LEvXAQ-Rylykvm3wEdPw39AOcQbGKfaobPvmH4oHGlrDyVZ7IZuAahUlFJ6O0RIS3ai-_6jLLUBD5bLLpTSYUSj/s400/los+peregrinos.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/comparsa-los-peregrinos-1.JPG
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HADOQEZ91_Y?feature=player_embedded'

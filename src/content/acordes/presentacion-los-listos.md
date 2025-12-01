@@ -4,7 +4,7 @@ agrupacion: Los Listos
 year: 2020
 musica: José Manuel Aranda
 letra: José Manuel Aranda
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhd7liBPEeuju1cIP4iy8T7I511VRn_2cbyDJoCAUYUdEpMZif8E7mlIwzlKpZUy34jgzxnvM6wI2iikrQUxKjCYUd2k1atI44DDpSlNLAQvNSsX_bV1ZzGxuQ793APiW3-zwvLzAdDIJV/s400/loslistos.jpg
+img: https://s3.abcstatics.com/media/provincia/2020/01/21/v/loslistos-kux--1248x698@abc-Home.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/yWDbQsrs7Ys?feature=player_embedded'

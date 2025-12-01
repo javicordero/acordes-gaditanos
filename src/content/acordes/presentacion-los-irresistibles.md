@@ -4,7 +4,7 @@ agrupacion: Los Irresistibles
 year: 2016
 musica: Juan Fernández
 letra: Juan Fernández
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMvkeB1IGy2SU1CJQrlm5YERny5Ixyw_9GR6cu6K9K30rhyaQMa5vgi0dgd2E49PB04VkaF6cBuTMlJI-47aBiFOonFsJpIrhn32py-1VxrLND_ihUO59N0jv-f1XzHdvW1lowwKmgNZgI/s400/Los+irresistibles+%25286%2529.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/irresistibles.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/lle-zDkjFls?feature=player_embedded'

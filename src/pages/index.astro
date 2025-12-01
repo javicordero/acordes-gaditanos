@@ -12,23 +12,21 @@ function parseSpanishDate(str: string) {
 
 let acordes = await getCollection('acordes');
 
+// Ordenar por fecha de creación descendente
 acordes = acordes.sort((a, b) => {
-  const yearA = a.data.year;
-  const yearB = b.data.year;
-  if (yearA !== yearB) {
-    return yearB - yearA;
-  }
   const dateA = parseSpanishDate(a.data.date);
   const dateB = parseSpanishDate(b.data.date);
   return dateB.getTime() - dateA.getTime();
 });
 
+// Los 4 más recientes
+const ultimos = acordes.slice(0, 4);
+
+// Destacadas: mostrar los acordes cuyo campo destacada sea distinto de null, ordenados por ese número ascendente
 const destacadas = acordes
-  .filter((acorde) => acorde.data.destacada === true || acorde.data.destacada === 'true')
+  .filter((acorde) => acorde.data.destacada !== null && acorde.data.destacada !== undefined)
   .sort((a, b) => {
-    const dateA = parseSpanishDate(a.data.date);
-    const dateB = parseSpanishDate(b.data.date);
-    return dateB.getTime() - dateA.getTime();
+    return Number(a.data.destacada) - Number(b.data.destacada);
   });
 
 let autores = await getCollection('autores');
@@ -38,8 +36,9 @@ let autores = await getCollection('autores');
   title='Acordes Gaditanos - Acordes y Letras del Carnaval de Cádiz'
   description='La mayor colección de acordes y letras del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
   <div class='main-container container-layout'>
-    <CardsGroup year={'DESTACANDO'} acordes={destacadas} />
+    <CardsGroup year={'LO ÚLTIMO'} acordes={ultimos} />
     <AutorCardsGroup autores={autores} />
+    <CardsGroup year={'DESTACANDO'} acordes={destacadas} />
     <YearsList
       years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
     />
@@ -55,7 +54,7 @@ let autores = await getCollection('autores');
 
   @media (max-width: 640px) {
     .main-container {
-      gap: calc(var(--main-container-gap-sm) - 16px);
+      gap: calc(var(--main-container-gap-sm));
     }
   }
 </style>

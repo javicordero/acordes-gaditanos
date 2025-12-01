@@ -4,7 +4,7 @@ agrupacion: Oh Capitán, My Capitán
 year: 2020
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5qYUfELdni-Z1tg0uOqOR0SWcVtXfGHp1oSzkLFXD7SYInrZpZzNzg5yvRPZIGQJYxf_HJ274kbNAdPddxvWEoumcEcbJegRoyW8nI5bn4n3nloW7Ask5_6NRSvhIeYGdPaSG2_nMUkqk/s320/oh+capitan.jpg
+img: https://static.grupojoly.com/clip/23ea30ae-2613-4ec8-97a9-81f2fe78334e_source-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Co0vEoWqhLQ?feature=player_embedded'

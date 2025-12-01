@@ -4,12 +4,11 @@ agrupacion: El cementerio
 year: 2025
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrv9FzPG7Qirun6sie4Y0fBvus1dRTAXRJBn5wNBW6dBPuV0-jLxcpQ7XyRaTYcac0HamjAdlQgbehX5oLda3SCyFoCcu5wWpnNSRPOZlq5I-7Fyup_fEN-vrX33NXsaJE7qbO5SmsMXgmA9bVRsPkSkQ7oeVx4D696ii1W0BSFKWF587z6fmFveaCp2zG/s320/cementerio.jpg
+img: https://www.canalsur.es/resources/archivos_offline/2025/3/1/1740788050784ComparsaElCementerio_1024x576.jpg
 cejilla: 2
 date: "20/11/2025"
 video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=H5WaOLCTOtpU7KGS'
 fraseClave: "Cerquita de la caleta he"
-destacada: true
 ---
 <pre><a>Do9</a>                   <a>Lam</a>                    <a>Rem</a>
 Cerquita de la caleta he reservado un sitito para 

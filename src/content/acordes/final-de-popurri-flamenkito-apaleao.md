@@ -4,7 +4,7 @@ agrupacion: Flamenkito Apaleao
 year: 2000
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyHOjgOCNVX51KNE1NVx645DO3gU8VvqwiTBJKjzDazD0woasGgGVIhkbwqhTUqb7LdhkdmXaRKjPJ4hP2uZdw69an1AsvBIXa0-0t1REpp-1nVuAC7L0OsA_oruZ9QXL0WgMOth7UDkH1w9kCGsNLNiqOYo5Fk3yPoSWg9j9lrzp03G8aThxineAXrcVB/s320/flamenkito.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/1e7c44b27be415581a10493e6.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/3eNmBAR_52Q?si=vjlZdGisOiITDU79'

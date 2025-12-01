@@ -4,7 +4,7 @@ agrupacion: OzBDC
 year: 2019
 musica: Germán Rendón
 letra: Germán Rendón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdhXbq8Eyi9oBEQ6a7rIa6PL8z54M0RKXt54uvok7A-jJwGmqTOeJYJm-ET2oMv_vJuTsKvHmKKlXZsAj02WIgenCCo-KRMGOkbEgokhYSrlRWEQa3kdPXTv1tbY2eY5JKSt_rJ6mNq2TF/s400/Ozbdc-1.jpg
+img: https://static.grupojoly.com/clip/c13b10c0-2344-4d36-a257-02226633119d_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/FSprO0hfAZM?feature=player_embedded'

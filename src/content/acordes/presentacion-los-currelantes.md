@@ -4,7 +4,7 @@ agrupacion: Los Currelantes
 year: 2011
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcVZW4T0sRo2jgMfh4Z3i-H_rjD6t-gUVg67_PFrFir58iVTUl-mK3o4vMtSrwFrwnAjI9G84j6hwRIx0fUgv7QNlgSDCQw9hilpjiRGXDx1A04529dA-VDsireurtkIIBEp71lQ3y-_cv/s320/los+currelantes.jpeg
+img: https://static.grupojoly.com/clip/1f89f490-9f4f-438a-8145-c577a042d573_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/51qUCrFAGG4?feature=player_embedded'

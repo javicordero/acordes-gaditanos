@@ -1,0 +1,234 @@
+---
+const CONSENT_KEY = 'ag_cookie_consent';
+---
+
+<div
+  id='cookie-banner'
+  class='cookie-banner'
+  role='dialog'
+  aria-live='polite'
+  aria-label='Aviso de cookies'>
+  <div class='cookie-banner__inner'>
+    <div class='cookie-banner__title'><strong>🍪 Usamos cookies</strong></div>
+    <p>
+      En <strong>acordesgaditanos.com</strong> utilizamos cookies propias y de terceros para mostrar
+      anuncios personalizados y analizar el tráfico. Más info en nuestra
+      <a href='/politica-de-cookies'>Política de Cookies</a>.
+    </p>
+    <div class='cookie-banner__actions'>
+      <button id='accept-cookies' class='btn btn--primary'>Aceptar</button>
+      <button id='reject-cookies' class='btn btn--outline'>Rechazar</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--card-background-color);
+    color: var(--text-color);
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.4);
+    font-size: 1rem;
+    display: none;
+    border-top: 1px solid var(--primary-color);
+    transition: box-shadow 0.2s;
+  }
+
+  .cookie-banner__inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .cookie-banner__title {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .cookie-banner__actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 8px 20px;
+    border-radius: 16px;
+    border: none;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.5s ease;
+  }
+  .btn--primary {
+    background: var(--primary-color);
+    color: var(--primary-contrast-color);
+  }
+  .btn--primary:hover {
+    background: var(--primary-contrast-color);
+    color: var(--primary-color);
+  }
+  .btn--outline {
+    background: transparent;
+    color: var(--primary-color);
+  }
+  .btn--outline:hover {
+    background: var(--primary-color);
+    color: var(--primary-contrast-color);
+  }
+
+  .cookie-banner a {
+    color: var(--link-color);
+    text-decoration: underline;
+    transition: color 0.5s ease;
+  }
+  .cookie-banner a:hover {
+    color: var(--link-hover-color);
+  }
+
+  @media screen and (max-width: 640px) {
+    .cookie-banner__inner {
+      padding: 14px 8px 10px;
+      font-size: 0.95rem;
+    }
+    .cookie-banner__actions {
+      gap: 6px;
+    }
+    .btn {
+      padding: 8px 12px;
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+<script>
+  const CONSENT_KEY = 'ag_cookie_consent';
+  const SESSION_KEY = CONSENT_KEY + '_session';
+  const BANNER_INITIALIZED_ATTR = 'data-ag-cookie-banner-initialized';
+
+  function getAcceptedConsent() {
+    try {
+      const cookieMatch = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith(CONSENT_KEY + '='));
+      const cookieValue = cookieMatch?.split('=')[1];
+
+      const localValue = localStorage.getItem(CONSENT_KEY);
+
+      if (cookieValue === 'accepted' || localValue === 'accepted') {
+        return 'accepted';
+      }
+
+      return null;
+    } catch (e) {
+      console.error('Error leyendo consentimiento', e);
+      return null;
+    }
+  }
+
+  function setAcceptedConsent() {
+    try {
+      const days = 180;
+      const expires = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toUTCString();
+      document.cookie = `${CONSENT_KEY}=accepted; expires=${expires}; path=/; SameSite=Lax`;
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+    } catch (e) {
+      console.error('Error guardando consentimiento de cookies', e);
+    }
+  }
+
+  function clearPersistentConsent() {
+    try {
+      document.cookie = `${CONSENT_KEY}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax`;
+      localStorage.removeItem(CONSENT_KEY);
+    } catch (e) {
+      console.error('Error limpiando consentimiento persistente', e);
+    }
+  }
+
+  function hasRejectedThisSession() {
+    try {
+      return sessionStorage.getItem(SESSION_KEY) === 'rejected';
+    } catch (e) {
+      console.error('Error leyendo rechazo de sesión', e);
+      return false;
+    }
+  }
+
+  function setRejectedThisSession() {
+    try {
+      sessionStorage.setItem(SESSION_KEY, 'rejected');
+    } catch (e) {
+      console.error('Error guardando rechazo de sesión', e);
+    }
+  }
+
+  function updateBannerVisibility(banner) {
+    const accepted = getAcceptedConsent() === 'accepted';
+    const rejectedSession = hasRejectedThisSession();
+
+    // - Si hay "accepted" → no mostrar banner
+    // - Si hay "rechazado en esta sesión" → no mostrar banner
+    // - Si nada → mostrar banner SIEMPRE
+    if (!accepted && !rejectedSession) {
+      banner.style.display = 'block';
+    } else {
+      banner.style.display = 'none';
+    }
+  }
+
+  function initCookieBanner() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const rejectBtn = document.getElementById('reject-cookies');
+    if (!banner || !acceptBtn || !rejectBtn) return;
+
+    // Evitar duplicar listeners cuando hay varias navegaciones SPA
+    if (banner.getAttribute(BANNER_INITIALIZED_ATTR) === 'true') {
+      updateBannerVisibility(banner);
+      return;
+    }
+    banner.setAttribute(BANNER_INITIALIZED_ATTR, 'true');
+
+    updateBannerVisibility(banner);
+
+    acceptBtn.addEventListener('click', () => {
+      setAcceptedConsent(); // persistente
+      sessionStorage.removeItem(SESSION_KEY);
+      banner.style.display = 'none';
+      window.dispatchEvent(new CustomEvent('ag:cookies-accepted'));
+    });
+
+    rejectBtn.addEventListener('click', () => {
+      clearPersistentConsent(); // nos aseguramos de no persistir rechazo
+      setRejectedThisSession(); // solo esta sesión
+      banner.style.display = 'none';
+      window.dispatchEvent(new CustomEvent('ag:cookies-rejected'));
+    });
+
+    // Reabrir banner desde enlace o botón
+    window.addEventListener('ag:open-cookie-banner', () => {
+      updateBannerVisibility(banner);
+    });
+  }
+
+  // 🔥 Clave con ClientRouter:
+  // se dispara en la primera carga y en cada navegación interna
+  document.addEventListener('astro:page-load', initCookieBanner);
+
+  // Por compatibilidad si algún día quitas ClientRouter:
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCookieBanner);
+  } else {
+    initCookieBanner();
+  }
+</script>

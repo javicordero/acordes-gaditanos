@@ -4,7 +4,7 @@ agrupacion: El nombre me lo estoy pensando
 year: 2019
 musica: Paco Rosado.
 letra: Paco Rosado.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkwMsiJCFnRLYNHodGlzmGEAhY_A8jarWpBhW1MJd2x6RiB4Cfu0KsgQlglw1bZEOpW02D8xTAgFgD-2BW8cPQfutS3oAbvtN71OHrLaC5xBtQHBEDwA2AC9bdGmW9OcgAJKScyMB-BsUs/s400/comparsa-asignatura-pendiente.jpg
+img: https://s1.abcstatics.com/media/MM/2019/02/03/v/chirigota-nombre-pensando%20(1)_xoptimizadax.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/jyRWXLmboL8?feature=player_embedded'

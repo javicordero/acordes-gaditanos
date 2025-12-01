@@ -4,7 +4,7 @@ agrupacion: Los Martínez
 year: 2023
 musica: Julio Pardo
 letra: Julio Pardo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaLPc6xWcwbIa_e4cj8nx6a0T_OFGZWi9kS_2PfeVQ32FV-ooHGQsfHcHj3tkBssmDsnykG6joi0Pssad8C3LooVWqgclc0QMg1IN-nPRd5hWxYwP4Ui23sHeJwMwEasPz0jIO7dvY6yEPkS2-FJa1u23G146o1fsfxbpk1IA-fYoStH9M8PswR5muyw/s320/martinez.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2023/14022023-los%20mart%C3%ADnez-043.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/VYQ57KkDVXc'

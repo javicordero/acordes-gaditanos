@@ -4,7 +4,7 @@ agrupacion: La Chirigota clásica
 year: 2024
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCvkt1wIAnWUtwsBhe6LWYYkZSt27EoJMAHQjnSCLyyAnLaKzVF819s_GOFKelvT4UI3cODgWuXLsWUAoxAq12kEUMkM6MnqHaHPYKa2qrCGhH-cVNU8yr_-2ns6pR_tQk-3CnBjJlnnX5wNM05HuZzCgFWUytvy_5OW6r70MqgWkXTkgJecjj8mUBiwwx/s320/chiriclasica.webp
+img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/23/23012024-lachirigotaclsica-057-U70864718313UmQ-1200x840@abc.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/YOdpz3ZyMZA?si=1mSIWrxQD8bmpJn3'

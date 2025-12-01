@@ -4,7 +4,7 @@ agrupacion: Los Plácidos Domingos
 year: 2024
 musica: Juaki
 letra: Juaki
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOz-ZnuzP8Ln7AOo1tnY2uFRD_BBxThwa85WMJJBNdwNislxUzRRnqUmNSACNBvxTDRg-tydWwj9nxDSSUMvvkW-Bt9K2tTfqApz2EPc_qSyAztRBANSgKWzdiJKH6DHAhcJBNuR05Za5fHYGHI4Yh7NDonL7uPI4WbRFwilmmSBLjrP4DYG69YELidSEF/s320/placidos2.jpg
+img: https://static.grupojoly.com/clip/f9c5c1ce-e4b5-4392-893a-fcbe994cd3e4_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/g5UhmY7oasM?si=MWTbfiXf07NhGXon'

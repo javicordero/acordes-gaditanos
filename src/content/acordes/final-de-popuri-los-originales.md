@@ -4,7 +4,7 @@ pieza: Final de popurí
 year: 2022
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXrwhsTbc8HyZV7vRNlClvxA6PyEnjrUFgWdWfNqwAVujzjkSmPh8FLKBhrp7OG5rBEgUeKrta7eRmsLGHAWMlouP39Er9gUGXNFaNB8R5NuQjJgx4Cwo8hUF7P2UWMNzxaeYLfP1A7LjCBs0ZOeWzAKZjEwyjz_e1U-7KrKruB1_KUfngq3648ixGvGXy/s2560/originales.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/19052022-los-originales-066-scaled.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iap5lRmMha0?si=6DpredvZhEq5bx04'

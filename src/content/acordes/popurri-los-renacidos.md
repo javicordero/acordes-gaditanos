@@ -4,7 +4,7 @@ agrupacion: Los Renacidos
 year: 2022
 musica: Raúl Cabrera
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9O3p3cRr7hHbcxry0T54sCf_L3Z5N3vZjP5RLSJWFHh8sIamL7uY1t5ygjyF-Brl9PPSgMZE8MyjIx8vFC-NcKS0bAI7KvTGY3FPogyqMn1oHbuhq4gJ5M7kAk822ZMRkrTh_qNOXJloyLDTWAT8kdGSxhXk59oSiLNxt6eGYe97t2QJCenZxM4Zysg/s320/renacidos.jpg
+img: https://static.grupojoly.com/clip/12aee06b-028a-4ff3-9173-bdf4f9a954b8_facebook-aspect-ratio_default_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/W9u3qLBbgmc'

@@ -4,7 +4,7 @@ agrupacion: Los del veredicto
 year: 2023
 musica: El Sheriff
 letra: El Sheriff
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiS1kQIm7iQxgdLm2Y7Pos5wtm3whzTO_4RLOzcBvA2gfHwx-2bc14lrr9mDUy9A1A9PN90O2egZG9cCPCpe1P4xcyssTGSFmHdhysvdDc_S33Xn86KLerB7YEHh6Dcxp6iiyLEiwbusPjIeIGQK1GpPwR02PdnN7Wb42QU8cpU91X5BFw88oD7i8Njgw/s320/veredicto.jpg
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/01/23/chirigota-veredicto1(5)_xoptimizadax-U52740056041dKZ-1200x840@abc.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4caALxC2d0k'

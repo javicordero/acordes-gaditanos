@@ -4,7 +4,7 @@ agrupacion: Los Ángeles Caídos
 year: 2002
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkR8KTReZJib-bMTPZTkXrpVrHQ8zWpVBC4PeHBGcBTOGv3xnDsMn_mhuNy36QKJMXfOSg9FkQUM8UD2l_9hsBdbbbI2l6dSAXKVpGJ4n5NbTWuoaBPJvEoBzz3qbP2xxj_07vDDwSvIdy/s400/los+angeles+caidos.jpg
+img: https://static.grupojoly.com/clip/f44701fe-fb8f-49ee-912e-3cbd7f14c85c_16-9-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cvjgMSLRXZ0?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: El cantón independiente (Que vivan las mujeres de Cádiz)
 year: 2023
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiealtsrqltHxmbYmIN3gGMW1tOix0dtFGlcgXdgM0dUJZIHsTYGzIOGhNv2yYnrdztR4cfVy-HM10zwI_QfnReq5L7P9Ot2yELjOqtrGA8XUw3A0zSxavCIPADbfkbqKmIoo0J3T156bEFfJoJS_C-pOXCxl0htv3OuKOtPxE0CUP2b6xVfev3l1RvTw/s320/canton.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/15022023-el-canton-independiente-033-scaled.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vmgeVynOI-U'

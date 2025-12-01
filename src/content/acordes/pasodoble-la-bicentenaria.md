@@ -4,7 +4,7 @@ agrupacion: La Bicentenaria
 year: 2012
 musica: Nene Cheza
 letra: Nene Cheza
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKyKD-RX-L9g2J0VTD9mOarMB2FlYS3YM6Lnlll08cFoCzQ2gqJCC6PxJXrWNhVvMtTPPgy2BmsOe1vgJ2UzDY92nt4pjzxi8X2XNWVcx6GI4p4VbcJy4kJwno1MH2NJqYy3hbu6hPyAaMQZJ9a1lQA4eJUuP5HUNrBvxcT-jaVlTXN9Mvc28DOLAhyphenhyphenqOE/s320/bicentenaria.jpg
+img: https://static.grupojoly.com/clip/2548886e-380f-413c-bfde-96f3be608c42_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/zYWVy398stA?si=0Q99MRRCuO0Bfrup'

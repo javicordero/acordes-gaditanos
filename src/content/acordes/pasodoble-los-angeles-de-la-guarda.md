@@ -4,7 +4,7 @@ agrupacion: Los ángeles de la guarda
 year: 2018
 musica: Hermanos Carapapas.
 letra: Hermanos Carapapas.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_SS-6O4tnqstiWpAFxV3F_9EnTfMztT_yInGyD4nbOVSpvKCHUZCdPip_EVJCBCtCYzQINh8Szk3LbctwcwrmSstXgGJeP-V6uxp9vECQqNZSsc_FFKtja-ZJuzPv330jOyIMTabwvotW/s320/comparsa-angeles-guarda-preliminares-coac2018.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22835.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vJ3mNG8E5lU?feature=player_embedded'

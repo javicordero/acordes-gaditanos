@@ -4,7 +4,7 @@ agrupacion: No aguantamos más, vamos de impacientes
 year: 2020
 musica: El Tomate
 letra: El Tomate
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiddB3CwX1hyNt9wdHXV3n0UbRMUXRjdaWlDX2NjA3aTluAwSqQxUrmPjErvw5hscaC_Bq_GeMt61W_muFwfURgimxO53rOOiQqceooWG8Tx8PLcE3q3jr0nSV3KOj99pyo2RozEfi9TjaD/s400/impacientes.jpg
+img: https://static.grupojoly.com/clip/7bceb602-3c28-4bec-bebc-f78054e5a8b1_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/IuRF6pxJZAc?feature=player_embedded'

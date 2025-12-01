@@ -4,7 +4,7 @@ agrupacion: El Joyero
 year: 2024
 musica: David Carapapa
 letra: David Carapapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxsswsXKbeO0dw4Vz5qYF2L_LJTq3mV1HgFJr2sxe_FlcC6-DFVsJmz9sk5lEF5fuXQlagIpREJR7gi5iK-nER00C2UROT56J6ZXsbgqGOsGcyWHIwwcyzOeXXzjsgmESmg7hyTg4em2QzBESoqbc7ycWu-0oal1IDacXflICyJlpKSlXoO3yvHLZp_fBq/s320/joyero.jpg
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/10/10022024-eljoyero-054-RtmwwflpfcQSb8V1oCWQIJK-1200x840@abc.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/p-0H0KFVJ9s?si=YdAYi8ZsuQEXmQz9'

@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
+import { Image } from 'astro:assets';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -54,13 +55,17 @@ const headingId = `acorde-${slug}`;
     </section>
 
     <figure>
-      <img
-        transition:name={`img-${slug}`}
+      <Image
+        class='acorde-image'
         src={img}
         alt={altText}
         loading='lazy'
         decoding='async'
+        transition:name={`img-${slug}`}
+        width={360}
+        height={480}
       />
+
       <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
         {musica}
       </figcaption>

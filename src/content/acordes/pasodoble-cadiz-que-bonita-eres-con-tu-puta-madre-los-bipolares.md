@@ -4,7 +4,7 @@ agrupacion: Cádiz que bonita eres con tu puta madre (Los bipolares)
 year: 2023
 musica: Víctor Jurado
 letra: Víctor Jurado
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg7TmCbyEYNCACeMzQgeBYMc6tXddwowO6Lw6moTJJXNlksa26C1iJVVnMRf2VaUM8mDHFnkbZxRveEwEMPhDTQm9jQMji4rDmNilR-7T7FIxSrK3pKYFu3CqQ7_uQG4A1AkxJ38RwG6WjBg4Sl4qTY-tCncbJe_tt-1OnBgBcJQqmANUqEP6d7zwB3xQ/s320/bipolares.jpg
+img: https://static.grupojoly.com/clip/57054097-9729-4d3d-9946-51a558d62040_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/H4Sa9aFMKmI'

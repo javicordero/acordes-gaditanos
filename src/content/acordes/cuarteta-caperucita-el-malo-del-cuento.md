@@ -4,7 +4,7 @@ agrupacion: El Malo del cuento
 year: 2016
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbU1lmXAaCDFpSjgygpYoInK1T42IZNBgy3MoPVTT1mQde0Q42V4L2EHhQOlWCDPYk7nVp2lIbXhGV4oto9aea1uLIw6S0DWTGFNOkIuWwA1Z5QzrCZQkz1if1v71_B-Tg_YmtN30cVo8l/s400/El+malo+del+cuento+%25285%2529_1.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/malocuento-comparsa-jona.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/eB-ROxMxE64?feature=player_embedded'

@@ -2,7 +2,7 @@
 pieza: Popurrí
 agrupacion: Los Colgaos
 year: 2024
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN5xjK73t5nvNfKrTu0vcr4svl6l_2IREHGjhGTqQ6vfXw-SMbf3wMFL7Nf5iqYRQAkH48-ZoLGuY79ZaPfBq4XG11comhXyZguc6PwbSYNnu2ZNM0df2vfRsALdojsLH1AQTKgpiMPETKaQvvbFL7tTy981I1bB3zcSIFyBcPQajHlUbGNN3zibhfoOvX/s320/colgaos3.webp
+img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/10/10022024-loscolgaos-027-R4b6JsDCMWX5I28A4xxfMkK-1200x840@abc.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/KJFxI9y1o-o?si=a6JkwNZLPM5XWXLJ'

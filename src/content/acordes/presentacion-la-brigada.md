@@ -4,7 +4,7 @@ agrupacion: La Brigada
 year: 2022
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqnimMrBgp-i7SkJjwDCXLpxGinnoRjsSU75jWFIdeJ8JadQdBHpWYWBmNNxkNcyz30eNGp3LH0nqVuyzbt6RqfcsoQL8VuIIG0fTT7eDizTV1JwaJXSYdvPiMiY9kxb2PdV1vuM_sdTo9R4QtuO-ni9nFj0lOc5xYnslnQb5zXNsNjwhv5SujiYbNVA/s320/brigada2.jpg
+img: https://s1.abcstatics.com/media/MM/2022/05/31/v/labrigada(15).JPG?width=600
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iVw8DL5qvKc'

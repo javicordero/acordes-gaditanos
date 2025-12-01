@@ -2,7 +2,7 @@
 pieza: Pasodoble
 agrupacion: We can do... Carnaval
 year: 2022
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKeecd86kGyg9qsCDFiT42TFqB6pWkhsjhJbnR4Zrfx8dzZKiQg-r94a6VsUQSX9ryFN9ycNtKNJsG4QsiAq_fiYayVbJnPK_EOPT90JL4sidmFYquJ4MqYrNWb6k9kx89ETgV4EMMF_h6MJVcxaxPouv2Q_TUOzDb3DzhJ4xYmn5ILQxlXk46Gd_J4g/s320/wecando.jpeg
+img: https://s3.abcstatics.com/media/carnaval/2022/06/17/v/wecandocarnaval3-k34C--1248x698@abc.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6Y4mm2Qg_6c'

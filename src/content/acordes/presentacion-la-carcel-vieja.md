@@ -4,7 +4,7 @@ agrupacion: La Cárcel vieja
 year: 2004
 musica: Nene Cheza
 letra: Nene Cheza
-img: https://blogger.googleusercontent.com/img/a/AVvXsEjDtZjfWC9GSoNPN_JGoENHMry0x_jNQr6IXOiPhJHn3dF-BtyYCbF-U0tFV85t4USgfzyCiTsN4ZpA1Yg6xRR-XNVOrTcCW92a3r-kPi9AFvX84NvCqUQ4z_wWCzzfuYgmqCkudg8eSWozI7Bh4aruy7txPCWsBuMO7fnUXHSeQB2q290v3vGRHgUWJw=s480
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/402e97cb0f0953d27bf9a94cb.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/s9L3ILnIUVo'

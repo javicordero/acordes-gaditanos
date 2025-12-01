@@ -4,7 +4,7 @@ agrupacion: El Creador
 year: 2016
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtllGoTf4VatoM3n4BprMbTy5Xi5rJ2nD2r6ANHDeLXLCST4hHOvmbNObrJ2nu1E_IAy9hpZnCNYLmgP4Mkh4VzPywPcGKWNmYegGgkhZ6EILHtHUd23_EY2JNAGRF5wfrmJbxQhkNiwy_/s400/comparsa-el-creador.jpeg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/creador_116918676ff49aebce8075a874be7e6d.jpeg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/5sroK3gzppw?feature=player_embedded'

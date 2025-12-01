@@ -4,7 +4,7 @@ agrupacion: Los que salieron perdiendo
 year: 2024
 musica: Carlitos Pérez
 letra: Carlitos Pérez
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQcW8iOEyZcMcauSE45-ecTEyaAEvF9mD3hK1y6T0s29KPelnsxwiBD9WqYbfMYGCcZbOsYrxgLVkUAVAc_s_Czo7mrgiOsMJ8Te2uBWt96sXOCQGlQz20O5pmFnEdRSMmsBd2Fq900h9Yiol3GEo9HRfpdJZaXZGP_82UuonohpiAnbHq8W3Wy6w8-bh6/s320/losquesalieron.webp
+img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/24/24012024-losquesalieronperdiendo-267-U35073721788ZmQ-1200x630@abc.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/jV2LZVcjAG0?si=OiwjZCO_x6OUg1ra'

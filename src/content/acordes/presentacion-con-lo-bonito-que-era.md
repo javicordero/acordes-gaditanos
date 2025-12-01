@@ -4,7 +4,7 @@ agrupacion: Con lo bonito que era
 year: 2024
 musica: David Principito
 letra: David Principito
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8WeFEaBOY-zCjsSnXfBmi02k5P-1RsMA9zQsAVWq1lCSB9HX8NvHdPdorG4WtWZoao6up_h6DJuO2YRPDoMKg-MSRBaNVWbkD2VSyK1fHYy00Ehqn_GZA3uaZPyf_c5FUIl_4YRPW_N7T6Fmb6rAKzjlvfBxmlkyxmuDTYVQDJZ4nBQEIW3ZWI_88bONT/s320/conlobonito.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/11012024-con%20lo%20bonito%20que%20era-030.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/doWdRZWv8IE?si=wLY1b7EwSn85PIEB'

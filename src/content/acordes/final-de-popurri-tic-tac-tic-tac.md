@@ -4,7 +4,7 @@ agrupacion: Tic-Tac, Tic-Tac
 year: 2018
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPNxlEXHbYnodiP8lBZ7CuvrCgch988s0tP4Uts6BbiHrNEK9kQOF33AN_v0VUjVYScsKNSoNKMVPAlO1txLE5PeoZlVNqcqUj1Y6rlnVKm4QaXIo6hMUoABoZXrS5JoiiB-Yr0fWYuGKm/s400/tic-tac2.jpg
+img: https://static.grupojoly.com/clip/6ca3887e-7d65-4897-9471-989aed0efa36_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/3F6QTRxOrTI?feature=player_embedded'

@@ -2,7 +2,7 @@
 pieza: Presentación
 agrupacion: Los Colgaos
 year: 2024
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmy0jPRDYQCdEE97voUPS2LWVDT5EXr65o4hXgLPxb7LENYjgP8zTSSpBDuWgaSgEsHEw0k7W78BflfjTtM7p9tEcM9nWKxAyWHp4KcPvHtdCwnPmAOX_9obFq_E774jwGwLg0B9PGtaRg-QWO7k6VMQBqX2zO4wjdPyhvPy0HwHvPZ1K32ILKbQXt06mn/s320/colgaos.jpg
+img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/10/10022024-loscolgaos-027-R4b6JsDCMWX5I28A4xxfMkK-1200x840@abc.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'

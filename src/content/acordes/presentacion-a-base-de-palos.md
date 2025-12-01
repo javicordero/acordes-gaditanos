@@ -4,7 +4,7 @@ agrupacion: A base de palos
 year: 2019
 musica: Antonio Jesús Bazalo
 letra: Antonio Jesús Bazalo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg56SNWcObPqp1ElGsJ-Wpaxh7Gaxo9ejUUizGgCOlviQCPzP6XJCJroqCLMhgdcqNl8lM-_hvR7sB0XG9XfLPpvJOXnBADAEcX53vbo2YRmXw8YtXU8GGLO1hY_tcP8Ddhmx428TTX6kPj/s400/a+base+de+palos.jpg
+img: https://static.grupojoly.com/clip/c89f1535-2f98-4a23-ac23-c315eb6f662e_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/v6Ft81c7uUI?feature=player_embedded'

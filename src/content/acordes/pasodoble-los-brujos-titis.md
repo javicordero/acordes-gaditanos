@@ -4,7 +4,7 @@ agrupacion: Los Brujos Titis
 year: 2018
 musica: Manolo Santander
 letra: Manolo Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj75-XCh77_ZKwrNzcTEAYs3DkPxvmsNoJF6F4z9b1e1fRBlYWuQ6tjoY5hX9DQttSZkMtU8vznUzxTDV7PxBY4WqKGxKVvL0PtWwcdaVzk8MtTZRDje6J-aVBnO-4eeAzfB7ditSlCWwuC/s320/unos-brujos-de-cadi-cadi-hacen-vibrar-al-falla.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22823.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ApAErgGfzd4?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: La Tribu
 year: 2025
 musica: Raúl Cabrera
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimuntyxmKmWlDBB5grx2OvdG4heNd0DJQUbSHA0FFfUdZ30pFvhuXUfIZ9YLZoRiLRN5axoZSCUF_NCMeRcUWsoZF5lXsTY8CRw_dpM2P4-ae4_x_ztVwRPZv6hS4j-CdgGXRxbTx-lXkSK8PCo-DVI-xXLcTY6U-GsT9xpTjoJmNOnimUxc4g3K41C1vF/s320/latribu.webp
+img: https://static.grupojoly.com/clip/f92c52c4-dbd2-497e-b8bf-73cea5495057_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/A8lJkL3i8vw?si=VRxRRSm0iR3N8f_r'

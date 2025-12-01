@@ -4,7 +4,7 @@ agrupacion: La mare que me parió
 year: 2009
 musica: Antonio Martín
 letra: Antonio Martín
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguuWQRJYjbrskMYEt8HpBcaE34CFqOuQsuBvubLWx_-TXb_jl8DdW5-8vAK5Hv8_FZhshEHwiBQYPiKFcCUUQKB4BI-FRUslY7QYksJt2b-RuzlmeqSoroEKtDPtxrd8bMURwFS_2URfu9/s320/La_mare_que_me_pario_3.jpg
+img: https://static.grupojoly.com/clip/85ff7885-182d-4c1c-b4e9-fea72f5d0140_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/oNVJy6VwTGk?feature=player_embedded'

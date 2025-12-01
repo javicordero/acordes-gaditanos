@@ -4,7 +4,7 @@ agrupacion: Los caballeros de la piera reonda
 year: 2010
 musica: Antonio Martín
 letra: Antonio Martín
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiha2WFXoWnnF5ItF4Ojfiz2Zztxj3Kwl1s4Zdp1M_d72sJyswTWchX9-QiBYcu5kkfU8t9a0BAllLvGyZyysDS5RZ716vHV2XTLvJ1yWAHrt2XtXqTO-Qh2RGbWSIz-8MCzbOTkYuNAeN2/s320/Los+Caballeros+de+la+Piera+Reonda_1.JPG
+img: https://static.grupojoly.com/clip/2b525acb-0121-4011-a948-2b4eed3023e5_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/RMU7No1Hleg?feature=player_embedded'

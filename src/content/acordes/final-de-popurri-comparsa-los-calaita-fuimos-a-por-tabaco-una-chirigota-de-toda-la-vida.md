@@ -4,11 +4,12 @@ agrupacion: Comparsa Los Calaíta (Fuimos a por tabaco) una chirigota de toda la
 year: 2025
 musica: El Peluca
 letra: El Peluca
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgz-d1BtmLSMWzW99OWBTIoqbp8KJtssrth4Bw7FJgEPaR3fo_MbGpfI2fs5fovVO-idbde0FQ_I1Sd_3vQuArmFZc66bRF_tYM9wwyZ1sTWrU2oP4b2zEafsuZGzlMUm4OsZO_tJ4UykpDQPCaDq_nhz_IZpb5Etgvt_zYCZ5SQoKRE2dUTwbgQoV7pRSc/s320/calaita.jpg
+img: https://static.grupojoly.com/clip/37c06769-030e-4ccd-b2fe-f32112158b24_source-aspect-ratio_1600w_0.jpg
 cejilla: 6
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JrgnnwCIj8g?si=nE399JdPTc8GKNS_'
 fraseClave: "Llego el adiós Y tendré"
+destacada: 2
 ---
 <pre>          <a>Do9</a>                    <a>Lam</a>
 Llego el adiós Y tendré que despedir Pa después 

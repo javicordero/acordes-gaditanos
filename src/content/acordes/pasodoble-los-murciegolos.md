@@ -1,5 +1,5 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: Los Murciegolos
 year: 2001
 musica: Juanma Romero Bey

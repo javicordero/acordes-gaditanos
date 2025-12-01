@@ -4,7 +4,7 @@ agrupacion: El ángel de Cádiz
 year: 2017
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHKEKPKMXype7FSGz7l6XpE0Tq-nD42yydLKhUSabjij41GELDx_rSwgfkmTXaQChj34Q4caJoQTSDbAW6zTOPgYA1z5thJnNWvImBkgX9LTNTs2SH7DKW4lluM6RUcIzvPOdL9D3w2jKTH1TY7z7MOTgFZCkvYUOU4I4PW6ZzpxvNX9bMDu1ZMMzHMA/s320/el-angel-de-cadiz.jpeg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/el-ngel-de-c-diz-1.JPG
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/g0OcUODah-8'

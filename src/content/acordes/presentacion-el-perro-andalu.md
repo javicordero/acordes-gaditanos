@@ -4,7 +4,7 @@ agrupacion: El perro andalú
 year: 2018
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGrmDTPmnsYwNzM7lHseYrAWI_t0AWG23hmScfpwXutEZrY4LFFsvaQOiAOxcnDJ-H24udGshN_LDxfyBhA-qvmELo6e7Z4DVfx0w_-dPprtRZqkOD53Vgz5Mx2VcMqQndn0_V1vWa6J5M/s400/martinez-ares-perro-andalu-2.jpg
+img: https://www.lavozdelsur.es/uploads/s1/55/48/0/valdescuartos-faniescorizafotografia-5-2.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/wTh5QH7bP8U?feature=player_embedded'

@@ -4,7 +4,7 @@ agrupacion: No te quemes todavía
 year: 2018
 musica: Manolín Santander
 letra: El Bizcocho
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiPsUgWz9OxKjrhLofKVKE5vEdd4WpRcOP3CDgwIcyn2L9KLLteCxyJ4X4NqrcekAOJtvQi3i9MQkKMBqWqfkWIPQxHZU8FCrEThc4JHx8U9EqJAxiEd9QYawVGgSzkRpqu9v4CpYf5rr9A/s320/no-te-vayas-todavia.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/361624e952ea374997de60e81.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/g44Exbn6vhU?feature=player_embedded'

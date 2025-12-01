@@ -4,7 +4,7 @@ agrupacion: Cuando tu vas yo vengo
 year: 2025
 musica: Carlitos Pérez
 letra: Carlitos Pérez
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi70sP81A5rGCjb_8VYgaJ8JI3u6KDH3U0nt4E6Z4dS1xahpAhmteQvwK3a6HNnQJMsyN54S5PtZVg15yqOK4U4SAxtIND8VekTb5pNkFrOPkUexmFy5l4cPRhPjI2nAHI6hpYRhZEaLcigzsFh1jbhtkgswI4E6QBG6gv5WnzCo8UTvlB48J3RSBosMUHY/s320/cuandotuvas.jpg
+img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/01/24/01CUANDOTVASYOVENGO-GABINETEDEPRENSADELAYUNTAMIENTODECDIZ-FotoReyna-3-RRMNL0ggkOUn22ydR0YAS9O-1200x840@abc.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NbYS5gt5C2c?si=ZiVpzZxFz7gyObOn'

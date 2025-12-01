@@ -4,7 +4,7 @@ agrupacion: Çembrando copla (La comparça er pueblo)
 year: 2023
 musica: Mario Rodríguez
 letra: Mario Rodríguez
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSR4Sr2vabRXQSx-qyTngtoFVqGZwL5p0DFeVDr6rpYjQbZ_KrQgepmnVvk_kBK5Fk40bPQwgoVpJPtfUILMRvMt6NFu7wbycKG0FceagSkN7fIVmygGu8LP9ZGyfQYJBaNi2437ZEFc_VU53F0gvDuOWNqwnEOvKsE2QVeEz6rNfesqE_HTVQcVWkdA/s320/cembrando.jpg
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/01/26/WhatsAppImage2023-01-26at22.20.49-Ryc6AMG0NHsgWHUu0S4HZYK-1200x840@abc.jpeg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/aHqFL-kpkoU'

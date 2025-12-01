@@ -4,7 +4,7 @@ agrupacion: Los Renacidos
 year: 2022
 musica: Raúl Cabrera
 letra: Raúl Cabrera
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqqZEUMy9VNDqYw1nz2lfjJ4SDv7mLNI6hYR15WFLnb7kGwEvp2eCDoGVjJlG1aZQ87tDwOYkJHntz-L0sE2m5Xb2szmpnfVShULdMo1sx-ok9rwEk9cjpi9U7gH3lpQZAlOFyVuln85JtGGybsnMcOcyh6VZ7uWNAUPhi_DtlHmL2iA6JxeWhj4zy3Q/s320/renacidos%286%29_xoptimizadax.jpg
+img: https://static.grupojoly.com/clip/12aee06b-028a-4ff3-9173-bdf4f9a954b8_facebook-aspect-ratio_default_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/W9u3qLBbgmc'

@@ -4,7 +4,7 @@ agrupacion: Los prisioneros
 year: 2018
 musica: El Noly
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkLdzgSrNH_qEk0MQaF69tg9AOmWn4zILANgKCP9RQ4u8calM36vbbVA8Oe6n1zTTsm25Gl3MCgLrG_DrSeYspoKXBflru3ooyLUVKF0i_e__dPsBM5jJqZmfAFQBj51fC2yZZUHj-bdk6/s400/prisioneros-comparsa-2.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22872.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HEJg8sX6S8E?feature=player_embedded'

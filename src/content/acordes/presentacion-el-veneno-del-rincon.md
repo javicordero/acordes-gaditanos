@@ -2,7 +2,7 @@
 pieza: Presentación
 agrupacion: El veneno del rincón
 year: 2023
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqwL4FUQ_elB07V_Pd38a3PylyfnnEQrmdQI-FYLBXHI5gMzEFGEfRrkTnGMUeGgm7wnlGzeQII91_IJXWHB9IeP9WcKID6c3FrUQm6KhMSFAIqYsEUDxSGhEMVARLRFjlyeqsR8xAopU3sc-FZExB2naKzW6tO2UQXcOR_e-r8Tb7j9sSeISLtVloHg/s320/veneno.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/08022023-el-veneno-del-rincon-069-scaled.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/7i5eXpVqV4M'

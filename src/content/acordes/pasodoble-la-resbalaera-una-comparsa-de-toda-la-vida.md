@@ -4,7 +4,7 @@ agrupacion: La resbalaera, una comparsa de toda la vida
 year: 2024
 musica: Nene Cheza
 letra: Nene Cheza
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYeS7jzAiZIG6Fx9GLDN73YJCyDzvrZp2cnBvs3Bdir0hiKafBpYegmbdEyFP8gSEmO7qCD51zy6KNOVVCTc7n4GKsO1LqYQa9BAmSdm4kvJB3fWftwIppTtos7g7pDlURXe-1rsSPuAU0vxgCX50Ak_u9NDPo-EIJVUt23jm1Ze5RGLaR8XV23vkIbha7/s320/resbalaera.jpg
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/05/05022024-laresbalaera-101-U40404724266bHb-1200x630@abc.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/V7v3gtfHBhg?si=506yx8VVOHwEIevl'

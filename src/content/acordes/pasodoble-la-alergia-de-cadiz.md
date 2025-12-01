@@ -4,7 +4,7 @@ agrupacion: La Alergia de Cádiz
 year: 2025
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9zXzdF2t0PesofPd9KbTjFNdxzKerSq2Fy_v8nMl_7RhxoJpWX5vwsnKyH8_9FI1AYjGOxCcDK0UzgasiGaooc8rFZW-zRFiT0KF2G79AJ3l_jQ8yPQCUugAZozpW_gw3IWCRgVZzFp6-EMsxPQyx_BJM3mQrlzjUhJ6j6iOejmpt46ffdKU6W6WiZZi5/s320/alergia.webp
+img: https://cadiznoticias.es/wp-content/uploads/2025/01/Gabinete-de-prensa-ayuntamiento-de-cadiz-foto-Reyna-23.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MWxjDKo-f7w?si=MPFZrZsZaPqMnWO6'

@@ -2,9 +2,9 @@
 pieza: Final de popurrí
 agrupacion: Ni los buenos son tan buenos, ni los malos son tan malos
 year: 2018
-musica: Iván Romero y Nono Galán
-letra: Iván Romero y Nono Galán
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyfAjvw5UQcdtL04apqirpmzhvrnjSX5aAqJ_hFliba0-Qsktu-_xbDjnSD5x78pKNPQjh_vXImZytZ9dZMlVx4CJrqJuTvDs_eoiJR_OKPrmcAcPe54QpPR0L912jIN3teylnHgAtBncu/s400/comparsa-ni-los-buenos-son-tan-buenos-ni-los-malos-son-tan-malos.jpg
+musica: Iván Romero
+letra: Iván Romero
+img: https://imagenes.cope.es/files/microformat_image/uploads/2024/07/10/668dc5edca53a.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/TRNRXONWYt8?feature=player_embedded'

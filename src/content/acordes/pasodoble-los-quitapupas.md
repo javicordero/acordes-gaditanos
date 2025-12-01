@@ -4,7 +4,7 @@ agrupacion: Los Quitapupas
 year: 2018
 musica: El Sheriff.
 letra: El Sheriff.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrPZLmjFZVCDnbgPpZ5EKeK_S8pzfMCV_YX_Rqpj9719Pf6VEri4fNdNpbfT2QFA4zOwXjuXrnAq_QcQYILSwg83j0WhbLiMFC3eGxysmEPdZqdOofsIQoOlpKpf331-YIulfqOW4pm0A8/s320/los+quitapupas.jpg
+img: https://static.grupojoly.com/clip/0ae65656-f5bb-4d55-9d81-523490fbc3eb_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/WY-WEzLBeW8?feature=player_embedded'

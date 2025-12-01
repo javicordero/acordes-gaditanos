@@ -4,7 +4,7 @@ agrupacion: Los Sumisos
 year: 2022
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgT_9SMUez_mTlJJuw2TIg34wSGmJWkhOTmfXPHR4q_PbnBuVzG1jwBt29FcBww0_JXlAjvvVz6EeooLaYdhtWE-PiEgapECvu_v54CkRIwIFf1Yyy5UrzjHH-9QfSbfixEpukBGlckM13o6sxmDzP0M3Y6OfOPAfv8hTvWM8xns4SbzE1x_oMMrcHktA/s320/sumisos3.jpg
+img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/18052022-los-sumisos-160-scaled.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iMr_gmISLdk'

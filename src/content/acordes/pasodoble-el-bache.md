@@ -4,7 +4,7 @@ agrupacion: El bache
 year: 1993
 musica: Paco Rosado
 letra: Paco Rosado
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaOwg-dMnkY4MZCFmTYM65S5Lw6MTTb3-UNnwO8PpXrGEWUvH8Itdc90SrWD_NwpRsKNb3euq8MBV_noF4kNBKPeRO9XEi0Tst8WHw2LUHtZWxKaDvqMz_mzcs0_MAsNz36ULxwTa6Rq2s/s320/el+bache.jpg
+img: https://static.grupojoly.com/clip/8a890cc8-8493-44af-a7de-151376ab630e_16-9-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/mYyK29S4zJM?feature=player_embedded'

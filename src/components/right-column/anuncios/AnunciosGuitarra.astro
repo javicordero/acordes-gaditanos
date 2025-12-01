@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import RightColumnCard from '../../../layouts/RightColumnCard.astro';
 
 const { class: className } = Astro.props;
@@ -84,7 +85,14 @@ const randomProducts = getRandomProducts(products, 4);
         <li>
           <a href={product.url} target='_blank' rel='noopener noreferrer'>
             <figure>
-              <img src={product.image} alt={product.name} loading='lazy' decoding='async' />
+              <Image
+                src={product.image}
+                alt={product.name}
+                loading='lazy'
+                decoding='async'
+                width={60}
+                height={60}
+              />
             </figure>
             <span class='product-name'>{product.name}</span>
           </a>

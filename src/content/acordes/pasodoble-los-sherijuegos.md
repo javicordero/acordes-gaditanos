@@ -4,7 +4,7 @@ agrupacion: Los Sherijuegos
 year: 2025
 musica: El Sheriff
 letra: El Sheriff
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjg_tFTHpOGMFbksgNuS70txMXoyrv2yb31IGTxxyOvAVJwRVHs6g76zf98I1NLC6RwFrTaLK4H9WoodteVcnnPBuFPEgAmK5iFW23HO-A7xmw9GuLlDcdLewEbgTITzdg-1zBn8xw29dF13iKxgLeFJwg9BsZ8SnJyv1BQaHcvhhIuXwdo7UG7pQvHEdP8/s320/sherijuegos.webp
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/20/05CHIRIGOTALossherijuegos-GABINETEDEPRENSADELAYUNTAMIENTODECDIZ-FotoReyna-3-RKhzmMWqFn4YrTHXH9ib3PP-1200x840@abc.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/C5483kWZ38g?si=_VLN6_MYI1QzG50z'

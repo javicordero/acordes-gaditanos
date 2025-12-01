@@ -4,7 +4,7 @@ agrupacion: Los del Cádiz Norte
 year: 2017
 musica: Manolo Santander
 letra: Manolo Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6ckki_M36jakcHWu2wvv2b7FD3ZqKah-LaDVgQc3-O5y3ExVet1jCsVqt5PCvx8_3QD3fOWwKiAn9F3aOaYjzaEYTHTsWgb-tCqgXwRjSdGtjSPMnZBllFOp4Xyyn7tQAmbID8VBzyzTK/s400/Cadiz-Norte_1110498950_65253158_667x375.jpg
+img: https://static.grupojoly.com/clip/023d7efc-3c84-4def-a004-3705191aeda3_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/9LgBEE3uymE?feature=player_embedded'

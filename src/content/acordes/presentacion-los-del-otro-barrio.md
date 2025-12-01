@@ -4,7 +4,7 @@ agrupacion: Los del otro barrio
 year: 2025
 musica: El Tomate
 letra: El Piru
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibXDGMLeTkSP7kao-iGIyrMyTl1wRPDFjtCSESYaeH_CLepHlNeqiKus2X8B3MBf65HDBfaymGJbJzabhT2OTmzkOxx36N-ki1OLzqu26Xb249Cx28WUupTw7pAhs5yCSty-ZUWYDvOG5LcSmW7moO97aOlq1uxxjFWW5qbX-ozQoromE-us7fib6xzBRZ/s320/otrobarrio.jpg
+img: https://www.cope.es/files/og_thumbnail/uploads/2025/02/20/67b67cf778770.jpeg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iXoyBUQvGEs?si=YIhzWZ01ZSgaqgnC'

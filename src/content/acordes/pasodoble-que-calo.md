@@ -4,7 +4,7 @@ agrupacion: Que caló
 year: 2018
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisBHXqM_Dwe6YDkpa2IaYALauRxh5m7pDQSUADpVXLgX3L2mVhxc3piV5KEh8vOBoTOeCb8TVzgDjgLd7Pv46-pKXPWB0l_WlK70gVRY6TIWsXMcQHdrgtCqA_dH8ZPnsjVbx15k_mJXwJ/s400/que+calo.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2019/05/que-calo-chirigota-canijo.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6VK6DY5eT0U?feature=player_embedded'

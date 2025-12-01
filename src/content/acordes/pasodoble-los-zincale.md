@@ -4,7 +4,7 @@ agrupacion: Los zincalé
 year: 2018
 musica: Tomy Alemania
 letra: Tomy Alemania
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtNkYKqCnuJFmzUT1l3kHeqsAMblp4nsnLGb3orlhJkKPiIruj6MBqX22NhK6xQPNTW5s4OejDLF_9E8QoG3dwN1i43Vyr_FKlfa2sCXdk9Zf75Qgv4FKLJWVgNBMJwzoqfUXM_Tpx4R7c/s400/los+zincale.jpg
+img: https://ondacadiz.es/sites/default/files/styles/webp/public/noticias/2018-07/imagenes/noticias%20cadiz%20Los%20zincale.jpg.webp?itok=SgUqRO2I
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/yuoxLd21JbA?feature=player_embedded'

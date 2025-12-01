@@ -4,7 +4,7 @@ agrupacion: Los Julianes
 year: 1958
 musica: Paco Alba
 letra: Paco Alba
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3hZgdgH3WWuakzu6SJWuEdqi4QysXDM6qorzAjCJcVabhlpnd5dEYRpvxEqTkmRGf21E_RrVo2dqA1VQSuZio-V0PlP7Jexbg74FXuprDqiZ8YxWTykqDVndJEkaCuvaT5BE5vlUmtdQp/s320/1958+Los+Julianes-Paco+Alba.JPG
+img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxC23hjk67lyf0cGceivW_ZvjnZcaQzllJa3fAEBMQAX3QKuPeds4EZWrMMGhh8XkiDlAAS8yDAXJSTYlN7gwBas_in5Flo0rsEIpCYUjduOjR49qBLz69kVAlok3dBi1jyjDOJ9AU4exx/s1600/losjulianes.jpg
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/1hnjZDgKmIw?feature=player_embedded'
 

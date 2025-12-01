@@ -4,7 +4,7 @@ agrupacion: Suspiros de Cai
 year: 1992
 musica: Pepito Martínez
 letra: Joaquin Quiñones
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkPRyHXDI7HdDofb1-Mq7i1ePs8vyBAXju2j84FsJyD8c1Cp8hoYCJQpFM9dmPnqzUtOV7wnRSIuna1li-VntH8qw7sYAHDdBPa9ULnk75PjJyfA4jtR7Q05j53fE9bDd962mdBY01yLfu/s400/2658130807_538234829a_o.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/dd6af8e6d80356b90e6e0079e.jpg
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6mumLy8t46I?feature=player_embedded'
 fraseClave: "Sabía un camino, camino entre"

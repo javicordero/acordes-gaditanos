@@ -26,11 +26,11 @@ const headingIdFinal =
     border-radius: 8px;
     border: 1px solid var(--primary-color);
     box-shadow: rgba(50, 50, 93, 0.12) 0px 30px 60px -20px;
-    padding: 16px;
+    padding: var(--card-padding);
     z-index: 0;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--card-padding);
 
     &::after {
       content: '';
@@ -73,6 +73,10 @@ const headingIdFinal =
 
   /* @media (--mq-sm) { */
   @media (max-width: 640px) {
+    section {
+      gap: var(--card-padding-sm);
+      padding: var(--card-padding-sm);
+    }
     h3 {
       font-size: var(--acorde-card-header-font-size-sm);
     }

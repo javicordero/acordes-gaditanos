@@ -4,7 +4,7 @@ agrupacion: La última y nos vamos
 year: 2024
 musica: El Bizcocho
 letra: El Bizcocho
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixRdm2BI0VpE6_VSj8u693iSztTdt-tUySSDSGLrlNbOnbxHYuec8jb5ht5eJ5aM_TlvG_a9apBXovgu1ZccHT7DBm4lsZ3fJdlsQQrzFaJInblwP74-ih5dNJAtf0cmHT6WBqGFUlobJyV1DNFGq_0B6Av94LQ77atuQ3ZVS7B8Dxl_q8cAkHIpt1fNfS/s320/laultimaynosvamos.webp
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/30012024-la%20%C3%BAltima%20y%20nos%20vamos-026.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Qzs_uLHx8cg?si=vXP_ShN_0fyZ-Rc7'

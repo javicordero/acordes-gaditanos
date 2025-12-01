@@ -4,7 +4,7 @@ agrupacion: Los muñecos de Cádiz
 year: 2011
 musica: Hermanos Carapapas
 letra: Hermanos Carapapas
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJNFGEKbQ2ggWUVO27573ztM7Bx-Nij0TT9H0qBuMlR91quLMk1q2LnfmbV06VkouMZxVZf95ePuba3iy127FMrPOUG8-FDM5fzEp8VYD7K27OcWW2gIHxjV7OPToAZErKuUIKKgHufpyA/s400/Los_munnecos_de_Cadiz_1.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1299832509-munecos.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/dJ1Dn0Yy_Kk?feature=player_embedded'

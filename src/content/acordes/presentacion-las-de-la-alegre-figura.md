@@ -4,7 +4,7 @@ agrupacion: Las de la alegre figura
 year: 2013
 musica: José Luis Bustelo
 letra: José Luis Bustelo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEieVLA96fjBW6gix4HxUtTIa2iy9PkbskcfV_ms2Gk11BU1YzGpvF6c4OYUvY9NegXAPGm0a75A6xxUGPLt7a6fpkkqFeyoGDANNPDF2IXW_Bo_UJfLvOvGEjBnge-wcl6eI57ubIZGFQOL/s400/Las_de_la_alegre_figura_1.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2013/las-de-la-alegre-figura-4.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MBqSZ8bbI-Q?feature=player_embedded'

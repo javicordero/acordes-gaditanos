@@ -4,7 +4,7 @@ agrupacion: Los Morosos
 year: 2019
 musica: Lolo Molina
 letra: Lolo Molina
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj41asU_BiW1VYo1bu7oUNkgYGNOZy3pstDRN_q54h_xkMlNh5uoDGJ0gvR3ROSkad3ez9RMf9GmTeOpdXhgHmomqlAFI5fV-by89KSdcFhqj-EtpsG19q9GIK8QDbjky8qjy8p01VgTG6y/s400/morosos2.jpg
+img: https://www.codigocarnaval.com/wp-content/uploads/2020/04/Chirigota-Los-Morosos.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bivvVH5Dzw0?feature=player_embedded'

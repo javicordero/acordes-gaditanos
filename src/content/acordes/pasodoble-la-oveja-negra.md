@@ -4,12 +4,12 @@ agrupacion: La Oveja negra
 year: 2024
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYrMr8EOysMzSTjW65IwC7B__0m08X45tM-LX84DWaHnZFp_GTliyV2QZWWZtpCUqZud1Ut2dOnoLvTDogLs8oMcR2CmfUdk48hOxwp_VfuOvKdGG8MfKvK8icimdLtO3qzBKmd2yCT0l7SMEsxEcg0smWZAYdSdGgN0DopNZl2SYbliv6K6ZLxXdxQE1s/s320/ovejanegra3.jpg
+img: https://cadenaser.com/resizer/v2/6E4VM27DTRBUBL3NE2SL3WIOUE.jpg?auth=e7a53fbac18c9c92284ccea5bed4e9cdaec7a57e82dccbd68d95ca5c9ed743df&quality=70&width=1200&height=900&smart=true
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/23eSN-eBwW4?si=-woJ-sL7utajzYMV'
 fraseClave: Me llamo Pedro Romero, pluma
-destacada: true
+destacada: 3
 
 ---
 <pre><a>Re</a>               <a>La7</a>             <a>Re</a>

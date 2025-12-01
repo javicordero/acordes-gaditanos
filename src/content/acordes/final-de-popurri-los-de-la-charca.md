@@ -4,7 +4,7 @@ agrupacion: Los de la charca
 year: 2017
 musica: Ángel Luis Silva Benzo
 letra: Ángel Luis Silva Benzo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhb4BrS9gQ3ynARyxOygZl7EgFqlASdQXnjfGnGPAHdWxvTKhwkifJGnohfs9wRQqYzPJK4mBL6L0XNvbr6ZFBhawLsXKvecq8CAzJJq9VILeIzYZHVRO-Je4DX_VGwM8ciRuLe-26tlX-_/s1000/07-Los+de+la+charca+-+cuartos+%25286%2529_0.JPG
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/fc04933d8dcf1e7bdb1d216a9.jpeg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JLaLLeafkc4'

@@ -4,7 +4,7 @@ agrupacion: Los Mafiosos
 year: 2018
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjX_t41jZjDWb7cAiyG9lKQ0dRwIel4fagPKT5J1zgdJS6dujHtCepTjgrfJZLKyjJWCgPTj3HOOiV8XMPqLZTdV-vdEtR8a3QhwtdSi0vLk78tREqgMjbQ8OFM5hdWWUfNQfmVZQWYmDY1/s400/mafiosos.jpg
+img: https://static.eldiario.es/clip/1cfe85cf-4b56-4c92-863e-beac3458a77a_16-9-aspect-ratio_default_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ba__Js82ZQw?feature=player_embedded'

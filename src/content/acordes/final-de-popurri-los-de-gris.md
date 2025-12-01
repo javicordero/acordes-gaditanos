@@ -4,7 +4,7 @@ agrupacion: Los de gris
 year: 2013
 musica: El Lacio
 letra: El Lacio
-img: https://blogger.googleusercontent.com/img/a/AVvXsEjiNPd0UVGMW_Y9wVcu9OFr0Yq-ulDvxcy6T6XMrXmTk91rbs3zcX9Iq5jZHPS7zs5FFZjgIkIFhQKJmYUZPgn2u6FuTkarUQDcaGXQv_Yd5-e2Q9_l4IhXrQN3cNmnhyCUrPmBuWfyAe3yek37hhGAbEAzmxMgtjPLN9W0c-bwaamcKURLXThzaxdhGw=s640
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2013/los-de-gris-8.jpg
 cejilla: 6
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ld0PTV1Dlxc'

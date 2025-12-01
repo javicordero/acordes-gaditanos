@@ -2,7 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los pimpinelas de la Plaza Fragela
 year: 2025
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-wB90Kjan6uYQVGmxmDqiU25esbhHpljOm7Bx4cVtR54QUBF31Nvnmw9Fax_1Hd0C4osoljrGFoERJABRwwb3fLKLN4IEW_sjO4JAup3yXJ4HbOHE_HSI5b-w7wIKrT07MOxtjEa22Gq0m4e4Ja6Ob3CotERcZ8aiLAO6Gjd61p2tXgCW2ey60wx0WunJ/s320/pimpinela.jpg
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/01/25/pimpinela(1)-R8xn7JQhhdAIwfuMG8tskeJ-1200x840@abc.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Jy0YXF0kJWo?si=gUmGlmpm8Zl6t4FC'

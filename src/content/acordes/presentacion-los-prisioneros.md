@@ -4,7 +4,7 @@ agrupacion: Los prisioneros
 year: 2018
 musica: Jose Manuel Aranda
 letra: El Chapa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_kN9FuySryBmiHzAXvOzKwyXq77W5KSKoKBwptWOmmBfs8zq1_9kccvHlJjG-BMobL3bJCLARYsDNUP2eI7gE47M0lkQ8VeI5dNPBiHSSckO3QmQnOb33EqwqpNxTEmtsImyFMlORXOl6/s400/prisioneros-comparsa-2.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22872.jpg
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iPx8A4bpEEc?feature=player_embedded'

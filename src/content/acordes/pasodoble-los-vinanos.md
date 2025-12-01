@@ -4,7 +4,7 @@ agrupacion: Los viñanos
 year: 2023
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_gUf_2Yw1fdwAJra2RCiquMptxPgp0vE6i9siHaMQva4bntIyfIrkDKESrvFwGIrYEc6kD9ZqV9rAxnxpi8b9QI5ZXNxGOUU2w_0p8f1p3XtSTShXeycayY1qJhd2OOkaGCXQDw6i5qASLzvQiQleX_JbP2E2sUzpDR9jo7bl0wp3XWt9z9Pq8gij4g/s320/vi%C3%B1anos.webp
+img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/18022023-los-vinanos-078-scaled.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Tfh2qRH4w4s'

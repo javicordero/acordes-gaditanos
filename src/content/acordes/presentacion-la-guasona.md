@@ -2,7 +2,7 @@
 pieza: Presentación
 agrupacion: La Guasona
 year: 2023
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwJA0C2pGKCsymSchI-ICApqk9-f30G0fpPUhh7JiLKKtsMs_zFTmXcW317BVPrpkpJclQ-TiNulTNh4l0-po7H7RASlXeoF9Aal5VfuxluTeKirKPobGYQjxPCzVv45Qu-Imj94NdkeEJKVFk2L-2hYZiSKThuHECkJ8eRqKbqMiB7SQYz_XuDNmuaQXO/s320/guasona.jpg
+img: https://static.grupojoly.com/clip/e183282f-2c22-44cf-8e36-ef7454f45500_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HaFk-MwNCo8?si=ASS9aJkZWJh0TLiI'

@@ -4,7 +4,7 @@ agrupacion: Lasssss Envenenásssss
 year: 2019
 musica: Juanma Romero Bey.
 letra: Juanma Romero Bey.
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJVPO_Gl626LbTBfInmVYLxoG1BbdMZ-ZHO9tBdGj4YwUotNXZ1IV848kwGJpOmOAtFclMoTvjY4JbNyfJfYtwAMERwCDqZdax0C7fqqC_sflLtThceNqi4iJscjRnknZvX0C7LkwQkl4W/s400/Comparsa%252C+Lasssss+envenenasssss+-+Preliminar+%25287%2529.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23480.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/OVpCvhIHz3Y?feature=player_embedded'

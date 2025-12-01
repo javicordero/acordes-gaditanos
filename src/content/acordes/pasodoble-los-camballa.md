@@ -4,7 +4,7 @@ agrupacion: Los camballá
 year: 2017
 musica: Tomy Alemania
 letra: Tomy Alemania
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiJrM-QqWJ8hI3gHAqYV4E7Ob6spWZOK6d_MlYVQHDb-Kdk6BHE-yTb1NlstJhIQQOW8Kx7zHHS4jSDwnABlNLuLZcuVdpuQu0qvc7gAFmhe3DkcQgfdpnC28PgmA7guELql29OPvXDEEEb/s400/los+camballa.jpg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/los-camball--9.JPG
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ZyB15EFvntI?feature=player_embedded'

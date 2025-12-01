@@ -4,7 +4,7 @@ agrupacion: Volver a empezar
 year: 2010
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqoaNWmhsRt9C8cTk1W-_-0AuN7896-cgmzE-8nDoHLmMckaW6dxj2XPSjTpeLQqfQsahxXP_8sZ5lOfGumRwMfdySav0xTckrgUrb9J6R3h4JVoLYBFShKsmNfLdun6RVwpb83SypzQAxplAbdZhoaChrPVVbkOdaImFa2_UbZru125JDc43nyksNcQ/s320/volver2.jpg
+img: https://static.grupojoly.com/clip/33bd782b-4c9b-403b-a5b0-14992e783047_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Sj4px-mOP6E'

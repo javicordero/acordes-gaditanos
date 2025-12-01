@@ -4,7 +4,7 @@ agrupacion: La Peleona
 year: 2015
 musica: José Luis Bustelo
 letra: José Luis Bustelo
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSNomq2W2GhSmnTjQ_Ejzn2bFL33UxsBtUV-toFDNtUNeulNv7hBMU4aasL3afJ8pBulDpf6qeqBOQCO4vZ7UdM4nKGE8osiwIbS7lQ5Mv3rNVF0dCz9fEaQ3HdP3dEs4vhrwYJXn1XAa9/s400/La+peleona+%25281%2529.jpg
+img: https://www.portaldecadiz.com/images/igallery/resized/15301-15400/reportaje_02-15352-1200-1200-80-wm-center_bottom-100-portaldecadizpng.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/r2iCo10ZbEU?feature=player_embedded'
