@@ -9,7 +9,6 @@ cejilla: 2
 date: "20/11/2025"
 video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=H5WaOLCTOtpU7KGS'
 fraseClave: "Cerquita de la caleta he"
-destacada: 2
 ---
 <pre><a>Do9</a>                   <a>Lam</a>                    <a>Rem</a>
 Cerquita de la caleta he reservado un sitito para 

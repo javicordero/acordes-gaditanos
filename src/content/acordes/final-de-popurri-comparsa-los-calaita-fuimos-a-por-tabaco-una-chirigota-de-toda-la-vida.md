@@ -9,6 +9,7 @@ cejilla: 6
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JrgnnwCIj8g?si=nE399JdPTc8GKNS_'
 fraseClave: "Llego el adiós Y tendré"
+destacada: 2
 ---
 <pre>          <a>Do9</a>                    <a>Lam</a>
 Llego el adiós Y tendré que despedir Pa después 
