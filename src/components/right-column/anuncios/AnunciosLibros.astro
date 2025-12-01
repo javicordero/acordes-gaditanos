@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import RightColumnCard from '../../../layouts/RightColumnCard.astro';
 
 const { class: className } = Astro.props;
@@ -94,11 +95,13 @@ const randomBooks = getRandomBooks(books, 4);
         <li>
           <a href={book.url} target='_blank' rel='noopener noreferrer'>
             <figure>
-              <img
+              <Image
                 src={book.image}
                 alt={`${book.title} - ${book.author}`}
                 loading='lazy'
                 decoding='async'
+                width={60}
+                height={85}
               />
             </figure>
             <div class='book-info'>

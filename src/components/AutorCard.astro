@@ -1,15 +1,19 @@
 ---
+import { Image } from 'astro:assets';
+
 const { autor } = Astro.props;
 const headingId = `autor-${autor.autorSlug}`;
 ---
 
 <article class='card' aria-labelledby={headingId}>
   <a href={`autor/musica/${autor.autorSlug}`}>
-    <img
+    <Image
       src={autor.img}
       alt={`${autor.nombre} - Carnaval de Cádiz`}
       loading='lazy'
       decoding='async'
+      width={360}
+      height={480}
       class='card-image'
     />
     <footer>
