@@ -60,11 +60,11 @@ mundo apaleao
 Y por ser de sangre roja y alas negras, también yo
     <a>Sol</a>
 fui condenao
-<a>Do</a>
+<a>Lam</a>
 No voy a sentarme a tu derecha si tu no me das
-  <a>Rem</a>
+  <a>Fa</a>
 permiso
-                                     <a>Fa</a>
+                                     <a>Rem</a>
 Pero déjame caer en Cádiz, que es la forma
 redentora
                              <a>Sol</a>       <a>Lam</a>
