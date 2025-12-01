@@ -5,13 +5,13 @@ year: 2015
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/losmillonarios-comparsa-carnaval.jpeg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2015/los-millonarios-7.jpg
 cejilla: 2
 video: https://www.youtube.com/embed/Y9yyzfG7Gvs?si=Fc2Og-xNdeLpqmLr
 cover: null
 autorCover: null
-date: 01/12/2025
-fraseClave: Quando arrivé a la citá vostra
+date: 04/12/2025
+fraseClave: Igual que en una mezquita
 ---
 
 <pre>
