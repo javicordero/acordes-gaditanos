@@ -4,7 +4,7 @@ agrupacion: de el Ángel de Cádiz
 year: 2017
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/el-ngel-de-c-diz-1.JPG
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/el-angel-de-cadiz-semifinales.jpeg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/a7eB2YwxAbc?feature=player_embedded'
