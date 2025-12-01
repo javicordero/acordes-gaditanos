@@ -2,8 +2,8 @@
 pieza: Presentación
 agrupacion: La Azotea
 year: 2017
-musica: Hermanos carapapas.
-letra: Hermanos carapapas.
+musica: Los Carapapa.
+letra: Los Carapapa.
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/nico-garcia-la-azotea.jpeg
 cejilla: 2
 date: "25/11/2025"
