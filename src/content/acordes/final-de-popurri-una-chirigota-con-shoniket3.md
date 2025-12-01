@@ -6,7 +6,7 @@ musica: Alejandro Sánchez Helmo
 letra: Alejandro Sánchez Helmo
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/19/DSC_5811.jpg
 cejilla: 6
-date: "27/11/2025"
+date: "26/11/2025"
 video: 'https://www.youtube.com/embed/I-sGXVxkAPY?si=jduhYEmU-_eR8WEV'
 cover: 'https://www.youtube.com/embed/ZzdJmVHaUfw?si=4og60KJaSa6j5xtu'
 autorCover: Caro Vargas
