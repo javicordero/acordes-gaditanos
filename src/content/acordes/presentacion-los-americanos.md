@@ -5,7 +5,7 @@ year: 2003
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZBjusPaZCxWe-f2WE4vUJero4D1WvuXbxgzBIJrBbPaXSRQVG7jR5H3fb8OvyPUyD7V3xrrcV_lXbn1J2m9iBJUkBKTw3UV3pWUO1F5npICp5ESiqCtp3YVKPvQWYyP4pSBAnQ3ufFy2a/s1600/Los_Americanos_2.jpg
+img: 'https://i.ytimg.com/vi/qEdKOfNiu0I/maxresdefault.jpg'
 cejilla: 3
 video: https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm
 cover: null
