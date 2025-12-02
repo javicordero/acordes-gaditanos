@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Los Esclavos
 year: 2023
 musica: Raúl Cabrera
-letra: Raúl Cabrera
+letra: El Chapa
 img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/17022023-los-esclavos-041-scaled.jpg
 cejilla: 4
 date: "25/11/2025"

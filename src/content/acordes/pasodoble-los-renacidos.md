@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Los Renacidos
 year: 2022
 musica: Raúl Cabrera
-letra: Raúl Cabrera
+letra: El Chapa
 img: https://static.grupojoly.com/clip/12aee06b-028a-4ff3-9173-bdf4f9a954b8_facebook-aspect-ratio_default_0.jpg
 cejilla: 1
 date: "25/11/2025"
