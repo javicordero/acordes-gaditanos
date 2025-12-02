@@ -10,7 +10,7 @@ cejilla: 3
 video: https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm
 cover: null
 autorCover: null
-date: 01/12/2025
+date: 03/12/2025
 fraseClave: Esta tribu de idioma salvaje
 
 ---
