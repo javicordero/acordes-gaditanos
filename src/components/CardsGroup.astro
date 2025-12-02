@@ -45,7 +45,7 @@ const headingId = `year-${year}`;
     padding: var(--card-padding);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 
     &::after {
       content: '';
@@ -84,7 +84,7 @@ const headingId = `year-${year}`;
         display: block;
         position: absolute;
         left: 0;
-        bottom: -6px;
+        bottom: -4px;
         width: 90%;
         height: 4px;
         background: var(--primary-contrast-color);
@@ -114,7 +114,7 @@ const headingId = `year-${year}`;
 
   @media (max-width: 640px) {
     .year-group {
-      gap: var(--card-padding-sm);
+      gap: calc(var(--card-padding-sm) - 2px);
       padding: var(--card-padding-sm);
     }
     .year-group--with-subtitle {
@@ -131,7 +131,7 @@ const headingId = `year-${year}`;
       gap: 8px;
       & h2::after {
         height: 3px;
-        bottom: -3px;
+        bottom: -1px;
       }
 
       & h3 {

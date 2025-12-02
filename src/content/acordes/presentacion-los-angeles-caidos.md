@@ -1,7 +1,7 @@
 ---
 pieza: Presentación
 agrupacion: Los Ángeles caídos
-year: 2001
+year: 2002
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
