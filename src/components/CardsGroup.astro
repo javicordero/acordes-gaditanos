@@ -1,6 +1,6 @@
 ---
 import Card from './Card.astro';
-const { year, acordes } = Astro.props;
+const { year, acordes, subtitle } = Astro.props;
 
 // Generar ID estable para accesibilidad
 const headingId = `year-${year}`;
@@ -9,6 +9,7 @@ const headingId = `year-${year}`;
 <article class='year-group' aria-labelledby={headingId}>
   <header>
     <h2 id={headingId} class='is-title-minus'>{year}</h2>
+    {subtitle && <h3>{subtitle}</h3>}
   </header>
 
   <div class='acordes-grid' role='region' aria-labelledby={headingId}>
@@ -59,6 +60,10 @@ const headingId = `year-${year}`;
   }
 
   header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
     & h2 {
       position: relative;
       color: var(--primary-color);
@@ -78,6 +83,13 @@ const headingId = `year-${year}`;
         height: 4px;
         background: var(--primary-contrast-color);
       }
+    }
+
+    & h3 {
+      font-size: 1.355rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+      letter-spacing: 0.3px;
     }
   }
 
@@ -107,9 +119,15 @@ const headingId = `year-${year}`;
     }
 
     header {
+      gap: 8px;
       & h2::after {
         height: 3px;
         bottom: -3px;
+      }
+
+      & h3 {
+        font-size: 1.15rem;
+        letter-spacing: 0.2px;
       }
     }
   }

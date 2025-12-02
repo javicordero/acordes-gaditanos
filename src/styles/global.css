@@ -65,7 +65,7 @@ p {
 }
 
 .is-title-minus {
-  letter-spacing: 1px;
+  letter-spacing: 0.4px;
 }
 
 h1,
@@ -107,7 +107,7 @@ p {
     width: 98%;
   }
   .is-title-minus {
-    letter-spacing: 0.7px;
+    letter-spacing: 0px;
   }
 }
 

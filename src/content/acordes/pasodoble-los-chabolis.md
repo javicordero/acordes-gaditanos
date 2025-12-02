@@ -4,7 +4,7 @@ agrupacion: Los Chabolis
 year: 2024
 musica: Lolo Molina
 letra: Lolo Molina
-img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/08/07022024-loschabolis-092-RAfYVJHMBTaNDgGxyPdu1TN-1200x840@abc.jpg
+img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/25/molina-RuOvjiUxJT9W6MkpqBggHQI-1200x840@abc.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cDLpVjVYZJg?si=_9I1CVkJWAbFGEeG'
