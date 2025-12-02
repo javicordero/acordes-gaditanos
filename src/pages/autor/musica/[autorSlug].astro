@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
-import YearCard from '../../../components/CardsGroup.astro';
+import CardsGroup from '../../../components/CardsGroup.astro';
 
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 
@@ -61,7 +61,7 @@ const description = `Todos los acordes con música de ${authorName} del Carnaval
   <Breadcrumb autor={authorName} autorSlug={acordes[0]?.data.musicaSlug} tipoAutor='musica' />
   <div class='main-container container-layout'>
     <article>
-      <YearCard year={`${authorName}`} acordes={acordesOrdenados} />
+      <CardsGroup year={`${authorName}`} acordes={acordesOrdenados} subtitle='Música' />
     </article>
   </div>
 </Layout>

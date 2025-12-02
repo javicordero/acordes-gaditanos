@@ -4,7 +4,7 @@ agrupacion: La eternidad
 year: 2017
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/eternidad_0f8409da923cef50541f7df4e6f8450d.jpeg
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/la-eternidad-3.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tcXCrf8-Xb8?feature=player_embedded'

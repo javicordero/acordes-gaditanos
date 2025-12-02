@@ -4,7 +4,7 @@ agrupacion: Los que salieron perdiendo
 year: 2024
 musica: Carlitos Pérez
 letra: Carlitos Pérez
-img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/24/24012024-losquesalieronperdiendo-267-U35073721788ZmQ-1200x630@abc.jpg
+img: https://www.diariobahiadecadiz.com/wp-content/uploads/2024/01/0prelis16losquesalieronperdiendo-porti.jpg
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/jV2LZVcjAG0?si=OiwjZCO_x6OUg1ra'

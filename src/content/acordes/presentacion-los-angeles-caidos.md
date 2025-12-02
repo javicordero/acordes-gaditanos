@@ -1,16 +1,16 @@
 ---
 pieza: Presentación
 agrupacion: Los Ángeles caídos
-year: 2001
+year: 2002
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://letrasdecarnaval.com/assets/images/agrupaciones/96a0a6ddfd7b5861a3f0e5107.jpg
+img: https://static.grupojoly.com/clip/f44701fe-fb8f-49ee-912e-3cbd7f14c85c_16-9-aspect-ratio_1600w_0.jpg
 cejilla: 0
 video: https://www.youtube.com/embed/eJ4ltG-NQUE?si=cACRL8mGicPqj8k7
 cover: null
 autorCover: null
-date: 01/12/2025
+date: 02/12/2025
 fraseClave: La puerta estaba cerrada
 ---
 

@@ -1,14 +1,17 @@
 ---
 import Card from './Card.astro';
-const { year, acordes } = Astro.props;
+const { year, acordes, subtitle } = Astro.props;
 
 // Generar ID estable para accesibilidad
 const headingId = `year-${year}`;
 ---
 
-<article class='year-group' aria-labelledby={headingId}>
+<article
+  class={`year-group${subtitle ? ' year-group--with-subtitle' : ''}`}
+  aria-labelledby={headingId}>
   <header>
     <h2 id={headingId} class='is-title-minus'>{year}</h2>
+    {subtitle && <h3>{subtitle}</h3>}
   </header>
 
   <div class='acordes-grid' role='region' aria-labelledby={headingId}>
@@ -42,7 +45,7 @@ const headingId = `year-${year}`;
     padding: var(--card-padding);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 
     &::after {
       content: '';
@@ -58,7 +61,15 @@ const headingId = `year-${year}`;
     }
   }
 
+  .year-group--with-subtitle {
+    gap: 10px;
+  }
+
   header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
     & h2 {
       position: relative;
       color: var(--primary-color);
@@ -73,11 +84,18 @@ const headingId = `year-${year}`;
         display: block;
         position: absolute;
         left: 0;
-        bottom: -6px;
+        bottom: -4px;
         width: 90%;
         height: 4px;
         background: var(--primary-contrast-color);
       }
+    }
+
+    & h3 {
+      font-size: 1.355rem;
+      font-weight: 600;
+      color: var(--secondary-color);
+      letter-spacing: 0.3px;
     }
   }
 
@@ -96,8 +114,11 @@ const headingId = `year-${year}`;
 
   @media (max-width: 640px) {
     .year-group {
-      gap: var(--card-padding-sm);
+      gap: calc(var(--card-padding-sm) - 2px);
       padding: var(--card-padding-sm);
+    }
+    .year-group--with-subtitle {
+      gap: 4px;
     }
 
     .acordes-grid {
@@ -107,9 +128,15 @@ const headingId = `year-${year}`;
     }
 
     header {
+      gap: 8px;
       & h2::after {
         height: 3px;
-        bottom: -3px;
+        bottom: -1px;
+      }
+
+      & h3 {
+        font-size: 1.15rem;
+        letter-spacing: 0.2px;
       }
     }
   }

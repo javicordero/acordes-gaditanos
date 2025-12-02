@@ -4,7 +4,7 @@ agrupacion: Los prisioneros
 year: 2018
 musica: El Noly
 letra: El Chapa
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22872.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/01/los-prisioneros-cuartos-1.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HEJg8sX6S8E?feature=player_embedded'

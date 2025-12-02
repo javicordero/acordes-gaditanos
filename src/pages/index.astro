@@ -36,9 +36,9 @@ let autores = await getCollection('autores');
   title='Acordes Gaditanos - Acordes y Letras del Carnaval de Cádiz'
   description='La mayor colección de acordes y letras del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
   <div class='main-container container-layout'>
-    <CardsGroup year={'LO ÚLTIMO'} acordes={ultimos} />
+    <CardsGroup year={'Novedades'} acordes={ultimos} />
     <AutorCardsGroup autores={autores} />
-    <CardsGroup year={'DESTACANDO'} acordes={destacadas} />
+    <CardsGroup year={'Destacando'} acordes={destacadas} />
     <YearsList
       years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
     />

@@ -62,8 +62,8 @@ const headingId = `acorde-${slug}`;
         loading='lazy'
         decoding='async'
         transition:name={`img-${slug}`}
-        width={360}
-        height={480}
+        width={480}
+        height={320}
       />
 
       <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
@@ -89,9 +89,7 @@ const headingId = `acorde-${slug}`;
     background-color: var(--card-background-color);
     border-radius: 8px;
     border: 1px solid var(--primary-color);
-    box-shadow:
-      rgba(50, 50, 93, 0.25) 0px 50px 100px -16px,
-      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(50, 50, 93, 0.12) 0px 30px 60px -20px;
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
@@ -109,7 +107,7 @@ const headingId = `acorde-${slug}`;
     gap: 16px;
     padding: var(--card-padding) var(--card-padding) 0 var(--card-padding);
     box-sizing: border-box;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
   }
 
   h2 {
@@ -184,18 +182,19 @@ const headingId = `acorde-${slug}`;
     border-radius: 8px;
     width: 100%;
     min-height: 225px;
+    max-height: 240px;
     object-fit: cover;
     display: block;
     /* Optimizaciones de performance */
     content-visibility: auto;
-    contain-intrinsic-size: 360px 480px;
+    contain-intrinsic-size: 482px 320px;
   }
 
   figcaption {
     position: absolute;
     bottom: 0;
     font-family: 'Raleway', sans-serif;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: 0.1px;
     font-weight: 500;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -289,12 +288,18 @@ const headingId = `acorde-${slug}`;
     }
 
     figure {
-      max-width: 260px;
+      max-width: 340px;
+      height: 100%;
       width: 100%;
       margin: 8px auto auto auto;
 
       & img {
-        min-height: 170px;
+        min-height: 150px;
+        max-height: 170px;
+        /* width: 250px;
+        max-height: 200px;
+        max-height: 170px;
+          /* min-height: 170px; */
       }
     }
 
