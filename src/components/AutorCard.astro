@@ -6,7 +6,7 @@ const headingId = `autor-${autor.autorSlug}`;
 ---
 
 <article class='card' aria-labelledby={headingId}>
-  <a href={`autor/musica/${autor.autorSlug}`}>
+  <a href={`autor/${autor.type}/${autor.autorSlug}`}>
     <Image
       src={autor.img}
       alt={`${autor.nombre} - Carnaval de Cádiz`}

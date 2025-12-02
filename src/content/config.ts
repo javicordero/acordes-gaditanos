@@ -49,7 +49,8 @@ const autores = defineCollection({
       nombre: z.string(),
       img: z.string(),
       destacado: z.boolean().optional().nullable(),
-      order: z.number().optional(),
+      order: z.number().optional().nullable(),
+      type: z.enum(['musica', 'letra']).optional().default('musica'),
     })
     .transform((data) => ({
       ...data,
