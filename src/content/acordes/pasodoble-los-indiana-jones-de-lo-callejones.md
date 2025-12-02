@@ -4,7 +4,7 @@ agrupacion: Los Indiana Jones de lo callejones
 year: 2017
 musica: Kike Remolino
 letra: Kike Remolino
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/21301.JPG
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/los-indiana-jones-de-los-callejones-4.JPG
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ACWW7pRYYJY?feature=player_embedded'

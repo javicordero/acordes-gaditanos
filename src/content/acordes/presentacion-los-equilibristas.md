@@ -4,7 +4,7 @@ agrupacion: Los Equilibristas
 year: 2017
 musica: José Manuel Aranda
 letra: El Chapa
-img: https://static.grupojoly.com/clip/28578471-9223-41da-92ab-599d72164bf0_source-aspect-ratio_1600w_0.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comparsa-los-equilibristas-cuartos-2.jpeg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/9Et0t_2T46Y'

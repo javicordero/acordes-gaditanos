@@ -4,7 +4,7 @@ agrupacion: La Oveja negra
 year: 2024
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://cadenaser.com/resizer/v2/6E4VM27DTRBUBL3NE2SL3WIOUE.jpg?auth=e7a53fbac18c9c92284ccea5bed4e9cdaec7a57e82dccbd68d95ca5c9ed743df&quality=70&width=1200&height=900&smart=true
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/10022024-la%20oveja%20negra-076.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/23eSN-eBwW4?si=Zfmrz306DIHV9Utz'
