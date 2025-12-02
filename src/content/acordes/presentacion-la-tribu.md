@@ -16,7 +16,7 @@ Llego del cielo un barquito Mas típico no lo hay
 Mas colgao ni más bonito Y que se llamaba Cai
 <a>Rem</a>               <a>Mi7</a>  <a>Lam7</a>         <a>Sol</a>   <a>Re/Fa#</a>
 En una noche de invierno En nuestra isla cayó Y 
-      <a>Rem</a>                    <a>Mim</a>         <a>La</a>
+      <a>Rem</a>                    <a>Mim</a>         <a>Lam Sol Fa Mi7</a>
 para siempre La vida de este salvaje Cambió
 <a>Do9</a>                                <a>Sol</a>
 Y entre sus restos supimos De otra civilización 

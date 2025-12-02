@@ -31,21 +31,20 @@ Cádiz con más dudas que certezas, Cádiz con más
 pobres que pobreza
 <a>LaM7</a>                 <a>Fa#7</a>         <a>Sim7</a>
 Con más barquillitas que con libertad, Cádiz con
-                    <a>Mi7</a>
+          <a>Mi7</a>    <a>Sim7</a>
 más chanclas que jardines
-<a>Sim7</a>            <a>Mi7</a>           <a>Sim7</a>
+         <a>Mi7</a>           <a>Sim7</a>
 Con más agujeros que adoquines, con más amistades
 <a>Mi7</a>        <a>LaM7</a>
 que con amistad
-              <a>Rem</a>               <a>LaM7</a>
+              <a>Rem</a>               <a>LaM7</a>       <a>Mi7</a>
 Más sol que luz, más tu que yo, más fe que santo y
- <a>Mi7</a>
 más lima que limón
 <a>LaM7</a>        <a>Mi7</a>        <a>LaM7</a>            <a>Mi7</a>
 Tienes más murallas que puentes, más balcones que
 <a>LaM7</a>
 gente
-                   <a>Fa#7</a> <a>Sim7</a>    <a>Mi7</a>
+              <a>Fa#7</a> <a>Sim7</a>    <a>Mi7</a>
 Mas macetas que flores. Tienes más cañitas que
 <a>Sim7</a>
 peces
@@ -57,15 +56,14 @@ Cádiz con más gatos que ratas, mas platillos que
 plata
        <a>La7</a>        <a>Re</a>
 Más negruras que soles
-          <a>Re</a>                  <a>Mi7</a>
+          <a>Re</a>            <a>Mi7</a>               <a>LaM7</a>
 Ay mi ciudad, con más espinas que rosas y más sed
- <a>LaM7</a>
 que sal
-            <a>Fa#7</a>                        <a>Sim7</a>
+            <a>Fa#7</a>               <a>Sim7</a>
 Con más ancianos que niños y más circo que pan
             <a>Mi7</a>               <a>LaM7</a>
 Con más baluartes que golpes de mar
-<a>Rem</a>                                    <a>LaM7</a>
+<a>Rem</a>                               <a>LaM7</a>
 Con más amantes que amores, que contradicción
                                    <a>Sim7</a>
 Yo no te entiendo, pero es que te quiero
