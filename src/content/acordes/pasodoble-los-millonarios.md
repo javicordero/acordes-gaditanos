@@ -10,7 +10,7 @@ cejilla: 2
 video: https://www.youtube.com/embed/Y9yyzfG7Gvs?si=Fc2Og-xNdeLpqmLr
 cover: null
 autorCover: null
-date: 04/12/2025
+date: 06/12/2025
 fraseClave: Igual que en una mezquita
 ---
 
