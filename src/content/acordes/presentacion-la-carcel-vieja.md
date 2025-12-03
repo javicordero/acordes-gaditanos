@@ -3,7 +3,7 @@ pieza: Presentación
 agrupacion: La Cárcel vieja
 year: 2004
 musica: Nene Cheza
-letra: Nene Cheza
+letra: Joaquín Quiñones
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/402e97cb0f0953d27bf9a94cb.jpg
 cejilla: 3
 date: "25/11/2025"
