@@ -82,13 +82,13 @@
           const ratio = parseFloat(pre.dataset.originalLineHeightRatio) || 1.2;
           pre.style.lineHeight = +(origRem * ratio).toFixed(4) + 'rem';
 
-          // dejar más padding a ambos lados para que el <pre> no quede pegado
+          // dejar padding de 8px a ambos lados para que el <pre> no quede pegado
           try {
             pre.style.padding = '0 8px';
             pre.style.boxSizing = 'border-box';
           } catch (e) {}
 
-          const contentWidth = Math.max(0, content.clientWidth - 16); // 8px por cada lado
+          const contentWidth = Math.max(0, content.clientWidth - 8); // 8px por cada lado
           const preWidth = pre.scrollWidth;
 
           if (preWidth <= contentWidth) {
