@@ -6,8 +6,9 @@ musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://static.grupojoly.com/clip/12647677-415e-4141-a63f-973fd00c9fa1_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
-date: "25/11/2025"
+date: "03/12/2025"
 video: https://www.youtube.com/embed/cqX97SFjeXA?si=Py5fAc0w0gQAheGQ
+fraseClave: Cuando las maravillas de los carnavales
 
 ---
 <pre>
