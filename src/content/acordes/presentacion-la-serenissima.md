@@ -5,13 +5,13 @@ year: 2012
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/serenaaa.jpeg
+img: https://static.grupojoly.com/clip/5478c8bf-b586-4016-91ef-d33a7e5df95e_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
 video: https://www.youtube.com/embed/CpxE47MMPf4?si=ha-x4ugONElQm-fv
 cover: null
 autorCover: null
-date: 01/12/2025
-fraseClave: Quando arrivé a la citá vostra
+date: 03/12/2025
+fraseClave: Oh donna mia veneziana
 ---
 
 
