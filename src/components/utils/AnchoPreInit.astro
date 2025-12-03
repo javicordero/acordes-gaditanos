@@ -60,7 +60,7 @@
         const origPx = parseFloat(computed.fontSize) || 14;
         pre.dataset.originalFontRem = (origPx / rootPx).toString();
         let linePx = parseFloat(computed.lineHeight);
-        if (!linePx || isNaN(linePx)) linePx = origPx * 1.85;
+        if (!linePx || isNaN(linePx)) linePx = origPx * 1.25;
         pre.dataset.originalLineHeightRatio = (linePx / origPx).toString();
       }
 
