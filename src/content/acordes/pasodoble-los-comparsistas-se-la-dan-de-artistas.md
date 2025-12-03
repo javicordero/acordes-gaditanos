@@ -74,7 +74,7 @@ Y aunque digan que yo voy dándomela de artista
 Mañana en todo el barrio hablaran de mi
 <a>Mim</a>                  <a>Fa#7</a>
 Y estarán todos de acuerdo
-                  <a>Sim</a>
+                                     <a>Sim</a>
 En que los comparsistas nos hacen sentir
 <a>Mim</a>                 <a>Fa#7</a>             <a>Sim</a>
 Las emociones más grandes de los gaditanos

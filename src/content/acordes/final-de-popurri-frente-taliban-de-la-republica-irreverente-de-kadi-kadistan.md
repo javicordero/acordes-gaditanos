@@ -1,6 +1,6 @@
 ---
 pieza: Final de popurrí
-agrupacion: Frente talibán de la republica irreverente de Kadi Kadistan
+agrupacion: Frente talibán de la republica irreverente de Kadi Kadistán
 year: 2023
 musica: Vera Luque
 letra: Vera Luque

@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Frente talibán de la república irreverente de Kadikadistán
+agrupacion: Frente talibán de la republica irreverente de Kadi Kadistán
 year: 2023
 musica: Vera Luque
 letra: Vera Luque
