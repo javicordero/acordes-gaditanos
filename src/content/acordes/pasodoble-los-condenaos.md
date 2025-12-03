@@ -5,13 +5,13 @@ year: 2001
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://i.ytimg.com/vi/T-v6l5CibyI/maxresdefault.jpg
+img: https://letrasdecarnaval.com/assets/images/agrupaciones/ff36867c8530075d1cca1842c.jpg
 cejilla: 0
 video: https://www.youtube.com/embed/T-v6l5CibyI?si=3R1sqhm16aW-lX9t
 cover: null
 autorCover: null
-date: 01/12/2025
-fraseClave: Un amigo es un amigo
+date: 03/12/2025
+fraseClave: Si se cumple la condena
 ---
 
 <pre>
