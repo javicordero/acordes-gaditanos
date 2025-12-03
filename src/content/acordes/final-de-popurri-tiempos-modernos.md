@@ -2,7 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Tiempos modernos
 year: 2018
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22897.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/02/coro-tiempos-modernos-coac2018.jpg
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6uzKJ74K17I?feature=player_embedded'

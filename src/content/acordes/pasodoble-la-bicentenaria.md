@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: La Bicentenaria
 year: 2012
 musica: Nene Cheza
-letra: Nene Cheza
+letra: El Chapa
 img: https://static.grupojoly.com/clip/2548886e-380f-413c-bfde-96f3be608c42_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"

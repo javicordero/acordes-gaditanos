@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: Pa gusto los colores
 year: 2011
-musica: Jona
-letra: Jona
+musica: Jonathan Pérez Ginel
+letra: Jonathan Pérez Ginel
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/pagustoloscolores.jpeg
 cejilla: 1
 date: "25/11/2025"

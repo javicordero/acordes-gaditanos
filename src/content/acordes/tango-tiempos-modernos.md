@@ -4,7 +4,7 @@ agrupacion: Tiempos modernos
 year: 2018
 musica: Tino Tovar
 letra: El Chapa
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22897.jpg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/02/coro-tiempos-modernos-coac2018.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cC7V-XV6f6E?feature=player_embedded'
@@ -64,6 +64,6 @@ Que hay un juramento con nuestro pueblo de ahora y
 siempre
                                           <a>Si7</a>
 Yo tan solo traigo esa conciencia que tú olvidaste
-              <a>La</a>            <a>Si7</a>
+           <a>La</a>          <a>Si7</a>     <a>Mi</a>
 Y la tradición de la que renegaste
 </pre>
