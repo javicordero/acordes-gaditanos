@@ -4,7 +4,7 @@ agrupacion: Los Cadizfornia
 year: 2020
 musica: Vera Luque
 letra: Vera Luque
-img: https://www.codigocarnaval.com/wp-content/uploads/2019/10/chirigota-los-cadizfornia.jpg.webp
+img: https://s3.abcstatics.com/media/MM/2020/02/06/v/cadizfornia(1)-k7L--1248x698@abc-Home.JPG
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Z3t_LYyeGX4?feature=player_embedded'

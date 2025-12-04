@@ -4,7 +4,7 @@ agrupacion: No tenemos el congo pa farolillos
 year: 2018
 musica: Vera Luque
 letra: Vera Luque
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22863.jpg
+img: https://static.grupojoly.com/clip/7dcd67b2-54c0-4fac-bb46-acab3447c8b9_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MukynhdiJdo'
