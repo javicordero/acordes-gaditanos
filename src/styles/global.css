@@ -13,7 +13,7 @@
   --link-color: var(--acorde-color);
   --link-hover-color: #0736d1;
 
-  --app-max-width: 1050px;
+  --app-max-width: 1000px;
   --nav-height: 56px;
   --main-container-gap: 24px;
   --main-container-gap-sm: 16px;
@@ -134,5 +134,17 @@ body {
   .main-container {
     margin-top: calc(var(--nav-height) + var(--main-container-gap-sm));
     padding-bottom: var(--main-container-gap-sm);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --app-max-width: 920px;
+  }
+}
+
+@media (min-width: 1700px) {
+  :root {
+    --app-max-width: 1000px;
   }
 }
