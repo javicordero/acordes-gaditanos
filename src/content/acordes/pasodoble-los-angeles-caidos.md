@@ -10,7 +10,7 @@ cejilla: 2
 video: https://www.youtube.com/embed/eJ4ltG-NQUE?si=cACRL8mGicPqj8k7
 cover: null
 autorCover: null
-date: 04/12/2025
+date: 03/12/2025
 fraseClave: Yo no le temo al castigo
 ---
 
