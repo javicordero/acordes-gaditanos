@@ -1,7 +1,7 @@
 ---
 pieza: Pasodoble
 agrupacion: La Comunidad
-year: 2017
+year: 2016
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 cejilla: 2

@@ -6,7 +6,7 @@ musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
-date: "04/12/2025"
+date: "03/12/2025"
 video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
 fraseClave: Si caminito del falla
 
