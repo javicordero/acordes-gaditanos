@@ -46,7 +46,7 @@ Que se enteren las fatigas que estamos pasando
 Que sin matar ni meternos en guerra
 <a>Re</a>
 Desde Bruselas y desde Berlín
-<a>Do</a>                 <a>Lam7</a>              <a>Mi</a>
+<a>Do</a>                 <a>Lam7</a>              <a>Si7</a>
 A los pobres nos están siempre bombardeando
 <a>Mi</a>                                          <a>Fa#m</a>
 Deja que yo con las flores y la velita encendia
