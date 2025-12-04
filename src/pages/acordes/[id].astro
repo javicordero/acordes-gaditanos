@@ -115,7 +115,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
         gap: 16px;
         /* La columna derecha crecerá para rellenar el espacio restante dentro del contenedor hasta un máximo razonable */
         flex: 1 1 clamp(220px, 22vw, 380px);
-        min-width: 0;
       }
 
       /* Mantener la card izquierda con su anchura natural (el componente controla su propio max-width)
@@ -137,6 +136,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
           /* Reducir anchura y fijar base para que no ocupe tanto espacio */
           max-width: 576px;
           min-width: 0;
+          flex: 1 1 576px;
         }
       }
 
