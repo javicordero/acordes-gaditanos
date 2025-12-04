@@ -1,5 +1,5 @@
 ---
-pieza: Pasodolbe
+pieza: Pasodoble
 agrupacion: El Cielo de Cádiz
 year: 1998
 musica: Tino Tovar

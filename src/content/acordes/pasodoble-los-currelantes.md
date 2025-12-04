@@ -1,12 +1,12 @@
 ---
-pieza: Pasodolbe
+pieza: Pasodoble
 agrupacion: Los Currelantes
 year: 2011
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://static.grupojoly.com/clip/1f89f490-9f4f-438a-8145-c577a042d573_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
-date: "25/11/2025"
+date: "26/11/2025"
 video: "https://www.youtube.com/embed/PIesjujD7vM?si=-2aGiz7O5Ankj7sw"
 
 

@@ -1,12 +1,12 @@
 ---
 pieza: Pasodoble
 agrupacion: No te vayas todavía
-year: 2015
+year: 2017
 musica: Manolín Santander
 letra: El Bizcocho
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/Notevayatodavia.jpeg
+img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/aNotevayatodavia_1(4).jpeg
 cejilla: 0
-date: "25/11/2025"
+date: "26/11/2025"
 video: https://www.youtube.com/embed/bOp9Q3nEaRM?si=GhC9PlFiqnYzzLlA'
 fraseClave: Hoy les voy a hablar de este hombre
 
