@@ -6,7 +6,7 @@ musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 cejilla: 2
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comunidad-comparsa-bienveido.jpeg
-date: "25/11/2025"
+date: "07/12/2025"
 video: https://www.youtube.com/embed/t-xrzn15gbY?si=YZdMaAya312yfcMF
 fraseClave: "Una ciudad es un trocito"
 

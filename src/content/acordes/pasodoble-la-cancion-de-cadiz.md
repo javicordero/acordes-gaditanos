@@ -6,7 +6,7 @@ musica: Tino Tovar
 letra: Tino Tovar
 img: https://www.portaldecadiz.com/images/igallery/resized/5001-5100/KTA_0046-5045-1200-1200-80-wm-center_bottom-100-portaldecadizpng.jpg
 cejilla: 1
-date: "25/11/2025"
+date: "26/11/2025"
 video: 'https://www.youtube.com/embed/a7eB2YwxAbc?feature=player_embedded'
 fraseClave: "Y eras tan guapa y tan niña"
 ---

@@ -6,7 +6,7 @@ musica: Los Carapapa
 letra: Los Carapapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1299832509-munecos.jpeg
 cejilla: 0
-date: "25/11/2025"
+date: "26/11/2025"
 video: https://www.youtube.com/embed/Rjj7ZnYe7J8?si=V5V_IJqdsAKLlhCU
 fraseClave: Dicen los libros de la magia negra
 
