@@ -71,7 +71,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     pieza={pieza}
   />
 
-  <h1 class='seo-title'>Acordes {pieza} {agrupacion} - Carnaval {year} - Acordes Gaditanos</h1>
+  <h1 class='seo-title'>
+    Acordes {pieza}
+    {agrupacion} - Carnaval {year} - {musica} - Acordes Gaditanos
+  </h1>
 
   <div class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
