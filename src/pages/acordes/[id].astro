@@ -40,7 +40,7 @@ const {
 const autores = musica === letra ? `de ${musica}` : `de ${letra} y ${musica}`;
 
 // Generar descripción completa
-const description = `Acordes ${pieza} ${agrupacion} ${modalidad} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
+const description = `Acordes ${pieza} ${agrupacion} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
 
 // Generar keywords específicas
 const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}, ${letra}, ${musica}, ${pieza}, ${modalidad}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
@@ -70,6 +70,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     agrupacionSlug={data.agrupacionSlug}
     pieza={pieza}
   />
+
+  <h1 class='seo-title'>Acordes {pieza} {agrupacion} - Carnaval {year} - Acordes Gaditanos</h1>
 
   <div class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
@@ -103,6 +105,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     </div>
 
     <style>
+      .seo-title {
+        position: absolute;
+        left: -9999px;
+      }
+
       .main-container {
         display: flex;
         row-gap: 16px;
