@@ -43,10 +43,15 @@ const autores = musica === letra ? `de ${musica}` : `de ${letra} y ${musica}`;
 const description = `Acordes ${pieza} ${agrupacion} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
 
 // Generar keywords específicas
-const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}, ${letra}, ${musica}, ${pieza}, ${modalidad}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
+const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}, ${letra}, ${musica}, ${pieza}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
 
 // Generar URL canónica
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+// Imagen absoluta para OG / Twitter / Schema
+const imageUrl = img
+  ? new URL(img, Astro.site).toString()
+  : new URL('/og-default.jpg', Astro.site).toString();
 ---
 
 <Layout
@@ -62,6 +67,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
     year={year}
     modalidad={modalidad}
     url={canonicalURL}
+    image={imageUrl}
   />
 
   <Breadcrumb

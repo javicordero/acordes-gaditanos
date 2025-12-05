@@ -7,9 +7,10 @@ interface Props {
   year: string;
   modalidad: string;
   url: string;
+  image: string;
 }
 
-const { pieza, agrupacion, musica, letra, year, modalidad, url } = Astro.props;
+const { pieza, agrupacion, musica, letra, year, modalidad, url, image } = Astro.props;
 
 // Generar estructura de datos para Schema.org
 const schema = {
@@ -27,11 +28,12 @@ const schema = {
           '@type': 'Person',
           name: letra,
         },
-  datePublished: year,
+  datePublished: `${year}-01-01`,
   genre: 'Carnaval de Cádiz',
   inLanguage: 'es-ES',
   about: `${modalidad} del Carnaval de Cádiz ${year}`,
   url: url,
+  image: image,
 };
 
 // Eliminar campos undefined
