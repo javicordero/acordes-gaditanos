@@ -6,7 +6,7 @@ musica: Nene Cheza
 letra: El Chapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/vl_LosGallitos01.jpeg
 cejilla: 0
-date: "25/11/2025"
+date: "27/11/2025"
 video: https://www.youtube.com/embed/IH_HvgcJyDA?si=XiqGf1RmOPiDyR0
 fraseClave: Amor de nieve
 

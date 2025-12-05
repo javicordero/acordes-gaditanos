@@ -6,7 +6,7 @@ musica: Kike Remolino
 letra: Kike Remolino
 img: https://static.grupojoly.com/clip/e7ddeb45-dc1b-4456-b11a-a527f5469f84_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
-date: "25/11/2025"
+date: "27/11/2025"
 video: https://www.youtube.com/embed/23ZpHdPwP6c?si=whoR5PdvViKqR-_H
 fraseClave: Reyes, que vais a traerles
 

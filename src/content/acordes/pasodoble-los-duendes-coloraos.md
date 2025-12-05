@@ -6,7 +6,7 @@ musica: Los Carapapa
 letra: Los Carapapa
 img: https://static.grupojoly.com/clip/5cdba07f-98b5-477b-90a2-29c3e36ee778_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
-date: "25/11/2025"
+date: "27/11/2025"
 video: https://www.youtube.com/embed/fmhqLiKcHJY?si=gkhsqnIeqngLOrhs
 fraseClave: Pa un añito que escucho tranquilo
 
