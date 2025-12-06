@@ -6,7 +6,7 @@ musica: Tino Tovar
 letra: Tino Tovar
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1298012614-juana.jpeg
 cejilla: 1
-date: "04/12/2025"
+date: "09/12/2025"
 video: 'https://www.youtube.com/embed/dyVclXWbmCI?feature=player_embedded'
 fraseClave: Se levantaron muy temprano
 
