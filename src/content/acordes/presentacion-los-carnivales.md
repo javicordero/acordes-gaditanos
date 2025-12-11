@@ -20,12 +20,14 @@ Tarararara, Tarararara, Trararairarara,
   <a>Si7</a>      <a>Mim</a>
 Rarairararairara
 Ha sonado el yunque bendito del amado profeta
+     <a>La</a>
 inmortal
 <a>Lam7</a>           <a>Re</a>                    <a>Mim</a>
 Su tañido nos devuelve a la cruda realidad
 <a>Lam7</a>                      <a>Re</a>                  <a>Mim</a>
 Nuestros dioses tienen que tienen un apetito voraz
 Hasta aquí retumba el griterío, se aproxima la
+            <a>La</a>
 ingente invasión
     <a>Sol</a>          <a>Re</a>                 <a>Do</a>
 Doce meses soñando pero la espera acabó, salimos de
@@ -46,7 +48,7 @@ la reina de nuestros huesos
 Puedo estar en un tablao, en una esquinita contigo
          <a>Do</a>                           <a>Si7</a>
 Y en menos de un 3x4 seco con un estribillo
-     <a>Mim</a>
+     <a>Mim</a>                <a>La</a>
 Yo no sé de sentimientos, yo lo único que se
      <a>Do</a>                                       <a>Re</a>
 Que me ha pedido tu alma y se la pondré a los pies
@@ -55,9 +57,9 @@ De la princesita del mar a la razón de mi cantar
 La que me hace alborotar y revolver y descontrolar
                          <a>Re</a>
 la sangre todos los inviernos
-             <a>Do</a>   <a>Si7</a>                  <a>MimL</a>
+               <a>Do</a>   <a>Si7</a>
 La que me hace ser feliz en este condenado
-<a>am7Si7</a>
+<a>  Mim Lam7 Si7</a>
 infierno
 <a>Mim</a>                      <a>Si7</a>           <a>Mim</a>
 Ya está el platillo de nuevo afilao, ya está ese
