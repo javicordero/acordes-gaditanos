@@ -6,8 +6,19 @@ import { Image } from 'astro:assets';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
-const { pieza, agrupacion, musica, img, year, letra, cejilla, modalidad, musicaSlug, letraSlug } =
-  data;
+const {
+  pieza,
+  agrupacion,
+  musica,
+  img,
+  year,
+  letra,
+  cejilla,
+  modalidad,
+  musicaSlug,
+  letraSlug,
+  agrupacionSlug,
+} = data;
 const { Content } = await render(acorde);
 
 // Generar texto ALT descriptivo para SEO
@@ -81,6 +92,16 @@ const headingId = `acorde-${slug}`;
       <span>{cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
     <Content />
+  </section>
+
+  <section class='sigue-tocando'>
+    <h3>Sigue Tocando</h3>
+    <ul>
+      <li>Más músicas de <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>{musica}</a></li>
+      <li>Más letras de <a href={`/autor/letra/${letraSlug}`} rel='noopener'>{letra}</a></li>
+      <li>Más de <a href={`/carnaval/${year}`} rel='noopener'>{year}</a></li>
+      <li>Más de <a href={`/agrupacion/${agrupacionSlug}`} rel='noopener'>{agrupacion}</a></li>
+    </ul>
   </section>
 </article>
 
@@ -251,6 +272,41 @@ const headingId = `acorde-${slug}`;
       color: var(--acorde-color);
       position: relative;
       left: 7px;
+    }
+  }
+
+  .sigue-tocando {
+    padding: 8px 16px;
+    border-top: 1px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    & h3 {
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      font-weight: 600;
+      max-width: fit-content;
+    }
+
+    & ul {
+      list-style: circle;
+      padding-left: 12px;
+      margin: 0;
+
+      & li {
+        margin-bottom: 4px;
+        color: var(--secondary-color);
+
+        & a {
+          color: var(--link-color);
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: none;
+            color: var(--link-hover-color);
+          }
+        }
+      }
     }
   }
 
