@@ -93,24 +93,11 @@ const headingId = `acorde-${slug}`;
     </div>
     <Content />
   </section>
-
-  <section class='sigue-tocando'>
-    <h3>Sigue Tocando</h3>
-    <ul>
-      <li>Más músicas de <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>{musica}</a></li>
-      <li>Más letras de <a href={`/autor/letra/${letraSlug}`} rel='noopener'>{letra}</a></li>
-      <li>Más de <a href={`/carnaval/${year}`} rel='noopener'>{year}</a></li>
-      <li>Más de <a href={`/agrupacion/${agrupacionSlug}`} rel='noopener'>{agrupacion}</a></li>
-    </ul>
-  </section>
 </article>
 
 <style>
   article {
-    background-color: var(--card-background-color);
     border-radius: 8px;
-    border: 1px solid var(--primary-color);
-    box-shadow: rgba(50, 50, 93, 0.12) 0px 30px 60px -20px;
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
@@ -125,8 +112,8 @@ const headingId = `acorde-${slug}`;
   header {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding: var(--card-padding) var(--card-padding) 0 var(--card-padding);
+    gap: 8px;
+
     box-sizing: border-box;
     /* text-transform: uppercase; */
   }
@@ -244,7 +231,7 @@ const headingId = `acorde-${slug}`;
   }
 
   .acorde-content {
-    padding: 0 4px 4px 4px;
+    padding: 0;
     display: grid;
     place-items: center;
     gap: 16px;
@@ -275,41 +262,6 @@ const headingId = `acorde-${slug}`;
     }
   }
 
-  .sigue-tocando {
-    padding: 8px 16px;
-    border-top: 1px solid var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    & h3 {
-      color: var(--primary-color);
-      font-size: 1.1rem;
-      font-weight: 600;
-      max-width: fit-content;
-    }
-
-    & ul {
-      list-style: circle;
-      padding-left: 12px;
-      margin: 0;
-
-      & li {
-        margin-bottom: 4px;
-        color: var(--secondary-color);
-
-        & a {
-          color: var(--link-color);
-          text-decoration: none;
-
-          &:hover {
-            text-decoration: none;
-            color: var(--link-hover-color);
-          }
-        }
-      }
-    }
-  }
-
   @media (min-width: 640px) and (max-width: 1023.98px) {
     article {
       max-width: 500px;
@@ -331,7 +283,6 @@ const headingId = `acorde-${slug}`;
   @media (max-width: 780px) {
     header {
       gap: 16px;
-      padding: 16px 16px 0 16px;
     }
   }
 
@@ -339,7 +290,6 @@ const headingId = `acorde-${slug}`;
     header {
       flex-direction: column;
       gap: 8px;
-      padding: var(--card-padding-sm) var(--card-padding-sm) 0 var(--card-padding-sm);
     }
     .autores {
       font-size: 0.9rem;

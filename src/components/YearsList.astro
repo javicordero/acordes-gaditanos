@@ -19,10 +19,7 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
 
 <style>
   .years-list {
-    background: var(--card-background-color);
-    border: 1px solid var(--primary-color);
     border-radius: 8px;
-    padding: var(--card-padding);
     display: flex;
     flex-direction: column;
     gap: 14px;
@@ -101,7 +98,6 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
   @media (max-width: 640px) {
     .years-list {
       gap: calc(var(--card-padding-sm) - 2px);
-      padding: var(--card-padding-sm);
     }
     ul {
       gap: 6px;

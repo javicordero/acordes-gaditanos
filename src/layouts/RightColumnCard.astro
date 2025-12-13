@@ -22,15 +22,11 @@ const headingIdFinal =
 <style>
   section {
     position: relative;
-    background-color: var(--card-background-color);
     border-radius: 8px;
-    border: 1px solid var(--primary-color);
-    box-shadow: rgba(50, 50, 93, 0.12) 0px 30px 60px -20px;
-    padding: var(--card-padding);
     z-index: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--card-padding);
+    gap: 8px;
 
     &::after {
       content: '';
@@ -38,7 +34,6 @@ const headingIdFinal =
       position: absolute;
       inset: 0;
       border-radius: 8px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
       z-index: -1;
     }
   }
@@ -52,11 +47,10 @@ const headingIdFinal =
 
   h3 {
     color: var(--primary-color);
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     font-family: 'Montserrat', sans-serif;
-    letter-spacing: 1.4px;
+    letter-spacing: 0.5px;
     font-weight: 700;
-    text-transform: uppercase;
     margin: 0;
 
     &::after {
@@ -75,7 +69,7 @@ const headingIdFinal =
   @media (max-width: 640px) {
     section {
       gap: var(--card-padding-sm);
-      padding: var(--card-padding-sm);
+      padding: 0;
     }
     h3 {
       font-size: var(--acorde-card-header-font-size-sm);

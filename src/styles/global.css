@@ -15,10 +15,10 @@
 
   --app-max-width: 1000px;
   --nav-height: 56px;
-  --main-container-gap: 24px;
-  --main-container-gap-sm: 16px;
-  --card-padding: 16px;
-  --card-padding-sm: 12px;
+  --main-container-gap: 16px;
+  --main-container-gap-sm: 8px;
+  --card-padding: 12px;
+  --card-padding-sm: 8px;
 
   /* --acorde-card-header-font-size-xl: 1.4rem; */
   --acorde-card-header-font-size-sm: 1.25rem;
@@ -93,6 +93,7 @@ p {
 @media (min-width: 640px) {
   .container-layout {
     width: 95%;
+    padding-top: 8px;
   }
   html {
     overflow-y: scroll;
@@ -104,7 +105,7 @@ p {
     --nav-height: 48px;
   }
   .container-layout {
-    width: 98%;
+    width: 95%;
   }
   .is-title-minus {
     letter-spacing: 0px;
@@ -134,6 +135,7 @@ body {
   .main-container {
     margin-top: calc(var(--nav-height) + var(--main-container-gap-sm));
     padding-bottom: var(--main-container-gap-sm);
+    padding-top: 6px;
   }
 }
 

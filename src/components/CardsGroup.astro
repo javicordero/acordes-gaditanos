@@ -39,26 +39,10 @@ const headingId = `year-${year}`;
 <style>
   .year-group {
     position: relative;
-    background: var(--card-background-color);
-    border: 1px solid var(--primary-color);
     border-radius: 8px;
-    padding: var(--card-padding);
     display: flex;
     flex-direction: column;
-    gap: 18px;
-
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 8px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      z-index: -1;
-    }
+    gap: 16px;
   }
 
   .year-group--with-subtitle {
@@ -115,14 +99,13 @@ const headingId = `year-${year}`;
   @media (max-width: 640px) {
     .year-group {
       gap: calc(var(--card-padding-sm) - 2px);
-      padding: var(--card-padding-sm);
     }
     .year-group--with-subtitle {
       gap: 4px;
     }
 
     .acordes-grid {
-      gap: 10px;
+      gap: 8px;
       grid-template-columns: repeat(2, 1fr);
       align-items: stretch;
     }

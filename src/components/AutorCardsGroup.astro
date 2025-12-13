@@ -21,26 +21,9 @@ const headingId = `autores-group`;
 <style>
   .year-group {
     position: relative;
-    background: var(--card-background-color);
-    border: 1px solid var(--primary-color);
-    border-radius: 8px;
-    padding: var(--card-padding);
     display: flex;
     flex-direction: column;
-    gap: 18px;
-
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 8px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      z-index: -1;
-    }
+    gap: 16px;
   }
 
   header {
@@ -81,7 +64,6 @@ const headingId = `autores-group`;
   @media (max-width: 640px) {
     .year-group {
       gap: calc(var(--card-padding-sm) - 2px);
-      padding: var(--card-padding-sm);
     }
 
     .acordes-grid {
