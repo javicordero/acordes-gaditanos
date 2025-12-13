@@ -42,14 +42,18 @@ y píntame tus colorete y ensuciame con tus churretes
 y aprietame con tus abrazos tan fuerte
 que el alma se rompa mil pedazos
       <a>Sol</a>                          <a>Re</a>
-y acurrucame con tus cortinas y enrédame en tus serpentinas
+y acurrucame con tus cortinas y enrédame 
+en tus serpentinas
     <a>Mim</a>                           <a>Do</a>
 y encierrame en una esquina no hay hueco mas grande
 ni bulla más divina 
       <a>Sol</a>                         <a>Re</a>
-Ven y ahógame junto a tu playa y entiérrame con tus caballas
-   <a>Mim</a>                       <a>Do</a>                       <a>Re</a>
-rescátame sin mi permiso que yo quise subir hasta tu cielo
+Ven y ahógame junto a tu playa y entiérrame 
+con tus caballas
+   <a>Mim</a>                       <a>Do</a>
+rescátame sin mi permiso que yo quise subir hasta
+    <a>Re</a>
+tu cielo
                     <a>Sol</a> <a>Do</a>      <a>Re</a>            <a>Sol</a> 
 y me quedé en tu paraíso  y me quedé en tu paraíso
 </pre>
