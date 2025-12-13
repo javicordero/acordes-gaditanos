@@ -10,6 +10,7 @@ import AnunciosGuitarra from '../../components/right-column/anuncios/AnunciosGui
 import AnunciosLibros from '../../components/right-column/anuncios/AnunciosLibros.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import Apoyar from '../../components/right-column/Apoyar.astro';
+import SigueTocando from '../../components/right-column/SigueTocando.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -106,9 +107,16 @@ const imageUrl = img
 
       <Apoyar class='apoyar' />
 
-      <AnunciosLibros class='anuncios-libros' />
-
-      <AnunciosGuitarra class='anuncios-guitarra' />
+      <SigueTocando
+        class='sigue-tocando'
+        agrupacion={agrupacion}
+        year={year}
+        letra={letra}
+        musica={musica}
+        letraSlug={data.letraSlug}
+        musicaSlug={data.musicaSlug}
+        agrupacionSlug={data.agrupacionSlug}
+      />
 
       <!-- <SitiosDeInteresCard class='sitios-interes' /> -->
     </div>
@@ -161,7 +169,12 @@ const imageUrl = img
           flex-direction: column;
         }
 
-        /* Reordenar visualmente en móvil: Apoyar primero */
+        /* Reordenar visualmente en móvil: SigueTocando primero */
+        .right-column > :global(.sigue-tocando) {
+          order: -2;
+        }
+
+        /* Apoyar segundo */
         .right-column > :global(.apoyar) {
           order: -1;
         }

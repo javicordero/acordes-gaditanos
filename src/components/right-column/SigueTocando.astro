@@ -2,11 +2,27 @@
 import { Icon } from 'astro-icon/components';
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
 
-const { class: className } = Astro.props;
+const {
+  class: className,
+  agrupacion,
+  year,
+  letra,
+  musica,
+  letraSlug,
+  musicaSlug,
+  agrupacionSlug,
+} = Astro.props;
 ---
 
 <RightColumnCard title='Sigue Tocando' headingId='sigue-tocando-heading' class={className}>
-  <section class:list={['card', className]} aria-labelledby='sigue-tocando-heading'></section>
+  <section class:list={['card', className]} aria-labelledby='sigue-tocando-heading'>
+    <ul>
+      <li>Más músicas de <a href={`/autor/musica/${musicaSlug}`}>{musica}</a></li>
+      <li>Más letras de <a href={`/autor/letra/${letraSlug}`}>{letra}</a></li>
+      <li>Más de <a href={`/carnaval/${year}`}>{year}</a></li>
+      <li>Más de <a href={`/agrupacion/${agrupacionSlug}`}>{agrupacion}</a></li>
+    </ul>
+  </section>
 </RightColumnCard>
 
 <style>
@@ -15,5 +31,29 @@ const { class: className } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    & li {
+      font-size: 0.95em;
+
+      & a {
+        color: var(--acorde-color);
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          /* text-decoration: underline; */
+        }
+      }
+    }
   }
 </style>
