@@ -38,7 +38,7 @@ let autores = await getCollection('autores');
   <div class='main-container container-layout'>
     <CardsGroup year={'Novedades'} acordes={ultimos} />
     <AutorCardsGroup autores={autores} />
-    <CardsGroup year={'Destacando'} acordes={destacadas} />
+    <!-- <CardsGroup year={'Destacando'} acordes={destacadas} /> -->
     <YearsList
       years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
     />
