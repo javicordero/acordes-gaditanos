@@ -6,6 +6,7 @@ import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import CookieBanner from '../components/adsense/CookieBanner.astro';
+import CmpTheMoneytizer from '../components/adsense/CmpTheMoneytizer.astro';
 
 interface Props {
   title?: string;
@@ -92,6 +93,7 @@ const imageURL = new URL(image, Astro.site);
     }
     <!-- End Cloudflare Web Analytics -->
 
+    <CmpTheMoneytizer />
     <ClientRouter />
   </head>
   <body>
@@ -100,7 +102,7 @@ const imageURL = new URL(image, Astro.site);
     <Footer />
     <ContactInit />
     <AnchoPreInit />
-    <CookieBanner />
+    <!-- <CookieBanner /> -->
 
     <script>
       import { hasAcceptedCookies, loadAdsense } from '../utils/cookiesConsent';
