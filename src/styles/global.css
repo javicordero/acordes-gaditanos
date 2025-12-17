@@ -150,3 +150,32 @@ body {
     --app-max-width: 1000px;
   }
 }
+
+/* Si Ezoic no mete nada dentro, no ocupa sitio ni genera gap */
+.ezoic-slot:empty {
+  display: none;
+}
+
+.ezoic-fw {
+  width: 100%;
+  min-height: 90px;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+}
+
+/* Ajuste del bloque bajo breadcrumb */
+.ezoic-mob-bc {
+  width: 100%;
+  min-height: 50px; /* para 320x50 */
+}

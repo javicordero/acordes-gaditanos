@@ -42,9 +42,12 @@ const description = `Todos los acordes y letras del Carnaval de Cádiz ${year}. 
 <Layout title={title} description={description}>
   <Breadcrumb year={year} />
   <div class='main-container container-layout'>
-    <article>
+    <section>
+      <div class='ezoic-fw ezoic-slot desktop-only' id='ezoic-pub-ad-placeholder-122'></div>
+      <div class='ezoic-slot ezoic-mob-bc mobile-only' id='ezoic-pub-ad-placeholder-123'></div>
+
       <CardsGroup year={year} acordes={acordesOrdenados} />
-    </article>
+    </section>
   </div>
 </Layout>
 
@@ -55,10 +58,9 @@ const description = `Todos los acordes y letras del Carnaval de Cádiz ${year}. 
     gap: var(--main-container-gap);
   }
 
-  article {
+  section {
     display: flex;
     flex-direction: column;
-    gap: 24px;
   }
 
   header {

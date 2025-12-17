@@ -60,9 +60,12 @@ const description = `Todos los acordes con letra de ${authorName} del Carnaval d
 <Layout title={title} description={description}>
   <Breadcrumb autor={authorName} autorSlug={acordes[0]?.data.letraSlug} tipoAutor='letra' />
   <div class='main-container container-layout'>
-    <article>
+    <section>
+      <div class='ezoic-fw ezoic-slot desktop-only' id='ezoic-pub-ad-placeholder-122'></div>
+      <div class='ezoic-slot ezoic-mob-bc mobile-only' id='ezoic-pub-ad-placeholder-123'></div>
+
       <CardsGroup year={`${authorName}`} acordes={acordesOrdenados} subtitle='Letra' />
-    </article>
+    </section>
   </div>
 </Layout>
 
