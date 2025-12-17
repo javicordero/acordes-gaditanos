@@ -46,8 +46,8 @@ solo se puede querer cuando se quiere tanto.
 Y no te he confundio con un cielo perdío
 con una noche larga, divina y amarga de
  <a>Do#7</a>     <a>Fa#m</a>
-<a>las</a> <a>borracheras</a>
-                    <a>Si7</a>                <a>Fa#</a>
+las borracheras
+                    <a>Si7</a>                <a>Fa#m</a>
 Y no me he equivocao, de haberme equivocao
 <a>Si7</a>            <a>La</a>               <a>Si7</a>
 esta amargura mia, golfa arrepentia,mala
