@@ -92,6 +92,16 @@ const imageURL = new URL(image, Astro.site);
     }
     <!-- End Cloudflare Web Analytics -->
 
+    <!-- Ezoic -->
+
+    <script async src='//www.ezojs.com/ezoic/sa.min.js'></script>
+    <script>
+      window.ezstandalone = window.ezstandalone || {};
+      ezstandalone.cmd = ezstandalone.cmd || [];
+    </script>
+
+    <!-- End Ezoic -->
+
     <ClientRouter />
   </head>
   <body>
