@@ -150,3 +150,18 @@ body {
     --app-max-width: 1000px;
   }
 }
+
+#qc-cmp2-ui {
+  max-width: max-content;
+  background: var(--card-background-color);
+
+  & button {
+    background: var(--primary-color);
+    color: var(--primary-contrast-color);
+
+    &:first-child {
+      background: transparent;
+      color: var(--primary-color);
+    }
+  }
+}
