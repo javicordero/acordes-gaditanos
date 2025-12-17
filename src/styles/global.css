@@ -165,3 +165,7 @@ body {
     }
   }
 }
+
+#qc-cmp2-persistent-link {
+  display: none !important;
+}
