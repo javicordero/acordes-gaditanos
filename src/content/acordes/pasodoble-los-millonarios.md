@@ -12,6 +12,7 @@ cover: null
 autorCover: null
 date: 06/12/2025
 fraseClave: Igual que en una mezquita
+recomendada: true
 ---
 
 <pre>

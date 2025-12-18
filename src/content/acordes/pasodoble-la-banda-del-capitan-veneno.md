@@ -9,6 +9,7 @@ cejilla: 5
 date: "03/12/2025"
 video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
 fraseClave: Si caminito del falla
+recomendada: true
 
 ---
 <pre>

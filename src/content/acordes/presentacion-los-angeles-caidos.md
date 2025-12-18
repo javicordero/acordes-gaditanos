@@ -12,6 +12,7 @@ cover: null
 autorCover: null
 date: 02/12/2025
 fraseClave: La puerta estaba cerrada
+recomendada: true
 ---
 
 <pre>

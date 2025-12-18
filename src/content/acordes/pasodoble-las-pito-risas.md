@@ -9,7 +9,7 @@ cejilla: 2
 date: "27/11/2025"
 video: https://www.youtube.com/embed/23ZpHdPwP6c?si=whoR5PdvViKqR-_H
 fraseClave: Reyes, que vais a traerles
-
+recomendada: true
 
 ---
 <pre>

@@ -7,6 +7,8 @@ letra: Paco Alba
 img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/07/1965-los-hombres-del-mar-3.jpg
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/2moZDBc0Hks?feature=player_embedded'
+fraseClave: Viene a esta tierra un barquito
+recomendada: true
 
 ---
 <pre>

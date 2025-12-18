@@ -9,6 +9,7 @@ cejilla: 1
 date: "05/12/2025"
 video: 'https://www.youtube.com/embed/a7eB2YwxAbc?feature=player_embedded'
 fraseClave: "Y eras tan guapa y tan niña"
+recomendada: true
 ---
 <pre>
 <a>LaM7</a>                                            <a>Do#m</a>

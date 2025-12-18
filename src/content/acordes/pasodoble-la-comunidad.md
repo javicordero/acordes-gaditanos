@@ -9,6 +9,7 @@ img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comuni
 date: "07/12/2025"
 video: https://www.youtube.com/embed/t-xrzn15gbY?si=YZdMaAya312yfcMF
 fraseClave: "Una ciudad es un trocito"
+recomendada: true
 
 ---
 

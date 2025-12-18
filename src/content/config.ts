@@ -33,6 +33,7 @@ const acordes = defineCollection({
       autorCover: z.string().optional().nullable(),
       fraseClave: z.string().optional(),
       destacada: z.number().optional().nullable(),
+      recomendada: z.boolean().optional().nullable(),
     })
     .transform((data) => ({
       ...data,

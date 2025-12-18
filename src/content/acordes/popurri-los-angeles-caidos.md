@@ -8,6 +8,7 @@ img: https://static.grupojoly.com/clip/f44701fe-fb8f-49ee-912e-3cbd7f14c85c_16-9
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cvjgMSLRXZ0?feature=player_embedded'
+recomendada: true
 
 ---
 <pre>

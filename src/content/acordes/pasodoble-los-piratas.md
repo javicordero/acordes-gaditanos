@@ -9,6 +9,7 @@ cejilla: 2
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/yVnLGn_CCTY?si=BzN0vno692lwAE6t'
 fraseClave: Carnecita de gallina
+recomendada: true
 ---
 
 

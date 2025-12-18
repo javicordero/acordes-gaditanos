@@ -11,6 +11,7 @@ import AnunciosLibros from '../../components/right-column/anuncios/AnunciosLibro
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import Apoyar from '../../components/right-column/Apoyar.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
+import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -36,6 +37,13 @@ const {
   modalidad,
   fraseClave,
 } = data;
+
+// Obtener acordes recomendados
+const todosLosAcordes = await getCollection('acordes');
+const acordesRecomendados = todosLosAcordes
+  .filter((a) => a.data.recomendada === true && a.slug !== slug)
+  .sort(() => Math.random() - 0.5) // Ordenar aleatoriamente
+  .slice(0, 6); // Limitar a 6 recomendaciones
 
 // Generar texto de autoría
 const autores = musica === letra ? `de ${musica}` : `de ${letra} y ${musica}`;
@@ -83,6 +91,11 @@ const imageUrl = img
     {agrupacion} - Carnaval {year} - {musica} - Acordes Gaditanos
   </h1>
 
+  <p class='seo-text'>
+    Estos son los acordes de guitarra de {pieza} de {agrupacion} de
+    {musica}, del Carnaval de Cádiz {year}.
+  </p>
+
   <div class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
 
@@ -121,6 +134,8 @@ const imageUrl = img
         agrupacionSlug={data.agrupacionSlug}
       />
 
+      <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
+
       <div class='ezoic-slot desktop-only' id='ezoic-pub-ad-placeholder-120'></div>
       <div class='ezoic-slot desktop-only' id='ezoic-pub-ad-placeholder-121'></div>
 
@@ -128,7 +143,8 @@ const imageUrl = img
     </div>
 
     <style>
-      .seo-title {
+      .seo-title,
+      .seo-text {
         position: absolute;
         left: -9999px;
       }
@@ -180,31 +196,23 @@ const imageUrl = img
           order: -2;
         }
 
+        .right-column > :global(.recomendados) {
+          order: -1;
+        }
+
         /* Apoyar segundo */
         .right-column > :global(.apoyar) {
-          order: -1;
+          order: 0;
         }
 
         /* El resto mantiene orden natural (order: 0 por defecto) */
         .right-column > :global(.video-oficial) {
-          order: 3;
+          order: 2;
         }
 
         .right-column > :global(.video-cover),
         .right-column > :global(.aparece-aqui) {
-          order: 0;
-        }
-
-        .right-column > :global(.anuncios-libros) {
           order: 1;
-        }
-
-        .right-column > :global(.anuncios-guitarra) {
-          order: 2;
-        }
-
-        .right-column > :global(.sitios-interes) {
-          order: 4;
         }
       }
 

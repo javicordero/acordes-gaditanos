@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: OBDC! La última flor
 year: 2017
-musica: Germán Rendón.
-letra: Germán Rendón.
+musica: Germán Rendón
+letra: Germán Rendón
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/OBDClaultimaflor-1.jpeg
 cejilla: 2
 date: "25/11/2025"

@@ -9,6 +9,7 @@ cejilla: 4
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/3eNmBAR_52Q?si=vjlZdGisOiITDU79'
 fraseClave: Aunque diga Blas Infante
+recomendada: true
 ---
 
 <pre>

@@ -2,13 +2,13 @@
 pieza: Presentación
 agrupacion: OBDC! La vida es bella
 year: 2016
-musica: Germán Rendón.
-letra: Germán Rendón.
+musica: Germán Rendón
+letra: Germán Rendón
 img: https://static-1.ivoox.com/audios/0/5/2/4/8301453824250_XXL.jpg
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/UIj5chFTNxI?feature=player_embedded'
-
+recomendada: true
 ---
 <pre>
 ¡Buenos días, Princesa!

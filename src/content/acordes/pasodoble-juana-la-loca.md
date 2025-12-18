@@ -9,7 +9,7 @@ cejilla: 1
 date: "09/12/2025"
 video: 'https://www.youtube.com/embed/dyVclXWbmCI?feature=player_embedded'
 fraseClave: Se levantaron muy temprano
-
+recomendada: true
 ---
 
 <pre>

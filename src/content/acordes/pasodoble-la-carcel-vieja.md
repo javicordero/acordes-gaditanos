@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/GbMfHj6T8gk?feature=player_embedded'
 fraseClave: "De la mano los dos me"
+recomendada: true
 
 ---
 <pre>

@@ -7,7 +7,7 @@ letra: José Luis Bustelo
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzrQby6YzRNclq5yI8jfiQ57v-t6gLBjY1aFGgehRAP9R7KwPOwgLHtIz9p0vw9EVrwiooTAmJBq2wau_prElJtEWHzKXdlUIORbcD-zSZHwCNI-P8kzzdSyUf0HhpYIqghlJ0npt8hsyV/s320/Los_regaera.jpg
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/S4wu1cXLjyQ?feature=player_embedded'
-
+recomendada: true
 ---
 <pre>
 <a>Rem</a>                                  <a>Lam</a>

@@ -9,6 +9,7 @@ cejilla: 5
 date: "27/11/2025"
 video: https://www.youtube.com/embed/3GUXfLlWaVg?si=wLRy07Vcb5MnUgHY
 fraseClave: Con una guitarra
+recomendada: true
 
 ---
 <pre>

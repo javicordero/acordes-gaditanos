@@ -1,0 +1,59 @@
+---
+import RightColumnCard from '../../layouts/RightColumnCard.astro';
+
+const { class: className, recomendadas = [] } = Astro.props;
+---
+
+{
+  recomendadas.length > 0 && (
+    <RightColumnCard
+      title='Coplas para el recuerdo'
+      headingId='recomendados-heading'
+      class={className}>
+      <section class:list={['card', className]} aria-labelledby='recomendados-heading'>
+        <ul>
+          {recomendadas.map((acorde: any) => (
+            <li>
+              <a href={`/acordes/${acorde.slug}`}>
+                {acorde.data.pieza}&nbsp;{acorde.data.agrupacion}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </RightColumnCard>
+  )
+}
+
+<style>
+  /* Layout */
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    & li {
+      font-size: 0.95em;
+
+      & a {
+        color: var(--acorde-color);
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+          /* text-decoration: underline; */
+        }
+      }
+    }
+  }
+</style>
