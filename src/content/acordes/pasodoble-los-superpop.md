@@ -8,6 +8,8 @@ img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/chirig
 cejilla: 1
 date: "20/12/2025"
 video: https://www.youtube.com/embed/5fpULO0IIyo?si=LJpLeYz9BlyPwelF
+fraseClave: Finales del falla las de los ochenta
+recomendada: true
 
 ---
 <pre>
