@@ -49,17 +49,17 @@ Que como buenos perritos falderos van atados
 con un collar
        <a>Rem</a>                               <a>Lam</a>
 Es la tercera guerra mundial, nuestra milicia
-                  <a>Mi7</a>
+                        <a>Mi7</a>
 se formará con nuestras manos con nuestra lucha
-         <a>Lam</a>  <a>La7</a>
+           <a>Lam</a>  <a>La7</a>
 nuestro heroísmo
      <a>Rem</a>                        <a>LaM7</a>
 El enemigo esperando está y lo tenemos 
-                      <a>Fa#7</a>    <a>Sim7</a>  <a>Mi7</a>
+                      <a>Fa#7</a>   <a>Sim7</a>  <a>Mi7</a>
 que derrotar se llama capitalismo
-                  <a>Sim7</a>         <a>Mi7</a>    <a>Sim7</a>
+                  <a>Sim7</a>         <a>Mi7</a>    
 Y habrá que combatirlo como lo mismo pasó en
-                 <a>Mi7</a>
+   <a>Sim7</a>          <a>Mi7</a>
 su día con el facismo, con el facismo
          <a>LaM7</a>
 Con el facismo
