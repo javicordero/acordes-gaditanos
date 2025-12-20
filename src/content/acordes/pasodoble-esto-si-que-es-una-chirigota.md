@@ -40,14 +40,18 @@ uhhhh a ti te damos tres y yo me quedo con cuatro
 y eso lo sabe hasta el tato
 <a>LaM7</a>         <a>Fa#7</a>     <a>Sim</a>  <a>Mi7</a>            <a>LaM7</a>
 pero aqui en Cádiz me dijo un gaditano juglar
-<a>Fa#7</a>             <a>Sim7</a>                  <a>Mi7</a>       <a>Sim7</a>   <a>Mi7</a>   <a>LaM7</a>
-con esa pinta de pijo a ti quien te ha dicho que eso es Carnaval
+<a>Fa#7</a>             <a>Sim7</a>                  <a>Mi7</a>      
+con esa pinta de pijo a ti quien te ha dicho que
+<a>Sim7</a>   <a>Mi7</a>   <a>LaM7</a>
+eso es Carnaval
         <a>Fa#7</a>     <a>Sim</a>  <a>Mi7</a>                 <a>Lam</a>
 lo que es la chirigota yo te lo voy a explicar
-        <a>Rem</a>             <a>Lam</a>             <a>Mi7</a>        <a>Lam</a>
-vente corriendo pa San Antonio el primer día de Carnaval
-        <a>Rem</a>           <a>Lam</a>           <a>Mi7</a>
-y cuando veas los pregoneros comprobarás lo que es una chirigota
-                <a>Sim7</a>                      <a>Mi7</a>               <a>LaM7</a>
-lo que es una chirigota lo que es una chirigota de las de verdad
+        <a>Rem</a>             <a>Lam</a>   
+vente corriendo pa San Antonio el primer día
+<a>Mi7</a>   <a>Lam</a>            <a>Rem</a>           <a>Lam</a>           <a>Mi7</a>
+de Carnaval y cuando veas los pregoneros comprobarás
+                                        <a>Sim7</a>  
+lo que es una chirigota lo que es una chirigota
+                    <a>Mi7</a>               <a>LaM7</a>
+ lo que es una chirigota de las de verdad
 </pre>
