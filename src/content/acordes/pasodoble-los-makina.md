@@ -27,17 +27,17 @@ También el griego que es muy bonito
 aunque yo el griego no lo practico.
          <a>Rem</a>                     <a>Sol7</a>      <a>Do</a>
 Y como a mi me fabricaron en el sur logicamente
-               <a>Lam7</a>
+                     <a>Lam7</a>
 también hablo el andaluz
         <a>Fa</a>                      <a>Sol7</a>        <a>Do</a>
 mi preferido, mi delirio, mi virtud mi favorito.
-                              <a>Sol7</a>        <a>Do</a>
+                                       <a>Sol7</a>        <a>Do</a>
 Y siento que no hay na que se hable con mas sentimiento
                       <a>La7</a>     <a>Rem</a>     <a>Fa</a>
 La faltan las eses le sobra talento Y siento
                    <a>Sol</a>              <a>Fa</a>
 que no hay na mas malage ni mas esperpento
-        <a>La7</a>                 <a>Do</a> <a>Sol7</a>
+              <a>Sol7</a>                 <a>Do</a> <a>Sol7</a>
 que un castellanito imitando mi acento.
    <a>Do</a> <a>Do7</a>                                      <a>Fa</a>
 y siento que no hay na que se diga con mas alegría
