@@ -93,16 +93,25 @@ const imageURL = new URL(image, Astro.site);
     <!-- End Cloudflare Web Analytics -->
 
     <!-- Ezoic -->
-    <!-- Ezoic CMP (TCF) - PRIVACY SCRIPTS -->
+    <!-- Ezoic -->
+    <!-- evita errores si algún script espera _ezaq -->
+    <script>
+      window._ezaq = window._ezaq || [];
+    </script>
+
+    <!-- Ezoic CMP (TCF) -->
     <script data-cfasync='false' src='https://cmp.gatekeeperconsent.com/min.js'></script>
     <script data-cfasync='false' src='https://the.gatekeeperconsent.com/cmp.min.js'></script>
 
-    <!-- Ezoic Ads (Standalone) -->
-    <script data-cfasync='false' async src='https://www.ezojs.com/ezoic/sa.min.js'></script>
+    <!-- Standalone: define la cola ANTES de cargar el script -->
     <script data-cfasync='false'>
       window.ezstandalone = window.ezstandalone || {};
-      ezstandalone.cmd = ezstandalone.cmd || [];
+      window.ezstandalone.cmd = window.ezstandalone.cmd || [];
     </script>
+
+    <!-- Carga Standalone SIN async (para asegurar orden) -->
+    <script data-cfasync='false' src='https://www.ezojs.com/ezoic/sa.min.js'></script>
+    <!-- End Ezoic -->
 
     <!-- End Ezoic -->
 
