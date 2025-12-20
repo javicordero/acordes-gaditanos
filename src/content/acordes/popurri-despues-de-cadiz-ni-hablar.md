@@ -3,7 +3,7 @@ pieza: Popurrí
 agrupacion: Después de Cádiz ni hablar
 year: 2022
 musica: El Tomate
-letra: Piru
+letra: El Piru
 img: https://s2.abcstatics.com/media/MM/2022/05/28/v/Despues%20de%20Cadiz%20(1).jpg
 cejilla: 3
 date: "25/11/2025"
