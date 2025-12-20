@@ -6,7 +6,7 @@ musica: Vera Luque
 letra: Vera Luque
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/pelota1.jpeg
 cejilla: 4
-date: "20/12/2025"
+date: "21/12/2025"
 video: https://www.youtube.com/embed/AzMCkY15PW8?si=bvZXIPgLbI4gYSCC
 fraseClave: Salta al campo Andalucía
 

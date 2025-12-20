@@ -6,7 +6,7 @@ musica: Vera Luque
 letra: Vera Luque
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/chirigota-superpop.jpeg
 cejilla: 1
-date: "20/12/2025"
+date: "21/12/2025"
 video: https://www.youtube.com/embed/5fpULO0IIyo?si=LJpLeYz9BlyPwelF
 fraseClave: Finales del falla las de los ochenta
 recomendada: true
