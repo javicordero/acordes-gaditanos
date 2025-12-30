@@ -6,7 +6,7 @@ musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://static.grupojoly.com/clip/06245f8e-5957-4264-8fac-7798e211dd56_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
-date: 22/12/2025
+date: 28/12/2025
 video: https://www.youtube.com/embed/GbdSdTQi9-Y?si=tfuGUs3qjUegne8t
 fraseClave: Fuego, le alumbra el fuego
 
