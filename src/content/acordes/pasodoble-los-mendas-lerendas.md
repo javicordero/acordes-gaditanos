@@ -5,7 +5,7 @@ year: 2008
 musica: Jesús Bienvenido  
 letra: Jesús Bienvenido  
 img: https://static.lavozdigital.es/media/provincia/2019/05/12/v/menda-lerenda-kichi-ksuF--1200x630@abc.jpg 
-cejilla: 5
+cejilla: 0
 date: 08/01/2026
 video: https://www.youtube.com/embed/ApqSbIScrCM?si=-9WT9MEm46C_BLH2 
 fraseClave: Desde el templo consagrado
@@ -18,7 +18,7 @@ Desde el templo consagrado de la Caleta
 donde el sol tiene la suerte de descansar,
           <a>Solm7</a>      <a>Fa#m7</a>        <a>Si7</a>      <a>Do</a>
 donde a rumiar sus hazañas se fue mi menda hace tantos
-     <a>Lam</a> <a>Fa#m7</a> <a>Si7</a>
+     <a>Lam</a> <a>Si7</a> <a>Mi</a>
 años ya.
                     <a>Fa#m7</a> <a>Si7</a> <a>Mi</a>
 Desde el templo consagrado    de la Caleta
