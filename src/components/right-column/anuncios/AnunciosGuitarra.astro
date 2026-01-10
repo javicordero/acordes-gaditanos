@@ -110,11 +110,12 @@ const randomProducts = getRandomProducts(products, 4);
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
   }
 
   li {
     border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
 
     &:hover {
@@ -125,7 +126,7 @@ const randomProducts = getRandomProducts(products, 4);
   li a {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     text-decoration: none;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -137,10 +138,10 @@ const randomProducts = getRandomProducts(products, 4);
   }
 
   figure {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     margin: 0;
-    border-radius: 8px;
+    border-radius: 8px 0 0 8px;
     overflow: hidden;
     background-color: var(--card-background-color);
     display: flex;
@@ -159,7 +160,7 @@ const randomProducts = getRandomProducts(products, 4);
   .product-name {
     flex: 1;
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1.2;
     color: var(--primary-color);
     overflow: hidden;
     text-overflow: ellipsis;
