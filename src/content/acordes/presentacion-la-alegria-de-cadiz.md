@@ -75,7 +75,7 @@ No, no, no no existe mejor consuelo
 Que colorear con una sonrisa tu peor momento
 <a>Fa</a>                                        <a>Mim</a>
 Y de eso sabe mi tierra que es noble y guerrera
-        <a>Fa</a>            <a>Sol</a>
+                                <a>Fa</a>            <a>Sol</a>
 Valiente y experta en el divino arte de sobrevivir
 <a>Fa</a>                               <a>Mim</a>
 Sin atrapar las cenizas de quien se fue
