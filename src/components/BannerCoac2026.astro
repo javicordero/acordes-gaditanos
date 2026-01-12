@@ -1,0 +1,172 @@
+---
+import { Icon } from 'astro-icon/components';
+import Image from 'astro/components/Image.astro';
+---
+
+<section class='banner-coac-2026'>
+  <header><h2>Todo el COAC 2026</h2></header>
+  <div class='image-text'>
+    <div class='image'>
+      <a href='/carnaval/2026'>
+        <Image
+          src='https://www.guiadecadiz.com/sites/default/files/2026/agenda/carnaval/cadiz/cartel-carnaval-cadiz.jpg'
+          alt='Banner COAC 2026'
+          width={208}
+          height={250}
+        />
+      </a>
+    </div>
+    <div class='text'>
+      <header>
+        <p>¡Ya por fin tenemos con nosotros el <a href='/carnaval/2026'>COAC 2026</a>!</p>
+      </header>
+
+      <div class='apoyar'>
+        <p>Si los acordes te sirven de ayuda, puedes apoyar el proyecto y ayudarnos a seguir.</p>
+        <div class='actions' role='group' aria-label='Opciones de apoyo'>
+          <a
+            href='https://www.buymeacoffee.com/AcordesGaditanos'
+            target='_blank'
+            rel='noopener noreferrer'
+            class='btn'
+            data-ga-event='support_bmc_click'
+            data-ga-params='{"method":"buymeacoffee"}'>
+            <span class='btn__icon'>
+              <Icon name='buy-me-a-coffee' width={18} height={24} />
+            </span>
+            <span class='btn__text'>Buy me a coffee</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & header {
+      & h2 {
+        position: relative;
+        color: var(--primary-color);
+        font-size: 1.625rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        max-width: fit-content;
+        margin: 0;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -4px;
+          width: 90%;
+          height: 4px;
+          background: var(--primary-contrast-color);
+        }
+      }
+    }
+
+    & .image-text {
+      display: flex;
+      /* align-items: end; */
+      gap: 16px;
+      max-width: 410px;
+
+      & .image {
+        /* flex-shrink: 0; */
+      }
+
+      & .text {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        & header {
+          gap: 6px;
+          display: flex;
+          flex-direction: column;
+
+          & a {
+            color: var(--link-color);
+            text-decoration: none;
+          }
+        }
+
+        & p {
+          margin: 0;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  .apoyar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    color: var(--card-background-color);
+    background-color: var(--secondary-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    min-height: 44px;
+    min-width: 85px;
+    flex: 1;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transform: scale(1.05);
+    }
+
+    &.btn--paypal {
+      background-color: var(--primary-contrast-color);
+      color: var(--primary-color);
+    }
+
+    &__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      line-height: 1;
+      font-size: 18px;
+
+      & svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__text {
+      font-size: 14px;
+      letter-spacing: 1.25px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .btn {
+      font-size: 0.85rem;
+    }
+  }
+</style>

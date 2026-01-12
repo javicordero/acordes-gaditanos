@@ -44,7 +44,7 @@ Ay, ay, lo que se ha perdido Cádiz
 Por los puntos de un jurado envenenao
              <a>Re</a>
 Y aquí estoy yo, defendiendo lo que he mamao
-               <a>Mu7</a>            <a>LaM7</a>
+               <a>Mi7</a>            <a>LaM7</a>
 Desde que empecé con mi chirigota
 Sin bajarme los pantalones, con mis amigos, dando
    <a>Mi7</a>        <a>Sim7</a>           <a>Mi7</a>
