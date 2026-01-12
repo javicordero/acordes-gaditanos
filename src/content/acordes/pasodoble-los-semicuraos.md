@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Los semicuraos
+agrupacion: Los Semicuraos
 year: 2026
 musica: El Sheriff
 letra: El Sheriff

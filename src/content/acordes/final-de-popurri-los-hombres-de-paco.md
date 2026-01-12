@@ -1,6 +1,6 @@
 ---
 pieza: Final de popurrí
-agrupacion: Los hombres de paco
+agrupacion: Los Hombres de Paco
 year: 2026
 musica: Ale Helmo
 letra: Ale Helmo
