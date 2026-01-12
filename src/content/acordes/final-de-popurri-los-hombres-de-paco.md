@@ -61,6 +61,6 @@ Tutututu tutututu tututu tutututuututtuuu
 Otro año pa enmarcar que clavé en mi corazón
                    <a>Fa</a>       <a>Sol</a>
 Con mi gente de verdad, vámonos
-<a>Fa</a>        <a>Sol</a>        <a>Do</a>  <a>Fa</a>        <a>Sol</a>        <a>Sol</a>
+<a>Fa</a>        <a>Sol</a>        <a>Do</a>  <a>Fa</a>        <a>Sol</a>        <a>Do</a>
 Que eres Cádiz mi pasión, que eres Cádiz mi pasión
 </pre>
