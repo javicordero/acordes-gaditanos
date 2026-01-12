@@ -43,7 +43,7 @@ const todosLosAcordes = await getCollection('acordes');
 const acordesRecomendados = todosLosAcordes
   .filter((a) => a.data.recomendada === true && a.slug !== slug)
   .sort(() => Math.random() - 0.5) // Ordenar aleatoriamente
-  .slice(0, 6); // Limitar a 6 recomendaciones
+  .slice(0, 5); // Limitar a 5 recomendaciones
 
 // Generar texto de autoría
 const autores = musica === letra ? `de ${musica}` : `de ${letra} y ${musica}`;
