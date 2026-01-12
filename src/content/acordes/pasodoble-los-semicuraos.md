@@ -9,6 +9,7 @@ cejilla: 4
 modalidad: Chirigota
 date: 12/01/2026
 video: https://www.youtube.com/embed/Z_yu2lHewCU?si=KgDUXDaW62onB7HH
+fraseClave: Aquí me tiene curado de espanto
 
 ---
 <pre>

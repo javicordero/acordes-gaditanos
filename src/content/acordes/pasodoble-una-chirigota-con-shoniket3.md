@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: Una chirigota con shoniket3
 year: 2025
-musica: Alejandro Sánchez Helmo
-letra: Alejandro Sánchez Helmo
+musica: Ale Helmo
+letra: Ale Helmo
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/19/DSC_5811.jpg
 cejilla: 1
 date: "27/11/2025"
