@@ -6,6 +6,7 @@ import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import CookieBanner from '../components/adsense/CookieBanner.astro';
+import Anuncios from '../components/Anuncios.astro';
 
 interface Props {
   title?: string;
@@ -103,6 +104,7 @@ const imageURL = new URL(image, Astro.site);
     <ClientRouter />
   </head>
   <body>
+    <Anuncios />
     <Header />
     <slot />
     <Footer />
