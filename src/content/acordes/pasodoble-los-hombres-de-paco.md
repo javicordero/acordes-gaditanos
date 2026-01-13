@@ -9,6 +9,8 @@ cejilla: 2
 modalidad: Chirigota
 date: 15/01/2026
 video: https://www.youtube.com/embed/VRNdvG7rjgg?si=ohFQE4tmAOmHat7o
+cover: https://www.youtube.com/embed/UVREVe7CkjA?si=qmAkYNJ6Xsa3_eGp
+autorCover: Acordes Gaditanos
 fraseClave: Juanma Moreno Bonilla no me ha sorprendido nada
 
 ---

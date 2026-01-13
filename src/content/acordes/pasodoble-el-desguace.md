@@ -9,6 +9,8 @@ cejilla: 5
 modalidad: Comparsa
 date: 14/01/2026
 video: https://www.youtube.com/embed/bZvuf2aGxWw?si=S0EjPlUuwZWWvMVN
+cover: https://www.youtube.com/embed/GNhmYnnViIE?si=ejsXU0q8zbTQ_D1u
+autorCover: Acordes Gaditanos
 fraseClave: Como pretendes que crea en tu patria
 
 ---
