@@ -9,6 +9,8 @@ cejilla: 4
 modalidad: Chirigota
 date: 12/01/2026
 video: https://www.youtube.com/embed/Z_yu2lHewCU?si=KgDUXDaW62onB7HH
+cover: https://www.youtube.com/embed/FGUpxNDU_l4?si=ia_KmLSVMYq4-J2A
+autorCover: Acordes Gaditanos
 fraseClave: Aquí me tiene curado de espanto
 
 ---
@@ -19,7 +21,7 @@ Aquí me tiene curado de espanto tacita para cantarte
 tacita para cantarte
                              <a>Mi7</a>               <a>Sim7</a>
 Que mis dolores se curan cantando y me hacen fuerte
-<a>Mi7</a>      <a>LaM7</a>            <a>Re</a>
+<a>Mi7</a>      <a>LaM7</a> <a>La</a>            <a>Re</a>
 Año tras año, que en carnavales
        <a>Rem</a>                            <a>LaM7</a>
 Mi medicina es una sonrisa que en carnavales
