@@ -25,9 +25,9 @@ Coplas por tus barrios y por tus calles
 Donde los acordes se vuelven más sencillos
              <a>Mim</a>
 Con la gente que se saben los estribillos
-             <a>Mi7</a>
+            <a>Sim7/5</a>                  <a>Mi7</a>
 Que lo más bonito de volver por febrero
-              <a>Lam</a>        <a>Sol</a>      <a>Fa</a>
+               <a>Lam</a>        <a>Sol</a>      <a>Fa</a>
 Es cantar con amigos y vivirlo contigo
            <a>Sol</a>
 Vivirlo contigo
@@ -55,12 +55,12 @@ Cantando carnavales
 Con el compás bendito que me enseñó mi pare
                                       <a>Sol</a>
 Que es mi mayor tesoro y no sé cuanto vale
-<a>Do</a>       <a>Lam</a>   <a>Mim</a>  <a>Fa</a>               <a>Sol</a>
+<a>Do</a>   <a>Sol</a>   <a>Lam</a>   <a>Mim</a>  <a>Fa</a>             <a>Sol</a>
 Tutututu tutututu tututu tutututuututtuuu
     <a>Fa</a>          <a>Mim</a>       <a>Mi7</a>           <a>Lam</a>
 Otro año pa enmarcar que clavé en mi corazón
                    <a>Fa</a>       <a>Sol</a>
 Con mi gente de verdad, vámonos
-<a>Fa</a>        <a>Sol</a>        <a>Do</a>  <a>Fa</a>        <a>Sol</a>        <a>Do</a>
+<a>Fa</a>        <a>Sol7</a>       <a>Do</a>  <a>Fa</a>        <a>Sol7</a>        <a>Do</a>
 Que eres Cádiz mi pasión, que eres Cádiz mi pasión
 </pre>
