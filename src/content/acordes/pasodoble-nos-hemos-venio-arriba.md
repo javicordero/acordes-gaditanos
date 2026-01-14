@@ -9,6 +9,8 @@ cejilla: 2
 modalidad: Chirigota
 date: 16/01/2026
 video: https://www.youtube.com/embed/DgbbmphSSNM?si=YLS3msWoHLLdvY4z
+cover: https://www.youtube.com/embed/3y_ivRqeXP8?si=gN5K4ntcavhhs3Gs
+autorCover: Acordes Gaditanos
 fraseClave: En lo alto de este regio castillito
 
 ---
