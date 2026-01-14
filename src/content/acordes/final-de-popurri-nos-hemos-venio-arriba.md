@@ -40,7 +40,7 @@ Pero una noche llego hasta mis murallas
 Una sonata tan bella
                 <a>Sim7</a>                 <a>Do</a>
 Que tuve que asomarme vi bajo las estrellas
-                 <a>Sol</a>                   <a>La</a>         <a>Si7</a>
+                 <a>Sol</a>                   <a>Re</a>         <a>Si7</a>
 Que desde la orillita se acercaba a compás un batallón
          <a>Sol</a>              <a>Si7</a>
 No me contuve daje del torreón temiendo que eso 
@@ -48,7 +48,7 @@ No me contuve daje del torreón temiendo que eso
 se acabe
               <a>Sim7</a>                <a>Do</a>
 Saque de la Caleta matarile las llaves
-                 <a>Sol</a>                     <a>La</a>
+                 <a>Sol</a>                     <a>Re</a>
 Y abrí de par en par de nuevo nuestro portón
         <a>Si7</a> 
 mi perdición
@@ -72,6 +72,6 @@ Y comprendimos que todo aquel que llega
 Al pie de una muralla
                    <a>Do#m7</a>                 <a>Re</a>
 No viene en son de guerra ni buscando batalla
-                     <a>La</a>                    <a>Si</a> <a>Mi7</a>
+                     <a>La</a>                    <a>Mi</a> <a>Mi7</a>
 Que hay gente que te quiere como te quiero yo
 </pre>
