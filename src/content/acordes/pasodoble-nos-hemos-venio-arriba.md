@@ -45,7 +45,7 @@ Que el sentido a mí me qui, me qui, me quita
 Ya salimos del encierro y mi copla desentierro
 <a>La7</a>                 <a>Re</a>      <a>Rem</a>
 Que yo no tengo más na, tan solo
-                                        <a>La</a> <a>Sol#</a>
+                                        <a>La</a> <a>Sol</a>
 Tan solo quince corazones soñando una playa
    <a>Fa#</a>              <a>Fa#7</a>             <a>Sim7</a>
 Tan solo quince caballeros desde su atalaya
