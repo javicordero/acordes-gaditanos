@@ -56,7 +56,7 @@ mi perdición
 El viento a bombo y platillo arropa un estribillo
                        <a>Re</a>           <a>Do</a>
 Llenando de brillo por dentro mi castillo
-                               <a>Re</a>
+                               <a>Re</a>  <a>Mi7</a>
 Y los papelillos llovieron sin más
          <a>La</a>                    <a>Mi</a>
 Y nos rendimos entraron sin llamar
@@ -64,7 +64,7 @@ Y nos rendimos entraron sin llamar
 Hasta el fondo de mis entrañas
                     <a>Do#m7</a>                   <a>Re</a>
 Hundiendo en mi costilla aquellos pitos de caña
-             <a>La</a>                     <a>Si</a>  <a>Mi7</a>
+             <a>La</a>                     <a>Mi</a>  <a>Mi7</a>
 Haciendo pasacalles qué bonita invasión
          <a>La</a>                        <a>Mi</a>
 Y comprendimos que todo aquel que llega
