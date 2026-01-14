@@ -7,7 +7,7 @@ letra: David Castro
 img: https://www.portaldecadiz.com/images/igallery/resized/nos-hemos-venio-arriba-3761/03-chirigota-nos-hemos-venio-arriba-foto-gabinete-ayuntamiento-de-cadiz--reynafotografo-15-1600-1600-80.jpg
 cejilla: 1
 modalidad: Chirigota
-date: 16/01/2026
+date: 17/01/2026
 video: https://www.youtube.com/embed/DgbbmphSSNM?si=YLS3msWoHLLdvY4z
 fraseClave: Hemos cerrado mi castillo a cal y canto
 
