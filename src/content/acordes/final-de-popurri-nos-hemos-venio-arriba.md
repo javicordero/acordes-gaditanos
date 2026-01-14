@@ -9,6 +9,8 @@ cejilla: 1
 modalidad: Chirigota
 date: 17/01/2026
 video: https://www.youtube.com/embed/DgbbmphSSNM?si=YLS3msWoHLLdvY4z
+cover: https://www.youtube.com/embed/t87s_qGBkkw?si=bSqBmtVLSdLK6abz
+autorCover: Acordes Gaditanos
 fraseClave: Hemos cerrado mi castillo a cal y canto
 
 ---
