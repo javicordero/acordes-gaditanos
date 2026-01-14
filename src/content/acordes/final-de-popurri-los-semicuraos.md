@@ -7,7 +7,7 @@ letra: El Sheriff
 img: https://www.andaluciainformacion.es/asset/thumbnail,1160,740,center,center/media/andaluciainformacion/images/2026/01/11/2026011123445951006.jpg
 cejilla: 4
 modalidad: Chirigota
-date: 15/01/2026
+date: 16/01/2026
 video: https://www.youtube.com/embed/Z_yu2lHewCU?si=KgDUXDaW62onB7HH
 fraseClave: Ni de baja ni de bajón, no quiero verte tacita
 
