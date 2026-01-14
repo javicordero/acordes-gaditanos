@@ -9,6 +9,8 @@ cejilla: 4
 modalidad: Chirigota
 date: 17/01/2026
 video: https://www.youtube.com/embed/NNG1dfsLepk?si=fw1pYblxDMiXZTp9
+cover: https://www.youtube.com/embed/9JTOmosv37w?si=kzjaHGCQ1XFVFews
+autorCover: Acordes Gaditanos
 fraseClave: A ti que escuchas mis coplas y te identificas
 
 ---
