@@ -121,8 +121,15 @@ const imageUrl = img
 
       <Apoyar class='apoyar' />
 
-      <div class='ezoic-slot desktop-only' id='ezoic-pub-ad-placeholder-119'></div>
-
+      <div class='adsterra-slot adtsterra-1'>
+        <script
+          is:inline
+          async='async'
+          data-cfasync='false'
+          src='https://pl28485480.effectivegatecpm.com/907d8074a2b3d5bc5b21598953ab32aa/invoke.js'
+        ></script>
+        <div id='container-907d8074a2b3d5bc5b21598953ab32aa'></div>
+      </div>
       <SigueTocando
         class='sigue-tocando'
         agrupacion={agrupacion}
@@ -136,27 +143,29 @@ const imageUrl = img
 
       <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
 
-      <AnunciosLibros />
+      <!-- <AnunciosLibros />
 
-      <AnunciosGuitarra />
+      <AnunciosGuitarra /> -->
 
-      <div class='ezoic-slot desktop-only' id='ezoic-pub-ad-placeholder-120'></div>
-      <div class='adsterra-slot'>
-        <script is:inline>
-          atOptions = {
-            key: '1feb159518aeafa2733b94e68d2fd67c',
-            format: 'iframe',
-            height: 250,
-            width: 300,
-            params: {},
-          };
-        </script>
+      <div class='adsterra-slot adtsterra-2'>
         <script
-          src='https://www.highperformanceformat.com/1feb159518aeafa2733b94e68d2fd67c/invoke.js'
+          is:inline
+          async='async'
+          data-cfasync='false'
+          src='https://pl28485617.effectivegatecpm.com/de35d09736627e3fbe880ded65316501/invoke.js'
         ></script>
+        <div id='container-de35d09736627e3fbe880ded65316501'></div>
       </div>
-      <div class='ezoic-slot desktop-only' id='ezoic-pub-ad-placeholder-121'></div>
 
+      <div class='adsterra-slot adsterra-3 desktop-only'>
+        <script
+          is:inline
+          async='async'
+          data-cfasync='false'
+          src='https://pl28485618.effectivegatecpm.com/ceb712e8e9d75d229ba1b3ce8eddd3b4/invoke.js'
+        ></script>
+        <div id='container-ceb712e8e9d75d229ba1b3ce8eddd3b4'></div>
+      </div>
       <!-- <SitiosDeInteresCard class='sitios-interes' /> -->
     </div>
 
@@ -221,6 +230,10 @@ const imageUrl = img
         /* Apoyar segundo */
         .right-column > :global(.apoyar) {
           order: -3;
+        }
+
+        .right-column > :global(.adtsterra-2) {
+          order: 4;
         }
 
         /* El resto mantiene orden natural (order: 0 por defecto) */

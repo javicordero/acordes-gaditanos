@@ -110,6 +110,11 @@ p {
   .is-title-minus {
     letter-spacing: 0px;
   }
+
+  .adsterra-320 {
+    display: flex !important;
+    justify-content: center;
+  }
 }
 
 html,
