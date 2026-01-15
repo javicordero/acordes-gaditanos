@@ -4,6 +4,8 @@ import Layout from '../../../layouts/Layout.astro';
 import CardsGroup from '../../../components/CardsGroup.astro';
 
 import Breadcrumb from '../../../components/Breadcrumb.astro';
+import Banner320X50 from '../../../components/anuncios/Banner320x50.astro';
+import Banner468X60 from '../../../components/anuncios/Banner468x60.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -61,37 +63,10 @@ const description = `Todos los acordes con letra de ${authorName} del Carnaval d
   <Breadcrumb autor={authorName} autorSlug={acordes[0]?.data.letraSlug} tipoAutor='letra' />
   <div class='main-container container-layout'>
     <section>
-      <div class='adsterra-slot desktop-only adsterra-728'>
-        <script is:inline>
-          atOptions = {
-            key: '8aa750fdfc5a04ab0cd410f5d4768dd9',
-            format: 'iframe',
-            height: 90,
-            width: 728,
-            params: {},
-          };
-        </script>
-        <script
-          is:inline
-          src='https://www.highperformanceformat.com/8aa750fdfc5a04ab0cd410f5d4768dd9/invoke.js'
-        ></script>
-      </div>
-      <div class='adsterra-slot mobile-only adsterra-320'>
-        <script is:inline>
-          atOptions = {
-            key: '00168e813d28ccdbf699a41e61d3b2ab',
-            format: 'iframe',
-            height: 50,
-            width: 320,
-            params: {},
-          };
-        </script>
-        <script
-          is:inline
-          src='https://www.highperformanceformat.com/00168e813d28ccdbf699a41e61d3b2ab/invoke.js'
-        ></script>
-      </div>
+      <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
+      <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
       <CardsGroup year={`${authorName}`} acordes={acordesOrdenados} subtitle='Letra' />
+      <Banner320X50 adKey='dfd3df20af74dd22bc5fae2ddf874fa4' />
     </section>
   </div>
 </Layout>

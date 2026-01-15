@@ -3,6 +3,8 @@ import { render } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
 import { Image } from 'astro:assets';
+import Banner320X50 from './anuncios/Banner320x50.astro';
+import Banner468X60 from './anuncios/Banner468x60.astro';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -29,21 +31,8 @@ const headingId = `acorde-${slug}`;
 ---
 
 <article class='acorde-card'>
-  <div class='adsterra-slot mobile-only adsterra-320'>
-    <script is:inline>
-      atOptions = {
-        key: '00168e813d28ccdbf699a41e61d3b2ab',
-        format: 'iframe',
-        height: 50,
-        width: 320,
-        params: {},
-      };
-    </script>
-    <script
-      is:inline
-      src='https://www.highperformanceformat.com/00168e813d28ccdbf699a41e61d3b2ab/invoke.js'
-    ></script>
-  </div>
+  <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
+  <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
   <!-- <AcordeAvisoMigracion /> -->
 
   <header>
@@ -108,6 +97,8 @@ const headingId = `acorde-${slug}`;
     </div>
     <Content />
   </section>
+
+  <Banner320X50 adKey='dfd3df20af74dd22bc5fae2ddf874fa4' />
 </article>
 
 <style>
