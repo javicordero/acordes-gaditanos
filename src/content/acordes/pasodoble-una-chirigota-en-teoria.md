@@ -9,6 +9,8 @@ cejilla: 3
 modalidad: Chirigota
 date: 18/01/2026
 video: https://www.youtube.com/embed/JocmCsI0q2A?si=tHh5q4Pw-3PtohT3
+cover: https://www.youtube.com/embed/jkVoAGV5grs?si=dbVJIrD9q5e14V54
+autorCover: Acordes Gaditanos
 fraseClave: Aunque tú me veas ahora
 
 ---
