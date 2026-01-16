@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Los Cadisapiens
+agrupacion: Los cadisapiens (La involución)
 year: 2026
 musica: Manolín Santander
 letra: Manolín Santander
