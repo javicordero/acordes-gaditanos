@@ -4,6 +4,8 @@ import Layout from '../layouts/Layout.astro';
 import CardsGroup from '../components/CardsGroup.astro';
 import YearsList from '../components/YearsList.astro';
 import AutorCardsGroup from '../components/AutorCardsGroup.astro';
+import Banner468X60 from '../components/anuncios/Banner468x60.astro';
+import Banner320X50 from '../components/anuncios/Banner320x50.astro';
 
 function parseSpanishDate(str: string) {
   const [d, m, y] = str.split(/[-/]/).map(Number);
@@ -51,6 +53,8 @@ let autores = await getCollection('autores');
   title='Acordes Gaditanos - Acordes del Carnaval de Cádiz'
   description='La mayor colección de acordes de guitarra del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
   <div class='main-container container-layout'>
+    <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
+    <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
     <!-- Mensaje de sin resultados (oculto por defecto) -->
     <article class='no-results' role='region' aria-labelledby='no-results-heading' style='display'>
       <header>
