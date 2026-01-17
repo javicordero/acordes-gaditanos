@@ -9,57 +9,53 @@ const { adKey } = Astro.props;
   </div>
 
   <script is:inline define:vars={{ adKey }}>
-    // const injectBanner468Dynamic = () => {
-    //   const container = document.getElementById(`container-${adKey}`);
+    const injectBanner468Dynamic = () => {
+      const container = document.getElementById(`container-${adKey}`);
 
-    //   if (container && !container.hasChildNodes()) {
-    //     const iframe = document.createElement('iframe');
-    //     iframe.style.border = 'none';
-    //     iframe.style.width = '468px';
-    //     iframe.style.height = '60px';
-    //     iframe.style.margin = '0';
-    //     iframe.style.padding = '0';
-    //     iframe.style.overflow = 'hidden';
-    //     iframe.scrolling = 'no';
+      if (container && !container.hasChildNodes()) {
+        const iframe = document.createElement('iframe');
+        iframe.style.border = 'none';
+        iframe.style.width = '468px';
+        iframe.style.height = '60px';
+        iframe.style.margin = '0';
+        iframe.style.padding = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.scrolling = 'no';
 
-    //     container.appendChild(iframe);
+        container.appendChild(iframe);
 
-    //     const adCode = `
-    //       <html>
-    //         <body style="margin:0;padding:0;display:flex;justify-content:center;">
-    //           <script type="text/javascript">
-    //             var atOptions = {
-    //               'key' : '${adKey}',
-    //               'format' : 'iframe',
-    //               'height' : 60,
-    //               'width' : 468,
-    //               'params' : {}
-    //             };
-    //           <\/script>
-    //           <script type="text/javascript" src="https://www.highperformanceformat.com/${adKey}/invoke.js"><\/script>
-    //         </body>
-    //       </html>
-    //     `;
+        const adCode = `
+          <html>
+            <body style="margin:0;padding:0;display:flex;justify-content:center;">
+              <script type="text/javascript">
+                var atOptions = {
+                  'key' : '${adKey}',
+                  'format' : 'iframe',
+                  'height' : 60,
+                  'width' : 468,
+                  'params' : {}
+                };
+              <\/script>
+              <script type="text/javascript" src="https://www.highperformanceformat.com/${adKey}/invoke.js"><\/script>
+            </body>
+          </html>
+        `;
 
-    //     const doc = iframe.contentWindow.document;
-    //     doc.open();
-    //     doc.write(adCode);
-    //     doc.close();
-    //   }
-    // };
+        const doc = iframe.contentWindow.document;
+        doc.open();
+        doc.write(adCode);
+        doc.close();
+      }
+    };
 
-    // // Carga inicial
-    // injectBanner468Dynamic();
-
-    // // Soporte para View Transitions de Astro
-    // document.addEventListener('astro:page-load', injectBanner468Dynamic);
+    document.addEventListener('astro:page-load', injectBanner468Dynamic);
   </script>
 </div>
 
 <style>
   .adsterra-wrapper-468 {
-    /* width: 468px;
-    height: 60px; */
+    width: 468px;
+    height: 60px;
     /* background-color: rgba(0, 0, 0, 0.03); */
     display: flex;
     justify-content: center;
