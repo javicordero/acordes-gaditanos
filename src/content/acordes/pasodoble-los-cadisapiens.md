@@ -9,6 +9,8 @@ cejilla: 3
 modalidad: Chirigota
 date: 19/01/2026
 video: https://www.youtube.com/embed/wiR8QueoHAE?si=BkK1eu1W-xDP9J_Z
+cover: https://www.youtube.com/embed/uJlJBIljVW8?si=4672H5vKfdG1lsbB
+autorCover: Acordes Gaditanos
 fraseClave: Otro año que volvemos a embarcarnos
 
 ---
