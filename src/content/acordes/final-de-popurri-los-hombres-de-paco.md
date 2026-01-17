@@ -9,6 +9,8 @@ cejilla: 4
 modalidad: Chirigota
 date: 13/01/2026
 video: https://www.youtube.com/embed/VRNdvG7rjgg?si=ohFQE4tmAOmHat7o
+cover: https://www.youtube.com/embed/DNos0o2WawY?si=6Aci7hS9_FZAJDWd
+autorCover: Acordes Gaditanos
 fraseClave: Ya vuelve a sonar la melodía
 
 ---
