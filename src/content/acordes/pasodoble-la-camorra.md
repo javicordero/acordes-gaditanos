@@ -16,7 +16,6 @@ fraseClave: Tres mil, más de tres mil mujeres
 ---
 <pre>
 <a>Solm</a>
-
 Tres mil más de tres mil mujeres 
              <a>Sol7</a>                <a>Dom</a>
 Han sido ignoradas en meses y en años
