@@ -9,8 +9,8 @@ cejilla: 3
 modalidad: Comparsa
 date: 21/01/2026
 video: https://www.youtube.com/embed/PN4gjw8tOJ8?si=_275eH5gb5ONl3M3
-# cover: https://www.youtube.com/embed/uJlJBIljVW8?si=4672H5vKfdG1lsbB
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/rqvS9jGoOHc?si=fJWgo5r0FcSXvAUb
+autorCover: Acordes Gaditanos
 fraseClave: Tres mil, más de tres mil mujeres
 
 ---
