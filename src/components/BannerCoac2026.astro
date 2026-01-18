@@ -11,7 +11,7 @@ import Image from 'astro/components/Image.astro';
         <Image
           src='https://www.guiadecadiz.com/sites/default/files/2026/agenda/carnaval/cadiz/cartel-carnaval-cadiz.jpg'
           alt='Banner COAC 2026'
-          width={208}
+          width={200}
           height={250}
         />
       </a>
@@ -22,7 +22,12 @@ import Image from 'astro/components/Image.astro';
       </header>
 
       <div class='apoyar'>
-        <p>Si los acordes te sirven de ayuda, puedes apoyar el proyecto y ayudarnos a seguir.</p>
+        <p>
+          Si los acordes te sirven de ayuda, puedes <a href='/colaborar'>apoyar</a> el proyecto o <strong>
+            anunciarte
+          </strong>
+          en nuestra web y ayudarnos a seguir.
+        </p>
         <div class='actions' role='group' aria-label='Opciones de apoyo'>
           <a
             href='https://www.buymeacoffee.com/AcordesGaditanos'
@@ -70,6 +75,17 @@ import Image from 'astro/components/Image.astro';
       }
     }
 
+    & p {
+      & a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      & a:hover {
+        color: var(--link-hover-color);
+      }
+    }
     & .image-text {
       display: flex;
       /* align-items: end; */
@@ -83,7 +99,7 @@ import Image from 'astro/components/Image.astro';
       & .text {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
 
         & header {
           gap: 6px;
