@@ -7,38 +7,29 @@ const { adKey } = Astro.props;
   <div class='adsterra-wrapper' id={`wrap-${adKey}`}>
     <div id={`container-${adKey}`}></div>
   </div>
-</div>
 
-<script is:inline define:vars={{ adKey }}>
-  const injectAd = () => {
-    const container = document.getElementById(`container-${adKey}`);
-    if (!container) return;
+  <script is:inline define:vars={{ adKey }}>
+    const injectAd = () => {
+      const container = document.getElementById(`container-${adKey}`);
 
-    // LIMPIEZA: Eliminamos cualquier anuncio anterior antes de crear el nuevo
-    while (container.firstChild) {
-      container.removeChild(container.firstChild);
-    }
+      if (container && !container.hasChildNodes()) {
+        // Creamos un iframe vacío para aislar el scope de 'atOptions'
+        const iframe = document.createElement('iframe');
+        iframe.style.border = 'none';
+        iframe.style.width = '320px';
+        iframe.style.height = '50px';
+        iframe.style.margin = '0';
+        iframe.style.padding = '0';
+        iframe.style.overflow = 'hidden';
+        iframe.scrolling = 'no';
 
-    // Reset de variables globales para evitar conflictos
-    window.atOptions = undefined;
+        container.appendChild(iframe);
 
-    const iframe = document.createElement('iframe');
-    iframe.style.border = 'none';
-    iframe.style.width = '320px';
-    iframe.style.height = '50px';
-    iframe.style.margin = '0';
-    iframe.style.padding = '0';
-    iframe.style.overflow = 'hidden';
-    iframe.scrolling = 'no';
-
-    container.appendChild(iframe);
-
-    const adCode = `
+        // Escribimos el código de Adsterra DENTRO del iframe
+        // Esto evita que las variables globales choquen entre banners
+        const adCode = `
           <html>
-            <head>
-              <meta name="referrer" content="no-referrer">
-            </head>
-            <body style="margin:0;padding:0;display:flex;justify-content:center;align-items:center;">
+            <body style="margin:0;padding:0;">
               <script type="text/javascript">
                 var atOptions = {
                   'key' : '${adKey}',
@@ -53,24 +44,26 @@ const { adKey } = Astro.props;
           </html>
         `;
 
-    const doc = iframe.contentWindow.document;
-    doc.open();
-    doc.write(adCode);
-    doc.close();
-  };
+        const doc = iframe.contentWindow.document;
+        doc.open();
+        doc.write(adCode);
+        doc.close();
+      }
+    };
 
-  // Carga inicial para la primera visita
-  injectAd();
+    // Carga inicial
 
-  // Re-carga limpia para View Transitions de Astro
-  document.addEventListener('astro:page-load', injectAd);
-</script>
+    // Re-carga para View Transitions de Astro
+    document.addEventListener('astro:page-load', injectAd);
+  </script>
+</div>
 
 <style>
   .adsterra-wrapper {
     width: 320px;
     height: 50px;
     margin-top: 8px;
+    /* background-color: rgba(0, 0, 0, 0.05); */
     display: flex;
     justify-content: center;
     align-items: center;
