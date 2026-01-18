@@ -187,6 +187,10 @@ body {
   .mobile-only {
     display: block;
   }
+
+  .anunciate-aqui {
+    display: none !important;
+  }
 }
 
 /* Ajuste del bloque bajo breadcrumb */

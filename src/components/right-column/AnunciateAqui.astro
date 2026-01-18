@@ -1,0 +1,35 @@
+---
+import RightColumnCard from '../../layouts/RightColumnCard.astro';
+
+const { class: className } = Astro.props;
+---
+
+<RightColumnCard title='Anúnciate aquí' headingId='anunciate-aqui-title' class={className}>
+  <section aria-labelledby='anunciate-aqui-title'>
+    <p>
+      ¿Te interesa <strong>anunciar</strong> tu producto o servicio en este espacio de nuestra web con
+      más de <strong>1.000 visitantes diarios</strong>? Ponte en <a href='/contacto'> contacto </a> con
+      nosotros para más información.
+    </p>
+    <p class='note'>También podemos buscar cualquier otro espacio en la web para ti.</p>
+  </section>
+
+  <style>
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      & a {
+        color: var(--acorde-color);
+        text-decoration: none;
+      }
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: var(--secondary-color);
+      font-style: italic;
+    }
+  </style>
+</RightColumnCard>

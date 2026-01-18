@@ -12,6 +12,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import Apoyar from '../../components/right-column/Apoyar.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
+import AnunciateAqui from '../../components/right-column/AnunciateAqui.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -117,6 +118,8 @@ const imageUrl = img
         )
       }
       {!cover && <ApareceAqui class='aparece-aqui' />}
+
+      <AnunciateAqui class='anunciate-aqui' />
 
       <Apoyar class='apoyar' />
 
