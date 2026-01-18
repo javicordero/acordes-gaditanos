@@ -2,8 +2,8 @@
 pieza: Final de popurrí
 agrupacion: Los Plácidos Domingos
 year: 2024
-musica: Juaki
-letra: Juaki
+musica: Ale Helmo
+letra: Joselini
 img: https://static.grupojoly.com/clip/f9c5c1ce-e4b5-4392-893a-fcbe994cd3e4_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
