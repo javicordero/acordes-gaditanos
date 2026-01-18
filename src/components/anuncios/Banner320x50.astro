@@ -7,27 +7,28 @@ const { adKey } = Astro.props;
   <div class='adsterra-wrapper' id={`wrap-${adKey}`}>
     <div id={`container-${adKey}`}></div>
   </div>
+</div>
 
-  <script is:inline define:vars={{ adKey }}>
-    const injectAd = () => {
-      const container = document.getElementById(`container-${adKey}`);
+<script is:inline define:vars={{ adKey }}>
+  const injectAd = () => {
+    const container = document.getElementById(`container-${adKey}`);
 
-      if (container && !container.hasChildNodes()) {
-        // Creamos un iframe vacío para aislar el scope de 'atOptions'
-        const iframe = document.createElement('iframe');
-        iframe.style.border = 'none';
-        iframe.style.width = '320px';
-        iframe.style.height = '50px';
-        iframe.style.margin = '0';
-        iframe.style.padding = '0';
-        iframe.style.overflow = 'hidden';
-        iframe.scrolling = 'no';
+    if (container && !container.hasChildNodes()) {
+      // Creamos un iframe vacío para aislar el scope de 'atOptions'
+      const iframe = document.createElement('iframe');
+      iframe.style.border = 'none';
+      iframe.style.width = '320px';
+      iframe.style.height = '50px';
+      iframe.style.margin = '0';
+      iframe.style.padding = '0';
+      iframe.style.overflow = 'hidden';
+      iframe.scrolling = 'no';
 
-        container.appendChild(iframe);
+      container.appendChild(iframe);
 
-        // Escribimos el código de Adsterra DENTRO del iframe
-        // Esto evita que las variables globales choquen entre banners
-        const adCode = `
+      // Escribimos el código de Adsterra DENTRO del iframe
+      // Esto evita que las variables globales choquen entre banners
+      const adCode = `
           <html>
             <body style="margin:0;padding:0;">
               <script type="text/javascript">
@@ -44,19 +45,18 @@ const { adKey } = Astro.props;
           </html>
         `;
 
-        const doc = iframe.contentWindow.document;
-        doc.open();
-        doc.write(adCode);
-        doc.close();
-      }
-    };
+      const doc = iframe.contentWindow.document;
+      doc.open();
+      doc.write(adCode);
+      doc.close();
+    }
+  };
 
-    // Carga inicial
+  // Carga inicial
 
-    // Re-carga para View Transitions de Astro
-    document.addEventListener('astro:page-load', injectAd);
-  </script>
-</div>
+  // Re-carga para View Transitions de Astro
+  // document.addEventListener('astro:page-load', injectAd);
+</script>
 
 <style>
   .adsterra-wrapper {

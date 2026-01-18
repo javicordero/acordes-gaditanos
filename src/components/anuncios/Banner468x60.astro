@@ -7,24 +7,25 @@ const { adKey } = Astro.props;
   <div class='adsterra-wrapper-468' id={`wrap-${adKey}`}>
     <div id={`container-${adKey}`}></div>
   </div>
+</div>
 
-  <script is:inline define:vars={{ adKey }}>
-    const injectBanner468Dynamic = () => {
-      const container = document.getElementById(`container-${adKey}`);
+<script is:inline define:vars={{ adKey }}>
+  const injectBanner468Dynamic = () => {
+    const container = document.getElementById(`container-${adKey}`);
 
-      if (container && !container.hasChildNodes()) {
-        const iframe = document.createElement('iframe');
-        iframe.style.border = 'none';
-        iframe.style.width = '468px';
-        iframe.style.height = '60px';
-        iframe.style.margin = '0';
-        iframe.style.padding = '0';
-        iframe.style.overflow = 'hidden';
-        iframe.scrolling = 'no';
+    if (container && !container.hasChildNodes()) {
+      const iframe = document.createElement('iframe');
+      iframe.style.border = 'none';
+      iframe.style.width = '468px';
+      iframe.style.height = '60px';
+      iframe.style.margin = '0';
+      iframe.style.padding = '0';
+      iframe.style.overflow = 'hidden';
+      iframe.scrolling = 'no';
 
-        container.appendChild(iframe);
+      container.appendChild(iframe);
 
-        const adCode = `
+      const adCode = `
           <html>
             <body style="margin:0;padding:0;display:flex;justify-content:center;">
               <script type="text/javascript">
@@ -41,16 +42,15 @@ const { adKey } = Astro.props;
           </html>
         `;
 
-        const doc = iframe.contentWindow.document;
-        doc.open();
-        doc.write(adCode);
-        doc.close();
-      }
-    };
+      const doc = iframe.contentWindow.document;
+      doc.open();
+      doc.write(adCode);
+      doc.close();
+    }
+  };
 
-    document.addEventListener('astro:page-load', injectBanner468Dynamic);
-  </script>
-</div>
+  // document.addEventListener('astro:page-load', injectBanner468Dynamic);
+</script>
 
 <style>
   .adsterra-wrapper-468 {
