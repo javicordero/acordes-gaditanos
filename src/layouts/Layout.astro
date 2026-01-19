@@ -117,20 +117,26 @@ const imageURL = new URL(image, Astro.site);
     </script>
     <!-- End Google Tag Manager -->
 
-    <script is:inline async src='https://www.googletagmanager.com/gtag/js?id=G-CTX6DK49K4'></script>
-    <script is:inline async src='https://www.googletagmanager.com/gtag/js?id=G-CTX6DK49K4'></script>
-    <script is:inline>
-      function gtag() {
-        window.dataLayer.push(arguments);
-      }
+    <!-- Google Analytics -->
+ {
+  !import.meta.env.DEV && (
+    <>
+      <script is:inline async src='https://www.googletagmanager.com/gtag/js?id=G-CTX6DK49K4'></script>
+      <script is:inline>
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
 
-      // Esta función se ejecuta cada vez que cambias de página gracias a ClientRouter
-      document.addEventListener('astro:page-load', () => {
-        window.dataLayer = window.dataLayer || [];
-        gtag('js', new Date());
-        gtag('config', 'G-CTX6DK49K4');
-      });
-    </script>
+        document.addEventListener('astro:page-load', () => {
+          window.dataLayer = window.dataLayer || [];
+          gtag('js', new Date());
+          gtag('config', 'G-CTX6DK49K4');
+        });
+      </script>
+    </>
+  )
+}
+    <!-- End Google Analytics -->
 
     <ClientRouter />
   </head>
