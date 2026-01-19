@@ -169,6 +169,35 @@ const imageURL = new URL(image, Astro.site);
       )
     }
     <!-- End Google Analytics -->
+    <!-- Contador propio  -->
+
+    <script>
+      // Función para enviar la visita
+      const registerVisit = async () => {
+        // Obtenemos el path actual en el momento de la ejecución
+        const path = window.location.pathname;
+        
+        try {
+          await fetch(`https://stats-worker.javiercorderotoscano.workers.dev?path=${path}`);
+          console.log("Visita registrada:", path);
+        } catch (e) {
+          console.error("Error en analytics");
+        }
+      };
+
+      // Escuchamos el evento de Astro para View Transitions
+      // 'astro:page-load' se dispara tanto en la carga inicial como tras cada navegación
+      document.addEventListener('astro:page-load', () => {
+        // Opcional: Evitar contar visitas en localhost
+        if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+          registerVisit();
+        } else {
+          console.log("Modo desarrollo: No se registra visita de", window.location.pathname);
+        }
+      });
+    </script>
+
+<!-- End contador propio -->
 
     {
       !import.meta.env.DEV && (
@@ -207,6 +236,7 @@ const imageURL = new URL(image, Astro.site);
         </>
       )
     }
+    
     <ClientRouter />
   </head>
   <body>
