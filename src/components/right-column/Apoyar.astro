@@ -106,3 +106,35 @@ const { class: className } = Astro.props;
     }
   }
 </style>
+
+<script>
+  function setupSupportTracking() {
+    // Buscamos todos los elementos que tengan el atributo de evento GA
+    const trackableButtons = document.querySelectorAll('[data-ga-event]');
+
+    trackableButtons.forEach((button) => {
+      // Evitamos añadir el listener varias veces si el script se vuelve a ejecutar
+      if (button.getAttribute('data-tracking-init')) return;
+      button.setAttribute('data-tracking-init', 'true');
+
+      button.addEventListener('click', () => {
+        // Comprobamos consentimiento
+        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
+
+        if (hasConsent && typeof gtag === 'function') {
+          const eventName = button.getAttribute('data-ga-event');
+          const eventParams = JSON.parse(button.getAttribute('data-ga-params') || '{}');
+
+          gtag('event', eventName, {
+            ...eventParams,
+            page_location: window.location.href,
+            button_location: 'right_column_card', // Esto te ayuda a saber que clicaron en el lateral
+          });
+        }
+      });
+    });
+  }
+
+  // Ejecución compatible con ClientRouter y carga inicial
+  document.addEventListener('astro:page-load', setupSupportTracking);
+</script>
