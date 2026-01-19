@@ -1,0 +1,81 @@
+<section aria-labelledby='anunciate-aqui-title'>
+  <header>
+    <h2>Anúnciate aquí</h2>
+  </header>
+  <main>
+    <p>
+      ¿Te interesa <strong>anunciar</strong> tu producto o servicio en este espacio de nuestra web con
+      más de <strong>1.000 visitantes diarios</strong>? Ponte en <a href='/contacto'> contacto </a> con
+      nosotros para más información.
+    </p>
+    <p class='note'>También podemos buscar cualquier otro espacio en la web para ti.</p>
+  </main>
+</section>
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    & header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      & h2 {
+        position: relative;
+        color: var(--primary-color);
+        font-size: 1.625rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        max-width: fit-content;
+        margin: 0;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -4px;
+          width: 90%;
+          height: 4px;
+          background: var(--primary-contrast-color);
+        }
+      }
+    }
+
+    & main {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      & a {
+        color: var(--acorde-color);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .note {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    section {
+      gap: 6px;
+
+      & header {
+        gap: 8px;
+        & h2::after {
+          height: 3px;
+          bottom: -1px;
+        }
+      }
+
+      & main {
+        gap: 4px;
+      }
+    }
+  }
+</style>

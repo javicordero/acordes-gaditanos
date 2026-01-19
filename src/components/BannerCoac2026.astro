@@ -183,4 +183,17 @@ import Image from 'astro/components/Image.astro';
       font-size: 0.85rem;
     }
   }
+
+  @media (max-width: 640px) {
+    section {
+      gap: 6px;
+      & header {
+        gap: 6px;
+        & h2::after {
+          height: 3px;
+          bottom: -1px;
+        }
+      }
+    }
+  }
 </style>
