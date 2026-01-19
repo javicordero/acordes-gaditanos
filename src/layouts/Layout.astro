@@ -119,23 +119,55 @@ const imageURL = new URL(image, Astro.site);
 
     <!-- Google Analytics -->
  {
-  !import.meta.env.DEV && (
-    <>
-      <script is:inline async src='https://www.googletagmanager.com/gtag/js?id=G-CTX6DK49K4'></script>
-      <script is:inline>
-        function gtag() {
-          window.dataLayer.push(arguments);
-        }
+      !import.meta.env.DEV && (
+        <>
+          <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              window.dataLayer.push(arguments);
+            }
 
-        document.addEventListener('astro:page-load', () => {
-          window.dataLayer = window.dataLayer || [];
-          gtag('js', new Date());
-          gtag('config', 'G-CTX6DK49K4');
-        });
-      </script>
-    </>
-  )
-}
+            // 1. Configuración de Consentimiento inicial
+            const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
+            
+            gtag('consent', 'default', {
+              analytics_storage: hasConsent ? 'granted' : 'denied',
+              ad_storage: hasConsent ? 'granted' : 'denied',
+            });
+
+            // 2. Inicialización básica
+            gtag('js', new Date());
+
+            // 3. Función para enviar la visita de forma segura
+            function sendPageView() {
+              if (localStorage.getItem('ag_cookie_consent') === 'accepted') {
+                gtag('config', 'G-CTX6DK49K4', {
+                  page_path: window.location.pathname,
+                });
+              }
+            }
+
+            // 4. Navegación con ClientRouter
+            document.addEventListener('astro:page-load', () => {
+              if (localStorage.getItem('ag_cookie_consent') === 'accepted') {
+                sendPageView();
+              }
+            });
+
+            // 5. Al aceptar el banner: concede permiso y envía visita inmediata
+            window.addEventListener('ag:cookies-accepted', () => {
+              gtag('consent', 'update', {
+                analytics_storage: 'granted',
+                ad_storage: 'granted',
+              });
+              sendPageView();
+            });
+          </script>
+
+          <script is:inline async src='https://www.googletagmanager.com/gtag/js?id=G-CTX6DK49K4'></script>
+        </>
+      )
+    }
     <!-- End Google Analytics -->
 
     <ClientRouter />
@@ -157,7 +189,7 @@ const imageURL = new URL(image, Astro.site);
     <Footer />
     <ContactInit />
     <AnchoPreInit />
-    <!-- <CookieBanner /> -->
+    <CookieBanner />
     <!-- <script>
       import { hasAcceptedCookies, loadAdsense } from '../utils/cookiesConsent';
 
