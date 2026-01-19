@@ -9,8 +9,8 @@ cejilla: 5
 modalidad: Chirigota
 date: 22/01/2026
 video: https://www.youtube.com/embed/ual-7SOW39I?si=JBKQhY9tWiwPjcuJ
-# cover: https://www.youtube.com/embed/DNos0o2WawY?si=6Aci7hS9_FZAJDWd
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/lcch24Jiwxs?si=kcUYFTcAY5LtDhBy
+autorCover: Acordes Gaditanos
 fraseClave: Recogiendos to las fundas cuando el día se ha acabao
 
 ---
