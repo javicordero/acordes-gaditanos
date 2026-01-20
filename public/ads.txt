@@ -1,1 +1,2 @@
 google.com, pub-3280015847198273, DIRECT, f08c47fec0942fa0
+MANAGERDOMAIN=monetumo.com
