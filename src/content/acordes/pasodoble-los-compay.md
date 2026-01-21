@@ -19,7 +19,7 @@ fraseClave: Yo vengo desde la habana, cuna del son caribeño
 Yo vengo desde la habana, cuna del son caribeño
                        <a>Do</a>                         <a>Re7</a>
 Y llego a la tierra hermana para cumplir con mi sueño
-                          <a>Sol</a>                  <a>Sim7</a>
+                        <a>Sol</a>                  <a>Sim7</a>
 Mi sueño es mostrarle a Cai la música y el talento
                            <a>Do</a>                    <a>Re7</a>
 Que en cuba a cualquier compay le nace de sus adentros
