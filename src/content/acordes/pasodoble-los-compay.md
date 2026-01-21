@@ -9,8 +9,8 @@ cejilla: 4
 modalidad: Chirigota
 date: 23/01/2026
 video: https://www.youtube.com/embed/ual-7SOW39I?si=JBKQhY9tWiwPjcuJ
-# cover: https://www.youtube.com/embed/lcch24Jiwxs?si=kcUYFTcAY5LtDhBy
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/Yz9ytjIKsso?si=8GngLB7JukfF9dnk
+autorCover: Acordes Gaditanos
 fraseClave: Yo vengo desde la habana, cuna del son caribeño
 
 ---
@@ -30,7 +30,7 @@ El sentimiento y la musicalidad
 <a>Re7</a>                        <a>Sol</a>
 Que nos diferencia a los demás
 Y to ese rollazo se fue de un plumazo
-                                  <a>Re7</a>
+                                <a>Re7</a>
 Cuando por el brazo vino y me cogió
           <a>Do</a>                   <a>Re7</a>
 Un viejo viñero, con su arte señero
