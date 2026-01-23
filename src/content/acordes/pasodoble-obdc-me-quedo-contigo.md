@@ -9,10 +9,9 @@ cejilla: 2
 modalidad: Comparsa
 date: 25/01/2026
 video: https://www.youtube.com/embed/mgIFmw8Jg2Q?si=FyAws9GHm8b5opJi
-# cover: https://www.youtube.com/embed/Yz9ytjIKsso?si=8GngLB7JukfF9dnk
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/z8eK-tjeAiI?si=t4ab9EsYlCMOmyaF
+autorCover: Acordes Gaditanos
 fraseClave: Hace frío y es enero, Pedro Sánchez con sus huevos
-
 
 ---
 <pre>
