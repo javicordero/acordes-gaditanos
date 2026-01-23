@@ -11,7 +11,7 @@ date: 24/01/2026
 video: https://www.youtube.com/embed/s80OxTYrvP4?si=KfEmSqoUAQBUGs54
 # cover: https://www.youtube.com/embed/Yz9ytjIKsso?si=8GngLB7JukfF9dnk
 # autorCover: Acordes Gaditanos
-fraseClave: Yo vengo desde la habana, cuna del son caribeño
+fraseClave: Con la guitarra en la mano y en su maleta el presente
 
 ---
 <pre>
