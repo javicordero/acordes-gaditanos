@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: OBDC. Me quedo contigo
+agrupacion: OBDC! Me quedo contigo
 year: 2026
 musica: Germán Rendón
 letra: Germán Rendón
