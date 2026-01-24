@@ -67,7 +67,7 @@ Y con diente por diente ver al hombre llorar.
 Cada gota de la sangre que él mismo hizo derramar.
 
 Viendo a tanto hijo de puta haciendo daño,
-                <a>Do</a>       <a>Si7</a>       <a>Mim</a>
+        <a>Do</a>       <a>Si7</a>       <a>Mim</a>
 Salir absuelto ante tanto crimen. 
                          <a>Re</a>     <a>Do</a>                  <a>Si7</a>
 A mí que alguien me lo explique la justicia dónde está
