@@ -17,7 +17,7 @@ fraseClave: La diferencia sea más suprema de los hombres
 <pre>
 <a>Mim</a>                                  <a>Si7</a>
 La diferencia sea más suprema de los hombres.
-       <a>Lam7</a> <a>Si7</a>  <a>Lam7</a>              <a>Si7</a>              <a>Mim</a>
+   <a>Lam7</a> <a>Si7</a>  <a>Lam7</a>              <a>Si7</a>              <a>Mim</a>
 Supuestamente es el la única especie que es racional
 <a>Si7</a>                               <a>Mim</a>
 Y es lo que nos dista de un ser animal.
