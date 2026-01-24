@@ -9,8 +9,8 @@ cejilla: 2
 modalidad: Chrigota
 date: 26/01/2026
 video: https://www.youtube.com/embed/URRCPxm15rQ?si=KPRCdOF-MsvTvNby
-# cover: https://www.youtube.com/embed/Yz9ytjIKsso?si=8GngLB7JukfF9dnk
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/c0JxTC6o5DI?si=yQnP93z4gLFKuSxK
+autorCover: Acordes Gaditanos
 fraseClave: La diferencia sea más suprema de los hombres
 
 ---
