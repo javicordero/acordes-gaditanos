@@ -39,7 +39,7 @@ Pero que siempre el hombre se lo ha pagado
 Con la traición.
 <a>Lam</a> <a>Re7</a>               <a>Sol</a>            <a>Si7</a>
 Tras su inherente crueldad, solo por ser de
-               <a>Mim</a>               <a>Lam7</a>             <a>Si7</a>
+       <a>Mim</a>               <a>Lam7</a>             <a>Si7</a>
 Raza animal, creyó que estaba para ser eslcavo
 <a>Lam7</a>    <a>Re7</a>      <a>Sol</a>          <a>Si7</a>            <a>Mim</a>
 Por carecer de razón y por hablar con el corazón
