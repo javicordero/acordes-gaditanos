@@ -25,7 +25,7 @@ Y se enciende un candilito de esperanza
 Dentro de la oscuridad
     <a>Lam7</a>                      <a>Re7</a>
 Al final de algún pasillo interminable
-     <a>Sol</a>           <a>Si7</a>          <a>M7m</a>
+     <a>Sol</a>           <a>Si7</a>          <a>Mi7</a>
 Se pregona en el silencio sepulcral
         <a>Do</a>                       <a>Re7</a>
 Con el grito atronador de una campana
@@ -49,7 +49,7 @@ Y se brinda por la suerte de quien sabe
 Que hoy ha vuelto a renacer
    <a>Do</a>                    <a>Dom7</a>
 Campana del derecho universal
-   <a>Sol</a>                     <a>Mim</a>
+   <a>Sol</a>                     <a>Mi7</a>
 Campana del cuidado y del amor
    <a>Lam7</a>                   <a>Re7</a>              <a>Sol</a>    <a>Sol7</a>
 Campana de la suerte de sanar y de la investigación
