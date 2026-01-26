@@ -6,7 +6,7 @@ musica: Tamara Beardo
 letra: Bea Aragón
 img: https://static.grupojoly.com/clip/8327afb5-0e87-4af2-aaa4-c50638e1a4a9_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
-modalidad: Chrigota
+modalidad: Comparsa
 date: 27/01/2026
 video: https://www.youtube.com/embed/sRnCaBbeO6s?si=ZYK4JKCOWzBfGzIy
 # cover: https://www.youtube.com/embed/c0JxTC6o5DI?si=yQnP93z4gLFKuSxK
