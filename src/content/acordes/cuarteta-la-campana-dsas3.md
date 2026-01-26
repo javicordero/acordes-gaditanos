@@ -11,7 +11,7 @@ date: 28/01/2026
 video: https://www.youtube.com/embed/kT5Y42bf7sc?si=qT2Vml4ytMUYuAN4
 # cover: https://www.youtube.com/embed/c0JxTC6o5DI?si=yQnP93z4gLFKuSxK
 # autorCover: Acordes Gaditanos
-fraseClave: Cuando dentro del castillo
+fraseClave: Cuando dentro del castillo a la muerte se la gana una batalla
 
 ---
 <pre>
