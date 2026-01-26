@@ -25,7 +25,7 @@ Y se enciende un candilito de esperanza
 Dentro de la oscuridad
     <a>Lam7</a>                      <a>Re7</a>
 Al final de algún pasillo interminable
-     <a>Sol</a>           <a>Si7</a>          <a>Mim</a>
+     <a>Sol</a>           <a>Si7</a>          <a>M7m</a>
 Se pregona en el silencio sepulcral
         <a>Do</a>                       <a>Re7</a>
 Con el grito atronador de una campana
@@ -55,7 +55,7 @@ Campana del cuidado y del amor
 Campana de la suerte de sanar y de la investigación
    <a>Do</a>                      <a>Dom7</a>
 Campana contra la precariedad
-    <a>Sol</a>                    <a>Mim</a>
+    <a>Sol</a>                    <a>Mi7</a>
 El desmantelamiento y el dolor
    <a>Lam7</a>                       <a>Re7</a>            <a>Sol</a>   <a>Sol7</a>
 Contra las artes del rey Baltasar y la privatización
