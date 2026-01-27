@@ -9,8 +9,8 @@ cejilla: 3
 modalidad: Chrigota
 date: 30/01/2026
 video: https://www.youtube.com/embed/Ov7yWWdRu4w?si=k49hjVAhIr9sxK_B
-# cover: https://www.youtube.com/embed/c0JxTC6o5DI?si=yQnP93z4gLFKuSxK
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/EWh8K_1EVSc?si=PZrhOxjhz8rXF2uD
+autorCover: Acordes Gaditanos
 fraseClave: Cádiz que te está pasando
 
 ---
