@@ -9,8 +9,8 @@ cejilla: 2
 modalidad: Chrigota
 date: 31/01/2026
 video: https://www.youtube.com/embed/URRCPxm15rQ?si=KPRCdOF-MsvTvNby
-# cover: https://www.youtube.com/embed/c0JxTC6o5DI?si=yQnP93z4gLFKuSxK
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/Wv9q2x-fTK0?si=b5iold4t1Co6fEh5
+autorCover: Acordes Gaditanos
 fraseClave: Todo tiene un final y esto no iba a ser menos
 
 
