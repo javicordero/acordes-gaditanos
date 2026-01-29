@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion:  SSSHHHHH!!!
+agrupacion: SSSHHHHH!!!
 year: 2026
 musica: El Bizcocho
 letra: El Bizcocho
