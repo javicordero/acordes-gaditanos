@@ -9,8 +9,8 @@ cejilla: 1
 modalidad: Chrigota
 date: 01/02/2026
 video: https://www.youtube.com/embed/3QWp0v1Okuc?si=dT-MG8T_NJ8QAnzu
-# cover: https://www.youtube.com/embed/Wv9q2x-fTK0?si=b5iold4t1Co6fEh5
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/BuUbn7MyYwg?si=cnrdAk_ZlhlYiXOy
+autorCover: Acordes Gaditanos
 fraseClave: Las balizas hay que llevar en el coche
 
 ---
