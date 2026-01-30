@@ -9,9 +9,9 @@ cejilla: 1
 modalidad: Comparsa
 date: 02/02/2026
 video: https://www.youtube.com/embed/Qs_dNLU57Lk?si=PWgPakifYZmJR3uu
-# cover: https://www.youtube.com/embed/BuUbn7MyYwg?si=cnrdAk_ZlhlYiXOy
-# autorCover: Acordes Gaditanos
-fraseClave: Se acabo este viejo sabio y gruñón
+cover: https://www.youtube.com/embed/40LrKq-IUnc?si=liFqte9c2VUxWXWY
+autorCover: Acordes Gaditanos
+fraseClave: Se acabó este viejo sabio y gruñón
 
 ---
 <pre>
