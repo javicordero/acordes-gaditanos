@@ -5,7 +5,7 @@ year: 2026
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2026/01/29/humanos1-RwIVyIq5Bxy3TqjF7ARuUVP-1200x840@abc.jpeg
-cejilla: 1
+cejilla: 2
 modalidad: Comparsa
 date: 04/02/2026
 video: https://www.youtube.com/embed/Qs_dNLU57Lk?si=PWgPakifYZmJR3uu
