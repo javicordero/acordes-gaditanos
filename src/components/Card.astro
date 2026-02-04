@@ -26,6 +26,8 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
   piezaType = 'pasodoble';
 } else if (piezaLower.includes('tango')) {
   piezaType = 'tango';
+} else if (piezaLower.includes('estribillo')) {
+  piezaType = 'estribillo';
 }
 ---
 
@@ -62,6 +64,9 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
 
     --pieza-tango-color: var(--primary-color);
     --pieza-tango-bg: #e6c800;
+
+    --pieza-estribillo-color: var(--primary-color);
+    --pieza-estribillo-bg: #dda0dd;
 
     --pieza-default-color: var(--primary-color);
     --pieza-default-bg: #98fb98;
@@ -162,6 +167,11 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
     &[data-pieza-type='tango'] {
       color: var(--pieza-tango-color);
       background-color: var(--pieza-tango-bg);
+    }
+
+    &[data-pieza-type='estribillo'] {
+      color: var(--pieza-estribillo-color);
+      background-color: var(--pieza-estribillo-bg);
     }
     &[data-pieza-type='default'] {
       color: var(--pieza-default-color);
