@@ -30,7 +30,7 @@ Viejo como una torreta viendo su moneda
 Preñá de un botín
 <a>Rem</a>             <a>La</a>   <a>Rem</a>      <a>Mi7</a>      <a>La</a>
 Viejo como la calima humillando los andares
-<a>ReM7</a> <a>Do#m7</a>  <a>Sim7</a> <a>Do#m7</a>  <a>ReM7</a>? <a>Mi7</a>     <a>Lam</a>
+<a>ReM7</a> <a>Do#m7</a>  <a>Sim7</a> <a>Do#m7</a>  <a>ReM7</a> <a>Mi7</a>     <a>Lam</a>
 Como las arrugas de las pieles de tus calles
 <a>La7</a>                 <a>Rem</a>
 Viejo como las palabras
@@ -66,7 +66,7 @@ Y que revienten los que pensaron
 Que el rebelde había muerto
    <a>Rem</a>
 Ay Cai, compañerita dame tu mano
-<a>Mi7</a>        <a>Lam7</a>      <a>Sol</a>?
+<a>Mi7</a>        <a>Lam7</a>      <a>Sol</a>
 Los dos juntitos chocheando
    <a>Fa</a>               <a>Si7</a>                  <a>Mi7</a>
 Besándonos como dos locos a la luz de la luna
