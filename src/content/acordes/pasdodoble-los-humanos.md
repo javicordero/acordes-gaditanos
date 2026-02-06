@@ -9,12 +9,11 @@ cejilla: 0
 modalidad: Comparsa
 date: 06/02/2026
 video: https://www.youtube.com/embed/Qs_dNLU57Lk?si=PWgPakifYZmJR3uu
-cover: <iframe width="560" height="315" src="https://www.youtube.com/embed/jBE00YrwbCs?si=Upeyedg5Sgd-37pN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+cover: https://www.youtube.com/embed/jBE00YrwbCs?si=Upeyedg5Sgd-37pN
 autorCover: Acordes Gaditanos
 fraseClave: Viejo como estas arenas que visten de crema
 
 ---
-
 <pre>
 <a>La</a>                <a>Do#m7</a>                <a>Sim7</a>
 Viejo como estas arenas que visten de crema
