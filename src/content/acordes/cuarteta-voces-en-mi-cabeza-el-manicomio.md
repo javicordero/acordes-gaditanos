@@ -35,7 +35,7 @@ Y pienso en los momentos que perdí a su vera
 Las horas y kilómetros de carretera
                <a>Sol</a>
 Fiestas de cumpleaños que deje vacías
-                  <a>Sam</a> 
+                  <a>Solm</a> 
 La noche que no estuve mientras tu dormías
                 <a>Re</a>
 Las metas y proyectos que aún siguen en cola
