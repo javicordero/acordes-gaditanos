@@ -19,7 +19,7 @@ fraseClave: Viejo como estas arenas que visten de crema
 Viejo como estas arenas que visten de crema
     <a>Mi7</a>     <a>La</a>
 Tu trazo divino
-<a>Re</a>               <a>La</a>                  <a>Sim?</a>
+<a>Re</a>               <a>La</a>                  <a>Si7</a>
 Viejo como los colores de todos los soles
                 <a>Mi7</a>
 Que aquí han sucumbido
