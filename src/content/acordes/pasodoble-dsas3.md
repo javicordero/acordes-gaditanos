@@ -9,8 +9,8 @@ cejilla: 5
 modalidad: Comparsa
 date: 29/01/2026
 video: https://www.youtube.com/embed/kT5Y42bf7sc?si=qT2Vml4ytMUYuAN4
-# cover: https://www.youtube.com/embed/c0JxTC6o5DI?si=yQnP93z4gLFKuSxK
-# autorCover: Acordes Gaditanos
+cover: https://www.youtube.com/embed/e9YQSwqyMzM?si=-4FoweJe5S7h2DvK
+autorCover: Acordes Gaditanos
 fraseClave: La quiere vestida de negro la quiere callada
 
 ---
