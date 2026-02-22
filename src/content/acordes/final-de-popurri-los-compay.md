@@ -4,7 +4,7 @@ agrupacion: Los Compay
 year: 2026
 musica: Lolo Molina
 letra: Lolo Molina
-img: https://pbs.twimg.com/card_img/2013030535874912256/69gVZG74?format=jpg&name=orig
+img: https://www.andaluciainformacion.es/asset/thumbnail,1160,740,center,center/media/andaluciainformacion/images/2026/01/19/2026011900152860256.jpg
 cejilla: 5
 modalidad: Chirigota
 date: 22/01/2026
