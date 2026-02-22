@@ -1,0 +1,213 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title='Sobre Acordes Gaditanos - Quiénes Somos'
+  description='Conoce la historia y el propósito detrás de Acordes Gaditanos, la plataforma dedicada a preservar y compartir los acordes del Carnaval de Cádiz.'>
+  <div class='main-container'>
+    <article class='about-card container-layout' aria-labelledby='about-title'>
+      <header>
+        <h1 id='about-title'>Sobre Nosotros</h1>
+      </header>
+
+      <div class='about-body' role='region' aria-labelledby='about-title'>
+        <!-- Introducción -->
+        <section>
+          <h2>¿Quiénes Somos?</h2>
+          <p>
+            Acordes Gaditanos es un proyecto nacido de la pasión por la música y la cultura del
+            Carnaval de Cádiz. Somos una comunidad de músicos, aficionados y amantes de la guitarra
+            que recogen los acordes de las coplas del carnaval gaditano para hacerlas accesibles a
+            todos. Nuestro objetivo es preservar esta rica tradición musical y compartirla de forma
+            gratuita con el mundo.
+          </p>
+        </section>
+
+        <!-- Misión -->
+        <section>
+          <h2>Nuestra Misión</h2>
+          <p>
+            Nuestra misión es <strong>preservar y compartir</strong> los acordes del Carnaval de Cádiz,
+            facilitando que guitarristas de todos los niveles puedan tocar las mejores obras musicales
+            de nuestro carnaval. Creemos que la música es un puente que conecta tradición con modernidad,
+            y queremos que cada nota llegue a más personas.
+          </p>
+        </section>
+
+        <!-- Por qué existe el proyecto -->
+        <section>
+          <h2>¿Por Qué Nace Acordes Gaditanos?</h2>
+          <p>
+            El Carnaval de Cádiz es una fiesta única en el mundo, donde la música, el ingenio y la
+            sátira se unen en las coplas de chirigotas, comparsas, cuartetos y coros. Sin embargo,
+            muchos de estos acordes eran difíciles de encontrar o estaban dispersos en diferentes
+            fuentes.
+          </p>
+          <p>
+            Nace así <strong>Acordes Gaditanos</strong>: un espacio donde recopilar, organizar y
+            compartir de forma libre y gratuita todos estos acordes. Nuestra inspiración es simple:
+            permitir que cualquiera, en cualquier lugar, pueda aprender y tocar la banda sonora del
+            mejor carnaval del mundo.
+          </p>
+        </section>
+
+        <!-- Intereses deeper -->
+        <section>
+          <h2>Más Allá de los Acordes</h2>
+          <p>
+            Aunque nuestro enfoque es la música del Carnaval de Cádiz, nos interesa profundamente la
+            historia cultural de nuestra tierra. El carnaval no es solo un evento musical, es una
+            expresión de identidad gaditana, de tradición y de creatividad. En Acordes Gaditanos
+            queremos honrar esa herencia mientras la mantenemos viva para las nuevas generaciones.
+          </p>
+          <p>
+            Creemos en la importancia de preservar las artes tradicionales en la era digital, y que
+            compartir conocimiento es el mejor acto de amor por lo que amamos.
+          </p>
+        </section>
+
+        <!-- Contacto -->
+        <section>
+          <h2>Conecta Con Nosotros</h2>
+          <p>
+            Queremos escucharte. Si tienes preguntas, sugerencias o simplemente quieres saludar, no
+            dudes en contactarnos a través de nuestro
+            <a href='/contacto'>formulario de contacto</a>
+            o síguenos en nuestras redes sociales.
+          </p>
+          <p>
+            Para colaborar con el proyecto, visita nuestra página de
+            <a href='/colaborar'>colaboración</a>
+            .
+          </p>
+        </section>
+      </div>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .about-card {
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    max-height: max-content;
+    gap: 64px;
+  }
+
+  header {
+    & h1 {
+      margin: 0;
+      color: var(--primary-color);
+      font-size: 2rem;
+      position: relative;
+      max-width: fit-content;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 90%;
+        height: 4px;
+        background: var(--primary-contrast-color);
+      }
+    }
+  }
+
+  .about-body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    & h2 {
+      margin: 0;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      position: relative;
+      max-width: fit-content;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 3px;
+        background: var(--primary-contrast-color);
+      }
+    }
+
+    & section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    & p {
+      margin: 0;
+      line-height: 1.6;
+      color: var(--text-color);
+      font-size: 1rem;
+
+      & strong {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+    }
+
+    & ul {
+      margin: 0;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      list-style-type: disc;
+
+      & li {
+        line-height: 1.6;
+        color: var(--text-color);
+
+        & strong {
+          color: var(--primary-color);
+          font-weight: 600;
+        }
+      }
+    }
+
+    & a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+
+      &:hover {
+        color: var(--link-hover-color);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-card {
+      gap: 32px;
+    }
+
+    header {
+      & h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .about-body {
+      gap: 24px;
+
+      & h2 {
+        font-size: 1.25rem;
+      }
+    }
+  }
+</style>
