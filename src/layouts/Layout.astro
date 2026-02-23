@@ -111,10 +111,6 @@ const imageURL = new URL(image, Astro.site);
     <!-- End Google Adsense -->
 
 
-    <!-- Journey Mediavine -->
-     <script data-grow-initializer="">!(function(){window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTpkNDljZmVmMy0xYzg0LTQxY2ItYTc4Mi0zYmQxYWIwNjM1MzA=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();</script>
-     <!-- End Journey Mediavine -->
-
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -267,6 +263,21 @@ const imageURL = new URL(image, Astro.site);
     <ContactInit />
     <AnchoPreInit />
     <CookieBanner />
+
+    <!-- Journey Mediavine -->
+    <script is:inline data-grow-initializer="">
+      !(function(){
+        window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));
+        var e=document.createElement("script");
+        (e.type="text/javascript"),
+        (e.src="https://faves.grow.me/main.js"),
+        (e.defer=!0),
+        e.setAttribute("data-grow-faves-site-id","U2l0ZTpkNDljZmVmMy0xYzg0LTQxY2ItYTc4Mi0zYmQxYWIwNjM1MzA=");
+        var t=document.getElementsByTagName("script")[0];
+        t.parentNode.insertBefore(e,t);
+      })();
+    </script>
+    <!-- End Journey Mediavine -->
     <!-- <script>
       import { hasAcceptedCookies, loadAdsense } from '../utils/cookiesConsent';
 
