@@ -30,7 +30,7 @@ Telaraña en las cortinas los nudillos en el mostrador
                     <a>Lam</a>
 Las arrugas de mis manos cuentan los años vividos
                      <a>Mi7</a>                      <a>La</a> <a>Mi7</a> <a>La</a>
-Y tanto carnaval sufrido por el cáliz de mi amor
+Y tanto carnaval sufrido por el Cádiz de mi amor
       <a>Mi7</a>        <a>La</a>         <a>Mi7</a>        <a>La</a>
 Malas puñalas me den. Malas puñalas me den
                               <a>Do#m7</a>        <a>Sim7</a>
