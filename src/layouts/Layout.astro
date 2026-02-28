@@ -264,7 +264,19 @@ const imageURL = new URL(image, Astro.site);
     <AnchoPreInit />
     <CookieBanner />
 
-    <script is:inline>(function(s){s.dataset.zone='10460271',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script is:inline>
+      function loadNap5k() {
+        (function(s){
+          s.dataset.zone='10460271';
+          s.src='https://nap5k.com/tag.min.js';
+        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+      }
+
+      // initial load
+      loadNap5k();
+      // reload on client-side navigation
+      document.addEventListener('astro:page-load', loadNap5k);
+    </script>
 
     <!-- Journey Mediavine -->
     <script is:inline data-grow-initializer="">
