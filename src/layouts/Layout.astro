@@ -204,45 +204,7 @@ const imageURL = new URL(image, Astro.site);
 </script>
 
 <!-- End contador propio -->
-
-    {
-      !import.meta.env.DEV && (
-        <>
-          <script is:inline>
-            function loadClarity() {
-              // Solo cargar si el usuario ha aceptado cookies en el localStorage
-              if (localStorage.getItem('ag_cookie_consent') === 'accepted') {
-                (function(c,l,a,r,i,t,y){
-                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                })(window, document, "clarity", "script", "v4213ly6s2");
-              }
-            }
-
-            // 1. Intentar cargar al inicio (por si ya existe el consentimiento)
-            loadClarity();
-
-            // 2. Navegación con ClientRouter (View Transitions)
-            document.addEventListener('astro:page-load', () => {
-              if (window.clarity) {
-                // Notificar cambio de página a Clarity
-                window.clarity("set", "page", window.location.pathname);
-              } else {
-                // Intentar cargar si el usuario aceptó en la página anterior
-                loadClarity();
-              }
-            });
-
-            // 3. Al aceptar el banner: inicializa Clarity inmediatamente
-            window.addEventListener('ag:cookies-accepted', () => {
-              loadClarity();
-            });
-          </script>
-        </>
-      )
-    }
-    
+   
     <ClientRouter />
   </head>
   <body>
@@ -264,6 +226,7 @@ const imageURL = new URL(image, Astro.site);
     <AnchoPreInit />
     <CookieBanner />
 
+    <!-- InPage push Monetag -->
     <script is:inline>
       function loadNap5k() {
         (function(s){
@@ -277,6 +240,25 @@ const imageURL = new URL(image, Astro.site);
       // reload on client-side navigation
       document.addEventListener('astro:page-load', loadNap5k);
     </script>
+    <!-- End Inpage push Monetag -->
+
+    
+    <!-- 5gvci push -->
+    <script is:inline>
+      function load5gvci() {
+        const script = document.createElement('script');
+        script.src = 'https://5gvci.com/act/files/tag.min.js?z=10665736';
+        script.dataset.cfasync = 'false';
+        script.async = true;
+        document.head.appendChild(script);
+      }
+
+      // initial load
+      load5gvci();
+      // reload on client-side navigation
+      document.addEventListener('astro:page-load', load5gvci);
+    </script>
+    <!-- End 5gvci push -->
 
     <!-- Journey Mediavine -->
     <script is:inline data-grow-initializer="">
@@ -292,6 +274,8 @@ const imageURL = new URL(image, Astro.site);
       })();
     </script>
     <!-- End Journey Mediavine -->
+
+    
     <!-- <script>
       import { hasAcceptedCookies, loadAdsense } from '../utils/cookiesConsent';
 
