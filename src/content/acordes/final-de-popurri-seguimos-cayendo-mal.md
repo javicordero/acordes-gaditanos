@@ -9,8 +9,8 @@ cejilla: 2
 modalidad: Chrigota
 date: 27/02/2026
 video: https://www.youtube.com/embed/NNG1dfsLepk?si=fw1pYblxDMiXZTp9
-# cover: https://www.youtube.com/embed/xrpvDhIbB3w?si=-hfFMLRTozL-VeGl
-# autorCover: Caro Vargas
+cover: https://www.youtube.com/embed/lmKR1niK9JY
+autorCover: Acordes Gaditanos
 fraseClave: Aunque el vuelo se acabo y tiene pinta de chocazo
 
 ---
