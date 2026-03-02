@@ -38,8 +38,9 @@ let autores = await getCollection('autores');
 <Layout
   title='Acordes Gaditanos - Acordes del Carnaval de Cádiz'
   description='La mayor colección de acordes de guitarra del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
+  <BannerCoac2026 />
+
   <div class='main-container container-layout'>
-    <BannerCoac2026 />
     <!-- <AnunciateIndex /> -->
 
     <CardsGroup year={'Novedades'} acordes={ultimos} />
@@ -56,6 +57,7 @@ let autores = await getCollection('autores');
     display: flex;
     flex-direction: column;
     gap: var(--main-container-gap);
+    margin-top: 0;
   }
 
   @media (max-width: 640px) {
