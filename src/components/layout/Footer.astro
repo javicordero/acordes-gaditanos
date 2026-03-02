@@ -20,13 +20,6 @@ export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
 
 <footer role='contentinfo'>
   <div class='wrap container-layout brand-social'>
-    <header>
-      <h3 class='brand'>Acordes Gaditanos</h3>
-      <p>
-        <a href={blog}>Blog Antiguo</a>
-      </p>
-    </header>
-
     <nav aria-label='Redes sociales'>
       <h3 class='brand'>Redes sociales</h3>
       <div class='social-icons'>
@@ -65,6 +58,7 @@ export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
 
   <address class='wrap container-layout'>
     <p class='small'>Desarrollado por Javier Cordero Toscano</p>
+
     <div class='author-links'>
       <a
         class='social'
@@ -80,6 +74,11 @@ export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
       </a>
     </div>
   </address>
+
+  <div class='wrap container-layout politics'>
+    <a href='/politicas/politica-de-privacidad'>Política de privacidad</a>
+    <a href='/politicas/politica-de-cookies'>Política de cookies</a>
+  </div>
 
   <div class='wrap container-layout bottom'>
     <p>© {new Date().getFullYear()} Acordes Gaditanos</p>
@@ -174,6 +173,23 @@ export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
       font-size: 0.8rem;
       color: var(--muted);
       margin: 0;
+    }
+  }
+
+  .politics {
+    display: flex;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: var(--muted);
+
+    & a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    & a:hover {
+      color: var(--primary-contrast-color);
     }
   }
 

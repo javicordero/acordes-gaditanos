@@ -218,7 +218,6 @@ const imageURL = new URL(image, Astro.site);
         style='display:none;visibility:hidden'></iframe></noscript
     >
     <!-- End Google Tag Manager (noscript) -->
-    <Anuncios />
     <Header />
     <slot />
     <Footer />
@@ -227,7 +226,7 @@ const imageURL = new URL(image, Astro.site);
     <CookieBanner />
 
     <!-- InPage push Monetag -->
-    <script is:inline>
+    <!-- <script is:inline>
       function loadNap5k() {
         (function(s){
           s.dataset.zone='10460271';
@@ -239,12 +238,12 @@ const imageURL = new URL(image, Astro.site);
       loadNap5k();
       // reload on client-side navigation
       document.addEventListener('astro:page-load', loadNap5k);
-    </script>
+    </script> -->
     <!-- End Inpage push Monetag -->
 
     
     <!-- 5gvci push -->
-    <script is:inline>
+    <!-- <script is:inline>
       function load5gvci() {
         const script = document.createElement('script');
         script.src = 'https://5gvci.com/act/files/tag.min.js?z=10665736';
@@ -257,7 +256,7 @@ const imageURL = new URL(image, Astro.site);
       load5gvci();
       // reload on client-side navigation
       document.addEventListener('astro:page-load', load5gvci);
-    </script>
+    </script> -->
     <!-- End 5gvci push -->
 
     <!-- Journey Mediavine -->
