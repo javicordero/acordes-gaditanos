@@ -8,11 +8,11 @@ import Image from 'astro/components/Image.astro';
     <div class='text'>
       <header>
         <h2>Todo el COAC 2026</h2>
+        <div class='subtitle'>
+          <p>¡Ya por fin tenemos con nosotros el <a href='/carnaval/2026'>COAC 2026</a>!</p>
+        </div>
       </header>
 
-      <div class='subtitle'>
-        <p>¡Ya por fin tenemos con nosotros el <a href='/carnaval/2026'>COAC 2026</a>!</p>
-      </div>
       <div class='apoyar'>
         <p>
           Si los acordes te sirven de ayuda, puedes <a href='/colaborar'>apoyar</a> el proyecto y ayudarnos
@@ -47,7 +47,7 @@ import Image from 'astro/components/Image.astro';
       center/cover;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    min-height: 480px;
+    min-height: calc(100dvh - 45px);
 
     &::before {
       content: '';
@@ -61,6 +61,11 @@ import Image from 'astro/components/Image.astro';
       z-index: 2;
       padding: 0;
       max-width: 600px;
+      min-height: calc(100dvh - 45px);
+      padding: 250px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       & h2 {
         margin: 0 0 24px;
@@ -115,10 +120,11 @@ import Image from 'astro/components/Image.astro';
       & {
         flex-direction: column;
         justify-content: space-between;
-        min-height: 320px;
+        /* min-height: 320px; */
       }
 
       & .text {
+        padding: 180px 0 250px;
         & h2 {
           font-size: 2rem;
           margin-bottom: 16px;
