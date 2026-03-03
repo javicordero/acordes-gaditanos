@@ -107,15 +107,8 @@ const randomProducts = getRandomProducts(products, 5);
               href={product.url}
               target='_blank'
               rel='noopener noreferrer'
-              onClick={() => {
-                if (typeof gtag === 'function') {
-                  gtag('event', 'product_click', {
-                    event_category: 'anuncios_tech',
-                    event_label: product.name,
-                    value: product.name,
-                  });
-                }
-              }}>
+              data-product-name={product.name}
+              class='product-link'>
               <figure>
                 <Image
                   src={product.image}
@@ -134,6 +127,22 @@ const randomProducts = getRandomProducts(products, 5);
     </ul>
   </RightColumnCard>
 </div>
+
+<script is:inline>
+  document.querySelectorAll('.product-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const productName = link.getAttribute('data-product-name');
+      console.log('Producto clickeado:', productName);
+      if (typeof gtag === 'function') {
+        gtag('event', 'product_click', {
+          event_category: 'anuncios_tech',
+          event_label: productName,
+          value: productName,
+        });
+      }
+    });
+  });
+</script>
 <style>
   ul {
     list-style: none;
