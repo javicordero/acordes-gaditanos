@@ -13,6 +13,8 @@ import Apoyar from '../../components/right-column/Apoyar.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 import AnunciateAqui from '../../components/right-column/AnunciateAqui.astro';
+import AnunciosTech from '../../components/right-column/anuncios/AnunciosTech.astro';
+import AnunciosHogar from '../../components/right-column/anuncios/AnunciosHogar.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -123,6 +125,8 @@ const imageUrl = img
 
       <Apoyar class='apoyar' />
 
+      <AnunciosTech class='anuncios-tech' />
+
       <SigueTocando
         class='sigue-tocando'
         agrupacion={agrupacion}
@@ -133,11 +137,10 @@ const imageUrl = img
         musicaSlug={data.musicaSlug}
         agrupacionSlug={data.agrupacionSlug}
       />
-      <AnunciosLibros />
 
       <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
 
-      <AnunciosGuitarra />
+      <AnunciosHogar class='anuncios-hogar' />
       <!-- <SitiosDeInteresCard class='sitios-interes' /> -->
     </div>
 
@@ -195,8 +198,12 @@ const imageUrl = img
           order: -2;
         }
 
-        .right-column > :global(.recomendados) {
+        .right-column > :global(.anuncios-tech) {
           order: -1;
+        }
+
+        .right-column > :global(.recomendados) {
+          order: 0;
         }
 
         /* Apoyar segundo */
