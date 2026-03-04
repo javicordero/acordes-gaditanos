@@ -46,7 +46,11 @@ import Image from 'astro/components/Image.astro';
     background: url('https://www.guiadecadiz.com/sites/default/files/2026/agenda/carnaval/cadiz/cartel-carnaval-cadiz.jpg')
       center/cover;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    height: calc(100vh - 45px);
+    /* Prefer the newer "svh" (small viewport) when available to avoid
+       jumps when the browser UI hides; fallback to a CSS variable set
+       from JS (see script below) which uses window.innerHeight. */
+    height: calc(var(--vh, 1vh) * 100 - 45px);
+    height: calc(100svh - 45px);
 
     &::before {
       content: '';
@@ -60,7 +64,8 @@ import Image from 'astro/components/Image.astro';
       z-index: 2;
       padding: 0;
       max-width: 600px;
-      height: calc(100vh - 45px);
+      height: calc(var(--vh, 1vh) * 100 - 45px);
+      height: calc(100svh - 45px);
       padding: 250px 0;
       display: flex;
       flex-direction: column;
@@ -185,7 +190,17 @@ import Image from 'astro/components/Image.astro';
   }
 </style>
 
-<script>
+<script is:inline>
+  // Set up CSS variable --vh to work around mobile viewport changes
+  function setVh() {
+    try {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    } catch (e) {
+      // fail silently
+    }
+  }
+
   function setupGTM() {
     // Buscamos el botón específico dentro de este componente
     const bmcButton = document.querySelector('[data-ga-event="support_bmc_click__index"]');
@@ -210,6 +225,17 @@ import Image from 'astro/components/Image.astro';
     }
   }
 
+  // Ejecutar setVh en carga y cuando cambie el viewport
+  setVh();
+  window.addEventListener('resize', setVh, { passive: true });
+  window.addEventListener('orientationchange', setVh);
+  if (window.visualViewport && window.visualViewport.addEventListener) {
+    window.visualViewport.addEventListener('resize', setVh);
+  }
+
   // Se ejecuta en la primera carga y en cada navegación de Astro
-  document.addEventListener('astro:page-load', setupGTM);
+  document.addEventListener('astro:page-load', () => {
+    setVh();
+    setupGTM();
+  });
 </script>
