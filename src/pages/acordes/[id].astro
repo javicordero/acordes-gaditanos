@@ -13,7 +13,7 @@ import Apoyar from '../../components/right-column/Apoyar.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 import AnunciateAqui from '../../components/right-column/AnunciateAqui.astro';
-import BannerEvadav1 from '../../components/right-column/anuncios/BannerEvadav1.astro';
+import AnunciosTech from '../../components/right-column/anuncios/AnunciosTech.astro';
 import AnunciosHogar from '../../components/right-column/anuncios/AnunciosHogar.astro';
 
 export async function getStaticPaths() {
@@ -125,7 +125,7 @@ const imageUrl = img
 
       <Apoyar class='apoyar' />
 
-      <BannerEvadav1 class='anuncios-tech' />
+      <AnunciosTech class='anuncios-tech' />
 
       <SigueTocando
         class='sigue-tocando'
@@ -140,7 +140,7 @@ const imageUrl = img
 
       <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
 
-      <!-- <AnunciosHogar class='anuncios-hogar' /> -->
+      <AnunciosHogar class='anuncios-hogar' />
       <!-- <SitiosDeInteresCard class='sitios-interes' /> -->
     </div>
 
