@@ -1,0 +1,28 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div class={`banner-evadav1-wrapper ${className ?? ''}`}>
+  <div class='banner-evadav1-inner'>
+    <script
+      is:inline
+      async
+      src='https://curoax.com/na/waWQiOjEyMjExMTIsInNpZCI6MTY2NTkxNSwid2lkIjo3MzQ4MDksInNyYyI6Mn0=eyJ.js'
+    ></script>
+  </div>
+</div>
+
+<style>
+  .banner-evadav1-wrapper {
+    width: 100%;
+  }
+
+  .banner-evadav1-inner {
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+</style>
