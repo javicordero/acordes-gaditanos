@@ -104,7 +104,7 @@ const randomBooks = getRandomBooks(books, 5);
       {
         randomBooks.map((book) => (
           <li>
-            <a href={book.url} target='_blank' rel='noopener noreferrer'>
+            <a href={book.url} target='_blank' rel='noopener noreferrer' data-book-title={book.title} class='book-link'>
               <figure>
                 <Image
                   src={book.image}
@@ -127,6 +127,20 @@ const randomBooks = getRandomBooks(books, 5);
   </RightColumnCard>
 </div>
 
+<script is:inline>
+  document.querySelectorAll('.book-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const bookTitle = link.getAttribute('data-book-title');
+      if (typeof gtag === 'function') {
+        gtag('event', 'libro_click', {
+          event_category: 'anuncios_libros',
+          event_label: bookTitle,
+          value: bookTitle,
+        });
+      }
+    });
+  });
+</script>
 <style>
   ul {
     list-style: none;

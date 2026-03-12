@@ -101,7 +101,7 @@ const randomProducts = getRandomProducts(products, 5);
       {
         randomProducts.map((product) => (
           <li>
-            <a href={product.url} target='_blank' rel='noopener noreferrer'>
+            <a href={product.url} target='_blank' rel='noopener noreferrer' data-product-name={product.name} class='product-link'>
               <figure>
                 <Image
                   src={product.image}
@@ -120,6 +120,20 @@ const randomProducts = getRandomProducts(products, 5);
     </ul>
   </RightColumnCard>
 </div>
+<script is:inline>
+  document.querySelectorAll('.product-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const productName = link.getAttribute('data-product-name');
+      if (typeof gtag === 'function') {
+        gtag('event', 'guitarra_click', {
+          event_category: 'anuncios_guitarra',
+          event_label: productName,
+          value: productName,
+        });
+      }
+    });
+  });
+</script>
 <style>
   ul {
     list-style: none;
