@@ -7,8 +7,8 @@ letra: David Castro
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/19/05AlCieloconelGABINETEDEpRENSADELAYUNTAMIENTODECADIZFotoReyna-171.jpg
 cejilla: 3
 video: https://www.youtube.com/embed/yqRuT6aWVjM?si=GSE-2R5BTJnCX-g3
-cover: null
-autorCover: null
+cover: https://www.youtube.com/embed/B4-yfTJ2Wcg?si=q65jPmj3qo4DrExo
+autorCover: Acordes Gaditanos
 date: 13/12/2025
 fraseClave: Y si no llegan los bomberos ya no me importa
 
