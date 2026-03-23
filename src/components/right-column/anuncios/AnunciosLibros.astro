@@ -22,6 +22,12 @@ const books: Book[] = [
     always: true,
   },
   {
+    title: 'Veneno de Capitán',
+    author: 'Martín Palomar',
+    image: 'https://m.media-amazon.com/images/I/61Z2e9bIwbL._SL1500_.jpg',
+    url: 'https://amzn.to/47irRnC',
+  },
+  {
     title: 'Juan Carlos Aragón: El Carnaval con mayúsculas',
     author: 'Jaime Cedillo',
     image: 'https://m.media-amazon.com/images/I/612iOqw3piL._SY522_.jpg',
@@ -104,7 +110,12 @@ const randomBooks = getRandomBooks(books, 5);
       {
         randomBooks.map((book) => (
           <li>
-            <a href={book.url} target='_blank' rel='noopener noreferrer' data-book-title={book.title} class='book-link'>
+            <a
+              href={book.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              data-book-title={book.title}
+              class='book-link'>
               <figure>
                 <Image
                   src={book.image}

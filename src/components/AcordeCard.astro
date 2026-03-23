@@ -5,6 +5,7 @@ import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
 import { Image } from 'astro:assets';
 import Banner320X50 from './anuncios/Banner320x50.astro';
 import Banner468X60 from './anuncios/Banner468x60.astro';
+import RecomendacionInline from './RecomendacionInline.astro';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -91,10 +92,13 @@ const headingId = `acorde-${slug}`;
   </header>
 
   <section class='acorde-content' role='region' aria-labelledby={headingId}>
+    <RecomendacionInline />
+
     <div class='acorde-meta'>
       <Icon name='cejilla' width={22} height={22} />
       <span>{cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
+
     <Content />
   </section>
 

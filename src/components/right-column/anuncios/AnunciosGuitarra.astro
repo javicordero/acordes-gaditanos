@@ -23,11 +23,11 @@ const products: Product[] = [
     image: 'https://m.media-amazon.com/images/I/710EIwj4oRL._AC_SX679_.jpg',
     url: 'https://amzn.to/3XRjLNw',
   },
-  // {
-  //   name: 'Cejilla de madera',
-  //   image: 'https://m.media-amazon.com/images/I/51fxFmlGsQL._AC_SX679_.jpg',
-  //   url: 'https://amzn.to/4p77lgA',
-  // },
+  {
+    name: 'Cejilla de madera',
+    image: 'https://m.media-amazon.com/images/I/51fxFmlGsQL._AC_SX679_.jpg',
+    url: 'https://amzn.to/4p77lgA',
+  },
   // {
   //   name: "Cuerdas D'Addario",
   //   image: 'https://m.media-amazon.com/images/I/8169k0GrNyL._AC_SX679_.jpg',
@@ -101,7 +101,12 @@ const randomProducts = getRandomProducts(products, 5);
       {
         randomProducts.map((product) => (
           <li>
-            <a href={product.url} target='_blank' rel='noopener noreferrer' data-product-name={product.name} class='product-link'>
+            <a
+              href={product.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              data-product-name={product.name}
+              class='product-link'>
               <figure>
                 <Image
                   src={product.image}
