@@ -8,6 +8,8 @@ img: https://static.grupojoly.com/clip/1f89f490-9f4f-438a-8145-c577a042d573_sour
 cejilla: 3
 date: "26/11/2025"
 video: "https://www.youtube.com/embed/PIesjujD7vM?si=-2aGiz7O5Ankj7sw"
+cover: https://www.youtube.com/embed/vTWUxxnBXGQ?si=9jjsYY6jyrC75rvW
+autorCover: Acordes Gaditanos
 recomendada: true
 
 ---
