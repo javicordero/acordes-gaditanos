@@ -81,37 +81,6 @@ const imageURL = new URL(image, Astro.site);
       })}
     />
 
-    <!-- Ezoic -->
-   <script is:inline data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js"></script>
-    <script is:inline data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js"></script>
-    <script is:inline async src="https://www.ezojs.com/ezoic/sa.min.js"></script>
-    <script is:inline>
-      window.ezstandalone = window.ezstandalone || {};
-      ezstandalone.cmd = ezstandalone.cmd || [];
-    </script>
-    <script is:inline defer src="https://ezoicanalytics.com/analytics.js"></script>
-
-    <script is:inline>
-      document.addEventListener('astro:page-load', () => {
-        window.ezstandalone = window.ezstandalone || {};
-        window.ezstandalone.cmd = window.ezstandalone.cmd || [];
-        
-        // Evita que se ejecute en la carga inicial si Ezoic ya lo hace automáticamente, 
-        // pero asegura que se recarguen los anuncios al navegar por la web
-        window.ezstandalone.cmd.push(function () {
-          // Destruimos los placeholders de la página anterior por seguridad
-          if (typeof ezstandalone.destroyAll === 'function') {
-             ezstandalone.destroyAll();
-          }
-          // Mostramos los anuncios en la nueva URL
-          if (typeof ezstandalone.showAds === 'function') {
-             ezstandalone.showAds();
-          }
-        });
-      });
-    </script>
-    <!-- End Ezoic -->
-
     <!-- Cloudflare Web Analytics -->
     {
       !import.meta.env.DEV && !import.meta.env.VITE_DISABLE_CLOUDFLARE && (
