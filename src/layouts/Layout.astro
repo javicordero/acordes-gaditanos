@@ -94,13 +94,6 @@ const imageURL = new URL(image, Astro.site);
 
     <!-- End Cloudflare Web Analytics -->
 
-    <!-- Mometumo -->
-    <link rel="stylesheet" href="https://b-cdn.monetumo.com/cls-css/acordesgaditanos-com.css" />
-    <script src="https://b-cdn.monetumo.com/cmp/acordesgaditanos-com.js" data-cfasync="false"></script>
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <script defer src="https://b-cdn.monetumo.com/bundles/acordesgaditanos-com.js" data-cfasync="false"></script>
-    <!-- End Mometumo -->
-
 
 
     <!-- Google Search Console -->
@@ -226,69 +219,5 @@ const imageURL = new URL(image, Astro.site);
     <AnchoPreInit />
     <CookieBanner />
 
-    <!-- InPage push Monetag -->
-    <!-- <script is:inline>
-      function loadNap5k() {
-        (function(s){
-          s.dataset.zone='10460271';
-          s.src='https://nap5k.com/tag.min.js';
-        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-      }
-
-      // initial load
-      loadNap5k();
-      // reload on client-side navigation
-      document.addEventListener('astro:page-load', loadNap5k);
-    </script> -->
-    <!-- End Inpage push Monetag -->
-
-    
-    <!-- 5gvci push -->
-    <!-- <script is:inline>
-      function load5gvci() {
-        const script = document.createElement('script');
-        script.src = 'https://5gvci.com/act/files/tag.min.js?z=10665736';
-        script.dataset.cfasync = 'false';
-        script.async = true;
-        document.head.appendChild(script);
-      }
-
-      // initial load
-      load5gvci();
-      // reload on client-side navigation
-      document.addEventListener('astro:page-load', load5gvci);
-    </script> -->
-    <!-- End 5gvci push -->
-
-    <!-- Journey Mediavine -->
-    <script is:inline data-grow-initializer="">
-      !(function(){
-        window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));
-        var e=document.createElement("script");
-        (e.type="text/javascript"),
-        (e.src="https://faves.grow.me/main.js"),
-        (e.defer=!0),
-        e.setAttribute("data-grow-faves-site-id","U2l0ZTpkNDljZmVmMy0xYzg0LTQxY2ItYTc4Mi0zYmQxYWIwNjM1MzA=");
-        var t=document.getElementsByTagName("script")[0];
-        t.parentNode.insertBefore(e,t);
-      })();
-    </script>
-    <!-- End Journey Mediavine -->
-
-    
-    <!-- <script>
-      import { hasAcceptedCookies, loadAdsense } from '../utils/cookiesConsent';
-
-      if (hasAcceptedCookies()) {
-        loadAdsense();
-      }
-
-      // Si el usuario acepta en el banner durante la sesión
-      window.addEventListener('ag:cookies-accepted', () => {
-        if (hasAcceptedCookies()) {
-          loadAdsense();
-        }
-      });
-    </script> -->
   </body>
 </html>
