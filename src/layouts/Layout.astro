@@ -200,6 +200,32 @@ const imageURL = new URL(image, Astro.site);
 <!-- End contador propio -->
    
     <ClientRouter />
+
+    <!-- Monetag anchor mobile -->
+    <script is:inline>
+      function loadMonetag() {
+        (function(s){
+          s.dataset.zone='10460271';
+          s.src='https://nap5k.com/tag.min.js';
+        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+      }
+      loadMonetag();
+      document.addEventListener('astro:page-load', loadMonetag);
+    </script>
+    <!-- End Monetag anchor mobile -->
+
+    <!-- Monetag vignette -->
+    <script is:inline>
+      function loadMonetagVignette() {
+        (function(s){
+          s.dataset.zone='10817131';
+          s.src='https://n6wxm.com/vignette.min.js';
+        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+      }
+      loadMonetagVignette();
+      document.addEventListener('astro:page-load', loadMonetagVignette);
+    </script>
+    <!-- End Monetag vignette -->
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
