@@ -24,7 +24,7 @@ acordes = acordes.sort((a, b) => {
 });
 
 // Los 4 más recientes
-const ultimos = acordes.slice(0, 4);
+const ultimos = acordes.slice(0, 8);
 
 // Destacadas: mostrar los acordes cuyo campo destacada sea distinto de null, ordenados por ese número ascendente
 const destacadas = acordes
@@ -42,15 +42,21 @@ let autores = await getCollection('autores');
   <!-- <BannerCoac2026 /> -->
 
   <BannerPacoAlba />
-  <div class='main-container container-layout'>
+  <div class='main-container'>
     <!-- <AnunciateIndex /> -->
 
-    <CardsGroup year={'Novedades'} acordes={ultimos} />
-    <AutorCardsGroup autores={autores} />
-    <!-- <CardsGroup year={'Destacando'} acordes={destacadas} /> -->
-    <YearsList
-      years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
-    />
+    <div class='section section--novedades'>
+      <CardsGroup year={'Novedades'} acordes={ultimos} />
+    </div>
+    <div class='section section--colored'>
+      <AutorCardsGroup autores={autores} />
+    </div>
+    <!-- <div class='section'><CardsGroup year={'Destacando'} acordes={destacadas} /></div> -->
+    <div class='section'>
+      <YearsList
+        years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
+      />
+    </div>
   </div>
 </Layout>
 
@@ -58,13 +64,28 @@ let autores = await getCollection('autores');
   .main-container {
     display: flex;
     flex-direction: column;
-    gap: var(--main-container-gap);
     margin-top: 0;
   }
 
+  .section {
+    padding-top: calc(var(--main-container-gap) - 8px);
+    padding-bottom: var(--main-container-gap);
+  }
+
+  .section--colored {
+    background-color: var(--secondary-color);
+  }
+
+  @media (max-width: 1024px) {
+    :global(.section--novedades .acordes-grid > *:nth-child(n + 7)) {
+      display: none;
+    }
+  }
+
   @media (max-width: 640px) {
-    .main-container {
-      gap: calc(var(--main-container-gap-sm));
+    .section {
+      padding-top: calc(var(--main-container-gap-sm) - 4px);
+      padding-bottom: var(--main-container-gap-sm);
     }
   }
 </style>

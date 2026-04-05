@@ -3,27 +3,33 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
 ---
 
 <article class='years-list' aria-labelledby={headingId}>
-  <header>
-    <h2 id={headingId}>{heading}</h2>
-  </header>
-  <ul>
-    {
-      years.map((year) => (
-        <li key={year}>
-          <a href={`/carnaval/${year}`}>{year}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <div class='container-layout inner-content'>
+    <header>
+      <h2 id={headingId}>{heading}</h2>
+    </header>
+    <ul>
+      {
+        years.map((year) => (
+          <li key={year}>
+            <a href={`/carnaval/${year}`}>{year}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </article>
 
 <style>
   .years-list {
     border-radius: 8px;
+  }
+
+  .inner-content {
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
+
   header h2 {
     position: relative;
     color: var(--primary-color);
@@ -96,7 +102,7 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
   }
 
   @media (max-width: 640px) {
-    .years-list {
+    .inner-content {
       gap: calc(var(--card-padding-sm) - 2px);
     }
     ul {
@@ -104,7 +110,6 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
       grid-template-columns: repeat(3, 1fr);
     }
     header h2 {
-      /* font-size: 1.4rem; */
       letter-spacing: 0px;
     }
     header h2::after {

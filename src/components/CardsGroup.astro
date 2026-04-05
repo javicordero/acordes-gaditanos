@@ -9,30 +9,32 @@ const headingId = `year-${year}`;
 <article
   class={`year-group${subtitle ? ' year-group--with-subtitle' : ''}`}
   aria-labelledby={headingId}>
-  <header>
-    <h2 id={headingId} class='is-title-minus'>{year}</h2>
-    {subtitle && <h3>{subtitle}</h3>}
-  </header>
+  <div class='container-layout inner-content'>
+    <header>
+      <h2 id={headingId} class='is-title-minus'>{year}</h2>
+      {subtitle && <h3>{subtitle}</h3>}
+    </header>
 
-  <div class='acordes-grid' role='region' aria-labelledby={headingId}>
-    {
-      acordes.map((acorde, idx) => {
-        const { slug, data } = acorde;
-        const { pieza, agrupacion, musica, letra, img, year: y } = data;
-        return (
-          <Card
-            pieza={pieza}
-            agrupacion={agrupacion}
-            musica={musica}
-            letra={letra}
-            img={img}
-            year={y}
-            slug={slug}
-            transitionKey={`${year}-${idx}`}
-          />
-        );
-      })
-    }
+    <div class='acordes-grid' role='region' aria-labelledby={headingId}>
+      {
+        acordes.map((acorde, idx) => {
+          const { slug, data } = acorde;
+          const { pieza, agrupacion, musica, letra, img, year: y } = data;
+          return (
+            <Card
+              pieza={pieza}
+              agrupacion={agrupacion}
+              musica={musica}
+              letra={letra}
+              img={img}
+              year={y}
+              slug={slug}
+              transitionKey={`${year}-${idx}`}
+            />
+          );
+        })
+      }
+    </div>
   </div>
 </article>
 
@@ -40,12 +42,15 @@ const headingId = `year-${year}`;
   .year-group {
     position: relative;
     border-radius: 8px;
+  }
+
+  .inner-content {
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
 
-  .year-group--with-subtitle {
+  .year-group--with-subtitle .inner-content {
     gap: 8px;
   }
 
@@ -97,10 +102,10 @@ const headingId = `year-${year}`;
   }
 
   @media (max-width: 640px) {
-    .year-group {
+    .inner-content {
       gap: calc(var(--card-padding-sm) - 2px);
     }
-    .year-group--with-subtitle {
+    .year-group--with-subtitle .inner-content {
       gap: 4px;
     }
 

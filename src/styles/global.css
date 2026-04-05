@@ -16,9 +16,9 @@
   --app-max-width: 1000px;
   --nav-height: 48px;
   --main-container-gap: 16px;
-  --main-container-gap-sm: 8px;
-  --card-padding: 12px;
-  --card-padding-sm: 8px;
+  --main-container-gap-sm: 12px;
+  --card-padding: 16px;
+  --card-padding-sm: 12px;
 
   /* --acorde-card-header-font-size-xl: 1.4rem; */
   --acorde-card-header-font-size-sm: 1.25rem;

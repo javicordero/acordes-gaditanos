@@ -52,7 +52,7 @@ let autores = await getCollection('autores');
 <Layout
   title='Acordes Gaditanos - Acordes del Carnaval de Cádiz'
   description='La mayor colección de acordes de guitarra del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
-  <div class='main-container container-layout'>
+  <div class='main-container'>
     <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
     <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
     <!-- Mensaje de sin resultados (oculto por defecto) -->
@@ -218,7 +218,7 @@ let autores = await getCollection('autores');
       // Filtrar acordes usando los datos serializados
       const resultados = acordesData.filter((acorde) => {
         const searchableText = normalizeText(
-          `${acorde.pieza} ${acorde.agrupacion} ${acorde.musica} ${acorde.letra}`
+          `${acorde.pieza} ${acorde.agrupacion} ${acorde.musica} ${acorde.letra}`,
         );
         return searchableText.includes(normalizedQuery);
       });

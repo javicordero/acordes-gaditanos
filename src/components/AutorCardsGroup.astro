@@ -5,22 +5,26 @@ const headingId = `autores-group`;
 ---
 
 <article class='year-group' aria-labelledby={headingId}>
-  <header>
-    <h2 id={headingId} class='is-title-minus'>{heading}</h2>
-  </header>
+  <div class='container-layout inner-content'>
+    <header>
+      <h2 id={headingId} class='is-title-minus'>{heading}</h2>
+    </header>
 
-  <div class='acordes-grid' role='region' aria-labelledby={headingId}>
-    {
-      [...autores]
-        .sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999))
-        .map((autor) => <AutorCard autor={autor.data} />)
-    }
+    <div class='acordes-grid' role='region' aria-labelledby={headingId}>
+      {
+        [...autores]
+          .sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999))
+          .map((autor) => <AutorCard autor={autor.data} />)
+      }
+    </div>
   </div>
 </article>
 
 <style>
   .year-group {
-    position: relative;
+  }
+
+  .inner-content {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -29,7 +33,7 @@ const headingId = `autores-group`;
   header {
     & h2 {
       position: relative;
-      color: var(--primary-color);
+      color: var(--color-bg);
       font-size: 1.625rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
@@ -62,7 +66,7 @@ const headingId = `autores-group`;
   }
 
   @media (max-width: 640px) {
-    .year-group {
+    .inner-content {
       gap: calc(var(--card-padding-sm) - 2px);
     }
 

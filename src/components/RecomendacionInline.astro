@@ -89,19 +89,29 @@ const item = pool[Math.floor(Math.random() * pool.length)];
   </a>
 </div>
 
-<script is:inline>
-  document.querySelectorAll('.rec-card').forEach((link) => {
-    link.addEventListener('click', () => {
-      const name = link.getAttribute('data-rec-name');
-      const type = link.getAttribute('data-rec-type');
-      if (typeof gtag === 'function') {
-        gtag('event', 'recomendacion_inline_click', {
-          event_category: `recomendacion_inline_${type}`,
-          event_label: name,
-        });
-      }
+<script>
+  declare const gtag: (...args: unknown[]) => void;
+
+  function setupRecTracking() {
+    document.querySelectorAll('.rec-card').forEach((link) => {
+      if (link.getAttribute('data-tracking-init')) return;
+      link.setAttribute('data-tracking-init', 'true');
+
+      link.addEventListener('click', () => {
+        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
+        if (hasConsent && typeof gtag === 'function') {
+          const name = link.getAttribute('data-rec-name');
+          const type = link.getAttribute('data-rec-type');
+          gtag('event', 'recomendacion_inline_click', {
+            event_category: `recomendacion_inline_${type}`,
+            event_label: name,
+          });
+        }
+      });
     });
-  });
+  }
+
+  document.addEventListener('astro:page-load', setupRecTracking);
 </script>
 
 <style>
