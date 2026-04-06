@@ -24,7 +24,7 @@ Ni romerías ni ferias en esta tierra
 Es verda que no tienen los gaditanos
                                    <a>Fa</a>
 Pero que vengan muchos y se den cuentan
-              <a>Mi7</a>        <a>La Mi7 Lam</a>
+              <a>Mi7</a>                   <a>La Mi7 Lam</a>
 Que Cádiz está de fiesta todo el verano
 <a>Sol7</a>
 Si no es campero es porque es andaluz fino y
@@ -34,7 +34,7 @@ marinero
 Pero es castizo desde puerta de tierra hasta los
  <a>Mi7</a>
 pisos
-      <a>Rem</a>        <a>Lam</a>
+             <a>Rem</a>                <a>Lam</a>
 Si no sabe lucir el traje de montar
                                            <a>Fa</a>
 Es porque a los de aquí no les sirve el caballo
@@ -46,15 +46,13 @@ Comprendo que es de maravilla tener la jaca
 enjaezá
  <a>Re</a>                     <a>La</a>
 pero yo tengo una barquilla
-                    <a>Mi7</a>                      L
-Con una gracia en la quilla que pa que te via
-<a>aLa7</a>
-contá
- <a>Re</a>                  <a>La</a>      <a>Mi7</a>
+                    <a>Mi7</a>                          <a>La</a>
+Con una gracia en la quilla que pa que te via contá
+ <a>Re</a>                     <a>La</a>      <a>Mi7</a>
 Por eso Cádiz tiene un sello de noble fino y
-<a>La</a> <a>La7</a>
+     <a>La</a> 
 señorial
- <a>Re</a>                     <a>La</a>
+ <a>Re</a>                      <a>La</a>
 Aquí se puso el Non Plus Ultra que traducido
    <a>Mi7</a>
 resulta
