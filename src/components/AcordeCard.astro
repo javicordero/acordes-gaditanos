@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 import Banner320X50 from './anuncios/Banner320x50.astro';
 import Banner468X60 from './anuncios/Banner468x60.astro';
 import RecomendacionInline from './RecomendacionInline.astro';
+import Native2x1 from './right-column/Native2x1.astro';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -32,8 +33,8 @@ const headingId = `acorde-${slug}`;
 ---
 
 <article class='acorde-card'>
-  <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
-  <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
+  <!-- <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
+  <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' /> -->
   <!-- <AcordeAvisoMigracion /> -->
 
   <header>
@@ -92,7 +93,8 @@ const headingId = `acorde-${slug}`;
   </header>
 
   <section class='acorde-content' role='region' aria-labelledby={headingId}>
-    <RecomendacionInline />
+    <!-- <RecomendacionInline /> -->
+    <Native2x1 />
 
     <div class='acorde-meta'>
       <Icon name='cejilla' width={22} height={22} />
