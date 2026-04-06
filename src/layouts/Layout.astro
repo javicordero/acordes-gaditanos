@@ -232,19 +232,86 @@ const imageURL = new URL(image, Astro.site);
     <!-- End Mondiad -->
     
     <!-- Mondiad Footer Anchor -->
-    <script async src="https://ss.mrmnd.com/dynamic.js" data-mnddynid="7e890794-fe0d-4ac3-87d8-d18b710ce36b"></script>
+    <script is:inline>
+      function loadMondiadFooter() {
+        // Remove existing script if it exists
+        const existingScript = document.querySelector('script[data-mnddynid="7e890794-fe0d-4ac3-87d8-d18b710ce36b"]');
+        if (existingScript) {
+          existingScript.remove();
+        }
+        
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://ss.mrmnd.com/dynamic.js';
+        script.setAttribute('data-mnddynid', '7e890794-fe0d-4ac3-87d8-d18b710ce36b');
+        document.head.appendChild(script);
+      }
+      
+      loadMondiadFooter();
+      document.addEventListener('astro:page-load', loadMondiadFooter);
+    </script>
      <!-- End Mondiad Footer Anchor -->
 
      <!-- Mondiad Header Anchor -->
-     <script async src="https://ss.mrmnd.com/dynamic.js" data-mnddynid="725741d4-9650-4554-9a4f-57ee1aec5e00"></script>
+     <script is:inline>
+      function loadMondiadHeader() {
+        // Remove existing script if it exists
+        const existingScript = document.querySelector('script[data-mnddynid="725741d4-9650-4554-9a4f-57ee1aec5e00"]');
+        if (existingScript) {
+          existingScript.remove();
+        }
+        
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://ss.mrmnd.com/dynamic.js';
+        script.setAttribute('data-mnddynid', '725741d4-9650-4554-9a4f-57ee1aec5e00');
+        document.head.appendChild(script);
+      }
+      
+      loadMondiadHeader();
+      document.addEventListener('astro:page-load', loadMondiadHeader);
+    </script>
      <!-- End Mondiad Header Anchor -->
 
      <!-- Mondiad In-Page Push -->
-     <script async src="https://ss.mrmnd.com/static/5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d.js"></script>
+     <script is:inline>
+      function loadMondiadPush() {
+        // Remove existing script if it exists
+        const existingScript = document.querySelector('script[src*="5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d"]');
+        if (existingScript) {
+          existingScript.remove();
+        }
+        
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://ss.mrmnd.com/static/5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d.js';
+        document.head.appendChild(script);
+      }
+      
+      loadMondiadPush();
+      document.addEventListener('astro:page-load', loadMondiadPush);
+    </script>
      <!-- End Mondiad In-Page Push -->
 
      <!-- Mondiad Interstitial -->
-     <!-- <script async src="https://ss.mrmnd.com/interstitial.js" data-mndintid="54eec45e-a57f-4056-b5db-e6faf0a49e2e"></script> -->
+     <script is:inline>
+      function loadMondiadInterstitial() {
+        // Remove existing script if it exists
+        const existingScript = document.querySelector('script[data-mndintid="54eec45e-a57f-4056-b5db-e6faf0a49e2e"]');
+        if (existingScript) {
+          existingScript.remove();
+        }
+        
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://ss.mrmnd.com/interstitial.js';
+        script.setAttribute('data-mndintid', '54eec45e-a57f-4056-b5db-e6faf0a49e2e');
+        document.head.appendChild(script);
+      }
+      
+      loadMondiadInterstitial();
+      document.addEventListener('astro:page-load', loadMondiadInterstitial);
+    </script>
      <!-- End Mondiad Interstitial -->
   </head>
   <body>
