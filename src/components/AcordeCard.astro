@@ -6,7 +6,7 @@ import { Image } from 'astro:assets';
 import Banner320X50 from './anuncios/Banner320x50.astro';
 import Banner468X60 from './anuncios/Banner468x60.astro';
 import RecomendacionInline from './RecomendacionInline.astro';
-import Native2x1 from './right-column/Native2x1.astro';
+import Native1x1 from './right-column/Native1x1.astro';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -94,7 +94,7 @@ const headingId = `acorde-${slug}`;
 
   <section class='acorde-content' role='region' aria-labelledby={headingId}>
     <!-- <RecomendacionInline /> -->
-    <Native2x1 />
+    <Native1x1 class='w-75' mndazid='04772000-82d3-4bd1-aa64-6c2df4ab44fc' />
 
     <div class='acorde-meta'>
       <Icon name='cejilla' width={22} height={22} />
