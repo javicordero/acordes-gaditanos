@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
+// import { ClientRouter } from 'astro:transitions';
 import ContactInit from '../components/utils/ContactInit.astro';
 import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
 import Header from '../components/layout/Header.astro';
@@ -104,30 +104,18 @@ const imageURL = new URL(image, Astro.site);
     <meta name="google-adsense-account" content="ca-pub-3280015847198273">
     <!-- End Google Adsense -->
 
+
+    <!-- Mondiad -->
+     <meta name="mnd-ver" content="zu4xdpajnya9vpq2fyutqq" />
+    <!-- End Mondiad -->
+
+
     <!-- Mondiad Banner -->
-    <script async src="https://ss.mrmnd.com/banner.js"></script>
+    <script defer src="https://ss.mrmnd.com/banner.js"></script>
     <!-- End Mondiad Banner -->
 
     <!-- Mondiad Footer Anchor -->
-    <script is:inline>
-      function loadMondiadFooter() {
-        const existingScript = document.querySelector('script[data-mnddynid="7e890794-fe0d-4ac3-87d8-d18b710ce36b"]');
-        if (existingScript) {
-          existingScript.remove();
-        }
-        
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://ss.mrmnd.com/dynamic.js?t=' + Date.now();
-        script.setAttribute('data-mnddynid', '7e890794-fe0d-4ac3-87d8-d18b710ce36b');
-        document.head.appendChild(script);
-      }
-      
-      loadMondiadFooter();
-      document.addEventListener('astro:page-load', () => {
-        setTimeout(loadMondiadFooter, 100);
-      });
-    </script>
+    <script async data-mnddynid="7e890794-fe0d-4ac3-87d8-d18b710ce36b" src="https://ss.mrmnd.com/dynamic.js"></script>
     <!-- End Mondiad Footer Anchor -->
 
     <!-- Google Tag Manager -->
@@ -224,7 +212,7 @@ const imageURL = new URL(image, Astro.site);
 
 <!-- End contador propio -->
    
-    <ClientRouter />
+    <!-- <ClientRouter /> -->
 
     <!-- Monetag anchor mobile -->
     <!-- <script is:inline>
@@ -251,6 +239,13 @@ const imageURL = new URL(image, Astro.site);
       document.addEventListener('astro:page-load', loadMonetagVignette);
     </script> -->
     <!-- End Monetag vignette -->
+
+    <!-- Dispara astro:page-load manualmente (reemplaza ClientRouter) -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.dispatchEvent(new Event('astro:page-load'));
+      });
+    </script>
 
   </head>
   <body>

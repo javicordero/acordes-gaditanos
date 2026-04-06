@@ -542,9 +542,7 @@ import { Icon } from 'astro-icon/components';
 
             // Navegar a la página de búsqueda sin queryParams
             if (window.location.pathname !== '/buscar') {
-              import('astro:transitions/client').then(({ navigate }) => {
-                navigate('/buscar');
-              });
+              window.location.href = '/buscar';
             } else {
               // Si ya estamos en /buscar, recargar la página
               window.location.reload();
