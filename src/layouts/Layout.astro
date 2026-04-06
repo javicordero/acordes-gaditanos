@@ -227,92 +227,6 @@ const imageURL = new URL(image, Astro.site);
     </script> -->
     <!-- End Monetag vignette -->
 
-    <!-- Mondiad -->
-    <meta name="mnd-ver" content="zu4xdpajnya9vpq2fyutqq" />
-    <!-- End Mondiad -->
-    
-    <!-- Mondiad Footer Anchor -->
-    <script is:inline>
-      function loadMondiadFooter() {
-        // Remove existing script if it exists
-        const existingScript = document.querySelector('script[data-mnddynid="7e890794-fe0d-4ac3-87d8-d18b710ce36b"]');
-        if (existingScript) {
-          existingScript.remove();
-        }
-        
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://ss.mrmnd.com/dynamic.js';
-        script.setAttribute('data-mnddynid', '7e890794-fe0d-4ac3-87d8-d18b710ce36b');
-        document.head.appendChild(script);
-      }
-      
-      loadMondiadFooter();
-      document.addEventListener('astro:page-load', loadMondiadFooter);
-    </script>
-     <!-- End Mondiad Footer Anchor -->
-
-     <!-- Mondiad Header Anchor -->
-     <script is:inline>
-      function loadMondiadHeader() {
-        // Remove existing script if it exists
-        const existingScript = document.querySelector('script[data-mnddynid="725741d4-9650-4554-9a4f-57ee1aec5e00"]');
-        if (existingScript) {
-          existingScript.remove();
-        }
-        
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://ss.mrmnd.com/dynamic.js';
-        script.setAttribute('data-mnddynid', '725741d4-9650-4554-9a4f-57ee1aec5e00');
-        document.head.appendChild(script);
-      }
-      
-      loadMondiadHeader();
-      document.addEventListener('astro:page-load', loadMondiadHeader);
-    </script>
-     <!-- End Mondiad Header Anchor -->
-
-     <!-- Mondiad In-Page Push -->
-     <script is:inline>
-      function loadMondiadPush() {
-        // Remove existing script if it exists
-        const existingScript = document.querySelector('script[src*="5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d"]');
-        if (existingScript) {
-          existingScript.remove();
-        }
-        
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://ss.mrmnd.com/static/5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d.js';
-        document.head.appendChild(script);
-      }
-      
-      loadMondiadPush();
-      document.addEventListener('astro:page-load', loadMondiadPush);
-    </script>
-     <!-- End Mondiad In-Page Push -->
-
-     <!-- Mondiad Interstitial -->
-     <script is:inline>
-      function loadMondiadInterstitial() {
-        // Remove existing script if it exists
-        const existingScript = document.querySelector('script[data-mndintid="54eec45e-a57f-4056-b5db-e6faf0a49e2e"]');
-        if (existingScript) {
-          existingScript.remove();
-        }
-        
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://ss.mrmnd.com/interstitial.js';
-        script.setAttribute('data-mndintid', '54eec45e-a57f-4056-b5db-e6faf0a49e2e');
-        document.head.appendChild(script);
-      }
-      
-      loadMondiadInterstitial();
-      document.addEventListener('astro:page-load', loadMondiadInterstitial);
-    </script>
-     <!-- End Mondiad Interstitial -->
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -331,6 +245,47 @@ const imageURL = new URL(image, Astro.site);
     <ContactInit />
     <AnchoPreInit />
     <CookieBanner />
+
+    <script is:inline>
+      const mondiadScripts = [
+        {
+          name: 'Footer Anchor',
+          src: 'https://ss.mrmnd.com/dynamic.js',
+          attr: 'data-mnddynid',
+          value: '7e890794-fe0d-4ac3-87d8-d18b710ce36b',
+        },
+        {
+          name: 'In-Page Push',
+          src: 'https://ss.mrmnd.com/static/5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d.js',
+          attr: null,
+          value: null,
+          selector: 'script[src*="5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d"]',
+        },
+      ];
+
+      function reloadMondiadScripts() {
+        mondiadScripts.forEach((item) => {
+          const selector = item.selector || `${item.attr ? `script[${item.attr}="${item.value}"]` : `script[src*="${item.src.split('/').pop()}"]`}`;
+          const existingScript = document.querySelector(selector);
+          if (existingScript) {
+            existingScript.remove();
+          }
+
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = `${item.src}?t=${Date.now()}`;
+          if (item.attr && item.value) {
+            script.setAttribute(item.attr, item.value);
+          }
+          document.body.appendChild(script);
+        });
+      }
+
+      reloadMondiadScripts();
+      document.addEventListener('astro:page-load', () => {
+        setTimeout(reloadMondiadScripts, 100);
+      });
+    </script>
 
   </body>
 </html>
