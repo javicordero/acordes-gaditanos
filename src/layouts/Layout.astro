@@ -108,6 +108,28 @@ const imageURL = new URL(image, Astro.site);
     <script async src="https://ss.mrmnd.com/banner.js"></script>
     <!-- End Mondiad Banner -->
 
+    <!-- Mondiad Footer Anchor -->
+    <script is:inline>
+      function loadMondiadFooter() {
+        const existingScript = document.querySelector('script[data-mnddynid="7e890794-fe0d-4ac3-87d8-d18b710ce36b"]');
+        if (existingScript) {
+          existingScript.remove();
+        }
+        
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://ss.mrmnd.com/dynamic.js?t=' + Date.now();
+        script.setAttribute('data-mnddynid', '7e890794-fe0d-4ac3-87d8-d18b710ce36b');
+        document.head.appendChild(script);
+      }
+      
+      loadMondiadFooter();
+      document.addEventListener('astro:page-load', () => {
+        setTimeout(loadMondiadFooter, 100);
+      });
+    </script>
+    <!-- End Mondiad Footer Anchor -->
+
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -249,46 +271,9 @@ const imageURL = new URL(image, Astro.site);
     <AnchoPreInit />
     <CookieBanner />
 
-    <script is:inline>
-      const mondiadScripts = [
-        {
-          name: 'Footer Anchor',
-          src: 'https://ss.mrmnd.com/dynamic.js',
-          attr: 'data-mnddynid',
-          value: '7e890794-fe0d-4ac3-87d8-d18b710ce36b',
-        },
-        {
-          name: 'In-Page Push',
-          src: 'https://ss.mrmnd.com/static/5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d.js',
-          attr: null,
-          value: null,
-          selector: 'script[src*="5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d"]',
-        },
-      ];
-
-      function reloadMondiadScripts() {
-        mondiadScripts.forEach((item) => {
-          const selector = item.selector || `${item.attr ? `script[${item.attr}="${item.value}"]` : `script[src*="${item.src.split('/').pop()}"]`}`;
-          const existingScript = document.querySelector(selector);
-          if (existingScript) {
-            existingScript.remove();
-          }
-
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = `${item.src}?t=${Date.now()}`;
-          if (item.attr && item.value) {
-            script.setAttribute(item.attr, item.value);
-          }
-          document.body.appendChild(script);
-        });
-      }
-
-      reloadMondiadScripts();
-      document.addEventListener('astro:page-load', () => {
-        setTimeout(reloadMondiadScripts, 100);
-      });
-    </script>
+    <!-- Mondiad In-Page Push -->
+    <script async src="https://ss.mrmnd.com/static/5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d.js"></script>
+    <!-- End Mondiad In-Page Push -->
 
   </body>
 </html>
