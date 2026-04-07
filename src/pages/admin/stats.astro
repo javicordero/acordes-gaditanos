@@ -1,0 +1,404 @@
+---
+// src/pages/stats.astro
+import Layout from '../../layouts/Layout.astro';
+
+// Hacemos la llamada al Worker
+const response = await fetch('https://stats-worker.javiercorderotoscano.workers.dev/');
+const data = await response.json();
+
+// Ordenamos las páginas por las más visitadas
+const sortedPages = data.pages.sort((a, b) => b.count - a.count);
+
+// Formatea números con separador de miles
+const fmt = (n: number) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+// Visitas por mes desde el worker (data.monthly)
+const monthNames = [
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre',
+];
+// Media diaria de los últimos 30 días
+const avgDaily = data.history.length
+  ? Math.round(data.history.reduce((sum: number, d: { count: number }) => sum + d.count, 0) / data.history.length)
+  : 0;
+
+// Media mensual excluyendo Enero/2026 (mes incompleto) y el mes actual
+const today = new Date();
+const currentMonthKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`;
+const avgMonthly = (() => {
+  const filtered = (data.monthly ?? []).filter(
+    (m: { month: string }) => m.month !== '2026-01' && m.month !== currentMonthKey
+  );
+  if (!filtered.length) return 0;
+  return Math.round(filtered.reduce((sum: number, m: { count: number }) => sum + m.count, 0) / filtered.length);
+})();
+
+const visitsByMonth = (data.monthly ?? []).map((m: { month: string; count: number }) => {
+  const [year, month] = m.month.split('-');
+  return { label: `${monthNames[parseInt(month) - 1]}/${year}`, count: m.count };
+});
+---
+
+<Layout title='Estadísticas de mi Web'>
+  <main class='stats-container'>
+    <header class='stats-header'>
+      <h1>Panel de Analíticas</h1>
+      <p>Contando desde 19/01/2025</p>
+      <p>Datos en tiempo real desde Cloudflare D1</p>
+    </header>
+
+    <div class='stats-grid'>
+      <div class='card card-today'>
+        <span class='card-label'>Visitas de Hoy</span>
+        <h2 class='card-value'>{fmt(data.history[0]?.count || 0)}</h2>
+      </div>
+
+      <div class='card card-main'>
+        <span class='card-label'>Visitas Totales</span>
+        <h2 class='card-value'>{fmt(data.total)}</h2>
+      </div>
+
+      <!-- <div class='card'>
+        <span class='card-label'>Páginas Únicas</span>
+        <h2 class='card-value'>{data.pages.length}</h2>
+      </div> -->
+
+      <div class='card'>
+        <span class='card-label'>Estado del Sistema</span>
+        <div class='status-badge'>
+          <span class='status-dot'></span>
+          Conectado
+        </div>
+      </div>
+    </div>
+
+    <div class='table-container' style='margin-top: 30px;'>
+      <div class='table-header history-header'>
+        <h3>Visitas por mes</h3>
+        <span class='avg-badge'>Media: {fmt(avgMonthly)} visitas/mes</span>
+      </div>
+      <table class='stats-table'>
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th class='text-right'>Visitas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            visitsByMonth.map((row: { label: string; count: number }) => (
+              <tr>
+                <td class='path-cell'>{row.label}</td>
+                <td class='count-cell'>{fmt(row.count)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class='table-container' style='margin-top: 30px;'>
+      <div class='table-header history-header'>
+        <h3>Evolución últimos 30 días</h3>
+        <span class='avg-badge'>Media: {fmt(avgDaily)} visitas/día</span>
+      </div>
+      <table class='stats-table'>
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th class='text-right'>Visitas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            data.history.map((day) => (
+              <tr>
+                <td class='path-cell'>{day.date}</td>
+                <td class='count-cell'>{fmt(day.count)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class='table-container' style='margin-top: 30px;'>
+      <div class='table-header'>
+        <h3>Fuentes de tráfico (¿De dónde vienen?)</h3>
+      </div>
+      <table class='stats-table'>
+        <thead>
+          <tr>
+            <th>Origen</th>
+            <th class='text-right'>Visitas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            data.sources.map((s) => (
+              <tr>
+                <td class='path-cell'>{s.source}</td>
+                <td class='count-cell'>{fmt(s.count)}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class='table-container' style='margin-top: 30px;'>
+      <div class='table-header'>
+        <h3>Rutas más visitadas</h3>
+      </div>
+      <table class='stats-table'>
+        <thead>
+          <tr>
+            <th>Ruta</th>
+            <th class='text-right'>Visitas</th>
+            <th class='text-right'>Popularidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            sortedPages.map((page) => (
+              <tr>
+                <td class='path-cell'>{page.path}</td>
+                <td class='count-cell'>{fmt(page.count)}</td>
+                <td class='progress-cell'>
+                  <div class='progress-bar'>
+                    <div
+                      class='progress-fill'
+                      style={`width: ${((page.count / data.total) * 100).toFixed(0)}%`}
+                    />
+                  </div>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .stats-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+    color: #333;
+  }
+
+  .stats-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .stats-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    color: #111;
+  }
+
+  .stats-header p {
+    color: #666;
+  }
+
+  /* Grid de Tarjetas */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  }
+
+  .card-main {
+    background: #0070f3;
+    color: white;
+    border: none;
+  }
+
+  .card-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+  }
+
+  .card-value {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 8px;
+  }
+
+  /* Badge de Estado */
+  .status-badge {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #22c55e;
+  }
+
+  .status-dot {
+    height: 10px;
+    width: 10px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+  }
+
+  .status-dot::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+
+  /* Estilos de la Tabla */
+  .table-container {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #eee;
+    overflow: hidden;
+  }
+
+  .table-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .avg-badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0070f3;
+    background: #f0f7ff;
+    border: 1px solid #cce0ff;
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+
+  .stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .stats-table th {
+    background: #f9f9f9;
+    padding: 12px 20px;
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+  }
+
+  .stats-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f9f9f9;
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .path-cell {
+    font-family: monospace;
+    color: #0070f3;
+    font-size: 0.9rem;
+  }
+
+  .count-cell {
+    font-weight: 700;
+    text-align: right;
+  }
+
+  /* Barra de Progreso */
+  .progress-cell {
+    width: 200px;
+  }
+
+  .progress-bar {
+    background: #eee;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .progress-fill {
+    background: #0070f3;
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 600px) {
+    .progress-cell {
+      display: none;
+    }
+  }
+
+  /* Añade esto a tu sección de estilos */
+  .card-today {
+    background: #f0f7ff; /* Un azul muy clarito */
+    border: 2px solid #0070f3; /* Borde azul fuerte */
+    color: #0070f3;
+  }
+
+  .card-today .card-label {
+    color: #0070f3;
+    opacity: 0.7;
+  }
+
+  /* Ajustamos el grid para que quepan 4 tarjetas bien */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+</style>

@@ -65,11 +65,13 @@ let autores = await getCollection('autores');
     display: flex;
     flex-direction: column;
     margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .section {
-    padding-top: calc(var(--main-container-gap) - 8px);
-    padding-bottom: var(--main-container-gap);
+    padding-top: var(--main-container-gap);
+    padding-bottom: calc(var(--main-container-gap) + 29px);
   }
 
   .section--colored {
@@ -84,8 +86,8 @@ let autores = await getCollection('autores');
 
   @media (max-width: 640px) {
     .section {
-      padding-top: calc(var(--main-container-gap-sm) - 4px);
-      padding-bottom: var(--main-container-gap-sm);
+      padding-top: var(--main-container-gap-sm);
+      padding-bottom: calc(var(--main-container-gap-sm) + 29px);
     }
   }
 </style>

@@ -47,7 +47,7 @@ const headingId = `year-${year}`;
   .inner-content {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--card-padding);
   }
 
   .year-group--with-subtitle .inner-content {
@@ -103,14 +103,14 @@ const headingId = `year-${year}`;
 
   @media (max-width: 640px) {
     .inner-content {
-      gap: calc(var(--card-padding-sm) - 2px);
+      gap: var(--card-padding-sm);
     }
     .year-group--with-subtitle .inner-content {
       gap: 4px;
     }
 
     .acordes-grid {
-      gap: 8px;
+      gap: 16px;
       grid-template-columns: repeat(2, 1fr);
       align-items: stretch;
     }

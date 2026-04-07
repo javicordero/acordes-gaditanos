@@ -15,9 +15,9 @@
 
   --app-max-width: 1000px;
   --nav-height: 48px;
-  --main-container-gap: 16px;
-  --main-container-gap-sm: 12px;
-  --card-padding: 16px;
+  --main-container-gap: 24px;
+  --main-container-gap-sm: 16px;
+  --card-padding: 24px;
   --card-padding-sm: 12px;
 
   /* --acorde-card-header-font-size-xl: 1.4rem; */
@@ -91,24 +91,13 @@ p {
   max-width: var(--app-max-width);
 }
 
-.adsterra-728 {
-  display: flex;
-}
-
 /* tablet: 3 columnas intermedias */
 @media (min-width: 640px) {
   .container-layout {
     width: 95%;
-    padding-top: 8px;
   }
   html {
     overflow-y: scroll;
-  }
-}
-
-@media (max-width: 730px) {
-  .adsterra-728 {
-    display: none !important;
   }
 }
 

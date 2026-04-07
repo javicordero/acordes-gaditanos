@@ -27,7 +27,7 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
   .inner-content {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: var(--card-padding);
   }
 
   header h2 {
@@ -57,7 +57,7 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
     margin: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
+    gap: var(--card-padding);
     width: 100%;
   }
   li {
@@ -103,10 +103,10 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
 
   @media (max-width: 640px) {
     .inner-content {
-      gap: calc(var(--card-padding-sm) - 2px);
+      gap: var(--card-padding-sm);
     }
     ul {
-      gap: 6px;
+      gap: 12px;
       grid-template-columns: repeat(3, 1fr);
     }
     header h2 {
