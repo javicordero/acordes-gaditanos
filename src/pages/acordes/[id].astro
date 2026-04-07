@@ -10,12 +10,12 @@ import AnunciosGuitarra from '../../components/right-column/anuncios/AnunciosGui
 import AnunciosLibros from '../../components/right-column/anuncios/AnunciosLibros.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import Apoyar from '../../components/right-column/Apoyar.astro';
-import Native1x1 from '../../components/right-column/Native1x1.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 import AnunciateAqui from '../../components/right-column/AnunciateAqui.astro';
 import AnunciosTech from '../../components/right-column/anuncios/AnunciosTech.astro';
 import AnunciosHogar from '../../components/right-column/anuncios/AnunciosHogar.astro';
+import VideoSliderHilitop from '../../components/anuncios/VideoSliderHilitop.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -71,7 +71,8 @@ const imageUrl = img
   title={`Acordes ${pieza} ${agrupacion} - Carnaval ${year} - Acordes Gaditanos`}
   description={description}
   keywords={keywords}
-  image={img}>
+  image={img}
+  noInPagePush>
   <MusicCompositionSchema
     pieza={pieza}
     agrupacion={agrupacion}
@@ -103,6 +104,8 @@ const imageUrl = img
   <div class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
 
+    <VideoSliderHilitop class='video-slider' />
+
     <div class='right-column'>
       <YoutubeCard
         link={video}
@@ -125,7 +128,6 @@ const imageUrl = img
       <!-- <AnunciateAqui class='anunciate-aqui' /> -->
 
       <Apoyar class='apoyar' />
-      <Native1x1 class='banner-315x300' mndazid='5f957da5-1e30-494b-a623-2cf1c446a49c' />
       <!-- <AnunciosTech class='anuncios-tech' /> -->
 
       <AnunciosGuitarra class='anuncios-guitarra' />

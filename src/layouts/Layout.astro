@@ -7,6 +7,8 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import CookieBanner from '../components/adsense/CookieBanner.astro';
 import Anuncios from '../components/Anuncios.astro';
+import InPagePushHilitop from '../components/anuncios/InPagePushHilitop.astro';
+import PopunderHilitop from '../components/anuncios/PopunderHilitop.astro';
 
 interface Props {
   title?: string;
@@ -14,6 +16,7 @@ interface Props {
   image?: string;
   noindex?: boolean;
   keywords?: string;
+  noInPagePush?: boolean;
 }
 
 const {
@@ -22,6 +25,7 @@ const {
   image = '/og-image.png',
   noindex = false,
   keywords = 'carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval',
+  noInPagePush = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -104,23 +108,9 @@ const imageURL = new URL(image, Astro.site);
     <meta name="google-adsense-account" content="ca-pub-3280015847198273">
     <!-- End Google Adsense -->
 
-
-    <!-- Mondiad -->
-     <meta name="mnd-ver" content="zu4xdpajnya9vpq2fyutqq" />
-    <!-- End Mondiad -->
-
-
-    <!-- Mondiad Banner -->
-    <script defer src="https://ss.mrmnd.com/banner.js"></script>
-    <!-- End Mondiad Banner -->
-
-    <!-- Mondiad Native -->
-    <script async src="https://ss.mrmnd.com/native.js"></script>
-    <!-- End Mondiad Native -->
-
-    <!-- Mondiad Footer Anchor -->
-    <script async data-mnddynid="7e890794-fe0d-4ac3-87d8-d18b710ce36b" src="https://ss.mrmnd.com/dynamic.js"></script>
-    <!-- End Mondiad Footer Anchor -->
+    <!-- Hilitop -->
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <!-- End hilitop -->
 
     <!-- Google Tag Manager -->
     <script>
@@ -263,16 +253,14 @@ const imageURL = new URL(image, Astro.site);
         style='display:none;visibility:hidden'></iframe></noscript
     >
     <!-- End Google Tag Manager (noscript) -->
+     {!noInPagePush && <InPagePushHilitop />}
+     <PopunderHilitop />
     <Header />
     <slot />
     <Footer />
     <ContactInit />
     <AnchoPreInit />
     <CookieBanner />
-
-    <!-- Mondiad In-Page Push -->
-    <script async src="https://ss.mrmnd.com/static/5cf7e99e-caa5-4c1e-a7ae-f8156a963b6d.js"></script>
-    <!-- End Mondiad In-Page Push -->
 
   </body>
 </html>
