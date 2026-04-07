@@ -15,7 +15,7 @@ import AcordesRecomendados from '../../components/right-column/AcordesRecomendad
 import AnunciateAqui from '../../components/right-column/AnunciateAqui.astro';
 import AnunciosTech from '../../components/right-column/anuncios/AnunciosTech.astro';
 import AnunciosHogar from '../../components/right-column/anuncios/AnunciosHogar.astro';
-import VideoSliderHilitop from '../../components/anuncios/VideoSliderHilitop.astro';
+// import VideoSliderHilitop from '../../components/anuncios/VideoSliderHilitop.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -104,7 +104,7 @@ const imageUrl = img
   <div class='main-container container-layout'>
     <AcordeCard acorde={acorde} />
 
-    <VideoSliderHilitop class='video-slider' />
+    <!-- <VideoSliderHilitop class='video-slider' /> -->
 
     <div class='right-column'>
       <YoutubeCard

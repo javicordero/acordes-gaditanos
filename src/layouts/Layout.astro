@@ -7,8 +7,8 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import CookieBanner from '../components/adsense/CookieBanner.astro';
 import Anuncios from '../components/Anuncios.astro';
-import InPagePushHilitop from '../components/anuncios/InPagePushHilitop.astro';
-import PopunderHilitop from '../components/anuncios/PopunderHilitop.astro';
+// import InPagePushHilitop from '../components/anuncios/InPagePushHilitop.astro';
+// import PopunderHilitop from '../components/anuncios/PopunderHilitop.astro';
 
 interface Props {
   title?: string;
@@ -109,7 +109,7 @@ const imageURL = new URL(image, Astro.site);
     <!-- End Google Adsense -->
 
     <!-- Hilitop -->
-    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <!-- <meta name="referrer" content="no-referrer-when-downgrade" /> -->
     <!-- End hilitop -->
 
     <!-- Google Tag Manager -->
@@ -253,8 +253,8 @@ const imageURL = new URL(image, Astro.site);
         style='display:none;visibility:hidden'></iframe></noscript
     >
     <!-- End Google Tag Manager (noscript) -->
-     {!noInPagePush && <InPagePushHilitop />}
-     <PopunderHilitop />
+     {/* !noInPagePush && <InPagePushHilitop /> */}
+     {/* <PopunderHilitop /> */}
     <Header />
     <slot />
     <Footer />
