@@ -3,7 +3,7 @@ import { render } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
 import { Image } from 'astro:assets';
-// import BannerDesktopYMovilHilitop from './anuncios/BannerDesktopYMovilHilitop.astro';
+import RecomendacionInline from './RecomendacionInline.astro';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -90,7 +90,7 @@ const headingId = `acorde-${slug}`;
   </header>
 
   <section class='acorde-content' role='region' aria-labelledby={headingId}>
-    <!-- <RecomendacionInline /> -->
+    <RecomendacionInline />
     <!-- <Native1x1 class='w-75' mndazid='04772000-82d3-4bd1-aa64-6c2df4ab44fc' /> -->
     <!-- <BannerMovilHilitop /> -->
     <!-- <BannerDesktopYMovilHilitop /> -->
@@ -102,7 +102,6 @@ const headingId = `acorde-${slug}`;
 
     <Content />
   </section>
-
 </article>
 
 <style>
