@@ -11,8 +11,8 @@ video: https://www.youtube.com/embed/V8-QSFCRyio?si=HvLoH7npzVsC_ZSC
 
 ---
 <pre>
-   <a>Re7</a>             <a>Sol</a>     <a>Re7</a>               <a>Sol</a>
-Tenemos nuestro condado situado frente al Hospicio,
+<a>Sol</a> <a>Re7</a>             <a>Sol</a>     <a>Re7</a>               <a>Sol</a>
+Teneemos nuestro condado situado frente al Hospicio,
     <a>Re7</a>           <a>Sol</a>     <a>Do</a>                <a>Re7</a>
 por donde desembarcaron hace siglos los fenicios,
                    <a>Sol</a>      <a>Re7</a>          <a>Sol</a>

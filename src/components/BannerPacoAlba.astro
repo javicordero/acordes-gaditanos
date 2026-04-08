@@ -65,7 +65,8 @@ import Image from 'astro/components/Image.astro';
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, var(--banner-overlay-opacity));
+      backdrop-filter: brightness(0.25);
+      background: transparent;
     }
 
     & .text {

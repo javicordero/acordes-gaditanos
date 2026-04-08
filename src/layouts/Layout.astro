@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-// import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import ContactInit from '../components/utils/ContactInit.astro';
 import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
 import Header from '../components/layout/Header.astro';
@@ -206,7 +206,7 @@ const imageURL = new URL(image, Astro.site);
 
 <!-- End contador propio -->
    
-    <!-- <ClientRouter /> -->
+    <ClientRouter />
 
     <!-- Monetag anchor mobile -->
     <!-- <script is:inline>
@@ -219,28 +219,27 @@ const imageURL = new URL(image, Astro.site);
 
     <!-- Monetag vignette -->
     <script is:inline>
-      (function(s){
-        s.dataset.zone='10817131';
-        s.src='https://n6wxm.com/vignette.min.js';
-      })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+      function loadMonetagVignette() {
+        (function(s){
+          s.dataset.zone='10817131';
+          s.src='https://n6wxm.com/vignette.min.js';
+        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+      }
+      document.addEventListener('astro:page-load', loadMonetagVignette);
     </script>
     <!-- End Monetag vignette -->
 
     <!-- Monetag popunder -->
     <script is:inline>
-      (function(s){
-        s.dataset.zone='10845227';
-        s.src='https://al5sm.com/tag.min.js';
-      })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+      function loadMonetagPopunder() {
+        (function(s){
+          s.dataset.zone='10845227';
+          s.src='https://al5sm.com/tag.min.js';
+        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
+      }
+      document.addEventListener('astro:page-load', loadMonetagPopunder);
     </script>
     <!-- End Monetag popunder -->
-
-    <!-- Dispara astro:page-load manualmente (reemplaza ClientRouter) -->
-    <script is:inline>
-      document.addEventListener('DOMContentLoaded', () => {
-        document.dispatchEvent(new Event('astro:page-load'));
-      });
-    </script>
 
   </head>
   <body>
