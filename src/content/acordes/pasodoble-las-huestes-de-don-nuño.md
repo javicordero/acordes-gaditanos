@@ -41,6 +41,6 @@ Allí acampado quedó nuestro cuartel general
 cuando don Nuño probó las caballitas asás.
                  <a>La</a>  <a>Si7</a>                 <a>Mi</a> 
 Allí clavó su pendón frente del Puente Canal
-<a>La</a>                            <a>Si7</a>                 <a>Mi</a>
+<a>Lam</a>                            <a>Si7</a>                 <a>Mi</a>
 por si hay que darle a un traidor una buena zambullá
 </pre>
