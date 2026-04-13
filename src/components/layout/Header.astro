@@ -53,7 +53,7 @@ import { Icon } from 'astro-icon/components';
       <li><a href='/'>Inicio</a></li>
       <li><a href='/colaborar'>Colaborar</a></li>
       <li><a href='/contacto'>Contacto</a></li>
-      <li><a href='/about'>Sobre nosotros</a></li>
+      <!-- <li><a href='/about'>Sobre nosotros</a></li> -->
     </ul>
   </nav>
 </header>
@@ -542,7 +542,9 @@ import { Icon } from 'astro-icon/components';
 
             // Navegar a la página de búsqueda sin queryParams
             if (window.location.pathname !== '/buscar') {
-              import('astro:transitions/client').then(({ navigate }) => { navigate('/buscar'); });
+              import('astro:transitions/client').then(({ navigate }) => {
+                navigate('/buscar');
+              });
             } else {
               // Si ya estamos en /buscar, recargar la página
               window.location.reload();
