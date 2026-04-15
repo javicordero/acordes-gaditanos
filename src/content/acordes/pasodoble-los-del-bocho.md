@@ -4,7 +4,7 @@ agrupacion: Los del bocho
 year: 1955
 musica: Paco Alba
 letra: Paco Alba
-cejilla: 6
+cejilla: 5
 img: https://i.ytimg.com/vi/04TKowg9G2Q/hqdefault.jpg
 date: 15/04/2026
 video: https://www.youtube.com/embed/OkMLqVqDW0o?si=haFcaewdpzZbOryz
