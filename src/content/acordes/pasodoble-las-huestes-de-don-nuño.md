@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Las huestes de don nuño
+agrupacion: Las huestes de don Nuño
 year: 1959
 musica: Paco Alba
 letra: Paco Alba
