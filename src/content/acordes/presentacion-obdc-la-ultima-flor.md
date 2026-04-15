@@ -31,13 +31,13 @@ Aún quedan mil lunas por soñar
 La vida nos da oportunidad
                            <a>Si7</a>
 De ser el principio y no el final
-                     <a>Mi</a>
+               <a>Mi</a>              <a>Sol#m</a>
 Me siento tan solo que tan solo te siento
                <a>La</a>               <a>Lam</a>
 Y si todo es desierto, pues yo camino
                  <a>Si7</a>                  <a>Mi</a>
 Camino y camino porque te pienso encontrar
-                       So
+                    <a>Sol#m</a>
 Porque tan solo te siento
              <a>La</a>
 Porque te veo en el viento
