@@ -15,6 +15,7 @@ import AcordesRecomendados from '../../components/right-column/AcordesRecomendad
 import AnunciateAqui from '../../components/right-column/AnunciateAqui.astro';
 import AnunciosTech from '../../components/right-column/anuncios/AnunciosTech.astro';
 import AnunciosHogar from '../../components/right-column/anuncios/AnunciosHogar.astro';
+import SheinRightColumn from '../../components/SheinRightColumn.astro';
 // import VideoSliderHilitop from '../../components/anuncios/VideoSliderHilitop.astro';
 
 export async function getStaticPaths() {
@@ -65,6 +66,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const imageUrl = img
   ? new URL(img, Astro.site).toString()
   : new URL('/og-default.jpg', Astro.site).toString();
+
+const CocinaSheinData = {
+  url: 'https://onelink.shein.com/3/5n10bkcaes6v',
+  name: 'Cocina Shein',
+  image: '/public/img/cocina.jpeg',
+};
+
+const unEuroSheinData = {
+  url: 'https://onelink.shein.com/3/5n105fcu0d1t',
+  name: '1 Euro Shein',
+  image: '/public/img/1euro.jpg',
+};
 ---
 
 <Layout
@@ -130,7 +143,8 @@ const imageUrl = img
       <Apoyar class='apoyar' />
       <!-- <AnunciosTech class='anuncios-tech' /> -->
 
-      <AnunciosGuitarra class='anuncios-guitarra' />
+      <!-- <AnunciosGuitarra class='anuncios-guitarra' /> -->
+      <SheinRightColumn class='shein-right-column' inlineSheinData={CocinaSheinData} />
 
       <SigueTocando
         class='sigue-tocando'
@@ -145,7 +159,8 @@ const imageUrl = img
 
       <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
 
-      <AnunciosLibros class='anuncios-libros' />
+      <!-- <AnunciosLibros class='anuncios-libros' /> -->
+      <SheinRightColumn class='shein-right-column' inlineSheinData={unEuroSheinData} />
       <!-- <SitiosDeInteresCard class='sitios-interes' /> -->
     </div>
 

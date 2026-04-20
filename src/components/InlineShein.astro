@@ -1,0 +1,62 @@
+---
+const { inlineSheinData } = Astro.props;
+---
+
+<div class='rec-wrap' data-nosnippet>
+  <a
+    href={inlineSheinData.url}
+    target='_blank'
+    rel='noopener noreferrer sponsored'
+    class='rec-card'
+    data-rec-name={inlineSheinData.name}>
+    <div class='rec-img'>
+      <img src={inlineSheinData.image} alt={inlineSheinData.name} loading='lazy' decoding='async' />
+    </div>
+  </a>
+</div>
+
+<script>
+  declare const gtag: (...args: unknown[]) => void;
+
+  function setupRecTracking() {
+    document.querySelectorAll('.rec-card').forEach((link) => {
+      if (link.getAttribute('data-tracking-init')) return;
+      link.setAttribute('data-tracking-init', 'true');
+
+      link.addEventListener('click', () => {
+        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
+        if (hasConsent && typeof gtag === 'function') {
+          const name = link.getAttribute('data-rec-name');
+          gtag('event', 'shein_inline', {
+            event_category: `shein_inline`,
+            event_label: name,
+          });
+        }
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupRecTracking);
+</script>
+
+<style>
+  .rec-wrap {
+    width: 300px;
+    height: 300px;
+  }
+
+  .rec-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+</style>
