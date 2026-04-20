@@ -43,11 +43,11 @@ Pues mi marecita y mi compañera,
 mi novia bonita, todo lo eres tú.
      <a>La</a>            <a>Mi7</a>
 Esta noche yo me siento feliz
-              <a>Mi7</a>           <a>La</a>
+                            <a>La</a>
 solamente por encontrarme aquí
                       <a>Mi7</a>
 ante ustedes en este bello rincón
-              <a>Mi7</a>   <a>La</a>
+                    <a>La</a>
 que tan grato recuerdos tengo yo
                     <a>Re</a>
 yo no se es porque tengo pasión
