@@ -43,7 +43,7 @@ Pues mi marecita y mi compañera,
 mi novia bonita, todo lo eres tú.
      <a>La</a>            <a>Mi7</a>
 Esta noche yo me siento feliz
-                            <a>La</a>
+                 <a>La</a>
 solamente por encontrarme aquí
                       <a>Mi7</a>
 ante ustedes en este bello rincón
@@ -53,8 +53,8 @@ que tan grato recuerdos tengo yo
 yo no se es porque tengo pasión
     <a>Mi7</a>            <a>Lam</a>            
 o será porque aquí tengo mi hogar
-     <a>Rem</a>             <a>La</a>
+     <a>Rem</a>           <a>La</a>
 sólo sé y lo juro de corazón
-         <a>Mi7</a>        <a>La</a>
+    <a>Mi7</a>        <a>La</a>
 como mi Cádiz ni hablar.
 </pre>
