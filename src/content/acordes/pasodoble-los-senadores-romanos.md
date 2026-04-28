@@ -12,52 +12,51 @@ cejilla: 6
 
 ---
 <pre>
-Lam
+<a>Lam</a>
 Un buen amigo y paisano el año pasado
-                 Mi7
+                 <a>Mi7</a>
 me honró con su letra nombrándome con agrado
-                             Lam
+                             <a>Lam</a>
 novio enamorado de nuestra Caleta.
-                                       La7
+                                       <a>La7</a>
 Y en justa correspondencia por su gentileza
-               Rem                      Lam
+               <a>Rem</a>                      <a>Lam</a>
 le estrecho mi mano ya que con ello demuestra
-                       Mi7                    Lam
+                       <a>Mi7</a>                    <a>Lam</a>
 que admira igual la belleza de ese rincón gaditano.
-Sol7              Do   Sol7              Do                  
+<a>Sol7</a>              <a>Do</a>   <a>Sol7</a>              <a>Do</a>                  
 Es para mí una promesa o como un peregrinaje
-Sol7            Do   Fa                 Mi7
+<a>Sol7</a>            <a>Do</a>   <a>Fa</a>                 <a>Mi7</a>
 entonarle mi falseta y cantarle a su paisaje
-Rem                   Lam   Mi7                 La
+<a>Rem</a>                   <a>Lam</a>   <a>Mi7</a>                 <a>La</a>
 viendo como el sol se templa en el azul de sus mares
-            Mi7        La
+            <a>Mi7</a>        <a>La</a>
 Contemplándola me invita a soñar
-                        Re
+                        <a>Re</a>
 y en mis sueños la quiero reconstruir
-                     Mi7
+                     <a>Mi7</a>
 contemplándola me invita a soñar
-                     La
+                     <a>La</a>
 recorriendo en sus aguajes
-                        Mi7
+                        <a>Mi7</a>
 la extensión de su escollera
-                    Re    Mi7               La
+                    <a>Re</a>    <a>Mi7</a>               <a>La</a>
 donde aquél antiguo Gades posiblemente estuviera.
 Por eso no le dejo de cantar
-                     Re
+                     <a>Re</a>
 por eso no le dejo de escribir
- Mi7             La
+ <a>Mi7</a>             <a>La</a>
 por eso no le dejo de cantar
-La7                    Re
+<a>La7</a>                    <a>Re</a>
 porque es para mí un sedante
-Si7                        Mi7
+<a>Si7</a>                        <a>Mi7</a>
 que me inspira y que me incita
-Re                 Mi7
+<a>Re</a>                 <a>Mi7</a>
 como dijo al expresarse
-                     La
+                     <a>La</a>
 la pluma del buen letrista
-Re                     La    
+<a>Re</a>                     <a>La</a>    
 la Caleta en mí es constante
-          Mi7              La
+          <a>Mi7</a>              <a>La</a>
 mi musa galante mi novia bonita.
-
 </pre>
