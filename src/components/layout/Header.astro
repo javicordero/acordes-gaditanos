@@ -8,7 +8,15 @@ import { Icon } from 'astro-icon/components';
     <div class='branding'>
       <picture>
         <a href='/' aria-label='Inicio' id='logo-link'>
-          <img src={Logo.src} alt='Acordes Gaditanos logo' transition:persist decoding='async' />
+          <img
+            src={Logo.src}
+            alt='Acordes Gaditanos logo'
+            transition:persist
+            decoding='async'
+            width={48}
+            height={48}
+            fetchpriority='high'
+          />
         </a>
       </picture>
       <h1 class='branding-title' transition:persist>

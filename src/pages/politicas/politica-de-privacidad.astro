@@ -2,9 +2,22 @@
 import Layout from '../../layouts/Layout.astro';
 
 const PAGE_TITLE = 'Política de Privacidad | Acordes Gaditanos';
+
+const privacyPolicySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'PrivacyPolicy',
+  name: 'Política de Privacidad',
+  url: 'https://acordesgaditanos.com/politicas/politica-de-privacidad',
+  dateModified: '2025-11-30',
+  author: {
+    '@type': 'Person',
+    name: 'Javier Cordero Toscano',
+  },
+};
 ---
 
 <Layout title={PAGE_TITLE} description='Política de privacidad de acordesgaditanos.com'>
+  <script type='application/ld+json' set:html={JSON.stringify(privacyPolicySchema)} />
   <div class='main-container'>
     <article class='privacidad-card container-layout' aria-labelledby='privacidad-title'>
       <header>

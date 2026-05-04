@@ -2,9 +2,22 @@
 import Layout from '../../layouts/Layout.astro';
 
 const PAGE_TITLE = 'Política de Cookies | Acordes Gaditanos';
+
+const cookiePolicySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Acordes Gaditanos',
+  url: 'https://acordesgaditanos.com',
+  hasPolicy: {
+    '@type': 'PrivacyPolicy',
+    name: 'Política de Cookies',
+    url: 'https://acordesgaditanos.com/politicas/politica-de-cookies',
+  },
+};
 ---
 
 <Layout title={PAGE_TITLE} description='Política de cookies de acordesgaditanos.com'>
+  <script type='application/ld+json' set:html={JSON.stringify(cookiePolicySchema)} />
   <div class='main-container'>
     <article class='colaborar-card' aria-labelledby='cookies-title'>
       <header>

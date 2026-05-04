@@ -18,7 +18,60 @@ const {
   tipoAutor,
   simple = false,
 } = Astro.props;
+
+const site = Astro.site || new URL('https://acordesgaditanos.com');
+const breadcrumbItems = [];
+
+breadcrumbItems.push({
+  '@type': 'ListItem',
+  position: 1,
+  name: 'Inicio',
+  item: new URL('/', site).toString(),
+});
+
+if (year) {
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: `Carnaval ${year}`,
+    item: new URL(`/carnaval/${year}`, site).toString(),
+  });
+}
+
+if (agrupacion && agrupacionSlug) {
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: year ? 3 : 2,
+    name: agrupacion,
+    item: new URL(`/agrupacion/${agrupacionSlug}`, site).toString(),
+  });
+}
+
+if (pieza) {
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: agrupacion ? (year ? 4 : 3) : (year ? 3 : 2),
+    name: pieza,
+  });
+}
+
+if (autor && autorSlug && tipoAutor && !year && !agrupacion && !pieza) {
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: `${autor} (${tipoAutor === 'musica' ? 'Música' : 'Letra'})`,
+    item: new URL(`/autor/${tipoAutor}/${autorSlug}`, site).toString(),
+  });
+}
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbItems,
+};
 ---
+
+<script type='application/ld+json' set:html={JSON.stringify(breadcrumbSchema)} />
 
 <div class='breadcrumb-container container-layout'>
   <nav aria-label='Navegación contextual' class='breadcrumb'>
