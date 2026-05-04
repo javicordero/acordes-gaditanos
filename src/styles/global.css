@@ -1,32 +1,4 @@
-:root {
-  --color-bg: #e5e5e5;
-  --card-background-color: #ffffff;
-  --primary-color: #000000;
-  --secondary-color: #14213d;
-  --text-color: #222;
-  --primary-contrast-color: #fca311;
-  /* Variables para enlaces (elige la que uses por defecto) */
-
-  --acorde-color: #04c;
-
-  /* --link-color: #0b5fff; */
-  --link-color: var(--acorde-color);
-  --link-hover-color: #0736d1;
-
-  --app-max-width: 1000px;
-  --nav-height: 48px;
-  --main-container-gap: 24px;
-  --main-container-gap-sm: 16px;
-  --card-padding: 24px;
-  --card-padding-sm: 12px;
-
-  /* --acorde-card-header-font-size-xl: 1.4rem; */
-  --acorde-card-header-font-size-sm: 1.25rem;
-  /* Color terciario para placeholders y elementos de baja prioridad */
-  --placeholder-color: #94a3b8; /* gris azulado, suficiente contraste pero suave */
-  --success-color: #28a745;
-  --error-color: #ea1d6f;
-}
+@import './variables.css';
 
 @font-face {
   font-family: 'Bodoni';

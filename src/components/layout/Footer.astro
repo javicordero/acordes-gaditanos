@@ -1,21 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { CONFIG } from '../../lib/constants';
 
-export interface Props {
-  github?: string;
-  linkedin?: string;
-  repo?: string;
-  blog?: string;
-}
-
-export let github: string = 'https://github.com/javicordero';
-export let linkedin: string = 'https://www.linkedin.com/in/javier-cordero-toscano';
-export let repo: string = 'https://github.com/javicordero/acordes-gaditanos';
-export let blog: string = 'https://acordesgaditanos.blogspot.com/';
-export let youtube: string = 'https://www.youtube.com/@acordesgaditanos';
-export let twitter: string = 'https://x.com/acordesgaditano';
-export let tiktok: string = 'https://www.tiktok.com/@acordes.gaditanos';
-export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
+const SOCIAL = {
+  github: 'https://github.com/javicordero',
+  linkedin: 'https://www.linkedin.com/in/javier-cordero-toscano',
+  repo: 'https://github.com/javicordero/acordes-gaditanos',
+  youtube: 'https://www.youtube.com/@acordesgaditanos',
+  twitter: 'https://x.com/acordesgaditano',
+  tiktok: 'https://www.tiktok.com/@acordes.gaditanos',
+  instagram: 'https://www.instagram.com/acordesgaditanos/',
+  blog: 'https://acordesgaditanos.blogspot.com/',
+} as const;
 ---
 
 <footer role='contentinfo'>
@@ -23,13 +19,13 @@ export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
     <nav aria-label='Redes sociales'>
       <h3 class='brand'>Redes sociales</h3>
       <div class='social-icons'>
-        <a class='social' href={twitter} target='_blank' rel='noopener noreferrer' aria-label='X'>
+        <a class='social' href={SOCIAL.twitter} target='_blank' rel='noopener noreferrer' aria-label='X'>
           <Icon name='x' width={20} height={20} />
         </a>
 
         <a
           class='social'
-          href={youtube}
+          href={SOCIAL.youtube}
           target='_blank'
           rel='noopener noreferrer'
           aria-label='YouTube'>
@@ -38,7 +34,7 @@ export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
 
         <a
           class='social'
-          href={tiktok}
+          href={SOCIAL.tiktok}
           target='_blank'
           rel='noopener noreferrer'
           aria-label='TikTok'>
@@ -46,7 +42,7 @@ export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
         </a>
         <a
           class='social'
-          href={instagram}
+          href={SOCIAL.instagram}
           target='_blank'
           rel='noopener noreferrer'
           aria-label='Instagram'>
@@ -62,14 +58,14 @@ export let instagram: string = 'https://www.instagram.com/acordesgaditanos/';
     <div class='author-links'>
       <a
         class='social'
-        href={linkedin}
+        href={SOCIAL.linkedin}
         target='_blank'
         rel='noopener noreferrer'
         aria-label='LinkedIn'>
         <Icon name='linkedin' width={20} height={20} />
       </a>
 
-      <a class='social' href={github} target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
+      <a class='social' href={SOCIAL.github} target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
         <Icon name='github' width={20} height={20} />
       </a>
     </div>

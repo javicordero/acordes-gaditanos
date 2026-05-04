@@ -1,27 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import CardsGroup from '../components/CardsGroup.astro';
-import YearsList from '../components/YearsList.astro';
-import AutorCardsGroup from '../components/AutorCardsGroup.astro';
-import BannerCoac2026 from '../components/BannerCoac2026.astro';
+import CardsGroup from '../components/page/CardsGroup.astro';
+import YearsList from '../components/page/YearsList.astro';
+import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
+import BannerCoac2026 from '../components/page/BannerCoac2026.astro';
 import AnunciateAqui from '../components/right-column/AnunciateAqui.astro';
-import AnunciateIndex from '../components/AnunciateIndex.astro';
-import BannerNoly from '../components/BannerNoly.astro';
-
-function parseSpanishDate(str: string) {
-  const [d, m, y] = str.split(/[-/]/).map(Number);
-  return new Date(y, m - 1, d); // Date(year, monthIndex, day)
-}
+import AnunciateIndex from '../components/page/AnunciateIndex.astro';
+import BannerNoly from '../components/page/BannerNoly.astro';
+import { parseSpanishDate, sortByYearDesc } from '../lib/index';
 
 let acordes = await getCollection('acordes');
 
 // Ordenar por fecha de creación descendente
-acordes = acordes.sort((a, b) => {
-  const dateA = parseSpanishDate(a.data.date);
-  const dateB = parseSpanishDate(b.data.date);
-  return dateB.getTime() - dateA.getTime();
-});
+acordes = acordes.sort((a, b) => parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime());
 
 // Los 4 más recientes
 const ultimos = acordes.slice(0, 8);
@@ -54,7 +46,7 @@ let autores = await getCollection('autores');
     <!-- <div class='section'><CardsGroup year={'Destacando'} acordes={destacadas} /></div> -->
     <div class='section'>
       <YearsList
-        years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort((a, b) => b - a)}
+        years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort(sortByYearDesc)}
       />
     </div>
   </div>

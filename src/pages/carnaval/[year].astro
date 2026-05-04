@@ -1,10 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-import CardsGroup from '../../components/CardsGroup.astro';
-import Breadcrumb from '../../components/Breadcrumb.astro';
-import Banner320X50 from '../../components/anuncios/Banner320x50.astro';
-import Banner468X60 from '../../components/anuncios/Banner468x60.astro';
+import CardsGroup from '../../components/page/CardsGroup.astro';
+import Breadcrumb from '../../components/page/Breadcrumb.astro';
+import Banner320X50 from '../../components/ads/Banner320x50.astro';
+import Banner468X60 from '../../components/ads/Banner468x60.astro';
+import { parseSpanishDate } from '../../lib/index';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -25,16 +26,8 @@ export async function getStaticPaths() {
 
 const { year, acordes } = Astro.props;
 
-// Ordenar acordes por fecha
-function parseSpanishDate(str: string) {
-  const [d, m, y] = str.split(/[-/]/).map(Number);
-  return new Date(y, m - 1, d);
-}
-
 const acordesOrdenados = acordes.sort((a, b) => {
-  const dateA = parseSpanishDate(a.data.date);
-  const dateB = parseSpanishDate(b.data.date);
-  return dateB.getTime() - dateA.getTime();
+  return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
 });
 
 const title = `Carnaval de Cádiz ${year} - Acordes de guitarra`;

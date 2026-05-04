@@ -5,10 +5,8 @@ import ContactInit from '../components/utils/ContactInit.astro';
 import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import CookieBanner from '../components/adsense/CookieBanner.astro';
-import Anuncios from '../components/Anuncios.astro';
-// import InPagePushHilitop from '../components/anuncios/InPagePushHilitop.astro';
-// import PopunderHilitop from '../components/anuncios/PopunderHilitop.astro';
+import CookieBanner from '../components/ads/CookieBanner.astro';
+import Anuncios from '../components/page/Anuncios.astro';
 
 interface Props {
   title?: string;
@@ -108,10 +106,6 @@ const imageURL = new URL(image, Astro.site);
     <meta name="google-adsense-account" content="ca-pub-3280015847198273">
     <!-- End Google Adsense -->
 
-    <!-- Hilitop -->
-    <!-- <meta name="referrer" content="no-referrer-when-downgrade" /> -->
-    <!-- End hilitop -->
-
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -205,41 +199,8 @@ const imageURL = new URL(image, Astro.site);
 </script>
 
 <!-- End contador propio -->
-   
+    
     <ClientRouter />
-
-    <!-- Monetag anchor mobile -->
-    <!-- <script is:inline>
-      (function(s){
-        s.dataset.zone='10460271';
-        s.src='https://nap5k.com/tag.min.js';
-      })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-    </script> -->
-    <!-- End Monetag anchor mobile -->
-
-    <!-- Monetag vignette -->
-    <!-- <script is:inline>
-      function loadMonetagVignette() {
-        (function(s){
-          s.dataset.zone='10817131';
-          s.src='https://n6wxm.com/vignette.min.js';
-        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-      }
-      document.addEventListener('astro:page-load', loadMonetagVignette);
-    </script> -->
-    <!-- End Monetag vignette -->
-
-    <!-- Monetag popunder -->
-    <!-- <script is:inline>
-      function loadMonetagPopunder() {
-        (function(s){
-          s.dataset.zone='10845227';
-          s.src='https://al5sm.com/tag.min.js';
-        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')));
-      }
-      document.addEventListener('astro:page-load', loadMonetagPopunder);
-    </script> -->
-    <!-- End Monetag popunder -->
 
   </head>
   <body>
@@ -252,9 +213,7 @@ const imageURL = new URL(image, Astro.site);
         width='0'
         style='display:none;visibility:hidden'></iframe></noscript
     >
-    <!-- End Google Tag Manager (noscript) -->
-     {/* !noInPagePush && <InPagePushHilitop /> */}
-     {/* <PopunderHilitop /> */}
+<!-- End Google Tag Manager (noscript) -->
     <Header />
     <slot />
     <Footer />

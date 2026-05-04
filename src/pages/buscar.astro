@@ -1,16 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import CardsGroup from '../components/CardsGroup.astro';
-import YearsList from '../components/YearsList.astro';
-import AutorCardsGroup from '../components/AutorCardsGroup.astro';
-import Banner468X60 from '../components/anuncios/Banner468x60.astro';
-import Banner320X50 from '../components/anuncios/Banner320x50.astro';
-
-function parseSpanishDate(str: string) {
-  const [d, m, y] = str.split(/[-/]/).map(Number);
-  return new Date(y, m - 1, d); // Date(year, monthIndex, day)
-}
+import CardsGroup from '../components/page/CardsGroup.astro';
+import YearsList from '../components/page/YearsList.astro';
+import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
+import Banner468X60 from '../components/ads/Banner468x60.astro';
+import Banner320X50 from '../components/ads/Banner320x50.astro';
+import { parseSpanishDate, sortByYearDesc } from '../lib/index';
 
 let acordes = await getCollection('acordes');
 
@@ -18,23 +14,12 @@ acordes = acordes.sort((a, b) => {
   const yearA = a.data.year;
   const yearB = b.data.year;
 
-  // Primero ordenamos por año descendente
   if (yearA !== yearB) {
-    return yearB - yearA;
+    return sortByYearDesc(yearA, yearB);
   }
 
-  // Luego por fecha española descendente
-  const dateA = parseSpanishDate(a.data.date);
-  const dateB = parseSpanishDate(b.data.date);
-
-  return dateB.getTime() - dateA.getTime();
+  return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
 });
-
-// Filtrar solo los acordes destacados y ordenar por date descendente
-function parseSpanishDate(str) {
-  const [d, m, y] = str.split(/[-/]/).map(Number);
-  return new Date(y, m - 1, d);
-}
 
 // Serializar acordes para JavaScript (solo datos necesarios para búsqueda)
 const acordesData = acordes.map((acorde) => ({
@@ -56,12 +41,14 @@ let autores = await getCollection('autores');
     <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
     <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
     <!-- Mensaje de sin resultados (oculto por defecto) -->
-    <article class='no-results' role='region' aria-labelledby='no-results-heading' style='display'>
-      <header>
-        <h2 id='no-results-heading'>No se encontraron resultados</h2>
-      </header>
-      <p>No se encontraron acordes que coincidan con <strong class='search-query'></strong>.</p>
-      <p>Intenta con otros términos de búsqueda.</p>
+    <article class='no-results' role='region' aria-labelledby='no-results-heading' style='display: none'>
+      <div class='container-layout inner-content'>
+        <header>
+          <h2 id='no-results-heading'>No se encontraron resultados</h2>
+        </header>
+        <p>No se encontraron acordes que coincidan con <strong class='search-query'></strong>.</p>
+        <p>Intenta con otros términos de búsqueda.</p>
+      </div>
     </article>
 
     <!-- Contenedor de resultados original -->
@@ -101,6 +88,11 @@ let autores = await getCollection('autores');
 
   /* Card de sin resultados */
   .no-results {
+    display: none;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    padding: var(--card-padding);
     border-radius: 8px;
 
     & header {

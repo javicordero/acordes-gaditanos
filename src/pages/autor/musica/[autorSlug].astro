@@ -1,11 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../../layouts/Layout.astro';
-import CardsGroup from '../../../components/CardsGroup.astro';
+import CardsGroup from '../../../components/page/CardsGroup.astro';
 
-import Breadcrumb from '../../../components/Breadcrumb.astro';
-import Banner320X50 from '../../../components/anuncios/Banner320x50.astro';
-import Banner468X60 from '../../../components/anuncios/Banner468x60.astro';
+import Breadcrumb from '../../../components/page/Breadcrumb.astro';
+import Banner320X50 from '../../../components/ads/Banner320x50.astro';
+import Banner468X60 from '../../../components/ads/Banner468x60.astro';
+import { parseSpanishDate, sortByYearDesc } from '../../../lib/index';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -36,23 +37,15 @@ export async function getStaticPaths() {
 
 const { authorName, acordes } = Astro.props;
 
-// Ordenar acordes por año descendente y fecha
-function parseSpanishDate(str: string) {
-  const [d, m, y] = str.split(/[-/]/).map(Number);
-  return new Date(y, m - 1, d);
-}
-
 const acordesOrdenados = acordes.sort((a, b) => {
-  const yearA = Number(a.data.year);
-  const yearB = Number(b.data.year);
+  const yearA = a.data.year;
+  const yearB = b.data.year;
 
   if (yearA !== yearB) {
-    return yearB - yearA;
+    return sortByYearDesc(yearA, yearB);
   }
 
-  const dateA = parseSpanishDate(a.data.date);
-  const dateB = parseSpanishDate(b.data.date);
-  return dateB.getTime() - dateA.getTime();
+  return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
 });
 
 const title = `${authorName} (Música) - Acordes del Carnaval de Cádiz`;
