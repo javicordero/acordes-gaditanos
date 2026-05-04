@@ -1,5 +1,9 @@
 # AGENTS.md
 
+## Idioma
+- **Commits**: Siempre en español
+- **Mensajes de salida**: En español
+
 ## Commands
 - `npm run dev` - Start dev server at localhost:4321
 - `npm run build` - Build to ./dist/
