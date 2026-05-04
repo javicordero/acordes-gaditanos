@@ -1,0 +1,255 @@
+---
+import { Icon } from 'astro-icon/components';
+import Image from 'astro/components/Image.astro';
+---
+
+<section class='banner-coac-2026'>
+  <div class='container-layout'>
+    <div class='text'>
+      <header>
+        <h2>Las coplas del Noly</h2>
+        <div class='subtitle'>
+          <p>
+            Tras recordar las <a href='/autor/musica/paco-alba'>coplas de Paco Alba</a>, llega el turno de Manuel Sánchez Alba, <a href='/autor/musica/el-noly'>El Noly</a>.
+          </p>
+<p>
+            Más de 40 años han pasado de esas Brujas Piti... más de 20 de su irrupción en la comparsa de Quiñones... cuantas pasodobles nos ha regalado.<br />
+            Las músicas del Noly tienen algo especial, sencillez, esencia y gaditanismo.
+          </p>
+          </div>
+      </header>
+
+      <div class='apoyar'>
+        <p>
+          Si los acordes te sirven de ayuda, puedes <a href='/colaborar'>apoyar</a> el proyecto y ayudarnos
+          a seguir.
+        </p>
+        <div class='actions' role='group' aria-label='Opciones de apoyo'>
+          <a
+            href='https://www.buymeacoffee.com/AcordesGaditanos'
+            target='_blank'
+            rel='noopener noreferrer'
+            class='btn'
+            data-ga-event='support_bmc_click__index'
+            data-ga-params='{"method":"buymeacoffee"}'>
+            <span class='btn__icon'>
+              <Icon name='buy-me-a-coffee' width={24} height={28} />
+            </span>
+            <span class='btn__text'>Apoyar Acordes Gaditanos</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  section.banner-coac-2026 {
+    margin-top: 46px;
+    --banner-overlay-opacity: 0.78;
+    position: relative;
+    display: flex;
+    color: #fff;
+    background: url('/img/noly.jpg')
+      center/cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: calc(var(--vh, 1vh) * 100 - 45px);
+    height: calc(100svh - 45px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      backdrop-filter: brightness(0.25);
+      background: transparent;
+    }
+
+    & .text {
+      position: relative;
+      z-index: 2;
+      padding: 0;
+      max-width: 600px;
+      height: calc(var(--vh, 1vh) * 100 - 45px);
+      height: calc(100svh - 45px);
+      padding: 250px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & h2 {
+        margin: 0 0 24px;
+        font-size: 3.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        max-width: fit-content;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 90%;
+          height: 4px;
+          background-color: var(--primary-contrast-color);
+        }
+      }
+
+      & p {
+        margin: 0 0 12px;
+        font-size: 1.1rem;
+        /* letter-spacing: 0.02em; */
+        line-height: 1.23rem;
+      }
+
+      & .apoyar {
+        margin-top: 56px;
+      }
+
+      & a {
+        color: var(--primary-contrast-color);
+        text-decoration: none;
+      }
+
+      & .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        color: white;
+        background-color: var(--secondary-color);
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        min-height: 44px;
+        min-width: 85px;
+        width: 98%;
+        flex: 1;
+        transition: all 0.3s ease;
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      & {
+        flex-direction: column;
+        justify-content: space-between;
+        background: url('/img/noly.png') center/cover;
+      }
+
+      & .text {
+        padding: 100px 0 180px;
+        & h2 {
+          font-size: 2rem;
+          margin-bottom: 16px;
+        }
+
+        & p {
+          font-size: 1rem;
+        }
+
+        & .apoyar {
+          margin-top: 48px;
+        }
+
+        & .btn {
+          font-size: 1.25rem;
+          gap: 12px;
+          padding: 10px 16px;
+          width: 98%;
+
+          & svg {
+            width: 20px;
+            height: 28px;
+          }
+        }
+      }
+    }
+  }
+
+  .btn {
+    &:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transform: scale(1.05);
+    }
+
+    &.btn--paypal {
+      background-color: var(--primary-contrast-color);
+      color: var(--primary-color);
+    }
+
+    &__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      line-height: 1;
+      font-size: 18px;
+
+      & svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__text {
+      font-size: 14px;
+      letter-spacing: 1.25px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .btn {
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
+<script is:inline>
+  // Set up CSS variable --vh to work around mobile viewport changes
+  function setVh() {
+    try {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    } catch (e) {
+      // fail silently
+    }
+  }
+
+  function setupGTM() {
+    // Buscamos el botón específico dentro de este componente
+    const bmcButton = document.querySelector('[data-ga-event="support_bmc_click__index"]');
+
+    if (bmcButton) {
+      bmcButton.addEventListener('click', () => {
+        // Comprobamos si el usuario aceptó cookies (tu clave es ag_cookie_consent)
+        const consent = localStorage.getItem('ag_cookie_consent');
+
+        if (consent === 'accepted' && typeof gtag === 'function') {
+          const eventName = bmcButton.getAttribute('data-ga-event');
+          const params = JSON.parse(bmcButton.getAttribute('data-ga-params') || '{}');
+
+          gtag('event', eventName, {
+            ...params,
+            page_location: window.location.href,
+          });
+
+          console.log('Evento enviado: ', eventName); // Opcional para debug
+        }
+      });
+    }
+  }
+
+  // Ejecutar setVh en carga y cuando cambie el viewport
+  setVh();
+  window.addEventListener('resize', setVh, { passive: true });
+  window.addEventListener('orientationchange', setVh);
+  if (window.visualViewport && window.visualViewport.addEventListener) {
+    window.visualViewport.addEventListener('resize', setVh);
+  }
+
+  // Se ejecuta en la primera carga y en cada navegación de Astro
+  document.addEventListener('astro:page-load', () => {
+    setVh();
+    setupGTM();
+  });
+</script>
