@@ -28,6 +28,12 @@ pnpm-debug.log*
 REFACTOR_GUIDE.md
 SEO_GUIDE.md
 
+# Local AI / editor config
+CLAUDE.md
+.claude/
+*.local
+.markdownlint.json
+
 
 src/content/template.md
 
