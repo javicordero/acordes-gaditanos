@@ -13,7 +13,7 @@ fraseClave: Nueva chirigota también un nuevo disfraz
 ---
 
 <pre>
-<a>LaM7</a>                      <a>Mi7</a>         <a>LaM7</a>
+          <a>LaM7</a>          <a>Mi7</a>         <a>LaM7</a>
 Nueva chirigota también un nuevo disfraz,
                         <a>Fa#7</a>         <a>Sim7</a>
 nuevas ilusiones mismas ganas de agradar
@@ -32,15 +32,14 @@ pero al fin y al cabo ya todo aquello pasó
 <a>Mi7</a>                         <a>LaM7</a>
 y aquí estamos al pie del cañón.
 Mucho cuidado que los que cantan son coco coco co coco
-                        <a>Fa#7</a>                      <a>Sim7</a>
+                        <a>Fa#7</a>                 <a>Sim7</a>
 los que viven en las leyendas viejos coco coco co coco
 <a>Mi7</a>                <a>Sim7</a>                <a>Mi7</a>         <a>LaM7</a>
 los que quieren coronar esa cueva singular de mariamoco
 venirnos a llevarnos a todo aquel que, 
                <a>Mi7</a>
 que no sea sincero
-                               
-y a meter en el saco a los que veamos, 
+y a meter en los sacos a los que veamos, 
                <a>LaM7</a>     <a>La7</a>   <a>Re</a>  <a>Mi7</a>  <a>LaM7</a>
 rompiendo un plumero qué bello es poder soñar
 <a>Re</a>      <a>Mi7</a>     <a>LaM7</a>    <a>Fa#7</a>     <a>Sim7</a>     <a>Mi7</a>     <a>LaM7</a>   
