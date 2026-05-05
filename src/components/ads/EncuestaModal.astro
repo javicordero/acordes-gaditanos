@@ -56,30 +56,7 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEe8EOiiOBaq4nI0RrTQ
     flex-direction: column;
   }
 
-  .encuesta-modal__close {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 12px;
-    width: 36px;
-    height: 36px;
-    border: none;
-    background: transparent;
-    color: #000;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: transform 0.2s, color 0.2s;
-  }
-
-  .encuesta-modal__close:hover {
-    transform: scale(1.1);
-    color: #444;
-  }
+  
 
 .encuesta-modal__header {
     display: flex;
@@ -88,6 +65,7 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEe8EOiiOBaq4nI0RrTQ
     padding: 16px 48px 12px;
     position: relative;
     flex-shrink: 0;
+    min-height: 60px;
   }
 
   .encuesta-modal__title {
@@ -99,14 +77,17 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEe8EOiiOBaq4nI0RrTQ
 
   .encuesta-modal__close {
     position: absolute;
-    right: 12px;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 36px;
     height: 36px;
     border: none;
     background: transparent;
     color: #000;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 28px;
+    line-height: 1;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -116,7 +97,7 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEe8EOiiOBaq4nI0RrTQ
   }
 
   .encuesta-modal__close:hover {
-    transform: scale(1.1);
+    transform: translateY(-50%) scale(1.1);
     color: #444;
   }
 
