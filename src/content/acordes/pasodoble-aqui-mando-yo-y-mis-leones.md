@@ -7,7 +7,7 @@ letra: Joaquín Sánchez Alba
 modalidad: Chirigota
 cejilla: 5
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxb0jvgMmGbHl6qHm-eARL1h0yf_l6GUBZBiPbNB3BNSdTYswZAjJnxYQXey7PiGp0LW1uxxGpg0rN4W-yJRjhdK6YlLcj_Zvyc8za7GFw81XtC8OSc4ybv84Pz0oPsGbRljLGa6xtLw4/s320/1989_aqui_mando_yo_y_mis_leones.jpg
-date: "06/05/2026"
+date: "07/05/2026"
 video: 'https://www.youtube.com/embed/_X18tdTuwlE'
 ---
 

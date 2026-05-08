@@ -7,7 +7,7 @@ letra: Joaquín Sánchez Alba
 modalidad: Chirigota
 cejilla: 2
 img: https://i.ytimg.com/vi/9BQDchuN0Q0/maxresdefault.jpg
-date: "06/05/2026"
+date: "07/05/2026"
 video: 'https://www.youtube.com/embed/V8Sbw6XwSlA'
 ---
 <pre>
