@@ -7,7 +7,7 @@ letra: Paco Cárdenas
 modalidad: Chirigota
 cejilla: 6
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpuDEpOdk7LNVd1LS5SePPe6nEimk2P6lhUQ&s
-date: "08/05/2026"
+date: "12/05/2026"
 video: 'https://www.youtube.com/embed/g1j47VNVZz8'
 ---
 <pre>
