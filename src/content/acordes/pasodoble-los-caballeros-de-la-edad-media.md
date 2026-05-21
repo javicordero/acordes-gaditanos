@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Los caballeros de la edad media
 year: 1995
 musica: El Noly
-letra: Paco Cárdenas, Ramón Peñalver, Ramón Peñalver
+letra: Paco Cárdenas, Ramón Peñalver
 modalidad: Chirigota
 cejilla: 6
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpuDEpOdk7LNVd1LS5SePPe6nEimk2P6lhUQ&s
