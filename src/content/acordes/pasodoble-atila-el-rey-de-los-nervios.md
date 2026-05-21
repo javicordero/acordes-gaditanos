@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Atila el rey de los nervios
 year: 1990
 musica: El Noly
-letra: Paco Cárdenas
+letra: Paco Cárdenas, Ramón Peñalver
 modalidad: Chirigota
 cejilla: 4
 img: https://i.ytimg.com/vi/Zj4tIdh3CIE/maxresdefault.jpg

@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Los Bisabuelos de los Viejos del 55
 year: 1993
 musica: El Noly
-letra: Paco Cárdenas
+letra: Paco Cárdenas, Ramón Peñalver
 modalidad: Chirigota
 cejilla: 3
 img: https://i.ytimg.com/vi/1_HOflDEWJI/maxresdefault.jpg

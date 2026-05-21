@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Las viudas de los bisabuelos de los viejos del 55
 year: 1994
 musica: El Noly
-letra: Paco Cárdenas
+letra: Paco Cárdenas, Ramón Peñalver
 modalidad: Chirigota
 cejilla: 4
 img: https://i.ytimg.com/vi/TClN-KL_d4A/sddefault.jpg
