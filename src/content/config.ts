@@ -1,5 +1,11 @@
 import { defineCollection, z } from 'astro:content';
 
+// Función para dividir autores por coma
+function splitAuthors(value: string | undefined): string[] {
+  if (!value || value.trim() === '') return [];
+  return value.split(',').map(s => s.trim()).filter(Boolean);
+}
+
 // Función para generar slugs automáticamente
 function generateSlug(text: string): string {
   return text
@@ -35,13 +41,21 @@ const acordes = defineCollection({
       destacada: z.number().optional().nullable(),
       recomendada: z.boolean().optional().nullable(),
     })
-    .transform((data) => ({
-      ...data,
-      // Generar slugs automáticamente
-      musicaSlug: data.musica ? generateSlug(data.musica) : '',
-      letraSlug: data.letra ? generateSlug(data.letra) : '',
-      agrupacionSlug: generateSlug(data.agrupacion),
-    })),
+    .transform((data) => {
+      const musicaList = splitAuthors(data.musica);
+      const letraList = splitAuthors(data.letra);
+      return {
+        ...data,
+        musicaList,
+        letraList,
+        musicaSlugs: musicaList.map(generateSlug),
+        letraSlugs: letraList.map(generateSlug),
+        // Generar slugs automáticamente (primer autor para backward compatibility)
+        musicaSlug: musicaList[0] ? generateSlug(musicaList[0]) : '',
+        letraSlug: letraList[0] ? generateSlug(letraList[0]) : '',
+        agrupacionSlug: generateSlug(data.agrupacion),
+      };
+    }),
 });
 
 const autores = defineCollection({

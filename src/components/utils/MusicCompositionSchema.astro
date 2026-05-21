@@ -2,32 +2,23 @@
 interface Props {
   pieza: string;
   agrupacion: string;
-  musica: string;
-  letra: string;
+  musicaList: string[];
+  letraList: string[];
   year: string;
   modalidad: string;
   url: string;
   image: string;
 }
 
-const { pieza, agrupacion, musica, letra, year, modalidad, url, image } = Astro.props;
+const { pieza, agrupacion, musicaList, letraList, year, modalidad, url, image } = Astro.props;
 
 // Generar estructura de datos para Schema.org
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'MusicComposition',
   name: `${pieza} - ${agrupacion}`,
-  composer: {
-    '@type': 'Person',
-    name: musica,
-  },
-  lyricist:
-    musica === letra
-      ? undefined
-      : {
-          '@type': 'Person',
-          name: letra,
-        },
+  composer: musicaList.map(n => ({ '@type': 'Person', name: n })),
+  lyricist: letraList.length > 0 ? letraList.map(n => ({ '@type': 'Person', name: n })) : undefined,
   datePublished: `${year}-01-01`,
   genre: 'Carnaval de Cádiz',
   inLanguage: 'es-ES',

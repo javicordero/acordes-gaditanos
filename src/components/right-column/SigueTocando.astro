@@ -6,10 +6,10 @@ const {
   class: className,
   agrupacion,
   year,
-  letra,
-  musica,
-  letraSlug,
-  musicaSlug,
+  letraList = [],
+  musicaList = [],
+  letraSlugs = [],
+  musicaSlugs = [],
   agrupacionSlug,
 } = Astro.props;
 ---
@@ -17,8 +17,20 @@ const {
 <RightColumnCard title='Sigue Tocando' headingId='sigue-tocando-heading' class={className}>
   <section class:list={['card', className]} aria-labelledby='sigue-tocando-heading'>
     <ul>
-      <li>Más músicas de <a href={`/autor/musica/${musicaSlug}`}>{musica}</a></li>
-      <li>Más letras de <a href={`/autor/letra/${letraSlug}`}>{letra}</a></li>
+      {
+        musicaList.length > 0
+          ? musicaList.map((nombre: string, i: number) => (
+              <li>Más músicas de <a href={`/autor/musica/${musicaSlugs[i] || ''}`}>{nombre}</a></li>
+            ))
+          : null
+      }
+      {
+        letraList.length > 0
+          ? letraList.map((nombre: string, i: number) => (
+              <li>Más letras de <a href={`/autor/letra/${letraSlugs[i] || ''}`}>{nombre}</a></li>
+            ))
+          : null
+      }
       <li>Más de <a href={`/agrupacion/${agrupacionSlug}`}>{agrupacion}</a></li>
       <li>Más de <a href={`/carnaval/${year}`}>{year}</a></li>
     </ul>

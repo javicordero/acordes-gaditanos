@@ -50,14 +50,41 @@ const acordesRecomendados = todosLosAcordes
   .sort(() => Math.random() - 0.5) // Ordenar aleatoriamente
   .slice(0, 5); // Limitar a 5 recomendaciones
 
+// Funciones de formateo de autores múltiples
+function formatearAutores(lista: string[]): string {
+  if (lista.length === 0) return '';
+  if (lista.length === 1) return lista[0];
+  return lista.slice(0, -1).join(', ') + ' y ' + lista[lista.length - 1];
+}
+
+function listasIguales(a: string[], b: string[]): boolean {
+  if (a.length !== b.length) return false;
+  const sa = [...a].sort(), sb = [...b].sort();
+  return sa.every((v, i) => v === sb[i]);
+}
+
+const musicaList = data.musicaList ?? (musica ? [musica] : []);
+const letraList = data.letraList ?? (letra ? [letra] : []);
+
+const textoMusica = formatearAutores(musicaList);
+const textoLetra = formatearAutores(letraList);
+
 // Generar texto de autoría
-const autores = musica === letra ? `de ${musica}` : `de ${letra} y ${musica}`;
+const autores = listasIguales(musicaList, letraList)
+  ? `de ${textoMusica}`
+  : textoLetra && textoMusica
+    ? `de ${textoLetra} y ${textoMusica}`
+    : textoMusica
+      ? `de ${textoMusica}`
+      : textoLetra
+        ? `de ${textoLetra}`
+        : '';
 
 // Generar descripción completa
 const description = `Acordes ${pieza} ${agrupacion} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
 
 // Generar keywords específicas
-const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}, ${letra}, ${musica}, ${pieza}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
+const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}, ${textoLetra}, ${textoMusica}, ${pieza}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
 
 // Generar URL canónica
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -77,8 +104,8 @@ const imageUrl = img
   <MusicCompositionSchema
     pieza={pieza}
     agrupacion={agrupacion}
-    musica={musica}
-    letra={letra}
+    musicaList={musicaList}
+    letraList={letraList}
     year={year}
     modalidad={modalidad}
     url={canonicalURL}
@@ -94,12 +121,12 @@ const imageUrl = img
 
   <h1 class='seo-title'>
     Acordes {pieza}
-    {agrupacion} - Carnaval {year} - {musica} - Acordes Gaditanos
+    {agrupacion} - Carnaval {year} - {textoMusica || textoLetra} - Acordes Gaditanos
   </h1>
 
   <p class='seo-text'>
-    Estos son los acordes de guitarra de {pieza} de {agrupacion} de
-    {musica}, del Carnaval de Cádiz {year}.
+    Estos son los acordes de guitarra de {pieza} de {agrupacion}
+    {autores}, del Carnaval de Cádiz {year}.
   </p>
 
   <div class='main-container container-layout'>
@@ -137,10 +164,10 @@ const imageUrl = img
         class='sigue-tocando'
         agrupacion={agrupacion}
         year={year}
-        letra={letra}
-        musica={musica}
-        letraSlug={data.letraSlug}
-        musicaSlug={data.musicaSlug}
+        letraList={letraList}
+        musicaList={musicaList}
+        letraSlugs={data.letraSlugs}
+        musicaSlugs={data.musicaSlugs}
         agrupacionSlug={data.agrupacionSlug}
       />
 

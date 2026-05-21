@@ -19,6 +19,10 @@ const {
   musicaSlug,
   letraSlug,
   agrupacionSlug,
+  musicaList,
+  letraList,
+  musicaSlugs,
+  letraSlugs,
 } = data;
 const { Content } = await render(acorde);
 
@@ -48,15 +52,19 @@ const headingId = `acorde-${slug}`;
       <div class='autores'>
         <p>
           <strong>Letra:</strong>
-          <a href={`/autor/letra/${letraSlug}`} rel='noopener'>
-            {letra}
-          </a>
+          {
+            (letraList && letraList.length > 0 ? letraList : (letra ? [letra] : [])).map((nombre: string, i: number, arr: string[]) => (
+              <>{i > 0 && (i === arr.length - 1 ? ' y ' : ', ')}<a href={`/autor/letra/${(letraSlugs && letraSlugs[i]) || letraSlug}`} rel='noopener'>{nombre}</a></>
+            ))
+          }
         </p>
         <p>
           <strong>Música:</strong>
-          <a href={`/autor/musica/${musicaSlug}`} rel='noopener'>
-            {musica}
-          </a>
+          {
+            (musicaList && musicaList.length > 0 ? musicaList : (musica ? [musica] : [])).map((nombre: string, i: number, arr: string[]) => (
+              <>{i > 0 && (i === arr.length - 1 ? ' y ' : ', ')}<a href={`/autor/musica/${(musicaSlugs && musicaSlugs[i]) || musicaSlug}`} rel='noopener'>{nombre}</a></>
+            ))
+          }
         </p>
       </div>
       <div class='year'>
