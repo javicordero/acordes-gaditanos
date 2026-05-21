@@ -10,6 +10,12 @@
 - `npm run preview` - Preview production build
 - `npm run astro check` - Type-check
 
+## Build Guidelines
+- **NO hacer build** después de cada cambio pequeño
+- **SÍ hacer build** solo antes de un commit
+- Para verificar cambios, usar `npm run dev` y probar en el navegador
+- El build completa exitosamente no garantiza que todo funcione, solo que compila
+
 ## Architecture
 
 ### Content Collections
