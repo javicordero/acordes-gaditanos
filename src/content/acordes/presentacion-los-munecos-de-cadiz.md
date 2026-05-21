@@ -2,8 +2,8 @@
 pieza: Presentación
 agrupacion: Los muñecos de Cádiz
 year: 2011
-musica: Los Carapapa
-letra: Los Carapapa
+musica: David Carapapa, Javier Carapapa
+letra: David Carapapa, Javier Carapapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1299832509-munecos.jpeg
 cejilla: 0
 date: "26/11/2025"

@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: Los ángeles de la guarda
 year: 2018
-musica: Los Carapapa.
-letra: Los Carapapa.
+musica: David Carapapa, Javier Carapapa
+letra: David Carapapa, Javier Carapapa
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22835.jpg
 cejilla: 5
 date: "25/11/2025"
