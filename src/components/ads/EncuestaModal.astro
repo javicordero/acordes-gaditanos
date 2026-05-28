@@ -269,6 +269,16 @@ const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeEe8EOiiOBaq4nI0RrTQ
     timeoutId = setTimeout(() => {
       if (!shouldShowModal()) return;
 
+      if ((window as any).__tutorialAutoscrollActive) {
+        var onCompleted = function() {
+          window.removeEventListener('ag:tutorial-completed', onCompleted);
+          modalShownInSession = true;
+          showModal();
+        };
+        window.addEventListener('ag:tutorial-completed', onCompleted);
+        return;
+      }
+
       modalShownInSession = true;
       showModal();
     }, 5000);

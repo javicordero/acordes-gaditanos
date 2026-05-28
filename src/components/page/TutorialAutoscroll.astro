@@ -1,0 +1,414 @@
+<div
+  id="tutorial-autoscroll"
+  class="tutorial-backdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="tutorial-title"
+  aria-hidden="true"
+>
+  <div class="tutorial-panel tutorial-panel--top" data-panel="top"></div>
+  <div class="tutorial-panel tutorial-panel--right" data-panel="right"></div>
+  <div class="tutorial-panel tutorial-panel--bottom" data-panel="bottom"></div>
+  <div class="tutorial-panel tutorial-panel--left" data-panel="left"></div>
+  <div class="tutorial-highlight" data-tutorial-highlight></div>
+  <div class="tutorial-tooltip" data-tutorial-tooltip>
+    <button class="tutorial-tooltip__close" data-tutorial-close aria-label="Cerrar tutorial">&times;</button>
+    <h3 id="tutorial-title" class="tutorial-tooltip__title">Desplazamiento autom&aacute;tico</h3>
+    <p class="tutorial-tooltip__subtitle">Despl&aacute;zate por la letra sin usar las manos</p>
+    <ul class="tutorial-tooltip__list">
+      <li><strong>&#9654; Play / &#9208; Pausa</strong> &mdash; inicia y detiene el scroll autom&aacute;tico</li>
+      <li><strong>1x a 5x</strong> &mdash; ajusta la velocidad de desplazamiento</li>
+      <li><strong>Tecla Espacio</strong> &mdash; atajo para reproducir o pausar</li>
+      <li>Se detiene autom&aacute;ticamente al llegar al final de la letra</li>
+      <li>Si haces scroll manual, el autoscroll se pausa moment&aacute;neamente</li>
+    </ul>
+    <button class="tutorial-tooltip__action" data-tutorial-action>&iexcl;Entendido!</button>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    var STORAGE_KEY = 'ag_tutorial_autoscroll_visto';
+    var TUTORIAL_ID = 'tutorial-autoscroll';
+    var isOpen = false;
+    var debounceTimer = null;
+    var clickGuard = false;
+    var rafId = null;
+
+    function getElements() {
+      var c = document.getElementById(TUTORIAL_ID);
+      if (!c) return null;
+      return {
+        container: c,
+        topPanel: c.querySelector('[data-panel="top"]'),
+        rightPanel: c.querySelector('[data-panel="right"]'),
+        bottomPanel: c.querySelector('[data-panel="bottom"]'),
+        leftPanel: c.querySelector('[data-panel="left"]'),
+        highlight: c.querySelector('[data-tutorial-highlight]'),
+        tooltip: c.querySelector('[data-tutorial-tooltip]'),
+        closeBtn: c.querySelector('[data-tutorial-close]'),
+        actionBtn: c.querySelector('[data-tutorial-action]'),
+      };
+    }
+
+    function getFocusableElements(els) {
+      if (!els || !els.tooltip) return [];
+      var focusable = els.tooltip.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      return Array.prototype.filter.call(focusable, function(el) {
+        return el.offsetWidth > 0 || el.offsetHeight > 0 || el === el.ownerDocument.activeElement;
+      });
+    }
+
+    function trapFocus(e, els) {
+      var focusable = getFocusableElements(els);
+      if (focusable.length === 0) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    }
+
+    function positionCutout(targetEl) {
+      var els = getElements();
+      if (!els) return;
+      var rect = targetEl.getBoundingClientRect();
+      var vw = document.documentElement.clientWidth;
+      var vh = document.documentElement.clientHeight;
+
+      els.topPanel.style.cssText = 'top:0;left:0;width:100%;height:' + rect.top + 'px';
+      els.bottomPanel.style.cssText = 'top:' + rect.bottom + 'px;left:0;width:100%;height:' + (vh - rect.bottom) + 'px';
+      els.leftPanel.style.cssText = 'top:' + rect.top + 'px;left:0;width:' + rect.left + 'px;height:' + rect.height + 'px';
+      els.rightPanel.style.cssText = 'top:' + rect.top + 'px;left:' + rect.right + 'px;width:' + (vw - rect.right) + 'px;height:' + rect.height + 'px';
+      els.highlight.style.cssText = 'top:' + rect.top + 'px;left:' + rect.left + 'px;width:' + rect.width + 'px;height:' + rect.height + 'px';
+    }
+
+    function positionTooltip(targetEl) {
+      var els = getElements();
+      if (!els) return;
+      var tip = els.tooltip;
+      var isMobile = window.innerWidth < 640;
+      if (isMobile) {
+        tip.style.cssText = 'top:50%;left:50%;transform:translate(-50%,-50%);right:auto;bottom:auto';
+      } else {
+        var rect = targetEl.getBoundingClientRect();
+        var vw = document.documentElement.clientWidth;
+        var vh = document.documentElement.clientHeight;
+        var tw = Math.min(320, vw - 32);
+        var leftPos = rect.left - tw - 16;
+        if (leftPos < 16) leftPos = rect.right + 16;
+        if (leftPos + tw > vw - 16) leftPos = Math.max(16, vw - tw - 16);
+        var th = tip.offsetHeight || 320;
+        var topPos = rect.top + (rect.height / 2) - (th / 2);
+        if (topPos < 16) topPos = 16;
+        if (topPos + th > vh - 16) topPos = vh - th - 16;
+        tip.style.cssText = 'left:' + leftPos + 'px;top:' + topPos + 'px;transform:none;right:auto;bottom:auto';
+      }
+    }
+
+    function pushAnalytics(eventName) {
+      try {
+        if (window.dataLayer && Array.isArray(window.dataLayer)) {
+          window.dataLayer.push({ event: eventName });
+        }
+      } catch (e) {}
+    }
+
+    function showTutorial(targetEl) {
+      if (isOpen) return;
+      if (window.__tutorialAutoscrollActive) return;
+      window.__tutorialAutoscrollActive = true;
+      isOpen = true;
+
+      var els = getElements();
+      if (!els) {
+        isOpen = false;
+        window.__tutorialAutoscrollActive = false;
+        return;
+      }
+
+      els.container.classList.add('tutorial-backdrop--visible');
+      els.container.setAttribute('aria-hidden', 'false');
+
+      positionCutout(targetEl);
+      positionTooltip(targetEl);
+
+      requestAnimationFrame(function() {
+        els.tooltip.classList.add('tutorial-tooltip--visible');
+        var focusable = getFocusableElements(els);
+        if (focusable.length > 0) {
+          focusable[0].focus();
+        }
+      });
+
+      pushAnalytics('tutorial_autoscroll_mostrado');
+    }
+
+    function closeTutorial() {
+      if (clickGuard) return;
+      clickGuard = true;
+      setTimeout(function() { clickGuard = false; }, 300);
+
+      if (!isOpen) return;
+      var els = getElements();
+      if (!els) return;
+
+      els.tooltip.classList.remove('tutorial-tooltip--visible');
+
+      setTimeout(function() {
+        els.container.classList.remove('tutorial-backdrop--visible');
+        els.container.setAttribute('aria-hidden', 'true');
+        isOpen = false;
+        window.__tutorialAutoscrollActive = false;
+
+        try { localStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
+
+        window.dispatchEvent(new CustomEvent('ag:tutorial-completed'));
+        pushAnalytics('tutorial_autoscroll_cerrado');
+
+        var helpBtn = document.querySelector('[data-tutorial-help]');
+        if (helpBtn) helpBtn.focus();
+      }, 300);
+    }
+
+    function initTutorial() {
+      try {
+        var article = document.querySelector('.acorde-card');
+        if (!article) return;
+        var wrapper = article.querySelector('.autoscroll-wrapper');
+        if (!wrapper) return;
+
+        var seen = false;
+        try { seen = localStorage.getItem(STORAGE_KEY) === 'true'; } catch (e) {}
+
+        if (!seen) {
+          showTutorial(wrapper);
+        }
+      } catch (e) {}
+    }
+
+    function handleHelpClick(e) {
+      var btn = e.target.closest('[data-tutorial-help]');
+      if (!btn) return;
+      e.preventDefault();
+      var article = btn.closest('.acorde-card');
+      if (!article) return;
+      var wrapper = article.querySelector('.autoscroll-wrapper');
+      if (!wrapper) return;
+
+      if (!isOpen) {
+        showTutorial(wrapper);
+        pushAnalytics('tutorial_autoscroll_reabierto');
+      }
+    }
+
+    function setupEvents() {
+      var els = getElements();
+      if (!els) return;
+
+      els.closeBtn && els.closeBtn.addEventListener('click', closeTutorial);
+      els.actionBtn && els.actionBtn.addEventListener('click', closeTutorial);
+
+      els.container.addEventListener('click', function(e) {
+        if (e.target === els.container) {
+          closeTutorial();
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isOpen) {
+          e.preventDefault();
+          closeTutorial();
+        }
+        if (isOpen) {
+          trapFocus(e, els);
+        }
+      });
+
+      document.addEventListener('click', handleHelpClick);
+
+      function repositionOnScroll() {
+        if (!isOpen) return;
+        if (rafId) return;
+        rafId = requestAnimationFrame(function() {
+          rafId = null;
+          var wrapper = document.querySelector('.autoscroll-wrapper');
+          if (wrapper) positionCutout(wrapper);
+        });
+      }
+
+      window.addEventListener('resize', repositionOnScroll, { passive: true });
+      window.addEventListener('scroll', repositionOnScroll, { passive: true });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() { setupEvents(); initTutorial(); });
+    } else {
+      setupEvents();
+      initTutorial();
+    }
+
+    document.addEventListener('astro:before-swap', function() {
+      if (isOpen) closeTutorial();
+      window.__tutorialAutoscrollActive = false;
+    });
+
+    document.addEventListener('astro:page-load', initTutorial);
+  })();
+</script>
+
+<style>
+  .tutorial-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    pointer-events: none;
+    display: none;
+  }
+
+  .tutorial-backdrop--visible {
+    display: block;
+  }
+
+  .tutorial-panel {
+    position: fixed;
+    z-index: 10001;
+    background: rgba(0, 0, 0, 0.55);
+    pointer-events: auto;
+  }
+
+  .tutorial-highlight {
+    position: fixed;
+    z-index: 10001;
+    border: 2px solid var(--primary-contrast-color);
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(252, 163, 17, 0.3);
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+
+  .tutorial-tooltip {
+    position: fixed;
+    z-index: 10002;
+    background: var(--card-background-color, #fff);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 320px;
+    width: max-content;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: auto;
+    outline: none;
+  }
+
+  .tutorial-tooltip--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tutorial-tooltip__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--text-color, #222);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+  }
+
+  .tutorial-tooltip__close:hover {
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  .tutorial-tooltip__title {
+    margin: 0 0 4px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary-color, #000);
+    padding-right: 24px;
+  }
+
+  .tutorial-tooltip__subtitle {
+    margin: 0 0 12px;
+    font-size: 0.875rem;
+    color: var(--secondary-color, #14213d);
+    line-height: 1.4;
+  }
+
+  .tutorial-tooltip__list {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-color, #222);
+  }
+
+  .tutorial-tooltip__list li {
+    padding: 2px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .tutorial-tooltip__list li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--primary-contrast-color, #fca311);
+  }
+
+  .tutorial-tooltip__action {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(145deg, var(--secondary-color, #14213d) 0%, var(--primary-color, #000) 100%);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    font-family: inherit;
+  }
+
+  .tutorial-tooltip__action:hover {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 640px) {
+    .tutorial-tooltip {
+      max-width: 280px;
+      padding: 16px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tutorial-tooltip {
+      transition: none;
+    }
+  }
+</style>

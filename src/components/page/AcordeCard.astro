@@ -4,6 +4,7 @@ import { Icon } from 'astro-icon/components';
 import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
 import { Image } from 'astro:assets';
 import RecomendacionInline from './RecomendacionInline.astro';
+import TutorialAutoscroll from './TutorialAutoscroll.astro';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -108,7 +109,26 @@ const headingId = `acorde-${slug}`;
       <span>{cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
 
-    <Content />
+    <div class='acorde-content'>
+      <TutorialAutoscroll />
+      <div class='autoscroll-wrapper'>
+        <button class='autoscroll-help-btn' data-tutorial-help aria-label='Ayuda sobre el autoscroll' type='button'>?</button>
+        <button class='autoscroll-btn play-btn' aria-label='Iniciar autoscroll'>
+          <svg style='position: relative; left: 1px;' xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='var(--primary-contrast-color)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='5 3 19 12 5 21 5 3'></polygon></svg>
+        </button>
+        <button class='autoscroll-btn pause-btn' aria-label='Pausar autoscroll'>
+          <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='var(--primary-contrast-color)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='6' y='4' width='4' height='16'></rect><rect x='14' y='4' width='4' height='16'></rect></svg>
+        </button>
+        <div class='speed-options'>
+          <button class='speed-btn' data-speed='1'>1x</button>
+          <button class='speed-btn active' data-speed='2'>2x</button>
+          <button class='speed-btn' data-speed='3'>3x</button>
+          <button class='speed-btn' data-speed='4'>4x</button>
+          <button class='speed-btn' data-speed='5'>5x</button>
+        </div>
+      </div>
+      <Content />
+    </div>
   </section>
 </article>
 
@@ -248,11 +268,13 @@ const headingId = `acorde-${slug}`;
   }
 
   .acorde-content {
-    padding: 0;
-    display: grid;
-    place-items: center;
+    position: relative;
+    padding: 16px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 16px;
-    margin-top: 8px;
+    width: 100%;
   }
 
   .acorde-meta {
@@ -272,108 +294,348 @@ const headingId = `acorde-${slug}`;
     word-spacing: -0.3px;
     font-size: 0.95rem;
     line-height: 1.25rem;
+    width: 100%;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    position: relative;
 
-    & :global(a) {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+& :global(a) {
       color: var(--acorde-color);
       position: relative;
       left: 7px;
     }
   }
 
-  @media (min-width: 640px) and (max-width: 1023.98px) {
-    article {
-      max-width: 500px;
-    }
+  .autoscroll-wrapper {
+    position: absolute;
+    top: -10px;
+    right: -6px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    min-width: 40px;
+    background: transparent;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
   }
 
-  @media (min-width: 1024px) {
-    article {
-      max-width: 550px;
-    }
+  .autoscroll-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(145deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s ease, transform 0.2s ease, box-shadow 0.5s ease;
+    box-shadow: 0 2px 8px rgba(59, 90, 100, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    order: -1;
+    position: relative;
+    left: 1px;
   }
 
-  @media (min-width: 1700px) {
-    article {
-      max-width: 600px;
-    }
+  .autoscroll-btn:hover {
+    transform: scale(1.08);
   }
 
-  @media (max-width: 780px) {
-    header {
-      gap: 16px;
-    }
+  .autoscroll-btn:active {
+    transform: scale(0.95);
+  }
+
+  .autoscroll-btn svg {
+    width: 16px;
+    height: 16px;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+  }
+
+  .pause-btn {
+    display: none;
+  }
+
+  .autoscroll-wrapper .speed-options {
+    gap: 2px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease-in-out;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .autoscroll-wrapper.playing {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 12px rgba(59, 90, 100, 0.15);
+  }
+
+  .autoscroll-wrapper.playing .speed-options {
+    max-height: 200px;
+    background: transparent;
+  }
+
+  .autoscroll-wrapper.playing .play-btn {
+    display: none;
+  }
+
+  .autoscroll-wrapper.playing .pause-btn {
+    display: flex;
+  }
+
+  .autoscroll-wrapper .play-btn {
+    display: flex;
+  }
+
+  .autoscroll-help-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid var(--secondary-color);
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    order: -2;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .autoscroll-help-btn:hover {
+    background: var(--secondary-color);
+    color: #fff;
+  }
+
+  .speed-btn {
+    padding: 2px 6px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 0.65rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .speed-btn:hover {
+    background: rgba(20, 33, 61, 0.12);
+    color: var(--primary-color);
+  }
+
+  .speed-btn.active {
+    background: linear-gradient(145deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: #fff;
+    box-shadow: 0 1px 4px rgba(20, 33, 61, 0.3);
   }
 
   @media (max-width: 640px) {
-    header {
-      flex-direction: column;
-      gap: 8px;
-    }
-    .autores {
-      font-size: 0.9rem;
+    .autoscroll-btn {
+      width: 30px;
+      height: 30px;
     }
 
-    .year {
-      font-size: 1.1rem;
+    .autoscroll-btn svg {
+      width: 16px;
+      height: 16px;
     }
 
-    figure {
-      max-width: 340px;
-      height: 100%;
-      width: 100%;
-      margin: 8px auto auto auto;
-
-      & img {
-        min-height: 150px;
-        max-height: 170px;
-        /* width: 250px;
-        max-height: 200px;
-        max-height: 170px;
-          /* min-height: 170px; */
-      }
+    .speed-btn {
+      padding: 2px 8px;
+      font-size: 0.6rem;
     }
 
-    h2::after {
-      height: 3px;
-    }
-
-    figcaption {
-      font-size: 13px;
-      padding: 4px 8px;
-    }
-
-    .acorde-meta {
-      & svg {
-        width: 16px;
-        height: 16px;
-      }
-
-      font-size: 0.9rem;
+    .autoscroll-wrapper {
+      top: -20px;
     }
   }
 
-  @media (max-width: 480px) {
-    .acorde-content :global(pre) {
-      line-height: 1.41rem;
-      /* font-size: 1rem; */
-    }
-
-    figure {
-      max-width: 240px;
-    }
+  .acorde-content :global(pre.scrolling) {
+    max-height: 85vh;
   }
 
-  /* @media (max-width: 392px) {
-    .acorde-content :global(pre) {
-      font-size: 0.73rem;
-      line-height: 1.1rem;
+  @media (max-width: 640px) {
+    .acorde-content :global(pre.scrolling) {
+      max-height: 70vh;
     }
   }
-
-  @media (max-width: 367px) {
-    .acorde-content :global(pre) {
-      font-size: 0.7rem;
-      line-height: 1rem;
-    }
-  } */
 </style>
+
+<script is:inline>
+  (function() {
+    const speeds = { 1: 0.4, 2: 0.8, 3: 1.25, 4: 2, 5: 3.25 };
+    let currentSpeed = 2;
+    let isPlaying = false;
+    let animationFrameId = null;
+    let lastScrollTime = 0;
+    let controlsContainer = null;
+    let preElement = null;
+    let isUserScrolling = false;
+    let userScrollTimeout = null;
+    let initialized = false;
+
+    function initAutoscroll() {
+      if (initialized) return;
+      initialized = true;
+
+      const article = document.querySelector('.acorde-card');
+      if (!article) return;
+
+      controlsContainer = article.querySelector('.autoscroll-wrapper');
+      const playBtn = article.querySelector('.play-btn');
+      const pauseBtn = article.querySelector('.pause-btn');
+      const speedBtns = article.querySelectorAll('.speed-btn');
+      const speedOptions = article.querySelector('.speed-options');
+
+      const contentArea = article.querySelector('.acorde-content');
+      preElement = contentArea?.querySelector('pre');
+      if (!preElement) return;
+
+      if (playBtn) {
+        playBtn.addEventListener('click', function() {
+          startAutoscroll(speedOptions, playBtn, pauseBtn);
+        });
+      }
+
+      if (pauseBtn) {
+        pauseBtn.addEventListener('click', function() {
+          stopAutoscroll(speedOptions, playBtn, pauseBtn);
+        });
+      }
+
+      speedBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          speedBtns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          currentSpeed = parseInt(btn.getAttribute('data-speed'), 10);
+          if (isPlaying) {
+            restartAutoscroll(speedOptions, playBtn, pauseBtn);
+          }
+        });
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.code === 'Space' && e.target === document.body) {
+          e.preventDefault();
+          if (isPlaying) {
+            stopAutoscroll(speedOptions, playBtn, pauseBtn);
+          } else {
+            startAutoscroll(speedOptions, playBtn, pauseBtn);
+          }
+        }
+      });
+
+      if (preElement) {
+        preElement.addEventListener('scroll', function() {
+          if (isPlaying) {
+            isUserScrolling = true;
+            clearTimeout(userScrollTimeout);
+            userScrollTimeout = setTimeout(function() {
+              isUserScrolling = false;
+            }, 300);
+          }
+        });
+
+        var contentParent = preElement.parentElement;
+        if (contentParent) {
+          contentParent.addEventListener('scroll', function() {
+            if (isPlaying && !isUserScrolling) {
+              if (preElement.scrollTop + preElement.clientHeight >= preElement.scrollHeight - 5) {
+                stopAutoscroll();
+              }
+            }
+          });
+        }
+      }
+    }
+
+    function animateScroll(timestamp) {
+      if (!preElement || !isPlaying || isUserScrolling) {
+        animationFrameId = requestAnimationFrame(animateScroll);
+        return;
+      }
+
+      if (!lastScrollTime) lastScrollTime = timestamp;
+      const elapsed = timestamp - lastScrollTime;
+
+      if (elapsed >= 8) {
+        const speed = speeds[currentSpeed];
+        const newScrollTop = preElement.scrollTop + speed;
+        if (newScrollTop >= preElement.scrollHeight - preElement.clientHeight) {
+          stopAutoscroll();
+          return;
+        } else {
+          preElement.scrollTop = newScrollTop;
+        }
+        lastScrollTime = timestamp;
+      }
+
+      animationFrameId = requestAnimationFrame(animateScroll);
+    }
+
+    function startAutoscroll(speedOptions, playBtn, pauseBtn) {
+      if (controlsContainer) {
+        controlsContainer.classList.add('playing');
+      }
+      isPlaying = true;
+      lastScrollTime = 0;
+
+      if (preElement) {
+        preElement.classList.add('scrolling');
+        animationFrameId = requestAnimationFrame(animateScroll);
+      }
+    }
+
+    function stopAutoscroll(speedOptions, playBtn, pauseBtn) {
+      isPlaying = false;
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+      if (controlsContainer) {
+        controlsContainer.classList.remove('playing');
+      }
+      if (preElement) {
+        preElement.classList.remove('scrolling');
+      }
+    }
+
+    function restartAutoscroll(speedOptions, playBtn, pauseBtn) {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+      startAutoscroll(speedOptions, playBtn, pauseBtn);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAutoscroll);
+    } else {
+      initAutoscroll();
+    }
+
+    document.addEventListener('astro:before-swap', function() {
+      initialized = false;
+    });
+
+    document.addEventListener('astro:page-load', initAutoscroll);
+  })();
+</script>
