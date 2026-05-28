@@ -86,7 +86,7 @@
       if (!els) return;
       var rect = targetEl.getBoundingClientRect();
       var vw = document.documentElement.clientWidth;
-      var vh = document.documentElement.clientHeight;
+      var vh = Math.max(document.documentElement.clientHeight, window.innerHeight);
 
       els.topPanel.style.cssText = 'top:0;left:0;width:100%;height:' + rect.top + 'px';
       els.bottomPanel.style.cssText = 'top:' + rect.bottom + 'px;left:0;width:100%;height:' + (vh - rect.bottom) + 'px';
@@ -105,7 +105,7 @@
       } else {
         var rect = targetEl.getBoundingClientRect();
         var vw = document.documentElement.clientWidth;
-        var vh = document.documentElement.clientHeight;
+        var vh = Math.max(document.documentElement.clientHeight, window.innerHeight);
         var tw = Math.min(320, vw - 32);
         var leftPos = rect.left - tw - 16;
         if (leftPos < 16) leftPos = rect.right + 16;
@@ -251,6 +251,9 @@
 
       window.addEventListener('resize', repositionOnScroll, { passive: true });
       window.addEventListener('scroll', repositionOnScroll, { passive: true });
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', repositionOnScroll, { passive: true });
+      }
     }
 
     if (document.readyState === 'loading') {
