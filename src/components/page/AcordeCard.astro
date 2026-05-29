@@ -488,8 +488,6 @@ const headingId = `acorde-${slug}`;
     let lastScrollTime = 0;
     let controlsContainer = null;
     let preElement = null;
-    let isUserScrolling = false;
-    let userScrollTimeout = null;
     let initialized = false;
 
     function initAutoscroll() {
@@ -543,32 +541,20 @@ const headingId = `acorde-${slug}`;
         }
       });
 
-      if (preElement) {
-        preElement.addEventListener('scroll', function() {
+      var contentParent = preElement.parentElement;
+      if (contentParent) {
+        contentParent.addEventListener('scroll', function() {
           if (isPlaying) {
-            isUserScrolling = true;
-            clearTimeout(userScrollTimeout);
-            userScrollTimeout = setTimeout(function() {
-              isUserScrolling = false;
-            }, 300);
+            if (preElement.scrollTop + preElement.clientHeight >= preElement.scrollHeight - 5) {
+              stopAutoscroll();
+            }
           }
         });
-
-        var contentParent = preElement.parentElement;
-        if (contentParent) {
-          contentParent.addEventListener('scroll', function() {
-            if (isPlaying && !isUserScrolling) {
-              if (preElement.scrollTop + preElement.clientHeight >= preElement.scrollHeight - 5) {
-                stopAutoscroll();
-              }
-            }
-          });
-        }
       }
     }
 
     function animateScroll(timestamp) {
-      if (!preElement || !isPlaying || isUserScrolling) {
+      if (!preElement || !isPlaying) {
         animationFrameId = requestAnimationFrame(animateScroll);
         return;
       }
