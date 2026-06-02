@@ -481,11 +481,12 @@ const headingId = `acorde-${slug}`;
 
 <script is:inline>
   (function() {
-    const speeds = { 1: 0.4, 2: 0.8, 3: 1.25, 4: 2, 5: 3.25 };
+    const speeds = { 1: 3, 2: 6, 3: 10, 4: 15, 5: 20 };
     let currentSpeed = 2;
     let isPlaying = false;
     let animationFrameId = null;
     let lastScrollTime = 0;
+    let scrollAccumulator = 0;
     let controlsContainer = null;
     let preElement = null;
     let initialized = false;
@@ -561,17 +562,21 @@ const headingId = `acorde-${slug}`;
 
       if (!lastScrollTime) lastScrollTime = timestamp;
       const elapsed = timestamp - lastScrollTime;
+      lastScrollTime = timestamp;
 
-      if (elapsed >= 8) {
-        const speed = speeds[currentSpeed];
-        const newScrollTop = preElement.scrollTop + speed;
+      const pxPerSec = speeds[currentSpeed];
+      scrollAccumulator += (pxPerSec * elapsed) / 1000;
+
+      if (scrollAccumulator >= 1) {
+        const wholePixels = Math.floor(scrollAccumulator);
+        const newScrollTop = preElement.scrollTop + wholePixels;
         if (newScrollTop >= preElement.scrollHeight - preElement.clientHeight) {
+          scrollAccumulator = 0;
           stopAutoscroll();
           return;
-        } else {
-          preElement.scrollTop = newScrollTop;
         }
-        lastScrollTime = timestamp;
+        preElement.scrollTop = newScrollTop;
+        scrollAccumulator -= wholePixels;
       }
 
       animationFrameId = requestAnimationFrame(animateScroll);
@@ -583,6 +588,7 @@ const headingId = `acorde-${slug}`;
       }
       isPlaying = true;
       lastScrollTime = 0;
+      scrollAccumulator = 0;
 
       if (preElement) {
         preElement.classList.add('scrolling');
