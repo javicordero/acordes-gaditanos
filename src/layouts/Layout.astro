@@ -16,6 +16,8 @@ interface Props {
   noindex?: boolean;
   keywords?: string;
   noInPagePush?: boolean;
+  articlePublishedTime?: string;
+  articleAuthors?: string[];
 }
 
 const {
@@ -25,6 +27,8 @@ const {
   noindex = false,
   keywords = 'carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval',
   noInPagePush = false,
+  articlePublishedTime,
+  articleAuthors,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -76,6 +80,10 @@ const imageURL = new URL(image, Astro.site);
     <meta property='og:image' content={imageURL} />
     <meta property='og:locale' content='es_ES' />
     <meta property='og:site_name' content='Acordes Gaditanos' />
+    {articlePublishedTime && <meta property='article:published_time' content={articlePublishedTime} />}
+    {articleAuthors?.map((author) => (
+      <meta property='article:author' content={author} />
+    ))}
 
     <!-- Twitter -->
     <meta name='twitter:card' content='summary_large_image' />

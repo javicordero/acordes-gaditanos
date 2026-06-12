@@ -136,5 +136,5 @@ autorCover: Nombre (opcional)
 
 <!-- SPECKIT START -->
 For additional context about the active feature, read the plan at
-`specs/001-tutorial-autoscroll/plan.md`
+`specs/002-optimizacion-integral/plan.md`
 <!-- SPECKIT END -->

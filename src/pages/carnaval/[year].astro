@@ -32,9 +32,21 @@ const acordesOrdenados = acordes.sort((a, b) => {
 
 const title = `Carnaval de Cádiz ${year} - Acordes de guitarra`;
 const description = `Todos los acordes de guitarra del Carnaval de Cádiz ${year}. Encuentra acordes de chirigotas, comparsas, cuartetos y coros del año ${year}.`;
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: acordesOrdenados.map((a, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${a.data.pieza} - ${a.data.agrupacion}`,
+    item: `${Astro.site}acordes/${a.slug}`,
+  })),
+};
 ---
 
 <Layout title={title} description={description}>
+  <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
   <Breadcrumb year={year} />
   <div class='main-container'>
     <section>
