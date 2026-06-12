@@ -44,8 +44,8 @@ Cada subagente lee las instrucciones detalladas desde `.opencode/commands/specki
 - `speckit.taskstoissues` — requiere GitHub MCP (no configurado)
 - `speckit.git.*` — hooks git ya están como skills en `.agents/skills/speckit-git-*`
 
-### Especificaciones legado
-- `.specs/01-*` y `02-*` se mantienen como legado
+### Especificaciones
+- Las specs activas están en `specs/NNN-feature/`
 
 ## Architecture
 
