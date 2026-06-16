@@ -73,7 +73,18 @@ const autores = defineCollection({
     })),
 });
 
+const donaciones = defineCollection({
+  schema: z.object({
+    donaciones: z.array(z.object({
+      fecha: z.string(),
+      importe: z.number(),
+      donante: z.string().optional(),
+    })),
+  }),
+});
+
 export const collections = {
   acordes: acordes,
   autores: autores,
+  donaciones: donaciones,
 };
