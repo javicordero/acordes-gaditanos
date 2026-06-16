@@ -136,5 +136,5 @@ autorCover: Nombre (opcional)
 
 <!-- SPECKIT START -->
 For additional context about the active feature, read the plan at
-`specs/002-optimizacion-integral/plan.md`
+`specs/003-mejora-donaciones/plan.md`
 <!-- SPECKIT END -->

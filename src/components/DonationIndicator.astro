@@ -1,0 +1,312 @@
+---
+import { getCollection } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+
+export interface Props {
+  variant?: 'compact' | 'timeline'
+  class?: string
+  messageC?: string
+  listStyle?: 'inline' | 'destacado' | 'pills'
+}
+
+const { variant = 'compact', class: className, messageC, listStyle = 'inline' } = Astro.props
+
+const [datos] = await getCollection('donaciones')
+const donaciones = [...datos.data.donaciones]
+  .sort((a, b) => b.fecha.split('/').reverse().join('').localeCompare(a.fecha.split('/').reverse().join('')))
+
+const totalDonantes = donaciones.length
+const maxNombres = variant === 'compact' ? 3 : 10
+const nombres = donaciones.slice(0, maxNombres).map(d => d.donante || 'Anónimo')
+const restantes = totalDonantes - nombres.length
+---
+
+<section class:list={['donation-indicator', variant, className]} aria-label='Indicador de donaciones'>
+  {totalDonantes === 0 ? (
+    <div class='donation-indicator--empty'>
+      <p>Se el primero en apoyar el proyecto</p>
+    </div>
+  ) : (
+    <>
+      <div class='donation-indicator__widget'>
+        {messageC && <p class='donation-indicator__message-c'>{messageC}</p>}
+        <div class='donation-indicator__count'>{totalDonantes} <span class='donation-indicator__count-label'>personas ya han colaborado</span></div>
+        {listStyle === 'destacado' && (
+          <>
+            <div class='donation-indicator__destacado'>
+              <span class='destacado-label'>Último</span>
+              <span class='destacado-name'>{nombres[0]}</span>
+            </div>
+            {nombres.slice(1).length > 0 && (
+              <p class='donation-indicator__names donation-indicator__names--rest'>
+                {nombres.slice(1).join(' · ')}
+                {restantes > 0 && <span class='donation-indicator__name-more'> y {restantes} más</span>}
+              </p>
+            )}
+          </>
+        )}
+        {listStyle === 'pills' && (
+          <div class='donation-indicator__pills'>
+            {nombres.map(name => (
+              <span class='pill'>
+                <svg class='pill__icon' width='12' height='14' viewBox='0 0 24 28' fill='currentColor'><path d='M4 8h16v9a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8z'/><path d='M10 2v3M14 2v3' stroke='currentColor' stroke-width='2' fill='none'/></svg>
+                {name}
+              </span>
+            ))}
+            {restantes > 0 && <span class='pill pill--more'>+{restantes}</span>}
+          </div>
+        )}
+        {listStyle === 'inline' && (
+          <p class='donation-indicator__names'>
+            {nombres.join(' · ')}
+            {restantes > 0 && <span class='donation-indicator__name-more'> y {restantes} más</span>}
+          </p>
+        )}
+        <a href='https://www.buymeacoffee.com/AcordesGaditanos' target='_blank' rel='noopener noreferrer' class='btn' data-ga-event='support_bmc_donation_indicator' data-ga-params='{"method":"buymeacoffee","location":"donation_indicator"}'>
+          <span class='btn__icon'>
+            <Icon name='buy-me-a-coffee' width={20} height={28} />
+          </span>
+          <span class='btn__text'>Apoyar Acordes Gaditanos</span>
+        </a>
+      </div>
+    </>
+  )}
+</section>
+
+<style>
+  .donation-indicator {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .donation-indicator__widget {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 16px;
+    background: #fafafa;
+  }
+
+  :global(.compact) .donation-indicator__widget {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    background: none;
+  }
+
+  :global(.timeline) .donation-indicator__widget {
+    width: 100%;
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.2);
+
+    @media (max-width: 640px) {
+      padding: 12px;
+    }
+  }
+
+  .donation-indicator__message-c {
+    font-size: 0.78rem;
+    color: #888;
+    margin: 0 0 6px;
+    line-height: 1.3;
+  }
+
+  :global(.timeline) .donation-indicator__message-c {
+    font-size: 0.9rem;
+    color: #fff;
+  }
+
+  .donation-indicator__count {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--acorde-color);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .donation-indicator__count-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  :global(.timeline) .donation-indicator__count {
+    font-size: 1.6rem;
+    color: var(--primary-contrast-color);
+  }
+
+  :global(.timeline) .donation-indicator__count-label {
+    font-size: 0.85rem;
+    color: #fff;
+  }
+
+  .donation-indicator__names {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 12px;
+    line-height: 1.6;
+  }
+
+  :global(.timeline) .donation-indicator__names {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .donation-indicator__name-more {
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .donation-indicator__destacado {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .destacado-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+  }
+
+  .destacado-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--acorde-color);
+  }
+
+  :global(.timeline) .destacado-label {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  :global(.timeline) .destacado-name {
+    color: var(--primary-contrast-color);
+  }
+
+  .donation-indicator__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    color: var(--primary-contrast-color);
+    border: 1px solid rgba(252, 163, 17, 0.3);
+    background: transparent;
+  }
+
+  :global(.compact) .pill {
+    color: var(--acorde-color);
+    border-color: rgba(0, 68, 204, 0.3);
+  }
+
+  .pill__icon {
+    flex-shrink: 0;
+  }
+
+  .pill--more {
+    font-style: italic;
+    background: transparent;
+    color: #888;
+  }
+
+  :global(.timeline) .pill {
+    font-size: 0.9rem;
+    background: transparent;
+  }
+
+  :global(.timeline) .pill--more {
+    color: rgba(255, 255, 255, 0.6);
+    background: transparent;
+  }
+
+  .donation-indicator .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--card-background-color);
+    background-color: var(--acorde-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    min-height: 44px;
+    transition: all 0.3s ease;
+  }
+
+  .donation-indicator .btn:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .donation-indicator .btn__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    line-height: 1;
+  }
+
+  .donation-indicator .btn__icon :global(svg) {
+    width: 20px;
+    height: 28px;
+  }
+
+  .donation-indicator .btn__text {
+    font-size: 14px;
+    letter-spacing: 1.25px;
+  }
+
+  .donation-indicator--empty p {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0 0 12px;
+  }
+
+  :global(.timeline) .donation-indicator--empty p {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .donation-indicator:global(.compact) .btn,
+  .donation-indicator:global(.timeline) .btn {
+    width: 100%;
+  }
+
+  .donation-indicator:global(.timeline) .btn__text {
+    font-size: 16px;
+  }
+</style>
+
+<script>
+  function setupTracking() {
+    const trackableButtons = document.querySelectorAll('[data-ga-event]')
+    trackableButtons.forEach((button) => {
+      if (button.getAttribute('data-tracking-init')) return
+      button.setAttribute('data-tracking-init', 'true')
+
+      button.addEventListener('click', () => {
+        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted'
+        if (hasConsent && typeof gtag === 'function') {
+          const eventName = button.getAttribute('data-ga-event')
+          const eventParams = JSON.parse(button.getAttribute('data-ga-params') || '{}')
+          gtag('event', eventName, {
+            ...eventParams,
+            page_location: window.location.href,
+          })
+        }
+      })
+    })
+  }
+
+  document.addEventListener('astro:page-load', setupTracking)
+</script>
