@@ -522,6 +522,15 @@ const headingId = `acorde-${slug}`;
           speedBtns.forEach(function(b) { b.classList.remove('active'); });
           btn.classList.add('active');
           currentSpeed = parseInt(btn.getAttribute('data-speed'), 10);
+          try {
+            const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
+            if (hasConsent && typeof gtag === 'function') {
+              gtag('event', 'autoscroll_speed', {
+                speed: currentSpeed,
+                page_location: window.location.href,
+              });
+            }
+          } catch (e) {}
           if (isPlaying) {
             restartAutoscroll(speedOptions, playBtn, pauseBtn);
           }
@@ -585,6 +594,14 @@ const headingId = `acorde-${slug}`;
         controlsContainer.classList.add('playing');
       }
       isPlaying = true;
+      try {
+        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
+        if (hasConsent && typeof gtag === 'function') {
+          gtag('event', 'autoscroll_start', {
+            page_location: window.location.href,
+          });
+        }
+      } catch (e) {}
       lastScrollTime = 0;
       scrollAccumulator = 0;
 
@@ -595,6 +612,16 @@ const headingId = `acorde-${slug}`;
     }
 
     function stopAutoscroll(speedOptions, playBtn, pauseBtn) {
+      if (isPlaying) {
+        try {
+          const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
+          if (hasConsent && typeof gtag === 'function') {
+            gtag('event', 'autoscroll_stop', {
+              page_location: window.location.href,
+            });
+          }
+        } catch (e) {}
+      }
       isPlaying = false;
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
