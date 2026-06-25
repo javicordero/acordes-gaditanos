@@ -31,7 +31,7 @@ Pide, pide, pide, pídeme Tacita por esa boca,
 que este pobre chirigotero se quita lo ropa,
                                  <a>Re7</a>
 se quita la ropa y se queda encuero.
-                    <a>Do</a>              <a>Re7</a>       <a>Sol</a>                       
+                    <a>Do</a>              <a>Re7</a>       <a>Sol</a>
 Pídeme lo que tú quieras que to es poco para ti,
                                               <a>Re7</a>
 a esa boca de escollera quién se puede resistir,
