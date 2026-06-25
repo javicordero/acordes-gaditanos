@@ -20,7 +20,7 @@ Yo soy el caballero aquel
 que en la vida, ya lo ves hoy lo ha vuelto un agarrao
                       <a>Re7</a>
 un ruin, tacaño y usurero
-           <a>Do7</a>        <a>Re7</a>  <a>Sol</a>
+           <a>Do</a>        <a>Re7</a>  <a>Sol</a>
 que explotando amasa su dinero,
                                 <a>Re7</a>
 un tacaño que se muere por su tierra
