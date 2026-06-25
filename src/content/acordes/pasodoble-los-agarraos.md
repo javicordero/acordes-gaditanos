@@ -15,7 +15,6 @@ video: 'https://www.youtube.com/embed/Sipso0MhMpA'
 Mi barca en la playa amarré
                                             <a>Re7</a>
 y aquí me tiene otra vez, ladrillitos coloraos.
-
 Yo soy el caballero aquel
                                                  <a>Sol</a>
 que en la vida, ya lo ves hoy lo ha vuelto un agarrao
