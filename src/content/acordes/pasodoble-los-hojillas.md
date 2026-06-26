@@ -8,8 +8,7 @@ modalidad: Chirigota
 cejilla: 2
 img: https://i.ytimg.com/vi/f-YuPv-hcHs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBOXh_Kt3AbRsjnMI-ZOrVTwZGiug
 date: "29/06/2026"
-video: https://www.youtube.com/embed/I_yCwGqRNK8?si=7GnltCkd4vfVp8XR
-
+video: https://www.youtube.com/embed/lLiFQRsAEnk?si=oNgctKx6vzrNroEH
 
 ---
 <pre>
