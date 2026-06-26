@@ -6,10 +6,9 @@ musica: El Noly
 letra: Paco Cárdenas, Ramón Peñalver
 modalidad: Chirigota
 cejilla: 6
-img: https://i.ytimg.com/vi/DUbwOfJaXys/sddefault.jpg
+img: https://i.ytimg.com/vi/QeIQLEEy-WQ/hqdefault.jpg
 date: "26/06/2026"
-video: https://www.youtube.com/embed/HbvLetbZg8o?si=EavAVctio9NwPMPB
-
+video: https://www.youtube.com/embed/HbvLetbZg8o?si=nGqVJl1_C9dfh0Fw
 
 ---
 <pre>
