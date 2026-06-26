@@ -16,10 +16,10 @@ video: https://www.youtube.com/embed/tjEFpHydMwE?si=c8OFcZvZEwMMfBxs
 Por mucho que homenajeen a pasodobles y tanguillos,
                    <a>Re7</a>                   <a>Do</a>
 la chispa del Carnaval sólo prende al cantar
-     <a>Re7</a>         <a>Sol</a>   
-los buenos cuplecillos, 
+     <a>Re7</a>         <a>Sol</a> 
+los buenos cuplecillos,
                     <a>Re7</a>                         <a>Sol</a>
-los cuplecillos pitosos, cachondos y desvergonzados, 
+los cuplecillos pitosos, cachondos y desvergonzados,
                      <a>Re7</a>                <a>Do</a>
 que asumen la condición de hermanito menor
      <a>Re7</a>        <a>Sol</a>
