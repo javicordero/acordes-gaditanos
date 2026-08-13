@@ -265,5 +265,21 @@ const imageURL = new URL(image, Astro.site);
     <AnchoPreInit />
     <CookieBanner />
 
+    <script>
+      import { loadAdsense, hasAcceptedCookies } from '../lib/cookiesConsent';
+
+      function initAdsense() {
+        if (hasAcceptedCookies()) {
+          loadAdsense();
+        }
+      }
+
+      initAdsense();
+
+      window.addEventListener('ag:cookies-accepted', () => {
+        loadAdsense();
+      });
+    </script>
+
   </body>
 </html>

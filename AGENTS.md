@@ -84,7 +84,7 @@ Bendita suerte pal aficionao que más de un mes de
 Implementado en `src/components/page/AcordeCard.astro`. Activado por checkbox "Activar autoscroll". Velocidad regulable. Ver `AUTOSCROLL-FEATURE.md`.
 
 ### Redirects
-- `public/_redirects` — redirect 301 de `/ads.txt` (Netlify-compatible)
+- `public/ads.txt` — archivo estático de AdSense (`google.com, pub-3280015847198273, DIRECT, f08c47fec0942fa0`)
 - `public/redirects.json` — mapa de 300+ URLs legacy → nuevas rutas (usado client-side)
 - `public/redirects-from.json` — lista de URLs legacy
 
@@ -136,5 +136,5 @@ autorCover: Nombre (opcional)
 
 <!-- SPECKIT START -->
 For additional context about the active feature, read the plan at
-`specs/003-mejora-donaciones/plan.md`
+`specs/004-integracion-ezoic/plan.md`
 <!-- SPECKIT END -->
