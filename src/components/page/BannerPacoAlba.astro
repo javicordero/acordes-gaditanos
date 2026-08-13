@@ -227,10 +227,7 @@ import Image from 'astro/components/Image.astro';
 
     if (bmcButton) {
       bmcButton.addEventListener('click', () => {
-        // Comprobamos si el usuario aceptó cookies (tu clave es ag_cookie_consent)
-        const consent = localStorage.getItem('ag_cookie_consent');
-
-        if (consent === 'accepted' && typeof gtag === 'function') {
+        if (typeof gtag === 'function') {
           const eventName = bmcButton.getAttribute('data-ga-event');
           const params = JSON.parse(bmcButton.getAttribute('data-ga-params') || '{}');
 
@@ -253,9 +250,10 @@ import Image from 'astro/components/Image.astro';
     window.visualViewport.addEventListener('resize', setVh);
   }
 
-  // Se ejecuta en la primera carga y en cada navegación de Astro
-  document.addEventListener('astro:page-load', () => {
-    setVh();
+  // Se ejecuta en la carga de la página
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupGTM);
+  } else {
     setupGTM();
-  });
+  }
 </script>

@@ -568,7 +568,11 @@ import { Icon } from 'astro-icon/components';
     }
   }
 
-  document.addEventListener('astro:page-load', initHeader);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeader);
+  } else {
+    initHeader();
+  }
 
   // Limpiar filtro al volver al inicio
   function clearSearchOnHomeClick(e) {

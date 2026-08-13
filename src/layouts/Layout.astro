@@ -1,11 +1,9 @@
 ---
 import '../styles/global.css';
-import { ClientRouter } from 'astro:transitions';
 import ContactInit from '../components/utils/ContactInit.astro';
 import AnchoPreInit from '../components/utils/AnchoPreInit.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import CookieBanner from '../components/ads/CookieBanner.astro';
 import Anuncios from '../components/page/Anuncios.astro';
 
 interface Props {
@@ -175,41 +173,62 @@ const imageURL = new URL(image, Astro.site);
               window.dataLayer.push(arguments);
             }
 
-            // 1. Configuración de Consentimiento inicial
-            const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
-            
+            // Consent Mode v2: todo denegado hasta que el CMP de Google lo conceda
             gtag('consent', 'default', {
-              analytics_storage: hasConsent ? 'granted' : 'denied',
-              ad_storage: hasConsent ? 'granted' : 'denied',
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              analytics_storage: 'denied',
+              wait_for_update: 500,
+            });
+            gtag('set', 'ads_data_redaction', true);
+
+            // El CMP de Google (Privacy & messaging) es el gestor único de consentimiento
+            window.googlefc = window.googlefc || {};
+            window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+            window.googlefc.callbackQueue.push({
+              CONSENT_MODE_DATA_READY: () => {
+                try {
+                  const vals = window.googlefc.getGoogleConsentModeValues();
+                  const notDenied = (s) =>
+                    s !==
+                    window.googlefc.ConsentModePurposeStatusEnum
+                      .CONSENT_MODE_PURPOSE_STATUS_DENIED;
+                  gtag('consent', 'update', {
+                    ad_storage: notDenied(vals.adStoragePurposeConsentStatus)
+                      ? 'granted'
+                      : 'denied',
+                    analytics_storage: notDenied(vals.analyticsStoragePurposeConsentStatus)
+                      ? 'granted'
+                      : 'denied',
+                    ad_user_data: notDenied(vals.adUserDataPurposeConsentStatus)
+                      ? 'granted'
+                      : 'denied',
+                    ad_personalization: notDenied(vals.adPersonalizationPurposeConsentStatus)
+                      ? 'granted'
+                      : 'denied',
+                  });
+                } catch (e) {}
+              },
             });
 
-            // 2. Inicialización básica
+            // Inicialización básica
             gtag('js', new Date());
 
-            // 3. Función para enviar la visita de forma segura
+            // Enviar visita (Consent Mode decide si se bloquea o no)
             function sendPageView() {
-              if (localStorage.getItem('ag_cookie_consent') === 'accepted') {
-                gtag('config', 'G-CTX6DK49K4', {
-                  page_path: window.location.pathname,
-                });
-              }
+              gtag('config', 'G-CTX6DK49K4', {
+                page_path: window.location.pathname,
+                page_location: window.location.href,
+                page_title: document.title,
+              });
             }
 
-            // 4. Navegación con ClientRouter
-            document.addEventListener('astro:page-load', () => {
-              if (localStorage.getItem('ag_cookie_consent') === 'accepted') {
-                sendPageView();
-              }
-            });
-
-            // 5. Al aceptar el banner: concede permiso y envía visita inmediata
-            window.addEventListener('ag:cookies-accepted', () => {
-              gtag('consent', 'update', {
-                analytics_storage: 'granted',
-                ad_storage: 'granted',
-              });
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', sendPageView);
+            } else {
               sendPageView();
-            });
+            }
           </script>
 
           <script is:inline async src='https://www.googletagmanager.com/gtag/js?id=G-CTX6DK49K4'></script>
@@ -235,7 +254,7 @@ const imageURL = new URL(image, Astro.site);
     }
   };
 
-  document.addEventListener('astro:page-load', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     if (location.hostname !== "localhost") {
       registerVisit();
     }
@@ -244,8 +263,6 @@ const imageURL = new URL(image, Astro.site);
 
 <!-- End contador propio -->
     
-    <ClientRouter />
-
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -263,22 +280,19 @@ const imageURL = new URL(image, Astro.site);
     <Footer />
     <ContactInit />
     <AnchoPreInit />
-    <CookieBanner />
 
     <script>
-      import { loadAdsense, hasAcceptedCookies } from '../lib/cookiesConsent';
+      import { loadAdsense } from '../lib/cookiesConsent';
 
       function initAdsense() {
-        if (hasAcceptedCookies()) {
-          loadAdsense();
-        }
+        loadAdsense();
       }
 
-      initAdsense();
-
-      window.addEventListener('ag:cookies-accepted', () => {
-        loadAdsense();
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAdsense);
+      } else {
+        initAdsense();
+      }
     </script>
 
   </body>

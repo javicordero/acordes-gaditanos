@@ -24,8 +24,7 @@ const { inlineSheinData } = Astro.props;
       link.setAttribute('data-tracking-init', 'true');
 
       link.addEventListener('click', () => {
-        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
-        if (hasConsent && typeof gtag === 'function') {
+        if (typeof gtag === 'function') {
           const name = link.getAttribute('data-rec-name');
           gtag('event', 'shein_columna', {
             event_category: `shein_columna`,
@@ -36,7 +35,11 @@ const { inlineSheinData } = Astro.props;
     });
   }
 
-  document.addEventListener('astro:page-load', setupRecTracking);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupRecTracking);
+  } else {
+    setupRecTracking();
+  }
 </script>
 
 <style>

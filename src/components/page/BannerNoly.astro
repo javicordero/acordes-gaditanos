@@ -139,8 +139,4 @@ import DonationIndicator from '../DonationIndicator.astro';
   if (window.visualViewport && window.visualViewport.addEventListener) {
     window.visualViewport.addEventListener('resize', setVh);
   }
-
-  document.addEventListener('astro:page-load', () => {
-    setVh();
-  });
 </script>

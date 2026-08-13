@@ -523,8 +523,7 @@ const headingId = `acorde-${slug}`;
           btn.classList.add('active');
           currentSpeed = parseInt(btn.getAttribute('data-speed'), 10);
           try {
-            const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
-            if (hasConsent && typeof gtag === 'function') {
+            if (typeof gtag === 'function') {
               gtag('event', 'autoscroll_speed', {
                 speed: currentSpeed,
                 page_location: window.location.href,
@@ -595,8 +594,7 @@ const headingId = `acorde-${slug}`;
       }
       isPlaying = true;
       try {
-        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
-        if (hasConsent && typeof gtag === 'function') {
+        if (typeof gtag === 'function') {
           gtag('event', 'autoscroll_start', {
             page_location: window.location.href,
           });
@@ -614,8 +612,7 @@ const headingId = `acorde-${slug}`;
     function stopAutoscroll(speedOptions, playBtn, pauseBtn) {
       if (isPlaying) {
         try {
-          const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
-          if (hasConsent && typeof gtag === 'function') {
+          if (typeof gtag === 'function') {
             gtag('event', 'autoscroll_stop', {
               page_location: window.location.href,
             });
@@ -646,11 +643,5 @@ const headingId = `acorde-${slug}`;
     } else {
       initAutoscroll();
     }
-
-    document.addEventListener('astro:before-swap', function() {
-      initialized = false;
-    });
-
-    document.addEventListener('astro:page-load', initAutoscroll);
   })();
 </script>

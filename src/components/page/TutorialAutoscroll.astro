@@ -261,13 +261,6 @@
       setupEvents();
       initTutorial();
     }
-
-    document.addEventListener('astro:before-swap', function() {
-      if (isOpen) closeTutorial();
-      window.__tutorialAutoscrollActive = false;
-    });
-
-    document.addEventListener('astro:page-load', initTutorial);
   })();
 </script>
 

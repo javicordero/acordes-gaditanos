@@ -295,8 +295,7 @@ const restantes = totalDonantes - nombres.length
       button.setAttribute('data-tracking-init', 'true')
 
       button.addEventListener('click', () => {
-        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted'
-        if (hasConsent && typeof gtag === 'function') {
+        if (typeof gtag === 'function') {
           const eventName = button.getAttribute('data-ga-event')
           const eventParams = JSON.parse(button.getAttribute('data-ga-params') || '{}')
           gtag('event', eventName, {
@@ -308,5 +307,9 @@ const restantes = totalDonantes - nombres.length
     })
   }
 
-  document.addEventListener('astro:page-load', setupTracking)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupTracking)
+  } else {
+    setupTracking()
+  }
 </script>

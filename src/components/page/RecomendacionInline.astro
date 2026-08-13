@@ -98,8 +98,7 @@ const item = pool[Math.floor(Math.random() * pool.length)];
       link.setAttribute('data-tracking-init', 'true');
 
       link.addEventListener('click', () => {
-        const hasConsent = localStorage.getItem('ag_cookie_consent') === 'accepted';
-        if (hasConsent && typeof gtag === 'function') {
+        if (typeof gtag === 'function') {
           const name = link.getAttribute('data-rec-name');
           const type = link.getAttribute('data-rec-type');
           gtag('event', 'recomendacion_inline_click', {
@@ -111,7 +110,11 @@ const item = pool[Math.floor(Math.random() * pool.length)];
     });
   }
 
-  document.addEventListener('astro:page-load', setupRecTracking);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupRecTracking);
+  } else {
+    setupRecTracking();
+  }
 </script>
 
 <style>

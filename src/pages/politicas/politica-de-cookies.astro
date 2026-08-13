@@ -82,7 +82,7 @@ const cookiePolicySchema = {
         <p>
           <a
             href='/'
-            onclick="event.preventDefault(); window.dispatchEvent(new CustomEvent('ag:open-cookie-banner'));">
+            onclick="event.preventDefault(); if (window.googlefc && window.googlefc.showRevocationMessage) { window.googlefc.showRevocationMessage(); }">
             Cambiar preferencias de cookies
           </a>
         </p>
