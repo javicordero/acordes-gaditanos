@@ -39,13 +39,19 @@ let autores = await getCollection('autores');
     <!-- <AnunciateIndex /> -->
 
     <div class='section section--novedades'>
-      <Anuncio adSlot='6375589626' />
+      <div class='container-layout'>
+        <Anuncio adSlot='6375589626' />
+      </div>
       <CardsGroup year={'Novedades'} acordes={ultimos} />
-      <Anuncio adSlot='5536512643' />
+      <div class='container-layout'>
+        <Anuncio adSlot='5536512643' />
+      </div>
     </div>
     <div class='section section--colored'>
       <AutorCardsGroup autores={autores} />
-      <Anuncio adSlot='9620700067' />
+      <div class='container-layout'>
+        <Anuncio adSlot='9620700067' />
+      </div>
     </div>
     <!-- <div class='section'><CardsGroup year={'Destacando'} acordes={destacadas} /></div> -->
     <div class='section'>
