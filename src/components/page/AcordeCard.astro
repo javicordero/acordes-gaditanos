@@ -91,7 +91,7 @@ const headingId = `acorde-${slug}`;
         unoptimized
       />
 
-      <Anuncio adSlot='8116046706' />
+      <Anuncio adSlot='8116046706' class='anuncio-movil' />
 
       <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
         {musica}
@@ -220,6 +220,16 @@ const headingId = `acorde-${slug}`;
     width: 360px;
     max-width: 100%;
     margin: 0 auto;
+  }
+
+  :global(.anuncio-movil) {
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    :global(.anuncio-movil) {
+      display: block;
+    }
   }
 
   img {
