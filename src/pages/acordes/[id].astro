@@ -10,8 +10,9 @@ import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Apoyar from '../../components/right-column/Apoyar.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
-// import AnunciosGuitarra from '../../components/right-column/anuncios/AnunciosGuitarra.astro';
-// import AnunciosLibros from '../../components/right-column/anuncios/AnunciosLibros.astro';
+import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
+import Anuncio2 from '../../components/right-column/anuncios/Anuncio2.astro';
+import Anuncio3 from '../../components/right-column/anuncios/Anuncio3.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -196,9 +197,11 @@ const webPageSchema = {
       }
       {!cover && <ApareceAqui class='aparece-aqui' />}
 
+      <Anuncio1 class='anuncio-1' />
+
       <Apoyar class='apoyar' />
 
-      <!-- <AnunciosGuitarra class='anuncios-guitarra' /> -->
+      <Anuncio2 class='anuncio-2' />
 
       <SigueTocando
         class='sigue-tocando'
@@ -212,6 +215,8 @@ const webPageSchema = {
       />
 
       <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
+
+      <Anuncio3 class='anuncio-3' />
     </div>
 
     <style>
@@ -263,36 +268,38 @@ const webPageSchema = {
           flex-direction: column;
         }
 
-        /* Reordenar visualmente en móvil: SigueTocando primero */
-        .right-column > :global(.sigue-tocando) {
-          order: -2;
+        /* Orden en móvil: Apoyar → Anuncio1 → SigueTocando → Recomendados → Anuncio2 → ApareceAqui/VideoCover → Anuncio3 → Video */
+        .right-column > :global(.apoyar) {
+          order: 1;
         }
 
-        .right-column > :global(.anuncios-tech) {
-          order: -1;
+        .right-column > :global(.anuncio-1) {
+          order: 2;
+        }
+
+        .right-column > :global(.sigue-tocando) {
+          order: 3;
         }
 
         .right-column > :global(.recomendados) {
-          order: 0;
-        }
-
-        /* Apoyar segundo */
-        .right-column > :global(.apoyar) {
-          order: -3;
-        }
-
-        .right-column > :global(.adtsterra-2) {
           order: 4;
         }
 
-        /* El resto mantiene orden natural (order: 0 por defecto) */
-        .right-column > :global(.video-oficial) {
-          order: 2;
+        .right-column > :global(.anuncio-2) {
+          order: 5;
         }
 
         .right-column > :global(.video-cover),
         .right-column > :global(.aparece-aqui) {
-          order: 1;
+          order: 6;
+        }
+
+        .right-column > :global(.anuncio-3) {
+          order: 7;
+        }
+
+        .right-column > :global(.video-oficial) {
+          order: 8;
         }
       }
 

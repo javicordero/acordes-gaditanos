@@ -5,6 +5,7 @@ import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
 import { Image } from 'astro:assets';
 import RecomendacionInline from './RecomendacionInline.astro';
 import TutorialAutoscroll from './TutorialAutoscroll.astro';
+import Anuncio from '../right-column/anuncios/Anuncio.astro';
 
 const { acorde } = Astro.props;
 const { data, slug } = acorde;
@@ -89,6 +90,8 @@ const headingId = `acorde-${slug}`;
         height={320}
         unoptimized
       />
+
+      <Anuncio adSlot='8116046706' />
 
       <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
         {musica}
