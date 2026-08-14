@@ -8,7 +8,6 @@ import BannerCoac2026 from '../components/page/BannerCoac2026.astro';
 import AnunciateAqui from '../components/right-column/AnunciateAqui.astro';
 import AnunciateIndex from '../components/page/AnunciateIndex.astro';
 import BannerNoly from '../components/page/BannerNoly.astro';
-import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
 import { parseSpanishDate, sortByYearDesc } from '../lib/index';
 
 let acordes = await getCollection('acordes');
@@ -40,9 +39,6 @@ let autores = await getCollection('autores');
 
     <div class='section section--novedades'>
       <CardsGroup year={'Novedades'} acordes={ultimos} />
-      <div class='container-layout anuncio-bajo-novedades'>
-        <Anuncio adSlot='5536512643' />
-      </div>
     </div>
     <div class='section section--colored'>
       <AutorCardsGroup autores={autores} />
@@ -72,10 +68,6 @@ let autores = await getCollection('autores');
 
   .section--colored {
     background-color: var(--secondary-color);
-  }
-
-  .anuncio-bajo-novedades {
-    margin-top: 8px;
   }
 
   @media (max-width: 1024px) {
