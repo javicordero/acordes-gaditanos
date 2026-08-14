@@ -39,19 +39,13 @@ let autores = await getCollection('autores');
     <!-- <AnunciateIndex /> -->
 
     <div class='section section--novedades'>
-      <div class='container-layout'>
-        <Anuncio adSlot='6375589626' />
-      </div>
       <CardsGroup year={'Novedades'} acordes={ultimos} />
-      <div class='container-layout'>
+      <div class='container-layout anuncio-bajo-novedades'>
         <Anuncio adSlot='5536512643' />
       </div>
     </div>
     <div class='section section--colored'>
       <AutorCardsGroup autores={autores} />
-      <div class='container-layout'>
-        <Anuncio adSlot='9620700067' />
-      </div>
     </div>
     <!-- <div class='section'><CardsGroup year={'Destacando'} acordes={destacadas} /></div> -->
     <div class='section'>
@@ -78,6 +72,10 @@ let autores = await getCollection('autores');
 
   .section--colored {
     background-color: var(--secondary-color);
+  }
+
+  .anuncio-bajo-novedades {
+    margin-top: 8px;
   }
 
   @media (max-width: 1024px) {
