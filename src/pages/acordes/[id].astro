@@ -197,15 +197,11 @@ const webPageSchema = {
       }
       {!cover && <ApareceAqui class='aparece-aqui' />}
 
-      <div class='container-layout anuncio-1'>
-        <Anuncio1 />
-      </div>
+      <Anuncio1 class='anuncio-1' />
 
       <Apoyar class='apoyar' />
 
-      <div class='container-layout anuncio-2'>
-        <Anuncio2 />
-      </div>
+      <Anuncio2 class='anuncio-2' />
 
       <SigueTocando
         class='sigue-tocando'
@@ -220,9 +216,7 @@ const webPageSchema = {
 
       <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
 
-      <div class='container-layout anuncio-3'>
-        <Anuncio3 />
-      </div>
+      <Anuncio3 class='anuncio-3' />
     </div>
 
     <style>
@@ -244,17 +238,6 @@ const webPageSchema = {
         gap: 16px;
         /* La columna derecha crecerá para rellenar el espacio restante dentro del contenedor hasta un máximo razonable */
         flex: 1 1 clamp(220px, 22vw, 380px);
-      }
-
-      /* En desktop los wrappers de anuncios ocupan todo el ancho de la columna derecha */
-      @media (min-width: 641px) {
-        .right-column > :global(.anuncio-1),
-        .right-column > :global(.anuncio-2),
-        .right-column > :global(.anuncio-3) {
-          width: 100%;
-          margin: 0;
-          max-width: none;
-        }
       }
 
       /* Mantener la card izquierda con su anchura natural (el componente controla su propio max-width)
@@ -285,12 +268,12 @@ const webPageSchema = {
           flex-direction: column;
         }
 
-        /* Orden en móvil: Apoyar → Anuncio1 → SigueTocando → Recomendados → Anuncio2 → ApareceAqui/VideoCover → Anuncio3 → Video */
-        .right-column > :global(.apoyar) {
+        /* Orden en móvil: Anuncio1 → Apoyar → SigueTocando → Recomendados → Anuncio2 → ApareceAqui/VideoCover → Video → Anuncio3 */
+        .right-column > :global(.anuncio-1) {
           order: 1;
         }
 
-        .right-column > :global(.anuncio-1) {
+        .right-column > :global(.apoyar) {
           order: 2;
         }
 
@@ -311,12 +294,12 @@ const webPageSchema = {
           order: 6;
         }
 
-        .right-column > :global(.anuncio-3) {
+        .right-column > :global(.video-oficial) {
           order: 7;
         }
 
-        .right-column > :global(.video-oficial) {
-          order: 8;
+        .right-column > :global(.anuncio-3) {
+          display: none !important;
         }
       }
 
