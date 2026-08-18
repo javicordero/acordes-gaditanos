@@ -1,0 +1,138 @@
+---
+import { Icon } from 'astro-icon/components';
+import Image from 'astro/components/Image.astro';
+import DonationIndicator from '../DonationIndicator.astro';
+---
+
+<section class='banner-coac-2026'>
+  <div class='container-layout'>
+    <div class='text'>
+      <header>
+        <h2>Las coplas de Antonio Martín</h2>
+        <div class='subtitle'>
+          <p>
+            Tras recordar las coplas de <a href='/autor/musica/paco-alba'>Paco Alba</a> y <a href='/autor/musica/el-noly'>El Noly</a>, llega el turno de <a href='/autor/musica/antonio-martin'>Antonio Martín</a>.
+          </p>
+          </div>
+      </header>
+
+      <div class='apoyar'>
+        <DonationIndicator variant='timeline' messageC='Ayuda a que siga subiendo más coplas' listStyle='pills' />
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  section.banner-coac-2026 {
+    margin-top: 46px;
+    --banner-overlay-opacity: 0.78;
+    position: relative;
+    display: flex;
+    color: #fff;
+    background: url('/img/antonio-martin.jpg')
+      center/cover;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: calc(var(--vh, 1vh) * 100 - 45px);
+    height: calc(100svh - 45px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      backdrop-filter: brightness(0.25);
+      background: transparent;
+    }
+
+    & .text {
+      position: relative;
+      z-index: 2;
+      padding: 0;
+      max-width: 600px;
+      height: calc(var(--vh, 1vh) * 100 - 45px);
+      height: calc(100svh - 45px);
+      padding: 250px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+
+      & h2 {
+        margin: 0 0 24px;
+        font-size: 3.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        max-width: fit-content;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 90%;
+          height: 4px;
+          background-color: var(--primary-contrast-color);
+        }
+      }
+
+      & p {
+        margin: 0 0 12px;
+        font-size: 1.1rem;
+        /* letter-spacing: 0.02em; */
+        line-height: 1.23rem;
+      }
+
+      & .apoyar {
+        margin-top: 56px;
+      }
+
+      & a {
+        color: var(--primary-contrast-color);
+        text-decoration: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      & {
+        flex-direction: column;
+        justify-content: space-between;
+        background: url('/img/antonio-martin-movil.jpg') center/cover;
+      }
+
+      & .text {
+        padding: 40px 0 120px;
+        & h2 {
+          font-size: 2rem;
+          margin-bottom: 16px;
+        }
+
+        & p {
+          font-size: 1rem;
+        }
+
+        & .apoyar {
+          margin-top: 24px;
+        }
+      }
+    }
+  }
+
+
+</style>
+
+<script is:inline>
+  // Set up CSS variable --vh to work around mobile viewport changes
+  function setVh() {
+    try {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    } catch (e) {
+      // fail silently
+    }
+  }
+
+  setVh();
+  window.addEventListener('resize', setVh, { passive: true });
+  window.addEventListener('orientationchange', setVh);
+  if (window.visualViewport && window.visualViewport.addEventListener) {
+    window.visualViewport.addEventListener('resize', setVh);
+  }
+</script>
