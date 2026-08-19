@@ -74,9 +74,9 @@ let autores = await getCollection('autores');
     background-color: var(--secondary-color);
   }
 
-  .anuncio-autores {
-    padding-top: var(--main-container-gap);
-    padding-bottom: var(--main-container-gap);
+  .anuncio-autores ins[data-ad-status='filled'] {
+    margin-top: var(--main-container-gap);
+    margin-bottom: var(--main-container-gap);
   }
 
   @media (max-width: 1024px) {
@@ -91,9 +91,9 @@ let autores = await getCollection('autores');
       padding-bottom: calc(var(--main-container-gap-sm) + 29px);
     }
 
-    .anuncio-autores {
-      padding-top: var(--main-container-gap-sm);
-      padding-bottom: var(--main-container-gap-sm);
+    .anuncio-autores ins[data-ad-status='filled'] {
+      margin-top: var(--main-container-gap-sm);
+      margin-bottom: var(--main-container-gap-sm);
     }
   }
 </style>

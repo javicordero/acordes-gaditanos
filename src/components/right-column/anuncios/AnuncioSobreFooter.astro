@@ -8,17 +8,21 @@
     data-ad-client="ca-pub-3280015847198273"
     data-ad-slot="8307618399"></ins>
   <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
   </script>
 </div>
 
 <style>
-  .anuncio-sobre-footer {
+  .anuncio-sobre-footer:has(ins:not([data-ad-status='filled'])) {
+    display: none;
+  }
+
+  .anuncio-sobre-footer ins[data-ad-status='filled'] {
     padding-bottom: calc(var(--main-container-gap) + 29px);
   }
 
   @media (max-width: 640px) {
-    .anuncio-sobre-footer {
+    .anuncio-sobre-footer ins[data-ad-status='filled'] {
       margin-bottom: calc(var(--main-container-gap-sm) + 29px);
     }
   }
