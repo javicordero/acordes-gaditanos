@@ -7,6 +7,7 @@ import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
 import BannerCoac2026 from '../components/page/BannerCoac2026.astro';
 import AnunciateAqui from '../components/right-column/AnunciateAqui.astro';
 import AnunciateIndex from '../components/page/AnunciateIndex.astro';
+import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
 import BannerMartin from '../components/page/BannerMartin.astro';
 import { parseSpanishDate, sortByYearDesc } from '../lib/index';
 
@@ -43,6 +44,9 @@ let autores = await getCollection('autores');
     <div class='section section--colored'>
       <AutorCardsGroup autores={autores} />
     </div>
+    <div class='container-layout anuncio-autores'>
+      <Anuncio adSlot='9620700067' />
+    </div>
     <!-- <div class='section'><CardsGroup year={'Destacando'} acordes={destacadas} /></div> -->
     <div class='section'>
       <YearsList
@@ -70,6 +74,11 @@ let autores = await getCollection('autores');
     background-color: var(--secondary-color);
   }
 
+  .anuncio-autores {
+    padding-top: var(--main-container-gap);
+    padding-bottom: var(--main-container-gap);
+  }
+
   @media (max-width: 1024px) {
     :global(.section--novedades .acordes-grid > *:nth-child(n + 7)) {
       display: none;
@@ -80,6 +89,11 @@ let autores = await getCollection('autores');
     .section {
       padding-top: var(--main-container-gap-sm);
       padding-bottom: calc(var(--main-container-gap-sm) + 29px);
+    }
+
+    .anuncio-autores {
+      padding-top: var(--main-container-gap-sm);
+      padding-bottom: var(--main-container-gap-sm);
     }
   }
 </style>
