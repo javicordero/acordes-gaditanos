@@ -14,7 +14,6 @@ video: 'https://www.youtube.com/embed/RMU7No1Hleg?feature=player_embedded'
 <a>Mi7</a>
 Desde la piera reonda de la Caleta
 conozco Cádiz entero por su silueta.
-    <a>la</a>        <a>reonda</a>     <a>la</a>
 conozco Cádiz entero por su silueta.
 <a>Lam</a>              <a>Sol</a>                     <a>Fa</a>
 De las entrañas del mar donde se funde el sol
