@@ -17,7 +17,7 @@ que de vueltas da la vida la vida da muchas vueltas.
 2 copleros se juntaron a colmo de una borrachera
                    <a>Sol</a>
 en la puerta la caleta 
-                          <a>Fa</a>      
+                          <a>Do</a>      
 los dos tienen muy clarito el compas del pasodoble.
 <a>Re7</a>                 <a>Sol</a>                      <a>Re7</a>  
 se mueven por un bombazo, vibran con un platillazo 

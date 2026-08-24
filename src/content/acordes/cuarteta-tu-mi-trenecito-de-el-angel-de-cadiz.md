@@ -23,8 +23,9 @@ Tu mi marea que no rebosa mi felicidad
 Y tú, mi caracola oriunda en la orilla , tu mi isla
       <a>Mi7</a>               <a>Re</a> <a>Mi7</a>
 que sin robinsones te van a dejar
-            <a>La</a>                         <a>Mi7</a>
+            <a>La</a>              <a>Mi7</a> 
 Tu que tienes esa mala costumbre de matarme en
+<a>Re</a>
 vida
       <a>La</a>                 <a>Mi7</a>            <a>ReMi7</a>
 Tu mi ventana, con vistas al mar de la fatalidad
