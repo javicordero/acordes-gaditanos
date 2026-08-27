@@ -6,6 +6,7 @@ import CardsGroup from '../../../components/page/CardsGroup.astro';
 import Breadcrumb from '../../../components/page/Breadcrumb.astro';
 import Banner320X50 from '../../../components/ads/Banner320x50.astro';
 import Banner468X60 from '../../../components/ads/Banner468x60.astro';
+import AnuncioSobrePagina from '../../../components/ads/AnuncioSobrePagina.astro';
 import { parseSpanishDate, sortByYearDesc } from '../../../lib/index';
 
 export async function getStaticPaths() {
@@ -68,6 +69,7 @@ const itemListSchema = {
 <Layout title={title} description={description}>
   <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
   <Breadcrumb autor={authorName} autorSlug={Astro.params.autorSlug} tipoAutor='musica' />
+  <AnuncioSobrePagina />
   <div class='main-container'>
     <section>
       <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
