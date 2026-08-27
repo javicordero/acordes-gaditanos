@@ -69,12 +69,13 @@ const itemListSchema = {
 <Layout title={title} description={description}>
   <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
   <Breadcrumb autor={authorName} autorSlug={Astro.params.autorSlug} tipoAutor='letra' />
-  <AnuncioSobrePagina />
   <div class='main-container'>
     <section>
       <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
       <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
-      <CardsGroup year={`${authorName}`} acordes={acordesOrdenados} subtitle='Letra' />
+      <CardsGroup year={`${authorName}`} acordes={acordesOrdenados} subtitle='Letra'>
+        <AnuncioSobrePagina />
+      </CardsGroup>
       <Banner320X50 adKey='dfd3df20af74dd22bc5fae2ddf874fa4' />
     </section>
   </div>
