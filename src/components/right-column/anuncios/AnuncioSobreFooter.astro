@@ -18,13 +18,13 @@
     display: none;
   }
 
-  .anuncio-sobre-footer ins[data-ad-status='filled'] {
-    padding-bottom: calc(var(--main-container-gap) + 29px);
+  .anuncio-sobre-footer:has(ins[data-ad-status='filled']) {
+    margin-bottom: var(--main-container-gap);
   }
 
   @media (max-width: 640px) {
-    .anuncio-sobre-footer ins[data-ad-status='filled'] {
-      margin-bottom: calc(var(--main-container-gap-sm) + 29px);
+    .anuncio-sobre-footer:has(ins[data-ad-status='filled']) {
+      margin-bottom: var(--main-container-gap-sm);
     }
   }
 </style>
