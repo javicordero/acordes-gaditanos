@@ -10,6 +10,7 @@ date: "27/11/2025"
 video: 'https://www.youtube.com/embed/zpAP3fNLL5Q?si=LypGaLiUJFH4PqyE'
 destacada: 1
 
+fraseClave: Aquí no mando yo en mi barrio ya no mando yo ahora
 ---
 <pre><a>Lam</a>
 Aquí no mando yo en mi barrio ya no mando yo ahora 

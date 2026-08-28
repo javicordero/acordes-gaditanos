@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/dyVclXWbmCI?feature=player_embedded'
 
+fraseClave: Hay veces que uno mismo no se guarda sus secretos,
 ---
 <pre>
 <a>Lam</a>                             <a>Fa</a>          <a>Mi7</a>

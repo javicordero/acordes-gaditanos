@@ -9,6 +9,7 @@ video: 'https://www.youtube.com/embed/g5UhmY7oasM?si=yJ073f0NvOHuX1i1'
 musica: Juaki
 letra: Joselini
 
+fraseClave: Hace catorce años me fui de Cádiz pa abrir mis
 ---
 <pre><a>Lam</a>          <a>Mi7</a>           <a>Lam</a>
 Hace catorce años me fui de Cádiz pa abrir mis 

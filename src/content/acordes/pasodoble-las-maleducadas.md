@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/3_GRFI-KXn8?si=MoxCIrulIIzuuwPr'
 
+fraseClave: Si en el cole te marginan  y te ofenden o te
 ---
 <pre><a>Mi</a>            <a>Do#7</a>   <a>Fa#m</a>         <a>Si7</a>
 Si en el cole te marginan  y te ofenden o te 

@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/1-sQYtq5vZo?feature=player_embedded'
 
+fraseClave: Por fin fondeo en tu orilla ¡Ay! Cádiz la prometida
 ---
 <pre>
 <a>Lam</a>                  <a>Sol</a>                    <a>Rem</a>

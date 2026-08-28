@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/FSprO0hfAZM?feature=player_embedded'
 
+fraseClave: Ooh         Ooh Oooooooh   Ooh         Ooh
 ---
 <pre>
 <a>Mi Si Do#m La</a> <a>Mi/add9 Si Do#m La Do</a>

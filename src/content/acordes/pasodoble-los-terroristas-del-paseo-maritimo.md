@@ -9,6 +9,7 @@ cejilla: 2
 img: https://i.ytimg.com/vi/9BQDchuN0Q0/maxresdefault.jpg
 date: "07/05/2026"
 video: 'https://www.youtube.com/embed/V8Sbw6XwSlA'
+fraseClave: Aunque nos vean terroristas
 ---
 <pre>
 <a>Re</a>               <a>La7</a>  <a>Re</a>

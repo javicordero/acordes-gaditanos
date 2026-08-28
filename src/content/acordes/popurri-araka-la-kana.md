@@ -9,6 +9,7 @@ video: 'https://www.youtube.com/embed/G5tg5uyyA9o?feature=player_embedded'
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 
+fraseClave: Araka es la murga compañera, allende el charco
 ---
 <pre>
 <a>Lam</a>                    <a>Rem</a>

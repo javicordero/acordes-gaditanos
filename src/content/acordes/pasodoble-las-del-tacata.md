@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/AjpUdP8QWmg'
 
+fraseClave: Siempre pasa lo mismo, no sé pa qué me meto,
 ---
 <pre>        <a>Sol</a>                  <a>Re/Fa#</a>
 Siempre pasa lo mismo, no sé pa qué me meto,

@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/-quCAxwcku0?feature=player_embedded'
 
+fraseClave: En un filito del mar, según la historia una playa
 ---
 <pre>
 <a>Sol</a>            <a>Re</a>   <a>Do</a>                       <a>Sol</a>

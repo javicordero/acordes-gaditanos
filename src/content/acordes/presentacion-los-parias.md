@@ -9,6 +9,7 @@ cejilla: 0
 date: "03/12/2025"
 video: 'https://www.youtube.com/embed/Kmz6jADMW-U?si=2D-xxxUu8q1Ou3UV'
 
+fraseClave: uuuuuuuuuhhhhhhh aaaaaaaaaaaaaaahhh
 ---
 <pre>
 <a>Lam</a>  <a>Sol</a>  <a>Fa</a> <a>Mi7</a> <a>Lam</a>  <a>Sol</a>  <a>Fa</a>  <a>Mi7</a>

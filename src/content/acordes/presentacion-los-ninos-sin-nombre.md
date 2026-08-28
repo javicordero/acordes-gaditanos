@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bg9I1bfy9ws?feature=player_embedded'
 
+fraseClave: Pararara Parara Pararara Pararara Parara Parara
 ---
 <pre>
 <a>LaM7 Mim</a> <a>La7</a>  <a>Re</a>  <a>Mi7</a> <a>LaM7</a>  <a>Mim La7</a> <a>Re</a>  <a>Mi7</a>

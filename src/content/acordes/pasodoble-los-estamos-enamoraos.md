@@ -10,6 +10,7 @@ img: https://i.ytimg.com/vi/DUbwOfJaXys/sddefault.jpg
 date: "26/06/2026"
 video: https://www.youtube.com/embed/tjEFpHydMwE?si=c8OFcZvZEwMMfBxs
 
+fraseClave: Por mucho que homenajeen a pasodobles y tanguillos,
 ---
 <pre>
 <a>Sol</a>                  <a>Re7</a>                     <a>Sol</a>

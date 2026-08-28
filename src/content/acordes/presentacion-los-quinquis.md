@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rbdtTcmUshY'
 
+fraseClave: Nonaino naino nonainonona Nonaino naino
 ---
 <pre>        <a>Fa</a>             <a>Mi7</a>        <a>Fa</a>
 Nonaino naino nonainonona Nonaino naino 

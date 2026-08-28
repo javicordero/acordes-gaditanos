@@ -9,6 +9,7 @@ img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/04/sarracenos
 date: 01/04/2026
 video: https://www.youtube.com/embed/diteJMo6siE?si=o6sFjfE4F93v6EFn
 
+fraseClave: Oh Cádiz a cantarte yo vengo a ti
 ---
 <pre>
 <a>Lam</a>           <a>Mi7</a>             <a>Lam</a> 

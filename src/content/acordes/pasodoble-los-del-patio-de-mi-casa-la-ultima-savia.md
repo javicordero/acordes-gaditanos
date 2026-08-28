@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/t72JfNHZHSE'
 
+fraseClave: Cuando seamos mayores, cuando nos cambie la voz
 ---
 <pre>  <a>Mi</a>    <a>Si7</a>     <a>Mi</a>                 <a>Si7</a>      <a>Mi</a>
 Cuando seamos mayores, cuando nos cambie la voz

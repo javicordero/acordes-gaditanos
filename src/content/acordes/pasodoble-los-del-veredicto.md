@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4caALxC2d0k'
 
+fraseClave: Buscando la musiquita que suene a gloria mirando al
 ---
 <pre>  <a>Sol</a>            <a>Sim7</a>              <a>Mi7</a>
 Buscando la musiquita que suene a gloria mirando al 

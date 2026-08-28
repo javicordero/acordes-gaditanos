@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/72-wt3-dSBI?feature=player_embedded'
 
+fraseClave: La conferencia episcopal ha financiado mi nuevo
 ---
 <pre>
 La conferencia episcopal ha financiado mi nuevo

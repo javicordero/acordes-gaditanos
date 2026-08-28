@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ApAErgGfzd4?feature=player_embedded'
 
+fraseClave: Embrujado por una ciudad, que me trata como una
 ---
 <pre>
 <a>Re</a>     <a>Si7</a>     <a>Mim</a>       <a>La7</a>

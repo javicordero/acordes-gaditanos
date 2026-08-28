@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/g1OK_EWgi3s'
 
+fraseClave: Que porque vuelvo a cantarte alguno me anda
 ---
 <pre><a>Sol</a>                     <a>Re</a>   <a>Mim</a>
 Que porque vuelvo a cantarte alguno me anda 

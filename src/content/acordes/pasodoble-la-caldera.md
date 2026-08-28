@@ -9,6 +9,7 @@ cejilla: 2
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/f63d71f456feeb171c7bdb43a.jpg
 date: "03/07/2026"
 video: 'https://www.youtube.com/embed/-F4tBKSENfo'
+fraseClave: En mi guitarra en mi guitarra, guardo un secreto
 ---
 <pre>
 <a>La</a>                                <a>Mi7</a>       <a>La</a>

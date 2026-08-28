@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/iXoyBUQvGEs?si=YIhzWZ01ZSgaqgnC'
 
+fraseClave: Cadiz me llama de nuevo Mi alma sigue errante Y
 ---
 <pre><a>Lam7</a>                                    <a>Sol7</a>
 Cadiz me llama de nuevo Mi alma sigue errante Y 

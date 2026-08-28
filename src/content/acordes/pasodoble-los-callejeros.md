@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/XP-pOx_DzE4?feature=player_embedded'
 
+fraseClave: Hay veces que me invade la tristeza o que no salgo
 ---
 <pre>
    <a>Mim</a>         <a>Mi7</a>           <a>Lam</a>    <a>Si7</a>

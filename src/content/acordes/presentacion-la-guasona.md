@@ -8,6 +8,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/HaFk-MwNCo8?si=ASS9aJkZWJh0TLiI'
 musica: Alba Fernández
 
+fraseClave: Tu rie, tu riete de ellos, que ellos no se reirán
 ---
 <pre>  <a>Rem</a>      <a>Solm7</a>    <a>La7</a>
 Tu rie, tu riete de ellos, que ellos no se reirán 

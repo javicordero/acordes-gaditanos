@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/A8lJkL3i8vw?si=VRxRRSm0iR3N8f_r'
 
+fraseClave: Recuerdo aquella noche, junto a la hoguera, que el
 ---
 <pre><a>Lam</a>               <a>Mi7</a>                 <a>Lam</a>
 Recuerdo aquella noche, junto a la hoguera, que el 

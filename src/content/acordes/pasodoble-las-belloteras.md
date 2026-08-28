@@ -10,6 +10,7 @@ img: https://i.ytimg.com/vi/QeIQLEEy-WQ/hqdefault.jpg
 date: "26/06/2026"
 video: https://www.youtube.com/embed/HbvLetbZg8o?si=nGqVJl1_C9dfh0Fw
 
+fraseClave: Jay que vé como cambian los tiempos
 ---
 <pre>
 <a>La</a>                          <a>Mi7</a>    

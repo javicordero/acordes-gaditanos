@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/j1wpXN7Amik?feature=player_embedded'
 
+fraseClave: Hoy me confieso sabiendo que habrá gente que no
 ---
 <pre>
         <a>Do</a>    <a>Mi7</a>                     <a>Lam</a>

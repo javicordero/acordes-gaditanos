@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/TghkJHhbF8Y'
 
+fraseClave: Vengo a robarte el corazón, uy! que tú ya me
 ---
 <pre>                    <a>Rem</a>
 Vengo a robarte el corazón, uy! que tú ya me 

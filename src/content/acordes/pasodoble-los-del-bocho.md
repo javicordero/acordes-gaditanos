@@ -9,6 +9,7 @@ img: https://i.ytimg.com/vi/04TKowg9G2Q/hqdefault.jpg
 date: 15/04/2026
 video: https://www.youtube.com/embed/OkMLqVqDW0o?si=haFcaewdpzZbOryz
 
+fraseClave: Dando nuestro saludo nos presentamos
 ---
 <pre>
 <a>Lam</a>              <a>Mi7</a>            <a>Lam</a>

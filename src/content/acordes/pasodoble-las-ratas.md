@@ -9,6 +9,7 @@ cejilla: 1
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/zpAP3fNLL5Q?si=LypGaLiUJFH4PqyE'
 
+fraseClave: Volver     con la sien más plateada que ocho años
 ---
 <pre>   <a>LaM7</a> <a>Fa</a>        <a>Mi7</a>           <a>LaM7</a>         <a>Mi7</a>
 Volver     con la sien más plateada que ocho años 

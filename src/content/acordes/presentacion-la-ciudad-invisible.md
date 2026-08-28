@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tpI4FrOW2JM'
 
+fraseClave: Nada más salir del Falla a la cárcel sin pensarlo
 ---
 <pre><a>Mim</a>
 Nada más salir del Falla a la cárcel sin pensarlo

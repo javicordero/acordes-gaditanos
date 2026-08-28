@@ -9,6 +9,7 @@ cejilla: 4
 img: https://i.ytimg.com/vi/TClN-KL_d4A/sddefault.jpg
 date: "11/05/2026"
 video: 'https://www.youtube.com/embed/KHVzUL0nSqY'
+fraseClave: Vuelve ya el tres por cuatro el tres por cuatro bueno
 ---
 <pre>
 <a>Sol</a>                     <a>Re7</a>  <a>Do</a>          <a>Re7</a>    <a>Sol</a>

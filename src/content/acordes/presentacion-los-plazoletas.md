@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/8Ac5Mr_qZpA?feature=player_embedded'
 
+fraseClave: Hubo un lugar donde Dios puso el alma para pintar
 ---
 <pre>
 <a>Do</a>                       <a>Mim</a>          <a>Fa</a>

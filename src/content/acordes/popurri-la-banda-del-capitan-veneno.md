@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/uynGARRr0M0'
 
+fraseClave: Tututu tututut tututu tutut
 ---
 <pre><a>Sim</a>           <a>La</a>       <a>Sim</a>
 Tututu tututut tututu tutut

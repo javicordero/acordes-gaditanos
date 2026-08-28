@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Tfh2qRH4w4s'
 
+fraseClave: Como son los de la Viña los más malos
 ---
 <pre><a>Lam</a>                <a>Mi7</a>          <a>Lam</a>
 Como son los de la Viña los más malos

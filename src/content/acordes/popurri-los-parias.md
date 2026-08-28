@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Kmz6jADMW-U?si=2D-xxxUu8q1Ou3UV'
 
+fraseClave: Yo sé que algún día la calle, el reino de la calle
 ---
 <pre>
 <a>Lam</a>

@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ba__Js82ZQw?feature=player_embedded'
 
+fraseClave: Nuestra leyenda es real tanto que debo mentir
 ---
 <pre>
 <a>Mim</a>                                       <a>Lam</a>

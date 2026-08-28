@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/3F6QTRxOrTI?feature=player_embedded'
 
+fraseClave: Media vida colgado de un reloj, media vida tejiendo
 ---
 <pre>
 <a>Fa9</a>

@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/olKxUdI8lJI?feature=player_embedded'
 
+fraseClave: Muy buenas noches señores, como en años anteriores,
 ---
 <pre>
                      <a>Mi</a>                      <a>Do#7</a>

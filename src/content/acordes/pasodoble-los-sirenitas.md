@@ -9,6 +9,7 @@ cejilla: 6
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/dq43OFuT6qQ?feature=player_embedded'
 
+fraseClave: Como si fuera un milagro que dejó mi religión
 ---
 <pre>
 <a>Do</a>                             <a>Sol7</a>      <a>Do</a>

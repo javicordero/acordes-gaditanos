@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/j4mTEz1CIDc?feature=player_embedded'
 
+fraseClave: Hoy cumple ya sus veinte años la letra de aquel
 ---
 <pre>
 Hoy cumple ya sus veinte años la letra de aquel

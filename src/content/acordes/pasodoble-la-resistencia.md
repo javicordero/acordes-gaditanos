@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/aGXdeGWhhGk?si=CLtKju9nsT8UxT-K'
 
+fraseClave: Con coplas de artillería, mi guitarra y mi bandera
 ---
 <pre><a>Mi/add9</a>                                      <a>Sol#</a>
 Con coplas de artillería, mi guitarra y mi bandera 

@@ -9,6 +9,7 @@ cejilla: 0
 date: "03/12/2025"
 video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
 
+fraseClave: Hoy cambio la forma a esta comparsa triste y a su son
 ---
 <pre>
 <a>Mim</a>                                               <a>Si7</a>

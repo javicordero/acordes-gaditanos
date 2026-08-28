@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ZyB15EFvntI?feature=player_embedded'
 
+fraseClave: Hoy he vuelto a contemplar lo bonita que eres
 ---
 <pre>
 <a>Sol</a>                              <a>Re7</a>     <a>Sol</a>

@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qkJByXdm7mg'
 
+fraseClave: El velero a las claras del día cuando el sol la
 ---
 <pre><a>Lam</a>                                      <a>Mim</a>
 El velero a las claras del día cuando el sol la 

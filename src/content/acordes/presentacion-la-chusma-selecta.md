@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/0WPwGX_qfQ8?feature=player_embedded'
 
+fraseClave: Por el castillo del Falla corre un rumor
 ---
 <pre>
        <a>Lam</a>

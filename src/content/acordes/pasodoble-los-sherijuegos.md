@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/C5483kWZ38g?si=_VLN6_MYI1QzG50z'
 
+fraseClave: Tacita de mis amores te critiqué un año entero
 ---
 <pre>   <a>Do</a>  <a>Sol7</a>     <a>Do</a>       <a>Fa</a>   <a>Sol7</a>        <a>Do</a>
 Tacita de mis amores te critiqué un año entero

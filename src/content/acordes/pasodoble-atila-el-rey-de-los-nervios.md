@@ -9,6 +9,7 @@ cejilla: 4
 img: https://i.ytimg.com/vi/Zj4tIdh3CIE/maxresdefault.jpg
 date: "07/05/2026"
 video: 'https://www.youtube.com/embed/P6qRgGqGYTE'
+fraseClave: Nervioso abrí el cajón de la mesa de noche
 ---
 <pre>
 <a>Sol</a>                         <a>Re7</a>    <a>Sol</a>

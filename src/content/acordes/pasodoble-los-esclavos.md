@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/k_kKNVmFaIA'
 
+fraseClave: Yo sé de ciudades sin memoria sin más belleza ni
 ---
 <pre><a>Mim</a>         <a>Si7</a>         <a>Mim</a>   <a>Si7</a>
 Yo sé de ciudades sin memoria sin más belleza ni 

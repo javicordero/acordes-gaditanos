@@ -8,6 +8,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cs6P2vqtYVM'
 
+fraseClave: Perdona que me marche perdona que me vaya
 ---
 <pre>
 <a>Do</a>                                   <a>Sol</a>

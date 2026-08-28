@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vkrW30aatrc'
 
+fraseClave: Cuando la luna se asoma por tus torres miradores y
 ---
 <pre>                    <a>Do9</a> <a>Sol7</a>            <a>Lam</a>      <a>Mim</a>
 Cuando la luna se asoma por tus torres miradores y 

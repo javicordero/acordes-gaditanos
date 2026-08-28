@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6EkVvU10P3I?feature=player_embedded'
 
+fraseClave: Permiteme que me presente asi de lento,
 ---
 <pre><a>Sol </a>                             <a>Re</a>
 Permiteme que me presente asi de lento, 

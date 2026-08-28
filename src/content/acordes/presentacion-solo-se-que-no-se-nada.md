@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Ke5z8JmXV-w?feature=player_embedded'
 
+fraseClave: Yo soy la incomprendida la que nadie valora
 ---
 <pre>
    <a>Mi</a>                              <a>Do#m7</a>

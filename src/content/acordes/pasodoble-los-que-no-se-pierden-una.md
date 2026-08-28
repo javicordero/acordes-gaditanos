@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/z-_XcCu3kw0?feature=player_embedded'
 
+fraseClave: Era una noche de invierno iba yo con mi guitarra
 ---
 <pre>
 <a>Re</a>                  <a>La7</a>       <a>Mim</a>          <a>Fa#m</a>

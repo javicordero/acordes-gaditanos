@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/g5UhmY7oasM?si=MWTbfiXf07NhGXon'
 
+fraseClave: Aunque esté agustito cantando coplas con tos
 ---
 <pre><a>Do</a>
 Aunque esté agustito cantando coplas con tos 

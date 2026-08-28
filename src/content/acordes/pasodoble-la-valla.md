@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/loEI4Cm17mY?si=eDZcNoJDX7Hj5yDO'
 
+fraseClave: Gracias por el año que me diste gracias por amarme
 ---
 <pre>  <a>LaM7</a>         <a>Mi7</a>        <a>LaM7</a>               <a>Fa#</a>
 Gracias por el año que me diste gracias por amarme 

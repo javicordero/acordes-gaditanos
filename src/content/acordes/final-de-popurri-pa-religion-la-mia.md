@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/B9Utf8Cjaas?feature=player_embedded'
 
+fraseClave: Llegó la hora me tengo que ir, para otro sitio
 ---
 <pre>
 Llegó la hora me tengo que ir, para otro sitio

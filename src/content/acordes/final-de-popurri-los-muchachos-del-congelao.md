@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4A44HlY0hIQ?si=Ixqv0RXWJYE8hefW'
 
+fraseClave: Queda un mundo por hacer mas humano y más completo
 ---
 <pre>          <a>Do</a>                <a>Sol</a>
 Queda un mundo por hacer mas humano y más completo

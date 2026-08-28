@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/oy-Vm_1sgsk?feature=player_embedded'
 
+fraseClave: Con la música que traigo tan gaditana hemos ensayao
 ---
 <pre>
       <a>Do</a>                          <a>Sol7</a>

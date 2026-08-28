@@ -8,6 +8,7 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSMeOI75OQSTjH4Y
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/km7dayE1pRI?si=mEfiIHmPsi7Kd9NA'
+fraseClave: Ay, recién salidita de la caldera traigo mi
 ---
 <pre>
 <a>LaM7</a>                       <a>Mi7</a>

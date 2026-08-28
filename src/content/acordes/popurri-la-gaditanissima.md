@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/5YqzTlDkSMk?feature=player_embedded'
 
+fraseClave: Se detiene el mundo y se para el tiempo, se subasta
 ---
 <pre>
 <a>Mi</a>          <a>Re</a>                 <a>Mi</a> <a>ReMi</a>

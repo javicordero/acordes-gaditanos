@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JLaLLeafkc4'
 
+fraseClave: Yo sé que te extraña que de aquí me vaya sin
 ---
 <pre><a>Re</a>
 Yo sé que te extraña que de aquí me vaya sin 

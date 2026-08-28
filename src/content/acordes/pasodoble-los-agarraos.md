@@ -9,6 +9,7 @@ cejilla: 6
 img: https://i.ytimg.com/vi/1FvGKIdbKHA/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-BIAC4AOKAgwIABABGH8gICgeMA8=&rs=AOn4CLCwYTfKaBP9t1myzPGhtsO5qiY_aA
 date: "25/06/2026"
 video: 'https://www.youtube.com/embed/Sipso0MhMpA'
+fraseClave: Mi barca en la playa amarré
 ---
 <pre>
 <a>Sol</a>

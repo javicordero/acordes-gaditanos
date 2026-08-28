@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/maeE5d51OaY'
 
+fraseClave: De nuevo abrace mi guitarra igual que el que abraza
 ---
 <pre>   <a>Sol</a>                <a>Re</a>      <a>Mim</a>
 De nuevo abrace mi guitarra igual que el que abraza 

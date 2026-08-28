@@ -10,6 +10,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cvjgMSLRXZ0?feature=player_embedded'
 recomendada: true
 
+fraseClave: Oh padre nuestro, eres tan gaditano, que hasta tu
 ---
 <pre>
 <a>Lam</a>                     <a>Sol</a>                  <a>Fa</a>

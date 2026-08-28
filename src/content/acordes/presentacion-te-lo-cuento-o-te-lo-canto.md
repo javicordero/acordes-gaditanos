@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/5zwwFSflHsY?feature=player_embedded'
 
+fraseClave: Oigo que cuentan que al sur del sur rodeada del mar
 ---
 <pre>
 <a>Lam</a>                      <a>Sol</a>              <a>Fa</a>

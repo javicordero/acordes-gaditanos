@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ZL-HltnVYI8'
 
+fraseClave: Me ha pedido de tu boca una dulce musiquilla
 ---
 <pre>
 <a>(SORDA)</a>

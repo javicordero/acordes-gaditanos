@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rbcpEZJ33OU'
 
+fraseClave: En frente del Sindicato, con un retrato del Ché
 ---
 <pre><a>Mim</a>                <a>Si7</a> <a>Do7</a>          <a>Si7</a>
 En frente del Sindicato, con un retrato del Ché 

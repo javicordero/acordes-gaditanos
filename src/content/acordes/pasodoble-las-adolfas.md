@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/XSOTISLxlQE?si=BMmFG3lK7eVpenaF'
 
+fraseClave: Cuando llegan a la clase tan pequeñas, con sus tres
 ---
 <pre><a>LaM7</a>               <a>Mi7</a>         <a>LaM7</a>
 Cuando llegan a la clase tan pequeñas, con sus tres 

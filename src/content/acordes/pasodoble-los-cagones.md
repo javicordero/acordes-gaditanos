@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/_SvHuxnRTto?si=3hD1__8t2nAVjXg6'
 
+fraseClave: Otra vez te vuelven a cantar contra vientos y
 ---
 <pre><a>LaM7</a>                <a>Mi7</a>      <a>Sim7</a>   <a>Mi7</a>
 Otra vez te vuelven a cantar contra vientos y 

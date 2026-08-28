@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/DugGO5xh5wA?si=qzlxbzBTueBatr98'
 
+fraseClave: Cansado de un mundo gris de interminables
 ---
 <pre><a>Sol</a>
 Cansado de un mundo gris de interminables 

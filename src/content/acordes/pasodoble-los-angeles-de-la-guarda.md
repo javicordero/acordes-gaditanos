@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/vJ3mNG8E5lU?feature=player_embedded'
 
+fraseClave: Toma esta copla que nace por tu orilla mariscando
 ---
 <pre>
           <a>Mim</a>

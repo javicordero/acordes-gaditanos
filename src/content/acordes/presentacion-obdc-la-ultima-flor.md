@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/sUGn95RVP1E?feature=player_embedded'
 
+fraseClave: Yo soy la última gota de un océano sin agua
 ---
 <pre>
   <a>Mi</a>            <a>Sol#m</a>                <a>Do#m7</a>

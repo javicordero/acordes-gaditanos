@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/D6PebBw8eKE?feature=player_embedded'
 
+fraseClave: Cada noche comparto contigo la luna, cada noche
 ---
 <pre>
 <a>Lam</a>            <a>Fa</a>       <a>Mi7</a>   <a>Lam</a>

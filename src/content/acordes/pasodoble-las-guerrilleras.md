@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/12wpFWXAueE?feature=player_embedded'
 
+fraseClave: Que va a ser de mi niño deja ya los carnavales
 ---
 <pre>
 <a>Mi</a>     <a>Do#7</a>     <a>Fa#m Si7</a>             <a>Do#m Do#m7</a>

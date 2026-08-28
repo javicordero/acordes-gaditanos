@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/jV2LZVcjAG0?si=OiwjZCO_x6OUg1ra'
 
+fraseClave: Aunque saliera perdiendo sumergido en la derrota
 ---
 <pre><a>Sol</a>                <a>Re7</a>                      <a>Sol</a>
 Aunque saliera perdiendo sumergido en la derrota

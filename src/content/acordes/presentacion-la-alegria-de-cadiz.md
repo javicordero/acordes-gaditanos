@@ -9,6 +9,7 @@ video: https://www.youtube.com/embed/UgU4TOeYp-0?si=YLvaxp7o2SMpeyYd
 musica: Manuel Cornejo
 letra: Manuel Cornejo
 
+fraseClave: Nací gaditano En la orilla de la playa
 ---
 <pre>
 <a>Do</a>                <a>Mim</a>

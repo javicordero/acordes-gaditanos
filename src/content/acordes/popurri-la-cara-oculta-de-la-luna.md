@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/mKffGaKfEBY?feature=player_embedded'
 
+fraseClave: Cuando la luna oculta su cara se muere un poco y
 ---
 <pre>
 <a>Re</a>       <a>Fa#m</a>        <a>Sol</a>   <a>Re</a>              <a>Fa#m</a>

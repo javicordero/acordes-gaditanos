@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/i12amRhI4Og?feature=player_embedded'
 
+fraseClave: Anoche me encerré con mi guitarra
 ---
 <pre>
 <a>Sol</a>                         <a>Sim7</a>

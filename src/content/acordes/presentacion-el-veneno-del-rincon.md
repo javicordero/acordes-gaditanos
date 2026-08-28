@@ -7,6 +7,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/7i5eXpVqV4M'
 musica: Robe
+fraseClave: Trairarararara Trairarararara
 ---
 <pre><a>Fa</a>         <a>Mi7</a>  <a>Fa</a>        <a>Mi7</a>
 Trairarararara Trairarararara

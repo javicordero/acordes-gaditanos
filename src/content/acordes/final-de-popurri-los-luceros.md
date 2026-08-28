@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cExaXtZ55Jo?feature=player_embedded'
 
+fraseClave: Ábre los ojos, abre los ojos, mira la multitud
 ---
 <pre>
 <a>Sol</a>                             <a>Do</a>

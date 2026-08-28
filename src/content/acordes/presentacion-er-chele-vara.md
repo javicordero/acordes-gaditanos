@@ -9,6 +9,7 @@ cejilla: 4
 date: "26/11/2025"
 video: 'https://www.youtube.com/embed/Yw9-6UhA1fE?feature=player_embedded'
 
+fraseClave: Por el barrio de la Viña quiso dios que se
 ---
 <pre>
   <a>Mim</a>             <a>Re</a>           <a>Do</a>

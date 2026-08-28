@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/f4Sa8bsRito?feature=player_embedded'
 
+fraseClave: Dicen que este año en chirigota va a ser flojito,
 ---
 <pre>
 <a>Mim</a>            <a>La7</a>           <a>Re</a>     <a>Sol7</a>  <a>Do</a>

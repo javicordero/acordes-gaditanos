@@ -10,6 +10,7 @@ date: "25/11/2025"
 video: https://www.youtube.com/embed/93flpG6BIBs?si=i1PFJW55-g2nPISo
 
 
+fraseClave: En su pasaje en la Biblia
 ---
 <pre>
 <a>Mim</a>                   <a>Lam7</a> <a>Si7</a>

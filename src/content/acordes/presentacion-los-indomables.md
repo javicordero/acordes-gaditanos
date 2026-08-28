@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JCXwB1cV4ZA'
 
+fraseClave: He esperado un año entero entre carretera y manta
 ---
 <pre><a>Rem</a>                 <a>Lam</a>                     <a>Rem</a>
 He esperado un año entero entre carretera y manta

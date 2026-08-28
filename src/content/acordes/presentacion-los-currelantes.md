@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/51qUCrFAGG4?feature=player_embedded'
 
+fraseClave: Yo soy tu voz, la voz del pueblo, la que no calla
 ---
 <pre>
 <a>Mim</a>      <a>Sol</a>   <a>Lam</a>       <a>Si7</a>    <a>Mim</a>     <a>Sol</a>

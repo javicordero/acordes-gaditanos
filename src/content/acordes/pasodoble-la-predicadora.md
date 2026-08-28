@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/46yCMAikAW4'
 
+fraseClave: Que sea al principio mu suavito y que la música te
 ---
 <pre><a>Mi</a>                   <a>Si7</a>   <a>Mi</a>                <a>Do#7</a>
 Que sea al principio mu suavito y que la música te 

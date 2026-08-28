@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/atOTSD3UwdM?feature=player_embedded'
 
+fraseClave: Hágase la luz lucero, hágase la luz de nuevo,
 ---
 <pre>
                         <a>Rem</a>       <a>Fa</a>      <a>Mi7</a>

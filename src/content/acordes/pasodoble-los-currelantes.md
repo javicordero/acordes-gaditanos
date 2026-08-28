@@ -12,6 +12,7 @@ cover: https://www.youtube.com/embed/vTWUxxnBXGQ?si=9jjsYY6jyrC75rvW
 autorCover: Acordes Gaditanos
 recomendada: true
 
+fraseClave: No tengo un vientre preñado y fértil
 ---
 <pre>
 <a>Mi</a>                   <a>Si7</a>        <a>Mi</a>

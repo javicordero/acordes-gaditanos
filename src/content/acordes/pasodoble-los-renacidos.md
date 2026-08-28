@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/W9u3qLBbgmc'
 
+fraseClave: Dicen que siempre se vuelve a donde fuimos felices
 ---
 <pre><a>Lam</a>                  <a>Mi7</a>                     <a>Lam</a>
 Dicen que siempre se vuelve a donde fuimos felices

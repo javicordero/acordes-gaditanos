@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Z3t_LYyeGX4?feature=player_embedded'
 
+fraseClave: Que envidia a mí me da ver cómo los catalanes,
 ---
 <pre>
 <a>LaM7 Mi7</a>         <a>LaM7 Fa#7</a>             <a>Sim7</a> <a>Mi7</a>

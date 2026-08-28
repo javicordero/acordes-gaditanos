@@ -9,6 +9,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MR8BLf8Nf44?feature=player_embedded'
 cejilla: 6
 
+fraseClave: Muy buenas noches tengan ustedes los gaditanos
 ---
 <pre>
             <a>Lam</a>             <a>Mi7</a>           <a>Lam</a>

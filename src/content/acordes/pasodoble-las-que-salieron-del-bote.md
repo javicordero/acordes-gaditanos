@@ -9,6 +9,7 @@ cejilla: 2
 img: https://i.ytimg.com/vi/A5iX6E8oOhI/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AHeAoACoAKKAgwIABABGHIgUShAMA8=&rs=AOn4CLBeTqTAorm7sTNDBB_YO9CWf5mqBA
 date: "02/07/2026"
 video: 'https://www.youtube.com/embed/oEl608Sxw0A'
+fraseClave: Tengo una espina clavá ay Cadi de mis entrañas
 ---
 <pre>
 <a>Do</a>          <a>Sol7</a>    <a>Do</a>                    <a>Sol7</a>

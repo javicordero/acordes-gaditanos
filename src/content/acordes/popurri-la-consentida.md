@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/7W4aPNvgGwA?si=xNVOYS-Mrsji0KI7'
 
+fraseClave: La luz primera de la mañana despierta el ruido de
 ---
 <pre>
 <a>Re</a>                           <a>Sim</a>

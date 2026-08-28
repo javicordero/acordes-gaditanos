@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tDirBCb5Vw4?feature=player_embedded'
 
+fraseClave: Involución, destrucción de una raza que camina
 ---
 <pre>
 <a>Lam</a> <a>Si7</a> <a>Mi7</a> (x5) <a>Lam</a> <a>Mi7</a>

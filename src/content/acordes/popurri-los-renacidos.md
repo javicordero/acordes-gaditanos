@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/W9u3qLBbgmc'
 
+fraseClave: Sabes que la vida nunca, nunca se detiene es como
 ---
 <pre>
 <a>Re</a>                                       <a>Sim7</a>

@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/oIB6AMdRXBU?si=PypXVI_z7-OfP5Xf'
 
+fraseClave: La negra, tenemos encima la negra, lo de nuestra
 ---
 <pre>    <a>Mim</a>                      <a>Re</a>
 La negra, tenemos encima la negra, lo de nuestra 

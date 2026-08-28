@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/v6Ft81c7uUI?feature=player_embedded'
 
+fraseClave: Entre la orilla y la muralla en la arenita de la
 ---
 <pre>
 <a>Mi/add9</a>             <a>Sol#m7</a>         <a>Sol#7</a>

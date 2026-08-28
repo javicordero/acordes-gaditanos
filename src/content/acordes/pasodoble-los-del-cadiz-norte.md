@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/9LgBEE3uymE?feature=player_embedded'
 
+fraseClave: Si hay alguno que pensó que me iba a callar la
 ---
 <pre>
 <a>LaM7</a>               <a>Mi7</a>

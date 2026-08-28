@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/cDLpVjVYZJg?si=_9I1CVkJWAbFGEeG'
 
+fraseClave: Buscando la musa para componerte otra musiquita
 ---
 <pre><a>Mim</a>               <a>Si7</a>      <a>Mim</a>             <a>Mi7</a>
 Buscando la musa para componerte otra musiquita 

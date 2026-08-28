@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bivvVH5Dzw0?feature=player_embedded'
 
+fraseClave: Me pregunte a mí mismo que tendrá este rinconcito
 ---
 <pre>
 <a>Sol</a>                             <a>Do</a>          <a>Re7</a>

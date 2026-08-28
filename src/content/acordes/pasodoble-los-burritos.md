@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/300bvt038Qo?feature=player_embedded'
 
+fraseClave: De tierras mejicanas te llega a ti esta tropa
 ---
 <pre>
 <a>La</a>            <a>Mi7</a>                        <a>La</a>

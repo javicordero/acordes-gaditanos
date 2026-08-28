@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MjwmDNM97g0'
 
+fraseClave: Recuerdo que de niño cantaba las coplas
 ---
 <pre><a>Lam</a>              <a>Mi7</a>             <a>Lam</a>
 Recuerdo que de niño cantaba las coplas 

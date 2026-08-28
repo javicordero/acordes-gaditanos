@@ -9,6 +9,7 @@ img: https://i.ytimg.com/vi/peadLcrma9c/maxresdefault.jpg
 date: 17/04/2026
 video: https://www.youtube.com/embed/peadLcrma9c?si=p2fcBvJTKncLK2vD
 
+fraseClave: Me dijeron que Cádiz para el turismo
 ---
 <pre>
 <a>La</a>              <a>Mi7</a>             <a>La</a>

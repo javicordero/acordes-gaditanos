@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/IK3DzVdec-s?feature=player_embedded'
 
+fraseClave: Como yo en Cádiz he nacido y he crecido siendo un
 ---
 <pre>
             <a>Sol</a>       <a>Re</a>         <a>Mim</a>           <a>Sim7</a>

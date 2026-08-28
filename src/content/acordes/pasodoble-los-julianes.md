@@ -9,6 +9,7 @@ date: "25/11/2025"
 video: https://www.youtube.com/embed/1hnjZDgKmIw?si=DHi0LJVJBVUH7qJY
 cejilla: 1
 
+fraseClave: Hay quien dice que Cádiz no tiene fiesta
 ---
 <pre>
 <a>Lam</a>                <a>Mi7</a>             <a>Lam</a>

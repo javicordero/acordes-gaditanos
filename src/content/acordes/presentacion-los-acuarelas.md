@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/LSPfxfnujKM'
 
+fraseClave: Si he de pintar un retrato del carnaval para mi
 ---
 <pre><a>La</a>                    <a>Mi</a>                    <a>Fa#m</a>
 Si he de pintar un retrato del carnaval para mi 

@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/R_S-giStoiE?feature=player_embedded'
 
+fraseClave: Comido por las deudas cantando sin dinero
 ---
 <pre>
 <a>Sol</a>

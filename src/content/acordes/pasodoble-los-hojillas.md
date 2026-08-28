@@ -10,6 +10,7 @@ img: https://i.ytimg.com/vi/f-YuPv-hcHs/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAx
 date: "29/06/2026"
 video: https://www.youtube.com/embed/lLiFQRsAEnk?si=oNgctKx6vzrNroEH
 
+fraseClave: Con mi bombato y mi platillato
 ---
 <pre>
            <a>Fa</a>    <a>Sol7</a>     <a>Do</a>

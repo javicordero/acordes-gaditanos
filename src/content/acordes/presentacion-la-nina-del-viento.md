@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Aq24zf77eFM?feature=player_embedded'
 
+fraseClave: Cuando salta el Levante, agarrando mis manos, me
 ---
 <pre>
 <a>Lam</a>              <a>Mim</a>                     <a>Fa</a>

@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/7W4aPNvgGwA?si=xNVOYS-Mrsji0KI7'
 
+fraseClave: Cuando me acaricia el sol  y se alegra mi ventana
 ---
 <pre>              <a>Sol</a>        <a>Re</a>        <a>Do9</a>
 Cuando me acaricia el sol  y se alegra mi ventana

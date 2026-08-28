@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NlTXTA6bDKM?feature=player_embedded'
 
+fraseClave: Envenenaita y sobre estas tablas, ya está en su teatro
 ---
 <pre>
 <a>Rem</a>                                <a>Solm</a>         <a>Rem7</a>  

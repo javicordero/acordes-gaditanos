@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/doWdRZWv8IE?si=wLY1b7EwSn85PIEB'
 
+fraseClave: Quién despertó a este robot, quien encendió mi
 ---
 <pre><a>Do</a>                     <a>Sol</a>                <a>Fa</a>
 Quién despertó a este robot, quien encendió mi 

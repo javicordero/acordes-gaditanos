@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/xZ_VB4MzlE8?feature=player_embedded'
 
+fraseClave: Tu ambición siempre fue controlarme un reloj
 ---
 <pre>
 MDo SolRe

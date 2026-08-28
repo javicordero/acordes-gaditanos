@@ -9,6 +9,7 @@ cejilla: 4
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3L8qAlUQ6ZfQP1AL5SanmxgqE1stmma4ovisc1EfHRC8twS-vejQBBuOB1onY6d5-dkWnvG68v18iuZHpNMcYrxHr6lk-vww5tP7DesZNuomtAdolyYikHPEUz6-S7flXcdDi2dLXWXou/s1600/1986loslocosdelacolina.jpg
 date: "06/05/2026"
 video: 'https://www.youtube.com/embed/H6VRXCjGYnU'
+fraseClave: Antiguo rincón marinero, metrópolis madre de siglos
 ---
 <pre>
    <a>LaM7</a>        <a>Mi7</a>  <a>LaM7</a>                      <a>Re</a>

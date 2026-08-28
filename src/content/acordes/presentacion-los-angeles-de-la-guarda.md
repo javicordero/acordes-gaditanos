@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/tWdqGUfuO08?feature=player_embedded'
 
+fraseClave: Sentaito en una estrella y contando los luceros
 ---
 <pre>
 <a>Mim</a>                 <a>Sim7</a>     <a>Lam7</a>         <a>Si7</a>

@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/yWDbQsrs7Ys?feature=player_embedded'
 
+fraseClave: Pararara paraparaparapa pa pa param
 ---
 <pre>
 <a>Lam</a>                <a>Rem</a>        <a>Mi7</a>

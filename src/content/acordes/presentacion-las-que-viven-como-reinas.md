@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/onH4CXBzN8U?feature=player_embedded'
 
+fraseClave: Sigo entre muros vagando, soñando, añorando aquello
 ---
 <pre>
 <a>Lam</a>            <a>Rem</a>               <a>Mi7</a>

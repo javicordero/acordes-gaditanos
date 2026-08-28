@@ -10,6 +10,7 @@ img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/lacoro
 date: "18/08/2026"
 video: https://www.youtube.com/embed/5D42dDdcflc?si=0-zgXCla8dyJeIEQ
 
+fraseClave: Contemplando el Campo del Sur sólo me queda decir
 ---
 <pre>
 <a>LaM7</a>            <a>Sim7</a>      <a>Mi7</a>                 <a>LaM7</a>

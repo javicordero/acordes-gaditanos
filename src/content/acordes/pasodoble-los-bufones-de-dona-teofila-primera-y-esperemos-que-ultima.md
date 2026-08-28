@@ -9,6 +9,7 @@ cejilla: 5
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhAHXhR24d8pn_gNn6hyphenhyphen2uCtejWN5K1iL3Dyo-Ph0-h5EvkDofgszyL3sWZWXFJt1TcPIFx3-bW2KcPokCwKshHmE9fyGUsWtqj3i9zoHo3MsDUylVBFERDEtRoTKxWyx1jUy4o3iQFqsM/w1200-h630-p-k-no-nu/2001_los_bufones_de_do%C3%B1a_teofila.jpg
 date: "28/06/2026"
 video: 'https://www.youtube.com/embed/_sDQ0pQAoOU'
+fraseClave: Si te quiero de verdad Cádiz del alma
 ---
 <pre>
 <a>Sol</a>                <a>Re7</a>           <a>Sol</a>

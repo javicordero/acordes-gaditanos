@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ZIRdsQbSZH8?feature=player_embedded'
 
+fraseClave: Como dicen que es más rico el que menos necesita
 ---
 <pre>
 <a>Mi/add9</a>                                 <a>Fa#m</a>

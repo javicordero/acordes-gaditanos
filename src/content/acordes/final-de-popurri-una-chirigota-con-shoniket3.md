@@ -12,6 +12,7 @@ cover: 'https://www.youtube.com/embed/ZzdJmVHaUfw?si=4og60KJaSa6j5xtu'
 autorCover: Caro Vargas
 destacada: 4
 
+fraseClave: He guardao' para el último tema un atardecer en La
 ---
 <pre>       <a>Sol</a>
 He guardao' para el último tema un atardecer en La 

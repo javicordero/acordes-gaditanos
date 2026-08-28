@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/oIB6AMdRXBU?si=H6qAs0xj17RmOb8e'
 
+fraseClave: En cuanto cae la noche, pasadas las doce y
 ---
 <pre>(Sorda)  
 En cuanto cae la noche, pasadas las doce y 

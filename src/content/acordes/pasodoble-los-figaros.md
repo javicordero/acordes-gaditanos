@@ -9,6 +9,7 @@ img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/07/1964-los-f
 date: 05/04/2026
 video: https://www.youtube.com/embed/KZqQfMYXHEk?si=0hEAZFlKAJujNyEe
 
+fraseClave: No es que la luna tenga luz de plata
 ---
 <pre>
 <a>Lam</a>                 <a>Rem</a>         <a>Lam</a>

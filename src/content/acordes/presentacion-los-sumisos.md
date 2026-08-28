@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/fZvk4gCYq8M'
 
+fraseClave: Por cantar coplas prohibidas acudió la policía y en
 ---
 <pre><a>Mim</a>
 Por cantar coplas prohibidas acudió la policía y en 

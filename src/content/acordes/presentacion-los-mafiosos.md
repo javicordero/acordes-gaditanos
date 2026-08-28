@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JF2ICP4ZMyU?feature=player_embedded'
 
+fraseClave: Parapapa, parapapa paraparaparaparpapa
 ---
 <pre>
    <a>Mim</a>                <a>Re</a>          <a>Mim</a>

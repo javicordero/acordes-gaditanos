@@ -9,6 +9,7 @@ video: 'https://www.youtube.com/embed/KJFxI9y1o-o?si=a6JkwNZLPM5XWXLJ'
 musica: Raúl Cabrera
 letra: El Chapa
 
+fraseClave: Y tú que estas escuchando desde alli abajo a
 ---
 <pre>
   <a>Sol</a>

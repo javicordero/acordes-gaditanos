@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/BRQJFOL-5RQ?feature=player_embedded'
 
+fraseClave: Ahhhh ahhh Si caminito del Falla el corazón te
 ---
 <pre>
 <a>Do#m La</a>   <a>Mi</a>                <a>Si</a>   <a>Do#m</a>

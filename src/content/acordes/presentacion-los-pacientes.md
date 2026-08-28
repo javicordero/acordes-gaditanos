@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Ck3TOVT8fuI?feature=player_embedded'
 
+fraseClave: Tú, ¿dónde te va a poner Tú, ¿pa dónde va a
 ---
 <pre>
 <a>Mi</a>                <a>Fa#m7 Si7</a>

@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NkdDvr0bhnI?feature=player_embedded'
 
+fraseClave: Leileleileleilele Leileleileleilele
 ---
 <pre>
 <a>Sol</a>           <a>Mim</a>              <a>Do9</a>

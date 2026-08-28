@@ -9,6 +9,7 @@ img: https://i.ytimg.com/vi/NvyXg-Tp6qU/maxresdefault.jpg
 date: 16/04/2026
 video: https://www.youtube.com/embed/Sal1yYNzYqQ?si=-jUtKc--q6h_kNjQ
 
+fraseClave: Como Cádiz, mano, no hay tierra más linda,
 ---
 <pre>
 <a>La</a> <a>Mi7</a>      <a>La</a>  <a>Mi7</a>                 <a>La</a>

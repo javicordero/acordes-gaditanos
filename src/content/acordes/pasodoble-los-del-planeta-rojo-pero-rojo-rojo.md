@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/NZsjfGhVTZo'
 
+fraseClave: No hay un planeta más rojo en toda la galaxia que
 ---
 <pre><a>Mi</a>                    <a>Si7</a>                <a>Mi</a>
 No hay un planeta más rojo en toda la galaxia que 

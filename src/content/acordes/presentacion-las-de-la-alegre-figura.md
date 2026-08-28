@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MBqSZ8bbI-Q?feature=player_embedded'
 
+fraseClave: Tengan buenas mercedes el saludo obligatorio
 ---
 <pre>
 <a>Mim</a>               <a>Sim</a> <a>Do</a>               <a>Re7</a>

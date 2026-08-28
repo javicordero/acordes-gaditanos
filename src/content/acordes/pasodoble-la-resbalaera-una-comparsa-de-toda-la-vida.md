@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/V7v3gtfHBhg?si=506yx8VVOHwEIevl'
 
+fraseClave: Aquí tienes mi comparsa tacita de mis amores
 ---
 <pre>  <a>Lam</a>      <a>Mi7</a>      <a>Lam</a>   <a>La7</a>           <a>Rem</a>
 Aquí tienes mi comparsa tacita de mis amores

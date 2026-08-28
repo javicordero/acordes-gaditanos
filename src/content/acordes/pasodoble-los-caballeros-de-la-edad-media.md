@@ -9,6 +9,7 @@ cejilla: 6
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpuDEpOdk7LNVd1LS5SePPe6nEimk2P6lhUQ&s
 date: "12/05/2026"
 video: 'https://www.youtube.com/embed/g1j47VNVZz8'
+fraseClave: Le pido, señor Carranza permiso a su Ayuntamiento
 ---
 <pre>
 <a>Sol</a>        <a>Re7</a>      <a>Sol</a> <a>Do</a>          <a>Re7</a>     <a>Sol</a>  

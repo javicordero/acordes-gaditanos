@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/5NGjRINKDAM?feature=player_embedded'
 
+fraseClave: Oh capitán, Oh capitán, Oh capitán, Oh capitán
 ---
 <pre><a>Mim</a>
 Oh capitán, Oh capitán, Oh capitán, Oh capitán

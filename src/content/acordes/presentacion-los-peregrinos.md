@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/opO94rdmLmE?feature=player_embedded'
 
+fraseClave: Oh, sin dios y sin permiso y a falta de paraíso ya,
 ---
 <pre>
 <a>Lam</a>

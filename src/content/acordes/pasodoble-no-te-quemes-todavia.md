@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/g44Exbn6vhU?feature=player_embedded'
 
+fraseClave: Pensé que no iba a gustar na y por poquito al final
 ---
 <pre>
 <a>Mim</a>       <a>Si7</a>       <a>Mim</a> <a>Si7 Mim</a>     <a>Si7</a>      <a>Mim</a>

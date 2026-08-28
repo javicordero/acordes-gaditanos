@@ -9,6 +9,7 @@ cejilla: 5
 date: "28/11/2025"
 video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=U0kyOQCh8yReslN8'
 
+fraseClave: Cádiz nuestro que estas bajo el suelo, santificado
 ---
 <pre>Cádiz nuestro que estas bajo el suelo, santificado 
 sea tu nombre

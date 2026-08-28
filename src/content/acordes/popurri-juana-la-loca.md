@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/GYepEWp_Poo?feature=player_embedded'
 
+fraseClave: Deja tu credo en la recepción, vente, acompáñame,
 ---
 <pre>
 <a>Mi</a>                          <a>Mi7</a>

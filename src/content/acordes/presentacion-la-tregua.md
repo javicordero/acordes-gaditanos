@@ -9,6 +9,7 @@ video: 'https://www.youtube.com/embed/nNON_XtbUzg?si=7vUw6GzxnPLs3iU7'
 musica: Salvador Gómez
 letra: Salvador Gómez
 
+fraseClave: Voy a matar dos pájaros de un tiro con mi
 ---
 <pre><a>Mim</a>                                    <a>Do</a>
 Voy a matar dos pájaros de un tiro con mi 

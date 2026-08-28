@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/uu0kVzrb3aE?feature=player_embedded'
 
+fraseClave: Tarararara, Tarararara, Trararairarara,
 ---
 <pre>
 <a>Mim</a>     <a>Sim7</a>         <a>Do</a>            <a>Lam7</a>

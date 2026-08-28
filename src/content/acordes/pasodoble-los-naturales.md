@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/EiWfVzHi34Q'
 
+fraseClave: Naturalmente natural como las olas de la mar, como
 ---
 <pre>       <a>LaM7</a>        <a>Mi7</a>       <a>LaM7</a>
 Naturalmente natural como las olas de la mar, como 

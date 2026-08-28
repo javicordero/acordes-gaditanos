@@ -9,6 +9,7 @@ img: https://unplatillodesal.wordpress.com/wp-content/uploads/2018/03/1973-estam
 date: 07/04/2026
 video: https://www.youtube.com/embed/azOwZIve4_U?si=dtbc343TQgRFYLZx
 
+fraseClave: La guitarra española es un bello instrumento
 ---
 <pre>
 <a>Lam</a>                        <a>Mi7</a>         <a>Lam</a>

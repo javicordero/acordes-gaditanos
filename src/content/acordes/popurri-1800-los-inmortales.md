@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/zw-NrqhwiJs?si=dC04Slv5vvJJOBYP'
 
+fraseClave: El que sale del alma es el único fuego que no
 ---
 <pre><a>Fa</a> <a>Mi</a>                                        <a>Fa</a>
       El que sale del alma es el único fuego que no 

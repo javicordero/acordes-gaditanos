@@ -9,6 +9,7 @@ video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'
 musica: Raúl Cabrera
 letra: El Chapa
 
+fraseClave: Y en el Gran Astillero enorme que fuera el mundo
 ---
 <pre><a>Lam</a>                     <a>Mi7</a>               <a>Lam</a>
 Y en el Gran Astillero enorme que fuera el mundo 

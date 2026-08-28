@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bUqwKgLh9gg'
 
+fraseClave: Cuando a un gaditano lo paren su alma y corazón se
 ---
 <pre><a>Lam</a>                     <a>Mim</a>    <a>Lam</a>
 Cuando a un gaditano lo paren su alma y corazón se 

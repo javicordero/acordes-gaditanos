@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/yiQ8_EO0jG8?feature=player_embedded'
 
+fraseClave: Dios hizo la marea, la lluvia y el relente,
 ---
 <pre>
                 <a>Lam Mi7</a>                <a>Lam</a>

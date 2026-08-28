@@ -9,6 +9,7 @@ cejilla: 6
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQur7yeEehVpxmdz4s9iox0ltiB9wFtnnwp6w&s
 date: "27/06/2026"
 video: 'https://www.youtube.com/embed/KnVkmHgDDU0'
+fraseClave: Mostradores de la viña mostradores de mi barrio
 ---
 <pre>
 <a>Sol</a>                <a>Re7</a>                   <a>Sol</a>

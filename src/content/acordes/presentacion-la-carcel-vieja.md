@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/s9L3ILnIUVo'
 
+fraseClave: Como el vuelo de un pajarillo quiero ser libre,
 ---
 <pre><a>Do</a>
 Como el vuelo de un pajarillo quiero ser libre, 

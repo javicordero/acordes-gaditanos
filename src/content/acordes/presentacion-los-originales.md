@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ACszzsYB7nM'
 
+fraseClave: Tran tran titirititrantrantran, titirititran
 ---
 <pre><a>Sol</a>                  <a>Mim</a>            <a>Do9</a>
 Tran tran titirititrantrantran, titirititran 

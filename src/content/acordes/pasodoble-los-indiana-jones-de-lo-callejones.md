@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/ACWW7pRYYJY?feature=player_embedded'
 
+fraseClave: Los gaditanos carnavaleros que se quedan en casa
 ---
 <pre>
 <a>Rem</a>  <a>Do</a>           <a>Sib</a>                       <a>La7</a>

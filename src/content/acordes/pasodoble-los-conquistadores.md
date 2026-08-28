@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/CKO17BTghBc'
 
+fraseClave: Se me clava en los siete sentidos que mi pasodoble
 ---
 <pre>       <a>LaM7</a>                                  <a>Do#m7</a>
 Se me clava en los siete sentidos que mi pasodoble 

@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/gdQFGYMRs7s'
 
+fraseClave: No me imaginaba vivir sin cantarte, cantar sin
 ---
 <pre>           <a>LaM7</a>    <a>Mi7</a>       <a>LaM7</a>       <a>Mi7</a>
 No me imaginaba vivir sin cantarte, cantar sin 

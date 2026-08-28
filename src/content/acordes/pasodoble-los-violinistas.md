@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/dsdbHJirKKI?feature=player_embedded'
 
+fraseClave: Cuando te vi los ojitos, los dos brillos mas
 ---
 <pre><a>Sol </a>                     <a> Sim</a>
 Cuando te vi los ojitos, los dos brillos mas 

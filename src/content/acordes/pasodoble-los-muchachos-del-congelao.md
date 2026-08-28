@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/4A44HlY0hIQ?si=HyRBtU-_DTbvVdNU'
 
+fraseClave: Érase otra vez, la desolación tengo que cantarle,
 ---
 <pre>           <a>LaM7</a>         <a>Fa#m</a>                <a>Re</a>
 Érase otra vez, la desolación tengo que cantarle, 

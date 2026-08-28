@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/23eSN-eBwW4?si=Zfmrz306DIHV9Utz'
 
+fraseClave: Amanece un nuevo día en la ciudad invisible
 ---
 <pre><a>Mim</a>                                   <a>La</a>
 Amanece un nuevo día en la ciudad invisible

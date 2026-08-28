@@ -8,6 +8,7 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'
 musica: Raúl Cabrera
 letra: El Chapa
+fraseClave: Ahh que nos están robando Cádiz y le van a arrancar
 ---
 <pre><a>Lam</a>                       <a>Do</a>         <a>Re</a>       <a>Mi7</a>
 Ahh que nos están robando Cádiz y le van a arrancar 

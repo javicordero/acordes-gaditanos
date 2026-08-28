@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bg9I1bfy9ws?feature=player_embedded'
 
+fraseClave: Cierra ya la puerta y echa la persiana que ya es
 ---
 <pre>
 <a>Lam</a>

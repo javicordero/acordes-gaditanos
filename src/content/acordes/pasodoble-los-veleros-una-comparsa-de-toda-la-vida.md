@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qkJByXdm7mg'
 
+fraseClave: Buenas noches Cádiz mío otra vez vengo a cantarte
 ---
 <pre><a>Sol</a>                 <a>Re</a>                      <a>Mim</a>
 Buenas noches Cádiz mío otra vez vengo a cantarte

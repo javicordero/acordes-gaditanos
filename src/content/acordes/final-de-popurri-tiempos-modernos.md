@@ -9,6 +9,7 @@ video: 'https://www.youtube.com/embed/6uzKJ74K17I?feature=player_embedded'
 musica: El Chapa
 letra: El Chapa
 
+fraseClave: Míralos, que parece que no están, pero mira como
 ---
 
 

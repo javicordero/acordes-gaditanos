@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/UIj5chFTNxI?feature=player_embedded'
 recomendada: true
+fraseClave: ¡Buenos días, Princesa!
 ---
 <pre>
 ¡Buenos días, Princesa!

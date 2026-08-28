@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/A8lJkL3i8vw?si=EtvIlccclDDnm-JT'
 
+fraseClave: Llego del cielo un barquito Mas típico no lo hay
 ---
 <pre><a>Lam7</a>                   <a>Sol</a>  <a>Fa</a>               <a>Mi7</a>
 Llego del cielo un barquito Mas típico no lo hay 

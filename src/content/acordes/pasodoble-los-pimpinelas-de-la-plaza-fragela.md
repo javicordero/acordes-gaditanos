@@ -9,6 +9,7 @@ video: 'https://www.youtube.com/embed/Jy0YXF0kJWo?si=gUmGlmpm8Zl6t4FC'
 musica: El Molina
 letra: El Molina
 
+fraseClave: Vuelve de nuevo a sonar mi pasodoble y vuelve con
 ---
 <pre><a>Sol</a>                 <a>Re7</a>         <a>Sol</a>    <a>Do</a>
 Vuelve de nuevo a sonar mi pasodoble y vuelve con 

@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qouI91bo7eI'
 
+fraseClave: Si mayo es plena primavera aunque febrero no fuera,
 ---
 <pre><a>Sol</a>                  <a>Si7</a>                     <a>Do</a>
 Si mayo es plena primavera aunque febrero no fuera, 

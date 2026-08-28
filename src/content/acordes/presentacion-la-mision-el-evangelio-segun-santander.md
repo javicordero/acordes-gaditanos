@@ -9,6 +9,7 @@ cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qQj6nQGdwxM'
 
+fraseClave: Ahhhhhhh  Ahhhhhhh  Ahh  Ahh  Ahh Ahh
 ---
 <pre><a>Do</a>  <a>Si7</a>   <a>Do</a>  <a>Si7</a>  <a>Lam</a>   <a>Mim</a>  <a>Do</a>  <a>Si7</a>
 Ahhhhhhh  Ahhhhhhh  Ahh  Ahh  Ahh Ahh

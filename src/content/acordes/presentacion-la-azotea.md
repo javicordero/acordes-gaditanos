@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/byuOY3ffkpc?feature=player_embedded'
 
+fraseClave: Se encendió la bombilla y me echo a temblar
 ---
 <pre>
            <a>Re</a>                         <a>Sim</a>

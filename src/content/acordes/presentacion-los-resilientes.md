@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/sAcQPn2bTQI?feature=player_embedded'
 
+fraseClave: Si yo canto carnavales en la playa
 ---
 <pre>
 <a>Mim</a>              <a>Re</a>          <a>Mim</a>

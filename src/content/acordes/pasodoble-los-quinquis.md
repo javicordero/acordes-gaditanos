@@ -9,6 +9,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rbdtTcmUshY'
 
+fraseClave: No entra en el salario que te fabriques una
 ---
 <pre><a>Lam</a>              <a>Sol</a>             <a>Fa</a>
 No entra en el salario que te fabriques una 

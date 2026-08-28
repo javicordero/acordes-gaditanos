@@ -11,6 +11,7 @@ date: "28/06/2026"
 video: https://www.youtube.com/embed/I_yCwGqRNK8?si=7GnltCkd4vfVp8XR
 
 
+fraseClave: Quien iventati el taratachín
 ---
 <pre>
             <a>Fa</a>    <a>Sol7</a>   <a>Do</a>

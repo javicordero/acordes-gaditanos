@@ -8,6 +8,7 @@ img: https://static.grupojoly.com/clip/e78f8930-aef6-41e7-a3dc-5c86f9f65454_sour
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/nNON_XtbUzg?si=7vUw6GzxnPLs3iU7'
+fraseClave: La risa es una turbulencia, un clavo que saca otra
 ---
 <pre><a>Lam</a>              <a>Mim</a>        <a>Fa</a>       <a>Sol7</a>
 La risa es una turbulencia, un clavo que saca otra 

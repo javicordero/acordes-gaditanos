@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/TUIiSaIxCDs'
 
+fraseClave: Déjame algun rescoldo de cualquier barricada
 ---
 <pre><a>Mim</a>
 Déjame algun rescoldo de cualquier barricada

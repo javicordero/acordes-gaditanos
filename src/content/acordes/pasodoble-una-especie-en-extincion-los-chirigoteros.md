@@ -9,6 +9,7 @@ cejilla: 4
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/especieextincion-chirigota-santander.jpeg
 date: "21/08/2026"
 video: 'https://www.youtube.com/embed/6d1ZHBYxYco'
+fraseClave: Se dice por ahí que la chirigota
 ---
 <pre>
 <a>Lam</a>          <a>Mi7</a>           <a>Lam</a> 

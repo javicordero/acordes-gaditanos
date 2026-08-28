@@ -9,6 +9,7 @@ cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/2Hx-ZfTR8Uo?feature=player_embedded'
 
+fraseClave: Yo quisiera cantar la más bella canción que ningún
 ---
 <pre>
 <a>Mim</a>                     <a>Si7</a>                  <a>Mim</a>

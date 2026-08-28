@@ -9,6 +9,7 @@ cejilla: 3
 img: https://i.ytimg.com/vi/1_HOflDEWJI/maxresdefault.jpg
 date: "10/05/2026"
 video: 'https://www.youtube.com/embed/22n7ckoXK5w'
+fraseClave: Qué culpa tengo, pare, de haber nacío en la Viña,
 ---
 <pre>
 <a>Sol</a>               <a>Re7</a>                         <a>Sol</a>

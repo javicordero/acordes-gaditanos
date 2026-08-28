@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/JG7HRTvK3d0?si=JnbwsuuNv5A5-3_W'
 
+fraseClave: Parapapapa parapapapa Parapapapa parapapapa
 ---
 <pre><a>Mim</a> <a>Mi7</a> <a>Lam7</a> <a>Si7</a>  <a>Mim</a>         <a>Si7</a>       <a>Mim</a>
 Parapapapa parapapapa Parapapapa parapapapa 

@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/qsMTh2bXSIY'
 
+fraseClave: Tutu tutu tututu tutu tutututu  Tutu tutu tututu
 ---
 <pre><a>Lam</a>        <a>Sim/5</a> <a>Mi7</a>      <a>Lam</a>              <a>Sim/5</a>
 Tutu tutu tututu tutu tutututu  Tutu tutu tututu 

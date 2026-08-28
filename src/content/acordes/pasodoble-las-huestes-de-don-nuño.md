@@ -9,6 +9,7 @@ img: https://static.grupojoly.com/clip/f369ac5c-2f21-47ff-b4e5-fa5dd677c6d6_face
 date: 08/04/2026
 video: https://www.youtube.com/embed/V8-QSFCRyio?si=HvLoH7npzVsC_ZSC
 
+fraseClave: Teneemos nuestro condado situado frente al Hospicio,
 ---
 <pre>
 <a>Sol</a> <a>Re7</a>             <a>Sol</a>     <a>Re7</a>               <a>Sol</a>

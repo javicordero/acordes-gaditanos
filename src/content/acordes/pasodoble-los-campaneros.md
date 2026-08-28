@@ -9,6 +9,7 @@ cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/KJdF-MBfOdM?feature=player_embedded'
 
+fraseClave: El día 24, cantó tu comparsa, yo con mi veneno
 ---
 <pre>
                 <a>Mi/add9</a>

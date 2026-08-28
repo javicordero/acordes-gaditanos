@@ -9,6 +9,7 @@ cejilla: 1
 date: "03/12/2025"
 video: 'https://www.youtube.com/embed/MQE7wRVr3Eg?si=Prn0X80kz7cvgAYM'
 
+fraseClave: Me dijo una gaditana, dedícame una letrilla
 ---
 <pre>
 <a>Lam</a>           <a>Mim</a>      <a>Lam</a>            <a>Mim</a>

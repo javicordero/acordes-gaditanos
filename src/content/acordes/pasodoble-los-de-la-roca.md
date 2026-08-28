@@ -9,6 +9,7 @@ cejilla: 6
 img: https://i.ytimg.com/vi/Ub8rBWKOxw0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC4IwZc8aiBnHmOmMfZlQ2u1AGWUg
 date: "04/07/2026"
 video: 'https://www.youtube.com/embed/g9aG5rh2Iyo'
+fraseClave: que de vueltas da la vida la vida da muchas vueltas.
 ---
 <pre>
 <a>Sol</a>                       <a>Do</a>

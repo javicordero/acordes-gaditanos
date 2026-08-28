@@ -9,6 +9,7 @@ cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Co0vEoWqhLQ?feature=player_embedded'
 
+fraseClave: Y esta casa que es trono de Momo y esta estirpe del
 ---
 <pre>          
     <a>Do</a>                      <a>Sol7</a>           <a>Lam</a>

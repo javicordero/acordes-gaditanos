@@ -9,6 +9,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/9Et0t_2T46Y'
 
+fraseClave: Pa, parara, papa, parara, papa Parapapa
 ---
 <pre><a>Mim</a>          <a>Lam7</a>  <a>Si7</a> <a>Mim</a>           <a>Lam7</a>
 Pa, parara, papa, parara, papa Parapapa 
