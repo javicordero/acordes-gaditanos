@@ -50,6 +50,6 @@ y te abraza ese que te dio la vida,
 tú quiérelo por siempre pero no olvides jamás
                          <a>Mi7</a>
 que aunque yo tarde llegué y no me llames papá
-                      <a>Re</a>         <a>Mi7</a>            <a>La</a>
+                                               <a>La</a>
 tú serás siempre mi hija, tú serás siempre mi hija.
 </pre>
