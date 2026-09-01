@@ -37,4 +37,7 @@ CLAUDE.md
 
 src/content/template.md
 
+# Admin pages (solo local)
+src/pages/admin/
+
 

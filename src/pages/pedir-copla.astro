@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import CommentsSection from '../components/comments/CommentsSection.astro';
 import CommentForm from '../components/comments/CommentForm.astro';
 import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
+import DonationIndicator from '../components/DonationIndicator.astro';
 ---
 
 <Layout
@@ -17,9 +18,11 @@ import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
       <div class='pedir-copla-body'>
         <section class='intro'>
           <p>
-            ¿No encuentras los acordes de alguna copla del Carnaval de Cádiz? Déjanos un comentario
-            con el nombre de la agrupación y la pieza, e intentaremos subirla lo antes posible.
+            ¿Echas en falta alguna copla? Deja un comentario en el formulario de abajo y la subiremos cuando podamos.
           </p>
+          <div class='pedir-copla-donations'>
+            <DonationIndicator variant='timeline' messageC='Ayuda a que siga subiendo más coplas' listStyle='pills' />
+          </div>
         </section>
 
         <Anuncio adSlot='6941813836' />
@@ -116,7 +119,37 @@ import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
     }
 
     .pedir-copla-body {
-      gap: 24px;
+      gap: var(--main-container-gap-sm);
     }
+  }
+
+  :global(section.donation-indicator.timeline .donation-indicator__widget) {
+    background: var(--card-bg, #fafafa);
+    border: 1px solid var(--placeholder-color, #e5e7eb);
+  }
+
+  :global(section.donation-indicator.timeline .donation-indicator__message-c) {
+    color: var(--text-color, #333) !important;
+  }
+
+  :global(section.donation-indicator.timeline .donation-indicator__count) {
+    color: var(--acorde-color, #0044cc) !important;
+  }
+
+  :global(section.donation-indicator.timeline .donation-indicator__count-label) {
+    color: var(--text-color, #333) !important;
+  }
+
+  :global(section.donation-indicator.timeline .pill) {
+    color: var(--acorde-color, #0044cc);
+    border-color: rgba(0, 68, 204, 0.3);
+  }
+
+  :global(section.donation-indicator.timeline .pill--more) {
+    color: var(--secondary-color, #888);
+  }
+
+  :global(section.donation-indicator.timeline .donation-indicator--empty p) {
+    color: var(--text-color, #333) !important;
   }
 </style>
