@@ -19,7 +19,7 @@ Si en verdad yo fuera sabio, si yo todo lo supiera,
 no saldría por mis labios otra fórmula más bella.
                     <a>Lam</a>                         <a>Sol</a>
 Con la Viña y la Caleta, con el Parque y la Alameda,
-        <a>Do8</a>                <a>Fa</a>
+        <a>Do</a>                <a>Fa</a>
 con San Carlos frente al Puerto,
                         <a>Mi7</a>
 donde ni el vapor nos llega.
