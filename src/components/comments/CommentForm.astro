@@ -1,0 +1,101 @@
+---
+interface Props {
+  parentId?: string | null;
+  placeholder?: string;
+}
+
+const { parentId = null, placeholder = 'Escribe tu comentario...' } = Astro.props;
+---
+
+<form class='comment-form' data-parent-id={parentId || ''}>
+  <input
+    type='text'
+    class='comment-author-input'
+    placeholder='Nombre (opcional)'
+    maxlength='50'
+    aria-label='Nombre'
+  />
+  <textarea
+    class='comment-content-input'
+    placeholder={placeholder}
+    rows='3'
+    maxlength='1000'
+    aria-label='Comentario'
+    required
+  ></textarea>
+  <div class='form-actions'>
+    {parentId && <button type='button' class='cancel-reply-btn'>Cancelar</button>}
+    <button type='submit' class='submit-btn'>Enviar</button>
+  </div>
+  <div class='form-status' aria-live='polite'></div>
+</form>
+
+<script>
+  function initCommentForms() {
+    document.querySelectorAll('.comment-form').forEach((form) => {
+      if ((form as HTMLElement).dataset.initialized === 'true') return;
+      (form as HTMLElement).dataset.initialized = 'true';
+
+      const contentInput = form.querySelector('.comment-content-input') as HTMLTextAreaElement;
+      const authorInput = form.querySelector('.comment-author-input') as HTMLInputElement;
+      const submitBtn = form.querySelector('.submit-btn') as HTMLButtonElement;
+      const cancelBtn = form.querySelector('.cancel-reply-btn') as HTMLButtonElement;
+      const status = form.querySelector('.form-status') as HTMLElement;
+      const parentId = (form as HTMLElement).dataset.parentId || null;
+
+      cancelBtn?.addEventListener('click', () => {
+        const replyForm = form.closest('.reply-form-container');
+        if (replyForm) replyForm.remove();
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const content = contentInput?.value.trim();
+        if (!content) {
+          status.textContent = 'El comentario no puede estar vacío';
+          status.className = 'form-status error';
+          return;
+        }
+
+        submitBtn.disabled = true;
+        status.textContent = 'Enviando...';
+        status.className = 'form-status';
+
+        try {
+          const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
+          const res = await fetch(COMMENTS_CONFIG.workerUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              path: '/pedir-copla',
+              author: authorInput?.value.trim() || '',
+              content,
+              parentId,
+            }),
+          });
+
+          if (!res.ok) {
+            const data = await res.json();
+            throw new Error(data.error || 'Error al enviar');
+          }
+
+          contentInput.value = '';
+          if (authorInput) authorInput.value = '';
+          status.textContent = 'Comentario enviado. Muchas gracias.';
+          status.className = 'form-status success';
+
+          window.dispatchEvent(new Event('comment-added'));
+        } catch (err) {
+          status.textContent = err instanceof Error ? err.message : 'Error al enviar el comentario';
+          status.className = 'form-status error';
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+    });
+  }
+
+  initCommentForms();
+  document.addEventListener('astro:page-load', initCommentForms);
+</script>

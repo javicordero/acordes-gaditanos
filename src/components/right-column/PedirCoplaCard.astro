@@ -1,0 +1,47 @@
+---
+import RightColumnCard from '../../layouts/RightColumnCard.astro';
+
+const { class: className } = Astro.props;
+---
+
+<RightColumnCard title='Pedir esta copla' headingId='pedir-copla-title' class={className}>
+  <section class='card' aria-labelledby='pedir-copla-heading'>
+    <p>
+      ¿Buscas los acordes de esta copla o de otra del Carnaval de Cádiz?
+      Pídelos en nuestra sección de peticiones.
+    </p>
+    <a href='/pedir-copla' class='btn-pedir'>Pedir copla</a>
+  </section>
+</RightColumnCard>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  .btn-pedir {
+    display: inline-block;
+    background: var(--primary-contrast-color, #c2185b);
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .btn-pedir:hover {
+    opacity: 0.9;
+  }
+</style>

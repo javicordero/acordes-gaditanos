@@ -8,6 +8,7 @@ import Layout from '../../layouts/Layout.astro';
 import MusicCompositionSchema from '../../components/utils/MusicCompositionSchema.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Apoyar from '../../components/right-column/Apoyar.astro';
+import PedirCoplaCard from '../../components/right-column/PedirCoplaCard.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
@@ -201,6 +202,8 @@ const webPageSchema = {
 
       <Apoyar class='apoyar' />
 
+      <PedirCoplaCard class='pedir-copla' />
+
       <Anuncio2 class='anuncio-2' />
 
       <SigueTocando
@@ -245,6 +248,10 @@ const webPageSchema = {
       .main-container > :global(.acorde-card) {
         flex: 0 0 auto;
         min-width: 0;
+      }
+
+      :global(.fab-container) {
+        display: none !important;
       }
 
       @media (max-width: 780px) {
@@ -299,6 +306,10 @@ const webPageSchema = {
         }
 
         .right-column > :global(.anuncio-3) {
+          display: none !important;
+        }
+
+        .right-column > :global(.pedir-copla) {
           display: none !important;
         }
       }

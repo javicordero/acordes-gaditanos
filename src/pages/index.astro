@@ -9,6 +9,7 @@ import AnunciateAqui from '../components/right-column/AnunciateAqui.astro';
 import AnunciateIndex from '../components/page/AnunciateIndex.astro';
 import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
 import BannerMartin from '../components/page/BannerMartin.astro';
+import FloatingButton from '../components/FloatingButton.astro';
 import { parseSpanishDate, sortByYearDesc } from '../lib/index';
 
 let acordes = await getCollection('acordes');
@@ -53,6 +54,9 @@ let autores = await getCollection('autores');
         years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort(sortByYearDesc)}
       />
     </div>
+  </div>
+  <div class='container-layout'>
+    <FloatingButton />
   </div>
 </Layout>
 

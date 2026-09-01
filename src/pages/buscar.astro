@@ -48,6 +48,7 @@ let autores = await getCollection('autores');
         </header>
         <p>No se encontraron acordes que coincidan con <strong class='search-query'></strong>.</p>
         <p>Intenta con otros términos de búsqueda.</p>
+        <p class='no-results-suggestion'>¿Buscas otra copla? <a href='/pedir-copla'>Pídela aquí</a>.</p>
       </div>
     </article>
 
@@ -121,7 +122,7 @@ let autores = await getCollection('autores');
       }
     }
 
-    & p {
+      & p {
       font-size: 1rem;
       line-height: 1.6;
       color: var(--text-color);
@@ -129,6 +130,21 @@ let autores = await getCollection('autores');
 
       & strong {
         color: var(--primary-color);
+      }
+    }
+
+    & .no-results-suggestion {
+      margin-top: 12px;
+
+      & a {
+        color: var(--link-color, #0070f3);
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--link-hover-color, #005bb5);
+          text-decoration: underline;
+        }
       }
     }
   }

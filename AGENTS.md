@@ -136,5 +136,5 @@ autorCover: Nombre (opcional)
 
 <!-- SPECKIT START -->
 For additional context about the active feature, read the plan at
-`specs/004-integracion-ezoic/plan.md`
+`specs/005-comentarios-peticiones/plan.md`
 <!-- SPECKIT END -->

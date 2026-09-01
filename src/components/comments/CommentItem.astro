@@ -1,0 +1,132 @@
+---
+interface Props {
+  id: string;
+  author: string;
+  content: string;
+  date: string;
+  isAdmin: boolean;
+  completed: boolean;
+  depth?: number;
+}
+
+const { id, author, content, date, isAdmin, completed, depth = 0 } = Astro.props;
+
+function formatDate(isoDate: string): string {
+  const d = new Date(isoDate);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  const hours = String(d.getHours()).padStart(2, '0');
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
+}
+
+const displayName = author && author.trim() ? author.trim() : 'Anónimo';
+---
+
+<div class:list={['comment-item', { 'is-admin': isAdmin, 'is-root': depth === 0 }]} style={`margin-left: ${depth * 24}px`}>
+  <div class='comment-header'>
+    <span class='comment-author'>
+      {isAdmin && <span class='badge-admin'>Propietario</span>}
+      {displayName}
+    </span>
+    <span class='comment-date'>{formatDate(date)}</span>
+    {completed && <span class='badge-completed'>Completada</span>}
+  </div>
+
+  <div class='comment-content'>
+    <p>{content}</p>
+  </div>
+
+  <div class='comment-actions'>
+    <button class='reply-btn' data-parent-id={id} data-author={displayName}>
+      Responder
+    </button>
+  </div>
+</div>
+
+<style>
+  .comment-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--placeholder-color, #e5e7eb);
+  }
+
+  .comment-item:last-child {
+    border-bottom: none;
+  }
+
+  .comment-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .comment-author {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-color, #333);
+  }
+
+  .comment-date {
+    font-size: 0.8rem;
+    color: var(--secondary-color, #888);
+  }
+
+  .badge-admin {
+    display: inline-block;
+    background: var(--primary-contrast-color, #c2185b);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-right: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .badge-completed {
+    display: inline-block;
+    background: #22c55e;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .comment-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color, #333);
+    word-wrap: break-word;
+  }
+
+  .comment-actions {
+    margin-top: 6px;
+  }
+
+  .reply-btn {
+    background: none;
+    border: none;
+    color: var(--link-color, #0070f3);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0;
+    font-weight: 600;
+  }
+
+  .reply-btn:hover {
+    color: var(--link-hover-color, #005bb5);
+    text-decoration: underline;
+  }
+
+  .is-root {
+    padding: 16px 0;
+  }
+</style>

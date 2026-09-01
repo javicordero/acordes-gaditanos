@@ -1,0 +1,326 @@
+---
+interface Props {
+  path?: string;
+  title?: string;
+}
+
+const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
+---
+
+<section class='comments-section' data-path={path}>
+  <h3 class='comments-title'>{title}</h3>
+  <div class='comments-loading'>Cargando comentarios...</div>
+  <div class='comments-list'></div>
+  <div class='comments-empty' style='display:none'>
+    <p>No hay comentarios aún. Sé el primero en comentar.</p>
+  </div>
+</section>
+
+<style>
+  .comments-section {
+    padding: 24px 0;
+  }
+
+  .comments-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color, #333);
+    margin: 0 0 16px 0;
+    position: relative;
+    max-width: fit-content;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 90%;
+      height: 3px;
+      background: var(--primary-contrast-color, #c2185b);
+      border-radius: 2px;
+    }
+  }
+
+  .comments-loading {
+    color: var(--secondary-color, #888);
+    font-size: 0.9rem;
+    padding: 16px 0;
+  }
+
+  .comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap-sm);
+  }
+
+  .comments-empty {
+    color: var(--secondary-color, #888);
+    font-size: 0.9rem;
+    padding: 16px 0;
+    font-style: italic;
+  }
+
+  :global(.comment-item-wrapper) {
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--placeholder-color, #e5e7eb);
+  }
+
+  :global(.comment-header) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+
+  :global(.comment-author) {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-color, #333);
+  }
+
+  :global(.comment-badge) {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  :global(.comment-badge--owner) {
+    background: var(--primary-contrast-color, #c2185b);
+    color: white;
+    margin-right: 4px;
+  }
+
+  :global(.comment-badge--completed) {
+    background: #22c55e;
+    color: white;
+  }
+
+  :global(.comment-date) {
+    font-size: 0.8rem;
+    color: var(--secondary-color, #888);
+  }
+
+  :global(.comment-content) {
+    margin-bottom: 4px;
+  }
+
+  :global(.comment-text) {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-color, #333);
+    word-wrap: break-word;
+  }
+
+  :global(.comment-actions) {
+    display: flex;
+    gap: 12px;
+  }
+
+  :global(.reply-trigger-btn) {
+    background: none;
+    border: none;
+    color: var(--link-color, #0070f3);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  :global(.reply-trigger-btn:hover) {
+    opacity: 0.8;
+  }
+</style>
+
+<script>
+  function initCommentsSection() {
+    document.querySelectorAll('.comments-section').forEach(async (section) => {
+      if ((section as HTMLElement).dataset.loaded === 'true') return;
+      (section as HTMLElement).dataset.loaded = 'true';
+
+      const pagePath = (section as HTMLElement).dataset.path || '/pedir-copla';
+      const loading = section.querySelector('.comments-loading') as HTMLElement;
+      const list = section.querySelector('.comments-list') as HTMLElement;
+      const empty = section.querySelector('.comments-empty') as HTMLElement;
+
+      async function loadComments() {
+        try {
+          const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
+          const res = await fetch(`${COMMENTS_CONFIG.workerUrl}?path=${encodeURIComponent(pagePath)}`);
+          const data = await res.json();
+          const comments = data.comments || [];
+
+          loading.style.display = 'none';
+          list.innerHTML = '';
+
+          if (comments.length === 0) {
+            empty.style.display = 'block';
+            return;
+          }
+
+          empty.style.display = 'none';
+          renderComments(comments, list, null, 0);
+        } catch {
+          loading.textContent = 'Error al cargar comentarios. Inténtalo de nuevo más tarde.';
+        }
+      }
+
+      function renderComments(comments, container, parentId, depth) {
+        const children = comments.filter((c) => c.parentId === parentId);
+        children.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        for (const comment of children) {
+
+          const el = document.createElement('div');
+          el.className = 'comment-item-wrapper';
+          el.style.marginLeft = `${depth * 24}px`;
+
+          const displayName = comment.isAdmin ? '' : (comment.author && comment.author.trim() ? comment.author.trim() : 'Anónimo');
+          const date = new Date(comment.date);
+          const dateStr = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+
+          el.innerHTML = `
+            <div class='comment-header'>
+              <span class='comment-author'>
+                ${comment.isAdmin ? '<span class="comment-badge comment-badge--owner">Propietario</span>' : ''}
+                ${displayName}
+              </span>
+              <span class='comment-date'>${dateStr}</span>
+              ${comment.completed ? '<span class="comment-badge comment-badge--completed">Completada</span>' : ''}
+            </div>
+            <div class='comment-content'>
+              <p class='comment-text'>${escapeHtml(comment.content)}</p>
+            </div>
+            <div class='comment-actions'>
+              <button class='reply-trigger-btn' data-comment-id='${comment.id}' data-author='${escapeHtml(displayName)}'>Responder</button>
+            </div>
+          `;
+
+          container.appendChild(el);
+
+          // Render children
+          renderComments(comments, container, comment.id, depth + 1);
+        }
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      // Handle reply button clicks
+      section.addEventListener('click', async (e) => {
+        const btn = (e.target as HTMLElement).closest('.reply-trigger-btn');
+        if (!btn) return;
+
+        const commentId = btn.dataset.commentId;
+        const author = btn.dataset.author;
+
+        // Remove existing reply forms
+        section.querySelectorAll('.reply-form-container').forEach((f) => f.remove());
+
+        const replyContainer = document.createElement('div');
+        replyContainer.className = 'reply-form-container';
+
+        replyContainer.innerHTML = `
+          <form class='comment-form' data-parent-id='${commentId}'>
+            <input type='text' class='comment-author-input' placeholder='Nombre (opcional)' maxlength='50' aria-label='Nombre' />
+            <textarea class='comment-content-input' placeholder='Respondiendo a ${author}...' rows='3' maxlength='1000' aria-label='Comentario' required></textarea>
+            <div class='form-actions'>
+              <button type='button' class='cancel-reply-btn'>Cancelar</button>
+              <button type='submit' class='submit-btn'>Enviar</button>
+            </div>
+            <div class='form-status' aria-live='polite'></div>
+          </form>
+        `;
+
+        btn.closest('.comment-item-wrapper')?.after(replyContainer);
+
+        // Init form
+        const form = replyContainer.querySelector('.comment-form');
+        if (form) {
+          const contentInput = form.querySelector('.comment-content-input');
+          const cancelReplyBtn = form.querySelector('.cancel-reply-btn');
+          const submitBtn = form.querySelector('.submit-btn');
+          const status = form.querySelector('.form-status');
+
+          cancelReplyBtn?.addEventListener('click', () => replyContainer.remove());
+
+          form.addEventListener('submit', async (ev) => {
+            ev.preventDefault();
+            const content = contentInput.value.trim();
+            if (!content) {
+              status.textContent = 'El comentario no puede estar vacío';
+              status.className = 'form-status error';
+              return;
+            }
+
+            submitBtn.disabled = true;
+            status.textContent = 'Enviando...';
+            status.className = 'form-status';
+
+            try {
+              const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
+              const authorInput = form.querySelector('.comment-author-input');
+              const res = await fetch(COMMENTS_CONFIG.workerUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  path: pagePath,
+                  author: authorInput?.value.trim() || '',
+                  content,
+                  parentId: commentId,
+                }),
+              });
+
+              if (!res.ok) {
+                const data = await res.json();
+                throw new Error(data.error || 'Error al enviar');
+              }
+
+              replyContainer.remove();
+              (section as HTMLElement).dataset.loaded = 'false';
+              list.innerHTML = '';
+              initCommentsSection();
+            } catch (err) {
+              status.textContent = err instanceof Error ? err.message : 'Error al enviar';
+              status.className = 'form-status error';
+              submitBtn.disabled = false;
+            }
+          });
+        }
+      });
+
+      // Store reload function on section for external access
+      (section as HTMLElement).__reloadComments = () => {
+        list.innerHTML = '';
+        loadComments();
+      };
+
+      await loadComments();
+    });
+  }
+
+  function setupGlobalListener() {
+    if ((window as any).__commentsListenerSetup) return;
+    (window as any).__commentsListenerSetup = true;
+
+    window.addEventListener('comment-added', () => {
+      document.querySelectorAll('.comments-section').forEach((section) => {
+        const reload = (section as HTMLElement).__reloadComments;
+        if (typeof reload === 'function') reload();
+      });
+    });
+  }
+
+  initCommentsSection();
+  setupGlobalListener();
+  document.addEventListener('astro:page-load', initCommentsSection);
+</script>

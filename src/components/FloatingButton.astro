@@ -1,0 +1,79 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div class:list={['fab-container', className]}>
+  <a href='/pedir-copla' class='fab' aria-label='Pedir una copla'>
+    <span class='fab-text'>Pedir una copla</span>
+  </a>
+</div>
+
+<style>
+  .fab-container {
+    position: fixed;
+    bottom: 24px;
+    width: 90%;
+    max-width: var(--app-max-width);
+    margin: auto;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .fab-container.hidden {
+    display: none;
+  }
+
+  .fab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 20px;
+    border-radius: 24px;
+    background: var(--primary-contrast-color, #c2185b);
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  .fab:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (min-width: 640px) {
+    .fab-container {
+      width: 95%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .fab-container {
+      bottom: 16px;
+    }
+
+    .fab {
+      padding: 10px 16px;
+      font-size: 0.8rem;
+    }
+  }
+</style>
+
+<script>
+  function initFAB() {
+    const container = document.querySelector('.fab-container');
+    if (!container) return;
+
+    localStorage.removeItem('fab-pedir-copla-closed');
+    container.classList.remove('hidden');
+  }
+
+  initFAB();
+  document.addEventListener('astro:page-load', initFAB);
+</script>

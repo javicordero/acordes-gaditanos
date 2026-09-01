@@ -78,6 +78,8 @@ const headingId = `acorde-${slug}`;
       </div>
     </section>
 
+    <a href='/pedir-copla' class='pedir-copla-mobile'>Pedir una copla</a>
+
     <figure>
       <Image
         class='acorde-image'
@@ -111,7 +113,7 @@ const headingId = `acorde-${slug}`;
       <span>{cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
 
-    <div class='acorde-content'>
+      <div class='acorde-content'>
       <TutorialAutoscroll />
       <div class='autoscroll-wrapper'>
         <button class='autoscroll-help-btn' data-tutorial-help aria-label='Ayuda sobre el autoscroll' type='button'>?</button>
@@ -485,9 +487,32 @@ const headingId = `acorde-${slug}`;
     max-height: 85vh;
   }
 
+  .pedir-copla-mobile {
+    display: none;
+  }
+
   @media (max-width: 640px) {
     .acorde-content :global(pre.scrolling) {
       max-height: 70vh;
+    }
+
+    .pedir-copla-mobile {
+      display: block;
+      width: 100%;
+      padding: 8px 0;
+      background: var(--primary-color);
+      color: var(--primary-contrast-color);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.3px;
+      text-align: center;
+    }
+
+    .pedir-copla-mobile:hover {
+      opacity: 0.9;
     }
   }
 </style>
