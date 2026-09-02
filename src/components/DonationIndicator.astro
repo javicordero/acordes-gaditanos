@@ -16,9 +16,7 @@ const donaciones = [...datos.data.donaciones]
   .sort((a, b) => b.fecha.split('/').reverse().join('').localeCompare(a.fecha.split('/').reverse().join('')))
 
 const totalDonantes = donaciones.length
-const maxNombres = variant === 'compact' ? 3 : 10
-const nombres = donaciones.slice(0, maxNombres).map(d => d.donante || 'Anónimo')
-const restantes = totalDonantes - nombres.length
+const nombres = donaciones.map(d => d.donante || 'Anónimo')
 ---
 
 <section class:list={['donation-indicator', variant, className]} aria-label='Indicador de donaciones'>
@@ -40,7 +38,6 @@ const restantes = totalDonantes - nombres.length
             {nombres.slice(1).length > 0 && (
               <p class='donation-indicator__names donation-indicator__names--rest'>
                 {nombres.slice(1).join(' · ')}
-                {restantes > 0 && <span class='donation-indicator__name-more'> y {restantes} más</span>}
               </p>
             )}
           </>
@@ -53,13 +50,11 @@ const restantes = totalDonantes - nombres.length
                 {name}
               </span>
             ))}
-            {restantes > 0 && <span class='pill pill--more'>+{restantes}</span>}
           </div>
         )}
         {listStyle === 'inline' && (
           <p class='donation-indicator__names'>
             {nombres.join(' · ')}
-            {restantes > 0 && <span class='donation-indicator__name-more'> y {restantes} más</span>}
           </p>
         )}
         <a href='https://www.buymeacoffee.com/AcordesGaditanos' target='_blank' rel='noopener noreferrer' class='btn' data-ga-event='support_bmc_donation_indicator' data-ga-params='{"method":"buymeacoffee","location":"donation_indicator"}'>
