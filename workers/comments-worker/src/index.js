@@ -101,6 +101,24 @@ export default {
       }
     }
 
+    // GET /stats — Obtener estadísticas de peticiones
+    if (method === 'GET' && path === '/stats') {
+      const pagePath = url.searchParams.get('path');
+      if (!pagePath) {
+        return jsonResponse({ error: 'Missing required parameter: path' }, 400);
+      }
+
+      try {
+        const comments = await getComments(pagePath, env);
+        const rootComments = comments.filter((c) => !c.parentId);
+        const total = rootComments.length;
+        const completed = rootComments.filter((c) => c.completed).length;
+        return jsonResponse({ total, completed });
+      } catch (err) {
+        return jsonResponse({ error: 'Service temporarily unavailable.' }, 503);
+      }
+    }
+
     // POST / — Crear comentario
     if (method === 'POST' && path === '/') {
       const ip = request.headers.get('cf-connecting-ip') || 'unknown';

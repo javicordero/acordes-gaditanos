@@ -220,12 +220,14 @@ body {
   border-color: var(--primary-contrast-color, #c2185b);
 }
 
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-}
+  .form-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
 
 .cancel-reply-btn {
   background: none;
@@ -274,12 +276,11 @@ body {
   transform: none;
 }
 
-.form-status {
-  font-size: 0.8rem;
-  min-height: 18px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-}
+  .form-status {
+    font-size: 0.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+  }
 
 .form-status.success {
   color: #22c55e;

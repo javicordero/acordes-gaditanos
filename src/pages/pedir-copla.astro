@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CommentsSection from '../components/comments/CommentsSection.astro';
 import CommentForm from '../components/comments/CommentForm.astro';
+import PeticionesStats from '../components/comments/PeticionesStats.astro';
 import DonationIndicator from '../components/DonationIndicator.astro';
 ---
 
@@ -19,6 +20,7 @@ import DonationIndicator from '../components/DonationIndicator.astro';
           <p>
             ¿Echas en falta alguna copla? Deja un comentario en el formulario de abajo y la subiremos cuando podamos.
           </p>
+          <PeticionesStats />
           <div class='pedir-copla-donations'>
             <DonationIndicator variant='timeline' messageC='Ayuda a que siga subiendo más coplas' listStyle='pills' />
           </div>

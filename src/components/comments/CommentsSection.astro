@@ -18,7 +18,6 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 
 <style>
   .comments-section {
-    padding: 24px 0;
   }
 
   .comments-title {
@@ -235,8 +234,8 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
             <div class='form-actions'>
               <button type='button' class='cancel-reply-btn'>Cancelar</button>
               <button type='submit' class='submit-btn'>Enviar</button>
+              <div class='form-status' aria-live='polite'></div>
             </div>
-            <div class='form-status' aria-live='polite'></div>
           </form>
         `;
 

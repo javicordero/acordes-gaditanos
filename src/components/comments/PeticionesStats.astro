@@ -1,0 +1,87 @@
+---
+interface Props {
+  path?: string;
+}
+
+const { path = '/pedir-copla' } = Astro.props;
+---
+
+<div class='peticiones-stats' data-path={path}>
+  <div class='stat'>
+    <span class='stat__number' id='stats-total'>-</span>
+    <span class='stat__label'>peticiones</span>
+  </div>
+  <div class='stat'>
+    <span class='stat__number stat__number--completed' id='stats-completed'>-</span>
+    <span class='stat__label'>completadas</span>
+  </div>
+</div>
+
+<script>
+  function initPeticionesStats() {
+    document.querySelectorAll('.peticiones-stats').forEach(async (el) => {
+      const pagePath = (el as HTMLElement).dataset.path || '/pedir-copla';
+      const totalEl = el.querySelector('#stats-total');
+      const completedEl = el.querySelector('#stats-completed');
+
+      async function loadStats() {
+        try {
+          const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
+          const res = await fetch(`${COMMENTS_CONFIG.workerUrl}/stats?path=${encodeURIComponent(pagePath)}`);
+          const data = await res.json();
+          if (totalEl) totalEl.textContent = data.total ?? '-';
+          if (completedEl) completedEl.textContent = data.completed ?? '-';
+        } catch {
+          if (totalEl) totalEl.textContent = '-';
+          if (completedEl) completedEl.textContent = '-';
+        }
+      }
+
+      await loadStats();
+
+      window.addEventListener('comment-added', () => {
+        loadStats();
+      });
+    });
+  }
+
+  initPeticionesStats();
+  document.addEventListener('astro:page-load', initPeticionesStats);
+</script>
+
+<style>
+  .peticiones-stats {
+    display: flex;
+    gap: 24px;
+    padding: 14px 18px;
+    background: var(--card-bg, #fafafa);
+    border: 1px solid var(--placeholder-color, #e5e7eb);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .stat__number {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--acorde-color, #0044cc);
+    line-height: 1;
+  }
+
+  .stat__number--completed {
+    color: #22c55e;
+  }
+
+  .stat__label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-color, #333);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+</style>

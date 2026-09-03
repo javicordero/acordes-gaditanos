@@ -26,8 +26,8 @@ const { parentId = null, placeholder = 'Escribe tu comentario...' } = Astro.prop
   <div class='form-actions'>
     {parentId && <button type='button' class='cancel-reply-btn'>Cancelar</button>}
     <button type='submit' class='submit-btn'>Enviar</button>
+    <div class='form-status' aria-live='polite'></div>
   </div>
-  <div class='form-status' aria-live='polite'></div>
 </form>
 
 <script>
@@ -82,7 +82,7 @@ const { parentId = null, placeholder = 'Escribe tu comentario...' } = Astro.prop
 
           contentInput.value = '';
           if (authorInput) authorInput.value = '';
-          status.textContent = 'Comentario enviado. Muchas gracias.';
+          status.textContent = 'Comentario enviado.';
           status.className = 'form-status success';
 
           window.dispatchEvent(new Event('comment-added'));
