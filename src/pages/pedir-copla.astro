@@ -17,14 +17,21 @@ import DonationIndicator from '../components/DonationIndicator.astro';
 
       <div class='pedir-copla-body'>
         <section class='intro'>
-          <p>
-            ¿Echas en falta alguna copla? Deja un comentario en el formulario de abajo y la subiremos cuando podamos.
-          </p>
+          <div class='intro-text'>
+            <p>
+              ¿Echas en falta alguna copla? Deja un comentario en el formulario de abajo y la subiremos cuando podamos.
+            </p>
+            <p class='vote-hint'>
+              Puedes votar las peticiones que mas te gusten con el icono de corazon.
+            </p>
+          </div>
           <PeticionesStats />
           <div class='pedir-copla-donations'>
             <DonationIndicator variant='timeline' messageC='Ayuda a que siga subiendo más coplas' listStyle='pills' />
           </div>
         </section>
+
+        <section class='top-peticiones top-peticiones--visible' id='top-peticiones'></section>
 
         <section class='form-section'>
           <h2>Escribe tu petición</h2>
@@ -83,6 +90,12 @@ import DonationIndicator from '../components/DonationIndicator.astro';
       line-height: 1.6;
       color: var(--text-color);
       font-size: 1rem;
+    }
+
+    & .vote-hint {
+      font-size: 0.875rem;
+      color: var(--acorde-color);
+      font-style: italic;
     }
   }
 
@@ -152,3 +165,50 @@ import DonationIndicator from '../components/DonationIndicator.astro';
     color: var(--text-color, #333) !important;
   }
 </style>
+
+<script>
+  async function loadTopPeticiones() {
+    const container = document.getElementById('top-peticiones');
+    if (!container) return;
+
+    try {
+      const { COMMENTS_CONFIG } = await import('../lib/comments.ts');
+      const res = await fetch(`${COMMENTS_CONFIG.workerUrl}/top?path=${encodeURIComponent('/pedir-copla')}&limit=3`);
+      const data = await res.json();
+      const top = data.top || [];
+
+      container.style.display = '';
+
+      if (top.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+
+      container.innerHTML = `
+        <h3 class='top-peticiones__title'>Peticiones más votadas</h3>
+        ${top.map((p) => `
+          <div class='top-peticiones__item'>
+            <span class='top-peticiones__content'>${escapeHtml(p.content)}</span>
+            <span class='top-peticiones__votes'>
+              <svg width='14' height='14' viewBox='0 0 24 24' fill='#e74c3c' stroke='none'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/></svg>
+              ${p.votes ?? 0}
+            </span>
+          </div>
+        `).join('')}
+      `;
+    } catch {
+      container.style.display = 'none';
+    }
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  (window as any).__reloadTopPeticiones = loadTopPeticiones;
+
+  loadTopPeticiones();
+  document.addEventListener('astro:page-load', loadTopPeticiones);
+</script>

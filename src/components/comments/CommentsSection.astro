@@ -134,6 +134,128 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
   :global(.reply-trigger-btn:hover) {
     opacity: 0.8;
   }
+
+  :global(.comment-vote-btn) {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--secondary-color, #888);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Montserrat', sans-serif;
+    transition: transform 0.15s ease;
+  }
+
+  :global(.comment-vote-btn:hover) {
+    opacity: 0.7;
+  }
+
+  :global(.comment-vote-btn--animate) {
+    animation: vote-pop 0.3s ease;
+  }
+
+  @keyframes vote-pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  :global(.comment-vote-btn--active) {
+    color: #e74c3c;
+  }
+
+  :global(.comment-vote-btn--active .heart-icon) {
+    fill: #e74c3c;
+  }
+
+  :global(.comment-votes-count) {
+    font-size: 0.8rem;
+    color: var(--secondary-color, #888);
+    min-width: 12px;
+  }
+
+  :global(.top-peticiones) {
+    background: var(--card-bg, #fafafa);
+    border: 1px solid var(--placeholder-color, #e5e7eb);
+    border-radius: 8px;
+    padding: 16px 16px 8px;
+  }
+
+:global(.top-peticiones__title) {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-color, #333);
+  margin: 0 0 12px 0;
+  position: relative;
+  max-width: fit-content;
+}
+
+:global(.top-peticiones__title::after) {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 90%;
+  height: 3px;
+  background: var(--primary-contrast-color, #c2185b);
+  border-radius: 2px;
+}
+
+  :global(.top-peticiones__item) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--placeholder-color, #e5e7eb);
+    gap: 12px;
+  }
+
+  :global(.top-peticiones__item:last-child) {
+    border-bottom: none;
+  }
+
+  :global(.top-peticiones__content) {
+    font-size: 0.9rem;
+    color: var(--text-color, #333);
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  :global(.top-peticiones__votes) {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.85rem;
+    color: #e74c3c;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  :global(.top-peticiones__empty) {
+    color: var(--secondary-color, #888);
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 0;
+  }
+
+  :global(.form-duplicate-warning) {
+    background: #fef3cd;
+    border-left: 4px solid #f0ad4e;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #856404;
+    line-height: 1.5;
+  }
 </style>
 
 <script>
@@ -149,7 +271,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 
       async function loadComments() {
         try {
-          const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
+          const { COMMENTS_CONFIG, getUserId } = await import('../../lib/comments.ts');
           const res = await fetch(`${COMMENTS_CONFIG.workerUrl}?path=${encodeURIComponent(pagePath)}`);
           const data = await res.json();
           const comments = data.comments || [];
@@ -163,13 +285,14 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
           }
 
           empty.style.display = 'none';
-          renderComments(comments, list, null, 0);
+          const userId = getUserId();
+          renderComments(comments, list, null, 0, userId);
         } catch {
           loading.textContent = 'Error al cargar comentarios. Inténtalo de nuevo más tarde.';
         }
       }
 
-      function renderComments(comments, container, parentId, depth) {
+      function renderComments(comments, container, parentId, depth, userId) {
         const children = comments.filter((c) => c.parentId === parentId);
         children.sort((a, b) => new Date(b.date) - new Date(a.date));
 
@@ -182,6 +305,10 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
           const displayName = comment.isAdmin ? '' : (comment.author && comment.author.trim() ? comment.author.trim() : 'Anónimo');
           const date = new Date(comment.date);
           const dateStr = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+          const isRoot = !comment.parentId;
+          const votes = comment.votes ?? 0;
+          const votedBy = comment.votedBy ?? [];
+          const hasVoted = votedBy.includes(userId);
 
           el.innerHTML = `
             <div class='comment-header'>
@@ -196,6 +323,10 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
               <p class='comment-text'>${escapeHtml(comment.content)}</p>
             </div>
             <div class='comment-actions'>
+              ${isRoot ? `<button class='comment-vote-btn ${hasVoted ? 'comment-vote-btn--active' : ''}' data-comment-id='${comment.id}' data-votes='${votes}' aria-label='Votar'>
+                <svg class='heart-icon' width='16' height='16' viewBox='0 0 24 24' fill='${hasVoted ? '#e74c3c' : 'none'}' stroke='currentColor' stroke-width='2'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/></svg>
+                <span class='comment-votes-count'>${votes}</span>
+              </button>` : ''}
               <button class='reply-trigger-btn' data-comment-id='${comment.id}' data-author='${escapeHtml(displayName)}'>Responder</button>
             </div>
           `;
@@ -203,7 +334,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
           container.appendChild(el);
 
           // Render children
-          renderComments(comments, container, comment.id, depth + 1);
+          renderComments(comments, container, comment.id, depth + 1, userId);
         }
       }
 
@@ -212,6 +343,68 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
         div.textContent = str;
         return div.innerHTML;
       }
+
+      // Handle vote button clicks
+      section.addEventListener('click', async (e) => {
+        const btn = (e.target as HTMLElement).closest('.comment-vote-btn');
+        if (!btn) return;
+
+        const commentId = btn.dataset.commentId;
+        if (!commentId) return;
+
+        const { COMMENTS_CONFIG, getUserId } = await import('../../lib/comments.ts');
+        const userId = getUserId();
+        const isActive = btn.classList.contains('comment-vote-btn--active');
+        const action = isActive ? 'unvote' : 'vote';
+
+        try {
+          const res = await fetch(`${COMMENTS_CONFIG.workerUrl}/vote`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ commentId, action, userId }),
+          });
+
+          const data = await res.json();
+
+          if (!res.ok) {
+            if (res.status === 409 && data.error === 'Already voted') {
+              btn.classList.add('comment-vote-btn--active');
+            }
+            return;
+          }
+
+          const { comment, hasVoted } = data;
+          const heartIcon = btn.querySelector('.heart-icon') as SVGElement;
+          const votesCount = btn.querySelector('.comment-votes-count') as HTMLElement;
+
+          if (hasVoted) {
+            btn.classList.add('comment-vote-btn--active');
+            if (heartIcon) heartIcon.setAttribute('fill', '#e74c3c');
+          } else {
+            btn.classList.remove('comment-vote-btn--active');
+            if (heartIcon) heartIcon.setAttribute('fill', 'none');
+          }
+
+          // Trigger animation
+          btn.classList.remove('comment-vote-btn--animate');
+          void btn.offsetWidth;
+          btn.classList.add('comment-vote-btn--animate');
+
+          if (votesCount) {
+            votesCount.textContent = String(comment.votes ?? 0);
+          }
+
+          btn.dataset.votes = String(comment.votes ?? 0);
+
+          // Update top peticiones if visible
+          const topSection = document.querySelector('.top-peticiones');
+          if (topSection && typeof (window as any).__reloadTopPeticiones === 'function') {
+            (window as any).__reloadTopPeticiones();
+          }
+        } catch {
+          // Silently fail
+        }
+      });
 
       // Handle reply button clicks
       section.addEventListener('click', async (e) => {

@@ -8,6 +8,9 @@ const { parentId = null, placeholder = 'Escribe tu comentario...' } = Astro.prop
 ---
 
 <form class='comment-form' data-parent-id={parentId || ''}>
+  <div class='form-duplicate-warning'>
+    Echa un vistazo a las peticiones que ya hay. Si encuentras la tuya, vota para que suba en la clasificacion.
+  </div>
   <input
     type='text'
     class='comment-author-input'
