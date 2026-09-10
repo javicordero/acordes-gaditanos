@@ -293,7 +293,7 @@ const webPageSchema = {
         }
 
         .right-column > :global(.anuncio-2) {
-          order: 5;
+          display: none !important;
         }
 
         .right-column > :global(.video-cover),
@@ -310,6 +310,10 @@ const webPageSchema = {
         }
 
         .right-column > :global(.pedir-copla) {
+          display: none !important;
+        }
+
+        :global(.anuncio-sobre-footer) {
           display: none !important;
         }
       }
