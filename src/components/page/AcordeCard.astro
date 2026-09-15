@@ -104,8 +104,6 @@ const headingId = `acorde-${slug}`;
     <Anuncio adSlot='8116046706' />
   </div>
 
-  <a href='/pedir-copla' class='pedir-copla-mobile'>Pedir una copla</a>
-
   <section class='acorde-content' role='region' aria-labelledby={headingId}>
 
     <div class='acorde-meta'>
@@ -116,7 +114,13 @@ const headingId = `acorde-${slug}`;
       <div class='acorde-content'>
       <TutorialAutoscroll />
       <div class='autoscroll-wrapper'>
-        <button class='autoscroll-help-btn' data-tutorial-help aria-label='Ayuda sobre el autoscroll' type='button'>?</button>
+        <button class='autoscroll-help-btn' data-tutorial-help aria-label='Ayuda sobre controles' type='button'>?</button>
+        <div class='transpose-controls'>
+          <button class='transpose-btn transpose-up' aria-label='Subir tono' title='Subir tono' type='button'>+</button>
+          <span class='transpose-display' data-transpose-display></span>
+          <button class='transpose-btn transpose-down' aria-label='Bajar tono' title='Bajar tono' type='button'>−</button>
+
+        </div>
         <button class='autoscroll-btn play-btn' aria-label='Iniciar autoscroll'>
           <svg style='position: relative; left: 1px;' xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='var(--primary-contrast-color)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='5 3 19 12 5 21 5 3'></polygon></svg>
         </button>
@@ -462,6 +466,53 @@ const headingId = `acorde-${slug}`;
     box-shadow: 0 1px 4px rgba(20, 33, 61, 0.3);
   }
 
+  .transpose-controls {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    align-items: center;
+    order: -3;
+  }
+
+  .transpose-btn {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(145deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.15s ease;
+    box-shadow: 0 1px 4px rgba(59, 90, 100, 0.2);
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .transpose-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .transpose-btn:active {
+    transform: scale(0.92);
+  }
+
+  .transpose-display {
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    min-width: 16px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1;
+  }
+
   @media (max-width: 640px) {
     .autoscroll-btn {
       width: 30px;
@@ -487,33 +538,9 @@ const headingId = `acorde-${slug}`;
     max-height: 85vh;
   }
 
-  .pedir-copla-mobile {
-    display: none;
-  }
-
   @media (max-width: 640px) {
     .acorde-content :global(pre.scrolling) {
       max-height: 70vh;
-    }
-
-    .pedir-copla-mobile {
-      display: block;
-      width: 100%;
-      margin-top: 24px;
-      padding: 8px 0;
-      background: var(--primary-contrast-color);
-      color: white;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      font-family: 'Montserrat', sans-serif;
-      letter-spacing: 0.3px;
-      text-align: center;
-    }
-
-    .pedir-copla-mobile:hover {
-      opacity: 0.9;
     }
   }
 </style>
@@ -521,6 +548,8 @@ const headingId = `acorde-${slug}`;
 <script is:inline>
   (function() {
     const speeds = { 1: 4, 2: 8, 3: 12, 4: 18, 5: 25 };
+    const ESCALA_CROMATICA = ['Do','Do#','Re','Re#','Mi','Fa','Fa#','Sol','Sol#','La','La#','Si'];
+    const NOTA_REGEX = /^(Sol#?|La#?|Si|Fa#?|Mi|Re#?|Do#?)(.*)$/;
     let currentSpeed = 2;
     let isPlaying = false;
     let animationFrameId = null;
@@ -529,6 +558,48 @@ const headingId = `acorde-${slug}`;
     let controlsContainer = null;
     let preElement = null;
     let initialized = false;
+
+    let currentTranspose = 0;
+    let originalChords = new Map();
+
+    function transportarNota(nota, semitonos) {
+      const idx = ESCALA_CROMATICA.indexOf(nota);
+      if (idx === -1) return nota;
+      const nuevoIdx = ((idx + semitonos) % 12 + 12) % 12;
+      return ESCALA_CROMATICA[nuevoIdx];
+    }
+
+    function transportarAcorde(texto, semitonos) {
+      if (!texto) return texto;
+      const partes = texto.split('/');
+      const transportarParte = function(p) {
+        const match = p.match(NOTA_REGEX);
+        if (!match) return p;
+        const nuevaNota = transportarNota(match[1], semitonos);
+        return nuevaNota + match[2];
+      };
+      return partes.map(transportarParte).join('/');
+    }
+
+    function transportarTodosLosAcordes(pre, semitonos) {
+      if (!pre) return;
+      const acordes = pre.querySelectorAll('a');
+      acordes.forEach(function(a) {
+        const original = originalChords.get(a);
+        if (original !== undefined) {
+          a.textContent = transportarAcorde(original, semitonos);
+        }
+      });
+    }
+
+    function actualizarDisplayTranspose(display) {
+      if (!display) return;
+      if (currentTranspose === 0) {
+        display.textContent = '';
+      } else {
+        display.textContent = (currentTranspose > 0 ? '+' : '') + currentTranspose;
+      }
+    }
 
     function initAutoscroll() {
       if (initialized) return;
@@ -546,6 +617,31 @@ const headingId = `acorde-${slug}`;
       const contentArea = article.querySelector('.acorde-content');
       preElement = contentArea?.querySelector('pre');
       if (!preElement) return;
+
+      const chordLinks = preElement.querySelectorAll('a');
+      chordLinks.forEach(function(a) {
+        originalChords.set(a, a.textContent);
+      });
+
+      const transposeUp = article.querySelector('.transpose-up');
+      const transposeDown = article.querySelector('.transpose-down');
+      const transposeDisplay = article.querySelector('[data-transpose-display]');
+
+      if (transposeUp) {
+        transposeUp.addEventListener('click', function() {
+          currentTranspose += 1;
+          transportarTodosLosAcordes(preElement, currentTranspose);
+          actualizarDisplayTranspose(transposeDisplay);
+        });
+      }
+
+      if (transposeDown) {
+        transposeDown.addEventListener('click', function() {
+          currentTranspose -= 1;
+          transportarTodosLosAcordes(preElement, currentTranspose);
+          actualizarDisplayTranspose(transposeDisplay);
+        });
+      }
 
       if (playBtn) {
         playBtn.addEventListener('click', function() {
