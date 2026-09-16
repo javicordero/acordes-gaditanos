@@ -105,6 +105,7 @@ Genera un PDF al lado del .md. Requiere `fonts/RobotoMono-*.ttf` (fallback a Cou
 ## Available Agent Skills
 Skills en `.agents/skills/` para tareas comunes:
 - `chord-formatting` — envolver acordes en `<a>` tags
+- `cifrado-a-formato` — convertir cifrado pegado de otra web al formato propio (línea de acordes + letra con palabras completas)
 - `create-acorde` — crear nuevo archivo markdown de acorde
 - `transportar` — transponer acordes de tonalidad
 - `tweet-acorde` — generar tweet para anunciar acorde
@@ -136,5 +137,5 @@ autorCover: Nombre (opcional)
 
 <!-- SPECKIT START -->
 For additional context about the active feature, read the plan at
-`specs/005-comentarios-peticiones/plan.md`
+`specs/001-banner-coplas-comunidad/plan.md`
 <!-- SPECKIT END -->
