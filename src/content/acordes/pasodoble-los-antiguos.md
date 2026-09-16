@@ -6,7 +6,7 @@ musica: Carlitos Pérez
 letra: Carlitos Pérez
 img: https://static.grupojoly.com/clip/4188db4a-3f48-4f3a-b5f0-4dd37d0a9099_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
-modalidad: Chrigota
+modalidad: Chirigota
 date: 23/02/2026
 video: https://www.youtube.com/embed/cmzEn7Ep2Yo?si=cmzEn7Ep2Yo
 # cover: https://www.youtube.com/embed/xrpvDhIbB3w?si=-hfFMLRTozL-VeGl

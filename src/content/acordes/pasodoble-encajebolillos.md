@@ -9,6 +9,7 @@ img: https://static.grupojoly.com/clip/3fbb2fa8-ce51-4c74-a1b2-5913e5b7362c_16-9
 cejilla: 1
 video: 'https://www.youtube.com/embed/GKD6z0ykZa4'
 date: "15/09/2026"
+fraseClave: "Barrio de los caleteros como te llevo en mis adentros"
 ---
 <pre>
 <a>Mi</a>                                                  <a>Si7</a>

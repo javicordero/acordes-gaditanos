@@ -10,6 +10,7 @@ cejilla: 0
 video: 'https://www.youtube.com/embed/XD4C0pxMdxk'
 date: "17/09/2026"
 
+fraseClave: "Quizás porque mi mare me vino a parir"
 ---
 <pre>
 <a>La</a>                 <a>Mi7</a>           <a>La</a>

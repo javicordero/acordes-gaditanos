@@ -9,6 +9,7 @@ img: https://i.ytimg.com/vi/3XVgcBWeGp4/maxresdefault.jpg
 cejilla: 0
 video: 'https://www.youtube.com/embed/PKiEFLrYSI4'
 date: "11/09/2026"
+fraseClave: "Capeando temporales ya son veintisiete años"
 ---
 <pre>
 <a>Lam</a>           <a>Sol</a>          <a>Fa</a>          <a>Mi7</a>  <a>Fa</a> <a>Mi7</a>
