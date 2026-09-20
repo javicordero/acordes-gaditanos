@@ -59,7 +59,7 @@ no los ponen contra las cuerdas
 esta historia se ha acabao
          <a>Mi7</a>
 y que se vaya el mundo a la mierda
-     <a>La</a>                      <a>Do#m</a>
+     <a>La</a>                      <a>Fa#m</a> 
 Esperanza tengo poca pero al menos me he zampao
       <a>Re</a>                      <a>Mi7</a>
 y con esta chirigota qué agustito me he quedao,
