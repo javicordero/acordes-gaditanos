@@ -294,7 +294,12 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 
       function renderComments(comments, container, parentId, depth, userId) {
         const children = comments.filter((c) => c.parentId === parentId);
-        children.sort((a, b) => new Date(b.date) - new Date(a.date));
+        children.sort((a, b) => {
+          const aCompleted = a.completed ? 1 : 0;
+          const bCompleted = b.completed ? 1 : 0;
+          if (aCompleted !== bCompleted) return aCompleted - bCompleted;
+          return new Date(b.date) - new Date(a.date);
+        });
 
         for (const comment of children) {
 
