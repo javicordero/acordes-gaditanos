@@ -12,7 +12,6 @@ date: "24/09/2026"
 fraseClave: "Cuando mi menda no aparezca por el COAC"
 ---
 <pre>
-<a>Sol</a>
 <a>(Sorda)</a>
 Cuando mi menda no aparezca por el COAC
 Cuando el concurso no me empiece a echar de menos
