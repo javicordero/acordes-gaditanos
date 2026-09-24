@@ -12,7 +12,7 @@ video: https://www.youtube.com/embed/o8tKhI61ZN8
 ---
 <pre>
 <a>Sol</a>                                      <a>Sim7</a>
-Las manos arrugadas qefleja que toda una vida
+Las manos arrugadas refleja que toda una vida
                    <a>Ladim7</a>                 <a>Lam</a>
 Tiro palante en su casa abuela de mi Andalucía
                                               <a>Re7</a>
