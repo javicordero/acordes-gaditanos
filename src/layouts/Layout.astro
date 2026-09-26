@@ -302,5 +302,49 @@ const imageURL = new URL(image, Astro.site);
       }
     </script>
 
+    <script>
+      function removeAd(ins: Element): void {
+        const wrapper = ins.closest('[data-ad-wrapper]');
+        (wrapper ?? ins).remove();
+      }
+
+      function pruneUnfilledAd(ins: Element): boolean {
+        if (ins.getAttribute('data-ad-status') === 'unfilled') {
+          removeAd(ins);
+          return true;
+        }
+        return false;
+      }
+
+      function initAdPruning() {
+        const insElements = Array.from(document.querySelectorAll('ins.adsbygoogle'));
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => pruneUnfilledAd(mutation.target as Element));
+        });
+
+        insElements.forEach((ins) => {
+          if (pruneUnfilledAd(ins)) return;
+          observer.observe(ins, { attributes: true, attributeFilter: ['data-ad-status'] });
+        });
+
+        // Fallback: si tras 4s el anuncio no se ha rellenado (o nunca se procesó,
+        // p. ej. adblock), se elimina el bloque.
+        window.setTimeout(() => {
+          insElements.forEach((ins) => {
+            if (!ins.isConnected) return;
+            if (ins.getAttribute('data-ad-status') !== 'filled') removeAd(ins);
+          });
+        }, 4000);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAdPruning);
+      } else {
+        initAdPruning();
+      }
+
+      document.addEventListener('astro:page-load', initAdPruning);
+    </script>
+
   </body>
 </html>

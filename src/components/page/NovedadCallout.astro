@@ -1,0 +1,93 @@
+---
+interface Props {
+  gaEvent?: string;
+}
+const { gaEvent = 'click_novedad_lista' } = Astro.props;
+---
+
+<div class='novedad-callout'>
+  <span class='novedad-badge'>Novedad</span>
+  <div class='novedad-body'>
+    <p class='novedad-text'>
+      Listado de todas las coplas, en formato lista simple, sin imágenes.
+    </p>
+    <p class='novedad-text'>
+      <a href='/lista' data-ga-event={gaEvent}>Pincha aquí</a> para ir al listado.
+    </p>
+  </div>
+</div>
+
+<style>
+  .novedad-callout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 12px 16px;
+    background: #fff8ec;
+    border-left: 4px solid var(--primary-contrast-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .novedad-badge {
+    flex: none;
+    display: inline-block;
+    background: var(--primary-contrast-color);
+    color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+  }
+
+  .novedad-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .novedad-text {
+    margin: 0;
+  }
+
+  .novedad-text a {
+    color: var(--link-color);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .novedad-text a:hover {
+    color: var(--link-hover-color);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-ga-event]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const eventName = el.getAttribute('data-ga-event');
+      if (!eventName) return;
+
+      const w = window as any;
+      if (typeof w.gtag === 'function') {
+        w.gtag('event', eventName, {
+          event_category: 'novedad_lista',
+          event_label: window.location.pathname,
+        });
+      } else {
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: eventName });
+      }
+    });
+  });
+</script>

@@ -6,6 +6,7 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
   <div class='container-layout inner-content'>
     <header>
       <h2 id={headingId}>{heading}</h2>
+      <slot name='subtitle' />
     </header>
     <ul>
       {
@@ -25,6 +26,12 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
   }
 
   .inner-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-padding);
+  }
+
+  header {
     display: flex;
     flex-direction: column;
     gap: var(--card-padding);
@@ -103,6 +110,9 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
 
   @media (max-width: 640px) {
     .inner-content {
+      gap: var(--card-padding-sm);
+    }
+    header {
       gap: var(--card-padding-sm);
     }
     ul {

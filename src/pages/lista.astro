@@ -1,0 +1,280 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Banner320X50 from '../components/ads/Banner320x50.astro';
+import Banner468X60 from '../components/ads/Banner468x60.astro';
+import { parseSpanishDate, sortByYearDesc } from '../lib/index';
+
+const acordes = await getCollection('acordes');
+
+const capitalize = (text: string) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
+
+const acordesOrdenados = [...acordes].sort((a, b) => {
+  const yearA = a.data.year;
+  const yearB = b.data.year;
+
+  if (yearA !== yearB) {
+    return sortByYearDesc(yearA, yearB);
+  }
+
+  return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
+});
+
+const years = [...new Set(acordesOrdenados.map((acorde) => acorde.data.year))];
+const acordesPorYear = years.map((year) => ({
+  year,
+  acordes: acordesOrdenados.filter((acorde) => acorde.data.year === year),
+}));
+
+const MAX_ANUNCIOS = 8;
+let anunciosColocados = 0;
+const bloques = acordesPorYear.map(({ year, acordes }, index) => {
+  const conAnuncio = index % 2 === 0 && anunciosColocados < MAX_ANUNCIOS;
+  if (conAnuncio) anunciosColocados++;
+  return { year, acordes, conAnuncio };
+});
+
+const title = 'Todas las coplas - Acordes del Carnaval de Cádiz';
+const description =
+  'Listado completo de todas las coplas con acordes de guitarra del Carnaval de Cádiz, agrupadas por año y ordenadas por fecha.';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: acordesOrdenados.map((a, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${capitalize(a.data.pieza)} - ${a.data.agrupacion}`,
+    item: `${Astro.site}acordes/${a.slug}`,
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
+  <div class='main-container'>
+    <section>
+      <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
+      <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
+
+      <article class='container-layout inner-content'>
+        <header>
+          <h1>Todas las coplas</h1>
+          <p class='subtitle'>
+            Aquí encontrarás, agrupadas por año, todas las coplas que hemos transcrito para tocarlas
+            con la guitarra. Ahora mismo hay{' '}
+            <strong class='subtitle-count'>{acordes.length}</strong> coplas y seguimos sumando.
+          </p>
+        </header>
+
+        {
+          bloques.map(({ year, acordes, conAnuncio }) => (
+            <section class='year-group' aria-labelledby={`year-${year}`}>
+              <h2 id={`year-${year}`}>{year}</h2>
+              <ul class='copla-list'>
+                {acordes.map((acorde) => (
+                  <li>
+                    <a href={`/acordes/${acorde.slug}`}>
+                      <span class='pieza'>{capitalize(acorde.data.pieza)}</span>{' '}
+                      <span class='agrupacion'>{acorde.data.agrupacion}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              {conAnuncio && (
+                <div class='anuncio-lista' data-ad-wrapper>
+                  <ins
+                    class='adsbygoogle adsbygoogle-lista'
+                    style='display:block'
+                    data-ad-client='ca-pub-3280015847198273'
+                    data-ad-slot='7003931546'
+                    data-ad-format='auto'
+                    data-full-width-responsive='true'
+                  />
+                </div>
+              )}
+            </section>
+          ))
+        }
+      </article>
+    </section>
+  </div>
+
+  <script>
+    document.querySelectorAll('ins.adsbygoogle-lista').forEach(() => {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    });
+  </script>
+</Layout>
+
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inner-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-padding);
+
+    & h1 {
+      position: relative;
+      color: var(--primary-color);
+      font-size: 2rem;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 1.4px;
+      font-weight: 700;
+      max-width: fit-content;
+      margin: 0;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 90%;
+        height: 4px;
+        background: var(--primary-contrast-color);
+      }
+    }
+
+    & .subtitle {
+      color: var(--text-secondary-color, var(--text-color));
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 780px;
+    }
+
+    & .subtitle-count {
+      color: var(--primary-color);
+      background: var(--primary-contrast-color);
+      font-weight: 700;
+      padding: 1px 8px;
+      border-radius: 6px;
+    }
+  }
+
+  .anuncio-lista {
+    margin-top: 8px;
+  }
+
+  .anuncio-lista:has(ins[data-ad-status='unfilled']) {
+    display: none;
+  }
+
+  .year-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & h2 {
+      position: relative;
+      color: var(--primary-color);
+      font-size: 1.625rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      max-width: fit-content;
+      margin: 0;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 90%;
+        height: 4px;
+        background: var(--primary-contrast-color);
+      }
+    }
+  }
+
+  .copla-list {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    & li {
+      position: relative;
+      padding-left: 18px;
+      line-height: 1.5;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 0.6em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--primary-contrast-color);
+      }
+    }
+
+    & a {
+      color: var(--primary-color);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      & .pieza {
+        color: var(--primary-color);
+      }
+
+      & .agrupacion {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .main-container {
+      gap: var(--main-container-gap-sm);
+    }
+
+    .inner-content {
+      gap: var(--main-container-gap-sm);
+    }
+
+    header {
+      gap: var(--card-padding-sm);
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+    }
+
+    header .subtitle {
+      font-size: 1rem;
+    }
+
+    .year-group h2 {
+      font-size: 1.4rem;
+
+      &::after {
+        height: 3px;
+        bottom: -2px;
+      }
+    }
+  }
+</style>

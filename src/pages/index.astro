@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import CardsGroup from '../components/page/CardsGroup.astro';
 import YearsList from '../components/page/YearsList.astro';
+import NovedadCallout from '../components/page/NovedadCallout.astro';
 import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
 import BannerCoac2026 from '../components/page/BannerCoac2026.astro';
 import AnunciateAqui from '../components/right-column/AnunciateAqui.astro';
@@ -40,7 +41,9 @@ let autores = await getCollection('autores');
     <!-- <AnunciateIndex /> -->
 
     <div class='section section--novedades'>
-      <CardsGroup year={'Novedades'} acordes={ultimos} />
+      <CardsGroup year={'Novedades'} acordes={ultimos}>
+        <NovedadCallout slot='notice' gaEvent='click_novedad_novedades' />
+      </CardsGroup>
     </div>
     <div class='section section--colored'>
       <AutorCardsGroup autores={autores} />
@@ -52,7 +55,9 @@ let autores = await getCollection('autores');
     <div class='section'>
       <YearsList
         years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort(sortByYearDesc)}
-      />
+      >
+        <NovedadCallout slot='subtitle' gaEvent='click_novedad_carnavales' />
+      </YearsList>
     </div>
   </div>
   <div class='container-layout'>
