@@ -67,7 +67,12 @@ function getAllChildIds(comments, parentId) {
 async function getComments(path, env) {
   const key = `comments:${path}`;
   const data = await env.COMMENTS.get(key, { type: 'json' });
-  return data || [];
+  if (!data) return [];
+  return data.map((c) => ({
+    ...c,
+    votes: c.votes ?? 0,
+    votedBy: c.votedBy ?? [],
+  }));
 }
 
 async function saveComments(path, comments, env) {
@@ -84,6 +89,93 @@ export default {
     // Handle CORS preflight
     if (method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: getCorsHeaders() });
+    }
+
+    // POST /vote — Votar o des-votar una peticion
+    if (method === 'POST' && path === '/vote') {
+      let body;
+      try {
+        body = await request.json();
+      } catch {
+        return jsonResponse({ error: 'Invalid JSON body' }, 400);
+      }
+
+      const { commentId, action, userId } = body;
+
+      if (!commentId || !action || !userId) {
+        return jsonResponse({ error: 'commentId, action, and userId are required' }, 400);
+      }
+
+      if (action !== 'vote' && action !== 'unvote') {
+        return jsonResponse({ error: 'action must be "vote" or "unvote"' }, 400);
+      }
+
+      try {
+        const list = await env.COMMENTS.list({ prefix: 'comments:' });
+        for (const key of list.keys) {
+          const comments = await env.COMMENTS.get(key.name, { type: 'json' });
+          if (!comments) continue;
+
+          const idx = comments.findIndex((c) => c.id === commentId);
+          if (idx !== -1) {
+            const comment = comments[idx];
+            const votedBy = comment.votedBy ?? [];
+            const hasVoted = votedBy.includes(userId);
+
+            if (action === 'vote') {
+              if (hasVoted) {
+                return jsonResponse({ error: 'Already voted' }, 409);
+              }
+              comments[idx].votes = (comment.votes ?? 0) + 1;
+              comments[idx].votedBy = [...votedBy, userId];
+            } else {
+              if (!hasVoted) {
+                return jsonResponse({ error: 'Vote not found' }, 409);
+              }
+              comments[idx].votes = Math.max(0, (comment.votes ?? 0) - 1);
+              comments[idx].votedBy = votedBy.filter((id) => id !== userId);
+            }
+
+            await env.COMMENTS.put(key.name, JSON.stringify(comments));
+            return jsonResponse({ comment: comments[idx], hasVoted: action === 'vote' });
+          }
+        }
+
+        return jsonResponse({ error: 'Comment not found' }, 404);
+      } catch (err) {
+        return jsonResponse({ error: 'Service temporarily unavailable' }, 503);
+      }
+    }
+
+    // GET /top — Peticiones mas votadas (o recientes si no hay votos)
+    if (method === 'GET' && path === '/top') {
+      const pagePath = url.searchParams.get('path');
+      const limit = parseInt(url.searchParams.get('limit') || '3', 10);
+
+      if (!pagePath) {
+        return jsonResponse({ error: 'Missing required parameter: path' }, 400);
+      }
+
+      try {
+        const comments = await getComments(pagePath, env);
+        const rootComments = comments.filter((c) => !c.parentId && !c.completed);
+
+        // First: peticiones con votos, ordenadas por votos
+        const voted = rootComments
+          .filter((c) => (c.votes ?? 0) >= 1)
+          .sort((a, b) => (b.votes ?? 0) - (a.votes ?? 0) || new Date(b.date) - new Date(a.date));
+
+        // Fill with recientes (sin votos) hasta completar limit
+        const recent = rootComments
+          .filter((c) => (c.votes ?? 0) < 1)
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        const result = [...voted, ...recent].slice(0, limit);
+
+        return jsonResponse({ top: result });
+      } catch (err) {
+        return jsonResponse({ error: 'Service temporarily unavailable.' }, 503);
+      }
     }
 
     // GET / — Obtener comentarios
@@ -159,6 +251,8 @@ export default {
         isAdmin,
         completed: false,
         parentId: parentId || null,
+        votes: 0,
+        votedBy: [],
       };
 
       try {

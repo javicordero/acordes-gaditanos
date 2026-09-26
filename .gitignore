@@ -33,11 +33,10 @@ CLAUDE.md
 .claude/
 *.local
 .markdownlint.json
-
+.playwright-mcp
 
 src/content/template.md
 
 # Admin pages (solo local)
 src/pages/admin/
-
 

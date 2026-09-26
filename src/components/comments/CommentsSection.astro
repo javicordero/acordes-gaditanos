@@ -465,9 +465,12 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
             try {
               const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
               const authorInput = form.querySelector('.comment-author-input');
+              const adminToken = localStorage.getItem('adminToken');
+              const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+              if (adminToken) headers['Authorization'] = `Bearer ${adminToken}`;
               const res = await fetch(COMMENTS_CONFIG.workerUrl, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers,
                 body: JSON.stringify({
                   path: pagePath,
                   author: authorInput?.value.trim() || '',

@@ -67,9 +67,12 @@ const { parentId = null, placeholder = 'Escribe tu comentario...' } = Astro.prop
 
         try {
           const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
+          const adminToken = localStorage.getItem('adminToken');
+          const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+          if (adminToken) headers['Authorization'] = `Bearer ${adminToken}`;
           const res = await fetch(COMMENTS_CONFIG.workerUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers,
             body: JSON.stringify({
               path: '/pedir-copla',
               author: authorInput?.value.trim() || '',

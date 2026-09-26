@@ -95,6 +95,7 @@ video: 'https://www.youtube.com/embed/XXXX'
 **Importante:**
 - `year` y `cejilla` deben ser números (sin comillas)
 - `date` debe tener comillas
+- `date` SIEMPRE debe ser la **fecha de hoy** en formato `DD/MM/AAAA` (p. ej. `date: "02/09/2026"`) — no usar la fecha del ejemplo ni ninguna otra
 - `video` debe tener comillas simples
 
 ### 5. Crear el archivo
@@ -137,7 +138,7 @@ video: 'https://www.youtube.com/embed/XDXMjadGQA0'
 
 ## Notas
 
-- La fecha debe ser la fecha actual en formato DD/MM/AAAA
+- **Siempre** usar la fecha actual (la de hoy) en `date`, en formato DD/MM/AAAA. Nunca copiar una fecha de ejemplo o de otro acorde.
 - Si no se especifica cejilla, usar "0"
 - Si no se especifica modalidad, no incluir el campo
 - El directorio de destino es siempre `src/content/acordes/`
