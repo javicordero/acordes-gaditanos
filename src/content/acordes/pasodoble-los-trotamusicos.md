@@ -9,6 +9,7 @@ img: https://i.ytimg.com/vi/ivWuc5Fm8xM/maxresdefault.jpg
 cejilla: 1
 video: 'https://www.youtube.com/embed/ivWuc5Fm8xM'
 date: "13/09/2026"
+fraseClave: "Ay, al son con este son que me marca el corazón"
 ---
 <pre>
 <a>Lam</a>
