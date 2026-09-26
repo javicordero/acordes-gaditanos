@@ -70,7 +70,10 @@ const itemListSchema = {
         {
           bloques.map(({ year, acordes, conAnuncio }) => (
             <section class='year-group' aria-labelledby={`year-${year}`}>
-              <h2 id={`year-${year}`}>{year}</h2>
+              <h2 id={`year-${year}`}>
+                <span class='year-label'>{year}</span>{' '}
+                <span class='year-count'>({acordes.length} coplas)</span>
+              </h2>
               <ul class='copla-list'>
                 {acordes.map((acorde) => (
                   <li>
@@ -183,7 +186,6 @@ const itemListSchema = {
     gap: 10px;
 
     & h2 {
-      position: relative;
       color: var(--primary-color);
       font-size: 1.625rem;
       font-family: 'Montserrat', sans-serif;
@@ -191,15 +193,25 @@ const itemListSchema = {
       max-width: fit-content;
       margin: 0;
 
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 90%;
-        height: 4px;
-        background: var(--primary-contrast-color);
+      & .year-label {
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -4px;
+          width: 90%;
+          height: 4px;
+          background: var(--primary-contrast-color);
+        }
+      }
+
+      & .year-count {
+        color: var(--text-secondary-color, var(--text-color));
+        font-size: 0.75em;
+        font-weight: 500;
       }
     }
   }
@@ -225,24 +237,17 @@ const itemListSchema = {
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: var(--primary-contrast-color);
+        background: var(--primary-color);
       }
     }
 
     & a {
-      color: var(--primary-color);
+      color: var(--link-color);
       text-decoration: none;
 
       &:hover {
+        color: var(--link-hover-color);
         text-decoration: underline;
-      }
-
-      & .pieza {
-        color: var(--primary-color);
-      }
-
-      & .agrupacion {
-        color: var(--primary-color);
       }
     }
   }
@@ -271,7 +276,7 @@ const itemListSchema = {
     .year-group h2 {
       font-size: 1.4rem;
 
-      &::after {
+      & .year-label::after {
         height: 3px;
         bottom: -2px;
       }
