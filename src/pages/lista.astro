@@ -9,6 +9,29 @@ const acordes = await getCollection('acordes');
 
 const capitalize = (text: string) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
 
+const normalizePieza = (pieza: string) =>
+  pieza
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim();
+
+const PIEZA_ORDER = [
+  'final de popur',
+  'cuarteta',
+  'estribillo',
+  'presentacion',
+  'pasodoble',
+  'tango',
+  'cuple',
+];
+
+const piezaRank = (pieza: string) => {
+  const normalized = normalizePieza(pieza);
+  const index = PIEZA_ORDER.findIndex((prefix) => normalized.startsWith(prefix));
+  return index === -1 ? PIEZA_ORDER.length : index;
+};
+
 const acordesOrdenados = [...acordes].sort((a, b) => {
   const yearA = a.data.year;
   const yearB = b.data.year;
@@ -23,7 +46,13 @@ const acordesOrdenados = [...acordes].sort((a, b) => {
 const years = [...new Set(acordesOrdenados.map((acorde) => acorde.data.year))];
 const acordesPorYear = years.map((year) => ({
   year,
-  acordes: acordesOrdenados.filter((acorde) => acorde.data.year === year),
+  acordes: acordesOrdenados
+    .filter((acorde) => acorde.data.year === year)
+    .sort((a, b) => {
+      const rankDiff = piezaRank(a.data.pieza) - piezaRank(b.data.pieza);
+      if (rankDiff !== 0) return rankDiff;
+      return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
+    }),
 }));
 
 const MAX_ANUNCIOS = 8;
@@ -36,7 +65,7 @@ const bloques = acordesPorYear.map(({ year, acordes }, index) => {
 
 const title = 'Todas las coplas - Acordes del Carnaval de Cádiz';
 const description =
-  'Listado completo de todas las coplas con acordes de guitarra del Carnaval de Cádiz, agrupadas por año y ordenadas por fecha.';
+  'Listado completo de todas las coplas con acordes de guitarra del Carnaval de Cádiz, agrupadas por año y ordenadas por tipo de pieza.';
 
 const itemListSchema = {
   '@context': 'https://schema.org',
