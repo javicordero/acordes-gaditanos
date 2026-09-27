@@ -8,7 +8,7 @@ img: https://static.grupojoly.com/clip/4188db4a-3f48-4f3a-b5f0-4dd37d0a9099_sour
 cejilla: 2
 modalidad: Chirigota
 video: 'https://www.youtube.com/embed/cmzEn7Ep2Yo?si=cmzEn7Ep2Yo'
-date: "30/09/2026"
+date: "31/09/2026"
 fraseClave: "Ahora quiero que te pongas bien cerquita"
 ---
 <pre>
