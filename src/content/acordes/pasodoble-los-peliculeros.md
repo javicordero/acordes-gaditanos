@@ -8,7 +8,7 @@ modalidad: Comparsa
 img: https://static.grupojoly.com/clip/684263ee-6200-4598-8231-99026c01db51_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 video: 'https://www.youtube.com/embed/9koJ-dv7xew'
-date: "03/10   /2026"
+date: "03/10/2026"
 fraseClave: "El tiempo es un tesoro incalculable"
 ---
 <pre>
