@@ -9,6 +9,8 @@ img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/20/y
 cejilla: 2
 video: https://www.youtube.com/embed/RMvM1clSABs
 date: "02/10/2026"
+fraseClave: "A mi niño de tres años he decidido apuntarlo"
+
 ---
 <pre>
 <a>Mim</a>
