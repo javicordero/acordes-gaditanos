@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: Las cosas del destino
 year: 2019
-musica: David Márquez Mateos
-letra: David Márquez Mateos
+musica: David Carapapa
+letra: David Carapapa
 modalidad: Chirigota
 img: https://www.codigocarnaval.com/wp-content/uploads/2020/04/Chirigota-Las-Cosas-del-destino.jpg.webp
 cejilla: 2
