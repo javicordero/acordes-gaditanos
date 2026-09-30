@@ -65,7 +65,7 @@ Esperanza tengo poca pero al menos me he zampao
 y con esta chirigota qué agustito me he quedao,
      <a>Re</a>                    <a>Do#m</a>
 pero antes de marcharnos tenemos que despedirnos
-       <a>Re</a>                         <a>Do#m</a>
+       <a>Re</a>                         <a>Mi7</a>
 porque si sigue Juan Carlos no volveremos los mismos.
      <a>La</a>           <a>Do#m</a> <a>Re</a>              <a>Rem</a>   <a>Mi7</a> <a>La</a>
 Chalalai lalai lailai Chalalai lalai lailai
