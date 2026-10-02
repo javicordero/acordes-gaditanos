@@ -12,9 +12,12 @@ const { class: className, recomendadas = [] } = Astro.props;
       class={className}>
       <section class:list={['card', className]} aria-labelledby='recomendados-heading'>
         <ul>
-          {recomendadas.map((acorde: any) => (
+          {recomendadas.map((acorde: any, i: number) => (
             <li>
-              <a href={`/acordes/${acorde.slug}`}>
+              <a
+                href={`/acordes/${acorde.slug}`}
+                data-ga-event='coplas_recuerdo_click'
+                data-ga-params={JSON.stringify({ link_label: acorde.slug, position: i })}>
                 {acorde.data.pieza}&nbsp;{acorde.data.agrupacion}
               </a>
             </li>
@@ -57,3 +60,32 @@ const { class: className, recomendadas = [] } = Astro.props;
     }
   }
 </style>
+
+<script>
+  declare const gtag: (...args: unknown[]) => void;
+
+  function setupCoplasRecuerdoTracking() {
+    const links = document.querySelectorAll('[data-ga-event="coplas_recuerdo_click"]');
+    links.forEach((link) => {
+      if (link.getAttribute('data-tracking-init')) return;
+      link.setAttribute('data-tracking-init', 'true');
+
+      link.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          const eventName = link.getAttribute('data-ga-event');
+          const eventParams = JSON.parse(link.getAttribute('data-ga-params') || '{}');
+          gtag('event', eventName, {
+            ...eventParams,
+            page_location: window.location.href,
+          });
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCoplasRecuerdoTracking);
+  } else {
+    setupCoplasRecuerdoTracking();
+  }
+</script>
