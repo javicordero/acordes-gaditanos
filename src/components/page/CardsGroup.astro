@@ -1,9 +1,10 @@
 ---
 import Card from '../ui/Card.astro';
-const { year, acordes, subtitle } = Astro.props;
+const { year, acordes, subtitle, headingAs = 'h2' } = Astro.props;
 
 // Generar ID estable para accesibilidad
 const headingId = `year-${year}`;
+const Heading = headingAs;
 ---
 
 <article
@@ -11,7 +12,7 @@ const headingId = `year-${year}`;
   aria-labelledby={headingId}>
   <div class='container-layout inner-content'>
     <header>
-      <h2 id={headingId} class='is-title-minus'>{year}</h2>
+      <Heading id={headingId} class='is-title-minus'>{year}</Heading>
       {subtitle && <h3>{subtitle}</h3>}
     </header>
 
@@ -63,7 +64,7 @@ const headingId = `year-${year}`;
     flex-direction: column;
     gap: 10px;
 
-    & h2 {
+    & :is(h1, h2) {
       position: relative;
       color: var(--primary-color);
       font-size: 1.625rem;
@@ -121,7 +122,7 @@ const headingId = `year-${year}`;
 
     header {
       gap: 6px;
-      & h2::after {
+      & :is(h1, h2)::after {
         height: 3px;
         bottom: -1px;
       }

@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import CardsGroup from '../components/page/CardsGroup.astro';
+import AnuncioSobrePagina from '../components/ads/AnuncioSobrePagina.astro';
+import { parseSpanishDate } from '../lib/index';
+
+const MAX_NOVEDADES = 40;
+
+let acordes = await getCollection('acordes');
+
+// Ordenar por fecha de creación descendente
+acordes = acordes.sort(
+  (a, b) => parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime()
+);
+
+// Los últimos acordes subidos
+const ultimos = acordes.slice(0, MAX_NOVEDADES);
+
+const title = 'Novedades - Acordes del Carnaval de Cádiz';
+const description =
+  'Los últimos acordes añadidos a Acordes Gaditanos. Descubre las coplas más recientes del Carnaval de Cádiz para tocar con la guitarra.';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: ultimos.map((a, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${a.data.pieza} - ${a.data.agrupacion}`,
+    item: `${Astro.site}acordes/${a.slug}`,
+  })),
+};
+---
+
+<Layout title={title} description={description}>
+  <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
+  <div class='main-container'>
+    <section>
+      <CardsGroup year='Novedades' acordes={ultimos} headingAs='h1'>
+        <AnuncioSobrePagina />
+      </CardsGroup>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 640px) {
+    .main-container {
+      gap: var(--main-container-gap-sm);
+    }
+  }
+</style>

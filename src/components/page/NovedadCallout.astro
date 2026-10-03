@@ -73,7 +73,7 @@ const { gaEvent = 'click_novedad_lista' } = Astro.props;
 </style>
 
 <script>
-  document.querySelectorAll('[data-ga-event]').forEach((el) => {
+  document.querySelectorAll('.novedad-callout [data-ga-event]').forEach((el) => {
     el.addEventListener('click', () => {
       const eventName = el.getAttribute('data-ga-event');
       if (!eventName) return;

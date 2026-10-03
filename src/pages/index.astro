@@ -44,6 +44,15 @@ let autores = await getCollection('autores');
       <CardsGroup year={'Novedades'} acordes={ultimos}>
         <NovedadCallout slot='notice' gaEvent='click_novedad_novedades' />
       </CardsGroup>
+      <div class='container-layout ver-mas-wrapper'>
+        <a
+          href='/novedades'
+          class='ver-mas'
+          data-ga-event='ver_mas_novedades_click'
+          data-ga-params='{"link_type":"novedades","location":"index_novedades"}'>
+          Ver más novedades
+        </a>
+      </div>
     </div>
     <div class='section section--colored'>
       <AutorCardsGroup autores={autores} />
@@ -65,6 +74,35 @@ let autores = await getCollection('autores');
   </div>
 </Layout>
 
+<script>
+  declare const gtag: (...args: unknown[]) => void;
+
+  function setupVerMasNovedadesTracking() {
+    const links = document.querySelectorAll('[data-ga-event="ver_mas_novedades_click"]');
+    links.forEach((link) => {
+      if (link.getAttribute('data-tracking-init')) return;
+      link.setAttribute('data-tracking-init', 'true');
+
+      link.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          const eventName = link.getAttribute('data-ga-event');
+          const eventParams = JSON.parse(link.getAttribute('data-ga-params') || '{}');
+          gtag('event', eventName, {
+            ...eventParams,
+            page_location: window.location.href,
+          });
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupVerMasNovedadesTracking);
+  } else {
+    setupVerMasNovedadesTracking();
+  }
+</script>
+
 <style>
   .main-container {
     display: flex;
@@ -79,6 +117,10 @@ let autores = await getCollection('autores');
     padding-bottom: calc(var(--main-container-gap) + 29px);
   }
 
+  .section--novedades {
+    padding-bottom: calc(var(--main-container-gap) + 8px);
+  }
+
   .section--colored {
     background-color: var(--secondary-color);
   }
@@ -86,6 +128,41 @@ let autores = await getCollection('autores');
   .anuncio-autores ins[data-ad-status='filled'] {
     margin-top: var(--main-container-gap);
     margin-bottom: var(--main-container-gap);
+  }
+
+  .ver-mas-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--card-padding);
+  }
+
+  .ver-mas {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--card-background-color);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.4px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .ver-mas:hover {
+    background-color: var(--primary-contrast-color);
+    color: var(--primary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  }
+
+  .ver-mas:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 3px;
   }
 
   @media (max-width: 1024px) {
@@ -98,6 +175,10 @@ let autores = await getCollection('autores');
     .section {
       padding-top: var(--main-container-gap-sm);
       padding-bottom: calc(var(--main-container-gap-sm) + 29px);
+    }
+
+    .section--novedades {
+      padding-bottom: calc(var(--main-container-gap-sm) + 8px);
     }
 
     .anuncio-autores ins[data-ad-status='filled'] {
