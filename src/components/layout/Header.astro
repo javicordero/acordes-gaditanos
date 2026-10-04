@@ -1,6 +1,7 @@
 ---
 import Logo from '../../../public/icons/logo.svg';
 import { Icon } from 'astro-icon/components';
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <header role='banner' transition:name='site-header'>
@@ -44,6 +45,10 @@ import { Icon } from 'astro-icon/components';
         </div>
       </div>
 
+      <div class='theme-container'>
+        <ThemeToggle />
+      </div>
+
       <button
         class='menu-toggle'
         aria-expanded='false'
@@ -76,7 +81,7 @@ import { Icon } from 'astro-icon/components';
     position: fixed;
     top: 0;
     z-index: 9999;
-    background-color: var(--primary-color);
+    background-color: var(--surface-color);
   }
 
   /* Container principal del nav-bar */
@@ -163,6 +168,21 @@ import { Icon } from 'astro-icon/components';
     pointer-events: none;
   }
 
+  /* Container del botón de tema */
+  .theme-container {
+    display: flex;
+    align-items: center;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .theme-container.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   /* Botón de lupa */
   .search-toggle {
     display: flex;
@@ -214,19 +234,18 @@ import { Icon } from 'astro-icon/components';
     font-size: 0.9rem;
     border: 2px solid var(--primary-contrast-color);
     border-radius: 6px;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--card-background-color);
     color: var(--text-color);
     transition: all 0.2s ease;
 
     &:focus {
-      outline: none;
-      background: white;
+      background: var(--card-background-color);
       box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
     }
 
     &::placeholder {
-      color: var(--text-secondary-color);
-      opacity: 0.7;
+      color: var(--placeholder-color);
+      opacity: 1;
     }
   }
 
@@ -246,11 +265,11 @@ import { Icon } from 'astro-icon/components';
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: var(--text-secondary-color);
+    color: var(--primary-contrast-color);
     transition: all 0.2s ease;
 
     &:hover {
-      color: var(--text-color);
+      color: var(--on-surface-color);
     }
   }
 
@@ -309,7 +328,7 @@ import { Icon } from 'astro-icon/components';
   /* Navegación principal */
   nav {
     padding-top: 120px;
-    background-color: var(--primary-color);
+    background-color: var(--surface-color);
     height: 100vh;
     width: 100%;
     transform: translate(-150%);
@@ -440,6 +459,7 @@ import { Icon } from 'astro-icon/components';
     const branding = document.querySelector('.branding');
     const brandingTitle = document.querySelector('.branding-title');
     const searchContainer = document.querySelector('.search-container');
+    const themeContainer = document.querySelector('.theme-container');
     const searchInput = document.querySelector('#header-search');
     const clearButton = document.querySelector('.clear-search');
     const searchToggle = document.querySelector('.search-toggle');
@@ -456,6 +476,7 @@ import { Icon } from 'astro-icon/components';
         toggle.setAttribute('aria-expanded', 'false');
         branding.classList.remove('is-hidden');
         if (searchContainer) searchContainer.classList.remove('is-hidden');
+        if (themeContainer) themeContainer.classList.remove('is-hidden');
       } else {
         nav.classList.add('is-open');
         toggle.classList.add('is-open');
@@ -463,6 +484,7 @@ import { Icon } from 'astro-icon/components';
         toggle.setAttribute('aria-expanded', 'true');
         branding.classList.add('is-hidden');
         if (searchContainer) searchContainer.classList.add('is-hidden');
+        if (themeContainer) themeContainer.classList.add('is-hidden');
       }
     };
 

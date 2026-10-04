@@ -38,6 +38,20 @@ const imageURL = new URL(image, Astro.site);
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta name='theme-color' content='#e5e5e5' id='theme-color-meta' />
+
+    <!-- Aplica el tema oscuro antes del primer pintado para evitar destellos -->
+    <script is:inline>
+      (function () {
+        var dark = false;
+        try {
+          dark = localStorage.getItem('ag_theme') === 'dark';
+        } catch (e) {}
+        if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+        var meta = document.getElementById('theme-color-meta');
+        if (meta) meta.setAttribute('content', dark ? '#12141a' : '#e5e5e5');
+      })();
+    </script>
 
     <!-- Resource Hints - Preconnect for faster external resources -->
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />

@@ -21,11 +21,38 @@ html {
 
 body {
   background-color: var(--color-bg);
+  color: var(--text-color);
   /* overflow-y: scroll; */
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+/* Transición suave al cambiar entre tema claro y oscuro.
+   Anima los propios tokens de color (registrados con @property en variables.css)
+   en lugar de `* { transition: color }`, que en Chromium provoca el bug de
+   `color: inherit`: cambio sutil y salto al valor final.
+   Se activa solo mientras dura el cambio, con la clase .theme-transition. */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition {
+    transition:
+      --color-bg 0.32s ease,
+      --card-background-color 0.32s ease,
+      --primary-color 0.32s ease,
+      --secondary-color 0.32s ease,
+      --text-color 0.32s ease,
+      --text-secondary-color 0.32s ease,
+      --acorde-color 0.32s ease,
+      --link-hover-color 0.32s ease,
+      --callout-bg 0.32s ease,
+      --hover-bg 0.32s ease,
+      --playing-overlay 0.32s ease,
+      --placeholder-color 0.32s ease,
+      --success-color 0.32s ease,
+      --error-color 0.32s ease,
+      --danger-color 0.32s ease;
+  }
 }
 
 h1,
@@ -190,7 +217,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: var(--card-bg, #fff);
   color: var(--text-color, #333);
-  outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s;
 }
@@ -208,7 +234,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: var(--card-bg, #fff);
   color: var(--text-color, #333);
-  outline: none;
   resize: vertical;
   min-height: 100px;
   box-sizing: border-box;
@@ -243,12 +268,12 @@ body {
 }
 
 .cancel-reply-btn:hover {
-  background: var(--placeholder-color, #f0f0f0);
+  background: var(--hover-bg, #f0f0f0);
   border-color: var(--secondary-color, #aaa);
 }
 
 .submit-btn {
-  background: var(--primary-color, #0f1724);
+  background: var(--surface-color, #0f1724);
   color: var(--primary-contrast-color, #f5a623);
   border: none;
   border-radius: 6px;
@@ -283,7 +308,7 @@ body {
   }
 
 .form-status.success {
-  color: #22c55e;
+  color: var(--success-color, #22c55e);
 }
 
 .form-status.error {
@@ -302,3 +327,17 @@ body {
   padding: 12px;
   gap: 10px;
 }
+
+/* ===== Foco visible (accesibilidad) ===== */
+:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Cabecera y pie del sitio (superficies negras): solo el acento ámbar tiene contraste */
+body > header :focus-visible,
+body > footer :focus-visible,
+.section--colored :focus-visible {
+  outline-color: var(--primary-contrast-color);
+}
+

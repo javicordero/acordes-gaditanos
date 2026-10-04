@@ -89,13 +89,13 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 
   :global(.comment-badge--owner) {
     background: var(--primary-contrast-color, #c2185b);
-    color: white;
+    color: var(--on-bright-color);
     margin-right: 4px;
   }
 
   :global(.comment-badge--completed) {
     background: #22c55e;
-    color: white;
+    color: var(--on-bright-color);
   }
 
   :global(.comment-date) {
@@ -165,11 +165,11 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
   }
 
   :global(.comment-vote-btn--active) {
-    color: #e74c3c;
+    color: var(--danger-color);
   }
 
   :global(.comment-vote-btn--active .heart-icon) {
-    fill: #e74c3c;
+    fill: var(--danger-color);
   }
 
   :global(.comment-votes-count) {
@@ -234,7 +234,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
     align-items: center;
     gap: 4px;
     font-size: 0.85rem;
-    color: #e74c3c;
+    color: var(--danger-color);
     font-weight: 600;
     white-space: nowrap;
   }
@@ -329,7 +329,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
             </div>
             <div class='comment-actions'>
               ${isRoot ? `<button class='comment-vote-btn ${hasVoted ? 'comment-vote-btn--active' : ''}' data-comment-id='${comment.id}' data-votes='${votes}' aria-label='Votar'>
-                <svg class='heart-icon' width='16' height='16' viewBox='0 0 24 24' fill='${hasVoted ? '#e74c3c' : 'none'}' stroke='currentColor' stroke-width='2'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/></svg>
+                <svg class='heart-icon' width='16' height='16' viewBox='0 0 24 24' fill='${hasVoted ? 'currentColor' : 'none'}' stroke='currentColor' stroke-width='2'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/></svg>
                 <span class='comment-votes-count'>${votes}</span>
               </button>` : ''}
               <button class='reply-trigger-btn' data-comment-id='${comment.id}' data-author='${escapeHtml(displayName)}'>Responder</button>
@@ -384,7 +384,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 
           if (hasVoted) {
             btn.classList.add('comment-vote-btn--active');
-            if (heartIcon) heartIcon.setAttribute('fill', '#e74c3c');
+            if (heartIcon) heartIcon.setAttribute('fill', 'currentColor');
           } else {
             btn.classList.remove('comment-vote-btn--active');
             if (heartIcon) heartIcon.setAttribute('fill', 'none');

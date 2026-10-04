@@ -122,7 +122,7 @@ let autores = await getCollection('autores');
   }
 
   .section--colored {
-    background-color: var(--secondary-color);
+    background-color: var(--brand-navy);
   }
 
   .anuncio-autores ins[data-ad-status='filled'] {
@@ -138,8 +138,8 @@ let autores = await getCollection('autores');
 
   .ver-mas {
     display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--card-background-color);
+    background-color: var(--surface-color);
+    color: var(--on-surface-color);
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1rem;
@@ -155,12 +155,22 @@ let autores = await getCollection('autores');
 
   .ver-mas:hover {
     background-color: var(--primary-contrast-color);
-    color: var(--primary-color);
+    color: var(--on-bright-color);
   }
 
   .ver-mas:focus-visible {
-    outline: 3px solid var(--primary-contrast-color);
+    outline: 3px solid var(--primary-color);
     outline-offset: 3px;
+  }
+
+  :global(html[data-theme='dark']) .ver-mas {
+    background-color: var(--primary-color);
+    color: var(--on-bright-color);
+  }
+
+  :global(html[data-theme='dark']) .ver-mas:hover {
+    background-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
   }
 
   @media (max-width: 1024px) {
