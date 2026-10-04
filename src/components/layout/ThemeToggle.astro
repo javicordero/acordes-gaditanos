@@ -9,6 +9,7 @@ import { Icon } from 'astro-icon/components';
 
 <style>
   .theme-toggle {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,28 +21,62 @@ import { Icon } from 'astro-icon/components';
     color: var(--primary-contrast-color);
     cursor: pointer;
     border-radius: 50%;
+    overflow: hidden;
     transition: transform 0.2s ease;
 
     &:hover {
       transform: scale(1.15);
     }
+
+    & :global(svg) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transition:
+        transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease;
+      will-change: transform, opacity;
+    }
+  }
+
+  /* Estado claro: se ve la luna (acción: activar oscuro) */
+  .icon-luna {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
   }
 
   .icon-sol {
-    display: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-120deg) scale(0.3);
   }
 
+  /* Estado oscuro: se ve el sol (acción: activar claro) */
   :global(html[data-theme='dark']) .icon-luna {
-    display: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(120deg) scale(0.3);
   }
 
   :global(html[data-theme='dark']) .icon-sol {
-    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .theme-toggle :global(svg) {
+      transition: opacity 0.2s ease;
+    }
+    .icon-luna,
+    .icon-sol,
+    :global(html[data-theme='dark']) .icon-luna,
+    :global(html[data-theme='dark']) .icon-sol {
+      transform: translate(-50%, -50%);
+    }
   }
 </style>
 
 <script>
   const THEME_KEY = 'ag_theme';
+  let themeTransitionTimer: ReturnType<typeof setTimeout> | undefined;
 
   function currentTheme() {
     return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
@@ -57,11 +92,15 @@ import { Icon } from 'astro-icon/components';
   }
 
   function setTheme(theme: 'light' | 'dark') {
-    document.documentElement.setAttribute('data-theme', theme);
+    const root = document.documentElement;
+    root.classList.add('theme-transition');
+    root.setAttribute('data-theme', theme);
     try {
       localStorage.setItem(THEME_KEY, theme);
     } catch (e) {}
     syncToggles();
+    if (themeTransitionTimer) clearTimeout(themeTransitionTimer);
+    themeTransitionTimer = setTimeout(() => root.classList.remove('theme-transition'), 360);
   }
 
   // Delegación: sigue funcionando si el header se vuelve a renderizar

@@ -29,6 +29,32 @@ body {
   padding-bottom: 0 !important;
 }
 
+/* Transición suave al cambiar entre tema claro y oscuro.
+   Anima los propios tokens de color (registrados con @property en variables.css)
+   en lugar de `* { transition: color }`, que en Chromium provoca el bug de
+   `color: inherit`: cambio sutil y salto al valor final.
+   Se activa solo mientras dura el cambio, con la clase .theme-transition. */
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition {
+    transition:
+      --color-bg 0.32s ease,
+      --card-background-color 0.32s ease,
+      --primary-color 0.32s ease,
+      --secondary-color 0.32s ease,
+      --text-color 0.32s ease,
+      --text-secondary-color 0.32s ease,
+      --acorde-color 0.32s ease,
+      --link-hover-color 0.32s ease,
+      --callout-bg 0.32s ease,
+      --hover-bg 0.32s ease,
+      --playing-overlay 0.32s ease,
+      --placeholder-color 0.32s ease,
+      --success-color 0.32s ease,
+      --error-color 0.32s ease,
+      --danger-color 0.32s ease;
+  }
+}
+
 h1,
 h2,
 h3,

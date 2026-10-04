@@ -306,6 +306,12 @@ const headingId = `acorde-${slug}`;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
+  :global(html[data-theme='dark']) .acorde-meta {
+    background-color: var(--card-background-color);
+    color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
   .acorde-content :global(pre) {
     margin: 0;
     letter-spacing: -0.3px;

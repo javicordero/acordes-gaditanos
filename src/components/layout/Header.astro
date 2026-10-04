@@ -45,7 +45,9 @@ import ThemeToggle from './ThemeToggle.astro';
         </div>
       </div>
 
-      <ThemeToggle />
+      <div class='theme-container'>
+        <ThemeToggle />
+      </div>
 
       <button
         class='menu-toggle'
@@ -161,6 +163,21 @@ import ThemeToggle from './ThemeToggle.astro';
   }
 
   .search-container.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Container del botón de tema */
+  .theme-container {
+    display: flex;
+    align-items: center;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .theme-container.is-hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -442,6 +459,7 @@ import ThemeToggle from './ThemeToggle.astro';
     const branding = document.querySelector('.branding');
     const brandingTitle = document.querySelector('.branding-title');
     const searchContainer = document.querySelector('.search-container');
+    const themeContainer = document.querySelector('.theme-container');
     const searchInput = document.querySelector('#header-search');
     const clearButton = document.querySelector('.clear-search');
     const searchToggle = document.querySelector('.search-toggle');
@@ -458,6 +476,7 @@ import ThemeToggle from './ThemeToggle.astro';
         toggle.setAttribute('aria-expanded', 'false');
         branding.classList.remove('is-hidden');
         if (searchContainer) searchContainer.classList.remove('is-hidden');
+        if (themeContainer) themeContainer.classList.remove('is-hidden');
       } else {
         nav.classList.add('is-open');
         toggle.classList.add('is-open');
@@ -465,6 +484,7 @@ import ThemeToggle from './ThemeToggle.astro';
         toggle.setAttribute('aria-expanded', 'true');
         branding.classList.add('is-hidden');
         if (searchContainer) searchContainer.classList.add('is-hidden');
+        if (themeContainer) themeContainer.classList.add('is-hidden');
       }
     };
 

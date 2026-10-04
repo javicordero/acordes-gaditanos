@@ -163,6 +163,16 @@ let autores = await getCollection('autores');
     outline-offset: 3px;
   }
 
+  :global(html[data-theme='dark']) .ver-mas {
+    background-color: var(--primary-color);
+    color: var(--on-bright-color);
+  }
+
+  :global(html[data-theme='dark']) .ver-mas:hover {
+    background-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
   @media (max-width: 1024px) {
     :global(.section--novedades .acordes-grid > *:nth-child(n + 7)) {
       display: none;
