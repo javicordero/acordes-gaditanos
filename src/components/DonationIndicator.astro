@@ -74,10 +74,10 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
   }
 
   .donation-indicator__widget {
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--placeholder-color);
     border-radius: 12px;
     padding: 16px;
-    background: #fafafa;
+    background: var(--card-background-color);
   }
 
   :global(.compact) .donation-indicator__widget {
@@ -99,7 +99,7 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
 
   .donation-indicator__message-c {
     font-size: 0.78rem;
-    color: #888;
+    color: var(--text-secondary-color);
     margin: 0 0 6px;
     line-height: 1.3;
   }
@@ -137,7 +137,7 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
 
   .donation-indicator__names {
     font-size: 0.85rem;
-    color: #666;
+    color: var(--text-secondary-color);
     margin: 0 0 12px;
     line-height: 1.6;
   }
@@ -163,7 +163,7 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #999;
+    color: var(--text-secondary-color);
   }
 
   .destacado-name {
@@ -211,7 +211,7 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
   .pill--more {
     font-style: italic;
     background: transparent;
-    color: #888;
+    color: var(--text-secondary-color);
   }
 
   :global(.timeline) .pill {
@@ -264,7 +264,7 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
 
   .donation-indicator--empty p {
     font-size: 0.85rem;
-    color: #888;
+    color: var(--text-secondary-color);
     margin: 0 0 12px;
   }
 
