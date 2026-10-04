@@ -1,11 +1,25 @@
 :root {
+  color-scheme: light;
+
   /* Colors */
   --color-bg: #e5e5e5;
   --card-background-color: #ffffff;
+  --card-bg: var(--card-background-color);
   --primary-color: #000000;
   --secondary-color: #14213d;
   --text-color: #222;
+  --text-secondary-color: #555555;
   --primary-contrast-color: #fca311;
+
+  /* Superficies y fijos (iguales en ambos temas) */
+  --surface-color: #000000;
+  --on-surface-color: #ffffff;
+  --brand-navy: #14213d;
+  --on-bright-color: #111111;
+  --btn-gradient: linear-gradient(145deg, var(--brand-navy) 0%, var(--surface-color) 100%);
+  --callout-bg: #fff8ec;
+  --hover-bg: #ececec;
+  --playing-overlay: rgba(255, 255, 255, 0.6);
 
   /* Links */
   --acorde-color: #04c;
@@ -21,26 +35,55 @@
   --card-padding-sm: 12px;
 
   /* Pieza type colors */
-  --pieza-presentacion-color: var(--primary-color);
+  --pieza-presentacion-color: var(--on-bright-color);
   --pieza-presentacion-bg: #87ceeb;
-  --pieza-pasodoble-color: var(--primary-color);
+  --pieza-pasodoble-color: var(--on-bright-color);
   --pieza-pasodoble-bg: #ffa07a;
-  --pieza-tango-color: var(--primary-color);
+  --pieza-tango-color: var(--on-bright-color);
   --pieza-tango-bg: #e6c800;
-  --pieza-estribillo-color: var(--primary-color);
+  --pieza-estribillo-color: var(--on-bright-color);
   --pieza-estribillo-bg: #dda0dd;
-  --pieza-default-color: var(--primary-color);
+  --pieza-default-color: var(--on-bright-color);
   --pieza-default-bg: #98fb98;
 
   /* Autor */
-  --autor-color: var(--primary-color);
+  --autor-color: var(--on-bright-color);
   --autor-bg: var(--primary-contrast-color);
 
   /* Typography */
   --acorde-card-header-font-size-sm: 1.25rem;
 
   /* Misc */
-  --placeholder-color: #94a3b8;
-  --success-color: #28a745;
-  --error-color: #ea1d6f;
+  --placeholder-color: #6b7280;
+  --success-color: #1a7f37;
+  --error-color: #c2185b;
+  --danger-color: #d32f2f;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Colors */
+  --color-bg: #12141a;
+  --card-background-color: #1b1e26;
+  --primary-color: #f0f2f5;
+  --secondary-color: #b9c4d8;
+  --text-color: #e8eaed;
+  --text-secondary-color: #aab4c4;
+
+  /* Links */
+  --acorde-color: #82aaff;
+  --link-hover-color: #a8c7ff;
+
+  /* Superficies y fijos */
+  --btn-gradient: linear-gradient(145deg, #5566a3 0%, #2a3560 100%);
+  --callout-bg: #2a2416;
+  --hover-bg: #262b34;
+  --playing-overlay: rgba(0, 0, 0, 0.55);
+
+  /* Misc */
+  --placeholder-color: #8b98ab;
+  --success-color: #4ade80;
+  --error-color: #ff7a9a;
+  --danger-color: #ff6b6b;
 }
