@@ -23,6 +23,7 @@ alegría
 bienvenidos al teatro de los gaditanos y a la 
        <a>Fa</a>
 tierra mía
+<a>Do</a>
 Y para usted que ha llegado de afuera le cuento que 
       <a>Sol7</a>
 este teatro es divino
