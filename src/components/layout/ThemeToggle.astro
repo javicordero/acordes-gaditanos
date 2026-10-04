@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 ---
 
-<button type='button' class='theme-toggle' data-theme-toggle aria-label='Activar tema oscuro'>
+<button type='button' class='theme-toggle' data-theme-toggle data-ga-event-light='theme_change_light' data-ga-event-dark='theme_change_dark' data-ga-params='{"location":"header"}' aria-label='Activar tema oscuro'>
   <Icon name='luna' width={26} height={26} class='icon-luna' aria-hidden='true' />
   <Icon name='sol' width={26} height={26} class='icon-sol' aria-hidden='true' />
 </button>
@@ -75,6 +75,8 @@ import { Icon } from 'astro-icon/components';
 </style>
 
 <script>
+  declare const gtag: (...args: unknown[]) => void;
+
   const THEME_KEY = 'ag_theme';
   let themeTransitionTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -103,11 +105,33 @@ import { Icon } from 'astro-icon/components';
     themeTransitionTimer = setTimeout(() => root.classList.remove('theme-transition'), 360);
   }
 
+  // Envía un evento a Google Analytics en cada cambio de tema.
+  // Mismo patrón que el botón "Ver más novedades" (data-ga-event / data-ga-params),
+  // con un evento distinto para cada dirección: theme_change_light / theme_change_dark.
+  function trackThemeChange(button: Element, theme: 'light' | 'dark') {
+    if (typeof gtag !== 'function') return;
+    const eventName = button.getAttribute(
+      theme === 'dark' ? 'data-ga-event-dark' : 'data-ga-event-light'
+    );
+    if (!eventName) return;
+    let eventParams: Record<string, unknown> = {};
+    try {
+      eventParams = JSON.parse(button.getAttribute('data-ga-params') || '{}');
+    } catch (e) {}
+    gtag('event', eventName, {
+      ...eventParams,
+      page_location: window.location.href,
+    });
+  }
+
   // Delegación: sigue funcionando si el header se vuelve a renderizar
   document.addEventListener('click', (e) => {
     const target = e.target as Element | null;
-    if (target?.closest('[data-theme-toggle]')) {
-      setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+    const toggle = target?.closest('[data-theme-toggle]');
+    if (toggle) {
+      const next = currentTheme() === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+      trackThemeChange(toggle, next);
     }
   });
 

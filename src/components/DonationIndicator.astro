@@ -284,7 +284,7 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
 
 <script>
   function setupTracking() {
-    const trackableButtons = document.querySelectorAll('[data-ga-event]')
+    const trackableButtons = document.querySelectorAll('.donation-indicator [data-ga-event]')
     trackableButtons.forEach((button) => {
       if (button.getAttribute('data-tracking-init')) return
       button.setAttribute('data-tracking-init', 'true')
