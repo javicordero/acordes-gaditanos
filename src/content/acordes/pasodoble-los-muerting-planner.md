@@ -65,7 +65,7 @@ Tengan presente y sirva de precedente
 comunidad educativa
                                <a>Do#7</a>      <a>Fa#m</a>
 que se actuarán a tiempo con conductas abusivas
- (Sorda)               <a>Si7</a>
+ <a>(Sorda)</a>               <a>Si7</a>
 Hoy Sandra Peña estaba viva
        <a>Fa#m</a>    <a>Si7</a>  <a>Mi</a>
 Estaba viva, estaba viva
