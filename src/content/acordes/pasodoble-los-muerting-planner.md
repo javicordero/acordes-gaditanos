@@ -9,6 +9,7 @@ cejilla: 2
 img: https://www.andaluciainformacion.es/media/andaluciainformacion/images/2026/01/22/2026012200260762917.jpg
 date: "12/10/2026"
 video: https://www.youtube.com/embed/ZKsn6YzHYuc
+fraseClave: "Cuando la vimos entrar por esa puerta"
 ---
 <pre>
 <a>Mi/add9</a>            <a>Si7</a>           <a>Mi/add9</a>

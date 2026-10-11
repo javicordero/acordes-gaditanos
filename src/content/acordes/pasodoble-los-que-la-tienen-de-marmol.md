@@ -9,6 +9,7 @@ cejilla: 3
 img: https://www.portaldecadiz.com/images/igallery/resized/los-que-la-tienen-de-marmol-3796/06-chirigota-los-que-la-tienen-de-marmol---gabinete-de-prensa-del-ayuntamiento-de-cadiz-foto--reyna-2-1600-1600-80.jpg
 date: "05/10/2026"
 video: https://www.youtube.com/embed/dJh7S98ageU
+fraseClave: "Esa mañana el cementerio no era el mismo,"
 ---
 <pre>
 <a>Mi</a>                                  <a>Si7</a>

@@ -9,6 +9,7 @@ cejilla: 2
 modalidad: Comparsa
 date: "28/09/2026"
 video: https://www.youtube.com/embed/ch8hjI0xkuQ?si=97qEncT2mH-KkQjK
+fraseClave: "Cai aflójame las cuerdas dale al bombo rienda suelta"
 ---
 <pre>
 <a>Lam</a>

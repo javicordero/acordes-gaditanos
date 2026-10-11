@@ -9,6 +9,7 @@ cejilla: 1
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbrPrgb2jALKyrF9zi3NmoG-9JgZODXtv0jMJXigbMXU8M6hl_D6xL8FMNMuaOQ8LsnmrFHo6uLeU4YjEiDTMbT4rI2Y4FklUsdPEEuBpPe7kbDOBNgOVlHE9ztCs58wm0Uprfqf9Unu06/s1600/Los_valientes.jpg
 date: "18/10/2026"
 video: 'https://www.youtube.com/embed/iv8vjLSPOxU'
+fraseClave: "Loquito por verte a mi vera cariñito mio"
 ---
 <pre>
 <a>LaM7</a>        <a>Mi7</a>      <a>LaM7</a>

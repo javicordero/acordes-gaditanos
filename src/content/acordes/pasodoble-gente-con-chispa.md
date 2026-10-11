@@ -9,6 +9,7 @@ cejilla: 1
 img: https://lachirigotadelbizcocho.com/wp-content/uploads/2024/03/2022_2.jpg
 date: "21/09/2026"
 video: https://www.youtube.com/embed/j8bkXQj9V_Q
+fraseClave: "Yo soy el más sevillano, no hay nadie más sevillano"
 ---
 <pre>
 <a>Mim</a>

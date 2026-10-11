@@ -9,6 +9,7 @@ cejilla: 1
 img: https://www.portaldecadiz.com/images/igallery/resized/los-que-la-tienen-de-marmol-3796/06-chirigota-los-que-la-tienen-de-marmol---gabinete-de-prensa-del-ayuntamiento-de-cadiz-foto--reyna-2-1600-1600-80.jpg
 date: "30/09/2026"
 video: https://www.youtube.com/embed/dJh7S98ageU
+fraseClave: "¿A que nunca has pensado dónde estarás"
 ---
 <pre>
 <a>Do</a>                                <a>Mim</a>

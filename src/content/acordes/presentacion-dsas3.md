@@ -11,6 +11,7 @@ date: "29/09/2026"
 video: https://www.youtube.com/embed/kT5Y42bf7sc?si=qT2Vml4ytMUYuAN4
 cover: https://www.youtube.com/embed/MqtOqqV3_KI
 autorCover: Caro Vargas
+fraseClave: "Y a mi no me compra nadie (nadie)"
 ---
 <pre>
 <a>Mi7</a>                       <a>Fa</a>        <a>Mi7</a>

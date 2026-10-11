@@ -9,6 +9,7 @@ cejilla: 1
 img: https://s1.abcstatics.com/abc/www/multimedia/sevilla/2026/02/12/tocina51_20260209213604-RA6caM9MeYrhKnplDGkbF9O-1200x840@abc.jpg
 date: "26/09/2026"
 video: https://www.youtube.com/embed/o8tKhI61ZN8
+fraseClave: "Las manos arrugadas refleja que toda una vida"
 ---
 <pre>
 <a>Sol</a>                                      <a>Sim7</a>

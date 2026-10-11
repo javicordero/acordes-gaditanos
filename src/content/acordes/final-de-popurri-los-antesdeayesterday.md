@@ -8,6 +8,7 @@ cejilla: 1
 img: https://static.grupojoly.com/clip/71e49641-73da-40d6-a091-ded9443fdb9f_source-aspect-ratio_1600w_0.jpg
 date: "23/09/2026"
 video: https://www.youtube.com/embed/ifWnZYRuYyw?si=TdGKoM_FOa6_w4Kg
+fraseClave: "Hubo un tiempo en que creía y no estaba equivocado"
 
 ---
 <pre>
