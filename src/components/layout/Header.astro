@@ -398,6 +398,16 @@ import ThemeToggle from './ThemeToggle.astro';
 
   /* Media queries - Responsive */
   @media (max-width: 640px) {
+    /* Ocultar header al hacer scroll hacia abajo (reaparece al subir) */
+    header {
+      transition: transform 0.3s ease;
+      will-change: transform;
+    }
+
+    header.header-hidden {
+      transform: translateY(-100%);
+    }
+
     .nav-bar-container {
       width: 95%;
       padding: 0;
@@ -454,6 +464,7 @@ import ThemeToggle from './ThemeToggle.astro';
 
 <script>
   function initHeader() {
+    const header = document.querySelector('header');
     const toggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('#primary-menu');
     const branding = document.querySelector('.branding');
@@ -466,6 +477,60 @@ import ThemeToggle from './ThemeToggle.astro';
     const searchWrapper = document.querySelector('.search-wrapper');
 
     if (!toggle || !nav || !branding) return;
+
+    // Ocultar header al hacer scroll hacia abajo en móvil (reaparece al subir)
+    if (header) {
+      const mobileQuery = window.matchMedia('(max-width: 640px)');
+      const HIDE_AFTER = 80; // px de scroll antes de empezar a ocultar
+      const DELTA = 6; // px mínimos para evitar parpadeo en el rubber-band
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      const updateHeaderOnScroll = () => {
+        ticking = false;
+        if (!mobileQuery.matches) return;
+
+        const y = window.scrollY;
+        const diff = y - lastScrollY;
+
+        const isMenuOpen = nav.classList.contains('is-open');
+        const isSearchOpen =
+          searchWrapper && !searchWrapper.classList.contains('collapsed');
+
+        if (isMenuOpen || isSearchOpen) {
+          header.classList.remove('header-hidden');
+          lastScrollY = y;
+          return;
+        }
+
+        if (y <= HIDE_AFTER) {
+          header.classList.remove('header-hidden');
+        } else if (diff > DELTA) {
+          header.classList.add('header-hidden');
+        } else if (diff < -DELTA) {
+          header.classList.remove('header-hidden');
+        }
+
+        lastScrollY = y;
+      };
+
+      const onScroll = () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(updateHeaderOnScroll);
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Al salir de móvil (resize/rotación) asegurar que el header es visible
+      mobileQuery.addEventListener('change', () => {
+        if (!mobileQuery.matches) {
+          header.classList.remove('header-hidden');
+        }
+        lastScrollY = window.scrollY;
+      });
+    }
 
     toggle.onclick = () => {
       const isOpen = nav.classList.contains('is-open');
