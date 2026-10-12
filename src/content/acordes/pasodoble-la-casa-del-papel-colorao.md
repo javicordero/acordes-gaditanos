@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: La casa del papel colorao
 year: 2020
-musica: Ni idea (creo que es Dios)
-letra: Ni idea (creo que es Dios)
+musica: Tatán
+letra: Tatán
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-casa-de-papel-colorao-4.jpg
 cejilla: 3
 date: "25/11/2025"
