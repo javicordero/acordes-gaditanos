@@ -10,6 +10,8 @@ img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/sereni
 date: "19/10/2026"
 video: 'https://www.youtube.com/embed/qN8p9dNyHO0'
 fraseClave: "En el escalón de cada noche mirando a la luna"
+recomendada: true
+
 ---
 <pre>
 <a>Sol</a>       <a>Re7</a>          <a>Sol</a>
