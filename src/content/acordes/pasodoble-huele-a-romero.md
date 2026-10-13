@@ -9,6 +9,8 @@ cejilla: 4
 img: https://static.grupojoly.com/clip/65bb5126-0833-4de2-ba82-71b4df543591_source-aspect-ratio_1600w_0.jpg
 date: "21/10/2026"
 video: https://www.youtube.com/embed/xKV33ICPGlQ
+fraseClave: Señor de Cádiz, Cristo Gitano del Barrio Santa María
+
 ---
 <pre>
  <a>Lam</a>                                          <a>Mim</a> 
