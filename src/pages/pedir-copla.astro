@@ -21,6 +21,11 @@ import DonationIndicator from '../components/DonationIndicator.astro';
             <p>
               ¿Echas en falta alguna copla? Deja un comentario en el formulario de abajo y la subiremos cuando podamos.
             </p>
+            <p>
+              Si has sacado los acordes de alguna copla puedes enviarlos a
+              <a href='mailto:acordesgaditanos@gmail.com'>acordesgaditanos@gmail.com</a>
+              y los subiremos.
+            </p>
             <p class='vote-hint'>
               Puedes votar las peticiones que mas te gusten con el icono de corazon.
             </p>
@@ -31,7 +36,10 @@ import DonationIndicator from '../components/DonationIndicator.astro';
           </div>
         </section>
 
-        <section class='top-peticiones top-peticiones--visible' id='top-peticiones'></section>
+        <section class='top-peticiones' id='top-peticiones-section' hidden>
+          <h2 class='top-peticiones__title'>Peticiones más votadas</h2>
+          <div class='top-peticiones__list' id='top-peticiones'></div>
+        </section>
 
         <section class='form-section'>
           <h2>Escribe tu petición</h2>
@@ -90,6 +98,12 @@ import DonationIndicator from '../components/DonationIndicator.astro';
       line-height: 1.6;
       color: var(--text-color);
       font-size: 1rem;
+    }
+
+    & a {
+      color: var(--acorde-color);
+      font-weight: 600;
+      text-decoration: underline;
     }
 
     & .vote-hint {
@@ -168,8 +182,9 @@ import DonationIndicator from '../components/DonationIndicator.astro';
 
 <script>
   async function loadTopPeticiones() {
-    const container = document.getElementById('top-peticiones');
-    if (!container) return;
+    const section = document.getElementById('top-peticiones-section');
+    const list = document.getElementById('top-peticiones');
+    if (!section || !list) return;
 
     try {
       const { COMMENTS_CONFIG } = await import('../lib/comments.ts');
@@ -177,27 +192,24 @@ import DonationIndicator from '../components/DonationIndicator.astro';
       const data = await res.json();
       const top = data.top || [];
 
-      container.style.display = '';
-
       if (top.length === 0) {
-        container.style.display = 'none';
+        section.hidden = true;
         return;
       }
 
-      container.innerHTML = `
-        <h3 class='top-peticiones__title'>Peticiones más votadas</h3>
-        ${top.map((p) => `
-          <div class='top-peticiones__item'>
-            <span class='top-peticiones__content'>${escapeHtml(p.content)}</span>
-            <span class='top-peticiones__votes'>
-              <svg width='14' height='14' viewBox='0 0 24 24' fill='#e74c3c' stroke='none'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/></svg>
-              ${p.votes ?? 0}
-            </span>
-          </div>
-        `).join('')}
-      `;
+      list.innerHTML = top.map((p) => `
+        <div class='top-peticiones__item'>
+          <span class='top-peticiones__content'>${escapeHtml(p.content)}</span>
+          <span class='top-peticiones__votes'>
+            <svg width='14' height='14' viewBox='0 0 24 24' fill='#e74c3c' stroke='none'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/></svg>
+            ${p.votes ?? 0}
+          </span>
+        </div>
+      `).join('');
+
+      section.hidden = false;
     } catch {
-      container.style.display = 'none';
+      section.hidden = true;
     }
   }
 
