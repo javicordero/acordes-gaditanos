@@ -9,8 +9,6 @@ cejilla: 0
 modalidad: Comparsa
 date: 24/10/2026
 video: https://www.youtube.com/embed/Qs_dNLU57Lk?si=PWgPakifYZmJR3uu
-cover: https://www.youtube.com/embed/jBE00YrwbCs?si=Upeyedg5Sgd-37pN
-autorCover: Acordes Gaditanos
 fraseClave: A veces tengo lagunas, pierdo el hilo
 ---
 <pre>
