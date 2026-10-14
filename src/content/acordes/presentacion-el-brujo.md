@@ -7,8 +7,10 @@ letra: Antonio Martínez Ares
 modalidad: Comparsa
 cejilla: 2
 img: https://i.ytimg.com/vi/vvNYJVuh2_0/maxresdefault.jpg
-date: "23/10/2026"
+date: "22/10/2026"
 video: 'https://www.youtube.com/embed/Avfovsj7tEI'
+fraseClave: Como yo no tengo nada que darte 
+
 ---
 <pre>
 <a>Lam</a>                       <a>Mi7</a>
