@@ -15,7 +15,7 @@ video: 'https://www.youtube.com/embed/VUWTb1SYUn8'
 Si quieres ver la claridad mas pura y del sol la clausura 
                <a>Mi7</a>  <a>Fa</a>
 como canto el poeta
-                   <a>Fa</a>        <a>Mi7</a>     
+<a>Mi7</a>                <a>Fa</a>        <a>Mi7</a>     
 si nunca has visto la Torre Tavira 
     <a>Fa</a>           <a>Mi7</a>               <a>Lam</a>   
 de azul y oro vestida vente pa la caleta 
