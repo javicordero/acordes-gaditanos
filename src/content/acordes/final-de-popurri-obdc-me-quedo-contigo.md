@@ -57,9 +57,9 @@ esos que se hacen bandera de Cádiz
 con poco trabajo y peor carnaval
 <a>Mim</a> <a>Re</a> <a>Do</a> <a>Si7</a>  <a>Mim</a> <a>Re</a>  <a>Do</a> <a>Si7</a>
 Uhhhh uhhhh    uhhhhhh uihhhhh
-      <a>Mim</a>      <a>Re</a>           <a>Do</a>             <a>Si7</a>
+<a>Mim</a>            <a>Re</a>           <a>Do</a>             <a>Si7</a>
 Un marinero de Cádiz de la tierra del carnaval
-      <a>Mim</a>      <a>Re</a>           <a>Do</a>                      <a>Si7</a>
+<a>Mim</a>            <a>Re</a>           <a>Do</a>                      <a>Si7</a>
 Un marinero de Cádiz de la tierra donde hay que amarrar
 
 donde hay que amarrar, donde hay que amarrar
