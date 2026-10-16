@@ -12,63 +12,69 @@ fraseClave: Cerre los ojos, pa
 
 
 ---
-<pre>   <a>Re</a>                                <a>Fa#7</a>
-Cerre los ojos, pa marcharme de este mundo al que 
-hoy he vuelto
+<pre>   
+  <a>Re</a>                                <a>Fa#7</a>
+Cerre los ojos, pa marcharme de este mundo 
+
+al que hoy he vuelto
 <a>Sim</a>                          <a>Lam</a>          <a>Re</a>
 Cerre los ojos, casi sin avisar y con lo puesto
-<a>Sol</a>                                 <a>Re</a>    <a>Mim</a>
-Cerre los ojos y emprendi un nuevo camino, entre la 
-         <a>La7</a>
-vida y lo divino. 
+<a>Sol</a>                                 <a>Re</a>    
+Cerre los ojos y emprendi un nuevo camino,
+<a>Mim</a>                 <a>La7</a>
+entre la  vida y lo divino. 
    <a>Re</a>                               <a>Fa#7</a>
-Y abri los ojos, y la estrella que brillo en el 
-firmamento
-<a>Sim</a>                                   <a>Lam</a>
-Todo este tiempo. Me estepraba allí sentado y 
-  <a>Re</a>
-sonriendo
+Y abri los ojos, y la estrella que brillo 
+                  <a>Sim</a>  
+en el  firmamento Todo este tiempo.
+                     <a>Lam</a>           <a>Re</a>
+me estepraba allí sentado y  sonriendo
 <a>Sol</a>                                <a>Re</a>
-Yo que pensaba que te fuiste para siempre y ahora 
- <a>Mim</a>             <a>La7</a>
-que te tengo en frente
-<a>Re</a>                       <a>Fa#7</a>           <a>Sim</a>
-Perdoname, Por lo que me calle contigo, sabes bien, 
-             <a>Lam</a>           <a>Re</a>
-Ay lo que para mi siempre has sido
+Yo que pensaba que te fuiste para siempre 
+        <a>Mim</a>             <a>La7</a>
+y ahora que te tengo en frente
+<a>Re</a>                       <a>Fa#7</a>           
+Perdoname, Por lo que me calle contigo, 
+<a>Sim</a>                        <a>Lam</a>               <a>Re</a>
+sabes bien, Ay lo que para mi tu siempre has sido
 <a>Sol</a>               <a>Re</a>
-Mírame, que tus pasos yo intente seguir porque 
- <a>Sol</a>                    <a>La</a>
-fuiste para mi mi mejor amigo
+Mírame, que tus pasos yo intente seguir  
+        <a>Sol</a>                     <a>La</a>
+porque fuiste para mi mi mejor amigo
       <a>Sol</a>                         <a>La</a>
-Y abrazame como cuando yo era un niño, cantemos 
- <a>Fa#m</a>                              <a>Si7</a>
-juntos la canción que tanto nos gustaba a los dos. 
+Y abrazame como cuando yo era un niño,  
+          <a>Fa#m</a>            
+cantemos juntos la canción 
+                  <a>Si7</a>
+que tanto nos gustaba a los dos.
 <a>Mim</a>                                     <a>Fa#7</a>
-Cuentame si te llegaron cada uno de los besos y los 
-                     <a>Sim</a>                      <a>Lam</a>
-te quieros que cada noche te mandaba Ay pare mio 
-             <a>Re</a>
-mirando al cielo. 
+Cuentame si te llegaron cada uno de los besos 
+                          <a>Sim</a>    
+y los te quiero que cada noche te mandaba
+        <a>Lam</a>              <a>Re</a>        
+Ay pare mio mirando al cielo. 
 <a>Sol</a>                              <a>La</a>
-Recuperemos juntos el tiempo perdío Que si algo 
-<a>Fam#7</a>                      <a>Si7</a>           <a>Mim</a>  <a>Mi7</a>
-bueno , tubo irme de este mundo fue encontrarme de 
-          <a>La7</a>
-nuevo contigo.
+Recuperemos juntos el tiempo perdío 
+            <a>Fam#7</a>                      <a>Si7</a> 
+Que si algo bueno , tubo irme de este mundo 
+          <a>Mim</a>  <a>Mi7</a>          <a>La7</a>
+fue encontrarme de nuevo contigo.
       <a>Sol</a>                         <a>La</a>
-Y abrazame como cuando yo era un niño, cantemos 
- <a>Fa#m</a>                              <a>Si7</a>
-juntos la canción que tanto nos gustaba a los dos. 
+Y abrazame como cuando yo era un niño,  
+          <a>Fa#m</a>            
+cantemos juntos la canción 
+                  <a>Si7</a>
+que tanto nos gustaba a los dos.
 <a>Mim</a>                                     <a>Fa#7</a>
-Cuentame si te llegaron cada uno de los besos y los 
-                     <a>Sim</a>                      <a>Lam</a>
-te quieros que cada noche te mandaba Ay pare mio 
-             <a>Re</a>
-mirando al cielo. 
+Cuentame si te llegaron cada uno de los besos 
+                          <a>Sim</a>    
+y los te quiero que cada noche te mandaba
+        <a>Lam</a>              <a>Re</a>        
+Ay pare mio mirando al cielo. 
 <a>Sol</a>                              <a>La</a>
-Recuperemos juntos el tiempo perdío Que si algo 
-<a>Fam#7</a>                      <a>Si7</a>             <a>Mi</a>
-bueno , tubo irme de este mundo fue encontrarme de 
- <a>La</a>       <a>Re</a>
-nuevo contigo.</pre>
+Recuperemos juntos el tiempo perdío 
+            <a>Fam#7</a>                      <a>Si7</a> 
+Que si algo bueno , tubo irme de este mundo 
+          <a>Mi</a>        <a>La</a>     <a>Re</a>
+fue encontrarme de nuevo contigo.
+</pre>

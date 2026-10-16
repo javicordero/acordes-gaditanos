@@ -14,18 +14,19 @@ destacada: 4
 
 fraseClave: He guardao' para el último tema un atardecer en La
 ---
-<pre>       <a>Sol</a>
-He guardao' para el último tema un atardecer en La 
- <a>Mi7</a>
-Caleta
-            <a>Lam7</a>                                 <a>Do</a>
-Que es la herencia que llevo en mis venas El compás 
-                               <a>Re7</a>
-de mi padre que marcaban sus baquetas.
-       <a>Sol</a>         <a>Re7</a>      <a>Sol</a>      <a>Si7</a>
-He guardao' para el último tema El mayor de todos 
-         <a>Do</a>
-mis te quiero
+<pre>
+       <a>Sol</a>
+He guardao' para el último tema 
+                     <a>Mi7</a>
+un atardecer en ña Caleta
+            <a>Lam7</a>                          
+Que es la herencia que llevo en mis venas
+       <a>Do</a>                               <a>Re7</a>
+El compás de mi padre que marcaban sus baquetas.
+       <a>Sol</a>         <a>Re7</a>      <a>Sol</a>
+He guardao' para el último tema 
+      <a>Si7</a>                  <a>Do</a>
+El mayor de todos mis te quiero
          <a>Dom7</a>                                  <a>Sol</a>
 Hoy te traigo para ti la melodía Que es la alegría, 
 <a>Mi7</a>          <a>Lam7</a> <a>Re7</a>              <a>Sol</a>
@@ -35,38 +36,38 @@ Nos vemos en El Corralón también en los callejones,
         <a>Mim</a>
 te cantaré la presentación
                                 <a>Do</a>
-En la calle de La Palma mi pasodoble que va por 
-Sol
+En la calle de La Palma mi pasodoble que va por sol
                                      <a>Re</a>
-Como el sol de mi Caleta que estos acordes me 
-regaló.
+Como el sol de mi Caleta que estos acordes me regaló
    <a>Mim</a>
-Si quieres escuchar un cuplé se lo robaré a los 
-                     <a>Sim7</a>
-duendes y en la Cruz Verde lo cantaré
+Si quieres escuchar un cuplé se lo robaré a los duende
+             <a>Sim7</a>
+y en la Cruz Verde lo cantaré
                                       <a>Do</a>
-Las cuerdas de mi guitarra por tus rincones 
-desangraré
+Las cuerdas de mi guitarra por tus rincones desangraré
                                         <a>Re</a>
-Que no hay forma más bonita pa demostrarte Cai mi 
-querer.
+Que no hay forma más bonita pa demostrarte 
+
+Cai mi querer
           <a>Sol</a>
-Será que tengo el acento de plata la piel de 
-  <a>Sim</a>
-escamas alimentada con sal
+Será que tengo el acento de plata 
+             <a>Sim</a>
+la piel de escamas alimentada con sal
            <a>Do</a>
-Tengo mil nanas cantadas por tanguillos desde que 
-        <a>Re7</a>                          <a>Mi7</a>
-era un chiquillo me acunaban en tu mar.
-            <a>La</a>                             <a>Do#m</a>
-Será que cuando al llegar febrerillo es primavera 
-en mi bella ciudad
+Tengo mil nanas cantadas por tanguillos 
+                   <a>Re7</a>                          <a>Mi7</a>
+desde que era un chiquillo me acunaban en tu mar.
+            <a>La</a>                      
+Será que cuando al llegar febrerillo
+       <a>Do#m</a> 
+es primavera en mi bella ciudad
              <a>Re</a>
-Que por mis venas navegan papelillos y un millón de 
-  <a>Mi7</a>
-coplillas donde premian la amistad.
+Que por mis venas navegan papelillos 
+                  <a>Mi7</a>
+y un millón de coplillas donde premian la amistad.
 <a>La</a> <a>Do#m</a> <a>Re</a> <a>Mi7</a>
-  <a>Re</a>         <a>Mi7</a>           <a>La</a>   <a>Sim7</a>
-Será que gaditano me parieron Y me sobran los te 
-  <a>Mi7</a>                     <a>La</a>
-quiero Pa cantarte en Carnaval</pre>
+  <a>Re</a>         <a>Mi7</a>           <a>La</a> 
+Será que gaditano me parieron 
+  <a>Sim7</a>               <a>Mi7</a>                     <a>La</a>
+Y me sobran los te quiero Pa cantarte en Carnaval
+</pre>

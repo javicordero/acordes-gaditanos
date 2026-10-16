@@ -10,55 +10,57 @@ musica: El Tomate
 letra: El Piru
 fraseClave: Cuando me dice un malage  Que ya no somos cantera Y
 ---
-<pre><a>Lam</a>                <a>Mi7</a> <a>Fa</a> <a>Mi7</a>             <a>Lam</a>
-Cuando me dice un malage  Que ya no somos cantera Y 
-                <a>Sol</a>                       <a>Fa</a>
-a esta comparsa debiera Llamarla de otra manera Que 
-                 <a>Mi</a>
-ya tenemos una edad
-                  <a>Rem</a>                  <a>Mi7</a>
-Cuando me dice un malage Que ese nombre Nunca va 
-             <a>Lam</a>
-adarme un primero
+<pre>
+<a>Lam</a>                <a>Mi7</a> <a>Fa</a> <a>Mi7</a>             <a>Lam</a>
+Cuando me dice un malage  Que ya no somos cantera  
+                  <a>Sol</a>                       <a>Fa</a>
+Y a esta comparsa debiera Llamarla de otra manera 
+                     <a>Mi7</a>
+Que ya tenemos una edad
+                  <a>Rem</a>                  
+Cuando me dice un malage Que ese nombre 
+<a>Mi7</a>                   <a>Lam</a>
+Nunca va adarme un primero
                  <a>Sol</a>                      <a>Fa</a>
-Yo le respondo sincero Mirando a mis compañeros Que 
-                 <a>Sim7/5</a>                      <a>Mi7</a>
-ese premio ya lo tengo Desde que empecé a ensayar
+Yo le respondo sincero Mirando a mis compañeros 
+                    <a>Sim7/5</a>                      <a>Mi7</a>
+Que ese premio ya lo tengo Desde que empecé a ensayar
                       <a>Rem</a>  <a>Mi7</a>               <a>Lam</a>
-Y puesto a usar la cantera Como mi nombre prefiero 
-                     <a>Mi7</a>               <a>Sim7</a> <a>Mi7</a>
-Al que utiliza a los niños Que van a cantar Para 
-             <a>LaM7</a>
-robarle el dinero
-Y con lo que tu presumías De haber hecho por la 
-                                             <a>Fa#7</a>
-cantera Tan solo querías a los niños Para llenarte 
-          <a>Sim7</a>
-bien la cartera
+Y puesto a usar la cantera como mi nombre prefiero 
+                     <a>Mi7</a>               <a>Sim7</a> 
+Al que utiliza a los niños Que van a cantar  
+<a>Mi7</a>              <a>LaM7</a>
+Para robarle el dinero
+Y con lo que tu presumías De haber hecho por la cantera
+                            
+Tan solo querías a los niños 
+        <a>Fa#7</a>           <a>Sim7</a>
+Para llenarte bien la cartera
                   <a>Mi7</a>                     <a>Sim7</a>
-Jugaste con sus ilusiones Robándole su recompensa Y 
-                            <a>Mi7</a>
-el que le hace eso a un chiquillo No es un ladrón 
-            <a>LaM7</a>
-Es un sinvergüenza
-    <a>Mi7</a>             <a>LaM7</a>
-Manchaste con tu presidencia De golpe la pura 
-    <a>La7</a>                           <a>Re</a>
-inocencia Nuestra semilla del carnaval
-Con lo que cuesta hoy en día Que los chavales Se 
- <a>Do#m7</a>
-empiecen a enamorar De los carnavales
+Jugaste con sus ilusiones Robándole su recompensa  
+                              <a>Mi7</a>
+Y el que le hace eso a un chiquillo 
+                           <a>LaM7</a>
+No es un ladrón Es un sinvergüenza
+    <a>Mi7</a>             <a>LaM7</a>                        <a>La7</a>  
+Manchaste con tu presidencia De golpe la pura inocencia
+                          <a>Re</a>
+Nuestra semilla del carnaval
+Con lo que cuesta hoy en día Que los chavales  
+    <a>Do#m7</a>
+Se empiecen a enamorar De los carnavales
     <a>Re</a>             <a>Do#m7</a>               <a>Sim7</a>
-Les robas el poco dinero Que pueden guardar Para 
-            <a>Si7</a>                    <a>Mi7</a>
-volver otro año Para pagarse el disfraz
+Les robas el poco dinero Que pueden guardar  
+                 <a>Si7</a>                    <a>Mi7</a>
+Para volver otro año Para pagarse el disfraz
      <a>Rem</a>                          <a>LaM7</a>
-Y a toda esa panda de chuflas Y mangantes Que se 
-            <a>Mi7</a>                       <a>LaM7</a>  <a>La7</a>
-pongan por delante A mi me van a encontrar
+Y a toda esa panda de chuflas Y mangantes 
+                     <a>Mi7</a>                   <a>LaM7</a>  <a>La7</a>
+Que se pongan por delante A mi me van a encontrar
       <a>Rem</a>          <a>Mi7</a>                 <a>LaM7</a>
 Porque esta Aunque haya muchos que les duela 
                    <a>Mi7</a>
 Siempre será la comparsa De la cantera De la 
                  <a>LaM7</a>
-cantera De la cantera</pre>
+cantera De la cantera
+</pre>
