@@ -11,53 +11,55 @@ recomendada: true
 fraseClave: Una vez soñé contigo, tacita de mis amores,
 ---
 <pre>
-<a>Rem</a>                                  <a>Lam</a>
+<a>Rem</a>                  <a>Lam</a>
 Una vez soñé contigo, tacita de mis amores,
-<a>Sol</a>                                         <a>Re</a>
+<a>Sol</a>                       <a>Re</a>
 Se volvieron tus ladrillos como ramito de flores
-<a>Rem</a>                                  <a>Lam</a>
+<a>Rem</a>                <a>Lam</a>
 Y yo medio jardinero llevaba en mi regadera
-<a>Sol</a>                        <a>Fa</a>            <a>Mi</a>
-Agüitas con mil te quieros pa ti por si no
-7    <a>Fa</a>            <a>Mi7LamSolFaSol7</a>
-lloviera, pa ti por si no lloviera.
-<a>Do</a>
-Un loquito jardinero que se muere y canta por la
-           <a>Mi7</a>
-tierra de su vía,
-<a>Lam</a>                  <a>Sol</a>                 <a>Fa</a>
+<a>Sol</a>                           <a>Fa</a>               <a>Mi7</a>
+Agüitas con mil te quieros pa ti por si no lloviera
+   <a>Fa</a>                <a>Mi7</a>  <a>Lam</a> <a>Sol</a>  <a>Fa</a>  <a>Sol7</a>
+pa ti por si no lloviera.
+<a>Do</a>                           <a>Mi7</a>
+Un loquito jardinero que se muere y canta 
+           
+por la tierra de su vía,
+<a>Lam</a>                  <a>Sol</a>                   <a>Fa</a>
 Siempre mirando pal cielo, por si algo te falta,
           <a>Sol7</a>
 maldita sequía.
 <a>Do</a>                                   <a>Sol</a>
-Todo Cádiz mi jardín, todo Cádiz de color, hasta
-              <a>Mi7</a>
-que yo me volviera
-<a>Lam</a>          <a>Sol</a>                <a>Fa</a>               <a>Mi7</a>
-Loco loquito por ti, loco loquito del to y como una
-  <a>FaMi7</a>
-regaera.
+Todo Cádiz mi jardín, todo Cádiz de color, 
+                   <a>Mi7</a>
+hasta que yo me volviera
+<a>Lam</a>             <a>Sol</a>                   <a>Fa</a> 
+Loco loquito por ti, loco loquito del to 
+              <a>Mi7</a>   <a>Fa</a> <a>Mi7</a>
+y como una regaera.
+
 <a>Lam</a>
-Yo regaré tus murallas bonitas, yo regaré tus
-playitas y arena,
-                                                So
-Y yo te riego Tacita de agüita bendita que apague
-l   <a>FaSol</a>
-tus penas.
+Yo regaré tus murallas bonitas, 
+
+yo regaré tus playitas y arena,
+                                       
+Y yo te riego Tacita de agüita bendita 
+                <a>Sol</a>  <a>Fa</a> <a>Sol</a>
+que apague tus penas.
 <a>Do</a>                <a>Sol</a>                   <a>Fa</a>
-Y así cantando te riegan los locos que llevan a Cai
-        <a>Mi7</a>
-en sus venas.
-<a>Rem</a>                                  <a>Lam</a>
+Y así cantando te riegan los locos que llevan 
+              <a>Mi7</a> 
+a Cai en sus venas.
+<a>Rem</a>                  <a>Lam</a>
 Una vez soñé contigo, tacita de mis amores,
-<a>Sol</a>                                         <a>Re</a>
+<a>Sol</a>                       <a>Re</a>
 Se volvieron tus ladrillos como ramito de flores
-<a>Rem</a>                                  <a>Lam</a>
+<a>Rem</a>                  <a>Lam</a>
 Una vez soñé contigo, tacita de mis amores,
 <a>Sol</a>                      <a>Mi7</a>               <a>Lam</a>
 Se volvieron tus ladrillos como ramito de flores
-  <a>Sol</a>        <a>Fa</a>  <a>Mi7</a>  <a>Lam</a>       <a>Sol</a>        <a>Fa</a> M
-De flores, de flores. De flores, de flores, de
-i7Lam
-flores
+     <a>Sol</a>        <a>Fa</a>  <a>Mi7</a>   <a>Lam</a>        <a>Sol</a>        
+De flores, de flores. De flores, de flores,  
+     <a>Fa</a>    <a>Mi7</a> <a>Lam</a> 
+de flores
 </pre>

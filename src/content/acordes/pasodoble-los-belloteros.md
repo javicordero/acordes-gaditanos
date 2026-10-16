@@ -8,33 +8,30 @@ img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaWVByllOH3k7dmy
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MR8BLf8Nf44?feature=player_embedded'
 cejilla: 6
-
 fraseClave: Muy buenas noches tengan ustedes los gaditanos
 ---
 <pre>
             <a>Lam</a>             <a>Mi7</a>           <a>Lam</a>
 Muy buenas noches tengan ustedes los gaditanos
-       <a>La7</a>                         <a>Rem</a>
+        <a>La7</a>                       <a>Rem</a>
 Hemos venido por eso mismo estamos aquí
          <a>Sol7</a>                           <a>Do</a>
 Vamos pa Cádiz dijimos un día y aquí estamos
-       <a>Fa</a>                              <a>Mi7</a>
+          <a>Fa</a>                           <a>Mi7</a>
 A ver la fiesta y nos quedamos aluego allí.
-               <a>Lam</a>         <a>Mi7</a>
-Ya me habían dicho to lo bonita que era esta
- <a>Lam</a>
-tierra
-       <a>La7</a>                     <a>Rem</a>
+               <a>Lam</a>         <a>Mi7</a>                <a>Lam</a>
+Ya me habían dicho to lo bonita que era esta tierra
+       <a>La7</a>                      <a>Rem</a>
 Y sus mujeres lo reteguapa y resalá
-       <a>Sol7</a>                        <a>Do</a>
+         <a>Sol7</a>                      <a>Do</a>
 Por algo dijo en una copla cierto poeta
-           <a>Mi7</a>                              <a>La</a>
+            <a>Mi7</a>                              <a>La</a>
 Después de Cádiz el Non Plus Ultra ya no va más.
           <a>Sim</a>                  <a>La</a>
 Viéndote a ti bella ciudad marinera
-                  <a>Mi7</a>                      <a>La</a>
+                    <a>Mi7</a>                    <a>La</a>
 Tengo que decir de vera que bien puede presumir
-       <a>Sim</a>                        <a>La</a>
+          <a>Sim</a>                        <a>La</a>
 Le juro usted que como encuentre trabajo
                  <a>Mi7</a>                    <a>La</a>
 Me vuelvo más gaditano que el mismísmo Moret

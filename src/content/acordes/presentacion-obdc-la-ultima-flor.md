@@ -12,67 +12,64 @@ video: 'https://www.youtube.com/embed/sUGn95RVP1E?feature=player_embedded'
 fraseClave: Yo soy la última gota de un océano sin agua
 ---
 <pre>
-  <a>Mi</a>            <a>Sol#m</a>                <a>Do#m7</a>
+  <a>Mi</a>            <a>Sol#m</a>        <a>Sol#7</a>    <a>Do#m7</a>
 Yo soy la última gota de un océano sin agua
-        <a>Mi7</a>                   <a>La</a>
+           <a>Mi7</a>                   <a>La</a>
 El último verso soy la última palabra
-<a>Mi</a>       <a>Lam La Sol#m Fa#m Si7</a>
+   <a>Mi</a>             <a>Lam</a> <a>La</a> <a>Sol#m</a> <a>Fa#m</a> <a>Si7</a>
 Yo soy la última bala.
-   <a>Mi</a>             <a>Sol#m</a>                    <a>Do#m7</a>
+   <a>Mi</a>             <a>Sol#m</a>        <a>Sol#7</a>        <a>Do#m7</a>
 Yo soy el último humano que habita en esta tierra
-         <a>Mi7</a>                 <a>La</a>
+              <a>Mi7</a>                     <a>La</a>
 No sé si fue suerte o solamente mi condena
-      <a>Mi</a>                      <a>Re</a> <a>Si7</a>
+       <a>Mi</a>                      <a>Re</a> <a>Si7</a>
 No hay más, ya no hay marcha atrás.
-                        <a>La</a>
+              <a>La</a>
 Aún quedan razones pa luchar
-                   <a>Sol#m</a>
+                <a>Sol#m</a>
 Aún quedan mil lunas por soñar
-                   <a>Fa#m</a>
+            <a>Fa#m</a>
 La vida nos da oportunidad
-                           <a>Si7</a>
+               <a>Si7</a>
 De ser el principio y no el final
-               <a>Mi</a>              <a>Sol#m</a>
+               <a>Mi</a>               <a>Sol#m</a>
 Me siento tan solo que tan solo te siento
-               <a>La</a>               <a>Lam</a>
+                <a>La</a>               <a>Lam</a>
 Y si todo es desierto, pues yo camino
-                 <a>Si7</a>                  <a>Mi</a>
+            <a>Si7</a>           <a>Mi</a>
 Camino y camino porque te pienso encontrar
-                    <a>Sol#m</a>
+               <a>Sol#m</a>
 Porque tan solo te siento
-             <a>La</a>
+          <a>La</a>
 Porque te veo en el viento
-     <a>Lam</a>       <a>Si7</a> <a>Do#m Sol#m La</a>
+       <a>Lam</a>           <a>Si7</a>     <a>Do#m</a> <a>Sol#m</a> <a>La</a>
 Porque llevo clavado tu olor.
-<a>Sol#m</a>       <a>Do#m Sol#m La</a>
+<a>Sol#m</a>              <a>Do#m</a> <a>Sol#m</a> <a>La</a>
 Tu eres mi última flor.
            <a>Mi</a>                       <a>Sol#m</a>
 Como me atruena este silencio insoportable
-Pero yo cierro los ojos y creo que puedo
-   <a>Lam</a>
-escucharte
-                   <a>Mi</a>
+                                                <a>Lam</a>
+Pero yo cierro los ojos y creo que puedo escucharte
+         <a>Mi</a>
 No queda nada, estoy vacío
-                       <a>Sol#m</a>
+            <a>Sol#m</a>
 El sol me abrasa y quema de frío
-        <a>La</a>                              <a>Lam</a>
+        <a>La</a>                             <a>Lam</a>
 Algo me dice aquí en el alma que no me rinda
-                                        <a>Si7</a>
+                             <a>Si7</a>
 No pierda la calma y que lo vuelva a intentar
-                     <a>Mi</a>
+              <a>Mi</a>                    <a>Sol#m</a>
 Me siento tan solo que tan solo te siento
-              <a>La</a>               <a>Lam</a>
-Y si todo es desierto pues yo camino, camino y
-  <a>Si7</a>
-camino
-<a>La</a>                  <a>Sol#m</a>
+                <a>La</a>               <a>Lam</a>              <a>Si7</a>
+Y si todo es desierto pues yo camino, camino y camino
+<a>La</a>                   <a>Sol#m</a>
 Porque tu eres la vida mía
-                             <a>La</a>
+                              <a>La</a>
 Porque tan solo es mi ultima flor
 <a>Sol#m</a>                 <a>La</a>
 Tan solo es mi última flor
                       <a>Si7</a>
 Tan solo es mi útlima flor
-         <a>Mi Sol#m La Si7</a>
+                <a>Mi</a> <a>Sol#m</a> <a>La</a> <a>Si7</a>
 Una canción de amor
 </pre>

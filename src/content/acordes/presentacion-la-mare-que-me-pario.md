@@ -18,37 +18,40 @@ Por las calles gaditanas va febrero,
 conquistando en Carnaval los corazones,
     <a>Lam</a>                         <a>Sol</a>
 anunciando que parió Cádiz de nuevo,
-     <a>Fa</a>                          <a>Mi7</a>
+     <a>Fa</a>                         <a>Mi7</a>
 pregonándolo en sus torres miradores.
         <a>Lam</a>                      <a>Sol</a>
 Que de nuevo parió Cádiz mil copleros,
        <a>Fa</a>             <a>Mi7</a>      <a>Lam</a>
 guerrilleros, peleones. Cádiz, Mare,
-madre de las libertades, libre por tí vuelvo
-Cádiz,
+
+madre de las libertades, libre por tí vuelvo Cádiz,
+
                                          <a>Sol</a>
 que a mí me parió mi mare gaditano, gaditano.
+
 Cádiz, Mare, romana, fenicia y mora,
-mujer valiente, andaora que en el nombre de la
-Pepa
+
+mujer valiente, andaora que en el nombre de la Pepa
                      <a>Fa</a>
 ni los reyes me callaron.
+
 Cádiz, Mare,  bautizada con tu nombre,
-esa libertad ahora corre por las venas de mis
-  <a>Mi7</a>
-manos.
+                                               <a>Mi7</a>
+esa libertad ahora corre por las venas de mis manos
 <a>Lam</a>
 Cádiz, Mare...
-                                             <a>Sol</a>
+                                           <a>Sol</a>
 te quiero como una mare, te adoro como una novia,
-                                              <a>Fa</a>
+                                           <a>Fa</a>
 te amo como una mujer, los sentimientos me sobran,
-que a una mujer para amarla sobran to los
-sentimientos,
+
+que a una mujer para amarla sobran to los sentimientos
+
 basta con un mandamiento:
-                                             <a>Mi7</a>
+                                         <a>Mi7</a>
 "No maltratarla, no maltratarla, no maltratarla".
-<a>Lam</a>           <a>Sol</a>                 <a>Fa</a>
+<a>Lam</a>           <a>Sol</a>          <a>Fa</a>
 Cádiz, Mare, Cádiz, Mare, Cádiz, Mare,
   <a>Fa</a>        <a>Mi7</a>  <a>Lam</a>
 La mare que me parió.

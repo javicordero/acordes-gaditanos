@@ -12,17 +12,17 @@ video: 'https://www.youtube.com/embed/i12amRhI4Og?feature=player_embedded'
 fraseClave: Anoche me encerré con mi guitarra
 ---
 <pre>
-<a>Sol</a>                         <a>Sim7</a>
+<a>Sol</a>                       <a>Sim7</a>
 Anoche me encerré con mi guitarra
-               <a>Lam</a>        <a>Re7</a>       <a>Sol</a>
+               <a>Lam</a>       <a>Re7</a>       <a>Sol</a>
 Llorándole otro año, el bendito pasodoble
 <a>Mi7</a>                         <a>Lam</a>
 Y me repitió lo mismo que antaño
 <a>Re7</a>                              <a>Sol</a>
 Cógeme en tus manos no seas más torpe
-  <a>Sol</a>                     <a>Sim7</a>
+                          <a>Sim7</a>
 De pronto así pareces un novato
-                     <a>Lam</a>        <a>Re7</a>       <a>Sol</a>
+                    <a>Lam</a>       <a>Re7</a>       <a>Sol</a>
 Que esta pasando el rato, jugando con 3 acordes
                              <a>Lam</a>
 Piensa en el impulso del la mayor
@@ -30,34 +30,30 @@ Piensa en el impulso del la mayor
 Marcate el compás que te condenó
 <a>Mi7</a>                    <a>Lam</a>
 Que como te dejes engatusar
-                <a>Re7</a>
+           <a>Re7</a>          <a>Sim7</a>
 Enseguida llegas a la mitad
-             <a>Mi7</a>          <a>Lam</a>
+             <a>Mi7</a>            <a>Lam</a>
 Y de aquí pa alante te llevo yo
 <a>Sol</a>
-Y ten cuidao con esta parte, no me pegues un
-traspiés
+Y ten cuidao con esta parte, no me pegues un traspiés
+
 Dosifica bien el aire, no lo sueltes de una vez
+
 Échale un montón de arte que se entere Cai entero
-     <a>Mi7</a>            <a>Lam</a>            <a>Mi7</a>
-De que estamos en el trío, si de que estamos en el
-<a>Lam</a>
-trío
+     <a>Mi7</a>            <a>Lam</a>            <a>Mi7</a>             <a>Lam</a>
+De que estamos en el trío, si de que estamos en el trío
+
                   <a>Re7</a>                        <a>Lam</a>
 Donde todo sabe a poco y el compás se vuelve loco
-    <a>Re7</a>             <a>SolSol7</a>                   <a>Do</a>
-Pa después morir rendio, si tienes problemas pa
-  <a>Re7</a>
-seguir,
-                <a>Sim7</a>   <a>Mi7</a>
-Hazme caso y dejate llevar, dale un toque de
-    <a>Lam</a>
-elegancia
-<a>Re7</a>                <a>Sol</a> <a>Sol7</a>                  <a>Do</a>
-Ponlo a punto pa acabar, venga que esto sale del
-<a>Re7</a>
-tirón
-                      <a>Si</a>
+    <a>Re7</a>             <a>Sol</a> 
+Pa después morir rendio, 
+<a>Sol7</a>                 <a>Do</a>   <a>Re7</a>
+si tienes problemas pa seguir,
+               <a>Sim7</a>   <a>Mi7</a>                       <a>Lam</a>
+Hazme caso y dejate llevar, dale un toque de elegancia
+<a>Re7</a>                <a>Sol</a> <a>Sol7</a>                  <a>Do</a>   <a>Re7</a>
+Ponlo a punto pa acabar, venga que esto sale del tirón
+                 <a>Sim7</a> <a>Mi7</a>
 Ya solo te falta rematar
 <a>Lam</a>                             <a>Re7</a>        <a>Sol</a>
 Aquí llevas lo que llevas picha no me pidas más.

@@ -16,78 +16,78 @@ fraseClave: Oh, sin dios y sin permiso y a falta de paraíso ya,
 Oh, sin dios y sin permiso y a falta de paraíso ya,
                 <a>Sol</a>
 ya tengo mi religión
-Con unos cuantos apóstoles mas, que lo mismo que
-yo, rendidos están
-                                    <a>Fa</a>
+
+Con unos cuantos apóstoles mas, 
+
+que lo mismo que yo, rendidos están
+                  <a>Fa</a>
 Al misterio que aquí se predica al cantar
-                         <a>Sim7/5</a>           <a>Mi7</a>
+                         <a>Sim7/5</a>            <a>Mi7</a>
 Y siguiendo a la osa del sur, mi estrella polar
-                      <a>Lam</a>
-Y guiándome a solas por la luz cegadora de San
-     <a>Sol</a>
-Sebastián
-              <a>Fa</a>
-Y el eterno perfume de su baja mar y el azul y
-   <a>Sim7/5</a>          <a>Mi7</a>
-amarillo de la claridad
+              <a>Lam</a>
+Y guiándome a solas 
+               <a>Sol</a>
+por la luz cegadora de San Sebastián
+               <a>Fa</a>
+Y el eterno perfume de su baja mar 
+              <a>Sim7/5</a>          <a>Mi7</a>
+y el azul y amarillo de la claridad
 <a>Rem</a>                                     <a>Lam</a>
 Desde un país imposible, igual que un profeta
-                                    <a>Mi7</a>
-Con este nuevo evangelio de música y letra vengo
-                           <a>Lam</a>
-buscando la meca de tu carnaval
-               <a>Sol</a>                <a>Fa</a>
-Por el mundo voy caminando, como un peregrino llevo
-       <a>Mi7</a>
-toda la vida
-<a>Lam</a>                                   <a>Sol</a>
+                                     <a>Mi7</a>
+Con este nuevo evangelio de música y letra 
+                             <a>Lam</a>
+vengo buscando la meca de tu carnaval
+             <a>Sol</a>           
+Por el mundo voy caminando,
+<a>Fa</a>                  <a>Mi7</a>
+como un peregrino llevo toda la vida
+<a>Lam</a>                      <a>Sol</a>
 Siempre por el margen y pisando los charcos
- <a>Fa</a>                              <a>Mi7</a>
+ <a>Fa</a>                         <a>Mi7</a>
 Llegando a la verdad por direcciones prohibidas
-<a>Lam</a>       <a>Sol</a>           <a>Fa</a>                 <a>Mi7</a>
+<a>Lam</a>        <a>Sol</a>           <a>Fa</a>             <a>Mi7</a>
 Y con mi bastón y mi canción de amor de carnaval
-<a>Lam</a>                    <a>Sol</a>
-Tengo tanto cielo y tanta fe que siento de cerca la
-     <a>Lam</a>
-eternidad
-           <a>Sol</a>               <a>Lam</a>
+<a>Lam</a>                      <a>Sol</a>
+Tengo tanto cielo y tanta fe 
+                            <a>Lam</a>
+que siento de cerca la eternidad
+       <a>Sol</a>         <a>Lam</a>            <a>Sol</a>
 Mi carnaval, mi carnaval, mi carnaval
-<a>Do</a>             <a>Do7</a>                       <a>Fa</a>
+<a>Do</a>             <a>Do7</a>                     <a>Fa</a>
 Ay, no busques vírgenes ni ángeles que no hay
-                                    <a>Sol</a>
+                                 <a>Sol</a>
 Que mi religión es tan profana y tan real
-<a>Mi7</a>                                 <a>Lam</a>  <a>Fa</a>
-Que en esta meca de los peregrinos de Cai las
-                  <a>Mi7</a>
-calles son su catedral
-<a>Lam</a>      <a>Sol</a>            <a>Fa</a>              <a>Mi7</a>
+<a>Mi7</a>                                <a>Lam</a>  
+Que en esta meca de los peregrinos de Cai 
+     <a>Fa</a>              <a>Mi7</a>
+las calles son su catedral
+<a>Lam</a>        <a>Sol</a>              <a>Fa</a>         <a>Mi7</a>
 Y una catedral en la que no hace falta cúpula
-<a>Lam</a>               <a>Sol</a>       <a>Fa</a>              <a>Mi7</a>
+<a>Lam</a>                <a>Sol</a>        <a>Fa</a>             <a>Mi7</a>
 Se queda cuando el sol se va de centinela la luna
 <a>Lam</a>              <a>Sol</a>         <a>Fa</a>          <a>Mi7</a>
 Y el único mandamiento es cantar por carnaval
-<a>Lam</a>                                       <a>Mi7</a>
+<a>Lam</a>             <a>Mi7</a>
 Y el único sacramento, tirarse desde el puente ca
-<a>Lam</a>          <a>Sol</a>               <a>Fa</a>
-Por el mundo voy caminando como un peregrino llevo
-       <a>Mi7</a>
-toda la vida
-<a>Lam</a>                                   <a>Sol</a>
+<a>Lam</a>          <a>Sol</a>           
+Por el mundo voy caminando,
+<a>Fa</a>                  <a>Mi7</a>
+como un peregrino llevo toda la vida
+<a>Lam</a>                      <a>Sol</a>
 Siempre por el margen y pisando los charcos
-  <a>Fa</a>                                      <a>Mi7</a>
+ <a>Fa</a>                         <a>Mi7</a>
 Llegando a la verdad por direcciones prohibidas
 <a>Lam</a>               <a>Mi7</a>                    <a>Lam</a>
 Si el corazón peregrino, tu corazón de canalla
-                        <a>Mi7</a>
-De pronto sientes que estalla, has encontrado el
-  <a>Lam</a>
-camino
+                        <a>Mi7</a>                      <a>Lam</a>
+De pronto sientes que estalla has encontrado el camino
                   <a>Mi7</a>                        <a>Lam</a>
 Has encontrado el camino que lleva a la salvación
-              <a>Sol</a>  <a>Lam</a>           <a>Sol</a>  <a>Lam</a>
-El caminito del Falla, el caminito del Falla, el
-     <a>Sol</a> <a>Lam</a>  <a>Mi7</a>
-caminito del Falla
-                <a>Lam</a>  
-El caminito del Falla
+                 <a>Sol</a>  <a>Lam</a>               <a>Sol</a>  <a>Lam</a>
+El caminito del Falla, el caminito del Falla, 
+                <a>Sol</a> <a>Lam</a> <a>Mi7</a>
+El caminito del Falla,
+                <a>Lam</a>
+El caminito del Falla,
 </pre>

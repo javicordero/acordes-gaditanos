@@ -12,48 +12,38 @@ video: 'https://www.youtube.com/embed/ApAErgGfzd4?feature=player_embedded'
 fraseClave: Embrujado por una ciudad, que me trata como una
 ---
 <pre>
-<a>Re</a>     <a>Si7</a>     <a>Mim</a>       <a>La7</a>
-Embrujado por una ciudad, que me trata como una
- <a>Re</a>
-mujer
-         <a>Si7</a>            <a>MimLa7</a>
-Que me encela y me enamora y me está volviendo
- <a>Re</a>
-loco.
-      <a>Si7</a>       <a>Mim</a>    <a>La7</a>
-Hechizado por un carnaval del que no puedo
-     <a>Rem</a>
-escaparme
-<a>Sib</a>               <a>La7</a> <a>Sib</a>
-Aquí me tienes de nuevo como un hijo ante su
-  <a>La7</a>
-madre.
-<a>Sol</a>     <a>La7</a>         <a>Re</a>            <a>Si7</a>        <a>Mim</a>
+<a>Re</a>     <a>Si7</a>     <a>Mim</a>       <a>La7</a>                  <a>Re</a>
+Embrujado por una ciudad, que me trata como una mujer
+         <a>Si7</a>          <a>Mim</a> <a>La7</a>                   <a>Re</a>
+Que me encela y me enamora y me está volviendo loco.
+      <a>Si7</a>        <a>Mim</a>    <a>La7</a>                     <a>Rem</a> 
+Hechizado por un carnaval del que no puedo escaparme
+<a>Sib</a>                <a>La7</a>  <a>Sib</a>                  <a>La7</a>
+Aquí me tienes de nuevo como un hijo ante su madre.
+<a>Sol</a>     <a>La7</a>           <a>Re</a>           <a>Si7</a>      <a>Mim</a>
 Pa’ entregarte los piropos que por na en el mundo
  <a>La7</a>       <a>Re</a>
 pienso callarme
-<a>Re</a>                   <a>Si7</a>          <a>Mim</a>
+                    <a>Si7</a>          <a>Mim</a>
 Y vuelvo para presumirte con lo nuestro
         <a>La7</a>                        <a>Re</a>
 Y vuelvo para presumir que soy de Cádiz
                       <a>Si7</a>            <a>Mim</a>
 Aunque sé que algunos cuando escuche esto
-   <a>Mi7</a>                            <a>La7</a>
+    <a>Mi7</a>                            <a>La7</a>
 Del veneno se les hiele hasta la sangre
-<a>Re</a>                  <a>Si7</a>         <a>Mim</a>
+<a>Re</a>                 <a>Si7</a>         <a>Mim</a>
 Y vuelvo para presumir de mi caleta.
-<a>La7</a>                  <a>Re</a> <a>Re7</a>
+<a>La7</a>                     <a>Re</a> <a>Re7</a>
 Qué quiere usted que le diga
-  <a>Sol</a>        <a>La7</a>      <a>Fa#m</a>   <a>Si7</a>
+  <a>Sol</a>           <a>La7</a>      <a>Fa#m</a>     <a>Si7</a>
 Lo que no es normal que en mi carnaval
          <a>Mim</a>       <a>La7</a>         <a>Re</a>
 Sea un pecado el decir soy gaditano
     <a>Sol</a>                             <a>La7</a>
 Pues yo soy de Cádiz, de Cádiz y ya está
-<a>Sol</a>                    <a>La7</a>      <a>Sol</a>
-Y no existe nada en el mundo ni existe dinero
-   <a>La7</a>
-ninguno
+<a>Sol</a>                    <a>La7</a>      <a>Sol</a>              <a>La7</a>
+Y no existe nada en el mundo ni existe dinero ninguno
                 <a>Sol</a>        <a>La7</a>          <a>Re</a>
 que pague el orgullo que siento al cantarlo.
 </pre>
