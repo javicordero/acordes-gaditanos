@@ -31,18 +31,21 @@ import ThemeToggle from './ThemeToggle.astro';
           <Icon name='lupa' width={30} height={30} />
         </button>
 
-        <div class='search-wrapper collapsed'>
-          <input
-            type='text'
-            id='header-search'
-            placeholder='Buscar acordes...'
-            aria-label='Buscar acordes'
-            autocomplete='off'
-          />
-          <button class='clear-search' aria-label='Borrar búsqueda' type='button' hidden>
-            <Icon name='cruz' width={24} height={24} />
-          </button>
-        </div>
+        <form class='search-form' role='search' action='/buscar' method='get'>
+          <div class='search-wrapper collapsed'>
+            <input
+              type='text'
+              id='header-search'
+              name='q'
+              placeholder='Buscar acordes...'
+              aria-label='Buscar acordes'
+              autocomplete='off'
+            />
+            <button class='clear-search' aria-label='Borrar búsqueda' type='button' hidden>
+              <Icon name='cruz' width={24} height={24} />
+            </button>
+          </div>
+        </form>
       </div>
 
       <div class='theme-container'>
@@ -166,6 +169,13 @@ import ThemeToggle from './ThemeToggle.astro';
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+  }
+
+  /* Formulario de búsqueda (navegación nativa a /buscar?q=...) */
+  .search-form {
+    display: flex;
+    align-items: center;
+    margin: 0;
   }
 
   /* Container del botón de tema */
@@ -475,6 +485,7 @@ import ThemeToggle from './ThemeToggle.astro';
     const clearButton = document.querySelector('.clear-search');
     const searchToggle = document.querySelector('.search-toggle');
     const searchWrapper = document.querySelector('.search-wrapper');
+    const searchForm = document.querySelector('.search-form');
 
     if (!toggle || !nav || !branding) return;
 
@@ -553,28 +564,38 @@ import ThemeToggle from './ThemeToggle.astro';
       }
     };
 
+    // Mostrar u ocultar el buscador
+    const setSearchOpen = (open = false) => {
+      if (!searchWrapper || !searchToggle) return;
+      if (open) {
+        searchWrapper.classList.remove('collapsed');
+        searchToggle.classList.add('hidden');
+        searchToggle.setAttribute('aria-label', 'Cerrar búsqueda');
+        // Ocultar título en móvil
+        if (window.innerWidth <= 640 && brandingTitle) {
+          brandingTitle.classList.add('is-hidden');
+        }
+      } else {
+        searchWrapper.classList.add('collapsed');
+        searchToggle.classList.remove('hidden');
+        searchToggle.setAttribute('aria-label', 'Abrir búsqueda');
+        // Mostrar título en móvil
+        if (window.innerWidth <= 640 && brandingTitle) {
+          brandingTitle.classList.remove('is-hidden');
+        }
+      }
+    };
+
     // Toggle del buscador con botón de lupa
-    if (searchToggle && searchWrapper && searchInput && brandingTitle) {
+    if (searchToggle && searchWrapper && searchInput) {
       searchToggle.addEventListener('click', () => {
         const isCollapsed = searchWrapper.classList.contains('collapsed');
+        setSearchOpen(isCollapsed);
         if (isCollapsed) {
-          searchWrapper.classList.remove('collapsed');
-          searchToggle.classList.add('hidden');
-          // Ocultar título en móvil
-          if (window.innerWidth <= 640) {
-            brandingTitle.classList.add('is-hidden');
-          }
           setTimeout(() => searchInput.focus(), 100);
-          searchToggle.setAttribute('aria-label', 'Cerrar búsqueda');
         } else {
-          searchWrapper.classList.add('collapsed');
-          searchToggle.classList.remove('hidden');
+          // Al cerrar con la lupa se limpia el texto (comportamiento previo)
           searchInput.value = '';
-          // Mostrar título en móvil
-          if (window.innerWidth <= 640) {
-            brandingTitle.classList.remove('is-hidden');
-          }
-          searchToggle.setAttribute('aria-label', 'Abrir búsqueda');
           if (clearButton) {
             clearButton.setAttribute('hidden', '');
           }
@@ -595,6 +616,15 @@ import ThemeToggle from './ThemeToggle.astro';
 
       searchInput.addEventListener('input', toggleClearButton);
 
+      // Reflejar en el input el término de búsqueda actual (/buscar?q=...)
+      if (window.location.pathname === '/buscar') {
+        const currentQuery = new URLSearchParams(window.location.search).get('q') || '';
+        if (currentQuery) {
+          searchInput.value = currentQuery;
+          setSearchOpen(false);
+        }
+      }
+
       // Inicializar estado del botón
       toggleClearButton();
 
@@ -602,57 +632,26 @@ import ThemeToggle from './ThemeToggle.astro';
       clearButton.addEventListener('click', () => {
         searchInput.value = '';
         toggleClearButton();
-        if (searchWrapper) {
-          searchWrapper.classList.add('collapsed');
-        }
-        if (searchToggle) {
-          searchToggle.classList.remove('hidden');
-        }
-        // Mostrar título en móvil
-        if (window.innerWidth <= 640 && brandingTitle) {
-          brandingTitle.classList.remove('is-hidden');
-        }
-        // Disparar evento para limpiar búsqueda
+        setSearchOpen(false);
+        // Disparar evento para limpiar búsqueda (y su ?q= en la URL)
         document.dispatchEvent(new CustomEvent('searchCleared'));
-      });
-
-      // Buscar al pulsar Enter - redirigir al index con el término
-      searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          const query = searchInput.value.trim();
-
-          if (query) {
-            // Cerrar el input
-            if (searchWrapper) {
-              searchWrapper.classList.add('collapsed');
-            }
-            if (searchToggle) {
-              searchToggle.classList.remove('hidden');
-            }
-            if (window.innerWidth <= 640 && brandingTitle) {
-              brandingTitle.classList.remove('is-hidden');
-            }
-
-            // Guardar el término de búsqueda en sessionStorage
-            sessionStorage.setItem('pendingSearch', query);
-
-            // Navegar a la página de búsqueda sin queryParams
-            if (window.location.pathname !== '/buscar') {
-              import('astro:transitions/client').then(({ navigate }) => {
-                navigate('/buscar');
-              });
-            } else {
-              // Si ya estamos en /buscar, recargar la página
-              window.location.reload();
-            }
-          }
-        }
       });
 
       // Detectar cuando se limpia el input (botón X nativo del navegador)
       searchInput.addEventListener('search', () => {
         toggleClearButton();
+      });
+    }
+
+    // Enviar la búsqueda: el formulario navega de forma nativa a /buscar?q=...
+    // (en /buscar la página intercepta el envío para buscar sin recargar)
+    if (searchForm && searchInput) {
+      searchForm.addEventListener('submit', (e) => {
+        if (!searchInput.value.trim()) {
+          e.preventDefault();
+          return;
+        }
+        setSearchOpen(false);
       });
     }
   }
@@ -662,14 +661,4 @@ import ThemeToggle from './ThemeToggle.astro';
   } else {
     initHeader();
   }
-
-  // Limpiar filtro al volver al inicio
-  function clearSearchOnHomeClick(e) {
-    sessionStorage.removeItem('pendingSearch');
-    document.dispatchEvent(new CustomEvent('searchCleared'));
-  }
-  const logoLink = document.getElementById('logo-link');
-  const titleLink = document.getElementById('title-link');
-  if (logoLink) logoLink.addEventListener('click', clearSearchOnHomeClick);
-  if (titleLink) titleLink.addEventListener('click', clearSearchOnHomeClick);
 </script>

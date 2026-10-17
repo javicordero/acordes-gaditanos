@@ -180,12 +180,12 @@ let autores = await getCollection('autores');
 <script define:vars={{ acordesData }}>
   function initSearch() {
     const searchInput = document.querySelector('#header-search');
-    if (!searchInput) return;
+    const searchForm = document.querySelector('.search-form');
+    const resultsContainer = document.querySelector('.results-container');
+    if (!resultsContainer) return;
 
     const noResults = document.querySelector('.no-results');
-    const resultsContainer = document.querySelector('.results-container');
     const searchQueryElement = noResults?.querySelector('.search-query');
-    if (!resultsContainer) return;
 
     // Guardar el HTML original y crear un mapa de todas las cards
     const originalContent = resultsContainer.innerHTML;
@@ -274,51 +274,60 @@ let autores = await getCollection('autores');
       }
     }
 
-    // Escuchar Enter en el input
-    searchInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        const query = searchInput.value;
-        performSearch(query);
-      }
-    });
-
-    // Limpiar búsqueda cuando se cierra el buscador
-    document.addEventListener('searchCleared', () => {
-      performSearch('');
-      searchInput.value = '';
-    });
-
-    // Escuchar evento personalizado de búsqueda desde el header
-    document.addEventListener('performSearch', (e) => {
-      const query = e.detail.query;
-      if (query) {
-        searchInput.value = query;
-        performSearch(query);
-      }
-    });
-
-    // Verificar si hay una búsqueda pendiente al cargar la página
-    const pendingSearch = sessionStorage.getItem('pendingSearch');
-    if (pendingSearch) {
-      sessionStorage.removeItem('pendingSearch');
-      performSearch(pendingSearch);
-
-      // Cerrar el input de búsqueda
-      const searchWrapper = document.querySelector('.search-wrapper');
-      const searchToggle = document.querySelector('.search-toggle');
-      const brandingTitle = document.querySelector('.branding-title');
-
-      if (searchWrapper) {
-        searchWrapper.classList.add('collapsed');
-      }
-      if (searchToggle) {
-        searchToggle.classList.remove('hidden');
-      }
-      if (window.innerWidth <= 640 && brandingTitle) {
-        brandingTitle.classList.remove('is-hidden');
-      }
+    // Devuelve el término de búsqueda actual de la URL
+    function getQueryFromUrl() {
+      return new URLSearchParams(window.location.search).get('q') || '';
     }
+
+    // Último término renderizado (evita re-renderizar al volver con bfcache)
+    let renderedQuery = null;
+
+    function renderQuery(query) {
+      renderedQuery = query;
+      performSearch(query);
+    }
+
+    // Aplica la búsqueda indicada por la URL (al cargar o al ir atrás/adelante)
+    function applySearchFromUrl() {
+      const query = getQueryFromUrl();
+      if (searchInput && searchInput.value !== query) {
+        searchInput.value = query;
+      }
+      if (query === renderedQuery) return;
+      renderQuery(query);
+    }
+
+    // Buscar sin recargar (en otras páginas el formulario navega de forma nativa)
+    if (searchForm && searchInput) {
+      searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const query = searchInput.value.trim();
+        if (!query) return;
+
+        const url = `/buscar?q=${encodeURIComponent(query)}`;
+        if (url !== `${window.location.pathname}${window.location.search}`) {
+          history.pushState({ q: query }, '', url);
+        }
+        renderQuery(query);
+      });
+    }
+
+    // Botón X del header: limpiar resultados y el ?q= de la URL
+    document.addEventListener('searchCleared', () => {
+      if (searchInput) searchInput.value = '';
+      renderQuery('');
+      if (window.location.search) {
+        history.pushState({}, '', '/buscar');
+      }
+    });
+
+    // Atrás/adelante dentro de la página de búsqueda
+    window.addEventListener('popstate', () => {
+      applySearchFromUrl();
+    });
+
+    // Estado inicial a partir de la URL (?q=...)
+    applySearchFromUrl();
   }
 
   if (document.readyState === 'loading') {
