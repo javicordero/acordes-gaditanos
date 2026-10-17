@@ -11,45 +11,49 @@ video: 'https://www.youtube.com/embed/XSOTISLxlQE?si=BMmFG3lK7eVpenaF'
 
 fraseClave: Cuando llegan a la clase tan pequeñas, con sus tres
 ---
-<pre><a>LaM7</a>               <a>Mi7</a>         <a>LaM7</a>
-Cuando llegan a la clase tan pequeñas, con sus tres 
-                    <a>Mi7</a>
-primaveritas en la piel
-                    <a>Sim7</a>          <a>Mi7</a>    <a>Sim7</a>
-La ternura envuelve todo el movimiento y se vuelve 
-    <a>Mi7</a>              <a>LaM</a>
-flamenco en manos y pies
-                      <a>Mi7</a>          <a>LaM7</a>    <a>Mi7</a>
-La expresión tan aprendida, tan sentía da coraje y 
-    <a>LaM7</a>      <a>La7</a>             <a>Re</a>
-rebeldía a su gesto y su semblante
+<pre>
+<a>LaM7</a>               <a>Mi7</a>         <a>LaM7</a>
+Cuando llegan a la clase tan pequeñas, 
+                                 <a>Mi7</a>
+con sus tres primaveritas en la piel
+                    <a>Sim7</a>          <a>Mi7</a> 
+La ternura envuelve todo el movimiento 
+  <a>Sim7</a>          <a>Mi7</a>              <a>LaM7</a> <a>Mi7</a> <a>LaM7</a>
+y se vuelve flamenco en manos y pies
+                      <a>Mi7</a>          <a>LaM7</a> 
+La expresión tan aprendida, tan sentía 
+     <a>Mi7</a>        <a>LaM7</a>      <a>La7</a>             <a>Re</a>
+da coraje y rebeldía a su gesto y su semblante
                            <a>LaM7</a>
-Con paciencia y amor se coordina el motor de sus 
- <a>Sim7</a>       <a>Mi7</a>        <a>LaM7</a>
-cuerpos delicados y elegantes
-      <a>Rem</a>                <a>LaM7</a>                  <a>Sim7</a>
-Y con repetición, de los pies la percusión, crearán 
-        <a>Mi7</a>          <a>LaM7</a>
-los soniquetes más vibrantes
+Con paciencia y amor se coordina el motor 
+        <a>Sim7</a>       <a>Mi7</a>        <a>LaM7</a>
+de sus cuerpos delicados y elegantes
+      <a>Rem</a>                <a>LaM7</a>              
+Y con repetición, de los pies la percusión, 
+    <a>Sim7</a>        <a>Mi7</a>          <a>LaM7</a>
+crearán los soniquetes más vibrantes
      <a>Mi7</a>        <a>LaM7</a>       <a>Mi7</a>            <a>LaM7</a>
-Umm, la adolescencia les llega sin darme cuenta y 
-                      <a>Sim7</a>
-su baile brota con poderío
-                               <a>Mi7</a>   <a>Sim7</a>
-Dominando el tanguillo, la alegría, tangos y 
-     <a>Mi7</a>        <a>LaM</a>
-bulerías o la soleá
+Umm, la adolescencia les llega sin darme cuenta
+                        <a>Sim7</a>
+y su baile brota con poderío
+                               <a>Mi7</a>
+Dominando el tanguillo, la alegría, 
+<a>Sim7</a>          <a>Mi7</a>        <a>LaM</a>
+tangos y bulerías o la soleá
 <a>Mi7</a>        <a>LaM7</a>          <a>Mi7</a>        <a>LaM7</a>
-Y aunque algunas quieran ser profesionales, mi 
-  <a>Mi7</a>           <a>LaM7</a>         <a>La7</a>           <a>Re</a>
-mensaje siempre vale para su alma y su alegría
+Y aunque algunas quieran ser profesionales, 
+     <a>Mi7</a>           <a>LaM7</a>         <a>La7</a>           <a>Re</a>
+mi mensaje siempre vale para su alma y su alegría
                            <a>LaM7</a>
-No importa demostrar ni el éxito alcanzar, que aquí 
-                     <a>Sim7</a>
-lo imprescindible es la felicidad
+No importa demostrar ni el éxito alcanzar, 
+                              <a>Sim7</a>
+que aquí lo imprescindible es la felicidad
             <a>Mi7</a>         <a>Sim7</a>   <a>Mi7</a> <a>LaM7</a>
 Que en cada baile haya sembrado o recogido
             <a>Re</a>               <a>LaM7</a>
-Niñas de mi alma, el mejor elenco que me dio el 
-                <a>Dom#m7</a> <a>Sim7</a>   <a>Mi7</a>   <a>LaM7</a>
-flamenco para ser maestra del movimiento</pre>
+Niñas de mi alma, el mejor elenco 
+
+que me dio el flamenco 
+      <a>Dom#m7</a> <a>Sim7</a>    <a>Mi7</a>   <a>LaM7</a>
+para ser maestra del movimiento
+</pre>

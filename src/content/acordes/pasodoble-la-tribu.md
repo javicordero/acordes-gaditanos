@@ -11,62 +11,63 @@ video: 'https://www.youtube.com/embed/A8lJkL3i8vw?si=VRxRRSm0iR3N8f_r'
 
 fraseClave: Recuerdo aquella noche, junto a la hoguera, que el
 ---
-<pre><a>Lam</a>               <a>Mi7</a>                 <a>Lam</a>
-Recuerdo aquella noche, junto a la hoguera, que el 
-                          <a>Sol</a>
-jefe de la tribu nos convocara
+<pre>
+<a>Lam</a>               <a>Mi7</a>                 <a>Lam</a>
+Recuerdo aquella noche, junto a la hoguera, 
+                                <a>Sol</a>
+que el jefe de la tribu nos convocara
                               <a>Fa</a>
-Y bajo una gran luna de primavera nos dijo, de 
-  <a>Rem</a>             <a>Sim7/5</a>       <a>Mi7</a>
-repente, vamos a hacer una comparsa
+Y bajo una gran luna de primavera 
+               <a>Rem</a>             <a>Sim7/5</a>       <a>Mi7</a>
+nos dijo, de repente, vamos a hacer una comparsa
 <a>Lam</a>              <a>Mi7</a>                <a>Lam</a>
-Me acuerdo, claramente, de aquel instante en que se 
-                           <a>Sol</a>
-hizo el silencio sobre la playa
+Me acuerdo, claramente, de aquel instante  
+                                    <a>Sol</a>
+en que se hizo el silencio sobre la playa
                                 <a>Fa</a>
-Porque el chamán nos dijo, desafiante, aquí hay que 
-       <a>Rem</a>       <a>Sim7/5</a>         <a>Mi7</a>
-darlo todo porque vamos a ir al Falla
+Porque el chamán nos dijo, desafiante, 
+                    <a>Rem</a>       <a>Sim7/5</a>         <a>Mi7</a>
+aquí hay que darlo todo porque vamos a ir al Falla
                 <a>Rem</a>         <a>Sol7</a>          <a>Do</a>
 Las dudas y los nervios, el sueño y las pasiones 
                         <a>Mi7</a>
-dieron fuego al calor gaditano que ardía en los 
-    <a>Lam</a>
-corazones 
-     <a>Sol7</a>                 <a>Fa</a>          <a>Mim</a>
-Y rezando a los dioses paganos, uno a uno nos dios 
-     <a>Rem</a>    <a>Fa</a>             <a>Mi7</a>
-las manos, tensando las ilusiones
-   <a>Rem</a>               <a>Lam</a>                    <a>Mi7</a>
-Chavales vamos tos a una que asi es como arrancan 
-          <a>LaM7</a>
-Las revoluciones, ay
+dieron fuego al calor gaditano 
+                     <a>Lam</a> 
+que ardía en los corazones 
+     <a>Sol7</a>                 <a>Fa</a>  
+Y rezando a los dioses paganos, 
+      <a>Mim</a>               <a>Rem</a>    <a>Fa</a>             <a>Mi7</a>
+uno a uno nos dios las manos, tensando las ilusiones
+   <a>Rem</a>               <a>Lam</a> 
+Chavales vamos tos a una 
+                   <a>Mi7</a>          <a>LaM7</a>
+que asi es como arrancan Las revoluciones, ay
                          <a>Mi7</a>                <a>LaM7</a>
 Aún llevo dentro de mi corazón el calambre enorme
 <a>Mi7</a>       <a>LaM7</a>  <a>Mi7</a>         <a>LaM7</a>
-Cuando escuchamos por vez primera la emoción del 
-     <a>Fa#</a>       <a>Sim</a>
-pasodo del pasodoble
-<a>Fa#</a>    <a>Sim</a>          <a>Mi7</a>        <a>Sim</a>
-Yo no podía ni imaginarme en el milagro de la noche 
- <a>Mi7</a>                         <a>LaM7</a>
-aquella que la vida iba a cambiarme
-                      <a>Re</a>    <a>Mi7</a>
-Tu conoces bien la historia que nos trajo este 
-   <a>LaM7</a>
-escenario
-<a>Fa#</a>                 <a>Sim</a>                   <a>Mi7</a>
-Y has seguido la aventura de esa mágica locura que 
-             <a>LaM7</a>
-nos hizo millonarios
+Cuando escuchamos por vez primera 
+                   <a>Fa#</a>       <a>Sim</a>
+la emoción del pasodo del pasodoble
+<a>Fa#</a>    <a>Sim</a>          <a>Mi7</a>          <a>Sim</a>
+Yo no podía ni imaginarme en el milagro 
+              <a>Mi7</a>                         <a>LaM7</a>
+de la noche aquella que la vida iba a cambiarme
+                      <a>Re</a>     <a>Mi7</a>
+Tu conoces bien la historia 
+                       <a>LaM7</a>
+que nos trajo este escenario
+<a>Fa#</a>                 <a>Sim</a>  
+Y has seguido la aventura 
+                <a>Mi7</a>                   <a>LaM7</a>
+de esa mágica locura que nos hizo millonarios
 <a>Rem</a>                        <a>LaM7</a>
-Y hoy se cumplen ya 10 años de este grupo que es mi 
-casa
+Y hoy se cumplen ya 10 años de este grupo que es mi casa
         <a>Sim</a>
-Y con mi tribu, mis viejos amigos, temblando 
-                       <a>Mi7</a>
-contigo, te vuelvo a cantar
+Y con mi tribu, mis viejos amigos,  
+                                  <a>Mi7</a>
+temblando contigo, te vuelvo a cantar
                                             
-Con mi comparsa, con mi comparsa, ay, con mi 
-<a>LaM7</a>
-comparsa</pre>
+Con mi comparsa, con mi comparsa, 
+              <a>LaM7</a>
+ay, con mi comparsa
+</pre
