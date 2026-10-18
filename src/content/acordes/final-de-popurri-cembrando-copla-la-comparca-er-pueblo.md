@@ -10,22 +10,23 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/aHqFL-kpkoU'
 fraseClave: "Siento que se me termina"
 ---
-<pre><a>Do</a>                           <a>Lam</a>
-Siento que se me termina el tiempo y que ahora es 
-     <a>Fa</a>                       <a>Sol7</a>
-el momento de anunciar mi despedía
+<pre>
+<a>Do</a>                           <a>Lam</a>
+Siento que se me termina el tiempo 
+                    <a>Fa</a>                       <a>Sol7</a>
+y que ahora es el momento de anunciar mi despedía
 <a>Do</a>                          <a>Lam</a>
-Ya se acaba el cuento y el viaje de este simple 
-     <a>Fa</a>                       <a>Sol7</a>
-personaje de un pueblo de Andalucía
-<a>Fa</a>                        <a>Sol7</a> <a>Mim</a>           <a>Mi7</a>
-Que soñó con venirte a cantar con su propio acento 
-<a>Lam</a>
-sus coplillas
+Ya se acaba el cuento y el viaje 
+                   <a>Fa</a>                       <a>Sol7</a>
+de este simple personaje de un pueblo de Andalucía
+<a>Fa</a>                        <a>Sol7</a> 
+Que soñó con venirte a cantar 
+<a>Mim</a>            <a>Mi7</a>    <a>Lam</a>
+con su propio acento sus coplillas
 <a>Fa</a>
-Coplas que sembraron estas manos pa sentirse 
-   <a>Re7</a>                     <a>Sol7</a>
-gaditano de la forma más sencilla
+Coplas que sembraron estas manos 
+               <a>Re7</a>                     <a>Sol7</a>
+pa sentirse gaditano de la forma más sencilla
           <a>Do</a>
 Yo quiero ser mojarrita en la caleta
           <a>Mim</a>
@@ -49,4 +50,5 @@ Quiero morir con tu guasa y con tu gente
              <a>Fa</a>                          <a>Do</a>
 Yo quiero estar en tus fiestas y en tus bullas
          <a>Fa</a>            <a>Re7</a>       <a>Sol7</a>
-Quiero vivir siempre a la verita tuya</pre>
+Quiero vivir siempre a la verita tuya
+</pre>
