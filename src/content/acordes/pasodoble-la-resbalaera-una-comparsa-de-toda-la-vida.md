@@ -11,9 +11,10 @@ video: 'https://www.youtube.com/embed/V7v3gtfHBhg?si=506yx8VVOHwEIevl'
 
 fraseClave: Aquí tienes mi comparsa tacita de mis amores
 ---
-<pre>  <a>Lam</a>      <a>Mi7</a>      <a>Lam</a>   <a>La7</a>           <a>Rem</a>
+<pre>  
+  <a>Lam</a>      <a>Mi7</a>      <a>Lam</a>   <a>La7</a>           <a>Rem</a>
 Aquí tienes mi comparsa tacita de mis amores
-                    <a>Sol7</a>                  <a>Do</a>
+                    <a>Sol7</a>                  <a>Do</a>   <a>Mi7</a>
 De nuevo regreso a casa marcharon los colaores
    <a>Lam</a>        <a>Mi7</a>     <a>Lam</a> <a>La7</a>             <a>Rem</a>
 Me rindo a tu mar bendito y traigo mi melodía
@@ -21,17 +22,19 @@ Me rindo a tu mar bendito y traigo mi melodía
 Fruto del vientre infinito del Barrio Santamaria
          <a>Sol7</a>                                 <a>Do</a>
 Como Caletero dejo mi capacha encallá en tu orilla
-                <a>Sol</a>               <a>Fa</a>
-Siento un cosquilleo desde las entrañas hasta el 
-    <a>Mi7</a>
-paladar
-              <a>Rem</a>  <a>Mi7</a>      <a>Lam</a>              <a>Mi7</a>
-Y es que regalarte la resbalaera sabe a mojarrita y 
-         <a>La</a>
-agüita salá
+                <a>Sol</a> 
+Siento un cosquilleo 
+              <a>Fa</a>                <a>Mi7</a>
+desde las entrañas hasta el paladar
+
+
+              <a>Rem</a>  <a>Mi7</a>      <a>Lam</a> 
+Y es que regalarte la resbalaera 
+             <a>Mi7</a>           <a>La</a>
+sabe a mojarrita y agüita salá
                   <a>LaM7</a>     <a>Mi7</a>          <a>LaM7</a>
 Aquí está mi pasodoble mas puro ya no lo hay
-(SORDA)
+<a>(SORDA)</a>
 Le he robado este compas a las olitas del mar
                        <a>Fa#7</a>          <a>Sim</a>
 Pa que a ti te suene a Cai, a Cai, a Cai
@@ -42,12 +45,12 @@ A verdín, a casapuerta y a playita los Corrales
 <a>La7</a>                   <a>Re</a> <a>Si7</a>                 <a>Mi</a>
 De esta forma lo aprendí y tal cual voy a morir
 <a>Re</a>                 <a>Mi7</a> <a>LaM7</a>
-Y aunque digan muchos genios que asi no se gana un 
-<a>Mi7</a>                      <a>LaM7</a>
-premio solo le voy a explicar
+Y aunque digan muchos genios 
+                       <a>Mi7</a>                      <a>LaM7</a>
+que asi no se gana un premio solo le voy a explicar
 <a>Rem</a>               <a>Mi7</a>         <a>LaM7</a>
-Mientras que conserve aquí conmigo mis dos niños y 
-      <a>Mi7</a>
-mis amigos
+Mientras que conserve aquí conmigo 
+                     <a>Mi7</a>
+mis dos niños y mis amigos
                         <a>Re</a>          <a>Mi7</a>        <a>LaM</a>
 Yo me tiro haciendo el cristo de lo alto del Canal</pre>

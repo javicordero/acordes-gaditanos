@@ -11,33 +11,28 @@ video: 'https://www.youtube.com/embed/23eSN-eBwW4?si=Zfmrz306DIHV9Utz'
 
 fraseClave: Amanece un nuevo día en la ciudad invisible
 ---
-<pre><a>Mim</a>                                   <a>La</a>
+<pre>
+<a>Mim</a>                                   <a>La</a>
 Amanece un nuevo día en la ciudad invisible
                     <a>Do</a>  <a>Re7</a>        <a>Sol</a>
 Ha cantao el gallo rojo compañero eres libre
-                        <a>Fa</a>
-Y aunque el futuro sea negro la oscuridad me 
-<a>Mim</a>
-devore
-            <a>Fa#</a>                           <a>Si7</a>
-Como soy gaditano por fuera mis penas son de 
-   <a>Mim</a>
-colores
+                        <a>Fa</a>                     <a>Mim</a>
+Y aunque el futuro sea negro la oscuridad me devore
+
+            <a>Fa#</a>                           <a>Si7</a>   <a>Mim</a>
+Como soy gaditano por fuera mis penas son de colores
 <a>Mim</a>
 Soy distinto, diferente un alma descarriada
 <a>La</a>
-Siempre voy contracorriente tengo la lengua 
-afilada
+Siempre voy contracorriente tengo la lengua afilada
 <a>Lam7</a>
 El guijarro en el zapato el acorde disonante
         <a>Do</a>                       <a>Si7</a>
-Un traidor pa los callaos la vergüenza de mi 
-sangre
+Un traidor pa los callaos la vergüenza de mi sangre
        <a>Mim</a>
 Cuando sopla carnavales soy el verso que molesta
       <a>La</a>
-Las columnas vertebrales de una sociedad que 
-apesta
+Las columnas vertebrales de una sociedad que apesta
      <a>Lam7</a>
 Me recuerdo mi promesa de disfrazo, me desangro
         <a>Do</a>                   <a>Si7</a>
@@ -52,34 +47,32 @@ Un batallón que al mundo quiera ganarle la partida
 Y pelee sin condiciones por mi Cai de mis amores 
                   <a>Si7</a>
 tos los días de su vida
-      Mim                                Smi7
+      <a>Mim</a>                                <a>Sim7</a>
 Aquí estoy mi amor mi amor otro año enamorao
        <a>Do</a>          <a>Re7</a>                   <a>Sol</a>
 Con el corazón mi amor en la boca y rebeleao
-       <a>Mim</a>
-Aquí estoy mi amor mi amor con el compás que me 
-<a>Sim7</a>
-delata
+       <a>Mim</a>                                       <a>Sim7</a>
+Aquí estoy mi amor mi amor con el compás que me delata
     <a>Do</a>            <a>Lam7</a>                     <a>Do</a>
 Ese bombo, ese platillo que llevo desde chiquillo 
      <a>Lam7</a>         <a>Si7</a>
 por mi Tacita de Plata
-<a>Mim</a>        <a>Si7</a>    <a>Lam</a>         <a>Si7</a>
-Siento la llamada el grito de furia de un pueblo 
-  <a>Mim</a>
-entero
-<a>Lam</a>         <a>Si7</a>          <a>Mim</a>        <a>Lam</a>       <a>Si7</a>
-Vuelvo vida mía a otra batalla aquí esta otra vez 
-el dolor de febrero
+<a>Mim</a>        <a>Si7</a>    <a>Lam</a>         <a>Si7</a>                 <a>Mim</a>
+Siento la llamada el grito de furia de un pueblo entero
+<a>Lam</a>         <a>Si7</a>          <a>Mim</a>  
+Vuelvo vida mía a otra batalla
+      <a>Lam</a>       <a>Si7</a> 
+aquí esta otra vez el dolor de febrero
 <a>Mim</a>            <a>Si7</a>                 <a>Mim</a>
-Ay mi amor, mi amor otro año enamorao ay mi amor, 
-    <a>Si7</a>                    <a>Mim</a>                <a>La</a>
-mi amor con mis coplas rebelao ay mi amor mi amor 
-       <a>Lam7</a>
-ay mi amor 
+Ay mi amor, mi amor otro año enamorao 
+               <a>Si7</a>                    <a>Mim</a> 
+ay mi amor, mi amor con mis coplas rebelao 
+               <a>La</a>       <a>Lam7</a>
+ay mi amor mi amor ay mi amor 
 <a>Do</a>                <a>Lam7</a>          <a>Si7</a>       <a>Do</a>
 Y aunque futuro sea negro y lo oscuro me devore
-            <a>Fa#</a>        <a>Si7</a>           <a>Mim</a>   <a>Si7</a>
-Como soy gaditano mis penas son de colores son de 
-  <a>Mim</a>
-colores</pre>
+            <a>Fa#</a>        <a>Si7</a>           <a>Mim</a>  
+Como soy gaditano mis penas son de colores 
+ <a>Si7</a>      <a>Mim</a>
+son de colores
+</pre>

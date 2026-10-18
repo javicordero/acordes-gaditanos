@@ -12,12 +12,14 @@ fraseClave: Me llamo Pedro Romero, pluma
 destacada: 3
 
 ---
-<pre><a>Re</a>               <a>La7</a>             <a>Re</a>
+<pre>
+<a>Re</a>               <a>La7</a>             <a>Re</a>
 Me llamo Pedro Romero, pluma del barrio
                                         <a>Si7</a>
-El niño de San Vicente, ese Libi impertinente y 
-            <a>Mim</a>
-sobrino de Pepón
+El niño de San Vicente, ese Libi impertinente 
+              <a>Mim</a>
+y sobrino de Pepón
+
 Soy el Quini desde Rusia cantando tangos
                    <a>La7</a>                        <a>Mim</a>
 Como Varo, filo intenso, como Arniz clavando sueños 
@@ -33,45 +35,43 @@ Cañamaque fecundando mi partitura, el Carota
 doblegando a la censura
         <a>Sib</a>          <a>La7</a>                    <a>Rem</a>
 Luis Ripoll, el Chimenea, Antoñito el del Lunar     
-   
              <a>La7</a>                  <a>Rem</a>
-El Tio de la Tiza y el Jambre del pueblo el Tomate, 
-   <a>Do</a>                   <a>Fa</a>
-Quintana, el soldado Bustelo
+El Tio de la Tiza y el Jambre del pueblo 
+              <a>Do</a>                   <a>Fa</a>
+el Tomate, Quintana, el soldado Bustelo
                 <a>Re7</a>            <a>Solm</a>
-El misterio del Gómez creando cuples, Eduardo 
-   <a>Mi7</a>                 <a>La7</a>
-Delgado, Fletilla, Requeté
-<a>Sol</a>              <a>La7</a>                       <a>Sol</a>
-Soy la niña Molonditra que a un Carapapa pario a 
-   <a>La7</a>      <a>Re</a>
-David y Javier
-Pedro el de las viejas ricas, el talento del 
-Peñita
-Paco Alba enamorá de una niña hecha de espuma y de 
-   <a>Si7</a>  <a>Mi</a>
-escolleras
+El misterio del Gómez creando cuples,  
+           <a>Mi7</a>                 <a>La7</a>
+Eduardo Delgado, Fletilla, Requeté
+<a>Sol</a>              <a>La7</a>                    
+Soy la niña Molonditra que a un Carapapa 
+   <a>Sol</a>   <a>La7</a>      <a>Re</a>
+pario a David y Javier
+Pedro el de las viejas ricas, el talento del Peñita
+
+Paco Alba enamorá de una niña hecha de espuma 
+            <a>Si7</a>  <a>Mim</a>
+y de escolleras
                   <a>La7</a>
-Soy el Yuyu, Bienvenido, que es mentira no se han 
-ido
-                       <a>Mim</a>         <a>La7</a>
-Julio Pardo entre las brumas más trianera, más 
- <a>Re</a>
-trianera
+Soy el Yuyu, Bienvenido, que es mentira no se han ido
+                       <a>Mim</a>         <a>La7</a>           <a>Re</a>
+Julio Pardo entre las brumas más trianera, más trianera
            <a>Sol</a>           <a>La7</a>           <a>Fa#m</a>
-Si por la parte de Santander soy chirigotero, por 
-  <a>Si7</a>              <a>Mim</a>
-Aragón llevo este veneno
+Si por la parte de Santander soy chirigotero, 
+       <a>Si7</a>              <a>Mim</a>
+por Aragón llevo este veneno
             <a>La7</a>          <a>Re7</a>
-Que se trasmite por el levante a las gargantas en 
-esta orillita olvidá
+Que se trasmite por el levante 
+
+a las gargantas en esta orillita olvidá
    <a>Sol</a>            <a>La7</a>              <a>Re</a>
-Agüillo, soy Paco Campos, Manuel Morera, soy don 
-  <a>Si7</a>                 <a>Mim</a>
-Enrique, Enrique Villegas
+Agüillo, soy Paco Campos, Manuel Morera, 
+           <a>Si7</a>             <a>Mim</a>
+soy don Enrique, Enrique Villegas
                   <a>La7</a>                   <a>Mim</a>
 Soy German que no obdc, soy el Noly impenitente, 
                    <a>La7</a>
 soy la voz del Catalán
                                 <a>La7</a>     <a>Re</a>
-Ovejas negras, ovejas negras, ovejas negras</pre>
+Ovejas negras, ovejas negras, ovejas negras
+</pre>
