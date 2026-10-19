@@ -11,46 +11,49 @@ video: 'https://www.youtube.com/embed/qouI91bo7eI'
 
 fraseClave: Si mayo es plena primavera aunque febrero no fuera,
 ---
-<pre><a>Sol</a>                  <a>Si7</a>                     <a>Do</a>
+<pre>
+<a>Sol</a>                  <a>Si7</a>                     <a>Do</a>
 Si mayo es plena primavera aunque febrero no fuera, 
                <a>Re</a>              <a>Sol</a>
 si nos lo pareciera sería por poco
-<a>Sol</a>                     <a>Si7</a>
-Si en mayo entran las calores Cádiz luce unos 
-  <a>Do</a>                        <a>La7</a>              <a>Re</a>
-colores que a la gente del mundo les vuelve loco
-      <a>Do</a>                                <a>Sim</a>
-Yo necesito el frío nervioso que al solecito va 
-      <a>Do</a>           <a>Re</a>
-refrescandome el sofoco
+<a>Sol</a>                     <a>Si7</a>                     <a>Do</a>
+Si en mayo entran las calores Cádiz luce unos colores
+                   <a>La7</a>              <a>Re</a>
+que a la gente del mundo les vuelve loco
+      <a>Do</a>                    
+Yo necesito el frío nervioso 
+            <a>Sim</a>          <a>Do</a>           <a>Re</a>
+que al solecito va refrescandome el sofoco
      <a>Do</a>               <a>Re</a>            <a>Si7</a>
-Pues yo prefiero febrerillo, que es más corto y más 
-  <a>Mim</a>            <a>La7</a>         <a>Re</a>
-sencillo, más simpático y más loco
+Pues yo prefiero febrerillo, que es más corto
+        <a>Mim</a>            <a>La7</a>         <a>Re</a>
+y más sencillo, más simpático y más loco
 <a>Sol</a>                  <a>Si7</a>                     <a>Do</a>
 Si mayo es plena primavera aunque febrero no fuera, 
                <a>Re</a>
 si nos lo pareciera sería por poco
+
 Febrero, cuatro lunes con sus cuatro domingos, 
+
 febrero que no llega ni a fin de mes
                  <a>Mim</a>         <a>Sim</a>         <a>Lam7</a>
-Igual que se disfraza como Cupido enamoradizo se 
-             <a>Re</a>                            <a>Do</a>
-clava la bandera de Andalucía tatuá en la piel
-   <a>Sol</a>                                <a>Re</a>    <a>Mim</a>
-Febrero, media España vive muerta de frío y Cádiz 
-                <a>Sim</a>
-que comienza a florecer
+Igual que se disfraza como Cupido enamoradizo  
+               <a>Re</a>                            <a>Do</a>  <a>Re</a>
+se clava la bandera de Andalucía tatuá en la piel
+   <a>Sol</a>                                <a>Re</a> 
+Febrero, media España vive muerta de frío  
+   <a>Mim</a>                 <a>Sim</a>
+y Cádiz que comienza a florecer
               <a>Do</a>                       <a>Sim</a>
-Porque en mi tierra en febrero es como la flor 
-                       <a>Do</a>         <a>La7</a>
-temprana que brota coloreada en cuanto que acaba 
- <a>Re</a>
-enero
-              <a>Do</a>                       <a>Sim</a>
-Aunque el mes sea lo de menos para volver a este 
-escenario
+Porque en mi tierra en febrero es como la flor temprana
+               <a>Do</a>         <a>La7</a>           <a>Re</a>
+que brota coloreada en cuanto que acaba enero
+              <a>Do</a>             
+Aunque el mes sea lo de menos 
+          <a>Sim</a>
+
 <a>Mim</a>                     <a>Re</a>      <a>Do</a>  <a>Re</a>
-Yo pido y sueño que el próximo febrero venga como 
-        <a>Do</a>   <a>Re</a>                  <a>Sol</a>
-agua de mayo, venga como agua de mayo</pre>
+Yo pido y sueño que el próximo febrero 
+                   <a>Do</a>   <a>Re</a>                  <a>Sol</a>
+venga como agua de mayo, venga como agua de mayo
+</pre>
