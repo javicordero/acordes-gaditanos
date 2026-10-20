@@ -154,7 +154,7 @@ const privacyPolicySchema = {
   <style>
     .privacidad-card {
       position: relative;
-      border-radius: 8px;
+      border-radius: 0;
       display: flex;
       flex-direction: column;
       max-height: max-content;
@@ -165,7 +165,11 @@ const privacyPolicySchema = {
       & h2 {
         margin: 0;
         color: var(--primary-color);
-        font-size: 1.625rem;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 1.75rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
         position: relative;
         max-width: fit-content;
 
@@ -174,15 +178,16 @@ const privacyPolicySchema = {
           display: block;
           position: absolute;
           left: 0;
-          bottom: -4px;
-          width: 90%;
-          height: 4px;
+          bottom: -6px;
+          width: 95%;
+          height: 6px;
           background: var(--primary-contrast-color);
         }
       }
       & .note {
-        font-size: 0.9rem;
-        color: var(--secondary-color);
+        font-family: 'Roboto Mono', monospace;
+        font-size: 0.8rem;
+        color: var(--text-secondary-color);
         margin-top: 0.5rem;
       }
     }
@@ -194,6 +199,28 @@ const privacyPolicySchema = {
       font-weight: 400;
       color: var(--text-color);
       line-height: 1.7;
+
+      & h3 {
+        margin: 8px 0 0;
+        padding-left: 10px;
+        border-left: 4px solid var(--primary-contrast-color);
+        font-family: 'Roboto Mono', monospace;
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--primary-color);
+      }
+
+      & h4 {
+        margin: 8px 0 0;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--text-secondary-color);
+      }
 
       & section {
         margin-bottom: 0.5rem;
@@ -209,12 +236,16 @@ const privacyPolicySchema = {
 
       & a {
         color: var(--link-color);
-        text-decoration: none;
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
         transition: color 0.2s ease;
       }
 
       & a:hover {
-        color: var(--link-hover-color);
+        color: var(--on-bright-color);
+        background: var(--primary-contrast-color);
+        text-decoration: none;
       }
     }
 
@@ -227,9 +258,13 @@ const privacyPolicySchema = {
           flex: none;
         }
 
-        & > header h2::after {
-          height: 3px;
-          bottom: -3px;
+        & > header h2 {
+          font-size: 1.4rem;
+
+          &::after {
+            height: 4px;
+            bottom: -4px;
+          }
         }
       }
     }

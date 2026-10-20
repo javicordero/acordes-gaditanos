@@ -1,7 +1,7 @@
 ---
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
 
-const { link, title, headingId, iframeTitle, class: className } = Astro.props;
+const { link, title, headingId, iframeTitle, class: className, flush = false } = Astro.props;
 
 const hasTitle = Boolean(title);
 // Use an explicit, human-friendly id by default so other nodes can reference it.
@@ -16,9 +16,10 @@ const headingIdFinal =
 const iframeTitleText = iframeTitle ?? 'Video de la agrupación del Carnaval de Cádiz';
 ---
 
-<RightColumnCard title={title} headingId={headingIdFinal} class={className}>
+<RightColumnCard title={title} headingId={headingIdFinal} class={className} flush={flush}>
   <section aria-labelledby={headingIdFinal}>
     <iframe
+      class:list={[{ 'is-flush': flush }]}
       src={link}
       title={iframeTitleText}
       frameborder='0'
@@ -31,11 +32,17 @@ const iframeTitleText = iframeTitle ?? 'Video de la agrupación del Carnaval de 
 
 <style>
   iframe {
-    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
     width: 100%;
     height: 180px;
     position: relative;
     top: 2px;
+    display: block;
+  }
+
+  iframe.is-flush {
+    border: none;
   }
 
   /* @media (--mq-sm) {

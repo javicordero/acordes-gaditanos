@@ -123,6 +123,8 @@ let autores = await getCollection('autores');
 
   .section--colored {
     background-color: var(--brand-navy);
+    border-top: 4px solid var(--primary-contrast-color);
+    border-bottom: 4px solid var(--primary-contrast-color);
   }
 
   .anuncio-autores ins[data-ad-status='filled'] {
@@ -137,35 +139,48 @@ let autores = await getCollection('autores');
   }
 
   .ver-mas {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--surface-color);
-    color: var(--on-surface-color);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.4px;
-    padding: 12px 28px;
-    border-radius: 999px;
+    color: var(--primary-contrast-color);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
     transition:
-      background-color 0.3s ease,
-      color 0.3s ease;
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
 
   .ver-mas:hover {
     background-color: var(--primary-contrast-color);
     color: var(--on-bright-color);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--primary-color);
+  }
+
+  .ver-mas:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
   }
 
   .ver-mas:focus-visible {
-    outline: 3px solid var(--primary-color);
+    outline: 3px solid var(--primary-contrast-color);
     outline-offset: 3px;
   }
 
   :global(html[data-theme='dark']) .ver-mas {
-    background-color: var(--primary-color);
-    color: var(--on-bright-color);
+    background-color: var(--surface-color);
+    color: var(--primary-contrast-color);
   }
 
   :global(html[data-theme='dark']) .ver-mas:hover {

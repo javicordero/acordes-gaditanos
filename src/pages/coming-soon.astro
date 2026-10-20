@@ -53,7 +53,7 @@ import { Icon } from 'astro-icon/components';
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+    background: var(--surface-color);
   }
 
   .content {
@@ -75,8 +75,10 @@ import { Icon } from 'astro-icon/components';
   }
 
   h1 {
+    font-family: 'Roboto Mono', monospace;
     font-size: 4rem;
-    font-weight: 700;
+    font-weight: 800;
+    text-transform: uppercase;
     color: var(--primary-contrast-color);
     letter-spacing: 2px;
   }
@@ -118,15 +120,20 @@ import { Icon } from 'astro-icon/components';
   }
 
   .social-link {
-    color: rgba(255, 255, 255, 0.7);
-    transition: all 0.3s ease;
+    color: var(--primary-contrast-color);
+    border: 2px solid var(--primary-contrast-color);
+    border-radius: 0;
+    padding: 10px;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:hover {
-      color: var(--primary-contrast-color);
-      transform: scale(1.15);
+      background-color: var(--primary-contrast-color);
+      color: var(--on-bright-color);
     }
   }
 

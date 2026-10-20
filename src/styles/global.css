@@ -24,9 +24,17 @@ body {
   color: var(--text-color);
   /* overflow-y: scroll; */
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
 }
 
 /* Transición suave al cambiar entre tema claro y oscuro.
@@ -204,17 +212,18 @@ body {
   gap: 12px;
   padding: 16px;
   background: var(--card-bg, #fafafa);
-  border: 1px solid var(--placeholder-color, #e5e7eb);
-  border-radius: 8px;
+  border: 2px solid var(--primary-color);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 0 var(--primary-color);
 }
 
 .comment-author-input {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid var(--placeholder-color, #e5e7eb);
-  border-radius: 6px;
+  border: 2px solid var(--primary-color);
+  border-radius: 0;
   font-size: 0.85rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   background: var(--card-bg, #fff);
   color: var(--text-color, #333);
   box-sizing: border-box;
@@ -222,16 +231,17 @@ body {
 }
 
 .comment-author-input:focus {
-  border-color: var(--primary-contrast-color, #c2185b);
+  outline: 3px solid var(--primary-contrast-color);
+  outline-offset: 1px;
 }
 
 .comment-content-input {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid var(--placeholder-color, #e5e7eb);
-  border-radius: 6px;
+  border: 2px solid var(--primary-color);
+  border-radius: 0;
   font-size: 0.9rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   background: var(--card-bg, #fff);
   color: var(--text-color, #333);
   resize: vertical;
@@ -242,7 +252,8 @@ body {
 }
 
 .comment-content-input:focus {
-  border-color: var(--primary-contrast-color, #c2185b);
+  outline: 3px solid var(--primary-contrast-color);
+  outline-offset: 1px;
 }
 
   .form-actions {
@@ -256,39 +267,46 @@ body {
 
 .cancel-reply-btn {
   background: none;
-  border: 1.5px solid var(--placeholder-color, #d1d5db);
-  border-radius: 6px;
+  border: 2px solid var(--primary-color);
+  border-radius: 0;
   padding: 10px 20px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
-  color: var(--text-color, #333);
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  transition: background 0.2s, border-color 0.2s;
+  color: var(--primary-color);
+  font-family: 'Roboto Mono', monospace;
+  transition: background 0.2s, color 0.2s;
 }
 
 .cancel-reply-btn:hover {
-  background: var(--hover-bg, #f0f0f0);
-  border-color: var(--secondary-color, #aaa);
+  background: var(--primary-contrast-color);
+  color: var(--on-bright-color);
 }
 
 .submit-btn {
   background: var(--surface-color, #0f1724);
   color: var(--primary-contrast-color, #f5a623);
-  border: none;
-  border-radius: 6px;
+  border: 2px solid var(--primary-color);
+  border-radius: 0;
   padding: 10px 28px;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 0.5px;
-  transition: opacity 0.2s, transform 0.1s;
+  font-family: 'Roboto Mono', monospace;
+  box-shadow: 3px 3px 0 0 var(--primary-color);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.2s;
 }
 
 .submit-btn:hover {
-  opacity: 0.9;
-  transform: scale(1.02);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 0 var(--primary-color);
 }
 
 .submit-btn:active {
@@ -303,7 +321,7 @@ body {
 
   .form-status {
     font-size: 0.8rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     font-weight: 500;
   }
 
@@ -318,9 +336,9 @@ body {
 .reply-form-container {
   margin-top: 12px;
   padding: 12px;
-  border-left: 3px solid var(--primary-contrast-color, #c2185b);
+  border-left: 4px solid var(--primary-contrast-color);
   background: var(--card-bg, #fafafa);
-  border-radius: 0 8px 8px 0;
+  border-radius: 0;
 }
 
 .reply-form-container .comment-form {
@@ -339,5 +357,112 @@ body > header :focus-visible,
 body > footer :focus-visible,
 .section--colored :focus-visible {
   outline-color: var(--primary-contrast-color);
+}
+
+/* ===== Primitivas brutalist =====
+   Se usan en las páginas de contenido para no repetir estilos. */
+:root {
+  --brutal-border: 2px solid var(--primary-color);
+  --brutal-border-accent: 2px solid var(--primary-contrast-color);
+  --brutal-shadow: 6px 6px 0 0 var(--primary-color);
+  --brutal-shadow-sm: 4px 4px 0 0 var(--primary-color);
+  --brutal-shadow-accent: 6px 6px 0 0 var(--primary-contrast-color);
+}
+
+.brutal-panel {
+  background-color: var(--card-background-color);
+  border: var(--brutal-border);
+  border-radius: 0;
+  box-shadow: var(--brutal-shadow-sm);
+  padding: 16px;
+}
+
+.brutal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: var(--brutal-border);
+  border-radius: 0;
+  background-color: var(--surface-color);
+  color: var(--primary-contrast-color);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: var(--brutal-shadow-sm);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.brutal-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 var(--primary-contrast-color);
+}
+
+.brutal-btn:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 0 var(--primary-contrast-color);
+}
+
+.brutal-btn--accent {
+  background-color: var(--primary-contrast-color);
+  color: var(--on-bright-color);
+  border-color: var(--on-bright-color);
+  box-shadow: 4px 4px 0 0 var(--on-bright-color);
+}
+
+.brutal-btn--accent:hover {
+  box-shadow: 6px 6px 0 0 var(--on-bright-color);
+}
+
+.brutal-btn--ghost {
+  background-color: transparent;
+  color: var(--primary-color);
+  box-shadow: none;
+}
+
+.brutal-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: var(--brutal-border);
+  border-radius: 0;
+  background-color: var(--card-background-color);
+  color: var(--text-color);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.brutal-input:focus {
+  outline: 3px solid var(--primary-contrast-color);
+  outline-offset: 1px;
+}
+
+.brutal-title {
+  position: relative;
+  margin: 0;
+  color: var(--primary-color);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.brutal-title::after {
+  content: '';
+  display: block;
+  width: 95%;
+  height: 6px;
+  margin-top: 8px;
+  background-color: var(--primary-contrast-color);
 }
 

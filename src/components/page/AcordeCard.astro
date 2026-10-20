@@ -42,12 +42,7 @@ const headingId = `acorde-${slug}`;
 
   <header>
     <h2 id={headingId} class='is-title-minus'>
-      <span class='pieza'>
-        {pieza}
-      </span>
-      <span class='agrupacion'>
-        {agrupacion}
-      </span>
+      {pieza} {agrupacion}
     </h2>
 
     <section class='autores-year'>
@@ -107,8 +102,8 @@ const headingId = `acorde-${slug}`;
   <section class='acorde-content' role='region' aria-labelledby={headingId}>
 
     <div class='acorde-meta'>
-      <Icon name='cejilla' width={22} height={22} />
-      <span>{cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
+      <Icon name='cejilla' width={18} height={18} />
+      <span>Cejilla: {cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
 
       <div class='acorde-content'>
@@ -141,7 +136,7 @@ const headingId = `acorde-${slug}`;
 
 <style>
   article {
-    border-radius: 8px;
+    border-radius: 0;
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
@@ -156,7 +151,7 @@ const headingId = `acorde-${slug}`;
   header {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 
     box-sizing: border-box;
     /* text-transform: uppercase; */
@@ -164,19 +159,35 @@ const headingId = `acorde-${slug}`;
 
   h2 {
     color: var(--primary-color);
-    font-size: 1.625rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    line-height: 1.79rem;
+    letter-spacing: 0.5px;
+    line-height: normal;
     max-width: fit-content;
     margin: 0;
-    text-transform: none;
+    text-transform: uppercase;
+    position: relative;
 
     &::after {
       content: '';
       display: block;
-      width: 92%;
-      height: 4px;
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 95%;
+      height: 6px;
       background: var(--primary-contrast-color);
+
+      @media (max-width: 640px) {
+        height: 4px;
+        bottom: -2px;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    h2 {
+      font-size: 1.25rem;
     }
   }
 
@@ -186,17 +197,18 @@ const headingId = `acorde-${slug}`;
   }
 
   .year {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 500;
     text-transform: none;
 
     & a {
       color: var(--link-color);
+      font-family: 'Roboto Mono', monospace;
       text-decoration: none;
 
       &:hover {
-        text-decoration: none;
         color: var(--link-hover-color);
+        text-decoration: underline;
       }
     }
   }
@@ -205,19 +217,30 @@ const headingId = `acorde-${slug}`;
     display: flex;
     flex-direction: column;
     gap: 4px;
-    font-size: 1rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.45;
     color: var(--secondary-color);
     font-weight: 500;
     text-transform: none;
     position: relative;
+
+    & strong {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-secondary-color);
+    }
 
     & a {
       color: var(--link-color);
       text-decoration: none;
 
       &:hover {
-        text-decoration: none;
         color: var(--link-hover-color);
+        text-decoration: underline;
       }
     }
   }
@@ -242,7 +265,8 @@ const headingId = `acorde-${slug}`;
 
   img {
     height: auto;
-    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
     width: 100%;
     min-height: 225px;
     max-height: 240px;
@@ -256,11 +280,11 @@ const headingId = `acorde-${slug}`;
   figcaption {
     position: absolute;
     bottom: 0;
-    font-family: 'Raleway', sans-serif;
-    /* text-transform: uppercase; */
+    font-family: 'Roboto Mono', monospace;
     letter-spacing: 0.1px;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    font-weight: 700;
+    border: 2px solid var(--primary-color);
+    box-shadow: none;
     font-size: 14px;
     padding: 6px 8px;
   }
@@ -272,7 +296,7 @@ const headingId = `acorde-${slug}`;
   .badge--musica {
     display: none;
     left: 0;
-    border-radius: 0 6px 0 6px;
+    border-radius: 0;
     color: var(--on-bright-color);
     background-color: var(--primary-contrast-color);
   }
@@ -282,7 +306,7 @@ const headingId = `acorde-${slug}`;
     right: 0;
     color: var(--primary-contrast-color);
     background-color: var(--surface-color);
-    border-radius: 6px 0 6px 0;
+    border-radius: 0;
   }
 
   .acorde-content {
@@ -298,22 +322,28 @@ const headingId = `acorde-${slug}`;
   .acorde-meta {
     display: flex;
     align-items: center;
-    gap: 2px;
-    font-size: 1.1rem;
-    color: var(--secondary-color);
-    padding: 4px 6px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    gap: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    padding: 4px 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background-color: var(--card-background-color);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
   }
 
   :global(html[data-theme='dark']) .acorde-meta {
     background-color: var(--card-background-color);
     color: var(--primary-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
   }
 
   .acorde-content :global(pre) {
     margin: 0;
+    font-family: 'Roboto Mono', monospace;
     letter-spacing: -0.3px;
     word-spacing: -0.3px;
     font-size: 0.95rem;
@@ -347,23 +377,25 @@ const headingId = `acorde-${slug}`;
     min-width: 40px;
     background: transparent;
     padding: 4px;
-    border-radius: 8px;
-    transition: background 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
+    border-radius: 0;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
   }
 
   .autoscroll-btn {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: none;
-    background: var(--btn-gradient);
+    width: 32px;
+    height: 32px;
+    border-radius: 0;
+    border: 2px solid var(--primary-color);
+    background: var(--surface-color);
     color: #fff;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.5s ease, transform 0.2s ease, box-shadow 0.5s ease;
-    box-shadow: 0 2px 8px rgba(59, 90, 100, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+    box-shadow: 2px 2px 0 0 var(--primary-color);
     flex-shrink: 0;
     order: -1;
     position: relative;
@@ -371,11 +403,13 @@ const headingId = `acorde-${slug}`;
   }
 
   .autoscroll-btn:hover {
-    transform: scale(1.08);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
   }
 
   .autoscroll-btn:active {
-    transform: scale(0.95);
+    transform: translate(0, 0);
+    box-shadow: 1px 1px 0 0 var(--primary-color);
   }
 
   .autoscroll-btn svg {
@@ -400,8 +434,9 @@ const headingId = `acorde-${slug}`;
   }
 
   .autoscroll-wrapper.playing {
-    background: var(--playing-overlay);
-    box-shadow: 0 2px 12px rgba(59, 90, 100, 0.15);
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
   }
 
   .autoscroll-wrapper.playing .speed-options {
@@ -422,12 +457,12 @@ const headingId = `acorde-${slug}`;
   }
 
   .autoscroll-help-btn {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1.5px solid var(--secondary-color);
-    background: transparent;
-    color: var(--secondary-color);
+    width: 22px;
+    height: 22px;
+    border-radius: 0;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    color: var(--primary-color);
     font-size: 0.7rem;
     font-weight: 700;
     cursor: pointer;
@@ -439,36 +474,36 @@ const headingId = `acorde-${slug}`;
     flex-shrink: 0;
     order: -2;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
   }
 
   .autoscroll-help-btn:hover {
-    background: var(--brand-navy);
-    color: #fff;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
   }
 
   .speed-btn {
     padding: 2px 6px;
-    border-radius: 6px;
-    border: none;
-    background: transparent;
-    color: var(--secondary-color);
+    border-radius: 0;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    color: var(--primary-color);
     font-size: 0.65rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.2s ease;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
   }
 
   .speed-btn:hover {
-    background: var(--hover-bg);
-    color: var(--primary-color);
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
   }
 
   .speed-btn.active {
-    background: var(--btn-gradient);
-    color: #fff;
-    box-shadow: 0 1px 4px rgba(20, 33, 61, 0.3);
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
   }
 
   .transpose-controls {
@@ -480,11 +515,11 @@ const headingId = `acorde-${slug}`;
   }
 
   .transpose-btn {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    border: none;
-    background: var(--btn-gradient);
+    width: 24px;
+    height: 24px;
+    border-radius: 0;
+    border: 2px solid var(--primary-color);
+    background: var(--surface-color);
     color: #fff;
     font-size: 0.85rem;
     font-weight: 700;
@@ -493,19 +528,19 @@ const headingId = `acorde-${slug}`;
     align-items: center;
     justify-content: center;
     transition: background 0.3s ease, transform 0.15s ease;
-    box-shadow: 0 1px 4px rgba(59, 90, 100, 0.2);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
     flex-shrink: 0;
     line-height: 1;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
   }
 
   .transpose-btn:hover {
-    transform: scale(1.1);
+    transform: translate(-1px, -1px);
   }
 
   .transpose-btn:active {
-    transform: scale(0.92);
+    transform: translate(0, 0);
   }
 
   .transpose-display {
@@ -514,7 +549,7 @@ const headingId = `acorde-${slug}`;
     color: var(--secondary-color);
     min-width: 16px;
     text-align: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     line-height: 1;
   }
 

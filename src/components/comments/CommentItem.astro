@@ -48,7 +48,7 @@ const displayName = author && author.trim() ? author.trim() : 'Anónimo';
 <style>
   .comment-item {
     padding: 12px 0;
-    border-bottom: 1px solid var(--placeholder-color, #e5e7eb);
+    border-bottom: 2px solid var(--primary-color);
   }
 
   .comment-item:last-child {
@@ -64,24 +64,28 @@ const displayName = author && author.trim() ? author.trim() : 'Anónimo';
   }
 
   .comment-author {
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     color: var(--primary-color, #333);
   }
 
   .comment-date {
-    font-size: 0.8rem;
-    color: var(--secondary-color, #888);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-secondary-color, #888);
   }
 
   .badge-admin {
     display: inline-block;
     background: var(--primary-contrast-color, #c2185b);
     color: var(--on-bright-color);
+    border: 2px solid var(--on-bright-color);
     padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 600;
+    border-radius: 0;
+    font-size: 0.65rem;
+    font-weight: 800;
     margin-right: 4px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -91,10 +95,11 @@ const displayName = author && author.trim() ? author.trim() : 'Anónimo';
     display: inline-block;
     background: #22c55e;
     color: var(--on-bright-color);
+    border: 2px solid var(--on-bright-color);
     padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 600;
+    border-radius: 0;
+    font-size: 0.65rem;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
@@ -113,17 +118,22 @@ const displayName = author && author.trim() ? author.trim() : 'Anónimo';
 
   .reply-btn {
     background: none;
-    border: none;
-    color: var(--link-color, #0070f3);
-    font-size: 0.8rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    color: var(--primary-color);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     cursor: pointer;
-    padding: 0;
-    font-weight: 600;
+    padding: 4px 10px;
+    font-family: 'Roboto Mono', monospace;
   }
 
   .reply-btn:hover {
-    color: var(--link-hover-color, #005bb5);
-    text-decoration: underline;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    text-decoration: none;
   }
 
   .is-root {

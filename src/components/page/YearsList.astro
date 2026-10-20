@@ -22,7 +22,7 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
 
 <style>
   .years-list {
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .inner-content {
@@ -40,21 +40,22 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
   header h2 {
     position: relative;
     color: var(--primary-color);
-    font-size: 1.625rem;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    font-family: 'Roboto Mono', monospace;
     font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     max-width: fit-content;
     margin: 0;
-    letter-spacing: 0.4px;
   }
   header h2::after {
     content: '';
     display: block;
     position: absolute;
     left: 0;
-    bottom: -4px;
-    width: 90%;
-    height: 4px;
+    bottom: -6px;
+    width: 95%;
+    height: 6px;
     background: var(--primary-contrast-color);
   }
 
@@ -69,12 +70,13 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
   }
   li {
     background: var(--primary-contrast-color);
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 0 var(--primary-color);
     transition:
-      box-shadow 0.2s,
-      transform 0.2s;
-    font-family: 'Montserrat', sans-serif;
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+    font-family: 'Roboto Mono', monospace;
     width: 100%;
     text-align: center;
   }
@@ -87,24 +89,23 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
     color: var(--on-bright-color);
     padding: 14px;
     box-sizing: border-box;
-    border-radius: 6px;
+    border-radius: 0;
+    font-family: 'Roboto Mono', monospace;
     font-weight: 700;
     font-size: 1.3rem;
-    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    transition: color 0.15s ease;
   }
 
   li:hover,
-  li:focus {
+  li:focus-within {
     background: var(--surface-color);
-    color: var(--primary-contrast-color);
-    outline: none;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    transform: translateY(-2px) scale(1.03);
-    transition: all 0.3s ease;
+    transform: translate(-3px, -3px);
+    box-shadow: 7px 7px 0 0 var(--primary-contrast-color);
   }
 
   li:hover a,
-  li:focus a {
+  li:focus-within a {
     color: var(--primary-contrast-color);
   }
 
@@ -116,15 +117,25 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
       gap: var(--card-padding-sm);
     }
     ul {
-      gap: 8px;
+      gap: 2.5vw;
       grid-template-columns: repeat(3, 1fr);
     }
+    li {
+      box-shadow: 3px 3px 0 0 var(--primary-color);
+
+      &:hover,
+      &:focus-within {
+        transform: none;
+        box-shadow: 3px 3px 0 0 var(--primary-color);
+      }
+    }
     header h2 {
+      font-size: 1.25rem;
       letter-spacing: 0px;
     }
     header h2::after {
-      height: 3px;
-      bottom: -1px;
+      height: 4px;
+      bottom: -2px;
     }
     li a {
       padding: 12px;

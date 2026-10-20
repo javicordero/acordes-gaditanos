@@ -83,20 +83,19 @@ const SOCIAL = {
 
 <style>
   :root {
-    --footer-bg: #0f1724;
     --footer-text: #e6eef8;
     --muted: #98a2b3;
-    --accent: #60a5fa;
   }
 
   footer {
     background: var(--surface-color);
+    border-top: 4px solid var(--primary-contrast-color);
     color: var(--footer-text);
-    padding: 16px 0;
+    padding: 24px 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    row-gap: 8px;
+    row-gap: 12px;
   }
 
   .brand-social {
@@ -135,9 +134,10 @@ const SOCIAL = {
   }
 
   h3.brand {
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.2px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
     margin: 0;
   }
 
@@ -145,14 +145,17 @@ const SOCIAL = {
     color: var(--muted);
     display: inline-flex;
     align-items: center;
-    transition: all 0.5s ease;
-    transform: scale(1);
+    justify-content: center;
+    padding: 2px;
+    border: none;
+    border-radius: 0;
+    transition: color 0.15s ease;
   }
 
   .social:has(:hover) {
     color: var(--primary-contrast-color);
+    background: transparent;
     outline: none;
-    transform: scale(1.25);
   }
 
   .author-links {
@@ -167,6 +170,7 @@ const SOCIAL = {
     font-style: normal;
     & p.small {
       font-size: 0.8rem;
+      font-family: 'Roboto Mono', monospace;
       color: var(--muted);
       margin: 0;
     }
@@ -176,6 +180,7 @@ const SOCIAL = {
     display: flex;
     gap: 12px;
     font-size: 0.8rem;
+    font-family: 'Roboto Mono', monospace;
     color: var(--muted);
 
     & a {
@@ -192,6 +197,7 @@ const SOCIAL = {
   .bottom p {
     color: var(--muted);
     font-size: 0.8rem;
+    font-family: 'Roboto Mono', monospace;
   }
 
   /* @media (--mq-sm) { */

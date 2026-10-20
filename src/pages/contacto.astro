@@ -72,7 +72,7 @@ import Layout from '../layouts/Layout.astro';
               id='message'
               class='form-control'
               placeholder='MENSAJE'
-              rows='1'
+              rows='5'
               aria-label='Mensaje'></textarea>
             <div class='error' id='error-message' aria-hidden='true'>Rellena este campo</div>
           </div>
@@ -92,7 +92,7 @@ import Layout from '../layouts/Layout.astro';
   input,
   textarea,
   .main-container {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     font-weight: 700;
     letter-spacing: 1.4px;
   }
@@ -113,7 +113,7 @@ import Layout from '../layouts/Layout.astro';
   /* Article container */
   .contact-page {
     position: relative;
-    border-radius: 8px;
+    border-radius: 0;
     display: flex;
     gap: 32px;
   }
@@ -130,7 +130,11 @@ import Layout from '../layouts/Layout.astro';
       & h2 {
         position: relative;
         color: var(--primary-color);
-        font-size: 1.625rem;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 1.75rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
         margin: 0;
         max-width: fit-content;
 
@@ -139,9 +143,9 @@ import Layout from '../layouts/Layout.astro';
           display: block;
           position: absolute;
           left: 0;
-          bottom: -4px;
-          width: 90%;
-          height: 4px;
+          bottom: -6px;
+          width: 95%;
+          height: 6px;
           background: var(--primary-contrast-color);
         }
       }
@@ -152,18 +156,23 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     gap: 8px;
-    font-size: 0.75rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
     font-weight: 400;
     color: var(--text-color);
-    line-height: 1.2rem;
+    line-height: 1.5;
 
     & a {
-      color: inherit;
-      text-decoration: none;
+      color: var(--link-color);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
       transition: color 0.3s ease;
 
       &:hover {
-        color: var(--link-color);
+        color: var(--on-bright-color);
+        background: var(--primary-contrast-color);
+        text-decoration: none;
       }
     }
 
@@ -189,11 +198,15 @@ import Layout from '../layouts/Layout.astro';
   /* Form section (right) */
   .contact-form-section {
     flex: 1 1 auto;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+    padding: 16px;
 
     & form {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
     }
   }
 
@@ -203,10 +216,10 @@ import Layout from '../layouts/Layout.astro';
 
   .form-control {
     width: 100%;
-    padding: 10px 0;
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--placeholder-color);
+    padding: 10px 12px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
     color: var(--primary-color);
     font-size: 0.875rem;
     transition: border-color 0.2s;
@@ -216,11 +229,12 @@ import Layout from '../layouts/Layout.astro';
     }
 
     &:focus {
-      border-bottom-color: var(--primary-contrast-color);
+      outline: 3px solid var(--primary-contrast-color);
+      outline-offset: 1px;
     }
 
     &.invalid {
-      border-bottom-color: var(--error-color);
+      border-color: var(--error-color);
     }
   }
 
@@ -246,18 +260,24 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .btn {
-    background: none;
-    border: 1px solid var(--primary-color);
-    border-radius: 8px;
-    padding: 16px 24px;
-    color: var(--primary-color);
-    font-size: 0.875rem;
+    background: var(--surface-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    padding: 14px 24px;
+    color: var(--primary-contrast-color);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.5s ease;
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
 
     &:hover {
-      border-color: var(--primary-contrast-color);
-      transform: scale(1.05);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 0 var(--primary-color);
     }
 
     &.invalid {
@@ -300,7 +320,7 @@ import Layout from '../layouts/Layout.astro';
       & header {
         & h2 {
           &::after {
-            height: 3px;
+            height: 4px;
             bottom: -3px;
           }
         }

@@ -13,11 +13,7 @@ import DonationIndicator from '../DonationIndicator.astro';
           <p>
             Desde hoy hasta el COAC 2027 aprovechamos para recoger las coplas que echa de menos la comunidad, vuestras coplas.</p>
           <p>
-             Puedes hacer una peticióny votar las de otros en esta  <a href='/pedir-copla'>página</a>. Las más votadas (y más me gusten) se irán subiendo.
-          </p>
-          <br>
-          <p>
-            Si os gusta la iniciativa, podéis darle al botoncito de abajo e invitarse a un cafelito.
+             Puedes hacer una petición y votar las de otros en esta  <a href='/pedir-copla'>página</a>. Las más votadas (y más me gusten) se irán subiendo.
           </p>
         </div>
       </header>
@@ -37,7 +33,7 @@ import DonationIndicator from '../DonationIndicator.astro';
     color: #fff;
     background: url('https://static.grupojoly.com/clip/e68a84a7-37c4-4bbe-a35c-f859862ca005_source-aspect-ratio_1600w_0.jpg')
       center/cover;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-bottom: 4px solid var(--primary-contrast-color);
     height: calc(var(--vh, 1vh) * 100 - 45px);
     height: calc(100svh - 45px);
 
@@ -53,37 +49,43 @@ import DonationIndicator from '../DonationIndicator.astro';
       position: relative;
       z-index: 2;
       padding: 0;
-      max-width: 600px;
+      max-width: 620px;
       height: calc(var(--vh, 1vh) * 100 - 45px);
       height: calc(100svh - 45px);
-      padding: 250px 0;
+      padding: 180px 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Roboto Mono', monospace;
+
+      & header {
+        padding: 0;
+      }
 
       & h2 {
         margin: 0 0 24px;
         font-size: 3.2rem;
-        font-weight: 700;
+        font-weight: 800;
+        letter-spacing: 1px;
+        line-height: 1;
         text-transform: uppercase;
         max-width: fit-content;
 
         &::after {
           content: '';
           display: block;
-          width: 90%;
-          height: 4px;
+          width: 95%;
+          height: 6px;
+          margin-top: 10px;
           background-color: var(--primary-contrast-color);
         }
       }
 
       & p {
         margin: 0 0 12px;
-        font-size: 1.1rem;
-        /* letter-spacing: 0.02em; */
-        line-height: 1.23rem;
+        font-size: 1.05rem;
+        line-height: 1.45;
       }
 
       & .apoyar {
@@ -108,13 +110,18 @@ import DonationIndicator from '../DonationIndicator.astro';
 
       & .text {
         padding: 40px 0 120px;
+
+        & header {
+          padding: 0;
+        }
+
         & h2 {
           font-size: 2rem;
           margin-bottom: 16px;
         }
 
         & p {
-          font-size: 1rem;
+          font-size: 0.95rem;
         }
 
         & .apoyar {

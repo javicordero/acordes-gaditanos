@@ -98,7 +98,6 @@
   --on-acorde-solid-color: #ffffff;
   --brand-navy: #14213d;
   --on-bright-color: #111111;
-  --btn-gradient: linear-gradient(145deg, var(--brand-navy) 0%, var(--surface-color) 100%);
   --callout-bg: #fff8ec;
   --hover-bg: #ececec;
   --playing-overlay: rgba(255, 255, 255, 0.6);
@@ -158,7 +157,6 @@
   --link-hover-color: #a8c7ff;
 
   /* Superficies y fijos */
-  --btn-gradient: linear-gradient(145deg, #5566a3 0%, #2a3560 100%);
   --callout-bg: #2a2416;
   --hover-bg: #262b34;
   --playing-overlay: rgba(0, 0, 0, 0.55);

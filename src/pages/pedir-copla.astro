@@ -26,9 +26,6 @@ import DonationIndicator from '../components/DonationIndicator.astro';
               <a href='mailto:acordesgaditanos@gmail.com'>acordesgaditanos@gmail.com</a>
               y los subiremos.
             </p>
-            <p class='vote-hint'>
-              Puedes votar las peticiones que mas te gusten con el icono de corazon.
-            </p>
           </div>
           <PeticionesStats />
           <div class='pedir-copla-donations'>
@@ -57,7 +54,7 @@ import DonationIndicator from '../components/DonationIndicator.astro';
 <style>
   .pedir-copla-page {
     position: relative;
-    border-radius: 8px;
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -66,7 +63,11 @@ import DonationIndicator from '../components/DonationIndicator.astro';
   header h1 {
     margin: 0;
     color: var(--primary-color);
-    font-size: 2rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     position: relative;
     max-width: fit-content;
 
@@ -76,8 +77,8 @@ import DonationIndicator from '../components/DonationIndicator.astro';
       position: absolute;
       left: 0;
       bottom: -8px;
-      width: 90%;
-      height: 4px;
+      width: 95%;
+      height: 6px;
       background: var(--primary-contrast-color);
     }
   }
@@ -100,16 +101,18 @@ import DonationIndicator from '../components/DonationIndicator.astro';
       font-size: 1rem;
     }
 
-    & a {
-      color: var(--acorde-color);
-      font-weight: 600;
-      text-decoration: underline;
+    & .intro-text {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
-    & .vote-hint {
-      font-size: 0.875rem;
-      color: var(--acorde-color);
-      font-style: italic;
+    & a {
+      color: var(--link-color);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
     }
   }
 
@@ -121,7 +124,11 @@ import DonationIndicator from '../components/DonationIndicator.astro';
     & h2 {
       margin: 0;
       color: var(--primary-color);
+      font-family: 'Roboto Mono', monospace;
       font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       position: relative;
       max-width: fit-content;
 
@@ -131,10 +138,10 @@ import DonationIndicator from '../components/DonationIndicator.astro';
         position: absolute;
         left: 0;
         bottom: -4px;
-        width: 90%;
-        height: 3px;
+        width: 95%;
+        height: 5px;
         background: var(--primary-contrast-color);
-        border-radius: 2px;
+        border-radius: 0;
       }
     }
   }
@@ -150,8 +157,9 @@ import DonationIndicator from '../components/DonationIndicator.astro';
   }
 
   :global(section.donation-indicator.timeline .donation-indicator__widget) {
-    background: var(--card-bg, #fafafa);
-    border: 1px solid var(--placeholder-color, #e5e7eb);
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
   }
 
   :global(section.donation-indicator.timeline .donation-indicator__message-c) {
@@ -159,7 +167,7 @@ import DonationIndicator from '../components/DonationIndicator.astro';
   }
 
   :global(section.donation-indicator.timeline .donation-indicator__count) {
-    color: var(--acorde-color, #0044cc) !important;
+    color: var(--acorde-color) !important;
   }
 
   :global(section.donation-indicator.timeline .donation-indicator__count-label) {
@@ -167,7 +175,7 @@ import DonationIndicator from '../components/DonationIndicator.astro';
   }
 
   :global(section.donation-indicator.timeline .pill) {
-    color: var(--acorde-color, #0044cc);
+    color: var(--acorde-color);
     border-color: rgba(0, 68, 204, 0.3);
   }
 

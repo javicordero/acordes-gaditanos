@@ -20,12 +20,15 @@ import { Icon } from 'astro-icon/components';
     background: transparent;
     color: var(--primary-contrast-color);
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 0;
     overflow: hidden;
-    transition: transform 0.2s ease;
+    transition:
+      color 0.15s ease,
+      transform 0.15s ease;
 
     &:hover {
-      transform: scale(1.15);
+      color: var(--primary-contrast-color);
+      transform: scale(1.12);
     }
 
     & :global(svg) {

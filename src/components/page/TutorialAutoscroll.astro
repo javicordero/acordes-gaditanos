@@ -13,13 +13,14 @@
   <div class="tutorial-highlight" data-tutorial-highlight></div>
   <div class="tutorial-tooltip" data-tutorial-tooltip>
     <button class="tutorial-tooltip__close" data-tutorial-close aria-label="Cerrar tutorial">&times;</button>
-    <h3 id="tutorial-title" class="tutorial-tooltip__title">Desplazamiento autom&aacute;tico</h3>
-    <p class="tutorial-tooltip__subtitle">Despl&aacute;zate por la letra sin usar las manos</p>
+    <h3 id="tutorial-title" class="tutorial-tooltip__title">Controles</h3>
+    <p class="tutorial-tooltip__subtitle">Despl&aacute;zate por la letra y transporta los acordes</p>
     <ul class="tutorial-tooltip__list">
       <li><strong>&#9654; Play / &#9208; Pausa</strong> &mdash; inicia y detiene el scroll autom&aacute;tico</li>
       <li><strong>1x a 5x</strong> &mdash; ajusta la velocidad de desplazamiento</li>
       <li><strong>Tecla Espacio</strong> &mdash; atajo para reproducir o pausar</li>
       <li>Se detiene autom&aacute;ticamente al llegar al final de la letra</li>
+      <li><strong>+ / −</strong> &mdash; sube o baja el tono medio semitono</li>
     </ul>
     <button class="tutorial-tooltip__action" data-tutorial-action>&iexcl;Entendido!</button>
   </div>
@@ -288,8 +289,8 @@
     position: fixed;
     z-index: 10001;
     border: 2px solid var(--primary-contrast-color);
-    border-radius: 8px;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(252, 163, 17, 0.3);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 0 var(--primary-contrast-color);
     pointer-events: none;
     box-sizing: border-box;
   }
@@ -298,8 +299,9 @@
     position: fixed;
     z-index: 10002;
     background: var(--card-background-color, #fff);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    box-shadow: 8px 8px 0 0 var(--primary-color);
     padding: 20px;
     max-width: 320px;
     width: max-content;
@@ -321,29 +323,32 @@
     right: 8px;
     width: 28px;
     height: 28px;
-    border: none;
+    border: 2px solid var(--primary-color);
     background: transparent;
-    color: var(--text-color, #222);
-    font-size: 20px;
+    color: var(--primary-color);
+    font-size: 18px;
     line-height: 1;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 0;
     transition: background 0.2s;
   }
 
   .tutorial-tooltip__close:hover {
-    background: rgba(0, 0, 0, 0.08);
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
   }
 
   .tutorial-tooltip__title {
     margin: 0 0 4px;
-    font-size: 1.125rem;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     color: var(--primary-color, #000);
-    padding-right: 24px;
+    padding-right: 32px;
   }
 
   .tutorial-tooltip__subtitle {
@@ -379,19 +384,25 @@
     display: block;
     width: 100%;
     padding: 10px 16px;
-    border: none;
-    border-radius: 8px;
-    background: var(--btn-gradient);
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--surface-color);
+    color: var(--primary-contrast-color);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: opacity 0.2s;
+    box-shadow: 3px 3px 0 0 var(--primary-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
     font-family: inherit;
   }
 
   .tutorial-tooltip__action:hover {
-    opacity: 0.9;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 var(--primary-color);
   }
 
   @media (max-width: 640px) {

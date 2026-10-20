@@ -209,7 +209,7 @@ import ThemeToggle from './ThemeToggle.astro';
     opacity: 1;
 
     &:hover {
-      transform: scale(1.15);
+      transform: translate(-2px, -2px);
     }
   }
 
@@ -243,14 +243,15 @@ import ThemeToggle from './ThemeToggle.astro';
     padding: 8px 36px 8px 12px;
     font-size: 0.9rem;
     border: 2px solid var(--primary-contrast-color);
-    border-radius: 6px;
+    border-radius: 0;
     background: var(--card-background-color);
     color: var(--text-color);
     transition: all 0.2s ease;
 
     &:focus {
       background: var(--card-background-color);
-      box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.3);
+      outline: 3px solid var(--primary-contrast-color);
+      outline-offset: 1px;
     }
 
     &::placeholder {
@@ -274,7 +275,7 @@ import ThemeToggle from './ThemeToggle.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 0;
     color: var(--primary-contrast-color);
     transition: all 0.2s ease;
 
@@ -305,7 +306,7 @@ import ThemeToggle from './ThemeToggle.astro';
     z-index: 2;
 
     &:hover {
-      transform: scale(1.1);
+      transform: translate(-1px, -1px);
     }
 
     & span {
@@ -314,7 +315,7 @@ import ThemeToggle from './ThemeToggle.astro';
       left: 0;
       width: 100%;
       height: var(--bar-h);
-      border-radius: 10px;
+      border-radius: 0;
       background: var(--primary-contrast-color);
       transition:
         transform 0.4s ease-in-out,
@@ -360,11 +361,11 @@ import ThemeToggle from './ThemeToggle.astro';
     & a {
       text-decoration: none;
       color: var(--primary-contrast-color);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 800;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       position: relative;
       display: inline-block;
 
@@ -374,14 +375,15 @@ import ThemeToggle from './ThemeToggle.astro';
         left: 0;
         bottom: -3px;
         height: 3px;
-        width: 100%;
+        width: 95%;
         background: var(--primary-contrast-color);
         transform-origin: left;
         transform: scaleX(0);
         transition: transform 0.3s ease;
       }
 
-      &:hover::after {
+      &:hover::after,
+      &:focus-visible::after {
         transform: scaleX(1);
       }
     }

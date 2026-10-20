@@ -21,7 +21,7 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+    background: var(--surface-color);
   }
 
   .error-content {
@@ -30,12 +30,18 @@ import Layout from '../layouts/Layout.astro';
     align-items: center;
     gap: 1.5rem;
     text-align: center;
-    padding: 0 2rem;
+    padding: 32px;
+    border: 2px solid var(--primary-contrast-color);
+    box-shadow: 10px 10px 0 0 var(--primary-contrast-color);
+    width: calc(100% - 32px);
+    max-width: 640px;
+    box-sizing: border-box;
   }
 
   .error-code {
+    font-family: 'Roboto Mono', monospace;
     font-size: 10rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--primary-contrast-color);
     margin: 0;
     letter-spacing: 4px;
@@ -43,11 +49,13 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .error-message {
+    font-family: 'Roboto Mono', monospace;
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     color: #ffffff;
     margin: 0;
-    letter-spacing: 1px;
   }
 
   .error-description {
@@ -64,23 +72,27 @@ import Layout from '../layouts/Layout.astro';
     padding: 1rem 2.5rem;
     margin-top: 1rem;
     background-color: var(--primary-contrast-color);
-    color: #0a0a0a;
+    color: var(--on-bright-color);
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.125rem;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
 
     &:hover {
-      /* background-color: #ffffff; */
-      /* transform: translateY(-2px); */
-      transform: scale(1.04);
-      box-shadow: 0 8px 20px rgba(252, 163, 17, 0.3);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 0 var(--on-bright-color);
     }
 
     &:active {
       transform: translateY(0);
+      box-shadow: 2px 2px 0 0 var(--on-bright-color);
     }
   }
 

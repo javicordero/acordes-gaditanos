@@ -4,10 +4,19 @@ import { Image } from 'astro:assets';
 const { autor } = Astro.props;
 const headingId = `autor-${autor.autorSlug}`;
 const esImagenLocal = autor.img.startsWith('/');
+const base = `/autor`;
+const tipoLabel = autor.type === 'letra' ? 'Letras' : 'Músicas';
 ---
 
 <article class='card' aria-labelledby={headingId}>
-  <a href={`autor/${autor.type}/${autor.autorSlug}`}>
+  <a
+    href={`${base}/${autor.type}/${autor.autorSlug}`}
+    class='card-stretch'
+    aria-label={`${autor.nombre} - ${tipoLabel}`}
+  >
+  </a>
+
+  <figure class='card-media'>
     {
       esImagenLocal ? (
         <img
@@ -32,113 +41,97 @@ const esImagenLocal = autor.img.startsWith('/');
         />
       )
     }
-    <footer>
-      <span class='badge'>{autor.nombre}</span>
-    </footer>
-  </a>
+  </figure>
+
+  <section class='card-body'>
+    <h3 id={headingId} class='card-title'>{autor.nombre}</h3>
+  </section>
 </article>
 
 <style>
   .card {
-    background-color: var(--card-background-color);
-    border-radius: 8px;
+    /* Variante editorial: fondo ámbar fijo y tinta negra en ambos temas */
+    background-color: var(--primary-contrast-color);
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
-    min-height: 200px;
     position: relative;
-    transition:
-      transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      box-shadow 0.5s ease;
-    /* Optimizaciones de performance */
-    content-visibility: auto;
-    contain-intrinsic-size: 300px 200px;
-    will-change: transform;
-
-    &:hover {
-      transform: scale(1.05) translateY(-12px) rotateZ(-1deg);
-      box-shadow:
-        0 40px 80px -20px rgba(0, 0, 0, 0.4),
-        0 0 40px rgba(255, 255, 255, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-      z-index: 10;
-    }
-
-    &:hover::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-  }
-
-  .card-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    z-index: 0;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: space-between;
-    position: relative;
-    z-index: 1;
+    transition: transform 0.15s ease;
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 340px;
+    will-change: transform;
+
+    &:hover {
+      transform: translate(-4px, -4px);
+      z-index: 10;
+    }
   }
 
-  footer {
+  .card-stretch {
     position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    pointer-events: none;
+    inset: 0;
+    z-index: 1;
+    text-decoration: none;
+
+    &:focus-visible {
+      outline: 2px solid var(--on-bright-color);
+      outline-offset: -6px;
+    }
   }
 
-  .badge {
+  .card-media {
     position: relative;
-    pointer-events: auto;
+    margin: 0;
   }
 
-  .badge {
-    font-family: 'Raleway', sans-serif;
-    letter-spacing: 0.2px;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+  .card-image {
     width: 100%;
-    text-align: center;
-    color: var(--primary-contrast-color);
-    background-color: var(--surface-color);
-    font-size: 1.2rem;
-    padding: 6px 10px;
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border-bottom: 2px solid var(--on-bright-color);
+  }
+
+  .card-body {
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+
+  .card-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: 0;
+    margin: 0;
+    padding: 0;
+    color: var(--on-bright-color);
+    line-height: 1.25;
   }
 
   @media (max-width: 640px) {
     .card {
-      transition: none;
-      min-height: 180px;
-
       &:hover {
         transform: none;
-        box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
-        filter: none;
-        z-index: auto;
       }
     }
 
-    .badge {
-      font-size: 0.9rem;
-      padding: 4px 4px;
+    .card-image {
+      height: 160px;
+    }
+
+    .card-body {
+      padding: 6px 8px;
+    }
+
+    .card-title {
+      font-size: 0.85rem;
     }
   }
 </style>

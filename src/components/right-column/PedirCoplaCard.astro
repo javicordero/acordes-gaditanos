@@ -28,19 +28,29 @@ const { class: className } = Astro.props;
   }
 
   .btn-pedir {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     background: var(--primary-contrast-color, #c2185b);
     color: var(--on-bright-color);
     text-align: center;
     padding: 10px 16px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     text-decoration: none;
-    transition: opacity 0.2s;
+    box-shadow: 3px 3px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   .btn-pedir:hover {
-    opacity: 0.9;
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 var(--on-bright-color);
   }
 </style>

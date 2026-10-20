@@ -1,5 +1,5 @@
 ---
-const { title, headingId, class: className } = Astro.props;
+const { title, headingId, class: className, flush = false } = Astro.props;
 const hasTitle = Boolean(title);
 // Build a stable id from the explicit `headingId` prop or the title.
 const headingIdFinal =
@@ -10,7 +10,7 @@ const headingIdFinal =
     .replace(/(^-|-$)/g, '');
 ---
 
-<section class:list={[className]} aria-labelledby={hasTitle ? headingIdFinal : undefined}>
+<section class:list={[className, { 'is-flush': flush }]} aria-labelledby={hasTitle ? headingIdFinal : undefined}>
   {
     hasTitle && (
       <header>
@@ -27,20 +27,25 @@ const headingIdFinal =
 <style>
   section {
     position: relative;
-    border-radius: 8px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
     z-index: 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
 
     &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      inset: 0;
-      border-radius: 8px;
-      z-index: -1;
+      content: none;
     }
+  }
+
+  section.is-flush {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
   }
 
   header {
@@ -52,10 +57,11 @@ const headingIdFinal =
 
   h3 {
     color: var(--primary-color);
-    font-size: 1.35rem;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 0.5px;
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 1px;
+    font-weight: 800;
+    text-transform: uppercase;
     margin: 0;
 
     &::after {
@@ -63,10 +69,10 @@ const headingIdFinal =
       display: block;
       position: absolute;
       bottom: -4px;
-      width: 90%;
-      height: 3px;
+      width: 95%;
+      height: 4px;
       background: var(--primary-contrast-color);
-      border-radius: 2px;
+      border-radius: 0;
     }
   }
 

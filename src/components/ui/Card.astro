@@ -1,26 +1,37 @@
 ---
 import { Image } from 'astro:assets';
 
-const { pieza, agrupacion, musica, letra, img, year, slug, transitionKey } = Astro.props;
+const {
+  pieza,
+  agrupacion,
+  musica,
+  letra,
+  img,
+  year,
+  slug,
+  musicaList,
+  letraList,
+  musicaSlugs,
+  letraSlugs,
+  musicaSlug,
+  letraSlug,
+} = Astro.props;
+
 const headingId = `acordes-${slug}`;
 
 // Limpiar "Cuarteta" y comillas si es necesario
 let piezaDisplay = pieza;
 if (pieza) {
-  // Patrón: "Cuarteta" seguido de espacio y texto entre comillas
   const cuartetaMatch = pieza.match(/^Cuarteta\s+"(.+)"$/i);
   if (cuartetaMatch) {
-    piezaDisplay = cuartetaMatch[1]; // Extraer solo el contenido entre comillas
+    piezaDisplay = cuartetaMatch[1];
   }
-
-  // Patrón: "final de popurrí/popurri" → "final popurrí" (siempre con acento)
-  piezaDisplay = piezaDisplay.replace(/\bfinal\s+de\s+popur(?:rí|ri)/gi, 'final popurrí');
+  piezaDisplay = piezaDisplay.replace(/\bfinal\s+de\s+popur(?:r\u00ED|ri)/gi, 'final popurr\u00ED');
 }
 
-const piezaLower = piezaDisplay?.toLowerCase() || '';
+const piezaLower = (piezaDisplay?.toLowerCase() || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 let piezaType = 'default';
-
-if (piezaLower.includes('presentación') || piezaLower.includes('presentacion')) {
+if (piezaLower.includes('presentacion')) {
   piezaType = 'presentacion';
 } else if (piezaLower.includes('pasodoble')) {
   piezaType = 'pasodoble';
@@ -29,10 +40,30 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
 } else if (piezaLower.includes('estribillo')) {
   piezaType = 'estribillo';
 }
+
+// Normalizar listas de autores
+const letraNombres = (letraList && letraList.length > 0 ? letraList : (letra ? [letra] : []));
+const musicaNombres = (musicaList && musicaList.length > 0 ? musicaList : (musica ? [musica] : []));
+
+function autorLink(tipo: 'letra' | 'musica', idx: number) {
+  const slugs = tipo === 'letra' ? letraSlugs : musicaSlugs;
+  const singleSlug = tipo === 'letra' ? letraSlug : musicaSlug;
+  const s = (slugs && slugs[idx]) || singleSlug;
+  if (!s) return null;
+  return tipo === 'letra' ? `/autor/letra/${s}` : `/autor/musica/${s}`;
+}
+
+// Combinar autores de letra y música, deduplicando por nombre
+const seenAutores = new Set();
+const autoresCombinados: { nombre: string; tipo: 'letra' | 'musica' }[] = [];
+letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add(n); autoresCombinados.push({ nombre: n, tipo: 'letra' }); } });
+musicaNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add(n); autoresCombinados.push({ nombre: n, tipo: 'musica' }); } });
 ---
 
 <article class='card' aria-labelledby={headingId}>
-  <a href={`/acordes/${slug}`}>
+  <a href={`/acordes/${slug}`} class='card-stretch' aria-label={`${agrupacion} - ${piezaDisplay}`}></a>
+
+  <figure class='card-media'>
     <Image
       class='card-image'
       src={img}
@@ -44,112 +75,124 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
       transition:name={`img-${slug}`}
       unoptimized
     />
-
-    <header>
-      <span class='badge' data-pieza-type={piezaType}>{piezaDisplay}</span>
+    <header class='card-header'>
+      <span class='badge badge--pieza' data-pieza-type={piezaType}>{piezaDisplay}</span>
     </header>
+    <span class='card-year'>{year}</span>
+  </figure>
 
-    <footer>
-      <span class='badge'>{musica}</span>
-    </footer>
-  </a>
+  <section class='card-body'>
+    <h3 id={headingId} class='card-title'>{agrupacion}</h3>
+
+    <div class='card-meta'>
+      <div class='card-authors'>
+        <span class='card-author-names'>
+          {
+            autoresCombinados.map((item) => (
+              <>
+                {(() => {
+                  const lista = item.tipo === 'letra' ? letraNombres : musicaNombres;
+                  const idx = lista.indexOf(item.nombre);
+                  const href = autorLink(item.tipo, idx);
+                  return href ? <a href={href} rel='noopener' title={item.nombre}>{item.nombre}</a> : <span title={item.nombre}>{item.nombre}</span>;
+                })()}
+              </>
+            ))
+          }
+        </span>
+      </div>
+    </div>
+  </section>
 </article>
 
 <style>
   .card {
     background-color: var(--card-background-color);
-    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
-    min-height: 200px;
+    box-shadow: 6px 6px 0 0 var(--primary-color);
     position: relative;
-    transition:
-      transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      box-shadow 0.5s ease;
-    /* Optimizaciones de performance */
-    content-visibility: auto;
-    contain-intrinsic-size: 300px 200px;
-    will-change: transform;
-
-    &:hover {
-      transform: scale(1.05) translateY(-12px) rotateZ(-1deg);
-      box-shadow:
-        0 40px 80px -20px rgba(0, 0, 0, 0.4),
-        0 0 40px rgba(255, 255, 255, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-      z-index: 10;
-    }
-
-    &:hover::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-  }
-
-  .card-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: 0;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: space-between;
-    position: relative;
-    z-index: 1;
-  }
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 420px;
+    will-change: transform;
 
-  header {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    position: relative;
-    z-index: 2;
-  }
-
-  .badge {
-    font-family: 'Raleway', sans-serif;
-    letter-spacing: 0.2px;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-    max-width: 95%;
-
-    &::first-letter {
-      text-transform: uppercase;
+    &:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0 0 var(--primary-contrast-color);
+      z-index: 10;
     }
   }
 
-  header > .badge {
-    border-radius: 0 0 8px 0;
-    font-size: 1.25rem;
-    padding: 6px 10px;
+  .card-stretch {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    text-decoration: none;
 
+    &:focus-visible {
+      outline: 2px solid var(--primary-contrast-color);
+      outline-offset: -2px;
+    }
+  }
+
+  .card-media {
+    position: relative;
+    margin: 0;
+  }
+
+
+
+  .card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .card-header {
+    position: absolute;
+    bottom: 10px;
+    left: 4px;
+    z-index: 0;
+  }
+
+  .badge {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: none;
+    border-radius: 0;
+    border: 2px solid var(--primary-color);
+    padding: 4px 6px;
+    font-size: 0.7rem;
+    line-height: 1.1;
+    white-space: nowrap;
+    max-width: none;
+  }
+
+  .badge--pieza {
     &[data-pieza-type='presentacion'] {
       color: var(--pieza-presentacion-color);
       background-color: var(--pieza-presentacion-bg);
     }
-
     &[data-pieza-type='pasodoble'] {
       color: var(--pieza-pasodoble-color);
       background-color: var(--pieza-pasodoble-bg);
     }
-
     &[data-pieza-type='tango'] {
       color: var(--pieza-tango-color);
       background-color: var(--pieza-tango-bg);
     }
-
     &[data-pieza-type='estribillo'] {
       color: var(--pieza-estribillo-color);
       background-color: var(--pieza-estribillo-bg);
@@ -160,48 +203,115 @@ if (piezaLower.includes('presentación') || piezaLower.includes('presentacion'))
     }
   }
 
-  footer {
+  .card-year {
+    position: absolute;
+    top: 8px;
+    left: 4px;
+    z-index: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 2px 8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background-color: var(--primary-contrast-color);
+    color: var(--primary-color);
+    line-height: 1;
+  }
+
+  .card-body {
+    padding: 4px 10px 8px 10px;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+    flex-direction: column;
+    gap: 6px;
+    background-color: var(--card-background-color);
+    border-top: 0;
+    margin-top: auto;
+  }
+
+  .card-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    padding: 8px 0 4px 0;
+    margin-bottom: 0;
+    color: var(--primary-color);
+    line-height: 1.2;
+    min-height: 2.6em;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-top: 2px solid var(--primary-color);
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+
+  .card-authors {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--primary-color);
+    min-height: 2.8em;
+  }
+
+  .card-author-names {
+    flex: 1 1 0;
+    min-width: 0;
+    white-space: normal;
+    overflow: visible;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .card-author-names a {
+    color: var(--link-color);
+    text-decoration: none;
     position: relative;
     z-index: 2;
-
-    & > .badge {
-      border-radius: 0 8px 0 0;
-      color: var(--autor-color);
-      background-color: var(--autor-bg);
-      font-size: 1.1rem;
-      padding: 4px 8px;
-    }
   }
 
   @media (max-width: 640px) {
     .card {
-      transition: none;
-      min-height: 180px;
+      box-shadow: 4px 4px 0 0 var(--primary-color);
 
       &:hover {
         transform: none;
-        box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
-        filter: none;
-        z-index: auto;
+        box-shadow: 4px 4px 0 0 var(--primary-color);
       }
     }
 
-    .badge {
-      transition: none;
-      letter-spacing: 0.1px;
+    .card-image {
+      height: 180px;
     }
 
-    header > .badge {
-      font-size: 1.1rem;
-      padding: 4px 8px;
+    .card-body {
+      padding: 4px 5px 8px 5px;
     }
 
-    footer > .badge {
+    .card-header,
+    .card-year {
+      left: 5px;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      padding-top: 6px;
+    }
+
+    .card-authors {
       font-size: 0.85rem;
-      padding: 4px 8px;
     }
   }
 </style>

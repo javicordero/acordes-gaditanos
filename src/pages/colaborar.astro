@@ -72,17 +72,25 @@ import Layout from '../layouts/Layout.astro';
 <style>
   .colaborar-card {
     position: relative;
-    border-radius: 8px;
+    border-radius: 0;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 6px 6px 0 0 var(--primary-color);
+    padding: 24px;
     display: flex;
     max-height: max-content;
-    gap: 64px;
+    gap: 48px;
   }
 
   header {
     & h2 {
       margin: 0;
       color: var(--primary-color);
-      font-size: 1.625rem;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       position: relative;
       max-width: fit-content;
 
@@ -91,9 +99,9 @@ import Layout from '../layouts/Layout.astro';
         display: block;
         position: absolute;
         left: 0;
-        bottom: -4px;
-        width: 90%;
-        height: 4px;
+        bottom: -6px;
+        width: 95%;
+        height: 6px;
         background: var(--primary-contrast-color);
       }
     }
@@ -122,12 +130,16 @@ import Layout from '../layouts/Layout.astro';
 
     & a {
       color: var(--link-color);
-      text-decoration: none;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
       transition: color 0.2s ease;
     }
 
     & a:hover {
-      color: var(--link-hover-color);
+      color: var(--on-bright-color);
+      background: var(--primary-contrast-color);
+      text-decoration: none;
     }
   }
 
@@ -142,14 +154,15 @@ import Layout from '../layouts/Layout.astro';
     .colaborar-card {
       flex-direction: column;
       gap: 12px;
+      padding: 16px;
 
       & > header {
         flex: none;
       }
 
       & > header h2::after {
-        height: 3px;
-        bottom: -3px;
+        height: 4px;
+        bottom: -4px;
       }
     }
   }

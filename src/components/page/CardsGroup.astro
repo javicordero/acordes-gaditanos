@@ -24,7 +24,7 @@ const Heading = headingAs;
       {
         acordes.map((acorde, idx) => {
           const { slug, data } = acorde;
-          const { pieza, agrupacion, musica, letra, img, year: y } = data;
+          const { pieza, agrupacion, musica, letra, img, year: y, musicaList, letraList, musicaSlugs, letraSlugs, musicaSlug, letraSlug } = data;
           return (
             <Card
               pieza={pieza}
@@ -34,6 +34,12 @@ const Heading = headingAs;
               img={img}
               year={y}
               slug={slug}
+              musicaList={musicaList}
+              letraList={letraList}
+              musicaSlugs={musicaSlugs}
+              letraSlugs={letraSlugs}
+              musicaSlug={musicaSlug}
+              letraSlug={letraSlug}
               transitionKey={`${year}-${idx}`}
             />
           );
@@ -46,7 +52,7 @@ const Heading = headingAs;
 <style>
   .year-group {
     position: relative;
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .inner-content {
@@ -67,9 +73,11 @@ const Heading = headingAs;
     & :is(h1, h2) {
       position: relative;
       color: var(--primary-color);
-      font-size: 1.625rem;
-      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-family: 'Roboto Mono', monospace;
       font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
       max-width: fit-content;
       margin: 0;
 
@@ -78,9 +86,9 @@ const Heading = headingAs;
         display: block;
         position: absolute;
         left: 0;
-        bottom: -4px;
-        width: 90%;
-        height: 4px;
+        bottom: -6px;
+        width: 95%;
+        height: 6px;
         background: var(--primary-contrast-color);
       }
     }
@@ -115,16 +123,19 @@ const Heading = headingAs;
     }
 
     .acordes-grid {
-      gap: 16px;
+      gap: 2.5vw;
       grid-template-columns: repeat(2, 1fr);
       align-items: stretch;
     }
 
     header {
       gap: 6px;
+      & :is(h1, h2) {
+        font-size: 1.25rem;
+      }
       & :is(h1, h2)::after {
-        height: 3px;
-        bottom: -1px;
+        height: 4px;
+        bottom: -2px;
       }
 
       & h3 {

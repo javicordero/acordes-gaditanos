@@ -124,26 +124,28 @@ const breadcrumbSchema = {
     align-items: center;
     gap: 8px;
     flex-wrap: nowrap;
-    font-size: 0.87rem;
-    color: var(--secondary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: var(--text-secondary-color);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     & a {
       color: var(--primary-color);
-      text-decoration: none;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
       transition: color 0.2s ease;
       max-width: 220px;
       text-wrap: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      &:hover {
-        color: var(--link-hover-color);
-        text-decoration: none;
-      }
     }
     & .separator {
-      color: var(--secondary-color);
+      color: var(--primary-contrast-color);
+      font-weight: 700;
       user-select: none;
     }
     & .breadcrumb-piece {
@@ -151,6 +153,7 @@ const breadcrumbSchema = {
       text-overflow: ellipsis;
       white-space: nowrap;
       display: inline-block;
+      color: var(--text-secondary-color);
     }
   }
   @media (max-width: 640px) {
@@ -159,7 +162,7 @@ const breadcrumbSchema = {
       /* height: 16px; */
     }
     .breadcrumb {
-      font-size: 0.72rem;
+      font-size: 0.64rem;
       gap: 4px;
       & a {
         max-width: 540px;

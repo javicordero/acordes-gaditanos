@@ -18,6 +18,7 @@ const { class: className } = Astro.props;
     z-index: 1000;
     display: flex;
     justify-content: flex-end;
+    pointer-events: none;
   }
 
   .fab-container.hidden {
@@ -29,22 +30,27 @@ const { class: className } = Astro.props;
     align-items: center;
     gap: 6px;
     padding: 12px 20px;
-    border-radius: 24px;
-    background: var(--primary-contrast-color, #c2185b);
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    background: var(--primary-contrast-color);
     color: var(--on-bright-color);
     text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
     white-space: nowrap;
+    pointer-events: auto;
   }
 
   .fab:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--on-bright-color);
   }
 
   @media (min-width: 640px) {
