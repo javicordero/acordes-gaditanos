@@ -1,5 +1,5 @@
 ---
-pieza: Presentacion
+pieza: Presentación
 agrupacion: El patriota
 year: 2026
 musica: Juan Manuel Moreno

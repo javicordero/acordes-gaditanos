@@ -1,5 +1,5 @@
 ---
-pieza: Presentacion
+pieza: Presentación
 agrupacion: Los Locos
 year: 2026
 musica: El Tomate
