@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Ricas y maduras
 year: 2011
 musica: Tino Tovar
-letra: Tino Tovar
+letra: El Canijo
 modalidad: Chirigota
 cejilla: 2
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/ricasymaduras2.jpeg
