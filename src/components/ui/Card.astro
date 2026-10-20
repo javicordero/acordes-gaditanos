@@ -76,7 +76,7 @@ musicaNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.ad
       unoptimized
     />
     <header class='card-header'>
-      <span class='badge badge--pieza' data-pieza-type={piezaType}>{piezaDisplay}</span>
+      <span class='badge badge--pieza' data-pieza-type={piezaType} data-fit-text data-fit-parent data-fit-min='8'>{piezaDisplay}</span>
     </header>
     <span class='card-year'>{year}</span>
   </figure>
@@ -162,10 +162,12 @@ musicaNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.ad
     position: absolute;
     bottom: 10px;
     left: 4px;
+    right: 4px;
     z-index: 0;
   }
 
   .badge {
+    display: inline-block;
     font-family: 'Roboto Mono', monospace;
     font-weight: 700;
     letter-spacing: 1px;
@@ -177,7 +179,7 @@ musicaNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.ad
     font-size: 0.7rem;
     line-height: 1.1;
     white-space: nowrap;
-    max-width: none;
+    max-width: 100%;
   }
 
   .badge--pieza {

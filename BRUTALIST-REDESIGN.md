@@ -82,13 +82,16 @@ aquí antes de aplicarlo.
 ### 3.1 Tarjeta de acorde — `ui/Card.astro`
 Blanca/oscura, borde 2px, sombra dura 6px. Imagen 220px (180px móvil). Badge de pieza
 con color plano y borde; año en sello ámbar arriba. Cuerpo: agrupación en Roboto Mono 700
-mayúsculas y autores en Roboto Mono. Hover: desplazamiento + sombra ámbar.
+mayúsculas y autores en Roboto Mono. Hover: desplazamiento + sombra ámbar. El badge de
+pieza ajusta su tamaño con `utils/FitTextInit.astro` para no salirse del ancho de la
+tarjeta.
 
 ### 3.2 Tarjeta de autor — `ui/AutorCard.astro`
 Variante editorial para diferenciarla de las de acorde:
 - Fondo ámbar fijo, tinta `--on-bright-color`.
 - Sin sombra: el borde negro de 2px la separa del bloque navy.
 - Nombre en Roboto Mono 700, sin mayúsculas, banda compacta (padding 6px 8px).
+- El nombre se autoajusta con `utils/FitTextInit.astro` para evitar saltos de línea.
 - Foto a color, sin filtros.
 - Sin sello de tipo (el tipo queda en el `aria-label`).
 
@@ -116,7 +119,7 @@ para que el mensaje tenga espacio desde el principio.
 ### 3.7 Enlaces
 Color `--link-color`, subrayado grueso (2px) y `text-underline-offset: 3px`. En hover,
 fondo ámbar o subrayado ámbar. Nunca quitar el foco visible. En la lista de coplas
-(`/lista`) los enlaces van sin subrayado y conservan el fondo ámbar al hover.
+(`/lista`) los enlaces van sin subrayado y sin cambio al hover.
 
 ### 3.8 Callouts
 Borde 2px, radio 0, sin sombra. Badge rectangular. Fondo `--callout-bg`.
@@ -281,6 +284,8 @@ fuera el admin local (gitignored), los formateadores ocultos y los componentes s
 - **20/10/2026** — Se descarta el ancho mínimo de LETRA/MÚSICA: la separación vuelve a
   ser natural aunque los autores no queden alineados entre sí.
 - **20/10/2026** — Las barras de los títulos de la columna derecha pasan de 2px a 4px.
+- **20/10/2026** — Se añade `FitTextInit`: los badges de pieza y los nombres de autor
+  reducen su tamaño para caber en una línea sin salirse de la tarjeta.
 - **20/10/2026** — El título de la ficha pasa a mostrar “$pieza $agrupación” y adopta el
   estilo de los títulos de sección: Roboto Mono 700, 1.6rem en escritorio (1.25rem en
   móvil) y barra ámbar de 6px (4px en móvil) al 95%.

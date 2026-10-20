@@ -1,0 +1,67 @@
+<script is:inline>
+  (() => {
+    const SELECTOR = '[data-fit-text]';
+    let resizeTimer;
+
+    function fit(el) {
+      if (!(el instanceof HTMLElement)) return;
+
+      const min = parseFloat(el.dataset.fitMin || '10');
+      el.style.fontSize = '';
+      el.style.whiteSpace = 'nowrap';
+
+      const style = getComputedStyle(el);
+      let size = parseFloat(style.fontSize);
+      if (!size) return;
+
+      const borderX =
+        (parseFloat(style.borderLeftWidth) || 0) +
+        (parseFloat(style.borderRightWidth) || 0);
+      const maxWidth = el.hasAttribute('data-fit-parent')
+        ? (el.parentElement?.clientWidth || 0)
+        : el.clientWidth;
+      if (!maxWidth) return;
+
+      // scrollWidth incluye el padding del badge; el borde va aparte.
+      const budget = maxWidth - borderX - 1;
+
+      if (el.scrollWidth > budget) {
+        size = Math.max(min, (size * budget) / el.scrollWidth);
+        el.style.fontSize = `${size}px`;
+      }
+
+      let guard = 0;
+      while (el.scrollWidth > budget && size > min && guard < 24) {
+        size = Math.max(min, size - 0.25);
+        el.style.fontSize = `${size}px`;
+        guard++;
+      }
+    }
+
+    function fitAll() {
+      document.querySelectorAll(SELECTOR).forEach(fit);
+    }
+
+    function schedule() {
+      requestAnimationFrame(fitAll);
+    }
+
+    function onResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(schedule, 120);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', schedule, { once: true });
+    } else {
+      schedule();
+    }
+
+    document.addEventListener('astro:page-load', schedule);
+    window.addEventListener('resize', onResize, { passive: true });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(schedule).catch(() => {});
+    }
+  })();
+</script>
