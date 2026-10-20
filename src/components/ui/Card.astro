@@ -53,11 +53,12 @@ function autorLink(tipo: 'letra' | 'musica', idx: number) {
   return tipo === 'letra' ? `/autor/letra/${s}` : `/autor/musica/${s}`;
 }
 
-// Combinar autores de letra y música, deduplicando por nombre
+// Combinar autores: primero música y después letra. Si alguien firma ambas,
+// se queda como música para que su enlace lleve a su página de música.
 const seenAutores = new Set();
 const autoresCombinados: { nombre: string; tipo: 'letra' | 'musica' }[] = [];
-letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add(n); autoresCombinados.push({ nombre: n, tipo: 'letra' }); } });
 musicaNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add(n); autoresCombinados.push({ nombre: n, tipo: 'musica' }); } });
+letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add(n); autoresCombinados.push({ nombre: n, tipo: 'letra' }); } });
 ---
 
 <article class='card' aria-labelledby={headingId}>
