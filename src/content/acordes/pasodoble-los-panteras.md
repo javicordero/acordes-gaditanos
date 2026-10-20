@@ -22,7 +22,7 @@ yo me paso por los huevos el carnaval.
                                 <a>Mi7</a>        <a>Lam7</a>
 Yo no soy carnavalero porque no aguanto las normas
                     <a>Do</a>
-pero canto porque de esta forma 
+pero canto porque de esta forma
 <a>Si7</a>                <a>Mim</a>
 pido tierra y libertad.
        <a>Re</a>           <a>Do</a>               <a>Re7</a>

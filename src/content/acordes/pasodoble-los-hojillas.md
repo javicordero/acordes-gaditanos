@@ -30,7 +30,7 @@ Hojilla, hojilla, hojilla
 Llevo la hoji, hoji, hoji, hoji, hojilla
                      <a>Sol7</a>
 Clavada ay cual plumerito
-                                                 <a>Do</a> 
+                                                 <a>Do</a>
 El carnaval me da la vida desde que era mu chiquetito
 <a>Do7</a>   <a>Fa</a>
 Ay marisma, yo necesito marisma

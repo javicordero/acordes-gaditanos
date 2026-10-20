@@ -11,16 +11,16 @@ video: 'https://www.youtube.com/embed/vmgeVynOI-U'
 fraseClave: "Si algo tiene claro esta"
 ---
 <pre>
-<a>LaM7</a>           <a>Mi</a>            <a>Fa#m</a> 
-Si algo tiene claro esta alcaldesa 
+<a>LaM7</a>           <a>Mi</a>            <a>Fa#m</a>
+Si algo tiene claro esta alcaldesa
          <a>Do#m7</a>      <a>Re</a>         <a>Si7</a>            <a>Mi</a>
 es que encima de su mesa nunca tendrá para un pleno
-<a>LaM7</a>               <a>Mi</a>        <a>Fa#m</a>  
-La traición que al barrio supondría 
+<a>LaM7</a>               <a>Mi</a>        <a>Fa#m</a>
+La traición que al barrio supondría
        <a>Do#m7</a>       <a>Re</a> <a>Si7</a>           <a>Mi</a>
 de prohibir jabonería al gitano nazareno
 <a>Re</a>
-Y negar los ojos que se empañan 
+Y negar los ojos que se empañan
                    <a>Do#m</a>
 por la calle de la Palma viendo al Cristo más moreno
 <a>Re</a>                                               <a>Mi</a>
@@ -40,7 +40,7 @@ Y aunque se hayan caio y las sentencie Pilatos
 Las columnas se han partido para que no falte un plato
 (Subida de tono)
 <a>Do#M7</a>          <a>Fa7</a>            <a>La#m</a>
-Si algo tiene claro esta alcaldesa 
+Si algo tiene claro esta alcaldesa
         <a>Fam</a>               <a>Fa#</a>                     <a>Sol#</a>
 es que no hay sitio en su mesa ni dentro de sus cajones
                   <a>Do#M7</a> <a>Fa#</a>  <a>Sol#</a>           <a>Do#M7</a>

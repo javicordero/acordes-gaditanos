@@ -45,7 +45,7 @@ y que esta España nuestra que es un gran burdel
                                  <a>Mi7</a>
 de izquierda a derecha y casos gurtel,
                <a>Sim7</a>
-que con sus comisiones y sus ventas de acciones 
+que con sus comisiones y sus ventas de acciones
                   <a>Mi7</a>
 y sus cuentas corrientes, sus trajes y sus millones
                                <a>LaM7</a>

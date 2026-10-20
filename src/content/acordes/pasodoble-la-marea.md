@@ -18,7 +18,7 @@ Si vengo, no vengo ni yo lo comprendo
 Si pienso en faltarte
              <a>Si7</a>               <a>Fa#m7</a>   <a>Si7</a>     <a>Mi</a>
 No vengo, sí vengo ¿Qué músico tengo para enamorarte?
-         <a>Do#m7</a>     
+         <a>Do#m7</a>
 La indecisión la tremenda indecisión
                   <a>Sol#m7</a>
 que flotaba a la deriva.
@@ -28,7 +28,7 @@ Y la tensión de si vengo o de sino
 Rebuscando en mi destino alguna cosa positiva.
 <a>Lam7</a>                <a>Mi</a>
 Y entonces fue "La marea".
-               <a>Fa#m7</a>    <a>Si7</a>       <a>Mi</a> 
+               <a>Fa#m7</a>    <a>Si7</a>       <a>Mi</a>
 Quien me hizo sentir que aún sigo viva
      <a>Si7</a>                   <a>Mi</a>
 Vuelvo igual que vuelve febrero
@@ -46,7 +46,7 @@ Vuelvo con olas de papelillos
 Pa regalarte nuestro estribillo
                           <a>LaM7</a>
 Y conquistarte otro añito más
- 
+
 Y a mi manera con mi comparsa y con esta música
        <a>Si7</a>          <a>Sol#m7</a>
 Tan chulita y chirigotera
@@ -55,12 +55,12 @@ Con el recuerdo de esa maestra que me enseñó
               <a>Fa#m7</a>
 cantando a mi vera
            <a>Si7</a>                <a>Mi</a>   <a>Mi7</a>
-Y con el anhelo de otras compañeras 
+Y con el anhelo de otras compañeras
           <a>Lam</a>                                <a>Mi</a>
 Y en el concurso con mi comparsa otra vez me tienes
          <a>Do#7</a>                  <a>Fa#m7</a>
 Que yo compito con todo el que viene
-       <a>Si7</a> 
+       <a>Si7</a>
 Y basta ya de diferenciar a las de hombres y de mujeres
          <a>Fa#m7</a>            <a>Si7</a>               <a>Mi</a>
 Somos comparsa y aquí nos tienes y aquí nos tienes

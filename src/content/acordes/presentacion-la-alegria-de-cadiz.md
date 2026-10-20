@@ -16,7 +16,7 @@ fraseClave: Nací gaditano En la orilla de la playa
 Nací gaditano En la orilla de la playa
    <a>Fa</a>                        <a>Sol</a>
 Una ola vino y tuve el primer resbalón
-<a>Do</a>                       <a>Mim</a> 
+<a>Do</a>                       <a>Mim</a>
 Y aprendí de niño que en el juego de la vida
     <a>Fa</a>                      <a>Sol</a>
 Levantarse si te caes era la única opción
@@ -50,7 +50,7 @@ Y con dos golpes de age alivio la cruz de tu calvario
 Ando por la vida con una vela encendida
 <a>Rem</a>                               <a>Sol7</a>
 Por si entre lo oscuro de tu mundo necesitas luz algún día
-<a>Fa</a>           <a>Mim</a>             <a>Mi7</a>          <a>Lam</a> 
+<a>Fa</a>           <a>Mim</a>             <a>Mi7</a>          <a>Lam</a>
 Busco lo positivo en los problemas de mi gente
 <a>Fa</a>                                                 <a>Sol</a>
 No importa cómo me llame me estas dibujando en tu mente
@@ -88,7 +88,7 @@ Pa que yo no pueda ayudarte en algo
 Siempre la risa presente que más maravilla no hay
                       <a>Sol7</a>
 Que cuando yo me vaya digan
-                         <a>Do</a>  
+                         <a>Do</a>
 Ole ahí va la alegría de Cádiz
     <a>Fa</a>    <a>Sol</a>      <a>Do</a>          <a>Fa</a>      <a>Sol</a>    <a>Do</a>
 Ahí va la alegría de Cádiz ahí va la alegría de Cádiz

@@ -20,12 +20,12 @@ Y que el puesto lo volveré a poné el domingo que viene
 A pesar de que de estas cosas no he vendido ninguna
                <a>Fa</a>                                 <a>Sol7</a>
 Pero es que yo tengo el horario de siete y media a una
-           <a>Fa</a>                      
-Así que sintiéndolo en nuestra alma 
+           <a>Fa</a>
+Así que sintiéndolo en nuestra alma
           <a>Fam</a>                            <a>Fa</a>  <a>Re7</a>   <a>Sol7</a>
 vamos a dejarno lo que nos queda en el final de popurrí
 <a>Do</a>                                            <a>Mi7</a>
-Y antes de que me despida quiero disirte una cosa 
+Y antes de que me despida quiero disirte una cosa
 <a>Lam</a>                     <a>La7</a>
 No te creas que mi vida es toda color de rosa
 <a>Rem</a>
@@ -39,40 +39,40 @@ Ni estoy cada domingo con mis tiestos al pie del cañón
              <a>Rem</a>               <a>Fam</a>                <a>Sol7</a>
 Dejándome la vida, mi tacita quería, en el número dos
 <a>Do</a>
-Si te da para un paseo y en la plaza te veo 
+Si te da para un paseo y en la plaza te veo
     <a>Mi7</a>         <a>Lam</a>
 en nuestra esquinita
 <a>Fa</a>                                       <a>Re7</a>
-Donde, además de venderte las cosas del puesto, 
+Donde, además de venderte las cosas del puesto,
           <a>Sol7</a>
 regalo coplillas
-<a>Do</a>                                        
-Cantando coplas por Cai, sabiendo que hay 
+<a>Do</a>
+Cantando coplas por Cai, sabiendo que hay
     <a>Mi7</a>     <a>Lam</a>
 el tiempo infinito
 <a>Fa</a>                                  <a>Re7</a>           <a>Sol7</a>
 Con mis amigos cantando, me dejo la via en este ratito
          <a>Do</a>                               <a>Mi7</a>
-Que cada año que yo vengo aquí a cantarte, 
+Que cada año que yo vengo aquí a cantarte,
          <a>Lam</a>
 no se me quita lo que siento en estas tablas
-          <a>Fa</a>                            
-Pasan los años y creo que más debo darte 
+          <a>Fa</a>
+Pasan los años y creo que más debo darte
    <a>Re7</a>           <a>Sol7</a>
 tacita de mis entrañas
 <a>(Sorda)</a>
-Los papelillos están lloviendo por febrero,  
+Los papelillos están lloviendo por febrero,
 
 Paquito y Willy están cantando desde el cielo
-        <a>Fa</a>                              
-Dos coloretes, serpentinas y un plumero, 
+        <a>Fa</a>
+Dos coloretes, serpentinas y un plumero,
      <a>Re7</a>            <a>Sol7</a>
 mi Cádiz cuanto te quiero
  <a>Do</a>      <a>Mi7</a> <a>Lam</a>      <a>Fa</a>                <a>Re7</a>     <a>Sol7</a>
 Tututututu tutututuutu tutututuuututu tutututuutututu
            <a>Fa</a>             <a>Sol7</a>              <a>Do</a>
-Si lo que buscas es un bordón po hazme un redoble 
-                  <a>Sol7</a>                        <a>Fa</a>   
+Si lo que buscas es un bordón po hazme un redoble
+                  <a>Sol7</a>                        <a>Fa</a>
 a ritmo de un pasodoble Aquí en la plaza nos vemos,
  <a>Sol</a>                  <a>Do</a>
 aquí en la plaza nos vemos

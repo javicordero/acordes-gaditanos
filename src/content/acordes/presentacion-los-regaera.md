@@ -22,33 +22,33 @@ Agüitas con mil te quieros pa ti por si no lloviera
    <a>Fa</a>                <a>Mi7</a>  <a>Lam</a> <a>Sol</a>  <a>Fa</a>  <a>Sol7</a>
 pa ti por si no lloviera.
 <a>Do</a>                           <a>Mi7</a>
-Un loquito jardinero que se muere y canta 
-           
+Un loquito jardinero que se muere y canta
+
 por la tierra de su vía,
 <a>Lam</a>                  <a>Sol</a>                   <a>Fa</a>
 Siempre mirando pal cielo, por si algo te falta,
           <a>Sol7</a>
 maldita sequía.
 <a>Do</a>                                   <a>Sol</a>
-Todo Cádiz mi jardín, todo Cádiz de color, 
+Todo Cádiz mi jardín, todo Cádiz de color,
                    <a>Mi7</a>
 hasta que yo me volviera
-<a>Lam</a>             <a>Sol</a>                   <a>Fa</a> 
-Loco loquito por ti, loco loquito del to 
+<a>Lam</a>             <a>Sol</a>                   <a>Fa</a>
+Loco loquito por ti, loco loquito del to
               <a>Mi7</a>   <a>Fa</a> <a>Mi7</a>
 y como una regaera.
 
 <a>Lam</a>
-Yo regaré tus murallas bonitas, 
+Yo regaré tus murallas bonitas,
 
 yo regaré tus playitas y arena,
-                                       
-Y yo te riego Tacita de agüita bendita 
+
+Y yo te riego Tacita de agüita bendita
                 <a>Sol</a>  <a>Fa</a> <a>Sol</a>
 que apague tus penas.
 <a>Do</a>                <a>Sol</a>                   <a>Fa</a>
-Y así cantando te riegan los locos que llevan 
-              <a>Mi7</a> 
+Y así cantando te riegan los locos que llevan
+              <a>Mi7</a>
 a Cai en sus venas.
 <a>Rem</a>                  <a>Lam</a>
 Una vez soñé contigo, tacita de mis amores,
@@ -58,8 +58,8 @@ Se volvieron tus ladrillos como ramito de flores
 Una vez soñé contigo, tacita de mis amores,
 <a>Sol</a>                      <a>Mi7</a>               <a>Lam</a>
 Se volvieron tus ladrillos como ramito de flores
-     <a>Sol</a>        <a>Fa</a>  <a>Mi7</a>   <a>Lam</a>        <a>Sol</a>        
-De flores, de flores. De flores, de flores,  
-     <a>Fa</a>    <a>Mi7</a> <a>Lam</a> 
+     <a>Sol</a>        <a>Fa</a>  <a>Mi7</a>   <a>Lam</a>        <a>Sol</a>
+De flores, de flores. De flores, de flores,
+     <a>Fa</a>    <a>Mi7</a> <a>Lam</a>
 de flores
 </pre>

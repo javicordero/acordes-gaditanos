@@ -18,8 +18,8 @@ fraseClave: "Que sabrá la gente lo"
 Que sabrá la gente lo que yo te quiero playita de
      <a>La7</a>
 mis amores
-                                         <a>La7</a> 
-Que sabrá la gente lo que desde siempre fuiste 
+                                         <a>La7</a>
+Que sabrá la gente lo que desde siempre fuiste
      <a>Re</a>
 para mi
                              <a>Rem</a>

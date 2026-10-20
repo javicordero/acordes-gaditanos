@@ -36,7 +36,7 @@ Y todos los diamantes del fondo de la tierra
 Como si fueran coronas sobre nuestra cabeza caerán
 <a>Fa</a>                                     <a>Mi7</a>
 Y apagara en un océano el fuego de la guerra
-<a>Rem Mi7</a>  <a>Rem</a> <a>Mi7</a>  
+<a>Rem Mi7</a>  <a>Rem</a> <a>Mi7</a>
 Ahhh ahh    ahhh ahh
 
 
@@ -75,7 +75,7 @@ parias y sé que un día llegara
 
 
 
-<a>Lam Fa</a>  <a>Sol</a>         <a>Lam</a> <a>Fa</a>    <a>Sol</a>          
+<a>Lam Fa</a>  <a>Sol</a>         <a>Lam</a> <a>Fa</a>    <a>Sol</a>
 Tengo una duda compañero, a ver si alguien con
  <a>Lam</a> <a>Fa</a>      <a>Sol</a>       <a>Lam Fa</a> <a>Mi7</a>
 dinero sabe decirme porqué
@@ -87,7 +87,7 @@ abandona
 Se te retira la calma y te hace malvada persona
 <a>Lam</a> <a>Sol</a>  <a>Fa</a>  <a>Sol</a>        <a>Lam</a> <a>Sol</a> <a>Fa</a>        <a>Sol</a>
 Ricos y son pobres convencidos de que el llanto y
-<a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Sol</a>             <a>Lam</a> <a>Fa</a> <a>Mi7</a>  
+<a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Sol</a>             <a>Lam</a> <a>Fa</a> <a>Mi7</a>
 el olvido        nunca le retorcerán
 <a>Lam</a>                      <a>Sol</a>
 Y mientras los cuernos le salen como la mayor de
@@ -185,7 +185,7 @@ Que hagan ruido en la calle, que hagan ruido en la
 <a>Fa</a>
 vida
 <a>SimLa</a> <a>Sol</a>  <a>Sim</a> <a>La</a>  <a>Sol</a>
-Ahh ahh ahh ahh    ahh ahh   
+Ahh ahh ahh ahh    ahh ahh
 <a>Sim</a>   <a>La</a>       <a>Sol</a>   <a>Sim</a>     <a>La</a>        <a>Sol</a>
 Para que siga cantando contigo junto los dos
 <a>Sim</a>  <a>La</a>       <a>Sol</a>                        <a>Sim</a> <a>La</a>

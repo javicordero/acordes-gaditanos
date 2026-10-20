@@ -46,7 +46,7 @@ Mil veces quiso salir de aquella vida infeliz
          <a>Mi</a>                        <a>Do#7</a>
 Pero su fuerza se agotó con cada intento.
   <a>Lam7</a>                     <a>Si7</a>
-Y ahora cuando paso por la calle si me ve 
+Y ahora cuando paso por la calle si me ve
            <a>Mi</a>     <a>Do#7</a>               <a>Fa#m7</a>
 vuelve a guiñarme y grita desde la esquina,
                     <a>Si7</a>

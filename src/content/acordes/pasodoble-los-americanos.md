@@ -16,25 +16,25 @@ fraseClave: Hay amores que nacen en primavera
 ---
 
 <pre>
-<a>Mim</a>            <a>Si7</a>           <a>Mim</a> 
-Hay amores que nacen en primavera 
+<a>Mim</a>            <a>Si7</a>           <a>Mim</a>
+Hay amores que nacen en primavera
                    <a>Mi7</a>           <a>Lam</a>
 hay amores que estallan en carnavales
-<a>Re7</a>                          <a>Sol</a>    
-hay amores malditos pero inmortales 
+<a>Re7</a>                          <a>Sol</a>
+hay amores malditos pero inmortales
 <a>Do</a>           <a>Lam7</a>                 <a>Si7</a>
 y malditos amores que ojalá no hubieran
-                                           <a>Mim</a>  
-Y amores que se mueren y resucitan 
+                                           <a>Mim</a>
+Y amores que se mueren y resucitan
                          <a>Mi7</a>            <a>Lam7</a>
 que lo mismo cautivan que te desatan
 <a>Re7</a>                               <a>Sol</a>
-y si es verdad que hay amores que matan 
+y si es verdad que hay amores que matan
 <a>Do</a>               <a>Lam7</a>              <a>Si7</a>
 seguro no habrá nunca muerte más bonita
    <a>Mim</a>
 Pero hasta los amores ya se van con estos tiempos
-Y estos tiempos que saben de amores que son 
+Y estos tiempos que saben de amores que son
               <a>Re</a>
 más fuertes que el viento
                                                  <a>Do</a>
@@ -49,11 +49,11 @@ por lo menos ya la muerte no será de un mal de amores
 Pero el tiempo más grande que hay es el del amor si es
 <a>Do#7</a>    <a>Fa#m</a>
 amor infinito
-      <a>Si7</a>               <a>Fa#m</a>                <a>Si7</a>      
+      <a>Si7</a>               <a>Fa#m</a>                <a>Si7</a>
 y yo que lo tengo no lo cambio ni por otro amor ni por
      <a>Mi</a>
 un continente
-                                                   <a>Mi7</a> 
+                                                   <a>Mi7</a>
 no lo cambio porque en este mundo no hay nada más puro
             <a>La</a>
 que pueda encontrar
@@ -62,7 +62,7 @@ y aunque a veces me haga ser esclavo tampoco lo cambio
           <a>Si7</a>
 por mi libertad
       <a>La</a>                            <a>Mi</a>      <a>La</a>
-Si la muerte tiene que llegarme un día a Dios le pido 
+Si la muerte tiene que llegarme un día a Dios le pido
                                                   <a>Si7</a>
 que me llegue entre sus brazos que si muero por amor
                     <a>Mi</a>

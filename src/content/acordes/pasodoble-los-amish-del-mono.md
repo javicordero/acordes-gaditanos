@@ -22,7 +22,7 @@ Supuestamente es el la única especie que es racional
 <a>Si7</a>                               <a>Mim</a>
 Y es lo que nos dista de un ser animal.
                                 <a>Re</a>
-Pero una vez el hombre tuvo un amigo 
+Pero una vez el hombre tuvo un amigo
                                 <a>Do</a>
 De otra especie que le puso el destino
                    <a>Lam7</a>                <a>Si7</a>
@@ -32,7 +32,7 @@ Amor que está al alcance pri vi legiado.
                                         <a>Re</a>
 De quién sabe apreciar lo que está a su lado
                              <a>Do</a>
-Incondicionalmente sin nada cambio, 
+Incondicionalmente sin nada cambio,
                      <a>Lam7</a>             <a>Re7</a>
 Pero que siempre el hombre se lo ha pagado
           <a>Mim</a>
@@ -46,7 +46,7 @@ Por carecer de razón y por hablar con el corazón
         <a>Lam7</a>             <a>Do</a>                 <a>Si7</a>
 Lo percibió como un inferior para ser maltratado.
 <a>Lam7</a>
-Cuando Dios forma cada ser en sus inicios, 
+Cuando Dios forma cada ser en sus inicios,
 <a>Mim</a>
 Al más macabro le entregó inteligencia,
 <a>Si7</a>
@@ -68,7 +68,7 @@ Cada gota de la sangre que él mismo hizo derramar.
 
 Viendo a tanto hijo de puta haciendo daño,
         <a>Do</a>       <a>Si7</a>       <a>Mim</a>
-Salir absuelto ante tanto crimen. 
+Salir absuelto ante tanto crimen.
                          <a>Re</a>     <a>Do</a>                  <a>Si7</a>
 A mí que alguien me lo explique la justicia dónde está
 <a>Lam7</a>                          <a>Si7</a>     <a>Mim</a>
@@ -77,11 +77,11 @@ En las manos de los hombres dejé te creer.
 Y hace ya tiempo que perdí la fe en esta
  <a>Si7</a>           <a>Mim</a> <a>Mi7</a>
 Frívola humanidad.
-<a>Lam7</a>  
+<a>Lam7</a>
 Permite que dude si fue el hombre quien creó
              <a>Mim</a>                             <a>Si7</a>
 Dios a su semejanza porque yo solo tendré esperanza
-<a>Lam7</a>                    <a>Do</a> 
+<a>Lam7</a>                    <a>Do</a>
 Mientras que sienta el amor a través de
    <a>Si7</a>           <a>Mim</a>
 Los ojos de un animal.

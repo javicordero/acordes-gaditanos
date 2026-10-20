@@ -16,7 +16,7 @@ He esperado un año entero entre carretera y manta
                  <a>Lam</a>                       <a>Rem</a>
 A que llegara febrero y es tan tétrica la estampa
                       <a>Do</a>
-Que no hay luces de colores, ni disfraces por la 
+Que no hay luces de colores, ni disfraces por la
 <a>Rem</a>
 calle
                      <a>Do</a>         <a>Sib</a>  <a>La7</a>     <a>Rem</a>
@@ -26,15 +26,15 @@ Y con la cara partía he partio la comparsa
 <a>Rem</a>                  <a>Do</a>        <a>Sib</a>         <a>La7</a>
 Y con los que me querían hemos formado una banda
                     <a>Rem</a>        <a>Do</a>
-Tan callejera tan urbana, tan gaditana 
+Tan callejera tan urbana, tan gaditana
           <a>Rem</a>              <a>Do</a>
-Tan desobediente, tan descarada 
+Tan desobediente, tan descarada
        <a>Solm</a>          <a>La7</a>          <a>Rem</a>
 Tan irreverente, tan libre y tan pagana
                 <a>Solm</a>                      <a>La7</a>
 Pa cantarte tierra mía cuando a mí me dé la gana
 <a>Rem</a>        <a>Do</a>         <a>Sib</a>        <a>La7</a>         <a>Rem</a>
-Parapapapa Parapapapa Parapapapa Parapapapa papa 
+Parapapapa Parapapapa Parapapapa Parapapapa papa
                      <a>Do</a>                <a>Rem</a>
 Que, aunque no haya carnaval como yo te amo igual
                   <a>Do</a>              <a>Sib</a>       <a>La7</a>
@@ -46,7 +46,7 @@ Prefiero ser clandestino, mucho antes que sumiso
 <a>Rem</a>                  <a>Do</a>         <a>Sib</a>        <a>La7</a>
 Prefiero ser clandestino, mucho antes que sumiso
                      <a>Rem</a>
-Que la espada y la pared clávamela entre las 
+Que la espada y la pared clávamela entre las
    <a>Do</a>
 costillas
                        <a>Sib</a>               <a>La7</a>
@@ -54,10 +54,10 @@ Porque elegí morir de pie a cantarte de rodillas
                      <a>Rem</a>                    <a>Do</a>
 Será que soy como mi tierra llenito de cardenales
                        <a>Sib</a>
-Y por mas palos que me dan y me dan, y me dan y me 
+Y por mas palos que me dan y me dan, y me dan y me
         <a>La7</a>
 dan y me dan
 <a>Sib</a>  <a>La7</a>        <a>Rem</a>     <a>Sib</a>  <a>La7</a>           <a>Rem</a>  <a>Sib</a>
-Me vuelvo más indomable, me vuelvo más indomable me 
+Me vuelvo más indomable, me vuelvo más indomable me
  <a>La7</a>      <a>Rem</a>
 vuelvo mas indomable</pre>

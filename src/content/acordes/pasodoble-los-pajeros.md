@@ -30,9 +30,9 @@ Tierra de sal y de espumas
 que embriaga la bruma tu hermosa bahía,
 <a>Sol7</a>                <a>Do</a>        <a>Fa</a>          <a>Mi7</a>
 la que le meció su cuna al cante por alegrías.
-          <a>Re</a>    <a>Mi7</a>             <a>La</a>      
+          <a>Re</a>    <a>Mi7</a>             <a>La</a>
 La que el navegante por ella suspira
-            <a>Do#m7</a>             <a>Sim7</a>          
+            <a>Do#m7</a>             <a>Sim7</a>
 cuando palpitante ve su bola negra
         <a>Mi7</a>    <a>La</a>
 en la Torre Tavira.

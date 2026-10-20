@@ -16,23 +16,23 @@ fraseClave: He guardao' para el último tema un atardecer en La
 ---
 <pre>
        <a>Sol</a>
-He guardao' para el último tema 
+He guardao' para el último tema
                      <a>Mi7</a>
 un atardecer en ña Caleta
-            <a>Lam7</a>                          
+            <a>Lam7</a>
 Que es la herencia que llevo en mis venas
        <a>Do</a>                               <a>Re7</a>
 El compás de mi padre que marcaban sus baquetas.
        <a>Sol</a>         <a>Re7</a>      <a>Sol</a>
-He guardao' para el último tema 
+He guardao' para el último tema
       <a>Si7</a>                  <a>Do</a>
 El mayor de todos mis te quiero
          <a>Dom7</a>                                  <a>Sol</a>
-Hoy te traigo para ti la melodía Que es la alegría, 
+Hoy te traigo para ti la melodía Que es la alegría,
 <a>Mi7</a>          <a>Lam7</a> <a>Re7</a>              <a>Sol</a>
 que sale del alma, que suena a mi abuelo.
      <a>Sol</a>
-Nos vemos en El Corralón también en los callejones, 
+Nos vemos en El Corralón también en los callejones,
         <a>Mim</a>
 te cantaré la presentación
                                 <a>Do</a>
@@ -46,28 +46,28 @@ y en la Cruz Verde lo cantaré
                                       <a>Do</a>
 Las cuerdas de mi guitarra por tus rincones desangraré
                                         <a>Re</a>
-Que no hay forma más bonita pa demostrarte 
+Que no hay forma más bonita pa demostrarte
 
 Cai mi querer
           <a>Sol</a>
-Será que tengo el acento de plata 
+Será que tengo el acento de plata
              <a>Sim</a>
 la piel de escamas alimentada con sal
            <a>Do</a>
-Tengo mil nanas cantadas por tanguillos 
+Tengo mil nanas cantadas por tanguillos
                    <a>Re7</a>                          <a>Mi7</a>
 desde que era un chiquillo me acunaban en tu mar.
-            <a>La</a>                      
+            <a>La</a>
 Será que cuando al llegar febrerillo
-       <a>Do#m</a> 
+       <a>Do#m</a>
 es primavera en mi bella ciudad
              <a>Re</a>
-Que por mis venas navegan papelillos 
+Que por mis venas navegan papelillos
                   <a>Mi7</a>
 y un millón de coplillas donde premian la amistad.
 <a>La</a> <a>Do#m</a> <a>Re</a> <a>Mi7</a>
-  <a>Re</a>         <a>Mi7</a>           <a>La</a> 
-Será que gaditano me parieron 
+  <a>Re</a>         <a>Mi7</a>           <a>La</a>
+Será que gaditano me parieron
   <a>Sim7</a>               <a>Mi7</a>                     <a>La</a>
 Y me sobran los te quiero Pa cantarte en Carnaval
 </pre>

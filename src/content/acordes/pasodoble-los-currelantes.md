@@ -60,7 +60,7 @@ voy a intentar ser tu maestro y camarada.
 No tengo un vientre donde tu cuerpo germine
                 <a>Fa#m7</a> <a>Fa#7</a>         <a>Si7</a>
 pero casi ya te quieeero más que a nada.
-<a>Lam</a>             <a>Mi</a>          <a>Do#7</a>        <a>Fa#m7</a>  
+<a>Lam</a>             <a>Mi</a>          <a>Do#7</a>        <a>Fa#m7</a>
 Nacer en este lugar va a obligarte a pelear
    <a>Si7</a>              <a>Mi</a>
 a sudor, lágrima y sangre.

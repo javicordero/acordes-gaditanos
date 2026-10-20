@@ -24,12 +24,12 @@ Yo no sé pa que dice el cojone que va a descansar
 Todo el mundo a sus puestos, preparen las maquinarias
 <a>Sim</a>
 Y venga a partir de ahora
- 
+
 un montón de horas extraordinarias
        <a>Sol</a>                           <a>Re</a>
 Veinticuatro horas al día los siete días de la semana
       <a>Mi</a>
-No te veas la que nos queda, 
+No te veas la que nos queda,
     <a>La</a>
 más horas que a la campana
 <a>Re</a>                          <a>Sim</a>
@@ -43,15 +43,15 @@ Y vamos a arrancar motores que revienten las calderas
 <a>Sol</a>             <a>La</a>         <a>Fa#7</a>          <a>Sim</a>
 Quiero más adrenalina no quiero a nadie parao
 <a>Sol</a>                                <a>Mim</a>
-Hagamos una comparsa que huela a Cádiz 
+Hagamos una comparsa que huela a Cádiz
                  <a>Fa#7</a>
 por los cuatro costaos
 <a>Sim</a>                             <a>La</a>
-Y fabricar cientos de miles de coplas 
+Y fabricar cientos de miles de coplas
                      <a>Sol</a>                       <a>Fa#7</a>
 de las que solo unas pocas luego salen por su boca
 <a>Sim</a>                             <a>La</a>
-Y maquinar cientos de miles de ideas 
+Y maquinar cientos de miles de ideas
                         <a>Sol</a>
 que dan vueltas en la azotea
       <a>Mim</a>       <a>Sol</a>         <a>Fa#</a>
@@ -64,7 +64,7 @@ Si la niña de mis ojos me está esperando otra vez
 Y vamos dejarnos el alma, poned los cinco sentíos
                       <a>Sol</a>                    <a>Fa#7</a>
 Cantadle que por la espalda te entre un escalofrió
- <a>Sol</a>                     <a>La</a>  
+ <a>Sol</a>                     <a>La</a>
 Y mezclando melodía y poesía,
     <a>Re</a>                    <a>Sim</a>
 ironía, sentimiento y rebeldía
@@ -72,10 +72,10 @@ ironía, sentimiento y rebeldía
 Aquí arriba es donde nace la comparsa
              <a>Fa#</a>     <a>Sol</a>
 y para que usted lo vea
-<a>Fa#7</a>               <a>Sim</a> <a>Sol</a> 
-Bienvenido a la Azotea, 
-<a>Fa#7</a>               <a>Sim</a> <a>Sol</a> 
+<a>Fa#7</a>               <a>Sim</a> <a>Sol</a>
+Bienvenido a la Azotea,
+<a>Fa#7</a>               <a>Sim</a> <a>Sol</a>
 bienvenido a la Azotea,
-<a>Fa#7</a>               <a>Sim</a>  
+<a>Fa#7</a>               <a>Sim</a>
 bienvenido a la Azotea.
 </pre>

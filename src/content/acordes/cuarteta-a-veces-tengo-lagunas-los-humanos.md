@@ -18,7 +18,7 @@ A veces tengo lagunas… Pierdo el hilo. No sé quién soy.
 Todo se vuelve lento. Miro al vacío.
             <a>Sol</a>
 ¿Qué día es hoy?
-                 <a>Do</a>  
+                 <a>Do</a>
 Todo es una niebla espesa.
               <a>Mim</a>       <a>Fa</a>   <a>La7</a>
 Las cosas juegan al esconder.
@@ -28,7 +28,7 @@ El espejo miente, miente.
 Mi sonrisa se fue.
 <a>Fa</a>
 Me hago fetal, pequeño,
-                     <a>Mim</a>      
+                     <a>Mim</a>
 en la placenta del vientre universal.
     <a>Rem</a>             <a>Fa</a>             <a>Mi7</a>
 Se sientan a mi lado mis amigos invisibles.
@@ -52,7 +52,7 @@ Traigo el disfraz de marioneta, y bailo con mi princesa,
 aunque ya no esté conmigo.
 
 Su nombre era… Dios mío.
-               <a>Fam</a>                        <a>Sol</a> 
+               <a>Fam</a>                        <a>Sol</a>
 ¿Quién soy? Me siento. Todo es lento, sombrío.
                <a>Fa</a>
 Y me vuelvo pequeño… Mirando.

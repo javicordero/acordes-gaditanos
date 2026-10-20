@@ -18,8 +18,8 @@ conozco Cádiz entero por su silueta.
 conozco Cádiz entero por su silueta.
 <a>Lam</a>                <a>Sol</a>                     <a>Fa</a>
 De las entrañas del mar donde se funde el sol
-                <a>Mi7</a>   
-Encendiendo tus aguas, 
+                <a>Mi7</a>
+Encendiendo tus aguas,
 <a>Lam</a>                <a>Sol</a>              <a>Fa</a>
 con el ímpetu del viento Estos caballeros
 
@@ -41,15 +41,15 @@ Lo juré desde la cuna mi caballo de batalla
                                    <a>Mi7</a>
 Pelearme con el mundo porque como tú ninguna.
                <a>Lam</a>
-Caballero del honor porque no hay honor más grande  
+Caballero del honor porque no hay honor más grande
                <a>Sol</a>                          <a>Fa</a>
-Que sentirse gaditano, cuando defiendan lo tuyo  
+Que sentirse gaditano, cuando defiendan lo tuyo
                                              <a>Mi7</a>
 Con vergüenza y con orgullo y el corazón en la mano.
 <a>Lam</a>                <a>Sol</a>                     <a>Fa</a>
 De las entrañas del mar donde se funde el sol
-                <a>Mi7</a>   
-Encendiendo tus aguas, 
+                <a>Mi7</a>
+Encendiendo tus aguas,
 <a>Lam</a>                <a>Sol</a>              <a>Fa</a>
 con el ímpetu del viento Estos caballeros
 

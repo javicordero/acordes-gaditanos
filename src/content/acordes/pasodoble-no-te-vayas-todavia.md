@@ -22,8 +22,8 @@ Este era de los que votaba A Rajoy pero juraba
 Que votaba a Podemos ay, Manuel estaba tan tieso
                   <a>Lam</a>
 Que el en un Mercedes No se va a enterrar
-            <a>Si7</a> 
-Porque hoy en día las funerarias tienen 
+            <a>Si7</a>
+Porque hoy en día las funerarias tienen
       <a>MIm</a>                      <a>Si7</a>
 unos precios Y a él con su presupuesto
         <a>MIm</a>

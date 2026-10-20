@@ -17,21 +17,21 @@ Cuando me acaricia el sol  y se alegra mi ventana
             <a>Sol</a>       <a>Re</a>        <a>Do9</a>
 Con el agua de tu amor vas regando mis mañanas
             <a>Lam</a>
-Otra vez la vida que comienza a florecer y yo 
+Otra vez la vida que comienza a florecer y yo
       <a>Mim</a>               <a>Re</a>                     <a>Do</a>
 siempre aquí contigo cantándote al oido mi canción
       <a>Lam</a>
-Yo no tengo alas pa volar al arcoíris 
+Yo no tengo alas pa volar al arcoíris
                   <a>Re</a>
 pero tengo sus colores
       <a>Lam</a>                                   <a>Do</a>
-Y con ellos la fortuna de entregarte la alegría 
+Y con ellos la fortuna de entregarte la alegría
                     <a>Si7</a>
 y que olvides tus dolores
            <a>Do9</a>           <a>Mim</a>
 Y aunque a veces frágil, cuidao con ella
       <a>Do</a>         <a>Lam7</a>     <a>Si7</a>
-No se puede arrancar una flor 
+No se puede arrancar una flor
                       <a>Mim</a>
 sin molestar a una estrella
 <a>Mim</a>
@@ -59,10 +59,10 @@ Alfombras de mis colores que con tu vino se riega
    <a>Sol</a>            <a>Si7</a>        <a>Mim</a>
 Lo bebo por mis raíces en la sabia de mis venas
   <a>Do</a>
-Me rescatas del invierno y me lo das todo 
+Me rescatas del invierno y me lo das todo
                    <a>Si7</a>
 aunque nunca te lo pida
-                   <a>Mim</a> <a>Re</a> <a>Do</a>   
+                   <a>Mim</a> <a>Re</a> <a>Do</a>
 Aquí está tu consentida
    <a>Si7</a>            <a>Mim</a>   <a>Re</a> <a>Do</a> <a>Lam7</a> <a>Do</a> <a>Lam7</a> <a>Re</a>
 aquí está tu consentida

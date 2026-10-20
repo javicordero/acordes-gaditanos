@@ -32,7 +32,7 @@ Y en los bloques nuestras primeras paji quillo
          <a>Fa</a>  <a>Sol</a>         <a>Do9</a>
 Así de bonito es nuestro lujo
          <a>Re7</a>             <a>Sol</a>
-El de la gente pura y sencilla 
+El de la gente pura y sencilla
     <a>Lam</a>              <a>Mim</a>
 Los viernes sagrados del nazareno
      <a>Fa</a>        <a>Sol</a>     <a>Do9</a>
@@ -97,7 +97,7 @@ Que yo me quedo, me quedo, me quedo en Santa María
 Que yo no les hablo de un barrio
             <a>Lam</a>
 Que yo les hablo de mi vida
-           <a>Fa</a>     
+           <a>Fa</a>
 Que yo me quedo, me quedo, me quedo
                 <a>Sol7</a>            <a>Do9</a>  <a>Fam</a>
 Por siempre me quedo en Santa María

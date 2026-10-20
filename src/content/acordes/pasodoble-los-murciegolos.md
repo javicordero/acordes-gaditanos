@@ -45,8 +45,8 @@ De que estamos en el trío, si de que estamos en el trío
 
                   <a>Re7</a>                        <a>Lam</a>
 Donde todo sabe a poco y el compás se vuelve loco
-    <a>Re7</a>             <a>Sol</a> 
-Pa después morir rendio, 
+    <a>Re7</a>             <a>Sol</a>
+Pa después morir rendio,
 <a>Sol7</a>                 <a>Do</a>   <a>Re7</a>
 si tienes problemas pa seguir,
                <a>Sim7</a>   <a>Mi7</a>                       <a>Lam</a>

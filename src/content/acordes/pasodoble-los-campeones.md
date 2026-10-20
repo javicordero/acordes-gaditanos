@@ -17,26 +17,26 @@ Despues de abrazarte, después de cantarte
     <a>Re7</a>        <a>Sol</a>
 tantísimos febreros
 
-Después de encelarme, después de quererte 
+Después de encelarme, después de quererte
      <a>Re7</a>
 te quiero
-Cogí a unos amigos y chirigoteando 
+Cogí a unos amigos y chirigoteando
                    <a>Do</a>
 tuvimos unas palabritas
            <a>Re7</a>
 Y mira por donde charlando y charlando
-                <a>Sol</a> <a>Re7</a> <a>Sol</a> 
+                <a>Sol</a> <a>Re7</a> <a>Sol</a>
 nació esta musiquita
                   <a>Re7</a>
-Si salió de la caleta no lo sé, 
+Si salió de la caleta no lo sé,
                  <a>Sol</a>
 o salió de la alameda no lo sé
-                      <a>Re7</a>           
-El caso es que este compás tan fiel 
+                      <a>Re7</a>
+El caso es que este compás tan fiel
 <a>Do</a>        <a>Re7</a>             <a>Sol</a> <a>Re7</a> <a>Sol</a>
 me hace a mi temblar las piernas
-                   <a>Do</a>   
-Y créeme cuando te digo, 
+                   <a>Do</a>
+Y créeme cuando te digo,
               <a>Re7</a>              <a>Sol</a>
 mis ojos me brillan cual faro marino
             <a>Lam7</a>            <a>Re7</a>          <a>Sol</a>

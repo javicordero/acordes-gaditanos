@@ -16,8 +16,8 @@ fraseClave: Me ha dicho Arantxa con rencor
 Me ha dicho Arancha con rencor
                        <a>Re</a>
 que no le van los gaditanos
-            <a>Sol7</a>       <a>Do</a>  
-Y que en ciudades como esta 
+            <a>Sol7</a>       <a>Do</a>
+Y que en ciudades como esta
 <a>Lam7</a>                    <a>Si7</a>
 se le atragantan los veranos
                           <a>Mim</a>
@@ -28,7 +28,7 @@ Pero si por ella fuera
 Se pasaría el mes de agosto
 <a>Lam7</a>                <a>Si7</a>
 En otro sitito cualquiera
-                     <a>Mim</a>         <a>Si7</a> 
+                     <a>Mim</a>         <a>Si7</a>
 Que prefiere el atractivo cultural
                    <a>Mim</a>
 de Sevilla o de Madrid
@@ -46,7 +46,7 @@ Y no le pone morena su piel fina y castellana
 Que cuando hace levante se le levanta  el vestido
                   <a>Fa#m</a>  <a>Si7</a>                 <a>Mi</a>
 Pero tiene un hermano que es la canela en rama
-<a>Mim</a>         <a>Lam7</a>  <a>Si7</a>             <a>Mi</a> 
+<a>Mim</a>         <a>Lam7</a>  <a>Si7</a>             <a>Mi</a>
 Y me dijo paisano tú pasa de mi hermana
              <a>Fa#m</a> <a>Si7</a>            <a>Mi</a>
 Si tuviera dinero yo te lo cambiaria

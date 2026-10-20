@@ -17,7 +17,7 @@ Oh, sin dios y sin permiso y a falta de paraíso ya,
                 <a>Sol</a>
 ya tengo mi religión
 
-Con unos cuantos apóstoles mas, 
+Con unos cuantos apóstoles mas,
 
 que lo mismo que yo, rendidos están
                   <a>Fa</a>
@@ -25,20 +25,20 @@ Al misterio que aquí se predica al cantar
                          <a>Sim7/5</a>            <a>Mi7</a>
 Y siguiendo a la osa del sur, mi estrella polar
               <a>Lam</a>
-Y guiándome a solas 
+Y guiándome a solas
                <a>Sol</a>
 por la luz cegadora de San Sebastián
                <a>Fa</a>
-Y el eterno perfume de su baja mar 
+Y el eterno perfume de su baja mar
               <a>Sim7/5</a>          <a>Mi7</a>
 y el azul y amarillo de la claridad
 <a>Rem</a>                                     <a>Lam</a>
 Desde un país imposible, igual que un profeta
                                      <a>Mi7</a>
-Con este nuevo evangelio de música y letra 
+Con este nuevo evangelio de música y letra
                              <a>Lam</a>
 vengo buscando la meca de tu carnaval
-             <a>Sol</a>           
+             <a>Sol</a>
 Por el mundo voy caminando,
 <a>Fa</a>                  <a>Mi7</a>
 como un peregrino llevo toda la vida
@@ -49,7 +49,7 @@ Llegando a la verdad por direcciones prohibidas
 <a>Lam</a>        <a>Sol</a>           <a>Fa</a>             <a>Mi7</a>
 Y con mi bastón y mi canción de amor de carnaval
 <a>Lam</a>                      <a>Sol</a>
-Tengo tanto cielo y tanta fe 
+Tengo tanto cielo y tanta fe
                             <a>Lam</a>
 que siento de cerca la eternidad
        <a>Sol</a>         <a>Lam</a>            <a>Sol</a>
@@ -58,8 +58,8 @@ Mi carnaval, mi carnaval, mi carnaval
 Ay, no busques vírgenes ni ángeles que no hay
                                  <a>Sol</a>
 Que mi religión es tan profana y tan real
-<a>Mi7</a>                                <a>Lam</a>  
-Que en esta meca de los peregrinos de Cai 
+<a>Mi7</a>                                <a>Lam</a>
+Que en esta meca de los peregrinos de Cai
      <a>Fa</a>              <a>Mi7</a>
 las calles son su catedral
 <a>Lam</a>        <a>Sol</a>              <a>Fa</a>         <a>Mi7</a>
@@ -70,7 +70,7 @@ Se queda cuando el sol se va de centinela la luna
 Y el único mandamiento es cantar por carnaval
 <a>Lam</a>             <a>Mi7</a>
 Y el único sacramento, tirarse desde el puente ca
-<a>Lam</a>          <a>Sol</a>           
+<a>Lam</a>          <a>Sol</a>
 Por el mundo voy caminando,
 <a>Fa</a>                  <a>Mi7</a>
 como un peregrino llevo toda la vida
@@ -85,7 +85,7 @@ De pronto sientes que estalla has encontrado el camino
                   <a>Mi7</a>                        <a>Lam</a>
 Has encontrado el camino que lleva a la salvación
                  <a>Sol</a>  <a>Lam</a>               <a>Sol</a>  <a>Lam</a>
-El caminito del Falla, el caminito del Falla, 
+El caminito del Falla, el caminito del Falla,
                 <a>Sol</a> <a>Lam</a> <a>Mi7</a>
 El caminito del Falla,
                 <a>Lam</a>

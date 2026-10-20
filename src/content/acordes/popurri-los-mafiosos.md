@@ -232,7 +232,7 @@ Pero como el carnaval a mí me da para tanto
 Sueño que los elimino con lo bonito de mi canto
 <a>Do</a>              <a>Sol</a>            <a>Re</a>         <a>Sol</a>
 Sueño que los elimino con lo bonito de mi canto
-   <a>Lam</a> 
+   <a>Lam</a>
 Ojala que mi canto algún día además de una historia
 <a>Lam</a>
 real

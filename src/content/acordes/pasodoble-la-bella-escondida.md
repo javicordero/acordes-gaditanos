@@ -13,19 +13,19 @@ fraseClave: "La música suena en nuestros"
 ---
 <pre>
 <a>Do</a>
-La música suena en nuestros corazones 
+La música suena en nuestros corazones
                                   <a>Rem</a>
 llevando el compás que mantiene la vida,
                               <a>Sol7</a>
-La música es fruto de las ilusiones 
+La música es fruto de las ilusiones
                <a>Fa</a>         <a>Sol7</a>      <a>Do</a>
 y en muchas canciones las penas se olvidan.
-                                  
-Valió la alegría de las emociones 
+
+Valió la alegría de las emociones
 <a>Mi7</a>                     <a>Lam</a>
 y guarda un espíritu de libertad,
               <a>Sol7</a>             <a>Do</a>
-La música es culto de las religiones 
+La música es culto de las religiones
              <a>Mi7</a>                  <a>Lam</a>
 de tantas naciones que pueblan el mundo,
            <a>Fa</a>                     <a>Sol7</a>

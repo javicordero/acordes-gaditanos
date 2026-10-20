@@ -22,7 +22,7 @@ Que suene a chirigota, que suene a carnaval
 Y que al cantarlo se te escape por la boca
                 <a>Si7</a>             <a>Mi</a>
 Olvídate de las modas y de innovar,
-     <a>Si7</a>                   <a>Mi</a> 
+     <a>Si7</a>                   <a>Mi</a>
 olvídate de que hay que ganar
    <a>Do#7</a>                         <a>Fa#m7</a>
 Y pégate un caprichito en el corazón

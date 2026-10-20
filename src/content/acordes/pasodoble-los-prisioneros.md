@@ -20,26 +20,26 @@ Deja que yo te cante la paradoja de tus entrañas
 Cádiz esclava y libre, enferma y sana, bajuna y noble
 <a>Mi7</a>                                            <a>LaM7</a>
 Cádiz me vuelves loco con tus hermosas contradicciones
-                    <a>Mi7</a>          
-Cádiz con más dudas que certezas, 
+                    <a>Mi7</a>
+Cádiz con más dudas que certezas,
 <a>LaM7</a>                 <a>Mi7</a>
 Cádiz con más pobres que pobreza
 <a>LaM7</a>                 <a>Fa#7</a>         <a>Sim7</a>
-Con más barquillitas que con libertad, 
-                       <a>Mi7</a>    
+Con más barquillitas que con libertad,
+                       <a>Mi7</a>
 Cádiz con más chanclas que jardines
-<a>Sim7</a>        <a>Mi7</a>               
+<a>Sim7</a>        <a>Mi7</a>
 Con más agujeros que adoquines,
 <a>Sim7</a>              <a>Mi7</a>        <a>LaM7</a>
 con más amistades que con amistad
-             <a>Rem</a>            <a>LaM7</a>           
-Más sol que luz, más tu que yo, 
+             <a>Rem</a>            <a>LaM7</a>
+Más sol que luz, más tu que yo,
            <a>Mi7</a>
 más fe que santo y más lima que limón
 <a>LaM7</a>        <a>Mi7</a>        <a>LaM7</a>            <a>Mi7</a>       <a>LaM7</a>
 Tienes más murallas que puentes, más balcones que gente
-                <a>Fa#7</a> <a>Sim7</a>    
-Mas macetas que flooores. 
+                <a>Fa#7</a> <a>Sim7</a>
+Mas macetas que flooores.
 <a>Mi7</a>                     <a>Sim7</a>
 Tienes más cañitas que peces
               <a>Mi7</a>                     <a>LaM7</a>
@@ -48,8 +48,8 @@ Más ruido que nueces, más dolor que dolores
 Cádiz con más gatos que ratas, mas platillos que plata
        <a>La7</a>        <a>Re</a>
 Más negruras que soles
-          <a>Re</a>            <a>Mi7</a>               
-Ay mi ciudad, con más espinas que rosas 
+          <a>Re</a>            <a>Mi7</a>
+Ay mi ciudad, con más espinas que rosas
      <a>LaM7</a>
 y más sed que sal
            <a>Fa#7</a>                <a>Sim7</a>

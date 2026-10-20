@@ -14,22 +14,22 @@ fraseClave: Como salidas de un cuento se presentan ante ustedes
 <pre>
 <a>La</a>                                           <a>Mi7</a>
 Como salidas de un cuento se presentan ante ustedes
-                   <a>Re</a> 
+                   <a>Re</a>
 las famosas brujas Piti
                <a>Mi7</a>               <a>La</a>
 aquellas que antaño te hicieran reirse
           <a>Mi7</a>         <a>La</a>     <a>Fa#7</a>           <a>Sim</a>
 Esas que pese a su ausencia felizmente recordásteis
-<a>Sol#7</a>           <a>Do#m</a>    <a>Mi7</a>                 <a>La</a> 
-posiblemente añorásteis sumergidas en nostalgia 
+<a>Sol#7</a>           <a>Do#m</a>    <a>Mi7</a>                 <a>La</a>
+posiblemente añorásteis sumergidas en nostalgia
   <a>Mi7</a>               <a>La</a>
 de no volverlas a ver
 <a>La</a>
 Que alegría representar en los días de carnaval
        <a>Mi7</a>        <a>La</a>                        <a>Mi7</a>
 a ese personaje cruel con intención chirigotera
-       <a>Re</a>        <a>Mi7</a>         <a>Re</a> 
-Trasmitir buen humor aunque vean 
+       <a>Re</a>        <a>Mi7</a>         <a>Re</a>
+Trasmitir buen humor aunque vean
        <a>Mi7</a>         <a>La</a>
 que todas somos vieja
        <a>La</a>
@@ -40,7 +40,7 @@ que es la fiesta del Dios Momo popular
 cuando el pueblo disfrazado en libertad
                   <a>Mi7</a>               <a>La</a>   <a>La7</a>
 muestra una expresión graciosa y sincera
-<a>Re</a>           <a>Mi7</a>        <a>La</a>            <a>Mi7</a> 
+<a>Re</a>           <a>Mi7</a>        <a>La</a>            <a>Mi7</a>
 Y le canto a Cádiz con amor con el corazón
            <a>La</a>
  tierra marinera</pre>

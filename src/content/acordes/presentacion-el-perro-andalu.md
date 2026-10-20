@@ -13,7 +13,7 @@ fraseClave: Cuidao, cuidao conmigo, que vengo que muerdo, que
 ---
 <pre>
 <a>Mim</a>
-Cuidao, cuidao conmigo, que vengo que muerdo, 
+Cuidao, cuidao conmigo, que vengo que muerdo,
 
 que vengo que muerdo.
 
@@ -35,7 +35,7 @@ sentencia una voz atravesando la loma.
              <a>Mim</a> <a>Si7</a>
 la corona bufona
 <a>Mim</a>                                       <a>Sim7</a>
-y este collar en tu garganta pues esclavo eres 
+y este collar en tu garganta pues esclavo eres
 
 de Isabel y de Fernando.
              <a>Lam7</a>                    <a>Si7</a>
@@ -43,19 +43,19 @@ Como un ecce-homo pa que nos riamos todos cargarás
               <a>Mim</a>   <a>Mi7</a>
 con un gran manto.
    <a>Lam7</a>         <a>Re7</a>                 <a>Sol</a>
-Ya tienes la charanga, ahí llevas juglar 
+Ya tienes la charanga, ahí llevas juglar
          <a>Do</a>       <a>Si7</a>
-la pandereta, el símbolo de la España inferior 
+la pandereta, el símbolo de la España inferior
                          <a>Mim</a> <a>Mi7</a>
 que va pariendo mesías poetas.
   <a>Lam7</a>           <a>Si7</a>              <a>Mim</a>  <a>Re</a>         <a>Do</a>
 Suplícale a tus santos pan y libertad, a ver si pueden.
 
-Y de todo el jardín que yo gobierno 
+Y de todo el jardín que yo gobierno
                               <a>Lam7</a>           <a>Si7</a>
 clavaíta irá en tu pecho esa flor que no te quiere.
-<a>Mim</a>                <a>Lam7</a>          
-Por fin coronao, maldito holgazán, 
+<a>Mim</a>                <a>Lam7</a>
+Por fin coronao, maldito holgazán,
   <a>Do</a>                 <a>Si7</a>
 abre tu barraca, empieza a reinar.
     <a>Mim</a>           <a>Sim7</a>
@@ -67,7 +67,7 @@ alegría en sus caritas.
     <a>Mim</a>              <a>Sim7</a>
 Recuerda que entre nosotros está el maldito carnaval,
             <a>Do</a>                        <a>Si7</a>
-cuida la lengüita, mide bien tus palabritas 
+cuida la lengüita, mide bien tus palabritas
                    <a>Mim</a>
 cuando vayas a… ¡Miraaa!
 <a>Mim</a>     <a>Do</a>    <a>Si7</a>
@@ -85,7 +85,7 @@ el perro rompe las cadenas, el perro no tiene amo.
 <a>Mim</a>       <a>Sim7</a>     <a>Do</a> <a>Si7</a> <a>Mim</a>  <a>Sim7</a>             <a>Do</a>  <a>Si7</a>
 Llevo la furia más loca,  llevo la rabia en el cuerpo.
     <a>Do</a>                                <a>Mim</a>
-Hoy traigo la sangre la sangre en la boca, 
+Hoy traigo la sangre la sangre en la boca,
                    <a>Si7</a>
 veneno en forma de coplas,
                      <a>Mim</a>   <a>Si7</a>       <a>Mim</a>

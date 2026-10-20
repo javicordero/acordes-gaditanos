@@ -12,35 +12,35 @@ video: 'https://www.youtube.com/embed/rbdtTcmUshY'
 fraseClave: Nonaino naino nonainonona Nonaino naino
 ---
 <pre>        <a>Fa</a>             <a>Mi7</a>        <a>Fa</a>
-Nonaino naino nonainonona Nonaino naino 
+Nonaino naino nonainonona Nonaino naino
         <a>Mi7</a>
 nonainonona
         <a>Lam</a>           <a>Sol</a>         <a>Fa</a>            <a>Mi7</a>
-Nonaino naino nonainonona Nonaino naino nonainonona 
+Nonaino naino nonainonona Nonaino naino nonainonona
 <a>Lam</a>
-Yo sobreviví buscándome la vía sin más salía que la 
+Yo sobreviví buscándome la vía sin más salía que la
          <a>Sol</a>
 de delinquir
-Temiendo que algún día mis fechorías me lleven a 
+Temiendo que algún día mis fechorías me lleven a
    <a>Fa</a>
-sufrir la puñetera pena de acabar en la trena 
+sufrir la puñetera pena de acabar en la trena
 <a>Lam</a>
-Desde que nací la sociedad podría de hipocresía fue 
+Desde que nací la sociedad podría de hipocresía fue
                  <a>Sol</a>
 la que me hizo así
-Un marginal ratero, un bandolero de incierto 
+Un marginal ratero, un bandolero de incierto
      <a>Fa</a>
 porvenir
                  <a>Lam</a>           <a>Fa</a>
-Que por mis compañeros doy la vida y muero si tengo 
+Que por mis compañeros doy la vida y muero si tengo
      <a>Mi7</a>
 que morir
            <a>Fa</a>           <a>Mi7</a>          <a>Fa</a>
-Nonaino naino nonainonona Nonaino naino 
+Nonaino naino nonainonona Nonaino naino
         <a>Mi7</a>
 nonainonona
            <a>Lam</a>         <a>Sol</a>           <a>Fa</a>
-Nonaino naino nonainonona Nonaino naino 
+Nonaino naino nonainonona Nonaino naino
        <a>Mi7</a>
 nonainonona
 <a>Lam</a>                                         <a>Sol</a>
@@ -48,41 +48,41 @@ Aquí está la canción que tanto me pedias cantar
                  <a>Fa</a>                            <a>Mi7</a>
 Aquí está mi canción que te olerá a viejo carnaval
 <a>Lam</a>
-Si en lo oscuro de la noche ves algo brillar y 
+Si en lo oscuro de la noche ves algo brillar y
                                    <a>Rem</a>
 rompe el silencio un eco de frio metal
                 <a>Lam</a>             <a>Fa</a>
-Es que mi navaja sale a pasear buscando un ingenuo 
+Es que mi navaja sale a pasear buscando un ingenuo
                   <a>Mi7</a>
 pecho en donde anidar
 <a>Lam</a>
-Pero más que esta navaja pinchará mi voz este canto 
+Pero más que esta navaja pinchará mi voz este canto
                         <a>Rem</a>
 desgarrao y lleno de pasión
                        <a>Lam</a>               <a>Fa</a>
-Que se hinca en el alma con la sensación de una 
+Que se hinca en el alma con la sensación de una
                            <a>Mi7</a>
 puñala directa hacia el corazón
          <a>Lam</a>
-Dame la plata o dame la vida y dame fuego 
+Dame la plata o dame la vida y dame fuego
        <a>Sol</a>
 iluminador
        <a>Fa</a>
-Dame veneno, dame poesía y a cambio entero me 
+Dame veneno, dame poesía y a cambio entero me
         <a>Mi</a>
 entrego yo
          <a>Lam</a>
-Dame la plata o dame la vida y dame fuego 
+Dame la plata o dame la vida y dame fuego
        <a>Sol</a>
 iluminador
         <a>Fa</a>
-Dame veneno, dame poesía que por esta te juro que 
+Dame veneno, dame poesía que por esta te juro que
            <a>Mi</a>
 me entrego yo
          <a>Lam</a>                        <a>Sol</a>
-Dame la plata, nonainonona, dame la vida, 
+Dame la plata, nonainonona, dame la vida,
 nonainonona
        <a>Fa</a>
-Dame veneno que quiero morir que por esta te juro 
+Dame veneno que quiero morir que por esta te juro
                <a>Mi7</a>        <a>La</a>
 que me entrego yo ohh ohh ohh</pre>

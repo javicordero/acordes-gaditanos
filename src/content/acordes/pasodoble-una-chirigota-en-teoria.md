@@ -26,9 +26,9 @@ Aunque mi vida no ha sido un caminito de rosas
      <a>La7</a>         <a>Rem</a>                     <a>Lam</a>
 Yo me río de mi mismo y con mi gran intelecto
                     <a>Mi7</a>
-Incluso llegué a la fama, pero no tanto como 
-                            <a>Lam</a>  
-El Willy que salió con el Cascana 
+Incluso llegué a la fama, pero no tanto como
+                            <a>Lam</a>
+El Willy que salió con el Cascana
 <a>LaM7</a>         <a>Mi7</a>       <a>LaM7</a>           <a>Fa#7</a>
 Aunque sea ilógico, ya ves, yo siempre me matuve
          <a>Sim7</a>                 <a>Mi7</a>          <a>Sim7</a>

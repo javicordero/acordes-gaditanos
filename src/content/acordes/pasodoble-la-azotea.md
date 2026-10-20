@@ -25,7 +25,7 @@ En mi delirio suena mi guitarra que vuelve a llamarme
           <a>Sol#m</a>                                   <a>Solm</a>
 Me vuelvo loco y conmigo mismo empiezo a pelearme
            <a>La</a>                     <a>Fa#7</a>
-Pues me recuerdan que es que ya no puedo 
+Pues me recuerdan que es que ya no puedo
            <a>Si7</a>
 vivir sin cantarte
          <a>La</a>
@@ -40,11 +40,11 @@ Me seducía con sus encantos
 Si me veía desesperando
    <a>La</a>      <a>Fa#7</a>          <a>Si7</a>
 Venga que Cai me está esperando
-          <a>Mi</a>                   <a>Si7</a>       
-Con mi guitarra, las musas, mi hermano, 
+          <a>Mi</a>                   <a>Si7</a>
+Con mi guitarra, las musas, mi hermano,
              <a>Mi</a>
 la vela y la luna
-                 
+
 Son elementos más que suficientes
                            <a>Do#7</a>       <a>Fa#m</a>
 Para que me caliente y se arranque mi pluma
@@ -52,8 +52,8 @@ Para que me caliente y se arranque mi pluma
 Un pasodoble bonito y sencillo hacerte quería
             <a>La</a>            <a>Si7</a>            <a>Mi</a> <a>Si7</a>
 De los que quean en la azotea pa toa la vida
-          <a>Mi</a>                    <a>Si7</a>       
-Con mi guitarra, las musas, mi hermano, 
+          <a>Mi</a>                    <a>Si7</a>
+Con mi guitarra, las musas, mi hermano,
              <a>Mi</a>
 la vela y la luna
                  <a>Mi7</a>                           <a>Lam</a>

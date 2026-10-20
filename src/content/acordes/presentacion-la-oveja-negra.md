@@ -44,7 +44,7 @@ Pa cantarle las cuarenta las cuarenta al enemigo
                     <a>Lam7</a>          <a>Re7</a>         <a>Sol</a>
 Un batallón que al mundo quiera ganarle la partida
                    <a>Do</a>                       <a>Lam7</a>
-Y pelee sin condiciones por mi Cai de mis amores 
+Y pelee sin condiciones por mi Cai de mis amores
                   <a>Si7</a>
 tos los días de su vida
       <a>Mim</a>                                <a>Sim7</a>
@@ -54,25 +54,25 @@ Con el corazón mi amor en la boca y rebeleao
        <a>Mim</a>                                       <a>Sim7</a>
 Aquí estoy mi amor mi amor con el compás que me delata
     <a>Do</a>            <a>Lam7</a>                     <a>Do</a>
-Ese bombo, ese platillo que llevo desde chiquillo 
+Ese bombo, ese platillo que llevo desde chiquillo
      <a>Lam7</a>         <a>Si7</a>
 por mi Tacita de Plata
 <a>Mim</a>        <a>Si7</a>    <a>Lam</a>         <a>Si7</a>                 <a>Mim</a>
 Siento la llamada el grito de furia de un pueblo entero
-<a>Lam</a>         <a>Si7</a>          <a>Mim</a>  
+<a>Lam</a>         <a>Si7</a>          <a>Mim</a>
 Vuelvo vida mía a otra batalla
-      <a>Lam</a>       <a>Si7</a> 
+      <a>Lam</a>       <a>Si7</a>
 aquí esta otra vez el dolor de febrero
 <a>Mim</a>            <a>Si7</a>                 <a>Mim</a>
-Ay mi amor, mi amor otro año enamorao 
-               <a>Si7</a>                    <a>Mim</a> 
-ay mi amor, mi amor con mis coplas rebelao 
+Ay mi amor, mi amor otro año enamorao
+               <a>Si7</a>                    <a>Mim</a>
+ay mi amor, mi amor con mis coplas rebelao
                <a>La</a>       <a>Lam7</a>
-ay mi amor mi amor ay mi amor 
+ay mi amor mi amor ay mi amor
 <a>Do</a>                <a>Lam7</a>          <a>Si7</a>       <a>Do</a>
 Y aunque futuro sea negro y lo oscuro me devore
-            <a>Fa#</a>        <a>Si7</a>           <a>Mim</a>  
-Como soy gaditano mis penas son de colores 
+            <a>Fa#</a>        <a>Si7</a>           <a>Mim</a>
+Como soy gaditano mis penas son de colores
  <a>Si7</a>      <a>Mim</a>
 son de colores
 </pre>

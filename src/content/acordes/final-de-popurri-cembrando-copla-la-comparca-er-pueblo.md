@@ -12,19 +12,19 @@ fraseClave: "Siento que se me termina"
 ---
 <pre>
 <a>Do</a>                           <a>Lam</a>
-Siento que se me termina el tiempo 
+Siento que se me termina el tiempo
                     <a>Fa</a>                       <a>Sol7</a>
 y que ahora es el momento de anunciar mi despedía
 <a>Do</a>                          <a>Lam</a>
-Ya se acaba el cuento y el viaje 
+Ya se acaba el cuento y el viaje
                    <a>Fa</a>                       <a>Sol7</a>
 de este simple personaje de un pueblo de Andalucía
-<a>Fa</a>                        <a>Sol7</a> 
-Que soñó con venirte a cantar 
+<a>Fa</a>                        <a>Sol7</a>
+Que soñó con venirte a cantar
 <a>Mim</a>            <a>Mi7</a>    <a>Lam</a>
 con su propio acento sus coplillas
 <a>Fa</a>
-Coplas que sembraron estas manos 
+Coplas que sembraron estas manos
                <a>Re7</a>                     <a>Sol7</a>
 pa sentirse gaditano de la forma más sencilla
           <a>Do</a>

@@ -36,7 +36,7 @@ Igual que necesito de estor nervios
 Para poder sentir que sigo vivo
 <a>Sim7</a>           <a>Mi7</a>           <a>LaM7</a>
 Para poder sentir lo que te quiero
-                             
+
 Y yo es que necesito estar contigo
 <a>La7</a>                  <a>Re</a>
 Siempre que llega febrero

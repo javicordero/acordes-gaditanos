@@ -30,7 +30,7 @@ Las coplas de este grupo no son aptas para ti
 Esta no es tu comparsa no vengas a ladrarme ni a
      <a>La7</a>        <a>Re</a>
 llamarme intolerante
-                      <a>Do</a>           <a>Lam7</a>       
+                      <a>Do</a>           <a>Lam7</a>
 Que el respeto mucho antes se te había olvidao a
 <a>Si7</a>
 ti

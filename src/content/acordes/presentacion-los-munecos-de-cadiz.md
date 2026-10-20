@@ -51,7 +51,7 @@ y haciendo uso de sus poderes le fue clavando
 los alfileres
 <a>Mim</a>                                       <a>Lam</a>
 pero aquel pobre chaman o aprendiz de hechicero
-                                  <a>Si7</a>  
+                                  <a>Si7</a>
 no contaba con la fuerza ni el poder de la magia
    <a>Mim</a>
 de febrero

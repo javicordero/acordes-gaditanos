@@ -30,7 +30,7 @@ y de hueso,
                <a>Re</a>   <a>Mi7</a>                 <a>LaM7</a>
 y mi pasión de poeta con tu pasión despertaste
             <a>Fa#</a>    <a>Sim</a>   <a>Si7</a>
-de noche en tu casapuerta, que no se enteren 
+de noche en tu casapuerta, que no se enteren
        <a>Mi7</a>
 tus padres
                           <a>LaM7</a>      <a>Mi7</a>           <a>LaM7</a>

@@ -18,8 +18,8 @@ y deja los tiempos seguir adelante.
                       <a>Do</a>                  <a>Re7</a>
 Cállate, cállate y procura que Dios te perdone,
             <a>Do</a>              <a>Re7</a>
-que precisamente, tú de maricones has 
-           <a>Sol</a>  
+que precisamente, tú de maricones has
+           <a>Sol</a>
 sabido bastante.
 <a>Sol</a> <a>Re7</a>            <a>Sol</a>    <a>Re7</a>       <a>Sol</a>
 Quien en nombre de Dios condene el amor

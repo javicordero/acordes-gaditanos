@@ -19,8 +19,8 @@ fraseClave: A ti que escuchas mis coplas y te identificas
 A ti que escuchas mis coplas y te identificas
     <a>Mi7</a>    <a>Lam7</a> <a>Mi7</a>
 con mi juventud
-  <a>Lam7</a>                              <a>Re7</a> 
-A ti quisiera dirigirme cantandote claro 
+  <a>Lam7</a>                              <a>Re7</a>
+A ti quisiera dirigirme cantandote claro
       <a>Sol</a> <a>Re7</a> <a>Sol</a>
 y de tu tu
          <a>Re7</a>       <a>Sol</a>                  <a>Sol7</a>
@@ -33,7 +33,7 @@ Sobre tiempos que otros ya vivieran
 Un billete de vuelta de un viaje pa regresar
              <a>Sol</a>
 A la España negra
-Que no había paro en el país 
+Que no había paro en el país
 pero cuantos huyegueguegueron al extranjeguegueguero
                       <a>Mi7</a>              <a>Lam7</a>
 O presos con trabajos forza, fueron forzados
@@ -42,7 +42,7 @@ Que no pasaban hambre con las cartillas racionamiento
                  <a>Do</a>     <a>Re7</a>       <a>Sol</a>
 Si se comía fue gracias al extraperlo
          <a>Do</a>
-No es verdad, ni creó las vacaciones 
+No es verdad, ni creó las vacaciones
      <a>Re7</a>       <a>Sol</a>
 Ni seguridad social, no es verdad
                                   <a>Mi7</a>       <a>Lam7</a>

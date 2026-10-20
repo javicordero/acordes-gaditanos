@@ -13,19 +13,19 @@ fraseClave: De toas las que yo vengo a verte prefiero
 ---
 <pre>
 <a>Mim</a>                        <a>Re</a>    <a>Do</a>
-De toas las que yo vengo a verte prefiero 
+De toas las que yo vengo a verte prefiero
             <a>Si7</a>
 las noches de mayo
  <a>Mim</a>
-entra el deseo como un rayo por las 
+entra el deseo como un rayo por las
              <a>Re</a>
 ventanas del poniente
 <a>Mim</a>                 <a>Do</a>      <a>Si7</a>
-tu sabana esta mas caliente y luego no hay ningun 
+tu sabana esta mas caliente y luego no hay ningun
 <a>Mim</a>   <a>Re7</a>
 ensayo
 <a>Sol</a>                <a>Re7</a>         <a>Sol</a>
-y ademas te tengo desde que se va el sol hasta 
+y ademas te tengo desde que se va el sol hasta
 la madrugá
                      <a>Re</a>     <a>Lam7</a>     <a>Si7</a>
 tu sabana esta mas caliente y luego no hay ningun
@@ -40,7 +40,7 @@ si te acuerdas de mi y cuanto te consumes
           <a>Mim</a>
 por volverme a ver
                                  <a>Lam7</a> <a>Si7</a>
-yo sé que te diran pídele por tu amor que 
+yo sé que te diran pídele por tu amor que
         <a>Mim</a>
 deje la comparsa
    <a>Lam</a>                     <a>Mim</a>
@@ -56,11 +56,11 @@ y te hable de mi
 <a>Mim</a>                     <a>Re</a>
 que yo no le temo al castigo
                      <a>Sol</a>              <a>Re7</a>
-pero tu dile que es mentira y con las bombas 
+pero tu dile que es mentira y con las bombas
       <a>Sol</a>
 que te tiran
                     <a>Re</a>
-los payos y los fanfarrones cógete bien esa 
+los payos y los fanfarrones cógete bien esa
    <a>Do</a>
 colita que es mas moderna y mas bonita
            <a>Re7</a>        <a>Sol</a>
@@ -69,7 +69,7 @@ que toitos sus tirabuzones
 yo se que a ti las malas lenguas del lugar
                       <a>Re</a>
 te andan contando la leyenda
-de una noche en carnaval que por una copla 
+de una noche en carnaval que por una copla
      <a>Do</a>
 como esta un comparsista abandonó y
       <a>Lam7</a>           <a>Si7</a>
@@ -79,7 +79,7 @@ y no seré yo quien te pida perdón por el
 <a>Si7</a>                       <a>Mim</a>  <a>M7</a>
 porque mi cariño es mas sincero
 <a>Lam</a>                             <a>Mim</a>
-esto que te canto es pa que el mundo 
+esto que te canto es pa que el mundo
      <a>Do</a> <a>Si7</a>   <a>Mim</a>
 sepa que    te quiero
 </pre>

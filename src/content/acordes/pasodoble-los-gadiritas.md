@@ -35,7 +35,7 @@ Y solo tuvo un novio que pa ella
    <a>Do#m</a>    <a>Sol#m</a>         <a>La</a>
 no había tiempo pa esas niñerías
                      <a>Si7</a>
-y el novio que iba a verla 
+y el novio que iba a verla
                     <a>Mi</a>     <a>Fa#m</a>
 la rondaba en su puerta
                                  <a>La</a>
@@ -76,7 +76,7 @@ Lola nunca trabajó.
           <a>La</a>                   <a>Si7</a>
 Pero a pesar de ese trato miserable
                     <a>Sol#m7</a>
-de esta España puñetera ella sigue 
+de esta España puñetera ella sigue
        <a>Do#7</a>               <a>Fa#m7</a>
 con su lucha y se levanta la primera.
           <a>La</a>    <a>Fa#m7</a>        <a>Si7</a>

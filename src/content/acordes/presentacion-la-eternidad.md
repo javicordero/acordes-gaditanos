@@ -33,24 +33,24 @@ con mi traje de gala de siglos y de estrellas
 Me da a cambio un recuerdo, una reliquia de amor
                     <a>Fa</a>        <a>Fa7</a>       <a>Mi7</a>
 Y entre nubes de mojarras nos vamos los dos
-<a>Lam</a> <a>Lam</a>     <a>Sib</a>   <a>Sib</a>    <a>Lam</a> <a>Lam</a> <a>Lam</a> <a>Lam</a>  
+<a>Lam</a> <a>Lam</a>     <a>Sib</a>   <a>Sib</a>    <a>Lam</a> <a>Lam</a> <a>Lam</a> <a>Lam</a>
 Aah aah Aah aah Aah aah Aah aah Aah aah
 <a>Sib</a> <a>Sib</a>       <a>Mi7</a>   <a>Mi7</a>     <a>Lam</a> <a>Lam</a> <a>Lam</a>
 Aah aah Aah aah Aah aah Aah aah Aah aah
 <a>Lam</a>                       <a>Fa</a>
-Ahí está la Tacita, la Tacita del cielo, 
+Ahí está la Tacita, la Tacita del cielo,
 <a>Rem</a>
 traigo un alma perdía
-                                        
+
 ¡Abre al barquero! ¡Abre al barquero!
 <a>Fa</a>        <a>Fa7</a>       <a>Mi7</a>
 ¡Ay ! ¡Abre al barquero!
-<a>Lam</a>              <a>Fa</a>           
+<a>Lam</a>              <a>Fa</a>
 Ohh Ooh Ooh Oooh Ohh Ooh Ooh Oooh
 <a>Re</a>               <a>Fa</a>          <a>Mi7</a>
 Ohh Ooh Ooh Oooh Ohh Ooh Ooh Oooh
 <a>Lam</a>
-Otra vez tierra mía, otra vez, ya lo ves, 
+Otra vez tierra mía, otra vez, ya lo ves,
                          <a>Fa</a>
 ya lo ves, otra vez, de nuevo enamorao
 <a>Re</a>

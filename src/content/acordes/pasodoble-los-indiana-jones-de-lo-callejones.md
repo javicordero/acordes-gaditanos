@@ -17,7 +17,7 @@ Los gaditanos carnavaleros que se quedan en casa
 <a>Rem</a>         <a>Do</a>                  <a>Sib</a>               <a>La7</a>
 Cuando no ensayan les falta el aire, les llora el alma
 <a>Rem</a>         <a>Do</a>                  <a>Sib</a>
-Y se ven sometidos a febreros callados 
+Y se ven sometidos a febreros callados
                 <a>La7</a>
 a cárcel sin barrotes
 <a>Rem</a>                    <a>Do</a>                     <a>Sib</a>

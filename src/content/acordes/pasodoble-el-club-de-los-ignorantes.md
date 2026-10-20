@@ -12,26 +12,26 @@ fraseClave: "Si fuera Cádiz una ventana"
 
 ---
 <pre><a>Mi/add9</a>  <a>Fa9</a>         <a>Mi/add9</a>     <a>Fa9</a>        <a>Mi/add9</a>
-Si fuera Cádiz una ventana me asomaría cada mañana 
+Si fuera Cádiz una ventana me asomaría cada mañana
         <a>Do#7</a>            <a>Fa#m</a>
 con el asombro de un ignorante
                                             <a>Fa#m</a>
-Si fuera Cádiz un precipicio me tiraría de vicio 
+Si fuera Cádiz un precipicio me tiraría de vicio
            <a>Si7</a>    <a>Mi/add9</a>
 buscando abrazos volantes
 <a>Mi/add9</a>  <a>Fa9</a>     <a>Mi/add9</a>                <a>Mi7</a>
-Si fuera Cádiz filosofía la vida me pasaría entre 
+Si fuera Cádiz filosofía la vida me pasaría entre
          <a>La</a>
 sus interrogantes
                          <a>Si7</a>            <a>Sol#m</a>
-Ay, y si fuera un reloj que marcara las diez yo 
+Ay, y si fuera un reloj que marcara las diez yo
 sería el cantor
 <a>Do#7</a>             <a>Fa#m</a>                    <a>Si7</a>
-De su noche estrellada, cada una de las cuerdas de 
+De su noche estrellada, cada una de las cuerdas de
        <a>Mi</a>
 su guitarra
      <a>Mi7</a>              <a>La</a>
-Y si Cádiz no fuera cobarde quien no sería soldado 
+Y si Cádiz no fuera cobarde quien no sería soldado
           <a>Sol#m7</a>
 que fuera delante
     <a>Do#7</a>                                 <a>Fa#m</a>
@@ -39,10 +39,10 @@ Dime quien alzaría el fusil ante tanto mangante
                    <a>Lam7</a>      <a>Si7</a>        <a>Mi/add</a>
 Si mi Cádiz fuera guerra yo sería su almirante
 <a>Mi/add9</a>    <a>Fa#m7</a>       <a>Sol#m7</a>   <a>La</a>     <a>Sol#m7</a>    <a>F</a>
-Y si Cádiz tuviera la suerte de ser el rincón más 
+Y si Cádiz tuviera la suerte de ser el rincón más
 <a>a#m7</a>     <a>Mi/add9</a>
 bonito del mundo
-El primero tal vez el segundo si mi Cádiz fuera 
+El primero tal vez el segundo si mi Cádiz fuera
    <a>Do#m7</a>     <a>Sol#m7</a>   <a>Do#7</a>       <a>Fa#m7</a>
 carnaval, yo sería una copla del pueblo
                       <a>Fa#m7M</a>               <a>Si7</a>
@@ -52,7 +52,7 @@ Yo sería comparsa que asalte verdades y credos
 <a>Mi7</a>                <a>La</a>    <a>Fa#7</a>            <a>Si7</a>
 Si Cádiz fuera escenario yo su juglar invidente
 <a>La</a>         <a>Si7</a>      <a>Mi</a>   <a>Do#7</a>     <a>Fa#m</a> <a>Si7</a>
-Si fuera un bello palacio aquí estaría su fiel 
+Si fuera un bello palacio aquí estaría su fiel
    <a>Mi</a>
 sirviente
 <a>La</a>          <a>Si7</a>      <a>Mi</a>    <a>Do#7</a>            <a>Fa#m</a>

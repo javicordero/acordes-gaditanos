@@ -12,52 +12,52 @@ fraseClave: "De tus premios, de tus finales"
 
 ---
 <pre>
-        <a>Mim</a>               <a>Re</a>  
+        <a>Mim</a>               <a>Re</a>
 De tus premios, de tus finales
-            <a>Do</a>         <a>Si7</a>    
+            <a>Do</a>         <a>Si7</a>
 yo no soy digno tacita mía
        <a>Mim</a>             <a>Re</a>
-Ni del gremio de los chavales 
+Ni del gremio de los chavales
            <a>Do</a>         <a>Si7</a>
 esos que ansían solo ganar
          <a>Sol</a>                         <a>Re</a>
-Soy del tedio anfihéroe que en sus pasiones  
+Soy del tedio anfihéroe que en sus pasiones
                             <a>Do</a>          <a>Si7</a>         <a>Mim</a>
 puso precio nunca a sus canciones ni vendió su libertad
       <a>Mi7</a>   <a>Lam7</a>         <a>Re7</a>
-¿Cuál es el aro, al que pides que yo pase?  
+¿Cuál es el aro, al que pides que yo pase?
            <a>Sol</a>        <a>Si7</a>        <a>Mim</a>
 Por bicho raro, niño malo de la clase
           <a>Lam</a>         <a>Do</a>          <a>Si7</a>
-contracorriente, mi camino y mi verdad  
-                       
-contrarias al presidente 
+contracorriente, mi camino y mi verdad
+
+contrarias al presidente
                   <a>Mim</a>          <a>Si7</a>       <a>Mi/add9</a>
 que consideró valiente ser machista  en carnaval
 
-Ay que se muere mi abuela llanto y lágrima al 
+Ay que se muere mi abuela llanto y lágrima al
 
-sentío vaya a ser que así le duela al cabrón que 
+sentío vaya a ser que así le duela al cabrón que
                                   <a>Fa#m7</a>
 nos recorta al dar su nombre y apellidos
                       <a>Si7</a>
-"Ni de izquierda ni derecha los políticos iguales" 
+"Ni de izquierda ni derecha los políticos iguales"
                       <a>Lam</a>                       <a>Si7</a>
 y al cantar la misma flecha, libertad que ultraderecha
                          <a>Mim</a>
 porque el cuñado así te aplaude
   <a>Mi7</a>   <a>Lam7</a>              <a>Si7</a>         <a>Mim</a>
-Malos tiempos, para el cantor juancarlista  
+Malos tiempos, para el cantor juancarlista
           <a>Si7</a>
-brotan de Vox y lo que importa 
+brotan de Vox y lo que importa
                           <a>Mim</a>
 el muerto a quién le pertenece
 <a>Mi7</a>       <a>Lam7</a>   <a>Do</a>                   <a>Si7</a>
-Pa ti las normas y el concurso de intereses 
+Pa ti las normas y el concurso de intereses
            <a>Do7</a>         <a>Si7</a>
 a ver si estalla de verdad
-         <a>Do7</a>         <a>Si7</a> 
-y nacen plumas sin bozal 
+         <a>Do7</a>         <a>Si7</a>
+y nacen plumas sin bozal
            <a>Lam7</a>      <a>Si7</a>        <a>Mim</a>
 que el carnaval verdadero desobedece
 </pre>

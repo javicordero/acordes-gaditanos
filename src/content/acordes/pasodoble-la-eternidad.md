@@ -34,7 +34,7 @@ Gaditana. Un cuatro de diciembre.
               <a>Sol7</a>      <a>Do</a>
 Se siente nostalgia constante, constante.
 <a>Re7</a>                    <a>Sol</a>   <a>Si7</a>
-El gobierno se hace el lila, pipirigaña 
+El gobierno se hace el lila, pipirigaña
                     <a>Do</a> <a>Do7</a>
 a ti que te dio la vida.
 <a>Mim</a>             <a>Do</a>                   <a>Lam7</a>
@@ -42,11 +42,11 @@ Somos los hinchapelotas. Quítale alfileres.
        <a>Si7</a>    <a>Mi</a>
 ¡Bajamelajá… aijá!
 <a>Mi</a>          <a>Si7</a>         <a>Mi</a>
-Al sur del sur, oye mi canto. 
+Al sur del sur, oye mi canto.
                         <a>Mi</a>
 Oh, mostradores de mi barrio.
                   <a>Do#7</a>
-En el barrio de La Viña, 
+En el barrio de La Viña,
                      <a>Fa#m</a>
 guachisnai, estas brujitas.
                      <a>Si7</a>
@@ -71,8 +71,8 @@ pa que recortara papelillos pa la cabalgata.
 Tiene balcones plateados, ay, ladrillitos coloraos.
 <a>Fa#7</a> <a>Si7</a>             <a>Mi7</a>
 Cuéntame tus penas a mí. ¡Oh, Cádiz!
-<a>Lam7</a>                         
-La biblia de los gaditanos, 
+<a>Lam7</a>
+La biblia de los gaditanos,
 <a>Mim</a>         <a>Re</a>           <a>Do</a>
 historias cantás por su gente.
 <a>Lam</a>  <a>Do</a>              <a>Si7</a>

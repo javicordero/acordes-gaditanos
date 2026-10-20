@@ -13,29 +13,29 @@ fraseClave: Con coplas de artillería, mi guitarra y mi bandera
 ---
 <pre>
 <a>Mi/add9</a>                                      <a>Sol#</a>
-Con coplas de artillería, mi guitarra y mi bandera 
+Con coplas de artillería, mi guitarra y mi bandera
                <a>Do#m7</a>    <a>Si7</a>                 <a>La</a>
 aquí sigo, vida mía, resistiendo en mi trinchera
                   <a>Sol#m</a>                  <a>Fa#m</a>
-En esta guerra de coplas vendo cara la derrota 
+En esta guerra de coplas vendo cara la derrota
                  <a>Si7</a>
 y detesto la traición
                   <a>Mi</a>                        <a>Sol#</a>
-En este largo conflicto que ya dura casi un siglo 
+En este largo conflicto que ya dura casi un siglo
               <a>Do#m7</a>
 y desata la pasión
                   <a>Fa#m</a>                      <a>La</a>
-Es tan cruda la batalla que por ganar en el falla 
+Es tan cruda la batalla que por ganar en el falla
                     <a>Sol#</a>
 hay quien pierde hasta el honor
        <a>La</a>                               <a>Sol#m7</a>
-Hay camaradas, llamémosle de puntería desviada,  
+Hay camaradas, llamémosle de puntería desviada,
       <a>Fa#m7</a>                         <a>Fa#7</a>
-tan agresivos, que disparan por la espalda, 
+tan agresivos, que disparan por la espalda,
        <a>Si7</a>
 fuego amigo
-      <a>La</a>                 <a>Sol#m</a> 
-Hay camaradas que no se enteran 
+      <a>La</a>                 <a>Sol#m</a>
+Hay camaradas que no se enteran
           <a>Fa#m</a>  <a>Fa#7</a>     <a>Si7</a>
 que el enemigo está ahí afuera
 <a>Mi/add9</a>                        <a>Si7</a>         <a>Mi</a>
@@ -43,23 +43,23 @@ Hay quien pide por febrero una lucha organizada
   <a>Si7</a>              <a>Mi</a>        <a>Do#7</a>        <a>Fa#m</a>
 y luego son los primeros en pegar la retirada
                                              <a>Si7</a>
-Hay soldados tan serviles, mercenarios y miserables 
+Hay soldados tan serviles, mercenarios y miserables
                    <a>La</a>           <a>Si7</a>          <a>Mi</a>
 que utilizan sus fusiles para insultos personales
-                  <a>Mi/add9</a> <a>Si7</a>                    <a>Mi</a> 
-Y bajo el fuego cruzado, aunque estamos en carnavales 
+                  <a>Mi/add9</a> <a>Si7</a>                    <a>Mi</a>
+Y bajo el fuego cruzado, aunque estamos en carnavales
                       <a>Mi7</a>                <a>La</a>
 la guerra ya ha comenzao y en la guerra todo vale
                    <a>Sol#m</a>         <a>Fa#m</a>   <a>Si7</a>     <a>Mi</a>
 Que la gente quiere sangre y más sangre vamos a darle
            <a>Lam</a>
-Después lloramos y cogemos, le cantamos 
+Después lloramos y cogemos, le cantamos
         <a>Si7</a>        <a>Mi</a>
 y nos andamos lamentando De un concurso en horas bajas
        <a>Do#7</a>      <a>Fa#m</a>
 que se está tambaleando
                   <a>Si7</a>
-Y somos nosotros mismos los que lo estamos matando, 
+Y somos nosotros mismos los que lo estamos matando,
                       <a>Mi</a>
 los que lo estamos matando
 </pre>

@@ -22,7 +22,7 @@ sencillas
 Si tu tuvieras ventanas mis odiseas te las
     <a>Mim</a>
 cantaría
- <a>Fa</a>             <a>Do</a>   <a>Rem</a>                        
+ <a>Fa</a>             <a>Do</a>   <a>Rem</a>
 pero resulta serrana que mira que, que  viene el
 <a>Mi7</a>
 día.

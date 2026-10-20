@@ -15,35 +15,35 @@ fraseClave: Que porque vuelvo a cantarte alguno me anda
 <a>Sol</a>                     <a>Re</a>   <a>Mim</a>              <a>Sim</a>
 Que porque vuelvo a cantarte alguno me anda diciendo
 
-<a>Do</a>       <a>Re</a>        <a>Sol</a>            <a>Lam</a>       
-No sé ni que contestarle pues de tarde en tarde 
+<a>Do</a>       <a>Re</a>        <a>Sol</a>            <a>Lam</a>
+No sé ni que contestarle pues de tarde en tarde
  <a>Lam7/Sib</a>      <a>Si7</a>
 ni yo lo comprendo
 <a>Sol</a>                    <a>Re</a>                    <a>Mim</a>
 Me dicen que yo estoy loco y que aquí no me quieren
 
-               <a>Sol7</a>              <a>Do</a>   
-Y que abra los ojos que no me conviene 
+               <a>Sol7</a>              <a>Do</a>
+Y que abra los ojos que no me conviene
 <a>Lam7</a>  <a>La7</a>               <a>Re</a>
 ser bufón donde no hay reyes
-          <a>Mim</a>             <a>Re</a>  
-Si con rencor poniendo un cero 
+          <a>Mim</a>             <a>Re</a>
+Si con rencor poniendo un cero
              <a>Do9</a>           <a>Sol</a>
 un jurado valoró nuestra ilusión
-     <a>Do9</a>         <a>Re</a>        <a>Sol</a> 
-No importa yo tampoco lo valoro 
+     <a>Do9</a>         <a>Re</a>        <a>Sol</a>
+No importa yo tampoco lo valoro
   <a>Do9</a>         <a>Re</a>         <a>Sol</a>
 pero como persona que es peor
    <a>Sol</a>           <a>Re7</a>                  <a>Sol</a>
 Y vuelvo por esa gente que está ahí afuera
-                                 
-Que con la mano cogía me decían 
+
+Que con la mano cogía me decían
           <a>Sim</a> <a>Sibm</a>          <a>Lam7</a>
 que por favor que no me aburriera
   <a>Do</a>                               <a>Re</a>
 Y vuelvo por esos niños tan chiquititos
                                   <a>Do</a>
-Con mi chirigota puesta en la pantalla 
+Con mi chirigota puesta en la pantalla
            <a>Re</a>            <a>Sol</a>  <a>Do</a> <a>Re</a>
 pa que se terminen los potitos
   <a>Sol</a>              <a>Re7</a>             <a>Sol</a>
@@ -52,12 +52,12 @@ Y vuelvo pues mi pasión es tan gaditana
 Que vuelvo porque es que vuelvo y porque me da la gana
                     <a>Lam7</a>   <a>Re</a>               <a>Sim7</a>
 Vuelvo porque me enseñaron sus oscuras decisiones
-<a>Mi7</a>                     <a>Lam7</a> 
-Que no hay que quedar primero 
+<a>Mi7</a>                     <a>Lam7</a>
+Que no hay que quedar primero
       <a>Re</a>             <a>Sol</a>
 pa quedar en los corazones
 <a>Sol7</a>              <a>Do</a>
-Y no tocare la gloria 
+Y no tocare la gloria
                                   <a>Re</a>         <a>Sol</a>
 pero en más de una memoria yo me quedare a vivir
       <a>Mi7</a>         <a>Lam</a> <a>Re</a>                    <a>Sol</a>

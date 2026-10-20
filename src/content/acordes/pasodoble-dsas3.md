@@ -18,9 +18,9 @@ fraseClave: La quiere vestida de negro la quiere callada
    <a>LaM7</a>   <a>Sim7/5</a>    <a>LaM7</a>      <a>Sim7/5</a>   <a>LaM7</a>
 La quiere vestida de negro la quiere callada
    <a>Mi7</a>       <a>LaM7</a>
-La quiere obediente 
+La quiere obediente
           <a>Do#m7</a>            <a>La7</a>       <a>Re</a>
-y la quiere cristiana sin morder la manzana 
+y la quiere cristiana sin morder la manzana
 <a>Fa#7</a>             <a>Sim7</a> <a>Re</a>    <a>Mi7</a>          <a>LaM7</a>
 del placer desconocido por recelo y por temor
       <a>Fa#7</a>      <a>Sim7</a>       <a>Mi7</a>         <a>LaM7</a>
@@ -43,7 +43,7 @@ Y la quiere muy sumisa con una sonrisa
 Que la satisfaga y que sacie la sed de su lujuria barata
 Y si alguna vez se niega
                       <a>Mi7</a>
-La escarmienta y la lastima y la hiere 
+La escarmienta y la lastima y la hiere
     <a>Mim</a>         <a>La7</a>
 Y la mata y y la mata
                     <a>Re</a>

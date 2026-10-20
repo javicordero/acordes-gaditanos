@@ -16,11 +16,11 @@ fraseClave: Tres mil, más de tres mil mujeres
 ---
 <pre>
 <a>Solm</a>
-Tres mil más de tres mil mujeres 
+Tres mil más de tres mil mujeres
              <a>Sol7</a>                <a>Dom</a>
 Han sido ignoradas en meses y en años
   <a>Fa7</a>
-Y muchas han sido enterradas porque 
+Y muchas han sido enterradas porque
                        <a>SibM7</a>
 La llamada jamás le llegó
    <a>Sol</a>                   <a>Dom</a>                      <a>Fa7</a>
@@ -49,7 +49,7 @@ Y cual mafia en el poder historiales han borrado
                  <a>Si7</a>                         <a>Fa#m7</a>
 Manipulando la información a tus corruptas maneras
                     <a>Si7</a>
-Tu maltrato de la institución directo 
+Tu maltrato de la institución directo
               <a>Mi</a>   <a>Mi7</a>
 A tantas compañeras
             <a>LaM7</a>           <a>Si7</a>                   <a>Sol#m</a>

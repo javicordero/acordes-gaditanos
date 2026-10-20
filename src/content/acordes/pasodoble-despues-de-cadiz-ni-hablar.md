@@ -12,64 +12,64 @@ fraseClave: "Hambriento de carnaval echaba la vista atrás y"
 
 ---
 <pre><a>Mi</a>                                      <a>Do#7</a>
-Hambriento de carnaval echaba la vista atrás y 
+Hambriento de carnaval echaba la vista atrás y
     <a>Fa#m</a>
 recordaba
                                           <a>Si7</a>
-Las coplas de aquel ayer que marcaron mi niñez 
+Las coplas de aquel ayer que marcaron mi niñez
                            <a>Mi</a>
 cuando mi abuelo me las cantaba
   <a>Si7</a>                      <a>Mi</a>
-Que hasta el sol viene a morir de Paco Alba a 
+Que hasta el sol viene a morir de Paco Alba a
        <a>Mi7</a>               <a>La</a>
 Martin barrio de los caleteros
                    <a>Mi</a>   <a>La</a>                <a>Fa#m</a>
-Joya de viejos copleros cuna de grandes maestros 
+Joya de viejos copleros cuna de grandes maestros
    <a>Si7</a>         <a>Mim</a>
 para este aprendiz
                       <a>Si7</a>       <a>Mim</a>
 Y con mi carroza y un grupo de amigos
                                       <a>La7</a>
-Voy dando la vuelta al mundo y un pasacalles marca 
+Voy dando la vuelta al mundo y un pasacalles marca
      <a>Re</a>
 el camino
-Pregonando coplas de nuestros poetas las que su 
+Pregonando coplas de nuestros poetas las que su
  <a>Fa#7</a>                <a>Si7</a>
 legado se vuelva inmortal
             <a>Lam</a>                            <a>Mim</a>
-Con este plumero y mi disfraz y este pellizquito 
+Con este plumero y mi disfraz y este pellizquito
 que sabe a sal
             <a>Si7</a>                  <a>Mi</a>
 Hoy esta comparsa les quiero brindar
 Que si la gente no sabe de Aurelio y  Pedro Romero
                             <a>Do#7</a>         <a>Fa#m</a>
 Como se atreve siquiera a llamarse carnavalero
-Que si el poeta de hoy por un premio cierra su 
+Que si el poeta de hoy por un premio cierra su
 <a>Si7</a>
 boca
                   <a>La</a>                 <a>Si7</a>
-Tal vez se le olvidó la lección del Fletilla y el 
+Tal vez se le olvidó la lección del Fletilla y el
   <a>Mi</a>
 Carota
                                 <a>Si7</a>
-Que si olvidamos lo que aquí cantaron nuestros 
+Que si olvidamos lo que aquí cantaron nuestros
   <a>Mi</a>          <a>Mi7</a>                 <a>La</a>
 abuelos enterraremos nuestro carnaval
                                              <a>Si7</a>
-Enseñarle a la cantera que la esencia no se debe 
+Enseñarle a la cantera que la esencia no se debe
 olvidar
                        <a>Sol#m</a>
-Recordarle a to el que venga que el pellizco no se 
+Recordarle a to el que venga que el pellizco no se
 <a>Do#7</a>
 puede copiar
                         <a>Fa#m</a>
-Disfrutar de los que están que luego cuando se nos 
+Disfrutar de los que están que luego cuando se nos
 <a>Si7</a>                     <a>Mi</a>
 van se atragantan los halagos
      <a>Lam</a>                   <a>Si7</a>
-Que cuando llevamos un disfraz por el mundo y 
+Que cuando llevamos un disfraz por el mundo y
    <a>Mi</a>
-cantamos 
+cantamos
                     <a>Sol#m</a>         <a>Fa#m</a>        <a>Si7</a>
 Llevamos con nuestra voz la tradición y la pasión
                                     <a>Mi</a>

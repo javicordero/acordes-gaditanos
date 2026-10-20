@@ -27,25 +27,25 @@ Este aplauso me da alas pa seguir un año más
 Y afilando mi pluma canalla y dándole al pito
              <a>Sim7</a>          <a>Mi7</a>      <a>Sim7</a>    <a>Mi7</a>   <a>LaM7</a>
  aquí  en el falla como mi padre me quiso a mi enseñar
-(Bordones 5ª y 6ª cuerda)                           
-Y le pido perdón a mi tierra por estar en guerra 
+(Bordones 5ª y 6ª cuerda)
+Y le pido perdón a mi tierra por estar en guerra
                  <a>(Sorda)</a>
 cuando le vengo a cantar
-Pero me arde la sangre en las venas y rabio de pena 
+Pero me arde la sangre en las venas y rabio de pena
                                            <a>LaM7</a>
 cuando siento que adulteran mi bendito carnaval
             <a>Mi7</a>      <a>LaM7</a>     <a>Mi7</a>        <a>LaM7</a>
-Y perdón a cada aficionao, al que le he fallao, 
+Y perdón a cada aficionao, al que le he fallao,
        <a>La7</a>                                 <a>Re</a>
 cuando toda su ilusión se le voló al escucharme
                  <a>Mi7</a>    <a>LaM7</a>
 Y perdón por ser chirigotero y
-                      <a>Mi7</a> 
-quererte como yo te quiero 
+                      <a>Mi7</a>
+quererte como yo te quiero
       <a>Sim7</a>      <a>Mi7</a>         <a>LaM7</a>
 y la forma que tengo al cantarte
          <a>Rem</a>
-Pero hoy vuelvo a sacar estas notas 
+Pero hoy vuelvo a sacar estas notas
                                 <a>LaM7</a>
 para que tu sigas cantando mis coplas
         <a>Fa#7</a>        <a>Sim7</a>           <a>Mi7</a>

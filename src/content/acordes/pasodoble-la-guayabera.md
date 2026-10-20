@@ -29,14 +29,14 @@ Pero que anda presa de otro mundo
 Y dentro de un país Con nombre y con escudo y con
 <a>Mim</a>
 Una bandera que no me representa
-Que para mí no es na ni En los tiempos de paz 
+Que para mí no es na ni En los tiempos de paz
                      <a>Re</a>
 ni en los tiempos de guerra
                               <a>Do</a>
 Que no hay bandera que yo haya jurao
               <a>Lam7</a>        <a>Si7</a>
 Más que ese mío pendón morado
-<a>Mim</a>              
+<a>Mim</a>
 Y en nombre de mi pendón y de mi tierra
 <a>Re</a>
 Y aunque mi llanto no llegue a París
@@ -53,7 +53,7 @@ Deja que yo con las flores y la velita encendia
               <a>Si7</a>                      <a>Mi</a>
 Llene mis alrededores que pa tragedia la mia
                                              <a>Mi7</a>
-Y si es que en mi corazón queda un poco de amor 
+Y si es que en mi corazón queda un poco de amor
               <a>La</a>                  <a>Mi</a>
 y de solidaridad más allá de mi ruina
                         <a>Si7</a>                  <a>Mim</a>

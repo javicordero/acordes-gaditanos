@@ -50,7 +50,7 @@ lo que es la chirigota yo te lo voy a explicar
 vente corriendo pa San Antonio el primer día
          <a>Lam</a>            <a>Rem</a>           <a>Lam</a>           <a>Mi7</a>
 de Carnaval y cuando veas los pregoneros comprobarás
-                                        <a>Sim7</a>  
+                                        <a>Sim7</a>
 lo que es una chirigota lo que es una chirigota
                     <a>Mi7</a>               <a>LaM7</a>
  lo que es una chirigota de las de verdad

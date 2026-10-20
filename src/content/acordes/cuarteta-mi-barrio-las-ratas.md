@@ -34,7 +34,7 @@ Mi barrio es el olor a hierbabuena del puchero
          <a>Mim</a>        <a>La7</a>        <a>ReM7</a>
 Amor del beso primero de casapuerta
                 <a>Re7</a>                      <a>Sol</a>
-El juego de una tarde interminable de un amigo 
+El juego de una tarde interminable de un amigo
       <a>Solm7</a>       <a>ReM7</a> <a>Re#dim7</a>  <a>Mim</a>  <a>La7</a>
 inseparable y de escuela de la calle
 <a>Solm7</a>              <a>Re</a>

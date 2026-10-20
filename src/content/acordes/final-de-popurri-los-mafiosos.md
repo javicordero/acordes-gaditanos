@@ -13,13 +13,13 @@ fraseClave: Está acabando la entrega de la mercancía, es tan
 ---
 <pre>
 <a>Lam</a>                <a>Sol</a>            <a>Lam</a>
-Está acabando la entrega de la mercancía, 
+Está acabando la entrega de la mercancía,
                    <a>Sol</a>         <a>Lam</a>
 es tan autentica y pura de fabricación
 <a>Rem</a>                    <a>Mi7</a>             <a>Lam</a>
 Que cuando pruebas la dosis el alma se agita
-        <a>Sib7</a>          <a>Lam</a>  
-Y se resucita en tu corazón 
+        <a>Sib7</a>          <a>Lam</a>
+Y se resucita en tu corazón
              <a>Mi7</a>          <a>Lam</a>
 un deseo infinito de revolución
 <a>Do</a>
@@ -41,11 +41,11 @@ Sueño que los elimino con lo bonito de mi canto
    <a>Lam</a>
 Ojala que mi canto algún día además de una historia real
             <a>Mim</a>
-Sirva para quitarle la mascara 
+Sirva para quitarle la mascara
                                     <a>Si7</a>
 a toda la mafia escondida bajo su disfraz
                                   <a>Mim</a>
-Y que bajo el disfraz se pasa la vida, 
+Y que bajo el disfraz se pasa la vida,
 <a>Do</a>               <a>Si7</a>       <a>Mim</a>
 como si la vida fuera carnaval
 <a>Do</a>               <a>Si7</a>       <a>Mim</a>

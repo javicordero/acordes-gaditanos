@@ -13,19 +13,19 @@ video: https://www.youtube.com/embed/HbvLetbZg8o?si=nGqVJl1_C9dfh0Fw
 fraseClave: Jay que vé como cambian los tiempos
 ---
 <pre>
-<a>La</a>                          <a>Mi7</a>    
-Jay que vé como cambian los tiempos 
+<a>La</a>                          <a>Mi7</a>
+Jay que vé como cambian los tiempos
                               <a>La</a>
 jay que vé como cambian las modas
-                            <a>Mi7</a>  
-como crejen nuestros carnavales 
+                            <a>Mi7</a>
+como crejen nuestros carnavales
                         <a>La</a>
 y como najen más gilipollas
-        <a>Re</a>                    
-Yo que me gradué con Fletilla 
+        <a>Re</a>
+Yo que me gradué con Fletilla
     <a>La</a>
 y mi maestro fue el Chimenea
-                                    <a>Mi7</a>  
+                                    <a>Mi7</a>
 vi a tener que coger el tres por cuatro
                            <a>La</a>
 y achocarlo contra la ajotea

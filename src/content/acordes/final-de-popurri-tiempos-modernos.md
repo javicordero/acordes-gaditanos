@@ -15,7 +15,7 @@ fraseClave: Míralos, que parece que no están, pero mira como
 
 <pre>
   <a>La</a>
-Míralos, que parece que no están, 
+Míralos, que parece que no están,
                                         <a>Mi</a>
 pero mira como brillan alumbrando la ciudad
                <a>Re</a>                      <a>Fa#m</a>
@@ -30,7 +30,7 @@ El señor en furgoneta que reparte los cafés
 El que barre las aceras, la que limpia en el hostal
 
 
-El que pasa toas las noches 
+El que pasa toas las noches
                        <a>Mi</a>
 junto a un horno haciendo pan
                   <a>La</a>
@@ -57,19 +57,19 @@ El mecánico, el barbero, la poeta, el profesor
 La canguro, el carnicero, la frutera y tantos más
                                            <a>Mi</a>
 Comprendedme pero a todos o los puedo mencionar
-          <a>Re</a>                  <a>Mi</a>  
-Ni de banqueros, ni curas ni reyes, 
+          <a>Re</a>                  <a>Mi</a>
+Ni de banqueros, ni curas ni reyes,
         <a>Do#m7</a>                <a>Fa#m</a>
 ni economistas, ni dineros ni leyes
        <a>Sim</a>                    <a>Mi</a>
-Ni generales, ni fiscales ni jueces, 
+Ni generales, ni fiscales ni jueces,
             <a>Do#m7</a> <a>Do#7</a>           <a>Fa#m</a>
 ni de inversores, ni accionistas, ni los gerentes
 <a>Sim</a>                     <a>Mi</a>
 Ni de los ministros, ni del presidente
-<a>Re</a>         <a>Mi</a>            <a>La</a>   
-Que este mundo es de la gente 
+<a>Re</a>         <a>Mi</a>            <a>La</a>
+Que este mundo es de la gente
 <a>Re</a>         <a>Mi</a>            <a>La</a>    <a>Rem</a> <a>La</a>
-Que este mundo es de la gente 
- 
+Que este mundo es de la gente
+
 </pre>

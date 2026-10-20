@@ -28,7 +28,7 @@ Y te cala hasta los huesos como en Cádiz la humedad
                     <a>Si7</a>       <a>Mi7</a>                     <a>Lam</a>
 Haya en Ucrania en el 86 un desastre nuclear el caos desata
            <a>La7</a>                   <a>Rem</a>
-Y el mismo año aquí en Cádiz también 
+Y el mismo año aquí en Cádiz también
                   <a>Si7</a> <a>Mi7</a>        <a>LaM7</a>
 un desastre de Final sin los cubatas
                                   <a>Fa#7</a>            <a>Sim7</a>

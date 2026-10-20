@@ -46,7 +46,7 @@ que en Sevilla un mi alma o aqui un picha mia.
                          <a>Fa</a>  <a>So7</a>                  <a>Do</a>
 Po por eso no puedo aguantar a una pi pi pija catalana
                                 <a>La7</a>
-que que por mi manera de hablar monta el cachondeo y 
+que que por mi manera de hablar monta el cachondeo y
       <a>Rem</a>  <a>Fa</a>                      <a>Sol7</a>
 la sardana con su gran sentido del humor.
 <a>Sol#</a>                                      <a>Sol7</a>

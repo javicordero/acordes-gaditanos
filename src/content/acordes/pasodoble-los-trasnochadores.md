@@ -28,7 +28,7 @@ y pude  tocar la luna cada noche que te vi.
 <a>La7</a>               <a>Rem</a>    <a>Si7</a>                  <a>Mi7</a>
 No puedes ni imaginarte, lo que me hiciste sentir
                           <a>Lam</a>       <a>La7</a>
-después de tanto tiempo ausente, sin verte 
+después de tanto tiempo ausente, sin verte
      <a>Rem</a>         <a>Fa</a>      <a>Mi7</a>
 y que tú te acordaras de mí, tú te acordaste de mí
                  <a>LaM7</a>       <a>Fa#7</a>   <a>Sim7</a>
@@ -48,8 +48,8 @@ Como no voy a hablar solo, con la cabeza perdida
 <a>Fa#7</a>                <a>Sim7</a>  <a>Si7</a>
 si en la calle confesaste
                            <a>Mi7</a>
-que era a mí a quién tu querías 
-<a>Re</a>      <a>Mi7</a>       <a>Sim7</a>  <a>Mi7</a> 
+que era a mí a quién tu querías
+<a>Re</a>      <a>Mi7</a>       <a>Sim7</a>  <a>Mi7</a>
 Y ahora soy un trasnochador
           <a>LaM7</a>     <a>Fa#7</a>       <a>Sim7</a>
 porque ni vivo, ni duermo, ni sueño

@@ -15,7 +15,7 @@ fraseClave: Contemplando el Campo del Sur sólo me queda decir
 <pre>
 <a>LaM7</a>            <a>Sim7</a>      <a>Mi7</a>                 <a>LaM7</a>
 Contemplando el Campo del Sur sólo me queda decir
-         <a>Fa#7</a>       <a>Sim7</a>                        
+         <a>Fa#7</a>       <a>Sim7</a>
 Ay qué bonito es mi Cai Y del Puente Hierro al Canal
                     <a>Mi7</a> <a>Sim7</a>       <a>Mi7</a>        <a>LaM7</a>
 Se produce una quietud Que en el mundo no la hay
@@ -23,8 +23,8 @@ Se produce una quietud Que en el mundo no la hay
 Por eso vengo a cantarte feliz abrazado a mi comparsa
        <a>Fa#7</a>       <a>Sim7</a>            <a>Mi7</a>         <a>LaM7</a>
 Con compases marineros pa ti que ya sentí añoranza
-<a>Sim7</a>       <a>Mi7</a>          <a>LaM7</a>     <a>Mi7</a> <a>LaM7</a> 
-De ser coplero en tus tablas 
+<a>Sim7</a>       <a>Mi7</a>          <a>LaM7</a>     <a>Mi7</a> <a>LaM7</a>
+De ser coplero en tus tablas
 porque yo me muero por ti
                                         <a>Mi7</a>
 Y me vuelvo loco por ti porque me envenenas
@@ -37,9 +37,9 @@ Porque tú eres como una barquilla que siempre me esperas
                              <a>Fa#7</a>   <a>Sim7</a> <a>Mi7</a>    <a>LaM7</a>   <a>La7</a>
 Igual que una novia en su cita primera se desespera
          <a>Re</a>                          <a>Mi7</a>     <a>LaM7</a>
-Y en el olvio he llorao mi ausencia y mis emociones 
-                                    <a>Mi7</a>  
-hoy vuelvo a cantarte lleno de ilusiones 
+Y en el olvio he llorao mi ausencia y mis emociones
+                                    <a>Mi7</a>
+hoy vuelvo a cantarte lleno de ilusiones
                <a>Sim7</a>
 ay Cai de mis amores No sabes cuánto te quiero
                        <a>Mi7</a>                  <a>LaM7</a>

@@ -88,7 +88,7 @@ Es porque no ha conocido este hermoso lugar
 Parara este hermoso lugar
 <a>Mim La7</a> <a>Re</a>         <a>Mi7</a>               <a>LaM7</a>
 Es porque no ha conocido este hermoso lugar
-<a>Mim</a> <a>La7</a> <a>Re</a>  <a>Mi7</a> <a>LaM7</a> <a>Mi</a> <a>La</a> <a>Re</a> <a>Mi7</a>  
+<a>Mim</a> <a>La7</a> <a>Re</a>  <a>Mi7</a> <a>LaM7</a> <a>Mi</a> <a>La</a> <a>Re</a> <a>Mi7</a>
 Parara este hermoso lugar
 Por suerte nuestra felicidad no es imposible de
     <a>La</a>

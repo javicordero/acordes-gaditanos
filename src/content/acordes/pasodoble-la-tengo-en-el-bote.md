@@ -28,7 +28,7 @@ pide por tu boquitaque todo es para ti,
                                        <a>Do</a>
 tú sabes, entrañitas, que eres mi sinvivir.
 Si algún día no viniera y cantarte no pudiera,
-                <a>Sol7</a>         
+                <a>Sol7</a>
 Cádiz de mi corazón, respetarte y venerarte
                                              <a>Do</a>
 desde que era chiquitito siempre fue mi religión.
@@ -38,7 +38,7 @@ El bombo empieza a sonar y mis piernas a temblar
 porque otra vez te traigo los compases más añejos,
                  <a>La7</a>                   <a>Rem</a>
 esos que yo he mamao, esos tan chirigoteros,
-                   <a>Sol7</a>                 
+                   <a>Sol7</a>
 los de ‘Las brujas Piti y los del bisabuelo
                                         <a>Do</a>
 pa que sepas, mi Cai, lo mucho que te quiero.

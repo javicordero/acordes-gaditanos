@@ -95,7 +95,7 @@ cantandote solo por fama y dinero
 Vestidos con lentejuelas mientras espera mi pueblo
                 <a>Mim</a>
 y de tanto que espera desespera
-<a>Re</a>  <a>Do</a> <a>Si7</a>  
+<a>Re</a>  <a>Do</a> <a>Si7</a>
 Ahhh ahhh ahh
 
 <strong>-Cejilla al 3.</strong>
@@ -246,7 +246,7 @@ Llorando por los rincones, mientras cantamos
 nuestras canciones de carna
 <a>Sim Re</a>   <a>Mi</a>      <a>Fa#7</a> <a>Sim</a>  <a>Re</a>  <a>Mi</a> <a>Fa#7</a>
 Y es tan Gaditanissima  ahhh ahhh
-<a>Sim</a>   <a>Re</a>   <a>Mi</a>       <a>Fa#7</a>   <a>Sim</a>     <a>Re</a>   <a>Mi</a>       <a>Fa#7</a>  
+<a>Sim</a>   <a>Re</a>   <a>Mi</a>       <a>Fa#7</a>   <a>Sim</a>     <a>Re</a>   <a>Mi</a>       <a>Fa#7</a>
 Gaditanissima Gaditanissima Gaditanissima Gaditanissima
          <a>Sim</a>
 Gaditanissima

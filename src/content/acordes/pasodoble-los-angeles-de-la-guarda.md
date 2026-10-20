@@ -28,26 +28,26 @@ entierra la caballa
 Y con mi copla quiero más que nunca sentirme viñero
          <a>Do</a> <a>Lam7</a>        <a>Si7</a>
 Como mi padre, como mi abuelo
-          <a>Mim</a>                                   <a>Sim7</a>                              
+          <a>Mim</a>                                   <a>Sim7</a>
 Por esas calles que a la chirigota perseguí en su día
                 <a>Sibm7</a>       <a>Lam7</a>
-Y sus pasodobles me los aprendía, 
+Y sus pasodobles me los aprendía,
                 <a>Do</a> <a>Lam7</a>          <a>Si7</a>
 subirme a la azotea donde yo empecé
                             <a>Mi</a>
-En ese lavaero en la calle jugué, 
+En ese lavaero en la calle jugué,
                          <a>Si7</a>         <a>Mi</a>
 yo me crie en un barrio donde la alegría
-                             
-Es su filosofía y una sonrisa 
+
+Es su filosofía y una sonrisa
           <a>Do#7</a>            <a>Fa#m</a>
 es el pan nuestro de cada día
                <a>La</a>        <a>Si7</a>        <a>Fa#m</a>
 Un barrio de nudillos en los mostradores
                <a>La</a>       <a>Si7</a>       <a>Mim</a>
 Y una virgen velando por sus pescadores
-                       <a>Lam</a>   
-Cuando uno vuelve a su barrio 
+                       <a>Lam</a>
+Cuando uno vuelve a su barrio
             <a>Do</a>                 <a>Si7</a>
 vuelve al santuario donde se crió
                   <a>Lam</a>                  <a>Re</a>

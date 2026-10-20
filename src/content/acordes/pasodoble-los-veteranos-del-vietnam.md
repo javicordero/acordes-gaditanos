@@ -12,40 +12,40 @@ video: 'https://www.youtube.com/embed/MjwmDNM97g0'
 fraseClave: Recuerdo que de niño cantaba las coplas
 ---
 <pre><a>Lam</a>              <a>Mi7</a>             <a>Lam</a>
-Recuerdo que de niño cantaba las coplas 
+Recuerdo que de niño cantaba las coplas
                    <a>La7</a>             <a>Rem</a>
-Y las coplas que a mi me gustaba cantar eran las 
+Y las coplas que a mi me gustaba cantar eran las
                          <a>Mi7</a>              <a>Lam</a>
 que un día cerraban y abrían mi puño y mi boca,
                    <a>Fa</a>     <a>Rem</a>               <a>Mi7</a>
-Por rebelde y por carota, me gustaba el carnaval, 
+Por rebelde y por carota, me gustaba el carnaval,
 <a>Rem</a>                 <a>Mi7</a>              <a>Lam</a>
 me daba igual la comparsa que la chirigota
-Y en las páginas en blanco de mis libros de 
-estudiante rabonero, puse un verso con un corazón 
+Y en las páginas en blanco de mis libros de
+estudiante rabonero, puse un verso con un corazón
                                <a>Sol</a>
 al lao "Ay que te quiero tierra mía"
-Me metí en esta aventura que no tiene ni finales ni 
+Me metí en esta aventura que no tiene ni finales ni
                                 <a>Do7</a>
-regreso,  digo que será por eso que en febrero no 
+regreso,  digo que será por eso que en febrero no
    <a>Fa</a>
 dormía,
 <a>Rem</a>                                        <a>Fa</a>
-Hasta que llegó la hora de subirme a la carreta, de 
+Hasta que llegó la hora de subirme a la carreta, de
   <a>Sim7/5</a>      <a>Mi7</a>
 subirme a la carreta
 <a>Rem</a>                            <a>Mi7</a>      <a>Lam</a>
-Y defender lo que siempre entendí que debía ser el 
+Y defender lo que siempre entendí que debía ser el
                          <a>Mi7</a>
-carnaval un disparo, una voz, un mensaje de un 
+carnaval un disparo, una voz, un mensaje de un
                    <a>LaM7</a>
 pueblo con música y letra
         <a>Fa#7</a>     <a>Sim7</a>  <a>Mi7</a>           <a>LaM7</a>
-Lástima que los poetas olvidaran sus raices y ahora 
+Lástima que los poetas olvidaran sus raices y ahora
   <a>Fa#7</a>      <a>Sim7</a>   <a>Mi7</a>                <a>LaM7</a>
 nada más que dicen: qué bonita es la caleta
                    <a>Mi7</a>                   <a>Lam</a>
-Que bonita es la caleta, que bonita y gaditana, 
+Que bonita es la caleta, que bonita y gaditana,
 <a>Fa</a>              <a>Mi7</a>
 lástima de las raices
 <a>Fa</a>                       <a>Mi7</a>     <a>Lam</a>

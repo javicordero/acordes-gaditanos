@@ -15,31 +15,31 @@ fraseClave: Si en el cole te marginan  y te ofenden o te
 <a>Mi</a>            <a>Do#7</a>   <a>Fa#m</a>         <a>Si7</a>           <a>Mi</a>
 Si en el cole te marginan  y te ofenden o te humillan
             <a>Do#7</a>            <a>Fa#m</a>
-y, al gritar, no te sale la voz, 
+y, al gritar, no te sale la voz,
         <a>Si7</a>              <a>Mi</a>
-llámame y gritaremos los dos. 
+llámame y gritaremos los dos.
            <a>Do#7</a>  <a>Fa#m</a>    <a>Si7</a>                 <a>Mim</a>
-Buscaremos otras voces, que no sepan ser valientes 
+Buscaremos otras voces, que no sepan ser valientes
        <a>Lam</a>        <a>Si7</a>                         <a>Mi</a>
 y formaremos una banda, la banda de los enclenques.
                         <a>Do#7</a>           <a>Fa#m</a>
-Y, poco a poco, nuestro grito se hará grande 
+Y, poco a poco, nuestro grito se hará grande
            <a>Si7</a>           <a>Fa#m</a> <a>Si7</a>     <a>Mi</a>
-porque la unión hace una fuerza desmedida 
+porque la unión hace una fuerza desmedida
            <a>Mi7</a>                            <a>La</a>
-y aquel matón que te humilló porque es cobarde, 
+y aquel matón que te humilló porque es cobarde,
       <a>Fa#7</a>         <a>Si7</a>
-temblará por las esquinas 
+temblará por las esquinas
         <a>La</a>                                   <a>Si7</a>
-y temblará el que se río al ver lo que te hacían, 
+y temblará el que se río al ver lo que te hacían,
      <a>Mi</a>                  <a>Do#7</a>
-temblará el profesor que nunca lo veía, 
+temblará el profesor que nunca lo veía,
         <a>Fa#m</a>  <a>Si7</a>      <a>Mi</a>  <a>Mi</a>
 y esos padres incompetentes.
 <a>Lam</a>                <a>Si7</a>                        <a>Mi</a>
 Nosotros ya no temblamos,  pues somos más fuertes,
                   <a>Fa#m</a>	              <a>Si7</a>
-uniendo grito con grito, tiene un poder infinito  
+uniendo grito con grito, tiene un poder infinito
                     <a>Mi</a>
 la banda de los enclenques.
 </pre>

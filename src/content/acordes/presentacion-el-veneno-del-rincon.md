@@ -12,56 +12,56 @@ fraseClave: Trairarararara Trairarararara
 <pre>
 <a>Fa</a>         <a>Mi7</a>  <a>Fa</a>        <a>Mi7</a>
 Trairarararara Trairarararara
- <a>Fa</a>       <a>Mi7</a>     <a>Fa</a>       <a>Mi7</a> 
-Veneno, veneno, veneno, veneno, 
+ <a>Fa</a>       <a>Mi7</a>     <a>Fa</a>       <a>Mi7</a>
+Veneno, veneno, veneno, veneno,
 <a>Lam</a>                  <a>Sol</a>        <a>Fa</a>            <a>Mi7</a>
 tienen las coplas de Cai pa lo malo y pa lo bueno
 <a>Lam</a>                  <a>Sol</a>        <a>Fa</a>            <a>Mi7</a>
-Tienen las coplas de Cai pa lo malo y pa lo bueno 
+Tienen las coplas de Cai pa lo malo y pa lo bueno
 <a>Lam</a>  <a>Sol</a>  <a>Lam</a>
 Uhhh uhhh uhhh
 <a>Lam</a>
-Del rincón más gaditano, ese que huele a romero, 
+Del rincón más gaditano, ese que huele a romero,
 
-que inundiaba con su esencia a este Cai que tanto 
+que inundiaba con su esencia a este Cai que tanto
  <a>Sol</a>
 quiero
-Donde nace este veneno, entre unas copas de vino, 
+Donde nace este veneno, entre unas copas de vino,
                                             <a>Fa</a>
 la maestría del Cochero, el paladar del Catalino
 
-la voz de Paco Copero, la magia de Miguelito,  
+la voz de Paco Copero, la magia de Miguelito,
                                        <a>Mi7</a>
 a Scapachini yo sueno y a los golpes de Monchito
 <a>Do</a>
-Con mi copla envenando al rincón de mis amores, 
+Con mi copla envenando al rincón de mis amores,
 
-la receta del misterio de mi gente, 
+la receta del misterio de mi gente,
                      <a>Sol</a>
 de mi gente, los pabellones
                                            <a>Fa</a>
-Resuenan por sus paredes las gargantas gaditanas  
+Resuenan por sus paredes las gargantas gaditanas
                         <a>Sim7/5</a>             <a>Mi7</a>
 de San Juan de Dios con Plocia, seis de la mañana
-<a>Lam</a>             <a>Sol</a>             <a>Fa</a>   <a>Mi7</a> 
-Veneno, veneno, veneno, veneno, veneno,  
+<a>Lam</a>             <a>Sol</a>             <a>Fa</a>   <a>Mi7</a>
+Veneno, veneno, veneno, veneno, veneno,
 <a>Lam</a>             <a>Sol</a>                <a>Fa</a>   <a>Mi7</a>
 Veneno, veneno, veneno, rincón del veneno,
                      <a>Sol</a>    <a>Lam</a>                <a>Sol</a>
 Del Lali Congui y Gaviño, Martín, Pastrana y Potera
 <a>Lam</a>               <a>Sol</a>                  <a>Fa</a>
-Del Petra con Manolito y la bendita cantera 
+Del Petra con Manolito y la bendita cantera
                  <a>Mi7</a>
 y la bendita cantera
-<a>Lam</a>             <a>Sol</a>             <a>Fa</a>   <a>Mi7</a> 
-Veneno, veneno, veneno, veneno, veneno,  
+<a>Lam</a>             <a>Sol</a>             <a>Fa</a>   <a>Mi7</a>
+Veneno, veneno, veneno, veneno, veneno,
 <a>Lam</a>             <a>Sol</a>                <a>Fa</a>   <a>Mi7</a>
 Veneno, veneno, veneno, rincón del veneno,
                      <a>Rem</a>                      <a>Lam</a>
-Quise hacerte un pasodoble de lo que fuera tu casa, 
+Quise hacerte un pasodoble de lo que fuera tu casa,
                   <a>Fa</a>                 <a>Mi7</a>
 perdon Pepe picha mía pero me sobra veneno
                      <a>Lam</a>  <a>Sol</a>               <a>Lam</a>  <a>Sol</a>
-pa escribirte esta comparsa, veneno de mi comparsa, 
+pa escribirte esta comparsa, veneno de mi comparsa,
                <a>Lam</a>
 veneno de mi comparsa</pre>

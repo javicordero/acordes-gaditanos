@@ -54,7 +54,7 @@ por eso se quedo pendiente la victoria de Los Parias
 <a>Mim</a>                    <a>Re</a>          <a>Do</a>           <a>Si7</a>
 Y mira tu que estando lejos lo cerquita que te siento
 <a>Mim</a>                       <a>Re</a>              <a>Do</a>
-no es que no te lleve conmigo es que mas no me 
+no es que no te lleve conmigo es que mas no me
 <a>Si7</a>
 cabe dentro
 <a>Mim</a>            <a>Lam</a>                  <a>Si7</a>

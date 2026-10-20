@@ -28,7 +28,7 @@ Si aun nadie sabe quien fuera el culpable
                                <a>Lam</a>
 De las muertes infames de aquellas residencias
                     <a>Si7</a>                 <a>Fa</a>
-Y el responsable de cuando en Valencia 
+Y el responsable de cuando en Valencia
          <a>Sim7/5</a>    <a>Mi7</a>
 Murió la gente sepultá
             <a>Lam</a>

@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/V7v3gtfHBhg?si=506yx8VVOHwEIevl'
 
 fraseClave: Aquí tienes mi comparsa tacita de mis amores
 ---
-<pre>  
+<pre>
   <a>Lam</a>      <a>Mi7</a>      <a>Lam</a>   <a>La7</a>           <a>Rem</a>
 Aquí tienes mi comparsa tacita de mis amores
                     <a>Sol7</a>                  <a>Do</a>   <a>Mi7</a>
@@ -22,14 +22,14 @@ Me rindo a tu mar bendito y traigo mi melodía
 Fruto del vientre infinito del Barrio Santamaria
          <a>Sol7</a>                                 <a>Do</a>
 Como Caletero dejo mi capacha encallá en tu orilla
-                <a>Sol</a> 
-Siento un cosquilleo 
+                <a>Sol</a>
+Siento un cosquilleo
               <a>Fa</a>                <a>Mi7</a>
 desde las entrañas hasta el paladar
 
 
-              <a>Rem</a>  <a>Mi7</a>      <a>Lam</a> 
-Y es que regalarte la resbalaera 
+              <a>Rem</a>  <a>Mi7</a>      <a>Lam</a>
+Y es que regalarte la resbalaera
              <a>Mi7</a>           <a>La</a>
 sabe a mojarrita y agüita salá
                   <a>LaM7</a>     <a>Mi7</a>          <a>LaM7</a>
@@ -45,11 +45,11 @@ A verdín, a casapuerta y a playita los Corrales
 <a>La7</a>                   <a>Re</a> <a>Si7</a>                 <a>Mi</a>
 De esta forma lo aprendí y tal cual voy a morir
 <a>Re</a>                 <a>Mi7</a> <a>LaM7</a>
-Y aunque digan muchos genios 
+Y aunque digan muchos genios
                        <a>Mi7</a>                      <a>LaM7</a>
 que asi no se gana un premio solo le voy a explicar
 <a>Rem</a>               <a>Mi7</a>         <a>LaM7</a>
-Mientras que conserve aquí conmigo 
+Mientras que conserve aquí conmigo
                      <a>Mi7</a>
 mis dos niños y mis amigos
                         <a>Re</a>          <a>Mi7</a>        <a>LaM</a>

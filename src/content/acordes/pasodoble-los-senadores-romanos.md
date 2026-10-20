@@ -24,7 +24,7 @@ Y en justa correspondencia por su gentileza
 le estrecho mi mano ya que con ello demuestra
                        <a>Mi7</a>                    <a>Lam</a>
 que admira igual la belleza de ese rincón gaditano.
-<a>Sol7</a>              <a>Do</a>   <a>Sol7</a>              <a>Do</a>                  
+<a>Sol7</a>              <a>Do</a>   <a>Sol7</a>              <a>Do</a>
 Es para mí una promesa o como un peregrinaje
 <a>Sol7</a>            <a>Do</a>   <a>Fa</a>                 <a>Mi7</a>
 entonarle mi falseta y cantarle a su paisaje
@@ -55,7 +55,7 @@ que me inspira y que me incita
 como dijo al expresarse
                      <a>La</a>
 la pluma del buen letrista
-<a>Re</a>                     <a>La</a>    
+<a>Re</a>                     <a>La</a>
 la Caleta en mí es constante
           <a>Mi7</a>              <a>La</a>
 mi musa galante mi novia bonita.

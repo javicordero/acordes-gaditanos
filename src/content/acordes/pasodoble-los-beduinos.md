@@ -27,7 +27,7 @@ Echamos de menos tu brisa
 que es una caricia de frescor y agrado
                         <a>Lam</a>
 y si siempre estamos de risa
-                <a>Mi7</a>                 <a>Lam</a>  
+                <a>Mi7</a>                 <a>Lam</a>
 eso nos caracteriza como buenos gaditanos.
     <a>Sol</a>
 Mas todo no es risa
@@ -51,7 +51,7 @@ ante ustedes en este bello rincón
 que tan grato recuerdos tengo yo
                     <a>Re</a>
 yo no se es porque tengo pasión
-    <a>Mi7</a>            <a>Lam</a>            
+    <a>Mi7</a>            <a>Lam</a>
 o será porque aquí tengo mi hogar
      <a>Rem</a>           <a>La</a>
 sólo sé y lo juro de corazón

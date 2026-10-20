@@ -12,7 +12,7 @@ fraseClave: Ay, recién salidita de la caldera traigo mi
 ---
 <pre>
 <a>LaM7</a>                       <a>Mi7</a>
-Ay, recién salidita de la caldera 
+Ay, recién salidita de la caldera
                <a>Sim</a>      <a>Mi7</a>    <a>LaM7</a>
 traigo mi musiquilla en mi barquita,
                  <a>Fa#7</a>               <a>Sim</a>
@@ -20,29 +20,29 @@ Viene casi a escondías y oliendo a pieras
               <a>Mi7</a>             <a>LaM7</a>
  sólo pa enamorarte, blanca Tacita,
 <a>Rem</a>          <a>Fa</a>     <a>Mi7</a>      <a>LaM7</a>
-Sólo pa enamorarte, blanca Tacita, 
+Sólo pa enamorarte, blanca Tacita,
 <a>Sim</a>           <a>Mi7</a>           <a>LaM7</a>
 y decirte al oído que eres bonita.
-      <a>Mi7</a>             <a>LaM7</a> 
-Eres bonita, porque lo eres, 
+      <a>Mi7</a>             <a>LaM7</a>
+Eres bonita, porque lo eres,
           <a>Mi7</a>          <a>LaM7</a>
 eres princesa de la alegría,
         <a>Mi7</a>              <a>LaM7</a>
 Eres la musa de mis canciones,
                      <a>Fa#7</a>     <a>Sim</a>
 la dueña perpetua de la copla mía.
-                          <a>Mi7</a> 
-Y hasta tu Luna ronea de noche 
+                          <a>Mi7</a>
+Y hasta tu Luna ronea de noche
 <a>Re</a>      <a>Mi7</a>            <a>LaM7</a>
 en los espejos de la Bahía.
-<a>Re</a>       <a>Mi7</a>           <a>LaM7</a> 
-Y aprovechando la oscuridad 
-       <a>Fa#7</a>               <a>Sim</a> 
+<a>Re</a>       <a>Mi7</a>           <a>LaM7</a>
+Y aprovechando la oscuridad
+       <a>Fa#7</a>               <a>Sim</a>
 voy a robarte el rumor al mar
       <a>Mi7</a>             <a>LaM7</a>
  pa devolvérselo por febrero.
-<a>Re</a>         <a>Mi7</a>         <a>LaM7</a> 
-Y aquí me tienes por Carnaval 
+<a>Re</a>         <a>Mi7</a>         <a>LaM7</a>
+Y aquí me tienes por Carnaval
             <a>Fa#7</a>         <a>Sim</a>
 con mi barquillita embarrancá
          <a>Mi7</a>                             <a>LaM7</a>

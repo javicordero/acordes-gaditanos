@@ -41,13 +41,13 @@ Cai, Cai, Cai
 <a>Do</a>                      <a>Re7</a>              <a>Sol</a>
 Que ya no se ve en la final lluvia de claveles
 <a>Sol7</a>         <a>Do</a>     <a>Re7</a>
-Y aunque no pueda vivir en mi ciudad, 
+Y aunque no pueda vivir en mi ciudad,
           <a>Sim</a>     <a>Mi7</a>       <a>Lam7</a>
-Me voy al mundo a poder explicar 
+Me voy al mundo a poder explicar
    <a>Re7</a>                            <a>Sol</a>
 Lo que fue para el Cádiz de mis recuerdos
 <a>Sol7</a>         <a>Do</a>      <a>Re7</a>
-Y aunque me duela pensar en mi niñez 
+Y aunque me duela pensar en mi niñez
        <a>Sim</a>   <a>Mi</a>    <a>Mi7</a>     <a>Lam7</a>
 a mi manera siempre te defenderé.
                     <a>Re7</a>      <a>Lam7</a>            <a>Re7</a>

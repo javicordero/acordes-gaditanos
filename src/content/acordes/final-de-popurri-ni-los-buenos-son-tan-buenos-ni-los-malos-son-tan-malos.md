@@ -13,11 +13,11 @@ fraseClave: Cuando todo se acabe y te encuentres conmigo, dará
 ---
 <pre>
 <a>Do9</a>                  <a>Lam</a>
-Cuando todo se acabe y te encuentres conmigo, 
+Cuando todo se acabe y te encuentres conmigo,
 <a>Fa</a>                   <a>Sol</a>
 dará igual el futuro, dará igual el destino.
                <a>Do9</a>                 <a>Lam</a>
-Cuando todo se acabe entenderás que tu vida 
+Cuando todo se acabe entenderás que tu vida
                <a>Fa</a>                 <a>Sol</a>
 es tan solo un viaje con billete de ida.
 <a>Fa</a>                 <a>Sol</a>                    <a>Lam</a>
@@ -25,17 +25,17 @@ Tenemos una vida solamente, pero si sabes vivirla
  <a>Fa7</a>               <a>Sol7</a>
 será más que suficiente.
          <a>Fa</a>
-Vive la vida sin pensar en el futuro 
+Vive la vida sin pensar en el futuro
                  <a>Sol</a>
 y disfruta del presente que el pasado ya no es tuyo.
                    <a>Fa</a>
 No me digas que la vida se te fue sin darte cuenta
                        <a>Sol</a>
 Y que no tienes qué contarme
-  
+
 cuando ajustemos la cuentas
          <a>Do9</a>                  <a>Mim</a>
-Vive la vida como si el último día 
+Vive la vida como si el último día
                  <a>Fa</a>
 fuera el día de mañana
                     <a>Sol</a>                        <a>Do9</a>
@@ -45,7 +45,7 @@ No te guardes un te quiero, no lo dejes pa' mañana,
                     <a>Sol</a>
 no te quedes con las ganas.
        <a>Lam</a>
-De decirme que lloraste viendo fotos, 
+De decirme que lloraste viendo fotos,
                     <a>Mim</a>
 que el corazón entregaste y te lo devolvieron roto
                     <a>Rem</a>

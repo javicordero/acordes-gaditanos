@@ -20,7 +20,7 @@ Ya vuelve a sonar la melodía pa cantarte vida mía
                   <a>Sol</a>
 El final de los finales
 <a>Do</a>            <a>Mi7</a>     <a>Lam7</a>
-Otra vez se va mi chirigota a ofrecerte nuevas 
+Otra vez se va mi chirigota a ofrecerte nuevas
 <a>Fa</a>                               <a>Sol</a>
 Coplas por tus barrios y por tus calles
             <a>Fa</a>
@@ -46,7 +46,7 @@ Perderme contigo y que nos den las tantas
                  <a>Lam</a>                <a>Mim</a>
 En portería capuchinos, pintar de lunares el
               <a>Fa</a>
-Cielo con papelillos pa que lo disfrutes y 
+Cielo con papelillos pa que lo disfrutes y
              <a>Sol</a>
 Lo cantes conmigo
 <a>Do</a>                                        <a>Mim</a>

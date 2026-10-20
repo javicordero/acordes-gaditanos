@@ -18,8 +18,8 @@ Otra vez me ha vuelto loco febrerillo
 Y he soñao con un mercao de maravillas,
                               <a>Fa#m</a>
 qué bonito cariño volver a cantarte
-    <a>Si7</a>                         <a>Mi</a> 
-y vivir como un niño esta fantasía, 
+    <a>Si7</a>                         <a>Mi</a>
+y vivir como un niño esta fantasía,
 <a>Mi7</a>         <a>La</a>    <a>Si7</a>                  <a>Mi</a>
 y otra melodía que se me ha vuelto a enamorar
        <a>Si7</a>             <a>Mi</a>

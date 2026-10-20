@@ -25,7 +25,7 @@ Oh mia góndola finale, apre tu anima al cantare
                                 <a>Mim</a>
 Di mia serena comparsa. Serenissima
 Interminabile signora, si cada giorno e un lamento
-                                                      <a>Re</a>  
+                                                      <a>Re</a>
 E ve que se sfugare il tiempo, e ve la crisi agravare
                                           <a>Si7</a>
 Il dia no tienen finale, la vita e un aburremento
@@ -34,7 +34,7 @@ Donna, donna, la felicita
 <a>Lam</a>         <a>Mim</a>   <a>Si7</a>    <a>Mim</a>             <a>Si7</a>
 Chiama a la porta di tua casa, e mia comparsa
                     <a>Mim</a>
-E un regalo di carnevale, mascherato 
+E un regalo di carnevale, mascherato
 di nostra locura
                          <a>Re</a>
 Una pompa di allegro cantare
@@ -63,6 +63,6 @@ Oh donna mia  veneziana, maschera bianca di mio cuore
 Di mia urbe e mia razza
                     <a>Si7</a>
 Oh mia góndola finale, apre tu anima al cantare
-                 <a>Mim</a>           <a>Si7</a>  <a>Mim</a>     
+                 <a>Mim</a>           <a>Si7</a>  <a>Mim</a>
 Di mia serena comparsa. Serenissima ahhh
 </pre>

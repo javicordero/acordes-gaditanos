@@ -17,15 +17,15 @@ Sin ganas, una noche lloviznando
                       <a>La7</a>       <a>Rem</a>
 Salía de mi casa caminito del ensayo,
       <a>Mi7</a>             <a>Lam</a>
-Salía con cargo de conciencia 
+Salía con cargo de conciencia
                            <a>Fa</a>       <a>Sim7/5</a>        <a>Mi7</a>
 porque me había echao en cara Cuatro cosas la parienta
-<a>Do</a>                          <a>Sol7</a> 
-Ya está bien de tanto cachondeo 
+<a>Do</a>                          <a>Sol7</a>
+Ya está bien de tanto cachondeo
 <a>Fa</a>         <a>Sol7</a>        <a>Do</a>
 que llevas no sé que tiempo
 <a>Do</a>                          <a>Mim</a>
-Que coges la puerta por tu cuenta 
+Que coges la puerta por tu cuenta
                        <a>Fa</a>                       <a>Sol7</a>
 y no te sientas en la mesa A charlar mientras comemos
      <a>Fa</a>         <a>Sol7</a>             <a>Do</a>
@@ -40,8 +40,8 @@ Que tiempo hace que ya no juegas
 Ni a los comboys ni a los comanches
 <a>Fa</a>                      <a>Mi7</a>
 ni le preguntas por la tarea.
- <a>Lam</a> <a>Mi7</a>          <a>Lam</a>    
-No te estás dando cuenta 
+ <a>Lam</a> <a>Mi7</a>          <a>Lam</a>
+No te estás dando cuenta
         <a>Mi7</a>               <a>Lam</a>
 cuando llegas allá a las tantas
                                             <a>Sol</a>
@@ -54,12 +54,12 @@ Que me roba tu amor hasta que a ella le da la gana
 Yo no te voy a pedir nunca que te retires
                   <a>Mi7</a>                       <a>Lam</a> <a>La7</a>
 Pero ten más miramiento y que nunca se te olvide,
- <a>Rem</a>                          
-Que yo cuando te dije sí hasta 
+ <a>Rem</a>
+Que yo cuando te dije sí hasta
     <a>Mi7</a>            <a>Lam</a>
 que la muerte nos separe
     <a>Fa</a>              <a>Mi7</a>
-Que contigo iba a cumplir 
+Que contigo iba a cumplir
             <a>Fa</a>  <a>Mi7</a>   <a>Lam</a>
 en vez de años carnavales.
 

@@ -13,37 +13,37 @@ fraseClave: Y en el Gran Astillero enorme que fuera el mundo
 ---
 <pre>
 <a>Lam</a>                     <a>Mi7</a>               <a>Lam</a>
-Y en el Gran Astillero enorme que fuera el mundo 
+Y en el Gran Astillero enorme que fuera el mundo
                                          <a>Mi7</a>
 cuando las cosas estaban en el génesis creando
          <a>Rem</a>                      <a>Mi7</a>
-Aunque el mar era todavia frio y oscuro 
+Aunque el mar era todavia frio y oscuro
                  <a>Sim7/5</a>        <a>Mi7</a>         <a>Lam</a>
 los ángeles de la risa frente a él se congregaron
       <a>Sol7</a>           <a>Fa</a>            <a>Mi7</a>
-Y se aliaron junto a los cuatro elementos 
+Y se aliaron junto a los cuatro elementos
          <a>Sol7</a>         <a>Fa</a>          <a>Mi7</a>
 para dar forma y construir una ciudad
-      <a>Rem</a>                          
-Una ciudad que era como un barquito 
+      <a>Rem</a>
+Una ciudad que era como un barquito
     <a>Lam</a>
 recoqueto, pequeño y bonito
     <a>Sim7/5</a>            <a>Mi7</a>          <a>Lam</a>
 Este barco llenito de locos donde habito
        <a>Rem</a>          <a>Sol7</a>
-Una ciudad diferente 
+Una ciudad diferente
                        <a>Do</a>
 un barco donde brillan los medios días
 <a>Fa</a>                   <a>Mi7</a>
-Porque los ángeles pusieron 
-                               <a>Lam</a> 
+Porque los ángeles pusieron
+                               <a>Lam</a>
 en su puente un balcón a una bahía
                     <a>Mi7</a>                      <a>Lam</a>
-Su casco se hizo de piedra y el corazón de metales 
+Su casco se hizo de piedra y el corazón de metales
                  <a>Fa</a>          <a>Mi7</a>          <a>LaM7</a>
 para ayudar a su gente a resistir los temporales
 <a>LaM7</a> <a>Mi7</a>   <a>LaM7</a>
-Ayy y le pusieron un árbol viejo 
+Ayy y le pusieron un árbol viejo
 
 que saluda a las mareas
                             <a>Fa#7</a>        <a>Sim7</a>
@@ -53,25 +53,25 @@ Ayy y le añadieron el centinela de las torres miradores
                           <a>LaM7</a>
 pa que vigile a los doce vientos
   <a>Mi7</a>           <a>LaM7</a>                      <a>La7</a>
-Y viendo la semejanza al verde de la esperanza  
+Y viendo la semejanza al verde de la esperanza
                         <a>Re</a>
 le pusieron color de verdín
                      <a>Rem</a>
-Y cuando ya estaba el barco completo 
+Y cuando ya estaba el barco completo
 
 los ángeles de la alegría
-            <a>Fa</a>          <a>Mi7</a>          <a>LaM7</a> 
-Pusieron su obra en la orilla de una playa 
+            <a>Fa</a>          <a>Mi7</a>          <a>LaM7</a>
+Pusieron su obra en la orilla de una playa
    <a>Fa#7</a>         <a>Sim7</a>     <a>Mi7</a>           <a>Lam</a>
 y se quedaron mirando subidos a las murallas
       <a>Sol</a>         <a>Fa</a>             <a>Sim7/5</a>     <a>Mi7</a>
 Y pensaron en silencio después de esto no hay nada
            <a>Sim7</a>                      <a>Mi7</a>
-Esto os lo cuento por si aún os preguntais 
+Esto os lo cuento por si aún os preguntais
                <a>Sim7</a>                        <a>Mi7</a>
 y no sabéis explicar porque yo amo a mi ciudad
 
-Y porque son tantos locos los que están 
+Y porque son tantos locos los que están
       <a>Sim7</a>   <a>Mi7</a>   <a>LaM7</a>
 ay colgaitos por mi Cai
 </pre>

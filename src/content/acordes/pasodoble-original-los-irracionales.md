@@ -15,8 +15,8 @@ fraseClave: "Por volverte a enamorar, al"
 Por volverte a enamorar, al volver la vista  atrás
                     <a>Fa#7</a>       <a>Sim7</a>
 Regresé al mismo rincón de la caleta
-            <a>Fa#7</a>    <a>Sim7</a> <a>Mi7</a>        
-Donde encontré la receta que supiera 
+            <a>Fa#7</a>    <a>Sim7</a> <a>Mi7</a>
+Donde encontré la receta que supiera
          <a>LaM7</a>
 conquistar tu corazón
 <a>Mi7</a>     <a>LaM7</a>                    <a>La7</a>

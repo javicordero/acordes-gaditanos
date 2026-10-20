@@ -36,7 +36,7 @@ Tengo un faro que son tus ojitos verdes
          <a>Re</a>                <a>Mi7</a>          <a>La</a>
 Y un soniquete que a mi me jala del corazón
 Y cantándole a tu gente yo me parto la armadura
-          <a>Fa#7</a>                     <a>Sim7</a> 
+          <a>Fa#7</a>                     <a>Sim7</a>
 Porque el alma mí me cu, me cu, me cura
                                <a>Mi7</a>
 En lo alto de mi torre veo la tierra más bonita

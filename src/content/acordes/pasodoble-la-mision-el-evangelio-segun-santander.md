@@ -13,51 +13,51 @@ fraseClave: Aquí llegan estos majaretas
 
 ---
 <pre>
-<a>La7M</a>               <a>Sim7</a>    
-Aquí llegan estos majaretas, 
+<a>La7M</a>               <a>Sim7</a>
+Aquí llegan estos majaretas,
 <a>Mi7</a>                       <a>La7M</a>
 que están locos se lo aseguramos
                           <a>Sim7</a>        <a>Mi7</a>
-Pues se creen que son grandes profetas, 
+Pues se creen que son grandes profetas,
                    <a>La7M</a>  <a>Mi7</a> <a>LaM7</a>
 del compás más gaditano.
 <a>La7M</a>                 <a>Sim7</a>   <a>Mi7</a>
-Y pa mi que son unos babeta, 
+Y pa mi que son unos babeta,
                         <a>La7M</a>
 pero vienen muy bien enseñaos
-       <a>Fa#7</a>             <a>Sim7</a> 
-Vienen desde la misma caleta, 
+       <a>Fa#7</a>             <a>Sim7</a>
+Vienen desde la misma caleta,
         <a>Mi7</a>                  <a>La7M</a>
 y el salitre en la sangre impregnao
-<a>(Sorda)</a>                           
-La orillita del templo bendito, 
+<a>(Sorda)</a>
+La orillita del templo bendito,
          <a>La7M</a>    <a>Fa#7</a>    <a>Sim7</a>         <a>Mi7</a>       <a>La7M</a>
 que nos presta este saborcito, De escollera y bajamar
-<a>La7M</a> 
-Y como en los carnavales, faltaba tu compas, 
+<a>La7M</a>
+Y como en los carnavales, faltaba tu compas,
 
-aquí estamos los chavales 
+aquí estamos los chavales
 pa deci bibibibi bibibibi bibibibi,
-      <a>Fa#7</a>        <a>Sim7</a>   
-al compás de los viñeros,  
+      <a>Fa#7</a>        <a>Sim7</a>
+al compás de los viñeros,
       <a>Mi7</a>                        <a>Sim7</a>
 que aquí está el batallón de tus coplas,
           <a>Mi7</a>             <a>La7M</a>    <a>La7</a>
 que aquí vuelven tus chirigoteros
 
-que como decía mi pare, yo no tengo más cariño 
+que como decía mi pare, yo no tengo más cariño
                         <a>Re</a>
 que el que me da el gallinero
 <a>Sim7</a>                                        <a>Si7</a>
-y me fui de mi comparsa, pa decirte en chirigota, 
+y me fui de mi comparsa, pa decirte en chirigota,
                     <a>Mi7</a>
 lo mucho que yo te quiero
-     <a>Re</a>              <a>La7M</a>             
-y vuelvo pa traer, y vuelvo a defender, 
+     <a>Re</a>              <a>La7M</a>
+y vuelvo pa traer, y vuelvo a defender,
       <a>Mi7</a>                    <a>La7M</a>
 tu legado tus compases y tus notas,
-    <a>Rem</a>                         <a>La7M</a>  
-y aquí vuelvo con todos tus compañeros, 
+    <a>Rem</a>                         <a>La7M</a>
+y aquí vuelvo con todos tus compañeros,
            <a>Fa7#</a>             <a>Sim7</a>
 pa que te llegue hasta el cielo,
            <a>Mi7</a>        <a>Re</a>     <a>Mi7</a>   <a>La7M</a>

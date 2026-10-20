@@ -25,9 +25,9 @@ Ojalá te hayan hecho reflexionar
 Si es así te invito a escuchar mi consejo de vida
       <a>Do</a>                     <a>Re</a>
 Mi guitarra y mi rabia las tiene sin mas
-      <a>Sol</a>            <a>Fa</a>        <a>Mi7</a>  
+      <a>Sol</a>            <a>Fa</a>        <a>Mi7</a>
 Te esperamos en la esquina del sur de la mar
-       <a>Fa</a> 
+       <a>Fa</a>
 En la tierra que le planta cara en febrero
    <a>Re7</a>
 Al mundo al mundo

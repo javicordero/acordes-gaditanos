@@ -66,7 +66,7 @@ Firmado oooh el Marques de Cádiz, el marqués de Cádiz
 De Cádiz Y añado una posdata
  <a>Sol7</a>                   <a>Do</a>                     <a>Sol</a>
 Antes de que acabe el tintero, Cádiz Tacita de Plata
-<a>Fa</a> <a>Sol7</a>       <a>Do</a> <a>Fa</a> <a>Sol7</a>     <a>Do</a>  <a>Fa</a> <a>Sol7</a>       <a>Do</a>   
+<a>Fa</a> <a>Sol7</a>       <a>Do</a> <a>Fa</a> <a>Sol7</a>     <a>Do</a>  <a>Fa</a> <a>Sol7</a>       <a>Do</a>
 Ahhhhhh Te quiero,       te quiero,       te quiero
 </pre>
 </pre>

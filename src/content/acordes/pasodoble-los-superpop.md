@@ -34,7 +34,7 @@ cantaban en la escaleras aquellas que ganaban
 <a>Rem</a>              <a>Fa</a>               <a>Mi7</a>
 y la fiesta terminaba cuando amanecía
 <a>Sol</a>     <a>Fa</a>          <a>Mi7</a> <a>Rem</a>
-y luego se iba a desayunar los churritos 
+y luego se iba a desayunar los churritos
       <a>Lam</a>             <a>Mi7</a>         <a>LaM7</a>
 de la guapa que ya empieza el Carnaval.
                    <a>Mi7</a>               <a>LaM7</a>

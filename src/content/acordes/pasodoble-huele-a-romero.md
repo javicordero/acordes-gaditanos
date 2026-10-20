@@ -13,11 +13,11 @@ fraseClave: Señor de Cádiz, Cristo Gitano del Barrio Santa María
 
 ---
 <pre>
- <a>Lam</a>                                          <a>Mim</a> 
+ <a>Lam</a>                                          <a>Mim</a>
 Señor de Cádiz, Cristo Gitano del Barrio Santa María,
          <a>La7</a>                    <a>Rem</a>
 vengo a rezarte con mi fé y mi alegría,
-       <a>Fa</a>         <a>Sim7/5</a>     <a>Mi7</a> 
+       <a>Fa</a>         <a>Sim7/5</a>     <a>Mi7</a>
 en una copla de mi mundo el carnaval.
    <a>Lam</a>                                      <a>Mim</a>
 Greñuo moreno, tu pelo al viento bajando Jabonería,
@@ -31,7 +31,7 @@ silencio, silencio soberano, que va bajando la Cuesta
 el señor de los gitanos,
   <a>Fa</a>                    <a>Mim</a>                       <a>Fa</a>
 silencio, silencio y ternura, que detrás viene su madre,
-                                            <a>Mi7</a> 
+                                            <a>Mi7</a>
 la Virgen de los Dolores, con carita de amargura,
 <a>Lam</a>                        <a>Mim</a>
 rezando las monjas en el convento,
@@ -41,7 +41,7 @@ entre salmos y entre versos, entre incienso y azahares,
 sólo con mirarlo me conmuevo viendo su cara divina,
                  <a>Mim</a>                             <a>Fa</a>
 y en la frente ese desprecio, de una corana de espina.
-  <a>Lam</a>        <a>Mim</a>            <a>Mi7</a>              <a>Fa</a> 
+  <a>Lam</a>        <a>Mim</a>            <a>Mi7</a>              <a>Fa</a>
 padrecito, Nazareno, no te olvides de tus hermanos
      <a>Rem</a>        <a>Fa</a>        <a>Mi7</a>             <a>Lam</a>  <a>Mim</a> <a>Fa</a> <a>Mi7</a>
 que llevamos a cuesta una cruz, por ser gitanos.

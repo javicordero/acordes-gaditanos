@@ -16,7 +16,7 @@ fraseClave: Embrujado por una ciudad, que me trata como una
 Embrujado por una ciudad, que me trata como una mujer
          <a>Si7</a>          <a>Mim</a> <a>La7</a>                   <a>Re</a>
 Que me encela y me enamora y me está volviendo loco.
-      <a>Si7</a>        <a>Mim</a>    <a>La7</a>                     <a>Rem</a> 
+      <a>Si7</a>        <a>Mim</a>    <a>La7</a>                     <a>Rem</a>
 Hechizado por un carnaval del que no puedo escaparme
 <a>Sib</a>                <a>La7</a>  <a>Sib</a>                  <a>La7</a>
 Aquí me tienes de nuevo como un hijo ante su madre.

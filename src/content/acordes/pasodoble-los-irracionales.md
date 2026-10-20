@@ -32,7 +32,7 @@ una ciudad es como la espinita
                <a>Mi7</a>            <a>Lam</a>
 clavada en el fondo de tu corazón.
 <a>Lam</a>  <a>Mi7</a>        <a>Lam</a>
-La ciudad es el pañuelo del adiós, 
+La ciudad es el pañuelo del adiós,
      <a>La7</a>       <a>Rem</a>                  <a>Mi7</a>
 la distancia llorada, un puñado de luces
                             <a>LaM7</a>
@@ -43,29 +43,29 @@ Y mi ciudad trimilenaria es tan pequeña frente al mar
 pero la veo un continente, un continente
                                   <a>Mi7</a>
 y aunque no sea la más bonita del mundo
-<a>Sim7</a>    <a>Mi7</a>   
+<a>Sim7</a>    <a>Mi7</a>
 A mí me lo parece.
 <a>LaM7</a>    <a>La7</a>        <a>Re</a>
 No tiene la elegancia de París,
-<a>Mi7</a>              <a>Do#m7</a>         
- ni de Venecia el porte señorial 
+<a>Mi7</a>              <a>Do#m7</a>
+ ni de Venecia el porte señorial
  <a>Fa#7</a>   <a>Sim7</a>
  pero aquí se aprendió a sobrevivir
                 <a>Si7</a>         <a>Mi7</a>
  y cantar, y cantar, y cantar.
-          <a>Re</a>                 
-Ciudad de fuerza y muralla, 
-<a>Mi7</a>                      <a>Do#m7</a>     
-ciudad que ha sorportado maremotos y batallas, 
-   <a>Fa#7</a>                   <a>Sim7</a> 
-la mágica ciudad,  con una mágica playa, 
+          <a>Re</a>
+Ciudad de fuerza y muralla,
+<a>Mi7</a>                      <a>Do#m7</a>
+ciudad que ha sorportado maremotos y batallas,
+   <a>Fa#7</a>                   <a>Sim7</a>
+la mágica ciudad,  con una mágica playa,
    <a>Mi7</a>                      <a>LaM7</a>
 el santo templo para el caletero.
          <a>Rem</a>                      <a>Mi7</a>      <a>LaM7</a>
 La playa donde vuelvo para encontrar los acordes
     <a>Fa#7</a>                <a>Sim7</a>
-que hagan posible el milagro 
-<a>(Sorda)</a>                               <a>Mi7</a> 
+que hagan posible el milagro
+<a>(Sorda)</a>                               <a>Mi7</a>
 y te envenene, y te envenene y te envenene
                   <a>LaM7</a>
  otra vez mi pasodoble

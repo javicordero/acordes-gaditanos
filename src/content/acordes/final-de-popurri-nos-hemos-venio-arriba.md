@@ -45,14 +45,14 @@ Que tuve que asomarme vi bajo las estrellas
                  <a>Sol</a>                   <a>Re</a>         <a>Si7</a>
 Que desde la orillita se acercaba a compás un batallón
          <a>Sol</a>              <a>Si7</a>
-No me contuve daje del torreón temiendo que eso 
+No me contuve daje del torreón temiendo que eso
     <a>Mim</a>
 se acabe
               <a>Sim7</a>                <a>Do</a>
 Saque de la Caleta matarile las llaves
                  <a>Sol</a>                     <a>Re</a>
 Y abrí de par en par de nuevo nuestro portón
-        <a>Si7</a> 
+        <a>Si7</a>
 mi perdición
                                             <a>Mim</a>
 El viento a bombo y platillo arropa un estribillo

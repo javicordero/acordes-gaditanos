@@ -22,14 +22,14 @@ y si no me sacan de aquí qui me da lo mismo
 y si acaso me entrara el hambre me reconforta
         <a>Lam7</a>            <a>Do</a>           <a>Re</a>
 no me importa a mi recurrir al canibalismo
-        <a>Sol</a>                                <a>Sim7</a> 
+        <a>Sol</a>                                <a>Sim7</a>
 que mas da si está muy estrecho este rinconcito
         <a>Mim</a>                             <a>Sim7</a>
 que más da no poder moverme por más que quiera
        <a>Do</a>   <a>Re</a>        <a>Sol</a>
 no hay un agobio más bonito
       <a>Lam7</a>             <a>Do</a>                <a>Re</a>
-que aquí me podría quedar to la vida entera 
+que aquí me podría quedar to la vida entera
       <a>Mim</a>                                     <a>Sim7</a>
 Arrebujao que me contagie la sonrisa del de al lao
                                   <a>Do</a>
@@ -42,18 +42,18 @@ y píntame tus colorete y ensuciame con tus churretes
 y aprietame con tus abrazos tan fuerte
 que el alma se rompa mil pedazos
       <a>Sol</a>                          <a>Re</a>
-y acurrucame con tus cortinas y enrédame 
+y acurrucame con tus cortinas y enrédame
 en tus serpentinas
     <a>Mim</a>                           <a>Do</a>
 y encierrame en una esquina no hay hueco mas grande
-ni bulla más divina 
+ni bulla más divina
       <a>Sol</a>                         <a>Re</a>
-Ven y ahógame junto a tu playa y entiérrame 
+Ven y ahógame junto a tu playa y entiérrame
 con tus caballas
    <a>Mim</a>                       <a>Do</a>
 rescátame sin mi permiso que yo quise subir hasta
     <a>Re</a>
 tu cielo
-                    <a>Sol</a> <a>Do</a>      <a>Re</a>            <a>Sol</a> 
+                    <a>Sol</a> <a>Do</a>      <a>Re</a>            <a>Sol</a>
 y me quedé en tu paraíso  y me quedé en tu paraíso
 </pre>

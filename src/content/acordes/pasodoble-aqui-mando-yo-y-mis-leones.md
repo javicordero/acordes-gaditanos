@@ -14,10 +14,10 @@ fraseClave: Amanece son las seis de la mañana
 
 <pre>
 <a>La</a>             <a>Mi7</a>           <a>La</a>
-Amanece son las seis de la mañana 
+Amanece son las seis de la mañana
                                <a>Mi7</a>
 en el horizonte ha renacido el sol
-la bajamar ha llegado el sol ya se ha relajao 
+la bajamar ha llegado el sol ya se ha relajao
                               <a>La</a>
 ya se dispone a salir el pescador
                              <a>Mi7</a>
@@ -27,7 +27,7 @@ una camaronera desde muy niño
                         <a>Fa#7</a>     <a>Sim7</a>
 su caña del país lleva sobre el hombro
                   <a>Mi7</a>           <a>La</a>
-y un sombrero de paja para los ojos 
+y un sombrero de paja para los ojos
           <a>Mi7</a>                 <a>La</a>
 tratataratarata ta tratataratarara
 <a>La7</a>              <a>Re</a>    <a>Mi7</a>                <a>La</a>

@@ -49,10 +49,10 @@ Y en cuatro pasodobles, sin salir de la peña
 Olí el verdín que tienen tus pieras
                <a>Mi7</a>                            <a>Lam7</a>
 Me bañé en la caleta y di una vuelta por la Alameda
-              <a>Re7</a>                             <a>Sol</a> 
+              <a>Re7</a>                             <a>Sol</a>
 Y me fui enamorando con cada copla de este rincón
-<a>Sol7</a>             <a>Do</a>                  <a>Re</a> 
-Y al salir de la peña vi como todo aquello de lo 
+<a>Sol7</a>             <a>Do</a>                  <a>Re</a>
+Y al salir de la peña vi como todo aquello de lo
                  <a>Sim7</a>                     <a>Mi7</a>
 Que yo venía vacilando lo tiene diez mil veces
                                           <a>Lam7</a>

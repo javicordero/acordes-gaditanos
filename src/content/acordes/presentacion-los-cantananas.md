@@ -12,46 +12,46 @@ video: 'https://www.youtube.com/embed/vkrW30aatrc'
 fraseClave: Cuando la luna se asoma por tus torres miradores y
 ---
 <pre>
-                    <a>Do9</a> <a>Sol7</a>            <a>Lam</a>     
+                    <a>Do9</a> <a>Sol7</a>            <a>Lam</a>
 Cuando la luna se asoma por tus torres miradores
 <a>Mim</a>                <a>Fa</a>   <a>Re7</a>                <a>Sol7</a>
 y el silencio le susurra a tus calles y rincones
-                    <a>Do9</a> <a>Sol7</a>              <a>Lam</a>    
-Cuando la luna se adueña de tus miles de temores 
+                    <a>Do9</a> <a>Sol7</a>              <a>Lam</a>
+Cuando la luna se adueña de tus miles de temores
 <a>Mim</a>              <a>Fa</a>   <a>Re7</a>                <a>Sol7</a>
 es la luz de Catalina, mi candil de cada noche
            <a>Fa</a>            <a>Mim</a>
-Y en este banco sentaíto con los míos, 
+Y en este banco sentaíto con los míos,
           <a>Fa</a>               <a>Mim</a>
 con mi guitarra y una nana de testigo
             <a>Fa</a>
-Porque es la copla de este joven cantanana 
+Porque es la copla de este joven cantanana
                         <a>Mim</a>
 que recuerda aquella historia de mi Cádiz ya pasada
                      <a>Mi7</a>
-La que cuentan tus murallas pa cantarlas en secreto 
+La que cuentan tus murallas pa cantarlas en secreto
               <a>Lam</a>
 cada noche en tu almohada
       <a>Fa</a>
-Y paseando por tus calles más oscuras 
+Y paseando por tus calles más oscuras
           <a>Mim</a>                           <a>Fa</a>
 pa que mi copla eche el cerrojo a tus pupilas
                                <a>Sol7</a>
 Y recordar aquellos tiempos de cultura
        <a>Fa</a>
-Y esta nana la que cuenta del poeta 
+Y esta nana la que cuenta del poeta
            <a>Mim</a>
 que con su copla hacía frente a la censura
           <a>Fa</a>
-Soy el compás por bulerías y el poeta, 
+Soy el compás por bulerías y el poeta,
            <a>Sol</a>
 soy del flamenco un soniquete con hechuras
          <a>Fa</a>
-Soy el reflejo de una noche en la Caleta, 
+Soy el reflejo de una noche en la Caleta,
            <a>Mim</a>
 soy las costumbres más añejas gaditanas
          <a>Mi7</a>
-Soy tu pasado que en mi nana se hizo letra 
+Soy tu pasado que en mi nana se hizo letra
                <a>Fa</a>         <a>Sol</a>  <a>Lam</a>   <a>Mim</a>   <a>Fa</a> <a>Sol7</a>
 soy tu son tu cantananas ahhh ahhhh ahhhh ahhhh
           <a>Fa</a>  <a>Do9</a>

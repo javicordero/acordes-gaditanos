@@ -14,7 +14,7 @@ fraseClave: Como dicen que es más rico el que menos necesita
 <pre>
 <a>Mi/add9</a>                                 <a>Fa#m</a>
 Como dicen que es más rico el que menos necesita
-    <a>Sol#m</a>         <a>Fa#m</a>           <a>Si7</a>          
+    <a>Sol#m</a>         <a>Fa#m</a>           <a>Si7</a>
 Yo naita necesito, por eso soy el marques de la
          <a>Miadd/9 Fa9 Si7 Mi/add9 Fa#m Si7</a>
 tierra más bonita

@@ -12,81 +12,81 @@ fraseClave: Ahh que nos están robando Cádiz y le van a arrancar
 ---
 <pre>
 <a>Lam</a>                       <a>Do</a>         <a>Re</a>       <a>Mi7</a>
-Ahh que nos están robando Cádiz y le van a arrancar 
+Ahh que nos están robando Cádiz y le van a arrancar
 <a>Lam</a>                 <a>Do</a>           <a>Sol</a>       <a>Fa</a>
 su juventud y sus tesoros su alegría y su pan
     <a>Rem</a>                           <a>Sol7</a>
-Su futuro, sus industrias, sus viviendas  
+Su futuro, sus industrias, sus viviendas
       <a>Mim</a>                       <a>Lam</a>
 sus vecinos sus secretos, sus leyendas
      <a>Rem</a>                        <a>Mi7</a>
-Y pa que no se la quede gente extraña 
+Y pa que no se la quede gente extraña
                 <a>Lam</a>
-po mejor la robo yo 
+po mejor la robo yo
 <a>Lam</a>              <a>Sim/5</a> <a>Lam</a>                 <a>Sim7/5</a>
-Y un grupo de gaditanos que estamos medio colgaos 
+Y un grupo de gaditanos que estamos medio colgaos
 <a>Rem</a>    <a>Sol7</a>      <a>Do</a>    <a>Fa</a>          <a>Sim7/5</a>     <a>Mi7</a>
 hartitos ya nos dijimos cucha hasta aquí hemos llegao
-<a>Lam</a>              <a>Sim/5</a> <a>Lam</a>                 <a>Sim7/5</a> 
-y nos volvimos majaras por cumplir un plan maestro 
+<a>Lam</a>              <a>Sim/5</a> <a>Lam</a>                 <a>Sim7/5</a>
+y nos volvimos majaras por cumplir un plan maestro
 <a>Rem</a>     <a>Sol7</a>        <a>Do</a>  <a>Fa</a>         <a>Sim7/5</a>    <a>Mi7</a>
-vamos a llevarnos a Cai que pa eso Cádiz es nuestro 
-<a>Sol7</a>                                   <a>Do</a>    
-Y a la ciudad enterita de la luna la colgamos 
+vamos a llevarnos a Cai que pa eso Cádiz es nuestro
+<a>Sol7</a>                                   <a>Do</a>
+Y a la ciudad enterita de la luna la colgamos
  <a>Rem</a>                    <a>Lam</a>    <a>Si7</a>             <a>Mi7</a>
 que antes de que nos la roben nosotros nos la llevamos
 <a>Fa</a>                <a>Mi7</a> <a>Fa</a>                  <a>Mi7</a>
 Y es esta la fantasía que este colgao te va a cantar
-<a>Lam</a>                 <a>Sol</a>            
-Vente y súbete a mi barco que Cádiz 
-      <a>Fa</a>                 <a>Mi7</a>    
-esta noche ha echado a volar 
+<a>Lam</a>                 <a>Sol</a>
+Vente y súbete a mi barco que Cádiz
+      <a>Fa</a>                 <a>Mi7</a>
+esta noche ha echado a volar
 <a>Lam</a>                   <a>Sol</a>
-vente y súbete a mi barco que Cádiz 
+vente y súbete a mi barco que Cádiz
       <a>Fa</a>                <a>Lam</a>
 esta noche ha echado a volar
 
-Cádiz por el cielo navegando 
+Cádiz por el cielo navegando
                   <a>Rem</a>           <a>Fa</a>          <a>Mi7</a>
 colgadita de las trenzas de la diosa de los vientos
        <a>Lam</a>
-Cádiz nuestro sube al cielo y ponte a salvo 
+Cádiz nuestro sube al cielo y ponte a salvo
                      <a>Fa</a>          <a>Sim7/5</a>      <a>Mi7</a>
 deja el mundo alli debajo y pon rumbo al firmamento
        <a>Lam</a>
-Déjame Cádiz que hoy yo quiera imaginarte  
+Déjame Cádiz que hoy yo quiera imaginarte
                  <a>Mim</a>
 huyendo de tu destino tu miseria y tu dolor
                     <a>Fa</a>                     <a>Rem</a>
-Cádiz mirando al reflejo el fondo de los espejos 
-                        <a>Fa</a>  
-tu reino no es de este reino 
+Cádiz mirando al reflejo el fondo de los espejos
+                        <a>Fa</a>
+tu reino no es de este reino
             <a>Sim7/5</a>        <a>Mi7</a>
 que es del cielo y es del sol
           <a>Lam</a>
-Cádiz yo vengo a rescatarte enamorao 
+Cádiz yo vengo a rescatarte enamorao
                 <a>Mim</a>
 y me imagino mi copla que es la copla de un colgao
                   <a>Fa</a>                       <a>Rem</a>
 A veces barco de plata y a veces barco de guerra
                          <a>Fa</a>            <a>Rem</a>
-Que Cádiz no es de este mundo, de este mundo, 
+Que Cádiz no es de este mundo, de este mundo,
          <a>Fa</a>          <a>Rem</a>             <a>Mi7</a>
 de este mundo ni mi tierra de esta tierra
-<a>Lam</a>                                    
-Marca el rumbo al cielo marque capitán 
+<a>Lam</a>
+Marca el rumbo al cielo marque capitán
    <a>Mim</a>
 que ya está amaneciendo un nuevo carnaval
-   <a>Fa</a>                                
-Y clava en esta nube el ancla corazón 
+   <a>Fa</a>
+Y clava en esta nube el ancla corazón
    <a>Mi7</a>
 que yo le canto al pueblo colgaito por tu amor
-<a>Lam</a>                           
+<a>Lam</a>
 Que mi ciudad no es invisible
 <a>Mim</a>
 ni esta enterrada bajo el suelo
        <a>Fa</a>
-Que a Cádiz hay que llevarla a lo más alto, 
+Que a Cádiz hay que llevarla a lo más alto,
                       <a>Mi7</a>
 a lo más alto pa que brille,
 
@@ -96,15 +96,15 @@ Y a los traidores fariseos hoy vengo a darles castigo
                     <a>Do7</a>                       <a>Fa</a>
 si dicen que aman a Cádiz ero solo aman su ombligo
                   <a>Rem</a>                       <a>Mi7</a>
-Y a to los falsos amantes yo le juro, yo le juro 
+Y a to los falsos amantes yo le juro, yo le juro
 
 que esta noche se la van a ver conmigo
-    <a>Fa</a>      <a>Sim7/5</a>       <a>Mi7</a>   
-Y a ti que si que amas a Cádiz 
+    <a>Fa</a>      <a>Sim7/5</a>       <a>Mi7</a>
+Y a ti que si que amas a Cádiz
  <a>Fa</a>       <a>Sim7/5</a>     <a>Mi7</a>
 desde estas nubes te convoco
         <a>Lam</a>        <a>Sol</a>          <a>Fa</a>           <a>Do</a>
-Vente y súbete, que sube, ven y sube, ven que sube, 
+Vente y súbete, que sube, ven y sube, ven que sube,
       <a>Rem</a>                        <a>Mi7</a>
 no lo pienses vente y sube con nosotros
              <a>Lam</a>       <a>Mi7</a>           <a>Lam</a>

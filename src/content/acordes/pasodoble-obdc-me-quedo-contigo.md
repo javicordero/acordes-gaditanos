@@ -42,7 +42,7 @@ Pero recuerda que es tu adversario, son propietarios
         <a>Fa#7</a>    <a>Si7</a>
 Y dueños del capital
             <a>Lam7</a>             <a>Mim</a>
-Que no intervengan en el mercado 
+Que no intervengan en el mercado
           <a>Si7</a>              <a>Mi/add9</a>
 Se debe a que hay que especular
                    <a>Sol#m7</a>         <a>Do#7</a>           <a>Fa#m7</a>

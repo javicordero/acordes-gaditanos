@@ -92,6 +92,10 @@ Implementado en `src/components/page/AcordeCard.astro`. Activado por checkbox "A
 `node scripts/generate-pdf.mjs src/content/acordes/<slug>.md`
 Genera un PDF al lado del .md. Requiere `fonts/RobotoMono-*.ttf` (fallback a Courier).
 
+### Limpieza de espacios en los `<pre>`
+`node scripts/trim-pre-whitespace.mjs [--dir <carpeta>] [--dry-run] [--quiet]`
+Quita espacios y tabuladores al final de línea **solo dentro de `<pre>…</pre>`** (la indentación inicial se conserva). Por defecto recorre `src/content/acordes` y `src/content/acordes2`. Es idempotente; útil después de importar o formatear acordes.
+
 ### SEO & Analytics
 - Site: `https://acordesgaditanos.com`
 - Google Tag Manager: `GTM-MZG7K2Q4`

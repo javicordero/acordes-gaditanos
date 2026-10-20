@@ -13,8 +13,8 @@ fraseClave: "Ahhhhh ahhhh ahhhhhhh"
 ---
 <pre>
 <a>Lam</a>    <a>Fa</a>    <a>Rem</a>   <a>Do</a>
-Ahhhhh ahhhh ahhhhhhh  
-<a>Lam</a>         
+Ahhhhh ahhhh ahhhhhhh
+<a>Lam</a>
 Desde este firmamento blanco y verde
  <a>Sol</a>
 En el que habitan los que un día partieron
@@ -46,7 +46,7 @@ De federalismo y autonomía
 De nuestra cultura y de nuestro acento
 <a>Rem</a>                        <a>Mi7</a>
 Por la dignidad de mi Andalucía
-  <a>Lam</a>                          <a>Fa</a> 
+  <a>Lam</a>                          <a>Fa</a>
 El yugo que arrastraba el jornalero
    <a>Sol</a>                    <a>Mim</a>
 El hambre paseando por las calles
@@ -60,17 +60,17 @@ Pero una mañana me arrestarían
 Me llevaron preso sin un delito
 <a>La7</a>                          <a>Rem</a>
 Maldito el destino que me vendría
-    <a>Fa</a>                      
+    <a>Fa</a>
 Solamente porque buscaba la libertad
                    <a>Mi7</a>
 De mi patria Andalucía
-   <a>Lam</a>      
+   <a>Lam</a>
 Y aquella madruga camino de Carmona
   <a>Sol</a>
 Se me paro el reloj se me quedó sin hora
  <a>Fa</a>
 Pero puedo jurar por la mar y por la sierra
-     <a>Mi7</a>            
+     <a>Mi7</a>
 Volvería sin dudarlo a batirme por mi tierra
     <a>Lam</a>
 Y aquella madrugá sonaron los disparos
@@ -82,7 +82,7 @@ Pero sonó mi voz y se les quedó grabado
 Porque antes de morirme, e morirme
 
 Yo grite a los cuatro vientos
-               <a>Lam</a> <a>Sol</a> <a>Fa</a>   <a>Mi7</a> 
+               <a>Lam</a> <a>Sol</a> <a>Fa</a>   <a>Mi7</a>
 Viva Andalucía Libre, ehhh ehhh
                <a>Lam</a>
 viva Andalucía Libre

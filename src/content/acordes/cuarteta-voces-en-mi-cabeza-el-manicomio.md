@@ -17,7 +17,7 @@ fraseClave: Ando escuchando voces dentro de mi cabeza
 <pre>
                 <a>Re</a>                 <a>Sim</a>
 Ando escuchando voces dentro de mi cabeza
-                <a>Re</a>                 
+                <a>Re</a>
 Voces que me reclaman voces que me gritan
                 <a>Sim</a>
 Voces que me acechan
@@ -35,7 +35,7 @@ Y pienso en los momentos que perdí a su vera
 Las horas y kilómetros de carretera
                <a>Sol</a>
 Fiestas de cumpleaños que deje vacías
-                  <a>Solm</a> 
+                  <a>Solm</a>
 La noche que no estuve mientras tu dormías
                 <a>Re</a>
 Las metas y proyectos que aún siguen en cola

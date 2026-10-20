@@ -12,7 +12,7 @@ video: 'https://www.youtube.com/embed/g1j47VNVZz8'
 fraseClave: Le pido, señor Carranza permiso a su Ayuntamiento
 ---
 <pre>
-<a>Sol</a>        <a>Re7</a>      <a>Sol</a> <a>Do</a>          <a>Re7</a>     <a>Sol</a>  
+<a>Sol</a>        <a>Re7</a>      <a>Sol</a> <a>Do</a>          <a>Re7</a>     <a>Sol</a>
 Le pido, señor Carranza permiso a su Ayuntamiento
 <a>Do</a>                      <a>Sol</a>
 pa que a mi bombo y mi caja

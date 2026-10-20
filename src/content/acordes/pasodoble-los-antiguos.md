@@ -37,7 +37,7 @@ Malas puñalas me den. Malas puñalas me den
 Si yo dejo que cambien el soniquete del pasodoble
                                        <a>Mi7</a>
 Malas puñalas me den. Malas puñalas me den
-                                 <a>La</a>    <a>Mi7</a> 
+                                 <a>La</a>    <a>Mi7</a>
 Si yo dejo que me cambie estos redobles
                      <a>La</a>        <a>Mi7</a>           <a>La</a>
 Y aquí me tiene otra vez, aquí me tiene otra vez.
@@ -46,7 +46,7 @@ Como un viejo cacarabias que por dentro
                                      <a>Re</a>
 Está que rabia por las cosas que se fueron.
                        <a>Rem</a>
-Y aunque me lleve al fracaso 
+Y aunque me lleve al fracaso
                        <a>La</a>
 Y to los años salga llorando
             <a>Do#m7</a>             <a>Sim7</a>

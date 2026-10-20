@@ -24,7 +24,7 @@ años ya.
 Desde el templo consagrado    de la Caleta
                    <a>Mi7</a>                   <a>Do#7</a>
 con un soplo del poniente hasta aquí llegué,
-           <a>Fa#m7</a>        <a>Lam</a>   <a>Si7</a>          <a>Mi</a>  
+           <a>Fa#m7</a>        <a>Lam</a>   <a>Si7</a>          <a>Mi</a>
 porque te extraño Tacita y tanto falté a tu cita
    <a>Do#7</a>                <a>Fa#m7</a>     <a>Si7</a>      <a>Mi</a>
 que hoy por tenerte cerquita vuelvo otra vez.

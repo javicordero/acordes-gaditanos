@@ -30,8 +30,8 @@ Las clavijas son bucles su mástil garganta
 Y dentro encierra un alma como cualquier ser
                                              <a>Mi7</a>
 Guitarra mía guitarra chulapona guitarra española
-                                 
-Quién pensaría te electrificarían 
+
+Quién pensaría te electrificarían
                    <a>La</a>
 Y te hicieran chillona
                                  <a>La7</a>              <a>Re</a>
@@ -40,8 +40,8 @@ Mas no te apures guitarra mía española guitarra castiza
 A ti no te desplaza cuatro conexiones y una tabla lisa
 <a>Fa</a>               <a>La</a>     <a>Fa</a>              <a>La</a>
 Mientras haya cantaores y grandes concertistas
-<a>Mi7</a>                     
-Te rendirán honores porque a los motores 
+<a>Mi7</a>
+Te rendirán honores porque a los motores
                     <a>La</a>
 No hay quién los resista
 </pre>

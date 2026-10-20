@@ -42,7 +42,7 @@ La banda suena y su virgen ya está fuera
                    <a>Sol7</a>
 y ellos le dicen adiós, ay ay ay ah.
                      <a>Do</a>       <a>Sol7</a>
-Cuando todos ya se marchan y se quedan 
+Cuando todos ya se marchan y se quedan
            <a>Do</a>
 los dos a solas a sus sueños ponen alas
                             <a>Sol</a>

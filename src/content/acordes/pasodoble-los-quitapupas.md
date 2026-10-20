@@ -18,8 +18,8 @@ Hay quien persigue milagros después de rezar
 rogándole a los santos
 <a>Lam</a>                  <a>Sol</a>     <a>Do</a>        <a>Fa</a>           <a>Mi7</a>
 Hay quien entrega su vida rezándole a Alá, Buda o Jesús
-<a>Rem</a>          <a>Mi7</a>           <a>Lam</a> 
-Hay quien le pide a San Antonio 
+<a>Rem</a>          <a>Mi7</a>           <a>Lam</a>
+Hay quien le pide a San Antonio
 <a>Rem</a>        <a>Mi7</a>    <a>Lam</a>
 solo por desesperación
 <a>Lam</a>                           <a>Sol</a>            <a>Fa</a>
@@ -37,11 +37,11 @@ Se que no hace milagros pero por mi daría su vida
                         <a>Mi7</a>           <a>Sim7</a> <a>Mi7</a>    <a>LaM7</a>
 Y aunque no se la da de santo siempre sana mis heridas
 <a>(Sorda)</a>
-Yo no voy a ponerle flores ni velas, 
+Yo no voy a ponerle flores ni velas,
 
 él no vive en un altar pero es divino
     <a>Sim7</a>                       <a>Mi7</a>
-Yo no llevo una estampa en mi cartera, 
+Yo no llevo una estampa en mi cartera,
                 <a>LaM7</a>
 va en el corazón mío
 <a>Sim7</a>  <a>Mi7</a>   <a>LaM7</a>            <a>Sim7</a>            <a>Mi7</a>

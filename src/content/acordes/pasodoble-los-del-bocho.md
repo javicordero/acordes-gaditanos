@@ -20,7 +20,7 @@ a este castizo publico gaditano.
 Venimos a ofrecerles nuestro folklore
           <a>Fa</a>                <a>Mi7</a>
 y a presentarles nuevas canciones.
-<a>Lam</a>             <a>Mi7</a>         <a>Lam</a>       
+<a>Lam</a>             <a>Mi7</a>         <a>Lam</a>
 Este año nos tocó de ser bilbainos
                    <a>Mi7</a>               <a>Lam</a>
 ya que el año anterior fuimos Los Guajiros,

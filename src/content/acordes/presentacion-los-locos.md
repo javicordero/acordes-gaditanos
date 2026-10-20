@@ -37,7 +37,7 @@ Hasta un huracán pa defenderte Tacita mía
 Y limpiarte de toitos tus males
       <a>Sol</a>
 Y perderme por todas tus calles
-        <a>Mim</a>    
+        <a>Mim</a>
 Porque a mí ya no habrá quien me calle
          <a>Lam</a>
 Porque rebelde me pario mi mare
@@ -51,7 +51,7 @@ Son mi locura y la razón de mi canción
 Loco por Cai que es lo que hay
         <a>Do7</a>                    <a>Fa</a>
 Sin avisar aquí el Levante se coló
-                           <a>Sol</a>       <a>Fa</a>           <a>Mi7</a>   
+                           <a>Sol</a>       <a>Fa</a>           <a>Mi7</a>
 Loco por Cai que Cai es mi mare mi locura y mi pasión
 <a>(Sorda)</a>                                            <a>Sol</a> <a>Fa</a>
 En mi cabeza suena un chailo lolailo, lolailo lola

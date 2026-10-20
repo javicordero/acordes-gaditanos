@@ -32,14 +32,14 @@ En el mar de los poetas que de ti se enamoraron
     <a>Fa</a>
 Fue Dios Paco Alba quien te bautizaba entre las piedras
   <a>Mi7</a>
-Y te nombraba reina de todos los gatidanos 
+Y te nombraba reina de todos los gatidanos
   <a>Lam</a>
 (Y tiene en su palacio)
                               <a>Sol</a>
 Escuadrones de caballas entre tus fenicias rocas
-                
+
 enterradas en la playa
-      <a>Fa</a>                                    
+      <a>Fa</a>
 Que morir por una reina es morir por Cadiz entero
   <a>Mi7</a>
 Morir por la bandera del imperio caletero
@@ -48,7 +48,7 @@ Y el reino de la Caleta tiene sus pies,
                  <a>Lam</a>
 en la orilla del mar
 <a>Sim7/5</a>    <a>Mi7</a>      <a>Lam</a>
-Y para que el mundo sepa que bajo las piedras 
+Y para que el mundo sepa que bajo las piedras
                                <a>Mi7</a>
 de nuestra playita viven como reinas
          <a>Lam</a>  <a>Mi7</a>        <a>Lam</a>  <a>Mi7</a>         <a>Lam</a>

@@ -31,7 +31,7 @@ Sobran las redes con derrotistas Que en carnavales
 Cuanto más doctores más enfermedades
 Y me duele, tacita, me duele los que por ti mueren
    <a>Fa#7</a>                 <a>Sim7</a> <a>Fa#7</a> <a>Sim7</a>
-Y luego te olviiiiiiidaaaaaaaaaaan 
+Y luego te olviiiiiiidaaaaaaaaaaan
                        <a>Mi7</a>                    <a>Sim7</a>
 Y me duele, tacita, me duele que en la fiesta manden
     <a>Mi7</a>    <a>LaM7</a>

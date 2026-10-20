@@ -19,28 +19,28 @@ Si caminito del Falla el corazón te palpita
 de esa manera canalla, que rompe y estalla
               <a>Si7</a>
 igual que un cañón.
-Es que mil cosas bonitas van a pasarte 
+Es que mil cosas bonitas van a pasarte
      <a>Mim</a>
 esta noche
                  <a>Si7</a>                  <a>Lam</a>
-Sentirás que por fin a tu puerta otra vez 
+Sentirás que por fin a tu puerta otra vez
       <a>Si7</a>         <a>Mim</a>  <a>Si7</a> <a>Mim</a>
 han llamado los dioses.
               <a>Lam7</a>
-Te lo digo paisano porque yo viví una 
+Te lo digo paisano porque yo viví una
          <a>Re7</a>
 noche de esas,
                  <a>Sol</a>                       <a>Si7</a>
-no quedaban más gritos que el de nuestras manos 
+no quedaban más gritos que el de nuestras manos
               <a>Mim</a>
 llamando a la suerte,
                   <a>Lam7</a>               <a>Do</a>
-ni más miedos que ver como a cada mujer le 
+ni más miedos que ver como a cada mujer le
   <a>Lam7</a>       <a>Si7</a>
 temblaban las piernas.
 <a>Mim</a>
 Abrase telón,
-                        <a>Re</a> 
+                        <a>Re</a>
 que la función ya no se puede alargar más,
                           <a>Do</a>
 que ya no queda libre un palco ni rincón,
@@ -48,7 +48,7 @@ que ya no queda libre un palco ni rincón,
 que está acabando con nosotros la Final.
 <a>Mim</a>
 Abrase telón,
-                           <a>Re</a> 
+                           <a>Re</a>
 que el corazón me está volviendo a palpitar,
                         <a>Mim</a>
 que no me acuerdo ya de la presentación

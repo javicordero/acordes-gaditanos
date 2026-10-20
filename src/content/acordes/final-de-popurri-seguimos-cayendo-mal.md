@@ -60,7 +60,7 @@ Que te vi desde la altura y no te quito de mi mente
 Cádiz mío ante el mundo siempre fuiste diferente
        <a>Fa</a>                         <a>Sol</a>
 Aunque mil veces me choque y mil veces de la nota
-<a>Fa</a>                  <a>Sol</a>    
+<a>Fa</a>                  <a>Sol</a>
 Siempre me llaves volando cada vez que vine
              <a>Do</a>  <a>Sol7</a>        <a>Do</a>
 Con mi chirigota con mi chirigota

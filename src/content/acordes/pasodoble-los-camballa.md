@@ -16,8 +16,8 @@ fraseClave: Hoy he vuelto a contemplar lo bonita que eres
 Hoy he vuelto a contemplar lo bonita que eres
                                <a>Mi7</a>       <a>Lam</a>
 Hoy he vuelto a disfrutar del olor de tu mar
-<a>Do</a>                 <a>Re</a>        <a>Sol</a>    
-Me he paseao por el puente canal, 
+<a>Do</a>                 <a>Re</a>        <a>Sol</a>
+Me he paseao por el puente canal,
 <a>Mi7</a>             <a>Lam</a>
 me he sentao frente a tu balaustrá
     <a>Do</a>              <a>Lam</a>                      <a>Re</a>
@@ -26,20 +26,20 @@ Pa verte mi Cai, quererte y darte un poquito más
 Tus ladrillos coloraos hoy serán los testigos
                       <a>Re</a>   <a>Do</a>   <a>Re</a>          <a>Sol</a>
 De cómo un grupo de amigos te regala este compás
-              <a>Sol</a>       <a>Re7</a>         <a>Sol</a>        
+              <a>Sol</a>       <a>Re7</a>         <a>Sol</a>
 Porque en tus tablas yo pierdo el sentido ay, ay,
 <a>Mi7</a>            <a>Lam</a>
 y se me va la razón
                <a>Do</a>             <a>Re</a>
-Porque en mis venas te llevo metío 
+Porque en mis venas te llevo metío
                           <a>Sol</a> <a>Sol7</a>
 que mi mare gaditano me parió
-<a>Dom7</a>          <a>Sol</a>                   
-Vengo a disfrutar de este carnaval, 
+<a>Dom7</a>          <a>Sol</a>
+Vengo a disfrutar de este carnaval,
 <a>Mi7</a>          <a>Lam</a>                <a>Re</a>          <a>Sol</a> <a>Sol7</a>
 donde ahora reina la vanidad, falsos y traidores
-<a>Dom7</a>      <a>Sol</a>    <a>Mi7</a>         <a>Lam</a>   
-Yo te necesito tacita de mis amores 
+<a>Dom7</a>      <a>Sol</a>    <a>Mi7</a>         <a>Lam</a>
+Yo te necesito tacita de mis amores
    <a>Do</a>                     <a>Re</a>
 y sabes que para venir a verte, mi niña
 <a>Do</a>            <a>Re</a>     <a>Sol</a>  <a>Re7</a> <a>Sol</a>

@@ -31,7 +31,7 @@ Ella no le da importancia, que esta es la mejor
    <a>Si7</a>           <a>Fa#m7</a>         <a>Si7</a>     <a>Mi</a>
 comparsa porque aquí es donde canta su padre
                       <a>Si7</a>     <a>Mi</a>        <a>Do#7</a>
-Mi niña se disfraza y por la plaza va de 
+Mi niña se disfraza y por la plaza va de
          <a>Fam#7</a>                       <a>Si7</a>
 va de mi mano con el orgullo y la gracia
 <a>Fa#m7</a>                <a>La</a>         <a>Si7</a>          <a>Mi</a>

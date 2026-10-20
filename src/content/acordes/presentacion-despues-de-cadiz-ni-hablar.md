@@ -12,83 +12,83 @@ video: 'https://www.youtube.com/embed/qsMTh2bXSIY'
 fraseClave: Tutu tutu tututu tutu tutututu  Tutu tutu tututu
 ---
 <pre><a>Lam</a>        <a>Sim/5</a> <a>Mi7</a>      <a>Lam</a>              <a>Sim/5</a>
-Tutu tutu tututu tutu tutututu  Tutu tutu tututu 
+Tutu tutu tututu tutu tutututu  Tutu tutu tututu
 <a>Mi7</a>     <a>Lam</a>
 tutu tutututu
 <a>Lam</a>                                        <a>La7</a>
-Que yo camino por el mundo predicando y cantando 
+Que yo camino por el mundo predicando y cantando
      <a>Rem</a>                       <a>Mi7</a>
-carnaval llevando a Cai por bandera y la palabra 
+carnaval llevando a Cai por bandera y la palabra
     <a>Lam</a>
 libertad
                                    <a>La7</a>
-Porque cuando canta mi tierra hasta Dios debe 
+Porque cuando canta mi tierra hasta Dios debe
   <a>Rem</a>
 callar
                   <a>Lam</a>                      <a>Mi7</a>
-Que ya lo dijo el poeta, que ya lo dijo el poeta 
+Que ya lo dijo el poeta, que ya lo dijo el poeta
                    <a>Lam</a>
 después de Cádiz ni hablar
                                        <a>Mi7</a>
-Cuentan que existe un paraíso donde el sol viene a 
+Cuentan que existe un paraíso donde el sol viene a
  <a>Lam</a>                                 <a>Sol7</a>        <a>D</a>
-morir y que divina fue mi suerte por haber nacido 
+morir y que divina fue mi suerte por haber nacido
 o
 allí
                <a>Rem</a>                  <a>Lam</a>
-Me enamore por vez primera en la orillita del mar y 
+Me enamore por vez primera en la orillita del mar y
      <a>Mi7</a>                        <a>Fa</a>
-le perdí el miedo a la altura saltando del puente 
+le perdí el miedo a la altura saltando del puente
   <a>Mi7</a>
 canal
        <a>Lam</a>      <a>Sol</a>   <a>Fa</a>
-Que el mundo despierta con mi canción por 
+Que el mundo despierta con mi canción por
 <a>Mi7</a>        <a>Rem</a>                      <a>Lam</a>
-carnavales yo soy la voz de los que callan soy el 
+carnavales yo soy la voz de los que callan soy el
  <a>Si7</a>        <a>Mi7</a>
 grito de la calle
    <a>Lam</a>      <a>Sol</a>   <a>Fa</a>             <a>Mi7</a>            <a>Rem</a>
-Que Cai despierta con un redoble por febrero y aquí 
+Que Cai despierta con un redoble por febrero y aquí
                  <a>Lam</a>          <a>Si7</a>             <a>Mi7</a>
-les traigo mi comparsa para decirle al mundo entero 
+les traigo mi comparsa para decirle al mundo entero
                      <a>Lam</a>
-después de Cádiz ni hablar 
+después de Cádiz ni hablar
             <a>Sim/5</a> <a>Mi7</a>      <a>Lam</a>              <a>Sim/5</a>
-Tutu tutu tututu tutu tutututu  Tutu tutu tututu 
+Tutu tutu tututu tutu tutututu  Tutu tutu tututu
  <a>Mi7</a>     <a>Lam</a>
 tutu tutututu
                 <a>La7</a>               <a>Rem</a>
-Y cantaré hasta que se duerman las calles yo soy la 
+Y cantaré hasta que se duerman las calles yo soy la
            <a>Sol7</a>                       <a>Do</a>
 sátira del pueblo, yo no soy bufón de nadie
                     <a>Rem</a>
-Desgarraremos las gargantas hasta que el mundo se 
+Desgarraremos las gargantas hasta que el mundo se
 <a>Lam</a>                 <a>Mi7</a>
-pare, gaditano me parieron pa mi Cai es lo primero 
+pare, gaditano me parieron pa mi Cai es lo primero
                       <a>Lam</a>
 por eso nunca voy a faltarte
-El que se piensa que esto es un botellón le vamos a 
+El que se piensa que esto es un botellón le vamos a
 dar cosquis y la pringa
-Al que se ofenda por lo que pueda cantar le vamos a 
+Al que se ofenda por lo que pueda cantar le vamos a
 dar cosquis y la pringa
                                  <a>Sim7/5</a>         <a>Mi7</a>
-A esos fanáticos que no ven más allá le vamos a dar 
+A esos fanáticos que no ven más allá le vamos a dar
                 <a>Lam</a>
 cosquis y la pringa
                                 <a>Sim7/5</a>           <a>Mi7</a>
-Y al que no deje escuchar una ilegal le vamos a dar 
+Y al que no deje escuchar una ilegal le vamos a dar
                 <a>Lam</a>
 cosquis y la pringa
                              <a>Rem</a>              <a>Mi7</a>
-Que por el mundo yo voy predicando que por el mundo 
+Que por el mundo yo voy predicando que por el mundo
             <a>Lam</a>
-yo me voy cantando, llevando a Cádiz siempre por 
+yo me voy cantando, llevando a Cádiz siempre por
 <a>Rem</a>            <a>Mi7</a>         <a>Lam</a>
 bandera y mi canción de carnaval
                             <a>Rem</a>               <a>Mi7</a>
-Que por el mundo yo voy predicando que por el mundo 
+Que por el mundo yo voy predicando que por el mundo
             <a>Lam</a>
-yo me voy cantando, Que ya lo dijo en su día el 
+yo me voy cantando, Que ya lo dijo en su día el
  <a>Mi7</a>
 poeta
    <a>Lam</a>
@@ -100,18 +100,18 @@ Cuchibiri cuchibiri cuchibiri chi chi
     <a>Sol</a>
 Cuchibiri cuchibiri cuchibiri chi chi
 <a>Lam</a>                   <a>Sim7/5</a>       <a>Mi7</a>
-Y si tú quieres ser feliz ay vente conmigo a la 
+Y si tú quieres ser feliz ay vente conmigo a la
 <a>Lam</a>                         <a>Sim7/5</a>       <a>Mi7</a>
-Luna que allí juntos encontraremos la verdadera 
+Luna que allí juntos encontraremos la verdadera
    <a>Lam</a>
 fortuna
                  <a>Sim7/5</a>     <a>Mi7</a>          <a>Lam</a>
-En la luna cantaremos mil coplas de carnaval que ya 
+En la luna cantaremos mil coplas de carnaval que ya
                       <a>Mi7</a>
 lo dijo en su día el poeta
 <a>Lam</a>             <a>Sol</a>      <a>Fa</a>             <a>Mi7</a>
 Cheilole chaleiloleilole Cheilole chaleilola
 <a>Lam</a>  <a>Sim7/5</a>   <a>Mi7</a>        <a>Lam</a>   <a>Sim7/5</a>    <a>Mi7</a>
-    Después de Cádiz ni hablar, después de Cádiz ni 
+    Después de Cádiz ni hablar, después de Cádiz ni
   <a>Lam</a>
 hablar</pre>

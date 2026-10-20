@@ -15,23 +15,23 @@ fraseClave: Carcelero, carcelero, prisionero como un pajarillo
 <a>Do</a>
 Carcelero, carcelero, prisionero como un pajarillo
 
-Hoy vengo por ti prisionero 
+Hoy vengo por ti prisionero
 
 porque preso de tus cosas vivo
                         <a>Fa</a>         <a>Do</a>
 Y entre rejas vivo para cantar, volar
   <a>Do</a>                        <a>Mi7</a>
-Y quien fue el tonto que me dijo 
+Y quien fue el tonto que me dijo
                       <a>Lam</a>
 que aprendiera yo a volar
 
-Total, pa que, pa na 
+Total, pa que, pa na
                <a>Sol7</a>
 si mira tú al final donde vine a parar
                                <a>Do</a>
 Que ya no tengo ni siquiera el aire de esta jaula
       <a>Mi7</a>                <a>Lam</a>
-Para poder estirar estas alas 
+Para poder estirar estas alas
                        <a>Rem</a>
 que aquí dentro no me valen
                   <a>Fa</a>                      <a>Mi7</a>
@@ -41,15 +41,15 @@ Escucha al pájaro cantándote de nuevo
 <a>Mim</a>
 Que tiene herio el corazón, pero no muerdo
 <a>Fa</a>
-Oye el rumor de sus alas 
+Oye el rumor de sus alas
 <a>Mi7</a>
 pa un teatro que es como una jaula
 <a>Lam</a>
-Pájaro que canta no espanta sus males 
+Pájaro que canta no espanta sus males
 
 los de otros espanta
 
-Pájaro que canta no espanta sus males 
+Pájaro que canta no espanta sus males
 
 los de otros espanta
 
@@ -61,7 +61,7 @@ Y al aire luego lanzo mi canción que pa quien canto
 solo lo sé yo
 <a>Lam</a>                                  <a>Mim</a>
 Y canto, y canto, y canto desde mi rincón
-         
+
 le canto al mundo
               <a>Rem</a>           <a>Fa</a>               <a>Mi7</a>
 Lo que quiero yo que pa cantar no me tiembla la voz
@@ -72,11 +72,11 @@ Tu mueres por tu tierra, yo muero por mi cielo
 
 Tu muy tranquilo fuera pintando una frontera
          <a>Mim</a>
-Y yo encerrao dentro 
+Y yo encerrao dentro
 
 tu siempre callaito, echándole el ratito
               <a>Do</a>
-Y yo aquí encerrao me dejo la vida 
+Y yo aquí encerrao me dejo la vida
                <a>Fa</a>              <a>Mi7</a>
 y la vida enterita cantando pa ti
  <a>Lam</a>                                 <a>Rem</a>

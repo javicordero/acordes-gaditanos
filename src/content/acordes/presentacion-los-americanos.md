@@ -16,8 +16,8 @@ fraseClave: Esta tribu de idioma salvaje
 ---
 
 <pre>
-<a>Sol</a>    <a>Re</a>    <a>Sol</a>   <a>Sol</a>    <a>Re</a>    <a>Sol</a>  
-Aahhhh ahhh ahhhh Aahhhh ahhh ahhhh 
+<a>Sol</a>    <a>Re</a>    <a>Sol</a>   <a>Sol</a>    <a>Re</a>    <a>Sol</a>
+Aahhhh ahhh ahhhh Aahhhh ahhh ahhhh
       <a>Sol</a>
 Esta tribu de idioma salvaje que América llama
 poblado de plata con puertas de tierra
@@ -43,13 +43,13 @@ si yo fuera gaditano sin muralla ni cañón
 con mi canoa en la orilla levantaria un espigón
 con piedras de maravilla donde cada corazón
                              <a>Mim</a>
-pudiera atracar la pasión en vez de en canoa 
+pudiera atracar la pasión en vez de en canoa
 en barquilla
                 <a>Sol</a>
-si yo fuera gaditano el viento seria mi barca 
+si yo fuera gaditano el viento seria mi barca
 y si un dia me hace falta
                  <a>Re</a>
-para crusar los siete mares necesito que mi mare 
+para crusar los siete mares necesito que mi mare
                    <a>Do</a>
 antes me bese las manos
                         <a>Mim</a>
@@ -61,9 +61,9 @@ hasta la ultima gota de sangre seguro que derramaba
 <a>Mim</a>            <a>Re</a>    <a>Mim</a>                 <a>Re</a>
 en la morada bandera que clavaria en la playa
 <a>Do</a>                     <a>Sol</a>    <a>Sol7</a>
-junto a las puertas de tierra mientras desentierro 
-   <a>Do</a>                            <a>Re</a>  
-el hacha mientras desentierro el hacha 
+junto a las puertas de tierra mientras desentierro
+   <a>Do</a>                            <a>Re</a>
+el hacha mientras desentierro el hacha
         <a>Mim</a> <a>Re</a>       <a>Mim</a>
 de la guerra  de la guerra
 </pre>

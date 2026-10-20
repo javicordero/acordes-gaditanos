@@ -48,7 +48,7 @@ que a mí esta vida me dio y es lo más grande,
 <a>Mi7</a>          <a>LaM7</a>
 y es lo más grande.
        <a>Re</a>                <a>Mi7</a>          <a>Do#m7</a>
-La que jala de mi cuando caigo y me impide tirar 
+La que jala de mi cuando caigo y me impide tirar
    <a>Fa#7</a>            <a>Sim7</a>            <a>Re</a>
 la toalla la que me agarra del corazón
             <a>Sim7</a>      <a>Si7</a>           <a>Mi7</a>

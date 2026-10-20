@@ -21,7 +21,7 @@ Dejé las dudas partir y chapoteando en mis penas.
                  <a>Do9</a>                          <a>Re</a>
 Un gaditano cualquiera se convirtió en este actor.
 <a>Lam7</a>                                  <a>Mim</a>
-Que lejos de concebir las vanidosas maneras 
+Que lejos de concebir las vanidosas maneras
                                               <a>Do</a>
 De los tercos directores que imponiendo por sistema
                                               <a>Re</a>
@@ -29,7 +29,7 @@ Sus clichés y sus barreras limitaban su actuación.
 <a>Lam7</a>                                     <a>Mim</a>
 Hoy se presenta ante ti con esta peli sincera.
                                          <a>Do</a>
-Colorida, independiente, musical y guerrillera 
+Colorida, independiente, musical y guerrillera
                         <a>Re7</a>
 Que busca, que espera servir de inspiración
       <a>Sol</a>                                       <a>Re</a>
@@ -37,13 +37,13 @@ Peliculero, por hacer con mi vida justo lo que quiero
                <a>Si7</a>                  <a>Mim</a>
 Por pintar de colores lo que tú ves negro,
                     <a>Re</a>                    <a>Do</a>
-Por dejar que mis sueños surquen por los mares 
+Por dejar que mis sueños surquen por los mares
          <a>Re</a>           <a>Sol</a>
 como estrellas en el cielo.
 <a>Sol</a>                                 <a>Re</a>
 Por darme un paseito a solas con la luna.
                      <a>Si7</a>                <a>Mim</a>
-Por quitarle a este mundo un punto de locura. 
+Por quitarle a este mundo un punto de locura.
                    <a>Do</a>
 Por pretender que estas cositas que te canto
          <a>Re</a>              <a>Sol</a>   <a>Sim7</a> <a>Do</a> <a>Dom</a> <a>Re</a>
@@ -56,8 +56,8 @@ Que a veces finaliza antes de lo que esperas
 Y es de obligación vivirla a tu manera.
 
 Que la rutina mata y sobran las escenas.
-   <a>Sol</a>                                
-Elige el personaje que mejor te venga, 
+   <a>Sol</a>
+Elige el personaje que mejor te venga,
   <a>Mim</a>            <a>Do</a>                <a>Re</a>
 Cambia tu guion volando a donde quieras.
       <a>Sol</a>                                       <a>Re</a>
@@ -65,13 +65,13 @@ Peliculero, por hacer con mi vida justo lo que quiero
                <a>Si7</a>                  <a>Mim</a>
 Por pintar de colores lo que tú ves negro,
                     <a>Re</a>                    <a>Do</a>
-Por dejar que mis sueños surquen por los mares 
+Por dejar que mis sueños surquen por los mares
          <a>Re</a>           <a>Sol</a>
 como estrellas en el cielo.
 <a>Sol</a>                                 <a>Re</a>
 Por darme un paseito a solas con la luna.
                      <a>Si7</a>                <a>Mim</a>
-Por quitarle a este mundo un punto de locura. 
+Por quitarle a este mundo un punto de locura.
        <a>Do</a>
 Por pretender que estas cositas que te canto
           <a>Re</a>
@@ -81,6 +81,6 @@ Ya se acabaron los papeles secundarios.
         <a>Si7</a>                       <a>Mim</a>
 Es el momento de triunfar y de brillar
            <a>Do</a>              <a>Dom</a>       <a>Re</a>
-Con esta historia que hoy narran mis coplas 
+Con esta historia que hoy narran mis coplas
          <a>Sol</a>  <a>Re</a>       <a>Sol</a>  <a>Re</a>       <a>Sol</a>
 por carnaval, por carnaval, por carnaval.</pre>

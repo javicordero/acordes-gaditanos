@@ -20,7 +20,7 @@ fraseClave: Todo tiene un final y esto no iba a ser menos
 Todo tiene un final y esto no iba a ser menos.
   <a>La</a>                     <a>Lam7</a>    <a>Si7</a>
 He de reconocer que me comían los miedos,
-   <a>Mi</a>          <a>Si7</a>          <a>Do#m7</a> 
+   <a>Mi</a>          <a>Si7</a>          <a>Do#m7</a>
 El miedo a caer y a perder mi cordura
    <a>La</a>                        <a>Lam7</a>        <a>Si7</a>
 Ya deberíais saber que tengo pánico a la altura
@@ -69,7 +69,7 @@ Y que la juventud no está muerta sin más.
        <a>Fa#m7</a>                        <a>Si7</a>
 Que se vea que no aún nos quedan cojones pa cantar.
     <a>Do#m7</a>                 <a>Sol#m7</a>
-Y volver, volver a ser lo que fuimos, 
+Y volver, volver a ser lo que fuimos,
                 <a>La</a>
 volver a sentirnos vivos
            <a>Fa#m7</a>                 <a>La</a>      <a>Fa#m7</a>   <a>Si7</a>
@@ -77,12 +77,12 @@ Que todo aquello que te impida crecer no pueda contigo
     <a>Do#m7</a>             <a>Sol#m7</a>
 Y soñar. Dejar volar nuestro sueño
               <a>La</a>
-Que con cariño y empeño 
+Que con cariño y empeño
            <a>Fa#m7</a>
-Se ha demostrado. Gracias a ustedes 
+Se ha demostrado. Gracias a ustedes
                                       <a>Si7</a>
 Aquí se ha demostrado que se puede lograr.
- <a>Mi</a>       <a>Sol#m7</a>  <a>La</a> 
+ <a>Mi</a>       <a>Sol#m7</a>  <a>La</a>
 Tararaira raraira Tararaira
            <a>Fa#m7</a>                <a>Si7</a>
 Se ha demostrado que se puede lograr.

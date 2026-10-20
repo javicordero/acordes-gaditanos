@@ -13,45 +13,45 @@ fraseClave: Vivo en una tacita mu vieja con dos castillitos
 ---
 <pre>
 <a>Mim</a>
-Vivo en una tacita mu vieja 
+Vivo en una tacita mu vieja
 <a>Re</a>
 con dos castillitos legendarios
 <a>Lam7</a>                             <a>Do</a>
-Y tres puertecitas que no tienen reja 
+Y tres puertecitas que no tienen reja
                                 <a>Si7</a>
 porque son la entrada a cuatro barrios
 <a>Mim</a>
-Soy el duende de este paraíso 
+Soy el duende de este paraíso
                 <a>Re</a>
 que encierra su nombre en cinco letras
-<a>Lam7</a>                                  
-Con seis playas que guardan mi hechizo 
+<a>Lam7</a>
+Con seis playas que guardan mi hechizo
 <a>Do</a>                  <a>Si7</a>
 desde cortadura a la caleta
-<a>Lam</a>                  <a>Mim</a>   
-Sigo conservando siete vidas 
+<a>Lam</a>                  <a>Mim</a>
+Sigo conservando siete vidas
 <a>Si7</a>                       <a>Mim</a>
 pa librarte de todos tus males
-<a>Do</a>                    <a>Lam7</a> 
-Que por algo eres tierra mía 
+<a>Do</a>                    <a>Lam7</a>
+Que por algo eres tierra mía
 <a>Do</a>            <a>Lam7</a>      <a>Si7</a>
 la más vieja de ocho capitales
-<a>Fa</a>                     <a>Mim</a>   
-Nueve horas surcando la noche, 
+<a>Fa</a>                     <a>Mim</a>
+Nueve horas surcando la noche,
    <a>Si7</a>            <a>Do</a>
 como el nazareno por tus calles
-<a>Lam7</a>                   <a>Do</a>         
-Sin diez mandamientos ni reproches 
+<a>Lam7</a>                   <a>Do</a>
+Sin diez mandamientos ni reproches
 <a>Lam7</a>                <a>Si7</a>
 con el once Mágico Gónzalez
 
 
 <a>Do</a>          <a>Lam7</a>         <a>Si7</a>
-Doce meses de amor verdadero 
+Doce meses de amor verdadero
 <a>Do</a>          <a>Lam7</a>         <a>Si7</a>
 entre cuatro barrios a porfía
 <a>La</a>         <a>Si7</a>          <a>Sol#m</a>
-Por la Viña, por el Mentidero, 
+Por la Viña, por el Mentidero,
 <a>Fa#m</a>    <a>Si7</a>              <a>Mi</a>
 por el Pópulo y Santa María
 <a>Mi</a>
@@ -95,7 +95,7 @@ Soy las gargantas de Palomar y de Chano Lobato
       <a>Fa#7</a>                          <a>Si7</a>
 Y la pasión de la caracola y Pedro Romero
            <a>La</a>
-Soy la esperanza que te libera, 
+Soy la esperanza que te libera,
          <a>Sol#m</a>
 noches oscuras yo soy tu raza
                            <a>Fa#m</a>

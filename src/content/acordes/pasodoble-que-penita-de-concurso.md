@@ -17,7 +17,7 @@ Ya estamos todos contentos, ya sonríe el gran teatro
 <a>La</a>                <a>Sol#m</a>   <a>La</a>               <a>Si7</a>
 Porque por fin ya tenemos nuestro nuevo patronato
 <a>Mi</a>                      <a>Sib</a>        <a>Sol#7</a>
-Ya por fin no habrá más colas lloviendo 
+Ya por fin no habrá más colas lloviendo
                    <a>Do#m7</a>
 para esa gran afición
                      <a>La</a>      <a>Sol#m</a>        <a>Fa#m</a>
@@ -42,10 +42,10 @@ Hasta en la gloria donde huele a Hierbabuena
 Ya por fin le pondremos una calle
                      <a>Sol#m</a>
 Estando en vida a Antonio Martin
-                   <a>Do#7</a>                          <a>Fa#m</a>                 
+                   <a>Do#7</a>                          <a>Fa#m</a>
 Ya somos todos iguales ya los nombres no pesan al fin
                     <a>Si7</a>
-Ya puede ganar el concurso una de Cádiz 
+Ya puede ganar el concurso una de Cádiz
                <a>Mi</a>
 o de Villa Martin
       <a>Lam</a>                     <a>Mi</a>

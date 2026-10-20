@@ -32,7 +32,7 @@ Pasodobles viñeros que guardo en mi maleta
          <a>Do</a>           <a>Re7</a>                    <a>Sol</a>
 Y aunque tenga el Malecón aquí no tengo la Caleta
                                              <a>Mim</a>
-Y le quito el cartelón sin que me vea un romancero 
+Y le quito el cartelón sin que me vea un romancero
                                    <a>Lam7</a>
 Pa llevarme la gracia y el arte callejero
 
@@ -48,11 +48,11 @@ Carnaval lamentos y mil pasiones
                           <a>Re</a>
 Carnaval bendito de mis amores
          <a>Sol</a>
-Y en ese día que me vuelva pa la Habana 
+Y en ese día que me vuelva pa la Habana
                 <a>Si7</a>
 Me despidan gaditanas disparando en los balcones
                <a>Mim</a>
-Cañones de papelillos 
+Cañones de papelillos
 <a>Lam7</a>                        <a>Do</a>       <a>Lam7</a>      <a>Re7</a>
 Mientras que en un mostrador suenan coplas a nudillo
 <a>Mim</a>

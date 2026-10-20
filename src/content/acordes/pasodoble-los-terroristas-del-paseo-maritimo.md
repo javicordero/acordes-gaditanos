@@ -16,7 +16,7 @@ fraseClave: Aunque nos vean terroristas
 Aunque nos vean terroristas
    <a>La7</a>     <a>Re</a>        <a>La7</a>       <a>Re</a>
 no tenemos maldad ni sabemos matar,
-                              <a>La7</a> 
+                              <a>La7</a>
 nos gusta el camarón y los burgaíllos,
    <a>Sol</a>       <a>La7</a>
 la brisa del paseíto, el salitre del mar,

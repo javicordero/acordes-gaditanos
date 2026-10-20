@@ -33,7 +33,7 @@ Hay suspiros que te curan y otros que causan dolor.
 Suspiros viendo fotos de los que se fueron,
               <a>La7</a>
 de sueños deseados que al fin se cumplieron.
-               <a>Fa#m</a>                      
+               <a>Fa#m</a>
 Suspiros por un beso que nunca te dieron
 <a>Fa#7</a>                  <a>Sim</a>    <a>Re7</a>
 o al escuchar esta cancion.

@@ -13,8 +13,8 @@ fraseClave: "Defensor del costalero nos vais"
 <pre>
 <a>Mim</a>               <a>Si7</a>                <a>Mim</a>
 Defensor del costalero nos vais a comer los huevos
-               <a>Re</a>    
-Si parecemos viyuelas 
+               <a>Re</a>
+Si parecemos viyuelas
                 <a>Do</a>            <a>Si7</a>
 es porque mi estilo es muy marinero
 <a>Si7</a>                                      <a>Mim</a>
@@ -28,9 +28,9 @@ Y penitentes con tenis eso si es original
 <a>Lam</a>                      <a>Mim</a>   <a>Do</a>       <a>Si7</a>        <a>Mi</a>
 Por si hay que salir corriendo como en vuestra madrugá
                                          <a>Si7</a>       <a>Mi</a>
-Y que suenen bien las horquillas del doble paso yo paso 
-                                  
-Porque alli un Cristo y una Virgen 
+Y que suenen bien las horquillas del doble paso yo paso
+
+Porque alli un Cristo y una Virgen
    <a>Do#7</a>             <a>Fa#m</a>
 parece que van de morazo
                         <a>Si7</a>
@@ -38,7 +38,7 @@ Cofradía de seis mil hermanos no me parece gran cosa
                         <a>Fa#m</a>       <a>Si7</a>        <a>Mi</a>
 Se podéis apuntar en el paro como familia numerosa
 <a>La</a>                        <a>Si7</a>
-Gracias a esos Fernandito Pérez 
+Gracias a esos Fernandito Pérez
                    <a>Sol#m</a>
 que todavía no se enteran
                 <a>Do#7</a>                    <a>Fa#m</a>
@@ -46,12 +46,12 @@ Que tiran al gaditano pero de aquí las banderas
                     <a>Si7</a>                        <a>Mi</a>  <a>Mi7</a>
 Se alimenta de un paisano a la vez que de él reniega
 
-        <a>La</a> <a>Lam</a> <a>Si7</a>                <a>Sol#m</a> 
-Te juro que    a los que imponen estilos 
+        <a>La</a> <a>Lam</a> <a>Si7</a>                <a>Sol#m</a>
+Te juro que    a los que imponen estilos
 <a>Do#7</a>            <a>Fa#m</a>
 a mi me hierve la sangre
-    <a>Si7</a>                                       
-Y si alguien defendió en Cádiz los sevillanos 
+    <a>Si7</a>
+Y si alguien defendió en Cádiz los sevillanos
 <a>Fa#m</a>       <a>Si7</a>          <a>Mi</a>
 po me cago en su puta madre
 </pre>

@@ -14,23 +14,23 @@ fraseClave: En su pasaje en la Biblia
 ---
 <pre>
 <a>Mim</a>                   <a>Lam7</a> <a>Si7</a>
-En su pasaje en la Biblia 
+En su pasaje en la Biblia
                           <a>Mim</a>
 cuenta que Dios hizo al hombre
                       <a>Re</a>                   <a>Sol</a>
 y al verse solo en la via Adán pidió su consorte.
           <a>Mi7</a>    <a>Lam7</a>          <a>Si7</a>     <a>Mim</a>
 Dios declinó ese ruego creando su compañera
-                     <a>Lam7</a>         
+                     <a>Lam7</a>
 de tu costilla la he hecho aquí esta Eva,
    <a>Si7</a>   <a>Mim</a>
 aquí esta Eva.
 <a>Re</a>
-Desde aquel momento la mujer y el hombre 
+Desde aquel momento la mujer y el hombre
             <a>Sol</a>
 convivimos juntos
-<a>Re</a>              <a>Do</a>        
-aunque algún varón no haya sabido ser un 
+<a>Re</a>              <a>Do</a>
+aunque algún varón no haya sabido ser un
      <a>Lam7</a>  <a>Si7</a>
 compañero justo
        <a>Lam7</a>                    <a>Mim</a>
@@ -62,7 +62,7 @@ Deja que aquí esta noche haga justicia por tu
   <a>Mi</a>                      <a>Si7</a>
 honor y le grite a toa la gente
 Qué seria de los hombres en esta vida
-sin las mujeres 
+sin las mujeres
              <a>Fa#m7</a>        <a>Si7</a>   <a>Mi</a>
 gracias chiquilla por ser como eres.
 </pre>

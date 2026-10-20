@@ -40,7 +40,7 @@ perdido
 Pero es que siento una cosita cuando yo escucho
   <a>Mi7</a>    <a>Lam7</a>
 esta musiquita
-                       <a>Do</a> 
+                       <a>Do</a>
 Que aunque los males me rompan el alma la chirigota
 <a>Re7</a>             <a>Do</a>          <a>Re7</a>     <a>Sol</a>
 en mi resucita

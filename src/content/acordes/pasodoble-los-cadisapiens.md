@@ -53,7 +53,7 @@ Yo lo siento aquí conmigo
 Que no me quiero copiar solo le vengo  ofrecer
              <a>Do</a>              <a>Re7</a>
 Junto a mis amigos y mi chirigota
-                <a>Do</a>                      <a>Re</a> 
+                <a>Do</a>                      <a>Re</a>
 Que no se os olvide y llenar vuestra memoria
 <a>Do</a>        <a>Re7</a>      <a>Sol</a>
 De Don Manuel Santander

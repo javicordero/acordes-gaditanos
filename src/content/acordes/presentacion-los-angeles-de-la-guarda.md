@@ -17,11 +17,11 @@ Sentaito en una estrella y contando los luceros
 <a>Mim</a>              <a>Sim7</a>     <a>Lam7</a>          <a>Si7</a>
 Estaba la noche aquella cavilando en el cielo
 <a>Lam</a>
-Hasta que el jefe supremo con un mensajero 
+Hasta que el jefe supremo con un mensajero
          <a>Mim</a>
 me hizo llamar
                   <a>Do</a>                    <a>Lam7</a>
-Y me pegue un voletio para atender el envió 
+Y me pegue un voletio para atender el envió
                      <a>Si7</a>
 y pa no hacerlo esperar
 <a>Mim</a>               <a>Sim7</a>            <a>Lam7</a>
@@ -36,7 +36,7 @@ Será tu nuevo destino este puntito en el mapa
 Y si te pierdes pregunta por la Tacita de Plata
                     <a>Lam</a>                        <a>Sim7</a>
 Que allí German y Servando en sus columnas de piedras
-                   <a>Do</a>                            <a>Re</a> 
+                   <a>Do</a>                            <a>Re</a>
 Ya me estaban esperando frente a las puertas de tierra
                    <a>Sol</a>              <a>Sim7</a>
 Y a la playa más bonita volando me llevaron
@@ -48,18 +48,18 @@ Entre sus manos un destello, un llamador me enseñaron
 Me lo colgaron del cuello y a la vez me explicaron
 <a>Mim</a>        <a>Re</a>          <a>Do</a>           <a>Si7</a>
 Escúchalo bien cuando suene el cascabel
-<a>Mim</a>                    <a>Sim7</a>  
+<a>Mim</a>                    <a>Sim7</a>
 Cierra los ojos que el viento
         <a>Lam7</a>                <a>Si7</a>
 te lleva volando en un santiamén
 <a>Mim</a>                  <a>Sim7</a>          <a>Do</a>          <a>Si7</a>
 Y sonó el cascabel y volé y a una madre me encontré
 <a>Mim</a>                      <a>Re</a>              <a>Do</a>
-Que un llamador como el mío ponía en tu cuna 
+Que un llamador como el mío ponía en tu cuna
              <a>Si7</a>
 y tu frente besé
 <a>Mim</a>                    <a>Sim7</a>              <a>Lam7</a>
-Y te juro por dios vida mía que desde ese día 
+Y te juro por dios vida mía que desde ese día
              <a>Si7</a>
 por siempre seré
               <a>Mim</a>          <a>Sim7</a>

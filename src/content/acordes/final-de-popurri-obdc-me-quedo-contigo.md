@@ -27,13 +27,13 @@ porque la vida es un juego envenenado entre los dos
 Que yo me quedo contigo hasta en domingo y desvelado
   <a>Do</a>                          <a>Lam7</a>
 sabiendo que el lunes va a ahogarnos
-  <a>Do</a>       <a>Si7</a> 
+  <a>Do</a>       <a>Si7</a>
 a golpe de prisa a traición
-                                                <a>Mim</a> 
+                                                <a>Mim</a>
 Solo le pido a luna que baje el tango y pare la marea
                       <a>Re</a>                       <a>Sol</a>
 No imploro a Virgen ninguna yo le rezo a tus caderas
-                  <a>Si7</a>                        <a>Mim</a> 
+                  <a>Si7</a>                        <a>Mim</a>
 Por estandarte mi cuna ropa al viento en azoteas
 <a>Re</a>   <a>Do</a>             <a>Lam7</a>
 como velas que se pliegan

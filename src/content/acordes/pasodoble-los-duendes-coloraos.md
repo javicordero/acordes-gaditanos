@@ -46,8 +46,8 @@ que me hicistes olvidar el fallo de un jurado
 super hiper preprado que con sus puestos,
                     <a>Sim7</a>                <a>Mi7</a>
 sus tablas y sus cuentas como ha resultado
-                     <a>Sim7</a>                    <a>Mi7</a>         
-demostró con dos cojones que el resto del mundo estaba 
+                     <a>Sim7</a>                    <a>Mi7</a>
+demostró con dos cojones que el resto del mundo estaba
       <a>La</a>
 equivocado
           <a>Rem</a>                                   <a>La</a>

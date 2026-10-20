@@ -37,30 +37,30 @@ Y hace una banda que esta banda de carnavales
  <a>Lam</a>                                 <a>Sol</a>
 Capitán corazón corazón capitán ay Veneno
     <a>Lam</a>
-Me robaste del alma y rebujaste en mi piel lo malo con 
+Me robaste del alma y rebujaste en mi piel lo malo con
    <a>Sol</a>
 lo bueno
                    <a>Lam</a>                   <a>Sol</a>
-Y conseguiste al final que loco me enamorara de una 
+Y conseguiste al final que loco me enamorara de una
         <a>Lam</a>
 mujer especial
                         <a>Rem</a>
-que en casa le llamaban Cádiz y en la calle le llamaban 
+que en casa le llamaban Cádiz y en la calle le llamaban
                <a>Mi7</a>
 Ay la Tacita de Plata
                     <a>Lam</a>
-Tú me elegiste a la suerte y yo también 
+Tú me elegiste a la suerte y yo también
                                  <a>Sol</a>
 malditas fueron las ganas de los dos
 Q por tu culpa ya no sé lo q es el bien
                                            <a>Lam</a>
 y no distingo los cariños del dolor ay pero ya
                        <a>Mi7</a>           <a>Lam</a>
-Como estoy preso en la cárcel de tu amor 
+Como estoy preso en la cárcel de tu amor
                                  <a>Sol</a>
 y este veneno que tengo es inmortal
 <a>Lam</a>
-No voy a quedarme sin ti por carnaval 
+No voy a quedarme sin ti por carnaval
 <a>Sol</a>
 No voy a quedarme sin ti por carnaval
 <a>Lam</a>                               <a>Sol</a> <a>Lam</a>

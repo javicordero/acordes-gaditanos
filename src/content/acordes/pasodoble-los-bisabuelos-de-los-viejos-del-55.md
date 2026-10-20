@@ -31,7 +31,7 @@ cuando yo me escapaba de chiquetillo
 y volvía con mi cajita de cerillos
                   <a>Do</a>    <a>Re7</a>        <a>Sol</a>
 cantando el estribillo de algún cuplé
-        <a>Re7</a>                               <a>Sol</a>                
+        <a>Re7</a>                               <a>Sol</a>
 Que no, pare, no tengo culpa que por mis venas
 <a>Re7</a>                            <a>Sol</a>
 se agarre como agarra la enredadera

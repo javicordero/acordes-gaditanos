@@ -20,7 +20,7 @@ como nos dicen algunos poetas
 es que de noche se baña en las aguas
            <a>Sol7</a>              <a>Do</a>
 de nuestra típica y bella Caleta.
-        <a>Rem</a>               
+        <a>Rem</a>
 Y los reflejos de su verde laca
           <a>Fa</a>               <a>Mi7</a>
 moja y empapa su gran pandereta

@@ -13,7 +13,7 @@ fraseClave: Voilá la casa del horror
 <pre>
 <a>Mim</a>
 Voilá la casa del horror
-                                   <a>Si7</a>     <a>Do7</a>   
+                                   <a>Si7</a>     <a>Do7</a>
 Que nace del terror que habita en tu cabeza
   <a>Si7</a>
 Voilá que tus miedos soy yo
@@ -27,7 +27,7 @@ Tu enemigo más constante un rehén ingobernable
 Cuando sientes que ya no queda nada
             <a>Si7</a>                        <a>Fa</a>  <a>Mi7</a>
 Siempre una luz se enciende y brota la esperanza
-            <a>Lam7</a>            <a>Si7</a>           <a>Mim</a> 
+            <a>Lam7</a>            <a>Si7</a>           <a>Mim</a>
 Y aunque hoy pienses que has perdido tu camino
                  <a>Do</a>                       <a>Re7</a>
 Voy de la mano contigo hasta que grites fuerte al alba
@@ -35,7 +35,7 @@ Voy de la mano contigo hasta que grites fuerte al alba
 Quiero volver a amar la vida y quiero amarte
                       <a>Mim</a>
 Hasta rompernos en cristales
-<a>Mi7</a>      <a>Lam7</a>          
+<a>Mi7</a>      <a>Lam7</a>
 Bailar contigo en la cocina
          <a>Do</a>                   <a>Re7</a>
 Y que resuenen en la casa carnavales
@@ -51,7 +51,7 @@ Donde fuimos felices
 ¿Cómo estás? cuantas veces te habrán preguntado
      <a>Do</a>                            <a>Dom7</a>
 Muy bien has respondido aunque aquí adentro todo es caos
-    <a>Sol</a>                               <a>Mim</a> 
+    <a>Sol</a>                               <a>Mim</a>
 Y cargar con la culpa que arranca en un llanto
     <a>Do</a>                       <a>Re</a>
 Tu mismo te has creído la verdad que te has dictado
@@ -75,7 +75,7 @@ Quiero reírme de todas mis cicatrices
 Quiero soñar y volver al lugar y volver al lugar
               <a>Do</a>             <a>Re</a>
 Y volver al lugar y volver al lugar
-              <a>Sol</a>   <a>Re</a> <a>Do</a> <a>Re</a> <a>Sol</a> <a>Do</a> <a>Re</a> 
+              <a>Sol</a>   <a>Re</a> <a>Do</a> <a>Re</a> <a>Sol</a> <a>Do</a> <a>Re</a>
 Donde fuimos felices
                 <a>Sol</a>
 Donde fuimos felices

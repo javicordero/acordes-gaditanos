@@ -22,7 +22,7 @@ Esta tropa es canalla como la orilla del mar
 Donde van a crear la copla caletera
 <a>La7</a>       <a>Rem</a>      <a>Mi7</a>         <a>La</a>
 Por eso las barcas bailan al compás
-<a>Fa#7</a>     <a>Sim7</a>     <a>Mi7</a>  <a>La</a>  
+<a>Fa#7</a>     <a>Sim7</a>     <a>Mi7</a>  <a>La</a>
 Como si fueran chirigoteras
        <a>La</a>                        <a>Do#m7</a>
 Y por eso ay ay ay, yo te vengo ay ay ay

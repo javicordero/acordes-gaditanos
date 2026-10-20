@@ -16,7 +16,7 @@ fraseClave: Me dijeron que Cádiz para el turismo
 Me dijeron que Cádiz para el turismo
               <a>La7</a>             <a>Re</a>
 no tiene nada que pueda interesar,
-                                    <a>Mi7</a>               
+                                    <a>Mi7</a>
 ni alcázares ni Alhambra ni algún tipismo
                                        <a>La</a>
 que nos muestre sus huellas de antigüedad.

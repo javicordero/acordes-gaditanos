@@ -52,7 +52,7 @@ yo quien ponga guapas tus maderas
 Para ponerte diez cañones en la proa pa acabar con
                                 <a>Si</a>
 los piratas que te tienen en barrena
-<a>Mi/add9</a>  <a>Sol#m7</a>  <a>Do#m7</a>  <a>La</a>  <a>Si</a>  <a>Mi/add9</a>  <a>Sol#m7</a>  
+<a>Mi/add9</a>  <a>Sol#m7</a>  <a>Do#m7</a>  <a>La</a>  <a>Si</a>  <a>Mi/add9</a>  <a>Sol#m7</a>
 <a>Do#m7</a>  <a>La</a>  <a>Si</a>
          <a>La</a>                       <a>Si7</a>
 No hay una barca mas bonita en la bahía

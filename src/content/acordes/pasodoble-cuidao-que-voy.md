@@ -20,9 +20,9 @@ el que venía detrás tuvo que darme el empujón
 y en cero coma dos tiré de la argollita
                 <a>Fa</a>                    <a>Sol7</a>
 el levante me meció y me acercó a la Tacita.
-           <a>Fa</a>    <a>Sol7</a>               <a>Mim</a>  
+           <a>Fa</a>    <a>Sol7</a>               <a>Mim</a>
 Es una maravilla verte con ojo de halcón
-               <a>Rem</a>         <a>Sol7</a>         <a>Do</a> 
+               <a>Rem</a>         <a>Sol7</a>         <a>Do</a>
 aunque soy de Sevilla me robaste el corazón.
                     <a>La7</a>         <a>Rem</a>
 Y el corazón por la boca se me salía
@@ -34,7 +34,7 @@ y el azul de tu cielo y de tu mar
 vi como en el horizonte se fundía.
 <a>Do</a>            <a>La7</a>        <a>Rem</a>
 Respirando tu aire perdí altura
-<a>Mi7</a>                                <a>Lam</a> 
+<a>Mi7</a>                                <a>Lam</a>
 contemplando esa estampa que es de locura.
 <a>Fa</a>      <a>Sol7</a>   <a>Do</a>     <a>La7</a>      <a>Rem</a>
 Y dando volteretas me trajo el viento
@@ -44,8 +44,8 @@ cerquita de la Caleta
 y aquí se presenta mi escuadrilla
   <a>La7</a>            <a>Rem</a>
 pa contarte mis pamplinas
-<a>Sol7</a>                                   
+<a>Sol7</a>
 entré por la azotea y me he quedao enredao
-            <a>Do</a>     
+            <a>Do</a>
 en tus bambalinas.
 </pre>

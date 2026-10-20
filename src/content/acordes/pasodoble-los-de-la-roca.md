@@ -14,33 +14,33 @@ fraseClave: que de vueltas da la vida la vida da muchas vueltas.
 <pre>
 <a>Sol</a>                       <a>Do</a>
 que de vueltas da la vida la vida da muchas vueltas.
-<a>Re7</a>              <a>Sol</a>                     <a>Re7</a>    
+<a>Re7</a>              <a>Sol</a>                     <a>Re7</a>
 2 copleros se juntaron a colmo de una borrachera
                    <a>Sol</a>
-en la puerta la caleta 
-                          <a>Do</a>      
+en la puerta la caleta
+                          <a>Do</a>
 los dos tienen muy clarito el compas del pasodoble.
-<a>Re7</a>                 <a>Sol</a>                      <a>Re7</a>  
-se mueven por un bombazo, vibran con un platillazo 
+<a>Re7</a>                 <a>Sol</a>                      <a>Re7</a>
+se mueven por un bombazo, vibran con un platillazo
                  <a>Sol</a>  <a>Re7</a> <a>Sol</a>
-y gozan con un redoble. 
-                              <a>Re7</a>  <a>Sol</a> 
-y otro añito yo te ofrezco mi tararachi 
+y gozan con un redoble.
+                              <a>Re7</a>  <a>Sol</a>
+y otro añito yo te ofrezco mi tararachi
                             <a>Re7</a>     <a>Sol</a>
-que cuando llega febrero no puede dormir, 
+que cuando llega febrero no puede dormir,
                      <a>Re7</a>
-por ti por ti ay por ti 
+por ti por ti ay por ti
                                       <a>Do</a>
-musiquillas que le sobran ganas de vivir 
-       <a>Re7</a>         <a>Sol</a> 
-y que nunca va a morir 
+musiquillas que le sobran ganas de vivir
+       <a>Re7</a>         <a>Sol</a>
+y que nunca va a morir
        <a>Do</a>                        <a>Re7</a> <a>Sol</a>
-por bandera traido siempre mi copliiiilla 
+por bandera traido siempre mi copliiiilla
           <a>Mi7</a>                         <a>Lam7</a>
-siempre intento componerlas muy senciiiilla 
+siempre intento componerlas muy senciiiilla
         <a>Re7</a>
-y aqui tiene chirigotas y 3x4 
-chirigotas de pellizco y de porrazo 
+y aqui tiene chirigotas y 3x4
+chirigotas de pellizco y de porrazo
                                 <a>Sol</a>
 de los compases de cai me emborracho.
 </pre>

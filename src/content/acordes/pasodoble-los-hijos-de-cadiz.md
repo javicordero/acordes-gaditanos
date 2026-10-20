@@ -29,7 +29,7 @@ No pensar por uno mismo, tan solo es preciso
              <a>Si7</a>
 Rendir obediencia
              <a>Mim</a>        <a>Do</a>          <a>Mim</a>
-Fascista vacilón de los del cara al sol 
+Fascista vacilón de los del cara al sol
        <a>Si7</a>       <a>Mim</a>
 Y el culito a la luna
                   <a>Mi7</a>                  <a>Lam</a>
@@ -53,12 +53,12 @@ Mamá yo quiero ser un fascista moderno
 Despiertan mi pasión cuando me hablan de invasión
                                 <a>Do#7</a>      <a>Fa#m7</a>
 Aunque los que me lo dicen invadan mis derechos
-Ir pegando por la calle a moros de mierda 
+Ir pegando por la calle a moros de mierda
           <a>Si7</a>
 Maricas y negros
                 <a>Fa#m7</a>   <a>Si7</a>             <a>Mi</a>
 Y en misa los domingos darme golpes de pecho
-                   <a>Mi7</a> 
+                   <a>Mi7</a>
 La mujer metida en casa que ya está aquí el hombre
                 <a>La</a>
 Pa hacer lo que quiera

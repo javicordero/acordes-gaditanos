@@ -39,7 +39,7 @@ de los besos robados a ese poeta,
 de las coplas al tres por cuatro,
                    <a>Mi7</a>
 del pregón de la Caleta,
-               <a>Rem</a>                <a>Lam</a> 
+               <a>Rem</a>                <a>Lam</a>
 de aquel niño que hace medio siglo ya
                     <a>Mi7</a>
 aquí te empezó a querer.
@@ -56,7 +56,7 @@ yo te juro que te he entregado todo lo que tenía
                 <a>Mi7</a>
 y aunque ya me vaya de noche y día
 si tú me llamas te rondaré,
-                <a>Re</a>               
+                <a>Re</a>
 igual que el Levante por tus esquinas
           <a>Mi7</a>                           <a>La</a>
 ay tierra mía, ay tierra mía, ay tierra mía.

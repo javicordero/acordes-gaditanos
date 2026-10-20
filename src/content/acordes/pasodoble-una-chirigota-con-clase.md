@@ -12,7 +12,7 @@ fraseClave: "Yo tengo diez mil preguntas,"
 
 ---
 <pre>
-<a>Re</a> <a>Sol</a>                   <a>Re</a>     <a>Sol</a>     
+<a>Re</a> <a>Sol</a>                   <a>Re</a>     <a>Sol</a>
 Yo tengo diez mil preguntas, que hacerle a mi
   <a>Re</a>
 papaito

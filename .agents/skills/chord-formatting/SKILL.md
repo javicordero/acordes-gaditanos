@@ -19,7 +19,7 @@ Los archivos de acordes están en `src/content/acordes/*.md`. Cada acorde en el 
 <pre>
 <a>La</a>                                           <a>Mi7</a>
 Como salidas de un cuento se presentan ante ustedes
-                   <a>Re</a> 
+                   <a>Re</a>
 las famosas brujas Piti
                <a>Mi7</a>               <a>La</a>
 </pre>
@@ -54,7 +54,14 @@ Acordes típicos en mayúsculas/minúsculas:
 2. Identificar todos los acordes (patrones: palabras que son notas musicales o derivados)
 3. Envolver cada acorde con `<a>...</a>`
 4. Preservar el resto del contenido (letra, espacios, puntuación)
-5. Verificar que no queden acordes sin formatear
+5. **No dejar espacios ni tabuladores al final de línea** dentro del `<pre>`: la línea termina justo después del último carácter (letra o `</a>`). La indentación inicial sí se conserva porque es la que alinea el acorde con la letra.
+6. Verificar que no queden acordes sin formatear
+
+Para comprobarlo o corregirlo después:
+
+```bash
+node scripts/trim-pre-whitespace.mjs --dir src/content/acordes --dry-run
+```
 
 ## Ejemplo de Transformación
 
@@ -70,7 +77,7 @@ las famosas brujas Piti
 ```
 <a>La</a>                                           <a>Mi7</a>
 Como salidas de un cuento se presentan ante ustedes
-                   <a>Re</a> 
+                   <a>Re</a>
 las famosas brujas Piti
 ```
 

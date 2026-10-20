@@ -13,7 +13,7 @@ fraseClave: "Sentaos en la orilla del"
 ---
 <pre>
    <a>Sol</a>          <a>Re7</a>      <a>Sol</a>
-Sentaos en la orilla del mar 
+Sentaos en la orilla del mar
              <a>Sol7</a>         <a>Do</a>
 jugaban dos niños en la playa
                     <a>Re7</a>        <a>Do</a>  <a>Re7</a>    <a>Sol</a>
@@ -21,16 +21,16 @@ Con su sonrisa celestial, sus cubos y sus palas.
              <a>Re7</a>    <a>Sol</a>                <a>Sol7</a>        <a>Do</a>
 Hoy no vamos a construir castillos con torres de arena
    <a>Re7</a>             <a>Sol</a>      <a>Mi7</a>          <a>LamRe7</a>
-Le vamos a hacer a mamá el piso que no le dan 
+Le vamos a hacer a mamá el piso que no le dan
                     <a>Sol</a> <a>Re7</a> <a>Sol</a>
 y con el que tanto sueña.
                        <a>Re7</a>
-Le vamos a poné un balcón 
+Le vamos a poné un balcón
 <a>Do</a>         <a>Re7</a>         <a>Sol</a>
 pa que al fresquito se siente,
                <a>Re7</a> <a>Do</a>       <a>Re7</a>          <a>Sol</a>
 Una cocina chiquita y un cuarto baño decente.
-                    <a>Re7</a> <a>Do</a>   <a>Re7</a>              <a>Sol</a> 
+                    <a>Re7</a> <a>Do</a>   <a>Re7</a>              <a>Sol</a>
 Nuestro dormitorio aquí y en esta esquina su alcoba
 <a>Do</a>                  <a>Sol</a>                     <a>Re7</a>
 Pa que ella pueda dormir sin tener ese sin vivir

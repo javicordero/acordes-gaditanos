@@ -22,13 +22,13 @@ Bailar, contra la gravedad, desde mi alambre
            <a>Si7</a>
 Son tantas veces que en el suelo me estrelle
               <a>Mim</a>
-Que ya he aprendido a caer siempre de pie  
+Que ya he aprendido a caer siempre de pie
                     <a>Lam</a>     <a>Si7</a>  <a>Mim</a>  <a>Lam7</a> <a>Si7</a>
 para volverme a levantar y a comenzar
 <a>Mim</a>          <a>Lam7</a>  <a>Si7</a>
 Pa, parara, papa, parara,
-<a>Sol</a>                               
-¿Quién dijo miedo? una, dos y tres, 
+<a>Sol</a>
+¿Quién dijo miedo? una, dos y tres,
 <a>Lam7</a>
 que yo no quiero que me pongan red
 <a>Do</a>                                       <a>Si7</a>
@@ -48,7 +48,7 @@ Míralo cantar, oyelo temblar, en el centro de la pista
 <a>Lam</a>              <a>Mim</a>           <a>Re7</a>                   <a>Sol</a>
 Se oye alrededor su respiración, esto no es ninguna broma
 <a>Lam</a>                     <a>Do</a>
-Y un niño no resiste las ganas de aplaudir, 
+Y un niño no resiste las ganas de aplaudir,
                  <a>Lam7</a> <a>Si7</a>
 asustando a las palomas
               <a>Mim</a>                 <a>Mi7</a>             <a>Lam</a>
@@ -56,10 +56,10 @@ Un pie y otro pie tensando el cordel, mirando al abismo
                  <a>Re7</a>                              <a>Sol</a>
 El riesgo está aquí y el público ahí y siempre lo mismo
                <a>Fa</a>    <a>Mi7</a>        <a>Lam</a>
-Los sueños te van aumentando el peligro 
+Los sueños te van aumentando el peligro
             <a>Do</a>          <a>Lam7</a>                  <a>Si7</a>
 y aquí sigo yo con mi corazón haciendo equilibrio
-              <a>Mim</a>               <a>Mi7</a>                 <a>Lam</a>           
+              <a>Mim</a>               <a>Mi7</a>                 <a>Lam</a>
 Que pongan la luz, los brazos en cruz, las carnes abiertas
         <a>Re7</a>                                 <a>Sol</a>
 Que de mi canción a tu corazón hay solo una cuerda
@@ -80,7 +80,7 @@ Que de mi canción a tu corazón hay solo una cuerda
            <a>Mim</a>             <a>Si7</a>              <a>Mim</a>
 Escúchame bien yo tengo los pies pegados mi tierra
            <a>Mim</a>  <a>Si7</a>            <a>Mim</a>
-Pegados mi tierra, pegados a mi tierra, 
+Pegados mi tierra, pegados a mi tierra,
 
 mi tierra, mi tierra, mi tierra.
 </pre>

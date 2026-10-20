@@ -18,7 +18,7 @@ fraseClave: Las balizas hay que llevar en el coche
 <a>Lam7</a>
      <a>Mi7</a> <a>Lam7</a>  <a>Mi7</a>                  <a>Lam7</a>
 Las   ba  lizas hay que llevar en el coche
-Aunque namas que valen si te averías 
+Aunque namas que valen si te averías
              <a>Mi7</a>
 Y es por la noche
                    <a>Rem</a>         <a>Mi7</a>          <a>Lam7</a>

@@ -19,28 +19,28 @@ Presento mi pasodoble pa mi Cádiz callejero
                               <a>Do7</a>         <a>Fa</a>
 Va cuajado de compases, de compases legendarios
            <a>Sol7</a>    <a>Do</a>   <a>La7</a>
-Y no tiene más riquezas 
+Y no tiene más riquezas
         <a>Rem</a>     <a>Sol7</a>   <a>Do</a>
 que el amor de este millonario
 
-Cantarte a ti, cantarte a ti en una esquinita 
+Cantarte a ti, cantarte a ti en una esquinita
                         <a>Sol7</a>
 me hace quererte todavía más
 
-Marca el compás con un puñao de serpentinas 
+Marca el compás con un puñao de serpentinas
                       <a>Do</a>
 hace que huela a carnaval
 
-La vi adornar con una copita de vino  
+La vi adornar con una copita de vino
           <a>Do7</a>             <a>Fa</a>
 pa que me salga bien el final
          <a>Sol7</a>                      <a>Mim</a>
 Porque te quiero, te quiero y te adoro
-          <a>La7</a>            <a>Rem</a>  
-Porque tu Cádiz eres mi tesoro 
+          <a>La7</a>            <a>Rem</a>
+Porque tu Cádiz eres mi tesoro
           <a>Sol7</a>          <a>Do</a>
 me vuelve loco tu claridad
-        <a>Fa</a>                  <a>Do</a>  
+        <a>Fa</a>                  <a>Do</a>
 Otro febrero yo vengo a cantarte,
         <a>La7</a>               <a>Rem</a>
 otro febrero yo vuelvo a besarte

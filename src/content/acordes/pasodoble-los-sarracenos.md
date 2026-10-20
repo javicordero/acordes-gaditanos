@@ -12,10 +12,10 @@ video: https://www.youtube.com/embed/diteJMo6siE?si=o6sFjfE4F93v6EFn
 fraseClave: Oh Cádiz a cantarte yo vengo a ti
 ---
 <pre>
-<a>Lam</a>           <a>Mi7</a>             <a>Lam</a> 
-Oh Cádiz a cantarte yo vengo a ti 
-                  <a>Sol7</a>            <a>Do</a> 
-Siempre fue mi ilusión el poderte ver 
+<a>Lam</a>           <a>Mi7</a>             <a>Lam</a>
+Oh Cádiz a cantarte yo vengo a ti
+                  <a>Sol7</a>            <a>Do</a>
+Siempre fue mi ilusión el poderte ver
        <a>Mi7</a>           <a>Lam</a>
 Bella tierra que yo soñé
    <a>Sol7</a>                <a>Do</a>       <a>Mi7</a>               <a>Lam</a>
@@ -24,20 +24,20 @@ No sé que tiene esta ciudad que tanto me hace recordar
 Se ve que el moro te habitó porque su acento se dejó
                 <a>Mi7</a>          <a>Lam</a>
 Con razón yo me considero español
-<a>Re</a>                             <a>La</a>  
-Cuando escucho un cante por soleá 
+<a>Re</a>                             <a>La</a>
+Cuando escucho un cante por soleá
          <a>Fa#7</a>          <a>Sim7</a>
 hasta me dan ganas de llorar
-<a>Mi7</a>                       <a>La</a> 
+<a>Mi7</a>                       <a>La</a>
 porque lo llevo en el corazón
 <a>Rem</a>                          <a>Lam</a>
 Son los mismos cantes de mi país
                         <a>Mi7</a>
-Es un recuerdo que se quedó 
+Es un recuerdo que se quedó
                               <a>Lam</a> <a>La7</a>
 Desde que el moro se fue de aquí
 <a>Rem</a>                          <a>Lam</a>
-Por eso a mí Cádiz me hace soñar 
+Por eso a mí Cádiz me hace soñar
                                  <a>Mi7</a>
 Y ya no habrá quién me eche de aquí
                          <a>La</a>

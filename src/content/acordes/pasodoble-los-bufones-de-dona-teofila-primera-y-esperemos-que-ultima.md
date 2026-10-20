@@ -19,11 +19,11 @@ Es porque tu claridad me maravilla
                  <a>Re7</a>
 Y las olas de tu mar me dan la calma
                          <a>Sol</a>   <a>Re7</a> <a>Sol</a>
-Pa poder tararear mi musiquilla 
+Pa poder tararear mi musiquilla
                   <a>Re7</a>        <a>Sol</a>
-Como bien dijeran los enterradores 
+Como bien dijeran los enterradores
                   <a>Sol7</a>            <a>Do</a>
-Yo no te pienso dejar, ay, cariño mío 
+Yo no te pienso dejar, ay, cariño mío
                     <a>Sol</a>                       <a>Re7</a>
 Y aquí tienes mi compás y aquí tienes el tatachán
                      <a>Sol</a>
@@ -32,11 +32,11 @@ Que mi guitarra ha parío
 Chirigota yo te traigo chirigota
                                        <a>Sol</a>
 Chirigota de pellizco pasodoble estremecio
- 
-Cai mio, la mirá de tu Alameda 
+
+Cai mio, la mirá de tu Alameda
                   <a>Re7</a>            <a>Sol</a>
 Me tiene loco perdido ay loco perdío
-           <a>Do</a>              <a>Re7</a> 
+           <a>Do</a>              <a>Re7</a>
 Y si no viniera y si no cantara
                 <a>Do</a>              <a>Re7</a>             <a>Sol</a>
 Que sería de de mi, Cádiz de mi alma sin tu folclore

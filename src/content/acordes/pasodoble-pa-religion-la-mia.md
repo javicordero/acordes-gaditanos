@@ -46,8 +46,8 @@ Que aunque le suenen no atina a cantar
 Y otro martes y otro más,
                <a>Re7</a>                   <a>Sim</a>
 escuchando nervioso la coplilla del vapor
-               <a>Mi7</a>                     
-Esa que le enamora y de su mente borró, 
+               <a>Mi7</a>
+Esa que le enamora y de su mente borró,
 <a>Lam7</a>   <a>Re7</a>  <a>Sol</a>
 Ay cabecita loca
        <a>Sol7</a>        <a>Do</a>

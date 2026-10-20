@@ -50,9 +50,9 @@ Los comparsistas se las dan de artistas
 Pero cuando mi comparsa camino de  falla
                                  <a>Si7</a>
 Se puso de parto al pasar por el arco
-          <a>Mim</a> 
+          <a>Mim</a>
 De San Rafael
-                  <a>Sol</a>                 <a>Mim</a> 
+                  <a>Sol</a>                 <a>Mim</a>
 Hasta mi hermano dejo de mirar porque vio
                  <a>La7</a>
 Que pa mí el carnaval era el punto y final

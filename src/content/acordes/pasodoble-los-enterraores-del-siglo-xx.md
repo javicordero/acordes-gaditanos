@@ -23,7 +23,7 @@ Cuantas veces se han posao sobre ti unos nudillos
 <a>Do</a>                <a>Sol</a>                      <a>Re7</a>
 para usarte de pellejo  y cantar cupleses viejos
                   <a>Sol</a>
-pasodobles y estribillos  
+pasodobles y estribillos
                       <a>Re7</a>               <a>Sol</a>
 Ay mostradores del Carapapa la peña el Charpa
                                           <a>Re7</a>
@@ -37,8 +37,8 @@ Ay mostradores los de la Viña los de mi Barrio
 Esos que llevan un siglo escuchando Carnaval
                         <a>Mi7</a>                    <a>Lam7</a>
 los que ni hablan ni critican sólo marcan el compás
-          <a>Re7</a>        
-y encima cuando llega febrero 
+          <a>Re7</a>
+y encima cuando llega febrero
                               <a>Sol</a>
 te dejan siempre una caja prestá
 

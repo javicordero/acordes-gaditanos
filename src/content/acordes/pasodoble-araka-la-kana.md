@@ -53,10 +53,10 @@ No hubo noches ni las habrá, más hermosa que la dulce
               <a>Lam</a>            <a>La7</a>
 noche que he pasado contigo
     <a>Rem</a>                              <a>Lam</a>
-Tu paseando tu cara bonita por esa almohada que era 
+Tu paseando tu cara bonita por esa almohada que era
 de los tres
                 <a>Mi7</a>
-Mientras yo susurraba en tu oreja caliente canciones 
+Mientras yo susurraba en tu oreja caliente canciones
   <a>Lam</a>  <a>La7</a>
 de cuna
     <a>Rem</a>                 <a>Mi7</a>                 <a>Lam</a>

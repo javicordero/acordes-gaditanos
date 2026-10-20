@@ -96,7 +96,7 @@ Si en algo reconozco el rostro de Dios padre es en
  <a>Sol</a>
 el agua de los mares
 <a>Lam7</a>
-En la perfección de la calma, la espuma en 
+En la perfección de la calma, la espuma en
 la misericordia
 En la justicia como el alma de sus misterios como
 <a>cordia</a>

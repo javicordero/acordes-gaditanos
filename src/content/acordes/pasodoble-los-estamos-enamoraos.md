@@ -17,7 +17,7 @@ fraseClave: Por mucho que homenajeen a pasodobles y tanguillos,
 Por mucho que homenajeen a pasodobles y tanguillos,
                    <a>Re7</a>                   <a>Do</a>
 la chispa del Carnaval sólo prende al cantar
-     <a>Re7</a>         <a>Sol</a> 
+     <a>Re7</a>         <a>Sol</a>
 los buenos cuplecillos,
                     <a>Re7</a>                         <a>Sol</a>
 los cuplecillos pitosos, cachondos y desvergonzados,

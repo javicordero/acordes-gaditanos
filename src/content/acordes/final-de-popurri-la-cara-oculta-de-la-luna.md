@@ -39,7 +39,7 @@ el corazón
 Que el mío es tuyo y lo que quiero es que estén
             <a>Mim</a>
 juntitos los dos
-               <a>La7</a>  
+               <a>La7</a>
 <a>De</a> <a>febrero</a> <a>a</a> <a>febrero</a>
   <a>Sol</a>
 Que si que si hace falta pa que nunca dejes de
@@ -64,7 +64,7 @@ corazón
 Que el mío es tuyo y lo que quiero es que estén
             <a>Mim</a>
 juntitos los dos
-               <a>La7</a>  
+               <a>La7</a>
 <a>De</a> <a>febrero</a> <a>a</a> <a>febrero</a>
   <a>Sol</a>
 Que si que si hace falta pa que nunca dejes de
@@ -80,7 +80,7 @@ el corazón
 Que el mío es tuyo y lo que quiero es que estén
             <a>Mim</a>
 juntitos los dos
-               <a>La7</a>  
+               <a>La7</a>
 <a>De</a> <a>febrero</a> <a>a</a> <a>febrero</a>
 <a>Sol</a>
 Como voy a querer robarte el corazón como voy a

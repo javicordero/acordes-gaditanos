@@ -37,7 +37,7 @@ Si este pueblo se le arrodilla a una espada
 y una mantilla, este pueblo me da vergüenza.
        <a>Mi7</a>              <a>La</a>
 Menos rollo de verdes mares,
-                    <a>La7</a> 
+                    <a>La7</a>
 de campiñas y de olivares,
                           <a>Re</a>
 que así luego nos luce el pelo, casta.

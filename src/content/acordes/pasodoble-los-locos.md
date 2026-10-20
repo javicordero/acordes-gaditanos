@@ -55,7 +55,7 @@ Que por buscarse un futuro se tuvieron que marchar
          <a>Rem</a>                                <a>Mi7</a>
 Que el relevo generacional ha tardado en llegar
           <a>LaM7</a>
-Dicen los viejos mientras que yo tengo 
+Dicen los viejos mientras que yo tengo
             <a>Fa#7</a>          <a>Sim7</a>
 Que decir adiós a un compañero
    <a>Re</a>                                        <a>Mi7</a>
