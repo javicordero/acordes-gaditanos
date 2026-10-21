@@ -2,7 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Equilibristas
 year: 2017
-musica: José Manuel Aranda
+musica: El Noly
 letra: El Chapa
 modalidad: Comparsa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comparsa-los-equilibristas-cuartos-2.jpeg
