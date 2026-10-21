@@ -11,63 +11,60 @@ video: 'https://www.youtube.com/embed/gdQFGYMRs7s'
 
 fraseClave: No me imaginaba vivir sin cantarte, cantar sin
 ---
-<pre>           <a>LaM7</a>    <a>Mi7</a>       <a>LaM7</a>       <a>Mi7</a>
-No me imaginaba vivir sin cantarte, cantar sin
-  <a>LaM7</a>          <a>Fa#7</a>     <a>Sim7</a>
-tenerte, tacita de mis amores, ay!
+<pre>           
+          <a>LaM7</a>    <a>Mi7</a>       <a>LaM7</a>   
+No me imaginaba vivir sin cantarte, 
+    <a>Mi7</a>     <a>LaM7</a>          <a>Fa#7</a>     <a>Sim7</a>
+cantar sin tenerte, tacita de mis amores, ay!
 <a>Fa#7</a>       <a>Sim7</a>               <a>Mi7</a>
-No me imaginaba vivir sin sentirte, sin poder
+No me imaginaba vivir sin sentirte, 
    <a>Sim7</a>           <a>Mi7</a>          <a>LaM</a>
 decirte que eres tu mi gran pasión
 <a>Mi7</a>        <a>LaM7</a>        <a>Mi7</a>     <a>LaM7</a>
-No me imaginaba que un año mis coplas quedaran
-   <a>La7</a>                       <a>Re</a>
-calladas y guardadas en un cajón
-                      <a>Mi7</a>                    <a>Do#m7</a> <a>Dom7</a>
-Y me vine hasta la luna con mi guitarra y mi pluuuu
-<a>Sim7</a>                <a>Mi7</a>
-ma rebuscando la manera que me permitiera hacer
-    <a>LaM7</a>
-carnaval
-<a>La7</a>                 <a>Re</a>          <a>Mi7</a>
-Para entregarte de nuevo, tacita, este bendito
-  <a>Do#m7</a>          <a>Fa#7</a>            <a>Sim7</a>         <a>Mi7</a>
-compás que sale directo desde el cielo a la orilla
-      <a>LaM7</a>
-de tu mar
-                                       <a>Mi7</a>
-Como no voy a cantarte, mi amor, si el mundo está
-      <a>LaM7</a>
-medio loco, si no descansan tus males ten por
-  <a>Fa#7</a>          <a>Sim7</a>
-seguro que yo tampoco
+No me imaginaba que un año mis coplas 
+            <a>La7</a>                       <a>Re</a>
+quedaran calladas y guardadas en un cajón
+                      <a>Mi7</a>
+Y me vine hasta la luna
+                    <a>Do#m7</a> <a>Dom7</a> <a>Sim7</a>
+con mi guitarra y mi pluuuuuu maa 
+                <a>Mi7</a>                             <a>LaM7</a>
+rebuscando la manera que me permitiera hacer carnaval
+<a>La7</a>                 <a>Re</a>          <a>Mi7</a>              <a>Do#m7</a>
+Para entregarte de nuevo, tacita, este bendito compás
+          <a>Fa#7</a>            <a>Sim7</a>         <a>Mi7</a>       <a>LaM7</a>
+que sale directo desde el cielo a la orilla de tu mar
+                                
+Como no voy a cantarte, mi amor, 
+       <a>Mi7</a>            <a>LaM7</a>
+si el mundo está medio loco,
+                                   <a>Fa#7</a>          <a>Sim7</a>
+si no descansan tus males ten por seguro que yo tampoco
 <a>Fa#7</a>            <a>Sim7</a>                        <a>Mi7</a>
 Como no voy a cantarte ni a entregarte mis piropos,
-                  <a>Sim7</a>         <a>Mi7</a>
-si no te canto me muero y me encelo si lo hace
-<a>LaM7</a>
-otro
-  <a>La7</a>      <a>Re</a>                     <a>Mi7</a>          <a>Do#m7</a>
-Y lejos de ti yo sentí que te perdía y cuando creí
-7                  <a>Fa#</a>
-que tus besos no tenía
+                  <a>Sim7</a>         <a>Mi7</a>            <a>LaM7</a>
+si no te canto me muero y me encelo si lo hace otro
+  <a>La7</a>      <a>Re</a>                     <a>Mi7</a>
+Y lejos de ti yo sentí que te perdía 
+          <a>Do#m7</a>                  <a>Fa#7</a>
+y cuando creí que tus besos no tenía
                 <a>Sim7</a>                    <a>Mi7</a>
-Por fin te encontré pues la plata de tu luz brilla
-              <a>LaM7</a>
-en todo el universo
+Por fin te encontré pues la plata de tu luz 
+                     <a>LaM7</a>
+brilla en todo el universo
      <a>Re</a>            <a>Mi7</a>
-Y flotando en el espacio comprendí que es tan
-<a>Do#m7</a>            <a>Fa#7</a>
-grande esto que siento por ti
+Y flotando en el espacio comprendí 
+            <a>Do#m7</a>            <a>Fa#7</a>
+que es tan grande esto que siento por ti
          <a>Sim7</a>                     <a>Mi7</a>
-Pues mi amor no es una estrella fugaz que se apaga
-       <a>LaM7</a>
-con el tiempo
+Pues mi amor no es una estrella fugaz 
+                    <a>LaM7</a>
+que se apaga con el tiempo
          <a>Rem</a>                 <a>LaM7</a>
-Dejame cantarte, sentrañitas mías, dejame
-                  <a>Fa#7</a>          <a>Sim7</a>
-entregarte otro febrero mis melodías
+Dejame cantarte, sentrañitas mías, 
+                         <a>Fa#7</a>          <a>Sim7</a>
+dejame entregarte otro febrero mis melodías
                              <a>Mi7</a>
-Que si no te canto no tengo vida, que si no te
-<a>Sim7</a>          <a>Mi7</a>            <a>LaM</a>
-canto, tacita mía, no tengo vida</pre>
+Que si no te canto no tengo vida, 
+             <a>Sim7</a>          <a>Mi7</a>            <a>LaM</a>
+que si no te canto, tacita mía, no tengo vida</pre>

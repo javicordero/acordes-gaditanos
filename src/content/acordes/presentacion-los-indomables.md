@@ -11,14 +11,13 @@ video: 'https://www.youtube.com/embed/JCXwB1cV4ZA'
 
 fraseClave: He esperado un año entero entre carretera y manta
 ---
-<pre><a>Rem</a>                 <a>Lam</a>                     <a>Rem</a>
+<pre>
+<a>Rem</a>                 <a>Lam</a>                     <a>Rem</a>
 He esperado un año entero entre carretera y manta
                  <a>Lam</a>                       <a>Rem</a>
 A que llegara febrero y es tan tétrica la estampa
-                      <a>Do</a>
-Que no hay luces de colores, ni disfraces por la
-<a>Rem</a>
-calle
+                      <a>Do</a>                         <a>Rem</a>
+Que no hay luces de colores, ni disfraces por la calle
                      <a>Do</a>         <a>Sib</a>  <a>La7</a>     <a>Rem</a>
 Porque Cai no tiene fiesta, ni feria ni carnavales
                 <a>Lam</a>       <a>Sib</a>         <a>La7</a>
@@ -45,19 +44,17 @@ Y por coger este camino no pido perdón ni permiso
 Prefiero ser clandestino, mucho antes que sumiso
 <a>Rem</a>                  <a>Do</a>         <a>Sib</a>        <a>La7</a>
 Prefiero ser clandestino, mucho antes que sumiso
-                     <a>Rem</a>
-Que la espada y la pared clávamela entre las
-   <a>Do</a>
-costillas
+                     <a>Rem</a>                         <a>Do</a>
+Que la espada y la pared clávamela entre las costillas
                        <a>Sib</a>               <a>La7</a>
 Porque elegí morir de pie a cantarte de rodillas
                      <a>Rem</a>                    <a>Do</a>
 Será que soy como mi tierra llenito de cardenales
                        <a>Sib</a>
-Y por mas palos que me dan y me dan, y me dan y me
-        <a>La7</a>
-dan y me dan
-<a>Sib</a>  <a>La7</a>        <a>Rem</a>     <a>Sib</a>  <a>La7</a>           <a>Rem</a>  <a>Sib</a>
-Me vuelvo más indomable, me vuelvo más indomable me
- <a>La7</a>      <a>Rem</a>
-vuelvo mas indomable</pre>
+Y por mas palos que me dan y me dan, 
+                       <a>La7</a>
+y me dan y me dan y me dan
+<a>Sib</a>  <a>La7</a>        <a>Rem</a>     <a>Sib</a>  <a>La7</a>           <a>Rem</a>  
+Me vuelvo más indomable, me vuelvo más indomable 
+<a>Sib</a> <a>La7</a>      <a>Rem</a>
+me vuelvo mas indomable</pre>
