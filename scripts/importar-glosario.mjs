@@ -412,6 +412,16 @@ async function main() {
     };
   }
 
+  // Posturas que sustituyen a las de LaCuerda para un acorde concreto.
+  const POSICIONES_OVERRIDE = {
+    'Lam/Fa#': [{ trastes: [2, 0, 0, 2, 1, 0], baseTraste: 1, cejilla: null }],
+  };
+
+  for (const [etiqueta, posiciones] of Object.entries(POSICIONES_OVERRIDE)) {
+    const entrada = acordes[etiqueta];
+    if (entrada) entrada.posiciones = posiciones;
+  }
+
   // Posiciones extra para acordes que ya vienen de LaCuerda (se añaden al final).
   const POSICIONES_EXTRA = {
     Lamaj7: [{ trastes: [-1, 0, 2, 2, 2, 4], baseTraste: 1, cejilla: null }],
