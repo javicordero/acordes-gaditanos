@@ -14,24 +14,26 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
   acordes.length > 0 && (
     <div class='acordes-pieza'>
       <div class='acordes-pieza__resumen'>
-        <span class='acordes-pieza__titulo'>Acordes usados:</span>
-        <span class='acordes-pieza__nombres'>
-          {nombres.map((nombre, i) => (
-            <>
-              <button
-                type='button'
-                class='acordes-pieza__nombre'
-                data-acorde={nombre}
-                aria-haspopup='dialog'
-                aria-expanded='false'
-                aria-label={`Ver cómo se toca ${nombre}`}
-              >
-                {nombre}
-              </button>
-              {i < nombres.length - 1 ? ', ' : ''}
-            </>
-          ))}
-        </span>
+        <p class='acordes-pieza__linea'>
+          <span class='acordes-pieza__titulo'>Acordes usados:</span>{' '}
+          <span class='acordes-pieza__nombres'>
+            {nombres.map((nombre, i) => (
+              <>
+                <button
+                  type='button'
+                  class='acordes-pieza__nombre'
+                  data-acorde={nombre}
+                  aria-haspopup='dialog'
+                  aria-expanded='false'
+                  aria-label={`Ver cómo se toca ${nombre}`}
+                >
+                  {nombre}
+                </button>
+                {i < nombres.length - 1 ? ', ' : ''}
+              </>
+            ))}
+          </span>
+        </p>
         <button
           type='button'
           class='acordes-pieza__accion'
@@ -96,14 +98,20 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
 
   .acordes-pieza__resumen {
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 4px 10px;
+    flex-direction: column;
+    gap: 2px;
     padding: 10px 14px;
     color: var(--text-color);
   }
 
+  .acordes-pieza__linea {
+    margin: 0;
+    line-height: 1.5;
+  }
+
   .acordes-pieza__titulo {
+    display: inline;
+    margin-right: 2px;
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 1px;
@@ -112,8 +120,7 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
   }
 
   .acordes-pieza__nombres {
-    flex: 1 1 0;
-    min-width: 0;
+    display: inline;
     font-size: 0.82rem;
     font-weight: 500;
     color: var(--acorde-color);
@@ -137,9 +144,11 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
   }
 
   .acordes-pieza__accion {
-    flex: 0 0 84px;
+    align-self: flex-end;
+    display: block;
+    margin-left: auto;
     width: 84px;
-    margin-left: 0;
+    margin-top: 2px;
     padding: 0;
     border: 0;
     border-radius: 0;
