@@ -383,6 +383,11 @@ const headingId = `acorde-${slug}`;
       position: relative;
       left: 7px;
     }
+
+    /* Acordes al inicio de línea: sin desplazamiento, alineados con la letra */
+    & :global(a.acorde-col0) {
+      left: 0;
+    }
   }
 
   .autoscroll-wrapper {

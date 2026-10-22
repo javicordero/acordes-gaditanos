@@ -118,4 +118,5 @@ Ahora quiero que te pongas bien cerquita
 - Escribir el resultado dentro del bloque `<pre>...</pre>` del archivo `.md`.
 - La línea de acordes puede quedar más larga que la de letra (los acordes ocupan más columnas que las sílabas); no pasa nada, el contenedor lo tolera.
 - Si un acorde coincide con otro muy cerca, mantener la alineación exacta de columnas.
+- Los acordes que quedan en la columna 0 se escriben sin espacios delante: el build los marca con la clase `acorde-col0` (plugin `src/lib/remark-acordes-col0.mjs`) y les quita el desplazamiento de 7px. Nunca añadas clases ni atributos a los `<a>`.
 - Al terminar, escribir el resultado al archivo correspondiente y verificar visualmente en el navegador (`npm run dev`).

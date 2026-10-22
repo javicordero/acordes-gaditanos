@@ -38,6 +38,7 @@ El glosario (`/glosario`) y el diagrama emergente funcionan **automáticamente**
 - **No hay que añadir nada más**: ni `href`, ni `class`, ni `data-acorde`, ni atributos ARIA. El popover añade `data-acorde`, `role`, `tabindex` y `aria-*` en el navegador.
 - El texto del `<a>` debe ser **solo el símbolo del acorde**. El popover usa ese texto para buscarlo en el glosario y muestra su diagrama si existe.
 - **No pongas `href`**: el enlace navegaría en vez de abrir el diagrama.
+- **Columna 0**: un acorde al principio de línea se escribe **sin espacios delante**. El build le añade la clase `acorde-col0` (plugin `src/lib/remark-acordes-col0.mjs`) y le anula el desplazamiento de 7px del CSS, para que quede alineado con la primera letra de la línea de abajo. No añadas clases ni atributos a los `<a>` ni indentes un acorde que va en la columna 0.
 - Solo se detectan los `<a>` que están **dentro de `<pre>`**; fuera del bloque no se enlazan.
 - `(Sorda)` y otras anotaciones pueden seguir dentro de `<a>`; no abrirán diagrama porque no son acordes.
 
