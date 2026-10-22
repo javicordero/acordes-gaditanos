@@ -24,15 +24,15 @@ hay amores que estallan en carnavales
 hay amores malditos pero inmortales
 <a>Do</a>           <a>Lam7</a>                 <a>Si7</a>
 y malditos amores que ojalá no hubieran
-                                           <a>Mim</a>
+                             <a>Mim</a>
 Y amores que se mueren y resucitan
-                         <a>Mi7</a>            <a>Lam7</a>
+                 <a>Mi7</a>            <a>Lam7</a>
 que lo mismo cautivan que te desatan
 <a>Re7</a>                               <a>Sol</a>
 y si es verdad que hay amores que matan
 <a>Do</a>               <a>Lam7</a>              <a>Si7</a>
 seguro no habrá nunca muerte más bonita
-   <a>Mim</a>
+<a>Mim</a>
 Pero hasta los amores ya se van con estos tiempos
 Y estos tiempos que saben de amores que son
               <a>Re</a>
