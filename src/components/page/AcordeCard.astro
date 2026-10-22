@@ -12,6 +12,7 @@ import GlosarioHint from './GlosarioHint.astro';
 import GlosarioPopover from './GlosarioPopover.astro';
 import glosarioJson from '../../data/glosario-acordes.json';
 import { acordesDePieza, crearIndice, type Glosario } from '../../lib/acordes';
+import { mapaGlosarioConTransportes } from '../../lib/transporte';
 
 const { acorde, glosario: conGlosario = true } = Astro.props;
 const { data, slug } = acorde;
@@ -46,9 +47,9 @@ const cuerpoAcorde =
       : '';
 const acordesPieza =
   indiceGlosario && cuerpoAcorde ? acordesDePieza(cuerpoAcorde, indiceGlosario) : [];
-const datosGlosario = Object.fromEntries(
-  acordesPieza.map(({ etiqueta, entrada }) => [etiqueta, entrada]),
-);
+const datosGlosario: Glosario = indiceGlosario
+  ? mapaGlosarioConTransportes(acordesPieza, indiceGlosario)
+  : {};
 
 // Generar texto ALT descriptivo para SEO
 const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
@@ -135,11 +136,6 @@ const headingId = `acorde-${slug}`;
       <TutorialAutoscroll />
       <div class='autoscroll-wrapper'>
        <button class='autoscroll-help-btn' data-tutorial-help aria-label='Ayuda sobre controles' type='button'>?</button>
-         <!-- <div class='transpose-controls'>
-          <button class='transpose-btn transpose-up' aria-label='Subir tono' title='Subir tono' type='button'>+</button>
-          <span class='transpose-display' data-transpose-display></span>
-          <button class='transpose-btn transpose-down' aria-label='Bajar tono' title='Bajar tono' type='button'>−</button>
-        </div> -->
         <button class='autoscroll-btn play-btn' aria-label='Iniciar autoscroll'>
           <svg style='position: relative; left: 1px;' xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='var(--primary-contrast-color)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='5 3 19 12 5 21 5 3'></polygon></svg>
         </button>
@@ -531,53 +527,6 @@ const headingId = `acorde-${slug}`;
     box-shadow: 2px 2px 0 0 var(--primary-color);
   }
 
-  .transpose-controls {
-    display: flex;
-    flex-direction: row;
-    gap: 2px;
-    align-items: center;
-    order: -3;
-  }
-
-  .transpose-btn {
-    width: 24px;
-    height: 24px;
-    border-radius: 0;
-    border: 2px solid var(--primary-color);
-    background: var(--surface-color);
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease, transform 0.15s ease;
-    box-shadow: 2px 2px 0 0 var(--primary-color);
-    flex-shrink: 0;
-    line-height: 1;
-    padding: 0;
-    font-family: 'Roboto Mono', monospace;
-  }
-
-  .transpose-btn:hover {
-    transform: translate(-1px, -1px);
-  }
-
-  .transpose-btn:active {
-    transform: translate(0, 0);
-  }
-
-  .transpose-display {
-    font-size: 0.55rem;
-    font-weight: 700;
-    color: var(--secondary-color);
-    min-width: 16px;
-    text-align: center;
-    font-family: 'Roboto Mono', monospace;
-    line-height: 1;
-  }
-
   @media (max-width: 640px) {
     .autoscroll-btn {
       width: 30px;
@@ -606,11 +555,12 @@ const headingId = `acorde-${slug}`;
   }
 </style>
 
-<script is:inline>
+<script>
+  // @ts-nocheck
+  import { transportarEtiqueta } from '../../lib/transporte';
+
   (function() {
     const speeds = { 1: 2, 2: 4, 3: 7, 4: 10, 5: 14 };
-    const ESCALA_CROMATICA = ['Do','Do#','Re','Re#','Mi','Fa','Fa#','Sol','Sol#','La','La#','Si'];
-    const NOTA_REGEX = /^(Sol#?|La#?|Si|Fa#?|Mi|Re#?|Do#?)(.*)$/;
     let currentSpeed = 2;
     let isPlaying = false;
     let animationFrameId = null;
@@ -621,44 +571,180 @@ const headingId = `acorde-${slug}`;
     let initialized = false;
 
     let currentTranspose = 0;
-    let originalChords = new Map();
+    let transposeDisplay = null;
+    let textosOriginales = [];
+    let acordesOriginales = [];
+    let originalesPorAncla = new Map();
 
-    function transportarNota(nota, semitonos) {
-      const idx = ESCALA_CROMATICA.indexOf(nota);
-      if (idx === -1) return nota;
-      const nuevoIdx = ((idx + semitonos) % 12 + 12) % 12;
-      return ESCALA_CROMATICA[nuevoIdx];
+    function guardarOriginales() {
+      textosOriginales = [];
+      acordesOriginales = [];
+      originalesPorAncla = new Map();
+
+      preElement.childNodes.forEach(function(nodo) {
+        if (nodo.nodeType === Node.TEXT_NODE) {
+          textosOriginales.push({ nodo: nodo, valor: nodo.nodeValue });
+        }
+      });
+
+      preElement.querySelectorAll('a').forEach(function(el) {
+        const texto = el.textContent || '';
+        acordesOriginales.push({ el: el, texto: texto });
+        originalesPorAncla.set(el, texto);
+      });
     }
 
-    function transportarAcorde(texto, semitonos) {
-      if (!texto) return texto;
-      const partes = texto.split('/');
-      const transportarParte = function(p) {
-        const match = p.match(NOTA_REGEX);
-        if (!match) return p;
-        const nuevaNota = transportarNota(match[1], semitonos);
-        return nuevaNota + match[2];
-      };
-      return partes.map(transportarParte).join('/');
-    }
-
-    function transportarTodosLosAcordes(pre, semitonos) {
-      if (!pre) return;
-      const acordes = pre.querySelectorAll('a');
-      acordes.forEach(function(a) {
-        const original = originalChords.get(a);
-        if (original !== undefined) {
-          a.textContent = transportarAcorde(original, semitonos);
+    function restaurarOriginales() {
+      textosOriginales.forEach(function(entrada) {
+        if (entrada.nodo.nodeValue !== entrada.valor) {
+          entrada.nodo.nodeValue = entrada.valor;
+        }
+      });
+      acordesOriginales.forEach(function(entrada) {
+        if (entrada.el.textContent !== entrada.texto) {
+          entrada.el.textContent = entrada.texto;
         }
       });
     }
 
-    function actualizarDisplayTranspose(display) {
-      if (!display) return;
+    // Divide el <pre> en líneas: cada trozo de texto y cada <a> es un elemento.
+    function construirLineas() {
+      const lineas = [[]];
+
+      preElement.childNodes.forEach(function(nodo) {
+        if (nodo.nodeType === Node.TEXT_NODE) {
+          const partes = (nodo.nodeValue || '').split('\n');
+          partes.forEach(function(parte, i) {
+            if (i > 0) lineas.push([]);
+            lineas[lineas.length - 1].push({
+              tipo: 'texto',
+              nodo: nodo,
+              parte: i,
+              texto: parte,
+            });
+          });
+        } else if (nodo.nodeType === Node.ELEMENT_NODE && originalesPorAncla.has(nodo)) {
+          lineas[lineas.length - 1].push({ tipo: 'ancla', el: nodo });
+        }
+      });
+
+      return lineas;
+    }
+
+    // Reparte los espacios de cada línea para que los acordes sigan sobre su sílaba.
+    function realinear() {
+      const lineas = construirLineas();
+      const partesPorNodo = new Map();
+
+      lineas.forEach(function(linea) {
+        let desplazamiento = 0;
+
+        for (let i = 0; i < linea.length; i++) {
+          const item = linea[i];
+
+          if (item.tipo === 'texto') continue;
+
+          if (desplazamiento !== 0) {
+            const hueco = linea[i - 1];
+            if (hueco && hueco.tipo === 'texto' && /^ *$/.test(hueco.texto)) {
+              const viejo = hueco.texto.length;
+              const nuevo = Math.max(0, viejo - desplazamiento);
+              if (nuevo !== viejo) {
+                hueco.texto = ' '.repeat(nuevo);
+                desplazamiento -= viejo - nuevo;
+              }
+            }
+          }
+
+          const original = originalesPorAncla.get(item.el) || '';
+          desplazamiento += (item.el.textContent || '').length - original.length;
+        }
+      });
+
+      lineas.forEach(function(linea) {
+        linea.forEach(function(item) {
+          if (item.tipo !== 'texto') return;
+          if (!partesPorNodo.has(item.nodo)) partesPorNodo.set(item.nodo, []);
+          partesPorNodo.get(item.nodo)[item.parte] = item.texto;
+        });
+      });
+
+      partesPorNodo.forEach(function(partes, nodo) {
+        nodo.nodeValue = partes.join('\n');
+      });
+    }
+
+    function actualizarContador() {
+      if (!transposeDisplay) return;
       if (currentTranspose === 0) {
-        display.textContent = '';
+        transposeDisplay.textContent = '0';
       } else {
-        display.textContent = (currentTranspose > 0 ? '+' : '') + currentTranspose;
+        const signo = currentTranspose > 0 ? '+' : '−';
+        transposeDisplay.textContent = signo + Math.abs(currentTranspose);
+      }
+    }
+
+    function actualizarAccesibilidad() {
+      acordesOriginales.forEach(function(entrada) {
+        if (!entrada.el.hasAttribute('data-acorde')) return;
+        const actual = (entrada.el.textContent || '').trim();
+        entrada.el.setAttribute('aria-label', 'Ver cómo se toca ' + actual);
+      });
+    }
+
+    function aplicarTransporte() {
+      if (!preElement) return;
+
+      restaurarOriginales();
+
+      if (currentTranspose !== 0) {
+        acordesOriginales.forEach(function(entrada) {
+          const nuevo = transportarEtiqueta(entrada.texto, currentTranspose);
+          if (nuevo !== entrada.texto) {
+            entrada.el.textContent = nuevo;
+          }
+        });
+        realinear();
+      }
+
+      actualizarAccesibilidad();
+      actualizarContador();
+
+      try {
+        document.dispatchEvent(
+          new CustomEvent('ag:transpose', { detail: { semitonos: currentTranspose } }),
+        );
+      } catch (e) {}
+    }
+
+    function analitica(evento, params) {
+      try {
+        const w = window as any;
+        if (typeof w.gtag === 'function') {
+          w.gtag('event', evento, {
+            ...(params || {}),
+            event_category: 'acordes',
+            event_label: window.location.pathname,
+          });
+        } else {
+          w.dataLayer = w.dataLayer || [];
+          w.dataLayer.push({ event: evento, ...(params || {}) });
+        }
+      } catch (e) {}
+    }
+
+    function cambiarTono(delta) {
+      const anterior = currentTranspose;
+      currentTranspose += delta;
+      aplicarTransporte();
+
+      analitica('transpose_acorde', {
+        direccion: delta > 0 ? 'subir' : 'bajar',
+        semitonos: currentTranspose,
+      });
+
+      if (anterior !== 0 && currentTranspose === 0) {
+        analitica('transpose_volver_original');
       }
     }
 
@@ -679,28 +765,28 @@ const headingId = `acorde-${slug}`;
       preElement = contentArea?.querySelector('pre');
       if (!preElement) return;
 
-      const chordLinks = preElement.querySelectorAll('a');
-      chordLinks.forEach(function(a) {
-        originalChords.set(a, a.textContent);
-      });
+      guardarOriginales();
+
+      // En la colección provisional los acordes aún no van envueltos en <a>.
+      const controlesTono = article.querySelector('.transpose-controls');
+      if (controlesTono && acordesOriginales.length === 0) {
+        const grupo = controlesTono.closest('.transporte') || controlesTono;
+        grupo.style.display = 'none';
+      }
 
       const transposeUp = article.querySelector('.transpose-up');
       const transposeDown = article.querySelector('.transpose-down');
-      const transposeDisplay = article.querySelector('[data-transpose-display]');
+      transposeDisplay = article.querySelector('[data-transpose-display]');
 
       if (transposeUp) {
         transposeUp.addEventListener('click', function() {
-          currentTranspose += 1;
-          transportarTodosLosAcordes(preElement, currentTranspose);
-          actualizarDisplayTranspose(transposeDisplay);
+          cambiarTono(1);
         });
       }
 
       if (transposeDown) {
         transposeDown.addEventListener('click', function() {
-          currentTranspose -= 1;
-          transportarTodosLosAcordes(preElement, currentTranspose);
-          actualizarDisplayTranspose(transposeDisplay);
+          cambiarTono(-1);
         });
       }
 
@@ -722,8 +808,9 @@ const headingId = `acorde-${slug}`;
           btn.classList.add('active');
           currentSpeed = parseInt(btn.getAttribute('data-speed'), 10);
           try {
-            if (typeof gtag === 'function') {
-              gtag('event', 'autoscroll_speed', {
+            const w = window as any;
+            if (typeof w.gtag === 'function') {
+              w.gtag('event', 'autoscroll_speed', {
                 speed: currentSpeed,
                 page_location: window.location.href,
               });
@@ -793,8 +880,9 @@ const headingId = `acorde-${slug}`;
       }
       isPlaying = true;
       try {
-        if (typeof gtag === 'function') {
-          gtag('event', 'autoscroll_start', {
+        const w = window as any;
+        if (typeof w.gtag === 'function') {
+          w.gtag('event', 'autoscroll_start', {
             page_location: window.location.href,
           });
         }
@@ -811,8 +899,9 @@ const headingId = `acorde-${slug}`;
     function stopAutoscroll(speedOptions, playBtn, pauseBtn) {
       if (isPlaying) {
         try {
-          if (typeof gtag === 'function') {
-            gtag('event', 'autoscroll_stop', {
+          const w = window as any;
+          if (typeof w.gtag === 'function') {
+            w.gtag('event', 'autoscroll_stop', {
               page_location: window.location.href,
             });
           }

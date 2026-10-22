@@ -14,13 +14,12 @@
   <div class="tutorial-tooltip" data-tutorial-tooltip>
     <button class="tutorial-tooltip__close" data-tutorial-close aria-label="Cerrar tutorial">&times;</button>
     <h3 id="tutorial-title" class="tutorial-tooltip__title">Controles</h3>
-    <p class="tutorial-tooltip__subtitle">Despl&aacute;zate por la letra y transporta los acordes</p>
+    <p class="tutorial-tooltip__subtitle">Despl&aacute;zate por la letra autom&aacute;ticamente</p>
     <ul class="tutorial-tooltip__list">
       <li><strong>&#9654; Play / &#9208; Pausa</strong> &mdash; inicia y detiene el scroll autom&aacute;tico</li>
       <li><strong>1x a 5x</strong> &mdash; ajusta la velocidad de desplazamiento</li>
       <li><strong>Tecla Espacio</strong> &mdash; atajo para reproducir o pausar</li>
       <li>Se detiene autom&aacute;ticamente al llegar al final de la letra</li>
-      <li><strong>+ / −</strong> &mdash; sube o baja el tono medio semitono</li>
     </ul>
     <button class="tutorial-tooltip__action" data-tutorial-action>&iexcl;Entendido!</button>
   </div>
@@ -28,7 +27,6 @@
 
 <script is:inline>
   (function() {
-    var STORAGE_KEY = 'ag_tutorial_autoscroll_visto';
     var TUTORIAL_ID = 'tutorial-autoscroll';
     var isOpen = false;
     var debounceTimer = null;
@@ -173,30 +171,12 @@
         isOpen = false;
         window.__tutorialAutoscrollActive = false;
 
-        try { localStorage.setItem(STORAGE_KEY, 'true'); } catch (e) {}
-
         window.dispatchEvent(new CustomEvent('ag:tutorial-completed'));
         pushAnalytics('tutorial_autoscroll_cerrado');
 
         var helpBtn = document.querySelector('[data-tutorial-help]');
         if (helpBtn) helpBtn.focus();
       }, 300);
-    }
-
-    function initTutorial() {
-      try {
-        var article = document.querySelector('.acorde-card');
-        if (!article) return;
-        var wrapper = article.querySelector('.autoscroll-wrapper');
-        if (!wrapper) return;
-
-        var seen = false;
-        try { seen = localStorage.getItem(STORAGE_KEY) === 'true'; } catch (e) {}
-
-        if (!seen) {
-          showTutorial(wrapper);
-        }
-      } catch (e) {}
     }
 
     function handleHelpClick(e) {
@@ -257,10 +237,9 @@
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() { setupEvents(); initTutorial(); });
+      document.addEventListener('DOMContentLoaded', setupEvents);
     } else {
       setupEvents();
-      initTutorial();
     }
   })();
 </script>

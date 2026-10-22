@@ -11,40 +11,70 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
 ---
 
 {
-  acordes.length > 0 && (
-    <div class='acordes-pieza'>
-      <div class='acordes-pieza__resumen'>
+  <div class='acordes-pieza'>
+    <div class='acordes-pieza__resumen'>
+      {acordes.length > 0 && (
         <p class='acordes-pieza__linea'>
           <span class='acordes-pieza__titulo'>Acordes usados:</span>{' '}
           <span class='acordes-pieza__nombres'>
             {nombres.map((nombre, i) => (
               <>
-                <button
-                  type='button'
-                  class='acordes-pieza__nombre'
-                  data-acorde={nombre}
-                  aria-haspopup='dialog'
-                  aria-expanded='false'
-                  aria-label={`Ver cómo se toca ${nombre}`}
-                >
-                  {nombre}
-                </button>
-                {i < nombres.length - 1 ? ', ' : ''}
+                <span class='acordes-pieza__item'>
+                  <button
+                    type='button'
+                    class='acordes-pieza__nombre'
+                    data-acorde={nombre}
+                    aria-haspopup='dialog'
+                    aria-expanded='false'
+                    aria-label={`Ver cómo se toca ${nombre}`}
+                  >
+                    {nombre}
+                  </button>
+                  {i < nombres.length - 1 ? ',' : ''}
+                </span>{' '}
               </>
             ))}
           </span>
         </p>
-        <button
-          type='button'
-          class='acordes-pieza__accion'
-          data-ver-mas
-          aria-expanded='false'
-          aria-controls='acordes-pieza-cuerpo'
-        >
-          Ver más
-        </button>
-      </div>
+      )}
 
+      <div class='acordes-pieza__acciones'>
+        <div class='transporte'>
+          <span class='transporte__titulo' id='transporte-titulo'>Transportar acordes</span>
+          <div class='transpose-controls' role='group' aria-labelledby='transporte-titulo'>
+            <button
+              class='transpose-btn transpose-down'
+              aria-label='Bajar tono'
+              title='Bajar tono'
+              type='button'>−</button>
+            <span
+              class='transpose-display'
+              data-transpose-display
+              role='status'
+              aria-live='polite'>0</span>
+            <button
+              class='transpose-btn transpose-up'
+              aria-label='Subir tono'
+              title='Subir tono'
+              type='button'>+</button>
+          </div>
+        </div>
+
+        {acordes.length > 0 && (
+          <button
+            type='button'
+            class='acordes-pieza__accion'
+            data-ver-mas
+            aria-expanded='false'
+            aria-controls='acordes-pieza-cuerpo'
+          >
+            Ver más
+          </button>
+        )}
+      </div>
+    </div>
+
+    {acordes.length > 0 && (
       <div class='acordes-pieza__caja'>
         <div class='acordes-pieza__cuerpo' id='acordes-pieza-cuerpo' inert aria-hidden='true'>
           <div class='acordes-pieza__interior'>
@@ -82,8 +112,8 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
           </div>
         </div>
       </div>
-    </div>
-  )
+    )}
+  </div>
 }
 
 <style>
@@ -109,6 +139,82 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
     line-height: 1.5;
   }
 
+  .acordes-pieza__acciones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .transporte {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .transporte__titulo {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .transpose-controls {
+    display: inline-flex;
+    align-items: stretch;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
+  }
+
+  .transpose-btn {
+    width: 28px;
+    min-height: 26px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .transpose-btn:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .transpose-btn:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
+  .transpose-display {
+    min-width: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--acorde-color);
+  }
+
   .acordes-pieza__titulo {
     display: inline;
     margin-right: 2px;
@@ -124,6 +230,11 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
     font-size: 0.82rem;
     font-weight: 500;
     color: var(--acorde-color);
+  }
+
+  .acordes-pieza__item {
+    display: inline;
+    white-space: nowrap;
   }
 
   .acordes-pieza__nombre {
@@ -144,11 +255,10 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
   }
 
   .acordes-pieza__accion {
-    align-self: flex-end;
+    align-self: center;
     display: block;
     margin-left: auto;
     width: 84px;
-    margin-top: 2px;
     padding: 0;
     border: 0;
     border-radius: 0;
@@ -265,6 +375,29 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
       grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
       gap: 6px;
     }
+
+    .acordes-pieza__acciones,
+    .transporte {
+      gap: 6px;
+    }
+
+    .transporte__titulo {
+      font-size: 0.66rem;
+      letter-spacing: 0.5px;
+    }
+
+    .transpose-btn {
+      width: 26px;
+    }
+
+    .transpose-display {
+      min-width: 26px;
+    }
+
+    .acordes-pieza__accion {
+      width: 72px;
+      font-size: 0.7rem;
+    }
   }
 </style>
 
@@ -317,4 +450,102 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
       if (evento) analitica(evento);
     });
   });
+</script>
+
+<script>
+  import { buscarEnIndice, crearIndice, type Glosario } from '../../lib/acordes';
+  import { svgDiagrama } from '../../lib/diagrama';
+  import { transportarEtiqueta } from '../../lib/transporte';
+
+  const panel = document.querySelector('.acordes-pieza');
+  const datosEl = document.getElementById('glosario-datos');
+
+  if (panel instanceof HTMLElement && datosEl) {
+    let indice: ReturnType<typeof crearIndice> | null = null;
+    let originales: Map<HTMLElement, string> | null = null;
+
+    function preparar() {
+      if (indice && originales) return;
+
+      let glosario: Glosario = {};
+      try {
+        glosario = JSON.parse(datosEl!.textContent || '{}') as Glosario;
+      } catch {
+        glosario = {};
+      }
+
+      indice = crearIndice(glosario);
+      originales = new Map();
+
+      panel!.querySelectorAll<HTMLElement>('[data-acorde]').forEach((el) => {
+        originales!.set(el, el.dataset.acorde || '');
+      });
+    }
+
+    /** Marca el botón como interactivo solo si el acorde tiene diagrama. */
+    function aplicarInteractividad(el: HTMLElement, etiqueta: string): boolean {
+      if (!entradaDe(etiqueta)) {
+        el.removeAttribute('data-acorde');
+        el.removeAttribute('aria-haspopup');
+        el.removeAttribute('aria-expanded');
+        el.setAttribute('aria-label', etiqueta);
+        return false;
+      }
+
+      el.dataset.acorde = etiqueta;
+      el.setAttribute('aria-haspopup', 'dialog');
+      el.setAttribute('aria-expanded', 'false');
+      el.setAttribute('aria-label', `Ver cómo se toca ${etiqueta}`);
+      return true;
+    }
+
+    function entradaDe(etiqueta: string) {
+      return indice ? buscarEnIndice(indice, etiqueta) : null;
+    }
+
+    function pintarDiagrama(boton: HTMLElement, etiqueta: string) {
+      const contenedor = boton.querySelector<HTMLElement>('.diagrama-acorde');
+      const entrada = entradaDe(etiqueta);
+      if (!contenedor) return;
+
+      if (!entrada) {
+        contenedor.innerHTML = '';
+        contenedor.style.display = 'none';
+        return;
+      }
+
+      contenedor.style.display = '';
+      contenedor.innerHTML = svgDiagrama({
+        nombre: etiqueta,
+        posicion: entrada.posiciones[0]!,
+        indice: 0,
+        total: entrada.posiciones.length,
+        ancho: 104,
+        alto: 132,
+      });
+    }
+
+    function aplicar(semitonos: number) {
+      preparar();
+
+      originales!.forEach((original, el) => {
+        const etiqueta = semitonos ? transportarEtiqueta(original, semitonos) : original;
+
+        if (el.classList.contains('acorde-mini__btn')) {
+          const nombre = el.querySelector<HTMLElement>('.acorde-mini__nombre');
+          if (nombre) nombre.textContent = etiqueta;
+          pintarDiagrama(el, etiqueta);
+        } else {
+          el.textContent = etiqueta;
+        }
+
+        aplicarInteractividad(el, etiqueta);
+      });
+    }
+
+    document.addEventListener('ag:transpose', (evento) => {
+      const detalle = (evento as CustomEvent<{ semitonos?: number }>).detail;
+      aplicar(detalle?.semitonos ?? 0);
+    });
+  }
 </script>
