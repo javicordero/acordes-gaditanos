@@ -1,0 +1,93 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: clase } = Astro.props;
+---
+
+<div class:list={['glosario-hint', clase]} role='note'>
+  <span class='glosario-hint__badge'>Novedad</span>
+  <div class='glosario-hint__body'>
+    <p class='glosario-hint__text'>
+      Pincha en cualquier acorde de la letra para ver c&oacute;mo se toca.
+    </p>
+    <p class='glosario-hint__text'>
+      <a href='/glosario' data-ga-event='click_novedad_glosario'>Ver glosario completo</a>
+    </p>
+  </div>
+</div>
+
+<style>
+  .glosario-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 14px 16px;
+    background: var(--callout-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .glosario-hint__badge {
+    flex: none;
+    display: inline-block;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+  }
+
+  .glosario-hint__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .glosario-hint__text {
+    margin: 0;
+  }
+
+  .glosario-hint__text a {
+    color: var(--link-color);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .glosario-hint__text a:hover {
+    color: var(--link-hover-color);
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.glosario-hint [data-ga-event]').forEach((el) => {
+    el.addEventListener('click', () => {
+      const evento = el.getAttribute('data-ga-event');
+      if (!evento) return;
+
+      const w = window as any;
+      if (typeof w.gtag === 'function') {
+        w.gtag('event', evento, {
+          event_category: 'glosario',
+          event_label: window.location.pathname,
+        });
+      } else {
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: evento });
+      }
+    });
+  });
+</script>

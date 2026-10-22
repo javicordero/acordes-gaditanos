@@ -1,0 +1,311 @@
+---
+import DiagramaAcorde from './DiagramaAcorde.astro';
+import type { EntradaGlosario } from '../../lib/acordes';
+
+interface Props {
+  acordes: Array<{ etiqueta: string; entrada: EntradaGlosario }>;
+}
+
+const { acordes } = Astro.props;
+const nombres = acordes.map(({ etiqueta }) => etiqueta);
+---
+
+{
+  acordes.length > 0 && (
+    <div class='acordes-pieza'>
+      <div class='acordes-pieza__resumen'>
+        <span class='acordes-pieza__titulo'>Acordes usados:</span>
+        <span class='acordes-pieza__nombres'>
+          {nombres.map((nombre, i) => (
+            <>
+              <button
+                type='button'
+                class='acordes-pieza__nombre'
+                data-acorde={nombre}
+                aria-haspopup='dialog'
+                aria-expanded='false'
+                aria-label={`Ver cómo se toca ${nombre}`}
+              >
+                {nombre}
+              </button>
+              {i < nombres.length - 1 ? ', ' : ''}
+            </>
+          ))}
+        </span>
+        <button
+          type='button'
+          class='acordes-pieza__accion'
+          data-ver-mas
+          aria-expanded='false'
+          aria-controls='acordes-pieza-cuerpo'
+        >
+          Ver más
+        </button>
+      </div>
+
+      <div class='acordes-pieza__caja'>
+        <div class='acordes-pieza__cuerpo' id='acordes-pieza-cuerpo' inert aria-hidden='true'>
+          <div class='acordes-pieza__interior'>
+            <ul class='acordes-pieza__grid'>
+              {acordes.map(({ etiqueta, entrada }) => (
+                <li class='acorde-mini'>
+                  <button
+                    type='button'
+                    class='acorde-mini__btn'
+                    data-acorde={etiqueta}
+                    aria-haspopup='dialog'
+                    aria-expanded='false'
+                    aria-label={`Ver cómo se toca ${etiqueta}`}
+                  >
+                    <span class='acorde-mini__nombre'>{etiqueta}</span>
+                    <DiagramaAcorde
+                      nombre={etiqueta}
+                      posicion={entrada.posiciones[0]!}
+                      total={entrada.posiciones.length}
+                      ancho={104}
+                      alto={132}
+                    />
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              class='acordes-pieza__enlace'
+              href='/glosario'
+              data-ga-event='click_glosario_acordes_usados'
+            >
+              Ver glosario completo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .acordes-pieza {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .acordes-pieza__resumen {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    padding: 10px 14px;
+    color: var(--text-color);
+  }
+
+  .acordes-pieza__titulo {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .acordes-pieza__nombres {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--acorde-color);
+  }
+
+  .acordes-pieza__nombre {
+    display: inline;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font: inherit;
+    color: var(--acorde-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .acordes-pieza__nombre:focus-visible {
+    outline: 2px solid var(--primary-contrast-color);
+    outline-offset: 1px;
+  }
+
+  .acordes-pieza__accion {
+    flex: 0 0 84px;
+    width: 84px;
+    margin-left: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--link-color);
+    text-align: right;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .acordes-pieza__accion:hover {
+    color: var(--link-hover-color);
+  }
+
+  .acordes-pieza__accion:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
+  .acordes-pieza--abierto .acordes-pieza__resumen {
+    border-bottom: 2px solid var(--primary-color);
+    background: var(--callout-bg);
+  }
+
+  .acordes-pieza__caja {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.22s ease;
+  }
+
+  .acordes-pieza--abierto .acordes-pieza__caja {
+    grid-template-rows: 1fr;
+  }
+
+  .acordes-pieza__cuerpo {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .acordes-pieza__interior {
+    padding: 12px 14px 14px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .acordes-pieza__caja {
+      transition: none;
+    }
+  }
+
+  .acordes-pieza__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 8px;
+  }
+
+  .acorde-mini {
+    margin: 0;
+  }
+
+  .acorde-mini__btn {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 4px 6px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-family: inherit;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .acorde-mini__btn:hover,
+  .acorde-mini__btn:focus-visible {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .acorde-mini__btn:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
+  .acorde-mini__nombre {
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--acorde-color);
+  }
+
+  .acordes-pieza__enlace {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--link-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .acordes-pieza__grid {
+      grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+      gap: 6px;
+    }
+  }
+</style>
+
+<script>
+  function analitica(evento: string, params: Record<string, unknown> = {}) {
+    const w = window as any;
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', evento, {
+        ...params,
+        event_category: 'acordes',
+        event_label: window.location.pathname,
+      });
+    } else {
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({ event: evento, ...params });
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    const boton = (e.target as HTMLElement | null)?.closest<HTMLElement>('[data-ver-mas]');
+    if (!boton) return;
+
+    const bloque = boton.closest('.acordes-pieza');
+    const cuerpo = bloque?.querySelector<HTMLElement>('.acordes-pieza__cuerpo');
+    if (!bloque || !cuerpo) return;
+
+    const abierto = boton.getAttribute('aria-expanded') === 'true';
+    const nuevo = !abierto;
+    boton.setAttribute('aria-expanded', String(nuevo));
+    boton.textContent = nuevo ? 'Ver menos' : 'Ver más';
+    bloque.classList.toggle('acordes-pieza--abierto', nuevo);
+
+    if (nuevo) {
+      cuerpo.inert = false;
+      cuerpo.setAttribute('aria-hidden', 'false');
+    } else {
+      if (cuerpo.contains(document.activeElement)) boton.focus();
+      cuerpo.inert = true;
+      cuerpo.setAttribute('aria-hidden', 'true');
+    }
+
+    analitica(nuevo ? 'click_acordes_usados_ver_mas' : 'click_acordes_usados_ver_menos', {
+      total: bloque.querySelectorAll('.acorde-mini').length,
+    });
+  });
+
+  document.querySelectorAll<HTMLElement>('.acordes-pieza [data-ga-event]').forEach((enlace) => {
+    enlace.addEventListener('click', () => {
+      const evento = enlace.getAttribute('data-ga-event');
+      if (evento) analitica(evento);
+    });
+  });
+</script>

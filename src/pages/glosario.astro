@@ -1,0 +1,522 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+import DiagramaAcorde from '../components/page/DiagramaAcorde.astro';
+import GlosarioPopover from '../components/page/GlosarioPopover.astro';
+import glosarioJson from '../data/glosario-acordes.json';
+import { slugAcorde, type EntradaGlosario, type Glosario } from '../lib/acordes';
+
+const glosario = (glosarioJson as unknown as { acordes: Glosario }).acordes;
+
+const ORDEN_RAICES = [
+  'Do', 'Do#', 'Reb', 'Re', 'Re#', 'Mib', 'Mi', 'Fa', 'Fa#',
+  'Solb', 'Sol', 'Sol#', 'Lab', 'La', 'La#', 'Sib', 'Si',
+];
+
+const ORDEN_SUFIJOS = [
+  '', 'm', '5', '6', 'm6', '7', 'm7', 'maj7', 'maj9', '9', 'm9', 'add9',
+  '11', '13', 'sus2', 'sus4', 'sus9', '7sus4', 'dim', 'dim7', 'aug', 'mmaj7',
+  '6add9', '7b5', '7maj5', 'm7b5',
+];
+
+const TIPO_NOMBRE: Record<string, string> = {
+  '': 'mayor',
+  m: 'menor',
+  '5': 'quinta',
+  '6': 'sexta',
+  m6: 'menor sexta',
+  '7': 'séptima',
+  m7: 'menor séptima',
+  maj7: 'séptima mayor',
+  maj9: 'novena mayor',
+  '9': 'novena',
+  m9: 'menor novena',
+  add9: 'novena añadida',
+  '11': 'oncena',
+  '13': 'trecena',
+  sus2: 'suspendida segunda',
+  sus4: 'suspendida cuarta',
+  sus9: 'suspendida con novena',
+  '7sus4': 'séptima suspendida',
+  dim: 'disminuido',
+  dim7: 'disminuido séptima',
+  aug: 'aumentado',
+  mmaj7: 'menor séptima mayor',
+  '6add9': 'sexta con novena',
+  '7b5': 'séptima con quinta bemol',
+  '7maj5': 'séptima con quinta aumentada',
+  m7b5: 'semidisminuido',
+};
+
+const normalizar = (texto: string) =>
+  texto
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+
+const rankSufijo = (entrada: EntradaGlosario) => {
+  const i = ORDEN_SUFIJOS.indexOf(entrada.sufijo);
+  return i === -1 ? ORDEN_SUFIJOS.length : i;
+};
+
+const grupos = ORDEN_RAICES.map((raiz) => {
+  const acordes = Object.entries(glosario)
+    .filter(([, entrada]) => entrada.raiz === raiz && entrada.posiciones.length > 0)
+    .sort((a, b) => {
+      const porTipo = rankSufijo(a[1]) - rankSufijo(b[1]);
+      if (porTipo !== 0) return porTipo;
+      return a[1].sufijo.localeCompare(b[1].sufijo, 'es');
+    })
+    .map(([etiqueta, entrada]) => ({
+      etiqueta,
+      entrada,
+      tipo: TIPO_NOMBRE[entrada.sufijo] ?? entrada.sufijo,
+      buscar: normalizar(
+        `${etiqueta} ${entrada.raiz} ${entrada.sufijo} ${entrada.slug.replace(/-/g, ' ')} ${
+          TIPO_NOMBRE[entrada.sufijo] ?? ''
+        } ${entrada.bajo ? 'bajo ' + entrada.bajo : ''}`,
+      ),
+    }));
+
+  return {
+    raiz,
+    id: `raiz-${slugAcorde({ raiz, sufijo: '', bajo: null })}`,
+    acordes,
+  };
+}).filter((grupo) => grupo.acordes.length > 0);
+
+const totalAcordes = grupos.reduce((total, grupo) => total + grupo.acordes.length, 0);
+
+const title = 'Glosario de acordes de guitarra - Acordes Gaditanos';
+const description =
+  'Diccionario de acordes de guitarra con diagramas: aprende a tocar todas las posiciones de cada acorde, con cuerdas mudas, al aire y cejillas. Notación española (Do, Re, Mi…).';
+const keywords =
+  'glosario de acordes, diccionario de acordes, acordes de guitarra, diagramas de acordes, cómo se tocan los acordes, acordes de Carnaval, Do Re Mi, cejillas';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Glosario de acordes de guitarra',
+  description,
+  url: canonicalURL,
+  inLanguage: 'es-ES',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Acordes Gaditanos',
+    url: Astro.site,
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: new URL('/', Astro.site).toString(),
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Glosario de acordes',
+      item: canonicalURL,
+    },
+  ],
+};
+---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <script type='application/ld+json' set:html={JSON.stringify(webPageSchema)} />
+  <script type='application/ld+json' set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class='main-container'>
+    <section>
+      <article class='container-layout inner-content glosario'>
+        <nav class='glosario__migas' aria-label='Migas de pan'>
+          <a href='/'>Inicio</a>
+          <span aria-hidden='true'>/</span>
+          <span>Glosario de acordes</span>
+        </nav>
+
+        <header class='glosario__header'>
+          <h1>Glosario de acordes de guitarra</h1>
+          <p class='glosario__intro'>
+            Todas las formas de los acordes que suenan en el Carnaval de Cádiz, con su diagrama de
+            guitarra. Pincha en cualquier acorde para ver sus posiciones y cómo se coloca cada dedo
+            sobre las cuerdas.
+          </p>
+        </header>
+
+    <!-- Herramienta privada: sin enlace público hasta que se decida publicarla. -->
+        <div class='glosario__buscador'>
+          <label class='glosario__label' for='glosario-buscar'>Buscar acorde</label>
+          <input
+            id='glosario-buscar'
+            class='glosario__input'
+            type='search'
+            placeholder='Ej.: Mi7, Sib, semidisminuido…'
+            autocomplete='off'
+            spellcheck='false'
+          />
+          <p class='glosario__resultados' id='glosario-resultados' aria-live='polite'>
+            {totalAcordes} acordes
+          </p>
+        </div>
+
+        <nav class='glosario__indice' aria-label='Fundamentales'>
+          {
+            grupos.map((grupo) => (
+              <a href={`#${grupo.id}`}>{grupo.raiz}</a>
+            ))
+          }
+        </nav>
+
+        {
+          grupos.map((grupo) => (
+            <section class='glosario-grupo' id={grupo.id} aria-labelledby={`${grupo.id}-titulo`}>
+              <h2 id={`${grupo.id}-titulo`}>
+                {grupo.raiz}
+                <span class='glosario-grupo__cuenta'>({grupo.acordes.length})</span>
+              </h2>
+
+              <div class='glosario-grid'>
+                {grupo.acordes.map(({ etiqueta, entrada, tipo, buscar }) => (
+                  <article class='glosario-card' id={slugAcorde(entrada)} data-buscar={buscar}>
+                    <button
+                      type='button'
+                      class='glosario-card__btn'
+                      data-acorde={etiqueta}
+                      aria-haspopup='dialog'
+                      aria-expanded='false'
+                      aria-label={`Ver ${etiqueta} (${tipo}) y todas sus posiciones`}
+                    >
+                      <span class='glosario-card__nombre'>{etiqueta}</span>
+                      <DiagramaAcorde
+                        nombre={etiqueta}
+                        posicion={entrada.posiciones[0]!}
+                        total={entrada.posiciones.length}
+                        ancho={104}
+                        alto={132}
+                      />
+                      <span class='glosario-card__pos'>{entrada.posiciones.length} pos.</span>
+                    </button>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))
+        }
+
+        <p class='glosario__vacio' id='glosario-vacio' hidden>
+          No hay acordes que coincidan con esa búsqueda. Prueba con otra grafía (por ejemplo,
+          <em>Sib</em>, <em>La#</em> o <em>m7</em>).
+        </p>
+
+        <p class='glosario__nota'>
+          Los diagramas muestran la forma estándar del acorde en afinación estándar (Mi-La-Re-Sol-Si-Mi).
+          Las cuerdas marcadas con <strong>×</strong> no se tocan y las marcadas con <strong>○</strong>
+          suenan al aire.
+        </p>
+      </article>
+    </section>
+  </div>
+
+  <GlosarioPopover />
+  <script type='application/json' id='glosario-datos' set:html={JSON.stringify(glosario)} />
+</Layout>
+
+<style>
+  .glosario__migas {
+    display: flex;
+    gap: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary-color);
+
+    & a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .glosario__header {
+    margin: 8px 0 20px;
+
+    & h1 {
+      margin: 0 0 8px;
+      font-size: 1.9rem;
+      line-height: 1.15;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .glosario__intro {
+    margin: 0;
+    max-width: 70ch;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  .glosario__buscador {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .glosario__label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .glosario__input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+  }
+
+  .glosario__input:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 1px;
+  }
+
+  .glosario__resultados {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-secondary-color);
+    white-space: nowrap;
+  }
+
+  .glosario__indice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+
+    & a {
+      padding: 3px 9px;
+      border: 2px solid var(--primary-color);
+      background: var(--card-background-color);
+      color: var(--primary-color);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    & a:hover {
+      background: var(--primary-contrast-color);
+      color: var(--on-bright-color);
+    }
+  }
+
+  .glosario-grupo {
+    margin-bottom: 28px;
+    scroll-margin-top: calc(var(--nav-height) + 16px);
+
+    & h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin: 0 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--primary-color);
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary-color);
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  .glosario-grupo__cuenta {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+    letter-spacing: 0;
+  }
+
+  .glosario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+    gap: 8px;
+  }
+
+  .glosario-card {
+    margin: 0;
+    scroll-margin-top: calc(var(--nav-height) + 16px);
+
+    &[hidden] {
+      display: none;
+    }
+
+    &:target .glosario-card__btn {
+      border-color: var(--primary-contrast-color);
+      box-shadow: 4px 4px 0 0 var(--primary-contrast-color);
+    }
+  }
+
+  .glosario-card__btn {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 4px 6px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .glosario-card__btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .glosario-card__btn:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
+  .glosario-card__nombre {
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    color: var(--acorde-color);
+  }
+
+  .glosario-card__pos {
+    font-size: 0.62rem;
+    color: var(--text-secondary-color);
+  }
+
+  .glosario__vacio {
+    padding: 14px;
+    border: 2px dashed var(--primary-color);
+    color: var(--text-color);
+  }
+
+  .glosario__vacio[hidden] {
+    display: none;
+  }
+
+  .glosario__nota {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: var(--text-secondary-color);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 640px) {
+    .glosario__header h1 {
+      font-size: 1.45rem;
+    }
+
+    .glosario__buscador {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+
+    .glosario-grid {
+      grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+      gap: 6px;
+    }
+  }
+</style>
+
+<script>
+  const entrada = document.getElementById('glosario-buscar') as HTMLInputElement | null;
+  const tarjetas = Array.from(document.querySelectorAll<HTMLElement>('.glosario-card'));
+  const secciones = Array.from(document.querySelectorAll<HTMLElement>('.glosario-grupo'));
+  const contador = document.getElementById('glosario-resultados');
+  const vacio = document.getElementById('glosario-vacio');
+
+  if (entrada && tarjetas.length > 0) {
+    const normalizar = (texto: string) =>
+      texto
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .trim();
+
+    let temporizador: ReturnType<typeof setTimeout> | undefined;
+
+    const registrarBusqueda = (consulta: string) => {
+      const w = window as any;
+      if (typeof w.gtag !== 'function' || !consulta) return;
+      clearTimeout(temporizador);
+      temporizador = setTimeout(() => {
+        w.gtag('event', 'glosario_buscar', {
+          event_category: 'glosario',
+          event_label: consulta,
+        });
+      }, 600);
+    };
+
+    const filtrar = () => {
+      const consulta = normalizar(entrada.value);
+      let visibles = 0;
+
+      for (const tarjeta of tarjetas) {
+        const coincide = !consulta || (tarjeta.dataset.buscar ?? '').includes(consulta);
+        tarjeta.hidden = !coincide;
+        if (coincide) visibles += 1;
+      }
+
+      for (const seccion of secciones) {
+        seccion.hidden = !seccion.querySelector('.glosario-card:not([hidden])');
+      }
+
+      if (contador) contador.textContent = `${visibles} acordes`;
+      if (vacio) vacio.hidden = visibles > 0;
+
+      registrarBusqueda(consulta);
+    };
+
+    entrada.addEventListener('input', filtrar);
+
+    if (window.location.hash) {
+      const objetivo = document.getElementById(window.location.hash.slice(1));
+      if (objetivo) {
+        setTimeout(() => objetivo.scrollIntoView({ block: 'center' }), 50);
+      }
+    }
+  }
+</script>

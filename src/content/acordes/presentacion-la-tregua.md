@@ -76,7 +76,7 @@ me voy con mi guitarra al infinito y más allá
 Me escapo de la guerra, la tregua es mi final,
      <a>Fa</a>                     <a>Sol</a>
 mi avión se escapa y vuela y siempre volará
-<a>La(Sus2)</a>                             <a>FaMaj7</a>
+<a>Lasus2</a>                             <a>FaMaj7</a>
 Disparé el avión porque sin ti no sé volar
                    <a>Sol</a>                <a>Fa</a>
 y necesito una canción y necesito un carnaval

@@ -32,9 +32,9 @@ por Madrid, Bilbao o Andalucía
 Orgullo de cantar sin tregua a mi modo feminista
       <a>Mi</a>           <a>LaM7</a>
 las cositas de mi tierra
-        <a>La/add9</a>    <a>La(sus9)</a>    <a>La/add9</a>
+        <a>La/add9</a>    <a>Lasus9</a>    <a>La/add9</a>
 Qué más da que en este concurso raso
-<a>La(sus9)</a>        <a>La/add9</a>
+<a>Lasus9</a>        <a>La/add9</a>
 yo ya intuya mi fracaso
                     <a>Mi</a>
 si el discurso tiene aquí mi función

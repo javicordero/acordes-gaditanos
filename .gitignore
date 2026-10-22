@@ -40,3 +40,6 @@ src/content/template.md
 # Admin pages (solo local)
 src/pages/admin/
 
+
+# Cache de importacion del glosario de acordes
+.cache/

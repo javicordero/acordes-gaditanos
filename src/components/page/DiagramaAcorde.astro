@@ -1,0 +1,32 @@
+---
+import { svgDiagrama, type PosicionDibujo } from '../../lib/diagrama';
+
+interface Props {
+  nombre: string;
+  posicion: PosicionDibujo;
+  indice?: number;
+  total?: number;
+  ancho?: number;
+  alto?: number;
+  class?: string;
+}
+
+const { nombre, posicion, indice = 0, total = 1, ancho = 116, alto = 148, class: clase } = Astro.props;
+const svg = svgDiagrama({ nombre, posicion, indice, total, ancho, alto });
+---
+
+<span class:list={['diagrama-acorde', clase]} set:html={svg} />
+
+<style>
+  .diagrama-acorde {
+    display: inline-flex;
+    color: var(--primary-color);
+    line-height: 0;
+  }
+
+  .diagrama-acorde :global(svg) {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+</style>

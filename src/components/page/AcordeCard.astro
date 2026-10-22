@@ -1,13 +1,19 @@
 ---
 import { render } from 'astro:content';
+import { readFileSync } from 'node:fs';
 import { Icon } from 'astro-icon/components';
 import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
 import { Image } from 'astro:assets';
 import RecomendacionInline from './RecomendacionInline.astro';
 import TutorialAutoscroll from './TutorialAutoscroll.astro';
 import Anuncio from '../right-column/anuncios/Anuncio.astro';
+import AcordesDeLaPieza from './AcordesDeLaPieza.astro';
+import GlosarioHint from './GlosarioHint.astro';
+import GlosarioPopover from './GlosarioPopover.astro';
+import glosarioJson from '../../data/glosario-acordes.json';
+import { acordesDePieza, crearIndice, type Glosario } from '../../lib/acordes';
 
-const { acorde } = Astro.props;
+const { acorde, glosario: conGlosario = true } = Astro.props;
 const { data, slug } = acorde;
 const {
   pieza,
@@ -27,6 +33,22 @@ const {
   letraSlugs,
 } = data;
 const { Content } = await render(acorde);
+
+// Glosario de acordes de la pieza (solo se calcula si está activo)
+const indiceGlosario = conGlosario
+  ? crearIndice((glosarioJson as unknown as { acordes: Glosario }).acordes)
+  : null;
+const cuerpoAcorde =
+  typeof acorde.body === 'string'
+    ? acorde.body
+    : typeof acorde.filePath === 'string'
+      ? readFileSync(acorde.filePath, 'utf8')
+      : '';
+const acordesPieza =
+  indiceGlosario && cuerpoAcorde ? acordesDePieza(cuerpoAcorde, indiceGlosario) : [];
+const datosGlosario = Object.fromEntries(
+  acordesPieza.map(({ etiqueta, entrada }) => [etiqueta, entrada]),
+);
 
 // Generar texto ALT descriptivo para SEO
 const altText = `${agrupacion} - ${modalidad} del Carnaval de Cádiz ${year}`;
@@ -106,6 +128,9 @@ const headingId = `acorde-${slug}`;
       <span>Cejilla: {cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
 
+    {conGlosario && <GlosarioHint />}
+    {conGlosario && <AcordesDeLaPieza acordes={acordesPieza} />}
+
       <div class='acorde-content'>
       <TutorialAutoscroll />
       <div class='autoscroll-wrapper'>
@@ -133,6 +158,11 @@ const headingId = `acorde-${slug}`;
     </div>
   </section>
 </article>
+
+{conGlosario && <GlosarioPopover />}
+{conGlosario && (
+  <script type='application/json' id='glosario-datos' set:html={JSON.stringify(datosGlosario)} />
+)}
 
 <style>
   article {
@@ -805,6 +835,23 @@ const headingId = `acorde-${slug}`;
       }
       startAutoscroll(speedOptions, playBtn, pauseBtn);
     }
+
+    // Pausa el autoscroll mientras se consulta un diagrama del glosario.
+    var reanudarAlCerrarGlosario = false;
+
+    document.addEventListener('ag:popover-abierto', function() {
+      if (isPlaying) {
+        stopAutoscroll();
+        reanudarAlCerrarGlosario = true;
+      }
+    });
+
+    document.addEventListener('ag:popover-cerrado', function() {
+      if (reanudarAlCerrarGlosario) {
+        reanudarAlCerrarGlosario = false;
+        startAutoscroll();
+      }
+    });
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initAutoscroll);

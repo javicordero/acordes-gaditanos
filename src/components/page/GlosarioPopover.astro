@@ -1,0 +1,497 @@
+﻿---
+/**
+ * Popover del glosario de acordes.
+ *
+ * Los diagramas se generan con `src/lib/diagrama.ts` (el mismo renderizador que
+ * usa el build), a partir de los datos embebidos en `#glosario-datos`.
+ */
+---
+
+<div
+  id='glosario-popover'
+  class='glosario-popover'
+  role='dialog'
+  aria-modal='false'
+  aria-labelledby='glosario-popover-nombre'
+  hidden
+>
+  <button type='button' class='glosario-popover__cerrar' data-cerrar aria-label='Cerrar diagrama'>
+    &times;
+  </button>
+  <p class='glosario-popover__nombre' id='glosario-popover-nombre' data-nombre></p>
+  <div class='glosario-popover__diagrama' data-diagrama></div>
+  <div class='glosario-popover__posiciones' data-posiciones hidden>
+    <button type='button' class='glosario-popover__flecha' data-prev aria-label='Posición anterior'>
+      &lsaquo;
+    </button>
+    <span class='glosario-popover__contador' data-contador aria-live='polite'>1/1</span>
+    <button type='button' class='glosario-popover__flecha' data-next aria-label='Posición siguiente'>
+      &rsaquo;
+    </button>
+  </div>
+  <a class='glosario-popover__enlace' data-enlace href='/glosario'>Ver en el glosario</a>
+</div>
+
+<style>
+  .glosario-popover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10050;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: max-content;
+    min-width: 168px;
+    max-width: min(300px, calc(100vw - 16px));
+    box-sizing: border-box;
+    padding: 14px 16px 12px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    box-shadow: 6px 6px 0 0 var(--primary-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .glosario-popover[hidden] {
+    display: none;
+  }
+
+  .glosario-popover__nombre {
+    margin: 0;
+    padding-right: 18px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--acorde-color);
+    text-align: center;
+  }
+
+  .glosario-popover__diagrama {
+    display: flex;
+    justify-content: center;
+    color: var(--primary-color);
+    line-height: 0;
+  }
+
+  .glosario-popover__diagrama :global(svg) {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .glosario-popover__cerrar {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .glosario-popover__cerrar:hover,
+  .glosario-popover__cerrar:focus-visible {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .glosario-popover__posiciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .glosario-popover__posiciones[hidden] {
+    display: none;
+  }
+
+  .glosario-popover__flecha {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--primary-color);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .glosario-popover__flecha:hover:not(:disabled) {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .glosario-popover__flecha:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .glosario-popover__contador {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary-color);
+  }
+
+  .glosario-popover__enlace {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    text-align: center;
+  }
+
+  :global(pre a.acorde-interactivo) {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glosario-popover * {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  import { buscarEnIndice, crearIndice, slugAcorde, type EntradaGlosario, type Glosario } from '../../lib/acordes';
+  import { svgDiagrama } from '../../lib/diagrama';
+
+  const pop = document.getElementById('glosario-popover') as HTMLElement;
+  const datosEl = document.getElementById('glosario-datos');
+
+  if (pop instanceof HTMLElement && datosEl) {
+    let glosario: Glosario = {};
+    try {
+      glosario = JSON.parse(datosEl.textContent || '{}') as Glosario;
+    } catch {
+      glosario = {};
+    }
+
+    const indice = crearIndice(glosario);
+
+    const elNombre = pop.querySelector<HTMLElement>('[data-nombre]');
+    const elDiagrama = pop.querySelector<HTMLElement>('[data-diagrama]');
+    const elPosiciones = pop.querySelector<HTMLElement>('[data-posiciones]');
+    const elContador = pop.querySelector<HTMLElement>('[data-contador]');
+    const btnPrev = pop.querySelector<HTMLButtonElement>('[data-prev]');
+    const btnNext = pop.querySelector<HTMLButtonElement>('[data-next]');
+    const btnCerrar = pop.querySelector<HTMLButtonElement>('[data-cerrar]');
+    const elEnlace = pop.querySelector<HTMLAnchorElement>('[data-enlace]');
+
+    let ancla: HTMLElement | null = null;
+    let entrada: EntradaGlosario | null = null;
+    let textoActual = '';
+    let posicion = 0;
+    let abiertoEn = 0;
+
+    function analitica(
+      evento: string,
+      params: Record<string, unknown> = {},
+      categoria = 'glosario',
+    ) {
+      const w = window as any;
+      if (typeof w.gtag === 'function') {
+        w.gtag('event', evento, {
+          ...params,
+          event_category: categoria,
+          event_label: window.location.pathname,
+        });
+      } else {
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: evento, ...params });
+      }
+    }
+
+    function pintar() {
+      if (
+        !entrada ||
+        !elNombre ||
+        !elDiagrama ||
+        !elContador ||
+        !btnPrev ||
+        !btnNext ||
+        !elPosiciones
+      ) {
+        return;
+      }
+
+      const total = entrada.posiciones.length;
+      const actual = entrada.posiciones[posicion] ?? entrada.posiciones[0];
+      if (!actual) return;
+
+      elNombre.textContent = textoActual;
+      elDiagrama.innerHTML = svgDiagrama({
+        nombre: textoActual,
+        posicion: actual,
+        indice: posicion,
+        total,
+        ancho: 136,
+        alto: 172,
+      });
+      elPosiciones.hidden = total <= 1;
+      elContador.textContent = `${posicion + 1}/${total}`;
+      btnPrev.disabled = posicion === 0;
+      btnNext.disabled = posicion === total - 1;
+    }
+
+    function posicionar() {
+      if (!ancla) return;
+
+      const rect = ancla.getBoundingClientRect();
+      const vw = document.documentElement.clientWidth;
+      const vh = window.innerHeight;
+      const pw = pop.offsetWidth;
+      const ph = pop.offsetHeight;
+      const margen = 8;
+
+      let left = rect.left + rect.width / 2 - pw / 2;
+      left = Math.max(margen, Math.min(left, vw - pw - margen));
+
+      let top = rect.bottom + margen;
+      if (top + ph > vh - margen) {
+        const arriba = rect.top - ph - margen;
+        top = arriba >= margen ? arriba : vh - ph - margen;
+      }
+
+      top = Math.max(margen, Math.min(top, vh - ph - margen));
+
+      pop.style.left = `${Math.round(left)}px`;
+      pop.style.top = `${Math.round(top)}px`;
+    }
+
+    function abrir(disparador: HTMLElement) {
+      const esEnlace = disparador.tagName === 'A';
+      const texto = (esEnlace ? disparador.textContent : disparador.dataset.acorde)?.trim() || '';
+      const encontrado = buscarEnIndice(indice, texto);
+
+      if (!encontrado) {
+        analitica('glosario_sin_diagrama', { acorde: texto, pagina: window.location.pathname });
+        return;
+      }
+
+      const yaAbierto = !pop.hidden;
+      if (!yaAbierto) {
+        abiertoEn = Date.now();
+        document.dispatchEvent(new CustomEvent('ag:popover-abierto'));
+      }
+
+      if (ancla && ancla !== disparador) {
+        ancla.setAttribute('aria-expanded', 'false');
+      }
+
+      ancla = disparador;
+      entrada = encontrado;
+      textoActual = texto;
+      posicion = 0;
+
+      if (elEnlace) elEnlace.href = `/glosario#${slugAcorde(encontrado)}`;
+
+      pop.hidden = false;
+      pintar();
+      posicionar();
+
+      ancla.setAttribute('aria-expanded', 'true');
+      btnCerrar?.focus({ preventScroll: true });
+
+      const enPre = !!disparador.closest('pre');
+      const enUsados = !!disparador.closest('.acordes-pieza');
+      const enGlosario = !!disparador.closest('.glosario-card');
+
+      if (enPre) {
+        analitica('click_acorde_pre', { acorde: texto, pagina: window.location.pathname }, 'acordes');
+      } else if (enUsados) {
+        analitica(
+          'click_acorde_usado',
+          { acorde: texto, pagina: window.location.pathname },
+          'acordes',
+        );
+      } else if (enGlosario) {
+        analitica(
+          'click_acorde_glosario',
+          { acorde: texto, pagina: window.location.pathname },
+          'glosario',
+        );
+      }
+    }
+
+    function cerrar(devolverFoco = true) {
+      if (pop.hidden) return;
+
+      pop.hidden = true;
+
+      if (ancla) {
+        ancla.setAttribute('aria-expanded', 'false');
+      }
+
+      const anterior = ancla;
+      ancla = null;
+      entrada = null;
+      textoActual = '';
+
+      document.dispatchEvent(new CustomEvent('ag:popover-cerrado'));
+
+      if (devolverFoco && anterior) {
+        anterior.focus({ preventScroll: true });
+      }
+    }
+
+    function mover(delta: number) {
+      if (!entrada) return;
+
+      const total = entrada.posiciones.length;
+      const nuevo = Math.min(Math.max(0, posicion + delta), total - 1);
+      if (nuevo === posicion) return;
+
+      posicion = nuevo;
+      pintar();
+      analitica('glosario_posicion', { acorde: textoActual, posicion: posicion + 1 });
+    }
+
+    function prepararAnclas() {
+      document.querySelectorAll<HTMLAnchorElement>('.acorde-content pre a').forEach((a) => {
+        const texto = (a.textContent || '').trim();
+        if (!buscarEnIndice(indice, texto)) return;
+
+        a.dataset.acorde = texto;
+        a.setAttribute('role', 'button');
+        a.setAttribute('tabindex', '0');
+        a.setAttribute('aria-haspopup', 'dialog');
+        a.setAttribute('aria-expanded', 'false');
+        a.setAttribute('aria-label', `Ver cómo se toca ${texto}`);
+        a.classList.add('acorde-interactivo');
+      });
+    }
+
+    document.addEventListener(
+      'click',
+      (e) => {
+        const objetivo = e.target as HTMLElement | null;
+        if (!objetivo) return;
+
+        if (objetivo.closest('[data-cerrar]')) {
+          e.preventDefault();
+          cerrar();
+          return;
+        }
+
+        if (objetivo.closest('[data-prev]')) {
+          e.preventDefault();
+          mover(-1);
+          return;
+        }
+
+        if (objetivo.closest('[data-next]')) {
+          e.preventDefault();
+          mover(1);
+          return;
+        }
+
+        const disparador = objetivo.closest<HTMLElement>('[data-acorde]');
+        if (disparador) {
+          e.preventDefault();
+          abrir(disparador);
+          return;
+        }
+
+        if (!pop.hidden && !pop.contains(objetivo)) {
+          cerrar(false);
+        }
+      },
+      true,
+    );
+
+    document.addEventListener('keydown', (e) => {
+      const activo = document.activeElement as HTMLElement | null;
+
+      if (
+        activo &&
+        activo.matches('a[data-acorde]') &&
+        (e.key === 'Enter' || e.key === ' ')
+      ) {
+        e.preventDefault();
+        abrir(activo);
+        return;
+      }
+
+      if (pop.hidden) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        cerrar();
+        return;
+      }
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        mover(-1);
+        return;
+      }
+
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        mover(1);
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const focusables = Array.from(
+          pop.querySelectorAll<HTMLElement>('button:not([disabled]), a[href]'),
+        ).filter((el) => el.offsetParent !== null);
+
+        if (focusables.length === 0) return;
+
+        const primero = focusables[0]!;
+        const ultimo = focusables[focusables.length - 1]!;
+
+        if (e.shiftKey && document.activeElement === primero) {
+          e.preventDefault();
+          ultimo.focus();
+        } else if (!e.shiftKey && document.activeElement === ultimo) {
+          e.preventDefault();
+          primero.focus();
+        }
+      }
+    });
+
+    function alDesplazar(e: Event) {
+      if (pop.hidden) return;
+      if (Date.now() - abiertoEn < 350) return;
+      if (e.target instanceof Node && pop.contains(e.target)) return;
+      cerrar(false);
+    }
+
+    window.addEventListener('scroll', alDesplazar, { passive: true, capture: true });
+    window.addEventListener(
+      'resize',
+      () => {
+        if (!pop.hidden) posicionar();
+      },
+      { passive: true },
+    );
+
+    prepararAnclas();
+  }
+</script>
