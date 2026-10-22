@@ -30,13 +30,13 @@ no vivo
 No vivo cuando pienso que no te podre pagar
                                              <a>Sim7</a>
 Las cosas que me diste y que me hicieron tan feliz
-                                         <a>Do9</a>
+                                         <a>Doadd9</a>
 Las que no valoraba cuando me la fuiste a dar
                   <a>Lam7</a>
 Y aunque suenen sencillas me hacen falta para
  <a>Re7</a>
 vivir
-           <a>Do9</a>
+           <a>Doadd9</a>
 Y es que te debo la luz que te ilumina en las
   <a>Sim7</a>
 mañanas

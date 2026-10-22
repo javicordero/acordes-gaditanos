@@ -1757,6 +1757,18 @@
           "trastes": [
             -1,
             3,
+            2,
+            -1,
+            3,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
+            3,
             0,
             0,
             1,

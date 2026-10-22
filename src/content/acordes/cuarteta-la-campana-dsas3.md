@@ -17,7 +17,7 @@ fraseClave: Cuando dentro del castillo a la muerte se la gana una batalla
 <pre>
 <a>Sol</a>
 Cuando dentro del castillo
-      <a>Do9</a>                    <a>Sol</a>
+      <a>Doadd9</a>                 <a>Sol</a>
 A la muerte se la gana una batalla
        <a>Mim</a>                        <a>Sim7</a>
 Y se enciende un candilito de esperanza
@@ -31,7 +31,7 @@ Se pregona en el silencio sepulcral
 Con el grito atronador de una campana
                      <a>Sol</a>
 Que hay otra oportunidad
-                             <a>Do9</a>
+                             <a>Doadd9</a>
 Y se pintan de colores las paredes
                 <a>Sol</a>
 Y de rosa los pañuelos

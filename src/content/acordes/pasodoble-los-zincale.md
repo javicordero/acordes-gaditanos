@@ -14,7 +14,7 @@ fraseClave: No le grites a papa y mama, no te subas encima del
 <pre>
 <a>Sol</a>
 No le grites a papa y mama,
-<a>Do9</a>
+<a>Doadd9</a>
 no te subas encima del sofá
 
 <a>Re7</a>                   <a>Sol</a>       <a>Mi7</a>

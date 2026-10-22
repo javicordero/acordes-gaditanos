@@ -18,13 +18,13 @@ En un brazo los números rojos, tu padre ha llamao,
 El agua, el seguro, el cole, el mercao,
 <a>Sib</a>                                     <a>Solm7</a>
 La tos de la niña, el día 29, la letra del piso, el
-             <a>Do9</a>
+             <a>Doadd9</a>
 whatsapp del jefe,
 <a>Sib</a>
 La carta del banco, el turno de noche,
 <a>Lam7</a>                                <a>Solm7</a>
 La abuela ingresada, el ruido del coche, son casi
-      <a>Do9</a>
+      <a>Doadd9</a>
 las doce....
 <a>Fa</a>           <a>Sib</a>            <a>Fa</a>
 Equilibrios del vivir sobre la cuerda del
@@ -32,19 +32,19 @@ Equilibrios del vivir sobre la cuerda del
 sinvivir.
 <a>Sol</a>
 Otro brazo soporta cargando la bolsa o la vida,
-                           <a>Do9</a>
+                           <a>Doadd9</a>
 Las leyes mordazas, la injusta justicia,
    <a>Lam7</a>
 Consume y trabaja, el banco es tu amigo, los nuevos
                          <a>Re7</a>
 collares, los viejos partidos,
-<a>Do9</a>
+<a>Doadd9</a>
 Se cree que soy tonto señor presidente,
 <a>Sim7</a>                                        <a>Lam7</a>
 La gente en las calles, el miedo en la gente, la
                 <a>Re7</a>
 rabia, los dientes...
-<a>Sol</a>            <a>Do9</a>          <a>Sol</a>
+<a>Sol</a>            <a>Doadd9</a>       <a>Sol</a>
 Equilibrios del poder y cuanto alambre por
      <a>Si7</a>
 recorrer.

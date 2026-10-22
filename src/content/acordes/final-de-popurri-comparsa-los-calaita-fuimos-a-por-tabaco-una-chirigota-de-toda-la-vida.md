@@ -12,9 +12,9 @@ fraseClave: "Llego el adiós Y tendré"
 destacada: 2
 ---
 <pre>
-          <a>Do9</a>                    <a>Lam</a>
+          <a>Doadd9</a>                 <a>Lam</a>
 Llego el adiós Y tendré que despedir
-                       <a>Fa</a>                   <a>Do9</a>
+                       <a>Fa</a>                   <a>Doadd9</a>
 Pa después volver a morir Y me manden al cajón
                                    <a>Lam</a>
 Ya disfruté Todo esto que estoy viviendo

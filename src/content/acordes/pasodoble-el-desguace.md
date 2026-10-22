@@ -21,7 +21,7 @@ Como pretendes que crea en tu patria
 Como creerme que existe justicia
                     <a>Sol</a>
 Si este país más que una democracia
-                  <a>Do9</a>
+                  <a>Doadd9</a>
 Es un desguace de mugre y de inmundicia
                         <a>Mi7</a>
 Si aun nadie sabe quien fuera el culpable

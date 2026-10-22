@@ -14,11 +14,11 @@ fraseClave: Cansado de un mundo gris de interminables
 <pre>
 <a>Sol</a>                                           <a>Mim</a>
 Cansado de un mundo gris de interminables tormentas.
-                      <a>Do9</a>                  <a>Re</a>
+                      <a>Doadd9</a>               <a>Re</a>
 Sembré un sol de primavera adentro del corazón.
 <a>Sol</a>                                         <a>Mim</a>
 Dejé las dudas partir y chapoteando en mis penas.
-                 <a>Do9</a>                          <a>Re</a>
+                 <a>Doadd9</a>                       <a>Re</a>
 Un gaditano cualquiera se convirtió en este actor.
 <a>Lam7</a>                                  <a>Mim</a>
 Que lejos de concebir las vanidosas maneras

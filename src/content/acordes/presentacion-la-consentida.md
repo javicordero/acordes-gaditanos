@@ -12,9 +12,9 @@ video: 'https://www.youtube.com/embed/7W4aPNvgGwA?si=xNVOYS-Mrsji0KI7'
 fraseClave: Cuando me acaricia el sol  y se alegra mi ventana
 ---
 <pre>
-              <a>Sol</a>        <a>Re</a>        <a>Do9</a>
+              <a>Sol</a>        <a>Re</a>        <a>Doadd9</a>
 Cuando me acaricia el sol  y se alegra mi ventana
-            <a>Sol</a>       <a>Re</a>        <a>Do9</a>
+            <a>Sol</a>       <a>Re</a>        <a>Doadd9</a>
 Con el agua de tu amor vas regando mis mañanas
             <a>Lam</a>
 Otra vez la vida que comienza a florecer y yo
@@ -28,7 +28,7 @@ pero tengo sus colores
 Y con ellos la fortuna de entregarte la alegría
                     <a>Si7</a>
 y que olvides tus dolores
-           <a>Do9</a>           <a>Mim</a>
+           <a>Doadd9</a>        <a>Mim</a>
 Y aunque a veces frágil, cuidao con ella
       <a>Do</a>         <a>Lam7</a>     <a>Si7</a>
 No se puede arrancar una flor

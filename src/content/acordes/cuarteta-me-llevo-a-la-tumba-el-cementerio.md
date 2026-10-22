@@ -11,11 +11,11 @@ video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=H5WaOLCTOtpU7KGS'
 fraseClave: "Cerquita de la caleta he"
 ---
 <pre>
-<a>Do9</a>                   <a>Lam</a>
+<a>Doadd9</a>                <a>Lam</a>
 Cerquita de la caleta he reservado un sitito
 <a>Rem</a>                   <a>Fa</a>                   <a>Fam</a>
 para dormirme a tu vera cuando se acaba el camino
-<a>Do9</a>                                        <a>Lam</a>
+<a>Doadd9</a>                                     <a>Lam</a>
 Lo he decorado con flores para que cada noviembre
 
 solo vengan con buen vino

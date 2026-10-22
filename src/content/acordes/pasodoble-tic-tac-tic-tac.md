@@ -42,7 +42,7 @@ ritual de disfrazarse
 Que no hay dos veces en to el año que se viva
           <a>Do</a>           <a>Re7</a>            <a>Sol</a>
 El primer día, el del estreno en carnavales
-    <a>Sol</a>       <a>Do9</a>        <a>Sol</a>          <a>Re</a>
+    <a>Sol</a>       <a>Doadd9</a>     <a>Sol</a>          <a>Re</a>
 Y empieza a vestirse en un orden que siempre
   <a>Sol</a>
 repite

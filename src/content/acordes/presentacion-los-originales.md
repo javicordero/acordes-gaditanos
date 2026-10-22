@@ -14,17 +14,17 @@ fraseClave: Tran tran titirititrantrantran, titirititran
 <pre>
 <a>Sol</a>                  <a>Mim</a>      
 Tran tran titirititrantrantran, 
-      <a>Do9</a>             <a>Re</a>
+      <a>Doadd9</a>          <a>Re</a>
 titirititran trataratachero
 <a>Sol</a>                  <a>Mim</a>      
 Tran tran titirititrantrantran, 
-      <a>Do9</a>             <a>Re</a>   <a>Do</a>
+      <a>Doadd9</a>          <a>Re</a>   <a>Do</a>
 titirititran trataratachero
 <a>Sol</a>
 En cualquier rincón de Cádiz, no importa calle ni barrio
 <a>Mim</a>
 Se inicia la resistencia de este humilde vecindario
-<a>Do9</a>
+<a>Doadd9</a>
 Un movimiento rebelde, leal a su idiosincrasia
 <a>Re</a>
 Cansado de charlatanes que abusan de nuestra esperanza
@@ -34,7 +34,7 @@ De falsos benefactores, de guerrillas de colores
 De un comercio que se marcha, 
 
 de una industria que no alcanza
-<a>Do9</a>
+<a>Doadd9</a>
 De las gesntrificaciones que han tumbado la balanza
 
 <a>Re</a>                                <a>Do</a>

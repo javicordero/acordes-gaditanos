@@ -36,11 +36,11 @@ la semilla de mi hogar, este árbol que miró
 Sin acción ya morirá pero con libertad
                     <a>Re7</a>
 porque brota en tu suelo
-            <a>Sol</a>       <a>Sim7</a>        <a>Do9</a>    <a>Re7</a>
+            <a>Sol</a>       <a>Sim7</a>        <a>Doadd9</a> <a>Re7</a>
 Me fui del mundo en mi sueño más rebelde,
-          <a>Sol</a>       <a>Sim7</a>      <a>Do9</a>
+          <a>Sol</a>       <a>Sim7</a>      <a>Doadd9</a>
 cambié de rumbo y mi voz desobedece
-          <a>Sol</a>      <a>Sim7</a>          <a>Do9</a>
+          <a>Sol</a>      <a>Sim7</a>          <a>Doadd9</a>
 Entre las ramas, rampando, vivo solo,
                  <a>Dom7</a>                           <a>Re7</a>
 me escapé de la jaula, compañera mía, prometo bajar
@@ -62,11 +62,11 @@ Y en mi árbol brillo y canto,
 por más billetes que claven
                                   <a>Re7</a>
 nos brotan las flores de los carnavales
-            <a>Sol</a>       <a>Sim7</a>        <a>Do9</a>    <a>Re7</a>
+            <a>Sol</a>       <a>Sim7</a>        <a>Doadd9</a> <a>Re7</a>
 Me fui del mundo en mi sueño más rebelde,
-          <a>Sol</a>       <a>Sim7</a>      <a>Do9</a>
+          <a>Sol</a>       <a>Sim7</a>      <a>Doadd9</a>
 cambié de rumbo y mi voz desobedece
-          <a>Sol</a>      <a>Sim7</a>          <a>Do9</a>
+          <a>Sol</a>      <a>Sim7</a>          <a>Doadd9</a>
 Entre las ramas, rampando, vivo solo,
                  <a>Dom7</a>                   <a>Sol</a>
 me escapé de la jaula, me escapé de la jaula,

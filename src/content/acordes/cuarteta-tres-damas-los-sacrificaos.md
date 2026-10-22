@@ -12,7 +12,7 @@ fraseClave: "Quien sería el creador que"
 
 ---
 <pre>
-<a>Do9</a>
+<a>Doadd9</a>
 Quien sería el creador que en su triste batalla
 <a>Lam</a>                              <a>Fa</a>
 solo puso una dama luchando a la vera de su tempesta
@@ -20,7 +20,7 @@ solo puso una dama luchando a la vera de su tempesta
 ¿Por qué la mantuvo atrás? ¿Por qué no supo apreciar
      <a>Fa</a>                    <a>Sol</a>
 el poder que desprendía en su caminar?
-<a>Do9</a>                                        <a>Sol</a>
+<a>Doadd9</a>                                     <a>Sol</a>
 ¿Quién sería el creador que en este torpe juego
 <a>Lam</a>                               <a>Fa</a>
 no colmó su tablero de hembras valientes

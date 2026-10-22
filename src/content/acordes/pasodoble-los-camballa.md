@@ -22,7 +22,7 @@ Me he paseao por el puente canal,
 me he sentao frente a tu balaustrá
     <a>Do</a>              <a>Lam</a>                      <a>Re</a>
 Pa verte mi Cai, quererte y darte un poquito más
-<a>Do9</a>               <a>Re</a>                    <a>Sim7</a>
+<a>Doadd9</a>            <a>Re</a>                    <a>Sim7</a>
 Tus ladrillos coloraos hoy serán los testigos
                       <a>Re</a>   <a>Do</a>   <a>Re</a>          <a>Sol</a>
 De cómo un grupo de amigos te regala este compás

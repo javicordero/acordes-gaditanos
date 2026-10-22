@@ -37,7 +37,7 @@ En mi Casa no hay tesoros y mi techo es bien sencillo
 es el Cielo que Manolo pintó en Cádiz de amarillo
    <a>Mim</a>
 Yo guardo en cada cuarto para ti un estribillo
-     <a>Do9</a>
+     <a>Doadd9</a>
 que arrojo cada tarde desde cualquier balcón
     <a>Lam7</a>
 Yo tengo una Bahía que entra por mi ventana

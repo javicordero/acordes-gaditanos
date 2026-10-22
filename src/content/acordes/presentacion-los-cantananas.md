@@ -12,11 +12,11 @@ video: 'https://www.youtube.com/embed/vkrW30aatrc'
 fraseClave: Cuando la luna se asoma por tus torres miradores y
 ---
 <pre>
-                    <a>Do9</a> <a>Sol7</a>            <a>Lam</a>
+                    <a>Doadd9</a> <a>Sol7</a>            <a>Lam</a>
 Cuando la luna se asoma por tus torres miradores
 <a>Mim</a>                <a>Fa</a>   <a>Re7</a>                <a>Sol7</a>
 y el silencio le susurra a tus calles y rincones
-                    <a>Do9</a> <a>Sol7</a>              <a>Lam</a>
+                    <a>Doadd9</a> <a>Sol7</a>              <a>Lam</a>
 Cuando la luna se adueña de tus miles de temores
 <a>Mim</a>              <a>Fa</a>   <a>Re7</a>                <a>Sol7</a>
 es la luz de Catalina, mi candil de cada noche
@@ -54,5 +54,5 @@ soy las costumbres más añejas gaditanas
 Soy tu pasado que en mi nana se hizo letra
                <a>Fa</a>         <a>Sol</a>  <a>Lam</a>   <a>Mim</a>   <a>Fa</a> <a>Sol7</a>
 soy tu son tu cantananas ahhh ahhhh ahhhh ahhhh
-          <a>Fa</a>  <a>Do9</a>
+          <a>Fa</a>  <a>Doadd9</a>
 Tu cantananas</pre>

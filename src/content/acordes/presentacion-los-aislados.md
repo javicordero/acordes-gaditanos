@@ -12,11 +12,11 @@ video: 'https://www.youtube.com/embed/NkdDvr0bhnI?feature=player_embedded'
 fraseClave: Leileleileleilele Leileleileleilele
 ---
 <pre>
-<a>Sol</a>           <a>Mim</a>              <a>Do9</a>
+<a>Sol</a>           <a>Mim</a>              <a>Doadd9</a>
 Leileleileleilele Leileleileleilele
              <a>Re</a>
 Leileleileleilela
-<a>Sol</a>           <a>Mim</a>              <a>Do9</a>
+<a>Sol</a>           <a>Mim</a>              <a>Doadd9</a>
 Leileleileleilele Leileleileleilele
              <a>Re</a>
 Leileleileleilela
@@ -24,13 +24,13 @@ Leileleileleilela
 Libre, o hay nada más bello en esta vida que ser
  <a>Mim</a>
 libre
-              <a>Sim7</a>                   <a>Do9</a>
+              <a>Sim7</a>                   <a>Doadd9</a>
 Desplegar tus alas sobre sueños increíbles
 <a>Sol</a>                 <a>Re</a>
 Libre, como esta canción
 <a>Sol</a>               <a>Si7</a>                         <a>Mim</a>
 Libre, pero para algunos se convierte en imposible
-              <a>Sim7</a>                  <a>Do9</a>
+              <a>Sim7</a>                  <a>Doadd9</a>
 Por tantas miradas y silencios impasibles
 <a>Sol</a>                  <a>Re</a>
 Libre, frente a su dolor
@@ -50,11 +50,11 @@ Mientras quede un alma valiente que frente a esta
 causa
 <a>Lam7</a>                            <a>Re</a>
 Se revele por romper con sus cadenas
-<a>Sol</a>           <a>Mim</a>              <a>Do9</a>
+<a>Sol</a>           <a>Mim</a>              <a>Doadd9</a>
 Leileleileleilele Leileleileleilele
              <a>Re</a>
 Leileleileleilela
-<a>Sol</a>           <a>Mim</a>              <a>Do9</a>
+<a>Sol</a>           <a>Mim</a>              <a>Doadd9</a>
 Leileleileleilele Leileleileleilele
              <a>Re</a>
 Leileleileleilela
@@ -63,7 +63,7 @@ Soy orilla en el estrecho y patria para el
 refugiao
 <a>Mim</a>
 Soy abrigo del sintecho y la canción del olvidao
-<a>Do9</a>
+<a>Doadd9</a>
 Soy la mano que te aprieta si el dolor llama a tu
 puerta
 <a>Re</a>
@@ -74,7 +74,7 @@ Soy un grito del silencio y el coraje del cobarde
 <a>Mim</a>
 Soy un patio de colegio, donde el miedo llega
 tarde
-<a>Do9</a>
+<a>Doadd9</a>
 Soy mordisco en la manzana, ante los dioses y el
 pecao
       <a>Re</a>
@@ -84,7 +84,7 @@ censurao
 Soy el punto de partida y el destino del que en
 <a>Sim7</a>         <a>Do</a>
 vida ha naufragao
-      <a>Re</a>          <a>Sol</a>   <a>Mim</a> <a>Do9</a>   <a>Re</a>
+      <a>Re</a>          <a>Sol</a>   <a>Mim</a> <a>Doadd9</a> <a>Re</a>
 Soy la voz de los aislaos ohhhhh ohhhh
          <a>Sol</a>
 De los aislaos

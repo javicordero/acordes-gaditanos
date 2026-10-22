@@ -39,7 +39,7 @@ Que han fallao dispara que aun me quedan seis vidas
 Para un acorde de guitarra
                     <a>Sol</a>           <a>Fa#</a>
 No hay arma más poderosa que la palabra
-<a>Do9</a>             <a>Sim</a>  <a>Do9</a>             <a>Sim</a>
+<a>Doadd9</a>          <a>Sim</a>  <a>Doadd9</a>          <a>Sim</a>
 A ti confió mis pasos mi querido compañero
 <a>Sol6</a>               <a>Sim</a>      <a>La</a>     <a>Sol6</a> <a>Mim</a>         <a>Fa#</a>
 Que me espera la Tacita mi reina bonita lo que más quiero

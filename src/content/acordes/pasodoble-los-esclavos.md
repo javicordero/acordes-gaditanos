@@ -24,7 +24,7 @@ que al calendario la gente no le subraya un febrero
 Se que hay ciudades donde no se pone el sol
 <a>Re7</a>                <a>Sol</a>
 en una fragua sin nombre
-            <a>Do9</a>  <a>Re7</a>      <a>Sol</a>
+            <a>Doadd9</a> <a>Re7</a>      <a>Sol</a>
 Mientras derrite los horizontes
             <a>Lam7</a>                     <a>Mim</a>
 Se que hay ciudades que beben agua bendita

@@ -17,11 +17,11 @@ fraseClave: Se acabó este viejo sabio y gruñón
 <pre>
 <a>Sol</a>                         <a>Mim</a>
 Se acabó este viejo sabio y gruñón
-               <a>Do9</a>                 <a>Re</a>
+               <a>Doadd9</a>              <a>Re</a>
 Cascarrabias y peleón ya va de recogida
 <a>Sol</a>                     <a>Mim</a>
 Ojalá te hayan hecho reflexionar
-                     <a>Do9</a>                     <a>Re</a>
+                     <a>Doadd9</a>                  <a>Re</a>
 Si es así te invito a escuchar mi consejo de vida
       <a>Do</a>                     <a>Re</a>
 Mi guitarra y mi rabia las tiene sin mas
@@ -35,7 +35,7 @@ Al mundo al mundo
 Carnaval el humano más fiero
     <a>Mim</a>
 Carnaval el humano sin miedo
-    <a>Do9</a>
+    <a>Doadd9</a>
 Carnaval el humano que explota
                                 <a>Re</a>
 Con miles de coplas por la libertad
@@ -43,7 +43,7 @@ Con miles de coplas por la libertad
 Carnaval el humano indomable
     <a>Mim</a>
 Carnaval el humano incansable
-    <a>Do9</a>
+    <a>Doadd9</a>
 Carnaval sin banderas Sin patria gobierno
                         <a>Re</a>
 Sin dios solo con su verdad
@@ -55,7 +55,7 @@ Mi pueblo se enfrenta al mundo al mundo
 Carnaval el humano indomable
      <a>Mim</a>
 Carnaval el humano incansable
-     <a>Do9</a>                                         <a>Re</a>
+     <a>Doadd9</a>                                      <a>Re</a>
 Carnaval mi niña mi reina mi diosa ya llega el final
    <a>Do</a>          <a>Re</a>       <a>Do</a>            <a>Re</a>        <a>Sol</a>
 Recuerda el consejo de vida de este viejo carnaval

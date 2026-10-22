@@ -28,11 +28,11 @@ Y que abra los ojos que no me conviene
 ser bufón donde no hay reyes
           <a>Mim</a>             <a>Re</a>
 Si con rencor poniendo un cero
-             <a>Do9</a>           <a>Sol</a>
+             <a>Doadd9</a>        <a>Sol</a>
 un jurado valoró nuestra ilusión
-     <a>Do9</a>         <a>Re</a>        <a>Sol</a>
+     <a>Doadd9</a>      <a>Re</a>        <a>Sol</a>
 No importa yo tampoco lo valoro
-  <a>Do9</a>         <a>Re</a>         <a>Sol</a>
+  <a>Doadd9</a>      <a>Re</a>         <a>Sol</a>
 pero como persona que es peor
    <a>Sol</a>           <a>Re7</a>                  <a>Sol</a>
 Y vuelvo por esa gente que está ahí afuera

@@ -31,7 +31,7 @@ Para currar en Madrid
 Y aunque allí no encuentra el mar ni brilla el sol
          <a>Sol7</a>
 De igual manera
-                  <a>Do9</a>             <a>Mi7</a>      <a>Lam</a>
+                  <a>Doadd9</a>          <a>Mi7</a>      <a>Lam</a>
 Busca algún atardecer y en una esquinita cualquiera
                     <a>Fa</a>                  <a>Mi7</a>
 Recordando aquellas noches en nuestra Caleta

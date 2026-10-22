@@ -14,7 +14,7 @@ fraseClave: Siempre pasa lo mismo, no sé pa qué me meto,
 <pre>
         <a>Sol</a>                  <a>Re/Fa#</a>
 Siempre pasa lo mismo, no sé pa qué me meto,
-           <a>Mim</a>               <a>Do9</a>
+           <a>Mim</a>               <a>Doadd9</a>
 si esto es mucha faena y me cuesta el dinero,
    <a>Lam7</a>                     <a>Sim7</a>
 además, no te quejes, porque no lo ha pedío,

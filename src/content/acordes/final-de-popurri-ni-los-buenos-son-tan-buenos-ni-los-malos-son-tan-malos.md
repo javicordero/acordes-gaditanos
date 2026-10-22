@@ -12,11 +12,11 @@ video: 'https://www.youtube.com/embed/TRNRXONWYt8?feature=player_embedded'
 fraseClave: Cuando todo se acabe y te encuentres conmigo, dará
 ---
 <pre>
-<a>Do9</a>                  <a>Lam</a>
+<a>Doadd9</a>               <a>Lam</a>
 Cuando todo se acabe y te encuentres conmigo,
 <a>Fa</a>                   <a>Sol</a>
 dará igual el futuro, dará igual el destino.
-               <a>Do9</a>                 <a>Lam</a>
+               <a>Doadd9</a>              <a>Lam</a>
 Cuando todo se acabe entenderás que tu vida
                <a>Fa</a>                 <a>Sol</a>
 es tan solo un viaje con billete de ida.
@@ -34,11 +34,11 @@ No me digas que la vida se te fue sin darte cuenta
 Y que no tienes qué contarme
 
 cuando ajustemos la cuentas
-         <a>Do9</a>                  <a>Mim</a>
+         <a>Doadd9</a>               <a>Mim</a>
 Vive la vida como si el último día
                  <a>Fa</a>
 fuera el día de mañana
-                    <a>Sol</a>                        <a>Do9</a>
+                    <a>Sol</a>                        <a>Doadd9</a>
 Y no pierdas ni un segundo cuando juegues en la cama
                      <a>Mim</a>                     <a>Fa</a>
 No te guardes un te quiero, no lo dejes pa' mañana,

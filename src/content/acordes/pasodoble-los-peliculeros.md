@@ -14,7 +14,7 @@ fraseClave: "El tiempo es un tesoro incalculable"
 <pre>
    <a>Sol</a>            <a>Re7</a>         <a>Sol</a>
 El tiempo es un tesoro incalculable
-    <a>Do9</a>                   <a>Lam7</a>
+    <a>Doadd9</a>                <a>Lam7</a>
 Tan fino distinguido y limitado
       <a>Dom7</a>               <a>Sol</a>
 Que empuja de manera inexorable
@@ -48,7 +48,7 @@ Si alguien me irrita corto reemplazo
 y reseteo mi corazón
                       <a>Re7</a>  <a>Sol</a>
 Amar no es solo bailar y reír
-     <a>Do9</a>
+     <a>Doadd9</a>
 Ni pasear a los pies de París
               <a>Lam</a>                  <a>Re7</a>
 No es solo un brindis con vista al mar

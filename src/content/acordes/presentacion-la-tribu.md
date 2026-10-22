@@ -14,13 +14,13 @@ fraseClave: Llego del cielo un barquito Mas típico no lo hay
 <pre>
 <a>Lam7</a>                   <a>Sol</a>  <a>Fa</a>               <a>Mi7</a>
 Llego del cielo un barquito Mas típico no lo hay
-<a>Lam7</a>              <a>Sol</a>   <a>Fa</a>                <a>Do9</a>
+<a>Lam7</a>              <a>Sol</a>   <a>Fa</a>                <a>Doadd9</a>
 Mas colgao ni más bonito Y que se llamaba Cai
 <a>Rem</a>               <a>Mi7</a>  <a>Lam7</a>         <a>Sol</a>   <a>Re/Fa#</a>
 En una noche de invierno En nuestra isla cayó
         <a>Rem</a>                    <a>Mim</a>         <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
 Y para siempre La vida de este salvaje Cambió
-<a>Do9</a>                                <a>Sol</a>
+<a>Doadd9</a>                             <a>Sol</a>
 Y entre sus restos supimos De otra civilización
       <a>Lam7</a>                         <a>Mim</a>
 Cádiz la tierra de plata Reino del cielo y de sol
