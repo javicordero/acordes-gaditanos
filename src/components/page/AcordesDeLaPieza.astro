@@ -1,13 +1,15 @@
 ---
 import DiagramaAcorde from './DiagramaAcorde.astro';
-import type { EntradaGlosario } from '../../lib/acordes';
+import { indicePostura, type EntradaGlosario } from '../../lib/acordes';
 
 interface Props {
   acordes: Array<{ etiqueta: string; entrada: EntradaGlosario }>;
+  posturas?: Record<string, string>;
 }
 
-const { acordes } = Astro.props;
+const { acordes, posturas = {} } = Astro.props;
 const nombres = acordes.map(({ etiqueta }) => etiqueta);
+const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
 ---
 
 {
@@ -24,9 +26,10 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
                     type='button'
                     class='acordes-pieza__nombre'
                     data-acorde={nombre}
+                    data-postura={posturas[nombre]}
                     aria-haspopup='dialog'
                     aria-expanded='false'
-                    aria-label={`Ver cómo se toca ${nombre}`}
+                    aria-label={`Ver cómo se toca ${nombre}${posturas[nombre] ? ' (postura de la pieza)' : ''}`}
                   >
                     {nombre}
                   </button>
@@ -35,6 +38,13 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
               </>
             ))}
           </span>
+        </p>
+      )}
+
+      {hayPosturas && (
+        <p class='acordes-pieza__leyenda'>
+          <span class='acordes-pieza__asterisco' aria-hidden='true'>*</span>{' '}
+          Postura concreta para esta pieza
         </p>
       )}
 
@@ -79,27 +89,32 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
         <div class='acordes-pieza__cuerpo' id='acordes-pieza-cuerpo' inert aria-hidden='true'>
           <div class='acordes-pieza__interior'>
             <ul class='acordes-pieza__grid'>
-              {acordes.map(({ etiqueta, entrada }) => (
-                <li class='acorde-mini'>
-                  <button
-                    type='button'
-                    class='acorde-mini__btn'
-                    data-acorde={etiqueta}
-                    aria-haspopup='dialog'
-                    aria-expanded='false'
-                    aria-label={`Ver cómo se toca ${etiqueta}`}
-                  >
-                    <span class='acorde-mini__nombre'>{etiqueta}</span>
-                    <DiagramaAcorde
-                      nombre={etiqueta}
-                      posicion={entrada.posiciones[0]!}
-                      total={entrada.posiciones.length}
-                      ancho={104}
-                      alto={132}
-                    />
-                  </button>
-                </li>
-              ))}
+              {acordes.map(({ etiqueta, entrada }) => {
+                const postura = posturas[etiqueta];
+                const indice = postura ? (indicePostura(entrada, postura) ?? 0) : 0;
+                return (
+                  <li class='acorde-mini'>
+                    <button
+                      type='button'
+                      class='acorde-mini__btn'
+                      data-acorde={etiqueta}
+                      data-postura={postura}
+                      aria-haspopup='dialog'
+                      aria-expanded='false'
+                      aria-label={`Ver cómo se toca ${etiqueta}${postura ? ' (postura de la pieza)' : ''}`}
+                    >
+                      <span class='acorde-mini__nombre'>{etiqueta}</span>
+                      <DiagramaAcorde
+                        nombre={etiqueta}
+                        posicion={entrada.posiciones[indice]!}
+                        total={entrada.posiciones.length}
+                        ancho={104}
+                        alto={132}
+                      />
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
 
             <a
@@ -253,6 +268,45 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
   .acordes-pieza__nombre:focus-visible {
     outline: 2px solid var(--primary-contrast-color);
     outline-offset: 1px;
+  }
+
+  .acordes-pieza__nombre[data-postura] {
+    position: relative;
+  }
+
+  .acordes-pieza__nombre[data-postura]::after {
+    content: '*';
+    position: absolute;
+    top: 0;
+    right: -0.7em;
+    font-size: 1em;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .acorde-mini__btn[data-postura] .acorde-mini__nombre {
+    position: relative;
+  }
+
+  .acorde-mini__btn[data-postura] .acorde-mini__nombre::after {
+    content: '*';
+    position: absolute;
+    top: 0;
+    right: -0.7em;
+    font-size: 1em;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .acordes-pieza__leyenda {
+    margin: 2px 0 0;
+    font-size: 0.68rem;
+    color: var(--text-secondary-color);
+  }
+
+  .acordes-pieza__asterisco {
+    color: var(--primary-contrast-color);
+    font-weight: 800;
   }
 
   .acordes-pieza__accion {
@@ -454,7 +508,7 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
 </script>
 
 <script>
-  import { buscarEnIndice, crearIndice, type Glosario } from '../../lib/acordes';
+  import { buscarEnIndice, crearIndice, indicePostura, type Glosario } from '../../lib/acordes';
   import { svgDiagrama } from '../../lib/diagrama';
   import { transportarEtiqueta } from '../../lib/transporte';
 
@@ -496,7 +550,10 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
       el.dataset.acorde = etiqueta;
       el.setAttribute('aria-haspopup', 'dialog');
       el.setAttribute('aria-expanded', 'false');
-      el.setAttribute('aria-label', `Ver cómo se toca ${etiqueta}`);
+      el.setAttribute(
+        'aria-label',
+        `Ver cómo se toca ${etiqueta}${el.dataset.postura ? ' (postura de la pieza)' : ''}`,
+      );
       return true;
     }
 
@@ -515,11 +572,14 @@ const nombres = acordes.map(({ etiqueta }) => etiqueta);
         return;
       }
 
+      const postura = boton.dataset.postura;
+      const indicePos = postura ? (indicePostura(entrada, postura) ?? 0) : 0;
+
       contenedor.style.display = '';
       contenedor.innerHTML = svgDiagrama({
         nombre: etiqueta,
-        posicion: entrada.posiciones[0]!,
-        indice: 0,
+        posicion: entrada.posiciones[indicePos]!,
+        indice: indicePos,
         total: entrada.posiciones.length,
         ancho: 104,
         alto: 132,

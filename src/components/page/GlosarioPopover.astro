@@ -163,7 +163,7 @@
 </style>
 
 <script>
-  import { buscarEnIndice, crearIndice, type EntradaGlosario, type Glosario } from '../../lib/acordes';
+  import { buscarEnIndice, crearIndice, indicePostura, type EntradaGlosario, type Glosario } from '../../lib/acordes';
   import { svgDiagrama } from '../../lib/diagrama';
 
   const pop = document.getElementById('glosario-popover') as HTMLElement;
@@ -268,6 +268,13 @@
       pop.style.top = `${Math.round(top)}px`;
     }
 
+    /** Postura inicial opcional: <a data-postura="x 0 2 2 2 4">LaM7</a>. */
+    function posturaInicial(disparador: HTMLElement, dato: EntradaGlosario): number {
+      const valor = disparador.dataset.postura?.trim();
+      if (!valor) return 0;
+      return indicePostura(dato, valor) ?? 0;
+    }
+
     function abrir(disparador: HTMLElement) {
       const esEnlace = disparador.tagName === 'A';
       const texto = (esEnlace ? disparador.textContent : disparador.dataset.acorde)?.trim() || '';
@@ -291,7 +298,7 @@
       ancla = disparador;
       entrada = encontrado;
       textoActual = texto;
-      posicion = 0;
+      posicion = posturaInicial(disparador, encontrado);
 
       pop.hidden = false;
       pintar();
@@ -364,7 +371,10 @@
         a.setAttribute('tabindex', '0');
         a.setAttribute('aria-haspopup', 'dialog');
         a.setAttribute('aria-expanded', 'false');
-        a.setAttribute('aria-label', `Ver cómo se toca ${texto}`);
+        a.setAttribute(
+          'aria-label',
+          `Ver cómo se toca ${texto}${a.dataset.postura ? ' (postura de la pieza)' : ''}`,
+        );
         a.classList.add('acorde-interactivo');
       });
     }

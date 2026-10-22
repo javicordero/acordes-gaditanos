@@ -240,6 +240,37 @@ export function buscarEnIndice(
   return null;
 }
 
+/**
+ * Convierte una postura escrita en trastes: "x 0 2 2 2 4" o "-1,0,2,2,2,4".
+ * Acepta `x`/`X` para cuerdas mudas. Devuelve `null` si no son 6 trastes válidos.
+ */
+export function parsearPostura(texto: string): number[] | null {
+  const trastes = texto
+    .trim()
+    .split(/[\s,]+/)
+    .filter(Boolean)
+    .map((traste) => (/^[xX]$/.test(traste) ? -1 : Number(traste)));
+
+  if (trastes.length !== 6 || trastes.some((t) => !Number.isInteger(t) || t < -1)) {
+    return null;
+  }
+  return trastes;
+}
+
+/** Índice de la posición del glosario que coincide con una postura escrita. */
+export function indicePostura(
+  entrada: Pick<EntradaGlosario, 'posiciones'>,
+  texto: string,
+): number | null {
+  const trastes = parsearPostura(texto);
+  if (!trastes) return null;
+
+  const indice = entrada.posiciones.findIndex(
+    (p) => p.trastes.length === trastes.length && p.trastes.every((v, i) => v === trastes[i]),
+  );
+  return indice === -1 ? null : indice;
+}
+
 /** Extrae los acordes de los bloques `<pre>` de una pieza, en orden de aparición. */
 export function extraerEtiquetasAcordes(cuerpo: string): string[] {
   const etiquetas: string[] = [];

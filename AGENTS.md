@@ -38,6 +38,13 @@ Cada acorde envuelto en `<a>etiqueta</a>` dentro de `<pre>`. El script `scripts/
 Bendita suerte pal aficionao que más de un mes de
 ```
 
+### Postura predeterminada por acorde
+En el `<pre>` se puede fijar la postura con la que se abre un acorde con `data-postura`:
+```html
+<a data-postura="x 0 2 2 2 4">LaM7</a>
+```
+La postura se escribe de la 6ª a la 1ª cuerda (`x` = muda) y debe coincidir exactamente con una posición del glosario. El popover abre en esa posición, el acorde se marca con un asterisco y, si la pieza tiene alguna, aparece la leyenda «* Postura concreta para esta pieza» en «Acordes usados». La lógica está en `parsearPostura`/`indicePostura` (`src/lib/acordes.ts`). Ver skill `postura-predeterminada`.
+
 ### Dynamic Routes (`src/pages/`)
 | Route | File |
 |---|---|
@@ -122,6 +129,7 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 ## Available Agent Skills
 Skills en `.agents/skills/` para tareas comunes:
 - `chord-formatting` — envolver acordes en `<a>` tags
+- `postura-predeterminada` — fijar la postura con la que se abre un acorde concreto con `data-postura`
 - `cifrado-a-formato` — convertir cifrado pegado de otra web al formato propio (línea de acordes + letra con palabras completas)
 - `create-acorde` — crear nuevo archivo markdown de acorde
 - `promover-acorde` — mover acordes revisados de `acordes2` a `acordes` (local, no versionada)

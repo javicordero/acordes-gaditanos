@@ -31,7 +31,7 @@ El glosario (`/glosario`) y el diagrama emergente funcionan **automáticamente**
 
 ```html
 <pre>
-<a>La</a>    <a>Mi7</a>    <a>Sim7/5</a>
+<a>La</a>    <a>Mi7</a>    <a>Sim7b5</a>
 </pre>
 ```
 
@@ -74,7 +74,7 @@ Cada acorde lleva un pequeño desplazamiento a la derecha (`left`) para quedar s
 | 31–45 | 7px | `acorde-col-4` |
 | 46+ | 8px | `acorde-col-5` |
 
-La clase la pone el build (plugin `src/lib/remark-acordes-columna.mjs`): **no añadas `style`, clases ni atributos a los `<a>`**. Lo que sí importa es que la columna sea exacta: cuenta caracteres de texto visible, sin los `<a>`. Un espacio de más o de menos desplaza el acorde y puede cambiarle el tramo.
+La clase la pone el build (plugin `src/lib/remark-acordes-columna.mjs`): **no añadas `style`, clases ni atributos a los `<a>`**, con una excepción: `data-postura` para fijar la postura predeterminada de un acorde (ver la skill `postura-predeterminada`). Lo que sí importa es que la columna sea exacta: cuenta caracteres de texto visible, sin los `<a>`. Un espacio de más o de menos desplaza el acorde y puede cambiarle el tramo.
 
 Ejemplo: en `<a>Sol</a>    <a>Do</a>`, `Sol` está en la columna 0 y `Do` en la 7 (no en la 14): `<a>Sol</a>` no ocupa esas 7 columnas.
 
@@ -113,7 +113,7 @@ Acordes típicos en mayúsculas/minúsculas:
 - Acordes con variaciones: Mi7b5, Lam7, Fa#m, Do#m, Sol#7
 - Acordes suspendidos: Lasus2, Lasus4, Lasus9, Lasusb6/9, Mi7sus4
 - Acordes con novena: Mi/add9, Lad9, Dom9
-- Acordes semidisminuidos: Sim7/5, Do#m7/5
+- Acordes semidisminuidos: Sim7b5, Do#m7b5
 - Inversiones: Re/Fa#, Lam7/Sib
 
 ## (Sorda) - Caso Especial

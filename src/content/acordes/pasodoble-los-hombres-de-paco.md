@@ -21,9 +21,9 @@ Juanma Moreno Bonilla no me ha sorprendido nada
 Lo tuyo con los cribados tu siempre fuiste muy
     <a>Mi7</a>
 de cribadas
-                           <a>Sim7/5</a>            <a>Mi7</a>
+                           <a>Sim7b5</a>            <a>Mi7</a>
 Y aunque el Yuyu le cantara a la sanidad una copla
-<a>Sim7/5</a>            <a>Mi7</a>            <a>Sim7/5</a>  <a>Mi7</a>    <a>Lam</a> <a>La7</a>
+<a>Sim7b5</a>            <a>Mi7</a>            <a>Sim7b5</a>  <a>Mi7</a>    <a>Lam</a> <a>La7</a>
 A ti te hace la pelota, en que quedamos, Yuyu cabrón
 <a>Rem</a>                               <a>Lam</a>
 Solución y dice Juanma que no hay solución
@@ -33,9 +33,9 @@ La sanidad sale muy cara pero pa toros si hay subvención
 Me pegué en Zamacola un día entero
                         <a>Mi7</a>
 Llego a ir vestido de torero lo mismo me atienden
-      <a>La</a>
+      <a>La6</a>
 del tirón
-                                <a>Fa#7</a>           <a>Sim7</a>
+                  <a data-postura="x 0 2 2 2 4">LaM7</a>           <a>Fa#7</a>           <a>Sim7</a>
 Días, doscientos días, mi Andalucía para una prueba
 <a>Re</a>                  <a>Mi7</a>                           <a>La</a> <a>La7</a>
 Noches, doscientas, noches, en esa lista que desespera

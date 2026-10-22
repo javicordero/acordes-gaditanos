@@ -412,6 +412,23 @@ async function main() {
     };
   }
 
+  // Posiciones extra para acordes que ya vienen de LaCuerda (se añaden al final).
+  const POSICIONES_EXTRA = {
+    Lamaj7: [{ trastes: [-1, 0, 2, 2, 2, 4], baseTraste: 1, cejilla: null }],
+  };
+
+  for (const [etiqueta, extras] of Object.entries(POSICIONES_EXTRA)) {
+    const entrada = acordes[etiqueta];
+    if (!entrada) continue;
+    const existentes = new Set(entrada.posiciones.map((p) => p.trastes.join(',')));
+    for (const posicion of extras) {
+      const clave = posicion.trastes.join(',');
+      if (existentes.has(clave)) continue;
+      entrada.posiciones.push(posicion);
+      existentes.add(clave);
+    }
+  }
+
   const ordenado = Object.fromEntries(
     Object.entries(acordes).sort(([a], [b]) => a.localeCompare(b, 'es')),
   );

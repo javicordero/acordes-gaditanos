@@ -47,6 +47,19 @@ const cuerpoAcorde =
       : '';
 const acordesPieza =
   indiceGlosario && cuerpoAcorde ? acordesDePieza(cuerpoAcorde, indiceGlosario) : [];
+
+/** Posturas predeterminadas por acorde: <a data-postura="x 0 2 2 2 4">LaM7</a>. */
+const posturasPieza: Record<string, string> = {};
+for (const m of cuerpoAcorde.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
+  const etiqueta = (m[2] ?? '').trim();
+  const atributos = m[1] ?? '';
+  const postura = atributos.match(/\bdata-postura\s*=\s*(?:"([^"]*)"|'([^']*)')/i);
+  const valor = (postura?.[1] ?? postura?.[2] ?? '').trim();
+  if (etiqueta && valor && !(etiqueta in posturasPieza)) {
+    posturasPieza[etiqueta] = valor;
+  }
+}
+
 const datosGlosario: Glosario = indiceGlosario
   ? mapaGlosarioConTransportes(acordesPieza, indiceGlosario)
   : {};
@@ -130,7 +143,7 @@ const headingId = `acorde-${slug}`;
     </div>
 
     {conGlosario && <GlosarioHint />}
-    {conGlosario && <AcordesDeLaPieza acordes={acordesPieza} />}
+    {conGlosario && <AcordesDeLaPieza acordes={acordesPieza} posturas={posturasPieza} />}
 
       <div class='acorde-content'>
       <TutorialAutoscroll />
@@ -404,6 +417,18 @@ const headingId = `acorde-${slug}`;
 
     & :global(a.acorde-col-5) {
       left: 8px;
+    }
+
+    /* Asterisco de "postura concreta para esta pieza". Va absoluto para no
+       desplazar la línea del <pre> ni romper la alineación con la letra. */
+    & :global(a[data-postura])::after {
+      content: '*';
+      position: absolute;
+      top: 0;
+      right: -0.7em;
+      font-size: 1em;
+      line-height: 1;
+      pointer-events: none;
     }
   }
 
