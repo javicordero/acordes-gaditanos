@@ -1,0 +1,745 @@
+---
+import Layout from '../layouts/Layout.astro';
+import glosarioJson from '../data/glosario-acordes.json';
+import { slugAcorde, type Glosario } from '../lib/acordes';
+
+const glosario = (glosarioJson as unknown as { acordes: Glosario }).acordes;
+const slugs = [...new Set(Object.values(glosario).map((entrada) => slugAcorde(entrada)))];
+
+// Posturas exactas del glosario: la etiqueta del sitio manda cuando la forma ya existe.
+const posturas: Record<string, [string, string]> = {};
+for (const [etiqueta, entrada] of Object.entries(glosario)) {
+  const slug = slugAcorde(entrada);
+  for (const posicion of entrada.posiciones) {
+    const clave = posicion.trastes.join(',');
+    if (!(clave in posturas)) posturas[clave] = [etiqueta, slug];
+  }
+}
+
+const CUERDAS = [6, 5, 4, 3, 2, 1];
+const NOTAS_CUERDA = ['Mi', 'La', 'Re', 'Sol', 'Si', 'Mi'];
+const TRASTES = Array.from({ length: 12 }, (_, i) => i + 1);
+
+const title = 'Reconocer un acorde de guitarra - Acordes Gaditanos';
+const description =
+  'Coloca los puntos de una postura en el mástil y descubre cómo se llama el acorde. Reconocedor de acordes de guitarra con notación española, inversiones y alternativas.';
+const keywords =
+  'reconocer acordes, qué acorde es, identificar acorde de guitarra, buscador de acordes por postura, mástil interactivo, acordes de Carnaval';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Reconocer un acorde de guitarra',
+  description,
+  url: canonicalURL,
+  inLanguage: 'es-ES',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Acordes Gaditanos',
+    url: Astro.site,
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: new URL('/', Astro.site).toString(),
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Glosario de acordes',
+      item: new URL('/glosario', Astro.site).toString(),
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Reconocer un acorde',
+      item: canonicalURL,
+    },
+  ],
+};
+---
+
+<Layout title={title} description={description} keywords={keywords} noindex>
+  <script type='application/ld+json' set:html={JSON.stringify(webPageSchema)} />
+  <script type='application/ld+json' set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <div class='main-container'>
+    <section>
+      <article class='container-layout inner-content reconocer'>
+        <nav class='reconocer__migas' aria-label='Migas de pan'>
+          <a href='/'>Inicio</a>
+          <span aria-hidden='true'>/</span>
+          <a href='/glosario'>Glosario de acordes</a>
+          <span aria-hidden='true'>/</span>
+          <span>Reconocer un acorde</span>
+        </nav>
+
+        <header class='reconocer__header'>
+          <h1>Reconocer un acorde</h1>
+          <p class='reconocer__intro'>
+            ¿Sabes cómo se pone un acorde pero no cómo se llama? Coloca los puntos de la postura en
+            el mástil y te decimos qué acorde es, con sus posibles interpretaciones.
+          </p>
+        </header>
+
+        <div class='reconocer__layout'>
+          <div class='reconocer__tablero'>
+            <div class='reconocer__cabecera'>
+              <span class='reconocer__esquina' aria-hidden='true'></span>
+              {
+                TRASTES.map((traste) => (
+                  <span class='reconocer__traste-num' aria-hidden='true'>
+                    {traste}
+                  </span>
+                ))
+              }
+            </div>
+
+            <div class='reconocer__mastil' role='group' aria-label='Mástil de guitarra'>
+              {
+                CUERDAS.map((cuerda, i) => (
+                  <div class='reconocer__cuerda-fila'>
+                    <div class='reconocer__cuerda-info'>
+                      <button
+                        type='button'
+                        class='reconocer__estado'
+                        data-estado={i}
+                        aria-label={`Cuerda ${cuerda} (${NOTAS_CUERDA[i]}): muda`}
+                      >
+                        ×
+                      </button>
+                      <span class='reconocer__nota' aria-hidden='true'>
+                        {NOTAS_CUERDA[i]}
+                      </span>
+                    </div>
+                    {TRASTES.map((traste) => (
+                      <button
+                        type='button'
+                        class='reconocer__celda'
+                        data-cuerda={i}
+                        data-traste={traste}
+                        aria-label={`Cuerda ${cuerda}, traste ${traste}`}
+                        aria-pressed='false'
+                        tabindex={traste === 1 && i === 0 ? 0 : -1}
+                      />
+                    ))}
+                  </div>
+                ))
+              }
+            </div>
+
+            <p class='reconocer__pista'>
+              Pulsa un traste para poner un punto. Marca con <strong>○</strong> las cuerdas que
+              suenan al aire y con <strong>×</strong> las que no se tocan. Las cuerdas sin punto y
+              sin ○ no suenan.
+            </p>
+            <p class='reconocer__lectura' data-lectura aria-live='polite'></p>
+          </div>
+
+          <aside class='reconocer__panel' aria-live='polite'>
+            <p class='reconocer__etiqueta'>Acorde</p>
+            <p class='reconocer__nombre' data-nombre>—</p>
+            <p class='reconocer__notas' data-notas></p>
+            <p class='reconocer__omitidas' data-omitidas></p>
+            <p class='reconocer__ayuda' data-ayuda>
+              Coloca puntos en el mástil o marca cuerdas al aire.
+            </p>
+
+            <div class='reconocer__alternativas' data-alternativas hidden>
+              <p class='reconocer__etiqueta'>También podría ser</p>
+              <ul class='reconocer__lista' data-lista></ul>
+            </div>
+
+            <a class='reconocer__enlace' data-enlace href='/glosario' hidden>
+              Ver en el glosario
+            </a>
+
+            <button type='button' class='reconocer__limpiar' data-limpiar>Limpiar mástil</button>
+          </aside>
+        </div>
+
+        <section class='reconocer__como'>
+          <h2>Cómo funciona</h2>
+          <p>
+            El mástil está en afinación estándar (Mi-La-Re-Sol-Si-Mi). Cada punto representa una
+            nota pisada; las cuerdas marcadas con <strong>○</strong> suenan al aire y las marcadas
+            con <strong>×</strong> no se tocan.
+          </p>
+          <p>
+            Calculamos las notas que suenan y buscamos el acorde que forman. Cuando hay varias
+            lecturas posibles (por ejemplo, <em>Do6</em> y <em>Lam7</em> comparten las mismas notas),
+            mostramos la más probable según la nota del bajo y, debajo, las alternativas.
+          </p>
+          <p>
+            Si el acorde está en nuestro <a href='/glosario'>glosario</a>, el enlace te lleva a su
+            ficha con todas las posiciones.
+          </p>
+        </section>
+      </article>
+    </section>
+  </div>
+
+  <script type='application/json' id='slugs-glosario' set:html={JSON.stringify(slugs)} />
+  <script type='application/json' id='posturas-glosario' set:html={JSON.stringify(posturas)} />
+</Layout>
+
+<style>
+  .reconocer__migas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary-color);
+
+    & a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .reconocer__header {
+    margin: 8px 0 20px;
+
+    & h1 {
+      margin: 0 0 8px;
+      font-size: 1.9rem;
+      line-height: 1.15;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .reconocer__intro {
+    margin: 0;
+    max-width: 70ch;
+    color: var(--text-color);
+    line-height: 1.6;
+  }
+
+  .reconocer__layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .reconocer__tablero {
+    flex: 1 1 440px;
+    max-width: 620px;
+  }
+
+  .reconocer__cabecera,
+  .reconocer__cuerda-fila {
+    display: grid;
+    grid-template-columns: 54px repeat(12, minmax(0, 1fr));
+  }
+
+  .reconocer__cabecera {
+    padding: 0 2px 2px;
+    align-items: end;
+  }
+
+  .reconocer__esquina {
+    display: block;
+  }
+
+  .reconocer__traste-num {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.6rem;
+    text-align: center;
+    color: var(--text-secondary-color);
+  }
+
+  .reconocer__mastil {
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .reconocer__cuerda-fila {
+    border-bottom: 1px solid var(--text-secondary-color);
+  }
+
+  .reconocer__cuerda-fila:last-child {
+    border-bottom: 0;
+  }
+
+  .reconocer__cuerda-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 5px;
+  }
+
+  .reconocer__estado {
+    flex: none;
+    width: 26px;
+    height: 24px;
+    padding: 0;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .reconocer__estado:hover,
+  .reconocer__estado:focus-visible {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .reconocer__estado[data-tipo='aire'] {
+    background: var(--acorde-color);
+    border-color: var(--acorde-color);
+    color: #fff;
+  }
+
+  .reconocer__nota {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: var(--text-secondary-color);
+  }
+
+  .reconocer__celda {
+    position: relative;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    border-right: 1px solid var(--text-secondary-color);
+    border-radius: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .reconocer__celda:last-child {
+    border-right: 0;
+  }
+
+  .reconocer__celda[data-traste='1'] {
+    border-left: 3px solid var(--primary-color);
+  }
+
+  .reconocer__celda:hover {
+    background: var(--hover-bg);
+  }
+
+  .reconocer__celda:focus-visible {
+    outline: 2px solid var(--primary-contrast-color);
+    outline-offset: -2px;
+  }
+
+  .reconocer__celda[aria-pressed='true']::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: var(--acorde-color);
+  }
+
+  .reconocer__pista {
+    margin: 10px 0 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+  }
+
+  .reconocer__lectura {
+    margin: 6px 0 0;
+    min-height: 1.2em;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: var(--acorde-color);
+  }
+
+  .reconocer__panel {
+    flex: 0 1 210px;
+    min-width: 190px;
+    padding: 14px 16px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .reconocer__etiqueta {
+    margin: 0 0 4px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-secondary-color);
+  }
+
+  .reconocer__nombre {
+    margin: 0 0 4px;
+    min-height: 1.2em;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--acorde-color);
+    word-break: break-word;
+  }
+
+  .reconocer__notas {
+    margin: 0 0 4px;
+    min-height: 1.2em;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-secondary-color);
+  }
+
+  .reconocer__omitidas {
+    margin: 0 0 10px;
+    min-height: 1.2em;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.66rem;
+    color: var(--text-secondary-color);
+  }
+
+  .reconocer__ayuda {
+    margin: 0 0 10px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  .reconocer__alternativas {
+    margin-bottom: 12px;
+  }
+
+  .reconocer__lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .reconocer__lista li {
+    margin: 0;
+  }
+
+  .reconocer__lista span {
+    display: inline-block;
+    padding: 2px 8px;
+    border: 2px solid var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .reconocer__enlace {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  .reconocer__limpiar {
+    display: block;
+    width: 100%;
+    padding: 7px 12px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 0 var(--primary-color);
+  }
+
+  .reconocer__limpiar:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .reconocer__como {
+    max-width: 70ch;
+
+    & h2 {
+      margin: 0 0 10px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--primary-color);
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary-color);
+    }
+
+    & p {
+      margin: 0 0 10px;
+      line-height: 1.6;
+      color: var(--text-color);
+    }
+
+    & a {
+      color: var(--link-color);
+      font-weight: 700;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .reconocer__header h1 {
+      font-size: 1.45rem;
+    }
+
+    .reconocer__celda {
+      height: 32px;
+    }
+
+    .reconocer__panel {
+      flex: 1 1 100%;
+      min-width: 0;
+    }
+  }
+</style>
+
+<script>
+  import { slugAcorde } from '../lib/acordes';
+  import { reconocerAcorde } from '../lib/reconocer';
+
+  const estados: number[] = [-1, -1, -1, -1, -1, -1];
+  const celdas = Array.from(document.querySelectorAll<HTMLButtonElement>('.reconocer__celda'));
+  const botonesEstado = Array.from(
+    document.querySelectorAll<HTMLButtonElement>('.reconocer__estado'),
+  );
+  const elNombre = document.querySelector<HTMLElement>('[data-nombre]');
+  const elNotas = document.querySelector<HTMLElement>('[data-notas]');
+  const elOmitidas = document.querySelector<HTMLElement>('[data-omitidas]');
+  const elLectura = document.querySelector<HTMLElement>('[data-lectura]');
+  const elAyuda = document.querySelector<HTMLElement>('[data-ayuda]');
+  const elAlternativas = document.querySelector<HTMLElement>('[data-alternativas]');
+  const elLista = document.querySelector<HTMLElement>('[data-lista]');
+  const elEnlace = document.querySelector<HTMLAnchorElement>('[data-enlace]');
+  const botonLimpiar = document.querySelector<HTMLButtonElement>('[data-limpiar]');
+  const datosSlugs = document.getElementById('slugs-glosario');
+
+  const slugs = new Set<string>(
+    datosSlugs ? (JSON.parse(datosSlugs.textContent || '[]') as string[]) : [],
+  );
+
+  const datosPosturas = document.getElementById('posturas-glosario');
+  const posturas = new Map<string, [string, string]>(
+    Object.entries(
+      datosPosturas ? (JSON.parse(datosPosturas.textContent || '{}') as Record<string, [string, string]>) : {},
+    ),
+  );
+
+  const NOMBRES_CUERDA = ['6ª', '5ª', '4ª', '3ª', '2ª', '1ª'];
+  const NOTAS_CUERDA = ['Mi', 'La', 'Re', 'Sol', 'Si', 'Mi'];
+  const AFINACION = [4, 9, 2, 7, 11, 4];
+  const NOTAS = ['Do', 'Do#', 'Re', 'Re#', 'Mi', 'Fa', 'Fa#', 'Sol', 'Sol#', 'La', 'Sib', 'Si'];
+  const NOMBRE_INTERVALO: Record<string, string> = {
+    '5': '5ª',
+    '9': '9ª',
+    '11': '11ª',
+    '13': '13ª',
+  };
+
+  function notaDeCuerda(cuerda: number, traste: number): string {
+    return NOTAS[(AFINACION[cuerda]! + traste) % 12]!;
+  }
+
+  function notasDetectadas(): string[] {
+    const notas = new Set<string>();
+    estados.forEach((estado, i) => {
+      if (estado >= 0) notas.add(notaDeCuerda(i, estado));
+    });
+    return [...notas];
+  }
+
+  function pintarLectura() {
+    if (!elLectura) return;
+    const partes = estados.map((estado, i) => {
+      if (estado === -1) return `${NOMBRES_CUERDA[i]} ×`;
+      if (estado === 0) return `${NOMBRES_CUERDA[i]} ${notaDeCuerda(i, 0)}`;
+      return `${NOMBRES_CUERDA[i]} ${notaDeCuerda(i, estado)} (${estado})`;
+    });
+    elLectura.textContent = partes.join(' · ');
+  }
+
+  function pintarCeldas() {
+    for (const celda of celdas) {
+      const cuerda = Number(celda.dataset.cuerda);
+      const traste = Number(celda.dataset.traste);
+      const activa = estados[cuerda] === traste;
+      celda.setAttribute('aria-pressed', String(activa));
+    }
+  }
+
+  function pintarEstados() {
+    botonesEstado.forEach((boton, i) => {
+      const estado = estados[i]!;
+      let texto = '×';
+      let tipo = 'muda';
+      if (estado === 0) {
+        texto = '○';
+        tipo = 'aire';
+      } else if (estado > 0) {
+        texto = String(estado);
+        tipo = 'pisada';
+      }
+      boton.textContent = texto;
+      boton.dataset.tipo = tipo;
+      const detalle = estado === -1 ? 'muda' : estado === 0 ? 'al aire' : `traste ${estado}`;
+      boton.setAttribute(
+        'aria-label',
+        `Cuerda ${NOMBRES_CUERDA[i]} (${NOTAS_CUERDA[i]}): ${detalle}. Pulsa para cambiar entre al aire y muda.`,
+      );
+      boton.title = `Cuerda ${NOMBRES_CUERDA[i]} (${NOTAS_CUERDA[i]}): ${detalle}`;
+    });
+  }
+
+  function pintarResultado() {
+    const resultados = reconocerAcorde(estados);
+
+    if (!resultados.length) {
+      if (elNombre) elNombre.textContent = '—';
+      if (elNotas) elNotas.textContent = '';
+      if (elOmitidas) elOmitidas.textContent = '';
+      const detectadas = notasDetectadas();
+      if (elAyuda) {
+        elAyuda.hidden = false;
+        elAyuda.textContent = detectadas.length
+          ? `Con esas notas (${detectadas.join(', ')}) no se reconoce ningún acorde. Revisa las cuerdas al aire (○) y las mudas (×).`
+          : 'Coloca puntos en el mástil o marca cuerdas al aire.';
+      }
+      if (elAlternativas) elAlternativas.hidden = true;
+      if (elEnlace) elEnlace.hidden = true;
+      return;
+    }
+
+    const principal = resultados[0]!;
+    if (elNombre) elNombre.textContent = principal.nombre;
+    if (elNotas) elNotas.textContent = `Notas: ${principal.analisis.join(' · ')}`;
+    if (elOmitidas) {
+      elOmitidas.textContent = principal.exacto
+        ? ''
+        : `Digitación sin ${principal.omitidas
+            .map((intervalo) => NOMBRE_INTERVALO[intervalo] ?? intervalo)
+            .join(' y ')}.`;
+    }
+    if (elAyuda) elAyuda.hidden = true;
+
+    const alternativas = resultados.slice(1, 6);
+    if (elAlternativas && elLista) {
+      elLista.innerHTML = '';
+      for (const alternativa of alternativas) {
+        const li = document.createElement('li');
+        const span = document.createElement('span');
+        span.textContent = alternativa.nombre;
+        li.appendChild(span);
+        elLista.appendChild(li);
+      }
+      elAlternativas.hidden = alternativas.length === 0;
+    }
+
+    if (elEnlace) {
+      const candidatos = [
+        slugAcorde(principal),
+        principal.bajo ? slugAcorde({ ...principal, bajo: null }) : null,
+      ].filter((s): s is string => Boolean(s));
+      const slug = candidatos.find((s) => slugs.has(s));
+      elEnlace.hidden = !slug;
+      elEnlace.href = `/glosario#${slug ?? candidatos[0]}`;
+    }
+  }
+
+  function pintarTodo() {
+    pintarCeldas();
+    pintarEstados();
+    pintarLectura();
+    pintarResultado();
+  }
+
+  celdas.forEach((celda) => {
+    celda.addEventListener('click', () => {
+      const cuerda = Number(celda.dataset.cuerda);
+      const traste = Number(celda.dataset.traste);
+      estados[cuerda] = estados[cuerda] === traste ? -1 : traste;
+      pintarTodo();
+    });
+  });
+
+  botonesEstado.forEach((boton, i) => {
+    boton.addEventListener('click', () => {
+      estados[i] = estados[i] === 0 ? -1 : 0;
+      pintarTodo();
+    });
+  });
+
+  botonLimpiar?.addEventListener('click', () => {
+    for (let i = 0; i < estados.length; i += 1) estados[i] = -1;
+    pintarTodo();
+  });
+
+  // Navegación con flechas por el mástil (una sola parada de tabulación).
+  document.addEventListener('focusin', (e) => {
+    const celda = (e.target as HTMLElement | null)?.closest<HTMLElement>('.reconocer__celda');
+    if (!celda) return;
+    for (const otra of celdas) otra.tabIndex = otra === celda ? 0 : -1;
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const celda = (e.target as HTMLElement | null)?.closest<HTMLElement>('.reconocer__celda');
+    if (!celda) return;
+
+    const cuerda = Number(celda.dataset.cuerda);
+    const traste = Number(celda.dataset.traste);
+    let nuevaCuerda = cuerda;
+    let nuevoTraste = traste;
+
+    if (e.key === 'ArrowLeft') nuevoTraste = Math.max(1, traste - 1);
+    else if (e.key === 'ArrowRight') nuevoTraste = Math.min(12, traste + 1);
+    else if (e.key === 'ArrowUp') nuevaCuerda = Math.max(0, cuerda - 1);
+    else if (e.key === 'ArrowDown') nuevaCuerda = Math.min(5, cuerda + 1);
+    else return;
+
+    e.preventDefault();
+    const destino = celdas.find(
+      (c) => Number(c.dataset.cuerda) === nuevaCuerda && Number(c.dataset.traste) === nuevoTraste,
+    );
+    destino?.focus();
+  });
+
+  pintarTodo();
+</script>

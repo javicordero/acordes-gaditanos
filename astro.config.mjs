@@ -13,7 +13,12 @@ export default defineConfig({
       iconDir: 'src/icons',
     }),
     sitemap({
-      filter: (page) => !page.includes('/coming-soon') && !page.includes('/en-construccion'),
+      filter: (page) =>
+        !page.includes('/coming-soon') &&
+        !page.includes('/en-construccion') &&
+        !page.includes('/acordes2') &&
+        !page.includes('/lista2') &&
+        !page.includes('/reconocer-acorde'),
     }),
   ],
 

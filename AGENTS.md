@@ -74,14 +74,29 @@ Bendita suerte pal aficionao que más de un mes de
 | `/agrupacion/[agrupacionSlug]` | `pages/agrupacion/[agrupacionSlug].astro` |
 | `/carnaval/[year]` | `pages/carnaval/[year].astro` |
 | `/buscar` | `pages/buscar.astro` (búsqueda cliente con datos serializados) |
+| `/glosario` | `pages/glosario.astro` — glosario de acordes con diagramas y buscador |
+| `/reconocer-acorde` | `pages/reconocer-acorde.astro` — mástil interactivo que identifica el acorde (privada: `noindex`, fuera del sitemap y sin enlaces públicos) |
 | `/admin/stats` | `pages/admin/stats.astro` |
 | `/api/fetch-url` | `pages/api/fetch-url.ts` — proxy CORS (GET `?url=...`) |
 | `/formateadores/*` | Redirigido a 404 por middleware (páginas existen pero ocultas) |
 
-**Importante**: `/coming-soon` y `/en-construccion` se filtran del sitemap. `/formateadores` redirige a 404.
+**Importante**: `/coming-soon`, `/en-construccion` y `/reconocer-acorde` se filtran del sitemap. `/reconocer-acorde` además emite `noindex`. `/formateadores` redirige a 404.
+
+### Glosario de acordes
+Los acordes del `<pre>` son interactivos: al pulsarlos se abre un popover con su diagrama.
+- Datos: `src/data/glosario-acordes.json` (481 acordes, ~1.278 posiciones), generados una sola vez con `node scripts/importar-glosario.mjs` a partir del glosario público de LaCuerda.net. El script cachea en `.cache/glosario` (ignorado por git) y no se ejecuta en build.
+- Renderizador único: `src/lib/diagrama.ts` (`svgDiagrama`) genera el SVG en build y en el navegador. No hay imágenes externas.
+- Parser de notación española: `src/lib/acordes.ts` (`parsearAcorde`, `buscarEnIndice`, `slugAcorde`). Admite enarmonías, `7M`/`M7`, `m7/5`, `/add9`, bajos con barra y raíces en mayúsculas (`MIm`, `SI7`).
+- Componentes: `DiagramaAcorde.astro`, `GlosarioPopover.astro`, `AcordesDeLaPieza.astro` y `GlosarioHint.astro` (aviso «Novedad» bajo la cejilla).
+- Anclas estables en `/glosario`: `#mi7`, `#do-sostenido-m7`, `#sol-sostenido-m`.
+- Reconocedor de acordes: `/reconocer-acorde` usa `src/lib/reconocer.ts` (`reconocerAcorde`) para identificar la postura por clases de altura, con el nombre más probable y alternativas. Funciona por teoría, aunque la postura no esté en el JSON. De momento es **privado**: `noindex`, fuera del sitemap y sin enlaces desde el glosario ni el footer; queda accesible por URL directa para publicarlo en el futuro.
+- Cobertura: `node --experimental-strip-types scripts/auditar-glosario.ts` falla si algún acorde válido del cancionero no tiene diagrama.
 
 ### Autoscroll
-Implementado en `src/components/page/AcordeCard.astro`. Activado por checkbox "Activar autoscroll". Velocidad regulable. Ver `AUTOSCROLL-FEATURE.md`.
+Implementado en `src/components/page/AcordeCard.astro`. Activado por checkbox "Activar autoscroll". Velocidad regulable. El tutorial del botón «?» ya no se abre solo: solo al pulsarlo.
+
+### Transportador
+Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astro` (debajo de la cejilla). La lógica está en `src/lib/transporte.ts` (`transportarEtiqueta`): cambia solo la raíz y el bajo, y conserva el sufijo y los espacios. `#glosario-datos` incluye las 12 transposiciones de cada acorde de la pieza, así que el popover y los diagramas del panel funcionan en cualquier tono. Tras transportar, `AcordeCard.astro` reparte los espacios de cada línea para que los acordes sigan sobre su sílaba. Sin persistencia; la cejilla no cambia.
 
 ### Redirects
 - `public/ads.txt` — archivo estático de AdSense (`google.com, pub-3280015847198273, DIRECT, f08c47fec0942fa0`)
@@ -91,6 +106,16 @@ Implementado en `src/components/page/AcordeCard.astro`. Activado por checkbox "A
 ### PDF Generation
 `node scripts/generate-pdf.mjs src/content/acordes/<slug>.md`
 Genera un PDF al lado del .md. Requiere `fonts/RobotoMono-*.ttf` (fallback a Courier).
+
+### Glosario de acordes (datos)
+`node scripts/importar-glosario.mjs [--dry-run] [--force] [--only <texto>]`
+Genera `src/data/glosario-acordes.json` desde el glosario público de LaCuerda.net. Cachea las respuestas en `.cache/glosario` y espera 400 ms entre peticiones. No se ejecuta en build.
+
+`node --experimental-strip-types scripts/auditar-glosario.ts`
+Audita la cobertura: recorre `src/content/acordes` y falla si algún acorde válido no tiene diagrama. Requiere Node ≥ 22.6.
+
+`node --experimental-strip-types scripts/sugerir-acorde.ts "Mi9"`
+Comprueba si un acorde existe en el glosario y, si no, sugiere acordes parecidos disponibles (misma fundamental, enarmonía y sufijos similares).
 
 ### Limpieza de espacios en los `<pre>`
 `node scripts/trim-pre-whitespace.mjs [--dir <carpeta>] [--dry-run] [--quiet]`
@@ -102,6 +127,8 @@ Quita espacios y tabuladores al final de línea **solo dentro de `<pre>…</pre>
 - Google Adsense: `ca-pub-3280015847198273`
 - Claves en `src/lib/constants.ts`
 - OG image por defecto: `/og-image.png`
+- Eventos del glosario: `click_novedad_glosario`, `click_acordes_usados_ver_mas` / `click_acordes_usados_ver_menos`, `click_acorde_pre`, `click_acorde_usado`, `click_acorde_glosario` y `click_glosario_acordes_usados`.
+- Eventos del transportador: `transpose_acorde` (parámetros `direccion` y `semitonos`) y `transpose_volver_original`.
 
 ### PostCSS
 `postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.
@@ -111,6 +138,7 @@ Skills en `.agents/skills/` para tareas comunes:
 - `chord-formatting` — envolver acordes en `<a>` tags
 - `cifrado-a-formato` — convertir cifrado pegado de otra web al formato propio (línea de acordes + letra con palabras completas)
 - `create-acorde` — crear nuevo archivo markdown de acorde
+- `subir-acorde` — ajustar la fecha al día siguiente del último publicado y hacer commit + push
 - `transportar` — transponer acordes de tonalidad
 - `tweet-acorde` — generar tweet para anunciar acorde
 - `seo` — optimizaciones SEO
@@ -141,5 +169,5 @@ autorCover: Nombre (opcional)
 
 <!-- SPECKIT START -->
 For additional context about the active feature, read the plan at
-`specs/001-banner-coplas-comunidad/plan.md`
+`specs/008-importar-cancionero/plan.md`
 <!-- SPECKIT END -->
