@@ -19,34 +19,6 @@ No hay scripts de test ni lint configurados.
 - Para verificar: `npm run dev` y probar en navegador
 - Build exitoso no garantiza funcionamiento, solo que compila
 
-## Spec-Driven Development (Speckit)
-
-Usar GitHub Spec Kit para planificar features. Subagentes en `.opencode/agents/speckit-*.md`:
-
-| Subagente | Invocación | Propósito |
-|---|---|---|
-| `speckit-constitution` | `task - speckit-constitution - "principios"` | Establecer/actualizar principios del proyecto |
-| `speckit-specify` | `task - speckit-specify - "descripción feature"` | Crear especificación funcional |
-| `speckit-clarify` | `task - speckit-clarify - ""` | Clarificar requisitos ambiguos |
-| `speckit-plan` | `task - speckit-plan - ""` | Plan técnico de implementación |
-| `speckit-tasks` | `task - speckit-tasks - ""` | Desglosar en tareas accionables |
-| `speckit-analyze` | `task - speckit-analyze - ""` | Validar consistencia spec/plan/tasks (read-only) |
-| `speckit-checklist` | `task - speckit-checklist - "ux"` | Generar checklist de calidad |
-| `speckit-implement` | `task - speckit-implement - ""` | Ejecutar implementación |
-
-Flujo completo: `constitution → specify → clarify → plan → tasks → analyze → implement`
-
-Cada subagente lee las instrucciones detalladas desde `.opencode/commands/speckit.*.md` y las ejecuta adaptadas a OpenCode.
-
-**Importante**: Ejecutar `chcp 65001` en PowerShell antes de `specify` para evitar errores de encoding en Windows.
-
-### Subagentes NO creados
-- `speckit.taskstoissues` — requiere GitHub MCP (no configurado)
-- `speckit.git.*` — hooks git ya están como skills en `.agents/skills/speckit-git-*`
-
-### Especificaciones
-- Las specs activas están en `specs/NNN-feature/`
-
 ## Architecture
 
 ### SSG site
@@ -161,8 +133,6 @@ Skills en `.agents/skills/` para tareas comunes:
 - `astro` / `astro-framework` — guías de Astro
 - `frontend-design` — diseño UI
 
-Skills de speckit para git: `speckit-git-*` en `.agents/skills/`.
-
 ## Content Template
 Usar `src/content/template.md` como referencia:
 ```yaml
@@ -182,7 +152,3 @@ cover: URL (opcional)
 autorCover: Nombre (opcional)
 ```
 
-<!-- SPECKIT START -->
-For additional context about the active feature, read the plan at
-`specs/008-importar-cancionero/plan.md`
-<!-- SPECKIT END -->

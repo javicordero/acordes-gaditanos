@@ -80,7 +80,7 @@ Abre `http://localhost:4321`.
 │   └── middleware.ts     # Redirecciones a 404
 ├── workers/              # Cloudflare Worker de comentarios
 ├── docs/                 # Guías de diseño y documentación interna
-└── specs/                # Especificaciones de features (Spec Kit)
+└── specs/                # Especificaciones históricas de features
 ```
 
 ## Contenido
