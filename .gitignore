@@ -40,6 +40,15 @@ src/content/template.md
 # Admin pages (solo local)
 src/pages/admin/
 
+# Importación local del cancionero (herramientas y contenido no versionados)
+src/content/acordes2/*.md
+src/pages/acordes2/
+src/pages/lista2.astro
+scripts/importar-cancionero.mjs
+.agents/skills/promover-acorde/
+
+# Capturas locales
+screenshots/
 
 # Cache de importacion del glosario de acordes
 .cache/

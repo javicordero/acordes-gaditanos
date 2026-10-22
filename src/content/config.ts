@@ -19,44 +19,49 @@ function generateSlug(text: string): string {
     .replace(/^-|-$/g, ''); // Quitar guiones al inicio/final
 }
 
-const acordes = defineCollection({
-  schema: z
-    .object({
-      pieza: z.string(),
-      agrupacion: z.string(),
-      musica: z.string().optional(),
-      letra: z.string().optional(),
-      img: z.string(),
-      year: z.number().transform((n) => n.toString()),
-      modalidad: z.string().optional(),
-      cejilla: z
-        .number()
-        .transform((n) => n.toString())
-        .optional(),
-      date: z.string().regex(/^\d{2}[-/]\d{2}[-/]\d{4}$/),
-      video: z.string().optional(),
-      cover: z.string().optional().nullable(),
-      autorCover: z.string().optional().nullable(),
-      fraseClave: z.string().optional(),
-      destacada: z.number().optional().nullable(),
-      recomendada: z.boolean().optional().nullable(),
-    })
-    .transform((data) => {
-      const musicaList = splitAuthors(data.musica);
-      const letraList = splitAuthors(data.letra);
-      return {
-        ...data,
-        musicaList,
-        letraList,
-        musicaSlugs: musicaList.map(generateSlug),
-        letraSlugs: letraList.map(generateSlug),
-        // Generar slugs automáticamente (primer autor para backward compatibility)
-        musicaSlug: musicaList[0] ? generateSlug(musicaList[0]) : '',
-        letraSlug: letraList[0] ? generateSlug(letraList[0]) : '',
-        agrupacionSlug: generateSlug(data.agrupacion),
-      };
-    }),
-});
+// Esquema compartido por la colección oficial y la provisional de importación
+const acordeSchema = z
+  .object({
+    pieza: z.string(),
+    agrupacion: z.string(),
+    musica: z.string().optional(),
+    letra: z.string().optional(),
+    img: z.string(),
+    year: z.number().transform((n) => n.toString()),
+    modalidad: z.string().optional(),
+    cejilla: z
+      .number()
+      .transform((n) => n.toString())
+      .optional(),
+    date: z.string().regex(/^\d{2}[-/]\d{2}[-/]\d{4}$/),
+    video: z.string().optional(),
+    cover: z.string().optional().nullable(),
+    autorCover: z.string().optional().nullable(),
+    fraseClave: z.string().optional(),
+    destacada: z.number().optional().nullable(),
+    recomendada: z.boolean().optional().nullable(),
+  })
+  .transform((data) => {
+    const musicaList = splitAuthors(data.musica);
+    const letraList = splitAuthors(data.letra);
+    return {
+      ...data,
+      musicaList,
+      letraList,
+      musicaSlugs: musicaList.map(generateSlug),
+      letraSlugs: letraList.map(generateSlug),
+      // Generar slugs automáticamente (primer autor para backward compatibility)
+      musicaSlug: musicaList[0] ? generateSlug(musicaList[0]) : '',
+      letraSlug: letraList[0] ? generateSlug(letraList[0]) : '',
+      agrupacionSlug: generateSlug(data.agrupacion),
+    };
+  });
+
+const acordes = defineCollection({ schema: acordeSchema });
+
+// Colección provisional: acordes importados desde el cancionero, pendientes de revisar.
+// Los acordes viven sin envolver en <a>; la envoltura se aplica al promover a `acordes`.
+const acordes2 = defineCollection({ schema: acordeSchema });
 
 const autores = defineCollection({
   schema: z
@@ -85,6 +90,7 @@ const donaciones = defineCollection({
 
 export const collections = {
   acordes: acordes,
+  acordes2: acordes2,
   autores: autores,
   donaciones: donaciones,
 };

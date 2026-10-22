@@ -55,6 +55,7 @@ Sitio 100% estático (SSG) con Astro content collections. Middleware solo rediri
 ### Content Collections (`src/content/config.ts`)
 - **`acordes`** — 400+ entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`.
 - **`autores`** — 11 autores. Frontmatter: `nombre`, `img`, `type` (`musica`|`letra`), `order`, `destacado`.
+- **`acordes2`** — colección provisional para los acordes importados del cancionero. Mismo esquema que `acordes`, pero su contenido (`.md`) no se versiona y los acordes van sin envolver en `<a>` hasta que se promueven.
 
 Slugs se generan automáticamente (lowercase, sin tildes, guiones). El transform también produce `musicaSlugs`, `letraSlugs`, `agrupacionSlug`.
 
@@ -69,6 +70,8 @@ Bendita suerte pal aficionao que más de un mes de
 | Route | File |
 |---|---|
 | `/acordes/[id]` | `pages/acordes/[id].astro` |
+| `/acordes2/[id]` | `pages/acordes2/[id].astro` — previsualización local de acordes importados (no versionada; `noindex`, fuera del sitemap) |
+| `/lista2` | `pages/lista2.astro` — listado local de `acordes2` (no versionada; `noindex`, fuera del sitemap) |
 | `/autor/musica/[autorSlug]` | `pages/autor/musica/[autorSlug].astro` |
 | `/autor/letra/[autorSlug]` | `pages/autor/letra/[autorSlug].astro` |
 | `/agrupacion/[agrupacionSlug]` | `pages/agrupacion/[agrupacionSlug].astro` |
@@ -80,7 +83,7 @@ Bendita suerte pal aficionao que más de un mes de
 | `/api/fetch-url` | `pages/api/fetch-url.ts` — proxy CORS (GET `?url=...`) |
 | `/formateadores/*` | Redirigido a 404 por middleware (páginas existen pero ocultas) |
 
-**Importante**: `/coming-soon`, `/en-construccion` y `/reconocer-acorde` se filtran del sitemap. `/reconocer-acorde` además emite `noindex`. `/formateadores` redirige a 404.
+**Importante**: `/coming-soon`, `/en-construccion`, `/acordes2`, `/lista2` y `/reconocer-acorde` se filtran del sitemap. `/acordes2`, `/lista2` y `/reconocer-acorde` además emiten `noindex`. `/formateadores` redirige a 404.
 
 ### Glosario de acordes
 Los acordes del `<pre>` son interactivos: al pulsarlos se abre un popover con su diagrama.
@@ -121,6 +124,17 @@ Comprueba si un acorde existe en el glosario y, si no, sugiere acordes parecidos
 `node scripts/trim-pre-whitespace.mjs [--dir <carpeta>] [--dry-run] [--quiet]`
 Quita espacios y tabuladores al final de línea **solo dentro de `<pre>…</pre>`** (la indentación inicial se conserva). Por defecto recorre `src/content/acordes` y `src/content/acordes2`. Es idempotente; útil después de importar o formatear acordes.
 
+### Importación de cancionero (local, no versionada)
+Las herramientas y el contenido de esta importación viven solo en local y están en `.gitignore`: `scripts/importar-cancionero.mjs`, `src/pages/lista2.astro`, `src/pages/acordes2/`, `.agents/skills/promover-acorde/` y los `.md` de `src/content/acordes2/`. La colección `acordes2` sí se declara en `src/content/config.ts` para que esas páginas compilen.
+
+`node scripts/importar-cancionero.mjs [opciones]`
+Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `src/content/acordes2/` (colección provisional, acordes sin envolver).
+- `--inventory` lista solo las URLs; `--dry-run` no escribe; `--only <valor>` y `--limit <n>` filtran.
+- `--index-file <ruta>` / `--ficha-file <ruta>` permiten trabajar con HTML local sin red.
+- Busca el vídeo en YouTube (query `Modalidad Agrupación`, primer resultado, sin API key); `--no-youtube` lo desactiva y `--fill-videos` rellena los vídeos por defecto de los `.md` ya generados.
+- Omite los acordes que ya existen en `acordes` (slug `pieza-agrupacion`) y avisa de posibles duplicados.
+- La promoción `acordes2` → `acordes` se hace con la skill `promover-acorde`, que envuelve los acordes en `<a>` y pone la fecha del día.
+
 ### SEO & Analytics
 - Site: `https://acordesgaditanos.com`
 - Google Tag Manager: `GTM-MZG7K2Q4`
@@ -138,6 +152,7 @@ Skills en `.agents/skills/` para tareas comunes:
 - `chord-formatting` — envolver acordes en `<a>` tags
 - `cifrado-a-formato` — convertir cifrado pegado de otra web al formato propio (línea de acordes + letra con palabras completas)
 - `create-acorde` — crear nuevo archivo markdown de acorde
+- `promover-acorde` — mover acordes revisados de `acordes2` a `acordes` (local, no versionada)
 - `subir-acorde` — ajustar la fecha al día siguiente del último publicado y hacer commit + push
 - `transportar` — transponer acordes de tonalidad
 - `tweet-acorde` — generar tweet para anunciar acorde
