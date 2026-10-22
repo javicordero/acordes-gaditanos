@@ -13455,6 +13455,26 @@
         }
       ]
     },
+    "Readd9/Fa#": {
+      "raiz": "Re",
+      "sufijo": "add9",
+      "bajo": "Fa#",
+      "slug": "readd9-fa-sostenido",
+      "posiciones": [
+        {
+          "trastes": [
+            2,
+            0,
+            0,
+            2,
+            3,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Reaug": {
       "raiz": "Re",
       "sufijo": "aug",

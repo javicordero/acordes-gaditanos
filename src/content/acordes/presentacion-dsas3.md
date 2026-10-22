@@ -50,7 +50,7 @@ Y mire por su suerte
 Que los que ya han perdido su salud
                 <a>Lam</a>
 No le temen a la muerte
-     <a>Re/Fa#</a>           <a>Lam</a>         <a>Re/Fa#7</a>
+     <a>Readd9/Fa#</a>        <a>Lam</a>         <a>Re/Fa#7</a>
 Desastre todo es un desastre bebebebbe
   <a>Rem</a>                   <a>Lam</a>
 Atraco a mano armada bananero
@@ -77,7 +77,7 @@ Hay un canto y un grito desoído
               <a>Si7</a>           <a>Mi7</a>
 Y hay una ansiedad esa ansiedad
 Que su merced tanto teme
-  <a>Lam</a>   <a>Re/Fa#</a>           <a>Lam</a>         <a>Re/Fa#7</a>
+  <a>Lam</a>   <a>Readd9/Fa#</a>        <a>Lam</a>         <a>Re/Fa#7</a>
 Desastre ehh todo es un desastre bebebebbe
   <a>Rem</a>                   <a>Lam</a>
 Atraco a mano armada bananero
@@ -107,9 +107,9 @@ Su dinero no podrá curar su dolencia
 Pedirá clemencia y caerá en mis manos
 
 Y veras que todo
-                              <a>Lam</a>    <a>Re/Fa#</a>
+                              <a>Lam</a>    <a>Readd9/Fa#</a>
 Todo, todo, todo, todo es un desastre ehhh
-              <a>Lam</a>        <a>Re/Fa#</a>
+              <a>Lam</a>        <a>Readd9/Fa#</a>
 Todo es un desastre bebebebere
   <a>Rem</a>                   <a>Lam</a>
 Atraco a mano armada bananero

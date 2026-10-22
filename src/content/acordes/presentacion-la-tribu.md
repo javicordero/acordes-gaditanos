@@ -16,7 +16,7 @@ fraseClave: Llego del cielo un barquito Mas típico no lo hay
 Llego del cielo un barquito Mas típico no lo hay
 <a>Lam7</a>              <a>Sol</a>   <a>Fa</a>                <a>Doadd9</a>
 Mas colgao ni más bonito Y que se llamaba Cai
-<a>Rem</a>               <a>Mi7</a>  <a>Lam7</a>         <a>Sol</a>   <a>Re/Fa#</a>
+<a>Rem</a>               <a>Mi7</a>  <a>Lam7</a>         <a>Sol</a>   <a>Readd9/Fa#</a>
 En una noche de invierno En nuestra isla cayó
         <a>Rem</a>                    <a>Mim</a>         <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
 Y para siempre La vida de este salvaje Cambió
@@ -52,7 +52,7 @@ Letras, músicas y coplas De una cultura remota
 De la que aprendimos todo
       <a>Lam</a>
 Aprendimos la alegría La dulzura del vivir
-                              <a>Re/Fa#</a>
+                              <a>Readd9/Fa#</a>
 Y aprendimos la ironia De ser pobre y de ser feliz
    <a>Fa</a>                          <a>Rem</a>
 La pregunta sin respuesta Y la magia del compas

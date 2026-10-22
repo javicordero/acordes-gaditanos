@@ -99,11 +99,11 @@ Loco por Cai que es lo que hay
 Sin avisar aquí el Levante se coló
                            <a>Fa</a>       <a>Sim7/5</a>        <a>Mi7</a>
 Loco por Cai que Cai es mi mare mi locura y mi pasión
-                 <a>Lam</a>           <a>Re/Fa#</a>
+                 <a>Lam</a>           <a>Readd9/Fa#</a>
 Ando loquito por ti loquito del to
                <a>Fa</a>                   <a>Mi7</a>
 Y vuelvo en febrero a curarte tus males
-           <a>Lam</a>           <a>Re/Fa#</a>
+           <a>Lam</a>           <a>Readd9/Fa#</a>
 Loquito por ti loquito del to
                <a>Fa</a>                <a>Mi7</a>
 Que si tú me faltas me quedo sin aire

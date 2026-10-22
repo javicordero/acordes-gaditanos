@@ -50,7 +50,7 @@ para asomarme a tus ojos
 Parapapapa parapapapa Parapapapa parapapapa
              <a>Lam7</a>              <a>Re7</a>
 Si ser civilizado encadena la vida yo, de cero,
-       <a>Sol</a>       <a>Re/Fa#</a>      <a>Mim</a>
+       <a>Sol</a>       <a>Readd9/Fa#</a>   <a>Mim</a>
 he empezado el control de la mía
                    <a>Si7</a>
 Porque nos someten tanto, tanto,

@@ -193,6 +193,9 @@ function posicionesManuales(etiqueta) {
   if (etiqueta === 'Misusb6/9') {
     return [{ trastes: [0, 3, 4, 2, 0, 0], baseTraste: 1, cejilla: null }];
   }
+  if (etiqueta === 'Readd9/Fa#') {
+    return [{ trastes: [2, 0, 0, 2, 3, 0], baseTraste: 1, cejilla: null }];
+  }
 
   const raiz = etiqueta.replace(/(m7b5|7b5|sus9)$/, '');
   const sufijo = etiqueta.slice(raiz.length);
@@ -318,7 +321,7 @@ async function main() {
     if (!r) continue;
     manuales.push(r + 'm7b5', r + '7b5', r + 'sus9');
   }
-  manuales.push('Lasusb6/9', 'Misusb6/9');
+  manuales.push('Lasusb6/9', 'Misusb6/9', 'Readd9/Fa#');
 
   const lista = ONLY ? catalogo.filter((n) => n.includes(ONLY)) : catalogo;
   console.log(`Importando ${lista.length} acordes (+ ${manuales.length} manuales)…`);
@@ -371,12 +374,13 @@ async function main() {
     if (!posiciones) continue;
     const m = etiqueta.match(/^(Do|Re|Mi|Fa|Sol|La|Si)([#b]?)(.*)$/);
     if (!m) continue;
-    const sufijo = etiqueta.endsWith('susb6/9') ? 'susb6add9' : m[3];
+    const sufijo = etiqueta.endsWith('susb6/9') ? 'susb6add9' : etiqueta === 'Readd9/Fa#' ? 'add9' : m[3];
+    const bajo = etiqueta === 'Readd9/Fa#' ? 'Fa#' : null;
     acordes[etiqueta] = {
       raiz: m[1] + m[2],
       sufijo,
-      bajo: null,
-      slug: slugAcorde(m[1] + m[2], sufijo, null),
+      bajo,
+      slug: slugAcorde(m[1] + m[2], sufijo, bajo),
       posiciones,
     };
   }

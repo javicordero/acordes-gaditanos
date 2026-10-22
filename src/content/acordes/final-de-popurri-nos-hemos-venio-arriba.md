@@ -15,7 +15,7 @@ fraseClave: Hemos cerrado mi castillo a cal y canto
 
 ---
 <pre>
-<a>Sol</a>                               <a>Re/Fa#</a>
+<a>Sol</a>                               <a>Readd9/Fa#</a>
 Hemos cerrado mi castillo a cal y canto
                     <a>Mim</a>
 Y no se cuela ni la brisa
@@ -23,7 +23,7 @@ Y no se cuela ni la brisa
 Y ni la luna ni las olas testarudas
                  <a>Re</a>
 Atraviesan mi portón
-    <a>Sol</a>                      <a>Re/Fa#</a>
+    <a>Sol</a>                      <a>Readd9/Fa#</a>
 Apuntale cada ventana y cada grieta
                 <a>Mim</a>
 De manera tan sumisa
@@ -36,7 +36,7 @@ Este castillo cerrado, cegado y tan consumido
 Sellado y callado, tan en el olvido
                                 <a>Re</a>
 Nublado y comido de sangre y de sal
-         <a>Sol</a>                     <a>Re/Fa#</a>
+         <a>Sol</a>                     <a>Readd9/Fa#</a>
 Pero una noche llego hasta mis murallas
                <a>Mim</a>
 Una sonata tan bella

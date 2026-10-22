@@ -206,13 +206,13 @@ carnaval
 
 <strong>- Cejilla al 3</strong>
 
-<a>Re/Fa#</a>                                     <a>Solm</a>
+<a>Readd9/Fa#</a>                                  <a>Solm</a>
 Es el embrujo sobrenatural de esa diosa del mar
-          <a>Re/Fa#</a>
+          <a>Readd9/Fa#</a>
 Que adormecida en su soledad se va haciendo
      <a>La7</a>
 inmortal
-   <a>Re/Fa#</a>                                 <a>Fa#m</a>
+   <a>Readd9/Fa#</a>                              <a>Fa#m</a>
 Bendito ese rincón donde las musas se revelan y
     <a>Fa#7</a>           <a>Sim7</a>
 juegan con la cantinela
@@ -239,7 +239,7 @@ los poetas
 Y adormecida en su soledad se va haciendo inmortal
                  <a>La7</a>
 sin que nadie lo sepa
-                   <a>Re/Fa#</a>
+                   <a>Readd9/Fa#</a>
 Que Cádiz tiene un noseque que te envenena
                  <a>Fa#7</a>
 Y tiene un que se yo que te entra por las venas
@@ -247,7 +247,7 @@ Y tiene un que se yo que te entra por las venas
 Y tiene un rinconcito para los poetas donde viven
     <a>Sol</a>                <a>La7</a>
 las musas y se llama caleta
-                    <a>Re/Fa#</a>
+                    <a>Readd9/Fa#</a>
 Cuentan que por las noches la luna se baña
                   <a>Fa#7</a>
 Para impregnar su cuerpo con la luz de plata
@@ -255,9 +255,9 @@ Para impregnar su cuerpo con la luz de plata
 En ese rinconcito para los poetas donde viven las
  <a>Sol</a>               <a>La7</a>
 musas y se llama caleta
-<a>Re/Fa#</a>                                      <a>Solm</a>
+<a>Readd9/Fa#</a>                                   <a>Solm</a>
 Es el embrujo sobre natural de esa diosa del mar
-<a>Re/Fa#</a>
+<a>Readd9/Fa#</a>
 Que adormecida en su soledad se va haciendo
     <a>La7</a>
 inmortal
