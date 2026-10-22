@@ -93,6 +93,7 @@ const SUFIJOS: Record<string, string> = {
   m9: 'm9',
   add9: 'add9',
   add2: 'add9',
+  madd9: 'madd9',
   '11': '11',
   '13': '13',
   '6add9': '6add9',

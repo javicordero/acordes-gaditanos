@@ -3575,6 +3575,26 @@
         }
       ]
     },
+    "Fa#m7b5/Do": {
+      "raiz": "Fa#",
+      "sufijo": "m7b5",
+      "bajo": "Do",
+      "slug": "fa-sostenido-m7b5-do",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            3,
+            4,
+            2,
+            0,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Fa#m9": {
       "raiz": "Fa#",
       "sufijo": "m9",
@@ -8339,6 +8359,26 @@
         }
       ]
     },
+    "Lam(add9)": {
+      "raiz": "La",
+      "sufijo": "madd9",
+      "bajo": null,
+      "slug": "lamadd9",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            0,
+            2,
+            4,
+            1,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Lam/Fa": {
       "raiz": "La",
       "sufijo": "m",
@@ -8624,6 +8664,26 @@
             "desde": 0,
             "hasta": 5
           }
+        }
+      ]
+    },
+    "Lam7/Sol": {
+      "raiz": "La",
+      "sufijo": "m7",
+      "bajo": "Sol",
+      "slug": "lam7-sol",
+      "posiciones": [
+        {
+          "trastes": [
+            3,
+            0,
+            2,
+            0,
+            1,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         }
       ]
     },

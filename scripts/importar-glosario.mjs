@@ -196,6 +196,15 @@ function posicionesManuales(etiqueta) {
   if (etiqueta === 'Readd9/Fa#') {
     return [{ trastes: [2, 0, 0, 2, 3, 0], baseTraste: 1, cejilla: null }];
   }
+  if (etiqueta === 'Lam(add9)') {
+    return [{ trastes: [-1, 0, 2, 4, 1, 0], baseTraste: 1, cejilla: null }];
+  }
+  if (etiqueta === 'Lam7/Sol') {
+    return [{ trastes: [3, 0, 2, 0, 1, 0], baseTraste: 1, cejilla: null }];
+  }
+  if (etiqueta === 'Fa#m7b5/Do') {
+    return [{ trastes: [-1, 3, 4, 2, 0, 0], baseTraste: 1, cejilla: null }];
+  }
 
   const raiz = etiqueta.replace(/(m7b5|7b5|sus9)$/, '');
   const sufijo = etiqueta.slice(raiz.length);
@@ -321,7 +330,7 @@ async function main() {
     if (!r) continue;
     manuales.push(r + 'm7b5', r + '7b5', r + 'sus9');
   }
-  manuales.push('Lasusb6/9', 'Misusb6/9', 'Readd9/Fa#');
+  manuales.push('Lasusb6/9', 'Misusb6/9', 'Readd9/Fa#', 'Lam(add9)', 'Lam7/Sol', 'Fa#m7b5/Do');
 
   const lista = ONLY ? catalogo.filter((n) => n.includes(ONLY)) : catalogo;
   console.log(`Importando ${lista.length} acordes (+ ${manuales.length} manuales)…`);
@@ -374,8 +383,26 @@ async function main() {
     if (!posiciones) continue;
     const m = etiqueta.match(/^(Do|Re|Mi|Fa|Sol|La|Si)([#b]?)(.*)$/);
     if (!m) continue;
-    const sufijo = etiqueta.endsWith('susb6/9') ? 'susb6add9' : etiqueta === 'Readd9/Fa#' ? 'add9' : m[3];
-    const bajo = etiqueta === 'Readd9/Fa#' ? 'Fa#' : null;
+    let resto = m[3];
+    let bajo = null;
+
+    // Inversiones: "Lam7/Sol", "Readd9/Fa#".
+    const barra = resto.lastIndexOf('/');
+    if (barra !== -1) {
+      const cola = resto.slice(barra + 1);
+      if (/^(Do|Re|Mi|Fa|Sol|La|Si)[#b]?$/.test(cola)) {
+        bajo = cola;
+        resto = resto.slice(0, barra);
+      }
+    }
+
+    // Sufijos manuales que no coinciden con el texto tal cual.
+    const sufijo = resto === 'm(add9)'
+      ? 'madd9'
+      : resto === 'susb6/9'
+        ? 'susb6add9'
+        : resto;
+
     acordes[etiqueta] = {
       raiz: m[1] + m[2],
       sufijo,

@@ -18,6 +18,8 @@ const INTERVALOS = [
 
 interface TipoAcorde {
   sufijo: string;
+  /** Cómo se escribe el sufijo al mostrar el acorde (si difiere de `sufijo`). */
+  nombreSufijo?: string;
   /** Notas que forman el acorde (intervalos desde la fundamental). */
   intervalos: number[];
   /** Notas imprescindibles para poder llamarlo así. */
@@ -41,6 +43,7 @@ const TIPOS: TipoAcorde[] = [
   { sufijo: 'sus4', intervalos: [0, 5, 7], requeridos: [0, 5] },
   { sufijo: 'sus9', intervalos: [0, 5, 7, 14], requeridos: [0, 5, 2] },
   { sufijo: 'add9', intervalos: [0, 4, 7, 14], requeridos: [0, 4, 2] },
+  { sufijo: 'madd9', nombreSufijo: 'm(add9)', intervalos: [0, 3, 7, 14], requeridos: [0, 3, 2] },
   { sufijo: 'add11', intervalos: [0, 4, 7, 17], requeridos: [0, 4, 5] },
   { sufijo: '9', intervalos: [0, 4, 7, 10, 14], requeridos: [0, 4, 10, 2] },
   { sufijo: 'm9', intervalos: [0, 3, 7, 10, 14], requeridos: [0, 3, 10, 2] },
@@ -130,7 +133,10 @@ export function reconocerAcorde(trastes: number[]): AcordeReconocido[] {
       const raizNombre = NOTAS[raiz]!;
       const esBajo = bajo === raiz;
       const bajoNombre = bajo !== null ? NOTAS[bajo]! : null;
-      const nombre = raizNombre + tipo.sufijo + (bajo !== null && !esBajo ? `/${bajoNombre}` : '');
+      const nombre =
+        raizNombre +
+        (tipo.nombreSufijo ?? tipo.sufijo) +
+        (bajo !== null && !esBajo ? `/${bajoNombre}` : '');
 
       const analisis = [...conjuntoNotas].map((pc) => {
         const intervalo = ((pc - raiz) % 12 + 12) % 12;
