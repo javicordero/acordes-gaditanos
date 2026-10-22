@@ -186,9 +186,12 @@ function normalizarPosicion(codigo) {
 
 /** Formas manuales para acordes que LaCuerda no publica (semidisminuidos y 7b5). */
 function posicionesManuales(etiqueta) {
-  // Suspendido con b6 y 9: postura abierta de La(susb6/9).
+  // Suspendidos con b6 y 9: posturas abiertas de La(susb6/9) y Mi(susb6/9).
   if (etiqueta === 'Lasusb6/9') {
     return [{ trastes: [-1, 0, 3, 4, 3, 0], baseTraste: 1, cejilla: null }];
+  }
+  if (etiqueta === 'Misusb6/9') {
+    return [{ trastes: [0, 3, 4, 2, 0, 0], baseTraste: 1, cejilla: null }];
   }
 
   const raiz = etiqueta.replace(/(m7b5|7b5|sus9)$/, '');
@@ -315,7 +318,7 @@ async function main() {
     if (!r) continue;
     manuales.push(r + 'm7b5', r + '7b5', r + 'sus9');
   }
-  manuales.push('Lasusb6/9');
+  manuales.push('Lasusb6/9', 'Misusb6/9');
 
   const lista = ONLY ? catalogo.filter((n) => n.includes(ONLY)) : catalogo;
   console.log(`Importando ${lista.length} acordes (+ ${manuales.length} manuales)…`);
@@ -368,7 +371,7 @@ async function main() {
     if (!posiciones) continue;
     const m = etiqueta.match(/^(Do|Re|Mi|Fa|Sol|La|Si)([#b]?)(.*)$/);
     if (!m) continue;
-    const sufijo = etiqueta === 'Lasusb6/9' ? 'susb6add9' : m[3];
+    const sufijo = etiqueta.endsWith('susb6/9') ? 'susb6add9' : m[3];
     acordes[etiqueta] = {
       raiz: m[1] + m[2],
       sufijo,

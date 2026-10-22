@@ -12,9 +12,6 @@ const { class: clase } = Astro.props;
     <p class='glosario-hint__text'>
       Pincha en cualquier acorde de la letra para ver c&oacute;mo se toca.
     </p>
-    <p class='glosario-hint__text'>
-      <a href='/glosario' data-ga-event='click_novedad_glosario'>Ver glosario completo</a>
-    </p>
   </div>
 </div>
 
@@ -60,34 +57,4 @@ const { class: clase } = Astro.props;
   .glosario-hint__text {
     margin: 0;
   }
-
-  .glosario-hint__text a {
-    color: var(--link-color);
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .glosario-hint__text a:hover {
-    color: var(--link-hover-color);
-  }
 </style>
-
-<script>
-  document.querySelectorAll('.glosario-hint [data-ga-event]').forEach((el) => {
-    el.addEventListener('click', () => {
-      const evento = el.getAttribute('data-ga-event');
-      if (!evento) return;
-
-      const w = window as any;
-      if (typeof w.gtag === 'function') {
-        w.gtag('event', evento, {
-          event_category: 'glosario',
-          event_label: window.location.pathname,
-        });
-      } else {
-        w.dataLayer = w.dataLayer || [];
-        w.dataLayer.push({ event: evento });
-      }
-    });
-  });
-</script>

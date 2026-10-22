@@ -11675,6 +11675,26 @@
         }
       ]
     },
+    "Misusb6/9": {
+      "raiz": "Mi",
+      "sufijo": "susb6add9",
+      "bajo": null,
+      "slug": "misusb6add9",
+      "posiciones": [
+        {
+          "trastes": [
+            0,
+            3,
+            4,
+            2,
+            0,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Re": {
       "raiz": "Re",
       "sufijo": "",
