@@ -76,6 +76,10 @@ const SUFIJOS: Record<string, string> = {
   sus2: 'sus2',
   sus4: 'sus4',
   sus9: 'sus9',
+  susb6add9: 'susb6add9',
+  Susb6add9: 'susb6add9',
+  'susb6/9': 'susb6add9',
+  'Susb6/9': 'susb6add9',
   Sus: 'sus',
   Sus2: 'sus2',
   Sus4: 'sus4',
@@ -140,6 +144,11 @@ export function parsearAcorde(texto: string): AcordeParseado | null {
 
   const raiz = RAIZ_CANONICA[m[1]!.toLowerCase()]! + (m[2] ?? '');
   let resto = etiqueta.slice(m[0]!.length);
+
+  // Suspendido con b6 y 9: "La(susb6/9)" o "Lasusb6/9".
+  if (resto.toLowerCase() === 'susb6/9') {
+    return { raiz, sufijo: 'susb6add9', bajo: null, etiqueta };
+  }
 
   // Semidisminuido y séptima con quinta bemol: "m7/5", "7/5".
   if (resto.endsWith('/5')) {

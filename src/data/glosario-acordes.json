@@ -8975,6 +8975,26 @@
         }
       ]
     },
+    "Lasusb6/9": {
+      "raiz": "La",
+      "sufijo": "susb6add9",
+      "bajo": null,
+      "slug": "lasusb6add9",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            0,
+            3,
+            4,
+            3,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Mi": {
       "raiz": "Mi",
       "sufijo": "",

@@ -47,10 +47,10 @@ El glosario (`/glosario`) y el diagrama emergente funcionan **automáticamente**
 - Fundamentales: Do, Re, Mi, Fa, Sol, La, Si, con `#` o `b` (Do#, Sib…).
 - Sufijos: `m`, `7`, `m7`, `maj7` (también `7M`, `M7`, `Maj7`), `6`, `m6`, `9`, `m9`, `maj9`, `add9`, `11`, `13`, `sus`, `sus2`, `sus4`, `sus9`, `7sus4`, `dim`, `dim7`, `m7b5` (o `m7/5`), `aug`, `7b5`, `7maj5`, `mmaj7`, `add11`.
 - Inversiones con barra: `Re/Fa#`, `Lam7/Sib`.
-- Sin paréntesis: `La(sus9)` → `Lasus9`; `La(Sus2)` → `Lasus2`.
+- Sin paréntesis: `La(sus9)` → `Lasus9`; `La(Sus2)` → `Lasus2`; `La(susb6/9)` → `Lasusb6/9`.
 - Se aceptan alias del cancionero (`La7M`, `MiMaj7`, `Sim7/5`, `Mi/add9`), pero mejor usar la forma canónica.
 
-Si un acorde no está en el glosario, se puede dejar en la letra, pero al pulsarlo no se abrirá ningún diagrama.
+Si un acorde no está en el glosario, se puede dejar en la letra, pero al pulsarlo no se abrirá ningún diagrama. En ese caso sigue el flujo de la sección siguiente.
 
 ### Verificación
 
@@ -60,7 +60,29 @@ Después de formatear, comprueba la cobertura:
 node --experimental-strip-types scripts/auditar-glosario.ts
 ```
 
-Falla si algún acorde válido del cancionero no tiene diagrama. Si aparece uno, corrige la notación o añádelo al glosario con `node scripts/importar-glosario.mjs`.
+Falla si algún acorde válido del cancionero no tiene diagrama.
+
+## Si un acorde no está en el glosario
+
+Cuando la auditoría detecte acordes sin diagrama (o al revisar un cifrado), comprueba cada uno:
+
+```bash
+node --experimental-strip-types scripts/sugerir-acorde.ts "Mi9" "Re/Fa#"
+```
+
+- Si existe: `OK (slug, N posiciones)`.
+- Si no existe: indica el motivo y muestra **acordes parecidos** disponibles (misma fundamental, enarmonía y sufijos similares).
+
+**Avisa siempre al usuario antes de tocar el contenido**, por ejemplo:
+
+> El acorde `X` no está en el glosario. ¿Quieres añadirlo con ese nombre o cambiarlo por uno de estos similares: `Mimaj7`, `Mimaj9`, `Mi6`…?
+
+Dos opciones:
+
+1. **Añadirlo al glosario**: crea sus posiciones en `scripts/importar-glosario.mjs` (nuevo modo o `posicionesManuales`) o añade la entrada al JSON; ejecuta el importador y la auditoría, y comprueba que el diagrama se pinta.
+2. **Cambiarlo por uno similar**: sustituye `X` por el nombre elegido en el `.md` y vuelve a pasar la auditoría.
+
+No cambies el acorde por iniciativa propia: decide el usuario.
 
 ## Patrón de Acordes a Formatear
 
@@ -73,7 +95,7 @@ Acordes típicos en mayúsculas/minúsculas:
 - Acordes con sexta: La6, Re6
 - Acordes con séptima: Mi7, La7, Sol7, Re7, Do7, Sim7, Fa#7
 - Acordes con variaciones: Mi7b5, Lam7, Fa#m, Do#m, Sol#7
-- Acordes suspendidos: Lasus2, Lasus4, Lasus9, Mi7sus4
+- Acordes suspendidos: Lasus2, Lasus4, Lasus9, Lasusb6/9, Mi7sus4
 - Acordes con novena: Mi/add9, Lad9, Dom9
 - Acordes semidisminuidos: Sim7/5, Do#m7/5
 - Inversiones: Re/Fa#, Lam7/Sib
