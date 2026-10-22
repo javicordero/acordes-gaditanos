@@ -56,13 +56,13 @@ Aquellos que tanto miraban, Juana la loca
 me llamaron,
                        <a>Lam</a>  <a>Fa</a> <a>Mi7</a>
 Juana la loca me llamaron.
-<a>Lam</a>                     <a>Sim7/5</a> <a>Fa</a>      <a>Mi7</a>
+<a>Lam</a>                     <a>Sim7b5</a> <a>Fa</a>      <a>Mi7</a>
 Hay quien camina por la vida y en su camino
         <a>Lam</a>
 abre verea.
 <a>Do</a>                      <a>Lam</a>       <a>Fa</a>
 Son caminantes de la historia que tiran
-   <a>Sim7/5</a>   <a>Mi7</a>
+   <a>Sim7b5</a>   <a>Mi7</a>
 muros y barreras.
 <a>Lam</a>                 <a>Fa</a>               <a>Mi7</a> <a>Lam</a>
 Yo soy aquel que soportó la humillación que a

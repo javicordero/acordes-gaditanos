@@ -18,7 +18,7 @@ Y en el Gran Astillero enorme que fuera el mundo
 cuando las cosas estaban en el génesis creando
          <a>Rem</a>                      <a>Mi7</a>
 Aunque el mar era todavia frio y oscuro
-                 <a>Sim7/5</a>        <a>Mi7</a>         <a>Lam</a>
+                 <a>Sim7b5</a>        <a>Mi7</a>         <a>Lam</a>
 los ángeles de la risa frente a él se congregaron
       <a>Sol7</a>           <a>Fa</a>            <a>Mi7</a>
 Y se aliaron junto a los cuatro elementos
@@ -28,7 +28,7 @@ para dar forma y construir una ciudad
 Una ciudad que era como un barquito
     <a>Lam</a>
 recoqueto, pequeño y bonito
-    <a>Sim7/5</a>            <a>Mi7</a>          <a>Lam</a>
+    <a>Sim7b5</a>            <a>Mi7</a>          <a>Lam</a>
 Este barco llenito de locos donde habito
        <a>Rem</a>          <a>Sol7</a>
 Una ciudad diferente
@@ -64,7 +64,7 @@ los ángeles de la alegría
 Pusieron su obra en la orilla de una playa
    <a>Fa#7</a>         <a>Sim7</a>     <a>Mi7</a>           <a>Lam</a>
 y se quedaron mirando subidos a las murallas
-      <a>Sol</a>         <a>Fa</a>             <a>Sim7/5</a>     <a>Mi7</a>
+      <a>Sol</a>         <a>Fa</a>             <a>Sim7b5</a>     <a>Mi7</a>
 Y pensaron en silencio después de esto no hay nada
            <a>Sim7</a>                      <a>Mi7</a>
 Esto os lo cuento por si aún os preguntais

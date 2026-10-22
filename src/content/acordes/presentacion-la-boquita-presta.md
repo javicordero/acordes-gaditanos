@@ -26,7 +26,7 @@ Va olvidando el sentido de la fiesta
 va desglorificando el fin que da febrero
          <a>Fa</a>
 hoy nos vemos en un concurso por cojones
-             <a>Sim7/5</a>          <a>Fa</a>           <a>Mi7</a>
+             <a>Sim7b5</a>          <a>Fa</a>           <a>Mi7</a>
 en mayo por pandemia con los muertos del dinero
                <a>Lam</a>               <a>Sol</a>
 Cádiz siempre opina nunca permanece callá
@@ -34,7 +34,7 @@ Cádiz siempre opina nunca permanece callá
 jamás le hizo falta una boquita prestá
     <a>Lam</a>                                              <a>Sol</a>
 Si quieres sentarte en la mesa ay de esta boquita prestá
-    <a>Do7</a>                    <a>Fa</a>      <a>Sim7/5</a>         <a>Mi7</a>
+    <a>Do7</a>                    <a>Fa</a>      <a>Sim7b5</a>         <a>Mi7</a>
 deja las mentiras en la puerta si no, no puedes pasar
      <a>Lam</a>
 Se admite veneno del bueno
@@ -54,7 +54,7 @@ me duele mas lo tuyo que lo mío que lo mío
 Llámame gaditano incurable,
     <a>Sol</a>                             <a>Fa</a>
 llámame chovinista intratable llámame,
-        <a>Sim7/5</a>   <a>Fa</a>       <a>Mi7</a>
+        <a>Sim7b5</a>   <a>Fa</a>       <a>Mi7</a>
 que ya mamé ya mamé yo bastante
      <a>Lam</a>
 Te enfadas por cambiar el nombre al estadio,
@@ -62,13 +62,13 @@ Te enfadas por cambiar el nombre al estadio,
 por como mecen las maniguetas
        <a>Do7</a>                  <a>Fa</a>
 Pero a ver si te veo al lao mía
-  <a>Sim/5</a>     <a>Fa</a>       <a>Mi7</a>
+  <a>Sim7b5</a>    <a>Fa</a>       <a>Mi7</a>
 tirándole piedras a una tanqueta
      <a>Lam</a>
 Cállate, si siempre estas cruzao de brazos,
 <a>Sol</a>               <a>Fa</a>
 con tu lengua de trapo,
-              <a>Sim7/5</a>         <a>Fa</a>             <a>Mi7</a>
+              <a>Sim7b5</a>         <a>Fa</a>             <a>Mi7</a>
 cállate ,anda cállate que a veces estas más guapo
                <a>Lam</a>               <a>Sol</a>
 Cádiz siempre opina nunca permanece callá
@@ -80,7 +80,7 @@ Este es mi foro de participación,
 aquí vengo con mi musical
            <a>Fa</a>
 Que no es mas que una comparsa mas
-           <a>Sim7/5</a>                 <a>Mi7</a>
+           <a>Sim7b5</a>                 <a>Mi7</a>
 que se desangra donde hay que estrenar
     <a>Lam</a>
 Camarero hoy nos emborrachamos

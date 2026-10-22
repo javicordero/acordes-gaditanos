@@ -27,7 +27,7 @@ Coplas por tus barrios y por tus calles
 Donde los acordes se vuelven más sencillos
              <a>Mim</a>
 Con la gente que se saben los estribillos
-            <a>Sim7/5</a>                  <a>Mi7</a>
+            <a>Sim7b5</a>                  <a>Mi7</a>
 Que lo más bonito de volver por febrero
                <a>Lam</a>        <a>Sol</a>      <a>Fa</a>
 Es cantar con amigos y vivirlo contigo

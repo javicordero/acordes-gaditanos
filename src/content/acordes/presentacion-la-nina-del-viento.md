@@ -31,7 +31,7 @@ Todo lo miras distinto porque aquí me tienes a
 solas contigo
           <a>Rem</a> <a>Fa</a> <a>Rem</a> <a>Fa</a>                  <a>Mi7</a>
 No puedes huir me tienes otra vez dentro de ti
-<a>Lam</a>    <a>Mim</a>                     <a>Fa</a>  <a>Sim7/5</a> <a>Mi7</a>
+<a>Lam</a>    <a>Mim</a>                     <a>Fa</a>  <a>Sim7b5</a> <a>Mi7</a>
 Soy la locura que llama a tu puerta,      Cádiz
 <a>Lam</a>   <a>Mim</a>                  <a>Fa</a>
 Soy la locura que pinta tus calles, tu alma, tu

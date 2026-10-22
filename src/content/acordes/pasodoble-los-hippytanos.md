@@ -25,7 +25,7 @@ ay, qué penita, compare, al más grande de los genio
 Que el arpegio de la noche se haga eterno como él,
                                                   <a>Sol</a>
 que nos lluevan los acordes del prodigio de sus manos
- <a>Do7</a>                <a>Fa</a>   <a>Sim7/5</a>              <a>Mi7</a>
+ <a>Do7</a>                <a>Fa</a>   <a>Sim7b5</a>              <a>Mi7</a>
 flamenco, andalú, gitano, hijo del mismo Undivé
         <a>Mi</a>          <a>Fa</a>        <a>Mi</a>
 Que el duende del cante, tu duende,
@@ -35,7 +35,7 @@ compare, no nos abandone,
 que no muera nunca tu guitarra
                            <a>Fa</a>
 porque fue el compás y el alma
-          <a>Sim7/5</a>     <a>Mi7</a>
+          <a>Sim7b5</a>     <a>Mi7</a>
 de esos grandes cantaores
 <a>Rem</a>                        <a>Lam</a>
 que hoy llorando entre dos aguas

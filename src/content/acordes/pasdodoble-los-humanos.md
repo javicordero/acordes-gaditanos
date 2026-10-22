@@ -15,11 +15,11 @@ fraseClave: Viejo como estas arenas que visten de crema
 
 ---
 <pre>
-<a>La</a>                <a>Do#m7</a>                <a>Sim7</a>
+<a>Laadd9</a>            <a>Do#m7</a>                <a>Sim7</a>
 Viejo como estas arenas que visten de crema
     <a>Mi7</a>     <a>La</a>
 Tu trazo divino
-<a>Re</a>               <a>La</a>                  <a>Si7</a>
+<a>Re</a>               <a>Laadd9</a>             <a>Fa#m7b5/Do</a>
 Viejo como los colores de todos los soles
                 <a>Mi7</a>
 Que aquí han sucumbido

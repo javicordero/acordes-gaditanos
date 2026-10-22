@@ -14,7 +14,7 @@ fraseClave: "Convertimos nuestra tierra en"
 <a>Fa</a> <a>Mi</a>
                                         <a>Fa</a>    <a>Mi7</a>
 Convertimos nuestra tierra en un parque por febero
-                                             <a>Sim7/5</a>
+                                             <a>Sim7b5</a>
 Ahora lloran las guitarras y las coplas se atragantan
            <a>Mi7</a>        <a>Lam</a>
  ya no nos duele lo nuestro
@@ -24,13 +24,13 @@ Leleleleleile Leleleleleile Lelelelile
 Leleleleleile Leleleleleile Lelelelile
                         <a>Lam</a>                       <a>Sol</a>
 Ya no explota en las gargantas la rabia de los valientes
-<a>Do7</a>                  <a>Fa</a>  <a>Sim7/5</a>                <a>Mi7</a>
+<a>Do7</a>                  <a>Fa</a>  <a>Sim7b5</a>                <a>Mi7</a>
 ahora rebuzna el que canta pa entretener a la gente
                    <a>Lam</a>                       <a>Sol</a>
 Ya no araña nuestra pluma la cara del que gobierna
  <a>Do7</a>                     <a>Fa</a>
 y el que escucha en ese palco,
-<a>Sim7/5</a>                       <a>Mi7</a>
+<a>Sim7b5</a>                       <a>Mi7</a>
 ¡ay! ya no le tiemblan las piernas
          <a>Fa</a>                                 <a>Mim</a>
 Y en una noria dando vueltas cada año por febrero
@@ -68,7 +68,7 @@ y seguimos cantando
 mientras venden mi tierra al turismo en verano
                <a>Fa</a>                <a>Sol</a>
 Y seguimos cantando y seguimos cantando
-                 <a>Fa</a>                            <a>Sim7/5</a>
+                 <a>Fa</a>                            <a>Sim7b5</a>
 viendo que la guitarra desde que se fuera el capitán
                  <a>Mi7</a>
 ya no levanta la mano

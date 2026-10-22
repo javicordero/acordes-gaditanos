@@ -43,11 +43,11 @@ enterradas en la playa
 Que morir por una reina es morir por Cadiz entero
   <a>Mi7</a>
 Morir por la bandera del imperio caletero
-<a>Sim7/5</a>     <a>Mi7</a>     <a>Lam</a>  <a>Sim7/5</a>       <a>Mi7</a>
+<a>Sim7b5</a>     <a>Mi7</a>     <a>Lam</a>  <a>Sim7b5</a>       <a>Mi7</a>
 Y el reino de la Caleta tiene sus pies,
                  <a>Lam</a>
 en la orilla del mar
-<a>Sim7/5</a>    <a>Mi7</a>      <a>Lam</a>
+<a>Sim7b5</a>    <a>Mi7</a>      <a>Lam</a>
 Y para que el mundo sepa que bajo las piedras
                                <a>Mi7</a>
 de nuestra playita viven como reinas

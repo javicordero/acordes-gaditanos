@@ -48,7 +48,7 @@ Huele a salistre y a mar, roca desnuda y verdin;
 Huele a pimienta y a sal, huele a romero en abril;
 <a>Rem</a>               <a>Lam</a>             
 Huele a tabaco de Falla, geranios 
-  <a>Fa</a>       <a>Sim7/5</a>     <a>Mi7</a>
+  <a>Fa</a>       <a>Sim7b5</a>     <a>Mi7</a>
 y damas de noches y abril.
 <a>(Sorda)</a>
 Huele a escolleras para los caleteros, 

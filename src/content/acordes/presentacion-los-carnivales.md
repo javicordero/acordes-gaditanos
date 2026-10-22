@@ -34,18 +34,18 @@ ingente invasión
 Doce meses soñando pero la espera acabó, salimos de
        <a>Si7</a>        <a>Mim</a>
 nuestra cueva, vámonos
-                                            <a>Do#m7/5</a>
+                                            <a data-postura="x x 4 5 4 5">Fa#dim7</a>
 No te fíes de la apariencia y las hechuras de la
 ropa
-    <a>Fa#7/5</a>                               <a>Fa7/5</a>
+    <a data-postura="2 3 2 3 0 0">Fa#7b5</a>                               <a data-postura="1 2 1 2 0 0">Fa7b5</a>
 Todos estos son trofeos de muchas victimas, su
                       <a>Mim</a>
 ropa, sus cabezas disecadas
-  <a>Do#m7/5</a>                      <a>Fa#7/5</a>
+  <a data-postura="x x 4 5 4 5">Fa#dim7</a>                      <a data-postura="2 3 2 3 0 0">Fa#7b5</a>
 Pedacitos de su cuerpo de toda la vida luchando con
-                   <a>Fa7/5</a>
+                   <a data-postura="1 2 1 2 0 0">Fa7b5</a>
 la reina de nuestros huesos
-            <a>Mim</a>                          <a>Do#m7/5</a>
+            <a>Mim</a>                          <a data-postura="x x 4 5 4 5">Fa#dim7</a>
 Puedo estar en un tablao, en una esquinita contigo
          <a>Do</a>                           <a>Si7</a>
 Y en menos de un 3x4 seco con un estribillo

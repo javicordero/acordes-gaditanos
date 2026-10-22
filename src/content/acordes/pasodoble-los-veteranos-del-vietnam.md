@@ -37,7 +37,7 @@ que no tiene ni finales ni regreso,
 digo que será por eso que en febrero no dormía,
 <a>Rem</a>                                        <a>Fa</a>
 Hasta que llegó la hora de subirme a la carreta, 
-    <a>Sim7/5</a>      <a>Mi7</a>
+    <a>Sim7b5</a>      <a>Mi7</a>
 de subirme a la carreta
 <a>Rem</a>                            <a>Mi7</a>
 Y defender lo que siempre entendí 

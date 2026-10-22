@@ -17,7 +17,7 @@ Yo sé que se me tacha de ser chovinista,
 que muchos me critican ser tan gaditano,
                      <a>Lam</a>               <a>Sol</a>
 que siempre ando cantando la misma cantiña,
-                   <a>Fa</a>  <a>Sim7/5</a>             <a>Mi7</a>
+                   <a>Fa</a>  <a>Sim7b5</a>             <a>Mi7</a>
 que si Cádiz, la Viña, que ya estoy desfasao.
 <a>Lam</a>                                <a>Sol</a>
 Dicen que el Carnaval de la tierra mía,

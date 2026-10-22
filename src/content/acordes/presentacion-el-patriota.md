@@ -28,7 +28,7 @@ Noventa años hace de mi muerte
 Noventa años que deje mi sangre
 <a>Rem</a>
 Y nunca he dejao de quererte
-                  <a>Fa</a> <a>Sim7/5</a>     <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
+                  <a>Fa</a> <a>Sim7b5</a>     <a>Lam</a> <a>Sol</a> <a>Fa</a> <a>Mi7</a>
 Soy tu padre Blas Infan    Blas Infante
 <a>Lam</a>                            <a>Sol</a>
 Por tender mi mano a los que labraban

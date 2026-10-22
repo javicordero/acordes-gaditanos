@@ -23,13 +23,13 @@ sus vecinos sus secretos, sus leyendas
 Y pa que no se la quede gente extraña
                 <a>Lam</a>
 po mejor la robo yo
-<a>Lam</a>              <a>Sim/5</a> <a>Lam</a>                 <a>Sim7/5</a>
+<a>Lam</a>             <a>Sim7b5</a> <a>Lam</a>                 <a>Sim7b5</a>
 Y un grupo de gaditanos que estamos medio colgaos
-<a>Rem</a>    <a>Sol7</a>      <a>Do</a>    <a>Fa</a>          <a>Sim7/5</a>     <a>Mi7</a>
+<a>Rem</a>    <a>Sol7</a>      <a>Do</a>    <a>Fa</a>          <a>Sim7b5</a>     <a>Mi7</a>
 hartitos ya nos dijimos cucha hasta aquí hemos llegao
-<a>Lam</a>              <a>Sim/5</a> <a>Lam</a>                 <a>Sim7/5</a>
+<a>Lam</a>             <a>Sim7b5</a> <a>Lam</a>                 <a>Sim7b5</a>
 y nos volvimos majaras por cumplir un plan maestro
-<a>Rem</a>     <a>Sol7</a>        <a>Do</a>  <a>Fa</a>         <a>Sim7/5</a>    <a>Mi7</a>
+<a>Rem</a>     <a>Sol7</a>        <a>Do</a>  <a>Fa</a>         <a>Sim7b5</a>    <a>Mi7</a>
 vamos a llevarnos a Cai que pa eso Cádiz es nuestro
 <a>Sol7</a>                                   <a>Do</a>
 Y a la ciudad enterita de la luna la colgamos
@@ -51,7 +51,7 @@ Cádiz por el cielo navegando
 colgadita de las trenzas de la diosa de los vientos
        <a>Lam</a>
 Cádiz nuestro sube al cielo y ponte a salvo
-                     <a>Fa</a>          <a>Sim7/5</a>      <a>Mi7</a>
+                     <a>Fa</a>          <a>Sim7b5</a>      <a>Mi7</a>
 deja el mundo alli debajo y pon rumbo al firmamento
        <a>Lam</a>
 Déjame Cádiz que hoy yo quiera imaginarte
@@ -61,7 +61,7 @@ huyendo de tu destino tu miseria y tu dolor
 Cádiz mirando al reflejo el fondo de los espejos
                         <a>Fa</a>
 tu reino no es de este reino
-            <a>Sim7/5</a>        <a>Mi7</a>
+            <a>Sim7b5</a>        <a>Mi7</a>
 que es del cielo y es del sol
           <a>Lam</a>
 Cádiz yo vengo a rescatarte enamorao
@@ -99,9 +99,9 @@ si dicen que aman a Cádiz ero solo aman su ombligo
 Y a to los falsos amantes yo le juro, yo le juro
 
 que esta noche se la van a ver conmigo
-    <a>Fa</a>      <a>Sim7/5</a>       <a>Mi7</a>
+    <a>Fa</a>      <a>Sim7b5</a>       <a>Mi7</a>
 Y a ti que si que amas a Cádiz
- <a>Fa</a>       <a>Sim7/5</a>     <a>Mi7</a>
+ <a>Fa</a>       <a>Sim7b5</a>     <a>Mi7</a>
 desde estas nubes te convoco
         <a>Lam</a>        <a>Sol</a>          <a>Fa</a>           <a>Do</a>
 Vente y súbete, que sube, ven y sube, ven que sube,

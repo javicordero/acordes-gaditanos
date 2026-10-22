@@ -60,15 +60,15 @@ La pregunta sin respuesta Y la magia del compas
 Y los cantos de su fiesta Que se llama carnaval
 <a>Lam</a>
 Ya no hay Timbales en la selva
-                <a>Sim7/5</a>         <a>Mi7</a>
+                <a>Sim7b5</a>         <a>Mi7</a>
 Sonando están Guitarras en la niebla
    <a>Do</a>            <a>Sol</a>
 No suenan ya Ni gritos ni tambores
      <a>Fa</a>               <a>Mi7</a>
 Tan solo el latido De los corazones
-<a>Lam</a>         <a>Sim7/5</a>         <a>Mi7</a>
+<a>Lam</a>         <a>Sim7b5</a>         <a>Mi7</a>
 Reniego de Mi raza y mi cultura
-<a>Lam</a>            <a>Sim7/5</a>      <a>Mi7</a>
+<a>Lam</a>            <a>Sim7b5</a>      <a>Mi7</a>
 Para adorar La claridad más pura
    <a>Do</a>            <a>Sol</a>
 Mi tribu no es Salvaje ni lejana
@@ -96,6 +96,6 @@ Suenen que resuenen Tus huracanes
 Y revienten los volcanes Que mi tribu ha comprendido
          <a>Mim</a>         <a>Rem</a>  <a>Fa</a>                     <a>Mi7</a>
 Y el secreto ya aprendío Lo tengo en frente del mar
-               <a>Lam</a> <a>Sim7/5</a> <a>Mi7</a>        <a>Lam</a>
+               <a>Lam</a> <a>Sim7b5</a> <a>Mi7</a>        <a>Lam</a>
 A vivir la libertad Tribu de la  libertad
 </pre>

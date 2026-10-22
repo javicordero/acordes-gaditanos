@@ -22,7 +22,7 @@ garantizo en cuanto que abro la boca
 somos grandes comediantes y los reyes del humor
         <a>Mi7</a>        <a>Do#m7</a>                  <a>Dom</a> <a>Sim</a>
 disfruten de nuestro arte que estoy delante
-<a>Sim7/5</a>     <a>Mi7</a>      <a>Lam</a>
+<a>Sim7b5</a>     <a>Mi7</a>      <a>Lam</a>
 comprueben con atención
                                                <a>Mi7</a>
 como yo al hablar recurro siempre al doble sentío
@@ -30,7 +30,7 @@ como yo al hablar recurro siempre al doble sentío
 y te hago creer to lo contrario de lo que te digo
                                                  <a>Sol</a>
 y si hay que tener poca vergüenza para hacer el tonto
-<a>Do7</a>       <a>Fa</a>   <a>Sim7/5</a>    <a>Mi7</a>
+<a>Do7</a>       <a>Fa</a>   <a>Sim7b5</a>    <a>Mi7</a>
 yo la vergüenza no la conozco
 <a>Rem</a>
 uhhhh este gobierno apuesta por el 3x4

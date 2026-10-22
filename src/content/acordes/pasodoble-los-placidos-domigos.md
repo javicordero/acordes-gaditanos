@@ -19,13 +19,13 @@ pa abrir mis horizontes y hallar sustento
 Y aunque echaba de menos los carnavales,
                           <a>Fa</a>
 miraba el sueldo en preliminares
-      <a>Sim7/5</a>            <a>Mi7</a>
+      <a>Sim7b5</a>            <a>Mi7</a>
 Y der tirón me ponía contento
 <a>Lam</a>            <a>Mi7</a>               <a>Lam</a>
 Pero volví pa Cádiz, llegué a mi barrio
                          <a>Sol</a>
 y de mi barrio no queda nada
-                   <a>Fa</a>           <a>Sim7/5</a>          <a>Mi7</a>
+                   <a>Fa</a>           <a>Sim7b5</a>          <a>Mi7</a>
 Cafeterías prefabricadas y la miseria bajo la alfombra
 <a>Fa</a>                  <a>Sol7</a>
 Se han perdio los canastos,

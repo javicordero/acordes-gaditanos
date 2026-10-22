@@ -26,7 +26,7 @@ Parto hacia la batalla no llevo bandera
 solo la guitarra y mi calavera
 
 Me voy con mi gente
-                <a>Sim7/5</a>           <a>Mi7</a>
+                <a>Sim7b5</a>           <a>Mi7</a>
 a esparcir la simiente de la libertad
 <a>Lam7</a>                      <a>Rem7</a>
 A cambiar el mundo con canciones
@@ -40,7 +40,7 @@ que si algo nos sobra es la rabia
 La marca del hierro me quema en el horizonte la mar
 <a>Lam7</a>           <a>Mim7</a>       <a>Rem7</a>
 Acoge niña a esta ovejita negra
-<a>Fa</a>                            <a>Sim7/5</a>        <a>Mi7</a>
+<a>Fa</a>                            <a>Sim7b5</a>        <a>Mi7</a>
 abreme las puertecitas ay mi tacita del carnaval
 <a>Lam7</a>                   <a>Rem7</a>
 Carnaval canalla e insolente
@@ -52,7 +52,7 @@ Carnaval milagro de febrero
 carnaval la madre del cordero
     <a>Mi7</a>         <a>Lam</a>     <a>Mi7</a>
 Carnaval, carnaval carnaval
-<a>Fa</a> <a>Sim7/5</a>  <a>Fa</a> <a>Sim7/5</a> <a>Fa</a> <a>Sim7/5</a> <a>Fa</a> <a>Sim7/5</a> <a>Mi7</a>
+<a>Fa</a> <a>Sim7b5</a>  <a>Fa</a> <a>Sim7b5</a> <a>Fa</a> <a>Sim7b5</a> <a>Fa</a> <a>Sim7b5</a> <a>Mi7</a>
 ahh ahh    ahh ahh   ahh ahh   ahh ahh   ahh
       <a>Lam</a>
 carnaval

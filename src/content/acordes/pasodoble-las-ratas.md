@@ -46,7 +46,7 @@ Y las lágrimas que, alguna vez, en silencio derramé
 eran ecos de tu llanto
     <a>Lam</a>                        <a>Sol</a>
 Cada grito era la sombra de tu rabia,
-        <a>Fa#</a>        <a>Fa</a>      <a>Sim7/5</a>      <a>Mi7</a>
+        <a>Fa#</a>        <a>Fa</a>      <a>Sim7b5</a>      <a>Mi7</a>
 tu alegría, mí alegría, tu fracaso, mi dolor
     <a>Re</a>                     <a>Rem</a>
 Tu siempre dentro de mi, sonando mi corazón,

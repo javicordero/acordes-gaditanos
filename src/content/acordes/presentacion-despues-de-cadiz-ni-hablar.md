@@ -11,7 +11,7 @@ video: 'https://www.youtube.com/embed/qsMTh2bXSIY'
 
 fraseClave: Tutu tutu tututu tutu tutututu  Tutu tutu tututu
 ---
-<pre><a>Lam</a>        <a>Sim/5</a> <a>Mi7</a>      <a>Lam</a>              <a>Sim/5</a>
+<pre><a>Lam</a>       <a>Sim7b5</a> <a>Mi7</a>      <a>Lam</a>             <a>Sim7b5</a>
 Tutu tutu tututu tutu tutututu  Tutu tutu tututu
 <a>Mi7</a>     <a>Lam</a>
 tutu tutututu
@@ -53,7 +53,7 @@ Que Cai despierta con un redoble por febrero y aquí
 les traigo mi comparsa para decirle al mundo entero
                      <a>Lam</a>
 después de Cádiz ni hablar
-            <a>Sim/5</a> <a>Mi7</a>      <a>Lam</a>              <a>Sim/5</a>
+           <a>Sim7b5</a> <a>Mi7</a>      <a>Lam</a>             <a>Sim7b5</a>
 Tutu tutu tututu tutu tutututu  Tutu tutu tututu
  <a>Mi7</a>     <a>Lam</a>
 tutu tutututu
@@ -71,11 +71,11 @@ El que se piensa que esto es un botellón le vamos a
 dar cosquis y la pringa
 Al que se ofenda por lo que pueda cantar le vamos a
 dar cosquis y la pringa
-                                 <a>Sim7/5</a>         <a>Mi7</a>
+                                 <a>Sim7b5</a>         <a>Mi7</a>
 A esos fanáticos que no ven más allá le vamos a dar
                 <a>Lam</a>
 cosquis y la pringa
-                                <a>Sim7/5</a>           <a>Mi7</a>
+                                <a>Sim7b5</a>           <a>Mi7</a>
 Y al que no deje escuchar una ilegal le vamos a dar
                 <a>Lam</a>
 cosquis y la pringa
@@ -99,19 +99,19 @@ Cuchibiri cuchibiri cuchibiri chi chi
 Cuchibiri cuchibiri cuchibiri chi chi
     <a>Sol</a>
 Cuchibiri cuchibiri cuchibiri chi chi
-<a>Lam</a>                   <a>Sim7/5</a>       <a>Mi7</a>
+<a>Lam</a>                   <a>Sim7b5</a>       <a>Mi7</a>
 Y si tú quieres ser feliz ay vente conmigo a la
-<a>Lam</a>                         <a>Sim7/5</a>       <a>Mi7</a>
+<a>Lam</a>                         <a>Sim7b5</a>       <a>Mi7</a>
 Luna que allí juntos encontraremos la verdadera
    <a>Lam</a>
 fortuna
-                 <a>Sim7/5</a>     <a>Mi7</a>          <a>Lam</a>
+                 <a>Sim7b5</a>     <a>Mi7</a>          <a>Lam</a>
 En la luna cantaremos mil coplas de carnaval que ya
                       <a>Mi7</a>
 lo dijo en su día el poeta
 <a>Lam</a>             <a>Sol</a>      <a>Fa</a>             <a>Mi7</a>
 Cheilole chaleiloleilole Cheilole chaleilola
-<a>Lam</a>  <a>Sim7/5</a>   <a>Mi7</a>        <a>Lam</a>   <a>Sim7/5</a>    <a>Mi7</a>
+<a>Lam</a>  <a>Sim7b5</a>   <a>Mi7</a>        <a>Lam</a>   <a>Sim7b5</a>    <a>Mi7</a>
     Después de Cádiz ni hablar, después de Cádiz ni
   <a>Lam</a>
 hablar</pre>

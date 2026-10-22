@@ -25,7 +25,7 @@ con San Carlos frente al Puerto,
 donde ni el vapor nos llega.
 <a>Do</a>                                       <a>Sol7</a>
 Con los niños desnudos, barrio de Santa María,
-         <a>Fa</a>  <a>Sim7/5</a>   <a>Mi7</a>
+         <a>Fa</a>  <a>Sim7b5</a>   <a>Mi7</a>
 con el Greñuo de recogía
         <a>Rem</a>               <a>Mi7</a>
 con la salitre de un garabato

@@ -19,7 +19,7 @@ por lo que se está viendo
 se va perdiendo poquito a poco
 que cada vez se escuchan menos sus coplas
 y que el aficionado últimamente
-           <a>Sim7/5</a>        <a>Mi7</a>   <a>Lam</a>
+           <a>Sim7b5</a>        <a>Mi7</a>   <a>Lam</a>
 con las Comparsas se ha vuelto loco
 <a>La7</a>
 muchos dicen que somos, maldita sea
@@ -27,7 +27,7 @@ muchos dicen que somos, maldita sea
 una especie en extinción
                                   <a>Fa</a>
 y cuando escucho eso al tres por cuatro
-    <a>Sim7/5</a>          <a>Mi7</a>
+    <a>Sim7b5</a>          <a>Mi7</a>
 me late a mi el corazón
                  <a>Lam</a>        <a>La7</a>        <a>Rem</a>
 y es que este compás lo he mamao desde niño
@@ -37,7 +37,7 @@ con el chin pompón siempre retumbando dentro de mi
 pa que ahora me vengan diciendo
                       <a>Mi7</a>
 que esto ya no es lo mismo
-              <a>Sim7/5</a>     <a>Mi7</a>            <a>La7M</a>
+              <a>Sim7b5</a>     <a>Mi7</a>            <a>La7M</a>
 dejando los fanatismos yo te vuelvo a repetir
 <a>(Sorda)</a>
 que pa mi la chirigota es como un pregón

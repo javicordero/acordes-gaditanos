@@ -43,7 +43,7 @@ lo que han merecido.
 En mi interior siento un dolor que me castiga,
            <a>Do7</a>   <a>Fa</a>   <a>Si7</a>             <a>Mi7</a>
 pero es un bajo precio pá cantarte mi vida.
-                <a>La</a>  <a>Sim7/5</a>                <a>La</a>
+                <a>La</a>  <a>Sim7b5</a>                <a>La</a>
 El apoyo de la gente me va llenando de orgullo
 
 Y con el disfraz a cuesta me he sentío el hombre

@@ -17,7 +17,7 @@ Que no, que no, que no , que no , que no , que no,
 que no  me quedo sin cantarte
     <a>Mi7</a>
 Que no, que no, que no , que no , que no , que no,
-<a>Sim7/5</a>      <a>La</a>
+<a>Sim7b5</a>      <a>La</a>
 como voy a faltarte
 
 Que no, que no, que no , que no , que no , que no,
@@ -39,7 +39,7 @@ Que no, que no, que no , que no , que no , que no ,
 que no  me quedo sin soñarte
 <a>Mi7</a>
 Que no, que no, que no , que no , que no , que no,
-<a>Sim7/5</a>      <a>La</a>
+<a>Sim7b5</a>      <a>La</a>
 como voy a aguantarme
 <a>La7</a>          <a>Re</a>         <a>Mi7</a>
 Si es que Febrero no es solo 
@@ -53,5 +53,5 @@ Que como a tantos locos ay de remate
 Que no de sobra sabe el teatro que volveremos, 
 <a>Fa#7</a>       <a>Sim7</a> <a>Mi7</a>                <a>Sim7</a>     <a>Mi7</a>
 pero yo necesito un rincón pequeñito, ay pequeñito
-<a>Sim7</a>             <a>Mi7</a>          <a>Sim7/5</a>      <a>La</a>
+<a>Sim7</a>             <a>Mi7</a>          <a>Sim7b5</a>      <a>La</a>
 Para decirte te quiero, para decirte te quiero</pre>

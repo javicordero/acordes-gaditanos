@@ -18,7 +18,7 @@ No tengo fortuna ninguna tampoco la espero, yo no
 tengo cuando me muera ni donde caer
   <a>Lam</a>                  <a>La7</a>                  <a>Rem</a>
 No tengo ni perras, ni tierra, tampoco las quiero
-  <a>Fa</a>                <a>Sim7/5</a>              <a>Mi7</a>
+  <a>Fa</a>                <a>Sim7b5</a>              <a>Mi7</a>
 Y usted pensará po valiente mojón de marqués
 <a>Lam</a>                        <a>Mi7</a>
 Espere que enseguida se lo explico, no encontrara
@@ -28,7 +28,7 @@ un marques que sea más rico
 Yo no tengo delirios de grandeza, no vivo rodeado
        <a>Fa</a>
 de riqueza
-   <a>Sim7/5</a>                  <a>Mi7</a>
+   <a>Sim7b5</a>                  <a>Mi7</a>
 Ni envidio lo que no puedo tener
          <a>Lam</a>
 Porque yo tengo una vieja guitarra y tengo un
@@ -36,7 +36,7 @@ Porque yo tengo una vieja guitarra y tengo un
 cuaderno
                        <a>Do</a>    <a>Fa</a>
 Tengo una melodía pa cada invierno y por cada
-  <a>Sim7/5</a>            <a>Mi7</a>
+  <a>Sim7b5</a>            <a>Mi7</a>
 febrero tengo un disfraz
             <a>Lam</a>
 Tengo en mi casa recuerdos y retales de mis

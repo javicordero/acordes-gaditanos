@@ -28,7 +28,7 @@ y que no necesita esperar a ningún hombre.
 Sois la dama que ocupa mi pecho,
          <a>Mi7</a>              <a>Fa</a>
 sois el sueño de mis madrugadas,
-    <a>Sol7</a>       <a>Do</a>    <a>Sim7/5</a>   <a>Mi7</a>           <a>Lam</a>
+    <a>Sol7</a>       <a>Do</a>    <a>Sim7b5</a>   <a>Mi7</a>           <a>Lam</a>
 Afrodita de mi lecho, la reflexión de mi almohada.
                  <a>La7</a>        <a>Rem</a>
 Nunca fuisteis de mí ni de nadie,
@@ -37,7 +37,7 @@ solo tuya mi fiel compañera,
         <a>Mi7</a>     <a>Lam</a> <a>Mi7</a>                 <a>LaM7</a>
 pero daríais la vida por mí si yo lo pidiera.
 La belleza de las pieles curtidas,
-             <a>Dom#7/5</a>
+             <a>Do#m7</a>
 la sabiduría de las heridas
                    <a>Sim7</a>                     <a>Fa#7</a>
 gracias por ser y existir, por latir, por vivir,

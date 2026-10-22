@@ -24,7 +24,7 @@ Es verdad que nos ponemos muy jartibles
 Con la Viña y con las coplas en la Caleta
         <a>Lam</a>
 Pero es que tuve la suerte picha mía
-             <a>Sim7/5</a>  <a>Mi7</a>     <a>LaM7</a>
+             <a>Sim7b5</a>  <a>Mi7</a>     <a>LaM7</a>
 que mi madre un día allí me pariera
           <a>Mi7</a>         <a>LaM7</a>         <a>Mi7</a>         <a>LaM7</a>
 Y aunque somos malos, malos, más malvados que Satán

@@ -15,7 +15,7 @@ fraseClave: Hágase la luz lucero, hágase la luz de nuevo,
                         <a>Rem</a>       <a>Fa</a>      <a>Mi7</a>
 Hágase la luz lucero, hágase la luz de nuevo,
 lucero
-<a>Lam</a>       <a>Mim</a>            <a>Sim7/5</a>       <a>Mi7</a>   <a>Lam</a>
+<a>Lam</a>       <a>Mim</a>            <a>Sim7b5</a>       <a>Mi7</a>   <a>Lam</a>
 Paraban Bam, bam Parararaparaban Paraban Bam, bam
     <a>Mim</a>
 Parararaparaban
@@ -27,7 +27,7 @@ Hay luciérnaga de las negruras mi candil del sur
 del sur
 <a>Rem</a>                                         <a>Lam</a>
 La estrellita para este farero gaditano y andaluz
-<a>Mi7</a>                 <a>Sim7/5Fa</a>                 <a>Mi7</a>
+<a>Mi7</a>                 <a>Sim7b5</a> <a>Fa</a>                <a>Mi7</a>
 Que brilla a contra luz    desde febrero a febrero
 <a>Lam</a>  <a>Mi7</a>       <a>Si7</a>           <a>La7</a>
 Paraban Bam, bam Paraban Bam, bam

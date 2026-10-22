@@ -137,7 +137,7 @@ hipotecas y de máscaras
 Máscaras, tu hijo y tu mujer y cada uno con su
  <a>Rem7</a>
 máscara,
-                                       <a>Sim7/5</a>
+                                       <a>Sim7b5</a>
 por fin el bienestar, adiós mamá, cayó tu máscara,
                      <a>Mi7</a>
 y el nuevo siglo abrió la negra caja de las

@@ -16,7 +16,7 @@ fraseClave: "Hace cuatro meses,"
 Hace cuatro meses, mi niña del alma,
                                             <a>Fa</a>
 que no me oyes ningún cuento con el corazón atento
-      <a>Sim7/5</a>        <a>Mi7</a> <a>Fa</a> <a>Mi7</a>
+      <a>Sim7b5</a>        <a>Mi7</a> <a>Fa</a> <a>Mi7</a>
 poco antes de dormir.
 Hace cuatro meses que apenas me hablas,
 cuando vuelvo del ensayo de esperarme te has cansao

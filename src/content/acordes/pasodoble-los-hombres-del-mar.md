@@ -13,7 +13,7 @@ cejilla: 5
 
 ---
 <pre>
-<a>Lam</a>         <a>Sim7/5</a>         <a>Mi7</a>                   <a>Lam</a>
+<a>Lam</a>         <a>Sim7b5</a>         <a>Mi7</a>                   <a>Lam</a>
 Viene a esta tierra un barquito, más típico no lo hay
 <a>Lam</a>                  <a>Mi7</a>                          <a>Lam</a>
 más blanco, ni más bonito, en toito' el muelle de Cai

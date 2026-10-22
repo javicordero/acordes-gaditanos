@@ -202,7 +202,7 @@ Y ahora estoy y yo jugando a quien quien será el
 próximo en caer
                <a>Mi7</a>                         <a>Lam</a>
 Quien, quien, quien, quien será el próximo caer
-    <a>Sim7/5</a> <a>Lam</a>  <a>Mi7</a>                         <a>Lam</a>
+    <a>Sim7b5</a> <a>Lam</a>  <a>Mi7</a>                         <a>Lam</a>
 Caer, caer,   caer, quien será el próximo en caer
 
 

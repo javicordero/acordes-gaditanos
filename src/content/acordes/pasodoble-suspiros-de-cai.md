@@ -46,7 +46,7 @@ Y el botín de mi quilla dejando blancos
 tirabuzones,
                  <a>Rem</a>                    <a>Lam</a>
 Mientras tú coqueteas, al rumor de canciones.
-                    <a>Fa</a>           <a>Sim7/5</a>
+                    <a>Fa</a>           <a>Sim7b5</a>
 Y se mueren de envidia tu celestial corte de
     <a>Mi7</a>
 tritones.

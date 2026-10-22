@@ -23,7 +23,7 @@ Aunque namas que valen si te averías
 Y es por la noche
                    <a>Rem</a>         <a>Mi7</a>          <a>Lam7</a>
 Pero yo lo veo muy bien es muy útil por lo pronto
-<a>Sim7/5</a>          <a>Fa</a>       <a>Mi7</a>
+<a>Sim7b5</a>          <a>Fa</a>       <a>Mi7</a>
 Un disgusto ya puedes evitar
 Yo se la pondría también a los tontos
     <a>La7</a> <a>Rem</a>
@@ -36,7 +36,7 @@ Porque el tonto lleva puesta su baliza
 Y tu lo ves venir de lejos
    <a>Rem</a>                         <a>Mi7</a>      <a>Lam7</a>
 Además, como ya trae GPS eso sí que vale oro
-               <a>Sim7/5</a>
+               <a>Sim7b5</a>
 Porque todos sabremos
              <a>Fa</a>                <a>Mi7</a>
 Si el tonto está en su casa acostao

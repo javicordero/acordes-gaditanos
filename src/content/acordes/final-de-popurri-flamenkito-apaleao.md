@@ -50,11 +50,11 @@ ni plazone zin los techo,
 ni los techos zin hormigones,
 <a>Lam</a>                           <a>Sol</a>
 Y en el autobús de vuelta hartitos de carretera,
-    <a>Fa</a>                            <a>Sim7/5</a>      <a>Mi7</a>
+    <a>Fa</a>                            <a>Sim7b5</a>      <a>Mi7</a>
 le dijimos al chofe, para en la próxima gasolinera
     <a>Lam</a>                         <a>Sol</a>
 que vamos a llenar el tanque de gasolina con hielo
-   <a>Fa</a>                            <a>Sim7/5</a>     <a>Mi7</a>
+   <a>Fa</a>                            <a>Sim7b5</a>     <a>Mi7</a>
 y dile al gafa que mangue otra película de pelo.
    <a>LaM7</a>       <a>Mi7</a>      <a>LaM7</a>
 Y con la gasolina destilada

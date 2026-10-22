@@ -39,7 +39,7 @@ volvemos a sentir
 Puede que fuera el ego, puede que la avaricia
                        <a>Sol</a>       <a>Do</a>          <a>Fa</a>
 Puede que el propio miedo a pensar que mis coplas
-   <a>Sim7/5</a>  <a>Mi7</a>   <a>Rem</a>    <a>Lam</a>         <a>Sim7/5</a>   <a>Mi7</a>
+   <a>Sim7b5</a>  <a>Mi7</a>   <a>Rem</a>    <a>Lam</a>         <a>Sim7b5</a>   <a>Mi7</a>
 Son poco pa ti, ay Cai, ay Cai, perdóname por ser
 <a>La</a>
 así

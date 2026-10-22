@@ -17,7 +17,7 @@ fraseClave: Señor de Cádiz, Cristo Gitano del Barrio Santa María
 Señor de Cádiz, Cristo Gitano del Barrio Santa María,
          <a>La7</a>                    <a>Rem</a>
 vengo a rezarte con mi fé y mi alegría,
-       <a>Fa</a>         <a>Sim7/5</a>     <a>Mi7</a>
+       <a>Fa</a>         <a>Sim7b5</a>     <a>Mi7</a>
 en una copla de mi mundo el carnaval.
    <a>Lam</a>                                      <a>Mim</a>
 Greñuo moreno, tu pelo al viento bajando Jabonería,

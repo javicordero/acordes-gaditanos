@@ -23,11 +23,11 @@ Ninguno quiso que el otro fuera rondando sus calles
 Y se quedó con el más loco y es por eso que mi pare
            <a>Lam</a>
 Es el Levante
-                                       <a>Sim7/5</a>          <a>Lam</a>
+                                       <a>Sim7b5</a>          <a>Lam</a>
 Pa irrumpir tu calma aquí me colé sin avisar total, pa que
-<a>Sim7/5</a>            <a>Mim</a>                     <a>Fa</a>
+<a>Sim7b5</a>            <a>Mim</a>                     <a>Fa</a>
 Si febrerillo me llama pa despertarte de nuevo
-                 <a>Rem</a>     <a>Fa</a> <a>Sim7/5</a> <a>Mi7</a>       <a>Lam</a> <a>Sol7</a>
+                 <a>Rem</a>     <a>Fa</a> <a>Sim7b5</a> <a>Mi7</a>       <a>Lam</a> <a>Sol7</a>
 Espabila o te desvelo agitando tus persianas
 <a>Do</a>
 Exudando coplas de carnaval puedo provocar
@@ -61,7 +61,7 @@ Y ya estoy medio majareta chailo lolailo, lolailo lola
 Y voy haciendo travesuras desde el barrio a la Caleta
 <a>Fa</a>                                                <a>Sol</a>
 Chailo lolailo, lolailo lola y ya estoy medio majareta
-<a>Fa</a>                                           <a>Sim7/5</a> <a>Mi7</a>
+<a>Fa</a>                                           <a>Sim7b5</a> <a>Mi7</a>
 Chailo lolailo, lolailo lola y voy haciendo travesuras
           <a>Lam</a>
 Bailo tanguillos por tus azoteas
@@ -69,7 +69,7 @@ Bailo tanguillos por tus azoteas
 Mientras te seco la ropa tendía
           <a>Do7</a>                   <a>Fa</a>
 Y las barquillas, aunque no me veas
-          <a>Sim7/5</a>         <a>Mi7</a>
+          <a>Sim7b5</a>         <a>Mi7</a>
 Las voy meciendo con alegría
            <a>Lam</a>
 Por tus rincones yo voy resoplando
@@ -97,7 +97,7 @@ Son mi locura y la razón de mi canción
 Loco por Cai que es lo que hay
                                <a>Rem</a>
 Sin avisar aquí el Levante se coló
-                           <a>Fa</a>       <a>Sim7/5</a>        <a>Mi7</a>
+                           <a>Fa</a>       <a>Sim7b5</a>        <a>Mi7</a>
 Loco por Cai que Cai es mi mare mi locura y mi pasión
                  <a>Lam</a>           <a>Readd9/Fa#</a>
 Ando loquito por ti loquito del to

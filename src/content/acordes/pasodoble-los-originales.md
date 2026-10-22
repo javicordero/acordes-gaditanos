@@ -36,7 +36,7 @@ con la escopeta carga ya no levanta un plumero
 Que mas da si el que te canta 
                    <a>Do7</a>                 <a>Fa</a>
 por la rentabilidad ya no te ofrece un te quiero
-                    <a>Sim7/5</a>                <a>Mi7</a>
+                    <a>Sim7b5</a>                <a>Mi7</a>
 Que mas da si el papelillo ya no inunda mi ciudad
                     <a>Rem</a>    <a>Mi7</a>                  <a>Lam</a>
 Y ahora son los botellones los que ocupan mis rincones

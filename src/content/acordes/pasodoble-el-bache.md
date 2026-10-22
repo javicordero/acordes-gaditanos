@@ -22,7 +22,7 @@ la está mirando.
 Niño, mira que te traigo, un martillito de plata;
 <a>La7</a>                 <a>Rem</a>                      <a>Fa</a>
 Luna, no quiero martillo, Luna no quiero martillo,
-         <a>Sim7/5</a>         <a>Mi7</a>
+         <a>Sim7b5</a>         <a>Mi7</a>
 dale un duende a mi garganta,
    <a>Rem</a>                      <a>Lam</a>         <a>Mi7</a>
 Y la Luna se lo dio, bendita sea, y el chiquillo se

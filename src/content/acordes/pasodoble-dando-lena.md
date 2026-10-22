@@ -18,7 +18,7 @@ Sin ganas, una noche lloviznando
 Salía de mi casa caminito del ensayo,
       <a>Mi7</a>             <a>Lam</a>
 Salía con cargo de conciencia
-                           <a>Fa</a>       <a>Sim7/5</a>        <a>Mi7</a>
+                           <a>Fa</a>       <a>Sim7b5</a>        <a>Mi7</a>
 porque me había echao en cara Cuatro cosas la parienta
 <a>Do</a>                          <a>Sol7</a>
 Ya está bien de tanto cachondeo

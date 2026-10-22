@@ -17,13 +17,13 @@ recomendada: true
 reyes que vais a traerle a este chavalito
 <a>Lam</a>                      <a>Sol</a>
 no quiero engañarte picha mia
- <a>Do7</a>                <a>Fa</a>       <a>Sim7/5</a>          <a>Mi7</a>
+ <a>Do7</a>                <a>Fa</a>       <a>Sim7b5</a>          <a>Mi7</a>
 pero mas bien te diria que otra vez viene cortito
      <a>Fa</a>          <a>Mi</a>     <a>Fa</a>          <a>Mi</a>
 este año la playstation tampoco te llega
 <a>Lam</a>                       <a>Sol</a>
 cuando te levante no te enfade
- <a>Do7</a>               <a>Fa</a>      <a>Sim7/5</a>          <a>Mi7</a>
+ <a>Do7</a>               <a>Fa</a>      <a>Sim7b5</a>          <a>Mi7</a>
 porque puede encontrarte el cocodrilo sacamuela
         <a>Fa</a>               <a>Mi</a>
 cuando llegue el seis de enero
@@ -31,7 +31,7 @@ cuando llegue el seis de enero
 se repetira la historia
 <a>Lam</a>                 <a>Sol</a>  <a>Do7</a>                <a>Fa</a>
 Pa los niños cacharritos y pa los más mayorcitos
-<a>Sim7/5</a>         <a>Mi7</a>   <a>Sol7</a>     <a>Do</a>
+<a>Sim7b5</a>         <a>Mi7</a>   <a>Sol7</a>     <a>Do</a>
 pijamitas y colonias ay lerelere
         <a>Sol7</a>          <a>Do</a>    <a>Sol7</a>         <a>Do</a>
 si tu supieras que melchor pa ponerte su regalo

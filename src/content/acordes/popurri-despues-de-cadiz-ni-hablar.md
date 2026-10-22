@@ -182,7 +182,7 @@ Que pa sentir como yo el carnaval hay que sufrir
 como los gaditanos
            <a>Fa</a>
 Que encadenaos en esta cárcel de sal dan brillo a
-      <a>Sim7/5</a>                 <a>Mi7</a>
+      <a>Sim7b5</a>                 <a>Mi7</a>
 los barrotes con sus propias manos
 <a>Lam</a>                                    <a>Sol</a>
 Que no, que no, que no que los dos coloretes que

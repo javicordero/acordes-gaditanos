@@ -25,7 +25,7 @@ Con veneno en las entrañas y los recuerdos del alma
 de aquel burrito lucero
                     <a>Fa</a>
 que escuchaba de mañana por las calles gaditanas
-    <a>Sim7/5</a>           <a>Mi7</a>
+    <a>Sim7b5</a>           <a>Mi7</a>
 el pregón de los pajeros.
           <a>Sol7</a>                <a>Do</a>
 Pero los tiempos han ido cambiando
@@ -50,7 +50,7 @@ Al compás de tu comparsa que como nadie la canta
 en tu honor estos chavales.
 <a>La7</a>                                         <a>Rem</a>
 Y en la puerta La Caleta, tu rincón más gaditano,
-                  <a>Fa</a>             <a>Sim7/5</a>     <a>Mi7</a>
+                  <a>Fa</a>             <a>Sim7b5</a>     <a>Mi7</a>
 aquí quiero devolverte lo que un día te robaron.
                        <a>Fa</a>                        <a>Mi7</a>
 Este premio y este aplauso y el abrazo de los nuestros

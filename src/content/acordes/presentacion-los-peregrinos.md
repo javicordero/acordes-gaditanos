@@ -22,7 +22,7 @@ Con unos cuantos apóstoles mas,
 que lo mismo que yo, rendidos están
                   <a>Fa</a>
 Al misterio que aquí se predica al cantar
-                         <a>Sim7/5</a>            <a>Mi7</a>
+                         <a>Sim7b5</a>            <a>Mi7</a>
 Y siguiendo a la osa del sur, mi estrella polar
               <a>Lam</a>
 Y guiándome a solas
@@ -30,7 +30,7 @@ Y guiándome a solas
 por la luz cegadora de San Sebastián
                <a>Fa</a>
 Y el eterno perfume de su baja mar
-              <a>Sim7/5</a>          <a>Mi7</a>
+              <a>Sim7b5</a>          <a>Mi7</a>
 y el azul y amarillo de la claridad
 <a>Rem</a>                                     <a>Lam</a>
 Desde un país imposible, igual que un profeta

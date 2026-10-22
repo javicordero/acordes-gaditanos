@@ -17,7 +17,7 @@ fraseClave: Muy buenas noches hoy me
 Muy buenas noches hoy me presento
          <a>Fa</a>           <a>Mi7</a>
 con este pasodoble sencillo
-         <a>Sim7/5</a>          <a>Mi7</a>
+         <a>Sim7b5</a>          <a>Mi7</a>
 Si soy el mismo el mismo preso
                    <a>Lam</a>
 mucho más viejo y fugitivo

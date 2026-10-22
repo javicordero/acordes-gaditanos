@@ -11,12 +11,12 @@ video: 'https://www.youtube.com/embed/6ehfMOea1ps'
 fraseClave: Por fuera un osito desmembrao
 ---
 <pre>
-    <a>Lam</a>       <a>Mi7</a>        <a>Lam</a>      <a>Sim/5</a>      <a>Mi7</a>
+    <a>Lam</a>       <a>Mi7</a>        <a>Lam</a>      <a>Sim7b5</a>     <a>Mi7</a>
 Por fuera un osito desmembrao cachondeo garantizao
        <a>Fa</a>            <a>Mi7</a>
 para abrir los noticieros
 Por dentro ya construyen barricadas, 
-               <a>Sim7/5</a>     <a>Mi7</a>           <a>Lam</a>   <a>Mi7</a>
+               <a>Sim7b5</a>     <a>Mi7</a>           <a>Lam</a>   <a>Mi7</a>
 huele a goma quemada de mi gente de astilleros
     <a>Lam</a>     <a>Mi7</a>           <a>Lam</a>
 Por fuera esos locos del levante 
@@ -32,7 +32,7 @@ Por fuera un alcalde carajote
 y un porrón de monigotes enganchaos al carnaval
 <a>Sol7</a>                         <a>Do</a>
 Por dentro el convenio se respeta 
-                   <a>Fa</a>         <a>Sim7/5</a>   <a>Mi7</a>
+                   <a>Fa</a>         <a>Sim7b5</a>   <a>Mi7</a>
 resistir la mano abierta de la nazi nacional
          <a>Sim7</a>     <a>Mi7</a>     <a>LaM7</a>   
 Por fuera picha, chocho, cojones 

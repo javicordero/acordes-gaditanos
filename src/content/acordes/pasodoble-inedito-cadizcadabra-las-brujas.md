@@ -16,7 +16,7 @@ fraseClave: "La playita de Santa María"
 La playita de Santa María refresca mis días libres
       <a>Do</a>
 del verano
-    <a>Rem</a>              <a>Lam</a>     <a>Sim7/5</a>
+    <a>Rem</a>              <a>Lam</a>     <a>Sim7b5</a>
 Y sus dos espigones vigía me regalan abrazos de
   <a>Mi7</a>
 hermano

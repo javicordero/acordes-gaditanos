@@ -22,7 +22,7 @@ Mamá perdóname pero yo de mayor quiero ser un fascista
 Fascista de los buenos, de los de verdad
                  <a>Lam7</a>
 De los de ultraderecha
-                   <a>Si7</a> <a>Do#m7/5</a>            <a>Mim</a>
+                   <a>Si7</a> <a>Do#m7b5</a>            <a>Mim</a>
 Es tan cómodo y sencillo anular mi inteligencia
 <a>Lam7</a>              <a>Do</a>                   <a>Lam7</a>
 No pensar por uno mismo, tan solo es preciso
@@ -38,7 +38,7 @@ La patria solo es una y el bulo mi doctrina
 Quiero entregar la nación al poder de los ricos
                                  <a>Si7</a>
 Que con la censura me cierren el pico
-          <a>Do#m7/5</a>              <a>Mim</a>  <a>Mi7</a>
+          <a>Do#m7b5</a>              <a>Mim</a>  <a>Mi7</a>
 Españoles claros por gracia de dios
     <a>Lam7</a>                                    <a>Mim</a>
 Un obrero facista, un currito, un cuñado confeso

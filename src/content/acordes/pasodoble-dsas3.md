@@ -15,7 +15,7 @@ fraseClave: La quiere vestida de negro la quiere callada
 
 ---
 <pre>
-   <a>LaM7</a>   <a>Sim7/5</a>    <a>LaM7</a>      <a>Sim7/5</a>   <a>LaM7</a>
+   <a>LaM7</a>   <a>Sim7b5</a>    <a>LaM7</a>      <a>Sim7b5</a>   <a>LaM7</a>
 La quiere vestida de negro la quiere callada
    <a>Mi7</a>       <a>LaM7</a>
 La quiere obediente
@@ -33,7 +33,7 @@ Y la quiere sin deseo, sin deseo
 Pensamiento ni opinión, sin mostrar su inteligencia
                                <a>Mi7</a>
 Que quede bien claro quien es superior
-<a>Rem</a>               <a>Lam</a>              <a>Sim7/5</a>
+<a>Rem</a>               <a>Lam</a>              <a>Sim7b5</a>
 Y la quiere dependiente de su autoridad
      <a>Mi7</a>      <a>Lam</a>
 Y a su disposición

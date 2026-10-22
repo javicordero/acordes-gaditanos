@@ -66,7 +66,7 @@ Late que late por Cadiz Mi corazón
 De coplas de Carnavales Con las raíces de antes
            <a>Fa</a>         <a>Rem</a>       <a>Fa</a>
 Pa que mi pueblo las cante Las cante
-     <a>Sim7/5</a>    <a>Mi7</a>
+     <a>Sim7b5</a>    <a>Mi7</a>
 con rabia Las cante
           <a>Lam</a>
 Poquito a poco Voy sanando
@@ -82,7 +82,7 @@ Que yo no sé lo que tendrás
 Tacita Mia que me vuelves a enrollar
            <a>Lam</a>           <a>Sol</a>
 Cantando coplas por tus calles
-                   <a>Fa</a>       <a>Sim7/5</a>          <a>Mi7</a>
+                   <a>Fa</a>       <a>Sim7b5</a>          <a>Mi7</a>
 Que se hacen inmortales Por febrero en Carnaval
           <a>Lam</a>         <a>Sol</a>
 Cantando coplas con puñales

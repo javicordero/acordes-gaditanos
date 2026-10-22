@@ -40,7 +40,7 @@ Fantoches sin gracia, coristas a sueldo,
 tobuses de pueblo, viñeros de pega
 <a>Lam</a>                <a>Sol</a>             
 Promesas viejunas, todos campeones, 
-     <a>Fa</a>    <a>Sim7/5</a>   <a>Mi7</a>
+     <a>Fa</a>    <a>Sim7b5</a>   <a>Mi7</a>
 cuarteteros con depresión
 <a>Rem</a>       <a>Mi7</a>   <a>Lam</a>            
 La roja paloma atrae más romero 

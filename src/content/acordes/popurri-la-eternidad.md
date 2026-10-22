@@ -97,7 +97,7 @@ Hoy habrá una gran fiesta en el otro barrio,
 Almas antiguas, tu gente, te están reclamando.
 <a>Sim</a>    <a>La</a>                 <a>Sol</a>    <a>Fa#7</a>
 Siémbrate y crece compañero y recuerda
-      <a>Do#m7/5</a>         <a>Mi7</a>       <a>LaRe</a>  <a>La7ReLaRe</a>
+      <a>Do#m7b5</a>         <a>Mi7</a>       <a>LaRe</a>  <a>La7ReLaRe</a>
 A quien dejaste llorando y llorando en la tierra.
 
 
@@ -291,7 +291,7 @@ mar)
 Cerremos pa los restos las herías.
 <a>Rem</a>            <a>Sol7</a>  <a>Do</a>                     <a>Rem</a>  <a>F</a>
 Quedad en la memoria. Por cierto, ya es febrero y
-<a>a</a>               <a>Sim7/5</a>      <a>Mi7</a>
+<a>a</a>               <a>Sim7b5</a>      <a>Mi7</a>
 estamos en la gloria, compañeros.
 <a>La</a>                                 <a>Sim7 Mi7</a>   <a>La</a>
 Mañana será otro mañana y despertarás. Revivirás.

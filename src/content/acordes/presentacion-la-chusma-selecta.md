@@ -82,7 +82,7 @@ De la ceniza de un pobre caníbal nació un caballero
 Cielito mío ya estoy aquí, 
    <a>Mim</a>
 para ganar, pa perder, pa sufrir
-          <a>Fa</a>                <a>Sim7/5</a>                <a>Mi7</a>
+          <a>Fa</a>                <a>Sim7b5</a>                <a>Mi7</a>
 Dale al compás tu bendito compás otra vez por febrero
 <a>Lam</a>                <a>Sol</a>         <a>Fa</a>            <a>Mi7</a> <a>Fa</a> <a>Mi7</a>
 Que Cádiz no tiene reyes solo poetas de carnaval

@@ -22,7 +22,7 @@ Porque llega el jueves
 y voy sonriéndole al fin de semana
           <a>Mi7</a>                              <a>Lam</a>
 Un chaleco mono, los labios rojos y una minifalda
-                <a>Fa</a>   <a>Rem</a>  <a>Sim7/5</a>         <a>Mi7</a>
+                <a>Fa</a>   <a>Rem</a>  <a>Sim7b5</a>         <a>Mi7</a>
 Dejo atrás el uniforme y despertar de madrugada
 <a>Fa</a>                               <a>Mim</a>
 Si es por trabajar a nadie le importa

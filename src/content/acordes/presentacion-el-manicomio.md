@@ -18,7 +18,7 @@ Cai aflójame las cuerdas dale al bombo rienda suelta
 Que ha llegado febrerillo
         <a>Re7</a>       <a>Sol</a>                      <a>Fa</a>
 Y en mi cabeza resuenan Y en mi cabeza resuenan
-    <a>Sim7/5</a>        <a>Mi7</a>                         <a>Lam</a>
+    <a>Sim7b5</a>        <a>Mi7</a>                         <a>Lam</a>
 Pasodobles y estribillos, pasodobles y estribillos
       <a>Sol</a>                <a>Lam</a> <a>Sol</a>                 <a>Lam</a>
 Loooooco, por tus coplas looooco, por tus coplas loco

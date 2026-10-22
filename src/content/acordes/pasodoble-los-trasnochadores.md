@@ -21,7 +21,7 @@ por la Caleta, sin dirección
 y han pensado que mi menda estaba loco,
        <a>Mi7</a>                           <a>LaM7</a>
 sepa usted que todo tiene una explicación.
-<a>Lam</a>               <a>Sim7/5</a> <a>Mi7</a>                 <a>Lam</a>
+<a>Lam</a>               <a>Sim7b5</a> <a>Mi7</a>                 <a>Lam</a>
 Es que yo vine a cantarte sin pretensiones ninguna
     <a>Sol</a> <a>Fa</a>        <a>Mi7</a>             <a>Lam</a>
 y pude  tocar la luna cada noche que te vi.

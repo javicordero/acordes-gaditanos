@@ -3068,6 +3068,18 @@
           ],
           "baseTraste": 9,
           "cejilla": null
+        },
+        {
+          "trastes": [
+            2,
+            3,
+            2,
+            3,
+            0,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         }
       ]
     },
@@ -3361,6 +3373,18 @@
             2,
             1,
             2
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
+            -1,
+            4,
+            5,
+            4,
+            5
           ],
           "baseTraste": 1,
           "cejilla": null
@@ -4167,6 +4191,18 @@
             -1
           ],
           "baseTraste": 8,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            1,
+            2,
+            1,
+            2,
+            0,
+            0
+          ],
+          "baseTraste": 1,
           "cejilla": null
         }
       ]

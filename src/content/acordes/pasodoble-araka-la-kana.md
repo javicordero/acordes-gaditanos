@@ -19,7 +19,7 @@ Ni aquella de Carranza de la Primavera
 Ni las de la Alameda abrazando al Poniente
                                  <a>Fa</a>
 Ni aquellas noches largas con mi gente
-          <a>Sim7/5</a>              <a>Mi7</a>
+          <a>Sim7b5</a>              <a>Mi7</a>
 Las noches malas y las noches buenas
 <a>Lam</a>                               <a>Mi7</a>
 Ni las noches de enero últimos ensayos

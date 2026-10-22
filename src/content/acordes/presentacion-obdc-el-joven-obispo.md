@@ -34,7 +34,7 @@ a darle un toque más comercial
 Obispo soy ya, aleluya
 <a>La</a>                  <a>Mi7</a>              <a>La</a>
 Ya somos obispos ay dios mío que alegría
-  <a>Fa</a>                <a>Sim7/5</a>         <a>Fa</a>             <a>Mi7</a>
+  <a>Fa</a>                <a>Sim7b5</a>         <a>Fa</a>             <a>Mi7</a>
 Y encima me han proclamado en la Tacita, que puntería
       <a>La</a>                      <a>Mi7</a>                <a>La</a>
 Yo le dije al papa Francisco te voy a cantar el credo
@@ -46,17 +46,17 @@ Para el bautismo el agua bendita que resucita
 donde se bañan los caleteros
             <a>Mi7</a>                        <a>Sim7</a>
 Y me dijo joven obispo no me seas más canalla
-                    <a>Fa</a>        <a>Sim7/5</a>         <a>Fa</a>
+                    <a>Fa</a>        <a>Sim7b5</a>         <a>Fa</a>
 Que no se si tu prefieres la playita a las mujeres
          <a>Mi7</a>        <a>Lam</a>
 o las mujeres en la playa
 <a>Rem</a>                          <a>Fa</a>
 Pero yo he jurado nuestros votos
-    <a>Sim7/5</a>            <a>Mi7</a>
+    <a>Sim7b5</a>            <a>Mi7</a>
 y clavaitos bien los tengo
 <a>Rem</a>                        <a>Fa</a>
 Dios creo todas las tentaciones
-    <a>Sim7/5</a>            <a>Mi7</a>
+    <a>Sim7b5</a>            <a>Mi7</a>
 y mi voluntad destierro
 <a>La</a>              <a>Sim7</a>
 Y creó los mares y creó los días,
@@ -78,9 +78,9 @@ Nuestro padrenuestro que es la ironia
 Y creó los mares, y creó los días
   <a>Rem</a>
 Y entonces Dios creo a la comparsa
-                        <a>Fa</a>     <a>Sim7/5</a>            <a>Mi7</a>
+                        <a>Fa</a>     <a>Sim7b5</a>            <a>Mi7</a>
 pa gritar cuando otros callan Verdades como catedrales
- <a>Fa</a>           <a>Sim7/5</a>      <a>Mi7</a>
+ <a>Fa</a>           <a>Sim7b5</a>      <a>Mi7</a>
 apuñalando a golpes de garganta
 <a>Fa</a>            <a>Mi7</a>           <a>La</a>
 Que para eso están los carnavales

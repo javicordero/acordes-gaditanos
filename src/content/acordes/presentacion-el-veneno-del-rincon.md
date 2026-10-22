@@ -41,7 +41,7 @@ la receta del misterio de mi gente,
 de mi gente, los pabellones
                                            <a>Fa</a>
 Resuenan por sus paredes las gargantas gaditanas
-                        <a>Sim7/5</a>             <a>Mi7</a>
+                        <a>Sim7b5</a>             <a>Mi7</a>
 de San Juan de Dios con Plocia, seis de la mañana
 <a>Lam</a>             <a>Sol</a>             <a>Fa</a>   <a>Mi7</a>
 Veneno, veneno, veneno, veneno, veneno,

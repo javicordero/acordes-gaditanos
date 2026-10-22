@@ -32,7 +32,7 @@ Y a cantar, y otra vez dispuesto aquí para cantar
 porque es lo nuestro
                                              <a>Fa</a>
 y es la forma mas hermosa de expresar lo que yo siento
-   <a>Sim7/5</a>                          <a>Mi7</a>
+   <a>Sim7b5</a>                          <a>Mi7</a>
 lo que yo siento por las cosas de aquí,
         <a>Rem</a>                                        <a>Mi7</a>
 por las cosas de mi tierra, que no me den guerra, guerra

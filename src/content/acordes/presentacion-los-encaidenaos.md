@@ -70,7 +70,7 @@ ni de las buenas
 <a>Rem</a>                <a>Mi7</a>              <a>Lam</a>
 Por más que ella me hiera, me hiera, es mi patria
 su cadena
-<a>Fa</a>        <a>Mi7</a>   <a>Lam</a>       <a>Sol</a>     <a>Fa</a>    <a>Sim7/5</a>
+<a>Fa</a>        <a>Mi7</a>   <a>Lam</a>       <a>Sol</a>     <a>Fa</a>    <a>Sim7b5</a>
 Que por ti mare hasta después de muerto mare me
 <a>Mi7</a>
 veo

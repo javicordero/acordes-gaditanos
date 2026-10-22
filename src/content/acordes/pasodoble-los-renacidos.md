@@ -15,7 +15,7 @@ fraseClave: Dicen que siempre se vuelve a donde fuimos felices
 Dicen que siempre se vuelve a donde fuimos felices
                             <a>Sol</a>
 Y hoy me han devuelto mis pasos
-           <a>Fa</a>      <a>Sim7/5</a>   <a>Mi7</a>
+           <a>Fa</a>      <a>Sim7b5</a>   <a>Mi7</a>
 al viejo teatro de donde partí
                       <a>Mi7</a>
 Con recuerdos que florecen como en un jardín
@@ -23,7 +23,7 @@ Con recuerdos que florecen como en un jardín
 y en la garganta un misterio
                              <a>Sol</a>
 Hoy vuelvo al sitio en cuyo aliento
-              <a>Fa</a>    <a>Sim7/5</a>    <a>Mi7</a>
+              <a>Fa</a>    <a>Sim7b5</a>    <a>Mi7</a>
 tan dulces momentos contigo viví
                     <a>Rem</a>                          <a>Sol7</a>
 Donde yo me hice un hombre, donde unas veces he ganao
@@ -56,11 +56,11 @@ Aquí fui feliz cantando su palabra y su talento
 Sus verdades y sus glorias sus poesías, sus tormentos
                       <a>Si7</a>
 Y hoy anuncio ante mi gente
-       <a>Sim7/5</a>         <a>Fa</a>      <a>Mi7</a>
+       <a>Sim7b5</a>         <a>Fa</a>      <a>Mi7</a>
 que he muerto y he nacido de nuevo
                                          <a>Lam</a>
 Pero ahora que regreso por favor no me pidáis
-        <a>Sol</a>           <a>Fa</a>            <a>Sim7/5</a>        <a>Mi7</a>
+        <a>Sol</a>           <a>Fa</a>            <a>Sim7b5</a>        <a>Mi7</a>
 Que os traiga un heredero porque herencia aquí no hay
           <a>Rem</a>          <a>Fa</a>       <a>Rem</a>
 Que su heredero es tan solo su tierra,

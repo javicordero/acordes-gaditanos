@@ -42,7 +42,7 @@ que al tercer invierno el amor se apaga
 Y yo llevo contigo 20 años y me niego
                  <a>Mi7</a>
 a vivir sin tu amor
-                    <a>La</a>  <a>Sim7/5</a>          <a>La</a>
+                    <a>La</a>  <a>Sim7b5</a>          <a>La</a>
 Que la vida es un tango, amor baila conmigo
                     <a>Fa#7</a>              <a>Sim</a>
 Mi deseo prohibido, mi flor de primavera

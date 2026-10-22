@@ -23,7 +23,7 @@ Cuando me dice un malage Que ese nombre
 Nunca va adarme un primero
                  <a>Sol</a>                      <a>Fa</a>
 Yo le respondo sincero Mirando a mis compañeros
-                    <a>Sim7/5</a>                      <a>Mi7</a>
+                    <a>Sim7b5</a>                      <a>Mi7</a>
 Que ese premio ya lo tengo Desde que empecé a ensayar
                       <a>Rem</a>  <a>Mi7</a>               <a>Lam</a>
 Y puesto a usar la cantera como mi nombre prefiero

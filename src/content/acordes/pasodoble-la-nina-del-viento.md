@@ -17,11 +17,11 @@ fraseClave: Niña, tú que ahora empiezas
 Niña, tú que ahora empiezas
             <a>Mim</a>       <a>Fa</a>     <a>Mi7</a>      <a>Lam</a>
 tú mágica y noble aventura desde la cantera
-<a>Rem</a>         <a>Lam</a>                  <a>Sim7/5</a>       <a>Mi7</a>
+<a>Rem</a>         <a>Lam</a>                  <a>Sim7b5</a>       <a>Mi7</a>
 Niña, ven y óyeme si quieres ser mujer carnavalera
 <a>Rem</a>                  <a>Lam</a>
 No persigas un premio, ni prestigios ni nombre
-<a>Fa</a>            <a>Rem</a>                       <a>Fa</a>   <a>Sim7/5</a> <a>Mi7</a>
+<a>Fa</a>            <a>Rem</a>                       <a>Fa</a>   <a>Sim7b5</a> <a>Mi7</a>
 Que la gloria de mi carnaval se reserva para los hombres
 <a>Rem</a>           <a>Sol7</a>
 Que no hay carnavales más puros

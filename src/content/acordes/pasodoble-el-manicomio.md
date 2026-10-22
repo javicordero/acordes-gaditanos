@@ -45,7 +45,7 @@ Cada rincón de mi interior
 Porque son tuyos mis secretos más amargos
           <a>Sib</a>                   <a>Lam</a>
 Mis cicatrices y demonios de resguardan en tu piel
-           <a>Sim7/5</a>                        <a>Mi7</a>
+           <a>Sim7b5</a>                        <a>Mi7</a>
 Porque eres parte imprescindible de la historia
                    <a>LaM7</a>
 Que conforman mis diarios

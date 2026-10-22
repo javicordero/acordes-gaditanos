@@ -18,7 +18,7 @@ Recuerdo aquella noche, junto a la hoguera,
 que el jefe de la tribu nos convocara
                               <a>Fa</a>
 Y bajo una gran luna de primavera
-               <a>Rem</a>             <a>Sim7/5</a>       <a>Mi7</a>
+               <a>Rem</a>             <a>Sim7b5</a>       <a>Mi7</a>
 nos dijo, de repente, vamos a hacer una comparsa
 <a>Lam</a>              <a>Mi7</a>                <a>Lam</a>
 Me acuerdo, claramente, de aquel instante
@@ -26,7 +26,7 @@ Me acuerdo, claramente, de aquel instante
 en que se hizo el silencio sobre la playa
                                 <a>Fa</a>
 Porque el chamán nos dijo, desafiante,
-                    <a>Rem</a>       <a>Sim7/5</a>         <a>Mi7</a>
+                    <a>Rem</a>       <a>Sim7b5</a>         <a>Mi7</a>
 aquí hay que darlo todo porque vamos a ir al Falla
                 <a>Rem</a>         <a>Sol7</a>          <a>Do</a>
 Las dudas y los nervios, el sueño y las pasiones

@@ -63,7 +63,7 @@ Y falta decencia
 Falta más humanidad Para un mundo mejor
           <a>Rem</a>                 <a>Lam</a>
 Mientras tanto solo queda Combatir Nuestras tragedias
-          <a>Fa</a>   <a>Sim7/5</a>  <a>Mi7</a>
+          <a>Fa</a>   <a>Sim7b5</a>  <a>Mi7</a>
 Con la palabra Y el humor
 <a>Do</a>
 Ríe Aunque no sea conmigo

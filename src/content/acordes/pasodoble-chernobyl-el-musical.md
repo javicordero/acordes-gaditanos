@@ -23,7 +23,7 @@ Chernóbil tiene gente rara y muchos mutantes
 Y en Cádiz con el levante no hay un habitante que sea normal
 <a>La7</a>                   <a>Re</a>   <a>Si7</a>               <a>Mi7</a>
 La radiación en Chernóbil tuvo un impacto brutal
-                     <a>Lam</a>            <a>Sim7/5</a>  <a>Mi7</a> <a>Lam</a>
+                     <a>Lam</a>            <a>Sim7b5</a>  <a>Mi7</a> <a>Lam</a>
 Y te cala hasta los huesos como en Cádiz la humedad
                     <a>Si7</a>       <a>Mi7</a>                     <a>Lam</a>
 Haya en Ucrania en el 86 un desastre nuclear el caos desata
