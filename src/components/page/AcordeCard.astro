@@ -380,9 +380,30 @@ const headingId = `acorde-${slug}`;
       left: 7px;
     }
 
-    /* Acordes al inicio de línea: sin desplazamiento, alineados con la letra */
-    & :global(a.acorde-col0) {
+    /* Desplazamiento según la columna donde empieza el acorde:
+       cuanto más a la izquierda, menos empujón necesita */
+    & :global(a.acorde-col-0) {
       left: 0;
+    }
+
+    & :global(a.acorde-col-1) {
+      left: 1px;
+    }
+
+    & :global(a.acorde-col-2) {
+      left: 3px;
+    }
+
+    & :global(a.acorde-col-3) {
+      left: 5px;
+    }
+
+    & :global(a.acorde-col-4) {
+      left: 7px;
+    }
+
+    & :global(a.acorde-col-5) {
+      left: 8px;
     }
   }
 

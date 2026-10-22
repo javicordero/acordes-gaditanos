@@ -1,12 +1,12 @@
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
-import remarkAcordesCol0 from './src/lib/remark-acordes-col0.mjs';
+import remarkAcordesColumna from './src/lib/remark-acordes-columna.mjs';
 
 export default defineConfig({
   site: 'https://acordesgaditanos.com',
   markdown: {
-    remarkPlugins: [remarkAcordesCol0],
+    remarkPlugins: [remarkAcordesColumna],
   },
   integrations: [
     icon({

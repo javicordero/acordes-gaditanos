@@ -38,7 +38,6 @@ El glosario (`/glosario`) y el diagrama emergente funcionan **automáticamente**
 - **No hay que añadir nada más**: ni `href`, ni `class`, ni `data-acorde`, ni atributos ARIA. El popover añade `data-acorde`, `role`, `tabindex` y `aria-*` en el navegador.
 - El texto del `<a>` debe ser **solo el símbolo del acorde**. El popover usa ese texto para buscarlo en el glosario y muestra su diagrama si existe.
 - **No pongas `href`**: el enlace navegaría en vez de abrir el diagrama.
-- **Columna 0**: un acorde al principio de línea se escribe **sin espacios delante**. El build le añade la clase `acorde-col0` (plugin `src/lib/remark-acordes-col0.mjs`) y le anula el desplazamiento de 7px del CSS, para que quede alineado con la primera letra de la línea de abajo. No añadas clases ni atributos a los `<a>` ni indentes un acorde que va en la columna 0.
 - Solo se detectan los `<a>` que están **dentro de `<pre>`**; fuera del bloque no se enlazan.
 - `(Sorda)` y otras anotaciones pueden seguir dentro de `<a>`; no abrirán diagrama porque no son acordes.
 
@@ -61,6 +60,23 @@ node --experimental-strip-types scripts/auditar-glosario.ts
 ```
 
 Falla si algún acorde válido del cancionero no tiene diagrama.
+
+## Alineación y desplazamiento
+
+Cada acorde lleva un pequeño desplazamiento a la derecha (`left`) para quedar sobre su sílaba. El desplazamiento depende de la **columna visible** en la que empieza el acorde (los `<a>` no ocupan sitio; solo cuenta el texto):
+
+| Columna | Desplazamiento | Clase |
+|---|---|---|
+| 0 | 0px | `acorde-col-0` |
+| 1–10 | 1px | `acorde-col-1` |
+| 11–20 | 3px | `acorde-col-2` |
+| 21–30 | 5px | `acorde-col-3` |
+| 31–45 | 7px | `acorde-col-4` |
+| 46+ | 8px | `acorde-col-5` |
+
+La clase la pone el build (plugin `src/lib/remark-acordes-columna.mjs`): **no añadas `style`, clases ni atributos a los `<a>`**. Lo que sí importa es que la columna sea exacta: cuenta caracteres de texto visible, sin los `<a>`. Un espacio de más o de menos desplaza el acorde y puede cambiarle el tramo.
+
+Ejemplo: en `<a>Sol</a>    <a>Do</a>`, `Sol` está en la columna 0 y `Do` en la 7 (no en la 14): `<a>Sol</a>` no ocupa esas 7 columnas.
 
 ## Si un acorde no está en el glosario
 
