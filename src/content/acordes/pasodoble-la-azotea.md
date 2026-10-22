@@ -12,11 +12,11 @@ fraseClave: "Doy mi palabra que no"
 
 ---
 <pre>
-     <a>Mi/add9</a>                                <a>Do#m7</a>
+     <a>Mi/add9</a>               <a>Misusb6/9</a>         <a>Do#m7</a>
 Doy mi palabra que no te engañaba cuando te decía
              <a>La</a>                 <a>Fa#m</a>           <a>Si7</a>
 Que aquel chatarra guardo su guitarra y descansaría
-        <a>Mi/add9</a>                             <a>Do#m7</a>
+        <a>Mi/add9</a>          <a>Misusb6/9</a>           <a>Do#m7</a>
 Pero las musas son tan atrevidas y tan caprichosas
           <a>La</a>                 <a>Fa#m</a>               <a>Si7</a>
 Que se colaron sin que lo esperara en plan revoltosa
