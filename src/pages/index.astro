@@ -12,6 +12,7 @@ import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
 import BannerCoplasComunidad from '../components/page/BannerCoplasComunidad.astro';
 import FloatingButton from '../components/FloatingButton.astro';
 import { parseSpanishDate, sortByYearDesc } from '../lib/index';
+import { contarCreditosAutores } from '../lib/autores';
 
 let acordes = await getCollection('acordes');
 
@@ -29,6 +30,11 @@ const destacadas = acordes
   });
 
 let autores = await getCollection('autores');
+
+const creditos = contarCreditosAutores(acordes);
+const autoresDestacados = [...autores]
+  .sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999))
+  .slice(0, 6);
 ---
 
 <Layout
@@ -54,8 +60,17 @@ let autores = await getCollection('autores');
         </a>
       </div>
     </div>
-    <div class='section section--colored'>
-      <AutorCardsGroup autores={autores} />
+    <div class='section section--colored section--autores'>
+      <AutorCardsGroup autores={autoresDestacados} creditos={creditos} />
+      <div class='container-layout ver-mas-wrapper'>
+        <a
+          href='/autores'
+          class='ver-mas ver-mas--autores'
+          data-ga-event='ver_mas_autores_click'
+          data-ga-params='{"link_type":"autores","location":"index_autores"}'>
+          Ver más autores destacados
+        </a>
+      </div>
     </div>
     <div class='container-layout anuncio-autores'>
       <Anuncio adSlot='9620700067' />
@@ -77,8 +92,8 @@ let autores = await getCollection('autores');
 <script>
   declare const gtag: (...args: unknown[]) => void;
 
-  function setupVerMasNovedadesTracking() {
-    const links = document.querySelectorAll('[data-ga-event="ver_mas_novedades_click"]');
+  function setupVerMasTracking() {
+    const links = document.querySelectorAll('[data-ga-event^="ver_mas_"]');
     links.forEach((link) => {
       if (link.getAttribute('data-tracking-init')) return;
       link.setAttribute('data-tracking-init', 'true');
@@ -97,9 +112,9 @@ let autores = await getCollection('autores');
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupVerMasNovedadesTracking);
+    document.addEventListener('DOMContentLoaded', setupVerMasTracking);
   } else {
-    setupVerMasNovedadesTracking();
+    setupVerMasTracking();
   }
 </script>
 
@@ -118,6 +133,11 @@ let autores = await getCollection('autores');
   }
 
   .section--novedades {
+    padding-bottom: calc(var(--main-container-gap) + 8px);
+  }
+
+  .section--autores {
+    --autores-heading-color: var(--on-surface-color);
     padding-bottom: calc(var(--main-container-gap) + 8px);
   }
 
@@ -188,6 +208,34 @@ let autores = await getCollection('autores');
     color: var(--on-bright-color);
   }
 
+  /* El botón de autores arranca con los colores que antes eran el hover */
+  .ver-mas--autores {
+    background-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    border-color: var(--on-bright-color);
+    box-shadow: 4px 4px 0 0 var(--on-bright-color);
+  }
+
+  .ver-mas--autores:hover {
+    background-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    box-shadow: 6px 6px 0 0 var(--on-bright-color);
+  }
+
+  .ver-mas--autores:active {
+    box-shadow: 2px 2px 0 0 var(--on-bright-color);
+  }
+
+  :global(html[data-theme='dark']) .ver-mas--autores {
+    background-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  :global(html[data-theme='dark']) .ver-mas--autores:hover {
+    background-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
   @media (max-width: 1024px) {
     :global(.section--novedades .acordes-grid > *:nth-child(n + 7)) {
       display: none;
@@ -202,6 +250,14 @@ let autores = await getCollection('autores');
 
     .section--novedades {
       padding-bottom: calc(var(--main-container-gap-sm) + 8px);
+    }
+
+    .section--autores {
+      padding-bottom: calc(var(--main-container-gap-sm) + 8px);
+    }
+
+    :global(.section--autores .acordes-grid > *:nth-child(n + 6)) {
+      display: none;
     }
 
     .anuncio-autores ins[data-ad-status='filled'] {

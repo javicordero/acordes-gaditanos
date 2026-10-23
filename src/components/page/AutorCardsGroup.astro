@@ -1,20 +1,44 @@
 ---
 import AutorCard from '../ui/AutorCard.astro';
-const { autores, heading = 'Autores destacados' } = Astro.props;
-const headingId = `autores-group`;
+const {
+  autores,
+  creditos = {},
+  heading = 'Autores destacados',
+  headingAs = 'h2',
+  ubicacion = 'index_autores',
+} = Astro.props;
+
+const headingSlug = heading
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '');
+const headingId = `autores-${headingSlug}`;
+const Heading = headingAs;
 ---
 
 <article class='year-group' aria-labelledby={headingId}>
   <div class='container-layout inner-content'>
     <header>
-      <h2 id={headingId} class='is-title-minus'>{heading}</h2>
+      <Heading id={headingId} class='is-title-minus'>{heading}</Heading>
     </header>
 
     <div class='acordes-grid' role='region' aria-labelledby={headingId}>
       {
         [...autores]
           .sort((a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999))
-          .map((autor) => <AutorCard autor={autor.data} />)
+          .map((autor) => {
+            const creditosAutor = creditos[autor.data.autorSlug] ?? { musica: 0, letra: 0 };
+            return (
+              <AutorCard
+                autor={autor.data}
+                musicaCount={creditosAutor.musica}
+                letraCount={creditosAutor.letra}
+                ubicacion={ubicacion}
+              />
+            );
+          })
       }
     </div>
   </div>
@@ -31,9 +55,10 @@ const headingId = `autores-group`;
   }
 
   header {
-    & h2 {
+    & :is(h1, h2) {
       position: relative;
-      color: var(--on-surface-color);
+      /* En la home va sobre el navy; en /autores, sobre el fondo normal */
+      color: var(--autores-heading-color, var(--primary-color));
       font-size: 1.6rem;
       font-family: 'Roboto Mono', monospace;
       font-weight: 700;
@@ -57,14 +82,9 @@ const headingId = `autores-group`;
 
   .acordes-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--card-padding);
-  }
-
-  @media (max-width: 1024px) {
-    .acordes-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+    align-items: stretch;
   }
 
   @media (max-width: 640px) {
@@ -73,16 +93,15 @@ const headingId = `autores-group`;
     }
 
     .acordes-grid {
-      gap: 2.5vw;
-      grid-template-columns: repeat(2, 1fr);
-      align-items: stretch;
+      gap: var(--card-padding-sm);
+      grid-template-columns: 1fr;
     }
 
     header {
-      & h2 {
+      & :is(h1, h2) {
         font-size: 1.25rem;
       }
-      & h2::after {
+      & :is(h1, h2)::after {
         height: 4px;
         bottom: -2px;
       }

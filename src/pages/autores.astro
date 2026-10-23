@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
+import { contarCreditosAutores } from '../lib/autores';
+
+const autores = await getCollection('autores');
+const acordes = await getCollection('acordes');
+
+const creditos = contarCreditosAutores(acordes);
+
+const autoresOrdenados = [...autores].sort(
+  (a, b) => (a.data.order ?? 9999) - (b.data.order ?? 9999)
+);
+
+const title = 'Autores destacados - Acordes del Carnaval de Cádiz';
+const description =
+  'Músicos y letristas del Carnaval de Cádiz con acordes de guitarra disponibles. Explora las coplas de Juan Carlos Aragón, Martínez Ares, Paco Alba y muchos más.';
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: autoresOrdenados.map((autor, i) => {
+    const creditosAutor = creditos[autor.data.autorSlug];
+    const tieneMusica = (creditosAutor?.musica ?? 0) > 0;
+    const tieneLetra = (creditosAutor?.letra ?? 0) > 0;
+    const tipoPreferido = autor.data.type === 'letra' ? 'letra' : 'musica';
+    const tipo =
+      tieneMusica || tieneLetra
+        ? tipoPreferido === 'letra'
+          ? tieneLetra
+            ? 'letra'
+            : 'musica'
+          : tieneMusica
+            ? 'musica'
+            : 'letra'
+        : tipoPreferido;
+
+    return {
+      '@type': 'ListItem',
+      position: i + 1,
+      name: autor.data.nombre,
+      item: `${Astro.site}autor/${tipo}/${autor.data.autorSlug}`,
+    };
+  }),
+};
+---
+
+<Layout title={title} description={description}>
+  <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
+  <div class='main-container'>
+    <section>
+      <AutorCardsGroup
+        autores={autoresOrdenados}
+        creditos={creditos}
+        heading='Autores destacados'
+        headingAs='h1'
+        ubicacion='autores'
+      />
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 640px) {
+    .main-container {
+      gap: var(--main-container-gap-sm);
+    }
+  }
+</style>

@@ -1,18 +1,38 @@
 ---
 import { Image } from 'astro:assets';
 
-const { autor } = Astro.props;
+const { autor, musicaCount = 0, letraCount = 0, ubicacion = 'index_autores' } = Astro.props;
 const headingId = `autor-${autor.autorSlug}`;
 const esImagenLocal = autor.img.startsWith('/');
 const base = `/autor`;
-const tipoLabel = autor.type === 'letra' ? 'Letras' : 'Músicas';
+
+const tieneMusica = musicaCount > 0;
+const tieneLetra = letraCount > 0;
+const tipoPreferido = autor.type === 'letra' ? 'letra' : 'musica';
+
+// Si la página preferida no tuviera coplas, la card lleva a la que sí existe.
+const tipoPrincipal =
+  tieneMusica || tieneLetra
+    ? tipoPreferido === 'letra'
+      ? tieneLetra
+        ? 'letra'
+        : 'musica'
+      : tieneMusica
+        ? 'musica'
+        : 'letra'
+    : tipoPreferido;
+
+const tipoLabel = tipoPrincipal === 'letra' ? 'Letras' : 'Músicas';
+const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
 ---
 
 <article class='card' aria-labelledby={headingId}>
   <a
-    href={`${base}/${autor.type}/${autor.autorSlug}`}
+    href={hrefPrincipal}
     class='card-stretch'
     aria-label={`${autor.nombre} - ${tipoLabel}`}
+    data-ga-event='click_autor_card'
+    data-ga-params={JSON.stringify({ autor: autor.autorSlug, ubicacion })}
   >
   </a>
 
@@ -44,7 +64,34 @@ const tipoLabel = autor.type === 'letra' ? 'Letras' : 'Músicas';
   </figure>
 
   <section class='card-body'>
-    <h3 id={headingId} class='card-title' data-fit-text data-fit-min='11'>{autor.nombre}</h3>
+    <h3 id={headingId} class='card-title'>{autor.nombre}</h3>
+
+    {
+      (tieneMusica || tieneLetra) && (
+        <div class='card-links'>
+          {tieneMusica && (
+            <a
+              href={`${base}/musica/${autor.autorSlug}`}
+              class='card-link'
+              aria-label={`Músicas de ${autor.nombre}`}
+              data-ga-event='click_autor_card_musicas'
+              data-ga-params={JSON.stringify({ autor: autor.autorSlug, ubicacion })}>
+              Músicas
+            </a>
+          )}
+          {tieneLetra && (
+            <a
+              href={`${base}/letra/${autor.autorSlug}`}
+              class='card-link'
+              aria-label={`Letras de ${autor.nombre}`}
+              data-ga-event='click_autor_card_letras'
+              data-ga-params={JSON.stringify({ autor: autor.autorSlug, ubicacion })}>
+              Letras
+            </a>
+          )}
+        </div>
+      )
+    }
   </section>
 </article>
 
@@ -55,17 +102,21 @@ const tipoLabel = autor.type === 'letra' ? 'Letras' : 'Músicas';
     border: 2px solid var(--on-bright-color);
     border-radius: 0;
     overflow: hidden;
+    box-shadow: 6px 6px 0 0 var(--on-bright-color);
     position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: transform 0.15s ease;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
     content-visibility: auto;
-    contain-intrinsic-size: 300px 340px;
+    contain-intrinsic-size: 460px 420px;
     will-change: transform;
 
     &:hover {
       transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0 0 var(--on-bright-color);
       z-index: 10;
     }
   }
@@ -89,7 +140,8 @@ const tipoLabel = autor.type === 'letra' ? 'Letras' : 'Músicas';
 
   .card-image {
     width: 100%;
-    height: 200px;
+    height: auto;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
     object-position: top;
     display: block;
@@ -97,41 +149,111 @@ const tipoLabel = autor.type === 'letra' ? 'Letras' : 'Músicas';
   }
 
   .card-body {
-    padding: 6px 8px;
+    padding: 10px 12px 12px;
     display: flex;
     flex-direction: column;
+    gap: 8px;
+    background-color: var(--primary-contrast-color);
     margin-top: auto;
   }
 
   .card-title {
     font-family: 'Roboto Mono', monospace;
-    font-size: 0.95rem;
-    font-weight: 700;
-    text-transform: none;
-    letter-spacing: 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin: 0;
     padding: 0;
     color: var(--on-bright-color);
     line-height: 1.25;
   }
 
+  .card-links {
+    display: flex;
+    gap: 8px;
+    border-top: 2px solid var(--on-bright-color);
+    padding-top: 8px;
+    margin-top: 2px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .card-link {
+    flex: 1 1 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 6px 10px;
+    border: 2px solid var(--on-bright-color);
+    background-color: var(--on-bright-color);
+    color: var(--primary-contrast-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+
+    &:focus-visible {
+      outline: 2px solid var(--on-bright-color);
+      outline-offset: 3px;
+    }
+  }
+
   @media (max-width: 640px) {
     .card {
+      box-shadow: 4px 4px 0 0 var(--on-bright-color);
+
       &:hover {
         transform: none;
+        box-shadow: 4px 4px 0 0 var(--on-bright-color);
       }
     }
 
     .card-image {
-      height: 160px;
+      aspect-ratio: 16 / 9;
     }
 
     .card-body {
-      padding: 6px 8px;
+      padding: 8px 10px 10px;
     }
 
     .card-title {
-      font-size: 0.85rem;
+      font-size: 1rem;
     }
   }
 </style>
+
+<script>
+  declare const gtag: (...args: unknown[]) => void;
+
+  function setupAutorCardTracking() {
+    const links = document.querySelectorAll<HTMLElement>('[data-ga-event^="click_autor_card"]');
+    links.forEach((link) => {
+      if (link.getAttribute('data-tracking-init')) return;
+      link.setAttribute('data-tracking-init', 'true');
+
+      link.addEventListener('click', () => {
+        if (typeof gtag !== 'function') return;
+        const eventName = link.getAttribute('data-ga-event');
+        if (!eventName) return;
+        const eventParams = JSON.parse(link.getAttribute('data-ga-params') || '{}');
+        gtag('event', eventName, {
+          ...eventParams,
+          page_location: window.location.href,
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupAutorCardTracking);
+  } else {
+    setupAutorCardTracking();
+  }
+</script>

@@ -38,6 +38,9 @@ Cada acorde envuelto en `<a>etiqueta</a>` dentro de `<pre>`. El script `scripts/
 Bendita suerte pal aficionao que más de un mes de
 ```
 
+### Autores
+`AutorCardsGroup` pinta el grid de autores (2 columnas en desktop, 1 en móvil). Cada `AutorCard` enlaza a la página principal del autor según `type` y añade chips a `/autor/musica/{slug}` y `/autor/letra/{slug}` cuando tiene créditos, calculados en build con `contarCreditosAutores` (`src/lib/autores.ts`). La home muestra los 6 primeros por `order` (5 en móvil) y `/autores` los muestra todos. Toda la card (imagen y cuerpo) usa `--primary-contrast-color`; el título y la línea de los chips van en `--on-bright-color` y los chips usan fondo `--on-bright-color` con texto `--primary-contrast-color` (sin cambio al hover). La sombra es `--on-bright-color` en reposo y en hover (solo crece y la card se desplaza).
+
 ### Postura predeterminada por acorde
 En el `<pre>` se puede fijar la postura con la que se abre un acorde con `data-postura`:
 ```html
@@ -53,6 +56,7 @@ La postura se escribe de la 6ª a la 1ª cuerda (`x` = muda) y debe coincidir ex
 | `/lista2` | `pages/lista2.astro` — listado local de `acordes2` (no versionada; `noindex`, fuera del sitemap) |
 | `/autor/musica/[autorSlug]` | `pages/autor/musica/[autorSlug].astro` |
 | `/autor/letra/[autorSlug]` | `pages/autor/letra/[autorSlug].astro` |
+| `/autores` | `pages/autores.astro` — listado de todos los autores (grid 2/1) |
 | `/agrupacion/[agrupacionSlug]` | `pages/agrupacion/[agrupacionSlug].astro` |
 | `/carnaval/[year]` | `pages/carnaval/[year].astro` |
 | `/buscar` | `pages/buscar.astro` (búsqueda cliente con datos serializados) |
@@ -122,6 +126,8 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 - OG image por defecto: `/og-image.png`
 - Eventos del glosario: `click_novedad_glosario`, `click_acordes_usados_ver_mas` / `click_acordes_usados_ver_menos`, `click_acorde_pre`, `click_acorde_usado`, `click_acorde_glosario` y `click_glosario_acordes_usados`.
 - Eventos del transportador: `transpose_acorde` (parámetros `direccion` y `semitonos`) y `transpose_volver_original`.
+- Eventos de "ver más" de la home: `ver_mas_novedades_click` y `ver_mas_autores_click` (parámetros `link_type` y `location`).
+- Eventos de las cards de autor: `click_autor_card`, `click_autor_card_musicas` y `click_autor_card_letras` (parámetros `autor` y `ubicacion`).
 
 ### PostCSS
 `postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.
