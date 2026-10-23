@@ -12,61 +12,60 @@ fraseClave: "Llegó ese final que el"
 
 ---
 <pre>
-<a>Lam</a>                        <a>Rem</a>
-Llegó ese final que el público esperó, entre la
-             <a>Sol7</a>
-incosnita y el resquemor
-                            <a>Do</a>        <a>Fa</a>
-De que es lo que aquí se cantó será ironía por
- <a>Mi7</a>
-favor
+<a>Lam</a>                          <a>Rem</a>
+Llegó ese final que el público esperó, 
+                      <a>Sol7</a>
+entre la incosnita y el resquemor
+                            <a>Do</a>        <a>Fa</a>        <a>Mi7</a>
+De que es lo que aquí se cantó será ironía por favor
 <a>Lam</a>                  <a>Rem</a>
-Ajolá sea una crítica original, doble sentido fino
-    <a>Sol7</a>
-y señorial
-                     <a>Do</a>                 <a>Fa</a>
-Del que derrocha esta ciudad en cuanto llega el
-    <a>Mi7</a>
-carnaval
-<a>Lam7</a>                     <a>Rem</a>                 <a>Mi7</a>
-Y resulte que lo que aquí se defendió sea un Cádiz
-           <a>Lam</a>
-más cosmopolita
- <a>Lam7</a>                    <a>Rem</a>                  <a>Mi7</a>
-Una forma de abrir a esta tierra por fin más allá
-              <a>Lam</a>
-de la propia Tacita
-                           <a>Rem</a>
-Po no ¿Tengo la cara yo de irónico? ¿Parezcole un
-          <a>Sol7</a>
-recurso cómico?
-                       <a>Do</a>    <a>Fa</a>
-No se me vaya a esquivocá, lo estoy diciendo de
-  <a>Mi7</a>
-verdad
-   <a>Lam7</a>                  <a>Rem</a>                    <a>Mi7</a>
-Gaditano a luchar por su tierra y tu mar que si los
-                 <a>Lam</a>
-Chele Vara triunfamos
-     <a>Lam7</a>                 <a>Rem</a>             <a>Mi7</a>
-Esta hermosa ciudad algún día, ajolá, será solo pa
-        <a>Lam</a>
-los gaditanos
-Con la seguridad que el alcalde estará con el
-Chere, si, mano con mano
-Porque si no lo está en las municipal, ahora vamos
-            <a>Lam</a>
-votar ciudadanos
-   <a>Lam7</a>                      <a>Rem</a>
-Gaditano a luchar por su tierra y tu mar que si los
-  <a>Mi7</a>                     <a>Lam</a>
-Chele Vara triunfamos
-     <a>Lam7</a>                 <a>Rem</a>             <a>Mi7</a>
-Esta hermosa ciudad algún día, ajolá, será solo pa
-        <a>Lam</a>
-los gaditanos
+Ajolá sea una crítica original, 
+                    <a>Sol7</a>
+doble sentido fino y señorial
+                      <a>Do</a>    
+Del que derrocha esta ciudad
+           <a>Fa</a>          <a>Mi7</a>
+en cuanto llega el carnaval
+<a>Lam7</a>                       <a>Rem</a>        
+Y resulte que lo que aquí se defendió
+        <a>Mi7</a>             <a>Lam</a>
+sea un Cádiz más cosmopolita
+ <a>Lam7</a>                     <a>Rem</a>   
+Una forma de abrir a esta tierra 
+             <a>Mi7</a>                 <a>Lam</a>
+por fin más allá de la propia Tacita
+                         <a>Rem</a>
+Po no ¿Tengo la cara yo de irónico? 
+                    <a>Sol7</a>
+¿Parezcole un recurso cómico?
+                       <a>Do</a>     <a>Fa</a>                 <a>Mi7</a>
+No se me vaya a esquivocá lo estoy diciendo de verdad
+   <a>Lam7</a>                  <a>Rem</a>            
+Gaditano a luchar por su tierra y tu mar 
+       <a>Mi7</a>                <a>Lam</a>
+que si los Chele Vara triunfamos
+     <a>Lam7</a>                 <a>Rem</a>        
+Esta hermosa ciudad algún día, ajolá, 
+    <a>Mi7</a>               <a>Lam</a>
+será solo pa los gaditanos
+
+Con la seguridad que el alcalde estará
+
+con el Chere, si, mano con mano
+
+Porque si no lo está en las municipal, 
+                      <a>Lam</a>
+ahora vamos votar ciudadanos
+   <a>Lam7</a>                  <a>Rem</a>            
+Gaditano a luchar por su tierra y tu mar 
+       <a>Mi7</a>                <a>Lam</a>
+que si los Chele Vara triunfamos
+     <a>Lam7</a>                 <a>Rem</a>        
+Esta hermosa ciudad algún día, ajolá, 
+    <a>Mi7</a>               <a>Lam</a>
+será solo pa los gaditanos
      <a>Mi7</a>                            <a>Lam</a>
 Me refiero a los gaditanos y a los demás
-  <a>Lam7</a>             <a>Rem</a>              <a>Mi7</a>           <a>Lam</a>
+  <a>Lam7</a>           <a>Rem</a>           <a>Mi7</a>           <a>Lam</a>
 Lalalala lala lalalala lala lalalala lala lalalala
 </pre>

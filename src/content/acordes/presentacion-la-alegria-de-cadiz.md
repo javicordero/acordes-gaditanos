@@ -62,7 +62,7 @@ Pa demostrarle al mundo mire usted po bonita que es la vida
 Y aunque roto por dentro ya lo ven sonrió cada mañana
               <a>Rem</a>                            <a>Sol</a>
 Y comparto mi risa contigo si el sol no brilla en tu ventana
-(Sorda)
+<a>(Sorda)</a>
 Y si te veo mala cara tengo un chiste
 Y si te noto agobiado antes de irte
 Tengo cinco minutos pa un café

@@ -13,64 +13,60 @@ fraseClave: Bonsoir mademoiselle ha llegado a Cádiz el amante
 ---
 <pre>
 <a>Mi</a>
-Bonsoir mademoiselle ha llegado a Cádiz el amante
-   <a>Si7</a>
-perfecto
-  <a>La</a>                                 <a>Si7Mi</a>
+Bonsoir mademoiselle 
+          <a>Si7</a>
+ha llegado a Cádiz el amante perfecto
+  <a>La</a>                                 <a>Si7</a>     <a>Mi</a>
 Llegó el irresistible, parlez-vous français?
-<a>La</a>                  <a>Si7</a>
-Y si no parle francés yo entiendo el gaditano
- <a>Do#m7</a>
-correcto
-     <a>Fa#m</a>        <a>Fa#7</a>                        <a>Si7</a>
+<a>La</a>              <a>Si7</a>                   <a>Do#m7</a>
+Y si no parle francés yo entiendo el gaditano correcto
+     <a>Fa#m</a>          <a>Fa#7</a>                     <a>Si7</a>
 Para hablar del amor se usa el idioma de los besos
-        <a>La</a>                              <a>Si7</a>
-Y escapé de París de un marido despechado que me
-                               <a>Do#m7</a>
-pilló infraganti consolado a su esposa
-        <a>Fa#m</a>                   <a>Fa#7</a>
-Cuando yo simplemente cumplía con mi profesión que
-<a>Si7</a>
-es tan maravillosa
-          <a>Mi</a>                              <a>Do#7</a>
+     <a>La</a>                   <a>Si7</a>
+Y escapé de París de un marido despechado 
+       <a>Do#m7</a>
+que me pilló infraganti consolado a su esposa
+        <a>Fa#m</a>             <a>Fa#7</a>             <a>Si7</a>
+Cuando yo simplemente cumplía con mi profesión 
+
+que es tan maravillosa
+           <a>Mi</a>                             <a>Do#7</a>
 Y mi profesión es hacer que consiga una mujer
               <a>Fa#m</a>
 cumplir su fantasía
-     <a>Si7</a>                                      <a>Mim</a>
+      <a>Si7</a>                                      <a>Mim</a>
 Esa mujer que con su esposo nunca esas cosas haría
                                     <a>Re</a>
-He llegado hasta aquí porque hay gaditanas que
-           <a>Do</a>
-necesitan de mí
-                <a>Si7</a>     <a>Do</a>      <a>Si7</a>     <a>Do</a>
-Tarde noche y mañana, mañana, mañana, mañana,
-  <a>Si7</a>
-mañana
-<a>Mi</a>                                  <a>Si7</a>
-Y me hablaron de Cádiz como el paraíso, de su sol
-                             <a>Mi</a>
-de su mar de sus calles chiquitas
+He llegado hasta aquí porque hay gaditanas 
+            <a>Do</a>                     <a>Si7</a> 
+que necesitan de mí Tarde noche y mañana
+  <a>Do</a>      <a>Si7</a>     <a>Do</a>     <a>Si7</a>
+mañana, mañana, mañana, mañana
+<a>Mi</a>                                <a>Si7</a>
+Y me hablaron de Cádiz como el paraíso, 
+                                     <a>Mi</a>
+de su sol de su mar de sus calles chiquitas
 <a>Mi</a>                                   <a>Si7</a>
-Y me hablaron de Cádiz porque Dios lo hizo, donde
-                            <a>Mi</a>
-la gente canta canciones bonitas
+Y me hablaron de Cádiz porque Dios lo hizo, 
+                                 <a>Mi</a>
+donde la gente canta canciones bonitas
 <a>Mim</a>
-Y me hablaron de ti con razón, perdí la razón
+Y me hablaron de ti con razón, 
           <a>Sim7</a>
-cuando te conocí
-          <a>Do</a>
-Y mi parisino y joven corazón al compás de Cádiz
-         <a>Si7</a>
-empezó a latir
-                <a>Mim</a>
-Y mientras latía canté la canción que hablaba y
-                 <a>Re</a>
-sonaba solamente a ti
-                  <a>Do</a>
-Y así me olvidé de mi propia nación, de la
-                      <a>Si7</a>
-marsellesa y hasta de París
-                                     <a>Do</a>       <a>SI7</a>
+perdí la razón cuando te conocí
+         <a>Do</a>
+Y mi parisino y joven corazón
+            <a>Si7</a>
+al compás de Cádiz empezó a latir
+             <a>Mim</a>
+Y mientras latía canté la canción 
+                <a>Re</a>
+que hablaba y sonaba solamente a ti
+             <a>Do</a>
+Y así me olvidé de mi propia nación, 
+           <a>Si7</a>
+de la marsellesa y hasta de París
+                                     <a>Do</a>       <a>Si7</a>
 Bonsoir mademoiselle ha llegado el amante perfecto
                   <a>Mim</a>
 Irresistible c'est moi

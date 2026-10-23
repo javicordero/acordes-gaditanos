@@ -12,47 +12,47 @@ video: 'https://www.youtube.com/embed/XP-pOx_DzE4?feature=player_embedded'
 fraseClave: Hay veces que me invade la tristeza o que no salgo
 ---
 <pre>
-   <a>Mim</a>         <a>Mi7</a>           <a>Lam</a>    <a>Si7</a>
-Hay veces que me invade la tristeza o que no salgo
-             <a>Mim</a>
-de una mala racha,
-                                  <a>Re</a>      <a>Do</a>
-Y cuando esto me ocurre a mí me alivia pasearme por
-     <a>Si7</a>
-la playa.
-   <a>Mim</a>            <a>Mi7</a>             <a>Lam</a>     <a>Si7</a>
-¿Y quién que de verdad sienta esta tierra y se ha
-                         <a>Mim</a>
-sentío agobiao por un problema
-               <a>Mi7</a>           <a>Lam</a>        <a>Si7</a>
-No ha caminado nunca por la playa pa olvidarse de
-     <a>Mi</a>
-una pena?
-<a>Re</a>                    <a>Re7</a>                  <a>Sol</a>
+     <a>Mim</a>         <a>Mi7</a>         <a>Lam</a>    
+Hay veces que me invade la tristeza 
+  <a>Si7</a>                      <a>Mim</a>
+o que no salgo de una mala racha,
+                                   <a>Re</a> 
+Y cuando esto me ocurre a mí me alivia 
+     <a>Do</a>         <a>Si7</a>
+pasearme por la playa.
+   <a>Mim</a>            <a>Mi7</a>              <a>Lam</a>    
+¿Y quién que de verdad sienta esta tierra 
+   <a>Si7</a>                           <a>Mim</a>
+y se ha sentío agobiao por un problema
+               <a>Mi7</a>           <a>Lam</a> 
+No ha caminado nunca por la playa 
+       <a>Si7</a>           <a>Mi</a>
+pa olvidarse de una pena?
+<a>Re</a>                    <a>Re7</a>                 <a>Sol</a>
 Será porque nuestras vidas los mejores momentos
-<a>Re</a>                <a>Re7</a>                       <a>Sol</a>
+<a>Re</a>                   <a>Re7</a>                      <a>Sol</a>
 Se pasan junto a la playa y ahora se echan de menos
                      <a>Mim</a>
 y ahora se echan de menos
                    <a>Si7</a>                  <a>Mi</a>
 Esos ratos se los llevan las olas pa dentro.
-          <a>Si7</a>        <a>Mi</a>
-¿Quién se puede olvidar de esas tardecitas de ir
-                <a>Sol#m</a>      <a>Do#7</a>      <a>Fa#m</a>
-con los del barrio a mariscar a las rocas?
-                                 <a>Si7</a>
+           <a>Si7</a>      <a>Mi</a>
+¿Quién se puede olvidar de esas tardecitas 
+                   <a>Sol#m</a>       <a>Do#7</a>       <a>Fa#m</a>
+de ir con los del barrio a mariscar a las rocas?
+                               <a>Si7</a>
 En la playa empezó mi primer romance,
-                                   <a>Mi</a>
+                                  <a>Mi</a>
 Me fui haciendo hombre entre ola y ola.
         <a>Si7</a>    <a>Mi</a>                <a>Mi7</a>
-Y es por eso la mar la que va marcando nuestra
-        <a>La</a>
-propia vida,
-         <a>Si7</a>       <a>Mi</a>            <a>Si7</a>
-Y pa encontrarnos de nuevo esos momentos que no se
-<a>Mi</a> <a>Mi7</a>
-olvidan
-<a>La</a>         <a>Si7</a>      <a>Mi</a>                         <a>Si7</a>
+Y es por eso la mar la que va marcando 
+               <a>La</a>
+nuestra propia vida,
+           <a>Si7</a>       <a>Mi</a>   
+Y pa encontrarnos de nuevo 
+         <a>Si7</a>               <a>Mi</a>  <a>Mi7</a>
+esos momentos que no se olvidan
+<a>La</a>         <a>Si7</a>      <a>Mi</a>                       <a>Si7</a>
 Cuando me llegue la hora que me lleven a la orilla
                        <a>Mi</a>
 y allí esparzan mi cenizas.
