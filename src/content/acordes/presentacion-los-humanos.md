@@ -16,7 +16,7 @@ fraseClave: El estribillo era, dió, como empezaba la letra
 <pre>
 <a>Sim7</a>              <a>La</a>
 Otra vez es febrero ya se hizo el milagro
-<a>Sim7</a>                <a>Mi9</a>
+<a>Sim7</a>                <a>Miadd9</a>
 La madre del cordero me acogió en su rebaño
 <a>Sim</a>                     <a>Fa#m</a>                 <a>Sim</a>
 Ay amor me he hecho viejo como pasan los años
