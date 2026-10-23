@@ -107,6 +107,12 @@ const Heading = headingAs;
     gap: var(--card-padding);
   }
 
+  /* Solo mientras se miden los títulos: content-visibility deja sin maquetar
+     las cards que están fuera del viewport y no se podrían medir. */
+  .acordes-grid.midiendo-titulos :global(.card) {
+    content-visibility: visible;
+  }
+
   /* Media queries */
   @media (max-width: 1024px) {
     .acordes-grid {
@@ -145,3 +151,139 @@ const Heading = headingAs;
     }
   }
 </style>
+
+<script>
+  const CLASE_MIDIENDO = 'midiendo-titulos';
+
+  const gridsObservados = new WeakSet<HTMLElement>();
+  const anchos = new WeakMap<HTMLElement, number>();
+
+  function ajustarGrid(grid: HTMLElement) {
+    const tarjetas = Array.from(grid.children).filter(
+      (hijo): hijo is HTMLElement =>
+        hijo instanceof HTMLElement &&
+        hijo.classList.contains('card') &&
+        // Solo cards de acordes (el grid de autores usa la misma clase .acordes-grid).
+        hijo.querySelector('a[href^="/acordes/"]') !== null,
+    );
+    if (tarjetas.length === 0) return;
+
+    // Grid oculto (p. ej. resultados de búsqueda aún sin mostrar): no se puede medir.
+    if (grid.getBoundingClientRect().width === 0) return;
+
+    grid.classList.add(CLASE_MIDIENDO);
+
+    const titulos = tarjetas.map((tarjeta) => tarjeta.querySelector<HTMLElement>('.card-title'));
+    const bloquesAutores = tarjetas.map((tarjeta) => tarjeta.querySelector<HTMLElement>('.card-authors'));
+
+    titulos.forEach((titulo) => {
+      if (titulo) titulo.style.minHeight = '';
+    });
+    bloquesAutores.forEach((bloque) => {
+      if (bloque) bloque.style.minHeight = '';
+    });
+
+    // Agrupar las cards por fila: las que comparten offsetTop van en la misma fila.
+    const filas = new Map<number, number[]>();
+    tarjetas.forEach((tarjeta, indice) => {
+      const fila = Math.round(tarjeta.offsetTop);
+      const indices = filas.get(fila);
+      if (indices) {
+        indices.push(indice);
+      } else {
+        filas.set(fila, [indice]);
+      }
+    });
+
+    filas.forEach((indices) => {
+      const alturasTitulos = indices
+        .map((indice) => titulos[indice]?.getBoundingClientRect().height ?? 0)
+        .filter((altura) => altura > 0);
+
+      // Solo se reserva altura si en la fila hay títulos de distinto alto.
+      const titulosDesiguales =
+        alturasTitulos.length > 1 &&
+        Math.max(...alturasTitulos) - Math.min(...alturasTitulos) > 1;
+
+      if (titulosDesiguales) {
+        const maxAlturaTitulo = Math.max(...alturasTitulos);
+        indices.forEach((indice) => {
+          const titulo = titulos[indice];
+          if (titulo) titulo.style.minHeight = `${Math.ceil(maxAlturaTitulo)}px`;
+        });
+      }
+
+      // Igual con los autores: solo si en la fila hay bloques de distinto alto,
+      // todos reservan la altura del más alto para que la raya quede alineada.
+      const alturasAutores = indices
+        .map((indice) => bloquesAutores[indice]?.getBoundingClientRect().height ?? 0)
+        .filter((altura) => altura > 0);
+
+      if (alturasAutores.length > 1) {
+        const maxAlturaAutores = Math.max(...alturasAutores);
+        const minAlturaAutores = Math.min(...alturasAutores);
+
+        if (maxAlturaAutores - minAlturaAutores > 1) {
+          indices.forEach((indice) => {
+            const bloque = bloquesAutores[indice];
+            if (bloque) bloque.style.minHeight = `${Math.ceil(maxAlturaAutores)}px`;
+          });
+        }
+      }
+    });
+
+    grid.classList.remove(CLASE_MIDIENDO);
+  }
+
+  const observadorResize = new ResizeObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      const grid = entrada.target as HTMLElement;
+      const ancho = Math.round(entrada.contentRect.width);
+      if (ancho === 0 || ancho === anchos.get(grid)) return;
+
+      anchos.set(grid, ancho);
+      ajustarGrid(grid);
+    });
+  });
+
+  function observarGrid(grid: HTMLElement) {
+    if (gridsObservados.has(grid)) return;
+
+    gridsObservados.add(grid);
+    anchos.set(grid, Math.round(grid.getBoundingClientRect().width));
+    ajustarGrid(grid);
+    observadorResize.observe(grid);
+  }
+
+  function observarTodosLosGrids() {
+    document.querySelectorAll<HTMLElement>('.acordes-grid').forEach(observarGrid);
+  }
+
+  function ajustarTodosLosGrids() {
+    document.querySelectorAll<HTMLElement>('.acordes-grid').forEach(ajustarGrid);
+  }
+
+  observarTodosLosGrids();
+
+  // La búsqueda sustituye el grid por uno clonado: hay que observarlo también.
+  const observadorMutaciones = new MutationObserver((mutaciones) => {
+    const hayGridNuevo = mutaciones.some((mutacion) =>
+      Array.from(mutacion.addedNodes).some(
+        (nodo) =>
+          nodo instanceof Element &&
+          (nodo.matches('.acordes-grid') || nodo.querySelector('.acordes-grid') !== null),
+      ),
+    );
+
+    if (hayGridNuevo) {
+      requestAnimationFrame(observarTodosLosGrids);
+    }
+  });
+
+  observadorMutaciones.observe(document.body, { childList: true, subtree: true });
+
+  // Al terminar de cargar la tipografía puede cambiar el corte de línea de los títulos.
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(ajustarTodosLosGrids);
+  }
+</script>
