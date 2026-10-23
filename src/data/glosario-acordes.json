@@ -1595,6 +1595,26 @@
         }
       ]
     },
+    "Do7/Sib": {
+      "raiz": "Do",
+      "sufijo": "7",
+      "bajo": "Sib",
+      "slug": "do7-sib",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            1,
+            2,
+            0,
+            1,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Do7b5": {
       "raiz": "Do",
       "sufijo": "7b5",
@@ -16571,6 +16591,18 @@
             -1
           ],
           "baseTraste": 3,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
+            -1,
+            -1,
+            3,
+            3,
+            2
+          ],
+          "baseTraste": 1,
           "cejilla": null
         }
       ]

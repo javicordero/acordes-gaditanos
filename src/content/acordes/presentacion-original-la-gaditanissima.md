@@ -12,73 +12,75 @@ video: 'https://www.youtube.com/embed/BRQJFOL-5RQ?feature=player_embedded'
 fraseClave: Ahhhh ahhh Si caminito del Falla el corazón te
 ---
 <pre>
-<a>Do#m La</a>   <a>Mi</a>                <a>Si</a>   <a>Do#m</a>
-Ahhhh ahhh Si caminito del Falla el corazón te
-<a>La</a>   <a>Mi</a>                  <a>Si</a>
-palpita de esa manera canalla
-<a>Mi</a>           <a>Si</a>           <a>La</a>      <a>Mi</a>
-Para que los poetas nunca digan aquí tiene un
- <a>Si</a>         <a>La</a>
-barrio universal
-<a>Mi</a>                  <a>Si</a>         <a>La</a>    <a>Mi</a>
-Quien dice un barrio dice una ciudad, quien dice
-       <a>Si</a>              <a>Do#m</a>
-una ciudad, dice una patria
+<a>Do#m</a>  <a>La</a>   <a>Mi</a>               <a>Si</a>   
+Ahhhh ahhh Si caminito del Falla 
+<a>Do#m</a>              <a>La</a>   <a>Mi</a>               <a>Si</a>
+el corazón te  palpita de esa manera canalla
+<a>Mi</a>            <a>Si</a>           <a>La</a>  
+Para que los poetas nunca digan 
+<a>Mi</a>             <a>Si</a>         <a>La</a>
+aquí tiene un barrio universal
+<a>Mi</a>                  <a>Si</a>            <a>La</a> 
+Quien dice un barrio dice una ciudad, 
+      <a>Mi</a>          <a>Si</a>             <a>Do#m</a>
+quien dice una ciudad, dice una patria
                                  <a>Fa#</a>
-Quien dice patria dice un mundo igual de grande que
-               <a>Si7</a>
-una Tacita de plata
-<a>Mi</a>           <a>Si</a>          <a>La</a>     <a>Mi</a>           <a>Si</a>
-Para que los poetas nunca digan aquí tienen un
-               <a>La</a>
-hombre tal como es
-<a>Mi</a>                   <a>Si</a>        <a>La</a>   <a>Mi</a>
-Quien dice un hombre dice una mujer quien dice una
- <a>Si</a>           <a>Do#m</a>
-mujer dice una vida
+Quien dice patria dice un mundo igual de grande 
+                  <a>Si7</a>
+que una Tacita de plata
+<a>Mi</a>            <a>Si</a>          <a>La</a>    
+Para que los poetas nunca digan 
+ <a>Mi</a>            <a>Si</a>             <a>La</a>
+aquí tienen un hombre tal como es
+<a>Mi</a>                   <a>Si</a>        <a>La</a>   
+Quien dice un hombre dice una mujer 
+<a>Mi</a>               <a>Si</a>           <a>Do#m</a>
+quien dice una mujer dice una vida
                        <a>Fa#</a>
-Quien dice vida dice detener el tiempo en cada
-                 <a>Si7</a>
-calle, en cada orilla
-                            <a>Mim</a>
-Y si la noche viene sin sueños ni quereres, antes
-de volverme loco me tiro de coco
-Por las escaleras me voy a la Alameda y me pongo a
- <a>Si7</a>
-cantar
+Quien dice vida dice detener el tiempo 
+                        <a>Si7</a>
+en cada calle, en cada orilla
+              <a>Mim</a>
+Y si la noche viene sin sueños ni quereres, 
+
+antes de volverme loco me tiro de coco
+
+Por las escaleras me voy a la Alameda 
+ 
+               <a>Si7</a>
+y me pongo a cantar
 La misma serenata que me sale del alma
-Cuando yo necesito probar lo bonito lo bueno y
-                 <a>Mim</a>
-barato que sale soñar
+Cuando yo necesito probar lo bonito 
+                            <a>Mim</a>
+lo bueno y barato que sale soñar
                                        <a>Mi7</a>
 Y si el mundo no cambia de rumbo ni dirección
-Que le den por culo al mundo que con mi guitarra ya
-       <a>Lam</a>
-lo cambio yo
+
+Que le den por culo al mundo
+                   <a>Lam</a>
+que con mi guitarra ya lo cambio yo
                        <a>Mim</a>
-Ay a mi Gaditanissima manera que es la única y
-<a>Si7</a>                     <a>MimMi7</a>
-primera que mi tierra me enseñó
-   <a>Lam</a>                 <a>Mim</a>
-Ay a mi Gaditanissima manera que es la única y
- <a>Si7</a>                       <a>Mim</a>
-primera que mi tierra me enseñó
-<a> (sorda) </a>
-Que la Gaditanissima no es mas que una comparsa de
-arlequines
-Que le canta a su tierra libre cuando llega el
-    <a>Mim</a>
-carnaval
+Ay a mi Gaditanissima manera 
+                     <a>Si7</a>                      <a>Mim</a>  <a>Mi7</a>
+que es la única y primera que mi tierra me enseñó
+    <a>Lam</a>                 <a>Mim</a>
+Ay a mi Gaditanissima manera 
+                     <a>Si7</a>                       <a>Mim</a>
+que es la única y primera que mi tierra me enseñó
+<a>(Sorda)</a> 
+Que la Gaditanissima no es mas 
+
+que una comparsa de arlequines
+                                                   <a>Mim</a>
+Que le canta a su tierra libre cuando llega el carnaval
               <a>Si7</a>
 Que la Gaditanissima no es mas que una comparsa de
-      <a>Mim</a>
-arlequines
-                        <a>Si7</a>
-Que le canta a su tierra libre cuando llega el
-    <a>Mim</a>
-carnaval
-                      <a>Lam</a>        <a>Do</a>  <a>Mim</a>
+                          <a>Mim</a>
+que una comparsa de arlequines
+                                                   <a>Mim</a>
+Que le canta a su tierra libre cuando llega el carnaval
+                     <a>Lam</a>         <a>Do</a>    <a>Mim</a>
 Y si el mundo quiere oírme más feliz será
-                      <a>Lam</a>        <a>Do</a> <a>Mim</a>
+                     <a>Lam</a>         <a>Do</a>    <a>Mim</a>
 Y si el mundo quiere oírme más feliz será
 </pre>
