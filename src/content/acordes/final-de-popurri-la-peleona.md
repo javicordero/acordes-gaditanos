@@ -13,45 +13,42 @@ fraseClave: "Perdón, quiero pedirles perdón,"
 ---
 <pre>
  <a>Sol</a>                     <a>Sim</a>
-Perdón, quiero pedirles perdón, por si a alguno os
-   <a>Do</a>
-molesté
-                            <a>Re7</a>     <a>SolDoRe7</a>
+Perdón, quiero pedirles perdón, 
+                        <a>Do</a>
+por si a alguno os molesté
+                            <a>Re7</a>           <a>Sol</a>  <a>Do</a> <a>Re7</a>
 Pero me pudo el querer por mi vieja tradición
- <a>Sol</a> <a>Si7</a>                     <a>Mim</a>                  <a>Do</a>
-Razón, que no me puedo esconder, la palabra no va a
-                         <a>Re7</a>
-ser más fuerte que el corazón
+ <a>Sol</a>   <a>Si7</a>                  <a>Mim</a> 
+Razón, que no me puedo esconder, 
+                   <a>Do</a>                      <a>Re7</a>
+la palabra no va a ser más fuerte que el corazón
            <a>Si7</a>                      <a>Mim</a>
 Y al gran maestro que está en los cielos
-         <a>Do</a>
-Darle las gracias por tanta elegancia que a Cádiz
-  <a>Re7</a>
-le dio
+          <a>Do</a>
+Darle las gracias 
+                                 <a>Re7</a>
+por tanta elegancia que a Cádiz le dio
+
 <a>Sol</a>             <a>Si7</a>                         <a>Mim</a>
 Mirando a su chiquilla que se quedó en la arena
                  <a>Do</a>          <a>Re7</a>        <a>Sol</a>
 Y le quitaba las penas por entrega y afición
-                <a>Si7</a>                       <a>Mim</a>
+                <a>Si7</a>                      <a>Mim</a>
 La cosa más sencilla que le vistió un coplero
-                  <a>Do</a>                          <a>Re</a>
+                 <a>Do</a>                           <a>Re</a>
 Y no mandaba el dinero ni en su pluma ni en su voz
 <a>Sol</a>         <a>Si7</a>                    <a>Mim</a>
-Comparsa gaditana, de viejos carnavales que todo
-         <a>Do</a>             <a>Re7</a>       <a>Sol</a>
-Cádiz la sabe y es tan grande recordar
-              <a>Si7</a>                        <a>Mim</a>
+Comparsa gaditana, de viejos carnavales 
+                  <a>Do</a>             <a>Re7</a>       <a>Sol</a>
+que todo Cádiz la sabe y es tan grande recordar
+              <a>Si7</a>                      <a>Mim</a>
 Cantar como cantaba: "yo tengo una barquilla
-                     <a>Do</a>
-Con una gracia en la quilla que pa que te via
-  <a>Re</a>
-contá"
+                      <a>Do</a>                       <a>Re</a>
+Con una gracia en la quilla que pa que te via contá"
 <a>Sol</a>                       <a>Sim</a>
-Perdón, quiero pedirles perdón, por si a alguno os
-   <a>Mim</a>
-molesté
-                   <a>Do</a> <a>Re7</a>                 <a>Sol Do </a>
-Pero me pudo el querer y me pudo el corazón, el
-<a>Re7</a> <a>Sol</a>
-corazón
+Perdón, quiero pedirles perdón, 
+                       <a>Mim</a>
+por si a alguno os molesté
+                   <a>Do</a> <a>Re7</a>               <a>Sol</a> <a>Do</a> <a>Re7</a> <a>Sol</a>
+Pero me pudo el querer y me pudo el corazón el corazón
 </pre>

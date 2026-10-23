@@ -12,53 +12,50 @@ fraseClave: "La playita de Santa María"
 
 ---
 <pre>
-     <a>Lam</a>             <a>Mim</a>                <a>Fa</a>  <a>Sol</a>
-La playita de Santa María refresca mis días libres
-      <a>Do</a>
-del verano
-    <a>Rem</a>              <a>Lam</a>     <a>Sim7b5</a>
-Y sus dos espigones vigía me regalan abrazos de
-  <a>Mi7</a>
-hermano
-    <a>Lam</a>                <a>Mim</a>                <a>Fa</a>
-Y a la luz de la luna su arena se bebe mis penas
-           <a>Mi7</a>
-frente al océano
+     <a>Lam</a>             <a>Mim</a>  
+La playita de Santa María 
+              <a>Fa</a>  <a>Sol</a>         <a>Do</a> 
+refresca mis días libres del verano
+      <a>Rem</a>             <a>Lam</a>     <a>Sim7b5</a>               <a>Mi7</a>
+Y sus dos espigones vigía me regalan abrazos de hermano
+       <a>Lam</a>               <a>Mim</a>    
+Y a la luz de la luna su arena 
+             <a>Fa</a>              <a>Mi7</a>
+se bebe mis penas frente al océano
 <a>Lam</a>
 Atardecer, desde mi playita cada atardecer
-Se vislumbra un horizonte que está polizonte de la
-       <a>Mim</a>
-piera barcos
-                               <a>Fa</a>
+
+Se vislumbra un horizonte 
+                               <a>Mim</a>
+que está polizonte de la piera barcos
+                              <a>Fa</a>
 Sobre las olas y delante del charco
-                   Rem
-   SoSol7
-Toma entre sus manos como un cuadro que, que no
-necesita marco
-     <a>Do</a>               <a>Sol</a>                 <a>Lam</a>
+                   <a>Rem</a>
+Toma entre sus manos como un cuadro que, 
+                 <a>Sol</a>   <a>Sol7</a>
+que no necesita marco
+      <a>Do</a>              <a>Sol</a>                <a>Lam</a>
 La playita de Santa María es como un relicario
-             <a>Mim</a>            <a>Fa</a>
-Donde los creyentes buscan a diario la mar que se
-<a>Mim</a>            <a>Rem</a>  <a>Sol</a>
-ofrece como un balneario
+             <a>Mim</a>              <a>Fa</a>
+Donde los creyentes buscan a diario 
+                <a>Mim</a>             <a>Rem</a>  <a>Sol</a>
+la mar que se ofrece como un balneario
      <a>Do</a>               <a>Sol</a>               <a>Lam</a>
 La playita de Santa María es como la frontera
-<a>Mim</a>                      <a>Fa</a>    <a>Mim</a>
-Donde vuela el viento la bandera de los barrios con
-      <a>Rem</a>    <a>Sol7</a>
-nombres de barrios
-<a>Rem</a>
-Y es la playa de las coplas y es la playa del
-  <a>Sol</a>
-turismo
-<a>Rem</a>                            <a>Sol</a>        <a>Sol7</a>
+<a>Mim</a>                        <a>Fa</a>    
+Donde vuela el viento la bandera 
+<a>Mim</a>                         <a>Rem</a>      <a>Sol7</a>
+de los barrios con nombres de barrios
+<a>Rem</a>                                          <a>Sol</a>
+Y es la playa de las coplas y es la playa del turismo
+<a>Rem</a>                                <a>Sol</a>        <a>Sol7</a>
 Es playita de mujeres que acortaron su bautismo
-     <a>Do</a>             <a>Sol</a>                  <a>Lam</a>
+       <a>Do</a>            <a>Sol</a>                <a>Lam</a>
 La playita de Santa María que da al occidente
-<a>Rem</a>    <a>Sol7</a>  <a>Mim</a>      <a>Lam</a>     <a>Rem</a>      <a>Sol</a>
-Es la que hace bonita la silueta bendita de mi
-      <a>Fa</a> <a>Fam</a>
-hermosa tacita
-<a>Sol</a>         <a>Do Lam Fa Sol Do</a>
+<a>Rem</a>       <a>Sol7</a>   <a>Mim</a>      <a>Lam</a>     <a>Rem</a>   
+Es la que hace bonita la silueta bendita 
+      <a>Sol</a>        <a>Fa</a>  <a>Fam</a>
+de mi hermosa tacita
+<a>Sol</a>                 <a>Do</a>   <a>Lam</a> <a>Fa</a> <a>Sol</a> <a>Do</a>
 Con cada sol de poniente
 </pre>
