@@ -2,8 +2,8 @@
 pieza: Presentación
 agrupacion: Los que la tienen de mármol
 year: 2026
-musica: El Molina, El Melli
-letra: El Molina, El Melli
+musica: El Molina
+letra: El Melli
 modalidad: Chirigota
 cejilla: 4
 img: https://www.portaldecadiz.com/images/igallery/resized/los-que-la-tienen-de-marmol-3796/06-chirigota-los-que-la-tienen-de-marmol---gabinete-de-prensa-del-ayuntamiento-de-cadiz-foto--reyna-2-1600-1600-80.jpg
