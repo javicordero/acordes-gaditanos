@@ -214,7 +214,7 @@ body {
   background: var(--card-bg, #fafafa);
   border: 2px solid var(--primary-color);
   border-radius: 0;
-  box-shadow: 4px 4px 0 0 var(--primary-color);
+  box-shadow: none;
 }
 
 .comment-author-input {
