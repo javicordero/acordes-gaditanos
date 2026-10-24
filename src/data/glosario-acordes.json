@@ -3079,18 +3079,6 @@
       "posiciones": [
         {
           "trastes": [
-            -1,
-            9,
-            10,
-            9,
-            11,
-            -1
-          ],
-          "baseTraste": 9,
-          "cejilla": null
-        },
-        {
-          "trastes": [
             2,
             3,
             2,
@@ -3099,6 +3087,18 @@
             0
           ],
           "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
+            9,
+            10,
+            9,
+            11,
+            -1
+          ],
+          "baseTraste": 9,
           "cejilla": null
         }
       ]
@@ -4203,18 +4203,6 @@
       "posiciones": [
         {
           "trastes": [
-            -1,
-            8,
-            9,
-            8,
-            10,
-            -1
-          ],
-          "baseTraste": 8,
-          "cejilla": null
-        },
-        {
-          "trastes": [
             1,
             2,
             1,
@@ -4223,6 +4211,18 @@
             0
           ],
           "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
+            8,
+            9,
+            8,
+            10,
+            -1
+          ],
+          "baseTraste": 8,
           "cejilla": null
         }
       ]
@@ -7139,6 +7139,26 @@
             9
           ],
           "baseTraste": 9,
+          "cejilla": null
+        }
+      ]
+    },
+    "Laadd9/Do#": {
+      "raiz": "La",
+      "sufijo": "add9",
+      "bajo": "Do#",
+      "slug": "laadd9-do-sostenido",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            4,
+            2,
+            2,
+            0,
+            0
+          ],
+          "baseTraste": 1,
           "cejilla": null
         }
       ]
@@ -11295,6 +11315,26 @@
         }
       ]
     },
+    "Mim(add9)": {
+      "raiz": "Mi",
+      "sufijo": "madd9",
+      "bajo": null,
+      "slug": "mimadd9",
+      "posiciones": [
+        {
+          "trastes": [
+            0,
+            2,
+            4,
+            0,
+            0,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Mim6": {
       "raiz": "Mi",
       "sufijo": "m6",
@@ -11649,6 +11689,18 @@
       "bajo": null,
       "slug": "mimmaj7",
       "posiciones": [
+        {
+          "trastes": [
+            0,
+            2,
+            1,
+            0,
+            0,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        },
         {
           "trastes": [
             -1,
