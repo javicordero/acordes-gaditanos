@@ -48,6 +48,30 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
         </p>
       )}
 
+      <p class='acordes-pieza__ayuda'>
+        <svg
+          class='acordes-pieza__ayuda-icono'
+          xmlns='http://www.w3.org/2000/svg'
+          width='14'
+          height='14'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+          aria-hidden='true'
+          focusable='false'
+        >
+          <path d='m9 9 5 12 1.8-5.2L21 14Z'></path>
+          <path d='M7.2 2.2 8 5.1'></path>
+          <path d='m5.1 8-2.9-.8'></path>
+          <path d='M14 4.1 12 6'></path>
+          <path d='m6 12-1.9 2'></path>
+        </svg>
+        <span>Pincha en cualquier acorde de la letra para ver su diagrama.</span>
+      </p>
+
       <div class='acordes-pieza__acciones'>
         <div class='transporte'>
           <span class='transporte__titulo' id='transporte-titulo'>Transportar acordes</span>
@@ -78,7 +102,7 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
             aria-expanded='false'
             aria-controls='acordes-pieza-cuerpo'
           >
-            Ver más
+            Ver diagramas
           </button>
         )}
       </div>
@@ -309,11 +333,29 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
     font-weight: 800;
   }
 
+  /* Nota de ayuda: sin caja, solo una línea discreta sobre el transportador. */
+  .acordes-pieza__ayuda {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin: 6px 0 0;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-secondary-color);
+  }
+
+  .acordes-pieza__ayuda-icono {
+    flex: none;
+    align-self: center;
+    color: var(--acorde-color);
+  }
+
   .acordes-pieza__accion {
     align-self: center;
     display: block;
+    flex: none;
     margin-left: auto;
-    width: 84px;
     padding: 0;
     border: 0;
     border-radius: 0;
@@ -324,6 +366,7 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
     color: var(--link-color);
     text-align: right;
     text-decoration: none;
+    white-space: nowrap;
     cursor: pointer;
   }
 
@@ -449,7 +492,6 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
     }
 
     .acordes-pieza__accion {
-      width: 72px;
       font-size: 0.75rem;
     }
   }
@@ -481,7 +523,7 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
     const abierto = boton.getAttribute('aria-expanded') === 'true';
     const nuevo = !abierto;
     boton.setAttribute('aria-expanded', String(nuevo));
-    boton.textContent = nuevo ? 'Ver menos' : 'Ver más';
+    boton.textContent = nuevo ? 'Ver menos' : 'Ver diagramas';
     bloque.classList.toggle('acordes-pieza--abierto', nuevo);
 
     if (nuevo) {

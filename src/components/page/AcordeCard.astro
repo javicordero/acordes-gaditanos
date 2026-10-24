@@ -8,7 +8,6 @@ import RecomendacionInline from './RecomendacionInline.astro';
 import TutorialAutoscroll from './TutorialAutoscroll.astro';
 import Anuncio from '../right-column/anuncios/Anuncio.astro';
 import AcordesDeLaPieza from './AcordesDeLaPieza.astro';
-import GlosarioHint from './GlosarioHint.astro';
 import GlosarioPopover from './GlosarioPopover.astro';
 import glosarioJson from '../../data/glosario-acordes.json';
 import { acordesDePieza, crearIndice, type Glosario } from '../../lib/acordes';
@@ -142,7 +141,6 @@ const headingId = `acorde-${slug}`;
       <span>Cejilla: {cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
 
-    {conGlosario && <GlosarioHint />}
     {conGlosario && <AcordesDeLaPieza acordes={acordesPieza} posturas={posturasPieza} />}
 
       <div class='acorde-content'>

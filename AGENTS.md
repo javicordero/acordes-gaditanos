@@ -73,7 +73,7 @@ Los acordes del `<pre>` son interactivos: al pulsarlos se abre un popover con su
 - Datos: `src/data/glosario-acordes.json` (481 acordes, ~1.278 posiciones), generados una sola vez con `node scripts/importar-glosario.mjs` a partir del glosario público de LaCuerda.net. El script cachea en `.cache/glosario` (ignorado por git) y no se ejecuta en build.
 - Renderizador único: `src/lib/diagrama.ts` (`svgDiagrama`) genera el SVG en build y en el navegador. No hay imágenes externas.
 - Parser de notación española: `src/lib/acordes.ts` (`parsearAcorde`, `buscarEnIndice`, `slugAcorde`). Admite enarmonías, `7M`/`M7`, `m7/5`, `/add9`, bajos con barra y raíces en mayúsculas (`MIm`, `SI7`).
-- Componentes: `DiagramaAcorde.astro`, `GlosarioPopover.astro`, `AcordesDeLaPieza.astro` y `GlosarioHint.astro` (aviso «Novedad» bajo la cejilla).
+- Componentes: `DiagramaAcorde.astro`, `GlosarioPopover.astro` y `AcordesDeLaPieza.astro` (incluye la nota «Pincha en cualquier acorde…», encima del transportador).
 - Anclas estables en `/glosario`: `#mi7`, `#do-sostenido-m7`, `#sol-sostenido-m`.
 - Reconocedor de acordes: `/reconocer-acorde` usa `src/lib/reconocer.ts` (`reconocerAcorde`) para identificar la postura por clases de altura, con el nombre más probable y alternativas. Funciona por teoría, aunque la postura no esté en el JSON. De momento es **privado**: `noindex`, fuera del sitemap y sin enlaces desde el glosario ni el footer; queda accesible por URL directa para publicarlo en el futuro.
 - Cobertura: `node --experimental-strip-types scripts/auditar-glosario.ts` falla si algún acorde válido del cancionero no tiene diagrama.
