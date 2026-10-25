@@ -28,16 +28,19 @@ import CanalCallout from '../components/page/CanalCallout.astro';
               y los subiremos.
             </p>
           </div>
-          <CanalCallout
-            titulo='¿Te aviso cuando suba la copla que pides?'
-            ubicacion='pedir-copla'
-            variante='destacado'
-          />
-
           <PeticionesStats />
           <div class='pedir-copla-donations'>
             <DonationIndicator variant='timeline' messageC='Ayuda a que siga subiendo más coplas' listStyle='pills' />
           </div>
+        </section>
+
+        <section class='canal-section'>
+          <CanalCallout
+            subtitulo='Avisos de coplas nuevas'
+            titulo='¿Te aviso cuando suba la copla que pides?'
+            ubicacion='pedir-copla'
+            variante='destacado'
+          />
         </section>
 
         <section class='top-peticiones' id='top-peticiones-section' hidden>
@@ -125,6 +128,14 @@ import CanalCallout from '../components/page/CanalCallout.astro';
       text-decoration-thickness: 2px;
       text-underline-offset: 3px;
     }
+  }
+
+  /* Avisos de coplas: va debajo del bloque de apoyo. La separación ya la pone
+     el gap de .pedir-copla-body. */
+  .canal-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap-sm);
   }
 
   .form-section {

@@ -12032,6 +12032,18 @@
           ],
           "baseTraste": 1,
           "cejilla": null
+        },
+        {
+          "trastes": [
+            5,
+            5,
+            4,
+            0,
+            3,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         }
       ]
     },
@@ -12061,6 +12073,18 @@
       "bajo": "Fa#",
       "slug": "re-fa-sostenido",
       "posiciones": [
+        {
+          "trastes": [
+            2,
+            0,
+            0,
+            2,
+            3,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        },
         {
           "trastes": [
             2,

@@ -14,15 +14,19 @@ interface Props {
   ubicacion: string;
   /** 'linea' (por defecto) o 'destacado'. */
   variante?: 'linea' | 'destacado';
+  /** Título visible, solo en la variante destacada. */
+  subtitulo?: string;
 }
 
-const { titulo, ubicacion, variante = 'linea' } = Astro.props;
+const { titulo, ubicacion, variante = 'linea', subtitulo } = Astro.props;
 const destacado = variante === 'destacado';
 ---
 
 {
   destacado ? (
     <div class='canal-callout canal-callout--destacado'>
+      {subtitulo && <h2 class='canal-callout__titulo'>{subtitulo}</h2>}
+
       <p class='canal-callout__parrafo'>
         {titulo} Únete a nuestros canales de WhatsApp y Telegram.
       </p>
@@ -165,8 +169,31 @@ const destacado = variante === 'destacado';
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 16px;
     text-align: left;
+  }
+
+  .canal-callout__titulo {
+    margin: 0 0 4px;
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    max-width: fit-content;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 95%;
+      height: 5px;
+      background: var(--primary-contrast-color);
+    }
   }
 
   .canal-callout__parrafo {
