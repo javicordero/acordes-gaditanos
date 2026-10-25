@@ -46,11 +46,11 @@ sus cabezas disecadas Pedacitos de su cuerpo
 de toda la vida luchando
        <a>Fa7b5</a>
 por la reina de nuestros huesos
-       <a>Mim</a>                   <a>La</a>
+       <a>Mim</a>                   <a>Lasus2</a>
 Puedo estar en un tablao, en una esquinita contigo
      <a>Do</a>              <a>Si7</a>
 Y en menos de un 3x4 seco con un estribillo
-     <a>Mim</a>                        <a>La</a>
+     <a>Mim</a>                        <a>Lasus2</a>
 Yo no sé de sentimientos, yo lo único que se
     <a>Do</a>                       <a>Re</a>
 Que me ha pedido tu alma y se la pondré a los pies
