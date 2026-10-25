@@ -36,11 +36,8 @@ const destacado = variante === 'destacado';
           aria-label='Seguir el canal de WhatsApp de Acordes Gaditanos'
           data-ga-event='click_canal'
           data-ga-params={JSON.stringify({ canal: 'whatsapp', ubicacion })}>
-          <span class='boton__icono' aria-hidden='true'>
-            <Icon name='whatsapp' width={18} height={18} />
-          </span>
+          <Icon name='whatsapp' width={18} height={18} />
           <span>WhatsApp</span>
-          <span class='boton__flecha' aria-hidden='true'>→</span>
         </a>
 
         <a
@@ -51,11 +48,8 @@ const destacado = variante === 'destacado';
           aria-label='Unirse al canal de Telegram de Acordes Gaditanos'
           data-ga-event='click_canal'
           data-ga-params={JSON.stringify({ canal: 'telegram', ubicacion })}>
-          <span class='boton__icono' aria-hidden='true'>
-            <Icon name='telegram' width={18} height={18} />
-          </span>
+          <Icon name='telegram' width={18} height={18} />
           <span>Telegram</span>
-          <span class='boton__flecha' aria-hidden='true'>→</span>
         </a>
       </div>
     </div>
@@ -184,16 +178,19 @@ const destacado = variante === 'destacado';
   }
 
   .canal-callout__botones {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+    width: 100%;
   }
 
   .boton {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 9px;
-    padding: 9px 14px;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 16px;
     background: var(--surface-color);
     color: var(--primary-contrast-color);
     font-family: 'Roboto Mono', monospace;
@@ -207,9 +204,13 @@ const destacado = variante === 'destacado';
     box-shadow: 4px 4px 0 0 var(--primary-color);
     transition:
       transform 0.15s ease,
-      box-shadow 0.15s ease;
+      box-shadow 0.15s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
 
     &:hover {
+      background-color: var(--primary-contrast-color);
+      color: var(--on-bright-color);
       transform: translate(-2px, -2px);
       box-shadow: 6px 6px 0 0 var(--primary-color);
     }
@@ -224,28 +225,14 @@ const destacado = variante === 'destacado';
       outline-offset: 3px;
     }
 
-    &:hover .boton__flecha {
-      transform: translateX(3px);
+    & :global(svg) {
+      display: block;
+      flex: none;
     }
   }
 
-  .boton__icono {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    flex: none;
-    background: var(--primary-contrast-color);
-    color: var(--on-bright-color);
-  }
-
-  .boton__flecha {
-    transition: transform 0.15s ease;
-  }
-
   :global(html[data-theme='dark']) .boton {
-    background: var(--card-background-color);
+    background-color: var(--card-background-color);
     color: var(--text-color);
   }
 </style>
