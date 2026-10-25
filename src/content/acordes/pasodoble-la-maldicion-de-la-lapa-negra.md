@@ -4,7 +4,7 @@ agrupacion: La maldición de la lapa negra
 year: 2019
 musica: Manolo Santander
 letra: Manolo Santander
-img: https://www.canalsur.es/resources/archivos_offline/2019/2/27/1551265323515la_maldicion_de_la_lapa_negra_1.JPG
+img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23489.jpg
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/GLMmRisDIGA?feature=player_embedded'
