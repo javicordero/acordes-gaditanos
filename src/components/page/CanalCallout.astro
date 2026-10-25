@@ -36,7 +36,7 @@ const eventoInfo = `click_canal_info_${sufijo}`;
       </p>
 
       <p class='canal-callout__info'>
-        Tienes todos los detalles, y cómo darte de baja, en
+        Más información de los canales en
         <a
           href='/suscribirse'
           data-ga-event={eventoInfo}
@@ -226,9 +226,12 @@ const eventoInfo = `click_canal_info_${sufijo}`;
     & a {
       color: var(--link-color);
       font-weight: 700;
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 3px;
+      text-decoration: none;
+
+      &:focus-visible {
+        outline: 2px solid var(--primary-contrast-color);
+        outline-offset: 2px;
+      }
     }
   }
 
