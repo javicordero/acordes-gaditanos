@@ -1967,6 +1967,26 @@
         }
       ]
     },
+    "Dodim7/Fa": {
+      "raiz": "Do",
+      "sufijo": "dim7",
+      "bajo": "Fa",
+      "slug": "dodim7-fa",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            -1,
+            4,
+            5,
+            4,
+            5
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Dom": {
       "raiz": "Do",
       "sufijo": "m",
@@ -2152,6 +2172,26 @@
             "desde": 0,
             "hasta": 4
           }
+        }
+      ]
+    },
+    "Dom7/Mib": {
+      "raiz": "Do",
+      "sufijo": "m7",
+      "bajo": "Mib",
+      "slug": "dom7-mi-bemol",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            -1,
+            1,
+            3,
+            1,
+            3
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         }
       ]
     },

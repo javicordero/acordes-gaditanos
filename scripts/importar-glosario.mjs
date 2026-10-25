@@ -205,6 +205,14 @@ function posicionesManuales(etiqueta) {
   if (etiqueta === 'Fa#m7b5/Do') {
     return [{ trastes: [-1, 3, 4, 2, 0, 0], baseTraste: 1, cejilla: null }];
   }
+  // Do m7 con bajo Mib (mismas notas que Mib6, pero con Mib en el bajo).
+  if (etiqueta === 'Dom7/Mib') {
+    return [{ trastes: [-1, -1, 1, 3, 1, 3], baseTraste: 1, cejilla: null }];
+  }
+  // Do dim7 (mismas notas que Fa#dim7) con la postura del traste 4.
+  if (etiqueta === 'Dodim7/Fa') {
+    return [{ trastes: [-1, -1, 4, 5, 4, 5], baseTraste: 1, cejilla: null }];
+  }
 
   const raiz = etiqueta.replace(/(m7b5|7b5|sus9)$/, '');
   const sufijo = etiqueta.slice(raiz.length);
@@ -330,7 +338,16 @@ async function main() {
     if (!r) continue;
     manuales.push(r + 'm7b5', r + '7b5', r + 'sus9');
   }
-  manuales.push('Lasusb6/9', 'Misusb6/9', 'Readd9/Fa#', 'Lam(add9)', 'Lam7/Sol', 'Fa#m7b5/Do');
+  manuales.push(
+    'Lasusb6/9',
+    'Misusb6/9',
+    'Readd9/Fa#',
+    'Lam(add9)',
+    'Lam7/Sol',
+    'Fa#m7b5/Do',
+    'Dom7/Mib',
+    'Dodim7/Fa',
+  );
 
   const lista = ONLY ? catalogo.filter((n) => n.includes(ONLY)) : catalogo;
   console.log(`Importando ${lista.length} acordes (+ ${manuales.length} manuales)…`);
