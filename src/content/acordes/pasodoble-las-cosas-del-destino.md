@@ -28,16 +28,17 @@ olvídate de que hay que ganar
 Y pégate un caprichito en el corazón
                                     <a>Si7</a>
 No quieras pegar el triple salto mortal,
+
 que cualquier día te vas a matar
                               <a>Mi</a>
 Y guíate solamente por la ilusión
-     <a>La/add2</a>      <a>Si7</a>            <a>Sol#m7</a>
+     <a>La/add9</a>      <a>Si7</a>            <a>Sol#m7</a>
 Taratachin, taratatachero taratachin
                 <a>Do#7</a>                 <a>Fa#m7</a>
 Que suene sencillito ya verás tu como si
                   <a>Si7</a>                       <a>Mi</a>   <a>Mi7</a>
 Porque los dos sabemos que Cádiz lo echa de menos
-      <a>La/add2</a>     <a>Si7</a>                     <a>Sol#m7</a>
+      <a>La/add9</a>    <a>Si7</a>                     <a>Sol#m7</a>
 Taratachin, taratachin, taratachin taratachero
                <a>Do#7</a>                  <a>Fa#m7</a>
 Que suene a Carapapa dulce como el caramelo
