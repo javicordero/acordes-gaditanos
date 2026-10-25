@@ -11,7 +11,7 @@ letra: El Chapa
 fraseClave: Y tú que estas escuchando desde alli abajo a nuestra comparsa
 ---
 <pre>
-  <a>Sol</a>
+<a>Sol</a>
 Y tú que estas escuchando 
 
 desde alli abajo a nuestra comparsa
