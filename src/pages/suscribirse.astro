@@ -44,7 +44,7 @@ import canales from '../data/canales.json';
                 href={canales.whatsapp}
                 target='_blank'
                 rel='noopener noreferrer'
-                data-ga-event='click_canal'
+                data-ga-event='click_canal_suscribirse'
                 data-ga-params='{"canal":"whatsapp","ubicacion":"suscribirse"}'>
                 Seguir el canal
               </a>
@@ -79,7 +79,7 @@ import canales from '../data/canales.json';
                 href={canales.telegram}
                 target='_blank'
                 rel='noopener noreferrer'
-                data-ga-event='click_canal'
+                data-ga-event='click_canal_suscribirse'
                 data-ga-params='{"canal":"telegram","ubicacion":"suscribirse"}'>
                 Unirme al canal
               </a>
@@ -126,10 +126,10 @@ import canales from '../data/canales.json';
 <script>
   declare const gtag: (...args: unknown[]) => void;
 
-  document.querySelectorAll<HTMLElement>('[data-ga-event="click_canal"]').forEach((enlace) => {
+  document.querySelectorAll<HTMLElement>('[data-ga-event^="click_canal"]').forEach((enlace) => {
     enlace.addEventListener('click', () => {
       if (typeof gtag !== 'function') return;
-      gtag('event', 'click_canal', {
+      gtag('event', enlace.getAttribute('data-ga-event') || 'click_canal', {
         ...JSON.parse(enlace.getAttribute('data-ga-params') || '{}'),
         page_location: window.location.href,
       });

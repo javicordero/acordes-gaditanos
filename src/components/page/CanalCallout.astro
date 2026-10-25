@@ -20,6 +20,8 @@ interface Props {
 
 const { titulo, ubicacion, variante = 'linea', subtitulo } = Astro.props;
 const destacado = variante === 'destacado';
+// Nombre de evento propio por página: click_canal_home, click_canal_pedir_copla…
+const evento = `click_canal_${ubicacion.replace(/[^a-z0-9]+/gi, '_')}`;
 ---
 
 {
@@ -38,7 +40,7 @@ const destacado = variante === 'destacado';
           target='_blank'
           rel='noopener noreferrer'
           aria-label='Seguir el canal de WhatsApp de Acordes Gaditanos'
-          data-ga-event='click_canal'
+          data-ga-event={evento}
           data-ga-params={JSON.stringify({ canal: 'whatsapp', ubicacion })}>
           <Icon name='whatsapp' width={18} height={18} />
           <span>WhatsApp</span>
@@ -50,7 +52,7 @@ const destacado = variante === 'destacado';
           target='_blank'
           rel='noopener noreferrer'
           aria-label='Unirse al canal de Telegram de Acordes Gaditanos'
-          data-ga-event='click_canal'
+          data-ga-event={evento}
           data-ga-params={JSON.stringify({ canal: 'telegram', ubicacion })}>
           <Icon name='telegram' width={18} height={18} />
           <span>Telegram</span>
@@ -69,7 +71,7 @@ const destacado = variante === 'destacado';
           target='_blank'
           rel='noopener noreferrer'
           aria-label='Seguir el canal de WhatsApp de Acordes Gaditanos'
-          data-ga-event='click_canal'
+          data-ga-event={evento}
           data-ga-params={JSON.stringify({ canal: 'whatsapp', ubicacion })}>
           <Icon name='whatsapp' width={15} height={15} />
           <span>WhatsApp</span>
@@ -81,7 +83,7 @@ const destacado = variante === 'destacado';
           target='_blank'
           rel='noopener noreferrer'
           aria-label='Unirse al canal de Telegram de Acordes Gaditanos'
-          data-ga-event='click_canal'
+          data-ga-event={evento}
           data-ga-params={JSON.stringify({ canal: 'telegram', ubicacion })}>
           <Icon name='telegram' width={15} height={15} />
           <span>Telegram</span>
