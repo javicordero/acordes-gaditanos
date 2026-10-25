@@ -21,7 +21,9 @@ interface Props {
 const { titulo, ubicacion, variante = 'linea', subtitulo } = Astro.props;
 const destacado = variante === 'destacado';
 // Nombre de evento propio por página: click_canal_home, click_canal_pedir_copla…
-const evento = `click_canal_${ubicacion.replace(/[^a-z0-9]+/gi, '_')}`;
+const sufijo = ubicacion.replace(/[^a-z0-9]+/gi, '_');
+const evento = `click_canal_${sufijo}`;
+const eventoInfo = `click_canal_info_${sufijo}`;
 ---
 
 {
@@ -31,6 +33,15 @@ const evento = `click_canal_${ubicacion.replace(/[^a-z0-9]+/gi, '_')}`;
 
       <p class='canal-callout__parrafo'>
         {titulo} Únete a nuestros canales de WhatsApp y Telegram.
+      </p>
+
+      <p class='canal-callout__info'>
+        Tienes todos los detalles, y cómo darte de baja, en
+        <a
+          href='/suscribirse'
+          data-ga-event={eventoInfo}
+          data-ga-params={JSON.stringify({ ubicacion })}>Avisos de coplas nuevas</a
+        >.
       </p>
 
       <div class='canal-callout__botones'>
@@ -204,6 +215,21 @@ const evento = `click_canal_${ubicacion.replace(/[^a-z0-9]+/gi, '_')}`;
     line-height: 1.6;
     color: var(--text-color);
     text-wrap: pretty;
+  }
+
+  .canal-callout__info {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-secondary-color);
+
+    & a {
+      color: var(--link-color);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
   }
 
   .canal-callout__botones {
