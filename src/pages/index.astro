@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import CardsGroup from '../components/page/CardsGroup.astro';
 import YearsList from '../components/page/YearsList.astro';
-import NovedadCallout from '../components/page/NovedadCallout.astro';
 import CanalCallout from '../components/page/CanalCallout.astro';
 import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
 import BannerCoac2026 from '../components/page/BannerCoac2026.astro';
@@ -48,9 +47,7 @@ const autoresDestacados = [...autores]
     <!-- <AnunciateIndex /> -->
 
     <div class='section section--novedades'>
-      <CardsGroup year={'Novedades'} acordes={ultimos}>
-        <NovedadCallout slot='notice' gaEvent='click_novedad_novedades' />
-      </CardsGroup>
+      <CardsGroup year={'Novedades'} acordes={ultimos} />
       <div class='container-layout ver-mas-wrapper'>
         <a
           href='/novedades'
@@ -84,9 +81,7 @@ const autoresDestacados = [...autores]
     <div class='section'>
       <YearsList
         years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort(sortByYearDesc)}
-      >
-        <NovedadCallout slot='subtitle' gaEvent='click_novedad_carnavales' />
-      </YearsList>
+      />
     </div>
   </div>
   <div class='container-layout'>
