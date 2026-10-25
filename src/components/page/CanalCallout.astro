@@ -1,13 +1,13 @@
 ---
 // src/components/page/CanalCallout.astro
 //
-// Banda de suscripción a los canales de avisos (WhatsApp y Telegram).
-// Se coloca en la home y en /pedir-copla con un título propio para cada sitio.
+// Invitación a seguir los canales de avisos (WhatsApp y Telegram).
+// Se usa en la home y en /pedir-copla con un título propio para cada sitio.
 import { Icon } from 'astro-icon/components';
 import canales from '../../data/canales.json';
 
 interface Props {
-  /** Pregunta que encabeza la banda. */
+  /** Pregunta que encabeza el bloque. */
   titulo: string;
   /** Página donde se pinta: se manda a la analítica. */
   ubicacion: string;
@@ -17,46 +17,52 @@ const { titulo, ubicacion } = Astro.props;
 const id = `canal-${ubicacion}`;
 ---
 
-<aside class='canal-callout' aria-labelledby={id}>
+<section class='canal-callout' aria-labelledby={id}>
   <div class='canal-callout__texto'>
     <h2 class='canal-callout__titulo' id={id}>{titulo}</h2>
-    <p class='canal-callout__nota'>
-      Solo avisos de coplas nuevas. Puedes salir cuando quieras.
-      <a
-        href='/suscribirse'
-        class='canal-callout__mas'
-        data-ga-event='click_canal_info'
-        data-ga-params={JSON.stringify({ ubicacion })}>¿Qué es esto?</a
-      >
-    </p>
+    <p class='canal-callout__nota'>Solo avisos de coplas nuevas. Puedes salir cuando quieras.</p>
   </div>
 
-  <div class='canal-callout__acciones'>
+  <div class='canal-callout__canales'>
     <a
-      class='canal-btn'
+      class='canal'
       href={canales.whatsapp}
       target='_blank'
       rel='noopener noreferrer'
-      aria-label='Canal de WhatsApp de Acordes Gaditanos'
+      aria-label='Seguir el canal de WhatsApp de Acordes Gaditanos'
       data-ga-event='click_canal'
       data-ga-params={JSON.stringify({ canal: 'whatsapp', ubicacion })}>
-      <Icon name='whatsapp' width={18} height={18} />
-      <span>WhatsApp</span>
+      <span class='canal__icono' aria-hidden='true'>
+        <Icon name='whatsapp' width={22} height={22} />
+      </span>
+      <span class='canal__nombre'>WhatsApp</span>
+      <span class='canal__flecha' aria-hidden='true'>→</span>
     </a>
 
     <a
-      class='canal-btn'
+      class='canal'
       href={canales.telegram}
       target='_blank'
       rel='noopener noreferrer'
-      aria-label='Canal de Telegram de Acordes Gaditanos'
+      aria-label='Unirse al canal de Telegram de Acordes Gaditanos'
       data-ga-event='click_canal'
       data-ga-params={JSON.stringify({ canal: 'telegram', ubicacion })}>
-      <Icon name='telegram' width={18} height={18} />
-      <span>Telegram</span>
+      <span class='canal__icono' aria-hidden='true'>
+        <Icon name='telegram' width={22} height={22} />
+      </span>
+      <span class='canal__nombre'>Telegram</span>
+      <span class='canal__flecha' aria-hidden='true'>→</span>
     </a>
   </div>
-</aside>
+
+  <p class='canal-callout__mas'>
+    <a
+      href='/suscribirse'
+      data-ga-event='click_canal_info'
+      data-ga-params={JSON.stringify({ ubicacion })}>¿Qué es esto?</a
+    >
+  </p>
+</section>
 
 <script>
   declare const gtag: (...args: unknown[]) => void;
@@ -84,11 +90,11 @@ const id = `canal-${ubicacion}`;
     pistaCanales();
   }
 
-  // El botón flotante de «Pedir una copla» se aparta mientras la banda está a
-  // la vista: pide el mismo clic y, en móvil, la tapaba.
+  // El botón flotante de «Pedir una copla» se aparta mientras el bloque está a
+  // la vista: pide el mismo clic y, en móvil, lo tapaba.
   const flotante = document.querySelector<HTMLElement>('.fab-container');
-  const bandas = document.querySelectorAll<HTMLElement>('.canal-callout');
-  if (flotante && bandas.length && 'IntersectionObserver' in window) {
+  const bloques = document.querySelectorAll<HTMLElement>('.canal-callout');
+  if (flotante && bloques.length && 'IntersectionObserver' in window) {
     const observador = new IntersectionObserver(
       (entradas) => {
         const visible = entradas.some((entrada) => entrada.isIntersecting);
@@ -97,35 +103,30 @@ const id = `canal-${ubicacion}`;
       { threshold: 0.35 },
     );
 
-    bandas.forEach((banda) => observador.observe(banda));
+    bloques.forEach((bloque) => observador.observe(bloque));
   }
 </script>
 
 <style>
   .canal-callout {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px 24px;
-    padding: 18px 20px;
-    background: var(--callout-bg);
-    border: 2px solid var(--primary-color);
-    border-radius: 0;
-    color: var(--text-color);
+    gap: 14px;
+    max-width: 620px;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .canal-callout__texto {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    min-width: 0;
-    flex: 1 1 260px;
+    gap: 4px;
   }
 
   .canal-callout__titulo {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 800;
     line-height: 1.35;
     text-wrap: balance;
@@ -138,46 +139,34 @@ const id = `canal-${ubicacion}`;
     color: var(--text-secondary-color);
   }
 
-  .canal-callout__mas {
-    color: var(--link-color);
-    font-weight: 700;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
-    white-space: nowrap;
-  }
-
-  .canal-callout__acciones {
+  .canal-callout__canales {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
   }
 
-  .canal-btn {
-    display: inline-flex;
+  /* Cada canal es una tarjeta entera pulsable, no un botón suelto. */
+  .canal {
+    display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 10px 16px;
-    background-color: var(--surface-color);
+    gap: 12px;
+    flex: 1 1 200px;
+    min-width: 0;
+    padding: 10px 14px;
+    background: var(--surface-color);
     color: var(--primary-contrast-color);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.8rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    text-decoration: none;
     border: 2px solid var(--primary-color);
     border-radius: 0;
     box-shadow: 4px 4px 0 0 var(--primary-color);
+    text-decoration: none;
     transition:
       transform 0.15s ease,
       box-shadow 0.15s ease,
-      background-color 0.2s ease,
-      color 0.2s ease;
+      background-color 0.2s ease;
 
     &:hover {
-      background-color: var(--primary-contrast-color);
-      color: var(--on-bright-color);
       transform: translate(-2px, -2px);
       box-shadow: 6px 6px 0 0 var(--primary-color);
     }
@@ -191,28 +180,64 @@ const id = `canal-${ubicacion}`;
       outline: 3px solid var(--primary-contrast-color);
       outline-offset: 3px;
     }
+
+    &:hover .canal__flecha {
+      transform: translateX(3px);
+    }
   }
 
-  :global(html[data-theme='dark']) .canal-btn {
+  .canal__icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex: none;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .canal__nombre {
+    flex: 1;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .canal__flecha {
+    flex: none;
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform 0.15s ease;
+  }
+
+  .canal-callout__mas {
+    margin: 0;
+    font-size: 0.75rem;
+
+    & a {
+      color: var(--text-secondary-color);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+
+      &:hover {
+        color: var(--link-color);
+      }
+    }
+  }
+
+  :global(html[data-theme='dark']) .canal {
     background-color: var(--card-background-color);
-    color: var(--text-color);
   }
 
-  @media (max-width: 640px) {
-    .canal-callout {
-      padding: 16px;
-      gap: 14px;
-    }
-
-    .canal-callout__acciones {
-      width: 100%;
-    }
-
-    .canal-btn {
-      flex: 1 1 0;
-      justify-content: center;
-      padding: 10px 12px;
-      font-size: 0.75rem;
+  @media (max-width: 480px) {
+    .canal {
+      flex: 1 1 100%;
     }
   }
 </style>
