@@ -4,18 +4,9 @@
 // Página de suscripción a los canales de avisos (WhatsApp y Telegram).
 // No hay formulario ni base de datos: suscribirse es unirse al canal y darse
 // de baja es salir de él.
-import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
-import { parseSpanishDate } from '../lib/date';
 import canales from '../data/canales.json';
-
-const acordes = await getCollection('acordes');
-
-const ultimos = acordes
-  .slice()
-  .sort((a, b) => parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime())
-  .slice(0, 5);
 ---
 
 <Layout
@@ -131,22 +122,6 @@ const ultimos = acordes
           tu número ni ningún dato tuyo: no hay formulario, no hay lista de correo y no hay nada
           que borrar.
         </p>
-      </section>
-
-      <section aria-labelledby='ultimas-title'>
-        <h2 class='suscribirse__subtitulo' id='ultimas-title'>Lo último que he subido</h2>
-        <ul class='ultimas'>
-          {
-            ultimos.map((acorde) => (
-              <li>
-                <a href={`/acordes/${acorde.slug}`}>
-                  {acorde.data.pieza} {acorde.data.agrupacion}
-                </a>
-                <span class='ultimas__year'>— {acorde.data.year}</span>
-              </li>
-            ))
-          }
-        </ul>
       </section>
     </article>
   </div>
@@ -342,28 +317,6 @@ const ultimos = acordes
     gap: 10px;
     font-size: 0.95rem;
     line-height: 1.6;
-  }
-
-  .ultimas {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-size: 0.95rem;
-
-    & a {
-      color: var(--link-color);
-      font-weight: 700;
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 3px;
-    }
-  }
-
-  .ultimas__year {
-    color: var(--text-secondary-color);
   }
 
   :global(html[data-theme='dark']) .canal__btn {
