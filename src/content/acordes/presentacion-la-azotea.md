@@ -12,70 +12,70 @@ video: 'https://www.youtube.com/embed/byuOY3ffkpc?feature=player_embedded'
 fraseClave: Se encendió la bombilla y me echo a temblar
 ---
 <pre>
-        <a>Re</a>                   <a>Sim</a>
+        Re                   Sim
 Se encendió la bombilla y me echo a temblar
-      <a>Sol7</a>                 <a>La</a>
+      Sol7                 La
 Desde hoy aquí arriba se acabó la tranquilidad
-      <a>Re</a>                         <a>Sim</a>
+      Re                         Sim
 Yo tenía entendió que íbamos a estar de relax
-      <a>Sol</a>                 <a>Mi7</a>                 <a>La</a>
+      Sol                 Mi7                 La
 Yo no sé pa que dice el cojone que va a descansar
-<a>Re</a>
+Re
 Todo el mundo a sus puestos, preparen las maquinarias
-<a>Sim</a>
+Sim
 Y venga a partir de ahora
 
 un montón de horas extraordinarias
-       <a>Sol</a>                           <a>Re</a>
+       Sol                           Re
 Veinticuatro horas al día los siete días de la semana
-      <a>Mi</a>
+      Mi
 No te veas la que nos queda,
-    <a>La</a>
+    La
 más horas que a la campana
-<a>Re</a>                          <a>Sim</a>
+Re                          Sim
 Retumba ya el 3x4 con los latidos del corazón
-<a>Sol</a>                       <a>Mi7</a>                   <a>La7</a>
+Sol                       Mi7                   La7
 Arriba ya estamos listos y otra vez al pie del cañón
-<a>Re</a>                      <a>Mim</a>
+Re                      Mim
 Encended los generadores activados los sistemas
-<a>Sol</a>                      <a>Mi7</a>                  <a>La7</a>
+Sol                      Mi7                  La7
 Y vamos a arrancar motores que revienten las calderas
-<a>Sol</a>             <a>La</a>         <a>Fa#7</a>          <a>Sim</a>
+Sol             La         Fa#7          Sim
 Quiero más adrenalina no quiero a nadie parao
-<a>Sol</a>                                <a>Mim</a>
+Sol                                Mim
 Hagamos una comparsa que huela a Cádiz
-                 <a>Fa#7</a>
+                 Fa#7
 por los cuatro costaos
-<a>Sim</a>                             <a>La</a>
+Sim                             La
 Y fabricar cientos de miles de coplas
-                     <a>Sol</a>                       <a>Fa#7</a>
+                     Sol                       Fa#7
 de las que solo unas pocas luego salen por su boca
-<a>Sim</a>                             <a>La</a>
+Sim                             La
 Y maquinar cientos de miles de ideas
-                        <a>Sol</a>
+                        Sol
 que dan vueltas en la azotea
-      <a>Mim</a>       <a>Sol</a>         <a>Fa#</a>
+      Mim       Sol         Fa#
 Sin parar, sin parar, sin parar
-<a>Sim</a>            <a>La</a>             <a>Sol</a>            <a>Fa#7</a>
+Sim            La             Sol            Fa#7
 Así me paso la vida sentrañas mías que voy a hacer
-<a>Sim</a>               <a>La</a>       <a>Sol</a>               <a>Fa#7</a>
+Sim               La       Sol               Fa#7
 Si la niña de mis ojos me está esperando otra vez
-<a>Sim</a>                 <a>La</a>                        <a>Re</a>
+Sim                 La                        Re
 Y vamos dejarnos el alma, poned los cinco sentíos
-                      <a>Sol</a>                    <a>Fa#7</a>
+                      Sol                    Fa#7
 Cantadle que por la espalda te entre un escalofrió
- <a>Sol</a>                     <a>La</a>
+ Sol                     La
 Y mezclando melodía y poesía,
-    <a>Re</a>                    <a>Sim</a>
+    Re                    Sim
 ironía, sentimiento y rebeldía
-       <a>Sol</a>
+       Sol
 Aquí arriba es donde nace la comparsa
-             <a>Fa#</a>     <a>Sol</a>
+             Fa#     Sol
 y para que usted lo vea
-<a>Fa#7</a>               <a>Sim</a> <a>Sol</a>
+Fa#7               Sim Sol
 Bienvenido a la Azotea,
-<a>Fa#7</a>               <a>Sim</a> <a>Sol</a>
+Fa#7               Sim Sol
 bienvenido a la Azotea,
-<a>Fa#7</a>               <a>Sim</a>
+Fa#7               Sim
 bienvenido a la Azotea.
 </pre>
