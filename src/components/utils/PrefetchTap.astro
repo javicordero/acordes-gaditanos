@@ -1,0 +1,33 @@
+---
+/**
+ * Prefetch al pulsar en pantallas táctiles.
+ *
+ * Astro solo aplica una estrategia por enlace y la de por defecto es `hover`
+ * (mouseenter/focus), así que en móvil no precarga nada. Este script
+ * reintroduce el prefetch en `pointerdown` reutilizando `prefetch()` de Astro,
+ * que comparte la lista de URLs ya precargadas (no duplica peticiones) y
+ * descarta conexiones lentas (saveData / 2g).
+ */
+---
+
+<script>
+  import { prefetch } from 'astro:prefetch';
+
+  document.addEventListener(
+    'pointerdown',
+    (event) => {
+      if (event.button !== 0) return;
+
+      const target = event.target as Element | null;
+      const anchor = target?.closest?.('a[href]') as HTMLAnchorElement | null;
+      if (!anchor) return;
+      if (anchor.dataset.astroPrefetch === 'false') return;
+      if (anchor.target && anchor.target !== '_self') return;
+      if (anchor.hasAttribute('download')) return;
+      if (new URL(anchor.href).origin !== location.origin) return;
+
+      prefetch(anchor.href);
+    },
+    { passive: true },
+  );
+</script>

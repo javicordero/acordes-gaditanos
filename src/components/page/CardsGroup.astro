@@ -1,6 +1,6 @@
 ---
 import Card from '../ui/Card.astro';
-const { year, acordes, subtitle, headingAs = 'h2' } = Astro.props;
+const { year, acordes, subtitle, headingAs = 'h2', headingTransition = null } = Astro.props;
 
 // Generar ID estable para accesibilidad
 const headingId = `year-${year}`;
@@ -12,7 +12,10 @@ const Heading = headingAs;
   aria-labelledby={headingId}>
   <div class='container-layout inner-content'>
     <header>
-      <Heading id={headingId} class='is-title-minus'>{year}</Heading>
+      <Heading
+        id={headingId}
+        class='is-title-minus'
+        style={headingTransition ? `view-transition-name: ${headingTransition}` : undefined}>{year}</Heading>
       {subtitle && <h3>{subtitle}</h3>}
     </header>
 

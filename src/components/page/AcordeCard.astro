@@ -76,7 +76,7 @@ const headingId = `acorde-${slug}`;
   <!-- <AcordeAvisoMigracion /> -->
 
   <header>
-    <h2 id={headingId} class='is-title-minus'>
+    <h2 id={headingId} class='is-title-minus' transition:name={`titulo-${slug}`}>
       {pieza} {agrupacion}
     </h2>
 
@@ -121,7 +121,7 @@ const headingId = `acorde-${slug}`;
         unoptimized
       />
 
-      <figcaption class='badge badge--musica' transition:name={`musica-${slug}`}>
+      <figcaption class='badge badge--musica'>
         {musica}
       </figcaption>
       <figcaption class='badge badge--letra'>

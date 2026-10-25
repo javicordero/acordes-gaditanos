@@ -5,6 +5,13 @@ import remarkAcordesColumna from './src/lib/remark-acordes-columna.mjs';
 
 export default defineConfig({
   site: 'https://acordesgaditanos.com',
+  // Precarga el HTML de los enlaces al pasar el ratón (escritorio).
+  // Astro descarta conexiones lentas (saveData / 2g) y enlaces externos.
+  // En móvil el prefetch se dispara desde PrefetchTap.astro.
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
   markdown: {
     remarkPlugins: [remarkAcordesColumna],
   },

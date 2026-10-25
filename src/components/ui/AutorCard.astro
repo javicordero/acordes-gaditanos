@@ -64,7 +64,7 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
   </figure>
 
   <section class='card-body'>
-    <h3 id={headingId} class='card-title'>{autor.nombre}</h3>
+    <h3 id={headingId} class='card-title' transition:name={`autor-${autor.autorSlug}`}>{autor.nombre}</h3>
 
     {
       (tieneMusica || tieneLetra) && (

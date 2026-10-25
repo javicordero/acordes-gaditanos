@@ -83,7 +83,7 @@ letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add
   </figure>
 
   <section class='card-body'>
-    <h3 id={headingId} class='card-title'>{agrupacion}</h3>
+    <h3 id={headingId} class='card-title' transition:name={`titulo-${slug}`}>{agrupacion}</h3>
 
     <div class='card-meta'>
       <div class='card-authors'>

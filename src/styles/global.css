@@ -8,6 +8,44 @@
   font-display: swap;
 }
 
+/* Transiciones de página nativas (cross-document view transitions).
+   No usan ClientRouter: la navegación sigue siendo una carga completa, así que
+   AdSense, GTM, GA4 y el contador propio funcionan exactamente igual.
+   Chrome/Edge 126+ y Safari 18.2+; el resto simplemente no anima. */
+@view-transition {
+  navigation: auto;
+}
+
+/* Astro emite las reglas ::view-transition-old/new con estos nombres de
+   animación, pero no define los keyframes (no existen en el build). Sin ellos
+   el morph de los elementos con transition:name salta en seco. */
+@keyframes astroFadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes astroFadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+/* Los 180 ms que emite Astro para los elementos con transition:name pasan
+   demasiado rápido: el morph no se llega a percibir. */
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 240ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
