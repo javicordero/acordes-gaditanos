@@ -428,6 +428,38 @@ const headingId = `acorde-${slug}`;
       line-height: 1;
       pointer-events: none;
     }
+
+    /* Marcas de cejilla dentro del cifrado ("Cejilla: 4", "Cejilla: No"):
+       mismo chip que .acorde-meta, pero dentro del <pre>. */
+    & :global(strong) {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+      margin: 0.5rem auto;
+      padding: 4px 10px;
+      border: 2px solid var(--primary-color);
+      background-color: var(--card-background-color);
+      box-shadow: 2px 2px 0 0 var(--primary-color);
+      color: var(--primary-color);
+      font-size: 0.8rem;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: normal;
+      word-spacing: normal;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    & :global(strong)::before {
+      content: '';
+      flex: none;
+      width: 18px;
+      height: 18px;
+      background-color: currentColor;
+      -webkit-mask: url('/icons/cejilla.svg') center / contain no-repeat;
+      mask: url('/icons/cejilla.svg') center / contain no-repeat;
+    }
   }
 
   .autoscroll-wrapper {
