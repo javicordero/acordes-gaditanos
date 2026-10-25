@@ -690,6 +690,19 @@ import SugerenciasBusqueda from './SugerenciasBusqueda.astro';
           e.preventDefault();
           return;
         }
+
+        // En /buscar el envío se intercepta y no se sale de la página de resultados.
+        if (!window.location.pathname.startsWith('/buscar')) {
+          const w = window as any;
+          if (typeof w.gtag === 'function') {
+            w.gtag('event', 'buscar_ver_resultados', {
+              consulta: searchInput.value.trim().slice(0, 40),
+              origen: 'formulario',
+              transport_type: 'beacon',
+            });
+          }
+        }
+
         setSearchOpen(false);
       });
     }

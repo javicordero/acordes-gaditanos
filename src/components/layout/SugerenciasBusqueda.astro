@@ -298,11 +298,13 @@
 
       enlace.append(titulo, meta);
 
-      enlace.addEventListener('click', () => {
+      enlace.addEventListener('click', (evento) => {
         analitica('buscar_sugerencia_click', {
           consulta: consultaActual.slice(0, 40),
           posicion: posicion + 1,
           resultado: resultado.agrupacion,
+          // Enter en el teclado dispara click() sin puntero: detail vale 0.
+          origen: evento.detail === 0 ? 'teclado' : 'raton',
         });
       });
 
@@ -371,6 +373,16 @@
           : total === 1
             ? 'Ver el resultado'
             : `Ver los ${total} resultados`;
+
+      // Navega a /buscar: se manda con beacon para que no se pierda en la descarga.
+      enlace.addEventListener('click', () => {
+        analitica('buscar_ver_resultados', {
+          consulta: consulta.slice(0, 40),
+          total,
+          origen: 'panel',
+          transport_type: 'beacon',
+        });
+      });
 
       item.append(enlace);
       return item;

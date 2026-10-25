@@ -100,7 +100,7 @@ Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astr
 - Sin JS el `<form action="/buscar/" method="get">` sigue funcionando igual. Las filas van directas a la ficha; no llevan `view-transition-name` a propósito (chocaría con la card del mismo slug que ya está en la página).
 - `/buscar` es `noindex` y está fuera del sitemap: es una página de resultados. Las variantes `?q=` no se indexan y la canonical las neutraliza. **El `noindex` no afecta a las visitas ni a AdSense**: solo a la indexación.
 - `node --experimental-strip-types scripts/auditar-busqueda.ts` comprueba el top-1 de 12 consultas reales (erratas, prefijos, orden libre, año, autor, tipo) y falla si el ranking se degrada.
-- Eventos: `buscar_sugerencia_click` y `buscar_sin_resultados` (consulta truncada a 40 caracteres).
+- Eventos: `buscar_sugerencia_click` (con `origen`: `raton`|`teclado`), `buscar_ver_resultados` (con `origen`: `panel`|`formulario` y `total` en el panel) y `buscar_sin_resultados` (consulta truncada a 40 caracteres). Los que navegan fuera de la página se mandan con `transport_type: 'beacon'` para que no se pierdan al descargar la siguiente.
 
 ### Canales de avisos (WhatsApp y Telegram)
 - Enlaces únicos en `src/data/canales.json` (`whatsapp` y `telegram`); se usan en el footer, en la banda de suscripción y en `Layout.astro` (`sameAs` de `Organization`).
