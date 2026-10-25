@@ -446,14 +446,42 @@ import ThemeToggle from './ThemeToggle.astro';
 
     .right-controls {
       gap: 8px;
+      min-width: 0;
+    }
+
+    /* Tema y menú nunca se comprimen ni salen de pantalla */
+    .theme-container,
+    .menu-toggle {
+      flex-shrink: 0;
+    }
+
+    /* El buscador ocupa solo el espacio libre que queda */
+    .search-form {
+      min-width: 0;
     }
 
     .search-wrapper {
-      width: 250px;
+      width: 100%;
+      min-width: 0;
     }
 
     .search-wrapper.collapsed {
       width: 0;
+    }
+
+    /* Con el buscador abierto, ocupa todo el hueco y no empuja tema/menú */
+    header.is-search-open .right-controls {
+      flex: 1;
+      min-width: 0;
+    }
+
+    header.is-search-open .search-container {
+      flex: 1;
+      min-width: 0;
+    }
+
+    header.is-search-open .search-form {
+      flex: 1;
     }
 
     .search-toggle {
@@ -571,6 +599,7 @@ import ThemeToggle from './ThemeToggle.astro';
     // Mostrar u ocultar el buscador
     const setSearchOpen = (open = false) => {
       if (!searchWrapper || !searchToggle) return;
+      if (header) header.classList.toggle('is-search-open', open);
       if (open) {
         searchWrapper.classList.remove('collapsed');
         searchToggle.classList.add('hidden');
