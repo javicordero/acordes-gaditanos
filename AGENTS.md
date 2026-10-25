@@ -117,7 +117,7 @@ Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astr
   https://acordesgaditanos.com/acordes/pasodoble-la-marea/
   ```
   Si música y letra son la misma persona se juntan en `Música y letra: …`; si falta el año, se omite el `— año`. La vista previa la pone Telegram (y WhatsApp) con el `og:image` de la ficha.
-- Local: `npm run difundir -- --solo <slug> --dry-run`, `--test`, `--antes <sha>`. La Action también admite `workflow_dispatch` con modo `prueba`, `seco` o `reenviar`.
+- Local: `npm run difundir -- --solo <slug> --dry-run`, `--test`, `--antes <sha>`. La Action también admite `workflow_dispatch` con modo `prueba` (manda un mensaje de prueba al canal), `seco` (con `slugs` previsualiza esas coplas; sin ellos compara `HEAD~1`) o `reenviar`.
 - **Secretos**: `TELEGRAM_BOT_TOKEN` (repo → Settings → Secrets → Actions) y, si se quiere cambiar, la variable `TELEGRAM_CHAT_ID` (por defecto `@acordesgaditanos`). El token no se imprime nunca. El bot debe ser administrador del canal con «Publicar mensajes», o Telegram devuelve `403`.
 - **WhatsApp no se automatiza**: no hay API oficial de Canales. Se copia el mismo texto del canal de Telegram y se pega en el canal; el enlace genera la vista previa. Las APIs no oficiales (Whapi, Baileys…) van contra los términos de WhatsApp y exponen el número, así que no se usan.
 - Web: `src/components/page/CanalCallout.astro` en la home (tras «Ver más novedades») y en `/pedir-copla` (encima de `PeticionesStats`), con título propio por `ubicacion`. Mientras la banda está visible, el botón flotante de «Pedir una copla» se aparta (`is-oculto`).

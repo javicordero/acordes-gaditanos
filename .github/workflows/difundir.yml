@@ -18,7 +18,7 @@ on:
           - seco
           - reenviar
       slugs:
-        description: 'Slugs para reenviar, separados por comas (solo en modo reenviar)'
+        description: 'Slugs para reenviar o previsualizar, separados por comas (opcional en modo seco)'
         required: false
 
 permissions:
@@ -64,7 +64,11 @@ jobs:
                 node scripts/difundir.mjs --test
                 ;;
               seco)
-                node scripts/difundir.mjs --antes HEAD~1 --dry-run
+                if [ -n "${SLUGS}" ]; then
+                  node scripts/difundir.mjs --solo "${SLUGS}" --dry-run
+                else
+                  node scripts/difundir.mjs --antes HEAD~1 --dry-run
+                fi
                 ;;
               reenviar)
                 if [ -z "${SLUGS}" ]; then
