@@ -120,6 +120,22 @@
       color: var(--on-bright-color);
     }
   }
+
+  /* En móvil el panel va del ancho del campo: se aprieta un poco para que la
+     segunda línea quepa sin recortes. */
+  @media (max-width: 640px) {
+    .sugerencia {
+      padding: 8px 10px;
+    }
+
+    .sugerencia-meta {
+      font-size: 0.72rem;
+    }
+
+    .sugerencias-todas {
+      padding: 8px 10px;
+    }
+  }
 </style>
 
 <script>
@@ -128,13 +144,16 @@
   const MINIMO = 2;
   const MAXIMO = 6;
   const RETARDO = 120;
+  // En móvil el panel va tan ancho como el campo; esto solo evita que quede
+  // inservible en pantallas muy estrechas.
+  const ANCHO_MINIMO = 180;
 
   interface Sugerencia {
     slug: string;
     agrupacion: string;
     year: string;
     etiquetaPieza: string;
-    etiquetaAutores: string;
+    etiquetaMusica: string;
   }
 
   interface Respuesta {
@@ -208,15 +227,20 @@
       return Array.from(lista!.querySelectorAll<HTMLElement>('[role="option"]'));
     }
 
-    /** Encaja el panel dentro de la pantalla, alineado a la derecha del input. */
+    /** Encaja el panel dentro de la pantalla, con el ancho del propio campo. */
     function colocar() {
       const contenedor = panel!.parentElement;
+      const campo = input!.getBoundingClientRect();
       if (!contenedor) return;
 
       const caja = contenedor.getBoundingClientRect();
       const margen = 8;
-      const ancho = Math.min(340, window.innerWidth - margen * 2);
-      const derecha = Math.min(caja.right, window.innerWidth - margen);
+      // Tan ancho como el campo, sin bajar de un mínimo legible ni salirse.
+      const ancho = Math.min(
+        Math.max(campo.width, ANCHO_MINIMO),
+        window.innerWidth - margen * 2,
+      );
+      const derecha = Math.min(campo.right, window.innerWidth - margen);
       const izquierda = Math.max(margen, derecha - ancho);
 
       panel!.style.width = `${ancho}px`;
@@ -268,7 +292,7 @@
 
       const meta = document.createElement('span');
       meta.className = 'sugerencia-meta';
-      meta.textContent = [resultado.etiquetaPieza, resultado.year, resultado.etiquetaAutores]
+      meta.textContent = [resultado.etiquetaPieza, resultado.etiquetaMusica || resultado.year]
         .filter(Boolean)
         .join(' · ');
 

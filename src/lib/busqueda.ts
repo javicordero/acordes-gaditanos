@@ -30,6 +30,7 @@ export interface EntradaPreparada extends EntradaIndice {
   /** Etiquetas listas para pintar. */
   etiquetaPieza: string;
   etiquetaAutores: string;
+  etiquetaMusica: string;
 }
 
 export interface ResultadoBusqueda {
@@ -93,6 +94,16 @@ function etiquetaAutores(musica: string, letra: string): string {
   return [...new Set(nombres)].join(', ');
 }
 
+/** Solo los autores de la música, sin repetir. */
+function etiquetaMusica(musica: string): string {
+  const nombres = (musica || '')
+    .split(',')
+    .map((nombre) => nombre.trim())
+    .filter(Boolean);
+
+  return [...new Set(nombres)].join(', ');
+}
+
 export function preparar(entradas: EntradaIndice[]): EntradaPreparada[] {
   return entradas.map((entrada) => {
     const nAgrupacion = normalizar(entrada.agrupacion);
@@ -109,6 +120,7 @@ export function preparar(entradas: EntradaIndice[]): EntradaPreparada[] {
       pPieza: nPieza.split(' ').filter(Boolean),
       etiquetaPieza: etiquetaPieza(entrada.pieza),
       etiquetaAutores: etiquetaAutores(entrada.musica, entrada.letra),
+      etiquetaMusica: etiquetaMusica(entrada.musica),
     };
   });
 }

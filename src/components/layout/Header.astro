@@ -229,7 +229,9 @@ import SugerenciasBusqueda from './SugerenciasBusqueda.astro';
   /* Wrapper del input de búsqueda */
   .search-wrapper {
     position: relative;
-    width: 250px;
+    /* Ancho del campo en escritorio. Crece con la pantalla para que el
+       desplegable de sugerencias no tenga que ser más ancho que el campo. */
+    width: clamp(240px, 34vw, 340px);
     overflow: hidden;
     transition:
       width 0.3s ease,
