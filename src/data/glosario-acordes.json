@@ -96,6 +96,18 @@
           ],
           "baseTraste": 10,
           "cejilla": null
+        },
+        {
+          "trastes": [
+            3,
+            3,
+            2,
+            0,
+            1,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         }
       ]
     },
