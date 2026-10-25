@@ -15031,6 +15031,26 @@
         }
       ]
     },
+    "Rem(add9)/La": {
+      "raiz": "Re",
+      "sufijo": "madd9",
+      "bajo": "La",
+      "slug": "remadd9-la",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            0,
+            3,
+            2,
+            3,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Rem6": {
       "raiz": "Re",
       "sufijo": "m6",
