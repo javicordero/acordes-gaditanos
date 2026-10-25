@@ -81,7 +81,16 @@ const autoresDestacados = [...autores]
     <div class='section'>
       <YearsList
         years={Array.from(new Set(acordes.map((acorde) => acorde.data.year))).sort(sortByYearDesc)}
-      />
+      >
+        <p class='listado-link' slot='subtitle'>
+          <a
+            href='/lista'
+            data-ga-event='click_listado_carnavales'
+            data-ga-params='{"link_type":"lista","location":"index_carnavales"}'>
+            Ver el listado completo de coplas
+          </a>
+        </p>
+      </YearsList>
     </div>
   </div>
   <div class='container-layout'>
@@ -93,7 +102,9 @@ const autoresDestacados = [...autores]
   declare const gtag: (...args: unknown[]) => void;
 
   function setupVerMasTracking() {
-    const links = document.querySelectorAll('[data-ga-event^="ver_mas_"]');
+    const links = document.querySelectorAll(
+      '[data-ga-event^="ver_mas_"], [data-ga-event="click_listado_carnavales"]',
+    );
     links.forEach((link) => {
       if (link.getAttribute('data-tracking-init')) return;
       link.setAttribute('data-tracking-init', 'true');
@@ -160,6 +171,31 @@ const autoresDestacados = [...autores]
 
   .canal-wrapper {
     margin-top: var(--main-container-gap-sm);
+  }
+
+  .listado-link {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .listado-link a {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .listado-link a:hover {
+    color: var(--link-hover-color);
+  }
+
+  .listado-link a:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 3px;
   }
 
   .ver-mas {
