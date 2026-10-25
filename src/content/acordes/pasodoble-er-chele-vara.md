@@ -13,55 +13,53 @@ fraseClave: "Llevo escuchando hace tiempo la"
 ---
 <pre>
 <a>Mim</a>                    <a>Si7</a>
-Llevo escuchando hace tiempo la chirigota está en
-  <a>Mim</a>
-crisis
-                   <a>Re</a>
-Que pasa malos momentos, que no hay Fletillas
-      <a>Do</a>  <a>Lam7</a>                <a>Si7</a>
-modernos, que está la cosa difícil
-                                             <a>Mim</a>
+Llevo escuchando hace tiempo 
+                      <a>Mim</a> 
+la chirigota está en crisis
+                   <a>Re</a>                          <a>Do</a>
+Que pasa malos momentos que no hay Fletillas modernos
+<a>Lam7</a>             <a>Si7</a>
+que está la cosa difícil
+                                           <a>Mim</a>
 Que esté desgadinizandose y perdiéndose la gracia
-<a>Lam</a>                  <a>Mim</a>            <a>Si7</a>
-Cuando de verdad la crisis quien la tiene es la
-   <a>Mim</a>
-comparsa
+<a>Lam</a>                  <a>Mim</a>  
+Cuando de verdad la crisis 
+           <a>Si7</a>           <a>Mim</a>
+quien la tiene es la comparsa
      <a>Si7</a>       <a>Mim</a>                   <a>Sol</a>
 La comparsa gaditana ya no sabe ni cantar
                                              <a>Re</a>
 Esos quejios no son carnaval son Marife de Triana
-No, no hay un mensaje social de los que llegan al
-<a>Sol</a>
-alma
-                       <a>Do</a>  <a>Lam7</a>
-Cádiz tes quiero y ya está y enfermedades muy
- <a>Si7</a>
-raras
-<a>Lam</a>                <a>Mim</a> <a>Si7</a>
-Cádiz tes quiero y ya está y enfermedades muy
- <a>Mi</a>
-raras
-La rodilla pa fuera y ajín torcía una mano en el
-<a>Si7</a>                  <a>Mi</a>
-pecho y la otra escondía
+                                                <a>Sol</a>
+No no hay un mensaje social de los que llegan al alma
+                       <a>Do</a>  <a>Lam7</a>               <a>Si7</a>
+Cádiz tes quiero y ya está y enfermedades mu raras
+<a>Lam</a>                  <a>Mim</a>   <a>Si7</a>                <a>Mi</a>
+Cádiz tes quiero y ya está y enfermedades mu raras
+
+La rodilla pa fuera y ajín torcía 
+               <a>Si7</a>                  <a>Mi</a>
+una mano en el pecho y la otra escondía
                    <a>Do#7</a>          <a>Fa#m</a>
-Postura que no son propias de carnavales, porque si
-                       <a>Si7</a>
-tu no respeta la ergonomía
-Lo único que propicia es la aparición de hernias
-    <a>Mi</a>
-discales
-<a>Mim</a>                           <a>Si7</a>
+Postura que no son propias de carnavales, 
+                                <a>Si7</a>
+porque si tu no respeta la ergonomía
+
+Lo único que propicia 
+                          <a>Mi</a>
+es la aparición de hernias discales
+<a>Mim</a>                 <a>Si7</a>                  <a>Mim</a>
 Remember aquellos bigotes remember la porpurina
-                               <a>Si7</a>
-Remember la gracia fina,Paco Alba la creó
+                   <a>Si7</a>                 <a>Mim</a>
+Remember la gracia fina, Paco Alba la creó
 <a>Mi7</a>          <a>Lam</a>
-Y después degeneró en una pelea de gallo y ahora
-              <a>Mim</a>
-todos tienen barba
+Y después degeneró en una pelea de gallo 
+                     <a>Mim</a>
+y ahora todos tienen barba
 <a>Lam</a>                                       <a>Si7</a>
 Por eso flipe el día que se hundió el vaporcito
-Porque la culpa repito, porque la culpa repito fue
-        <a>Mim</a>
-de Paco Alba
+
+Porque la culpa repito, porque la culpa repito 
+           <a>Mim</a>
+fue de Paco Alba
 </pre>

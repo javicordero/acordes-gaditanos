@@ -811,6 +811,26 @@
         }
       ]
     },
+    "Do#dim7/Sol": {
+      "raiz": "Do#",
+      "sufijo": "dim7",
+      "bajo": "Sol",
+      "slug": "do-sostenido-dim7-sol",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            -1,
+            5,
+            6,
+            5,
+            6
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Do#m": {
       "raiz": "Do#",
       "sufijo": "m",
@@ -11617,6 +11637,18 @@
           "trastes": [
             0,
             2,
+            1,
+            1,
+            0,
+            -1
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            0,
+            2,
             2,
             4,
             4,
@@ -11640,18 +11672,6 @@
             "desde": 1,
             "hasta": 5
           }
-        },
-        {
-          "trastes": [
-            0,
-            2,
-            1,
-            1,
-            0,
-            -1
-          ],
-          "baseTraste": 1,
-          "cejilla": null
         },
         {
           "trastes": [
@@ -16761,6 +16781,26 @@
             0,
             2,
             0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
+    "Sibdim7/Mi": {
+      "raiz": "Sib",
+      "sufijo": "dim7",
+      "bajo": "Mi",
+      "slug": "si-bemol-dim7-mi",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            -1,
+            2,
+            3,
+            2,
+            3
           ],
           "baseTraste": 1,
           "cejilla": null
