@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 import sitemap from '@astrojs/sitemap';
 import remarkAcordesColumna from './src/lib/remark-acordes-columna.mjs';
+import enlacesConBarra from './src/integrations/enlaces-con-barra.mjs';
 
 export default defineConfig({
   site: 'https://acordesgaditanos.com',
@@ -16,6 +17,8 @@ export default defineConfig({
     remarkPlugins: [remarkAcordesColumna],
   },
   integrations: [
+    // Añade la barra final a los enlaces internos (Netlify redirige sin ella).
+    enlacesConBarra(),
     icon({
       iconDir: 'src/icons',
     }),
