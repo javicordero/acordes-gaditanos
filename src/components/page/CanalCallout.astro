@@ -1,68 +1,51 @@
 ---
 // src/components/page/CanalCallout.astro
 //
-// Invitación a seguir los canales de avisos (WhatsApp y Telegram).
-// Se usa en la home y en /pedir-copla con un título propio para cada sitio.
+// Invitación discreta a seguir los canales de avisos (WhatsApp y Telegram).
+// Se usa en la home y en /pedir-copla con un texto propio para cada sitio.
 import { Icon } from 'astro-icon/components';
 import canales from '../../data/canales.json';
 
 interface Props {
-  /** Pregunta que encabeza el bloque. */
+  /** Frase que encabeza el bloque. */
   titulo: string;
   /** Página donde se pinta: se manda a la analítica. */
   ubicacion: string;
 }
 
 const { titulo, ubicacion } = Astro.props;
-const id = `canal-${ubicacion}`;
 ---
 
-<section class='canal-callout' aria-labelledby={id}>
-  <div class='canal-callout__texto'>
-    <h2 class='canal-callout__titulo' id={id}>{titulo}</h2>
-    <p class='canal-callout__nota'>Solo avisos de coplas nuevas. Puedes salir cuando quieras.</p>
-  </div>
+<p class='canal-callout'>
+  <span class='canal-callout__pregunta'>{titulo}</span>
 
-  <div class='canal-callout__canales'>
+  <span class='canal-callout__sigue'>
+    Sígueme en
     <a
-      class='canal'
+      class='canal-callout__enlace'
       href={canales.whatsapp}
       target='_blank'
       rel='noopener noreferrer'
       aria-label='Seguir el canal de WhatsApp de Acordes Gaditanos'
       data-ga-event='click_canal'
       data-ga-params={JSON.stringify({ canal: 'whatsapp', ubicacion })}>
-      <span class='canal__icono' aria-hidden='true'>
-        <Icon name='whatsapp' width={22} height={22} />
-      </span>
-      <span class='canal__nombre'>WhatsApp</span>
-      <span class='canal__flecha' aria-hidden='true'>→</span>
+      <Icon name='whatsapp' width={15} height={15} />
+      WhatsApp
     </a>
-
+    <span class='canal-callout__punto' aria-hidden='true'>·</span>
     <a
-      class='canal'
+      class='canal-callout__enlace'
       href={canales.telegram}
       target='_blank'
       rel='noopener noreferrer'
       aria-label='Unirse al canal de Telegram de Acordes Gaditanos'
       data-ga-event='click_canal'
       data-ga-params={JSON.stringify({ canal: 'telegram', ubicacion })}>
-      <span class='canal__icono' aria-hidden='true'>
-        <Icon name='telegram' width={22} height={22} />
-      </span>
-      <span class='canal__nombre'>Telegram</span>
-      <span class='canal__flecha' aria-hidden='true'>→</span>
+      <Icon name='telegram' width={15} height={15} />
+      Telegram
     </a>
-  </div>
-
-  <p class='canal-callout__mas'>
-    <a
-      href='/suscribirse'
-      data-ga-event='click_canal_info'
-      data-ga-params={JSON.stringify({ ubicacion })}>¿Qué es esto?</a
-    >
-  </p>
-</section>
+  </span>
+</p>
 
 <script>
   declare const gtag: (...args: unknown[]) => void;
@@ -91,7 +74,7 @@ const id = `canal-${ubicacion}`;
   }
 
   // El botón flotante de «Pedir una copla» se aparta mientras el bloque está a
-  // la vista: pide el mismo clic y, en móvil, lo tapaba.
+  // la vista: en móvil puede tapar el enlace de Telegram.
   const flotante = document.querySelector<HTMLElement>('.fab-container');
   const bloques = document.querySelectorAll<HTMLElement>('.canal-callout');
   if (flotante && bloques.length && 'IntersectionObserver' in window) {
@@ -110,134 +93,55 @@ const id = `canal-${ubicacion}`;
 <style>
   .canal-callout {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    max-width: 620px;
-    margin-inline: auto;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px 6px;
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.6;
     text-align: center;
-  }
-
-  .canal-callout__texto {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .canal-callout__titulo {
-    margin: 0;
-    font-size: 1.05rem;
-    font-weight: 800;
-    line-height: 1.35;
-    text-wrap: balance;
-  }
-
-  .canal-callout__nota {
-    margin: 0;
-    font-size: 0.78rem;
-    line-height: 1.5;
     color: var(--text-secondary-color);
   }
 
-  .canal-callout__canales {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
+  .canal-callout__pregunta {
+    color: var(--text-color);
   }
 
-  /* Cada canal es una tarjeta entera pulsable, no un botón suelto. */
-  .canal {
-    display: flex;
+  .canal-callout__sigue {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px 6px;
+  }
+
+  .canal-callout__enlace {
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    flex: 1 1 200px;
-    min-width: 0;
-    padding: 10px 14px;
-    background: var(--surface-color);
-    color: var(--primary-contrast-color);
-    border: 2px solid var(--primary-color);
-    border-radius: 0;
-    box-shadow: 4px 4px 0 0 var(--primary-color);
+    gap: 4px;
+    color: var(--link-color);
+    font-weight: 700;
     text-decoration: none;
-    transition:
-      transform 0.15s ease,
-      box-shadow 0.15s ease,
-      background-color 0.2s ease;
 
     &:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 0 var(--primary-color);
-    }
-
-    &:active {
-      transform: translate(0, 0);
-      box-shadow: 2px 2px 0 0 var(--primary-color);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
     }
 
     &:focus-visible {
-      outline: 3px solid var(--primary-contrast-color);
-      outline-offset: 3px;
+      outline: 2px solid var(--primary-contrast-color);
+      outline-offset: 2px;
     }
 
-    &:hover .canal__flecha {
-      transform: translateX(3px);
-    }
-  }
-
-  .canal__icono {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    flex: none;
-    background: var(--primary-contrast-color);
-    color: var(--on-bright-color);
-  }
-
-  .canal__nombre {
-    flex: 1;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-align: left;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
-
-  .canal__flecha {
-    flex: none;
-    font-size: 1rem;
-    line-height: 1;
-    transition: transform 0.15s ease;
-  }
-
-  .canal-callout__mas {
-    margin: 0;
-    font-size: 0.75rem;
-
-    & a {
-      color: var(--text-secondary-color);
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-
-      &:hover {
-        color: var(--link-color);
-      }
+    & :global(svg) {
+      position: relative;
+      top: 2px;
     }
   }
 
-  :global(html[data-theme='dark']) .canal {
-    background-color: var(--card-background-color);
-  }
-
-  @media (max-width: 480px) {
-    .canal {
-      flex: 1 1 100%;
-    }
+  .canal-callout__punto {
+    color: var(--text-secondary-color);
   }
 </style>

@@ -120,7 +120,7 @@ Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astr
 - Local: `npm run difundir -- --solo <slug> --dry-run`, `--test`, `--antes <sha>`. La Action también admite `workflow_dispatch` con modo `prueba` (manda un mensaje de prueba al canal), `seco` (con `slugs` previsualiza esas coplas; sin ellos compara `HEAD~1`) o `reenviar`.
 - **Secretos**: `TELEGRAM_BOT_TOKEN` (repo → Settings → Secrets → Actions) y, si se quiere cambiar, la variable `TELEGRAM_CHAT_ID` (por defecto `@acordesgaditanos`). El token no se imprime nunca. El bot debe ser administrador del canal con «Publicar mensajes», o Telegram devuelve `403`.
 - **WhatsApp no se automatiza**: no hay API oficial de Canales. Se copia el mismo texto del canal de Telegram y se pega en el canal; el enlace genera la vista previa. Las APIs no oficiales (Whapi, Baileys…) van contra los términos de WhatsApp y exponen el número, así que no se usan.
-- Web: `src/components/page/CanalCallout.astro` (bloque centrado con dos tarjetas de canal, cada una pulsable entera) en la home (tras «Ver más novedades») y en `/pedir-copla` (encima de `PeticionesStats`), con título propio por `ubicacion`. Mientras el bloque está visible, el botón flotante de «Pedir una copla» se aparta (`is-oculto`).
+- Web: `src/components/page/CanalCallout.astro`, una línea discreta («¿Te aviso…? Sígueme en WhatsApp · Telegram») en la home (tras «Ver más novedades») y en `/pedir-copla` (encima de `PeticionesStats`), con texto propio por `ubicacion`. Mientras el bloque está visible, el botón flotante de «Pedir una copla» se aparta (`is-oculto`).
 - `/suscribirse` explica qué llega y cómo darse de baja, con QR en escritorio. Los QR se generan una sola vez con `npm run qr` y van versionados en `public/qr-*.svg` (no se generan en el build). No hay formulario ni base de datos: suscribirse es unirse al canal.
 
 ### Prefetch y transiciones de página
@@ -174,7 +174,7 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 - Eventos del transportador: `transpose_acorde` (parámetros `direccion` y `semitonos`) y `transpose_volver_original`.
 - Eventos de "ver más" de la home: `ver_mas_novedades_click` y `ver_mas_autores_click` (parámetros `link_type` y `location`).
 - Eventos de las cards de autor: `click_autor_card`, `click_autor_card_musicas` y `click_autor_card_letras` (parámetros `autor` y `ubicacion`).
-- Eventos de los canales de avisos: `click_canal` (parámetros `canal` y `ubicacion`) y `click_canal_info` (parámetro `ubicacion`).
+- Eventos de los canales de avisos: `click_canal` (parámetros `canal` y `ubicacion`).
 
 ### PostCSS
 `postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.
