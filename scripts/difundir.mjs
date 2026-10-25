@@ -174,7 +174,7 @@ function urlAcorde(copla) {
 
 function mensajeUna(copla) {
   return [
-    '🎶 Nueva copla',
+    '🎶 Nuevos acordes',
     '',
     titulo(copla.datos),
     ...lineasAutores(copla.datos),
@@ -185,7 +185,7 @@ function mensajeUna(copla) {
 
 function mensajeVarias(coplas) {
   return [
-    `🎶 ${coplas.length} coplas nuevas`,
+    `🎶 ${coplas.length} acordes nuevos`,
     '',
     ...coplas.map((copla) => `• ${titulo(copla.datos)}`),
     '',
@@ -195,7 +195,7 @@ function mensajeVarias(coplas) {
 
 function mensajeResumen(coplas) {
   return [
-    `🎶 ${coplas.length} coplas nuevas`,
+    `🎶 ${coplas.length} acordes nuevos`,
     '',
     `Hoy hemos subido ${coplas.length} coplas al cancionero. La última, ${titulo(coplas[0].datos)}.`,
     '',
@@ -207,7 +207,7 @@ function mensajePrueba() {
   return [
     '🎶 Canal de Acordes Gaditanos',
     '',
-    'Prueba de publicación correcta. A partir de ahora, cada copla nueva se avisará aquí.',
+    'Prueba de publicación correcta. A partir de ahora, cada acorde nuevo se avisará aquí.',
     '',
     `${SITE}/`,
   ].join('\n');
