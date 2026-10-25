@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "difundir": "node scripts/difundir.mjs",
+    "qr": "node scripts/generar-qr.mjs"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",
@@ -26,6 +28,7 @@
     "postcss-csso": "^6.0.1",
     "postcss-nesting": "^13.0.2",
     "postcss-preset-env": "^10.4.0",
+    "qrcode": "^1.5.4",
     "typescript": "^5.9.3"
   }
 }

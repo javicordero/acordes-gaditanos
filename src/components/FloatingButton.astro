@@ -20,10 +20,20 @@ const { class: className } = Astro.props;
     justify-content: flex-end;
     pointer-events: none;
     transform: translateX(8px);
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
   }
 
   .fab-container.hidden {
     display: none;
+  }
+
+  /* La banda de canales de la home pide el mismo clic: mientras se ve, el
+     botón flotante se aparta. */
+  .fab-container.is-oculto {
+    opacity: 0;
+    visibility: hidden;
   }
 
   .fab {

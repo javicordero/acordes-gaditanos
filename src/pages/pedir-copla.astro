@@ -4,6 +4,7 @@ import CommentsSection from '../components/comments/CommentsSection.astro';
 import CommentForm from '../components/comments/CommentForm.astro';
 import PeticionesStats from '../components/comments/PeticionesStats.astro';
 import DonationIndicator from '../components/DonationIndicator.astro';
+import CanalCallout from '../components/page/CanalCallout.astro';
 ---
 
 <Layout
@@ -27,6 +28,11 @@ import DonationIndicator from '../components/DonationIndicator.astro';
               y los subiremos.
             </p>
           </div>
+          <CanalCallout
+            titulo='Te aviso cuando suba la copla que pides'
+            ubicacion='pedir-copla'
+          />
+
           <PeticionesStats />
           <div class='pedir-copla-donations'>
             <DonationIndicator variant='timeline' messageC='Ayuda a que siga subiendo más coplas' listStyle='pills' />

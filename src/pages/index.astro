@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import CardsGroup from '../components/page/CardsGroup.astro';
 import YearsList from '../components/page/YearsList.astro';
 import NovedadCallout from '../components/page/NovedadCallout.astro';
+import CanalCallout from '../components/page/CanalCallout.astro';
 import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
 import BannerCoac2026 from '../components/page/BannerCoac2026.astro';
 import AnunciateAqui from '../components/right-column/AnunciateAqui.astro';
@@ -58,6 +59,10 @@ const autoresDestacados = [...autores]
           data-ga-params='{"link_type":"novedades","location":"index_novedades"}'>
           Ver más novedades
         </a>
+      </div>
+
+      <div class='container-layout canal-wrapper'>
+        <CanalCallout titulo='¿Te aviso cuando suba una copla nueva?' ubicacion='home' />
       </div>
     </div>
     <div class='section section--colored section--autores'>
@@ -156,6 +161,10 @@ const autoresDestacados = [...autores]
     display: flex;
     justify-content: center;
     margin-top: var(--card-padding);
+  }
+
+  .canal-wrapper {
+    margin-top: var(--main-container-gap-sm);
   }
 
   .ver-mas {

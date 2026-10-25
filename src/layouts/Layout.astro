@@ -8,6 +8,7 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import Anuncios from '../components/page/Anuncios.astro';
 import AnuncioSobreFooter from '../components/right-column/anuncios/AnuncioSobreFooter.astro';
+import canales from '../data/canales.json';
 
 interface Props {
   title?: string;
@@ -128,6 +129,8 @@ const imageURL = new URL(image, Astro.site);
         description: 'La mayor colección de acordes de guitarra del Carnaval de Cádiz',
         sameAs: [
           'https://twitter.com/acordesgaditano',
+          canales.telegram,
+          canales.whatsapp,
         ],
         contactPoint: {
           '@type': 'ContactPoint',

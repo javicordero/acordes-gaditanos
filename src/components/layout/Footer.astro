@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { CONFIG } from '../../lib/constants';
+import canales from '../../data/canales.json';
 
 const SOCIAL = {
   github: 'https://github.com/javicordero',
@@ -48,6 +49,24 @@ const SOCIAL = {
           aria-label='Instagram'>
           <Icon name='instagram' width={21} height={21} />
         </a>
+
+        <a
+          class='social'
+          href={canales.whatsapp}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Canal de WhatsApp'>
+          <Icon name='whatsapp' width={20} height={20} />
+        </a>
+
+        <a
+          class='social'
+          href={canales.telegram}
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Canal de Telegram'>
+          <Icon name='telegram' width={20} height={20} />
+        </a>
       </div>
     </nav>
   </div>
@@ -73,6 +92,7 @@ const SOCIAL = {
 
   <div class='wrap container-layout politics'>
     <a href='/glosario'>Glosario de acordes</a>
+    <a href='/suscribirse'>Avisos de coplas</a>
     <a href='/politicas/politica-de-privacidad'>Política de privacidad</a>
     <a href='/politicas/politica-de-cookies'>Política de cookies</a>
   </div>

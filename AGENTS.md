@@ -102,6 +102,27 @@ Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astr
 - `node --experimental-strip-types scripts/auditar-busqueda.ts` comprueba el top-1 de 12 consultas reales (erratas, prefijos, orden libre, año, autor, tipo) y falla si el ranking se degrada.
 - Eventos: `buscar_sugerencia_click` y `buscar_sin_resultados` (consulta truncada a 40 caracteres).
 
+### Canales de avisos (WhatsApp y Telegram)
+- Enlaces únicos en `src/data/canales.json` (`whatsapp` y `telegram`); se usan en el footer, en la banda de suscripción y en `Layout.astro` (`sameAs` de `Organization`).
+- **Telegram se publica solo**: `.github/workflows/difundir.yml` se dispara en cada push a `master` que toque `src/content/acordes/**` y llama a `scripts/difundir.mjs`. El script vuelve a comprobar con `git diff --diff-filter=A` que sean **`.md` añadidos** en `src/content/acordes/`: editar, corregir o cambiar la fecha de una copla ya publicada **no avisa**. Los PDFs de `scripts/generate-pdf.mjs` y la carpeta local `acordes2` tampoco cuentan.
+- El mensaje se agrupa por push: 1 copla → ficha; de 2 a 10 → lista `• Pieza Agrupación — año` + enlace a `/lista/`; más de 10 (importación) → resumen con enlace a `/novedades/`. Antes de enviar espera hasta 5 minutos a que la ficha responda 200 (Netlify tarda 1-2 min), para no publicar un enlace roto.
+- Formato acordado (sin paréntesis en el año):
+  ```
+  🎶 Nueva copla
+
+  Pasodoble La Marea — 2024
+  Música: Tatán
+  Letra: Antonio Martín
+
+  https://acordesgaditanos.com/acordes/pasodoble-la-marea/
+  ```
+  Si música y letra son la misma persona se juntan en `Música y letra: …`; si falta el año, se omite el `— año`. La vista previa la pone Telegram (y WhatsApp) con el `og:image` de la ficha.
+- Local: `npm run difundir -- --solo <slug> --dry-run`, `--test`, `--antes <sha>`. La Action también admite `workflow_dispatch` con modo `prueba`, `seco` o `reenviar`.
+- **Secretos**: `TELEGRAM_BOT_TOKEN` (repo → Settings → Secrets → Actions) y, si se quiere cambiar, la variable `TELEGRAM_CHAT_ID` (por defecto `@acordesgaditanos`). El token no se imprime nunca. El bot debe ser administrador del canal con «Publicar mensajes», o Telegram devuelve `403`.
+- **WhatsApp no se automatiza**: no hay API oficial de Canales. Se copia el mismo texto del canal de Telegram y se pega en el canal; el enlace genera la vista previa. Las APIs no oficiales (Whapi, Baileys…) van contra los términos de WhatsApp y exponen el número, así que no se usan.
+- Web: `src/components/page/CanalCallout.astro` en la home (tras «Ver más novedades») y en `/pedir-copla` (encima de `PeticionesStats`), con título propio por `ubicacion`. Mientras la banda está visible, el botón flotante de «Pedir una copla» se aparta (`is-oculto`).
+- `/suscribirse` explica qué llega y cómo darse de baja, con QR en escritorio. Los QR se generan una sola vez con `npm run qr` y van versionados en `public/qr-*.svg` (no se generan en el build). No hay formulario ni base de datos: suscribirse es unirse al canal.
+
 ### Prefetch y transiciones de página
 - **Prefetch**: `prefetch: { prefetchAll: true, defaultStrategy: 'hover' }` en `astro.config.mjs`. Precarga el HTML de los enlaces al pasar el ratón o al enfocar con teclado, descarta conexiones lentas (`saveData`, 2g) y enlaces externos. En táctil no hay hover, así que `src/components/utils/PrefetchTap.astro` precarga en `pointerdown` con `prefetch()` de `astro:prefetch` (comparte la lista de URLs ya precargadas; no duplica peticiones).
 - **Transiciones**: view transitions cross-document nativas con `@view-transition { navigation: auto }` en `global.css`. **No** se usa `ClientRouter` (se quitó para que funcione AdSense Auto Ads): la navegación sigue siendo una carga completa, así que AdSense, GTM, GA4, el contador propio y el CMP funcionan igual. Chrome/Edge 126+ y Safari 18.2+; con `prefers-reduced-motion: reduce` se desactivan.
@@ -153,6 +174,7 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 - Eventos del transportador: `transpose_acorde` (parámetros `direccion` y `semitonos`) y `transpose_volver_original`.
 - Eventos de "ver más" de la home: `ver_mas_novedades_click` y `ver_mas_autores_click` (parámetros `link_type` y `location`).
 - Eventos de las cards de autor: `click_autor_card`, `click_autor_card_musicas` y `click_autor_card_letras` (parámetros `autor` y `ubicacion`).
+- Eventos de los canales de avisos: `click_canal` (parámetros `canal` y `ubicacion`) y `click_canal_info` (parámetro `ubicacion`).
 
 ### PostCSS
 `postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.

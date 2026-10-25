@@ -1,0 +1,218 @@
+---
+// src/components/page/CanalCallout.astro
+//
+// Banda de suscripción a los canales de avisos (WhatsApp y Telegram).
+// Se coloca en la home y en /pedir-copla con un título propio para cada sitio.
+import { Icon } from 'astro-icon/components';
+import canales from '../../data/canales.json';
+
+interface Props {
+  /** Pregunta que encabeza la banda. */
+  titulo: string;
+  /** Página donde se pinta: se manda a la analítica. */
+  ubicacion: string;
+}
+
+const { titulo, ubicacion } = Astro.props;
+const id = `canal-${ubicacion}`;
+---
+
+<aside class='canal-callout' aria-labelledby={id}>
+  <div class='canal-callout__texto'>
+    <h2 class='canal-callout__titulo' id={id}>{titulo}</h2>
+    <p class='canal-callout__nota'>
+      Solo avisos de coplas nuevas. Puedes salir cuando quieras.
+      <a
+        href='/suscribirse'
+        class='canal-callout__mas'
+        data-ga-event='click_canal_info'
+        data-ga-params={JSON.stringify({ ubicacion })}>¿Qué es esto?</a
+      >
+    </p>
+  </div>
+
+  <div class='canal-callout__acciones'>
+    <a
+      class='canal-btn'
+      href={canales.whatsapp}
+      target='_blank'
+      rel='noopener noreferrer'
+      aria-label='Canal de WhatsApp de Acordes Gaditanos'
+      data-ga-event='click_canal'
+      data-ga-params={JSON.stringify({ canal: 'whatsapp', ubicacion })}>
+      <Icon name='whatsapp' width={18} height={18} />
+      <span>WhatsApp</span>
+    </a>
+
+    <a
+      class='canal-btn'
+      href={canales.telegram}
+      target='_blank'
+      rel='noopener noreferrer'
+      aria-label='Canal de Telegram de Acordes Gaditanos'
+      data-ga-event='click_canal'
+      data-ga-params={JSON.stringify({ canal: 'telegram', ubicacion })}>
+      <Icon name='telegram' width={18} height={18} />
+      <span>Telegram</span>
+    </a>
+  </div>
+</aside>
+
+<script>
+  declare const gtag: (...args: unknown[]) => void;
+
+  function pistaCanales() {
+    document.querySelectorAll<HTMLElement>('.canal-callout [data-ga-event]').forEach((enlace) => {
+      if (enlace.dataset.trackingInit) return;
+      enlace.dataset.trackingInit = 'true';
+
+      enlace.addEventListener('click', () => {
+        if (typeof gtag !== 'function') return;
+        const evento = enlace.getAttribute('data-ga-event');
+        const params = JSON.parse(enlace.getAttribute('data-ga-params') || '{}');
+        gtag('event', evento, {
+          ...params,
+          page_location: window.location.href,
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', pistaCanales);
+  } else {
+    pistaCanales();
+  }
+
+  // El botón flotante de «Pedir una copla» se aparta mientras la banda está a
+  // la vista: pide el mismo clic y, en móvil, la tapaba.
+  const flotante = document.querySelector<HTMLElement>('.fab-container');
+  const bandas = document.querySelectorAll<HTMLElement>('.canal-callout');
+  if (flotante && bandas.length && 'IntersectionObserver' in window) {
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        const visible = entradas.some((entrada) => entrada.isIntersecting);
+        flotante.classList.toggle('is-oculto', visible);
+      },
+      { threshold: 0.35 },
+    );
+
+    bandas.forEach((banda) => observador.observe(banda));
+  }
+</script>
+
+<style>
+  .canal-callout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    padding: 18px 20px;
+    background: var(--callout-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    color: var(--text-color);
+  }
+
+  .canal-callout__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    flex: 1 1 260px;
+  }
+
+  .canal-callout__titulo {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.35;
+    text-wrap: balance;
+  }
+
+  .canal-callout__nota {
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+  }
+
+  .canal-callout__mas {
+    color: var(--link-color);
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+
+  .canal-callout__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .canal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background-color: var(--surface-color);
+    color: var(--primary-contrast-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover {
+      background-color: var(--primary-contrast-color);
+      color: var(--on-bright-color);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 0 var(--primary-color);
+    }
+
+    &:active {
+      transform: translate(0, 0);
+      box-shadow: 2px 2px 0 0 var(--primary-color);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--primary-contrast-color);
+      outline-offset: 3px;
+    }
+  }
+
+  :global(html[data-theme='dark']) .canal-btn {
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+  }
+
+  @media (max-width: 640px) {
+    .canal-callout {
+      padding: 16px;
+      gap: 14px;
+    }
+
+    .canal-callout__acciones {
+      width: 100%;
+    }
+
+    .canal-btn {
+      flex: 1 1 0;
+      justify-content: center;
+      padding: 10px 12px;
+      font-size: 0.75rem;
+    }
+  }
+</style>

@@ -1,0 +1,79 @@
+name: Avisar en Telegram
+
+# Solo cuando un push a master añade ficheros en src/content/acordes.
+# El script vuelve a comprobar que sean .md NUEVOS: editar una copla no avisa.
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'src/content/acordes/**'
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: 'Qué hacer'
+        type: choice
+        default: prueba
+        options:
+          - prueba
+          - seco
+          - reenviar
+      slugs:
+        description: 'Slugs para reenviar, separados por comas (solo en modo reenviar)'
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: difundir-telegram
+  cancel-in-progress: false
+
+jobs:
+  aviso:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+        with:
+          # Hace falta el commit anterior para saber qué se ha añadido.
+          fetch-depth: 0
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Publicar el aviso
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ vars.TELEGRAM_CHAT_ID || '@acordesgaditanos' }}
+          MODO: ${{ inputs.modo }}
+          SLUGS: ${{ inputs.slugs }}
+          ANTES: ${{ github.event.before }}
+          DESPUES: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+            echo "Ejecución manual en modo: ${MODO}"
+
+            case "${MODO}" in
+              prueba)
+                node scripts/difundir.mjs --test
+                ;;
+              seco)
+                node scripts/difundir.mjs --antes HEAD~1 --dry-run
+                ;;
+              reenviar)
+                if [ -z "${SLUGS}" ]; then
+                  echo "::error::Indica al menos un slug para reenviar."
+                  exit 1
+                fi
+                node scripts/difundir.mjs --solo "${SLUGS}"
+                ;;
+            esac
+          else
+            node scripts/difundir.mjs --antes "${ANTES}" --despues "${DESPUES}"
+          fi

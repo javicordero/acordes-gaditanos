@@ -1,0 +1,394 @@
+---
+// src/pages/suscribirse.astro
+//
+// Página de suscripción a los canales de avisos (WhatsApp y Telegram).
+// No hay formulario ni base de datos: suscribirse es unirse al canal y darse
+// de baja es salir de él.
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+import { parseSpanishDate } from '../lib/date';
+import canales from '../data/canales.json';
+
+const acordes = await getCollection('acordes');
+
+const ultimos = acordes
+  .slice()
+  .sort((a, b) => parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime())
+  .slice(0, 5);
+---
+
+<Layout
+  title='Avisos de coplas nuevas - Acordes Gaditanos'
+  description='Recibe un aviso cada vez que subimos una copla nueva al cancionero. Canales gratuitos de WhatsApp y Telegram, sin spam y con baja en un toque.'>
+  <div class='main-container'>
+    <article class='suscribirse container-layout' aria-labelledby='suscribirse-title'>
+      <header class='suscribirse__cabecera'>
+        <h1 id='suscribirse-title'>Avisos de coplas nuevas</h1>
+        <p class='suscribirse__entradilla'>
+          Cuando subo una copla nueva al cancionero, lo aviso en dos canales. Solo eso: el aviso con
+          el enlace directo al cifrado. Sin resúmenes semanales, sin publicidad y sin tener que
+          darme tu teléfono.
+        </p>
+      </header>
+
+      <section class='canales' aria-labelledby='canales-title'>
+        <h2 class='suscribirse__subtitulo' id='canales-title'>Elige el canal</h2>
+
+        <div class='canales__grid'>
+          <div class='canal'>
+            <div class='canal__cabecera'>
+              <span class='canal__icono' aria-hidden='true'>
+                <Icon name='whatsapp' width={26} height={26} />
+              </span>
+              <h3>WhatsApp</h3>
+            </div>
+            <p>
+              El que más se usa por aquí. Es un <strong>canal</strong>, no un grupo: nadie ve tu
+              número y tú no ves el de los demás.
+            </p>
+            <div class='canal__pie'>
+              <a
+                class='canal__btn'
+                href={canales.whatsapp}
+                target='_blank'
+                rel='noopener noreferrer'
+                data-ga-event='click_canal'
+                data-ga-params='{"canal":"whatsapp","ubicacion":"suscribirse"}'>
+                Seguir el canal
+              </a>
+              <figure class='canal__qr'>
+                <img
+                  src='/qr-whatsapp.svg'
+                  alt='Código QR para seguir el canal de WhatsApp de Acordes Gaditanos'
+                  width='150'
+                  height='150'
+                  loading='lazy'
+                  decoding='async'
+                />
+                <figcaption>O escanea el QR con el móvil</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class='canal'>
+            <div class='canal__cabecera'>
+              <span class='canal__icono' aria-hidden='true'>
+                <Icon name='telegram' width={26} height={26} />
+              </span>
+              <h3>Telegram</h3>
+            </div>
+            <p>
+              No hace falta número de teléfono para entrar desde el ordenador y el canal tiene
+              buscador propio.
+            </p>
+            <div class='canal__pie'>
+              <a
+                class='canal__btn'
+                href={canales.telegram}
+                target='_blank'
+                rel='noopener noreferrer'
+                data-ga-event='click_canal'
+                data-ga-params='{"canal":"telegram","ubicacion":"suscribirse"}'>
+                Unirme al canal
+              </a>
+              <figure class='canal__qr'>
+                <img
+                  src='/qr-telegram.svg'
+                  alt='Código QR para unirse al canal de Telegram de Acordes Gaditanos'
+                  width='150'
+                  height='150'
+                  loading='lazy'
+                  decoding='async'
+                />
+                <figcaption>O escanea el QR con el móvil</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby='recibes-title'>
+        <h2 class='suscribirse__subtitulo' id='recibes-title'>Qué te va a llegar</h2>
+        <ul class='lista'>
+          <li>
+            Un aviso por cada copla nueva: <strong>pieza</strong>, <strong>agrupación</strong>,
+            <strong>año</strong>, autor de la música y de la letra, y el enlace directo al cifrado.
+          </li>
+          <li>
+            Si subo varias el mismo día, un solo mensaje con todas. Nada de cinco notificaciones
+            seguidas.
+          </li>
+          <li>Ni boletines, ni promociones, ni cosas que no sean coplas del Carnaval.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby='baja-title'>
+        <h2 class='suscribirse__subtitulo' id='baja-title'>Cómo darte de baja</h2>
+        <p>
+          Dentro del canal, toca el nombre del canal y elige <strong>Salir</strong> (o silencia las
+          notificaciones con la campana si solo quieres menos ruido). Al ser un canal, no guardo
+          tu número ni ningún dato tuyo: no hay formulario, no hay lista de correo y no hay nada
+          que borrar.
+        </p>
+      </section>
+
+      <section aria-labelledby='ultimas-title'>
+        <h2 class='suscribirse__subtitulo' id='ultimas-title'>Lo último que he subido</h2>
+        <ul class='ultimas'>
+          {
+            ultimos.map((acorde) => (
+              <li>
+                <a href={`/acordes/${acorde.slug}`}>
+                  {acorde.data.pieza} {acorde.data.agrupacion}
+                </a>
+                <span class='ultimas__year'>— {acorde.data.year}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<script>
+  declare const gtag: (...args: unknown[]) => void;
+
+  document.querySelectorAll<HTMLElement>('[data-ga-event="click_canal"]').forEach((enlace) => {
+    enlace.addEventListener('click', () => {
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'click_canal', {
+        ...JSON.parse(enlace.getAttribute('data-ga-params') || '{}'),
+        page_location: window.location.href,
+      });
+    });
+  });
+</script>
+
+<style>
+  .suscribirse {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  .suscribirse__cabecera {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  h1 {
+    margin: 0;
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    max-width: fit-content;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 95%;
+      height: 6px;
+      background: var(--primary-contrast-color);
+    }
+  }
+
+  .suscribirse__entradilla {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+
+  .suscribirse__subtitulo {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+
+  .canales__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--main-container-gap-sm);
+  }
+
+  .canal {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+
+    & p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text-secondary-color);
+      flex: 1;
+    }
+  }
+
+  .canal__cabecera {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+  }
+
+  .canal__icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .canal__pie {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .canal__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 20px;
+    background-color: var(--surface-color);
+    color: var(--primary-contrast-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover {
+      background-color: var(--primary-contrast-color);
+      color: var(--on-bright-color);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 0 var(--primary-color);
+    }
+
+    &:active {
+      transform: translate(0, 0);
+      box-shadow: 2px 2px 0 0 var(--primary-color);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--primary-contrast-color);
+      outline-offset: 3px;
+    }
+  }
+
+  .canal__qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+
+    & img {
+      display: block;
+      width: 120px;
+      height: 120px;
+      background: #fff;
+      padding: 6px;
+      border: 2px solid var(--primary-color);
+    }
+
+    & figcaption {
+      font-size: 0.7rem;
+      line-height: 1.3;
+      color: var(--text-secondary-color);
+      text-align: center;
+      max-width: 120px;
+    }
+  }
+
+  .lista {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .ultimas {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95rem;
+
+    & a {
+      color: var(--link-color);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
+  }
+
+  .ultimas__year {
+    color: var(--text-secondary-color);
+  }
+
+  :global(html[data-theme='dark']) .canal__btn {
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+  }
+
+  @media (max-width: 860px) {
+    .canales__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    /* En el móvil el QR no sirve: el botón ya abre la app. */
+    .canal__qr {
+      display: none;
+    }
+
+    .canal__btn {
+      width: 100%;
+    }
+  }
+</style>
