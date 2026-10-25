@@ -2,6 +2,7 @@
 import Logo from '../../../public/icons/logo.svg';
 import { Icon } from 'astro-icon/components';
 import ThemeToggle from './ThemeToggle.astro';
+import SugerenciasBusqueda from './SugerenciasBusqueda.astro';
 ---
 
 <header role='banner' transition:name='site-header'>
@@ -46,6 +47,8 @@ import ThemeToggle from './ThemeToggle.astro';
             </button>
           </div>
         </form>
+
+        <SugerenciasBusqueda />
       </div>
 
       <div class='theme-container'>
@@ -651,7 +654,7 @@ import ThemeToggle from './ThemeToggle.astro';
       searchInput.addEventListener('input', toggleClearButton);
 
       // Reflejar en el input el término de búsqueda actual (/buscar?q=...)
-      if (window.location.pathname === '/buscar') {
+      if (window.location.pathname.replace(/\/+$/, '') === '/buscar') {
         const currentQuery = new URLSearchParams(window.location.search).get('q') || '';
         if (currentQuery) {
           searchInput.value = currentQuery;

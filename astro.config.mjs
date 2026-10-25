@@ -28,7 +28,9 @@ export default defineConfig({
         !page.includes('/en-construccion') &&
         !page.includes('/acordes2') &&
         !page.includes('/lista2') &&
-        !page.includes('/reconocer-acorde'),
+        !page.includes('/reconocer-acorde') &&
+        // Página de resultados: noindex y fuera del sitemap.
+        !page.includes('/buscar'),
     }),
   ],
 

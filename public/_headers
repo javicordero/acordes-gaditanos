@@ -1,0 +1,4 @@
+# Índice del buscador: se descarga al abrir el buscador, así que conviene que
+# el navegador lo guarde y no lo revalide en cada página.
+/indice-busqueda.json
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
