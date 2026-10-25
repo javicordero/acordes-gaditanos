@@ -30,8 +30,11 @@ export interface EntradaPreparada extends EntradaIndice {
   /** Etiquetas listas para pintar. */
   etiquetaPieza: string;
   etiquetaAutores: string;
-  etiquetaMusica: string;
+  /** Tipo de pieza, para colorear el badge igual que en las cards. */
+  tipoPieza: TipoPieza;
 }
+
+export type TipoPieza = 'presentacion' | 'pasodoble' | 'tango' | 'estribillo' | 'default';
 
 export interface ResultadoBusqueda {
   resultados: EntradaPreparada[];
@@ -64,11 +67,14 @@ export function tokenizar(texto: string): string[] {
   return normalizado ? normalizado.split(' ') : [];
 }
 
-/** Etiqueta legible del tipo de pieza (`final de popurri` → `Final de popurrí`). */
+/**
+ * Etiqueta legible de la pieza (`final de popurri` → `Final de popurrí`).
+ * En las cuartetas se muestra solo el título, igual que el badge de las cards.
+ */
 export function etiquetaPieza(pieza: string): string {
   const limpia = (pieza || '').trim().replace(/\s+/g, ' ');
   const cuarteta = limpia.match(/^cuarteta\s+"(.+)"$/i);
-  if (cuarteta) return `Cuarteta · ${cuarteta[1]}`;
+  if (cuarteta) return cuarteta[1];
 
   const normalizada = normalizar(limpia);
 
@@ -84,24 +90,29 @@ export function etiquetaPieza(pieza: string): string {
   return limpia.charAt(0).toUpperCase() + limpia.slice(1);
 }
 
-/** Autores juntos y sin repetir, para la segunda línea de cada sugerencia. */
-function etiquetaAutores(musica: string, letra: string): string {
-  const nombres = `${musica || ''},${letra || ''}`
-    .split(',')
-    .map((nombre) => nombre.trim())
-    .filter(Boolean);
+/** Tipo de pieza para el badge, con la misma regla que las cards. */
+export function tipoPieza(pieza: string): TipoPieza {
+  const cuarteta = (pieza || '').trim().match(/^cuarteta\s+"(.+)"$/i);
+  const base = normalizar(cuarteta ? cuarteta[1] : pieza);
 
-  return [...new Set(nombres)].join(', ');
+  if (base.includes('presentacion')) return 'presentacion';
+  if (base.includes('pasodoble')) return 'pasodoble';
+  if (base.includes('tango')) return 'tango';
+  if (base.includes('estribillo')) return 'estribillo';
+
+  return 'default';
 }
 
-/** Solo los autores de la música, sin repetir. */
-function etiquetaMusica(musica: string): string {
-  const nombres = (musica || '')
-    .split(',')
-    .map((nombre) => nombre.trim())
-    .filter(Boolean);
+/** Autores de música y de letra, sin repetir, en la segunda línea de cada sugerencia. */
+function etiquetaAutores(musica: string, letra: string): string {
+  const limpiar = (texto: string) =>
+    [...new Set((texto || '').split(',').map((nombre) => nombre.trim()).filter(Boolean))];
 
-  return [...new Set(nombres)].join(', ');
+  const musicos = limpiar(musica);
+  // Si alguien firma música y letra, se queda solo en el primer grupo.
+  const letristas = limpiar(letra).filter((nombre) => !musicos.includes(nombre));
+
+  return [musicos.join(', '), letristas.join(', ')].filter(Boolean).join(' · ');
 }
 
 export function preparar(entradas: EntradaIndice[]): EntradaPreparada[] {
@@ -120,7 +131,7 @@ export function preparar(entradas: EntradaIndice[]): EntradaPreparada[] {
       pPieza: nPieza.split(' ').filter(Boolean),
       etiquetaPieza: etiquetaPieza(entrada.pieza),
       etiquetaAutores: etiquetaAutores(entrada.musica, entrada.letra),
-      etiquetaMusica: etiquetaMusica(entrada.musica),
+      tipoPieza: tipoPieza(entrada.pieza),
     };
   });
 }

@@ -24,7 +24,7 @@
     background: var(--card-background-color);
     border: 2px solid var(--primary-contrast-color);
     box-shadow: 4px 4px 0 0 var(--primary-color);
-    max-height: min(50vh, 420px);
+    max-height: min(60vh, 500px);
     overflow-y: auto;
     overscroll-behavior: contain;
     text-align: left;
@@ -78,6 +78,7 @@
     }
   }
 
+  /* Agrupación en su línea; la pieza va debajo como el badge de las cards. */
   .sugerencia-titulo {
     font-size: 0.9rem;
     font-weight: 700;
@@ -85,6 +86,47 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .sugerencia-pieza {
+    align-self: flex-start;
+    max-width: 100%;
+    padding: 2px 5px;
+    border: 2px solid var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &[data-pieza-type='presentacion'] {
+      color: var(--pieza-presentacion-color);
+      background-color: var(--pieza-presentacion-bg);
+    }
+
+    &[data-pieza-type='pasodoble'] {
+      color: var(--pieza-pasodoble-color);
+      background-color: var(--pieza-pasodoble-bg);
+    }
+
+    &[data-pieza-type='tango'] {
+      color: var(--pieza-tango-color);
+      background-color: var(--pieza-tango-bg);
+    }
+
+    &[data-pieza-type='estribillo'] {
+      color: var(--pieza-estribillo-color);
+      background-color: var(--pieza-estribillo-bg);
+    }
+
+    &[data-pieza-type='default'] {
+      color: var(--pieza-default-color);
+      background-color: var(--pieza-default-bg);
+    }
   }
 
   .sugerencia-meta {
@@ -128,6 +170,10 @@
       padding: 8px 10px;
     }
 
+    .sugerencia-titulo {
+      font-size: 0.85rem;
+    }
+
     .sugerencia-meta {
       font-size: 0.72rem;
     }
@@ -153,7 +199,8 @@
     agrupacion: string;
     year: string;
     etiquetaPieza: string;
-    etiquetaMusica: string;
+    etiquetaAutores: string;
+    tipoPieza: string;
   }
 
   interface Respuesta {
@@ -290,13 +337,19 @@
       titulo.className = 'sugerencia-titulo';
       titulo.textContent = resultado.agrupacion;
 
+      const pieza = document.createElement('span');
+      pieza.className = 'sugerencia-pieza';
+      pieza.textContent = resultado.etiquetaPieza;
+      pieza.dataset.piezaType = resultado.tipoPieza;
+
       const meta = document.createElement('span');
       meta.className = 'sugerencia-meta';
-      meta.textContent = [resultado.etiquetaPieza, resultado.etiquetaMusica || resultado.year]
-        .filter(Boolean)
-        .join(' · ');
+      // Música · letra (sin repetir); si no hay autores, al menos el año.
+      meta.textContent = resultado.etiquetaAutores || resultado.year;
 
-      enlace.append(titulo, meta);
+      if (titulo.textContent) enlace.append(titulo);
+      if (pieza.textContent) enlace.append(pieza);
+      enlace.append(meta);
 
       enlace.addEventListener('click', (evento) => {
         analitica('buscar_sugerencia_click', {
