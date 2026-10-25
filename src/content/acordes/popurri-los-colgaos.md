@@ -147,7 +147,7 @@ que se suban cuando quieran
 
 
    <a>Mi/add9</a>                               
-Estrellita que marcais el camino 
+Estrellitas que marcais el camino 
     <a>Do#m</a>
 en mitad de esta noche tan oscura
   <a>La</a>                                   
