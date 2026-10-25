@@ -141,7 +141,11 @@ function etiquetaPieza(pieza) {
   const limpia = (pieza || '').trim().replace(/\s+/g, ' ');
   const clave = sinTildes(limpia);
   if (PIEZAS[clave]) return PIEZAS[clave];
-  if (clave.startsWith('cuarteta')) return 'Cuarteta';
+
+  // Cuarteta "Título": se normaliza el tipo y se conserva el título.
+  const cuarteta = limpia.match(/^cuarteta\s+"(.+)"$/i);
+  if (cuarteta) return `Cuarteta "${cuarteta[1]}"`;
+
   return limpia ? limpia.charAt(0).toUpperCase() + limpia.slice(1) : '';
 }
 
