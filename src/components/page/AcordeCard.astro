@@ -136,12 +136,12 @@ const headingId = `acorde-${slug}`;
 
   <section class='acorde-content' role='region' aria-labelledby={headingId}>
 
+    {conGlosario && <AcordesDeLaPieza acordes={acordesPieza} posturas={posturasPieza} />}
+
     <div class='acorde-meta'>
       <Icon name='cejilla' width={18} height={18} />
       <span>Cejilla: {cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
-
-    {conGlosario && <AcordesDeLaPieza acordes={acordesPieza} posturas={posturasPieza} />}
 
       <div class='acorde-content'>
       <TutorialAutoscroll />
