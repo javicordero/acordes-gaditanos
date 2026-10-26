@@ -148,6 +148,29 @@ git push origin master
 
 Si el push falla, informar del error y avisar de que los commits quedan locales.
 
+### 7-bis. Aviso en WhatsApp (si el acorde es nuevo)
+
+Telegram lo manda solo la Action al hacer push. WhatsApp no tiene API oficial, así que se
+publica desde este equipo con Chrome y Playwright, **después** del push:
+
+```powershell
+npm run wa -- --solo <slug>[,<slug>]
+```
+
+- Solo para `.md` **nuevos**. Si se está editando o cambiando la fecha de una copla ya
+  publicada, no se avisa (la misma regla que Telegram).
+- El script espera a que la ficha responda 200 (1-2 min tras el push), abre el canal
+  «Acordes Gaditanos» y **deja el mensaje escrito**: el usuario lo revisa y pulsa Enter.
+- Lanzarlo en segundo plano y avisar al usuario de que tiene que pulsar Enter en la
+  ventana de Chrome. No bloquear el turno esperando.
+- Si sale `2` (sesión caducada): pedir que ejecute `npm run wa:login` y dejar el texto
+  del aviso a mano para pegarlo, sin reintentar en bucle.
+- Si sale `5` (no enviado): el mensaje no llegó a salir; ofrecer `--forzar` para repetir.
+- Si sale `3` o `4`: mirar la captura de `wa-debug/` y avisar de que los selectores de
+  WhatsApp pueden haber cambiado.
+- Guardar el `MENSAJE` completo (o el texto del `--dry-run`) en la respuesta, para que se
+  pueda pegar a mano si algo falla.
+
 ### 8. Reportar
 
 Informar de:
@@ -155,6 +178,7 @@ Informar de:
 - Acordes subidos (ruta final, fecha anterior → fecha nueva).
 - Mensaje de commit de cada uno.
 - Resultado del push.
+- Resultado del aviso de WhatsApp (enviado, pendiente de Enter o fallido con el motivo).
 - Acordes omitidos por no existir o pendientes de confirmación.
 
 ## Ejemplo

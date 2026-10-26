@@ -49,5 +49,11 @@ scripts/importar-cancionero.mjs
 # Capturas locales
 screenshots/
 
+# Canal de WhatsApp (local): perfil de Chrome, capturas de fallo y registro de
+# avisos ya publicados. Nunca se sube: el perfil contiene la sesión.
+wa-profile/
+wa-debug/
+wa-enviados.json
+
 # Cache de importacion del glosario de acordes
 .cache/

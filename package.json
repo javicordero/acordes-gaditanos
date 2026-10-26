@@ -8,6 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "difundir": "node scripts/difundir.mjs",
+    "wa": "node scripts/whatsapp.mjs post",
+    "wa:login": "node scripts/whatsapp.mjs login",
     "qr": "node scripts/generar-qr.mjs"
   },
   "dependencies": {
@@ -24,6 +26,7 @@
     "@astrojs/check": "^0.9.9",
     "autoprefixer": "^10.4.22",
     "cheerio": "^1.0.0",
+    "playwright-core": "^1.64.1",
     "postcss": "^8.5.6",
     "postcss-csso": "^6.0.1",
     "postcss-nesting": "^13.0.2",
