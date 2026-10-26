@@ -103,7 +103,7 @@ export function urlAcorde(copla) {
 
 export function mensajeUna(copla) {
   return [
-    '🎶 Nuevos acordes',
+    '🎶 Nueva copla',
     '',
     titulo(copla.datos),
     ...lineasAutores(copla.datos),

@@ -298,7 +298,7 @@ async function adjuntar(page, imagen) {
  */
 async function etiquetar(page, cuentas) {
   const abrir = page.getByText('Etiquetar personas', { exact: false }).first();
-  if (!(await abrir.isVisible({ timeout: 8000 }).catch(() => false))) {
+  if (!(await abrir.isVisible({ timeout: 60000 }).catch(() => false))) {
     return { estado: 'sin-panel', puestas: [], fallidas: [...cuentas] };
   }
 
