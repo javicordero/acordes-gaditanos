@@ -810,7 +810,6 @@ const headingId = `acorde-${slug}`;
     }
 
     function cambiarTono(delta) {
-      const anterior = currentTranspose;
       currentTranspose += delta;
       aplicarTransporte();
 
@@ -818,10 +817,6 @@ const headingId = `acorde-${slug}`;
         direccion: delta > 0 ? 'subir' : 'bajar',
         semitonos: currentTranspose,
       });
-
-      if (anterior !== 0 && currentTranspose === 0) {
-        analitica('transpose_volver_original');
-      }
     }
 
     function initAutoscroll() {
