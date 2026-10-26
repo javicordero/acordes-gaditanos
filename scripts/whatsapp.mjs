@@ -351,7 +351,7 @@ async function escribir(page, texto, marca) {
     if (i < lineas.length - 1) await page.keyboard.press('Shift+Enter');
   }
 
-  return compositor;
+  return { compositor, antes };
 }
 
 /** Pulsa el botón de enviar; si no aparece, Enter (como haría una persona). */
@@ -443,7 +443,7 @@ async function publicar(opciones) {
     }
     coplas = cargarCoplas(opciones.solo);
     if (!coplas.length) throw new Error('No existe ninguno de esos slugs en la colección.');
-    texto = textoDe(coplas);
+    texto = textoDe(coplas, 10, 'whatsapp');
   }
 
   const clave = opciones.solo.length ? opciones.solo.join(',') : `mensaje:${texto.slice(0, 40)}`;

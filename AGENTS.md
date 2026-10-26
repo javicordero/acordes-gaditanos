@@ -108,18 +108,19 @@ Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astr
 - Enlaces únicos en `src/data/canales.json` (`whatsapp` y `telegram`); se usan en el footer, en la banda de suscripción y en `Layout.astro` (`sameAs` de `Organization`).
 - **Telegram se publica solo**: `.github/workflows/difundir.yml` se dispara en cada push a `master` que toque `src/content/acordes/**` y llama a `scripts/difundir.mjs`. El script vuelve a comprobar con `git diff --diff-filter=A` que sean **`.md` añadidos** en `src/content/acordes/`: editar, corregir o cambiar la fecha de una copla ya publicada **no avisa**. Los PDFs de `scripts/generate-pdf.mjs` y la carpeta local `acordes2` tampoco cuentan.
 - **Modo silencioso**: si el asunto del último commit lleva `[sin aviso]`, `difundir.mjs` no envía nada (también con `SALTAR_AVISO=1`). Es lo que usa la skill cuando se pide «súbelo sin avisos»: la copla se publica igual, pero no salta ningún canal.
-- El mensaje se agrupa por push: 1 copla → ficha; de 2 a 10 → lista `• Pieza Agrupación — año` + enlace a `/lista/`; más de 10 (importación) → resumen con enlace a `/novedades/`. Antes de enviar espera hasta 5 minutos a que la ficha responda 200 (Netlify tarda 1-2 min), para no publicar un enlace roto.
-- Formato acordado (sin paréntesis en el año):
+- El mensaje se agrupa por push: 1 copla → ficha; de 2 a 10 → lista `• Pieza Agrupación` + enlace a `/lista/`; más de 10 (importación) → resumen con enlace a `/novedades/`. Antes de enviar espera hasta 5 minutos a que la ficha responda 200 (Netlify tarda 1-2 min), para no publicar un enlace roto.
+- Formato acordado (sin paréntesis en el año; pieza y agrupación en negrita y sin año, y línea en blanco antes de los autores):
   ```
-  🎶 Nueva copla
+  🎶 Nuevos acordes
 
-  Pasodoble La Marea — 2024
+  *Pasodoble La Marea*
+
   Música: Tatán
   Letra: Antonio Martín
 
   https://acordesgaditanos.com/acordes/pasodoble-la-marea/
   ```
-  Si música y letra son la misma persona se juntan en `Música y letra: …`; si falta el año, se omite el `— año`. La vista previa la pone Telegram (y WhatsApp) con el `og:image` de la ficha.
+  WhatsApp marca la negrita con `*…*`; Telegram con `<b>…</b>` y `parse_mode: HTML` (lo pone `difundir.mjs`). El año no se pone en el aviso. Si música y letra son la misma persona se juntan en `Música y letra: …`. La vista previa la pone Telegram (y WhatsApp) con el `og:image` de la ficha.
 - Local: `npm run difundir -- --solo <slug> --dry-run`, `--test`, `--antes <sha>`. La Action también admite `workflow_dispatch` con modo `prueba` (manda un mensaje de prueba al canal), `seco` (con `slugs` previsualiza esas coplas; sin ellos compara `HEAD~1`) o `reenviar`.
 - **Secretos**: `TELEGRAM_BOT_TOKEN` (repo → Settings → Secrets → Actions) y, si se quiere cambiar, la variable `TELEGRAM_CHAT_ID` (por defecto `@acordesgaditanos`). El token no se imprime nunca. El bot debe ser administrador del canal con «Publicar mensajes», o Telegram devuelve `403`.
 - **WhatsApp no tiene API oficial**: las APIs no oficiales (Whapi, Baileys…) van contra los términos de WhatsApp, cuestan 10-30 €/mes y arriesgan el número y el canal, así que no se usan. En su lugar, `scripts/whatsapp.mjs` controla WhatsApp Web con Playwright y **tu Chrome** (perfil propio `wa-profile/`, gitignored) desde este equipo: escribe el aviso en el canal «Acordes Gaditanos» y **envía solo** tras 15 s de margen (si se cierra la ventana, no se envía). Se lanza desde la skill `subir-acorde` después del push (`npm run wa -- --solo <slug>`), nunca desde CI: no hay runner ni secretos.

@@ -74,12 +74,36 @@ export function etiquetaPieza(pieza) {
   return limpia ? limpia.charAt(0).toUpperCase() + limpia.slice(1) : '';
 }
 
-export function titulo(datos) {
+/** Pieza y agrupación, sin año. */
+export function nombreDe(datos) {
   const pieza = etiquetaPieza(datos.pieza);
   const agrupacion = (datos.agrupacion || '').trim();
-  const year = (datos.year || '').trim();
-  const nombre = [pieza, agrupacion].filter(Boolean).join(' ');
-  return year ? `${nombre} — ${year}` : nombre;
+  return [pieza, agrupacion].filter(Boolean).join(' ');
+}
+
+/** HTML de Telegram: evita que un «&» o un «<» del título rompan el mensaje. */
+export function escaparHtml(texto) {
+  return texto.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+/**
+ * Cada canal marca la negrita a su manera: WhatsApp con asteriscos (se aplican
+ * al enviar) y Telegram con `<b>` y `parse_mode: HTML`.
+ */
+function negrita(texto, formato) {
+  if (formato === 'telegram') return `<b>${escaparHtml(texto)}</b>`;
+  if (formato === 'whatsapp') return `*${texto}*`;
+  return texto;
+}
+
+/** Pieza y agrupación en negrita (sin año: en el aviso no aporta). */
+export function tituloResaltado(datos, formato = 'plano') {
+  return negrita(nombreDe(datos), formato);
+}
+
+/** Escapa el texto normal en Telegram; en los demás formatos no hay nada que escapar. */
+function normal(texto, formato) {
+  return formato === 'telegram' ? escaparHtml(texto) : texto;
 }
 
 /** Música y letra en líneas separadas; si son la misma persona, en una. */
@@ -101,34 +125,35 @@ export function urlAcorde(copla) {
   return `${SITE}/acordes/${copla.slug}/`;
 }
 
-export function mensajeUna(copla) {
+export function mensajeUna(copla, formato = 'plano') {
   return [
-    '🎶 Nueva copla',
+    '🎶 Nuevos acordes',
     '',
-    titulo(copla.datos),
-    ...lineasAutores(copla.datos),
+    tituloResaltado(copla.datos, formato),
     '',
-    urlAcorde(copla),
+    ...lineasAutores(copla.datos).map((linea) => normal(linea, formato)),
+    '',
+    normal(urlAcorde(copla), formato),
   ].join('\n');
 }
 
-export function mensajeVarias(coplas) {
+export function mensajeVarias(coplas, formato = 'plano') {
   return [
-    `🎶 ${coplas.length} acordes nuevos`,
+    '🎶 Nuevos acordes',
     '',
-    ...coplas.map((copla) => `• ${titulo(copla.datos)}`),
+    ...coplas.map((copla) => `• ${tituloResaltado(copla.datos, formato)}`),
     '',
-    `${SITE}/lista/`,
+    normal(`${SITE}/lista/`, formato),
   ].join('\n');
 }
 
-export function mensajeResumen(coplas) {
+export function mensajeResumen(coplas, formato = 'plano') {
   return [
-    `🎶 ${coplas.length} acordes nuevos`,
+    '🎶 Nuevos acordes',
     '',
-    `Hoy hemos subido ${coplas.length} coplas al cancionero. La última, ${titulo(coplas[0].datos)}.`,
+    `Hoy hemos subido ${coplas.length} coplas al cancionero. La última, ${tituloResaltado(coplas[0].datos, formato)}.`,
     '',
-    `${SITE}/novedades/`,
+    normal(`${SITE}/novedades/`, formato),
   ].join('\n');
 }
 
@@ -143,9 +168,9 @@ export function mensajePrueba() {
 }
 
 /** Texto del aviso según cuántas coplas entren en el mismo aviso. */
-export function textoDe(coplas, tope = 10) {
-  if (coplas.length === 1) return mensajeUna(coplas[0]);
-  return coplas.length > tope ? mensajeResumen(coplas) : mensajeVarias(coplas);
+export function textoDe(coplas, tope = 10, formato = 'plano') {
+  if (coplas.length === 1) return mensajeUna(coplas[0], formato);
+  return coplas.length > tope ? mensajeResumen(coplas, formato) : mensajeVarias(coplas, formato);
 }
 
 export function ficherosAnadidos(antes, despues) {

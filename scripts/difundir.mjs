@@ -109,6 +109,7 @@ async function enviarTelegram(texto) {
     body: JSON.stringify({
       chat_id: CHAT,
       text: texto,
+      parse_mode: 'HTML',
       link_preview_options: { is_disabled: false, prefer_large_media: true },
     }),
   });
@@ -189,12 +190,13 @@ async function principal() {
     return;
   }
 
-  const texto = textoDe(coplas, opciones.tope);
+  const texto = textoDe(coplas, opciones.tope, 'telegram');
+  const textoPlano = textoDe(coplas, opciones.tope);
 
   if (opciones.seco) {
     console.log('Mensaje preparado (no enviado):\n');
-    console.log(texto);
-    escribirResumen('Mensaje preparado (modo seco)', texto);
+    console.log(textoPlano);
+    escribirResumen('Mensaje preparado (modo seco)', textoPlano);
     return;
   }
 
@@ -208,7 +210,7 @@ async function principal() {
 
   await enviarTelegram(texto);
   console.log(`✓ Aviso enviado a Telegram (${coplas.length} copla${coplas.length === 1 ? '' : 's'}).`);
-  escribirResumen('Aviso enviado a Telegram', texto);
+  escribirResumen('Aviso enviado a Telegram', textoPlano);
 }
 
 principal().catch((error) => {
