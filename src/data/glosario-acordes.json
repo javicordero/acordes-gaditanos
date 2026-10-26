@@ -3883,6 +3883,22 @@
       "posiciones": [
         {
           "trastes": [
+            2,
+            4,
+            3,
+            2,
+            2,
+            2
+          ],
+          "baseTraste": 1,
+          "cejilla": {
+            "traste": 2,
+            "desde": 0,
+            "hasta": 5
+          }
+        },
+        {
+          "trastes": [
             -1,
             -1,
             4,
@@ -19157,6 +19173,22 @@
       "bajo": null,
       "slug": "sol-sostenido-mmaj7",
       "posiciones": [
+        {
+          "trastes": [
+            4,
+            6,
+            5,
+            4,
+            4,
+            4
+          ],
+          "baseTraste": 1,
+          "cejilla": {
+            "traste": 4,
+            "desde": 0,
+            "hasta": 5
+          }
+        },
         {
           "trastes": [
             -1,
