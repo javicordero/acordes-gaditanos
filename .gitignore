@@ -55,5 +55,10 @@ wa-profile/
 wa-debug/
 wa-enviados.json
 
+# Cuenta de X (local): mismo caso que WhatsApp.
+x-profile/
+x-debug/
+x-enviados.json
+
 # Cache de importacion del glosario de acordes
 .cache/

@@ -171,6 +171,29 @@ npm run wa -- --solo <slug>[,<slug>]
 - Guardar el `MENSAJE` completo (o el texto del `--dry-run`) en la respuesta, para que se
   pueda pegar a mano si algo falla.
 
+### 7-ter. Aviso en X (si el acorde es nuevo)
+
+Mismo patrón que WhatsApp, después del push y también solo para `.md` **nuevos**:
+
+```powershell
+npm run x -- --solo <slug>[,<slug>]
+```
+
+- Formato: cabecera «🆕 Nuevos acordes en la web», línea `🎭 Pieza – Agrupación`,
+  `🎵 música` y `✏️ letra` (si son la misma persona, una sola línea) y el enlace al final.
+- Descarga el `img` del `.md`, lo valida (WebP/JPEG/PNG/GIF y ≤5 MB) y lo adjunta.
+- Etiqueta en la imagen a @Carnavaladictos y @Orteguilla25 (constante `ETIQUETAS` en
+  `scripts/lib/tuit.mjs`). Si X no encuentra alguna, avisa y publica igual: no se aborta.
+- Deja el tuit escrito en el compositor **sin publicar**: el usuario revisa y pulsa
+  «Publicar». Lanzarlo en segundo plano y avisar de que le toca a él, como en WhatsApp.
+- Verifica el tuit en `x.com/<cuenta>` antes de darlo por bueno; si no lo confirma, sale
+  con `5` y no lo marca como publicado.
+- Códigos: `2` sesión caducada (`npm run x:login`), `3` compositor no encontrado
+  (mirar `x-debug/`), `5` no publicado.
+- Si hay varias coplas, el tuit lleva una línea por copla y el enlace a `/lista/`.
+- Recordar que el enlace externo reduce alcance en X, pero no hay penalización escrita ni
+  riesgo de «softban» a este volumen: un tuit por copla, imagen adjunta y sin repetir.
+
 ### 8. Reportar
 
 Informar de:
@@ -179,6 +202,7 @@ Informar de:
 - Mensaje de commit de cada uno.
 - Resultado del push.
 - Resultado del aviso de WhatsApp (enviado, pendiente de Enter o fallido con el motivo).
+- Resultado del tuit (publicado, pendiente de «Publicar» o fallido con el motivo).
 - Acordes omitidos por no existir o pendientes de confirmación.
 
 ## Ejemplo

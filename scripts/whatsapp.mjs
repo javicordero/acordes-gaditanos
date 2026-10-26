@@ -174,7 +174,7 @@ function captura(page, motivo) {
     mkdirSync(DEPURACION, { recursive: true });
     const marca = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const ruta = path.join(DEPURACION, `${marca}-${motivo}.png`);
-    return page.screenshot({ path: ruta, fullPage: false }).then(() => ruta);
+    return page.screenshot({ path: ruta, fullPage: false }).then(() => ruta).catch(() => null);
   } catch {
     return Promise.resolve(null);
   }
