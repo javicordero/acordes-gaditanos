@@ -23,6 +23,8 @@ Se activa con frases naturales como:
 - "haz commit de este acorde", "commitea este acorde"
 - "haz commit y push del acorde", "súbelo a git"
 - "sube los acordes nuevos", "publica los acordes"
+- "súbelo sin avisos", "sube sin posts", "sin avisar" → publicar en la web sin notificar
+  en ningún canal (ver paso 6: marcador `[sin aviso]`).
 
 Si el usuario no nombra acordes y dice "este acorde", usar el que esté claro por el
 contexto reciente de la conversación o, si no, los `.md` nuevos (sin rastrear) de
@@ -138,6 +140,16 @@ en el mismo orden alfabético en que se asignaron las fechas.
 **Nunca** usar `git add .` ni `git add -A`: el working tree puede tener otros cambios
 (configuración, docs, otros acordes) que no deben subirse.
 
+Si el usuario pide **subir sin avisos** («súbelo sin avisos», «sin posts», «sin avisar»),
+añadir `[sin aviso]` al final del asunto del commit:
+
+```powershell
+git commit -m "acordes <Pieza> <Agrupación> [sin aviso]"
+```
+
+Ese marcador hace que la Action de Telegram no notifique (`difundir.mjs` lo comprueba) y
+que no se lancen ni WhatsApp ni X. El `.md` se publica en la web igual que siempre.
+
 ### 7. Push
 
 Un único push al final:
@@ -160,12 +172,15 @@ npm run wa -- --solo <slug>[,<slug>]
 - Solo para `.md` **nuevos**. Si se está editando o cambiando la fecha de una copla ya
   publicada, no se avisa (la misma regla que Telegram).
 - El script espera a que la ficha responda 200 (1-2 min tras el push), abre el canal
-  «Acordes Gaditanos» y **deja el mensaje escrito**: el usuario lo revisa y pulsa Enter.
-- Lanzarlo en segundo plano y avisar al usuario de que tiene que pulsar Enter en la
-  ventana de Chrome. No bloquear el turno esperando.
+  «Acordes Gaditanos», escribe (vaciando antes cualquier borrador) y **envía solo** tras
+  15 s de margen: si el usuario cierra la ventana en ese tiempo, no se envía nada.
+- Lanzarlo en segundo plano y decir al usuario que se publica solo, que **no cierre la
+  ventana** si quiere que se confirme y se apunte en `wa-enviados.json`.
+- Con `--manual` vuelve al modo anterior (deja el mensaje escrito y espera el Enter).
 - Si sale `2` (sesión caducada): pedir que ejecute `npm run wa:login` y dejar el texto
   del aviso a mano para pegarlo, sin reintentar en bucle.
-- Si sale `5` (no enviado): el mensaje no llegó a salir; ofrecer `--forzar` para repetir.
+- Si sale `5` (no enviado o no confirmado): comprobar el canal antes de repetir; para
+  repetir, `--forzar`.
 - Si sale `3` o `4`: mirar la captura de `wa-debug/` y avisar de que los selectores de
   WhatsApp pueden haber cambiado.
 - Guardar el `MENSAJE` completo (o el texto del `--dry-run`) en la respuesta, para que se
@@ -184,8 +199,8 @@ npm run x -- --solo <slug>[,<slug>]
 - Descarga el `img` del `.md`, lo valida (WebP/JPEG/PNG/GIF y ≤5 MB) y lo adjunta.
 - Etiqueta en la imagen a @Carnavaladictos y @Orteguilla25 (constante `ETIQUETAS` en
   `scripts/lib/tuit.mjs`). Si X no encuentra alguna, avisa y publica igual: no se aborta.
-- Deja el tuit escrito en el compositor **sin publicar**: el usuario revisa y pulsa
-  «Publicar». Lanzarlo en segundo plano y avisar de que le toca a él, como en WhatsApp.
+- Escribe el tuit (vaciando antes cualquier borrador) y **publica solo** tras 15 s de
+  margen. Con `--manual` deja el tuit escrito esperando «Publicar».
 - Verifica el tuit en `x.com/<cuenta>` antes de darlo por bueno; si no lo confirma, sale
   con `5` y no lo marca como publicado.
 - Códigos: `2` sesión caducada (`npm run x:login`), `3` compositor no encontrado

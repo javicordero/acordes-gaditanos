@@ -93,6 +93,8 @@ const AYUDA = [
   '  --sin-esperar           no espera a la publicación',
   '  --espera-manual <min>   minutos que espera a que pulses Enter (10)',
   '  --forzar                publicar aunque ya esté en wa-enviados.json',
+  '  --manual                dejar el mensaje escrito y esperar tu Enter',
+  '  --margen <seg>          segundos de margen antes de enviar solo (15)',
   '  --comprobar             abrir el canal y hacer captura, sin escribir',
   '  --dry-run               enseña el mensaje y sale',
 ].join('\n');
@@ -107,6 +109,8 @@ function leerArgumentos(argv) {
     canal: CANAL,
     espera: 240,
     esperaManual: 10,
+    manual: false,
+    margen: 15,
     forzar: false,
     seco: false,
     comprobar: false,
@@ -123,6 +127,12 @@ function leerArgumentos(argv) {
       opciones.seco = true;
     } else if (arg === '--forzar') {
       opciones.forzar = true;
+    } else if (arg === '--manual') {
+      opciones.manual = true;
+    } else if (arg === '--margen') {
+      const segundos = Number(siguiente);
+      opciones.margen = Number.isFinite(segundos) ? segundos : 15;
+      i++;
     } else if (arg === '--comprobar') {
       opciones.comprobar = true;
     } else if (arg === '--sin-esperar') {
@@ -305,13 +315,35 @@ async function abrirCanal(page, canal) {
 }
 
 /** Escribe el texto respetando los saltos de línea con Shift+Enter. */
-async function escribir(page, texto) {
+async function escribir(page, texto, marca) {
   await cerrarAvisos(page);
   const compositor = await localizar(page, SELECTORES.compositor, 20_000);
-  if (!compositor) return null;
+  if (!compositor) return { compositor: null, antes: 0 };
 
   await compositor.click();
   await esperar(300);
+
+  // WhatsApp guarda como borrador lo que quedó sin enviar: si hay algo, se vacía
+  // antes de escribir o el aviso saldría mezclado con el intento anterior.
+  const previo = (await compositor.innerText().catch(() => '')) || '';
+  if (previo.trim()) {
+    await page.keyboard.press('Control+A').catch(() => {});
+    await page.keyboard.press('Delete').catch(() => {});
+    await esperar(400);
+
+    const resto = (await compositor.innerText().catch(() => '')) || '';
+    if (resto.trim()) {
+      await page.keyboard.press('Control+A').catch(() => {});
+      await page.keyboard.press('Backspace').catch(() => {});
+      await esperar(300);
+    }
+
+    console.log('(Había un borrador en el canal: se ha vaciado antes de escribir.)');
+  }
+
+  // Se cuenta con el compositor ya vacío: si se contara antes, el borrador
+  // contaría como mensaje publicado y la confirmación nunca cuadraría.
+  const antes = await contarMarca(page, marca);
 
   const lineas = texto.split('\n');
   for (let i = 0; i < lineas.length; i++) {
@@ -320,6 +352,22 @@ async function escribir(page, texto) {
   }
 
   return compositor;
+}
+
+/** Pulsa el botón de enviar; si no aparece, Enter (como haría una persona). */
+async function enviarMensaje(page) {
+  const boton = page
+    .locator('[aria-label="Enviar"], [aria-label="Send"], [data-icon="send"]')
+    .first();
+
+  if (await boton.isVisible({ timeout: 2500 }).catch(() => false)) {
+    await boton.click({ timeout: 5000 }).catch(async () => {
+      await page.keyboard.press('Enter').catch(() => {});
+    });
+    return;
+  }
+
+  await page.keyboard.press('Enter').catch(() => {});
 }
 
 /** Espera a que el compositor se vacíe (= has pulsado Enter y el mensaje salió). */
@@ -455,12 +503,12 @@ async function publicar(opciones) {
       return 3;
     }
 
-    // Marca única del aviso y cuántas veces aparecía ya: así se distingue el
-    // envío real de un cambio de vista.
+    // Marca única del aviso. El recuento de partida lo hace `escribir()` con el
+    // compositor ya vacío (si se contara antes, un borrador contaría como enviado).
     const marca = texto.split('\n').map((linea) => linea.trim()).filter(Boolean).pop() || '';
-    const antes = await contarMarca(page, marca);
 
     if (opciones.comprobar) {
+      const antes = await contarMarca(page, marca);
       const ruta = await captura(page, 'comprobacion');
       console.log('✓ Canal abierto sin escribir nada (--comprobar).');
       console.log(`  Apariciones de la marca del aviso en el canal: ${antes}`);
@@ -468,7 +516,7 @@ async function publicar(opciones) {
       return 0;
     }
 
-    const compositor = await escribir(page, texto);
+    const { compositor, antes } = await escribir(page, texto, marca);
     if (!compositor) {
       await captura(page, 'compositor-no-encontrado');
       console.error('✗ No se encontró el compositor del canal. Mira wa-debug/.');
@@ -476,11 +524,25 @@ async function publicar(opciones) {
     }
 
     console.log('');
-    console.log('El mensaje está escrito en el canal. Revísalo y pulsa Enter para enviarlo.');
-    console.log('(Si tienes activado «Intro para nueva línea», envía con Ctrl+Enter).');
-    console.log(`Esperando hasta ${opciones.esperaManual} minutos…`);
 
-    const resultado = await esperarEnvio(page, compositor, opciones.esperaManual);
+    if (opciones.manual) {
+      console.log('El mensaje está escrito en el canal. Revísalo y pulsa Enter para enviarlo.');
+      console.log('(Si tienes activado «Intro para nueva línea», envía con Ctrl+Enter).');
+      console.log(`Esperando hasta ${opciones.esperaManual} minutos…`);
+    } else {
+      console.log(
+        `Se envía en ${opciones.margen} s. Cierra la ventana si no quieres enviarlo.`,
+      );
+      await page.bringToFront().catch(() => {});
+      await esperar(opciones.margen * 1000);
+      await enviarMensaje(page);
+    }
+
+    const resultado = await esperarEnvio(
+      page,
+      compositor,
+      opciones.manual ? opciones.esperaManual : 2,
+    );
     const confirmado =
       resultado === 'enviado' && (await confirmarEnvio(page, opciones.canal, marca, antes));
     const ruta = await captura(page, `envio-${confirmado ? 'confirmado' : resultado}`);

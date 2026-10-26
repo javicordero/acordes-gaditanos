@@ -69,6 +69,8 @@ const AYUDA = [
   '  --sin-esperar           no espera a la publicación de la ficha',
   '  --espera-manual <min>   minutos que espera a que pulses Publicar (30; 0 = sin límite)',
   '  --forzar                publicar aunque ya esté en x-enviados.json',
+  '  --manual                dejar el tuit escrito y esperar a que pulses Publicar',
+  '  --margen <seg>          segundos de margen antes de publicar solo (15)',
   '  --comprobar             abrir el compositor con texto e imagen y capturar, sin publicar',
   '  --dry-run               enseñar el texto y salir',
 ].join('\n');
@@ -85,6 +87,8 @@ function leerArgumentos(argv) {
     cuenta: CUENTA,
     espera: 240,
     esperaManual: 30,
+    manual: false,
+    margen: 15,
     forzar: false,
     seco: false,
     comprobar: false,
@@ -99,6 +103,12 @@ function leerArgumentos(argv) {
     else if (arg === '--dry-run' || arg === '--seco') opciones.seco = true;
     else if (arg === '--forzar') opciones.forzar = true;
     else if (arg === '--comprobar') opciones.comprobar = true;
+    else if (arg === '--manual') opciones.manual = true;
+    else if (arg === '--margen') {
+      const segundos = Number(siguiente);
+      opciones.margen = Number.isFinite(segundos) ? segundos : 15;
+      i++;
+    }
     else if (arg === '--sin-esperar') opciones.espera = 0;
     else if (arg === '--espera') {
       opciones.espera = Number(siguiente) || 0;
@@ -249,6 +259,15 @@ async function escribir(page, texto) {
   await caja.click();
   await esperar(400);
 
+  // X también restaura borradores: se vacía lo que haya antes de escribir.
+  const previo = (await caja.innerText().catch(() => '')) || '';
+  if (previo.trim()) {
+    await page.keyboard.press('Control+A').catch(() => {});
+    await page.keyboard.press('Delete').catch(() => {});
+    await esperar(400);
+    console.log('(Había un borrador en el compositor: se ha vaciado antes de escribir.)');
+  }
+
   const lineas = texto.split('\n');
   for (let i = 0; i < lineas.length; i++) {
     if (lineas[i]) await page.keyboard.insertText(lineas[i]);
@@ -330,6 +349,18 @@ async function etiquetar(page, cuentas) {
   await esperar(1200);
 
   return { estado: 'ok', puestas, fallidas };
+}
+
+/** Pulsa «Publicar» en el compositor. */
+async function pulsarPublicar(page) {
+  for (const selector of SELECTORES.publicar) {
+    const boton = page.locator(selector).first();
+    if (await boton.isVisible({ timeout: 2500 }).catch(() => false)) {
+      await boton.click({ timeout: 8000 }).catch(() => {});
+      return true;
+    }
+  }
+  return false;
 }
 
 /** Espera a que el compositor se cierre (= has pulsado Publicar). */
@@ -542,15 +573,27 @@ async function publicar(opciones) {
     }
 
     console.log('');
-    console.log('El tuit está listo en el compositor. Revísalo y pulsa «Publicar».');
-    console.log(
-      opciones.esperaManual > 0
-        ? `Esperando hasta ${opciones.esperaManual} minutos (o cierra la ventana)…`
-        : 'Esperando sin límite: publica o cierra la ventana.',
-    );
+
+    if (opciones.manual) {
+      console.log('El tuit está listo en el compositor. Revísalo y pulsa «Publicar».');
+      console.log(
+        opciones.esperaManual > 0
+          ? `Esperando hasta ${opciones.esperaManual} minutos (o cierra la ventana)…`
+          : 'Esperando sin límite: publica o cierra la ventana.',
+      );
+    } else {
+      console.log(`Se publica en ${opciones.margen} s. Cierra la ventana si no quieres.`);
+      await esperar(opciones.margen * 1000);
+      const pulsado = await pulsarPublicar(page);
+      if (!pulsado) console.log('No encontré el botón «Publicar»: prueba con --manual.');
+    }
+
     await page.bringToFront().catch(() => {});
 
-    const resultado = await esperarPublicacionManual(page, opciones.esperaManual);
+    const resultado = await esperarPublicacionManual(
+      page,
+      opciones.manual ? opciones.esperaManual : 2,
+    );
 
     if (resultado !== 'publicado') {
       const ruta = await captura(page, `sin-publicar-${resultado}`);

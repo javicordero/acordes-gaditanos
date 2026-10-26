@@ -19,6 +19,7 @@
 // El texto y la detección de ficheros nuevos viven en scripts/lib/aviso.mjs,
 // porque el canal de WhatsApp (scripts/whatsapp.mjs) usa exactamente lo mismo.
 
+import { execFileSync } from 'node:child_process';
 import { appendFileSync } from 'node:fs';
 import {
   cargarCopla,
@@ -126,8 +127,24 @@ async function enviarTelegram(texto) {
   }
 }
 
-function escribirResumen(tituloResumen, texto) {
-  if (!process.env.GITHUB_STEP_SUMMARY) return;
+/**
+ * Un push cuyo último commit lleve «[sin aviso]» en el asunto no notifica nada.
+ * Sirve para subir coplas sin que salte el canal de Telegram.
+ */
+function marcadoSinAviso() {
+  if (process.env.SALTAR_AVISO === '1') return true;
+
+  try {
+    const asunto = execFileSync('git', ['log', '-1', '--pretty=%s'], {
+      encoding: 'utf8',
+    }).trim();
+    return /\[sin avisos?\]/i.test(asunto);
+  } catch {
+    return false;
+  }
+}
+
+function escribirResumen(tituloResumen, texto) {  if (!process.env.GITHUB_STEP_SUMMARY) return;
 
   appendFileSync(
     process.env.GITHUB_STEP_SUMMARY,
@@ -158,6 +175,11 @@ async function principal() {
   if (opciones.solo.length) {
     coplas = cargarCoplas(opciones.solo);
   } else {
+    if (marcadoSinAviso()) {
+      console.log('El commit está marcado [sin aviso]: no se notifica nada.');
+      escribirResumen('Aviso silenciado', 'El commit lleva [sin aviso].');
+      return;
+    }
     coplas = ordenar(ficherosAnadidos(opciones.antes, opciones.despues).map(cargarCopla));
   }
 
