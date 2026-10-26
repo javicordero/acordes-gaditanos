@@ -51,7 +51,7 @@ const SOCIAL = {
         </a>
 
         <a
-          class='social'
+          class='social canal'
           href={canales.whatsapp}
           target='_blank'
           rel='noopener noreferrer'
@@ -60,7 +60,7 @@ const SOCIAL = {
         </a>
 
         <a
-          class='social'
+          class='social canal'
           href={canales.telegram}
           target='_blank'
           rel='noopener noreferrer'
@@ -179,6 +179,11 @@ const SOCIAL = {
     outline: none;
   }
 
+  .social.canal :global(svg) {
+    width: 18px;
+    height: 18px;
+  }
+
   .author-links {
     display: flex;
     gap: 8px;
@@ -230,6 +235,7 @@ const SOCIAL = {
 
     .wrap {
       padding: 0 4px;
+      flex-wrap: wrap;
     }
 
     .brand-social {
