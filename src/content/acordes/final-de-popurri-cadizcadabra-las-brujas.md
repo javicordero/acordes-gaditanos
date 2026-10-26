@@ -6,7 +6,7 @@ musica: Juanma Romero Bey
 letra: Juanma Romero Bey
 img: https://static.grupojoly.com/clip/d046d8da-8e89-4042-9eeb-c982b4e57d1c_facebook-aspect-ratio_default_0.jpg
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/f75c6LUqdlc?feature=player_embedded'
+video: 'https://www.youtube.com/embed/bcr1vKPpYfc'
 fraseClave: "Acabo de acabar, la"
 cejilla: 0
 

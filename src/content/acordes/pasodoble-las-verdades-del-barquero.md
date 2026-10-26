@@ -7,7 +7,7 @@ letra: Antonio Martín
 modalidad: Comparsa
 img: https://i.ytimg.com/vi/3XVgcBWeGp4/maxresdefault.jpg
 cejilla: 0
-video: 'https://www.youtube.com/embed/PKiEFLrYSI4'
+video: 'https://www.youtube.com/embed/2o-H5GN9uBI'
 date: "11/09/2026"
 fraseClave: "Capeando temporales ya son veintisiete años"
 ---

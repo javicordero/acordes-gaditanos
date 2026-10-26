@@ -7,7 +7,7 @@ letra: El Noly
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKccNcS1pSeBBkWeCuCXUxJJcpZO3Iz9B-xy4TKfQYxjSetRMys2bTFrgACufSIRctEgIYiieqd-KWeAzM2uUJZrhCN80h7y3DXgBL-1TISDZTMUvBY9HvokNflUKGS5fM0X_JmcX-ocJL/s400/los-campeones-preliminares+%25289%2529-kBn--1353x900%2540abc.jpg
 cejilla: 7
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/_ss9WHK4O4s?feature=player_embedded'
+video: 'https://www.youtube.com/embed/R8lrQPkEsRY'
 
 fraseClave: Despues de abrazarte, después de cantarte
 ---

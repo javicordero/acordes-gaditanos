@@ -7,7 +7,7 @@ letra: Juan Carlos Aragón
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/comparsa-los-peregrinos-1.JPG
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/HADOQEZ91_Y?feature=player_embedded'
+video: 'https://www.youtube.com/embed/eNPZ8-VCRUI'
 fraseClave: Tú vente conmigo que sobra futuro
 ---
 <pre>

@@ -7,7 +7,7 @@ letra: Kike Remolino
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2022/La%20luz%20de%20C%C3%A1diz%20-Cuartos%20%286%29.jpg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/pJ45LSbO0aQ?feature=player_embedded'
+video: 'https://www.youtube.com/embed/j-c3nNcUpFk'
 fraseClave: Papa que se marcha el verano
 
 

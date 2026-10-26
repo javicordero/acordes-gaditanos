@@ -7,7 +7,7 @@ letra: El Noly
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/Albordedelprecipicio_.jpeg
 cejilla: 5
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/z8r1_tlTMhA?feature=player_embedded'
+video: 'https://www.youtube.com/embed/WwR3qlbRxgU'
 fraseClave: "Surgido de un buen platillazo,"
 
 ---

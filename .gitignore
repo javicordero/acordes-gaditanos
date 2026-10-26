@@ -62,3 +62,7 @@ x-enviados.json
 
 # Cache de importacion del glosario de acordes
 .cache/
+
+# Revision de videos: se generan con 'npm run videos -- --buscar'
+videos-candidatos.md
+src/data/videos-candidatos.json

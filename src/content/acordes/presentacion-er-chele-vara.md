@@ -7,7 +7,7 @@ letra: Juan Carlos Aragón
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/er-chele-vara-2.jpg
 cejilla: 4
 date: "26/11/2025"
-video: 'https://www.youtube.com/embed/Yw9-6UhA1fE?feature=player_embedded'
+video: 'https://www.youtube.com/embed/fDYKirJsC08'
 
 fraseClave: Por el barrio de la Viña quiso dios que se
 ---

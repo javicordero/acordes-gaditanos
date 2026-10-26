@@ -7,7 +7,7 @@ letra: José Luis Bustelo
 img: https://www.portaldecadiz.com/images/igallery/resized/15301-15400/reportaje_02-15352-1200-1200-80-wm-center_bottom-100-portaldecadizpng.jpg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/r2iCo10ZbEU?feature=player_embedded'
+video: 'https://www.youtube.com/embed/W2UlvWEa0l0'
 fraseClave: "Perdón, quiero pedirles perdón,"
 
 ---

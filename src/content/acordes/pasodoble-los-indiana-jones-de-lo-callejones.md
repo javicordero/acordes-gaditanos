@@ -7,7 +7,7 @@ letra: Kike Remolino
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/los-indiana-jones-de-los-callejones-4.JPG
 cejilla: 0
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/ACWW7pRYYJY?feature=player_embedded'
+video: 'https://www.youtube.com/embed/RzxO9o6kdbA'
 
 fraseClave: Los gaditanos carnavaleros que se quedan en casa
 ---

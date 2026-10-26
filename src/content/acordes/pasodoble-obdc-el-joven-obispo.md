@@ -7,7 +7,7 @@ letra: Germán Rendón
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/15c0f1a31819b8902ada8b2cc.jpg
 cejilla: 4
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/3gxK8Qpgk3w?feature=player_embedded'
+video: 'https://www.youtube.com/embed/xF_oHP0G_bU'
 fraseClave: "Como el café que despierta"
 
 ---

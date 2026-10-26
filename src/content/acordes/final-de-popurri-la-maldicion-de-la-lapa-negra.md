@@ -7,7 +7,7 @@ letra: Manolo Santander
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23489.jpg
 cejilla: 0
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/KU8dlbes1Is?feature=player_embedded'
+video: 'https://www.youtube.com/embed/zLEptCYqShw'
 fraseClave: "Ya me voy que sube"
 ---
 <pre>

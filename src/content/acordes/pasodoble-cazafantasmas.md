@@ -7,7 +7,7 @@ letra: El Piru
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/cazafantasmas-comparsa-femenina.jpeg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/hejqpHNEaH8?feature=player_embedded'
+video: 'https://www.youtube.com/embed/fjXCMghOODg'
 fraseClave: "Abuelo siéntate a mi vera"
 ---
 <pre>

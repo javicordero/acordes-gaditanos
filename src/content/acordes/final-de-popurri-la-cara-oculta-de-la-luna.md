@@ -7,7 +7,7 @@ letra: Juan Manuel Romero Bey
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/01/cara-oculta-luna-coac-2018.jpg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/mKffGaKfEBY?feature=player_embedded'
+video: 'https://www.youtube.com/embed/xmehVD588hE'
 fraseClave: "Con la mano en el pecho"
 
 ---

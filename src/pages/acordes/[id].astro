@@ -14,6 +14,7 @@ import AcordesRecomendados from '../../components/right-column/AcordesRecomendad
 import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
 import Anuncio2 from '../../components/right-column/anuncios/Anuncio2.astro';
 import Anuncio3 from '../../components/right-column/anuncios/Anuncio3.astro';
+import { busquedaYoutube, enlaceYoutube, estadoDeVideo } from '../../lib/videos';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -39,6 +40,12 @@ const {
   modalidad,
   fraseClave,
 } = data;
+
+// Estado del vídeo principal (npm run videos). Si está caído o bloqueado, la
+// ficha no pinta un iframe roto: muestra un enlace útil en su lugar.
+const estadoVideo = estadoDeVideo(video);
+const enlaceVideo = enlaceYoutube(video);
+const busquedaVideo = busquedaYoutube(pieza, agrupacion, year);
 
 // Obtener acordes recomendados
 const todosLosAcordes = await getCollection('acordes');
@@ -185,6 +192,9 @@ const webPageSchema = {
         iframeTitle={`Video oficial de ${pieza} - ${agrupacion} - Carnaval de Cádiz ${year}`}
         class='video-oficial'
         flush
+        estado={estadoVideo}
+        enlace={enlaceVideo}
+        busqueda={busquedaVideo}
       />
 
       {

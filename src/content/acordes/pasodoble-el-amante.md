@@ -7,7 +7,7 @@ letra: Juanma Romero Bey
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2015/el-amante-1.jpg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/pAPC37_wCEs?feature=player_embedded'
+video: 'https://www.youtube.com/embed/4jaJIHmnoqA'
 fraseClave: "El amor es un cuchillo afilado"
 
 ---

@@ -7,7 +7,7 @@ letra: Juan Carlos Aragón
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/er-chele-vara-2.jpg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/AGuj8wGrJvE?feature=player_embedded'
+video: 'https://www.youtube.com/embed/fDYKirJsC08'
 fraseClave: "Llevo escuchando hace tiempo la"
 
 ---

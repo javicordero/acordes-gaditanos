@@ -7,7 +7,7 @@ letra: Kike Remolino.
 img: https://s1.abcstatics.com/media/MM/2019/01/26/v/cachitopan%20(8)_xoptimizadax.jpg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/f4Sa8bsRito?feature=player_embedded'
+video: 'https://www.youtube.com/embed/tasyumPNSd4'
 
 fraseClave: Dicen que este año en chirigota va a ser flojito,
 ---

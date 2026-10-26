@@ -7,7 +7,7 @@ letra: José Luis Bustelo
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2013/las-de-la-alegre-figura-4.jpg
 cejilla: 5
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/MBqSZ8bbI-Q?feature=player_embedded'
+video: 'https://www.youtube.com/embed/jFhsQQmj1mg'
 
 fraseClave: Tengan buenas mercedes el saludo obligatorio
 ---

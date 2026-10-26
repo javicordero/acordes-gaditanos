@@ -7,7 +7,7 @@ letra: Juanma Romero Bey
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23480.jpg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/NlTXTA6bDKM?feature=player_embedded'
+video: 'https://www.youtube.com/embed/OVpCvhIHz3Y'
 
 fraseClave: Envenenaita y sobre estas tablas, ya está en su teatro
 ---

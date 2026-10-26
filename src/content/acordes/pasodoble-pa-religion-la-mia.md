@@ -7,7 +7,7 @@ letra: Lolo Molina
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/chirigota-pa-religion-la-mia(5).jpeg
 cejilla: 6
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/ANXzz3Q4GqU?feature=player_embedded'
+video: 'https://www.youtube.com/embed/Yfc1DMU5Li0'
 fraseClave: "Igual que cada martes, entraron"
 
 ---

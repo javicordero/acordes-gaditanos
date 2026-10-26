@@ -7,7 +7,7 @@ letra: Germán Rendón
 img: https://www.codigocarnaval.com/wp-content/uploads/2019/10/comparsa-los-resilientes.jpg.webp
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/qagSYIQglYQ?feature=player_embedded'
+video: 'https://www.youtube.com/embed/qPrqSFSqu1Q'
 
 fraseClave: En tiempos del todo vale de usar y tirar amores
 ---

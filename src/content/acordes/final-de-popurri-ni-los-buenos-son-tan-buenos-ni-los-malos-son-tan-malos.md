@@ -7,7 +7,7 @@ letra: Iván Romero
 img: https://imagenes.cope.es/files/microformat_image/uploads/2024/07/10/668dc5edca53a.jpeg
 cejilla: 0
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/TRNRXONWYt8?feature=player_embedded'
+video: 'https://www.youtube.com/embed/_j1KYd8RwNk'
 
 fraseClave: Cuando todo se acabe y te encuentres conmigo, dará
 ---

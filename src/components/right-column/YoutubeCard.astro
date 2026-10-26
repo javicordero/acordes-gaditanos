@@ -1,7 +1,18 @@
 ---
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
 
-const { link, title, headingId, iframeTitle, class: className, flush = false } = Astro.props;
+const {
+  link,
+  title,
+  headingId,
+  iframeTitle,
+  class: className,
+  flush = false,
+  // Estado del vídeo según src/data/videos-estado.json (npm run videos).
+  estado = 'ok' as 'ok' | 'muerto' | 'bloqueado',
+  enlace = '',
+  busqueda = '',
+} = Astro.props;
 
 const hasTitle = Boolean(title);
 // Use an explicit, human-friendly id by default so other nodes can reference it.
@@ -18,15 +29,40 @@ const iframeTitleText = iframeTitle ?? 'Video de la agrupación del Carnaval de 
 
 <RightColumnCard title={title} headingId={headingIdFinal} class={className} flush={flush}>
   <section aria-labelledby={headingIdFinal}>
-    <iframe
-      class:list={[{ 'is-flush': flush }]}
-      src={link}
-      title={iframeTitleText}
-      frameborder='0'
-      allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-      referrerpolicy='strict-origin-when-cross-origin'
-      allowfullscreen
-      loading='lazy'></iframe>
+    {
+      estado === 'ok' ? (
+        <iframe
+          class:list={[{ 'is-flush': flush }]}
+          src={link}
+          title={iframeTitleText}
+          frameborder='0'
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+          referrerpolicy='strict-origin-when-cross-origin'
+          allowfullscreen
+          loading='lazy'
+        />
+      ) : estado === 'bloqueado' && enlace ? (
+        <a class='video-estado' href={enlace} target='_blank' rel='noopener'>
+          <span class='video-estado__titulo'>Vídeo en YouTube</span>
+          <span class='video-estado__texto'>
+            El autor no permite incrustarlo aquí. Se abre en YouTube.
+          </span>
+          <span class='video-estado__boton'>Ver en YouTube</span>
+        </a>
+      ) : (
+        <div class='video-estado'>
+          <span class='video-estado__titulo'>Vídeo no disponible</span>
+          <span class='video-estado__texto'>El vídeo original ya no existe en YouTube.</span>
+          {
+            busqueda && (
+              <a class='video-estado__boton' href={busqueda} target='_blank' rel='noopener'>
+                Buscar la actuación
+              </a>
+            )
+          }
+        </div>
+      )
+    }
   </section>
 </RightColumnCard>
 
@@ -45,8 +81,51 @@ const iframeTitleText = iframeTitle ?? 'Video de la agrupación del Carnaval de 
     border: none;
   }
 
-  /* @media (--mq-sm) {
-   */
+  .video-estado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-height: 180px;
+    padding: 1rem;
+    border: 2px dashed color-mix(in srgb, var(--primary-color) 45%, transparent);
+    text-align: center;
+    position: relative;
+    top: 2px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .video-estado__titulo {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.85rem;
+  }
+
+  .video-estado__texto {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    opacity: 0.8;
+  }
+
+  .video-estado__boton {
+    margin-top: 0.35rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+
+  .video-estado__boton:hover,
+  .video-estado__boton:focus-visible {
+    background: var(--primary-color);
+    color: var(--primary-contrast-color, #fff);
+  }
+
   @media (max-width: 640px) {
     iframe {
       height: 200px;

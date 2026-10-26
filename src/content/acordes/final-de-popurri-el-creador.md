@@ -7,7 +7,7 @@ letra: Tino Tovar
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/creador_116918676ff49aebce8075a874be7e6d.jpeg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/5sroK3gzppw?feature=player_embedded'
+video: 'https://www.youtube.com/embed/MFwtj8A9l3U'
 fraseClave: "Este rapsoda que se empeña"
 
 ---

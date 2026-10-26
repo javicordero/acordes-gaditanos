@@ -7,7 +7,7 @@ letra: David Carapapa
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/el-marqu-s-de-c-diz-1.jpg
 cejilla: 4
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/ZIRdsQbSZH8?feature=player_embedded'
+video: 'https://www.youtube.com/embed/K51_kGMyWps'
 
 fraseClave: Como dicen que es más rico el que menos necesita
 ---

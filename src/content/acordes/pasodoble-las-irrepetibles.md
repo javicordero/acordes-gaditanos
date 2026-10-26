@@ -7,7 +7,7 @@ letra: David Castro
 img: https://imagenes.cope.es/files/microformat_image/uploads/2024/07/12/66912c089573e.jpeg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/j1wpXN7Amik?feature=player_embedded'
+video: 'https://www.youtube.com/embed/809svjKwZgU'
 
 fraseClave: Hoy me confieso sabiendo que habrá gente que no
 ---

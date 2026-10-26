@@ -7,7 +7,7 @@ letra: El Chapa
 img: https://s3.abcstatics.com/media/provincia/2020/01/21/v/loslistos-kux--1248x698@abc-Home.jpg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/38nvh6usYew?feature=player_embedded'
+video: 'https://www.youtube.com/embed/K0sHnaxAAmk'
 fraseClave: Y cuando yo era un tonto
 ---
 <pre>

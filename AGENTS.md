@@ -147,6 +147,14 @@ Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astr
 - `public/redirects.json` — mapa de 300+ URLs legacy → nuevas rutas (usado client-side)
 - `public/redirects-from.json` — lista de URLs legacy
 
+### Vídeos de YouTube
+- Cada ficha tiene un `video:` (embed) y, si hay, un `cover:` (guitarra). El estado del vídeo principal se guarda en `src/data/videos-estado.json`: `ok`, `muerto` (404/401) o `bloqueado` (403, el autor no permite incrustarlo).
+- `npm run videos` audita con el oEmbed de YouTube y reescribe ese JSON. No se ejecuta en build (son ~440 peticiones): se pasa antes de publicar o cuando se toque el cancionero. Si una consulta falla por red o 429 se conserva el estado anterior; con `--solo` se conserva el resto del cancionero.
+- `src/lib/videos.ts` lo lee en la ficha (`estadoDeVideo`, `enlaceYoutube`, `busquedaYoutube`). `YoutubeCard` pinta el iframe solo si está `ok`: si está `muerto` muestra un bloque con enlace a la búsqueda en YouTube, y si está `bloqueado` un enlace directo a `watch?v=`. Sin datos se asume `ok`, para no ocultar un vídeo nuevo.
+- **Recambio**: `npm run videos -- --buscar` busca la **actuación completa** de la agrupación en `@ONDACADIZCARNAVAL`, `@carnavalsur` y `@cadizbooktv8695`, en ese orden. Escribe `videos-candidatos.md` y `src/data/videos-candidatos.json`. Filtros: el título debe llevar todas las palabras de la agrupación, no puede ser de otro año (título, `COACnn` o fecha de subida si es ≥2015), ni una pieza suelta, ni antología/homenaje/entrevista/resumen/carnaval chiquito, y tiene que durar ≥10 min. El canal se verifica con el `author_name` de oEmbed, porque el buscador de CADIZBOOKTV cae a resultados generales.
+- `npm run videos -- --aplicar` escribe el vídeo elegido **solo en las fichas caídas** de esa agrupación y año (nunca cambia uno que funciona). Para descartar un grupo, `"aplicar": false` en el JSON. `--solo <texto>` limita a una agrupación y fusiona con lo ya revisado.
+- Los covers no se auditan (se asume `ok`).
+
 ### PDF Generation
 `node scripts/generate-pdf.mjs src/content/acordes/<slug>.md`
 Genera un PDF al lado del .md. Requiere `fonts/RobotoMono-*.ttf` (fallback a Courier).

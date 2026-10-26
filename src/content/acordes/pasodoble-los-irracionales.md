@@ -6,7 +6,7 @@ musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/los-irracionales-milian-oneto.jpeg
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/4zDOYXFpKV0?feature=player_embedded'
+video: 'https://www.youtube.com/embed/loVpLX6wnls'
 fraseClave: "Una ciudad es un trocito"
 
 ---

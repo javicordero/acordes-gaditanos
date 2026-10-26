@@ -7,7 +7,7 @@ letra: Antonio Martínez Ares
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-chusma-selecta-2.jpg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/0WPwGX_qfQ8?feature=player_embedded'
+video: 'https://www.youtube.com/embed/PF08FGBfQsc'
 
 fraseClave: Por el castillo del Falla corre un rumor
 ---

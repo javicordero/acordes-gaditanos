@@ -7,7 +7,7 @@ letra: El Chapa
 img: https://static.grupojoly.com/clip/0aa6a594-a9ed-4fd2-824a-86339774f3f0_source-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/cExaXtZ55Jo?feature=player_embedded'
+video: 'https://www.youtube.com/embed/u5TgnhkVxGg'
 
 fraseClave: Ábre los ojos, abre los ojos, mira la multitud
 ---

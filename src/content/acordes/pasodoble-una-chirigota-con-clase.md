@@ -7,7 +7,7 @@ letra: José Luis Bustelo
 img: https://www.codigocarnaval.com/wp-content/uploads/2021/01/Don-Adolfo-Una-chirigota-con-clase.jpg
 cejilla: 0
 date: "27/11/2025"
-video: 'https://www.youtube.com/embed/shBjJL-5g3s?si=4YllNc3c5bNzvO2z'
+video: 'https://www.youtube.com/embed/a31iqBpt4kc'
 fraseClave: "Yo tengo diez mil preguntas,"
 
 ---

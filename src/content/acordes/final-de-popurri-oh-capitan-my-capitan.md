@@ -7,7 +7,7 @@ letra: Tino Tovar
 img: https://static.grupojoly.com/clip/23ea30ae-2613-4ec8-97a9-81f2fe78334e_source-aspect-ratio_1600w_0.jpg
 cejilla: 4
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/Co0vEoWqhLQ?feature=player_embedded'
+video: 'https://www.youtube.com/embed/V6DSke1ks-A'
 
 fraseClave: Y esta casa que es trono de Momo y esta estirpe del
 ---

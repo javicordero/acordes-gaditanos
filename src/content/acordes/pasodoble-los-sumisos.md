@@ -7,7 +7,7 @@ letra: Antonio Martínez Ares
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/18052022-los-sumisos-160-scaled.jpg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/6ehfMOea1ps'
+video: 'https://www.youtube.com/embed/fZvk4gCYq8M'
 fraseClave: Por fuera un osito desmembrao
 ---
 <pre>

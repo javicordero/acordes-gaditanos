@@ -7,7 +7,7 @@ letra: Kike Remolino
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2020/02/comparsa-los-encaidenaos.jpg
 cejilla: 0
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/bUqwKgLh9gg'
+video: 'https://www.youtube.com/embed/7R6LYC-hdbQ'
 
 fraseClave: Cuando a un gaditano lo paren su alma y corazón se
 ---

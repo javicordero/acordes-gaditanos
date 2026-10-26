@@ -7,7 +7,7 @@ letra: Germán García Rendón
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/15c0f1a31819b8902ada8b2cc.jpg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/72-wt3-dSBI?feature=player_embedded'
+video: 'https://www.youtube.com/embed/xF_oHP0G_bU'
 
 fraseClave: La conferencia episcopal ha financiado mi nuevo
 ---

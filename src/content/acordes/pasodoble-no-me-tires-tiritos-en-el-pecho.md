@@ -7,7 +7,7 @@ letra: Antoñito Molina
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23538.jpg
 cejilla: 0
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/j4mTEz1CIDc?feature=player_embedded'
+video: 'https://www.youtube.com/embed/6UxXB2TFu5Y'
 
 fraseClave: Hoy cumple ya sus veinte años la letra de aquel
 ---

@@ -12,7 +12,10 @@
     "wa:login": "node scripts/whatsapp.mjs login",
     "x": "node scripts/x.mjs post",
     "x:login": "node scripts/x.mjs login",
-    "qr": "node scripts/generar-qr.mjs"
+    "qr": "node scripts/generar-qr.mjs",
+    "videos": "node scripts/auditar-videos.mjs",
+    "videos:buscar": "node scripts/auditar-videos.mjs --buscar",
+    "videos:aplicar": "node scripts/auditar-videos.mjs --aplicar"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",

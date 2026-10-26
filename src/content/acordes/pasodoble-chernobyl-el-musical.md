@@ -7,7 +7,7 @@ letra: El Canijo
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/24137.jpg
 cejilla: 0
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/DId047PTPkU?feature=player_embedded'
+video: 'https://www.youtube.com/embed/0XLKexiK1ag'
 fraseClave: "Chernóbil es igual que Cádiz"
 
 ---

@@ -7,7 +7,7 @@ letra: Tino Tovar
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/el-angel-de-cadiz-semifinales.jpeg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/a7eB2YwxAbc?feature=player_embedded'
+video: 'https://www.youtube.com/embed/m9l0la0BD9Q'
 fraseClave: "Tú, mi trenecito que nunca"
 ---
 <pre>

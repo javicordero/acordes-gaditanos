@@ -7,7 +7,7 @@ letra: Manolín Santander
 img: https://static.grupojoly.com/clip/59458108-2ac2-4bb6-9bff-3e7230b738c2_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/300bvt038Qo?feature=player_embedded'
+video: 'https://www.youtube.com/embed/c2aNUDTU-Ls'
 
 fraseClave: De tierras mejicanas te llega a ti esta tropa
 ---

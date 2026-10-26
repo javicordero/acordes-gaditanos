@@ -7,7 +7,7 @@ letra: Antonio Martínez Ares
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/la-eternidad-3.jpg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/xzkmIue8GpQ?feature=player_embedded'
+video: 'https://www.youtube.com/embed/zHucsI4MUo0'
 
 fraseClave: Tacita… las despedidas son tan amargas,
 ---

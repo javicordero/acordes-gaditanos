@@ -7,7 +7,7 @@ letra: Tino Tovar
 img: https://static.grupojoly.com/clip/6ca3887e-7d65-4897-9471-989aed0efa36_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/3F6QTRxOrTI?feature=player_embedded'
+video: 'https://www.youtube.com/embed/HKpMaFZOL_A'
 
 fraseClave: Media vida colgado de un reloj, media vida tejiendo
 ---

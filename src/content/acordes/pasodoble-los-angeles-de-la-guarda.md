@@ -7,7 +7,7 @@ letra: David Carapapa, Javier Carapapa
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22835.jpg
 cejilla: 5
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/vJ3mNG8E5lU?feature=player_embedded'
+video: 'https://www.youtube.com/embed/2p5ifLTJ5is'
 
 fraseClave: Toma esta copla que nace por tu orilla mariscando
 ---

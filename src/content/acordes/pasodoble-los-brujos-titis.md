@@ -7,7 +7,7 @@ letra: Manolo Santander
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22823.jpg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/ApAErgGfzd4?feature=player_embedded'
+video: 'https://www.youtube.com/embed/NsFyisl0ju4'
 
 fraseClave: Embrujado por una ciudad, que me trata como una
 ---

@@ -7,7 +7,7 @@ letra: Iván Romero
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comparsa-que-corgaera.jpeg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/D6PebBw8eKE?feature=player_embedded'
+video: 'https://www.youtube.com/embed/_HfEMaEBFhI'
 
 fraseClave: Cada noche comparto contigo la luna, cada noche
 ---

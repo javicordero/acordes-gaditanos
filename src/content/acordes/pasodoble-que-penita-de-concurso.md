@@ -7,7 +7,7 @@ letra: Miguel Choza
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/quepenitadeconcurso_.jpeg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/FPWRc8BjAxY?feature=player_embedded'
+video: 'https://www.youtube.com/embed/LOU2mTX8HSo'
 fraseClave: "Ya estamos todos contentos, ya"
 
 ---

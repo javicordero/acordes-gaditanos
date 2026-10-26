@@ -7,7 +7,7 @@ letra: Jonathan Pérez Ginel
 img: https://static.grupojoly.com/clip/84e6b03a-80b0-4237-ad09-0f20341e551a_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/xmleph61hGo?feature=player_embedded'
+video: 'https://www.youtube.com/embed/xf3Wx41hXtE'
 fraseClave: "Años, cuarenta y pico de"
 
 ---

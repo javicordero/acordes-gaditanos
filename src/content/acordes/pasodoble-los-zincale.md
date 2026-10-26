@@ -7,7 +7,7 @@ letra: Tomy Alemania
 img: https://ondacadiz.es/sites/default/files/styles/webp/public/noticias/2018-07/imagenes/noticias%20cadiz%20Los%20zincale.jpg.webp?itok=SgUqRO2I
 cejilla: 4
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/yuoxLd21JbA?feature=player_embedded'
+video: 'https://www.youtube.com/embed/61aJ6VSl6dA'
 
 fraseClave: No le grites a papa y mama, no te subas encima del
 ---

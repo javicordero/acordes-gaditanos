@@ -7,7 +7,7 @@ letra: David Carapapa, Javier Carapapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/nico-garcia-la-azotea.jpeg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/byuOY3ffkpc?feature=player_embedded'
+video: 'https://www.youtube.com/embed/Wc7rY5Nta8g'
 
 fraseClave: Se encendió la bombilla y me echo a temblar
 ---

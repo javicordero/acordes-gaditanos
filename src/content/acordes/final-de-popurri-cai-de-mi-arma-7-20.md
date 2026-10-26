@@ -7,7 +7,7 @@ letra: Kike Remolino
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22876.jpg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/o8gbW1mHU7g?feature=player_embedded'
+video: 'https://www.youtube.com/embed/x05jE_VnclA'
 fraseClave: "Yo tengo la Viña, yo"
 ---
 <pre>

@@ -7,7 +7,7 @@ letra: El Piru
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-ciudad-de-dios-1.jpg
 cejilla: 4
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/nYJWdOxQPHc?feature=player_embedded'
+video: 'https://www.youtube.com/embed/Nc2YZUx5rzk'
 fraseClave: "De nuevo el gaditano demostró"
 
 ---

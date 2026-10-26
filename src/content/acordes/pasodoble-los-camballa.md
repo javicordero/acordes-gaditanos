@@ -7,7 +7,7 @@ letra: Tomy Alemania
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/los-camball--9.JPG
 cejilla: 4
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/ZyB15EFvntI?feature=player_embedded'
+video: 'https://www.youtube.com/embed/OXyOrMNPMes'
 
 fraseClave: Hoy he vuelto a contemplar lo bonita que eres
 ---

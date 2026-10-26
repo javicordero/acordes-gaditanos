@@ -7,7 +7,7 @@ letra: Jesús Bienvenido
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2019/05/que-calo-chirigota-canijo.jpg
 cejilla: 1
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/6VK6DY5eT0U?feature=player_embedded'
+video: 'https://www.youtube.com/embed/s9qxsY6c1qw'
 fraseClave: "Cuando se entra por Cádiz primo"
 
 ---

@@ -7,7 +7,7 @@ letra: David Carapapa
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-canci-n-de-la-laguna-6.jpg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/hAHI_mpR19Q?feature=player_embedded'
+video: 'https://www.youtube.com/embed/aVvHhSPDC_g'
 fraseClave: "Cuando el verano se rinde"
 
 ---

@@ -7,7 +7,7 @@ letra: Jonathan Pérez Ginel
 img: https://static.grupojoly.com/clip/119692aa-f30b-42d5-8170-78495489808f_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/IyBzZV74oYQ?feature=player_embedded'
+video: 'https://www.youtube.com/embed/aEthyrSZhhs'
 
 fraseClave: Bajo una luna de cristal y mil barquillas encallá
 ---

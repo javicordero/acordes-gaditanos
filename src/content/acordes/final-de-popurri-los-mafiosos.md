@@ -7,7 +7,7 @@ letra: Juan Carlos Aragón
 img: https://static.eldiario.es/clip/1cfe85cf-4b56-4c92-863e-beac3458a77a_16-9-aspect-ratio_default_0.jpg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/naJsn6oO3dU?feature=player_embedded'
+video: 'https://www.youtube.com/embed/GgU6ALIHG0w'
 
 fraseClave: Está acabando la entrega de la mercancía, es tan
 ---

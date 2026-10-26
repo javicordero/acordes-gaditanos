@@ -7,7 +7,7 @@ letra: Germán Rendón
 img: https://static.grupojoly.com/clip/c13b10c0-2344-4d36-a257-02226633119d_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/FSprO0hfAZM?feature=player_embedded'
+video: 'https://www.youtube.com/embed/Q_mRLH--ppE'
 
 fraseClave: Yo tuve el bonito sueño de volver a casa
 ---

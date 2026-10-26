@@ -7,7 +7,7 @@ letra: Juan Carlos Aragón
 img: https://www.canalsur.es/resources/archivos_offline/2019/2/6/1550743445135la_gaditanisima_1024x576.jpg
 cejilla: 3
 date: "25/11/2025"
-video: 'https://www.youtube.com/embed/5YqzTlDkSMk?feature=player_embedded'
+video: 'https://www.youtube.com/embed/2Hx-ZfTR8Uo'
 
 fraseClave: Se detiene el mundo y se para el tiempo, se subasta
 ---
