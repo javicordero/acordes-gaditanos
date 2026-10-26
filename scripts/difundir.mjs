@@ -15,35 +15,24 @@
 //   TELEGRAM_CHAT_ID    por defecto @acordesgaditanos
 //   SITE_URL            por defecto https://acordesgaditanos.com
 //   GITHUB_STEP_SUMMARY si existe, deja el texto en el resumen de la Action
+//
+// El texto y la detección de ficheros nuevos viven en scripts/lib/aviso.mjs,
+// porque el canal de WhatsApp (scripts/whatsapp.mjs) usa exactamente lo mismo.
 
-import { execFileSync } from 'node:child_process';
-import { appendFileSync, existsSync, readFileSync } from 'node:fs';
+import { appendFileSync } from 'node:fs';
+import {
+  cargarCopla,
+  cargarCoplas,
+  esperarPublicacion,
+  ficherosAnadidos,
+  mensajePrueba,
+  ordenar,
+  textoDe,
+  urlAcorde,
+} from './lib/aviso.mjs';
 
-const CARPETA = 'src/content/acordes';
-const SITE = (process.env.SITE_URL || 'https://acordesgaditanos.com').replace(/\/+$/, '');
 const TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
 const CHAT = process.env.TELEGRAM_CHAT_ID || '@acordesgaditanos';
-
-/** Piezas que llegan del frontmatter en formas muy distintas (sin tildes, minúsculas…). */
-const PIEZAS = {
-  pasodoble: 'Pasodoble',
-  presentacion: 'Presentación',
-  popurri: 'Popurrí',
-  'final de popurri': 'Final de popurrí',
-  estribillo: 'Estribillo',
-  tango: 'Tango',
-  credo: 'Credo',
-  cuarteta: 'Cuarteta',
-};
-
-function sinTildes(texto) {
-  return (texto || '')
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
 
 function leerArgumentos(argv) {
   const opciones = {
@@ -108,156 +97,6 @@ function leerArgumentos(argv) {
   return opciones;
 }
 
-function leerFrontmatter(ruta) {
-  const texto = readFileSync(ruta, 'utf8');
-  const bloque = texto.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!bloque) return {};
-
-  const datos = {};
-  for (const linea of bloque[1].split(/\r?\n/)) {
-    const corte = linea.indexOf(':');
-    if (corte <= 0) continue;
-
-    const clave = linea.slice(0, corte).trim();
-    let valor = linea.slice(corte + 1).trim();
-    if (
-      (valor.startsWith('"') && valor.endsWith('"')) ||
-      (valor.startsWith("'") && valor.endsWith("'"))
-    ) {
-      valor = valor.slice(1, -1);
-    }
-    datos[clave] = valor.trim();
-  }
-  return datos;
-}
-
-function fechaDe(texto) {
-  const partes = (texto || '').split(/[-/]/).map(Number);
-  if (partes.length !== 3 || partes.some(Number.isNaN)) return 0;
-  return new Date(partes[2], partes[1] - 1, partes[0]).getTime();
-}
-
-function etiquetaPieza(pieza) {
-  const limpia = (pieza || '').trim().replace(/\s+/g, ' ');
-  const clave = sinTildes(limpia);
-  if (PIEZAS[clave]) return PIEZAS[clave];
-
-  // Cuarteta "Título": se normaliza el tipo y se conserva el título.
-  const cuarteta = limpia.match(/^cuarteta\s+"(.+)"$/i);
-  if (cuarteta) return `Cuarteta "${cuarteta[1]}"`;
-
-  return limpia ? limpia.charAt(0).toUpperCase() + limpia.slice(1) : '';
-}
-
-function titulo(datos) {
-  const pieza = etiquetaPieza(datos.pieza);
-  const agrupacion = (datos.agrupacion || '').trim();
-  const year = (datos.year || '').trim();
-  const nombre = [pieza, agrupacion].filter(Boolean).join(' ');
-  return year ? `${nombre} — ${year}` : nombre;
-}
-
-/** Música y letra en líneas separadas; si son la misma persona, en una. */
-function lineasAutores(datos) {
-  const musica = (datos.musica || '').trim();
-  const letra = (datos.letra || '').trim();
-
-  if (musica && letra && sinTildes(musica) === sinTildes(letra)) {
-    return [`Música y letra: ${musica}`];
-  }
-
-  const lineas = [];
-  if (musica) lineas.push(`Música: ${musica}`);
-  if (letra) lineas.push(`Letra: ${letra}`);
-  return lineas;
-}
-
-function urlAcorde(copla) {
-  return `${SITE}/acordes/${copla.slug}/`;
-}
-
-function mensajeUna(copla) {
-  return [
-    '🎶 Nuevos acordes',
-    '',
-    titulo(copla.datos),
-    ...lineasAutores(copla.datos),
-    '',
-    urlAcorde(copla),
-  ].join('\n');
-}
-
-function mensajeVarias(coplas) {
-  return [
-    `🎶 ${coplas.length} acordes nuevos`,
-    '',
-    ...coplas.map((copla) => `• ${titulo(copla.datos)}`),
-    '',
-    `${SITE}/lista/`,
-  ].join('\n');
-}
-
-function mensajeResumen(coplas) {
-  return [
-    `🎶 ${coplas.length} acordes nuevos`,
-    '',
-    `Hoy hemos subido ${coplas.length} coplas al cancionero. La última, ${titulo(coplas[0].datos)}.`,
-    '',
-    `${SITE}/novedades/`,
-  ].join('\n');
-}
-
-function mensajePrueba() {
-  return [
-    '🎶 Canal de Acordes Gaditanos',
-    '',
-    'Prueba de publicación correcta. A partir de ahora, cada acorde nuevo se avisará aquí.',
-    '',
-    `${SITE}/`,
-  ].join('\n');
-}
-
-function ficherosAnadidos(antes, despues) {
-  const base = !antes || /^0+$/.test(antes) ? `${despues}~1` : antes;
-
-  try {
-    const salida = execFileSync(
-      'git',
-      ['diff', '--diff-filter=A', '--name-only', base, despues, '--', CARPETA],
-      { encoding: 'utf8' },
-    ).trim();
-
-    return salida ? salida.split(/\r?\n/).filter((ruta) => ruta.endsWith('.md')) : [];
-  } catch (error) {
-    console.warn(`No se pudo comparar ${base}..${despues}: ${error.message}`);
-    return [];
-  }
-}
-
-function cargarCopla(ruta) {
-  return {
-    ruta,
-    slug: ruta.split('/').pop().replace(/\.md$/, ''),
-    datos: leerFrontmatter(ruta),
-  };
-}
-
-async function esperarPublicacion(url, segundos) {
-  if (!segundos) return true;
-
-  const limite = Date.now() + segundos * 1000;
-  while (Date.now() < limite) {
-    try {
-      const res = await fetch(url, { redirect: 'follow' });
-      if (res.status === 200) return true;
-    } catch {
-      // Reintentamos hasta agotar la espera.
-    }
-    await new Promise((listo) => setTimeout(listo, 10_000));
-  }
-  return false;
-}
-
 async function enviarTelegram(texto) {
   if (!TOKEN) {
     throw new Error('Falta TELEGRAM_BOT_TOKEN en el entorno.');
@@ -315,39 +154,20 @@ async function principal() {
     return;
   }
 
-  let rutas;
+  let coplas;
   if (opciones.solo.length) {
-    rutas = opciones.solo
-      .map((slug) => `${CARPETA}/${slug}.md`)
-      .filter((ruta) => existsSync(ruta));
-
-    const faltan = opciones.solo.filter((slug) => !existsSync(`${CARPETA}/${slug}.md`));
-    if (faltan.length) console.warn(`No existen: ${faltan.join(', ')}`);
+    coplas = cargarCoplas(opciones.solo);
   } else {
-    rutas = ficherosAnadidos(opciones.antes, opciones.despues);
+    coplas = ordenar(ficherosAnadidos(opciones.antes, opciones.despues).map(cargarCopla));
   }
 
-  if (!rutas.length) {
+  if (!coplas.length) {
     console.log('Sin coplas nuevas en este push: no se avisa.');
     escribirResumen('Sin novedades', 'Este push no añade coplas nuevas.');
     return;
   }
 
-  const coplas = rutas
-    .map(cargarCopla)
-    .sort(
-      (a, b) =>
-        fechaDe(b.datos.date) - fechaDe(a.datos.date) ||
-        Number(b.datos.year) - Number(a.datos.year) ||
-        (a.datos.agrupacion || '').localeCompare(b.datos.agrupacion || '', 'es'),
-    );
-
-  const texto =
-    coplas.length === 1
-      ? mensajeUna(coplas[0])
-      : coplas.length > opciones.tope
-        ? mensajeResumen(coplas)
-        : mensajeVarias(coplas);
+  const texto = textoDe(coplas, opciones.tope);
 
   if (opciones.seco) {
     console.log('Mensaje preparado (no enviado):\n');
