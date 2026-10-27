@@ -5,7 +5,6 @@ import { Icon } from 'astro-icon/components';
 import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
 import { Image } from 'astro:assets';
 import RecomendacionInline from './RecomendacionInline.astro';
-import TutorialAutoscroll from './TutorialAutoscroll.astro';
 import Anuncio from '../right-column/anuncios/Anuncio.astro';
 import AcordesDeLaPieza from './AcordesDeLaPieza.astro';
 import GlosarioPopover from './GlosarioPopover.astro';
@@ -143,10 +142,8 @@ const headingId = `acorde-${slug}`;
       <span>Cejilla: {cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
 
-      <div class='acorde-content'>
-      <TutorialAutoscroll />
+    <div class='acorde-content'>
       <div class='autoscroll-wrapper'>
-       <button class='autoscroll-help-btn' data-tutorial-help aria-label='Ayuda sobre controles' type='button'>?</button>
         <button class='autoscroll-btn play-btn' aria-label='Iniciar autoscroll'>
           <svg style='position: relative; left: 1px;' xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='var(--primary-contrast-color)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='5 3 19 12 5 21 5 3'></polygon></svg>
         </button>
@@ -346,6 +343,12 @@ const headingId = `acorde-${slug}`;
     width: 100%;
   }
 
+  /* Hueco para el control de autoscroll, que flota sobre la esquina
+     superior derecha del cifrado sin tapar la primera línea. */
+  .acorde-content > .acorde-content {
+    padding-top: 26px;
+  }
+
   .acorde-meta {
     display: flex;
     align-items: center;
@@ -464,7 +467,7 @@ const headingId = `acorde-${slug}`;
 
   .autoscroll-wrapper {
     position: absolute;
-    top: -10px;
+    top: -22px;
     right: -6px;
     z-index: 10;
     display: flex;
@@ -553,32 +556,6 @@ const headingId = `acorde-${slug}`;
     display: flex;
   }
 
-  .autoscroll-help-btn {
-    width: 22px;
-    height: 22px;
-    border-radius: 0;
-    border: 2px solid var(--primary-color);
-    background: var(--card-background-color);
-    color: var(--primary-color);
-    font-size: 0.7rem;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-    order: -2;
-    padding: 0;
-    font-family: 'Roboto Mono', monospace;
-  }
-
-  .autoscroll-help-btn:hover {
-    background: var(--primary-contrast-color);
-    color: var(--on-bright-color);
-  }
-
   .speed-btn {
     padding: 2px 6px;
     border-radius: 0;
@@ -605,17 +582,17 @@ const headingId = `acorde-${slug}`;
 
   @media (max-width: 640px) {
     .autoscroll-btn {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
     }
 
     .autoscroll-btn svg {
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
     }
 
     .speed-btn {
-      padding: 2px 8px;
+      padding: 2px 6px;
       font-size: 0.6rem;
     }
   }

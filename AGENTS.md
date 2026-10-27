@@ -83,7 +83,7 @@ Los acordes del `<pre>` son interactivos: al pulsarlos se abre un popover con su
 - Cobertura: `node --experimental-strip-types scripts/auditar-glosario.ts` falla si algún acorde válido del cancionero no tiene diagrama.
 
 ### Autoscroll
-Implementado en `src/components/page/AcordeCard.astro`. Activado por checkbox "Activar autoscroll". Velocidad regulable. El tutorial del botón «?» ya no se abre solo: solo al pulsarlo.
+Implementado en `src/components/page/AcordeCard.astro`. Activado por el botón de play y regulado con 1x–5x, que se despliegan en vertical bajo el botón. El control flota en la esquina superior derecha del cifrado (`top: -22px`) y el contenedor del `<pre>` lleva `padding-top: 26px` para que no tape la primera línea; en móvil el botón mide 28 px. El antiguo tutorial del botón «?» se eliminó.
 
 ### Transportador
 Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astro` (debajo de la cejilla). La lógica está en `src/lib/transporte.ts` (`transportarEtiqueta`): cambia solo la raíz y el bajo, y conserva el sufijo y los espacios. `#glosario-datos` incluye las 12 transposiciones de cada acorde de la pieza, así que el popover y los diagramas del panel funcionan en cualquier tono. Tras transportar, `AcordeCard.astro` reparte los espacios de cada línea para que los acordes sigan sobre su sílaba. Sin persistencia; la cejilla no cambia.
