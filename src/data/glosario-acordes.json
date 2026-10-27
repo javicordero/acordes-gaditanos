@@ -515,6 +515,30 @@
         }
       ]
     },
+    "Do#7b9": {
+      "raiz": "Do#",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "do-sostenido-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            9,
+            11,
+            12,
+            10,
+            12,
+            9
+          ],
+          "baseTraste": 9,
+          "cejilla": {
+            "traste": 9,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "Do#7maj5": {
       "raiz": "Do#",
       "sufijo": "7maj5",
@@ -1664,6 +1688,30 @@
           ],
           "baseTraste": 1,
           "cejilla": null
+        }
+      ]
+    },
+    "Do7b9": {
+      "raiz": "Do",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "do7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            8,
+            10,
+            11,
+            9,
+            11,
+            8
+          ],
+          "baseTraste": 8,
+          "cejilla": {
+            "traste": 8,
+            "desde": 0,
+            "hasta": 5
+          }
         }
       ]
     },
@@ -3175,6 +3223,30 @@
         }
       ]
     },
+    "Fa#7b9": {
+      "raiz": "Fa#",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "fa-sostenido-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            2,
+            4,
+            5,
+            3,
+            5,
+            2
+          ],
+          "baseTraste": 1,
+          "cejilla": {
+            "traste": 2,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "Fa#7maj5": {
       "raiz": "Fa#",
       "sufijo": "7maj5",
@@ -4312,6 +4384,30 @@
           ],
           "baseTraste": 8,
           "cejilla": null
+        }
+      ]
+    },
+    "Fa7b9": {
+      "raiz": "Fa",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "fa7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            1,
+            3,
+            4,
+            2,
+            4,
+            1
+          ],
+          "baseTraste": 1,
+          "cejilla": {
+            "traste": 1,
+            "desde": 0,
+            "hasta": 5
+          }
         }
       ]
     },
@@ -5807,6 +5903,30 @@
         }
       ]
     },
+    "La#7b9": {
+      "raiz": "La#",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "la-sostenido-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            6,
+            8,
+            9,
+            7,
+            9,
+            6
+          ],
+          "baseTraste": 6,
+          "cejilla": {
+            "traste": 6,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "La#7maj5": {
       "raiz": "La#",
       "sufijo": "7maj5",
@@ -6963,6 +7083,30 @@
         }
       ]
     },
+    "La7b9": {
+      "raiz": "La",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "la7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            5,
+            7,
+            8,
+            6,
+            8,
+            5
+          ],
+          "baseTraste": 5,
+          "cejilla": {
+            "traste": 5,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "La7maj5": {
       "raiz": "La",
       "sufijo": "7maj5",
@@ -7592,6 +7736,30 @@
           ],
           "baseTraste": 11,
           "cejilla": null
+        }
+      ]
+    },
+    "Lab7b9": {
+      "raiz": "Lab",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "la-bemol-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            4,
+            6,
+            7,
+            5,
+            7,
+            4
+          ],
+          "baseTraste": 4,
+          "cejilla": {
+            "traste": 4,
+            "desde": 0,
+            "hasta": 5
+          }
         }
       ]
     },
@@ -9811,6 +9979,26 @@
         }
       ]
     },
+    "Mi7b9": {
+      "raiz": "Mi",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "mi7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            0,
+            2,
+            3,
+            1,
+            3,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
     "Mi7maj5": {
       "raiz": "Mi",
       "sufijo": "7maj5",
@@ -10404,6 +10592,30 @@
           ],
           "baseTraste": 6,
           "cejilla": null
+        }
+      ]
+    },
+    "Mib7b9": {
+      "raiz": "Mib",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "mi-bemol-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            11,
+            13,
+            14,
+            12,
+            14,
+            11
+          ],
+          "baseTraste": 11,
+          "cejilla": {
+            "traste": 11,
+            "desde": 0,
+            "hasta": 5
+          }
         }
       ]
     },
@@ -12543,6 +12755,30 @@
         }
       ]
     },
+    "Re#7b9": {
+      "raiz": "Re#",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "re-sostenido-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            11,
+            13,
+            14,
+            12,
+            14,
+            11
+          ],
+          "baseTraste": 11,
+          "cejilla": {
+            "traste": 11,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "Re#7maj5": {
       "raiz": "Re#",
       "sufijo": "7maj5",
@@ -13503,6 +13739,30 @@
         }
       ]
     },
+    "Re7b9": {
+      "raiz": "Re",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "re7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            10,
+            12,
+            13,
+            11,
+            13,
+            10
+          ],
+          "baseTraste": 10,
+          "cejilla": {
+            "traste": 10,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "Re7maj5": {
       "raiz": "Re",
       "sufijo": "7maj5",
@@ -14148,6 +14408,30 @@
           ],
           "baseTraste": 4,
           "cejilla": null
+        }
+      ]
+    },
+    "Reb7b9": {
+      "raiz": "Reb",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "re-bemol-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            9,
+            11,
+            12,
+            10,
+            12,
+            9
+          ],
+          "baseTraste": 9,
+          "cejilla": {
+            "traste": 9,
+            "desde": 0,
+            "hasta": 5
+          }
         }
       ]
     },
@@ -15967,6 +16251,30 @@
         }
       ]
     },
+    "Si7b9": {
+      "raiz": "Si",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "si7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            7,
+            9,
+            10,
+            8,
+            10,
+            7
+          ],
+          "baseTraste": 7,
+          "cejilla": {
+            "traste": 7,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "Si7maj5": {
       "raiz": "Si",
       "sufijo": "7maj5",
@@ -16548,6 +16856,30 @@
           ],
           "baseTraste": 1,
           "cejilla": null
+        }
+      ]
+    },
+    "Sib7b9": {
+      "raiz": "Sib",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "si-bemol-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            6,
+            8,
+            9,
+            7,
+            9,
+            6
+          ],
+          "baseTraste": 6,
+          "cejilla": {
+            "traste": 6,
+            "desde": 0,
+            "hasta": 5
+          }
         }
       ]
     },
@@ -18523,6 +18855,30 @@
         }
       ]
     },
+    "Sol#7b9": {
+      "raiz": "Sol#",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "sol-sostenido-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            4,
+            6,
+            7,
+            5,
+            7,
+            4
+          ],
+          "baseTraste": 4,
+          "cejilla": {
+            "traste": 4,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "Sol#7maj5": {
       "raiz": "Sol#",
       "sufijo": "7maj5",
@@ -19611,6 +19967,30 @@
         }
       ]
     },
+    "Sol7b9": {
+      "raiz": "Sol",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "sol7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            3,
+            5,
+            6,
+            4,
+            6,
+            3
+          ],
+          "baseTraste": 3,
+          "cejilla": {
+            "traste": 3,
+            "desde": 0,
+            "hasta": 5
+          }
+        }
+      ]
+    },
     "Sol7maj5": {
       "raiz": "Sol",
       "sufijo": "7maj5",
@@ -20192,6 +20572,30 @@
           ],
           "baseTraste": 9,
           "cejilla": null
+        }
+      ]
+    },
+    "Solb7b9": {
+      "raiz": "Solb",
+      "sufijo": "7b9",
+      "bajo": null,
+      "slug": "sol-bemol-7b9",
+      "posiciones": [
+        {
+          "trastes": [
+            2,
+            4,
+            5,
+            3,
+            5,
+            2
+          ],
+          "baseTraste": 1,
+          "cejilla": {
+            "traste": 2,
+            "desde": 0,
+            "hasta": 5
+          }
         }
       ]
     },

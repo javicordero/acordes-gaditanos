@@ -108,6 +108,8 @@ const SUFIJOS: Record<string, string> = {
   '7b5': '7b5',
   '7-5': '7b5',
   '7/5': '7b5',
+  '7b9': '7b9',
+  '7-9': '7b9',
 };
 
 /** Equivalencias enarmónicas para buscar una misma forma con otra grafía. */

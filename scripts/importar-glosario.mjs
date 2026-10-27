@@ -184,7 +184,7 @@ function normalizarPosicion(codigo) {
   return { trastes, baseTraste, cejilla };
 }
 
-/** Formas manuales para acordes que LaCuerda no publica (semidisminuidos y 7b5). */
+/** Formas manuales para acordes que LaCuerda no publica (semidisminuidos, 7b5 y 7b9). */
 function posicionesManuales(etiqueta) {
   // Suspendidos con b6 y 9: posturas abiertas de La(susb6/9) y Mi(susb6/9).
   if (etiqueta === 'Lasusb6/9') {
@@ -214,7 +214,7 @@ function posicionesManuales(etiqueta) {
     return [{ trastes: [-1, -1, 4, 5, 4, 5], baseTraste: 1, cejilla: null }];
   }
 
-  const raiz = etiqueta.replace(/(m7b5|7b5|sus9)$/, '');
+  const raiz = etiqueta.replace(/(m7b5|7b5|7b9|sus9)$/, '');
   const sufijo = etiqueta.slice(raiz.length);
 
   // Sus9: fundamental, 4ª, 5ª y 9ª. Forma móvil sobre la 5ª cuerda.
@@ -243,6 +243,26 @@ function posicionesManuales(etiqueta) {
     }
 
     return [{ trastes, baseTraste, cejilla }];
+  }
+
+  // Dominante con novena bemol: forma móvil del Mi7b9 abierto (0 2 3 1 3 0),
+  // con cejilla en el traste de la fundamental sobre la 6ª cuerda.
+  if (sufijo === '7b9') {
+    const trastes6 = {
+      Do: 8, 'Do#': 9, Re: 10, 'Re#': 11, Mi: 0, Fa: 1, 'Fa#': 2, Sol: 3,
+      'Sol#': 4, La: 5, 'La#': 6, Si: 7, Reb: 9, Mib: 11, Solb: 2, Lab: 4, Sib: 6,
+    };
+    const f = trastes6[raiz];
+    if (f === undefined) return null;
+    if (f === 0) {
+      return [{ trastes: [0, 2, 3, 1, 3, 0], baseTraste: 1, cejilla: null }];
+    }
+    const trastes = [f, f + 2, f + 3, f + 1, f + 3, f];
+    return [{
+      trastes,
+      baseTraste: Math.max(...trastes) <= 5 ? 1 : f,
+      cejilla: { traste: f, desde: 0, hasta: 5 },
+    }];
   }
 
   if (!['m7b5', '7b5'].includes(sufijo)) return null;
@@ -336,7 +356,7 @@ async function main() {
   for (const raiz of RAICES) {
     const r = ROOT_LABEL[raiz];
     if (!r) continue;
-    manuales.push(r + 'm7b5', r + '7b5', r + 'sus9');
+    manuales.push(r + 'm7b5', r + '7b5', r + '7b9', r + 'sus9');
   }
   manuales.push(
     'Lasusb6/9',
