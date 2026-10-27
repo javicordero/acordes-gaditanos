@@ -12,63 +12,63 @@ letra: El Chapa
 fraseClave: Y tú que estas escuchando desde alli abajo a
 ---
 <pre>
-  <a>Sol</a>
-Y tú que estas escuchando 
+<a>Sol</a>
+Y tú que estas escuchando
 
 desde alli abajo a nuestra comparsa
 <a>Re/Fa#</a>
 ahora cierra los ojos y atrévete
-             <a>Mim</a>
+             <a>Mim(add9)</a>
 Imagina el momento aquel con la noche ya a flor de piel
                      <a>Doadd9</a>
-Cuando hirviendo de amor y de locura 
+Cuando hirviendo de amor y de locura
                <a>Re/Fa#</a>
 enganchamos a Cádiz de la luna
               <a data-postura="3 3 2 0 1 0">Do</a>
-Imagina la euforia cuando sentimos 
+Imagina la euforia cuando sentimos
                                   <a data-postura="5 5 4 0 3 0">Re</a>
 que se elevaba en el aire colgaba Cádiz sobre el vacío
-                                    
-Cuando iba cogiendo altura 
+
+Cuando iba cogiendo altura
          <a>Sim7</a>
 y nos embargaba un escalofrío
-                                   <a data-postura="3 3 2 0 1 0">Do</a>
-Y nos íbamos alejando por fin del mundo 
-        <a>Sim7</a>            <a data-postura="3 3 2 0 1 0">Do</a>   
+                                   <a>Mim</a>
+Y nos íbamos alejando por fin del mundo
+        <a>Sim7</a>            <a>DoM7</a>
 de sus jaleos de su conflicto
-          <a>Sim7</a>        <a data-postura="3 3 2 0 1 0">Do</a>
+          <a>Sim7</a>        <a>Lam7</a>
 de sus cadenas de su ruido
-                       <a>Lam7</a>
-Que Cádiz ya surca el cielo 
-                         <a>Re/Fa#</a>
+                       <a data-postura="3 3 2 0 1 0">Do</a>
+Que Cádiz ya surca el cielo
+                         <a data-postura="5 5 4 0 3 0">Re</a>
 que Cádiz ya está en su sitio
-<a>Sol</a>
+ <a>Sol</a>
 Navega Cádiz navega balcón de los siete vientos
          <a>Re/Fa#</a>
 muralla blanca de los planetas
                                    <a>Mim</a>
-Vuela libre vieja ciudad sobre las veletas 
-              <a>Sim7</a>              <a data-postura="3 3 2 0 1 0">Do</a>
+Vuela libre vieja ciudad sobre las veletas
+              <a>Sim7</a>              <a>DoM7</a>
 que si en la tierra tú ya eras bella
          <a>Sim7</a>              <a>Lam7</a>
 Ya ni te digo entre las estrellas
-                  <a>Re/Fa#</a>
+    <a data-postura="3 3 2 0 1 0">Do</a>           <a data-postura="5 5 4 0 3 0">Re</a>
 la amante de los cometas
 <a>Sol</a>
-Navega ciudad sin dueño crucero del infinito 
+Navega ciudad sin dueño lucero del infinito
             <a>Re/Fa#</a>
 la hermana chica del firmamento
                                        <a>Mim</a>
-La cabeza por ti en las nubes yo me he dejao 
-         <a>Sim7</a>             <a data-postura="3 3 2 0 1 0">Do</a> 
+La cabeza por ti en las nubes yo me he dejao
+         <a>Sim7</a>             <a>DoM7</a>
 como un loquito Como un chalao
-             <a>Sim7</a>            <a>Lam7</a>                <a>Re/Fa#</a>
+             <a>Sim7</a>            <a>Lam7</a> <a>Do</a>              <a data-postura="5 5 4 0 3 0">Re</a>
 que de tus huesos se ha enamorao patria de los colgaos
-<a>Dom</a>
-Y ahora que llego el carnaval 
-                           <a>Sol</a> 
+<a>Dom7</a>
+Y ahora que llego el carnaval
+                           <a>Sol</a>
 he soñado que en esta nube puedo
-     <a>Re/Fa#</a>          <a>Mim</a>   <a>Sim7</a>              <a data-postura="3 3 2 0 1 0">Do</a>
+     <a>Re/Fa#</a>          <a>Mim</a>                     <a>Doadd9</a>
 el ancla lanzar de nuevo para cantarle a mi pueblo
 
 
@@ -146,63 +146,63 @@ la pasión y el calor de mi gente
 que se suban cuando quieran
 
 
-   <a>Mi/add9</a>                               
-Estrellitas que marcais el camino 
+   <a>Mi/add9</a>
+Estrellitas que marcais el camino
     <a>Do#m</a>
 en mitad de esta noche tan oscura
-  <a>La</a>                                   
-Guiad con vuestra luz a este barquito 
+  <a>La</a>
+Guiad con vuestra luz a este barquito
         <a>Si7</a>
 y Mi/add9 destino de toítas sus criaturas
-   <a>Mi</a>                           
-El barquito de Cádiz el barquito 
+   <a>Mi/add9</a>
+El barquito de Cádiz el barquito
          <a>Do#m</a>
 que la historia ha dejado a la deriva
-   <a>La</a>                                
-No dejes que tus madre, ni tus hijos 
+   <a>La</a>
+No dejes que tus madre, ni tus hijos
      <a>Lam7</a>   <a>Si7</a>
 se marchen malvivan
    <a>Do#m</a>                   <a>Sol#m</a>
-Alumbradle por favor estrellita 
-                    <a>La</a>                
+Alumbradle por favor estrellita
+                    <a>La</a>
 sus balcones, sus calles, su gente
-   <a>Si7</a>                    <a>Mi/add9</a> 
+   <a>Si7</a>                    <a>Mi/add9</a>
 que Cádiz se hace vieja y se marchita
-          <a>Sol#</a>
+                      <a>Sol#</a>
 Déjale un sitio pa que vuele mi paloma planetaria
-                <a>Do#m</a>
+                <a>Do#m</a>          <a>Si</a>           <a>Do#m</a>
 por azul del equinoccio polvo de estrella polar
-      <a>La</a>
-Donde cada copla es copla libertaria 
-                  <a>Fa#m7</a>         <a>Fa#7</a>        <a>Si7</a>
+      <a>La</a>                       <a>Fa#m7</a>
+Donde cada copla es copla libertaria
+                  <a>La</a>        <a>Fa#7</a>        <a>Si7</a>
 y donde todas las noches, noches son de carnaval
-       <a>Mi/add9</a>              <a>Sol#m</a> 
-Mil estrellas florecen esta noche 
-        <a>Sol#7</a>      <a>Do#m</a>
+       <a>Mi/add9</a>              <a>Sol#m</a>
+Mil estrellas florecen esta noche
+                   <a>Do#m</a>
 por los prados del cielo
                 <a>Sol#m</a>                      <a>La</a>
 Los vientos siderales me despeinan hoy el pelo
-               <a>Mi/add9</a>                  <a>La</a>
+               <a>Mi/add9</a>                  <a>Fa#m7</a>
 Constelaciones blancas nebulosas mil eclipses,
-              <a>Fa#m7</a>        <a>Fa#7</a>       <a>Si7</a>
+              <a>La</a>          <a>Fa#7</a>       <a>Si7</a>
 palpitan esta noche dentro de mis cicatrices
-    <a>Mi/add9</a>              <a>Sol#m</a>          
-Estrellitas de plata, campanitas de luz, 
+    <a>Mi/add9</a>              <a>Sol#m</a>
+Estrellitas de plata, campanitas de luz,
      <a>Do#m</a>             <a>Sol#m</a>
 alumbrad el camino para la juventud
-    <a>La</a>                       <a>Fa#m</a>
-Los jóvenes de Cádiz que yo siempre he convocao 
-       <a>La</a>         <a>Fa#m</a>            <a>Fa#7</a>     <a>Si7</a>
+    <a>La</a>
+Los jóvenes de Cádiz que yo siempre he convocao
+       <a>Si</a>
 pa que vean las estrellas con sus ojitos cerrados
-      <a>La</a>                           <a>Si7</a>
-Y a vosotras, estrellitas, hoy os rezo 
+      <a>La</a>                          <a>Si7</a>
+Y a vosotras, estrellitas, hoy os rezo
                        <a>Sol#m</a>
 porque a dios yo no le pienso rezar
-                        <a>La</a>          
-Que me he recorrido los siete cielos 
-       <a>Fa#7</a>                     <a>Si7</a>
+                        <a>La</a>
+Que me he recorrido los siete cielos
+       <a>Fa#m7</a>             <a>Fa#7</a>     <a>Si7</a>
 pero a dios yo no lo he visto jamás
-     <a>Mi/add9</a>                <a>Lam7</a>         <a>Mi/add9</a> 
+     <a>Mi/add9</a>                <a>Lam7</a>         <a>Mi/add9</a>
 Estrellita esta noche yo os rezo por mi tierra
 
 
@@ -249,73 +249,72 @@ arriba capitán ahhhh
 
 <strong>Cejilla: 1</strong>
 
-   <a>Mi</a>                           <a>La</a>
+   <a>Mi</a>                           <a>Lam</a>
 No pienses que aquí se acaba mi copla y mi travesía
-  <a>Mi</a>                                  <a>La</a>
+  <a>Mi</a>                                  <a>Lam</a>
 amigo levanta el ancla que hay que seguir esta fantasía
-<a>Mi</a>                         <a>La</a>                 
+<a>Mi</a>                         <a>Lasus2</a>
 Pongo rumbo hacia otro lugar porque de momento
-<a>Mi</a>                    <a>La</a>
+<a>Mi</a>                    <a>Lasus2</a>
 devolveros esta ciudad yo no os la devuelvo
     <a>Mi</a>                    <a>Si</a>
 Que nos quedaremos Cádiz hasta que se la quiera
-       <a>Do#m</a>                  
-como a Cádiz hay que quererla 
+       <a>Do#m</a>
+como a Cádiz hay que quererla
    <a>La</a>            <a>Si</a>       <a>Mi</a>
-y sea el mundo digno de tenerla 
-           <a>Si</a>                <a>La</a>               <a>Sol#</a>
+y sea el mundo digno de tenerla
+           <a>Si</a>                <a>Lasus2</a>            <a>Sol#</a>
 Una tierra libre, una tierra abierta una tierra nueva
 <a>Do#m</a>       <a>La</a>             <a>Mi</a>               <a>Si</a>
 Cádiz mío, Cádiz nuestro, este es todo, mi juramento
-
-<a>Do#m</a>          <a>La</a>             <a>Mi</a>         
-Por la luna, por los cielos, vuela libre 
+<a>Do#m</a>         <a>La</a>              <a>Mi</a>
+Por la luna, por los cielos, vuela libre
     <a>Sol#7</a>
 que yo cuido tu sueño
 <a>Mi</a>                          <a>Si</a>
 Y yo al mundo te devolveré cuando te dejen de desangrar
-<a>Do#m</a>                        <a>La</a>            <a>Si7</a> 
+<a>Do#m</a>                        <a>La</a>            <a>Si7</a>
 y tu gente regrese otra vez pa llenar tus calles
-<a>Mi</a> 
-Y yo al mundo te devolveré 
-<a>Si</a>                            <a>Do#m</a>
+<a>Mi</a>
+Y yo al mundo te devolveré
+<a>Si</a>                             <a>Do#m</a>
 cuando a ti te quieran por ser joven
-                     <a>Sol#m</a>                   <a>La</a>
+                     <a>Si</a>                      <a>La</a>
 Lo mismo que por ser vieja y seas bonita por dentro
                  <a>Sol#7</a>
 y no tan solo por fuera
-<a>Do#m</a>                  <a>Sol#m</a>                   <a>La</a>
+<a>Do#m</a>                    <a>Si</a>                   <a>La</a>
 Juro por mi pasión de colgao que mi voz de enamorao
                  <a>Fa#m</a>  <a>La</a> <a>Fa#m</a> <a>Sol#7</a>
 no va a callarse jamás ahhhhhh
-<a>Mi</a>                       <a>La</a>                   
-Marca el rumbo ya capitán que está amaneciendo 
-<a>Mi</a>                       <a>La</a>
+<a>Mi</a>                       <a>Lasus2</a>
+Marca el rumbo ya capitán que está amaneciendo
+<a>Mi</a>                       <a>Lasus2</a>
 y quince colgaos ya se van hasta el firmamento
-<a>Mi</a>                           <a>La</a>
-Que febrero llego a mi ciudad y mi barco ya se engalana 
-<a>Mi</a>                               
-que aqui arriba llegó el carnaval 
-<a>La</a>
+<a>Mi</a>                           <a>Lasus2</a>
+Que febrero llego a mi ciudad y mi barco ya se engalana
+<a>Mi</a>
+que aqui arriba llegó el carnaval
+<a>Lasus2</a>
 que es la fiesta más  gaditana
-<a>Do#m</a>                          
-Nuestra nave empieza a brillar 
-<a>Si7</a>
-y se estrecha nuestra hermandad 
+<a>Do#m</a>
+Nuestra nave empieza a brillar
+<a>Si</a>
+y se estrecha nuestra hermandad
 <a>Sol#7</a>                           <a>Do#m</a>
 la hermandad sagrada de estos colgaos
-            <a>Sol#m</a>          <a>La</a>                   <a>Sol#7</a>
+            <a>Si</a>             <a>La</a>                   <a>Sol#7</a>
 Que mientras tu sigas a mi lao ya tengo el cielo ganao
-<a>Do#m</a>                       <a>Si7</a>
+<a>Do#m</a>                       <a>Si</a>
 Que este viaje no acaba aquí que mi copla no tiene fin
-<a>La</a>
-que el futuro es nuestro sube a mi nave 
+<a>Lasus2</a>                             <a>Fa#m7</a>
+que el futuro es nuestro sube a mi nave
         <a>Fa#7</a>              <a>Si7</a>
 vente conmigo porque este sueño
-                  <a>Mi</a>  <a>Lam7</a>  <a>Si7</a>        <a>Mi</a>
+                  <a>Mi</a>  <a>Lam</a>               <a>Mi</a>
 Solo acaba de empezar solo acaba de empezar
 <a>Do#m</a> <a>La</a> <a>Mi</a>  <a>Si</a>
-Umm umm umm umm 
+Umm umm umm umm
 <a>Do#m</a> <a>La</a> <a>Mi</a>  <a>Si</a>
 Umm umm umm umm
 </pre>
