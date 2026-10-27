@@ -18280,6 +18280,18 @@
         {
           "trastes": [
             -1,
+            2,
+            4,
+            4,
+            2,
+            2
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
             4,
             4,
             4,

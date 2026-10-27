@@ -479,6 +479,19 @@ async function main() {
     }
   }
 
+  // Posiciones que abren el diagrama por defecto (el popover muestra la primera).
+  const POSICIONES_PREFERIDAS = {
+    Sisus2: [{ trastes: [-1, 2, 4, 4, 2, 2], baseTraste: 1, cejilla: null }],
+  };
+
+  for (const [etiqueta, preferidas] of Object.entries(POSICIONES_PREFERIDAS)) {
+    const entrada = acordes[etiqueta];
+    if (!entrada) continue;
+    const existentes = new Set(entrada.posiciones.map((p) => p.trastes.join(',')));
+    const nuevas = preferidas.filter((p) => !existentes.has(p.trastes.join(',')));
+    entrada.posiciones = [...nuevas, ...entrada.posiciones];
+  }
+
   const ordenado = Object.fromEntries(
     Object.entries(acordes).sort(([a], [b]) => a.localeCompare(b, 'es')),
   );
