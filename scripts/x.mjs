@@ -194,6 +194,19 @@ async function localizar(page, selectores, esperaMs = 0) {
   return null;
 }
 
+/**
+ * Espera de verdad a que un elemento aparezca visible. `locator.isVisible()` NO
+ * espera: devuelve el estado en ese instante e ignora el timeout, así que no
+ * sirve para algo que aún se está pintando (p. ej. «Etiquetar personas», que
+ * solo sale cuando la imagen ha terminado de subir).
+ */
+async function aparece(local, timeout) {
+  return local
+    .waitFor({ state: 'visible', timeout })
+    .then(() => true)
+    .catch(() => false);
+}
+
 /** 'listo' con sesión, 'sin-sesion' si hay que entrar a mano, null si no se sabe. */
 async function estadoSesion(page, esperaMs) {
   const limite = Date.now() + esperaMs;
@@ -298,7 +311,7 @@ async function adjuntar(page, imagen) {
  */
 async function etiquetar(page, cuentas) {
   const abrir = page.getByText('Etiquetar personas', { exact: false }).first();
-  if (!(await abrir.isVisible({ timeout: 60000 }).catch(() => false))) {
+  if (!(await aparece(abrir, 60_000))) {
     return { estado: 'sin-panel', puestas: [], fallidas: [...cuentas] };
   }
 
@@ -310,7 +323,7 @@ async function etiquetar(page, cuentas) {
 
   for (const cuenta of cuentas) {
     const campo = page.locator('input[data-testid="searchPeople"]').first();
-    if (!(await campo.isVisible({ timeout: 5000 }).catch(() => false))) {
+    if (!(await aparece(campo, 5000))) {
       fallidas.push(cuenta);
       continue;
     }
@@ -345,7 +358,7 @@ async function etiquetar(page, cuentas) {
   }
 
   const listo = page.getByRole('button', { name: 'Listo' }).first();
-  if (await listo.isVisible({ timeout: 4000 }).catch(() => false)) await listo.click();
+  if (await aparece(listo, 4000)) await listo.click();
   await esperar(1200);
 
   return { estado: 'ok', puestas, fallidas };
