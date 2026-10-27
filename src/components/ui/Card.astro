@@ -6,6 +6,7 @@ const {
   agrupacion,
   musica,
   letra,
+  letraTitulo,
   img,
   year,
   slug,
@@ -41,6 +42,14 @@ if (piezaLower.includes('presentacion')) {
   piezaType = 'estribillo';
 }
 
+// Nombre completo para lectores de pantalla y para el alt de la imagen.
+const nombreCompleto = [
+  letraTitulo ? `${piezaDisplay} "${letraTitulo}"` : piezaDisplay,
+  agrupacion,
+]
+  .filter(Boolean)
+  .join(' ');
+
 // Normalizar listas de autores
 const letraNombres = (letraList && letraList.length > 0 ? letraList : (letra ? [letra] : []));
 const musicaNombres = (musicaList && musicaList.length > 0 ? musicaList : (musica ? [musica] : []));
@@ -62,13 +71,13 @@ letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add
 ---
 
 <article class='card' aria-labelledby={headingId}>
-  <a href={`/acordes/${slug}`} class='card-stretch' aria-label={`${agrupacion} - ${piezaDisplay}`}></a>
+  <a href={`/acordes/${slug}`} class='card-stretch' aria-label={nombreCompleto}></a>
 
   <figure class='card-media'>
     <Image
       class='card-image'
       src={img}
-      alt={`${agrupacion} - ${pieza} - Carnaval de Cádiz ${year}`}
+      alt={`${nombreCompleto} - Carnaval de Cádiz ${year}`}
       loading='lazy'
       decoding='async'
       width={480}
@@ -78,6 +87,7 @@ letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add
     />
     <header class='card-header'>
       <span class='badge badge--pieza' data-pieza-type={piezaType} data-fit-text data-fit-parent data-fit-min='8'>{piezaDisplay}</span>
+      {letraTitulo && <span class='badge-letra' data-fit-text data-fit-parent data-fit-min='8' title={`Letra: ${letraTitulo}`}>{letraTitulo}</span>}
     </header>
     <span class='card-year'>{year}</span>
   </figure>
@@ -165,6 +175,10 @@ letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add
     left: 4px;
     right: 4px;
     z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
   }
 
   .badge {

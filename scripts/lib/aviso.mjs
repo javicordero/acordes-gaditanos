@@ -74,11 +74,12 @@ export function etiquetaPieza(pieza) {
   return limpia ? limpia.charAt(0).toUpperCase() + limpia.slice(1) : '';
 }
 
-/** Pieza y agrupación, sin año. */
+/** Pieza y agrupación, sin año. Con el título de la letra si es una variante. */
 export function nombreDe(datos) {
   const pieza = etiquetaPieza(datos.pieza);
+  const titulo = (datos.letraTitulo || '').trim();
   const agrupacion = (datos.agrupacion || '').trim();
-  return [pieza, agrupacion].filter(Boolean).join(' ');
+  return [pieza, titulo ? `"${titulo}"` : '', agrupacion].filter(Boolean).join(' ');
 }
 
 /** HTML de Telegram: evita que un «&» o un «<» del título rompan el mensaje. */

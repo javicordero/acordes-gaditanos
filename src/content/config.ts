@@ -26,6 +26,9 @@ const acordeSchema = z
     agrupacion: z.string(),
     musica: z.string().optional(),
     letra: z.string().optional(),
+    // Título de una letra alternativa de la misma música ("La mujer nube").
+    // Solo lo llevan las fichas que no son la original.
+    letraTitulo: z.string().optional(),
     img: z.string(),
     year: z.number().transform((n) => n.toString()),
     modalidad: z.string().optional(),

@@ -504,3 +504,24 @@ body > footer :focus-visible,
   background-color: var(--primary-contrast-color);
 }
 
+
+/* Etiqueta de una letra alternativa de la misma musica (`letraTitulo`).
+   Se usa en las cards y en el desplegable de sugerencias del buscador. */
+.badge-letra {
+  display: inline-block;
+  max-width: 100%;
+  padding: 4px 6px;
+  border: 2px solid var(--primary-color);
+  border-radius: 0;
+  background-color: var(--brand-navy);
+  color: var(--on-surface-color);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

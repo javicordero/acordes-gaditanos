@@ -27,13 +27,14 @@ const Heading = headingAs;
       {
         acordes.map((acorde, idx) => {
           const { slug, data } = acorde;
-          const { pieza, agrupacion, musica, letra, img, year: y, musicaList, letraList, musicaSlugs, letraSlugs, musicaSlug, letraSlug } = data;
+          const { pieza, agrupacion, musica, letra, letraTitulo, img, year: y, musicaList, letraList, musicaSlugs, letraSlugs, musicaSlug, letraSlug } = data;
           return (
             <Card
               pieza={pieza}
               agrupacion={agrupacion}
               musica={musica}
               letra={letra}
+              letraTitulo={letraTitulo}
               img={img}
               year={y}
               slug={slug}

@@ -137,6 +137,14 @@
     white-space: nowrap;
   }
 
+  .sugerencia-letra {
+    align-self: flex-start;
+    margin-top: 1px;
+    padding: 2px 5px;
+    font-size: 0.66rem;
+    line-height: 1.1;
+  }
+
   .sugerencias-vacio {
     padding: 10px 12px;
     font-size: 0.85rem;
@@ -201,6 +209,7 @@
     etiquetaPieza: string;
     etiquetaAutores: string;
     tipoPieza: string;
+    letraTitulo?: string;
   }
 
   interface Respuesta {
@@ -342,6 +351,14 @@
       pieza.textContent = resultado.etiquetaPieza;
       pieza.dataset.piezaType = resultado.tipoPieza;
 
+      const letra = resultado.letraTitulo
+        ? document.createElement('span')
+        : null;
+      if (letra) {
+        letra.className = 'badge-letra sugerencia-letra';
+        letra.textContent = resultado.letraTitulo ?? '';
+      }
+
       const meta = document.createElement('span');
       meta.className = 'sugerencia-meta';
       // Música · letra (sin repetir); si no hay autores, al menos el año.
@@ -349,6 +366,7 @@
 
       if (titulo.textContent) enlace.append(titulo);
       if (pieza.textContent) enlace.append(pieza);
+      if (letra) enlace.append(letra);
       enlace.append(meta);
 
       enlace.addEventListener('click', (evento) => {

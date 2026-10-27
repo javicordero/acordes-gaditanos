@@ -74,7 +74,7 @@ const itemListSchema = {
   itemListElement: acordesOrdenados.map((a, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    name: `${capitalize(a.data.pieza)} - ${a.data.agrupacion}`,
+    name: `${capitalize(a.data.pieza)}${a.data.letraTitulo ? ` "${a.data.letraTitulo}"` : ''} - ${a.data.agrupacion}`,
     item: `${Astro.site}acordes/${a.slug}`,
   })),
 };
@@ -108,7 +108,7 @@ const itemListSchema = {
                 {acordes.map((acorde) => (
                   <li>
                     <a href={`/acordes/${acorde.slug}`}>
-                      <span class='pieza'>{capitalize(acorde.data.pieza)}</span>{' '}
+                      <span class='pieza'>{capitalize(acorde.data.pieza)}{acorde.data.letraTitulo ? ` "${acorde.data.letraTitulo}"` : ''}</span>{' '}
                       <span class='agrupacion'>{acorde.data.agrupacion}</span>
                     </a>
                   </li>

@@ -13,6 +13,7 @@
     "x": "node scripts/x.mjs post",
     "x:login": "node scripts/x.mjs login",
     "qr": "node scripts/generar-qr.mjs",
+    "auditar:letras": "node scripts/auditar-letras.mjs",
     "videos": "node scripts/auditar-videos.mjs",
     "videos:buscar": "node scripts/auditar-videos.mjs --buscar",
     "videos:aplicar": "node scripts/auditar-videos.mjs --aplicar"

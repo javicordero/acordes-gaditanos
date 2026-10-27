@@ -28,8 +28,9 @@ const ANIO_RE = /\s+—\s+\d{4}$/;
 /** «Presentación – Los locos». Sin año: ya sale en la vista previa del enlace. */
 export function nombreCorto(datos) {
   const pieza = etiquetaPieza(datos.pieza);
+  const titulo = (datos.letraTitulo || '').trim();
   const agrupacion = (datos.agrupacion || '').trim();
-  return [pieza, agrupacion].filter(Boolean).join(' – ');
+  return [pieza, titulo ? `"${titulo}"` : '', agrupacion].filter(Boolean).join(' – ');
 }
 
 /**

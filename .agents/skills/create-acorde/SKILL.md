@@ -38,6 +38,20 @@ Imagen https://example.com/imagen.jpg
 - Tango
 - Credo
 
+## Letras alternativas de una misma música
+
+Si la ficha es **otra letra de una música que ya existe** (por ejemplo, el mismo
+pasodoble con otra letra), añade en el frontmatter:
+
+```yaml
+letraTitulo: La mujer nube
+```
+
+- El título se intercala entre la pieza y la agrupación: `Pasodoble "La mujer nube" Los Colgaos`.
+- **No se toca** la ficha original; la relación es automática por agrupación, año y tipo.
+- El nombre del archivo debe incluir el título: `pasodoble-los-colgaos-la-mujer-nube.md`.
+- De momento solo para pasodobles.
+
 ## Proceso
 
 ### 1. Parsear los datos
@@ -81,6 +95,7 @@ agrupacion: Los locos de la colina
 year: 1986
 musica: El Noly
 letra: Joaquín Sánchez Alba
+letraTitulo: # Solo en letras alternativas de la misma música
 modalidad: Chirigota
 cejilla: 4
 img: https://example.com/imagen.jpg

@@ -30,6 +30,7 @@ const entradas: EntradaIndice[] = fs
       year: String(data.year || ''),
       musica: data.musica || '',
       letra: data.letra || '',
+      letraTitulo: data.letraTitulo || '',
     };
   });
 
@@ -105,6 +106,16 @@ const casos: Caso[] = [
     espera: (primero, total) => total > 0 && /popurr/i.test(primero.pieza),
   },
 ];
+
+// La ficha de «La mujer nube» es local hasta que se publique el pasodoble. Si
+// no está, la prueba se omite para que la auditoría pase en un clon limpio.
+if (entradas.some((entrada) => entrada.slug === 'pasodoble-los-colgaos-la-mujer-nube')) {
+  casos.push({
+    consulta: 'la mujer nube',
+    descripcion: 'encuentra la letra alternativa por su título',
+    espera: (primero) => primero.slug === 'pasodoble-los-colgaos-la-mujer-nube',
+  });
+}
 
 let fallos = 0;
 

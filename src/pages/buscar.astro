@@ -29,6 +29,7 @@ const acordesData = acordes.map((acorde) => ({
   agrupacion: acorde.data.agrupacion || '',
   musica: acorde.data.musica || '',
   letra: acorde.data.letra || '',
+  letraTitulo: acorde.data.letraTitulo || '',
 }));
 
 let autores = await getCollection('autores');
@@ -235,7 +236,7 @@ let autores = await getCollection('autores');
       // Filtrar acordes usando los datos serializados
       const resultados = acordesData.filter((acorde) => {
         const searchableText = normalizeText(
-          `${acorde.pieza} ${acorde.agrupacion} ${acorde.musica} ${acorde.letra}`,
+          `${acorde.pieza} ${acorde.agrupacion} ${acorde.musica} ${acorde.letra} ${acorde.letraTitulo}`,
         );
         return searchableText.includes(normalizedQuery);
       });

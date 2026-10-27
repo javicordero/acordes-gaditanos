@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import AcordeCard from '../../components/page/AcordeCard.astro';
 import YoutubeCard from '../../components/right-column/YoutubeCard.astro';
 import SitiosDeInteresCard from '../../components/right-column/SitiosDeInteresCard.astro';
@@ -15,6 +16,7 @@ import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
 import Anuncio2 from '../../components/right-column/anuncios/Anuncio2.astro';
 import Anuncio3 from '../../components/right-column/anuncios/Anuncio3.astro';
 import { busquedaYoutube, enlaceYoutube, estadoDeVideo } from '../../lib/videos';
+import { hermanasDe, nombrePieza, piezaConTitulo } from '../../lib/letras';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -24,8 +26,10 @@ export async function getStaticPaths() {
   }));
 }
 
-const { acorde } = Astro.props;
+const { acorde } = Astro.props as { acorde: CollectionEntry<'acordes'> };
 const { data, slug } = acorde;
+const nombreCompleto = nombrePieza(acorde);
+const piezaConTituloTexto = piezaConTitulo(data);
 const {
   pieza,
   agrupacion,
@@ -49,6 +53,7 @@ const busquedaVideo = busquedaYoutube(pieza, agrupacion, year);
 
 // Obtener acordes recomendados
 const todosLosAcordes = await getCollection('acordes');
+const hermanas = hermanasDe(acorde, todosLosAcordes);
 const acordesRecomendados = todosLosAcordes
   .filter((a) => a.data.recomendada === true && a.slug !== slug)
   .sort(() => Math.random() - 0.5) // Ordenar aleatoriamente
@@ -85,10 +90,10 @@ const autores = listasIguales(musicaList, letraList)
         : '';
 
 // Generar descripción completa
-const description = `Acordes ${pieza} ${agrupacion} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
+const description = `Acordes ${nombreCompleto} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
 
 // Generar keywords específicas
-const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}, ${textoLetra}, ${textoMusica}, ${pieza}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
+const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}${data.letraTitulo ? `, "${data.letraTitulo}"` : ''}, ${textoLetra}, ${textoMusica}, ${pieza}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
 
 // Generar URL canónica
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
@@ -112,7 +117,7 @@ const isoDate = dateToISO(data.date);
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: `${pieza} - ${agrupacion}`,
+  headline: `${nombreCompleto}`,
   description,
   datePublished: isoDate,
   author: [
@@ -132,7 +137,7 @@ const articleSchema = {
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: `Acordes ${pieza} ${agrupacion} - Carnaval ${year}`,
+  name: `Acordes ${nombreCompleto} - Carnaval ${year}`,
   description,
   url: canonicalURL,
   inLanguage: 'es-ES',
@@ -145,7 +150,7 @@ const webPageSchema = {
 ---
 
 <Layout
-  title={`Acordes ${pieza} ${agrupacion} - Carnaval ${year} - Acordes Gaditanos`}
+  title={`Acordes ${nombreCompleto} - Carnaval ${year} - Acordes Gaditanos`}
   description={description}
   keywords={keywords}
   image={img}
@@ -154,6 +159,7 @@ const webPageSchema = {
   articleAuthors={[...new Set([...letraList, ...musicaList])]}>
   <MusicCompositionSchema
     pieza={pieza}
+    letraTitulo={data.letraTitulo}
     agrupacion={agrupacion}
     musicaList={musicaList}
     letraList={letraList}
@@ -170,26 +176,25 @@ const webPageSchema = {
     year={year}
     agrupacion={agrupacion}
     agrupacionSlug={data.agrupacionSlug}
-    pieza={pieza}
+    pieza={piezaConTituloTexto}
   />
 
   <h1 class='seo-title'>
-    Acordes {pieza}
-    {agrupacion} - Carnaval {year} - {textoMusica || textoLetra} - Acordes Gaditanos
+    Acordes {nombreCompleto} - Carnaval {year} - {textoMusica || textoLetra} - Acordes Gaditanos
   </h1>
 
   <p class='seo-text'>
-    Estos son los acordes de guitarra de {pieza} de {agrupacion}
+    Estos son los acordes de guitarra de {nombreCompleto}
     {autores}, del Carnaval de Cádiz {year}.
   </p>
 
   <div class='main-container container-layout'>
-    <AcordeCard acorde={acorde} />
+    <AcordeCard acorde={acorde} hermanas={hermanas} />
 
     <div class='right-column'>
       <YoutubeCard
         link={video}
-        iframeTitle={`Video oficial de ${pieza} - ${agrupacion} - Carnaval de Cádiz ${year}`}
+        iframeTitle={`Video oficial de ${nombreCompleto} - Carnaval de Cádiz ${year}`}
         class='video-oficial'
         flush
         estado={estadoVideo}

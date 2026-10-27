@@ -16,6 +16,8 @@ export interface EntradaIndice {
   year: string;
   musica: string;
   letra: string;
+  /** Título de una letra alternativa de la misma música. */
+  letraTitulo?: string;
 }
 
 export interface EntradaPreparada extends EntradaIndice {
@@ -23,10 +25,12 @@ export interface EntradaPreparada extends EntradaIndice {
   nAgrupacion: string;
   nAutores: string;
   nPieza: string;
+  nLetraTitulo: string;
   /** Palabras sueltas, para premios por inicio de palabra. */
   pAgrupacion: string[];
   pAutores: string[];
   pPieza: string[];
+  pLetraTitulo: string[];
   /** Etiquetas listas para pintar. */
   etiquetaPieza: string;
   etiquetaAutores: string;
@@ -47,6 +51,7 @@ const PESOS = {
   agrupacion: 10,
   autores: 6,
   pieza: 5,
+  letraTitulo: 4,
   year: 4,
 };
 
@@ -120,15 +125,18 @@ export function preparar(entradas: EntradaIndice[]): EntradaPreparada[] {
     const nAgrupacion = normalizar(entrada.agrupacion);
     const nAutores = normalizar(`${entrada.musica || ''} ${entrada.letra || ''}`);
     const nPieza = normalizar(entrada.pieza);
+    const nLetraTitulo = normalizar(entrada.letraTitulo || '');
 
     return {
       ...entrada,
       nAgrupacion,
       nAutores,
       nPieza,
+      nLetraTitulo,
       pAgrupacion: nAgrupacion.split(' ').filter(Boolean),
       pAutores: nAutores.split(' ').filter(Boolean),
       pPieza: nPieza.split(' ').filter(Boolean),
+      pLetraTitulo: nLetraTitulo.split(' ').filter(Boolean),
       etiquetaPieza: etiquetaPieza(entrada.pieza),
       etiquetaAutores: etiquetaAutores(entrada.musica, entrada.letra),
       tipoPieza: tipoPieza(entrada.pieza),
@@ -223,6 +231,8 @@ function puntuarEntrada(entrada: EntradaPreparada, tokens: string[], frase: stri
       PESOS.agrupacion * puntuarCampo(token, entrada.nAgrupacion, entrada.pAgrupacion, true),
       PESOS.autores * puntuarCampo(token, entrada.nAutores, entrada.pAutores, true),
       PESOS.pieza * puntuarCampo(token, entrada.nPieza, entrada.pPieza, true),
+      PESOS.letraTitulo *
+        puntuarCampo(token, entrada.nLetraTitulo, entrada.pLetraTitulo, true),
     ];
 
     const mejor = Math.max(...puntuaciones);
@@ -264,6 +274,11 @@ export function buscar(
 
   puntuadas.sort((a, b) => {
     if (b.puntos !== a.puntos) return b.puntos - a.puntos;
+
+    // Si empatan, la ficha original (sin letraTitulo) va antes que sus variantes.
+    const tituloA = a.entrada.letraTitulo ? 1 : 0;
+    const tituloB = b.entrada.letraTitulo ? 1 : 0;
+    if (tituloA !== tituloB) return tituloA - tituloB;
 
     const anioA = Number(a.entrada.year) || 0;
     const anioB = Number(b.entrada.year) || 0;
