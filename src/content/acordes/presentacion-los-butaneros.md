@@ -2,8 +2,8 @@
 pieza: Presentación
 agrupacion: Los butaneros, chirigota de CAI/CDC
 year: 2025
-musica: Kike Remolino
-letra: Kike Remolino
+musica: Kike Remolino, Javi El Ojo
+letra: Kike Remolino, Javi El Ojo
 modalidad: Chirigota
 cejilla: 0
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/06/30/butanero(1)-RIhXKoeEoAcqu6ARNNxFyGJ-1200x840abc-R5kGT3LntfeQ16S7eXlgaYK-1200x840@abc.jpg
