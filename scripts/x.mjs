@@ -372,6 +372,16 @@ async function esperarPublicacionManual(page, minutos) {
   while (Date.now() < limite) {
     if (page.isClosed()) return 'cerrado';
 
+    // Al publicar, X cierra el compositor y vuelve a la portada. Ojo: el compositor
+    // en línea de /home también lleva tweetTextarea_0, así que la señal fiable es
+    // haber salido de /compose/post (si no, la espera se agotaba aunque el tuit
+    // estuviera publicado).
+    let ruta = '';
+    try {
+      ruta = new URL(page.url()).pathname;
+    } catch {}
+    if (!ruta.startsWith('/compose/')) return 'publicado';
+
     const abierto = await page
       .locator(SELECTORES.compositor[0])
       .first()
