@@ -210,6 +210,26 @@ async function localizar(page, selectores, esperaMs = 0) {
   return null;
 }
 
+/**
+ * Pulsa un elemento tolerando los avisos flotantes de WhatsApp (por ejemplo
+ * «Conoce las novedades de tus temas favoritos»), que se quedan encima del
+ * buscador y bloquean el clic normal con «subtree intercepts pointer events».
+ * Si el clic se queda esperando, se aparta el ratón, se manda Escape y se
+ * reintenta forzado; como último recurso se enfoca el elemento, que es lo único
+ * necesario para escribir en un campo.
+ */
+async function pulsar(page, local, timeout = 3000) {
+  if (await local.click({ timeout }).then(() => true).catch(() => false)) return true;
+
+  await page.keyboard.press('Escape').catch(() => {});
+  await page.mouse.move(640, 420).catch(() => {});
+  await esperar(400);
+
+  if (await local.click({ timeout, force: true }).then(() => true).catch(() => false)) return true;
+
+  return local.focus({ timeout }).then(() => true).catch(() => false);
+}
+
 /** 'listo' si hay sesión, 'qr' si pide vincular el dispositivo, null si ni una cosa ni otra. */
 async function estadoSesion(page, esperaMs) {
   const limite = Date.now() + esperaMs;
@@ -291,7 +311,7 @@ async function abrirCanal(page, canal) {
   // :visible descarta las copias ocultas que WhatsApp deja montadas.
   const enLista = page.locator(`span[title="${canal}"]:visible`).first();
   if (await enLista.isVisible({ timeout: 4000 }).catch(() => false)) {
-    await enLista.click();
+    await pulsar(page, enLista);
     return true;
   }
 
@@ -299,7 +319,7 @@ async function abrirCanal(page, canal) {
   const buscador = await localizar(page, SELECTORES.buscar, 4000);
   if (!buscador) return false;
 
-  await buscador.click();
+  await pulsar(page, buscador);
   await buscador.fill(canal).catch(async () => {
     await page.keyboard.type(canal, { delay: 40 });
   });
@@ -307,7 +327,8 @@ async function abrirCanal(page, canal) {
 
   const resultado = page.getByText(canal, { exact: true }).first();
   if (await resultado.isVisible({ timeout: 5000 }).catch(() => false)) {
-    await resultado.click();
+    if (!(await pulsar(page, resultado))) await page.keyboard.press('Enter').catch(() => {});
+    await esperar(1500);
     return true;
   }
 
@@ -320,7 +341,7 @@ async function escribir(page, texto, marca) {
   const compositor = await localizar(page, SELECTORES.compositor, 20_000);
   if (!compositor) return { compositor: null, antes: 0 };
 
-  await compositor.click();
+  await pulsar(page, compositor);
   await esperar(300);
 
   // WhatsApp guarda como borrador lo que quedó sin enviar: si hay algo, se vacía
