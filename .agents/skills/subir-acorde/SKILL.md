@@ -195,7 +195,8 @@ npm run x -- --solo <slug>[,<slug>]
 ```
 
 - Formato: cabecera «🆕 Nuevos acordes en la web», línea `🎭 Pieza – Agrupación`,
-  `🎵 música` y `✏️ letra` (si son la misma persona, una sola línea) y el enlace al final.
+  línea en blanco, `🎵 música` y `✏️ letra` (si son la misma persona, una sola línea)
+  y el enlace al final.
 - Descarga el `img` del `.md`, lo valida (WebP/JPEG/PNG/GIF y ≤5 MB) y lo adjunta.
 - Etiqueta en la imagen a @Carnavaladictos y @Orteguilla25 (constante `ETIQUETAS` en
   `scripts/lib/tuit.mjs`). Si X no encuentra alguna, avisa y publica igual: no se aborta.

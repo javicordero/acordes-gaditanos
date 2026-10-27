@@ -26,9 +26,10 @@ El usuario puede proporcionar:
 🆕 Nuevos acordes en la web
 
 🎭 Presentación – Los Humanos
+
 🎵 Antonio Martínez Ares
 
-🔗https://acordesgaditanos.com/acordes/presentacion-los-humanos/
+🔗 https://acordesgaditanos.com/acordes/presentacion-los-humanos/
 ```
 
 ### Varios acordes del mismo autor
@@ -108,14 +109,16 @@ Autor: Antonio Martínez Ares
 🆕 Nuevos acordes en la web
 
 🎭 Presentación – Los Humanos
+
 🎵 Antonio Martínez Ares
 
-🔗https://acordesgaditanos.com/acordes/presentacion-los-humanos/
+🔗 https://acordesgaditanos.com/acordes/presentacion-los-humanos/
 ```
 
 ## Notas
 
 - Usar siempre el emoji correcto: 🎵 para tipo de canción, 🎭 para cada acorde
+- Entre la línea `🎭` (pieza y agrupación) y los autores va una línea en blanco, igual que en WhatsApp y Telegram
 - La URL siempre al final con 🔗
 - No incluir año entre paréntesis en los nombres de los acordes
 - Si es un solo acuerdo, usar formato corto

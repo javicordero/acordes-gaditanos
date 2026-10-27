@@ -5,6 +5,7 @@
 //   🆕 Nuevos acordes en la web
 //
 //   🎭 Presentación – Los locos
+//
 //   🎵 El Tomate
 //   ✏️ El Piru
 //
@@ -53,7 +54,9 @@ export function autoresDe(datos) {
 function lineasCopla(copla, conAutores = true) {
   const lineas = [`🎭 ${nombreCorto(copla.datos)}`];
   if (conAutores) {
-    for (const autor of autoresDe(copla.datos)) lineas.push(`${autor.icono} ${autor.nombre}`);
+    const autores = autoresDe(copla.datos).map((autor) => `${autor.icono} ${autor.nombre}`);
+    // Línea en blanco entre la pieza y los autores, como en WhatsApp y Telegram.
+    if (autores.length) lineas.push('', ...autores);
   }
   return lineas;
 }
@@ -103,16 +106,24 @@ export function contarTuit(texto) {
 
 /**
  * Recorta hasta que quepa, sin tocar nunca la URL: primero se quitan las líneas
- * de autores, luego se acorta el nombre de la copla con puntos suspensivos.
+ * de autores (y el hueco que las separaba), luego se acorta el nombre de la copla
+ * con puntos suspensivos.
  */
 export function ajustarTuit(texto) {
   if (contarTuit(texto) <= LIMITE) return texto;
 
   const lineas = texto.split('\n');
-  const sinAutores = lineas.filter((linea) => !/^[🎵✏️]/.test(linea.trim()));
-  if (contarTuit(sinAutores.join('\n')) <= LIMITE) return sinAutores.join('\n');
+  // Con el flag `u` la clase solo casa 🎵 y ✏️; sin él también se comía la
+  // cabecera 🆕 y la línea 🎭, que comparten el primer surrogado.
+  const sinAutores = lineas.filter((linea) => !/^[🎵✏️]/u.test(linea.trim()));
 
-  const recortado = sinAutores.map((linea) =>
+  // Al quitar los autores queda su línea en blanco: se colapsan las repetidas.
+  const limpias = sinAutores.filter(
+    (linea, i) => !(linea === '' && sinAutores[i - 1] === ''),
+  );
+  if (contarTuit(limpias.join('\n')) <= LIMITE) return limpias.join('\n');
+
+  const recortado = limpias.map((linea) =>
     linea.startsWith('🎭 ') ? `${linea.slice(0, 60).trimEnd()}…` : linea,
   );
   return recortado.join('\n');
