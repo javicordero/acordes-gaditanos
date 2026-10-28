@@ -463,6 +463,7 @@ async function main() {
   const POSICIONES_EXTRA = {
     Lamaj7: [{ trastes: [-1, 0, 2, 2, 2, 4], baseTraste: 1, cejilla: null }],
     'Fa#dim7': [{ trastes: [-1, -1, 4, 5, 4, 5], baseTraste: 1, cejilla: null }],
+    Ladim7: [{ trastes: [-1, -1, 7, 8, 7, 8], baseTraste: 7, cejilla: null }],
     'Fa#7b5': [{ trastes: [2, 3, 2, 3, 0, 0], baseTraste: 1, cejilla: null }],
     Fa7b5: [{ trastes: [1, 2, 1, 2, 0, 0], baseTraste: 1, cejilla: null }],
   };

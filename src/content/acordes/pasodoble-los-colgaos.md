@@ -8,8 +8,9 @@ date: "25/11/2025"
 video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'
 musica: Raúl Cabrera
 letra: El Chapa
+letraTitulo: Y en el Gran Astillero
 
-fraseClave: Y en el Gran Astillero enorme que fuera el mundo
+fraseClave: Y en el gran astillero
 ---
 <pre>
 <a>Lam</a>                     <a>Mi7</a>               <a>Lam</a>
@@ -20,21 +21,21 @@ cuando las cosas estaban en el génesis creando
 Aunque el mar era todavia frio y oscuro
                  <a>Sim7b5</a>        <a>Mi7</a>         <a>Lam</a>
 los ángeles de la risa frente a él se congregaron
-      <a>Sol7</a>           <a>Fa</a>            <a>Mi7</a>
+      <a>Sol6</a>           <a>Fa</a>            <a>Mi7</a>
 Y se aliaron junto a los cuatro elementos
-         <a>Sol7</a>         <a>Fa</a>          <a>Mi7</a>
+         <a>Sol6</a>         <a>Fa</a>          <a>Mi7</a>
 para dar forma y construir una ciudad
       <a>Rem</a>
 Una ciudad que era como un barquito
     <a>Lam</a>
 recoqueto, pequeño y bonito
-    <a>Sim7b5</a>            <a>Mi7</a>          <a>Lam</a>
+    <a>Sim7b5</a>            <a>Mi7</a>          <a>Lam</a>  <a>La7</a>
 Este barco llenito de locos donde habito
        <a>Rem</a>          <a>Sol7</a>
 Una ciudad diferente
                        <a>Do</a>
 un barco donde brillan los medios días
-<a>Fa</a>                   <a>Mi7</a>
+                      <a>Mi7</a>
 Porque los ángeles pusieron
                                <a>Lam</a>
 en su puente un balcón a una bahía
@@ -48,7 +49,7 @@ Ayy y le pusieron un árbol viejo
 que saluda a las mareas
                             <a>Fa#7</a>        <a>Sim7</a>
 Y entre sus ramas tirita el oro de los luceros
-            <a>Mi7</a>
+            <a>Mi7</a>            <a>Sim7</a>                  <a>Mi7</a>
 Ayy y le añadieron el centinela de las torres miradores
                           <a>LaM7</a>
 pa que vigile a los doce vientos
@@ -64,14 +65,14 @@ los ángeles de la alegría
 Pusieron su obra en la orilla de una playa
    <a>Fa#7</a>         <a>Sim7</a>     <a>Mi7</a>           <a>Lam</a>
 y se quedaron mirando subidos a las murallas
-      <a>Sol</a>         <a>Fa</a>             <a>Sim7b5</a>     <a>Mi7</a>
+      <a>Sol6</a>        <a>Fa</a>             <a>Sim7b5</a>      <a>Mi7</a>
 Y pensaron en silencio después de esto no hay nada
-           <a>Sim7</a>                      <a>Mi7</a>
+           <a>Re</a>         <a>Sim7</a>            <a>Mi7</a>
 Esto os lo cuento por si aún os preguntais
                <a>Sim7</a>                        <a>Mi7</a>
 y no sabéis explicar porque yo amo a mi ciudad
 
 Y porque son tantos locos los que están
-      <a>Sim7</a>   <a>Mi7</a>   <a>LaM7</a>
+                   <a>LaM7</a>
 ay colgaitos por mi Cai
 </pre>

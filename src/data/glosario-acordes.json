@@ -8612,6 +8612,18 @@
           ],
           "baseTraste": 1,
           "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
+            -1,
+            7,
+            8,
+            7,
+            8
+          ],
+          "baseTraste": 7,
+          "cejilla": null
         }
       ]
     },

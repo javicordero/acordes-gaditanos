@@ -8,11 +8,11 @@ img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/nico-g
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Wc7rY5Nta8g'
-fraseClave: "Doy mi palabra que no"
+fraseClave: "Doy mi palabra"
 
 ---
 <pre>
-     <a>Mi/add9</a>               <a>Misusb6/9</a>         <a>Do#m7</a>
+        <a>Mi/add9</a>             <a>Misusb6/9</a>         <a>Do#m7</a>
 Doy mi palabra que no te engañaba cuando te decía
              <a>La</a>                 <a>Fa#m</a>           <a>Si7</a>
 Que aquel chatarra guardo su guitarra y descansaría
@@ -24,7 +24,7 @@ Que se colaron sin que lo esperara en plan revoltosa
 En mi delirio suena mi guitarra que vuelve a llamarme
           <a>Sol#m</a>                                   <a>Solm</a>
 Me vuelvo loco y conmigo mismo empiezo a pelearme
-           <a>La</a>                     <a>Fa#7</a>
+           <a>Fa#m</a>                     <a>Fa#7</a>
 Pues me recuerdan que es que ya no puedo
            <a>Si7</a>
 vivir sin cantarte
