@@ -5,6 +5,7 @@
 //   🆕 Nuevos acordes en la web
 //
 //   🎭 Presentación – Los locos
+//   🎭 Pasodoble "La mujer nube" – Los Colgaos
 //
 //   🎵 El Tomate
 //   ✏️ El Piru
@@ -25,12 +26,17 @@ export const ETIQUETAS = ['Carnavaladictos', 'Orteguilla25'];
 const LIMITE_BYTES = 5 * 1024 * 1024; // tope de X para imágenes
 const ANIO_RE = /\s+—\s+\d{4}$/;
 
-/** «Presentación – Los locos». Sin año: ya sale en la vista previa del enlace. */
+/**
+ * «Presentación – Los locos». Sin año: ya sale en la vista previa del enlace.
+ * Si la ficha lleva `letraTitulo`, el título va pegado a la pieza, como en el
+ * resto de la web: «Pasodoble "La mujer nube" – Los Colgaos».
+ */
 export function nombreCorto(datos) {
   const pieza = etiquetaPieza(datos.pieza);
   const titulo = (datos.letraTitulo || '').trim();
   const agrupacion = (datos.agrupacion || '').trim();
-  return [pieza, titulo ? `"${titulo}"` : '', agrupacion].filter(Boolean).join(' – ');
+  const cabeza = titulo ? `${pieza} "${titulo}"` : pieza;
+  return [cabeza, agrupacion].filter(Boolean).join(' – ');
 }
 
 /**
