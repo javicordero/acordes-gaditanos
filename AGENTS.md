@@ -44,7 +44,7 @@ En los popurrís, los cambios de cejilla a mitad de copla se marcan con `<strong
 
 ### Letras alternativas de una misma música
 Una misma música puede tener varias letras. Cada letra es una ficha propia (`.md` + URL), para que se pueda buscar por el título de esa letra; no se meten varias letras en la misma página.
-- Campo opcional `letraTitulo` en el frontmatter (solo en la ficha de la letra alternativa). El título se intercala entre la pieza y la agrupación: `Pasodoble "La mujer nube" Los Colgaos`.
+- Campo opcional `letraTitulo` en el frontmatter (solo en la ficha de la letra alternativa). El título se muestra en el badge de la card, en el bloque «Letras de este pasodoble» y en los avisos; el título de la ficha sigue siendo `Pasodoble Los Colgaos`.
 - La relación es **implícita**: misma `agrupacion`, `year` y tipo base (`pasodoble`), siempre que al menos una ficha del grupo tenga `letraTitulo`. La ficha original no se toca.
 - En la card, el badge de la letra va debajo del de pieza; en el desplegable de sugerencias, debajo del badge de pieza; en la ficha, un bloque «Letras de este pasodoble».
 - De momento solo se agrupan pasodobles (`TIPOS_CON_LETRAS` en `src/lib/letras.ts`). Para otros tipos, añadirlos ahí.

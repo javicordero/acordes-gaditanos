@@ -11,8 +11,7 @@ interface Props {
   image: string;
 }
 
-const { pieza, letraTitulo, agrupacion, musicaList, letraList, year, modalidad, url, image } =
-  Astro.props;
+const { pieza, agrupacion, musicaList, letraList, year, modalidad, url, image } = Astro.props;
 
 const contexto = modalidad
   ? `${modalidad} del Carnaval de Cádiz ${year}`
@@ -22,7 +21,7 @@ const contexto = modalidad
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'MusicComposition',
-  name: `${pieza}${letraTitulo ? ` "${letraTitulo}"` : ''} - ${agrupacion}`,
+  name: `${pieza} - ${agrupacion}`,
   composer: musicaList.map(n => ({ '@type': 'Person', name: n })),
   lyricist: letraList.length > 0 ? letraList.map(n => ({ '@type': 'Person', name: n })) : undefined,
   datePublished: `${year}-01-01`,

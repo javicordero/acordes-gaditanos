@@ -16,7 +16,7 @@ import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
 import Anuncio2 from '../../components/right-column/anuncios/Anuncio2.astro';
 import Anuncio3 from '../../components/right-column/anuncios/Anuncio3.astro';
 import { busquedaYoutube, enlaceYoutube, estadoDeVideo } from '../../lib/videos';
-import { hermanasDe, nombrePieza, piezaConTitulo } from '../../lib/letras';
+import { hermanasDe, nombrePieza } from '../../lib/letras';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -29,7 +29,6 @@ export async function getStaticPaths() {
 const { acorde } = Astro.props as { acorde: CollectionEntry<'acordes'> };
 const { data, slug } = acorde;
 const nombreCompleto = nombrePieza(acorde);
-const piezaConTituloTexto = piezaConTitulo(data);
 const {
   pieza,
   agrupacion,
@@ -44,6 +43,10 @@ const {
   modalidad,
   fraseClave,
 } = data;
+
+// El título de la ficha no incluye el nombre de la letra: la letra se muestra
+// en el badge de la card y en el bloque de hermanas.
+const tituloPagina = `${pieza} ${agrupacion}`;
 
 // Estado del vídeo principal (npm run videos). Si está caído o bloqueado, la
 // ficha no pinta un iframe roto: muestra un enlace útil en su lugar.
@@ -117,7 +120,7 @@ const isoDate = dateToISO(data.date);
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: `${nombreCompleto}`,
+  headline: `${tituloPagina}`,
   description,
   datePublished: isoDate,
   author: [
@@ -137,7 +140,7 @@ const articleSchema = {
 const webPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: `Acordes ${nombreCompleto} - Carnaval ${year}`,
+  name: `Acordes ${tituloPagina} - Carnaval ${year}`,
   description,
   url: canonicalURL,
   inLanguage: 'es-ES',
@@ -150,7 +153,7 @@ const webPageSchema = {
 ---
 
 <Layout
-  title={`Acordes ${nombreCompleto} - Carnaval ${year} - Acordes Gaditanos`}
+  title={`Acordes ${tituloPagina} - Carnaval ${year} - Acordes Gaditanos`}
   description={description}
   keywords={keywords}
   image={img}
@@ -159,7 +162,6 @@ const webPageSchema = {
   articleAuthors={[...new Set([...letraList, ...musicaList])]}>
   <MusicCompositionSchema
     pieza={pieza}
-    letraTitulo={data.letraTitulo}
     agrupacion={agrupacion}
     musicaList={musicaList}
     letraList={letraList}
@@ -176,11 +178,11 @@ const webPageSchema = {
     year={year}
     agrupacion={agrupacion}
     agrupacionSlug={data.agrupacionSlug}
-    pieza={piezaConTituloTexto}
+    pieza={pieza}
   />
 
   <h1 class='seo-title'>
-    Acordes {nombreCompleto} - Carnaval {year} - {textoMusica || textoLetra} - Acordes Gaditanos
+    Acordes {tituloPagina} - Carnaval {year} - {textoMusica || textoLetra} - Acordes Gaditanos
   </h1>
 
   <p class='seo-text'>
@@ -194,7 +196,7 @@ const webPageSchema = {
     <div class='right-column'>
       <YoutubeCard
         link={video}
-        iframeTitle={`Video oficial de ${nombreCompleto} - Carnaval de Cádiz ${year}`}
+        iframeTitle={`Video oficial de ${tituloPagina} - Carnaval de Cádiz ${year}`}
         class='video-oficial'
         flush
         estado={estadoVideo}

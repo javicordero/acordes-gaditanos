@@ -47,7 +47,7 @@ pasodoble con otra letra), añade en el frontmatter:
 letraTitulo: La mujer nube
 ```
 
-- El título se intercala entre la pieza y la agrupación: `Pasodoble "La mujer nube" Los Colgaos`.
+- El título se muestra en el badge de la card, en el bloque de letras y en los avisos; el título de la ficha sigue siendo `Pasodoble Los Colgaos`.
 - **No se toca** la ficha original; la relación es automática por agrupación, año y tipo.
 - El nombre del archivo debe incluir el título: `pasodoble-los-colgaos-la-mujer-nube.md`.
 - De momento solo para pasodobles.

@@ -11,12 +11,13 @@ import GlosarioPopover from './GlosarioPopover.astro';
 import glosarioJson from '../../data/glosario-acordes.json';
 import { acordesDePieza, crearIndice, type Glosario } from '../../lib/acordes';
 import { mapaGlosarioConTransportes } from '../../lib/transporte';
-import { etiquetaLetra, nombrePieza } from '../../lib/letras';
+import { etiquetaLetra } from '../../lib/letras';
 
 const { acorde, glosario: conGlosario = true, hermanas = [] } = Astro.props;
 const { data, slug } = acorde;
-const tituloPieza = nombrePieza(acorde);
 const {
+  pieza,
+  agrupacion,
   musica,
   img,
   year,
@@ -30,6 +31,10 @@ const {
   musicaSlugs,
   letraSlugs,
 } = data;
+
+// El título visible de la ficha no lleva el nombre de la letra; ese nombre
+// queda en el badge de la card y en el bloque «Letras de este pasodoble».
+const tituloPieza = `${pieza} ${agrupacion}`;
 const { Content } = await render(acorde);
 
 // Glosario de acordes de la pieza (solo se calcula si está activo)
