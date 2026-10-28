@@ -63,7 +63,7 @@ Me condeno a quererte más allá del límite de la razón
 Si en toda esta tormenta tú pones la calma
       <a>Do#7</a>              <a>Fa#m</a>
 Esta letra que sale del alma
-      <a>La</a>            i7
+      <a>La</a>            <a>Si7</a>
 Te la debía, te la debía
       <a>La</a>                       <a>Si7</a>
 Te la debía, si quieres te la cambio
