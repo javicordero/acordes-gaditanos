@@ -27,7 +27,7 @@ como si nada.
 Todo se cubrió de negro
           <a>Sim7</a>            <a>Mi7</a>                 <a>La6</a>
 y en un momento lo que era bello pues ya no estaba.
-                                            <a>Sim7</a>?
+                                            <a>Sim7</a>
 Recuerdo esos días que cada vez más lentos pasaban
           <a>Mi7</a>                             <a>La6</a>
 y nunca quería que el sol entrara por mi ventana.
