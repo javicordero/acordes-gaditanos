@@ -4,7 +4,7 @@ agrupacion: Los Sacrificaos
 year: 2024
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://www.diariobahiadecadiz.com/wp-content/uploads/2024/02/8semis2-lossacrificaos.jpg
+img: https://d3cyidimctrlqs.cloudfront.net/articulos/articulos-209080.jpg
 cejilla: 3
 date: "22/11/2026"
 video: 'https://www.youtube.com/embed/NFBC3HS-U_8?si=QyjqLj5hhxb7XCQh'
