@@ -12,70 +12,70 @@ video: 'https://www.youtube.com/embed/Wc7rY5Nta8g'
 fraseClave: Se encendió la bombilla y me echo a temblar
 ---
 <pre>
-        Re                   Sim
+        <a>Re</a>                   <a>Sim</a>
 Se encendió la bombilla y me echo a temblar
-      Sol7                 La
+      <a>Sol7</a>                 <a>La</a>
 Desde hoy aquí arriba se acabó la tranquilidad
-      Re                         Sim
+      <a>Re</a>                         <a>Sim</a>
 Yo tenía entendió que íbamos a estar de relax
-      Sol                 Mi7                 La
+      <a>Sol</a>                 <a>Mi7</a>                 <a>La</a>
 Yo no sé pa que dice el cojone que va a descansar
-Re
+<a>Re</a>
 Todo el mundo a sus puestos, preparen las maquinarias
-Sim
+<a>Sim</a>
 Y venga a partir de ahora
 
 un montón de horas extraordinarias
-       Sol                           Re
+       <a>Sol</a>                           <a>Re</a>
 Veinticuatro horas al día los siete días de la semana
-      Mi
+      <a>Mi</a>
 No te veas la que nos queda,
-    La
+    <a>La</a>
 más horas que a la campana
-Re                          Sim
+<a>Re</a>                          <a>Sim</a>
 Retumba ya el 3x4 con los latidos del corazón
-Sol                       Mi7                   La7
+<a>Sol</a>                       <a>Mi7</a>                   <a>La7</a>
 Arriba ya estamos listos y otra vez al pie del cañón
-Re                      Mim
+<a>Re</a>                      <a>Mim</a>
 Encended los generadores activados los sistemas
-Sol                      Mi7                  La7
+<a>Sol</a>                      <a>Mi7</a>                  <a>La7</a>
 Y vamos a arrancar motores que revienten las calderas
-Sol             La         Fa#7          Sim
+<a>Sol</a>             <a>La</a>         <a>Fa#7</a>          <a>Sim</a>
 Quiero más adrenalina no quiero a nadie parao
-Sol                                Mim
+<a>Sol</a>                                <a>Mim</a>
 Hagamos una comparsa que huela a Cádiz
-                 Fa#7
+                 <a>Fa#7</a>
 por los cuatro costaos
-Sim                             La
+<a>Sim</a>                             <a>La</a>
 Y fabricar cientos de miles de coplas
-                     Sol                       Fa#7
+                     <a>Sol</a>                       <a>Fa#7</a>
 de las que solo unas pocas luego salen por su boca
-Sim                             La
+<a>Sim</a>                             <a>La</a>
 Y maquinar cientos de miles de ideas
-                        Sol
+                        <a>Sol</a>
 que dan vueltas en la azotea
-      Mim       Sol         Fa#
+      <a>Mim</a>       <a>Sol</a>         <a>Fa#</a>
 Sin parar, sin parar, sin parar
-Sim            La             Sol            Fa#7
+<a>Sim</a>            <a>La</a>             <a>Sol</a>            <a>Fa#7</a>
 Así me paso la vida sentrañas mías que voy a hacer
-Sim               La       Sol               Fa#7
+<a>Sim</a>               <a>La</a>       <a>Sol</a>               <a>Fa#7</a>
 Si la niña de mis ojos me está esperando otra vez
-Sim                 La                        Re
+<a>Sim</a>                 <a>La</a>                        <a>Re</a>
 Y vamos dejarnos el alma, poned los cinco sentíos
-                      Sol                    Fa#7
+                      <a>Sol</a>                    <a>Fa#7</a>
 Cantadle que por la espalda te entre un escalofrió
- Sol                     La
+ <a>Sol</a>                     <a>La</a>
 Y mezclando melodía y poesía,
-    Re                    Sim
+    <a>Re</a>                    <a>Sim</a>
 ironía, sentimiento y rebeldía
-       Sol
+       <a>Sol</a>
 Aquí arriba es donde nace la comparsa
-             Fa#     Sol
+             <a>Fa#</a>     <a>Sol</a>
 y para que usted lo vea
-Fa#7               Sim Sol
+<a>Fa#7</a>               <a>Sim</a> <a>Sol</a>
 Bienvenido a la Azotea,
-Fa#7               Sim Sol
+<a>Fa#7</a>               <a>Sim</a> <a>Sol</a>
 bienvenido a la Azotea,
-Fa#7               Sim
+<a>Fa#7</a>               <a>Sim</a>
 bienvenido a la Azotea.
 </pre>
