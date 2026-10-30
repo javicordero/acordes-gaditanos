@@ -298,24 +298,44 @@ async function cerrarAvisos(page) {
   }
 }
 
+/**
+ * Espera de verdad a que un elemento aparezca visible. `locator.isVisible()` NO
+ * espera: devuelve el estado del momento e ignora el timeout, así que no vale
+ * para listas que WhatsApp pinta con retraso (el canal, los resultados…).
+ */
+async function aparece(local, timeout) {
+  return local
+    .waitFor({ state: 'visible', timeout })
+    .then(() => true)
+    .catch(() => false);
+}
+
 /** Entra en la pestaña de canales y abre el canal por su nombre. */
 async function abrirCanal(page, canal) {
   await cerrarAvisos(page);
 
+  // :visible descarta las copias ocultas que WhatsApp deja montadas.
+  const enLista = () => page.locator(`span[title="${canal}"]:visible`).first();
+
+  // 1. A veces el canal ya está en la lista de chats abierta.
+  if (await aparece(enLista(), 2500)) {
+    if (await pulsar(page, enLista())) return true;
+  }
+
+  // 2. Lo normal desde 2026: los canales viven en su propia pestaña.
   const pestana = await localizar(page, SELECTORES.canales, 20_000);
   if (pestana) {
-    await pestana.click({ timeout: 8000 }).catch(() => {});
+    await pulsar(page, pestana);
     await esperar(1500);
+    if (await aparece(enLista(), 12_000)) {
+      if (await pulsar(page, enLista())) {
+        await esperar(1200);
+        return true;
+      }
+    }
   }
 
-  // :visible descarta las copias ocultas que WhatsApp deja montadas.
-  const enLista = page.locator(`span[title="${canal}"]:visible`).first();
-  if (await enLista.isVisible({ timeout: 4000 }).catch(() => false)) {
-    await pulsar(page, enLista);
-    return true;
-  }
-
-  // Sin suerte: se filtra con el buscador de la barra lateral.
+  // 3. Último recurso: el buscador de la barra lateral («Canales que sigues»).
   const buscador = await localizar(page, SELECTORES.buscar, 4000);
   if (!buscador) return false;
 
@@ -323,16 +343,13 @@ async function abrirCanal(page, canal) {
   await buscador.fill(canal).catch(async () => {
     await page.keyboard.type(canal, { delay: 40 });
   });
-  await esperar(2000);
 
   const resultado = page.getByText(canal, { exact: true }).first();
-  if (await resultado.isVisible({ timeout: 5000 }).catch(() => false)) {
-    if (!(await pulsar(page, resultado))) await page.keyboard.press('Enter').catch(() => {});
-    await esperar(1500);
-    return true;
-  }
+  if (!(await aparece(resultado, 10_000))) return false;
 
-  return false;
+  if (!(await pulsar(page, resultado))) await page.keyboard.press('Enter').catch(() => {});
+  await esperar(1500);
+  return true;
 }
 
 /** Escribe el texto respetando los saltos de línea con Shift+Enter. */
@@ -381,7 +398,7 @@ async function enviarMensaje(page) {
     .locator('[aria-label="Enviar"], [aria-label="Send"], [data-icon="send"]')
     .first();
 
-  if (await boton.isVisible({ timeout: 2500 }).catch(() => false)) {
+  if (await aparece(boton, 2500)) {
     await boton.click({ timeout: 5000 }).catch(async () => {
       await page.keyboard.press('Enter').catch(() => {});
     });
