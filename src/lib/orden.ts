@@ -9,7 +9,7 @@ import { parseSpanishDate, sortByYearDesc } from './date.ts';
  * Se compara con `startsWith` sobre el texto normalizado, así encajan las
  * variantes del cancionero ("Final de popurrí" / "Final de popurri" /
  * "Final de popurí", "Presentación Original", "Pasodoble Inédito"...).
- * Lo que no case (Testamento, Tango...) va al final, por orden alfabético.
+ * Lo que no case va al final, por orden alfabético.
  */
 export const ORDEN_PIEZAS = [
   'popurri',
@@ -17,15 +17,18 @@ export const ORDEN_PIEZAS = [
   'cuarteta',
   'estribillo',
   'pasodoble',
+  'tango',
   'presentacion',
 ];
 
 /**
- * Tipos de pieza que se ordenan como otro tipo. El `Credo` de Los Peregrinos
- * (Aragón, 2017) cuenta como cuarteta.
+ * Tipos de pieza que se ordenan como otro tipo: el `Credo` de Los Peregrinos
+ * (Aragón, 2017) y el `Testamento` de El Marqués de Cádiz (2019) cuentan como
+ * cuarteta.
  */
 const EQUIVALENCIAS_PIEZAS: Record<string, string> = {
   credo: 'cuarteta',
+  testamento: 'cuarteta',
 };
 
 /** Posición de un tipo de pieza en `ORDEN_PIEZAS`; los desconocidos, al final. */

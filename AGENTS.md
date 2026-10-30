@@ -61,7 +61,7 @@ Todo en `src/lib/orden.ts`, con dos comparadores que comparten las piezas (`comp
 - `/autor/musica` y `/autor/letra` (`ordenarAcordesAutor`, `compararFichas`): **año ↓** → agrupación A-Z → tipo de pieza → `date` ↓ → pieza A-Z → slug A-Z. No reciben prioridad: todas las cards son del mismo autor.
 - `/carnaval/[year]` (`ordenarAcordesYear`, `compararFichasYear`): **tipo de pieza primero** → prioridad por autor destacado → agrupación A-Z → `date` ↓ → pieza A-Z → slug A-Z.
 
-**Tipo de pieza** (`ORDEN_PIEZAS`): popurrí, final de popurrí, cuarteta, estribillo, pasodoble, presentación. Se compara por prefijo, así encajan «Final de popurrí/popurri/popurí», «Presentación Original» o «Pasodoble Inédito»; lo que no case (Testamento, Tango…) va al final por orden alfabético. Las equivalencias puntuales van en `EQUIVALENCIAS_PIEZAS`: el `Credo` cuenta como cuarteta.
+**Tipo de pieza** (`ORDEN_PIEZAS`): popurrí, final de popurrí, cuarteta, estribillo, pasodoble, tango, presentación. Se compara por prefijo, así encajan «Final de popurrí/popurri/popurí», «Presentación Original» o «Pasodoble Inédito»; lo que no case va al final por orden alfabético. Las equivalencias puntuales van en `EQUIVALENCIAS_PIEZAS`: el `Credo` y el `Testamento` cuentan como cuarteta.
 
 **`date` ↓** es la fecha de alta en la web, no la de la copla; para cerrar empates se usa pieza A-Z y slug A-Z (antes, las fichas empatadas quedaban en el orden en que `getCollection` devuelve los ficheros). **`/lista` es la excepción**: conserva su orden local por tipo de pieza, que es lo que anuncia su meta description.
 
