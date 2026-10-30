@@ -25,14 +25,15 @@ Con mi pelo lleno canas quien diría que a Alemania
 yo tendría que emigrar y aunque ya tengo comida
                    <a>Si7</a>                    <a>Mim</a>
 pa mi es una pesadilla vivir el sueño Alemán
-             <a>Re7</a>                         <a>Sol</a>
+           <a>Re7</a>                         <a>Sol</a>
 Maldita Merkel, maldito banco, maldito frío
-          <a>Do</a>                        <a>Si7</a>
+          <a>Do</a>                       <a>Si7</a>
 lo que daría por un ratito de libertad
-         <a>Lam</a>                          <a>Mim</a>
+         <a>Lam</a>                         <a>Mim</a>
 en la Marina tomando churros con cafelito
                     <a>Si7</a>                               <a>Mi</a>
 no como allí en Alemania que llevo hasta la lengua tapá
+
 por toa la casa tengo colgás
                           <a>Si7</a>
 na mas que fotos de mi Caleta
@@ -42,17 +43,17 @@ para beberme todo ese mar
 que se escapa luego llorando en la casapuerta.
          <a>Si7</a>           <a>Mi</a>
 Antes de irme pa trabajar
-          <a>Mi7</a>                  <a>La</a>
+         <a>Mi7</a>                  <a>La</a>
 siempre dejo volar la imaginación
-           <a>Si7</a>            <a>Sol#m</a>
+          <a>Si7</a>            <a>Sol#m</a>
 mi primer beso en el Corralón
         <a>Do#7</a>          <a>Fa#m</a>          <a>Si7</a>              <a>Mi</a>
 una coplita en el escalón y una oración en la madrugá
                <a>Lam7</a>                    <a>Mi</a>
 Virgen del la Palma, me chachis en la mar
-                    <a>Si7</a>
+                   <a>Si7</a>
 llévame pa Cádiz volando
-                                 <a>Fa#m</a>
+                               <a>Fa#m</a>
 que allí está tol mundo de Carnaval
               <a>Si7</a>               <a>Mi</a>
 y yo aquí soñando, soñando, soñando.
