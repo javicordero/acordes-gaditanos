@@ -33,6 +33,7 @@ Sálvame Cai perdóname mi Cai y agarra mi guitarra
 y agarra mi guitarra yo quisiera ser un barco de vela
                                <a>Do</a>
 para acariciar tu bahía eternamente
+
 yo quisiera ser tu pasodoble
                                    <a>Sol7</a>
 tu pasodoble en un libreto perpetuamente
@@ -40,6 +41,7 @@ tu pasodoble en un libreto perpetuamente
 cuatro años yo estuve alejado de ti
     <a>Fa</a>                   <a>Sol7</a>
 la tierra en donde nací y viví
+
 toma el tres por cuatro toma nuestras voces
                                         <a>Do</a>
 que mi tres por cuatro siempre acaba en doce

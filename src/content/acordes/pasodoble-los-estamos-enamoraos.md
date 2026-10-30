@@ -41,6 +41,7 @@ Puede que con todos sus desplantes
 nunca sea tan elegante como el tanguillo de Cai,
 <a>Do</a>            <a>Re7</a>         <a>Sol</a>                     <a>Re7</a>
 tango que por la gracia divina vio nacer el guirigay,
+
 pero si es gracia divina mi cuplé nació en la esquina
                           <a>Sol</a>
 por la gracia que hay en Cai.

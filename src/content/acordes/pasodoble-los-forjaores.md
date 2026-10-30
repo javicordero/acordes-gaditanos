@@ -32,9 +32,11 @@ en nuestra Caleta baja de color.
 Ay, supongo yo que al fundirse entre sus aguas
                                              <a>Re7</a>
 se convierta en esa fragua del famoso dios Vulcano.
+
 Ay, lo cierto es que al hundirse  en sus entrañas
                                               <a>Sol</a>
 toma un temple de esmeralda todo el cielo gaditano.
+
 Ay, pudiera ser que algún cíclope gitano
                     <a>Sol7</a>                    <a>Do</a>
 tenga un taller artesano sumergido en la Caleta.

@@ -14,14 +14,14 @@ fraseClave: Europa está al pie de guera
 ---
 <pre>
 <a>LaM7</a>
-Europa está al pie de guera igual que ocurriera
-          <a>Re</a>
-hace años ya
+Europa está al pie de guera 
+                             <a>Re</a>
+igual que ocurriera hace años ya
 <a>Mi7</a>                   <a>Sim7</a>                  <a>Mi7</a>
 No es una guerra cualquiera porque es la tercera
                <a>LaM7</a>
 gran guerra mundial
-<a>La7</a>            <a>Re</a>  <a>Si7</a>               <a>Mi7</a>
+<a>La7</a>           <a>Re</a>  <a>Si7</a>               <a>Mi7</a>
 Alemania como no, de nuevo es el invasor
 <a>LaM7</a>                    <a>Do#m7</a>  <a>Dom7</a>        <a>Sim7</a>
 Y no hay un Furher por medio porque es el dinero
@@ -29,7 +29,7 @@ Y no hay un Furher por medio porque es el dinero
 el gran dictador
                   <a>La7</a>           <a>Rem</a>
 Los ataques ya no son con bombardeos
-      <a>Mi7</a>                      <a>Lam</a>
+       <a>Mi7</a>                      <a>Lam</a>
 Ni organizan campos de concentración
                                            <a>Mi7</a>
 Ahora el exterminio es con deshaucios al obrero
@@ -43,16 +43,16 @@ El símbolo del euro fue quien lo sustituyó
 Sus aliados hoy son los mercados, la banca
     <a>Fa#7</a>        <a>Sim7</a>
 El poder, los gobiernos
-<a>Mi7</a>      <a>Sim7</a>      <a>Mi7</a>      <a>Sim7</a>      <a>Mi7</a>
-Que como buenos perritos falderos van atados
-        <a>Lam</a>
-con un collar
+<a>Mi7</a>      <a>Sim7</a>      <a>Mi7</a>      <a>Sim7</a> 
+Que como buenos perritos falderos 
+     <a>Mi7</a>             <a>Lam</a>
+van atados con un collar
        <a>Rem</a>                               <a>Lam</a>
 Es la tercera guerra mundial, nuestra milicia
                         <a>Mi7</a>
-se formará con nuestras manos con nuestra lucha
-           <a>Lam</a>  <a>La7</a>
-nuestro heroísmo
+se formará con nuestras manos 
+                             <a>Lam</a>  <a>La7</a>
+con nuestra lucha nuestro heroísmo
      <a>Rem</a>                        <a>LaM7</a>
 El enemigo esperando está y lo tenemos
                       <a>Fa#7</a>   <a>Sim7</a>  <a>Mi7</a>

@@ -28,6 +28,7 @@ pasodobles y estribillos
 Ay mostradores del Carapapa la peña el Charpa
                                           <a>Re7</a>
 cuantos nudillos en tus maeras han dejao marca
+
 Ay mostrador de la peña el Quini y Macias Rete
                                       <a>Sol</a>
 no tienen nudos en sus maeras son coloretes

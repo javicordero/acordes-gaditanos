@@ -15,16 +15,20 @@ fraseClave: Pa un añito que escucho tranquilo
 <pre>
        <a>Lam</a>                   <a>La7</a>                   <a>Rem</a>
 Pa un añito que escucho tranquilo en la ciudad de cádiz
-        <a>Mi7</a>                 <a>Lam</a>
+        <a>Mi7</a>                  <a>Lam</a>
 otro cajonazo y eso es lo que hay
-                                                       <a>Sol</a>
-no veas que drama, todo el mundo llorando todos enmorecidos
-       <a>Do7</a>                <a>Fa</a>          <a>Rem</a>           <a>Mi7</a>
-y el subiela diciendo tranquilos repartiendo antidepresivos
+                                         
+no veas que drama, todo el mundo llorando 
+             <a>Sol</a>       <a>Do7</a>                <a>Fa</a>  
+tos enmorecidos y el subiela diciendo tranquilos 
+       <a>Rem</a>           <a>Mi7</a>
+repartiendo antidepresivos
         <a>Lam</a>                                  <a>Sol</a>
 ya nos veíamos en la gran final con esa florecita
-                <a>Fa</a>                <a>Rem</a>             <a>Mi7</a>
-y acabé en una barraca comprando pistacho, anacardo y gomitas
+                 <a>Fa</a>                <a>Rem</a>   
+y acabé en una barraca comprando pistacho, 
+           <a>Mi7</a>
+anacardo y gomitas
         <a>Do</a>                        <a>Mim</a>
 puse la tele y me agobió el canal sur
          <a>Fa</a>                          <a>Sol</a>
@@ -41,15 +45,16 @@ mas vida me dabas mas vida me dabas
 y en cada noche y en cada escenario
    <a>Mi7</a>        <a>La</a>   <a>Sim7</a>  <a>Mi7</a>         <a>La</a>
 donde me esperabas tanto cariño encontraba
+
 que me hicistes olvidar el fallo de un jurado
-<a>Fa#7</a>           <a>Sim7</a>              <a>Mi7</a>
-super hiper preprado que con sus puestos,
-                    <a>Sim7</a>                <a>Mi7</a>
-sus tablas y sus cuentas como ha resultado
-                     <a>Sim7</a>                    <a>Mi7</a>
-demostró con dos cojones que el resto del mundo estaba
-      <a>La</a>
-equivocado
+<a>Fa#7</a>           <a>Sim7</a> 
+super hiper preprado 
+              <a>Mi7</a>                   <a>Sim7</a>      
+que con sus puestos, sus tablas y sus cuentas 
+          <a>Mi7</a>                         <a>Sim7</a>     
+como ha resultado demostró con dos cojones
+                   <a>Mi7</a>               <a>La</a>
+ que el resto del mundo estaba equivocado
           <a>Rem</a>                                   <a>La</a>
 y si este año me pasa lo mismo y no llego al nivel
            <a>Fa#7</a>                 <a>Sim7</a>
@@ -58,9 +63,12 @@ conmigo no sufras no tengas problemas
 que yo otro año como el que he vivido lo firmo otra vez
              <a>Fa#7</a>               <a>Sim7</a>
 así que tranquilo y hagan lo que quieran
-               <a>Mi7</a>               <a>Sim7</a>                 <a>Mi7</a>
-y luego en la calle después cada palo que aguante su vela
+               <a>Mi7</a>               <a>Sim7</a>
+y luego en la calle después cada palo 
+                <a>Mi7</a>
+que aguante su vela
                       <a>Sim7</a>
 que es donde está el pueblo
                  <a>Mi7</a>                 <a>La</a>
-que es el que te premia o el que te condena</pre>
+que es el que te premia o el que te condena
+</pre>

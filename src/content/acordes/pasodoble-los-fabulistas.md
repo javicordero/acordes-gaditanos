@@ -14,10 +14,13 @@ cejilla: 6
 <pre>
 <a>Mim</a>
 No cabe la menor duda que por lo que estamos viendo
+
 van a llegar a la Luna
                                     <a>Re</a>
 como aquel que dice en menos de un verbo.
+
 Y cuando ya se conozca ese astro deshabitado
+
 verán que no es tan hermosa
                          <a>Do</a>
 como los poetas la imaginaron
