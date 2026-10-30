@@ -27,6 +27,7 @@ Donde siempre volvería para quedarme dormío
 Dormiito, dormiito, ay como un recién nacío
            <a>Sol7</a>     <a>Do</a>
 Hojilla, hojilla, hojilla
+
 Llevo la hoji, hoji, hoji, hoji, hojilla
                      <a>Sol7</a>
 Clavada ay cual plumerito
@@ -36,9 +37,11 @@ El carnaval me da la vida desde que era mu chiquetito
 Ay marisma, yo necesito marisma
               <a>Sol7</a>                  <a>Do</a>
 Tu mar y tu cielo, tus noche y tus días
+
 Ay marisma, yo necesito la luna
                               <a>Sol7</a>
 La luna, lunera, la de mi alegría
+
 Ay marisma, Cádiz eres la plateada
                             <a>Do</a>
 La reina salada, la de la bahía
