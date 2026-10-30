@@ -14,12 +14,19 @@ fraseClave: "Cuando mi menda no aparezca por el COAC"
 <pre>
 <a>(Sorda)</a>
 Cuando mi menda no aparezca por el COAC
+
 Cuando el concurso no me empiece a echar de menos
+
 Cuando solo este de moda con la gente ciega
+
 en una barbacoa
+
 Cuando en febrero ya no este en el escenario
+
 Cuando ya no tenga fuerzas pa ensayar
+
 Cuando digan los que saben que carajo
+
                           <a>Re</a>
 ha hecho el Yuyu en carnaval
                                <a>Mim</a>

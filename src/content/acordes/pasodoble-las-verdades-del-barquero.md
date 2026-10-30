@@ -32,7 +32,9 @@ que viste una hartá si es de Antonio Martín.
 Siga usted haciéndole el juego a los politiquillos
 <a>Rem</a>                   <a>Mi7</a>                 <a>La</a>
 que puede ser que por ello le den un carguillo.
+
 Váyase, vayase, que es el momento
+
 pa emborracharse en la barra
                                               <a>Sim7</a>
 y cubrirse las espaldas con los que son como usted.
@@ -46,6 +48,7 @@ Corra y dígalo en la radio, háblelo en televisión,
 que yo respondo cantando a su asquerosa labor.
                        <a>Fa</a>
 Que mientras Cádiz me alumbre
+
 a esta barca no la hunde ni la arrastra
              <a>Mi7</a>    <a>La</a>    <a>Fa</a>                    <a>Mi7</a>
 una borrasca despreciable contra esos vientos cobardes

@@ -69,4 +69,3 @@ Antes de que acabe el tintero, Cádiz Tacita de Plata
 <a>Fa</a> <a>Sol7</a>       <a>Do</a> <a>Fa</a> <a>Sol7</a>     <a>Do</a>  <a>Fa</a> <a>Sol7</a>       <a>Do</a>
 Ahhhhhh Te quiero,       te quiero,       te quiero
 </pre>
-</pre>

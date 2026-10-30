@@ -62,6 +62,7 @@ defiende lo tuyo, cai hasta morirte,
 pon rabia y orgullo nunca consientas
         <a>Sim7</a>          <a>Mi7</a>
 que pisoteen, maldita sea,
+
 nuestras raices, nuestras raices
           <a>La</a>
 nuestras raices.

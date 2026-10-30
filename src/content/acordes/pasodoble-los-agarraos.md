@@ -16,6 +16,7 @@ fraseClave: Mi barca en la playa amarré
 Mi barca en la playa amarré
                                             <a>Re7</a>
 y aquí me tiene otra vez, ladrillitos coloraos.
+
 Yo soy el caballero aquel
                                                  <a>Sol</a>
 que en la vida, ya lo ves hoy lo ha vuelto un agarrao
@@ -29,6 +30,7 @@ un tacaño que se muere por su tierra
 y a la que le entregaría toas sus perras.
        <a>Re7</a>  <a>Sol</a>
 Pide, pide, pide, pídeme Tacita por esa boca,
+
 que este pobre chirigotero se quita lo ropa,
                                  <a>Re7</a>
 se quita la ropa y se queda encuero.
@@ -36,7 +38,9 @@ se quita la ropa y se queda encuero.
 Pídeme lo que tú quieras que to es poco para ti,
                                               <a>Re7</a>
 a esa boca de escollera quién se puede resistir,
+
 ¿de qué vale mi fortuna con la plata que hay aquí?
+
 Y que no es literatura, y que no es literatura
                             <a>Sol</a>
 que hasta el sol viene a morir.

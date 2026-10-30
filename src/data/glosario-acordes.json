@@ -13035,6 +13035,18 @@
       "posiciones": [
         {
           "trastes": [
+            0,
+            6,
+            7,
+            5,
+            7,
+            0
+          ],
+          "baseTraste": 5,
+          "cejilla": null
+        },
+        {
+          "trastes": [
             -1,
             -1,
             1,
@@ -15628,18 +15640,6 @@
         {
           "trastes": [
             -1,
-            -1,
-            0,
-            2,
-            2,
-            2
-          ],
-          "baseTraste": 1,
-          "cejilla": null
-        },
-        {
-          "trastes": [
-            -1,
             5,
             7,
             6,
@@ -15652,6 +15652,18 @@
             "desde": 1,
             "hasta": 5
           }
+        },
+        {
+          "trastes": [
+            -1,
+            -1,
+            0,
+            2,
+            2,
+            2
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         },
         {
           "trastes": [

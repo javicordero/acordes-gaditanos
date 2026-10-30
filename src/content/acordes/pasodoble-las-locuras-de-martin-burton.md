@@ -20,6 +20,7 @@ cuando comenzó este cuento, ay niña de mis amores.
 Con tus cinco primaveras llenaste mi vida entera
                      <a>La</a>
 y aquel invierno de flores.
+
 Y aunque yo llegaba tarde no era tarde pa quererte
                  <a>La7</a>                  <a>Re</a>
 así tardará una vida enamorando a tu madre
@@ -43,6 +44,7 @@ que del trabajo a casa me desbordo
 loquito por llegar y estar contigo.
         <a>La7</a>                 <a>Re</a>
 Que el corazón entero se me va
+
 cuando llama a la puerta
                  <a>Mi7</a>           <a>La</a>
 y te abraza ese que te dio la vida,

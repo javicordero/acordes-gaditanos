@@ -22,6 +22,7 @@ a mi me parten los sentimientos
 En el barrio de la viña esas calles que colindan
                     <a>Si7</a> <a>Do7</a> <a>Si7</a>
 con nuestra bella caleta
+
 se van a morir de rabia si pronto no desagravia
    <a>Si7</a>             <a>Mim</a>  <a>Si7</a> <a>Mim</a>
 el daño que las contempla

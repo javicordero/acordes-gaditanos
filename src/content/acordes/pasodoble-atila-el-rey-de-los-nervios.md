@@ -36,6 +36,7 @@ Salimos a pasear.
 Ay, con qué gracia me dijo mire usted
                                      <a>Re7</a>
 estas son las murallas, las de San Carlos,
+
 Ay, Alameda, Parque Genovés
                             <a>Sol</a>    <a>Sol7</a>
 y en esta curva agárrate al carro.
@@ -49,7 +50,9 @@ enseguidita entramos en Catedral,
 y le dije cochero, qué maravilla,
                                <a>Re7</a>
 no te enfades conmigo soy de la Viña,
+
 dale al carro rienda suelta,
+
 o es que no te has dado cuenta,
                      <a>Do</a>          <a>Re7</a>     <a>Sol</a>
 y por lo que tú más quieras no te vayas a parar.

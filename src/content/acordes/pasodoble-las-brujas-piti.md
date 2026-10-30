@@ -22,7 +22,7 @@ aquellas que antaño te hicieran reirse
 Esas que pese a su ausencia felizmente recordásteis
 <a>Sol#7</a>           <a>Do#m</a>    <a>Mi7</a>                 <a>La</a>
 posiblemente añorásteis sumergidas en nostalgia
-  <a>Mi7</a>               <a>La</a>
+  <a>Mi7</a>             <a>La</a>
 de no volverlas a ver
 <a>La</a>
 Que alegría representar en los días de carnaval
@@ -40,7 +40,8 @@ que es la fiesta del Dios Momo popular
 cuando el pueblo disfrazado en libertad
                   <a>Mi7</a>               <a>La</a>   <a>La7</a>
 muestra una expresión graciosa y sincera
-<a>Re</a>           <a>Mi7</a>        <a>La</a>            <a>Mi7</a>
-Y le canto a Cádiz con amor con el corazón
-           <a>La</a>
- tierra marinera</pre>
+<a>Re</a>           <a>Mi7</a>        <a>La</a>  
+Y le canto a Cádiz con amor 
+            <a>Mi7</a>            <a>La</a>
+ con el corazón tierra marinera
+ </pre>

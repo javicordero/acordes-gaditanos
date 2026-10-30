@@ -25,7 +25,8 @@ no se cuantas cosas más
 <a>Re</a>                  <a>La</a>                      <a>Mi7</a>
 Les pido que me perdonen hago lo que yo he mamao
                     <a>La</a>
- desde chico en Carnaval
+desde chico en Carnaval
+
 A mi me enseñaron solo pa cantar cantar y cantar
                      <a>Fa#7</a> <a>Sim7</a>
 un buen pasodoble chirigotero
@@ -39,6 +40,7 @@ Pero nadie piense que estoy criticando las nuevas olas
 ni a los que les gustan todas esas modas
                                           <a>Mi7</a>
 es que yo no cambio el ritmo del tres por cuatro
+
 que no lo cambio y aunque fracase
                                         <a>La</a>
 yo seguiré por razón de ser con mi chirigota

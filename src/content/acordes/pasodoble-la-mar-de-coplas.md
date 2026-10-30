@@ -23,6 +23,7 @@ cuando del mar me alejo en la distancia muero,
 tal vez porque fue Cádiz en donde yo nací,
                 <a>Sim7</a>                 <a>Mi7</a>
 la sangre de mis venas esté bañá de sal
+
 y de tanto soñar cerca de la Caleta
                                <a>La</a>
 igual que el poeta me crea marinero.
@@ -50,6 +51,7 @@ Y aunque sirva de risa gritarlo no puedo
 es como una caricia que a mi me disloca,
                  <a>Sim7</a>             <a>Do#</a> <a>Re</a> <a>Do#</a>
 quizás porque mi mare me parió sin más
+
 en la orillita del mar,
                                    <a>Fa#</a>
 el alma se me ahoga en este mar de coplas.

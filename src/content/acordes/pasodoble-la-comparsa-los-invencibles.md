@@ -39,6 +39,7 @@ y aunque ahora somos amigos no te confies chaval
 y oye bien lo que te digo con una mujer por medio
                  <a>Mi</a>
 de todo puede pasar
+
 Y ya te dije que Cádiz es esa mujer bonita
                                 <a>Do#7</a>       <a>Fa#m7</a>
 la que le ronda sus calles esos vientos gaditanos

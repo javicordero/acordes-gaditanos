@@ -24,16 +24,17 @@ Y entendí que las musas
 no eran diosas divinas ni ninfas de cuento,
             <a>Fa#</a>        <a>Sim</a>
 que aquella noche tus celos
-                         <a>Re</a>                   <a>Do#7</a>
-me hicieron ver que las musas y eran de carne
-y de hueso,
+                         <a>Re</a>                  
+me hicieron ver que las musas 
+              <a>Do#7</a>
+y eran de carne y de hueso,
                <a>Re</a>   <a>Mi7</a>                 <a>LaM7</a>
 y mi pasión de poeta con tu pasión despertaste
-            <a>Fa#</a>    <a>Sim</a>   <a>Si7</a>
-de noche en tu casapuerta, que no se enteren
-       <a>Mi7</a>
-tus padres
-                          <a>LaM7</a>      <a>Mi7</a>           <a>LaM7</a>
+            <a>Fa#</a>    <a>Sim</a>    <a>Si7</a>
+de noche en tu casapuerta, 
+                        <a>Mi7</a>
+que no se enteren tus padres
+                          <a>LaM7</a>      <a>Mi7</a>          <a>LaM7</a>
 Y en la esquinita de en frente, donde nadie nos veía
                      <a>Do#m</a>                       <a>Do#7</a>
 nos subía hasta la fiebre y entres juegos y caricias
@@ -45,11 +46,11 @@ Y tal como te dejaba pa mi barrio me volvía,
 y como si fuese magia mis canciones me nacían
 <a>Sim</a>     <a>Si7</a>        <a>Mi7</a>
 Y mi comparsa te hacía
-            <a>Re</a>                <a>Mi7</a>
+            <a>Re</a>               <a>Mi7</a>
 Y desde entonces, fiel compañera,
-            <a>Do#m7</a>        <a>Fa#</a>
+            <a>Do#m7</a>       <a>Fa#</a>
 tanto ha llovido, amiga mía,
-            <a>Sim7</a>               <a>Mi7</a>              <a>LaM7</a>
+            <a>Sim7</a>              <a>Mi7</a>              <a>LaM7</a>
 tanto inspiraste a este juntaletras que te la debía
 <a>La7</a>        <a>Re</a>            <a>Mi7</a>               <a>Do#m</a>
 Y cuando alguno te dicen musa, si ya estas harta

@@ -29,9 +29,9 @@ y mi maestro fue el Chimenea
 vi a tener que coger el tres por cuatro
                            <a>La</a>
 y achocarlo contra la ajotea
-                                                      <a>Mi7</a>
+                                                    <a>Mi7</a>
 Tiene tipismo tiene tipismo el pajodoble de nuestro Cai
-                                                    <a>La</a>
+                                                  <a>La</a>
 porque es najio en la Caleta y bautijao en el guirigai
            <a>Mi7</a>                                 <a>La</a>
 Y ji lo quieres de verdad lo tienes que paladear

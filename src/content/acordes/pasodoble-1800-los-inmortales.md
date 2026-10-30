@@ -15,22 +15,23 @@ recomendada: true
 <pre>
 <a>Mim</a>                           <a>Mi7</a>        <a>Lam</a>
 Yo me enamore de ti por culpa de los carnavales
-                  <a>Re7</a>                          <a>Sol</a>
+                  <a>Re7</a>                         <a>Sol</a>
 Desde entonces no se si vivir, o morirme a raudales
-      <a>Si7</a>        <a>Mim</a>       <a>Mi7</a>          <a>Lam</a>
+     <a>Si7</a>        <a>Mim</a>       <a>Mi7</a>          <a>Lam</a>
 pero ya me enamoré y como con los corazones
-                 <a>Mim</a>          <a>Si7</a>               <a>Mim</a>
+              <a>Mim</a>          <a>Si7</a>               <a>Mim</a>
 nunca ganan razones, mis razones las voy a perder.
-                   <a>Lam7</a>      <a>Re7</a>                 <a>Sol</a>
+                   <a>Lam7</a>   <a>Re7</a>                 <a>Sol</a>
 Ya se cual es tu ventana, por si se abre algun dia
 <a>Mim</a>              <a>Lam7</a>               <a>Si7</a>
-la luz de cada mañana se meta en tu cama y te de
-       <a>Mim</a> <a>Mi7</a>
-la alegría
+la luz de cada mañana se meta en tu cama 
+               <a>Mim</a> <a>Mi7</a>
+y te de la alegría
 <a>Lam</a>               <a>Mim</a>   <a>Si7</a>
-y con las manos vacias abras la que yo sabia que
-          <a>Mi</a>
-fue tu ventana.
+y con las manos vacias abras la que yo sabia 
+              <a>Mi</a>
+que fue tu ventana.
+
 Y si pa mi gaditano algun diita la abres
                                            <a>Fa#m</a>
 que sepas que yo tu mano no se la pido a tu padre.
@@ -38,7 +39,7 @@ que sepas que yo tu mano no se la pido a tu padre.
 Tu padre tiene la suya asi que puesto a pedir
                  <a>Si7</a>
 si yo pidiera la tuya
-                     <a>La</a>    <a>Si7</a>             <a>Mi</a>
+                     <a>La</a>   <a>Si7</a>             <a>Mi</a>
 como es tu mano y es tuya te la pediria a ti
     <a>Mim</a>                      <a>Mi7</a>          <a>Lam</a>
 te estoy pidiendo la mano damela por carnavales

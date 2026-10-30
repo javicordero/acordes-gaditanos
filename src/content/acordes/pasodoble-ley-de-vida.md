@@ -30,6 +30,7 @@ del parlamento del Gavilán,
 del barrio la Viña, de los compases chirigoteros,
                          <a>Fa</a>                <a>Mi7</a>
 de la Rosarillo de la Carmela y de los te quiero,
+
 de la vida entera en una guitarra,
                              <a>Lam</a>
 de la rosa que le partiera el alma,
@@ -55,6 +56,7 @@ No hagas más difícil Cádiz del alma esta despedía
 yo te juro que te he entregado todo lo que tenía
                 <a>Mi7</a>
 y aunque ya me vaya de noche y día
+
 si tú me llamas te rondaré,
                 <a>Re</a>
 igual que el Levante por tus esquinas

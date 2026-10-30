@@ -20,6 +20,7 @@ de que hiciera un pasodoble dedicandolo a la viña
 que resaltara la belleza de sus calles
                                                <a>Mi</a>
 y el aroma de su ambiente que enseguida te encariña.
+
 que mas quisiera yo paquito de mi alma
                       <a>Mi7</a>                   <a>La</a>
 que lo que me estas pidiendo fuera una realidad,
@@ -27,9 +28,11 @@ que lo que me estas pidiendo fuera una realidad,
 pero resulta pisha de que mi barrio se desmorona
                                                <a>Si7</a>
 y que en un mismo cuarto alli conviven doce personas,
+
 que clase de piropo le puedo echar.
 <a>Mi</a>
 yo no muero por la viña, yo es que vivo allá en la viña
+
 y me hace gracia la gente que son viñeras
              <a>Do#7</a>         <a>Fa#m</a>
 tan solo en fechas de carnaval.

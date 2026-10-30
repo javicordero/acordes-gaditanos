@@ -20,9 +20,11 @@ si no hay nadie más libre que tu mora de la morería.
 Yo construiría un país para ti coronaito por dunas
 <a>Re</a>                 <a>LaM7</a>      <a>Mi7</a>       <a>Lam</a>
 donde el Sahara pudiera lucir su media luna.
+
 Y ni el hambre ni la sed nada pudo entorpecer
                                  <a>Mi7</a>
 que tu pudieras seguir por tu camino.
+
 Y por el mismo Magre te pasaste a Mohamé
                            <a>Lam</a>
 y al pelota maniquí de Moratinos.
@@ -50,5 +52,4 @@ que con sus comisiones y sus ventas de acciones
 y sus cuentas corrientes, sus trajes y sus millones
                                <a>LaM7</a>
 no tienen cojones de ser tan valiente.
-
 </pre>

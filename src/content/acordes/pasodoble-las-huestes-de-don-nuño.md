@@ -20,9 +20,11 @@ por donde desembarcaron hace siglos los fenicios,
 y aunque no críe ganado se cría mucho marisco.
  <a>Mim</a>                                           <a>Re</a>
 Allí mi pueblo vive feliz y no ambiciona la riqueza
+
 mas sí para poder subsistir
                         <a>Do</a>
 hay que tener mucha destreza
+
 y ser caletero cien por cien
                       <a>Si7</a>
 desde los pies a la cabeza.
@@ -30,9 +32,11 @@ desde los pies a la cabeza.
 El mar se ilumina al reflejar
                          <a>Re7</a>
 la luz del faro con su brillo
+
 y da sensación al contemplar
                          <a>Do</a>
 que son de plata mis castillos
+
 y el son de las olas es un crisol
           <a>Si7</a>          <a>Mi</a>
 donde se funde mi canción.

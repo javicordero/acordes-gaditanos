@@ -40,15 +40,19 @@ y los latidos retumben toitos a la vez descontrolaos
 y píntame tus colorete y ensuciame con tus churretes
     <a>Mim</a>                         <a>Do</a>
 y aprietame con tus abrazos tan fuerte
+
 que el alma se rompa mil pedazos
       <a>Sol</a>                          <a>Re</a>
 y acurrucame con tus cortinas y enrédame
+
 en tus serpentinas
     <a>Mim</a>                           <a>Do</a>
 y encierrame en una esquina no hay hueco mas grande
+
 ni bulla más divina
       <a>Sol</a>                         <a>Re</a>
 Ven y ahógame junto a tu playa y entiérrame
+
 con tus caballas
    <a>Mim</a>                       <a>Do</a>
 rescátame sin mi permiso que yo quise subir hasta

@@ -40,6 +40,7 @@ cuantos plumeros, cuantos plumeros
 he clavao Tacita, en la calle la Palma
            <a>Sol7</a>
 y cuantas bolsas de papelillo
+
 yo te he tirao desde chiquillo,
           <a>Fa</a>               <a>Sol7</a>
 desde chiquillo, desde chiquillo

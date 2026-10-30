@@ -17,6 +17,7 @@ fraseClave: Amanece son las seis de la mañana
 Amanece son las seis de la mañana
                                <a>Mi7</a>
 en el horizonte ha renacido el sol
+
 la bajamar ha llegado el sol ya se ha relajao
                               <a>La</a>
 ya se dispone a salir el pescador

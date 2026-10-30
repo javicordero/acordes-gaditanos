@@ -18,15 +18,15 @@ y deja los tiempos seguir adelante.
                       <a>Do</a>                  <a>Re7</a>
 Cállate, cállate y procura que Dios te perdone,
             <a>Do</a>              <a>Re7</a>
-que precisamente, tú de maricones has
-           <a>Sol</a>
-sabido bastante.
+que precisamente, tú de maricones 
+              <a>Sol</a>
+has sabido bastante.
 <a>Sol</a> <a>Re7</a>            <a>Sol</a>    <a>Re7</a>       <a>Sol</a>
 Quien en nombre de Dios condene el amor
-                <a>Re7</a> <a>Sol</a> <a>Si7</a>
-en la forma que sea,     ojalá que se las vea
-               <a>Mim</a>
-en el juicio final,
+                <a>Re7</a> <a>Sol</a> 
+en la forma que sea,     
+<a>Si7</a>                                <a>Mim</a>
+ojalá que se las vea en el juicio final,
                                           <a>Lam7</a> <a>Si7</a>
 quien condene a dos personas por un matrimonio
 <a>Lam7</a>                                 <a>Si7</a>
@@ -63,5 +63,4 @@ y se debe callar, a callar, a callar.
 Y deja ya a la gente distinta y valiente
               <a>La</a>   <a>Si7</a>            <a>Mi</a>
 amando a su manera, amando a su manera.
-</pre>
 </pre>

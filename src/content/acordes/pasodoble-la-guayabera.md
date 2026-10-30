@@ -15,24 +15,29 @@ fraseClave: Yo no soy libre ni soy esclavo
 ---
 
 <pre>
-<a>Mim</a>                        <a>Re</a>         <a>Do</a>    <a>Lam7</a>
-Yo no soy libre ni soy esclavo ni millonario
-        <a>Si7</a>
-No soy Paris
-          <a>Mim</a>             <a>Re</a>             <a>Do</a>   <a>Lam7</a>
-Yo no soy moro ni soy cristiano yo soy el barrio
-       <a>Si7</a>    <a>Mim</a>
-Donde nací. El barrio donde yo nací
+<a>Mim</a>                        <a>Re</a>  
+Yo no soy libre ni soy esclavo 
+       <a>Do</a>    <a>Lam7</a>       <a>Si7</a>
+ni millonario No soy Paris
+          <a>Mim</a>             <a>Re</a>    
+Yo no soy moro ni soy cristiano 
+          <a>Do</a>   <a>Lam7</a>     <a>Si7</a>    
+yo soy el barrio Donde nací. 
+   <a>Mim</a>
+El barrio donde yo nací
+
 Está en una ciudad que para mí es el mundo
               <a>Si7</a>
 Pero que anda presa de otro mundo
-Y dentro de un país Con nombre y con escudo y con
-<a>Mim</a>
-Una bandera que no me representa
-Que para mí no es na ni En los tiempos de paz
+
+Y dentro de un país Con nombre y con escudo 
+      <a>Mim</a>
+y con una bandera que no me representa
+
+Que para mí no es na ni en los tiempos de paz
                      <a>Re</a>
 ni en los tiempos de guerra
-                              <a>Do</a>
+                               <a>Do</a>
 Que no hay bandera que yo haya jurao
               <a>Lam7</a>        <a>Si7</a>
 Más que ese mío pendón morado
@@ -50,7 +55,7 @@ Desde Bruselas y desde Berlín
 A los pobres nos están siempre bombardeando
 <a>Mi</a>                                          <a>Fa#m</a>
 Deja que yo con las flores y la velita encendia
-              <a>Si7</a>                      <a>Mi</a>
+                <a>Si7</a>                      <a>Mi</a>
 Llene mis alrededores que pa tragedia la mia
                                              <a>Mi7</a>
 Y si es que en mi corazón queda un poco de amor

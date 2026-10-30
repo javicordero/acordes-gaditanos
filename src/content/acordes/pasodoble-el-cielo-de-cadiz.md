@@ -61,8 +61,8 @@ que me lo marca con tu suave contoneo.
 Deja que aquí esta noche haga justicia por tu
   <a>Mi</a>                      <a>Si7</a>
 honor y le grite a toa la gente
-Qué seria de los hombres en esta vida
-sin las mujeres
+
+Qué seria de los hombres en esta vida sin las mujeres
              <a>Fa#m7</a>        <a>Si7</a>   <a>Mi</a>
 gracias chiquilla por ser como eres.
 </pre>

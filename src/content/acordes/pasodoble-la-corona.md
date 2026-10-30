@@ -16,25 +16,28 @@ fraseClave: Contemplando el Campo del Sur sólo me queda decir
 <a>LaM7</a>            <a>Sim7</a>      <a>Mi7</a>                 <a>LaM7</a>
 Contemplando el Campo del Sur sólo me queda decir
          <a>Fa#7</a>       <a>Sim7</a>
-Ay qué bonito es mi Cai Y del Puente Hierro al Canal
-                    <a>Mi7</a> <a>Sim7</a>       <a>Mi7</a>        <a>LaM7</a>
-Se produce una quietud Que en el mundo no la hay
+Ay qué bonito es mi Cai 
+                                                <a>Mi7</a>
+Y del Puente Hierro al Canal Se produce una quietud
+<a>Sim7</a>       <a>Mi7</a>        <a>LaM7</a>
+Que en el mundo no la hay
                     <a>Sim7</a>         <a>Mi7</a>           <a>LaM7</a>
 Por eso vengo a cantarte feliz abrazado a mi comparsa
        <a>Fa#7</a>       <a>Sim7</a>            <a>Mi7</a>         <a>LaM7</a>
 Con compases marineros pa ti que ya sentí añoranza
-<a>Sim7</a>       <a>Mi7</a>          <a>LaM7</a>     <a>Mi7</a> <a>LaM7</a>
+<a>Sim7</a>       <a>Mi7</a>          <a>LaM7</a>    <a>Mi7</a> <a>LaM7</a>
 De ser coplero en tus tablas
+
 porque yo me muero por ti
                                         <a>Mi7</a>
 Y me vuelvo loco por ti porque me envenenas
              <a>Sim7</a>                   <a>Mi7</a>
 En la tierra donde nací no me canso de repetir
-                            <a>LaM7</a>    <a>La7</a>
+                          <a>LaM7</a>    <a>La7</a>
 Ole, ole y ole tierra marinera
           <a>Re</a>                                       <a>LaM7</a>
 Porque tú eres como una barquilla que siempre me esperas
-                             <a>Fa#7</a>   <a>Sim7</a> <a>Mi7</a>    <a>LaM7</a>   <a>La7</a>
+                            <a>Fa#7</a>  <a>Sim7</a> <a>Mi7</a>    <a>LaM7</a>   <a>La7</a>
 Igual que una novia en su cita primera se desespera
          <a>Re</a>                          <a>Mi7</a>     <a>LaM7</a>
 Y en el olvio he llorao mi ausencia y mis emociones

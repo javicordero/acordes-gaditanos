@@ -16,6 +16,7 @@ fraseClave: Vestido de viudo,
 Vestido de viudo,
                                <a>Sol7</a>
 vestido de viudo y con mu mala cara
+
 vengo para adorarte
                                   <a>Do</a>
 y a darte otro besito, tacita plateada.
@@ -27,6 +28,7 @@ y dime, tierra mía, lo que quieres de mí,
 pide por tu boquitaque todo es para ti,
                                        <a>Do</a>
 tú sabes, entrañitas, que eres mi sinvivir.
+
 Si algún día no viniera y cantarte no pudiera,
                 <a>Sol7</a>
 Cádiz de mi corazón, respetarte y venerarte

@@ -21,9 +21,9 @@ siempre es así en los Jueves Santos,
 que hay que arreglarse pa ese día,
 <a>Sol7</a>                     <a>Do</a>
 no pueden ir hecho un guiñapo.
-                     <a>Sol7</a>                      <a>Fa</a>
+                     <a>Sol7</a>                      
 Con sus ropas de postín con sus galas de vestir
-                            <a>Sol7</a>
+<a>Fa</a>                          <a>Sol7</a>
 ahí van los dos la mar de guapos.
          <a>Fa</a>                           <a>Sol7</a>
 Juan y Jesús se han santiguao na más entrar
