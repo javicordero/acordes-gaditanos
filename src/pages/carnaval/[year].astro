@@ -6,7 +6,11 @@ import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Banner320X50 from '../../components/ads/Banner320x50.astro';
 import Banner468X60 from '../../components/ads/Banner468x60.astro';
 import AnuncioSobrePagina from '../../components/ads/AnuncioSobrePagina.astro';
-import { parseSpanishDate } from '../../lib/index';
+import {
+  ordenarAcordesYear,
+  prioridadDeAgrupaciones,
+  prioridadDeAutores,
+} from '../../lib/index';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -27,9 +31,11 @@ export async function getStaticPaths() {
 
 const { year, acordes } = Astro.props;
 
-const acordesOrdenados = acordes.sort((a, b) => {
-  return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
-});
+// Agrupaciones con autores del listado de /autores salen primero, en el orden
+// de esos autores; el resto queda detrás, alfabéticamente.
+const autores = await getCollection('autores');
+const prioridad = prioridadDeAgrupaciones(acordes, prioridadDeAutores(autores));
+const acordesOrdenados = ordenarAcordesYear(acordes, prioridad);
 
 const title = `Carnaval de Cádiz ${year} - Acordes de guitarra`;
 const description = `Todos los acordes de guitarra del Carnaval de Cádiz ${year}. Encuentra acordes de chirigotas, comparsas, cuartetos y coros del año ${year}.`;

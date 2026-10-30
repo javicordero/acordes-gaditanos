@@ -7,7 +7,7 @@ import Breadcrumb from '../../../components/page/Breadcrumb.astro';
 import Banner320X50 from '../../../components/ads/Banner320x50.astro';
 import Banner468X60 from '../../../components/ads/Banner468x60.astro';
 import AnuncioSobrePagina from '../../../components/ads/AnuncioSobrePagina.astro';
-import { parseSpanishDate, sortByYearDesc } from '../../../lib/index';
+import { ordenarAcordesAutor } from '../../../lib/index';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -40,16 +40,7 @@ export async function getStaticPaths() {
 
 const { authorName, acordes } = Astro.props;
 
-const acordesOrdenados = acordes.sort((a, b) => {
-  const yearA = a.data.year;
-  const yearB = b.data.year;
-
-  if (yearA !== yearB) {
-    return sortByYearDesc(yearA, yearB);
-  }
-
-  return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
-});
+const acordesOrdenados = ordenarAcordesAutor(acordes);
 
 const title = `${authorName} (Letra) - Acordes del Carnaval de Cádiz`;
 const description = `Todos los acordes con letra de ${authorName} del Carnaval de Cádiz. Explora todas las agrupaciones y piezas de este autor.`;

@@ -53,6 +53,18 @@ Una misma música puede tener varias letras. Cada letra es una ficha propia (`.m
 ### Autores
 `AutorCardsGroup` pinta el grid de autores (2 columnas en desktop, 1 en móvil). Cada `AutorCard` enlaza a la página principal del autor según `type` y añade chips a `/autor/musica/{slug}` y `/autor/letra/{slug}` cuando tiene créditos, calculados en build con `contarCreditosAutores` (`src/lib/autores.ts`). La home muestra los 6 primeros por `order` (5 en móvil) y `/autores` los muestra todos. Toda la card (imagen y cuerpo) usa `--primary-contrast-color`; el título y la línea de los chips van en `--on-bright-color` y los chips usan fondo `--on-bright-color` con texto `--primary-contrast-color` (sin cambio al hover). La sombra es `--on-bright-color` en reposo y en hover (solo crece y la card se desplaza).
 
+### Orden de las cards en los listados
+Todo en `src/lib/orden.ts`, con dos comparadores que comparten las piezas (`compararTipo`, `compararPrioridad`, `compararAgrupacion`, `compararResto`).
+
+**Prioridad por autor destacado** (la usan los dos): la agrupación (por `agrupacionSlug`) de un autor del listado de `/autores` va delante, en el orden de su campo `order`, usando la mejor posición entre sus autores de música y letra. Las agrupaciones sin autor del listado quedan detrás.
+
+- `/autor/musica` y `/autor/letra` (`ordenarAcordesAutor`, `compararFichas`): **año ↓** → agrupación A-Z → tipo de pieza → `date` ↓ → pieza A-Z → slug A-Z. No reciben prioridad: todas las cards son del mismo autor.
+- `/carnaval/[year]` (`ordenarAcordesYear`, `compararFichasYear`): **tipo de pieza primero** → prioridad por autor destacado → agrupación A-Z → `date` ↓ → pieza A-Z → slug A-Z.
+
+**Tipo de pieza** (`ORDEN_PIEZAS`): popurrí, final de popurrí, cuarteta, estribillo, pasodoble, presentación. Se compara por prefijo, así encajan «Final de popurrí/popurri/popurí», «Presentación Original» o «Pasodoble Inédito»; lo que no case (Testamento, Tango…) va al final por orden alfabético. Las equivalencias puntuales van en `EQUIVALENCIAS_PIEZAS`: el `Credo` cuenta como cuarteta.
+
+**`date` ↓** es la fecha de alta en la web, no la de la copla; para cerrar empates se usa pieza A-Z y slug A-Z (antes, las fichas empatadas quedaban en el orden en que `getCollection` devuelve los ficheros). **`/lista` es la excepción**: conserva su orden local por tipo de pieza, que es lo que anuncia su meta description.
+
 ### Postura predeterminada por acorde
 En el `<pre>` se puede fijar la postura con la que se abre un acorde con `data-postura`:
 ```html
