@@ -14,8 +14,8 @@ fraseClave: que de vueltas da la vida la vida da muchas vueltas.
 <pre>
 <a>Sol</a>                       <a>Do</a>
 que de vueltas da la vida la vida da muchas vueltas.
-<a>Re7</a>              <a>Sol</a>                     <a>Re7</a>
-2 copleros se juntaron a colmo de una borrachera
+<a>Re7</a>                <a>Sol</a>                     <a>Re7</a>
+dos copleros se juntaron a colmo de una borrachera
                    <a>Sol</a>
 en la puerta la caleta
                           <a>Do</a>
@@ -40,6 +40,7 @@ por bandera traido siempre mi copliiiilla
 siempre intento componerlas muy senciiiilla
         <a>Re7</a>
 y aqui tiene chirigotas y 3x4
+
 chirigotas de pellizco y de porrazo
                                 <a>Sol</a>
 de los compases de cai me emborracho.

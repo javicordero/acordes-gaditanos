@@ -47,6 +47,7 @@ Ya va a saltar va a ganar ya lo echó
 son de amores ay estos duelos
 <a>Re</a>                   <a>Mi7</a>         <a>La</a>               <a>Mi7</a>
 Que Cai coqueta los quiere a los dos cosas de mujeres
+
 que está que se bebe los dos vientos los dos vientos
                <a>La</a>
 ¡ay! los dos vientos

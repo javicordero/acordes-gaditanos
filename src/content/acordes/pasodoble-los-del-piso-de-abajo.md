@@ -26,10 +26,10 @@ Lo mismo que mi sangre ayy, me corre por las venas
 Ese veneno dulce de rabia y de condena
                  <a>Si7</a>                      <a>Fa</a>
 Y que más da que pierda y que más da que gane
-<a>Lam7</a>                <a>Si7</a>  <a>Lam7</a>
-Ella no le da importancia, que esta es la mejor
-   <a>Si7</a>           <a>Fa#m7</a>         <a>Si7</a>     <a>Mi</a>
-comparsa porque aquí es donde canta su padre
+<a>Lam7</a>                <a>Si7</a>  <a>Lam7</a>                     <a>Si7</a>  
+Ella no le da importancia que esta es la mejor comparsa
+       <a>Fa#m7</a>         <a>Si7</a>     <a>Mi</a>
+porque aquí es donde canta su padre
                       <a>Si7</a>     <a>Mi</a>        <a>Do#7</a>
 Mi niña se disfraza y por la plaza va de
          <a>Fam#7</a>                       <a>Si7</a>

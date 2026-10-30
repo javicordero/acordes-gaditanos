@@ -31,7 +31,7 @@ del que conoces sólo la voz
 y tantas veces ya te he soñado
                 <a>Fa#</a>       <a>Lam7</a> <a>Si7</a> <a>Mim</a>
 que adelantaría nueve meses el  reloj.
-                        <a>Si7</a>                       <a>Mim</a>
+                  <a>Si7</a>                       <a>Mim</a>
 No sé si habremos hecho bien trayéndote a vivir aquí
                  <a>Re7</a>                  <a>Sol</a>
 a este mundo tan infeliz y tan maravilloso,
@@ -43,6 +43,7 @@ el difícil oficio de sobrevivir.
 Yo te prometo olvidarme hasta de mí
                 <a>Mi</a>
 para que seas feliz.
+
 Tendrás la suerte de abrir tu rumbo
    <a>Fa#m7</a>   <a>Sol#m7</a> <a>Fa#m7</a> <a>Sol#m7</a>    <a>Fa#m7</a>
 hermosa del mundo  lere lere lere lere

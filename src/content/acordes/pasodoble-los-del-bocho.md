@@ -12,7 +12,7 @@ video: https://www.youtube.com/embed/OkMLqVqDW0o?si=haFcaewdpzZbOryz
 fraseClave: Dando nuestro saludo nos presentamos
 ---
 <pre>
-<a>Lam</a>              <a>Mi7</a>            <a>Lam</a>
+<a>Lam</a>             <a>Mi7</a>            <a>Lam</a>
 Dando nuestro saludo nos presentamos
                <a>Mi7</a>         <a>Lam</a>
 a este castizo publico gaditano.

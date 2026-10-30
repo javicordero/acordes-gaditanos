@@ -14,9 +14,9 @@ fraseClave: Cuando las maravillas de los carnavales
 <pre>
 <a>Sim</a>
 Cuando las maravillas de los Carnavales
-                               <a>Mim</a>
+                                <a>Mim</a>
 Conquistaron mi vida y clavaron bandera
-        <a>Fa#7</a>            <a>Sim</a>
+               <a>Fa#7</a>        <a>Sim</a>
 Sentí el escalofrío de una calavera
                                 <a>Sol</a>
 Que arremango mi alma con siete puñales
@@ -30,15 +30,15 @@ Note como su cara miraba a otro lado
 Gritándome cuidado que yo no sabia
                <a>Mim</a>                 <a>Fa#7</a>
 De esa leyenda negra que a mí me contaron
-       <a>Sim</a>
+           <a>Sim</a>
 Los comparsistas se la dan de artistas
-    <a>La</a>
+     <a>La</a>
 Por salir en carnaval
-    <a>Mim</a>                   <a>Sol</a>
+      <a>Mim</a>                  <a>Sol</a>
 Las mujeres que vienen son malas
                <a>Fa#7</a>
 Y el dinero es poco
-       <a>Sim</a>
+          <a>Sim</a>
 Los comparsistas se la dan de artistas
      <a>La</a>                            <a>Sol</a>
 Y no saben bien a donde van se emborrachan

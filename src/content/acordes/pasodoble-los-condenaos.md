@@ -17,29 +17,28 @@ fraseClave: Si se cumple la condena
 <pre>
 <a>Lam</a>                <a>Mi7</a>                  <a>Lam</a>
 Si se cumple la condena rubita de mis amores
-                           <a>La7</a>            <a>Rem</a>
+                          <a>La7</a>            <a>Rem</a>
 y te dejo tan chiquita callada y como dormida
                                               <a>Lam</a>
 no preguntes por papá, ni lo persigas, ni lo llores
-                         <a>Fa</a>
-que en su muerte no hallarás más dolores que en
-   <a>Mi7</a>
-su vida
+                         <a>Fa</a>                        <a>Mi7</a>
+que en su muerte no hallarás más dolores que en su vida
 <a>Lam</a>                <a>Mi7</a>                <a>Lam</a>
 Imagínalo con su melena sus eternos ideales
 <a>Do</a>
 míralo cantando con su gente en sus divinos carnavales
 <a>Sol</a>
-píntalo de negro el diecinueve del mes de
-la primavera
+píntalo de negro el diecinueve del mes de la primavera
 <a>Fa</a>
-piénsalo de blanco en navidad y espéralo por
-la escalera
+piénsalo de blanco en navidad 
+
+y espéralo por la escalera
+
       <a>Lam</a>        <a>Sol</a>          <a>Fa</a>           <a>Mi7</a>
 que vendrá para traer una canción más para tí,
      <a>Lam</a>     <a>Do</a>        <a>Sol7</a>
 rubita y mala, rubita y mala.
-                    <a>Dol</a>
+                    <a>Do</a>
 Cuando un rayito de luna te dibujaba en la cuna
                     <a>Sol7</a>                  <a>Rem</a>
 cinco barquitos de vela, la mano que te mecía

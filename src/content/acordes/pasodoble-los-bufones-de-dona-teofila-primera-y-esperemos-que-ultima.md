@@ -18,7 +18,7 @@ Si te quiero de verdad Cádiz del alma
 Es porque tu claridad me maravilla
                  <a>Re7</a>
 Y las olas de tu mar me dan la calma
-                         <a>Sol</a>   <a>Re7</a> <a>Sol</a>
+                          <a>Sol</a>   <a>Re7</a> <a>Sol</a>
 Pa poder tararear mi musiquilla
                   <a>Re7</a>        <a>Sol</a>
 Como bien dijeran los enterradores
@@ -42,6 +42,7 @@ Y si no viniera y si no cantara
 Que sería de de mi, Cádiz de mi alma sin tu folclore
                                                <a>Re7</a>
 Sin mi sinvivir, sin mi tatachín y sin mis canciones
+
 Sin mis cachondeos y mis tradiciones
            <a>Do</a>        <a>Re7</a>          <a>Sol</a>
 Moriría de pena, ay Cádiz de mis amores</pre>

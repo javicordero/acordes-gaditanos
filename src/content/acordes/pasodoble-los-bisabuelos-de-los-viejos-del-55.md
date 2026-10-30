@@ -12,14 +12,15 @@ video: 'https://www.youtube.com/embed/22n7ckoXK5w'
 fraseClave: Qué culpa tengo, pare, de haber nacío en la Viña,
 ---
 <pre>
-<a>Sol</a>               <a>Re7</a>                         <a>Sol</a>
+<a>Sol</a>               <a>Re7</a>                       <a>Sol</a>
 Qué culpa tengo, pare, de haber nacío en la Viña,
-                                      <a>Re7</a>
+                                     <a>Re7</a>
 en la misma campiña donde nace el cuplé,
+
 qué culpa tengo, pare,
 <a>Do</a>                           <a>Re7</a>
 ya sé que soy viñero y chirigotero,
-                   <a>Do</a>   <a>Re7</a>         <a>Sol</a>
+                   <a>Do</a>   <a>Re7</a>        <a>Sol</a>
 ya que salgo al abuelo, al abuelo José.
                 <a>Re7</a>                     <a>Sol</a>
 Todas estas peleíllas tenía yo cuando chico
@@ -35,6 +36,7 @@ cantando el estribillo de algún cuplé
 Que no, pare, no tengo culpa que por mis venas
 <a>Re7</a>                            <a>Sol</a>
 se agarre como agarra la enredadera
+
 los compases de un pasodoble,
                          <a>Re7</a>
 de un pasodoble chirigotero.

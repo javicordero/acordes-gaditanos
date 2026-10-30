@@ -39,9 +39,11 @@ el mismo que en carnavales te canta alegre
 y entre piropos se pierde por las cosas de mi tierra
                                     <a>Si7</a>
 pero que a su mal la gente nunca lo tome
+
 porque le sobran cojone
                     <a>Mi</a>
 si vienen pidiendo guerra
+
 pasodoble de mi Viña y de to mi Cai
                    <a>Mi7</a>                    <a>La</a>
 que formas el guirigay cada vez que te cantamos
@@ -49,6 +51,7 @@ que formas el guirigay cada vez que te cantamos
 que el 3x4 va pregonando a los cuatro vientos
               <a>Mim</a>                        <a>Si7</a>
 que aunque contigo lo mismo reimos que lloramos
+
 en tus compases van reflejaos los sentimientos
                             <a>Mi</a>
 de este gaditano de este gaditano
