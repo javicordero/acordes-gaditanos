@@ -19,6 +19,7 @@ La viña, mi barrio la viña que el sentío a mí me quita
 no es del mar esa casita que cantó Paco Rosado.
                                    <a>Do7</a> <a>Si7</a>
 La envidia, que mala es la envidia
+
 que tampoco es la corrala
                                      <a>Mim</a>
 de casas apuntaladas de mi amigo Carapalo.

@@ -34,29 +34,20 @@ y hacer las camas, la comida y la colada.
 Y solo tuvo un novio que pa ella
    <a>Do#m</a>    <a>Sol#m</a>         <a>La</a>
 no había tiempo pa esas niñerías
-                     <a>Si7</a>
-y el novio que iba a verla
-                    <a>Mi</a>     <a>Fa#m</a>
-la rondaba en su puerta
+                     <a>Si7</a>                     <a>Mi</a>    <a>Fa#m</a>
+y el novio que iba a verla la rondaba en su puerta
                                  <a>La</a>
 hasta que un día un anillo de pedida
-                  <a>Fa#</a>
-hizo que Lola tuviera
-                     <a>Si7</a>
-que levantar otra familia.
-                      <a>Mi</a>
-Y así ha criao a sus hijos
-<a>Si7</a>             <a>Mi</a>
-con un amor amnegado
-cientos de noches en vilo
-                       <a>Do#7</a>
-y sin despertar a su marido
+                  <a>Fa#</a>                      <a>Si7</a>
+hizo que Lola tuviera que levantar otra familia.
+                      <a>Mi</a>   <a>Si7</a>             <a>Mi</a>
+Y así ha criao a sus hijos con un amor amnegado
+                                                <a>Do#7</a>
+cientos de noches en vilo y sin despertar a su marido
                          <a>Fa#m7</a>  <a>Si7</a>
 que se tie que ir pa el trabajo.
-                     <a>Fa#m7</a>
-Y aprendió hasta medicina
-                   <a>Si7</a>
-de tanto como ha curao,
+                     <a>Fa#m7</a>                   <a>Si7</a>
+Y aprendió hasta medicina de tanto como ha curao,
                          <a>La</a>
 siempre está lista pa un hijo,
                         <a>Si7</a>
@@ -69,10 +60,8 @@ Lola cumplió hoy sesenta y cinco años
 y como nunca cotizó no le queda
         <a>Do#7</a>                   <a>Fa#m</a>
 ni una ayuda, ni una paga ni pensión,
-                     <a>Si7</a>
-que según dicen las leyes
-                <a>Mi</a>  <a>Mi7</a>
-Lola nunca trabajó.
+                     <a>Si7</a>                 <a>Mi</a>  <a>Mi7</a>
+que según dicen las leyes Lola nunca trabajó.
           <a>La</a>                   <a>Si7</a>
 Pero a pesar de ese trato miserable
                     <a>Sol#m7</a>

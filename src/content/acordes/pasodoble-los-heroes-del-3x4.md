@@ -19,18 +19,19 @@ El día que yo me muera  que nadie me traiga flores,
 que nadie encienda una vela ni por mí que nadie llore
                   <a>Re</a>                 <a>Mi7</a>
 El día que yo me vaya en alegre pasacalle
-                                                 <a>LaM7</a>
+                                                <a>LaM7</a>
 que me acerquen hasta el Falla recorriendo todo Cai.
-                   <a>La7</a>
+                  <a>La7</a>
 Ese día en que la vida se me vaya por la boca
-                                          <a>Re</a>
+                                         <a>Re</a>
 con el alma y esa copla que será mi despedía,
-       <a>Mi7</a>          <a>LaM7</a>      <a>Fa#7</a>           <a>Sim</a>
+      <a>Mi7</a>          <a>LaM7</a>      <a>Fa#7</a>           <a>Sim</a>
 llevadme hasta la Caleta y a la sombra del poeta
      <a>Mi7</a>             <a>LaM7</a>  <a>Rem</a>                 <a>LaM7</a>
 entre admiración y envidia, que las olas de la playa
-   <a>Fa#~7</a>          <a>Sim</a>      <a>Mi7</a>                <a>LaM7</a>
+   <a>Fa#7</a>          <a>Sim</a>      <a>Mi7</a>                <a>LaM7</a>
 me salpiquen a la cara: la Viña, la Viña, la Viña.
+
 Que suenen chirigotas y comparsas
                            <a>Fa#7</a>               <a>Sim</a>
 y esos coros en la plaza cerquita de la Cruz Verde,
