@@ -75,6 +75,7 @@ llevan `?` hay que resolverlas mirando el listado de agrupaciones del cancionero
 | 43 | La amistad tiene la llave | Los Trasnochadores | pasodoble-los-trasnochadores | con acordes | pasodoble-los-trasnochadores-la-amistad-tiene-la-llave | http://carnavaldecadiz-elio.blogspot.com/2010/09/los-trasnochadores.html | el .txt traia dos pasodobles; cortado a 18 lineas; 1 aviso (v20) |
 | 44 | Un amigo es un amigo | Los Condenaos | pasodoble-los-condenaos | pendiente | |  |  |
 | 45 | Era un 4 de diciembre | Los piratas | pasodoble-los-piratas | pendiente | |  |  |
+| 46 | Con permiso buenas tardes | Los Piratas | pasodoble-los-piratas | pendiente | |  |  |
 
 ## Historial
 
