@@ -18,8 +18,10 @@ export const prerender = true;
   :root { --tinta:#1d1a16; --papel:#fbf8f1; --suave:#8a8175; --linea:#e2dacb; --acento:#b4552b; --ok:#3d7a4a; --nuevo:#b07d12; --mal:#b3261e; }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
-  html, body { height: 100%; }
-  body { margin:0; background:var(--papel); color:var(--tinta); font:14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; display:flex; flex-direction:column; }
+  html { height:100%; }
+  /* `--alto-vv` lo pone el JS con visualViewport: en iOS el teclado no encoge
+     el layout y, sin esto, la barra de flechas y el pie quedan debajo. */
+  body { margin:0; height:100vh; height:var(--alto-vv, 100dvh); background:var(--papel); color:var(--tinta); font:14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; display:flex; flex-direction:column; }
   a { color:var(--acento); }
   header { flex:0 0 auto; border-bottom:1px solid var(--linea); padding:8px 14px; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
   h1 { font-size:15px; margin:0; font-weight:650; }
@@ -31,6 +33,8 @@ export const prerender = true;
   button:hover, .boton:hover { border-color:var(--acento); color:var(--acento); }
   button.principal { background:var(--acento); border-color:var(--acento); color:#fff; }
   button.principal:hover { color:#fff; filter:brightness(1.08); }
+  button.revisado { background:var(--ok); border-color:var(--ok); color:#fff; }
+  button.revisado:hover { color:#fff; filter:brightness(1.08); }
   button:disabled { opacity:.4; cursor:default; }
   .estado { font-size:12px; color:var(--suave); }
   .estado.ok { color:var(--ok); }
@@ -87,6 +91,7 @@ export const prerender = true;
   .marca { display:inline-block; font-size:10px; letter-spacing:.06em; color:#fff; background:var(--nuevo); border-radius:4px; padding:0 4px; vertical-align:1px; }
   .marca.pr { background:var(--acento); }
   .marca.local { background:var(--suave); }
+  .marca.revisar { background:#3a6ea5; }
   .nota { margin:0 0 10px; font-size:12px; color:var(--suave); line-height:1.4; }
   /* datos de la ficha */
   .datos { flex:0 0 auto; background:#fff; border-bottom:1px solid var(--linea); }
@@ -115,16 +120,24 @@ export const prerender = true;
   .pane:last-child { border-right:0; }
   .cab { padding:5px 10px; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); border-bottom:1px solid var(--linea); display:flex; gap:8px; align-items:center; }
   .cab b { color:var(--tinta); font-weight:600; letter-spacing:0; text-transform:none; font-size:12px; }
+  .cab .mal { color:var(--mal); }
   #base-sel { flex:1; min-width:0; max-width:100%; font:11px system-ui, sans-serif; padding:1px 3px; border:1px solid var(--linea); border-radius:4px; background:#fff; color:var(--tinta); }
-  .lienzo { position:relative; flex:1; min-height:0; overflow:hidden; }
-  .pane pre, .lienzo textarea { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space:pre; overflow:auto; tab-size:4; }
-  .pane pre { color:var(--tinta); }
-  .lienzo textarea { position:absolute; inset:0; resize:none; background:transparent; color:transparent; caret-color:var(--acento); outline:none; }
+  #b-zoom { margin-left:auto; flex:0 0 auto; padding:2px 7px; font-size:10.5px; letter-spacing:0; text-transform:none; }
+  /* Un solo scroller: la hoja mide lo que el texto y el textarea la cubre entera.
+     Así el arrastre lateral funciona en toda el área y no hay que sincronizar. */
+  .lienzo { position:relative; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; }
+  .hoja { position:relative; width:max-content; min-width:100%; min-height:100%; --pre-size:13px; font:var(--pre-size)/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; }
+  .pane pre { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space:pre; overflow:auto; tab-size:4; color:var(--tinta); }
+  #capa { width:max-content; height:auto; overflow:visible; font:inherit; pointer-events:none; }
+  .lienzo textarea { position:absolute; inset:0; margin:0; padding:12px 14px; border:0; width:100%; height:100%; resize:none; background:transparent; color:transparent; caret-color:var(--acento); outline:none; font:inherit; white-space:pre; overflow:hidden; tab-size:4; }
   .lienzo textarea::selection { background:rgba(180,85,43,.22); }
-  #capa { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  /* Guía del ancho previsto: la columna 56 empieza justo aquí. */
+  .regla { position:absolute; top:0; bottom:0; left:calc(14px + 55ch); width:0; border-left:1px dashed rgba(180,85,43,.42); pointer-events:none; }
   .ac { color:var(--acento); }
   .nuevo { color:var(--nuevo); text-decoration:underline dotted; }
   .anot { color:var(--suave); }
+  /* Lo que pasa de la columna 55: rojo y subrayado (no hay salto de línea). */
+  .pasado { color:var(--mal); text-decoration:underline; text-underline-offset:2px; }
   footer { flex:0 0 auto; border-top:1px solid var(--linea); padding:5px 12px; font-size:11.5px; color:var(--suave); display:flex; gap:12px; flex-wrap:wrap; }
   kbd { font:11px ui-monospace, monospace; border:1px solid var(--linea); border-bottom-width:2px; border-radius:4px; padding:0 4px; background:#fff; }
   #sug { position:fixed; z-index:30; background:#fff; border:1px solid var(--linea); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.15); padding:4px; display:none; max-height:200px; overflow:auto; }
@@ -145,6 +158,11 @@ export const prerender = true;
   .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
   .tabs { display:none; }
   @media (max-width: 620px) {
+    header { padding:6px 10px; gap:6px 10px; }
+    /* Una sola fila con scroll: la cabecera deja de comerse el alto del editor. */
+    .barra { width:100%; margin-left:0; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+    .barra::-webkit-scrollbar { display:none; }
+    #quien, .pie-teclas { display:none; }
     .lista-cab { padding:10px 10px 8px; }
     .lista-cuerpo { padding:2px 10px 24px; }
     .fila { grid-template-columns:1fr; gap:5px; }
@@ -179,13 +197,14 @@ export const prerender = true;
     <button id="b-pr" hidden>Ver PR</button>
     <button id="b-fusionar" hidden>Fusionar</button>
     <button id="b-avisos" hidden>Avisos</button>
+    <button id="b-revisado" class="revisado" hidden>Revisado ✓</button>
     <button id="b-guardar" class="principal" hidden>Guardar</button>
     <span id="quien" class="meta"></span>
   </div>
 </header>
 
 <main>
-  <div id="login">
+  <div id="login" hidden>
     <div class="caja">
       <h2>Panel privado</h2>
       <p>Solo el propietario. Entra con tu cuenta de GitHub.</p>
@@ -204,6 +223,7 @@ export const prerender = true;
         <button type="button" data-filtro="todas" class="sel">Todas <span class="cuenta" data-cuenta="todas"></span></button>
         <button type="button" data-filtro="pendientes" title="Borradores de acordes3 y fichas con una PR abierta">Acordes3 <span class="cuenta" data-cuenta="pendientes"></span></button>
         <button type="button" data-filtro="publicadas" title="Fichas de acordes (publicadas)">Acordes <span class="cuenta" data-cuenta="publicadas"></span></button>
+        <button type="button" data-filtro="revisar" title="Coplas que aún no se han revisado a mano">Por revisar <span class="cuenta" data-cuenta="revisar"></span></button>
       </div>
     </div>
     <div class="lista-cuerpo">
@@ -248,10 +268,13 @@ export const prerender = true;
         <pre id="ref-der"></pre>
       </section>
       <section class="pane activo" data-pane="cen">
-        <div class="cab"><b>Editor</b><span id="editor-meta"></span></div>
-        <div class="lienzo">
-          <pre id="capa"></pre>
-          <textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+        <div class="cab"><b>Editor</b><span id="editor-meta"></span><button type="button" id="b-zoom" hidden>Ajustar</button></div>
+        <div class="lienzo" id="lienzo">
+          <div class="hoja" id="hoja">
+            <pre id="capa"></pre>
+            <textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+            <div class="regla" id="regla" aria-hidden="true"></div>
+          </div>
           <div id="sug"></div>
         </div>
         <div class="mover">
@@ -268,9 +291,9 @@ export const prerender = true;
 </main>
 
 <footer>
-  <span><kbd>Alt</kbd>+<kbd>←</kbd><kbd>→</kbd> mover acorde</span>
-  <span><kbd>Ctrl</kbd>+<kbd>S</kbd> guardar</span>
-  <span><kbd>Ctrl</kbd>+<kbd>Z</kbd> deshacer</span>
+  <span class="pie-teclas"><kbd>Alt</kbd>+<kbd>←</kbd><kbd>→</kbd> mover acorde</span>
+  <span class="pie-teclas"><kbd>Ctrl</kbd>+<kbd>S</kbd> guardar</span>
+  <span class="pie-teclas"><kbd>Ctrl</kbd>+<kbd>Z</kbd> deshacer</span>
   <span id="pie"></span>
 </footer>
 

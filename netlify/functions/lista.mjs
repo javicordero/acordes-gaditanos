@@ -8,6 +8,10 @@ import { sesion, sinSesion, json, gh, REPO, BASE, CARPETAS } from './_lib.mjs';
 // Lo activa la ruta de desarrollo (`src/integrations/estudio-api.ts`).
 const LOCAL = process.env.ESTUDIO_LOCAL === '1';
 
+// Cola de coplas pendientes de revisión (una sola, compartida por el panel y
+// `npm run revisar`). Se versiona para que el panel la lea de master.
+const RUTA_REVISION = 'src/data/revision-acordes.json';
+
 const campo = (md, k) => {
   const fm = (md.match(/^---\n([\s\S]*?)\n---/) || [])[1] || '';
   const m = new RegExp(`^${k}:\\s*(.+)$`, 'm').exec(fm);
@@ -41,6 +45,22 @@ async function borradoresLocales() {
     } catch { /* ficha ilegible: se omite */ }
   }
   return out;
+}
+
+/** Slugs pendientes de revisión. En local manda el archivo del ordenador. */
+async function pendientesRevision(token) {
+  try {
+    if (LOCAL) {
+      const { readFile } = await import('node:fs/promises');
+      const json = JSON.parse(await readFile(join(process.cwd(), RUTA_REVISION), 'utf8'));
+      return Array.isArray(json.pendientes) ? json.pendientes : [];
+    }
+    const d = await gh(`/repos/${REPO}/contents/${RUTA_REVISION}?ref=${BASE}`, { token });
+    const json = JSON.parse(Buffer.from(d.content, 'base64').toString('utf8'));
+    return Array.isArray(json.pendientes) ? json.pendientes : [];
+  } catch {
+    return [];
+  }
 }
 
 export default async (req) => {
@@ -89,7 +109,7 @@ export default async (req) => {
     }
 
     fichas.sort((a, b) => `${b.year}${b.agrupacion}`.localeCompare(`${a.year}${a.agrupacion}`, 'es'));
-    return json({ borradores: fichas });
+    return json({ borradores: fichas, revision: await pendientesRevision(s.token) });
   } catch (e) {
     return json({ error: String(e.message || e) }, 502);
   }

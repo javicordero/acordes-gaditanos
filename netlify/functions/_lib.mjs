@@ -63,8 +63,23 @@ export function cookieSesion(valor, maxAge = MAX_EDAD) {
   return `${COOKIE}=${valor}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
 }
 
+// Sesión de desarrollo: en `astro dev` no se pasa por GitHub. Se activa solo con
+// los tres cerrojos puestos: la marca que pone la ruta de dev (ESTUDIO_LOCAL), el
+// opt-in explícito del `.env` y un token disponible. En Netlify el primero nunca
+// está, así que esto no se ejecuta en producción.
+function sesionLocal() {
+  if (!LOCAL) return null;
+  if (process.env.ESTUDIO_SIN_LOGIN !== '1') return null;
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) return null;
+  return { login: OWNER, token, exp: Number.MAX_SAFE_INTEGER, local: true };
+}
+
 /** Sesión válida o null. */
 export function sesion(req) {
+  const local = sesionLocal();
+  if (local) return local;
+
   const s = descifrar(cookies(req)[COOKIE]);
   if (!s || !s.token || !s.login) return null;
   if (Date.now() > Number(s.exp || 0)) return null;

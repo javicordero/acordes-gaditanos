@@ -15,6 +15,60 @@ const campo = (md, k) => {
 
 const abiertas = (token) => gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token });
 
+// Cola de coplas pendientes de revisión: al marcar una como revisada se quita su
+// slug y sale del listado «Por revisar» del panel.
+const RUTA_REVISION = 'src/data/revision-acordes.json';
+const hoy = () => new Date().toISOString().slice(0, 10);
+
+async function revisionEnRama(token, rama) {
+  try {
+    const d = await gh(`/repos/${REPO}/contents/${RUTA_REVISION}?ref=${encodeURIComponent(rama)}`, { token });
+    return { json: JSON.parse(Buffer.from(d.content, 'base64').toString('utf8')), sha: d.sha };
+  } catch (e) {
+    if (e.status === 404) return null;
+    throw e;
+  }
+}
+
+/** Quita el slug en disco (modo local). Devuelve cuántos quedan, o null si no hay archivo. */
+async function quitarRevisionLocal(slug) {
+  const { readFile, writeFile } = await import('node:fs/promises');
+  const { join } = await import('node:path');
+  const ruta = join(process.cwd(), RUTA_REVISION);
+  try {
+    const json = JSON.parse(await readFile(ruta, 'utf8'));
+    const antes = (json.pendientes || []).length;
+    json.pendientes = (json.pendientes || []).filter((x) => x !== slug);
+    if (json.pendientes.length === antes) return antes;
+    json.actualizado = hoy();
+    await writeFile(ruta, `${JSON.stringify(json, null, 2)}\n`, 'utf8');
+    return json.pendientes.length;
+  } catch {
+    return null;
+  }
+}
+
+/** Quita el slug en la rama de la PR. Devuelve cuántos quedan, o null si no hay archivo. */
+async function quitarRevision(token, slug, rama) {
+  const rev = await revisionEnRama(token, rama);
+  if (!rev) return null;
+  const antes = (rev.json.pendientes || []).length;
+  const pendientes = (rev.json.pendientes || []).filter((x) => x !== slug);
+  if (pendientes.length === antes) return antes;
+  const nuevo = { ...rev.json, actualizado: hoy(), pendientes };
+  await gh(`/repos/${REPO}/contents/${RUTA_REVISION}`, {
+    token,
+    method: 'PUT',
+    body: {
+      message: `Marca ${slug} como revisada`,
+      content: Buffer.from(`${JSON.stringify(nuevo, null, 2)}\n`, 'utf8').toString('base64'),
+      branch: rama,
+      sha: rev.sha,
+    },
+  });
+  return pendientes.length;
+}
+
 async function contenido(token, carpeta, slug, ref) {
   try {
     const d = await gh(`/repos/${REPO}/contents/${carpeta}/${slug}.md?ref=${encodeURIComponent(ref)}`, { token });
@@ -40,6 +94,7 @@ export default async (req) => {
   const pedido = String(cuerpo.slugNuevo || '').trim();
   const destino = /^[a-z0-9][a-z0-9-]*$/.test(pedido) ? pedido : slug;
   const ramaPedida = String(cuerpo.rama || '').trim();
+  const marcarRevisada = cuerpo.revisado === true;
 
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) return json({ error: 'slug inválido' }, 400);
   if (md.length < 20 || md.length > 300_000) return json({ error: 'tamaño de ficha fuera de rango' }, 400);
@@ -56,7 +111,8 @@ export default async (req) => {
       await mkdir(dir, { recursive: true });
       await writeFile(join(dir, `${destino}.md`), md, 'utf8');
       if (destino !== slug) await rm(join(dir, `${slug}.md`), { force: true });
-      return json({ ok: true, local: true, slug: destino, rama: null, pr: null, zona, nueva: false });
+      const restantes = marcarRevisada ? await quitarRevisionLocal(slug) : null;
+      return json({ ok: true, local: true, slug: destino, rama: null, pr: null, zona, nueva: false, revision: { restantes } });
     }
 
     const lista = await abiertas(s.token);
@@ -109,6 +165,8 @@ export default async (req) => {
       });
     }
 
+    const restantes = marcarRevisada ? await quitarRevision(s.token, slug, rama) : null;
+
     const cuerpoPr = [
       `Propuesta desde el panel \`/estudio\`.`,
       '',
@@ -116,6 +174,7 @@ export default async (req) => {
       `- Archivo: \`${carpeta}/${destino}.md\``,
       `- Zona: **${zona}**${zona === 'acordes3' ? ' (borrador; se publica desde el panel o con `npm run promover`)' : ' (publicada)'}`,
       ...(destino !== slug ? [`- Renombrada desde: \`${slug}\``] : []),
+      ...(marcarRevisada ? ['- Marcada como revisada (sale de «Por revisar»)'] : []),
       '',
       'Netlify deja aquí el enlace al deploy preview cuando termine.',
     ].join('\n');
@@ -145,7 +204,7 @@ export default async (req) => {
       pr = { numero: actualizada.number, url: actualizada.html_url };
     }
 
-    return json({ ok: true, rama, zona, pr, nueva: !actual, slug: destino, propietario: OWNER });
+    return json({ ok: true, rama, zona, pr, nueva: !actual, slug: destino, propietario: OWNER, revision: { restantes } });
   } catch (e) {
     return json({ error: String(e.message || e) }, 502);
   }

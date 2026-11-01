@@ -1,11 +1,13 @@
-import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar } from '../lib/pre-acordes.js';
+import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho } from '../lib/pre-acordes.js';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
 
 const API = '/estudio/api';
 // En `astro dev` el panel trabaja contra los archivos del ordenador (sin PR).
-const MODO_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+// El servidor lo confirma con `local` en /me: por un túnel o por la IP de la red
+// el hostname ya no es localhost, pero el panel sigue en modo local.
+let MODO_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
 // La ficha abierta lleva su slug en la URL (`/estudio/?ficha=...`), así el botón
 // atrás vuelve a la lista en vez de salir del panel. La página es estática: el
 // query no rompe nada y permite refrescar sin perder la ficha.
@@ -15,6 +17,11 @@ let creando = false;
 const $ = (id) => document.getElementById(id);
 const ta = $('editor');
 const capa = $('capa');
+const lienzo = $('lienzo');
+const hoja = $('hoja');
+const regla = $('regla');
+// La guía va donde acaba la columna ANCHO_MAX (el CSS deja un 55 de reserva).
+regla.style.left = 'calc(14px + ' + ANCHO_MAX + 'ch)';
 const aviso = $('aviso');
 const sug = $('sug');
 
@@ -49,18 +56,25 @@ function mostrarAviso(txt, color) {
 function cerrarAviso() { aviso.style.display = 'none'; }
 
 /* ---------------- autenticación ---------------- */
+/** Cuenta y modo (`{ login, local }`), o null si no hay sesión. */
 async function quien() {
-  const r = await fetch(API + '/me', { headers: { Accept: 'application/json' } });
-  if (!r.ok) return null;
-  return (await r.json()).login;
+  try {
+    const r = await fetch(API + '/me', { headers: { Accept: 'application/json' } });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
 }
 
 /* ---------------- lista ---------------- */
 let filtroTipo = 'todas';
+// Coplas que faltan por revisar (cola de `src/data/revision-acordes.json`).
+let revision = new Set();
 
 const normalizar = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 /** Pendiente = borrador, ficha solo local o cualquiera con una PR abierta. */
 const esPendiente = (x) => x.zona === 'acordes3' || !!x.enPR || !!x.local;
+/** Ficha de la cola «Por revisar». */
+const porRevisar = (x) => revision.has(x.slug);
 
 async function cargarIndice() {
   if (indice.length) return indice;
@@ -69,7 +83,11 @@ async function cargarIndice() {
   let borradores = [];
   try {
     const b = await fetch(API + '/lista');
-    if (b.ok) borradores = (await b.json()).borradores.map((x) => ({ ...x, zona: x.zona || 'acordes3' }));
+    if (b.ok) {
+      const j = await b.json();
+      borradores = j.borradores.map((x) => ({ ...x, zona: x.zona || 'acordes3' }));
+      revision = new Set(j.revision || []);
+    }
   } catch { /* sin borradores */ }
   indice = [...borradores, ...publicadas];
   const dl = $('slugs');
@@ -81,6 +99,7 @@ const marcas = (x) => [
   x.zona === 'acordes3' ? '<span class="marca">BORRADOR</span>' : '',
   x.local ? '<span class="marca local">LOCAL</span>' : '',
   x.enPR ? '<span class="marca pr">EN PR</span>' : '',
+  porRevisar(x) ? '<span class="marca revisar">POR REVISAR</span>' : '',
 ].filter(Boolean).join(' ');
 
 function filaLista(x) {
@@ -125,11 +144,16 @@ function pintarLista() {
   const pendientes = resultado.filter(esPendiente)
     .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || a.agrupacion.localeCompare(b.agrupacion, 'es'));
   const publicadas = resultado.filter((x) => !esPendiente(x));
+  const revisar = resultado.filter(porRevisar)
+    .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || a.agrupacion.localeCompare(b.agrupacion, 'es'));
 
   $('q-limpiar').hidden = !$('q').value;
   for (const el of document.querySelectorAll('[data-cuenta]')) {
     const k = el.dataset.cuenta;
-    el.textContent = k === 'todas' ? resultado.length : k === 'pendientes' ? pendientes.length : publicadas.length;
+    el.textContent = k === 'todas' ? resultado.length
+      : k === 'pendientes' ? pendientes.length
+      : k === 'publicadas' ? publicadas.length
+      : revisar.length;
   }
 
   const MAX = 300;
@@ -141,21 +165,25 @@ function pintarLista() {
   };
 
   let html = '';
-  if (filtroTipo !== 'publicadas' && pendientes.length) {
-    html += grupoLista('Pendientes', recorta(pendientes), 'pend');
-  }
-  if (filtroTipo !== 'pendientes' && publicadas.length) {
-    const porAnio = new Map();
-    for (const x of publicadas) {
-      const y = String(x.year || 'Sin año');
-      if (!porAnio.has(y)) porAnio.set(y, []);
-      porAnio.get(y).push(x);
+  if (filtroTipo === 'revisar') {
+    if (revisar.length) html += grupoLista('Por revisar', recorta(revisar), 'pend');
+  } else {
+    if (filtroTipo !== 'publicadas' && pendientes.length) {
+      html += grupoLista('Pendientes', recorta(pendientes), 'pend');
     }
-    const anios = [...porAnio.keys()].sort((a, b) => (Number(b) || 0) - (Number(a) || 0) || a.localeCompare(b, 'es'));
-    for (const anio of anios) {
-      const items = porAnio.get(anio)
-        .sort((a, b) => a.agrupacion.localeCompare(b.agrupacion, 'es') || String(a.pieza).localeCompare(String(b.pieza), 'es'));
-      html += grupoLista(anio, recorta(items));
+    if (filtroTipo !== 'pendientes' && publicadas.length) {
+      const porAnio = new Map();
+      for (const x of publicadas) {
+        const y = String(x.year || 'Sin año');
+        if (!porAnio.has(y)) porAnio.set(y, []);
+        porAnio.get(y).push(x);
+      }
+      const anios = [...porAnio.keys()].sort((a, b) => (Number(b) || 0) - (Number(a) || 0) || a.localeCompare(b, 'es'));
+      for (const anio of anios) {
+        const items = porAnio.get(anio)
+          .sort((a, b) => a.agrupacion.localeCompare(b.agrupacion, 'es') || String(a.pieza).localeCompare(String(b.pieza), 'es'));
+        html += grupoLista(anio, recorta(items));
+      }
     }
   }
 
@@ -169,13 +197,16 @@ function pintarLista() {
     };
   });
 
-  $('lista-vacio').hidden = resultado.length > 0;
-  if (!resultado.length) {
+  const mostradas = filtroTipo === 'revisar' ? revisar.length : resultado.length;
+  $('lista-vacio').hidden = mostradas > 0;
+  if (!mostradas) {
     const q = $('q').value.trim();
-    $('lista-vacio').innerHTML = '<b>' + (indice.length ? 'Sin resultados' : 'Cargando…') + '</b>' +
-      (indice.length && q ? 'Ninguna ficha casa con «' + esc(q) + '».' : indice.length ? 'No hay fichas todavía: crea la primera.' : '');
+    $('lista-vacio').innerHTML = filtroTipo === 'revisar' && !q && indice.length
+      ? '<b>Nada pendiente</b>No queda ninguna copla por revisar.'
+      : '<b>' + (indice.length ? 'Sin resultados' : 'Cargando…') + '</b>' +
+        (indice.length && q ? 'Ninguna ficha casa con «' + esc(q) + '».' : indice.length ? 'No hay fichas todavía: crea la primera.' : '');
   }
-  $('lista-tope').hidden = resultado.length <= MAX;
+  $('lista-tope').hidden = mostradas <= MAX;
 }
 
 /** Vuelve a la lista (el historial lo decide quien llama). */
@@ -184,9 +215,10 @@ function mostrarLista() {
   $('vista-lista').hidden = false;
   $('b-nueva').hidden = false;
   $('b-letra').hidden = false;
-  ['b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar'].forEach((id) => { $(id).hidden = true; });
+  ['b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado'].forEach((id) => { $(id).hidden = true; });
   $('cab-meta').textContent = '';
   setEstado('', true);
+  if (indice.length) pintarLista();
 }
 
 /** Abre el formulario de ficha nueva (con su entrada en el historial). */
@@ -217,46 +249,130 @@ const conocidos = new Set();
 
 function tipo(linea, sig) { return clasificar(linea, sig, conocidos).tipo; }
 
-function pintar() {
-  const texto = ta.value;
-  const lineas = texto.split('\n');
-  let html = '';
-  for (let i = 0; i < lineas.length; i++) {
-    const l = lineas[i];
-    const t = tipo(l, lineas[i + 1] || '');
-    if (t !== 'acordes') { html += esc(l) + '\n'; continue; }
-    let out = '';
-    let ultimo = 0;
-    const re = /\S+/g;
-    let m;
-    while ((m = re.exec(l))) {
-      out += esc(l.slice(ultimo, m.index));
-      out += '<span class="' + (conocidos.has(m[0]) ? 'ac' : esAnot(m[0]) ? 'anot' : 'nuevo') + '">' + esc(m[0]) + '</span>';
-      ultimo = m.index + m[0].length;
-    }
-    html += out + esc(l.slice(ultimo)) + '\n';
+const claseCss = (...cs) => cs.filter(Boolean).join(' ');
+const trozo = (txt, cls) => (cls ? '<span class="' + cls + '">' + esc(txt) + '</span>' : esc(txt));
+
+/** Trozos [texto, clase] de una línea; en las de acordes, cada acorde lleva su color. */
+function piezasLinea(linea, t) {
+  if (t !== 'acordes') return [[linea, '']];
+  const piezas = [];
+  let ultimo = 0;
+  const re = /\S+/g;
+  let m;
+  while ((m = re.exec(linea))) {
+    if (m.index > ultimo) piezas.push([linea.slice(ultimo, m.index), '']);
+    const tok = m[0];
+    piezas.push([tok, conocidos.has(tok) ? 'ac' : esAnot(tok) ? 'anot' : 'nuevo']);
+    ultimo = m.index + tok.length;
   }
-  capa.innerHTML = html;
-  capa.scrollTop = ta.scrollTop;
-  capa.scrollLeft = ta.scrollLeft;
+  if (ultimo < linea.length) piezas.push([linea.slice(ultimo), '']);
+  return piezas;
+}
+
+/** HTML de una línea: lo que pasa de ANCHO_MAX va en rojo subrayado. */
+function htmlLinea(linea, t) {
+  const corte = cortePorAncho(linea);
+  let pos = 0;
+  let out = '';
+  for (const [txt, cls] of piezasLinea(linea, t)) {
+    const fin = pos + txt.length;
+    if (corte < 0 || fin <= corte) {
+      out += trozo(txt, cls);
+    } else if (pos >= corte) {
+      out += trozo(txt, claseCss(cls, 'pasado'));
+    } else {
+      const k = corte - pos;
+      out += trozo(txt.slice(0, k), cls);
+      out += trozo(txt.slice(k), claseCss(cls, 'pasado'));
+    }
+    pos = fin;
+  }
+  return out;
+}
+
+function pintar() {
+  const lineas = ta.value.split('\n');
+  capa.innerHTML = lineas.map((l, i) => htmlLinea(l, tipo(l, lineas[i + 1] || ''))).join('\n');
+  let max = 0;
+  for (const l of lineas) max = Math.max(max, columnasLinea(l));
+  const meta = $('editor-meta');
+  meta.textContent = lineas.length + ' líneas · ' + max + '/' + ANCHO_MAX;
+  meta.classList.toggle('mal', max > ANCHO_MAX);
 }
 
 function pintarTexto(texto, el) {
   const lineas = texto.split('\n');
-  el.innerHTML = lineas.map((l, i) => {
-    const t = tipo(l, lineas[i + 1] || '');
-    if (t !== 'acordes') return esc(l);
-    let out = '';
-    let ultimo = 0;
-    const re = /\S+/g;
-    let m;
-    while ((m = re.exec(l))) {
-      out += esc(l.slice(ultimo, m.index));
-      out += '<span class="' + (conocidos.has(m[0]) ? 'ac' : esAnot(m[0]) ? 'anot' : 'nuevo') + '">' + esc(m[0]) + '</span>';
-      ultimo = m.index + m[0].length;
-    }
-    return out + esc(l.slice(ultimo));
-  }).join('\n');
+  el.innerHTML = lineas.map((l, i) => htmlLinea(l, tipo(l, lineas[i + 1] || ''))).join('\n');
+}
+
+/* ---------------- ancho, zoom y cursor ---------------- */
+const CLAVE_ZOOM = 'estudio:zoom';
+const FUENTE_PRE = 'ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace';
+let zoomAjustado = false;
+try { zoomAjustado = localStorage.getItem(CLAVE_ZOOM) === '1'; } catch { /* sin almacenamiento */ }
+
+/** Ancho de un carácter a 13 px (la fuente del editor), medido de verdad. */
+function anchoCaracter13() {
+  let m = $('medidor-ch');
+  if (!m) {
+    m = document.createElement('span');
+    m.id = 'medidor-ch';
+    m.setAttribute('aria-hidden', 'true');
+    m.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden;white-space:pre';
+    hoja.appendChild(m);
+  }
+  m.style.font = '13px/1.55 ' + FUENTE_PRE;
+  m.textContent = '0'.repeat(100);
+  return m.getBoundingClientRect().width / 100 || 7.8;
+}
+
+/** Tamaño al que caben ANCHO_MAX columnas en el ancho actual (9–13 px). */
+function tamAjustado() {
+  const disp = lienzo.clientWidth - 28 - 4;
+  if (disp <= 0) return 13;
+  const tam = (13 * disp) / (ANCHO_MAX * anchoCaracter13());
+  return Math.max(9, Math.min(13, Math.floor(tam * 2) / 2));
+}
+
+/** Muestra u oculta «Ajustar» y aplica el tamaño. */
+function aplicarZoom() {
+  const b = $('b-zoom');
+  if (!b) return;
+  if (!lienzo.clientWidth) { b.hidden = true; return; }
+  const tam = tamAjustado();
+  const cabe = tam >= 13;
+  if (cabe) zoomAjustado = false;
+  b.hidden = cabe;
+  b.textContent = zoomAjustado ? 'Ampliar' : 'Ajustar';
+  b.title = zoomAjustado
+    ? 'Vuelve a la letra normal'
+    : 'Reduce la letra para que quepan las ' + ANCHO_MAX + ' columnas sin arrastrar';
+  hoja.style.setProperty('--pre-size', (zoomAjustado && !cabe ? tam : 13) + 'px');
+  if (cabe) { try { localStorage.removeItem(CLAVE_ZOOM); } catch { /* sin almacenamiento */ } }
+}
+
+/** Deja visible el cursor dentro del scroller (al mover con Alt+flechas o al aceptar una sugerencia). */
+function verCaret() {
+  if (!lienzo.clientWidth) return;
+  const texto = ta.value;
+  const pos = ta.selectionStart;
+  const ini = texto.lastIndexOf('\n', pos - 1) + 1;
+  const ch = (regla.offsetLeft - 14) / ANCHO_MAX;
+  if (ch > 0) {
+    // Ojo: aquí se cuenta el prefijo tal cual, sin quitar espacios finales
+    // (columnasLinea los recorta y daría una columna falsa).
+    let col = 0;
+    for (const c of texto.slice(ini, pos)) col += c === '\t' ? 4 - (col % 4) : 1;
+    const x = 14 + col * ch;
+    const margen = 24;
+    if (x < lienzo.scrollLeft + margen) lienzo.scrollLeft = Math.max(0, x - margen);
+    else if (x > lienzo.scrollLeft + lienzo.clientWidth - margen) lienzo.scrollLeft = x - lienzo.clientWidth + margen;
+  }
+  const lh = parseFloat(getComputedStyle(ta).lineHeight) || 20;
+  const fila = texto.slice(0, ini).split('\n').length - 1;
+  const y = 12 + fila * lh;
+  if (y < lienzo.scrollTop) lienzo.scrollTop = Math.max(0, y - lh);
+  else if (y + lh > lienzo.scrollTop + lienzo.clientHeight) lienzo.scrollTop = y + lh - lienzo.clientHeight + lh;
 }
 
 async function abrirFicha(slug, empujar = true) {
@@ -267,7 +383,6 @@ async function abrirFicha(slug, empujar = true) {
     if (!r.ok) throw new Error(datos.error || 'no se pudo cargar');
     montarEditor(slug, datos.md, null, datos.zona, datos.rama);
     await cargarBase(slug);
-    pintar();
     if (empujar) history.pushState({ vista: 'ficha', slug }, '', urlFicha(slug));
     if (MODO_LOCAL) {
       mostrarAviso(datos.local
@@ -294,10 +409,13 @@ async function abrirFicha(slug, empujar = true) {
   pintarDatos(d.frontmatter);
   mostrarBase(false);
   $('cab-meta').textContent = slug;
-  $('editor-meta').textContent = d.texto.split('\n').length + ' líneas';
   $('vista-lista').hidden = true;
   $('vista-editor').hidden = false;
+  pintar();
+  aplicarZoom();
   ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos'].forEach((id) => { $(id).hidden = false; });
+  $('b-revisado').hidden = !(zonaFicha === 'acordes' && porRevisar({ slug }));
+  $('b-revisado').title = 'Guarda, marca la copla como revisada y fusiona la PR';
   $('b-nueva').hidden = true;
   $('b-letra').hidden = true;
   $('b-publicar').hidden = zonaFicha !== 'acordes3';
@@ -411,6 +529,7 @@ function mover(dir) {
   sucio = true;
   setEstado('sin guardar', false);
   pintar();
+  verCaret();
 }
 
 /* ---------------- guardar / comprobar ---------------- */
@@ -435,35 +554,47 @@ function frontmatterActual() {
   });
 }
 
+function comprobarObligatorios() {
+  const datos = datosDelEditor();
+  if (!datos.pieza || !datos.agrupacion) { mostrarAviso('La pieza y la agrupación son obligatorias.', 'var(--mal)'); return false; }
+  if (!datos.year) { mostrarAviso('Falta el año.', 'var(--mal)'); return false; }
+  if (!datos.img) { mostrarAviso('Falta la imagen: el esquema la exige.', 'var(--mal)'); return false; }
+  return true;
+}
+
+/** Guarda la ficha en la rama/PR (o en disco). Devuelve la respuesta del servidor. */
+async function enviarGuardar(extra = {}) {
+  const fm = frontmatterActual();
+  const envuelto = envolver(ta.value, ficha.d.registros, ficha.d.originales);
+  const md = montarMd(fm, envuelto.pre);
+  const r = await fetch(API + '/guardar', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      slug: ficha.slug,
+      md,
+      zona: zonaFicha,
+      ...(ficha.rama ? { rama: ficha.rama } : {}),
+      ...extra,
+    }),
+  });
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.error || 'no se pudo guardar');
+
+  ficha.d.frontmatter = fm;
+  ficha.md = md;
+  ficha.rama = d.rama || (d.local ? null : ficha.rama);
+  ficha.pr = d.pr || null;
+  pintarDatos(fm);
+  return d;
+}
+
 async function guardar() {
   if (!ficha) return;
-  const datos = datosDelEditor();
-  if (!datos.pieza || !datos.agrupacion) { mostrarAviso('La pieza y la agrupación son obligatorias.', 'var(--mal)'); return; }
-  if (!datos.year) { mostrarAviso('Falta el año.', 'var(--mal)'); return; }
-  if (!datos.img) { mostrarAviso('Falta la imagen: el esquema la exige.', 'var(--mal)'); return; }
+  if (!comprobarObligatorios()) return;
 
   try {
-    const fm = frontmatterActual();
-    const envuelto = envolver(ta.value, ficha.d.registros, ficha.d.originales);
-    const md = montarMd(fm, envuelto.pre);
-    const r = await fetch(API + '/guardar', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        slug: ficha.slug,
-        md,
-        zona: zonaFicha,
-        ...(ficha.rama ? { rama: ficha.rama } : {}),
-      }),
-    });
-    const d = await r.json();
-    if (!r.ok) throw new Error(d.error || 'no se pudo guardar');
-
-    ficha.d.frontmatter = fm;
-    ficha.md = md;
-    ficha.rama = d.rama || (d.local ? null : ficha.rama);
-    ficha.pr = d.pr || null;
-    pintarDatos(fm);
+    const d = await enviarGuardar();
 
     if (d.local) {
       $('b-pr').hidden = true;
@@ -480,6 +611,49 @@ async function guardar() {
     $('b-pr').onclick = () => window.open(d.pr.url, '_blank');
     mostrarAviso('Guardado en la rama ' + d.rama + '.\nPR #' + d.pr.numero + ': ' + d.pr.url +
       '\nNetlify está construyendo el preview; en un par de minutos lo tienes en la PR.', 'var(--ok)');
+  } catch (e) {
+    mostrarAviso(String(e.message || e), 'var(--mal)');
+  }
+}
+
+/** Guarda, saca la copla de «Por revisar» y (en producción) fusiona la PR. */
+async function revisarFicha() {
+  if (!ficha) return;
+  if (!comprobarObligatorios()) return;
+  const seguro = MODO_LOCAL
+    ? '¿Marcar esta copla como revisada?\nSe guarda el archivo y sale de «Por revisar». El commit lo haces luego.'
+    : '¿Marcar esta copla como revisada?\nSe guarda, se marca y se fusiona la PR: el cambio queda publicado.';
+  if (!confirm(seguro)) return;
+
+  try {
+    const d = await enviarGuardar({ revisado: true });
+    revision.delete(ficha.slug);
+    const quedan = d.revision && typeof d.revision.restantes === 'number' ? d.revision.restantes : null;
+    const cola = quedan === null ? '' : '\nQuedan ' + quedan + ' por revisar.';
+
+    if (d.local) {
+      $('b-revisado').hidden = true;
+      setEstado('revisada', true);
+      mostrarAviso('Guardada y marcada como revisada.' + cola +
+        '\nEn local no se crea PR: el commit lo haces luego (`subir-acorde`).', 'var(--ok)');
+      return;
+    }
+
+    if (!d.pr) throw new Error('se guardó, pero no hay PR que fusionar');
+    const r = await fetch(API + '/fusionar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: ficha.slug, ...(d.rama ? { rama: d.rama } : {}) }),
+    });
+    const j = await r.json();
+    if (!r.ok) throw new Error('guardada y marcada, pero no se pudo fusionar: ' + (j.error || 'error'));
+
+    $('b-revisado').hidden = true;
+    $('b-pr').hidden = true;
+    $('b-fusionar').hidden = true;
+    setEstado('revisada y fusionada', true);
+    mostrarAviso('Revisada y fusionada. Netlify publica en un par de minutos.' + cola +
+      (j.url ? '\n' + j.url : ''), 'var(--ok)');
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
   }
@@ -857,6 +1031,7 @@ function insertarSug(t) {
   sucio = true;
   setEstado('sin guardar', false);
   pintar();
+  verCaret();
 }
 
 /* ---------------- eventos ---------------- */
@@ -908,6 +1083,7 @@ $('f-letra').addEventListener('input', pintarBaseLetra);
 $('l-cancelar').onclick = () => $('dlg-letra').close();
 $('f-letra').onsubmit = anadirLetra;
 $('b-guardar').onclick = guardar;
+$('b-revisado').onclick = revisarFicha;
 $('b-comprobar').onclick = comprobar;
 $('b-fusionar').onclick = fusionar;
 $('b-publicar').onclick = publicar;
@@ -929,8 +1105,37 @@ document.querySelectorAll('.tabs button').forEach((b) => {
     paneActivo = b.dataset.pane;
     document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('sel', x === b));
     document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('activo', p.dataset.pane === paneActivo));
+    if (paneActivo === 'cen') aplicarZoom();
   };
 });
+
+$('b-zoom').onclick = () => {
+  zoomAjustado = !zoomAjustado;
+  try { localStorage.setItem(CLAVE_ZOOM, zoomAjustado ? '1' : '0'); } catch { /* sin almacenamiento */ }
+  aplicarZoom();
+  verCaret();
+};
+
+let rafAjuste = 0;
+window.addEventListener('resize', () => {
+  cancelAnimationFrame(rafAjuste);
+  rafAjuste = requestAnimationFrame(() => { aplicarZoom(); verCaret(); });
+});
+
+/** En iOS el teclado no encoge el layout: se ajusta el alto con visualViewport. */
+function ajustarAltoVisible() {
+  const vv = window.visualViewport;
+  if (!vv) return;
+  if (vv.height < window.innerHeight - 80 && vv.scale === 1) {
+    document.documentElement.style.setProperty('--alto-vv', Math.max(320, Math.round(vv.height)) + 'px');
+  } else {
+    document.documentElement.style.removeProperty('--alto-vv');
+  }
+}
+if (window.visualViewport) {
+  window.visualViewport.addEventListener('resize', ajustarAltoVisible);
+  ajustarAltoVisible();
+}
 
 ta.addEventListener('input', () => {
   hist.push(anterior);
@@ -941,10 +1146,6 @@ ta.addEventListener('input', () => {
   setEstado('sin guardar', false);
   pintar();
   if (tokenAntesCaret().length >= 2) abrirSug(); else cerrarSug();
-});
-ta.addEventListener('scroll', () => {
-  capa.scrollTop = ta.scrollTop;
-  capa.scrollLeft = ta.scrollLeft;
 });
 ta.addEventListener('keydown', (e) => {
   if (e.altKey && e.key === 'ArrowLeft') { e.preventDefault(); return mover(-1); }
@@ -986,10 +1187,11 @@ window.addEventListener('beforeunload', (e) => {
 /* ---------------- arranque ---------------- */
 (async () => {
   const params = new URLSearchParams(location.search);
-  const login = await quien();
-  if (!login) return; // se queda la pantalla de login
+  const cuenta = await quien();
+  if (!cuenta) { $('login').hidden = false; return; } // sin sesión: pantalla de login
+  MODO_LOCAL = MODO_LOCAL || cuenta.local === true;
   $('login').hidden = true;
-  $('quien').textContent = login;
+  $('quien').textContent = cuenta.login;
   $('vista-lista').hidden = false;
   $('b-nueva').hidden = false;
   $('b-letra').hidden = false;
@@ -1002,6 +1204,8 @@ window.addEventListener('beforeunload', (e) => {
   history.replaceState(estadoLista, '', '/estudio/');
   if (params.get('ficha')) await abrirFicha(params.get('ficha'));
   else if (params.get('nueva')) abrirNueva();
-  $('pie').innerHTML = '<a href="/estudio/api/salir">Salir</a>';
+  $('pie').innerHTML = MODO_LOCAL
+    ? '<span title="Sin sesión de GitHub: se usa el token del .env">Modo local · sin sesión</span>'
+    : '<a href="/estudio/api/salir">Salir</a>';
 })();
 

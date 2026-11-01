@@ -26,6 +26,34 @@ export const tieneDiagrama = (t) => (INDICE ? buscarEnIndice(INDICE, t) !== null
 /** Anotaciones tipo «(Sorda)» que van en la línea de acordes sin ser acordes. */
 export const esAnotacion = (t) => /^\(.*\)$/.test(t);
 
+/** Ancho previsto del bloque `<pre>`: las columnas 1-55 caben, la 56 se marca. */
+export const ANCHO_MAX = 55;
+
+/** Columnas visuales de una línea (tabulador = 4, sin contar espacios finales). */
+export function columnasLinea(linea) {
+  const limpia = String(linea).replace(/\s+$/, '');
+  let col = 0;
+  for (let i = 0; i < limpia.length; i++) {
+    col += limpia[i] === '\t' ? 4 - (col % 4) : 1;
+  }
+  return col;
+}
+
+/**
+ * Índice del carácter donde empieza lo que pasa de `max` columnas, o -1 si la
+ * línea cabe. Los espacios finales no cuentan (no ensucian el ancho del `<pre>`).
+ */
+export function cortePorAncho(linea, max = ANCHO_MAX) {
+  const limpia = String(linea).replace(/\s+$/, '');
+  let col = 0;
+  for (let i = 0; i < limpia.length; i++) {
+    const salto = limpia[i] === '\t' ? 4 - (col % 4) : 1;
+    if (col + salto > max) return i;
+    col += salto;
+  }
+  return -1;
+}
+
 const RE_ETIQUETA = /<a([^>]*)>([\s\S]*?)<\/a>/g;
 
 /**
