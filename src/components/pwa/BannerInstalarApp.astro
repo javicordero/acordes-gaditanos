@@ -17,9 +17,7 @@ const { ubicacion } = Astro.props;
   <span class='banner-instalar__badge'>Novedad</span>
   <div class='banner-instalar__cuerpo'>
     <p class='banner-instalar__texto'>Instala la aplicación Acordes Gaditanos en tu móvil.</p>
-    <p class='banner-instalar__texto'>
-      <button type='button' class='banner-instalar__accion' data-pwa-instalar>Instalar app</button>
-    </p>
+    <button type='button' class='banner-instalar__accion' data-pwa-instalar>Instalar app</button>
   </div>
 </div>
 
@@ -106,20 +104,31 @@ const { ubicacion } = Astro.props;
   }
 
   .banner-instalar__accion {
-    background: none;
-    border: none;
-    padding: 0;
-    color: var(--link-color);
-    font: inherit;
-    font-weight: 700;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    text-align: center;
+    padding: 10px 16px;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     cursor: pointer;
+    box-shadow: 3px 3px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   .banner-instalar__accion:hover {
-    color: var(--link-hover-color);
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 var(--on-bright-color);
   }
 
   .banner-instalar__accion:focus-visible {
