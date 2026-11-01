@@ -4,6 +4,8 @@
 const RATE_LIMIT = 5;
 const RATE_WINDOW = 60 * 60 * 1000; // 1 hour in ms
 const rateLimitMap = new Map();
+// Cache de tokens de GitHub ya verificados (token -> { ok, exp }).
+const tokenCache = new Map();
 
 function getCorsHeaders() {
   return {
@@ -42,13 +44,42 @@ function checkRateLimit(ip) {
   return { allowed: true, remaining: RATE_LIMIT - record.count };
 }
 
-function verifyAdmin(request, env) {
+async function verifyAdmin(request, env) {
   const authHeader = request.headers.get('Authorization');
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return false;
   }
-  const token = authHeader.slice(7);
-  return token === env.ADMIN_TOKEN;
+  const token = authHeader.slice(7).trim();
+  if (!token) return false;
+
+  // Compatibilidad con el token de administrador antiguo.
+  if (env.ADMIN_TOKEN && token === env.ADMIN_TOKEN) return true;
+
+  // Token de GitHub del panel /estudio: tiene que ser el propietario.
+  const ahora = Date.now();
+  const cache = tokenCache.get(token);
+  if (cache && cache.exp > ahora) return cache.ok;
+
+  try {
+    const r = await fetch('https://api.github.com/user', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'User-Agent': 'acordes-gaditanos-comments-worker',
+        Accept: 'application/vnd.github+json',
+      },
+    });
+    if (!r.ok) {
+      tokenCache.set(token, { ok: false, exp: ahora + 60 * 1000 });
+      return false;
+    }
+    const usuario = await r.json();
+    const propietario = String(env.OWNER_LOGIN || 'javicordero').toLowerCase();
+    const ok = String(usuario.login || '').toLowerCase() === propietario;
+    tokenCache.set(token, { ok, exp: ahora + 5 * 60 * 1000 });
+    return ok;
+  } catch {
+    return false;
+  }
 }
 
 function generateId() {
@@ -240,7 +271,7 @@ export default {
         return jsonResponse({ error: 'Content is required' }, 400);
       }
 
-      const isAdmin = verifyAdmin(request, env);
+      const isAdmin = await verifyAdmin(request, env);
 
       const comment = {
         id: generateId(),
@@ -270,7 +301,7 @@ export default {
     if (method === 'PATCH' && patchMatch) {
       const commentId = patchMatch[1];
 
-      if (!verifyAdmin(request, env)) {
+      if (!(await verifyAdmin(request, env))) {
         return jsonResponse({ error: 'Unauthorized' }, 401);
       }
 
@@ -312,7 +343,7 @@ export default {
     if (method === 'DELETE' && deleteMatch) {
       const commentId = deleteMatch[1];
 
-      if (!verifyAdmin(request, env)) {
+      if (!(await verifyAdmin(request, env))) {
         return jsonResponse({ error: 'Unauthorized' }, 401);
       }
 
