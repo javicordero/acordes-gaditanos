@@ -13,18 +13,21 @@ const LOGO = fileURLToPath(new URL('../public/icons/logo.svg', import.meta.url))
 
 async function generar(nombre, px, fraccion) {
   const tam = Math.round(px * fraccion);
-  // Logo en negro sobre transparente, reducido a la fracción pedida.
+  // Logo en negro sobre transparente, a su proporción natural (sin forzar cuadrado,
+  // para no introducir bandas de letterbox).
   const logo = await sharp(LOGO)
-    .resize(tam, tam, { fit: 'contain' })
+    .resize({ width: tam })
     .png()
     .toBuffer();
+  const meta = await sharp(logo).metadata();
   // Lienzo ámbar a sangre y logo centrado.
   const lienzo = sharp({
     create: { width: px, height: px, channels: 4, background: AMBAR },
   });
-  const offset = Math.round((px - tam) / 2);
+  const left = Math.round((px - (meta.width ?? tam)) / 2);
+  const top = Math.round((px - (meta.height ?? tam)) / 2);
   await lienzo
-    .composite([{ input: logo, left: offset, top: offset }])
+    .composite([{ input: logo, left, top }])
     .png()
     .toFile(fileURLToPath(new URL(`../public/${nombre}`, import.meta.url)));
   console.log(`✓ public/${nombre} (${px}x${px})`);
