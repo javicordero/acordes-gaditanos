@@ -10,7 +10,6 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  node_version = "20"
 
 # /estudio/api/* → funciones. Se usa este prefijo (y no /api/*) para no chocar
 # con el endpoint /api/fetch-url del sitio.
