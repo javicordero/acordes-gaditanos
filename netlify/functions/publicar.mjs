@@ -48,7 +48,7 @@ export default async (req) => {
       try {
         md = await readFile(origen, 'utf8');
       } catch {
-        return json({ error: 'no encuentro el borrador en acordes3' }, 404);
+        return json({ error: 'ese borrador no está en el ordenador (solo en GitHub): ábrelo y guárdalo para traerlo, o haz git pull' }, 404);
       }
       md = md.replace(/^date:[^\n]*/m, `date: "${hoy()}"`);
       const destinoDir = join(process.cwd(), CARPETAS.acordes);

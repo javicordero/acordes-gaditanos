@@ -98,6 +98,9 @@ async function cargarIndice() {
 const marcas = (x) => [
   x.zona === 'acordes3' ? '<span class="marca">BORRADOR</span>' : '',
   x.local ? '<span class="marca local">LOCAL</span>' : '',
+  MODO_LOCAL && x.zona === 'acordes3' && !x.local
+    ? '<span class="marca remoto" title="Solo está en GitHub: ábrelo y guárdalo para traerlo al ordenador">EN GITHUB</span>'
+    : '',
   x.enPR ? '<span class="marca pr">EN PR</span>' : '',
   porRevisar(x) ? '<span class="marca revisar">POR REVISAR</span>' : '',
 ].filter(Boolean).join(' ');
@@ -107,6 +110,8 @@ function filaLista(x) {
     '<button type="button" class="acc' + (extra || '') + '" data-accion="' + accion + '" data-slug="' + esc(x.slug) + '"' +
       (accion === 'clonar' ? ' title="Crear otra ficha (otra letra) a partir de esta misma música" aria-label="Crear otra ficha a partir de esta música"' : '') +
       '>' + texto + '</button>';
+  // En local solo se puede promover lo que está en el disco.
+  const puedePublicar = x.zona === 'acordes3' && (!MODO_LOCAL || x.local);
 
   return '<article class="fila' + (esPendiente(x) ? ' pendiente' : '') + '">' +
     '<button type="button" class="fila-info" data-slug="' + esc(x.slug) + '">' +
@@ -120,7 +125,7 @@ function filaLista(x) {
     '</button>' +
     '<div class="fila-acciones">' +
       boton('editar', 'Editar') +
-      (x.zona === 'acordes3' ? boton('publicar', MODO_LOCAL ? 'Promover' : 'Publicar', ' principal') : '') +
+      (puedePublicar ? boton('publicar', MODO_LOCAL ? 'Promover' : 'Publicar', ' principal') : '') +
       boton('clonar', '＋', ' icono') +
     '</div>' +
   '</article>';
@@ -585,6 +590,12 @@ async function enviarGuardar(extra = {}) {
   ficha.md = md;
   ficha.rama = d.rama || (d.local ? null : ficha.rama);
   ficha.pr = d.pr || null;
+  // Al guardar en local, el borrador ya existe en el disco: la lista puede
+  // ofrecer Promover sin recargar.
+  if (d.local && zonaFicha === 'acordes3') {
+    const x = indice.find((i) => i.slug === ficha.slug);
+    if (x) { x.local = true; x.zona = 'acordes3'; }
+  }
   pintarDatos(fm);
   return d;
 }
@@ -701,6 +712,8 @@ async function publicar() {
     if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
     const md = montarMd(ficha.d.frontmatter, envolver(ta.value, ficha.d.registros, ficha.d.originales).pre);
     montarEditor(ficha.slug, md, d.pr, 'acordes', d.rama);
+    const x = indice.find((i) => i.slug === ficha.slug);
+    if (x) { x.zona = 'acordes'; x.local = false; x.enPR = d.pr ? d.pr.numero : null; }
     if (d.local) {
       setEstado('promovida a acordes', true);
       $('b-publicar').hidden = true;
@@ -717,6 +730,11 @@ async function publicar() {
 
 /** Publica un borrador desde la propia lista, sin abrir el editor. */
 async function publicarDesdeLista(slug, boton) {
+  const item = indice.find((i) => i.slug === slug);
+  if (MODO_LOCAL && item && !item.local) {
+    mostrarAviso('Ese borrador está solo en GitHub: ábrelo, guárdalo para traerlo al ordenador y después podrás promoverlo.', 'var(--nuevo)');
+    return;
+  }
   if (!confirm(MODO_LOCAL
     ? '¿Promover «' + slug + '» a acordes?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
     : '¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes y se abrirá la PR. Al fusionar saldrá el aviso.')) return;
@@ -731,8 +749,7 @@ async function publicarDesdeLista(slug, boton) {
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
-    const x = indice.find((i) => i.slug === slug);
-    if (x) { x.zona = 'acordes'; x.enPR = d.pr ? d.pr.numero : null; }
+    if (item) { item.zona = 'acordes'; item.local = false; item.enPR = d.pr ? d.pr.numero : null; }
     pintarLista();
     mostrarAviso(d.local
       ? 'Promovida a acordes: «' + slug + '» ya está en src/content/acordes/.\nLa web no cambia hasta que hagas commit y push (`subir-acorde`).'
@@ -924,6 +941,7 @@ async function crear(e) {
       musica: v('musica'),
       letra: v('letra'),
       zona: 'acordes3',
+      local: gd.local === true,
       enPR: gd.pr ? gd.pr.numero : null,
     });
     montarEditor(slug, md, gd.pr, 'acordes3', gd.rama);
