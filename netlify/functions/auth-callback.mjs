@@ -1,7 +1,7 @@
 ﻿// Vuelta de GitHub: cambia el código por un token, comprueba que eres tú y deja
 // la sesión en una cookie cifrada.
 import {
-  SITE, OWNER, COOKIE_ESTADO, cifrar, cookies, cookieSesion, gh,
+  SITE, OWNER, cifrar, cookieSesion, gh, estadoValido,
 } from './_lib.mjs';
 
 const error = (mensaje, detalle = '') => new Response(
@@ -17,10 +17,9 @@ export default async (req) => {
   const url = new URL(req.url);
   const codigo = url.searchParams.get('code');
   const estado = url.searchParams.get('state');
-  const cookieEstado = cookies(req)[COOKIE_ESTADO];
 
   if (!codigo) return error('GitHub no ha devuelto el código de autorización.');
-  if (!estado || !cookieEstado || estado !== cookieEstado) {
+  if (!estadoValido(estado)) {
     return error('La comprobación de seguridad no cuadra. Vuelve a intentarlo desde /estudio.');
   }
 
@@ -55,13 +54,10 @@ export default async (req) => {
     return error(`La cuenta ${login} no es la propietaria de este panel.`);
   }
 
-  // Dos cookies: la de sesión y la de estado (que se borra). Se añaden con
-  // `append` porque un `Set-Cookie` con array se serializa mal y el navegador
-  // se queda sin sesión.
+  // Solo la cookie de sesión; el `state` ya no usa cookie (va firmado en la URL).
   const cabeceras = new Headers();
   cabeceras.set('Location', `${SITE}/estudio/`);
   cabeceras.append('Set-Cookie', cookieSesion(cifrar({ login, token, exp: Date.now() + 12 * 60 * 60 * 1000 })));
-  cabeceras.append('Set-Cookie', `${COOKIE_ESTADO}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`);
   cabeceras.set('Cache-Control', 'no-store');
   return new Response(null, { status: 302, headers: cabeceras });
 };

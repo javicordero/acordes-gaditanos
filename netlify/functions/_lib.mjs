@@ -5,14 +5,13 @@
 // servidor: viaja dentro de la cookie cifrada (HttpOnly) y solo lo leen estas
 // funciones.
 
-import { createCipheriv, createDecipheriv, createHash, randomBytes } from 'node:crypto';
+import { createCipheriv, createDecipheriv, createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 
 export const REPO = process.env.GITHUB_REPO || 'javicordero/acordes-gaditanos';
 export const OWNER = (process.env.OWNER_LOGIN || 'javicordero').toLowerCase();
 export const SITE = (process.env.URL || 'https://acordesgaditanos.com').replace(/\/+$/, '');
 export const BASE = 'master';
 export const COOKIE = 'estudio';
-export const COOKIE_ESTADO = 'estudio_estado';
 export const CARPETA = 'src/content/acordes';
 export const CARPETAS = { acordes: 'src/content/acordes', acordes3: 'src/content/acordes3' };
 // En `astro dev` el panel trabaja contra los archivos del ordenador, no contra
@@ -99,6 +98,30 @@ export async function gh(ruta, { token, method = 'GET', body } = {}) {
     throw err;
   }
   return datos;
+}
+
+/** Firma HMAC-SHA256 con SESSION_SECRET (para el `state` del OAuth). */
+export function firmar(valor) {
+  return createHmac('sha256', String(process.env.SESSION_SECRET || 'sin-secreto'))
+    .update(String(valor)).digest('base64url');
+}
+
+/** `state` para el OAuth: `nonce.firma`, sin depender de cookies. */
+export function estadoNuevo() {
+  const nonce = randomBytes(16).toString('base64url');
+  return `${nonce}.${firmar(nonce)}`;
+}
+
+/** Comprueba que un `state` devuelto por GitHub lleve la firma correcta. */
+export function estadoValido(estado) {
+  if (typeof estado !== 'string') return false;
+  const i = estado.lastIndexOf('.');
+  if (i <= 0) return false;
+  const nonce = estado.slice(0, i);
+  const firma = estado.slice(i + 1);
+  const esperada = firmar(nonce);
+  return firma.length === esperada.length &&
+    timingSafeEqual(Buffer.from(firma), Buffer.from(esperada));
 }
 
 /** URL de autorización de GitHub. */
