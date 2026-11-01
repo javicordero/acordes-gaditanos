@@ -113,6 +113,7 @@ export const prerender = true;
   .pane:last-child { border-right:0; }
   .cab { padding:5px 10px; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); border-bottom:1px solid var(--linea); display:flex; gap:8px; align-items:center; }
   .cab b { color:var(--tinta); font-weight:600; letter-spacing:0; text-transform:none; font-size:12px; }
+  #base-sel { flex:1; min-width:0; max-width:100%; font:11px system-ui, sans-serif; padding:1px 3px; border:1px solid var(--linea); border-radius:4px; background:#fff; color:var(--tinta); }
   .lienzo { position:relative; flex:1; min-height:0; overflow:hidden; }
   pre, textarea { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space:pre; overflow:auto; tab-size:4; }
   pre { color:var(--tinta); }
@@ -254,7 +255,7 @@ export const prerender = true;
         </div>
       </section>
       <section class="pane" data-pane="der">
-        <div class="cab"><b>Base</b><span id="base-meta"></span></div>
+        <div class="cab"><b>Base</b><select id="base-sel" title="Elige la ficha con la que comparar"></select></div>
         <pre id="ref-der"></pre>
       </section>
     </div>

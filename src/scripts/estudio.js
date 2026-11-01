@@ -290,7 +290,7 @@ function mostrarBase(si) {
   $('cols').classList.toggle('sin-base', !si);
   if (!si) {
     if (pane) pane.classList.remove('activo');
-    $('base-meta').textContent = '';
+    $('base-sel').innerHTML = '';
     $('ref-der').textContent = '';
     if (paneActivo === 'der') {
       paneActivo = 'cen';
@@ -300,19 +300,36 @@ function mostrarBase(si) {
   }
 }
 
-async function cargarBase(slug) {
+async function cargarBase(slug, elegida) {
   const actual = indice.find((x) => x.slug === slug);
   if (!actual) return;
-  const candidatas = indice.filter((x) => x.slug !== slug && x.agrupacion === actual.agrupacion && String(x.year) === String(actual.year));
-  const base = candidatas.find((x) => x.pieza === actual.pieza) || candidatas[0];
-  if (!base) return;
+  // Bases posibles: cualquier otra ficha de la misma agrupación (mismo año primero).
+  const delAnio = (x) => (String(x.year) === String(actual.year) ? 0 : 1);
+  const candidatas = indice
+    .filter((x) => x.slug !== slug && x.agrupacion === actual.agrupacion)
+    .sort((a, b) => delAnio(a) - delAnio(b)
+      || (a.pieza === actual.pieza ? 0 : 1) - (b.pieza === actual.pieza ? 0 : 1)
+      || String(b.year).localeCompare(String(a.year), 'es')
+      || a.slug.localeCompare(b.slug, 'es'));
+  if (!candidatas.length) { mostrarBase(false); return; }
+
+  const base = (elegida && candidatas.find((x) => x.slug === elegida))
+    || candidatas.find((x) => x.pieza === actual.pieza)
+    || candidatas[0];
+
+  const sel = $('base-sel');
+  sel.innerHTML = candidatas.map((x) =>
+    '<option value="' + esc(x.slug) + '">' +
+      esc((x.letraTitulo ? x.letraTitulo + ' · ' : '') + x.year + ' · ' + x.pieza) +
+    '</option>').join('');
+  sel.value = base.slug;
+
   try {
     const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(base.slug));
     const datos = await r.json();
     if (!r.ok) return;
     const d = desenvolver(datos.md);
     pintarTexto(d.texto, $('ref-der'));
-    $('base-meta').textContent = base.slug;
     mostrarBase(true);
   } catch { /* sin base */ }
 }
@@ -744,6 +761,7 @@ $('f-datos').addEventListener('input', () => {
   setEstado('sin guardar', false);
 });
 $('q-limpiar').onclick = () => { $('q').value = ''; $('q').focus(); pintarLista(); };
+$('base-sel').onchange = () => { if (ficha) cargarBase(ficha.slug, $('base-sel').value); };
 document.querySelectorAll('#filtros button').forEach((b) => {
   b.onclick = () => {
     filtroTipo = b.dataset.filtro;
