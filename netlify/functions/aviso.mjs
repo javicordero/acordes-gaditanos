@@ -18,14 +18,24 @@ export default async (req) => {
   const s = sesion(req);
   if (!s) return sinSesion();
 
+  // La ficha abierta en el panel manda: si llega su frontmatter en el cuerpo, el
+  // aviso se compone con eso y no importa si está subida, en una PR o solo en el
+  // ordenador. Sin cuerpo, se lee del repositorio (o del disco, en local).
+  let cuerpo = null;
+  if (req.method === 'POST') {
+    try { cuerpo = await req.json(); } catch { cuerpo = null; }
+  }
+
   const url = new URL(req.url);
-  const slug = String(url.searchParams.get('slug') || '').trim();
+  const slug = String((cuerpo && cuerpo.slug) || url.searchParams.get('slug') || '').trim();
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) return json({ error: 'slug inválido' }, 400);
+
+  const frontmatterAbierto = cuerpo && cuerpo.frontmatter ? String(cuerpo.frontmatter) : null;
 
   try {
     // En local se lee el archivo del disco: puede ser un borrador sin publicar.
-    let mdCrudo = null;
-    if (LOCAL) {
+    let mdCrudo = frontmatterAbierto;
+    if (!mdCrudo && LOCAL) {
       const { readFile } = await import('node:fs/promises');
       const { join } = await import('node:path');
       for (const zona of ['acordes', 'acordes3']) {

@@ -98,7 +98,7 @@ Panel privado desplegado con Netlify Functions. Vive en `/estudio`: `noindex`, s
 - **Publicar / Promover**: en producción, botón que mueve el borrador de `acordes3` a `acordes` en una rama nueva y abre la PR; al fusionar, Netlify reconstruye y el aviso de Telegram sale solo (un `.md` añadido). En local el botón se llama **Promover** y solo mueve el archivo en el proyecto (sin PR y sin tocar la web, que no cambia hasta el commit y push).
 - **Fichas publicadas**: se pueden abrir y corregir; al guardar, la PR va a `acordes`.
 - **Fusionar**: botón que hace squash merge de la PR abierta de esa ficha. Si la ficha se ha renombrado, la PR se localiza por la rama (`rama`), no por el slug.
-- **Avisos**: el panel compone el mismo texto que Telegram (`scripts/lib/aviso.mjs`), con botón de copiar y de abrir X. WhatsApp y X siguen saliendo desde el PC (`npm run wa`, `npm run x`): necesitan tu Chrome con sesión.
+- **Avisos**: el panel compone el mismo texto que Telegram (`scripts/lib/aviso.mjs`) con la **ficha abierta**: manda su frontmatter por `POST /estudio/api/aviso`, así que sale aunque no esté subida, esté en una PR o solo en el ordenador. Botones de copiar y de abrir X. WhatsApp y X siguen saliendo desde el PC (`npm run wa`, `npm run x`): necesitan tu Chrome con sesión.
 
 Variables en Netlify: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (secreta), `SESSION_SECRET` (secreta), `OWNER_LOGIN`. El callback de la OAuth App tiene que ser `https://acordesgaditanos.com/estudio/api/auth-callback`.
 

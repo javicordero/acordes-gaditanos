@@ -378,6 +378,27 @@ function mover(dir) {
 }
 
 /* ---------------- guardar / comprobar ---------------- */
+/** Frontmatter con los valores que hay ahora mismo en el panel de datos. */
+function frontmatterActual() {
+  const datos = datosDelEditor();
+  return cambiarFrontmatter(ficha.d.frontmatter, {
+    pieza: datos.pieza,
+    agrupacion: datos.agrupacion,
+    year: datos.year,
+    musica: datos.musica || null,
+    letra: datos.letra || null,
+    letraTitulo: datos.letraTitulo || null,
+    cejilla: datos.cejilla || null,
+    video: datos.video || null,
+    img: datos.img,
+    fraseClave: datos.fraseClave || null,
+    destacada: datos.destacada || null,
+    recomendada: datos.recomendada || null,
+    cover: datos.cover || null,
+    autorCover: datos.autorCover || null,
+  });
+}
+
 async function guardar() {
   if (!ficha) return;
   const datos = datosDelEditor();
@@ -386,22 +407,7 @@ async function guardar() {
   if (!datos.img) { mostrarAviso('Falta la imagen: el esquema la exige.', 'var(--mal)'); return; }
 
   try {
-    const fm = cambiarFrontmatter(ficha.d.frontmatter, {
-      pieza: datos.pieza,
-      agrupacion: datos.agrupacion,
-      year: datos.year,
-      musica: datos.musica || null,
-      letra: datos.letra || null,
-      letraTitulo: datos.letraTitulo || null,
-      cejilla: datos.cejilla || null,
-      video: datos.video || null,
-      img: datos.img,
-      fraseClave: datos.fraseClave || null,
-      destacada: datos.destacada || null,
-      recomendada: datos.recomendada || null,
-      cover: datos.cover || null,
-      autorCover: datos.autorCover || null,
-    });
+    const fm = frontmatterActual();
     const envuelto = envolver(ta.value, ficha.d.registros, ficha.d.originales);
     const md = montarMd(fm, envuelto.pre);
     const r = await fetch(API + '/guardar', {
@@ -532,7 +538,13 @@ async function publicarDesdeLista(slug, boton) {
 async function abrirAvisos() {
   if (!ficha) return;
   try {
-    const r = await fetch(API + '/aviso?slug=' + encodeURIComponent(ficha.slug));
+    // Se manda el frontmatter abierto: el aviso sale aunque la ficha no esté
+    // subida, esté en una PR o solo en el ordenador.
+    const r = await fetch(API + '/aviso', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: ficha.slug, frontmatter: frontmatterActual() }),
+    });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo componer el aviso');
     $('aviso-meta').textContent = d.titulo;
