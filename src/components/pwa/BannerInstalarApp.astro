@@ -5,6 +5,8 @@
 // coplas») que invita a instalar la app. Se usa tras el título de «Novedades»
 // (portada) y bajo la cejilla en las fichas. Solo en móvil, oculto si ya está
 // instalada o descartada.
+import { Icon } from 'astro-icon/components';
+
 interface Props {
   /** Para la analítica: 'portada' o 'ficha'. */
   ubicacion: string;
@@ -17,7 +19,10 @@ const { ubicacion } = Astro.props;
   <span class='banner-instalar__badge'>Novedad</span>
   <div class='banner-instalar__cuerpo'>
     <p class='banner-instalar__texto'>Instala la aplicación Acordes Gaditanos en tu móvil.</p>
-    <button type='button' class='banner-instalar__accion' data-pwa-instalar>Instalar app</button>
+    <button type='button' class='banner-instalar__accion' data-pwa-instalar>
+      <Icon name='descargar' width={15} height={15} />
+      <span>Instalar app</span>
+    </button>
   </div>
 </div>
 
@@ -59,13 +64,13 @@ const { ubicacion } = Astro.props;
 <style>
   .banner-instalar {
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 10px;
     width: fit-content;
     max-width: 100%;
     margin: 0;
-    padding: 14px 16px;
+    padding: 12px 14px;
     background: var(--callout-bg);
     border: 2px solid var(--primary-color);
     border-radius: 0;
@@ -96,7 +101,7 @@ const { ubicacion } = Astro.props;
   .banner-instalar__cuerpo {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 8px;
   }
 
   .banner-instalar__texto {
@@ -107,20 +112,22 @@ const { ubicacion } = Astro.props;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
+    gap: 6px;
+    width: fit-content;
+    min-height: 32px;
     background: var(--primary-contrast-color);
     color: var(--on-bright-color);
     text-align: center;
-    padding: 10px 16px;
+    padding: 5px 12px;
     border: 2px solid var(--on-bright-color);
     border-radius: 0;
     font-family: 'Roboto Mono', monospace;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 3px 3px 0 0 var(--on-bright-color);
+    box-shadow: 2px 2px 0 0 var(--on-bright-color);
     transition:
       transform 0.15s ease,
       box-shadow 0.15s ease;
@@ -128,11 +135,16 @@ const { ubicacion } = Astro.props;
 
   .banner-instalar__accion:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0 0 var(--on-bright-color);
+    box-shadow: 4px 4px 0 0 var(--on-bright-color);
   }
 
   .banner-instalar__accion:focus-visible {
     outline: 3px solid var(--primary-contrast-color);
     outline-offset: 3px;
+  }
+
+  .banner-instalar__accion :global(svg) {
+    display: block;
+    flex: none;
   }
 </style>
