@@ -354,13 +354,17 @@ async function crear(e) {
   const f = new FormData($('f-nueva'));
   const v = (k) => String(f.get(k) || '').trim();
   const base = v('base');
-  if (!base) { mostrarAviso('Hace falta una ficha base para copiar los acordes.', 'var(--mal)'); return; }
+  const pieza = v('pieza') || 'Pasodoble';
+  if (!v('agrupacion')) { mostrarAviso('La agrupación es obligatoria.', 'var(--mal)'); return; }
   try {
-    const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(base));
-    const d = await r.json();
-    if (!r.ok) throw new Error('no encuentro la base ' + base);
-    const bd = desenvolver(d.md);
-    const pieza = v('pieza') || 'Pasodoble';
+    // Sin ficha base, la ficha nace vacía: el bloque se pega luego en el editor.
+    let bd = { frontmatter: '---\n---\n', pre: '' };
+    if (base) {
+      const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(base));
+      const d = await r.json();
+      if (!r.ok) throw new Error('no encuentro la base ' + base);
+      bd = desenvolver(d.md);
+    }
     const slug = (pieza + '-' + v('agrupacion') + (v('letraTitulo') ? '-' + v('letraTitulo') : ''))
       .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     const fm = cambiarFrontmatter(bd.frontmatter, {
@@ -372,7 +376,7 @@ async function crear(e) {
       letraTitulo: v('letraTitulo'),
       cejilla: v('cejilla') || undefined,
       video: v('video') || undefined,
-      img: v('img') || undefined,
+      img: v('img') || (base ? undefined : '/og-image.png'),
       fraseClave: v('fraseClave') || undefined,
       date: hoy(),
     });
