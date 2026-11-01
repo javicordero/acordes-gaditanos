@@ -61,7 +61,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       manifest: {
         name: 'Acordes Gaditanos',
-        short_name: 'Acordes',
+        short_name: 'Acordes Gaditanos',
         description:
           'Acordes de guitarra del Carnaval de Cádiz. Presentaciones, pasodobles, tangos, cuplés y popurrís para tocar con tu guitarra.',
         lang: 'es',
