@@ -1,0 +1,100 @@
+---
+// src/components/pwa/BannerInstalarApp.astro
+//
+// Banner propio y discreto (solo texto) que invita a instalar la app.
+// Se usa en dos sitios: tras el título de «Novedades» (portada) y bajo la
+// cejilla en las fichas. Solo en móvil, oculto si ya está instalada o descartada.
+interface Props {
+  /** Para la analítica: 'portada' o 'ficha'. */
+  ubicacion: string;
+}
+
+const { ubicacion } = Astro.props;
+---
+
+<button type='button' class='banner-instalar' data-pwa-banner data-ubicacion={ubicacion}>
+  <span class='banner-instalar__novedad'>Novedad</span>
+  <span class='banner-instalar__texto'>Instala la aplicación Acordes Gaditanos en tu móvil.</span>
+</button>
+
+<script>
+  import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
+  import { eventoPwa } from '../../lib/pwa/analytics';
+
+  let promptMostrado = false;
+
+  function init() {
+    const banner = document.querySelector<HTMLElement>('[data-pwa-banner]');
+    if (!banner) return;
+
+    if (puedeInstalar()) {
+      banner.classList.add('banner-instalar--visible');
+      if (!promptMostrado) {
+        promptMostrado = true;
+        eventoPwa('pwa_prompt_shown', { ubicacion: banner.dataset.ubicacion });
+      }
+      if (!banner.dataset.wired) {
+        banner.dataset.wired = 'true';
+        banner.addEventListener('click', () => {
+          eventoPwa('pwa_home_banner_click', { ubicacion: banner.dataset.ubicacion });
+          instalar();
+        });
+      }
+    } else {
+      banner.classList.remove('banner-instalar--visible');
+    }
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+  window.addEventListener('ag:beforeinstallprompt', init);
+  window.addEventListener('ag:pwa-estado', init);
+</script>
+
+<style>
+  .banner-instalar {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+  }
+
+  .banner-instalar--visible {
+    display: flex;
+  }
+
+  .banner-instalar__novedad {
+    color: var(--primary-contrast-color);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .banner-instalar__texto {
+    color: var(--text-secondary-color);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .banner-instalar:hover .banner-instalar__texto,
+  .banner-instalar:focus-visible .banner-instalar__texto {
+    color: var(--link-color);
+  }
+
+  .banner-instalar:focus-visible {
+    outline: 2px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+</style>

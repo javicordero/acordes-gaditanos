@@ -11,6 +11,7 @@ import AnunciateIndex from '../components/page/AnunciateIndex.astro';
 import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
 import BannerCoplasComunidad from '../components/page/BannerCoplasComunidad.astro';
 import FloatingButton from '../components/FloatingButton.astro';
+import BannerInstalarApp from '../components/pwa/BannerInstalarApp.astro';
 import { parseSpanishDate, sortByYearDesc } from '../lib/index';
 import { contarCreditosAutores } from '../lib/autores';
 
@@ -47,7 +48,11 @@ const autoresDestacados = [...autores]
     <!-- <AnunciateIndex /> -->
 
     <div class='section section--novedades'>
-      <CardsGroup year={'Novedades'} acordes={ultimos} />
+      <CardsGroup year={'Novedades'} acordes={ultimos}>
+        <div slot='notice'>
+          <BannerInstalarApp ubicacion='portada' />
+        </div>
+      </CardsGroup>
       <div class='container-layout ver-mas-wrapper'>
         <a
           href='/novedades'
