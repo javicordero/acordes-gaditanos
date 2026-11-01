@@ -1,0 +1,110 @@
+---
+// src/components/right-column/InstalarAppCard.astro
+//
+// Tarjeta de la columna derecha (ficha de acordes) que invita a instalar la app.
+// Solo se muestra en móvil (Android/iOS), si no está instalada ni descartada.
+// Se oculta por defecto y la muestra el script para no parpadear en escritorio.
+import RightColumnCard from '../../layouts/RightColumnCard.astro';
+import { Icon } from 'astro-icon/components';
+
+const { class: className } = Astro.props;
+---
+
+<RightColumnCard title='Instalar la app' headingId='instalar-app-title' class={className}>
+  <section class='card'>
+    <p>Instala Acordes Gaditanos en tu móvil y úsala sin conexión.</p>
+    <button type='button' class='btn-instalar'>
+      <Icon name='descargar' width={16} height={16} />
+      <span>Instalar app</span>
+    </button>
+  </section>
+</RightColumnCard>
+
+<script>
+  import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
+  import { eventoPwa } from '../../lib/pwa/analytics';
+
+  function init() {
+    const card = document.querySelector('.instalar-app') as HTMLElement | null;
+    if (!card) return;
+
+    if (!puedeInstalar()) {
+      card.classList.remove('instalar-app--visible');
+      return;
+    }
+
+    card.classList.add('instalar-app--visible');
+    eventoPwa('pwa_prompt_shown', { ubicacion: 'ficha' });
+
+    const btn = card.querySelector('.btn-instalar');
+    btn?.addEventListener('click', () => {
+      instalar();
+      // Tras instalar o descartar, la tarjeta desaparece.
+      setTimeout(() => {
+        if (!puedeInstalar()) card.classList.remove('instalar-app--visible');
+      }, 1000);
+    });
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  /* La sección la pinta RightColumnCard (con su propio scope), así que para
+     ocultarla/mostrarla usamos :global sobre la clase única que le pasamos. */
+  :global(.instalar-app) {
+    display: none;
+  }
+
+  :global(.instalar-app.instalar-app--visible) {
+    display: flex;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  .btn-instalar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    background: var(--primary-contrast-color, #c2185b);
+    color: var(--on-bright-color);
+    text-align: center;
+    padding: 10px 16px;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .btn-instalar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 var(--on-bright-color);
+  }
+
+  .btn-instalar :global(svg) {
+    display: block;
+    flex: none;
+  }
+</style>

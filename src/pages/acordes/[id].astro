@@ -10,6 +10,7 @@ import MusicCompositionSchema from '../../components/utils/MusicCompositionSchem
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
 import Apoyar from '../../components/right-column/Apoyar.astro';
 import PedirCoplaCard from '../../components/right-column/PedirCoplaCard.astro';
+import InstalarAppCard from '../../components/right-column/InstalarAppCard.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
@@ -220,6 +221,8 @@ const webPageSchema = {
 
       <Apoyar class='apoyar' />
 
+      <InstalarAppCard class='instalar-app' />
+
       <PedirCoplaCard class='pedir-copla' />
 
       <Anuncio2 class='anuncio-2' />
@@ -293,7 +296,7 @@ const webPageSchema = {
           flex-direction: column;
         }
 
-        /* Orden en móvil: Anuncio1 → Apoyar → SigueTocando → Recomendados → Anuncio2 → ApareceAqui/VideoCover → Video → Anuncio3 */
+        /* Orden en móvil: Anuncio1 → Apoyar → Instalar → SigueTocando → Recomendados → Anuncio2 → ApareceAqui/VideoCover → Video → Anuncio3 */
         .right-column > :global(.anuncio-1) {
           order: 1;
         }
@@ -302,12 +305,16 @@ const webPageSchema = {
           order: 2;
         }
 
-        .right-column > :global(.sigue-tocando) {
+        .right-column > :global(.instalar-app) {
           order: 3;
         }
 
-        .right-column > :global(.recomendados) {
+        .right-column > :global(.sigue-tocando) {
           order: 4;
+        }
+
+        .right-column > :global(.recomendados) {
+          order: 5;
         }
 
         .right-column > :global(.anuncio-2) {
