@@ -58,6 +58,12 @@ export default defineConfig({
 
   vite: {
     server: {
+      // En `astro dev`, guardar un borrador desde el panel escribe en
+      // `src/content/acordes3`; si el watcher lo ve, Astro recarga la página y
+      // se pierde el editor. Esa colección solo la usa el panel (lee el archivo
+      // directamente), así que se ignora. `acordes` sí se vigila: el preview
+      // del sitio tiene que actualizarse al editar una ficha publicada.
+      watch: { ignored: ['**/src/content/acordes3/**'] },
       allowedHosts: [],
     },
   },
