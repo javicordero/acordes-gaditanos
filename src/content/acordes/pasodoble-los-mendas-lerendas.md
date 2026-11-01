@@ -12,38 +12,38 @@ fraseClave: Desde el templo consagrado
 
 ---  
 <pre>
-<a>Mi</a>                  <a>Si7</a>            <a>Mi</a>
+Mi                  Si7            Mi
 Desde el templo consagrado de la Caleta
-                      <a>Fa#m7</a>    <a>Si7</a>    <a>Mi</a>
+                      Fa#m7    Si7    Mi
 donde el sol tiene la suerte de descansar,
-          <a>Solm7</a>      <a>Fa#m7</a>        <a>Si7</a>      <a>Do</a>
-donde a rumiar sus hazañas se fue mi menda hace tantos
-     <a>Lam</a> <a>Si7</a> <a>Mi</a>
-años ya.
-                    <a>Fa#m7</a> <a>Si7</a> <a>Mi</a>
+          Solm7      Fa#m7        Si7      
+donde a rumiar sus hazañas se fue mi menda 
+Do              Lam Si7 Mi
+hace tantos años ya.
+                    Fa#m7 Si7 Mi
 Desde el templo consagrado    de la Caleta
-                   <a>Mi7</a>                   <a>Do#7</a>
+                   Mi7                   Do#7
 con un soplo del poniente hasta aquí llegué,
-           <a>Fa#m7</a>        <a>Lam</a>   <a>Si7</a>          <a>Mi</a>
+           Fa#m7        Lam   Si7          Mi
 porque te extraño Tacita y tanto falté a tu cita
-   <a>Do#7</a>                <a>Fa#m7</a>     <a>Si7</a>      <a>Mi</a>
+   Do#7                Fa#m7     Si7      Mi
 que hoy por tenerte cerquita vuelvo otra vez.
-       <a>Do#7</a>         <a>Fa#m7</a>      <a>Si7</a>                 <a>Mi</a>
+       Do#7         Fa#m7      Si7                 Mi
 Tantos años te he faltado que tengo dentro una espinita.
-     <a>Si7</a>         <a>Sol#m7</a>    <a>Fa#m7</a>   <a>Sol#m7</a> <a>Do#7</a>   <a>Fa#m7</a>
+     Si7         Sol#m7    Fa#m7   Sol#m7 Do#7   Fa#m7
 Creo que me has olvidao al haberme alejao de tu verita.
-                 <a>Si7</a>                          <a>Mi</a>
+                 Si7                          Mi
 Y me siento desterrao de ti y me creo que te voy a perder,
-               <a>Fa#m7</a>               <a>Si7</a>                <a>Mi</a>
+               Fa#m7               Si7                Mi
 dame una señal que me haga sentir que me quieres todavía.
-<a>Lam</a>           <a>Si7</a>            <a>Mi</a> <a>Sol#m7</a>         <a>Solm7</a>
+Lam           Si7            Mi Sol#m7         Solm7
 Déjame que te mire una noche más Cádiz de mis entrañas
-           <a>Fa#m7</a>
+           Fa#m7
 que guapa estás.
-          <a>Si7</a>               <a>Mi</a>                  <a>Fa#m7</a>
+          Si7               Mi                  Fa#m7
 Ojalá mi letra, sin pedir permiso entre por tus grietas
-<a>Fa#7</a>          <a>Si7</a>  <a>Lam</a>      <a>Si7</a>    <a>Mi</a>
+Fa#7          Si7  Lam      Si7    Mi
 y surta el hechizo pa que este menda lerenda
-           <a>Do#7</a>    <a>Fa#m7</a>             <a>Si7</a>           <a>Mi</a>
+           Do#7    Fa#m7             Si7           Mi
 pa que este menda lerenda tenga las llaves del paraiso.
 </pre>
