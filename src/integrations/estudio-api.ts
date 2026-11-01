@@ -1,28 +1,21 @@
-// Puente entre Astro y las funciones de Netlify, solo para `astro dev`.
+// Ruta de desarrollo para ejecutar las funciones de Netlify del panel /estudio.
 //
-// En producción las ejecuta Netlify (redirección de `netlify.toml`); en
-// desarrollo no existen, así que esta ruta las llama directamente. Se hace con
-// una ruta de verdad (y no con middleware) porque el middleware de Astro recibe
-// una petición sintética sin query ni cabeceras para rutas que no existen.
+// Se inyecta solo con `astro dev` (ver astro.config.mjs). En producción las
+// ejecuta Netlify con la redirección de `netlify.toml`; en desarrollo no existen,
+// así que esta ruta las llama con la petición real (query y cabeceras incluidas).
 import type { APIRoute } from 'astro';
 
-export const prerender = !import.meta.env.DEV;
-
-export function getStaticPaths() {
-  return [];
-}
-
 const FUNCIONES: Record<string, () => Promise<{ default: (req: Request) => Promise<Response> }>> = {
-  auth: () => import('../../../../netlify/functions/auth.mjs'),
-  'auth-callback': () => import('../../../../netlify/functions/auth-callback.mjs'),
-  me: () => import('../../../../netlify/functions/me.mjs'),
-  salir: () => import('../../../../netlify/functions/salir.mjs'),
-  ficha: () => import('../../../../netlify/functions/ficha.mjs'),
-  lista: () => import('../../../../netlify/functions/lista.mjs'),
-  guardar: () => import('../../../../netlify/functions/guardar.mjs'),
-  publicar: () => import('../../../../netlify/functions/publicar.mjs'),
-  fusionar: () => import('../../../../netlify/functions/fusionar.mjs'),
-  aviso: () => import('../../../../netlify/functions/aviso.mjs'),
+  auth: () => import('../../netlify/functions/auth.mjs'),
+  'auth-callback': () => import('../../netlify/functions/auth-callback.mjs'),
+  me: () => import('../../netlify/functions/me.mjs'),
+  salir: () => import('../../netlify/functions/salir.mjs'),
+  ficha: () => import('../../netlify/functions/ficha.mjs'),
+  lista: () => import('../../netlify/functions/lista.mjs'),
+  guardar: () => import('../../netlify/functions/guardar.mjs'),
+  publicar: () => import('../../netlify/functions/publicar.mjs'),
+  fusionar: () => import('../../netlify/functions/fusionar.mjs'),
+  aviso: () => import('../../netlify/functions/aviso.mjs'),
 };
 
 export const ALL: APIRoute = async ({ request, params, url }) => {
@@ -35,6 +28,9 @@ export const ALL: APIRoute = async ({ request, params, url }) => {
     if (typeof v === 'string' && !process.env[k]) process.env[k] = v;
   }
   process.env.URL = url.origin;
+  // Marca de desarrollo: las funciones pueden leer fichas del disco que aún no
+  // están en GitHub y decir cuándo hay una copia local más nueva.
+  process.env.ESTUDIO_LOCAL = '1';
 
   try {
     const mod = await cargar();

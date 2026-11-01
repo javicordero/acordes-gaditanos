@@ -2,7 +2,7 @@
 // (o en una nueva) y deja la PR lista para fusionar. Al fusionar, Netlify
 // reconstruye y el aviso de Telegram sale solo (un `.md` añadido en `acordes`).
 import {
-  REPO, BASE, CARPETAS, sesion, sinSesion, json, gh,
+  REPO, BASE, CARPETAS, LOCAL, sesion, sinSesion, json, gh,
 } from './_lib.mjs';
 
 const campo = (md, k) => {
@@ -34,12 +34,36 @@ export default async (req) => {
   let cuerpo;
   try { cuerpo = await req.json(); } catch { return json({ error: 'cuerpo inválido' }, 400); }
   const slug = String(cuerpo.slug || '').trim();
+  const ramaPedida = String(cuerpo.rama || '').trim();
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) return json({ error: 'slug inválido' }, 400);
 
   try {
+    // En local «publicar» es mover el archivo de acordes3 a acordes, con la fecha
+    // de hoy, sin PR ni ramas.
+    if (LOCAL) {
+      const { readFile, writeFile, rm, mkdir } = await import('node:fs/promises');
+      const { join } = await import('node:path');
+      const origen = join(process.cwd(), CARPETAS.acordes3, `${slug}.md`);
+      let md;
+      try {
+        md = await readFile(origen, 'utf8');
+      } catch {
+        return json({ error: 'no encuentro el borrador en acordes3' }, 404);
+      }
+      md = md.replace(/^date:[^\n]*/m, `date: "${hoy()}"`);
+      const destinoDir = join(process.cwd(), CARPETAS.acordes);
+      await mkdir(destinoDir, { recursive: true });
+      await writeFile(join(destinoDir, `${slug}.md`), md, 'utf8');
+      await rm(origen, { force: true });
+      const titulo = [campo(md, 'pieza'), campo(md, 'agrupacion'), campo(md, 'year')].filter(Boolean).join(' · ');
+      return json({ ok: true, local: true, rama: null, pr: null, titulo, slug });
+    }
+
     // 1. ¿Hay ya una PR abierta de esta ficha? Entonces se publica en su rama.
     const abiertas = await gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token: s.token });
-    const previa = abiertas.find((p) => p.head.ref === `estudio/${slug}` || p.head.ref.startsWith(`estudio/${slug}-`));
+    const previa =
+      abiertas.find((p) => ramaPedida && p.head.ref === ramaPedida) ||
+      abiertas.find((p) => p.head.ref === `estudio/${slug}` || p.head.ref.startsWith(`estudio/${slug}-`));
 
     let rama = previa?.head?.ref;
     if (!rama) {

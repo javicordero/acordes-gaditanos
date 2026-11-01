@@ -4,6 +4,8 @@ import glosario from '../data/glosario-acordes.json';
 initPreAcordes(glosario);
 
 const API = '/estudio/api';
+// En `astro dev` el panel trabaja contra los archivos del ordenador (sin PR).
+const MODO_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
 const $ = (id) => document.getElementById(id);
 const ta = $('editor');
 const capa = $('capa');
@@ -46,6 +48,12 @@ async function quien() {
 }
 
 /* ---------------- lista ---------------- */
+let filtroTipo = 'todas';
+
+const normalizar = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+/** Pendiente = borrador, ficha solo local o cualquiera con una PR abierta. */
+const esPendiente = (x) => x.zona === 'acordes3' || !!x.enPR || !!x.local;
+
 async function cargarIndice() {
   if (indice.length) return indice;
   const r = await fetch('/indice-busqueda.json');
@@ -53,7 +61,7 @@ async function cargarIndice() {
   let borradores = [];
   try {
     const b = await fetch(API + '/lista');
-    if (b.ok) borradores = (await b.json()).borradores.map((x) => ({ ...x, zona: 'acordes3' }));
+    if (b.ok) borradores = (await b.json()).borradores.map((x) => ({ ...x, zona: x.zona || 'acordes3' }));
   } catch { /* sin borradores */ }
   indice = [...borradores, ...publicadas];
   const dl = $('slugs');
@@ -61,25 +69,105 @@ async function cargarIndice() {
   return indice;
 }
 
-function pintarLista(filtro) {
-  const q = (filtro || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  const filas = indice.filter((x) => {
-    if (!q) return true;
-    const t = [x.slug, x.pieza, x.agrupacion, x.year, x.letraTitulo, x.musica, x.letra].join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    return q.split(/\s+/).every((w) => t.includes(w));
-  }).slice(0, 300);
+const marcas = (x) => [
+  x.zona === 'acordes3' ? '<span class="marca">BORRADOR</span>' : '',
+  x.local ? '<span class="marca local">LOCAL</span>' : '',
+  x.enPR ? '<span class="marca pr">EN PR</span>' : '',
+].filter(Boolean).join(' ');
 
-  $('filas').innerHTML = filas.map((x) =>
-    '<div class="fila" data-slug="' + esc(x.slug) + '">' +
-      '<div><b>' + esc(x.pieza + ' · ' + x.agrupacion) + '</b><small>' +
-        (x.zona === 'acordes3' ? '<span class="marca">BORRADOR</span> ' : '') +
-        (x.enPR ? '<span class="marca pr">EN PR</span> ' : '') +
-        esc(x.letraTitulo || '') + '</small></div>' +
-      '<div class="der">' + esc(String(x.year)) + '</div>' +
-    '</div>').join('');
-  $('filas').querySelectorAll('.fila').forEach((f) => {
-    f.onclick = () => abrirFicha(f.dataset.slug);
+function filaLista(x) {
+  const boton = (accion, texto, extra) =>
+    '<button type="button" class="acc' + (extra || '') + '" data-accion="' + accion + '" data-slug="' + esc(x.slug) + '"' +
+      (accion === 'clonar' ? ' title="Crear otra ficha (otra letra) a partir de esta misma música" aria-label="Crear otra ficha a partir de esta música"' : '') +
+      '>' + texto + '</button>';
+
+  return '<article class="fila' + (esPendiente(x) ? ' pendiente' : '') + '">' +
+    '<button type="button" class="fila-info" data-slug="' + esc(x.slug) + '">' +
+      '<span class="f-agr">' + esc(x.agrupacion) + '</span>' +
+      '<span class="f-meta">' +
+        '<span class="f-year">' + esc(String(x.year || '—')) + '</span>' +
+        '<span>' + esc(x.pieza) + '</span>' +
+        (x.letraTitulo ? '<span class="f-letra">' + esc(x.letraTitulo) + '</span>' : '') +
+        marcas(x) +
+      '</span>' +
+    '</button>' +
+    '<div class="fila-acciones">' +
+      boton('editar', 'Editar') +
+      (x.zona === 'acordes3' ? boton('publicar', 'Publicar', ' principal') : '') +
+      boton('clonar', '＋', ' icono') +
+    '</div>' +
+  '</article>';
+}
+
+function grupoLista(titulo, items, clase) {
+  return '<div class="grupo' + (clase ? ' ' + clase : '') + '">' +
+    '<span class="grupo-tit">' + esc(titulo) + '</span><i></i><span class="grupo-n">' + items.length + '</span></div>' +
+    items.map(filaLista).join('');
+}
+
+function pintarLista() {
+  const palabras = normalizar($('q').value).split(/\s+/).filter(Boolean);
+  const coincide = (x) => {
+    if (!palabras.length) return true;
+    const t = normalizar([x.slug, x.pieza, x.agrupacion, x.year, x.letraTitulo, x.musica, x.letra].join(' '));
+    return palabras.every((w) => t.includes(w));
+  };
+
+  const resultado = indice.filter(coincide);
+  const pendientes = resultado.filter(esPendiente)
+    .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || a.agrupacion.localeCompare(b.agrupacion, 'es'));
+  const publicadas = resultado.filter((x) => !esPendiente(x));
+
+  $('q-limpiar').hidden = !$('q').value;
+  for (const el of document.querySelectorAll('[data-cuenta]')) {
+    const k = el.dataset.cuenta;
+    el.textContent = k === 'todas' ? resultado.length : k === 'pendientes' ? pendientes.length : publicadas.length;
+  }
+
+  const MAX = 300;
+  let pintadas = 0;
+  const recorta = (items) => {
+    const r = items.slice(0, Math.max(0, MAX - pintadas));
+    pintadas += r.length;
+    return r;
+  };
+
+  let html = '';
+  if (filtroTipo !== 'publicadas' && pendientes.length) {
+    html += grupoLista('Pendientes', recorta(pendientes), 'pend');
+  }
+  if (filtroTipo !== 'pendientes' && publicadas.length) {
+    const porAnio = new Map();
+    for (const x of publicadas) {
+      const y = String(x.year || 'Sin año');
+      if (!porAnio.has(y)) porAnio.set(y, []);
+      porAnio.get(y).push(x);
+    }
+    const anios = [...porAnio.keys()].sort((a, b) => (Number(b) || 0) - (Number(a) || 0) || a.localeCompare(b, 'es'));
+    for (const anio of anios) {
+      const items = porAnio.get(anio)
+        .sort((a, b) => a.agrupacion.localeCompare(b.agrupacion, 'es') || String(a.pieza).localeCompare(String(b.pieza), 'es'));
+      html += grupoLista(anio, recorta(items));
+    }
+  }
+
+  $('filas').innerHTML = html;
+  $('filas').querySelectorAll('[data-slug]').forEach((b) => {
+    const accion = b.dataset.accion || 'editar';
+    b.onclick = () => {
+      if (accion === 'editar') return abrirFicha(b.dataset.slug);
+      if (accion === 'publicar') return publicarDesdeLista(b.dataset.slug, b);
+      if (accion === 'clonar') return clonar(b.dataset.slug);
+    };
   });
+
+  $('lista-vacio').hidden = resultado.length > 0;
+  if (!resultado.length) {
+    const q = $('q').value.trim();
+    $('lista-vacio').innerHTML = '<b>' + (indice.length ? 'Sin resultados' : 'Cargando…') + '</b>' +
+      (indice.length && q ? 'Ninguna ficha casa con «' + esc(q) + '».' : indice.length ? 'No hay fichas todavía: crea la primera.' : '');
+  }
+  $('lista-tope').hidden = resultado.length <= MAX;
 }
 
 /* ---------------- editor ---------------- */
@@ -139,30 +227,37 @@ function pintarTexto(texto, el) {
 
 async function abrirFicha(slug) {
   try {
+    cerrarAviso();
     const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(slug));
     const datos = await r.json();
     if (!r.ok) throw new Error(datos.error || 'no se pudo cargar');
-    montarEditor(slug, datos.md, null, datos.zona);
+    montarEditor(slug, datos.md, null, datos.zona, datos.rama);
     await cargarBase(slug);
     pintar();
+    if (MODO_LOCAL) {
+      mostrarAviso(datos.local
+        ? 'Ficha local: al guardar se escribe en el archivo del proyecto, sin PR.' + (datos.desync ? '\nEn GitHub hay otra versión; esta es la de tu ordenador.' : '')
+        : 'Esta ficha está solo en GitHub: al guardar se creará el archivo en tu ordenador.', 'var(--acento)');
+    }
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
   }
 }
 
-/** Prepara el editor con un `.md` ya cargado (de master o de una rama recién creada). */
-function montarEditor(slug, md, pr, zona) {
+/** Prepara el editor con un `.md` ya cargado (de master o de una rama recién creada). */function montarEditor(slug, md, pr, zona, rama) {
   zonaFicha = zona === 'acordes3' ? 'acordes3' : 'acordes';
   const d = desenvolver(md);
   conocidos.clear();
   d.registros.flat().forEach((x) => conocidos.add(x.etiqueta));
-  ficha = { slug, md, d, pr: pr || null };
+  ficha = { slug, md, d, pr: pr || null, rama: rama || null };
   anterior = d.texto;
   hist = [];
   futuro = [];
   sucio = false;
   ta.value = d.texto;
   pintarTexto(d.texto, $('ref-izq'));
+  pintarDatos(d.frontmatter);
+  mostrarBase(false);
   $('cab-meta').textContent = slug;
   $('editor-meta').textContent = d.texto.split('\n').length + ' líneas';
   $('vista-lista').hidden = true;
@@ -182,10 +277,27 @@ function montarEditor(slug, md, pr, zona) {
   }
 }
 
+/** Muestra u oculta la columna de la ficha base (solo tiene sentido si hay base). */
+function mostrarBase(si) {
+  const pane = document.querySelector('.pane[data-pane="der"]');
+  const tab = document.querySelector('.tabs button[data-pane="der"]');
+  if (pane) pane.hidden = !si;
+  if (tab) tab.hidden = !si;
+  $('cols').classList.toggle('sin-base', !si);
+  if (!si) {
+    if (pane) pane.classList.remove('activo');
+    $('base-meta').textContent = '';
+    $('ref-der').textContent = '';
+    if (paneActivo === 'der') {
+      paneActivo = 'cen';
+      document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('activo', p.dataset.pane === 'cen'));
+      document.querySelectorAll('.tabs button').forEach((b) => b.classList.toggle('sel', b.dataset.pane === 'cen'));
+    }
+  }
+}
+
 async function cargarBase(slug) {
   const actual = indice.find((x) => x.slug === slug);
-  $('ref-der').textContent = 'Sin ficha base para comparar.';
-  $('base-meta').textContent = '';
   if (!actual) return;
   const candidatas = indice.filter((x) => x.slug !== slug && x.agrupacion === actual.agrupacion && String(x.year) === String(actual.year));
   const base = candidatas.find((x) => x.pieza === actual.pieza) || candidatas[0];
@@ -197,6 +309,7 @@ async function cargarBase(slug) {
     const d = desenvolver(datos.md);
     pintarTexto(d.texto, $('ref-der'));
     $('base-meta').textContent = base.slug;
+    mostrarBase(true);
   } catch { /* sin base */ }
 }
 
@@ -246,22 +359,83 @@ function mover(dir) {
 /* ---------------- guardar / comprobar ---------------- */
 async function guardar() {
   if (!ficha) return;
+  const datos = datosDelEditor();
+  if (!datos.pieza || !datos.agrupacion) { mostrarAviso('La pieza y la agrupación son obligatorias.', 'var(--mal)'); return; }
+  if (!datos.year) { mostrarAviso('Falta el año.', 'var(--mal)'); return; }
+  if (!datos.img) { mostrarAviso('Falta la imagen: el esquema la exige.', 'var(--mal)'); return; }
+
+  const slugCalculado = slugDeDatos(datos);
+  // Renombrar solo si los campos del slug han cambiado respecto a los originales.
+  const slugNuevo = slugCalculado !== ficha.slugBase ? slugCalculado : ficha.slug;
+  const renombra = slugCalculado !== ficha.slugBase && slugNuevo !== ficha.slug;
+  if (renombra) {
+    const ruta = zonaFicha === 'acordes3' ? '/acordes3/' : '/acordes/';
+    if (!confirm('La ficha cambia de URL:\n' + ruta + ficha.slug + '/\n→  ' + ruta + slugNuevo + '/\n\nAl guardar se renombra el archivo. ¿Seguir?')) return;
+  }
+
   try {
+    const fm = cambiarFrontmatter(ficha.d.frontmatter, {
+      pieza: datos.pieza,
+      agrupacion: datos.agrupacion,
+      year: datos.year,
+      musica: datos.musica || null,
+      letra: datos.letra || null,
+      letraTitulo: datos.letraTitulo || null,
+      cejilla: datos.cejilla || null,
+      video: datos.video || null,
+      img: datos.img,
+      fraseClave: datos.fraseClave || null,
+      destacada: datos.destacada || null,
+      recomendada: datos.recomendada || null,
+      cover: datos.cover || null,
+      autorCover: datos.autorCover || null,
+    });
     const envuelto = envolver(ta.value, ficha.d.registros, ficha.d.originales);
-    const md = montarMd(ficha.d.frontmatter, envuelto.pre);
+    const md = montarMd(fm, envuelto.pre);
     const r = await fetch(API + '/guardar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug: ficha.slug, md, zona: zonaFicha }),
+      body: JSON.stringify({
+        slug: ficha.slug,
+        ...(renombra ? { slugNuevo } : {}),
+        md,
+        zona: zonaFicha,
+        ...(ficha.rama ? { rama: ficha.rama } : {}),
+      }),
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo guardar');
-    ficha.pr = d.pr;
+
+    if (renombra) {
+      const viejo = ficha.slug;
+      ficha.slug = d.slug || slugNuevo;
+      const enIndice = indice.find((x) => x.slug === viejo);
+      if (enIndice) enIndice.slug = ficha.slug;
+      $('cab-meta').textContent = ficha.slug;
+    }
+    ficha.d.frontmatter = fm;
+    ficha.md = md;
+    ficha.rama = d.rama || (d.local ? null : ficha.rama);
+    ficha.pr = d.pr || null;
+    pintarDatos(fm);
+
+    if (d.local) {
+      $('b-pr').hidden = true;
+      $('b-fusionar').hidden = true;
+      setEstado('guardado en local', true);
+      const ruta = 'src/content/' + (zonaFicha === 'acordes3' ? 'acordes3' : 'acordes') + '/' + ficha.slug + '.md';
+      mostrarAviso('Guardado en ' + ruta + '.\nEn local no se crea PR: el archivo queda escrito en el proyecto.' +
+        (renombra ? '\nLa ficha ha cambiado de nombre de archivo.' : ''), 'var(--ok)');
+      return;
+    }
+
     setEstado('en PR #' + d.pr.numero, true);
     $('b-pr').hidden = false;
     $('b-fusionar').hidden = false;
     $('b-pr').onclick = () => window.open(d.pr.url, '_blank');
-    mostrarAviso('Guardado en la rama ' + d.rama + '.\nPR #' + d.pr.numero + ': ' + d.pr.url + '\nNetlify está construyendo el preview; en un par de minutos lo tienes en la PR.', 'var(--ok)');
+    mostrarAviso('Guardado en la rama ' + d.rama + '.\nPR #' + d.pr.numero + ': ' + d.pr.url +
+      (renombra ? '\nOjo: al fusionar, la URL antigua dejará de existir.' : '') +
+      '\nNetlify está construyendo el preview; en un par de minutos lo tienes en la PR.', 'var(--ok)');
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
   }
@@ -283,7 +457,7 @@ async function fusionar() {
   if (!ficha || !ficha.pr) return;
   if (!confirm('¿Fusionar la PR #' + ficha.pr.numero + '? Se publicará en la web.')) return;
   try {
-    const r = await fetch(API + '/fusionar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ slug: ficha.slug }) });
+    const r = await fetch(API + '/fusionar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ slug: ficha.slug, ...(ficha.rama ? { rama: ficha.rama } : {}) }) });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo fusionar');
     setEstado('fusionada', true);
@@ -301,16 +475,49 @@ async function publicar() {
     const r = await fetch(API + '/publicar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug: ficha.slug }),
+      body: JSON.stringify({ slug: ficha.slug, ...(ficha.rama ? { rama: ficha.rama } : {}) }),
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
     const md = montarMd(ficha.d.frontmatter, envolver(ta.value, ficha.d.registros, ficha.d.originales).pre);
-    montarEditor(ficha.slug, md, d.pr, 'acordes');
+    montarEditor(ficha.slug, md, d.pr, 'acordes', d.rama);
+    if (d.local) {
+      setEstado('publicado en local', true);
+      $('b-publicar').hidden = true;
+      mostrarAviso('Publicado en local: movido a src/content/acordes/' + ficha.slug + '.md.\nSigue en el proyecto; para la web, súbelo con `subir-acorde`.', 'var(--ok)');
+      return;
+    }
     setEstado('publicando · PR #' + d.pr.numero, true);
     $('b-publicar').hidden = true;
     mostrarAviso('Publicación en la PR #' + d.pr.numero + ': ' + d.pr.url + '\nAl fusionar, Telegram avisa solo. WhatsApp y X, desde el PC.', 'var(--ok)');
   } catch (e) {
+    mostrarAviso(String(e.message || e), 'var(--mal)');
+  }
+}
+
+/** Publica un borrador desde la propia lista, sin abrir el editor. */
+async function publicarDesdeLista(slug, boton) {
+  if (!confirm('¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes y se abrirá la PR. Al fusionar saldrá el aviso.')) return;
+  const antes = boton.textContent;
+  boton.disabled = true;
+  boton.textContent = '…';
+  try {
+    const r = await fetch(API + '/publicar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
+    const x = indice.find((i) => i.slug === slug);
+    if (x) { x.zona = 'acordes'; x.enPR = d.pr ? d.pr.numero : null; }
+    pintarLista();
+    mostrarAviso(d.local
+      ? 'Publicada en local: «' + slug + '» ya está en src/content/acordes/.\nPara la web, súbela con `subir-acorde`.'
+      : 'Publicada «' + slug + '» en la PR #' + d.pr.numero + '.\nAl fusionar, Telegram avisa solo; WhatsApp y X, desde el PC.\n' + d.pr.url, 'var(--ok)');
+  } catch (e) {
+    boton.disabled = false;
+    boton.textContent = antes;
     mostrarAviso(String(e.message || e), 'var(--mal)');
   }
 }
@@ -331,6 +538,85 @@ async function abrirAvisos() {
 }
 
 /* ---------------- nueva ficha ---------------- */
+/** frontmatter en texto → objeto de campos simples (para rellenar el formulario). */
+function leerFrontmatter(fm) {
+  const cuerpo = (fm.match(/^---\n([\s\S]*?)\n---/) || [])[1] || '';
+  const datos = {};
+  for (const linea of cuerpo.split('\n')) {
+    const m = linea.match(/^([a-zA-Z][\w-]*):\s*(.*)$/);
+    if (!m) continue;
+    datos[m[1]] = m[2].trim().replace(/^['"]|['"]$/g, '');
+  }
+  return datos;
+}
+
+/** Vuelca el frontmatter en el formulario de datos del editor. */
+function pintarDatos(fmTexto) {
+  const fm = leerFrontmatter(fmTexto);
+  for (const el of $('f-datos').querySelectorAll('[name]')) el.value = fm[el.name] ?? '';
+  // Slug que saldría de los datos originales: sirve para saber si el usuario
+  // ha tocado pieza/agrupación/título (muchas fichas tienen slug propio).
+  if (ficha) ficha.slugBase = slugDeDatos(datosDelEditor());
+  actualizarSlug();
+}
+
+/** Valores actuales del formulario de datos. */
+function datosDelEditor() {
+  const d = {};
+  for (const el of $('f-datos').querySelectorAll('[name]')) d[el.name] = el.value.trim();
+  return d;
+}
+
+/** Slug que saldría de los datos del formulario (misma regla que al crear). */
+const slugDeDatos = (d) => (d.pieza + '-' + d.agrupacion + (d.letraTitulo ? '-' + d.letraTitulo : ''))
+  .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/** Pinta el resumen de la cabecera y avisa si el slug va a cambiar. */
+function actualizarSlug() {
+  if (!ficha) return;
+  const d = datosDelEditor();
+  const calculado = slugDeDatos(d);
+  // Solo cambia el archivo si se han tocado los campos que forman el slug.
+  const objetivo = calculado !== ficha.slugBase ? calculado : ficha.slug;
+  const cambia = objetivo !== ficha.slug;
+  const el = $('datos-slug');
+  const ruta = (zonaFicha === 'acordes3' ? '/acordes3/' : '/acordes/') + objetivo + '/';
+  el.textContent = (cambia ? '→ ' : '') + ruta;
+  el.classList.toggle('mal', cambia);
+  el.title = cambia ? 'Al guardar cambiará la URL de la ficha' : 'URL de la ficha';
+  $('datos-resumen').textContent = [d.pieza, d.agrupacion, d.year].filter(Boolean).join(' · ');
+}
+
+/** Abre «Nueva ficha» con todo copiado de otra: solo falta el título de la letra. */
+async function clonar(slug) {
+  try {
+    const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(slug));
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudo leer la ficha');
+    const fm = leerFrontmatter(desenvolver(d.md).frontmatter);
+    const f = $('f-nueva');
+    f.reset();
+    f.clon.value = '1';
+    f.base.value = slug;
+    f.pieza.value = fm.pieza || 'Pasodoble';
+    f.agrupacion.value = fm.agrupacion || '';
+    f.year.value = fm.year || '';
+    f.musica.value = fm.musica || '';
+    f.letra.value = fm.letra || '';
+    f.cejilla.value = fm.cejilla || '';
+    f.video.value = fm.video || '';
+    f.img.value = fm.img || '';
+    f.letraTitulo.value = '';
+    f.fraseClave.value = '';
+    $('dlg-nueva-titulo').textContent = 'Otra letra de esta música';
+    $('dlg-nueva-nota').innerHTML = 'Todo viene relleno de la ficha original, <b>incluidos los acordes</b>. Escribe el título de la letra nueva y, ya en el editor, cambia la letra encima de los acordes.';
+    $('dlg-nueva').showModal();
+    f.letraTitulo.focus();
+  } catch (e) {
+    mostrarAviso(String(e.message || e), 'var(--mal)');
+  }
+}
+
 function cambiarFrontmatter(fm, cambios) {
   const lineas = fm.replace(/\n+$/, '').split('\n');
   const cierre = lineas.lastIndexOf('---');
@@ -342,8 +628,13 @@ function cambiarFrontmatter(fm, cambios) {
     return k + ": '" + s.replace(/'/g, "''") + "'";
   };
   for (const [k, v] of Object.entries(cambios)) {
-    if (v === undefined || v === '') continue;
     const i = cuerpo.findIndex((l) => l.startsWith(k + ':'));
+    // `null` borra el campo (p. ej. el título de la letra al copiar una ficha).
+    if (v === null) {
+      if (i >= 0) cuerpo.splice(i, 1);
+      continue;
+    }
+    if (v === undefined || v === '') continue;
     if (i >= 0) cuerpo[i] = valor(k, v); else cuerpo.push(valor(k, v));
   }
   return '---\n' + cuerpo.join('\n') + '\n---\n';
@@ -354,8 +645,19 @@ async function crear(e) {
   const f = new FormData($('f-nueva'));
   const v = (k) => String(f.get(k) || '').trim();
   const base = v('base');
+  const clon = v('clon') === '1';
   const pieza = v('pieza') || 'Pasodoble';
   if (!v('agrupacion')) { mostrarAviso('La agrupación es obligatoria.', 'var(--mal)'); return; }
+  if (clon && !v('letraTitulo')) {
+    mostrarAviso('Escribe el título de la letra nueva: es lo que distingue esta ficha de la original.', 'var(--mal)');
+    return;
+  }
+  const slug = (pieza + '-' + v('agrupacion') + (v('letraTitulo') ? '-' + v('letraTitulo') : ''))
+    .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  if (indice.some((x) => x.slug === slug)) {
+    mostrarAviso('Ya existe una ficha con el slug «' + slug + '».\nEscribe un título de letra distinto para diferenciarla.', 'var(--mal)');
+    return;
+  }
   try {
     // Sin ficha base, la ficha nace vacía: el bloque se pega luego en el editor.
     let bd = { frontmatter: '---\n---\n', pre: '' };
@@ -363,22 +665,24 @@ async function crear(e) {
       const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(base));
       const d = await r.json();
       if (!r.ok) throw new Error('no encuentro la base ' + base);
-      bd = desenvolver(d.md);
+      const dv = desenvolver(d.md);
+      // Se copia el bloque tal cual viene (con sus etiquetas <a> y espacios).
+      bd = { frontmatter: dv.frontmatter, pre: dv.originales.join('\n') };
     }
-    const slug = (pieza + '-' + v('agrupacion') + (v('letraTitulo') ? '-' + v('letraTitulo') : ''))
-      .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
     const fm = cambiarFrontmatter(bd.frontmatter, {
       pieza,
       agrupacion: v('agrupacion'),
       year: v('year'),
       musica: v('musica'),
       letra: v('letra'),
-      letraTitulo: v('letraTitulo'),
+      letraTitulo: v('letraTitulo') || (clon ? null : undefined),
       cejilla: v('cejilla') || undefined,
       video: v('video') || undefined,
       img: v('img') || (base ? undefined : '/og-image.png'),
-      fraseClave: v('fraseClave') || undefined,
+      fraseClave: clon ? (v('fraseClave') || null) : (v('fraseClave') || undefined),
       date: hoy(),
+      // La copia no hereda el sitio en portada ni el destacado de la original.
+      ...(clon ? { destacada: null, recomendada: null } : {}),
     });
     const md = montarMd(fm, bd.pre);
     const g = await fetch(API + '/guardar', {
@@ -388,8 +692,24 @@ async function crear(e) {
     const gd = await g.json();
     if (!g.ok) throw new Error(gd.error || 'no se pudo crear');
     $('dlg-nueva').close();
-    montarEditor(slug, md, gd.pr, 'acordes3');
-    mostrarAviso('Ficha creada en la rama ' + gd.rama + '.\nPR #' + gd.pr.numero + ': ' + gd.pr.url + '\nAhora pega la letra nueva sobre la de la base y mueve los acordes.', 'var(--ok)');
+    // La lista tiene que reflejarla sin recargar.
+    indice.unshift({
+      slug,
+      pieza,
+      agrupacion: v('agrupacion'),
+      year: v('year'),
+      letraTitulo: v('letraTitulo'),
+      musica: v('musica'),
+      letra: v('letra'),
+      zona: 'acordes3',
+      enPR: gd.pr ? gd.pr.numero : null,
+    });
+    montarEditor(slug, md, gd.pr, 'acordes3', gd.rama);
+    mostrarAviso(gd.local
+      ? 'Ficha creada en src/content/acordes3/' + slug + '.md.\n' +
+        (clon ? 'Ahora cambia la letra nueva encima de los acordes y mueve lo que haga falta.' : 'Ahora pega la letra en el editor y coloca los acordes.')
+      : 'Ficha creada en la rama ' + gd.rama + '.\nPR #' + gd.pr.numero + ': ' + gd.pr.url + '\n' +
+        (clon ? 'Ahora cambia la letra nueva encima de los acordes y mueve lo que haga falta.' : 'Ahora pega la letra en el editor y coloca los acordes.'), 'var(--ok)');
   } catch (err) {
     mostrarAviso(String(err.message || err), 'var(--mal)');
   }
@@ -437,7 +757,20 @@ function insertarSug(t) {
 }
 
 /* ---------------- eventos ---------------- */
-$('q').oninput = (e) => pintarLista(e.target.value);
+$('q').oninput = () => pintarLista();
+$('f-datos').addEventListener('input', () => {
+  actualizarSlug();
+  sucio = true;
+  setEstado('sin guardar', false);
+});
+$('q-limpiar').onclick = () => { $('q').value = ''; $('q').focus(); pintarLista(); };
+document.querySelectorAll('#filtros button').forEach((b) => {
+  b.onclick = () => {
+    filtroTipo = b.dataset.filtro;
+    document.querySelectorAll('#filtros button').forEach((x) => x.classList.toggle('sel', x === b));
+    pintarLista();
+  };
+});
 $('b-lista').onclick = () => {
   $('vista-editor').hidden = true;
   $('vista-lista').hidden = false;
@@ -446,7 +779,16 @@ $('b-lista').onclick = () => {
   $('cab-meta').textContent = '';
   setEstado('', true);
 };
-$('b-nueva').onclick = () => { $('f-nueva').reset(); $('f-nueva').pieza.value = 'Pasodoble'; $('f-nueva').year.value = new Date().getFullYear(); $('dlg-nueva').showModal(); };
+$('b-nueva').onclick = () => {
+  const f = $('f-nueva');
+  f.reset();
+  f.clon.value = '';
+  f.pieza.value = 'Pasodoble';
+  f.year.value = new Date().getFullYear();
+  $('dlg-nueva-titulo').textContent = 'Nueva ficha';
+  $('dlg-nueva-nota').innerHTML = 'Se crea como borrador con el bloque de la ficha base. Después cambias la letra y mueves los acordes.';
+  $('dlg-nueva').showModal();
+};
 $('n-cancelar').onclick = () => $('dlg-nueva').close();
 $('f-nueva').onsubmit = crear;
 $('b-guardar').onclick = guardar;
@@ -536,7 +878,7 @@ window.addEventListener('beforeunload', (e) => {
   $('cab-meta').textContent = '';
   setEstado('', true);
   await cargarIndice();
-  pintarLista('');
+  pintarLista();
   $('pie').innerHTML = '<a href="/estudio/api/salir">Salir</a>';
 })();
 

@@ -14,7 +14,7 @@ export const prerender = true;
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Estudio · Acordes Gaditanos</title>
-<style>
+<style is:global>
   :root { --tinta:#1d1a16; --papel:#fbf8f1; --suave:#8a8175; --linea:#e2dacb; --acento:#b4552b; --ok:#3d7a4a; --nuevo:#b07d12; --mal:#b3261e; }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
@@ -40,22 +40,75 @@ export const prerender = true;
   #login h2 { font-size:18px; margin:0 0 6px; }
   #login p { color:var(--suave); }
   /* lista */
-  #vista-lista { flex:1; overflow:auto; padding:16px; }
-  .buscador { display:flex; gap:8px; margin-bottom:12px; }
-  .buscador input { flex:1; font:inherit; padding:7px 10px; border:1px solid var(--linea); border-radius:6px; background:#fff; }
-  .filas { display:grid; gap:2px; }
-  .fila { display:grid; grid-template-columns: 1fr auto; gap:10px; padding:7px 10px; border-radius:6px; cursor:pointer; border:1px solid transparent; }
-  .fila:hover { background:#f6efe3; border-color:var(--linea); }
-  .fila b { font-weight:600; }
-  .fila small { color:var(--suave); display:block; }
-  .fila .der { color:var(--suave); font-size:12px; text-align:right; }
+  #vista-lista { flex:1; overflow:auto; background:var(--papel); }
+  .lista-cab { position:sticky; top:0; z-index:4; display:grid; gap:9px; padding:12px 14px 10px; background:var(--papel); border-bottom:1px solid var(--linea); }
+  .lista-cab > * { width:100%; max-width:840px; margin:0 auto; }
+  .buscador { position:relative; display:flex; align-items:center; }
+  .buscador .lupa { position:absolute; left:11px; width:15px; height:15px; fill:none; stroke:var(--suave); stroke-width:2; stroke-linecap:round; pointer-events:none; }
+  .buscador input { flex:1; width:100%; font:inherit; font-size:15px; color:var(--tinta); background:#fff; border:1px solid var(--linea); border-radius:10px; padding:10px 38px 10px 34px; }
+  .buscador input::placeholder { color:var(--suave); }
+  .buscador input:focus { outline:none; border-color:var(--acento); box-shadow:0 0 0 3px rgba(180,85,43,.13); }
+  .buscador input::-webkit-search-cancel-button { display:none; }
+  .limpiar { position:absolute; right:5px; width:28px; height:28px; padding:0; border:0; border-radius:50%; background:transparent; color:var(--suave); font-size:13px; line-height:1; }
+  .limpiar:hover { color:var(--acento); background:#f6efe3; }
+  .filtros { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; }
+  .filtros::-webkit-scrollbar { display:none; }
+  .filtros button { flex:0 0 auto; display:inline-flex; align-items:center; gap:6px; padding:5px 11px; border-radius:999px; border:1px solid var(--linea); background:#fff; color:var(--suave); font-size:12.5px; }
+  .filtros button.sel { background:var(--tinta); border-color:var(--tinta); color:#fff; }
+  .filtros button.sel .cuenta { color:#fff; opacity:.65; }
+  .filtros .cuenta { font-size:11px; font-variant-numeric:tabular-nums; opacity:.85; }
+  .lista-cuerpo { max-width:840px; margin:0 auto; padding:4px 14px 28px; }
+  .grupo { display:flex; align-items:center; gap:10px; padding:15px 2px 7px; }
+  .grupo-tit { font-size:11px; font-weight:650; letter-spacing:.1em; text-transform:uppercase; color:var(--suave); }
+  .grupo i { flex:1; height:1px; background:var(--linea); }
+  .grupo-n { font-size:11px; color:var(--suave); font-variant-numeric:tabular-nums; }
+  .grupo.pend .grupo-tit { color:var(--nuevo); }
+  .filas { display:grid; gap:6px; }
+  .fila { display:grid; grid-template-columns:minmax(0, 1fr) auto; align-items:center; gap:8px; padding:8px 10px; background:#fff; border:1px solid var(--linea); border-radius:10px; }
+  .fila:hover { border-color:#d3c4ab; }
+  .fila.pendiente { border-left:3px solid var(--nuevo); }
+  .fila-info { display:grid; gap:3px; min-width:0; padding:2px 0; border:0; border-radius:6px; background:transparent; font:inherit; color:inherit; text-align:left; cursor:pointer; }
+  .fila-info:hover .f-agr { color:var(--acento); }
+  .f-agr { font-size:14px; font-weight:600; line-height:1.25; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .f-meta { display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:11.5px; line-height:1.3; color:var(--suave); }
+  .f-year { font-variant-numeric:tabular-nums; background:var(--papel); border:1px solid var(--linea); border-radius:999px; padding:0 6px; }
+  .f-letra { font-style:italic; }
+  .f-meta .marca { vertical-align:0; }
+  .fila-acciones { display:flex; align-items:center; gap:5px; }
+  .fila-acciones .acc { padding:4px 9px; font-size:12px; border-radius:7px; background:#fff; }
+  .fila-acciones .acc.icono { padding:4px 8px; font-size:13px; }
+  .fila-acciones .acc.principal { background:var(--acento); border-color:var(--acento); color:#fff; }
+  .fila-acciones .acc.principal:hover { color:#fff; filter:brightness(1.08); }
+  .lista-vacio { padding:44px 10px; text-align:center; color:var(--suave); font-size:13px; }
+  .lista-vacio b { display:block; margin-bottom:4px; color:var(--tinta); font-size:14px; }
+  .lista-tope { padding-top:14px; text-align:center; color:var(--suave); font-size:11.5px; }
   .marca { display:inline-block; font-size:10px; letter-spacing:.06em; color:#fff; background:var(--nuevo); border-radius:4px; padding:0 4px; vertical-align:1px; }
   .marca.pr { background:var(--acento); }
+  .marca.local { background:var(--suave); }
+  .nota { margin:0 0 10px; font-size:12px; color:var(--suave); line-height:1.4; }
+  /* datos de la ficha */
+  .datos { flex:0 0 auto; background:#fff; border-bottom:1px solid var(--linea); }
+  .datos > summary { display:flex; align-items:center; gap:9px; padding:7px 12px; cursor:pointer; list-style:none; overflow:hidden; }
+  .datos > summary::-webkit-details-marker { display:none; }
+  .datos > summary::before { content:'▸'; color:var(--suave); font-size:11px; flex:0 0 auto; }
+  .datos[open] > summary::before { content:'▾'; }
+  .datos-tit { font-size:11px; font-weight:650; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); flex:0 0 auto; }
+  .datos-resumen { font-size:12px; color:var(--tinta); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
+  .datos-slug { margin-left:auto; min-width:0; font:10.5px ui-monospace, monospace; color:var(--suave); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .datos-slug.mal { color:var(--mal); }
+  .datos-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(165px, 1fr)); gap:8px 10px; padding:0 12px 12px; max-height:40vh; overflow:auto; }
+  .datos-grid .campo { margin:0; }
+  .datos-grid .ancho { grid-column:1 / -1; }
+  @media (max-width: 620px) {
+    .datos-resumen { display:none; }
+    .datos-grid { grid-template-columns:1fr 1fr; max-height:46vh; }
+  }
   /* editor */
   #vista-editor { flex:1; display:flex; flex-direction:column; min-height:0; }
   #vista-editor[hidden] { display:none; }
   .cols { flex:1; display:grid; grid-template-columns: 1fr 1.35fr 1fr; min-height:0; }
   .cols.una { grid-template-columns: 1fr; }
+  .cols.sin-base { grid-template-columns: 1fr 1.35fr; }
   .pane { min-width:0; min-height:0; display:flex; flex-direction:column; border-right:1px solid var(--linea); }
   .pane:last-child { border-right:0; }
   .cab { padding:5px 10px; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); border-bottom:1px solid var(--linea); display:flex; gap:8px; align-items:center; }
@@ -87,8 +140,15 @@ export const prerender = true;
   .dos { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
   .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
   .tabs { display:none; }
+  @media (max-width: 620px) {
+    .lista-cab { padding:10px 10px 8px; }
+    .lista-cuerpo { padding:2px 10px 24px; }
+    .fila { grid-template-columns:1fr; gap:5px; }
+    .fila-acciones { justify-content:flex-end; }
+    .f-agr { white-space:normal; }
+  }
   @media (max-width: 900px) {
-    .cols { grid-template-columns: 1fr; }
+    .cols, .cols.sin-base { grid-template-columns: 1fr; }
     .pane { display:none; }
     .pane.activo { display:flex; }
     .tabs { display:flex; gap:6px; padding:6px 10px; border-bottom:1px solid var(--linea); }
@@ -128,13 +188,49 @@ export const prerender = true;
   </div>
 
   <div id="vista-lista" hidden>
-    <div class="buscador">
-      <input id="q" type="search" placeholder="Buscar por pieza, agrupación, año o título…" autocomplete="off">
+    <div class="lista-cab">
+      <div class="buscador">
+        <svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>
+        <input id="q" type="search" placeholder="Buscar pieza, agrupación, año o título…" autocomplete="off">
+        <button id="q-limpiar" class="limpiar" type="button" aria-label="Limpiar la búsqueda" hidden>✕</button>
+      </div>
+      <div class="filtros" id="filtros">
+        <button type="button" data-filtro="todas" class="sel">Todas <span class="cuenta" data-cuenta="todas"></span></button>
+        <button type="button" data-filtro="pendientes" title="Borradores de acordes3 y fichas con una PR abierta">Acordes3 <span class="cuenta" data-cuenta="pendientes"></span></button>
+        <button type="button" data-filtro="publicadas" title="Fichas de acordes (publicadas)">Acordes <span class="cuenta" data-cuenta="publicadas"></span></button>
+      </div>
     </div>
-    <div class="filas" id="filas"></div>
+    <div class="lista-cuerpo">
+      <div class="filas" id="filas"></div>
+      <p class="lista-vacio" id="lista-vacio" hidden></p>
+      <p class="lista-tope" id="lista-tope" hidden>Mostrando las 300 primeras. Afina la búsqueda para ver el resto.</p>
+    </div>
   </div>
 
   <div id="vista-editor" hidden>
+    <details class="datos" id="datos">
+      <summary>
+        <span class="datos-tit">Datos</span>
+        <span class="datos-resumen" id="datos-resumen"></span>
+        <span class="datos-slug" id="datos-slug"></span>
+      </summary>
+      <div class="datos-grid" id="f-datos">
+        <div class="campo"><label>Pieza</label><input name="pieza" required></div>
+        <div class="campo"><label>Agrupación</label><input name="agrupacion" required></div>
+        <div class="campo"><label>Año</label><input name="year" inputmode="numeric" required></div>
+        <div class="campo"><label>Cejilla</label><input name="cejilla" inputmode="numeric" placeholder="—"></div>
+        <div class="campo"><label>Música</label><input name="musica" placeholder="autores separados por coma"></div>
+        <div class="campo"><label>Letra</label><input name="letra" placeholder="autores separados por coma"></div>
+        <div class="campo"><label>Título de la letra</label><input name="letraTitulo" placeholder="solo letras alternativas"></div>
+        <div class="campo"><label>Frase clave</label><input name="fraseClave"></div>
+        <div class="campo ancho"><label>Imagen</label><input name="img" required placeholder="https://…"></div>
+        <div class="campo ancho"><label>Vídeo (embed)</label><input name="video" placeholder="https://www.youtube.com/embed/…"></div>
+        <div class="campo"><label>Destacada</label><input name="destacada" inputmode="numeric" placeholder="orden en portada"></div>
+        <div class="campo"><label>Recomendada</label><select name="recomendada"><option value="">—</option><option value="true">Sí</option><option value="false">No</option></select></div>
+        <div class="campo"><label>Cover</label><input name="cover" placeholder="opcional"></div>
+        <div class="campo"><label>Autor del cover</label><input name="autorCover" placeholder="opcional"></div>
+      </div>
+    </details>
     <div class="tabs">
       <button data-pane="izq">Original</button>
       <button data-pane="cen" class="sel">Editor</button>
@@ -176,7 +272,9 @@ export const prerender = true;
 
 <dialog id="dlg-nueva">
   <form id="f-nueva">
-    <h2>Nueva ficha</h2>
+    <h2 id="dlg-nueva-titulo">Nueva ficha</h2>
+    <p class="nota" id="dlg-nueva-nota">Se crea como borrador con el bloque de la ficha base. Después cambias la letra y mueves los acordes.</p>
+    <input type="hidden" name="clon" value="">
     <div class="dos">
       <div class="campo"><label>Pieza</label><input name="pieza" value="Pasodoble" required></div>
       <div class="campo"><label>Agrupación</label><input name="agrupacion" required></div>
@@ -191,7 +289,6 @@ export const prerender = true;
     </div>
     <div class="campo"><label>Frase clave</label><input name="fraseClave"></div>
     <datalist id="slugs"></datalist>
-    <p class="meta" style="font-size:12px">La ficha se crea con el bloque de la base. Después pegas la letra encima y mueves los acordes. Para el reparto automático, usa <code>npm run acordes:aplicar</code> en el ordenador.</p>
     <div class="acciones">
       <button type="button" id="n-cancelar">Cancelar</button>
       <button type="submit" class="principal">Crear</button>

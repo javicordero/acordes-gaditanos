@@ -29,7 +29,7 @@ Sitio 100% estático (SSG) con Astro content collections. Middleware solo rediri
 ### Content Collections (`src/content/config.ts`)
 - **`acordes`** — 400+ entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`.
 - **`autores`** — 11 autores. Frontmatter: `nombre`, `img`, `type` (`musica`|`letra`), `order`, `destacado`.
-- **`acordes3`** — borradores del panel `/estudio`: fichas nuevas o a medias que aún no se publican. Se promueven a `acordes` con `npm run promover`.
+- **`acordes3`** — borradores del panel `/estudio`: fichas nuevas o a medias que aún no se publican. Se promueven a `acordes` con `npm run promover`. Una ficha que solo existe en el ordenador (sin subir) vive aquí, no en `acordes`: el panel la lista con la marca LOCAL y `npm run letras -- auditar` la da por buena aunque no esté publicada.
 - **`acordes2`** — colección provisional para los acordes importados del cancionero. Mismo esquema que `acordes`, pero su contenido (`.md`) no se versiona y los acordes van sin envolver en `<a>` hasta que se promueven.
 
 Slugs se generan automáticamente (lowercase, sin tildes, guiones). El transform también produce `musicaSlugs`, `letraSlugs`, `agrupacionSlug`.
@@ -90,12 +90,14 @@ Criterio de estado: si el informe sale con muchos `⚠️` (más de ~8), la letr
 Panel privado desplegado con Netlify Functions. Vive en `/estudio`: `noindex`, sin enlaces desde la web y fuera del sitemap. Solo entra el propietario (`OWNER_LOGIN`) con GitHub.
 
 - **Login**: `/estudio/api/auth` → GitHub OAuth (`public_repo`) → `/estudio/api/auth-callback`, que comprueba el usuario y deja una cookie cifrada (12 h) con el token. El token no llega nunca al navegador.
-- **Editor**: el mismo `<pre>` en texto que el revisor local (tres columnas: original, editor, base), con acordes coloreados, sugerencias y **Alt+←/→** para mover una columna. En móvil, pestañas y botones ◀ ▶.
+- **Listado**: buscador + pestañas `Todas`, `Acordes3` (borradores y fichas con PR) y `Acordes` (publicadas), agrupadas por año y con `Pendientes` arriba. Cada fila lleva **Editar**, **Publicar** (solo borradores) y **＋** (crear otra ficha a partir de esa misma música). Los estilos de la página van con `<style is:global>`: el HTML que pinta el JS no lleva el `data-astro-cid` y con estilos *scoped* la lista salía sin ellos.
+- **Editor**: el mismo `<pre>` en texto que el revisor local, con acordes coloreados, sugerencias y **Alt+←/→** para mover una columna. En móvil, pestañas y botones ◀ ▶. Arriba, un panel **Datos** plegable con el frontmatter editable (pieza, agrupación, año, cejilla, autores, título de la letra, frase clave, imagen, vídeo, destacada, recomendada, cover). Si al cambiarlos el slug resultante varía, al guardar se pide confirmación y se renombra el archivo. La tercera columna (**Base**) solo aparece si hay otra ficha de la misma agrupación y año.
 - **Guardar**: crea la rama `estudio/<slug>-<rand>`, hace el commit y abre (o actualiza) la **PR**. Netlify deja el deploy preview en la PR.
+- **En local (`astro dev`) no hay PR**: el panel ejecuta las funciones con `ESTUDIO_LOCAL=1`, así que **Guardar escribe el `.md` en el proyecto** (con renombrado si toca) y **Publicar mueve el archivo** de `acordes3` a `acordes` con la fecha del día. `lista.mjs` y `ficha.mjs` leen también del disco, y en la lista salen los borradores locales con la marca LOCAL. Para subirlo a la web, después, `subir-acorde`.
 - **Borradores**: todo lo que se crea o se está trabajando vive en `acordes3`; la lista del panel los saca primero, con la marca BORRADOR. Al guardar se actualiza la rama y la PR.
 - **Publicar**: botón que mueve el borrador de `acordes3` a `acordes` en una rama nueva y abre la PR. Al fusionar, Netlify reconstruye y el aviso de Telegram sale solo (un `.md` añadido).
 - **Fichas publicadas**: se pueden abrir y corregir; al guardar, la PR va a `acordes`.
-- **Fusionar**: botón que hace squash merge de la PR abierta de esa ficha.
+- **Fusionar**: botón que hace squash merge de la PR abierta de esa ficha. Si la ficha se ha renombrado, la PR se localiza por la rama (`rama`), no por el slug.
 - **Avisos**: el panel compone el mismo texto que Telegram (`scripts/lib/aviso.mjs`), con botón de copiar y de abrir X. WhatsApp y X siguen saliendo desde el PC (`npm run wa`, `npm run x`): necesitan tu Chrome con sesión.
 
 Variables en Netlify: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (secreta), `SESSION_SECRET` (secreta), `OWNER_LOGIN`. El callback de la OAuth App tiene que ser `https://acordesgaditanos.com/estudio/api/auth-callback`.

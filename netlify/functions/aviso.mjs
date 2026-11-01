@@ -1,6 +1,6 @@
 // Devuelve el texto del aviso de una ficha (el mismo que Telegram), para
 // copiarlo en WhatsApp o abrirlo en X desde el móvil.
-import { sesion, sinSesion, json, fichaEnRepo, BASE } from './_lib.mjs';
+import { sesion, sinSesion, json, fichaEnRepo, BASE, CARPETAS, LOCAL } from './_lib.mjs';
 import { mensajeUna } from '../../scripts/lib/aviso.mjs';
 
 function frontmatter(md) {
@@ -23,7 +23,20 @@ export default async (req) => {
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) return json({ error: 'slug inválido' }, 400);
 
   try {
-    const f = await fichaEnRepo(s.token, slug, BASE);
+    // En local se lee el archivo del disco: puede ser un borrador sin publicar.
+    let mdCrudo = null;
+    if (LOCAL) {
+      const { readFile } = await import('node:fs/promises');
+      const { join } = await import('node:path');
+      for (const zona of ['acordes', 'acordes3']) {
+        try {
+          mdCrudo = await readFile(join(process.cwd(), CARPETAS[zona], `${slug}.md`), 'utf8');
+          break;
+        } catch { /* siguiente carpeta */ }
+      }
+    }
+
+    const f = mdCrudo ? { md: mdCrudo } : await fichaEnRepo(s.token, slug, BASE);
     if (!f) return json({ error: 'no existe la ficha (¿aún sin fusionar?)' }, 404);
     const datos = frontmatter(f.md);
     return json({

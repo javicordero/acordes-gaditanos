@@ -15,6 +15,9 @@ export const COOKIE = 'estudio';
 export const COOKIE_ESTADO = 'estudio_estado';
 export const CARPETA = 'src/content/acordes';
 export const CARPETAS = { acordes: 'src/content/acordes', acordes3: 'src/content/acordes3' };
+// En `astro dev` el panel trabaja contra los archivos del ordenador, no contra
+// GitHub: guardar escribe el `.md` y publicar mueve el archivo de carpeta.
+export const LOCAL = process.env.ESTUDIO_LOCAL === '1';
 export const MAX_EDAD = 60 * 60 * 12; // 12 h
 
 const clave = () => createHash('sha256').update(String(process.env.SESSION_SECRET || 'sin-secreto')).digest();

@@ -18,6 +18,11 @@ import { join } from 'node:path';
 
 const ARCHIVO = 'letras-pendientes.md';
 const CARPETA = 'src/content/acordes';
+// Las fichas creadas pero todavía sin publicar viven en acordes3.
+const CARPETA_BORRADORES = 'src/content/acordes3';
+const rutaFicha = (slug) => [CARPETA, CARPETA_BORRADORES]
+  .map((c) => join(c, `${slug}.md`))
+  .find((r) => existsSync(r)) || null;
 const ESTADOS = ['pendiente', 'encontrada', 'con acordes', 'no encontrada', 'duplicada'];
 const ICONO = {
   pendiente: '·', encontrada: '🔎', 'con acordes': '✓', 'no encontrada': '✗', duplicada: '=' ,
@@ -73,13 +78,13 @@ function opciones(argv) {
 function comprobar(f) {
   const problemas = [];
   if (!f.base || f.base === '?' || f.base.includes('?')) problemas.push('sin ficha base');
-  else if (!existsSync(join(CARPETA, `${f.base}.md`))) problemas.push(`no existe la base ${f.base}`);
+  else if (!rutaFicha(f.base)) problemas.push(`no existe la base ${f.base}`);
   if (f.estado === 'con acordes') {
     if (!f.ficha) problemas.push('estado «con acordes» sin ficha');
-    else if (!existsSync(join(CARPETA, `${f.ficha}.md`))) problemas.push(`no existe ${f.ficha}.md`);
     else {
-      const t = readFileSync(join(CARPETA, `${f.ficha}.md`), 'utf8');
-      if (!t.includes('letraTitulo:')) problemas.push(`${f.ficha} no lleva letraTitulo`);
+      const ruta = rutaFicha(f.ficha);
+      if (!ruta) problemas.push(`no existe ${f.ficha}.md`);
+      else if (!readFileSync(ruta, 'utf8').includes('letraTitulo:')) problemas.push(`${f.ficha} no lleva letraTitulo`);
     }
   }
   if (f.estado === 'encontrada' && !f.fuente) problemas.push('estado «encontrada» sin fuente');

@@ -4,6 +4,24 @@ import sitemap from '@astrojs/sitemap';
 import remarkAcordesColumna from './src/lib/remark-acordes-columna.mjs';
 import enlacesConBarra from './src/integrations/enlaces-con-barra.mjs';
 
+// En `astro dev` no existen las Netlify Functions del panel /estudio, así que se
+// inyecta una ruta real que las ejecuta con la petición completa. `prerender: false`
+// es imprescindible: sin él, la ruta hereda el `prerender: true` del output estático
+// y Astro pide `getStaticPaths` (404 en dev).
+const estudioApiDev = {
+  name: 'estudio-api-dev',
+  hooks: {
+    'astro:config:setup': ({ command, injectRoute }) => {
+      if (command !== 'dev') return;
+      injectRoute({
+        pattern: '/estudio/api/[...ruta]',
+        entrypoint: './src/integrations/estudio-api.ts',
+        prerender: false,
+      });
+    },
+  },
+};
+
 export default defineConfig({
   site: 'https://acordesgaditanos.com',
   // Precarga el HTML de los enlaces al pasar el ratón (escritorio).
@@ -17,6 +35,7 @@ export default defineConfig({
     remarkPlugins: [remarkAcordesColumna],
   },
   integrations: [
+    estudioApiDev,
     // Añade la barra final a los enlaces internos (Netlify redirige sin ella).
     enlacesConBarra(),
     icon({
