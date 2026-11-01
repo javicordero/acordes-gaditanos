@@ -34,6 +34,12 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
+
+// Páginas privadas (panel, borradores, listas internas, stats): son visitas del
+// propietario, así que no se miden ni llevan anuncios.
+const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acorde)(\/|$)/.test(
+  Astro.url.pathname,
+);
 ---
 
 <!doctype html>
@@ -140,9 +146,23 @@ const imageURL = new URL(image, Astro.site);
       })}
     />
 
+    <!-- Sin medición fuera de producción: local, previews (*.netlify.app) y
+         páginas privadas del propietario. Tiene que ir antes de GA/GTM. -->
+    <script is:inline>
+      (function () {
+        var host = location.hostname;
+        var privada = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acorde)(\/|$)/.test(
+          location.pathname,
+        );
+        if (host === 'localhost' || host.endsWith('.netlify.app') || privada) {
+          window['ga-disable-G-CTX6DK49K4'] = true;
+        }
+      })();
+    </script>
+
     <!-- Cloudflare Web Analytics -->
     {
-      !import.meta.env.DEV && !import.meta.env.VITE_DISABLE_CLOUDFLARE && (
+      !import.meta.env.DEV && !import.meta.env.VITE_DISABLE_CLOUDFLARE && !sinAnalitica && (
         <script
           defer
           src='https://static.cloudflareinsights.com/beacon.min.js'
@@ -161,28 +181,32 @@ const imageURL = new URL(image, Astro.site);
 
     <!-- Google Adsense -->
     <meta name="google-adsense-account" content="ca-pub-3280015847198273">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3280015847198273"
-     crossorigin="anonymous"></script>
+    {!sinAnalitica && (
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3280015847198273"
+       crossorigin="anonymous"></script>
+    )}
     <!-- End Google Adsense -->
 
     <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-MZG7K2Q4');
-    </script>
+    {!sinAnalitica && (
+      <script is:inline>
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MZG7K2Q4');
+      </script>
+    )}
     <!-- End Google Tag Manager -->
 
     <!-- Google Analytics -->
  {
-      !import.meta.env.DEV && (
+      !import.meta.env.DEV && !sinAnalitica && (
         <>
           <script is:inline>
             window.dataLayer = window.dataLayer || [];
@@ -254,8 +278,8 @@ const imageURL = new URL(image, Astro.site);
     }
     <!-- End Google Analytics -->
     <!-- Contador propio  -->
-
-    <script>
+    {!sinAnalitica && (
+      <script is:inline>
   const registerVisit = async () => {
     const path = window.location.pathname;
     // Capturamos de dónde viene (ej: google.com) o ponemos 'direct' si viene vacío
@@ -272,25 +296,28 @@ const imageURL = new URL(image, Astro.site);
   };
 
   document.addEventListener('DOMContentLoaded', () => {
-    if (location.hostname !== "localhost") {
-      registerVisit();
-    }
+    const host = location.hostname;
+    // No cuentan: local, deploy previews (*.netlify.app) ni páginas privadas.
+    if (host === 'localhost' || host.endsWith('.netlify.app')) return;
+    registerVisit();
   });
-</script>
+      </script>
+    )}
 
 <!-- End contador propio -->
     
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src='https://www.googletagmanager.com/ns.html?id=GTM-MZG7K2Q4'
-        height='0'
-        width='0'
-        style='display:none;visibility:hidden'></iframe></noscript
-    >
+    {!sinAnalitica && (
+      <noscript
+        ><iframe
+          src='https://www.googletagmanager.com/ns.html?id=GTM-MZG7K2Q4'
+          height='0'
+          width='0'
+          style='display:none;visibility:hidden'></iframe></noscript
+      >
+    )}
 <!-- End Google Tag Manager (noscript) -->
     <Header />
     <slot />
@@ -302,19 +329,21 @@ const imageURL = new URL(image, Astro.site);
     <FitTextInit />
     <PrefetchTap />
 
-    <script>
-      import { loadAdsense } from '../lib/cookiesConsent';
+    {!sinAnalitica && (
+      <script>
+        import { loadAdsense } from '../lib/cookiesConsent';
 
-      function initAdsense() {
-        loadAdsense();
-      }
+        function initAdsense() {
+          loadAdsense();
+        }
 
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAdsense);
-      } else {
-        initAdsense();
-      }
-    </script>
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initAdsense);
+        } else {
+          initAdsense();
+        }
+      </script>
+    )}
 
   </body>
 </html>
