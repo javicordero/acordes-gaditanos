@@ -24,30 +24,32 @@ const { class: className } = Astro.props;
   import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
   import { eventoPwa } from '../../lib/pwa/analytics';
 
+  let promptMostrado = false;
+
   function init() {
     const card = document.querySelector('.instalar-app') as HTMLElement | null;
     if (!card) return;
+    const btn = card.querySelector('.btn-instalar') as HTMLElement | null;
 
-    if (!puedeInstalar()) {
+    if (puedeInstalar()) {
+      card.classList.add('instalar-app--visible');
+      if (!promptMostrado) {
+        promptMostrado = true;
+        eventoPwa('pwa_prompt_shown', { ubicacion: 'ficha' });
+      }
+      if (btn && !btn.dataset.wired) {
+        btn.dataset.wired = 'true';
+        btn.addEventListener('click', () => instalar());
+      }
+    } else {
       card.classList.remove('instalar-app--visible');
-      return;
     }
-
-    card.classList.add('instalar-app--visible');
-    eventoPwa('pwa_prompt_shown', { ubicacion: 'ficha' });
-
-    const btn = card.querySelector('.btn-instalar');
-    btn?.addEventListener('click', () => {
-      instalar();
-      // Tras instalar o descartar, la tarjeta desaparece.
-      setTimeout(() => {
-        if (!puedeInstalar()) card.classList.remove('instalar-app--visible');
-      }, 1000);
-    });
   }
 
   init();
   document.addEventListener('astro:page-load', init);
+  window.addEventListener('ag:beforeinstallprompt', init);
+  window.addEventListener('ag:pwa-estado', init);
 </script>
 
 <style>

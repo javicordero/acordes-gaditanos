@@ -1,7 +1,7 @@
 // src/lib/pwa/instalacion.ts
 //
-// Lógica de instalación de la PWA: estado (descartado/instalado), disparo del
-// prompt nativo en Android y panel de instrucciones en iOS/otros navegadores.
+// Lógica de instalación de la PWA: estado (descartado), disparo del prompt nativo
+// en Android y panel de instrucciones en iOS/otros navegadores.
 // El evento beforeinstallprompt lo captura un script inline del <head> (antes de
 // que carguen los módulos) y lo deja en window.__agPwa.
 
@@ -13,7 +13,6 @@ import {
 } from './analytics';
 
 const CLAVE_DESCARTADO = 'ag_pwa_descartado';
-const CLAVE_INSTALADO = 'ag_pwa_instalado';
 const CADUCIDAD_DESCARTE_MS = 90 * 24 * 60 * 60 * 1000; // 90 días
 
 interface AgPwa {
@@ -26,20 +25,8 @@ function esMovil(): boolean {
   return o === 'android' || o === 'ios';
 }
 
-function leerFlag(clave: string): boolean {
-  try {
-    return localStorage.getItem(clave) === '1';
-  } catch {
-    return false;
-  }
-}
-
 function agPwa(): AgPwa | undefined {
   return (window as unknown as { __agPwa?: AgPwa }).__agPwa;
-}
-
-export function estaInstalado(): boolean {
-  return leerFlag(CLAVE_INSTALADO) || Boolean(agPwa()?.installed);
 }
 
 export function estaDescartado(): boolean {
@@ -51,24 +38,32 @@ export function estaDescartado(): boolean {
   }
 }
 
-// ¿Mostramos la invitación a instalar? Solo en móvil, no en standalone, y si no
-// está instalada ni descartada recientemente.
+// ¿Mostramos la invitación a instalar?
+// - Solo en móvil, si no estamos ya dentro de la app (standalone) ni descartado.
+// - Android: solo si el navegador ofreció el prompt nativo (beforeinstallprompt),
+//   que es la señal de que la app es instalable. Si ya está instalada (aunque
+//   estés en el navegador), Chrome no lo dispara y no mostramos el botón.
+// - iOS: en Safari siempre se puede añadir a pantalla de inicio; no hay otra señal.
+// Nota: no usamos un flag persistente de "ya instalado" porque localStorage no se
+// borra al desinstalar la app y dejaría el botón oculto para siempre.
 export function puedeInstalar(): boolean {
-  return esMovil() && !esStandalone() && !estaInstalado() && !estaDescartado();
+  if (!esMovil() || esStandalone() || estaDescartado()) return false;
+  if (detectarOs() === 'android') return Boolean(agPwa()?.prompt);
+  return true;
 }
 
-// pwa_installed se emite una sola vez (venga de `appinstalled` o del userChoice
-// aceptado), para no duplicar la métrica.
+// pwa_installed se emite una sola vez por sesión de página (no en cada recarga).
 let instaladoReportado = false;
 function reportarInstalado() {
   if (instaladoReportado) return;
   instaladoReportado = true;
-  try {
-    localStorage.setItem(CLAVE_INSTALADO, '1');
-  } catch {
-    /* sin almacenamiento: no pasa nada */
-  }
   eventoPwa('pwa_installed');
+}
+
+// Avisa a los componentes (FAB, tarjeta) de que el estado ha cambiado para que
+// vuelvan a decidir si mostrarse.
+function notificarEstado() {
+  window.dispatchEvent(new CustomEvent('ag:pwa-estado'));
 }
 
 export function descartar() {
@@ -78,6 +73,7 @@ export function descartar() {
     /* sin almacenamiento */
   }
   cerrarPanel();
+  notificarEstado();
 }
 
 function abrirPanel() {
@@ -112,6 +108,7 @@ export function instalar() {
         const ctx = agPwa();
         if (ctx) ctx.prompt = null;
         if (choice.outcome === 'accepted') reportarInstalado();
+        notificarEstado();
       })
       .catch(() => {
         /* el usuario cerró el prompt sin elegir */
@@ -130,6 +127,7 @@ export function initPwa() {
   // `appinstalled` lo captura el script inline y llega como evento propio.
   window.addEventListener('ag:appinstalled', () => {
     reportarInstalado();
+    notificarEstado();
   });
 
   // Cerrar el panel al pulsar la X o el fondo (equivale a descartar).

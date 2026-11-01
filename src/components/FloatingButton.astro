@@ -108,6 +108,8 @@ const { class: className } = Astro.props;
 
   const SEL_ANCLA = 'ins[data-anchor-status], ins[data-anchor-shown="true"], div[id^="google_anchor"]';
 
+  let promptMostrado = false;
+
   function ajustarPorAncla() {
     const container = document.querySelector('.fab-container');
     if (!container) return;
@@ -115,39 +117,50 @@ const { class: className } = Astro.props;
     container.classList.toggle('fab--sobre-ancla', Boolean(ancla));
   }
 
+  function aplicarEstado() {
+    const container = document.querySelector('.fab-container');
+    if (!container) return;
+    const pedir = container.querySelector('.fab--pedir');
+    const instalarBtn = container.querySelector('.fab--instalar');
+    if (!pedir || !instalarBtn) return;
+
+    if (puedeInstalar()) {
+      pedir.setAttribute('hidden', '');
+      instalarBtn.removeAttribute('hidden');
+      if (!promptMostrado) {
+        promptMostrado = true;
+        eventoPwa('pwa_prompt_shown', { ubicacion: 'portada' });
+      }
+    } else {
+      pedir.removeAttribute('hidden');
+      instalarBtn.setAttribute('hidden', '');
+    }
+    ajustarPorAncla();
+  }
+
   function initFAB() {
     const container = document.querySelector('.fab-container');
     if (!container) return;
     container.classList.remove('hidden');
 
-    const pedir = container.querySelector('.fab--pedir');
     const instalarBtn = container.querySelector('.fab--instalar');
-
-    if (puedeInstalar()) {
-      pedir?.setAttribute('hidden', '');
-      instalarBtn?.removeAttribute('hidden');
-      eventoPwa('pwa_prompt_shown', { ubicacion: 'portada' });
-    } else {
-      pedir?.removeAttribute('hidden');
-      instalarBtn?.setAttribute('hidden', '');
+    if (instalarBtn && !instalarBtn.dataset.wired) {
+      instalarBtn.dataset.wired = 'true';
+      instalarBtn.addEventListener('click', () => {
+        eventoPwa('pwa_home_banner_click', { ubicacion: 'portada' });
+        instalar();
+      });
     }
 
-    instalarBtn?.addEventListener('click', () => {
-      eventoPwa('pwa_home_banner_click', { ubicacion: 'portada' });
-      instalar();
-      // Al instalar o descartar, el botón vuelve a «Pedir una copla».
-      setTimeout(() => {
-        if (puedeInstalar()) return;
-        pedir?.removeAttribute('hidden');
-        instalarBtn?.setAttribute('hidden', '');
-      }, 1000);
-    });
-
-    ajustarPorAncla();
+    aplicarEstado();
   }
 
   initFAB();
   document.addEventListener('astro:page-load', initFAB);
+  // El prompt nativo de Android puede llegar después de cargar la página.
+  window.addEventListener('ag:beforeinstallprompt', aplicarEstado);
+  // Tras instalar o descartar, el botón vuelve a «Pedir una copla».
+  window.addEventListener('ag:pwa-estado', aplicarEstado);
 
   // Observa la aparición del anuncio ancla para apartar el botón.
   if (typeof MutationObserver !== 'undefined') {
