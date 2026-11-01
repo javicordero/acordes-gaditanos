@@ -21,6 +21,40 @@ export interface FichaConLetra {
   };
 }
 
+/** Coplas y letras alternativas que hay en un conjunto de fichas. */
+export interface RecuentoCoplas {
+  /** Piezas distintas: cada grupo de letras cuenta una sola vez. */
+  coplas: number;
+  /** Letras que acompañan a una copla ya contada (las demás del grupo). */
+  letras: number;
+}
+
+/** Recuento de coplas y letras extras, con el mismo criterio que `hermanasDe`. */
+export function contarCoplas(fichas: FichaConLetra[]): RecuentoCoplas {
+  const grupos = new Map<string, FichaConLetra[]>();
+
+  for (const ficha of fichas) {
+    const tipo = tipoBase(ficha.data.pieza);
+    if (!TIPOS_CON_LETRAS.has(tipo)) continue;
+    const agrupacion = ficha.data.agrupacionSlug || ficha.data.agrupacion;
+    const clave = `${tipo}|${agrupacion}|${ficha.data.year}`;
+    const grupo = grupos.get(clave);
+    if (grupo) grupo.push(ficha);
+    else grupos.set(clave, [ficha]);
+  }
+
+  let letras = 0;
+  for (const grupo of grupos.values()) {
+    // Dos pasodobles sueltos de la misma agrupación y año no son una letra
+    // alternativa: sin `letraTitulo` no sabemos que compartan música.
+    if (grupo.length < 2) continue;
+    if (!grupo.some((ficha) => (ficha.data.letraTitulo || '').trim())) continue;
+    letras += grupo.length - 1;
+  }
+
+  return { coplas: fichas.length - letras, letras };
+}
+
 /** Tipos de pieza en los que varias fichas pueden compartir música. */
 export const TIPOS_CON_LETRAS = new Set(['pasodoble']);
 

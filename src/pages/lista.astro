@@ -4,10 +4,16 @@ import Layout from '../layouts/Layout.astro';
 import Banner320X50 from '../components/ads/Banner320x50.astro';
 import Banner468X60 from '../components/ads/Banner468x60.astro';
 import { parseSpanishDate, sortByYearDesc } from '../lib/index';
+import { contarCoplas } from '../lib/letras';
 
 const acordes = await getCollection('acordes');
 
 const capitalize = (text: string) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
+
+/** `1 copla` / `3 coplas`: la cifra con su palabra en singular o plural. */
+const plural = (n: number, uno: string, varios: string) => `${n} ${n === 1 ? uno : varios}`;
+
+const recuento = contarCoplas(acordes);
 
 const normalizePieza = (pieza: string) =>
   pieza
@@ -45,23 +51,23 @@ const acordesOrdenados = [...acordes].sort((a, b) => {
 });
 
 const years = [...new Set(acordesOrdenados.map((acorde) => acorde.data.year))];
-const acordesPorYear = years.map((year) => ({
-  year,
-  acordes: acordesOrdenados
+const acordesPorYear = years.map((year) => {
+  const delYear = acordesOrdenados
     .filter((acorde) => acorde.data.year === year)
     .sort((a, b) => {
       const rankDiff = piezaRank(a.data.pieza) - piezaRank(b.data.pieza);
       if (rankDiff !== 0) return rankDiff;
       return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
-    }),
-}));
+    });
+  return { year, acordes: delYear, recuento: contarCoplas(delYear) };
+});
 
 const MAX_ANUNCIOS = 8;
 let anunciosColocados = 0;
-const bloques = acordesPorYear.map(({ year, acordes }, index) => {
+const bloques = acordesPorYear.map(({ year, acordes, recuento }, index) => {
   const conAnuncio = index % 2 === 0 && anunciosColocados < MAX_ANUNCIOS;
   if (conAnuncio) anunciosColocados++;
-  return { year, acordes, conAnuncio };
+  return { year, acordes, recuento, conAnuncio };
 });
 
 const title = 'Todas las coplas - Acordes del Carnaval de Cádiz';
@@ -93,16 +99,16 @@ const itemListSchema = {
           <p class='subtitle'>
             Aquí encontrarás, agrupadas por año, todas las coplas que hemos transcrito para tocarlas
             con la guitarra. Ahora mismo hay{' '}
-            <strong class='subtitle-count'>{acordes.length}</strong> coplas y seguimos sumando.
+            <strong class='subtitle-count'>{recuento.coplas}</strong> {recuento.coplas === 1 ? 'copla' : 'coplas'} y <strong class='subtitle-count'>{recuento.letras}</strong> {recuento.letras === 1 ? 'letra extra' : 'letras extras'}, y seguimos sumando.
           </p>
         </header>
 
         {
-          bloques.map(({ year, acordes, conAnuncio }) => (
+          bloques.map(({ year, acordes, recuento, conAnuncio }) => (
             <section class='year-group' aria-labelledby={`year-${year}`}>
               <h2 id={`year-${year}`}>
                 <span class='year-label'>{year}</span>{' '}
-                <span class='year-count'>({acordes.length} coplas)</span>
+                <span class='year-count'>({plural(recuento.coplas, 'copla', 'coplas')} y {plural(recuento.letras, 'letra extra', 'letras extras')})</span>
               </h2>
               <ul class='copla-list'>
                 {acordes.map((acorde) => (
