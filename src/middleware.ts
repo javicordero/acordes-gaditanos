@@ -37,7 +37,10 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
 
     try {
       const mod = await cargar();
-      const res = await mod.default(request);
+      // `request.url` puede venir sin la query en dev: se reconstruye con la URL
+      // completa de Astro para que las funciones lean bien `?code`, `?slug`, etc.
+      const peticion = new Request(request.url, request);
+      const res = await mod.default(peticion);
       // En http://localhost el navegador descarta las cookies `Secure`.
       const cookies = res.headers.getSetCookie?.() ?? [];
       if (!cookies.length) return res;
