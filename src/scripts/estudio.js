@@ -6,6 +6,12 @@ initPreAcordes(glosario);
 const API = '/estudio/api';
 // En `astro dev` el panel trabaja contra los archivos del ordenador (sin PR).
 const MODO_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
+// La ficha abierta lleva su slug en la URL (`/estudio/?ficha=...`), así el botón
+// atrás vuelve a la lista en vez de salir del panel. La página es estática: el
+// query no rompe nada y permite refrescar sin perder la ficha.
+const urlFicha = (slug) => '/estudio/?ficha=' + encodeURIComponent(slug);
+const estadoLista = { vista: 'lista' };
+let creando = false;
 const $ = (id) => document.getElementById(id);
 const ta = $('editor');
 const capa = $('capa');
@@ -22,6 +28,8 @@ let sugerencias = [];
 let sugSel = 0;
 let paneActivo = 'cen';
 let zonaFicha = 'acordes';
+// Texto del aviso sin marcas, para el tuit (el textarea lleva el de WhatsApp).
+let avisoX = '';
 
 const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const hoy = () => { const d = new Date(); const p = (n) => String(n).padStart(2, '0'); return p(d.getDate()) + '/' + p(d.getMonth() + 1) + '/' + d.getFullYear(); };
@@ -170,6 +178,32 @@ function pintarLista() {
   $('lista-tope').hidden = resultado.length <= MAX;
 }
 
+/** Vuelve a la lista (el historial lo decide quien llama). */
+function mostrarLista() {
+  $('vista-editor').hidden = true;
+  $('vista-lista').hidden = false;
+  $('b-nueva').hidden = false;
+  $('b-letra').hidden = false;
+  ['b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar'].forEach((id) => { $(id).hidden = true; });
+  $('cab-meta').textContent = '';
+  setEstado('', true);
+}
+
+/** Abre el formulario de ficha nueva (con su entrada en el historial). */
+function abrirNueva(empujar = true) {
+  const f = $('f-nueva');
+  f.reset();
+  f.clon.value = '';
+  f.pieza.value = 'Pasodoble';
+  f.year.value = new Date().getFullYear();
+  $('dlg-nueva-titulo').textContent = 'Nueva ficha';
+  $('dlg-nueva-nota').innerHTML = 'Se crea como borrador con el bloque de la ficha base. Después cambias la letra y mueves los acordes.';
+  const estado = { vista: 'nueva' };
+  if (empujar) history.pushState(estado, '', '/estudio/?nueva=1');
+  else history.replaceState(estado, '', '/estudio/?nueva=1');
+  $('dlg-nueva').showModal();
+}
+
 /* ---------------- editor ---------------- */
 const pareceAcorde = (t) => {
   const limpio = t.replace(/[()]/g, '');
@@ -225,7 +259,7 @@ function pintarTexto(texto, el) {
   }).join('\n');
 }
 
-async function abrirFicha(slug) {
+async function abrirFicha(slug, empujar = true) {
   try {
     cerrarAviso();
     const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(slug));
@@ -234,6 +268,7 @@ async function abrirFicha(slug) {
     montarEditor(slug, datos.md, null, datos.zona, datos.rama);
     await cargarBase(slug);
     pintar();
+    if (empujar) history.pushState({ vista: 'ficha', slug }, '', urlFicha(slug));
     if (MODO_LOCAL) {
       mostrarAviso(datos.local
         ? 'Ficha local: al guardar se escribe en el archivo del proyecto, sin PR.' + (datos.desync ? '\nEn GitHub hay otra versión; esta es la de tu ordenador.' : '')
@@ -264,6 +299,7 @@ async function abrirFicha(slug) {
   $('vista-editor').hidden = false;
   ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos'].forEach((id) => { $(id).hidden = false; });
   $('b-nueva').hidden = true;
+  $('b-letra').hidden = true;
   $('b-publicar').hidden = zonaFicha !== 'acordes3';
   $('b-publicar').textContent = MODO_LOCAL ? 'Promover' : 'Publicar';
   $('b-publicar').title = MODO_LOCAL
@@ -549,6 +585,7 @@ async function abrirAvisos() {
     if (!r.ok) throw new Error(d.error || 'no se pudo componer el aviso');
     $('aviso-meta').textContent = d.titulo;
     $('aviso-texto').value = d.texto;
+    avisoX = d.textoX || d.texto;
     $('dlg-aviso').showModal();
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
@@ -700,7 +737,9 @@ async function crear(e) {
     });
     const gd = await g.json();
     if (!g.ok) throw new Error(gd.error || 'no se pudo crear');
+    creando = true;
     $('dlg-nueva').close();
+    history.replaceState({ vista: 'ficha', slug }, '', urlFicha(slug));
     // La lista tiene que reflejarla sin recargar.
     indice.unshift({
       slug,
@@ -719,6 +758,61 @@ async function crear(e) {
         (clon ? 'Ahora cambia la letra nueva encima de los acordes y mueve lo que haga falta.' : 'Ahora pega la letra en el editor y coloca los acordes.')
       : 'Ficha creada en la rama ' + gd.rama + '.\nPR #' + gd.pr.numero + ': ' + gd.pr.url + '\n' +
         (clon ? 'Ahora cambia la letra nueva encima de los acordes y mueve lo que haga falta.' : 'Ahora pega la letra en el editor y coloca los acordes.'), 'var(--ok)');
+  } catch (err) {
+    mostrarAviso(String(err.message || err), 'var(--mal)');
+  }
+}
+
+/* ---------------- nueva letra pendiente ---------------- */
+/** La base es el pasodoble de esa agrupación (la original, sin letraTitulo). */
+function baseDeAgrupacion(agrupacion) {
+  const busca = normalizar(agrupacion);
+  if (!busca) return '';
+  const deLaAgrupacion = indice.filter((x) => normalizar(x.agrupacion) === busca);
+  const pasodobles = deLaAgrupacion.filter((x) => /^pasodoble/i.test(x.pieza || ''));
+  const elegida = pasodobles.find((x) => !x.letraTitulo) || pasodobles[0] || deLaAgrupacion[0];
+  return elegida ? elegida.slug : '';
+}
+
+/** Muestra la base que se va a apuntar según la agrupación escrita. */
+function pintarBaseLetra() {
+  const agrupacion = $('f-letra').agrupacion.value.trim();
+  const el = $('letra-base');
+  if (!agrupacion) { el.textContent = 'La base será el pasodoble de esa agrupación.'; el.classList.remove('mal'); return; }
+  const base = baseDeAgrupacion(agrupacion);
+  el.textContent = base
+    ? 'Base: ' + base
+    : 'No encuentro una ficha de «' + agrupacion + '»: se apunta sin base (?) para resolverla luego.';
+  el.classList.toggle('mal', !base);
+}
+
+async function anadirLetra(e) {
+  e.preventDefault();
+  const f = new FormData($('f-letra'));
+  const v = (k) => String(f.get(k) || '').trim();
+  if (!v('frase') || !v('agrupacion')) {
+    mostrarAviso('La frase y la agrupación son obligatorias.', 'var(--mal)');
+    return;
+  }
+  try {
+    const r = await fetch(API + '/letra', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        frase: v('frase'),
+        agrupacion: v('agrupacion'),
+        base: baseDeAgrupacion(v('agrupacion')),
+        fuente: v('fuente'),
+        notas: v('notas'),
+      }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudo añadir');
+    $('dlg-letra').close();
+    $('f-letra').reset();
+    mostrarAviso(d.local
+      ? 'Añadida la letra ' + d.n + ' a ' + d.archivo + '.\nMírala con `npm run letras` cuando quieras.'
+      : 'Añadida la letra ' + d.n + ' en la PR #' + d.pr.numero + '.\n' + d.pr.url, 'var(--ok)');
   } catch (err) {
     mostrarAviso(String(err.message || err), 'var(--mal)');
   }
@@ -782,25 +876,29 @@ document.querySelectorAll('#filtros button').forEach((b) => {
   };
 });
 $('b-lista').onclick = () => {
-  $('vista-editor').hidden = true;
-  $('vista-lista').hidden = false;
-  $('b-nueva').hidden = false;
-  ['b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar'].forEach((id) => { $(id).hidden = true; });
-  $('cab-meta').textContent = '';
-  setEstado('', true);
+  mostrarLista();
+  // Si venimos de una ficha, el atrás deja el historial en la lista.
+  if (history.state && history.state.vista === 'ficha') history.back();
 };
-$('b-nueva').onclick = () => {
-  const f = $('f-nueva');
-  f.reset();
-  f.clon.value = '';
-  f.pieza.value = 'Pasodoble';
-  f.year.value = new Date().getFullYear();
-  $('dlg-nueva-titulo').textContent = 'Nueva ficha';
-  $('dlg-nueva-nota').innerHTML = 'Se crea como borrador con el bloque de la ficha base. Después cambias la letra y mueves los acordes.';
-  $('dlg-nueva').showModal();
-};
+$('b-nueva').onclick = () => abrirNueva();
+$('dlg-nueva').addEventListener('close', () => {
+  // Cerrar el formulario (Cancelar, Esc o la ✕) devuelve a la vista anterior.
+  if (!creando && history.state && history.state.vista === 'nueva') history.back();
+  creando = false;
+});
+window.addEventListener('popstate', (e) => {
+  const st = e.state;
+  if (st && st.vista === 'ficha' && st.slug) { abrirFicha(st.slug, false); return; }
+  if ($('dlg-nueva').open) $('dlg-nueva').close();
+  mostrarLista();
+  cerrarAviso();
+});
 $('n-cancelar').onclick = () => $('dlg-nueva').close();
 $('f-nueva').onsubmit = crear;
+$('b-letra').onclick = () => { $('f-letra').reset(); pintarBaseLetra(); $('dlg-letra').showModal(); $('f-letra').frase.focus(); };
+$('f-letra').addEventListener('input', pintarBaseLetra);
+$('l-cancelar').onclick = () => $('dlg-letra').close();
+$('f-letra').onsubmit = anadirLetra;
 $('b-guardar').onclick = guardar;
 $('b-comprobar').onclick = comprobar;
 $('b-fusionar').onclick = fusionar;
@@ -814,7 +912,7 @@ $('av-copiar').onclick = async () => {
   catch { $('aviso-texto').select(); document.execCommand('copy'); }
 };
 $('av-tuit').onclick = () => {
-  const t = $('aviso-texto').value;
+  const t = avisoX || $('aviso-texto').value;
   window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(t.slice(0, 280)), '_blank');
 };
 
@@ -879,16 +977,23 @@ window.addEventListener('beforeunload', (e) => {
 
 /* ---------------- arranque ---------------- */
 (async () => {
+  const params = new URLSearchParams(location.search);
   const login = await quien();
   if (!login) return; // se queda la pantalla de login
   $('login').hidden = true;
   $('quien').textContent = login;
   $('vista-lista').hidden = false;
   $('b-nueva').hidden = false;
+  $('b-letra').hidden = false;
   $('cab-meta').textContent = '';
   setEstado('', true);
   await cargarIndice();
   pintarLista();
+  // La entrada base del historial es la lista: así el atrás desde una ficha
+  // vuelve aquí y no sale del panel.
+  history.replaceState(estadoLista, '', '/estudio/');
+  if (params.get('ficha')) await abrirFicha(params.get('ficha'));
+  else if (params.get('nueva')) abrirNueva();
   $('pie').innerHTML = '<a href="/estudio/api/salir">Salir</a>';
 })();
 

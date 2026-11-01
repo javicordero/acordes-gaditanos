@@ -108,17 +108,17 @@ export const prerender = true;
   #vista-editor[hidden] { display:none; }
   .cols { flex:1; display:grid; grid-template-columns: 1fr 1.35fr 1fr; min-height:0; }
   .cols.una { grid-template-columns: 1fr; }
-  .cols.sin-base { grid-template-columns: 1fr 1.35fr; }
+  .cols.sin-base { grid-template-columns: 1.35fr 1fr; }
   .pane { min-width:0; min-height:0; display:flex; flex-direction:column; border-right:1px solid var(--linea); }
   .pane:last-child { border-right:0; }
   .cab { padding:5px 10px; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); border-bottom:1px solid var(--linea); display:flex; gap:8px; align-items:center; }
   .cab b { color:var(--tinta); font-weight:600; letter-spacing:0; text-transform:none; font-size:12px; }
   #base-sel { flex:1; min-width:0; max-width:100%; font:11px system-ui, sans-serif; padding:1px 3px; border:1px solid var(--linea); border-radius:4px; background:#fff; color:var(--tinta); }
   .lienzo { position:relative; flex:1; min-height:0; overflow:hidden; }
-  pre, textarea { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space:pre; overflow:auto; tab-size:4; }
-  pre { color:var(--tinta); }
-  textarea { position:absolute; inset:0; resize:none; background:transparent; color:transparent; caret-color:var(--acento); outline:none; }
-  textarea::selection { background:rgba(180,85,43,.22); }
+  .pane pre, .lienzo textarea { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space:pre; overflow:auto; tab-size:4; }
+  .pane pre { color:var(--tinta); }
+  .lienzo textarea { position:absolute; inset:0; resize:none; background:transparent; color:transparent; caret-color:var(--acento); outline:none; }
+  .lienzo textarea::selection { background:rgba(180,85,43,.22); }
   #capa { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
   .ac { color:var(--acento); }
   .nuevo { color:var(--nuevo); text-decoration:underline dotted; }
@@ -137,7 +137,8 @@ export const prerender = true;
   .campo { display:grid; gap:3px; margin-bottom:9px; }
   .campo label { font-size:11.5px; color:var(--suave); text-transform:uppercase; letter-spacing:.05em; }
   .campo input, .campo select, .campo textarea { font:inherit; padding:6px 8px; border:1px solid var(--linea); border-radius:6px; background:#fff; }
-  .campo textarea { min-height:80px; font-family:ui-monospace, monospace; font-size:12.5px; }
+  .campo textarea { width:100%; height:auto; min-height:80px; color:var(--tinta); background:#fff; font-family:ui-monospace, monospace; font-size:12.5px; white-space:pre-wrap; resize:vertical; }
+  .campo textarea:focus { outline:none; border-color:var(--acento); box-shadow:0 0 0 3px rgba(180,85,43,.13); }
   .dos { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
   .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
   .tabs { display:none; }
@@ -169,6 +170,7 @@ export const prerender = true;
   <div class="barra">
     <button id="b-lista" hidden>← Lista</button>
     <button id="b-nueva" hidden>Nueva ficha</button>
+    <button id="b-letra" hidden>＋ Letra</button>
     <button id="b-publicar" hidden title="Pasa el borrador a acordes y abre la PR">Publicar</button>
     <button id="b-comprobar" hidden>Comprobar</button>
     <button id="b-pr" hidden>Ver PR</button>
@@ -233,14 +235,14 @@ export const prerender = true;
       </div>
     </details>
     <div class="tabs">
-      <button data-pane="izq">Original</button>
-      <button data-pane="cen" class="sel">Editor</button>
       <button data-pane="der">Base</button>
+      <button data-pane="cen" class="sel">Editor</button>
+      <button data-pane="izq">Original</button>
     </div>
     <div class="cols" id="cols">
-      <section class="pane" data-pane="izq">
-        <div class="cab"><b>Original</b></div>
-        <pre id="ref-izq"></pre>
+      <section class="pane" data-pane="der">
+        <div class="cab"><b>Base</b><select id="base-sel" title="Elige la ficha con la que comparar"></select></div>
+        <pre id="ref-der"></pre>
       </section>
       <section class="pane activo" data-pane="cen">
         <div class="cab"><b>Editor</b><span id="editor-meta"></span></div>
@@ -254,9 +256,9 @@ export const prerender = true;
           <button id="m-der" title="Mover el acorde una columna a la derecha">▶</button>
         </div>
       </section>
-      <section class="pane" data-pane="der">
-        <div class="cab"><b>Base</b><select id="base-sel" title="Elige la ficha con la que comparar"></select></div>
-        <pre id="ref-der"></pre>
+      <section class="pane" data-pane="izq">
+        <div class="cab"><b>Original</b></div>
+        <pre id="ref-izq"></pre>
       </section>
     </div>
   </div>
@@ -293,6 +295,24 @@ export const prerender = true;
     <div class="acciones">
       <button type="button" id="n-cancelar">Cancelar</button>
       <button type="submit" class="principal">Crear</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlg-letra">
+  <form id="f-letra">
+    <h2>Nueva letra pendiente</h2>
+    <p class="nota">Se apunta en <code>letras-pendientes.md</code> para buscarla y ponerle los acordes después.</p>
+    <div class="dos">
+      <div class="campo"><label>Frase que recuerdas</label><input name="frase" required placeholder="primera frase o la que te acuerdes"></div>
+      <div class="campo"><label>Agrupación</label><input name="agrupacion" required></div>
+      <div class="campo"><label>Fuente</label><input name="fuente" placeholder="opcional (URL)"></div>
+      <div class="campo"><label>Notas</label><input name="notas" placeholder="opcional"></div>
+    </div>
+    <p class="nota" id="letra-base"></p>
+    <div class="acciones">
+      <button type="button" id="l-cancelar">Cancelar</button>
+      <button type="submit" class="principal">Añadir a la cola</button>
     </div>
   </form>
 </dialog>
