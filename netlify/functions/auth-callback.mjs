@@ -1,5 +1,5 @@
-﻿// Vuelta de GitHub: cambia el cÃ³digo por un token, comprueba que eres tÃº y deja
-// la sesiÃ³n en una cookie cifrada.
+﻿// Vuelta de GitHub: cambia el código por un token, comprueba que eres tú y deja
+// la sesión en una cookie cifrada.
 import {
   SITE, OWNER, COOKIE_ESTADO, cifrar, cookies, cookieSesion, gh,
 } from './_lib.mjs';
@@ -19,9 +19,9 @@ export default async (req) => {
   const estado = url.searchParams.get('state');
   const cookieEstado = cookies(req)[COOKIE_ESTADO];
 
-  if (!codigo) return error('GitHub no ha devuelto el cÃ³digo de autorizaciÃ³n.');
+  if (!codigo) return error('GitHub no ha devuelto el código de autorización.');
   if (!estado || !cookieEstado || estado !== cookieEstado) {
-    return error('La comprobaciÃ³n de seguridad no cuadra. Vuelve a intentarlo desde /estudio.');
+    return error('La comprobación de seguridad no cuadra. Vuelve a intentarlo desde /estudio.');
   }
 
   let token;
@@ -55,18 +55,13 @@ export default async (req) => {
     return error(`La cuenta ${login} no es la propietaria de este panel.`);
   }
 
-  const cookie = cifrar({ login, token, exp: Date.now() + 12 * 60 * 60 * 1000 });
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: '/estudio',
-      'Set-Cookie': [
-        cookieSesion(cookie),
-        `${COOKIE_ESTADO}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`,
-      ],
-      'Cache-Control': 'no-store',
-    },
-  });
+  // Dos cookies: la de sesión y la de estado (que se borra). Se añaden con
+  // `append` porque un `Set-Cookie` con array se serializa mal y el navegador
+  // se queda sin sesión.
+  const cabeceras = new Headers();
+  cabeceras.set('Location', `${SITE}/estudio/`);
+  cabeceras.append('Set-Cookie', cookieSesion(cifrar({ login, token, exp: Date.now() + 12 * 60 * 60 * 1000 })));
+  cabeceras.append('Set-Cookie', `${COOKIE_ESTADO}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`);
+  cabeceras.set('Cache-Control', 'no-store');
+  return new Response(null, { status: 302, headers: cabeceras });
 };
-
-
