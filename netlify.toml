@@ -1,0 +1,26 @@
+# Panel privado /estudio y funciones.
+#
+# La web sigue siendo 100 % estática: las funciones solo sirven al panel, que
+# habla con GitHub para crear ramas y PRs.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  node_version = "20"
+
+# /estudio/api/* → funciones. Se usa este prefijo (y no /api/*) para no chocar
+# con el endpoint /api/fetch-url del sitio.
+[[redirects]]
+  from = "/estudio/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/estudio/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

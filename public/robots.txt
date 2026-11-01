@@ -5,6 +5,7 @@ Allow: /
 # Bloquear páginas temporales
 Disallow: /coming-soon
 Disallow: /en-construccion
+Disallow: /estudio
 
 # Sitemap
 Sitemap: https://acordesgaditanos.com/sitemap-index.xml

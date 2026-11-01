@@ -1,0 +1,45 @@
+---
+// Previsualización de una ficha en borrador (colección `acordes3`).
+//
+// No se enlaza desde ningún listado: sirve para ver la copla montada en el
+// deploy preview de la PR mientras se revisa desde el móvil.
+import { getCollection } from 'astro:content';
+import { readdirSync } from 'node:fs';
+import AcordeCard from '../../components/page/AcordeCard.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  // Si no hay borradores, no se llama a getCollection (Astro avisa/falla con
+  // una colección vacía).
+  const hay = readdirSync('src/content/acordes3').some((f) => f.endsWith('.md'));
+  if (!hay) return [];
+  const acordes = await getCollection('acordes3');
+  return acordes.map((acorde) => ({ params: { id: acorde.slug }, props: { acorde } }));
+}
+
+const { acorde } = Astro.props;
+const { pieza, agrupacion, year } = acorde.data;
+---
+
+<Layout
+  title={`Borrador · ${pieza} ${agrupacion} · ${year}`}
+  description="Ficha en borrador sin publicar."
+  noindex={true}
+  noInPagePush={true}
+>
+  <p class="banner-borrador">Borrador sin publicar · se promueve desde el ordenador</p>
+  <AcordeCard acorde={acorde} />
+</Layout>
+
+<style>
+  .banner-borrador {
+    margin: 12px auto;
+    max-width: 900px;
+    padding: 10px 14px;
+    border: 1px dashed #b4552b;
+    border-radius: 8px;
+    color: #b4552b;
+    font-size: 13px;
+    text-align: center;
+  }
+</style>

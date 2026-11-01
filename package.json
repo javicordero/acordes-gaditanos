@@ -14,9 +14,21 @@
     "x:login": "node scripts/x.mjs login",
     "qr": "node scripts/generar-qr.mjs",
     "auditar:letras": "node scripts/auditar-letras.mjs",
+    "acordes:plan": "node scripts/aplicar-acordes.mjs --plan",
+    "acordes:aplicar": "node scripts/aplicar-acordes.mjs",
+    "acordes:evaluar": "node scripts/evaluar-acordes.mjs",
+    "auditar:acordes": "node scripts/auditar-acordes.mjs",
+    "acordes:revisar": "node scripts/revisar-acordes.mjs",
     "videos": "node scripts/auditar-videos.mjs",
     "videos:buscar": "node scripts/auditar-videos.mjs --buscar",
-    "videos:aplicar": "node scripts/auditar-videos.mjs --aplicar"
+    "videos:aplicar": "node scripts/auditar-videos.mjs --aplicar",
+    "letras": "node scripts/letras-pendientes.mjs",
+    "letra:web": "node scripts/letra-web.mjs",
+    "letra:blog": "node scripts/buscar-letra-blog.mjs",
+    "letra:decarnaval": "node scripts/letra-decarnaval.mjs",
+    "auditar:pre": "node scripts/auditar-pre.mjs",
+    "promover": "node scripts/promover-acordes3.mjs",
+    "prs": "node scripts/prs-acordes3.mjs"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",

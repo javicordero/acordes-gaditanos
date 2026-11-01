@@ -29,6 +29,7 @@ Sitio 100% estático (SSG) con Astro content collections. Middleware solo rediri
 ### Content Collections (`src/content/config.ts`)
 - **`acordes`** — 400+ entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`.
 - **`autores`** — 11 autores. Frontmatter: `nombre`, `img`, `type` (`musica`|`letra`), `order`, `destacado`.
+- **`acordes3`** — borradores del panel `/estudio`: fichas nuevas o a medias que aún no se publican. Se promueven a `acordes` con `npm run promover`.
 - **`acordes2`** — colección provisional para los acordes importados del cancionero. Mismo esquema que `acordes`, pero su contenido (`.md`) no se versiona y los acordes van sin envolver en `<a>` hasta que se promueven.
 
 Slugs se generan automáticamente (lowercase, sin tildes, guiones). El transform también produce `musicaSlugs`, `letraSlugs`, `agrupacionSlug`.
@@ -49,6 +50,61 @@ Una misma música puede tener varias letras. Cada letra es una ficha propia (`.m
 - En la card, el badge de la letra va debajo del de pieza; en el desplegable de sugerencias, debajo del badge de pieza; en la ficha, un bloque «Letras de este pasodoble».
 - De momento solo se agrupan pasodobles (`TIPOS_CON_LETRAS` en `src/lib/letras.ts`). Para otros tipos, añadirlos ahí.
 - `npm run auditar:letras` valida que el título no se repita en el grupo, que las fichas compartan música y que las variantes no lleven `destacada`/`recomendada`.
+
+### Poner los acordes de una ficha a una letra nueva
+Cuando una música tiene otra letra, los acordes caen sobre las mismas sílabas. `scripts/aplicar-acordes.mjs` reparte la letra con la métrica de la ficha base y coloca cada acorde alineando el patrón de acentos del verso. La parte que decide (qué líneas forman cada verso) la lleva el agente siguiendo la skill `letra-alternativa`; el script solo hace la aritmética de sílabas y columnas.
+
+- `npm run acordes:plan -- --base <slug>` — esqueleto de la base (nº de verso, sílabas y el acorde sobre su sílaba: `Lam«Y» Mi7«nor»`) y de la letra pegada (`L1 5s Cinco años`). Sirve para decidir el reparto antes de generar.
+- Marcas en el `.txt` de la letra: `---` sola corta entre líneas, `|` corta entre palabras (`Apaleado | y humillado`) y `-` sola salta un verso de la base sin gastar letra. Sin marcas, el reparto es automático (programación dinámica).
+- `npm run acordes:aplicar -- --base <slug> --letra <txt> --titulo "..."` — escribe `src/content/acordes/<pieza>-<agrupación>-<título>.md` con el frontmatter de la base (cambia `letraTitulo`, `fraseClave` y `date`, y autores/vídeo si se pasan). `--hermanas` añade las fichas de la misma pieza, agrupación, año **y autoría de música** como candidatas; `--destino acordes2` escribe en la colección provisional. El informe marca `⚠️` (más de una sílaba de desfase) y `~` (una).
+- `npm run acordes:revisar -- --slug <slug> [--base <slug>]` — editor local en el puerto 4324, **en modo texto**: tres columnas con la ficha original a la izquierda, el `<pre>` editable en el centro (acordes sin las etiquetas, encima de su sílaba) y la ficha base a la derecha. **Alt+←/→** mueve el acorde una columna, se puede escribir y pegar como en cualquier editor, y al guardar se vuelven a envolver los acordes en `<a>` conservando los `data-postura`. Antes de escribir comprueba que no haya tokens inválidos, acordes perdidos ni columnas fuera de la letra, y deja respaldo en `.cache/planes/<slug>.bak.md`. Los acordes que no están en el glosario salen en ámbar (y avisan al guardar). Con `--silabas` se abre el revisor antiguo, que mueve por sílaba en vez de por columna.
+- `npm run auditar:pre` — red de seguridad del editor: desenvolver y volver a envolver las 603 fichas tiene que dar exactamente el mismo `<pre>` (incluidos `data-postura`, `(Sorda)` y los espacios). Si falla, el editor no es de fiar.
+
+- `npm run acordes:evaluar` — mide aplicando los acordes de una ficha a la letra de su hermana. Empareja por orden de aparición (no «el mismo acorde más cercano») y cuenta exactos / ±1 / **>1 sílaba**. Contra fichas hechas a mano el 100 % exacto no existe (se llevan ±1 entre sí), así que el número que importa es el de >1. `--pares a>b,c>d` elige pares, `--max-fuera 12` lo usa como tope y sale con 1 si empeora. Baseline de las fichas actuales: ~61 % exactos, ~28 % ±1, ~9 % >1.
+- `npm run auditar:acordes` — relee y repinta las 562 fichas y comprueba que no se pierde ningún acorde ni cambia de sitio. La primera pasada normaliza (quita espacios de más y pega cada acorde a su sílaba); a partir de ahí el dibujo tiene que ser idéntico. Falla si una ficha no se puede leer o pierde acordes.
+
+### Buscar la letra en internet y llevar la cola
+`letras-pendientes.md` es la lista de coplas de las que solo tenemos una frase y el nombre de la agrupación (a veces aproximado). La tabla es la fuente de verdad y lleva el estado de cada una.
+
+- `npm run letras` — resumen por estado y la cola completa (`-- --estado pendiente` filtra).
+- `npm run letras -- siguiente` — el primer pendiente con su ficha base.
+- `npm run letras -- estado <n> encontrada|"con acordes"|"no encontrada"|duplicada --ficha <slug> --fuente <url> --notas "..."` — actualiza la fila.
+- `npm run letras -- auditar` — comprueba que cada `con acordes` tiene ficha real con `letraTitulo` y que la base existe.
+- `npm run letras -- anadir "frase" --agrupacion "Los X" --base <slug>` — añade una fila nueva.
+
+La búsqueda se hace con `Pasodoble "<frase>"` y, si no aparece, con la agrupación o sin la palabra «pasodoble». Se acepta la letra solo si la frase aparece literal y la agrupación y el año cuadran; se descartan traducciones y montajes.
+
+`npm run letra:web -- <url> --desde "<primera frase>" [--hasta "<corte>"] --salida .cache/letra-<n>.txt` descarga una página y la deja en un `.txt` con un verso por línea: recorta al contenedor del artículo, quita menús y recomendados, decodifica entidades y parte los textos que vienen de corrido. Con `--blogger` tira del feed Atom (muchos blogs no sirven la letra en el HTML) y con `--mapa` enseña el número de línea y el principio de cada verso para revisar el recorte. `--sin-cortar` desactiva el troceo por puntuación.
+
+`npm run letra:blog -- "<frase>" [--agrupacion "Los X"] [--blog dominio]` busca la copla en un blog de Blogger por el feed, exige que la frase aparezca entera en el cuerpo y devuelve título, fecha y URL. Por defecto busca en *Letras desde el Paraíso*, que es la que mejor separa los versos.
+
+`npm run letra:decarnaval -- <url> [--salida .cache/letra-x.txt]` saca la letra de una página de letrasdecarnaval.com del contenedor `<p id="letra">`, que trae un `<br>` por verso. Es la vía limpia para esa web (el extractor general a veces coge el bloque de «relacionados»).
+
+El `.txt` tiene que llevar **solo la letra**: si arrastra el título («Pasodoble…»), el contador de visitas, el año con la agrupación o el pie de autoría, `acordes:aplicar` se para y las enumera. Se quitan a mano (o se fuerza con `--permitir-meta`, que casi nunca es lo que quieres). Si la ficha base empieza con un verso de entrada que la letra nueva no tiene, se pone una línea `-` sola al principio y se separan los versos con `---`; así los acordes caen donde suenan.
+
+Cuando la fuente no trae saltos de verso, `acordes:aplicar` puede recibir `--lineas-duras`, que trata cada línea del `.txt` como un verso de la base.
+
+Criterio de estado: si el informe sale con muchos `⚠️` (más de ~8), la letra se deja en `encontrada` con la fuente anotada y no se publica la ficha; el reparto se termina revisando a mano. Si la letra no aparece, `no encontrada` con las webs miradas en `Notas`.
+
+### Panel `/estudio` (editar desde el móvil)
+Panel privado desplegado con Netlify Functions. Vive en `/estudio`: `noindex`, sin enlaces desde la web y fuera del sitemap. Solo entra el propietario (`OWNER_LOGIN`) con GitHub.
+
+- **Login**: `/estudio/api/auth` → GitHub OAuth (`public_repo`) → `/estudio/api/auth-callback`, que comprueba el usuario y deja una cookie cifrada (12 h) con el token. El token no llega nunca al navegador.
+- **Editor**: el mismo `<pre>` en texto que el revisor local (tres columnas: original, editor, base), con acordes coloreados, sugerencias y **Alt+←/→** para mover una columna. En móvil, pestañas y botones ◀ ▶.
+- **Guardar**: crea la rama `estudio/<slug>-<rand>`, hace el commit y abre (o actualiza) la **PR**. Netlify deja el deploy preview en la PR.
+- **Borradores**: todo lo que se crea o se está trabajando vive en `acordes3`; la lista del panel los saca primero, con la marca BORRADOR. Al guardar se actualiza la rama y la PR.
+- **Publicar**: botón que mueve el borrador de `acordes3` a `acordes` en una rama nueva y abre la PR. Al fusionar, Netlify reconstruye y el aviso de Telegram sale solo (un `.md` añadido).
+- **Fichas publicadas**: se pueden abrir y corregir; al guardar, la PR va a `acordes`.
+- **Fusionar**: botón que hace squash merge de la PR abierta de esa ficha.
+- **Avisos**: el panel compone el mismo texto que Telegram (`scripts/lib/aviso.mjs`), con botón de copiar y de abrir X. WhatsApp y X siguen saliendo desde el PC (`npm run wa`, `npm run x`): necesitan tu Chrome con sesión.
+
+Variables en Netlify: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (secreta), `SESSION_SECRET` (secreta), `OWNER_LOGIN`. El callback de la OAuth App tiene que ser `https://acordesgaditanos.com/estudio/api/auth-callback`.
+
+`npm run prs` lista las PRs abiertas del panel (borradores `estudio/*` y publicaciones `publica/*`).
+`npm run prs -- --merge [--si]` fusiona con squash los borradores; `--todas` incluye las de publicar (eso publica y avisa).
+Necesita `GITHUB_TOKEN` en `.env` (permiso `public_repo` o `repo`) o `gh` autenticado. Después, `git pull`.
+
+`npm run promover -- --slug <slug>[,<slug>] | --todos [--dry]` pasa los borradores de `acordes3` a `acordes`, les pone la fecha del día y borra el borrador. Después, `auditar:pre`, `auditar:acordes` y el commit con `subir-acorde`.
 
 ### Autores
 `AutorCardsGroup` pinta el grid de autores (2 columnas en desktop, 1 en móvil). Cada `AutorCard` enlaza a la página principal del autor según `type` y añade chips a `/autor/musica/{slug}` y `/autor/letra/{slug}` cuando tiene créditos, calculados en build con `contarCreditosAutores` (`src/lib/autores.ts`). La home muestra los 6 primeros por `order` (5 en móvil) y `/autores` los muestra todos. Toda la card (imagen y cuerpo) usa `--primary-contrast-color`; el título y la línea de los chips van en `--on-bright-color` y los chips usan fondo `--on-bright-color` con texto `--primary-contrast-color` (sin cambio al hover). La sombra es `--on-bright-color` en reposo y en hover (solo crece y la card se desplaza).
@@ -227,6 +283,8 @@ Skills en `.agents/skills/` para tareas comunes:
 - `cifrado-a-formato` — convertir cifrado pegado de otra web al formato propio (línea de acordes + letra con palabras completas)
 - `create-acorde` — crear nuevo archivo markdown de acorde
 - `promover-acorde` — mover acordes revisados de `acordes2` a `acordes` (local, no versionada)
+- `letra-alternativa` — aplicar los acordes de una ficha a una letra nueva de la misma música
+- `prs-acordes3` — listar y fusionar las PRs de los borradores que se guardaron desde el móvil
 - `subir-acorde` — ajustar la fecha al día siguiente del último publicado y hacer commit + push
 - `transportar` — transponer acordes de tonalidad
 - `tweet-acorde` — generar tweet para anunciar acorde

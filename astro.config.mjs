@@ -27,8 +27,11 @@ export default defineConfig({
         !page.includes('/coming-soon') &&
         !page.includes('/en-construccion') &&
         !page.includes('/acordes2') &&
+        !page.includes('/acordes3') &&
         !page.includes('/lista2') &&
         !page.includes('/reconocer-acorde') &&
+        // Panel privado de edición: noindex y fuera del sitemap.
+        !page.includes('/estudio') &&
         // Página de resultados: noindex y fuera del sitemap.
         !page.includes('/buscar'),
     }),

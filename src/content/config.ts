@@ -66,6 +66,10 @@ const acordes = defineCollection({ schema: acordeSchema });
 // Los acordes viven sin envolver en <a>; la envoltura se aplica al promover a `acordes`.
 const acordes2 = defineCollection({ schema: acordeSchema });
 
+// Colección de borradores del panel /estudio: la PR lleva aquí la ficha
+// hasta que se promueve a `acordes` desde el ordenador.
+const acordes3 = defineCollection({ schema: acordeSchema });
+
 const autores = defineCollection({
   schema: z
     .object({
@@ -94,6 +98,7 @@ const donaciones = defineCollection({
 export const collections = {
   acordes: acordes,
   acordes2: acordes2,
+  acordes3: acordes3,
   autores: autores,
   donaciones: donaciones,
 };

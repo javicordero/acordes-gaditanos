@@ -1,0 +1,219 @@
+---
+// Panel privado de edición (solo el propietario, con login de GitHub).
+//
+// Vive en /estudio, no está enlazado desde la web, va con noindex y fuera del
+// sitemap. Las funciones de /estudio/api/* son las que hablan con GitHub: la
+// página solo manda el `.md` ya montado.
+
+export const prerender = true;
+---
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Estudio · Acordes Gaditanos</title>
+<style>
+  :root { --tinta:#1d1a16; --papel:#fbf8f1; --suave:#8a8175; --linea:#e2dacb; --acento:#b4552b; --ok:#3d7a4a; --nuevo:#b07d12; --mal:#b3261e; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { height: 100%; }
+  body { margin:0; background:var(--papel); color:var(--tinta); font:14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; display:flex; flex-direction:column; }
+  a { color:var(--acento); }
+  header { flex:0 0 auto; border-bottom:1px solid var(--linea); padding:8px 14px; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
+  h1 { font-size:15px; margin:0; font-weight:650; }
+  .meta { color:var(--suave); font-size:12.5px; }
+  .barra { display:flex; gap:8px; align-items:center; margin-left:auto; flex-wrap:wrap; }
+  button, .boton { font:inherit; font-size:12.5px; padding:5px 10px; border:1px solid var(--linea); background:#fff; color:var(--tinta); border-radius:6px; cursor:pointer; text-decoration:none; display:inline-block; }
+  button:hover, .boton:hover { border-color:var(--acento); color:var(--acento); }
+  button.principal { background:var(--acento); border-color:var(--acento); color:#fff; }
+  button.principal:hover { color:#fff; filter:brightness(1.08); }
+  button:disabled { opacity:.4; cursor:default; }
+  .estado { font-size:12px; color:var(--suave); }
+  .estado.ok { color:var(--ok); }
+  .estado.mal { color:var(--mal); }
+  main { flex:1 1 0; min-height:0; overflow:hidden; display:flex; }
+  #login { flex:1; display:flex; align-items:center; justify-content:center; padding:24px; }
+  #login[hidden] { display:none; }
+  #login .caja { max-width:420px; text-align:center; }
+  #login h2 { font-size:18px; margin:0 0 6px; }
+  #login p { color:var(--suave); }
+  /* lista */
+  #vista-lista { flex:1; overflow:auto; padding:16px; }
+  .buscador { display:flex; gap:8px; margin-bottom:12px; }
+  .buscador input { flex:1; font:inherit; padding:7px 10px; border:1px solid var(--linea); border-radius:6px; background:#fff; }
+  .filas { display:grid; gap:2px; }
+  .fila { display:grid; grid-template-columns: 1fr auto; gap:10px; padding:7px 10px; border-radius:6px; cursor:pointer; border:1px solid transparent; }
+  .fila:hover { background:#f6efe3; border-color:var(--linea); }
+  .fila b { font-weight:600; }
+  .fila small { color:var(--suave); display:block; }
+  .fila .der { color:var(--suave); font-size:12px; text-align:right; }
+  .marca { display:inline-block; font-size:10px; letter-spacing:.06em; color:#fff; background:var(--nuevo); border-radius:4px; padding:0 4px; vertical-align:1px; }
+  .marca.pr { background:var(--acento); }
+  /* editor */
+  #vista-editor { flex:1; display:flex; flex-direction:column; min-height:0; }
+  #vista-editor[hidden] { display:none; }
+  .cols { flex:1; display:grid; grid-template-columns: 1fr 1.35fr 1fr; min-height:0; }
+  .cols.una { grid-template-columns: 1fr; }
+  .pane { min-width:0; min-height:0; display:flex; flex-direction:column; border-right:1px solid var(--linea); }
+  .pane:last-child { border-right:0; }
+  .cab { padding:5px 10px; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); border-bottom:1px solid var(--linea); display:flex; gap:8px; align-items:center; }
+  .cab b { color:var(--tinta); font-weight:600; letter-spacing:0; text-transform:none; font-size:12px; }
+  .lienzo { position:relative; flex:1; min-height:0; overflow:hidden; }
+  pre, textarea { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space:pre; overflow:auto; tab-size:4; }
+  pre { color:var(--tinta); }
+  textarea { position:absolute; inset:0; resize:none; background:transparent; color:transparent; caret-color:var(--acento); outline:none; }
+  textarea::selection { background:rgba(180,85,43,.22); }
+  #capa { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  .ac { color:var(--acento); }
+  .nuevo { color:var(--nuevo); text-decoration:underline dotted; }
+  .anot { color:var(--suave); }
+  footer { flex:0 0 auto; border-top:1px solid var(--linea); padding:5px 12px; font-size:11.5px; color:var(--suave); display:flex; gap:12px; flex-wrap:wrap; }
+  kbd { font:11px ui-monospace, monospace; border:1px solid var(--linea); border-bottom-width:2px; border-radius:4px; padding:0 4px; background:#fff; }
+  #sug { position:fixed; z-index:30; background:#fff; border:1px solid var(--linea); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.15); padding:4px; display:none; max-height:200px; overflow:auto; }
+  #sug button { display:block; width:100%; text-align:left; border:0; border-radius:5px; padding:3px 8px; font:12.5px ui-monospace, monospace; background:transparent; }
+  #sug button.sel, #sug button:hover { background:#f2e3d8; color:var(--acento); }
+  #aviso { position:fixed; left:12px; right:12px; bottom:12px; z-index:25; background:#fff; border:1px solid var(--linea); border-left:4px solid var(--acento); border-radius:8px; padding:10px 12px; font-size:12.5px; display:none; white-space:pre-wrap; box-shadow:0 8px 24px rgba(0,0,0,.12); max-height:45vh; overflow:auto; }
+  #aviso .cerrar { float:right; margin-left:10px; }
+  dialog { border:1px solid var(--linea); border-radius:10px; padding:0; width:min(560px, 94vw); }
+  dialog::backdrop { background:rgba(29,26,22,.35); }
+  dialog form, dialog .cuerpo { padding:16px; }
+  dialog h2 { margin:0 0 10px; font-size:16px; }
+  .campo { display:grid; gap:3px; margin-bottom:9px; }
+  .campo label { font-size:11.5px; color:var(--suave); text-transform:uppercase; letter-spacing:.05em; }
+  .campo input, .campo select, .campo textarea { font:inherit; padding:6px 8px; border:1px solid var(--linea); border-radius:6px; background:#fff; }
+  .campo textarea { min-height:80px; font-family:ui-monospace, monospace; font-size:12.5px; }
+  .dos { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
+  .tabs { display:none; }
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; }
+    .pane { display:none; }
+    .pane.activo { display:flex; }
+    .tabs { display:flex; gap:6px; padding:6px 10px; border-bottom:1px solid var(--linea); }
+    .tabs button { flex:1; }
+    .tabs button.sel { background:var(--acento); border-color:var(--acento); color:#fff; }
+    .mover { display:flex; }
+  }
+  .mover { display:none; gap:6px; padding:6px 10px; border-top:1px solid var(--linea); }
+  .mover button { flex:1; padding:9px; font-size:15px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Estudio</h1>
+  <span class="meta" id="cab-meta"></span>
+  <span class="estado" id="cab-estado"></span>
+  <div class="barra">
+    <button id="b-lista" hidden>← Lista</button>
+    <button id="b-nueva" hidden>Nueva ficha</button>
+    <button id="b-publicar" hidden title="Pasa el borrador a acordes y abre la PR">Publicar</button>
+    <button id="b-comprobar" hidden>Comprobar</button>
+    <button id="b-pr" hidden>Ver PR</button>
+    <button id="b-fusionar" hidden>Fusionar</button>
+    <button id="b-avisos" hidden>Avisos</button>
+    <button id="b-guardar" class="principal" hidden>Guardar</button>
+    <span id="quien" class="meta"></span>
+  </div>
+</header>
+
+<main>
+  <div id="login">
+    <div class="caja">
+      <h2>Panel privado</h2>
+      <p>Solo el propietario. Entra con tu cuenta de GitHub.</p>
+      <a class="boton" href="/estudio/api/auth" style="background:var(--acento);color:#fff;border-color:var(--acento);padding:8px 14px">Entrar con GitHub</a>
+    </div>
+  </div>
+
+  <div id="vista-lista" hidden>
+    <div class="buscador">
+      <input id="q" type="search" placeholder="Buscar por pieza, agrupación, año o título…" autocomplete="off">
+    </div>
+    <div class="filas" id="filas"></div>
+  </div>
+
+  <div id="vista-editor" hidden>
+    <div class="tabs">
+      <button data-pane="izq">Original</button>
+      <button data-pane="cen" class="sel">Editor</button>
+      <button data-pane="der">Base</button>
+    </div>
+    <div class="cols" id="cols">
+      <section class="pane" data-pane="izq">
+        <div class="cab"><b>Original</b></div>
+        <pre id="ref-izq"></pre>
+      </section>
+      <section class="pane activo" data-pane="cen">
+        <div class="cab"><b>Editor</b><span id="editor-meta"></span></div>
+        <div class="lienzo">
+          <pre id="capa"></pre>
+          <textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+          <div id="sug"></div>
+        </div>
+        <div class="mover">
+          <button id="m-izq" title="Mover el acorde una columna a la izquierda">◀</button>
+          <button id="m-der" title="Mover el acorde una columna a la derecha">▶</button>
+        </div>
+      </section>
+      <section class="pane" data-pane="der">
+        <div class="cab"><b>Base</b><span id="base-meta"></span></div>
+        <pre id="ref-der"></pre>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span><kbd>Alt</kbd>+<kbd>←</kbd><kbd>→</kbd> mover acorde</span>
+  <span><kbd>Ctrl</kbd>+<kbd>S</kbd> guardar</span>
+  <span><kbd>Ctrl</kbd>+<kbd>Z</kbd> deshacer</span>
+  <span id="pie"></span>
+</footer>
+
+<div id="aviso"></div>
+
+<dialog id="dlg-nueva">
+  <form id="f-nueva">
+    <h2>Nueva ficha</h2>
+    <div class="dos">
+      <div class="campo"><label>Pieza</label><input name="pieza" value="Pasodoble" required></div>
+      <div class="campo"><label>Agrupación</label><input name="agrupacion" required></div>
+      <div class="campo"><label>Año</label><input name="year" inputmode="numeric" required></div>
+      <div class="campo"><label>Cejilla</label><input name="cejilla" inputmode="numeric" placeholder="opcional"></div>
+      <div class="campo"><label>Música</label><input name="musica"></div>
+      <div class="campo"><label>Letra</label><input name="letra"></div>
+      <div class="campo"><label>Título de la letra</label><input name="letraTitulo"></div>
+      <div class="campo"><label>Vídeo (embed)</label><input name="video"></div>
+      <div class="campo"><label>Imagen</label><input name="img"></div>
+      <div class="campo"><label>Ficha base (de la que copiar acordes)</label><input name="base" list="slugs" placeholder="slug"></div>
+    </div>
+    <div class="campo"><label>Frase clave</label><input name="fraseClave"></div>
+    <datalist id="slugs"></datalist>
+    <p class="meta" style="font-size:12px">La ficha se crea con el bloque de la base. Después pegas la letra encima y mueves los acordes. Para el reparto automático, usa <code>npm run acordes:aplicar</code> en el ordenador.</p>
+    <div class="acciones">
+      <button type="button" id="n-cancelar">Cancelar</button>
+      <button type="submit" class="principal">Crear</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="dlg-aviso">
+  <div class="cuerpo">
+    <h2>Avisos</h2>
+    <p class="meta" id="aviso-meta"></p>
+    <div class="campo"><textarea id="aviso-texto" readonly></textarea></div>
+    <div class="acciones">
+      <button type="button" id="av-copiar">Copiar</button>
+      <button type="button" id="av-tuit">Abrir en X</button>
+      <button type="button" id="av-cerrar" class="principal">Cerrar</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+import '../scripts/estudio.js';
+</script>
+</body>
+</html>
