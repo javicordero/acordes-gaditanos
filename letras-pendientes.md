@@ -77,6 +77,7 @@ llevan `?` hay que resolverlas mirando el listado de agrupaciones del cancionero
 | 45 | Era un 4 de diciembre | Los piratas | pasodoble-los-piratas | pendiente | |  |  |
 | 46 | Con permiso buenas tardes | Los Piratas | pasodoble-los-piratas | pendiente | |  |  |
 | 47 | La muerte es una playa | Los comparsistas se la dan de artistas | pasodoble-los-comparsistas-se-la-dan-de-artistas | pendiente | |  |  |
+| 48 | Vecina estandarte del barrio | Dsas3 | pasodoble-dsas3 | pendiente | |  |  |
 
 ## Historial
 
