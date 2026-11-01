@@ -4,7 +4,7 @@ agrupacion: Los Colgaos
 year: 2024
 img: 'https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/07/colgaos-ReVEYnWZmk0pH97vfq71eOK-1200x840@abc.jpg'
 cejilla: 4
-date: "31/10/2026"
+date: "01/11/2026"
 video: 'https://www.youtube.com/embed/pm79P9BHtco?si=RgYoNEw5xvG1H8Xc'
 musica: Raúl Cabrera
 letra: El Chapa
