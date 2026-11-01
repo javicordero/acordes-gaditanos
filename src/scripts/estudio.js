@@ -307,7 +307,6 @@ function pintar() {
   capa.innerHTML = lineas.map((l, i) => htmlLinea(l, tipo(l, lineas[i + 1] || ''))).join('\n');
   let max = 0;
   for (const l of lineas) max = Math.max(max, columnasLinea(l));
-  maxColumnas = max;
   const meta = $('editor-meta');
   meta.textContent = lineas.length + ' líneas · ' + max + '/' + ANCHO_MAX;
   meta.classList.toggle('mal', max > ANCHO_MAX);
@@ -321,17 +320,8 @@ function pintarTexto(texto, el) {
 /* ---------------- ancho, zoom y cursor ---------------- */
 const CLAVE_ZOOM = 'estudio:zoom:v2';
 const FUENTE_PRE = 'ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace';
-let maxColumnas = 0;
 let zoomAjustado = false;
-// Sin preferencia guardada, en móvil se ajusta solo cuando la ficha cabe en
-// ANCHO_MAX columnas pero no a 13 px: así no hay que arrastrar 20-30 px para
-// ver el final de la línea. Si el usuario pulsa Ajustar/Ampliar, manda él.
-let zoomAuto = true;
-try {
-  const guardado = localStorage.getItem(CLAVE_ZOOM);
-  if (guardado === '1') { zoomAjustado = true; zoomAuto = false; }
-  else if (guardado === '0') { zoomAuto = false; }
-} catch { /* sin almacenamiento */ }
+try { zoomAjustado = localStorage.getItem(CLAVE_ZOOM) === '1'; } catch { /* sin almacenamiento */ }
 
 /** Ancho de un carácter a 13 px (la fuente del editor), medido de verdad. */
 function anchoCaracter13() {
@@ -349,10 +339,10 @@ function anchoCaracter13() {
 }
 
 /** Tamaño al que caben ANCHO_MAX columnas en el ancho actual (9–13 px). */
-function tamAjustado(ch = anchoCaracter13()) {
+function tamAjustado() {
   const disp = lienzo.clientWidth - 28 - 4;
   if (disp <= 0) return 13;
-  const tam = (13 * disp) / (ANCHO_MAX * ch);
+  const tam = (13 * disp) / (ANCHO_MAX * anchoCaracter13());
   return Math.max(9, Math.min(13, Math.floor(tam * 2) / 2));
 }
 
@@ -361,13 +351,8 @@ function aplicarZoom() {
   const b = $('b-zoom');
   if (!b) return;
   if (!lienzo.clientWidth) { b.hidden = true; return; }
-  const ch = anchoCaracter13();
-  const tam = tamAjustado(ch);
-  const cabe = tam >= 13; // caben las 55 columnas a 13 px
-  const cabeTexto = maxColumnas * ch + 28 <= lienzo.clientWidth;
-  if (zoomAuto) {
-    zoomAjustado = !cabe && maxColumnas > 0 && maxColumnas <= ANCHO_MAX && !cabeTexto;
-  }
+  const tam = tamAjustado();
+  const cabe = tam >= 13;
   b.hidden = cabe;
   b.textContent = zoomAjustado ? 'Ampliar' : 'Ajustar';
   b.title = zoomAjustado
@@ -1152,7 +1137,6 @@ document.querySelectorAll('.tabs button').forEach((b) => {
 });
 
 $('b-zoom').onclick = () => {
-  zoomAuto = false; // el usuario manda a partir de aquí
   zoomAjustado = !zoomAjustado;
   try { localStorage.setItem(CLAVE_ZOOM, zoomAjustado ? '1' : '0'); } catch { /* sin almacenamiento */ }
   aplicarZoom();
