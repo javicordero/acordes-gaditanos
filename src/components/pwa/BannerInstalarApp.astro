@@ -16,10 +16,8 @@ const { ubicacion } = Astro.props;
 ---
 
 <div class='banner-instalar' data-pwa-banner data-ubicacion={ubicacion}>
-  <p class='banner-instalar__texto'>
-    <span class='banner-instalar__badge'>Novedad</span>
-    Instala la aplicación Acordes Gaditanos en tu móvil.
-  </p>
+  <span class='banner-instalar__badge'>Novedad</span>
+  <p class='banner-instalar__texto'>Instala la aplicación Acordes Gaditanos en tu móvil.</p>
   <button type='button' class='banner-instalar__accion' data-pwa-instalar>
     <Icon name='descargar' width={15} height={15} />
     <span>Instalar app</span>
@@ -87,12 +85,11 @@ const { ubicacion } = Astro.props;
     margin: 0;
   }
 
-  /* Insignia inline: el texto arranca a su derecha y, si es largo, sigue por
-     debajo a todo el ancho (no deja una columna vacía bajo la insignia). */
+  /* Insignia arriba (Novedad), texto debajo y botón debajo, como el antiguo
+     NovedadCallout. */
   .banner-instalar__badge {
+    flex: none;
     display: inline-block;
-    vertical-align: middle;
-    margin-right: 8px;
     background: var(--primary-contrast-color);
     color: var(--on-bright-color);
     font-family: 'Roboto Mono', monospace;
