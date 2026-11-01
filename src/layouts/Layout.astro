@@ -70,16 +70,15 @@ const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acord
     </script>
 
     <!-- PWA: captura el beforeinstallprompt antes de que carguen los módulos.
-         Solo en la portada (donde mostramos nuestro botón flotante) suprimimos el
-         aviso nativo de Chrome. En el resto de páginas lo dejamos aparecer, que es
-         lo que ve quien llega directo a una ficha desde Google. -->
+         En la portada suprimimos el aviso nativo de Chrome (ahí va nuestro botón
+         flotante). En el resto lo dejamos aparecer Y capturamos el evento para
+         poder mostrar la tarjeta de la columna derecha. -->
     <script is:inline>
       (function () {
         window.__agPwa = { prompt: null, installed: false };
         window.addEventListener('beforeinstallprompt', function (e) {
           var esIndex = location.pathname === '/' || location.pathname === '/index.html';
-          if (!esIndex) return; // dejamos que Chrome muestre su aviso nativo
-          e.preventDefault();
+          if (esIndex) e.preventDefault();
           window.__agPwa.prompt = e;
           window.dispatchEvent(new CustomEvent('ag:beforeinstallprompt'));
         });
