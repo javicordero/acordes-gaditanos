@@ -82,6 +82,10 @@ export default async (req) => {
     const yaDestino = destino !== slug ? await contenido(s.token, carpeta, destino, rama) : null;
     if (yaDestino) return json({ error: `ya existe una ficha con el slug ${destino}` }, 409);
 
+    // GitHub exige el `sha` del archivo para sobrescribir uno que ya existe en
+    // la rama; sin él devuelve 422 («sha wasn't supplied»).
+    const sha = destino === slug ? actual?.sha : null;
+
     const titulo = [campo(md, 'pieza'), campo(md, 'agrupacion'), campo(md, 'year')].filter(Boolean).join(' · ');
     const commit = mensaje || `${actual ? 'Actualiza' : 'Añade'} ${titulo || destino}`;
 
@@ -92,7 +96,7 @@ export default async (req) => {
         message: commit,
         content: Buffer.from(md, 'utf8').toString('base64'),
         branch: rama,
-        ...(yaDestino ? { sha: yaDestino.sha } : {}),
+        ...(sha ? { sha } : {}),
       },
     });
 
