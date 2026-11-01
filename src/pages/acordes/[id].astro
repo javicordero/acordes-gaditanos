@@ -296,7 +296,7 @@ const webPageSchema = {
           flex-direction: column;
         }
 
-        /* Orden en móvil: Anuncio1 → Apoyar → Instalar → SigueTocando → Recomendados → Anuncio2 → ApareceAqui/VideoCover → Video → Anuncio3 */
+        /* Orden en móvil: Anuncio1 → Apoyar → Instalar → Pedir una copla → SigueTocando → Recomendados → Anuncio2 → ApareceAqui/VideoCover → Video → Anuncio3 */
         .right-column > :global(.anuncio-1) {
           order: 1;
         }
@@ -309,12 +309,16 @@ const webPageSchema = {
           order: 3;
         }
 
-        .right-column > :global(.sigue-tocando) {
+        .right-column > :global(.pedir-copla) {
           order: 4;
         }
 
-        .right-column > :global(.recomendados) {
+        .right-column > :global(.sigue-tocando) {
           order: 5;
+        }
+
+        .right-column > :global(.recomendados) {
+          order: 6;
         }
 
         .right-column > :global(.anuncio-2) {
@@ -323,18 +327,14 @@ const webPageSchema = {
 
         .right-column > :global(.video-cover),
         .right-column > :global(.aparece-aqui) {
-          order: 6;
-        }
-
-        .right-column > :global(.video-oficial) {
           order: 7;
         }
 
-        .right-column > :global(.anuncio-3) {
-          display: none !important;
+        .right-column > :global(.video-oficial) {
+          order: 8;
         }
 
-        .right-column > :global(.pedir-copla) {
+        .right-column > :global(.anuncio-3) {
           display: none !important;
         }
 

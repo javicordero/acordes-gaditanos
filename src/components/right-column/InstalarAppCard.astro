@@ -51,14 +51,14 @@ const { class: className } = Astro.props;
 </script>
 
 <style>
-  /* La sección la pinta RightColumnCard (con su propio scope), así que para
-     ocultarla/mostrarla usamos :global sobre la clase única que le pasamos. */
+  /* La sección la pinta RightColumnCard (con su propio scope y `display:flex`),
+     así que para ocultarla/mostrarla necesitamos `!important` sobre la clase. */
   :global(.instalar-app) {
-    display: none;
+    display: none !important;
   }
 
   :global(.instalar-app.instalar-app--visible) {
-    display: flex;
+    display: flex !important;
   }
 
   .card {
