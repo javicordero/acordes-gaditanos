@@ -6,7 +6,7 @@ musica: El Tomate
 letra: Fermín
 modalidad: Chirigota
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/02/18/desgraciaitos(8)-U40578328776YIl-1200x840@abc.jpg
-cejilla: 0
+cejilla: 2
 date: "21/11/2026"
 video: 'https://www.youtube.com/embed/77sVfn_nK3M?feature=player_embedded'
 ---
