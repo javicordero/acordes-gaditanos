@@ -1,9 +1,10 @@
 ---
 // src/components/pwa/BannerInstalarApp.astro
 //
-// Banner propio y discreto (solo texto) que invita a instalar la app.
-// Se usa en dos sitios: tras el título de «Novedades» (portada) y bajo la
-// cejilla en las fichas. Solo en móvil, oculto si ya está instalada o descartada.
+// Banner propio (estilo del antiguo NovedadCallout del «listado de todas las
+// coplas») que invita a instalar la app. Se usa tras el título de «Novedades»
+// (portada) y bajo la cejilla en las fichas. Solo en móvil, oculto si ya está
+// instalada o descartada.
 interface Props {
   /** Para la analítica: 'portada' o 'ficha'. */
   ubicacion: string;
@@ -12,10 +13,15 @@ interface Props {
 const { ubicacion } = Astro.props;
 ---
 
-<button type='button' class='banner-instalar' data-pwa-banner data-ubicacion={ubicacion}>
-  <span class='banner-instalar__novedad'>Novedad</span>
-  <span class='banner-instalar__texto'>Instala la aplicación Acordes Gaditanos en tu móvil.</span>
-</button>
+<div class='banner-instalar' data-pwa-banner data-ubicacion={ubicacion}>
+  <span class='banner-instalar__badge'>Novedad</span>
+  <div class='banner-instalar__cuerpo'>
+    <p class='banner-instalar__texto'>Instala la aplicación Acordes Gaditanos en tu móvil.</p>
+    <p class='banner-instalar__texto'>
+      <button type='button' class='banner-instalar__accion' data-pwa-instalar>Instalar app</button>
+    </p>
+  </div>
+</div>
 
 <script>
   import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
@@ -33,9 +39,10 @@ const { ubicacion } = Astro.props;
         promptMostrado = true;
         eventoPwa('pwa_prompt_shown', { ubicacion: banner.dataset.ubicacion });
       }
-      if (!banner.dataset.wired) {
-        banner.dataset.wired = 'true';
-        banner.addEventListener('click', () => {
+      const btn = banner.querySelector<HTMLElement>('[data-pwa-instalar]');
+      if (btn && !btn.dataset.wired) {
+        btn.dataset.wired = 'true';
+        btn.addEventListener('click', () => {
           eventoPwa('pwa_home_banner_click', { ubicacion: banner.dataset.ubicacion });
           instalar();
         });
@@ -54,47 +61,69 @@ const { ubicacion } = Astro.props;
 <style>
   .banner-instalar {
     display: none;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: fit-content;
+    max-width: 100%;
     margin: 0;
-    padding: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: 'Roboto Mono', monospace;
-    text-align: center;
+    padding: 14px 16px;
+    background: var(--callout-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
   .banner-instalar--visible {
     display: flex;
   }
 
-  .banner-instalar__novedad {
-    color: var(--primary-contrast-color);
-    font-size: 0.68rem;
+  .banner-instalar__badge {
+    flex: none;
+    display: inline-block;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    font-family: 'Roboto Mono', monospace;
     font-weight: 800;
-    letter-spacing: 1px;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+    padding: 4px 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+  }
+
+  .banner-instalar__cuerpo {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .banner-instalar__texto {
-    color: var(--text-secondary-color);
-    font-size: 0.82rem;
-    line-height: 1.5;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    margin: 0;
   }
 
-  .banner-instalar:hover .banner-instalar__texto,
-  .banner-instalar:focus-visible .banner-instalar__texto {
+  .banner-instalar__accion {
+    background: none;
+    border: none;
+    padding: 0;
     color: var(--link-color);
+    font: inherit;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    cursor: pointer;
   }
 
-  .banner-instalar:focus-visible {
-    outline: 2px solid var(--primary-contrast-color);
-    outline-offset: 2px;
+  .banner-instalar__accion:hover {
+    color: var(--link-hover-color);
+  }
+
+  .banner-instalar__accion:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 3px;
   }
 </style>
