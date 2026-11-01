@@ -483,6 +483,7 @@ async function main() {
   // Posiciones que abren el diagrama por defecto (el popover muestra la primera).
   const POSICIONES_PREFERIDAS = {
     Sisus2: [{ trastes: [-1, 2, 4, 4, 2, 2], baseTraste: 1, cejilla: null }],
+    'Re#dim7': [{ trastes: [-1, -1, 1, 2, 1, 2], baseTraste: 1, cejilla: null }],
   };
 
   for (const [etiqueta, preferidas] of Object.entries(POSICIONES_PREFERIDAS)) {

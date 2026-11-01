@@ -13035,18 +13035,6 @@
       "posiciones": [
         {
           "trastes": [
-            0,
-            6,
-            7,
-            5,
-            7,
-            0
-          ],
-          "baseTraste": 5,
-          "cejilla": null
-        },
-        {
-          "trastes": [
             -1,
             -1,
             1,
@@ -13055,6 +13043,18 @@
             2
           ],
           "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            0,
+            6,
+            7,
+            5,
+            7,
+            0
+          ],
+          "baseTraste": 5,
           "cejilla": null
         }
       ]
