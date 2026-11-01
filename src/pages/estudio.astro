@@ -14,178 +14,258 @@ export const prerender = true;
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Estudio · Acordes Gaditanos</title>
+<link rel="preload" href="/fonts/bodoni-72-oldstyle-book.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/roboto-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style is:global>
-  :root { --tinta:#1d1a16; --papel:#fbf8f1; --suave:#8a8175; --linea:#e2dacb; --acento:#b4552b; --ok:#3d7a4a; --nuevo:#b07d12; --mal:#b3261e; }
-  * { box-sizing: border-box; }
-  [hidden] { display: none !important; }
+  /* Tipografías de la web (el panel es una página suelta: las carga aquí). */
+  @font-face { font-family:'Bodoni'; src:url('/fonts/bodoni-72-oldstyle-book.woff2') format('woff2'); font-weight:normal; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Roboto Mono'; src:url('/fonts/roboto-mono-latin.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Roboto Mono'; src:url('/fonts/roboto-mono-latin.woff2') format('woff2'); font-weight:700; font-style:normal; font-display:swap; }
+
+  :root {
+    --fondo:#e5e5e5;
+    --papel:#ffffff;
+    --tinta:#222222;
+    --suave:#555555;
+    --linea:#000000;
+    --acento:#fca311;
+    --navy:#14213d;
+    --azul:#0044cc;
+    --ok:#1a7f37;
+    --nuevo:#b45309;
+    --mal:#d32f2f;
+    --sombra:4px 4px 0 0 #000;
+    --sombra-sm:3px 3px 0 0 #000;
+    --mono:'Roboto Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+    --serif:'Bodoni', Georgia, 'Times New Roman', serif;
+  }
+  * { box-sizing:border-box; }
+  [hidden] { display:none !important; }
   html { height:100%; }
   /* `--alto-vv` lo pone el JS con visualViewport: en iOS el teclado no encoge
      el layout y, sin esto, la barra de flechas y el pie quedan debajo. */
-  body { margin:0; height:100vh; height:var(--alto-vv, 100dvh); background:var(--papel); color:var(--tinta); font:14px/1.45 system-ui, -apple-system, Segoe UI, sans-serif; display:flex; flex-direction:column; }
-  a { color:var(--acento); }
-  header { flex:0 0 auto; border-bottom:1px solid var(--linea); padding:8px 14px; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
-  h1 { font-size:15px; margin:0; font-weight:650; }
-  h1 a { color:inherit; text-decoration:none; }
+  body { margin:0; height:100vh; height:var(--alto-vv, 100dvh); background:var(--fondo); color:var(--tinta); font:400 14px/1.5 var(--mono); display:flex; flex-direction:column; }
+  a { color:var(--azul); }
+  :focus-visible { outline:3px solid var(--acento); outline-offset:2px; }
+
+  /* Cabecera: como la de la web (negra con filo ámbar y logo Bodoni). */
+  header { flex:0 0 auto; position:relative; z-index:5; background:#000; color:#fff; border-bottom:4px solid var(--acento); padding:0 14px; min-height:56px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  h1 { margin:0; font:normal 1.45rem/1 var(--serif); letter-spacing:.4px; }
+  h1 a { color:var(--acento); text-decoration:none; }
   h1 a:hover, h1 a:focus-visible { text-decoration:underline; }
-  .meta { color:var(--suave); font-size:12.5px; }
-  .barra { display:flex; gap:8px; align-items:center; margin-left:auto; flex-wrap:wrap; }
-  button, .boton { font:inherit; font-size:12.5px; padding:5px 10px; border:1px solid var(--linea); background:#fff; color:var(--tinta); border-radius:6px; cursor:pointer; text-decoration:none; display:inline-block; }
-  button:hover, .boton:hover { border-color:var(--acento); color:var(--acento); }
-  button.principal { background:var(--acento); border-color:var(--acento); color:#fff; }
-  button.principal:hover { color:#fff; filter:brightness(1.08); }
+  .meta { color:#d0d0d0; font-size:11.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:34vw; }
+  .estado { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#d0d0d0; }
+  .estado.ok { color:var(--acento); }
+  .estado.mal { color:#ff8a8a; }
+  .barra { display:flex; align-items:center; gap:6px; margin-left:auto; flex-wrap:wrap; }
+  header button { border-color:var(--acento); background:transparent; color:var(--acento); box-shadow:none; }
+  header button:hover { background:var(--acento); color:#000; border-color:var(--acento); }
+  header button.principal { background:var(--acento); color:#000; border-color:var(--acento); }
+  header button.principal:hover { filter:brightness(1.06); }
+  header button.revisado { background:var(--ok); border-color:var(--ok); color:#fff; }
+  header button.revisado:hover { filter:brightness(1.08); }
+
+  /* Botones: rectos, con borde negro y sombra dura. */
+  button, .boton { font:700 11px/1 var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:8px 11px; border:2px solid var(--linea); border-radius:0; background:var(--papel); color:var(--tinta); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:6px; box-shadow:var(--sombra-sm); transition:transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease; }
+  button:hover, .boton:hover { background:var(--acento); color:#000; transform:translate(-1px,-1px); box-shadow:4px 4px 0 0 #000; }
+  button:active, .boton:active { transform:translate(1px,1px); box-shadow:1px 1px 0 0 #000; }
+  button.principal, .boton.principal { background:var(--acento); color:#000; }
+  button.principal:hover, .boton.principal:hover { background:#ffb733; }
   button.revisado { background:var(--ok); border-color:var(--ok); color:#fff; }
-  button.revisado:hover { color:#fff; filter:brightness(1.08); }
-  button:disabled { opacity:.4; cursor:default; }
-  .estado { font-size:12px; color:var(--suave); }
-  .estado.ok { color:var(--ok); }
-  .estado.mal { color:var(--mal); }
+  button:disabled { opacity:.45; cursor:default; transform:none; box-shadow:none; }
+
   main { flex:1 1 0; min-height:0; overflow:hidden; display:flex; }
-  #login { flex:1; display:flex; align-items:center; justify-content:center; padding:24px; }
-  #login[hidden] { display:none; }
-  #login .caja { max-width:420px; text-align:center; }
-  #login h2 { font-size:18px; margin:0 0 6px; }
-  #login p { color:var(--suave); }
-  /* lista */
-  #vista-lista { flex:1; overflow:auto; background:var(--papel); }
-  .lista-cab { position:sticky; top:0; z-index:4; display:grid; gap:9px; padding:12px 14px 10px; background:var(--papel); border-bottom:1px solid var(--linea); }
-  .lista-cab > * { width:100%; max-width:840px; margin:0 auto; }
+
+  /* Login */
+  #login { flex:1; display:flex; align-items:center; justify-content:center; padding:24px; background:var(--fondo); }
+  #login .caja { width:100%; max-width:420px; text-align:center; background:var(--papel); border:2px solid #000; box-shadow:6px 6px 0 #000; padding:28px 24px; }
+  #login h2 { font:normal 1.7rem/1.1 var(--serif); margin:0 0 8px; }
+  #login p { color:var(--suave); font-size:12px; margin:0 0 18px; }
+
+  /* Lista */
+  #vista-lista { flex:1; overflow:auto; background:var(--fondo); }
+  .lista-cab { position:sticky; top:0; z-index:4; display:grid; gap:10px; padding:14px; background:var(--papel); border-bottom:2px solid #000; }
+  .lista-cab > * { width:100%; max-width:1000px; margin:0 auto; }
   .buscador { position:relative; display:flex; align-items:center; }
-  .buscador .lupa { position:absolute; left:11px; width:15px; height:15px; fill:none; stroke:var(--suave); stroke-width:2; stroke-linecap:round; pointer-events:none; }
-  .buscador input { flex:1; width:100%; font:inherit; font-size:15px; color:var(--tinta); background:#fff; border:1px solid var(--linea); border-radius:10px; padding:10px 38px 10px 34px; }
+  .buscador .lupa { position:absolute; left:12px; width:16px; height:16px; fill:none; stroke:#000; stroke-width:2; stroke-linecap:round; pointer-events:none; }
+  .buscador input { flex:1; width:100%; font:400 16px/1.2 var(--mono); color:var(--tinta); background:var(--papel); border:2px solid #000; border-radius:0; padding:11px 40px 11px 36px; }
   .buscador input::placeholder { color:var(--suave); }
-  .buscador input:focus { outline:none; border-color:var(--acento); box-shadow:0 0 0 3px rgba(180,85,43,.13); }
+  .buscador input:focus { outline:3px solid var(--acento); outline-offset:1px; }
   .buscador input::-webkit-search-cancel-button { display:none; }
-  .limpiar { position:absolute; right:5px; width:28px; height:28px; padding:0; border:0; border-radius:50%; background:transparent; color:var(--suave); font-size:13px; line-height:1; }
-  .limpiar:hover { color:var(--acento); background:#f6efe3; }
+  .limpiar { position:absolute; right:6px; width:30px; height:30px; padding:0; border:0; box-shadow:none; background:transparent; color:var(--suave); font-size:13px; }
+  .limpiar:hover { color:#000; background:var(--acento); transform:none; box-shadow:none; }
   .filtros { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; }
   .filtros::-webkit-scrollbar { display:none; }
-  .filtros button { flex:0 0 auto; display:inline-flex; align-items:center; gap:6px; padding:5px 11px; border-radius:999px; border:1px solid var(--linea); background:#fff; color:var(--suave); font-size:12.5px; }
-  .filtros button.sel { background:var(--tinta); border-color:var(--tinta); color:#fff; }
-  .filtros button.sel .cuenta { color:#fff; opacity:.65; }
-  .filtros .cuenta { font-size:11px; font-variant-numeric:tabular-nums; opacity:.85; }
-  .lista-cuerpo { max-width:840px; margin:0 auto; padding:4px 14px 28px; }
-  .grupo { display:flex; align-items:center; gap:10px; padding:15px 2px 7px; }
-  .grupo-tit { font-size:11px; font-weight:650; letter-spacing:.1em; text-transform:uppercase; color:var(--suave); }
-  .grupo i { flex:1; height:1px; background:var(--linea); }
-  .grupo-n { font-size:11px; color:var(--suave); font-variant-numeric:tabular-nums; }
+  .filtros button { flex:0 0 auto; padding:7px 10px; font-size:10px; background:var(--papel); color:var(--tinta); box-shadow:none; }
+  .filtros button.sel { background:#000; border-color:#000; color:var(--acento); }
+  .filtros button.sel .cuenta { color:var(--acento); opacity:.85; }
+  .filtros .cuenta { font-size:10px; opacity:.7; }
+  .lista-cuerpo { max-width:1000px; margin:0 auto; padding:8px 14px 40px; }
+  .grupo { display:flex; align-items:center; gap:10px; padding:20px 2px 8px; }
+  .grupo-tit { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#000; }
+  .grupo i { flex:1; height:2px; background:#000; }
+  .grupo-n { font-size:10px; color:var(--suave); }
   .grupo.pend .grupo-tit { color:var(--nuevo); }
-  .filas { display:grid; gap:6px; }
-  .fila { display:grid; grid-template-columns:minmax(0, 1fr) auto; align-items:center; gap:8px; padding:8px 10px; background:#fff; border:1px solid var(--linea); border-radius:10px; }
-  .fila:hover { border-color:#d3c4ab; }
-  .fila.pendiente { border-left:3px solid var(--nuevo); }
-  .fila-info { display:grid; gap:3px; min-width:0; padding:2px 0; border:0; border-radius:6px; background:transparent; font:inherit; color:inherit; text-align:left; cursor:pointer; }
-  .fila-info:hover .f-agr { color:var(--acento); }
-  .f-agr { font-size:14px; font-weight:600; line-height:1.25; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .f-meta { display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:11.5px; line-height:1.3; color:var(--suave); }
-  .f-year { font-variant-numeric:tabular-nums; background:var(--papel); border:1px solid var(--linea); border-radius:999px; padding:0 6px; }
+  .filas { display:grid; gap:9px; }
+  .fila { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:10px; padding:10px 12px; background:var(--papel); border:2px solid #000; border-radius:0; box-shadow:2px 2px 0 rgba(0,0,0,.18); }
+  .fila:hover { box-shadow:4px 4px 0 #000; }
+  .fila.pendiente { border-left:6px solid var(--acento); }
+  .fila-info { display:grid; gap:4px; width:100%; min-width:0; padding:0; border:0; background:transparent; font:inherit; color:inherit; text-align:left; cursor:pointer; box-shadow:none; text-transform:none; letter-spacing:0; justify-content:stretch; justify-items:stretch; align-items:stretch; }
+  .fila-info:hover { background:transparent; color:inherit; transform:none; box-shadow:none; }
+  .fila-info:hover .f-agr { color:var(--azul); }
+  .f-agr { font-size:13.5px; font-weight:700; line-height:1.3; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .f-meta { display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:10.5px; line-height:1.3; color:var(--suave); }
+  .f-year { background:var(--papel); border:1.5px solid #000; padding:0 5px; font-weight:700; color:#000; }
   .f-letra { font-style:italic; }
-  .f-meta .marca { vertical-align:0; }
-  .fila-acciones { display:flex; align-items:center; gap:5px; }
-  .fila-acciones .acc { padding:4px 9px; font-size:12px; border-radius:7px; background:#fff; }
-  .fila-acciones .acc.icono { padding:4px 8px; font-size:13px; }
-  .fila-acciones .acc.principal { background:var(--acento); border-color:var(--acento); color:#fff; }
-  .fila-acciones .acc.principal:hover { color:#fff; filter:brightness(1.08); }
-  .lista-vacio { padding:44px 10px; text-align:center; color:var(--suave); font-size:13px; }
-  .lista-vacio b { display:block; margin-bottom:4px; color:var(--tinta); font-size:14px; }
-  .lista-tope { padding-top:14px; text-align:center; color:var(--suave); font-size:11.5px; }
-  .marca { display:inline-block; font-size:10px; letter-spacing:.06em; color:#fff; background:var(--nuevo); border-radius:4px; padding:0 4px; vertical-align:1px; }
-  .marca.pr { background:var(--acento); }
-  .marca.local { background:var(--suave); }
-  .marca.remoto { background:#6b5b95; }
-  .marca.revisar { background:#3a6ea5; }
-  .nota { margin:0 0 10px; font-size:12px; color:var(--suave); line-height:1.4; }
-  /* datos de la ficha */
-  .datos { flex:0 0 auto; background:#fff; border-bottom:1px solid var(--linea); }
-  .datos > summary { display:flex; align-items:center; gap:9px; padding:7px 12px; cursor:pointer; list-style:none; overflow:hidden; }
+  .fila-acciones { display:flex; align-items:center; gap:6px; }
+  .fila-acciones .acc { padding:7px 9px; font-size:9.5px; box-shadow:none; }
+  .fila-acciones .acc.icono { padding:7px 9px; font-size:12px; }
+  .fila-acciones .acc.principal { background:var(--acento); border-color:#000; color:#000; }
+  .fila-acciones .acc.principal:hover { background:#ffb733; color:#000; }
+  .lista-vacio { padding:48px 12px; text-align:center; color:var(--suave); font-size:12px; }
+  .lista-vacio b { display:block; margin-bottom:4px; color:#000; font-size:14px; }
+  .lista-tope { padding-top:16px; text-align:center; color:var(--suave); font-size:10px; }
+  .marca { display:inline-block; font-size:9px; font-weight:700; letter-spacing:.08em; color:#000; background:var(--acento); padding:1px 4px; vertical-align:1px; }
+  .marca.pr { background:#9cc4ff; }
+  .marca.local { background:#d4d4d4; }
+  .marca.remoto { background:#c9b8ff; }
+  .marca.revisar { background:#a8d5ff; }
+  .nota { margin:0 0 12px; font-size:11.5px; color:var(--suave); line-height:1.5; }
+
+  /* Datos de la ficha */
+  .datos { flex:0 0 auto; background:var(--papel); border-bottom:2px solid #000; }
+  .datos > summary { display:flex; align-items:center; gap:10px; padding:8px 14px; cursor:pointer; list-style:none; overflow:hidden; }
   .datos > summary::-webkit-details-marker { display:none; }
-  .datos > summary::before { content:'▸'; color:var(--suave); font-size:11px; flex:0 0 auto; }
+  .datos > summary::before { content:'▸'; color:#000; font-size:11px; flex:0 0 auto; }
   .datos[open] > summary::before { content:'▾'; }
-  .datos-tit { font-size:11px; font-weight:650; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); flex:0 0 auto; }
-  .datos-resumen { font-size:12px; color:var(--tinta); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
-  .datos-slug { margin-left:auto; min-width:0; font:10.5px ui-monospace, monospace; color:var(--suave); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .datos-tit { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#000; flex:0 0 auto; }
+  .datos-resumen { font-size:11.5px; color:var(--suave); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
+  .datos-slug { margin-left:auto; min-width:0; font:10px var(--mono); color:var(--suave); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .datos-slug.mal { color:var(--mal); }
-  .datos-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(165px, 1fr)); gap:8px 10px; padding:0 12px 12px; max-height:40vh; overflow:auto; }
+  .datos-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px,1fr)); gap:10px 12px; padding:2px 14px 14px; max-height:42vh; overflow:auto; }
   .datos-grid .campo { margin:0; }
-  .datos-grid .ancho { grid-column:1 / -1; }
-  @media (max-width: 620px) {
-    .datos-resumen { display:none; }
-    .datos-grid { grid-template-columns:1fr; max-height:46vh; }
-  }
-  /* editor */
-  #vista-editor { flex:1; display:flex; flex-direction:column; min-height:0; }
-  #vista-editor[hidden] { display:none; }
-  .cols { flex:1; display:grid; grid-template-columns: 1fr 1.35fr 1fr; min-height:0; }
-  .cols.una { grid-template-columns: 1fr; }
-  .cols.sin-base { grid-template-columns: 1.35fr 1fr; }
-  .pane { min-width:0; min-height:0; display:flex; flex-direction:column; border-right:1px solid var(--linea); }
+  .datos-grid .ancho { grid-column:1/-1; }
+
+  /* Editor */
+  #vista-editor { flex:1; display:flex; flex-direction:column; min-height:0; background:var(--fondo); }
+  .cols { flex:1; display:grid; grid-template-columns:1fr 1.35fr 1fr; min-height:0; background:var(--fondo); }
+  .cols.una { grid-template-columns:1fr; }
+  .cols.sin-base { grid-template-columns:1.35fr 1fr; }
+  .pane { min-width:0; min-height:0; display:flex; flex-direction:column; background:var(--papel); border-right:2px solid #000; }
   .pane:last-child { border-right:0; }
-  .cab { padding:5px 10px; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); border-bottom:1px solid var(--linea); display:flex; gap:8px; align-items:center; }
-  .cab b { color:var(--tinta); font-weight:600; letter-spacing:0; text-transform:none; font-size:12px; }
+  .cab { padding:7px 10px; min-height:38px; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#000; background:var(--papel); border-bottom:2px solid #000; display:flex; gap:8px; align-items:center; }
+  .cab b { color:#000; font-weight:700; letter-spacing:0; text-transform:none; font-size:12px; }
   .cab .mal { color:var(--mal); }
-  #base-sel { flex:1; min-width:0; max-width:100%; font:11px system-ui, sans-serif; padding:1px 3px; border:1px solid var(--linea); border-radius:4px; background:#fff; color:var(--tinta); }
-  #b-zoom { margin-left:auto; flex:0 0 auto; padding:2px 7px; font-size:10.5px; letter-spacing:0; text-transform:none; }
-  /* Un solo scroller: la hoja mide lo que el texto y el textarea la cubre entera.
-     Así el arrastre lateral funciona en toda el área y no hay que sincronizar. */
-  .lienzo { position:relative; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; }
-  .hoja { position:relative; width:max-content; min-width:100%; min-height:100%; --pre-size:13px; font:var(--pre-size)/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; }
-  .pane pre { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; white-space:pre; overflow:auto; tab-size:4; color:var(--tinta); }
+  #editor-meta { color:var(--suave); font-size:10px; }
+  #base-sel { flex:1; min-width:0; max-width:100%; font:400 11px var(--mono); padding:3px 4px; border:1.5px solid #000; background:var(--papel); color:var(--tinta); }
+  #b-zoom { margin-left:auto; flex:0 0 auto; padding:5px 8px; font-size:9.5px; letter-spacing:.04em; text-transform:uppercase; box-shadow:none; }
+  /* Un solo scroller: la hoja mide lo que el texto y el textarea la cubre entera. */
+  .lienzo { position:relative; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; background:var(--papel); }
+  .hoja { position:relative; width:max-content; min-width:100%; min-height:100%; --pre-size:13px; font:var(--pre-size)/1.55 var(--mono); }
+  .pane pre { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 var(--mono); white-space:pre; overflow:auto; tab-size:4; color:var(--tinta); }
   #capa { width:max-content; height:auto; overflow:visible; font:inherit; pointer-events:none; }
-  .lienzo textarea { position:absolute; inset:0; margin:0; padding:12px 14px; border:0; width:100%; height:100%; resize:none; background:transparent; color:transparent; caret-color:var(--acento); outline:none; font:inherit; white-space:pre; overflow:hidden; tab-size:4; }
-  .lienzo textarea::selection { background:rgba(180,85,43,.22); }
+  .lienzo textarea { position:absolute; inset:0; margin:0; padding:12px 14px; border:0; width:100%; height:100%; resize:none; background:transparent; color:transparent; caret-color:var(--azul); outline:none; font:inherit; white-space:pre; overflow:hidden; tab-size:4; }
+  .lienzo textarea::selection { background:rgba(252,163,17,.35); }
   /* Guía del ancho previsto: la columna 56 empieza justo aquí. */
-  .regla { position:absolute; top:0; bottom:0; left:calc(14px + 55ch); width:0; border-left:1px dashed rgba(180,85,43,.42); pointer-events:none; }
-  .ac { color:var(--acento); }
+  .regla { position:absolute; top:0; bottom:0; left:calc(14px + 55ch); width:0; border-left:1px dashed rgba(0,0,0,.3); pointer-events:none; }
+  .ac { color:var(--azul); }
   .nuevo { color:var(--nuevo); text-decoration:underline dotted; }
   .anot { color:var(--suave); }
-  /* Lo que pasa de la columna 55: rojo y subrayado (no hay salto de línea). */
   .pasado { color:var(--mal); text-decoration:underline; text-underline-offset:2px; }
-  /* Estado de la ficha local: banda en el flujo, no un aviso flotante que tape
-     el editor (en móvil se comía las últimas líneas). */
-  #nota-local { flex:0 0 auto; display:flex; align-items:flex-start; gap:8px; padding:6px 10px; font-size:12px; line-height:1.35; color:var(--suave); background:#fff; border-bottom:1px solid var(--linea); border-left:3px solid var(--nuevo); }
-  #nota-local .cerrar { margin-left:auto; flex:0 0 auto; padding:0 4px; border:0; background:transparent; color:var(--suave); font-size:12px; }
-  footer { flex:0 0 auto; border-top:1px solid var(--linea); padding:5px 12px; font-size:11.5px; color:var(--suave); display:flex; gap:12px; flex-wrap:wrap; }
-  kbd { font:11px ui-monospace, monospace; border:1px solid var(--linea); border-bottom-width:2px; border-radius:4px; padding:0 4px; background:#fff; }
-  #sug { position:fixed; z-index:30; background:#fff; border:1px solid var(--linea); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.15); padding:4px; display:none; max-height:200px; overflow:auto; }
-  #sug button { display:block; width:100%; text-align:left; border:0; border-radius:5px; padding:3px 8px; font:12.5px ui-monospace, monospace; background:transparent; }
-  #sug button.sel, #sug button:hover { background:#f2e3d8; color:var(--acento); }
-  #aviso { position:fixed; left:12px; right:12px; bottom:12px; z-index:25; background:#fff; border:1px solid var(--linea); border-left:4px solid var(--acento); border-radius:8px; padding:10px 12px; font-size:12.5px; display:none; white-space:pre-wrap; box-shadow:0 8px 24px rgba(0,0,0,.12); max-height:45vh; overflow:auto; }
-  #aviso .cerrar { float:right; margin-left:10px; }
-  dialog { border:1px solid var(--linea); border-radius:10px; padding:0; width:min(560px, 94vw); }
-  dialog::backdrop { background:rgba(29,26,22,.35); }
-  dialog form, dialog .cuerpo { padding:16px; }
-  dialog h2 { margin:0 0 10px; font-size:16px; }
-  .campo { display:grid; gap:3px; margin-bottom:9px; }
-  .campo label { font-size:11.5px; color:var(--suave); text-transform:uppercase; letter-spacing:.05em; }
-  .campo input, .campo select, .campo textarea { font:inherit; padding:6px 8px; border:1px solid var(--linea); border-radius:6px; background:#fff; }
-  .campo textarea { width:100%; height:auto; min-height:80px; color:var(--tinta); background:#fff; font-family:ui-monospace, monospace; font-size:12.5px; white-space:pre-wrap; resize:vertical; }
-  .campo textarea:focus { outline:none; border-color:var(--acento); box-shadow:0 0 0 3px rgba(180,85,43,.13); }
-  .dos { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:8px; }
+
+  /* Estado de ficha local: banda en el flujo, no un aviso flotante. */
+  #nota-local { flex:0 0 auto; display:flex; align-items:flex-start; gap:8px; padding:7px 12px; font-size:11px; line-height:1.4; color:var(--tinta); background:#fff8ec; border-bottom:2px solid #000; border-left:6px solid var(--acento); }
+  #nota-local .cerrar { margin-left:auto; flex:0 0 auto; padding:0 5px; border:0; background:transparent; color:#000; font-size:12px; box-shadow:none; }
+  #nota-local .cerrar:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
+
+  /* Pie */
+  footer { flex:0 0 auto; background:#000; color:#d0d0d0; border-top:4px solid var(--acento); padding:6px 12px; font-size:10.5px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+  footer a { color:var(--acento); }
+  kbd { font:10px var(--mono); border:1.5px solid #777; border-bottom-width:2px; padding:0 4px; background:#222; color:#fff; }
+
+  /* Sugerencias */
+  #sug { position:fixed; z-index:30; background:var(--papel); border:2px solid #000; box-shadow:6px 6px 0 #000; padding:4px; display:none; max-height:220px; overflow:auto; }
+  #sug button { display:block; width:100%; text-align:left; border:0; box-shadow:none; padding:6px 8px; font:400 12.5px var(--mono); background:transparent; text-transform:none; letter-spacing:0; }
+  #sug button.sel, #sug button:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
+
+  /* Aviso flotante (solo mensajes pasajeros) */
+  #aviso { position:fixed; left:14px; right:14px; bottom:14px; z-index:25; background:var(--papel); border:2px solid #000; border-left:8px solid var(--acento); padding:12px 14px; font-size:12px; display:none; white-space:pre-wrap; box-shadow:6px 6px 0 #000; max-height:50vh; overflow:auto; }
+  #aviso .cerrar { float:right; margin-left:10px; box-shadow:none; padding:2px 6px; }
+
+  /* Diálogos */
+  dialog { border:2px solid #000; padding:0; width:min(620px, 94vw); max-height:92dvh; background:var(--papel); color:var(--tinta); box-shadow:8px 8px 0 #000; }
+  dialog::backdrop { background:rgba(0,0,0,.55); }
+  dialog form, dialog .cuerpo { padding:20px; overflow:auto; max-height:92dvh; }
+  dialog h2 { margin:0 0 10px; font:normal 1.5rem/1.1 var(--serif); }
+  .campo { display:grid; gap:4px; margin-bottom:10px; }
+  .campo label { font-size:9.5px; font-weight:700; color:#000; text-transform:uppercase; letter-spacing:.08em; }
+  .campo input, .campo select, .campo textarea { font:400 14px var(--mono); padding:9px 10px; border:2px solid #000; border-radius:0; background:var(--papel); color:var(--tinta); width:100%; min-width:0; }
+  .campo textarea { width:100%; height:auto; min-height:100px; font-size:12.5px; white-space:pre-wrap; resize:vertical; }
+  .campo input:focus, .campo select:focus, .campo textarea:focus { outline:3px solid var(--acento); outline-offset:1px; }
+  .dos { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:14px; flex-wrap:wrap; }
+
+  /* Pestañas y flechas (solo pantallas estrechas) */
   .tabs { display:none; }
-  @media (max-width: 620px) {
-    header { padding:6px 10px; gap:6px 10px; }
-    /* Una sola fila con scroll: la cabecera deja de comerse el alto del editor. */
-    .barra { width:100%; margin-left:0; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+  .mover { display:none; gap:8px; padding:8px 10px; border-top:2px solid #000; background:var(--papel); }
+  .mover button { flex:1; padding:12px; font-size:16px; }
+
+  @media (max-width:1000px) {
+    .cols, .cols.sin-base { grid-template-columns:1fr; }
+    .pane { display:none; border-right:0; }
+    .pane.activo { display:flex; }
+    .tabs { display:flex; gap:6px; padding:8px 10px; background:var(--papel); border-bottom:2px solid #000; }
+    .tabs button { flex:1; padding:10px 6px; font-size:10px; box-shadow:none; }
+    .tabs button.sel { background:#000; border-color:#000; color:var(--acento); }
+    .mover { display:flex; }
+    .datos-resumen { display:none; }
+    .barra { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+    .barra::-webkit-scrollbar { display:none; }
+    #quien { display:none; }
+    /* Datos a pantalla completa: si no, en tablet deja el editor muy corto. */
+    .datos[open] { position:fixed; inset:0; z-index:20; overflow:auto; background:var(--papel); border-bottom:0; }
+    .datos[open] > summary { position:sticky; top:0; z-index:1; background:var(--papel); border-bottom:2px solid #000; }
+    .datos[open] > summary::after { content:'Cerrar ✕'; margin-left:auto; font-size:10px; font-weight:700; letter-spacing:.06em; }
+    .datos[open] .datos-grid { max-height:none; overflow:visible; padding-bottom:24px; }
+  }
+
+  @media (max-width:640px) {
+    body { font-size:13px; }
+    header { padding:8px 10px; gap:6px 8px; min-height:0; }
+    h1 { font-size:1.25rem; }
+    .meta { display:none; }
+    .estado { font-size:9.5px; }
+    .barra { width:100%; margin-left:0; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; gap:6px; }
     .barra::-webkit-scrollbar { display:none; }
     #quien, .pie-teclas { display:none; }
-    .lista-cab { padding:10px 10px 8px; }
-    .lista-cuerpo { padding:2px 10px 24px; }
-    .fila { grid-template-columns:1fr; gap:5px; }
+    header button { flex:0 0 auto; padding:8px 9px; font-size:9.5px; }
+    #b-lista { order:-2; }
+    #b-guardar { order:-1; }
+    .lista-cab { padding:10px; gap:8px; }
+    .lista-cuerpo { padding:6px 10px 32px; }
+    .fila { grid-template-columns:1fr; gap:8px; padding:10px; }
     .fila-acciones { justify-content:flex-end; }
     .f-agr { white-space:normal; }
-    .dos { grid-template-columns:1fr; }
+    .datos-grid { grid-template-columns:1fr; max-height:46vh; padding:2px 10px 12px; }
+    .datos > summary { padding:8px 10px; }
+    .datos-slug { display:none; }
+    .cab { padding:6px 8px; gap:6px; min-height:34px; }
+    #editor-meta { font-size:9.5px; }
+    .tabs { padding:6px 8px; }
+    .tabs button { padding:11px 4px; }
+    .mover { padding:6px 8px; }
+    .mover button { padding:13px; }
+    #nota-local { padding:6px 10px; font-size:10.5px; }
+    footer { padding:6px 10px; font-size:10px; }
+    #aviso { left:8px; right:8px; bottom:8px; padding:10px 12px; font-size:11.5px; }
+    dialog { width:96vw; max-height:94dvh; box-shadow:5px 5px 0 #000; }
+    dialog form, dialog .cuerpo { padding:14px; max-height:94dvh; }
+    .dos { grid-template-columns:1fr; gap:0; }
+    .acciones { justify-content:stretch; }
+    .acciones button { flex:1; }
+    #login { padding:16px; }
+    #login .caja { padding:22px 18px; }
   }
-  @media (max-width: 900px) {
-    .cols, .cols.sin-base { grid-template-columns: 1fr; }
-    .pane { display:none; }
-    .pane.activo { display:flex; }
-    .tabs { display:flex; gap:6px; padding:6px 10px; border-bottom:1px solid var(--linea); }
-    .tabs button { flex:1; }
-    .tabs button.sel { background:var(--acento); border-color:var(--acento); color:#fff; }
-    .mover { display:flex; }
-  }
-  .mover { display:none; gap:6px; padding:6px 10px; border-top:1px solid var(--linea); }
-  .mover button { flex:1; padding:9px; font-size:15px; }
 </style>
 </head>
 <body>
@@ -213,7 +293,7 @@ export const prerender = true;
     <div class="caja">
       <h2>Panel privado</h2>
       <p>Solo el propietario. Entra con tu cuenta de GitHub.</p>
-      <a class="boton" href="/estudio/api/auth" style="background:var(--acento);color:#fff;border-color:var(--acento);padding:8px 14px">Entrar con GitHub</a>
+      <a class="boton principal" href="/estudio/api/auth">Entrar con GitHub</a>
     </div>
   </div>
 

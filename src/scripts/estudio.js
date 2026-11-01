@@ -1038,9 +1038,11 @@ function abrirSug() {
   sug.querySelectorAll('button').forEach((b) => {
     b.onmousedown = (ev) => { ev.preventDefault(); insertarSug(b.textContent); };
   });
-  const r = ta.getBoundingClientRect();
-  sug.style.left = Math.min(window.innerWidth - 200, r.left + 14) + 'px';
-  sug.style.top = (r.top + 40) + 'px';
+  // El popover cuelga del lienzo visible, no del textarea: al scrollear a los
+  // lados el textarea se sale de la pantalla y el popover aparecía en negativo.
+  const r = lienzo.getBoundingClientRect();
+  sug.style.left = Math.max(8, Math.min(window.innerWidth - 200, r.left + 14)) + 'px';
+  sug.style.top = Math.max(8, Math.min(window.innerHeight - 220, r.top + 40)) + 'px';
   sug.style.display = 'block';
 }
 function cerrarSug() { sug.style.display = 'none'; sug.innerHTML = ''; sugerencias = []; }
