@@ -29,7 +29,7 @@ Sitio 100% estático (SSG) con Astro content collections. Middleware solo rediri
 ### Content Collections (`src/content/config.ts`)
 - **`acordes`** — 400+ entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`.
 - **`autores`** — 11 autores. Frontmatter: `nombre`, `img`, `type` (`musica`|`letra`), `order`, `destacado`.
-- **`acordes3`** — borradores del panel `/estudio`: fichas nuevas o a medias que aún no se publican. Se promueven a `acordes` con `npm run promover`. Una ficha que solo existe en el ordenador (sin subir) vive aquí, no en `acordes`: el panel la lista con la marca LOCAL y `npm run letras -- auditar` la da por buena aunque no esté publicada.
+- **`acordes3`** — borradores del panel `/admin`: fichas nuevas o a medias que aún no se publican. Se promueven a `acordes` con `npm run promover`. Una ficha que solo existe en el ordenador (sin subir) vive aquí, no en `acordes`: el panel la lista con la marca LOCAL y `npm run letras -- auditar` la da por buena aunque no esté publicada.
 - **`acordes2`** — colección provisional para los acordes importados del cancionero. Mismo esquema que `acordes`, pero su contenido (`.md`) no se versiona y los acordes van sin envolver en `<a>` hasta que se promueven.
 
 Slugs se generan automáticamente (lowercase, sin tildes, guiones). El transform también produce `musicaSlugs`, `letraSlugs`, `agrupacionSlug`.
@@ -86,10 +86,11 @@ Cuando la fuente no trae saltos de verso, `acordes:aplicar` puede recibir `--lin
 
 Criterio de estado: si el informe sale con muchos `⚠️` (más de ~8), la letra se deja en `encontrada` con la fuente anotada y no se publica la ficha; el reparto se termina revisando a mano. Si la letra no aparece, `no encontrada` con las webs miradas en `Notas`.
 
-### Panel `/estudio` (editar desde el móvil)
-Panel privado desplegado con Netlify Functions. Vive en `/estudio`: `noindex`, sin enlaces desde la web y fuera del sitemap. Solo entra el propietario (`OWNER_LOGIN`) con GitHub. Tiene tres secciones con la misma sesión: **Editor**, **Estadísticas** y **Comentarios**. `/admin/stats` y `/admin/comentarios` redirigen a `/estudio/?vista=stats` y `/estudio/?vista=comentarios`. Las estadísticas pasan por `/estudio/api/stats` (el worker no manda CORS). Los comentarios pasan por `/estudio/api/comentarios`, que manda el **token de GitHub de la sesión**; el worker de comentarios (proyecto `acordes-gaditanos-pwa`) comprueba con la API de GitHub que el usuario es el propietario. No hay un segundo login ni un token que pedir en el navegador.
+### Panel `/admin` (editar desde el móvil)
+Panel privado desplegado con Netlify Functions. Vive en `/admin`: `noindex`, sin enlaces desde la web y fuera del sitemap. Solo entra el propietario (`OWNER_LOGIN`) con GitHub. Tiene tres secciones con la misma sesión: **Editor**, **Estadísticas** y **Comentarios**. `/admin/stats` y `/admin/comentarios` redirigen a `/admin/?vista=stats` y `/admin/?vista=comentarios`. Las estadísticas pasan por `/admin/api/stats` (el worker no manda CORS). Los comentarios pasan por `/admin/api/comentarios`, que manda el **token de GitHub de la sesión**; el worker de comentarios (proyecto `acordes-gaditanos-pwa`) comprueba con la API de GitHub que el usuario es el propietario. No hay un segundo login ni un token que pedir en el navegador.
 
-- **Login**: `/estudio/api/auth` → GitHub OAuth (`public_repo`) → `/estudio/api/auth-callback`, que comprueba el usuario y deja una cookie cifrada (12 h) con el token. El token no llega nunca al navegador.
+- **Login**: `/admin/api/auth` → GitHub OAuth (`public_repo`) → `/admin/api/auth-callback`, que comprueba el usuario y deja una cookie cifrada (12 h) con el token. El token no llega nunca al navegador. La cookie se llama `admin`; al cambiar el nombre hay que volver a entrar una vez.
+- **Seguridad**: `netlify.toml` manda CSP y cabeceras (`noindex`, `nosniff`, `DENY`, `no-referrer`) en `/admin/*`. `SESSION_SECRET` es obligatorio en producción (sin él, `_lib.mjs` falla cerrado y no firma cookies ni el `state`); en local se mantiene el valor de ejemplo. El panel vivía en `/estudio`: Netlify responde 301 a `/admin` y en `astro dev` queda una página de salto que conserva la query.
 - **Listado**: buscador + pestañas `Todas`, `Acordes3` (borradores y fichas con PR), `Acordes` (publicadas) y `Por revisar` (coplas que faltan por revisar a mano), agrupadas por año y con `Pendientes` arriba. Cada fila lleva **Editar**, **Publicar** (solo borradores) y **＋** (crear otra ficha a partir de esa misma música). Los estilos de la página van con `<style is:global>`: el HTML que pinta el JS no lleva el `data-astro-cid` y con estilos *scoped* la lista salía sin ellos.
 - **Por revisar**: la cola vive en `src/data/revision-acordes.json` (`pendientes: [slug]`), la lee `lista.mjs` y la comparte `npm run revisar` (`--marcar`, `--anadir`, `--auditar`, `--sincronizar` desde `pendientes-revision.md`). En el editor, el botón **Revisado ✓** guarda, quita la copla de la cola y (en producción) fusiona la PR; en local solo escribe el archivo y el commit se hace luego con `subir-acorde`.
 - **＋ Letra**: añade una entrada a `letras-pendientes.md` (frase y agrupación obligatorias; fuente y notas opcionales) con estado `pendiente`, para buscarla y ponerle los acordes después. La **base se calcula sola**: el pasodoble de esa agrupación (la ficha original, sin `letraTitulo`); si no hay ninguna, se apunta `?`. En local escribe el archivo; en producción abre una PR en `letras/<n>-…` (la lista `npm run prs` las marca como `letra` y las fusiona con `--merge`).
@@ -101,9 +102,9 @@ Panel privado desplegado con Netlify Functions. Vive en `/estudio`: `noindex`, s
 - **Publicar / Promover**: en producción, botón que mueve el borrador de `acordes3` a `acordes` en una rama nueva y abre la PR; al fusionar, Netlify reconstruye y el aviso de Telegram sale solo (un `.md` añadido). En local el botón se llama **Promover** y solo mueve el archivo en el proyecto (sin PR y sin tocar la web, que no cambia hasta el commit y push).
 - **Fichas publicadas**: se pueden abrir y corregir; al guardar, la PR va a `acordes`.
 - **Fusionar**: botón que hace squash merge de la PR abierta de esa ficha. Si la ficha se ha renombrado, la PR se localiza por la rama (`rama`), no por el slug.
-- **Avisos**: el panel compone el aviso con la ficha abierta (manda su frontmatter por `POST /estudio/api/aviso`, así sale aunque no esté subida, en una PR o solo en el ordenador). El texto va en formato **WhatsApp** (negrita con `*…*`) para copiar; para X se manda sin marcas (`textoX`). Botones de copiar y de abrir X. WhatsApp y X siguen saliendo desde el PC (`npm run wa`, `npm run x`): necesitan tu Chrome con sesión.
+- **Avisos**: el panel compone el aviso con la ficha abierta (manda su frontmatter por `POST /admin/api/aviso`, así sale aunque no esté subida, en una PR o solo en el ordenador). El texto va en formato **WhatsApp** (negrita con `*…*`) para copiar; para X se manda sin marcas (`textoX`). Botones de copiar y de abrir X. WhatsApp y X siguen saliendo desde el PC (`npm run wa`, `npm run x`): necesitan tu Chrome con sesión.
 
-Variables en Netlify: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (secreta), `SESSION_SECRET` (secreta) y `OWNER_LOGIN`. El callback de la OAuth App tiene que ser `https://acordesgaditanos.com/estudio/api/auth-callback`.
+Variables en Netlify: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (secreta), `SESSION_SECRET` (secreta) y `OWNER_LOGIN`. El callback de la OAuth App tiene que ser `https://acordesgaditanos.com/admin/api/auth-callback`.
 
 `npm run prs` lista las PRs abiertas del panel (borradores `estudio/*` y publicaciones `publica/*`).
 `npm run prs -- --merge [--si]` fusiona con squash los borradores; `--todas` incluye las de publicar (eso publica y avisa).
@@ -149,8 +150,8 @@ La postura se escribe de la 6ª a la 1ª cuerda (`x` = muda) y debe coincidir ex
 | `/buscar` | `pages/buscar.astro` (búsqueda cliente con datos serializados) |
 | `/glosario` | `pages/glosario.astro` — glosario de acordes con diagramas y buscador |
 | `/reconocer-acorde` | `pages/reconocer-acorde.astro` — mástil interactivo que identifica el acorde (privada: `noindex`, fuera del sitemap y sin enlaces públicos) |
-| `/admin/stats` | Redirige a `/estudio/?vista=stats` (301, `netlify.toml`) |
-| `/admin/comentarios` | Redirige a `/estudio/?vista=comentarios` (301, `netlify.toml`) |
+| `/admin/stats` | Redirige a `/admin/?vista=stats` (301, `netlify.toml`) |
+| `/admin/comentarios` | Redirige a `/admin/?vista=comentarios` (301, `netlify.toml`) |
 | `/api/fetch-url` | `pages/api/fetch-url.ts` — proxy CORS (GET `?url=...`) |
 | `/formateadores/*` | Redirigido a 404 por middleware (páginas existen pero ocultas) |
 

@@ -2,7 +2,7 @@
 // glosario del disco y reexporta el resto.
 //
 // El módulo de verdad vive en `src/lib/pre-acordes.js` para que lo use también
-// el panel `/estudio` desde el navegador.
+// el panel `/admin` desde el navegador.
 
 import { readFileSync } from 'node:fs';
 import { initPreAcordes } from '../../src/lib/pre-acordes.js';

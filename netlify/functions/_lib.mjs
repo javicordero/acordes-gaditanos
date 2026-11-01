@@ -1,4 +1,4 @@
-// Utilidades comunes del panel /estudio.
+// Utilidades comunes del panel /admin.
 //
 // Todo lo que toca GitHub pasa por aquí: sesión en cookie cifrada, llamadas a la
 // API y comprobación del propietario. El token de GitHub no sale nunca del
@@ -11,7 +11,7 @@ export const REPO = process.env.GITHUB_REPO || 'javicordero/acordes-gaditanos';
 export const OWNER = (process.env.OWNER_LOGIN || 'javicordero').toLowerCase();
 export const SITE = (process.env.URL || 'https://acordesgaditanos.com').replace(/\/+$/, '');
 export const BASE = 'master';
-export const COOKIE = 'estudio';
+export const COOKIE = 'admin';
 export const CARPETA = 'src/content/acordes';
 export const CARPETAS = { acordes: 'src/content/acordes', acordes3: 'src/content/acordes3' };
 // En `astro dev` el panel trabaja contra los archivos del ordenador, no contra
@@ -19,7 +19,16 @@ export const CARPETAS = { acordes: 'src/content/acordes', acordes3: 'src/content
 export const LOCAL = process.env.ESTUDIO_LOCAL === '1';
 export const MAX_EDAD = 60 * 60 * 12; // 12 h
 
-const clave = () => createHash('sha256').update(String(process.env.SESSION_SECRET || 'sin-secreto')).digest();
+// En producción no se admite el secreto de ejemplo: si falta SESSION_SECRET,
+// las cookies y el state del OAuth no se pueden firmar de forma segura. En
+// local se mantiene el valor de ejemplo para no obligar a configurarlo.
+function secreto() {
+  const s = process.env.SESSION_SECRET;
+  if (!s && !LOCAL) throw new Error('Falta SESSION_SECRET en el entorno del panel');
+  return String(s || 'sin-secreto');
+}
+
+const clave = () => createHash('sha256').update(secreto()).digest();
 
 export function cifrar(obj) {
   const iv = randomBytes(12);
@@ -54,7 +63,9 @@ export function cookies(req) {
   for (const parte of crudo.split(';')) {
     const i = parte.indexOf('=');
     if (i < 0) continue;
-    out[parte.slice(0, i).trim()] = decodeURIComponent(parte.slice(i + 1).trim());
+    const valor = parte.slice(i + 1).trim();
+    try { out[parte.slice(0, i).trim()] = decodeURIComponent(valor); }
+    catch { out[parte.slice(0, i).trim()] = valor; }
   }
   return out;
 }
@@ -117,7 +128,7 @@ export async function gh(ruta, { token, method = 'GET', body } = {}) {
 
 /** Firma HMAC-SHA256 con SESSION_SECRET (para el `state` del OAuth). */
 export function firmar(valor) {
-  return createHmac('sha256', String(process.env.SESSION_SECRET || 'sin-secreto'))
+  return createHmac('sha256', secreto())
     .update(String(valor)).digest('base64url');
 }
 
@@ -143,7 +154,7 @@ export function estadoValido(estado) {
 export function urlAutorizacion(estado) {
   const p = new URLSearchParams({
     client_id: process.env.GITHUB_CLIENT_ID || '',
-    redirect_uri: `${SITE}/estudio/api/auth-callback`,
+    redirect_uri: `${SITE}/admin/api/auth-callback`,
     scope: 'public_repo',
     state: estado,
   });

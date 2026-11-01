@@ -7,7 +7,7 @@ export const onRequest: MiddlewareHandler = async ({ url, redirect }, next) => {
     return redirect('/404', 302);
   }
 
-  // En desarrollo, el API del panel /estudio lo inyecta la integración
+  // En desarrollo, el API del panel /admin lo inyecta la integración
   // `estudioApiDev` (astro.config.mjs); en producción lo ejecuta Netlify.
   return next();
 };

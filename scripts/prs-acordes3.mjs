@@ -1,4 +1,4 @@
-// Lista y fusiona las PRs pendientes del panel /estudio.
+// Lista y fusiona las PRs pendientes del panel /admin.
 //
 // Uso:
 //   npm run prs                     # ver las PRs abiertas (borradores y publicaciones)

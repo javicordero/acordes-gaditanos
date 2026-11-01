@@ -168,7 +168,7 @@ export default async (req) => {
     const restantes = marcarRevisada ? await quitarRevision(s.token, slug, rama) : null;
 
     const cuerpoPr = [
-      `Propuesta desde el panel \`/estudio\`.`,
+      `Propuesta desde el panel \`/admin\`.`,
       '',
       `- Ficha: \`${destino}\``,
       `- Archivo: \`${carpeta}/${destino}.md\``,

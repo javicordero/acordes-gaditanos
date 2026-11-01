@@ -1,4 +1,4 @@
-# Panel privado /estudio y funciones.
+# Panel privado /admin y funciones.
 #
 # La web sigue siendo 100 % estática: las funciones solo sirven al panel, que
 # habla con GitHub para crear ramas y PRs.
@@ -11,39 +11,67 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# /estudio/api/* → funciones. Se usa este prefijo (y no /api/*) para no chocar
-# con el endpoint /api/fetch-url del sitio.
+# /admin/api/* → funciones. Se mantiene /estudio/api/* para el callback antiguo
+# de la OAuth App y por si queda alguna URL guardada.
+[[redirects]]
+  from = "/admin/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/estudio/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
   force = true
 
-# Los antiguos paneles de admin viven ahora dentro de /estudio, con la misma
+# Los antiguos paneles de admin viven ahora dentro de /admin, con la misma
 # sesión de GitHub.
 [[redirects]]
   from = "/admin/stats"
-  to = "/estudio/?vista=stats"
+  to = "/admin/?vista=stats"
   status = 301
   force = true
 
 [[redirects]]
   from = "/admin/stats/*"
-  to = "/estudio/?vista=stats"
+  to = "/admin/?vista=stats"
   status = 301
   force = true
 
 [[redirects]]
   from = "/admin/comentarios"
-  to = "/estudio/?vista=comentarios"
+  to = "/admin/?vista=comentarios"
   status = 301
   force = true
 
 [[redirects]]
   from = "/admin/comentarios/*"
-  to = "/estudio/?vista=comentarios"
+  to = "/admin/?vista=comentarios"
   status = 301
   force = true
+
+# El panel vivía en /estudio: redirección permanente al nuevo /admin.
+[[redirects]]
+  from = "/estudio"
+  to = "/admin"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/estudio/*"
+  to = "/admin/:splat"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "no-referrer"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
 
 [[headers]]
   for = "/estudio/*"

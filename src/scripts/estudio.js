@@ -3,15 +3,15 @@ import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
 
-const API = '/estudio/api';
+const API = '/admin/api';
 // En `astro dev` el panel trabaja contra los archivos del ordenador (sin PR).
 // El servidor lo confirma con `local` en /me: por un túnel o por la IP de la red
 // el hostname ya no es localhost, pero el panel sigue en modo local.
 let MODO_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(location.hostname);
-// La ficha abierta lleva su slug en la URL (`/estudio/?ficha=...`), así el botón
+// La ficha abierta lleva su slug en la URL (`/admin/?ficha=...`), así el botón
 // atrás vuelve a la lista en vez de salir del panel. La página es estática: el
 // query no rompe nada y permite refrescar sin perder la ficha.
-const urlFicha = (slug) => '/estudio/?ficha=' + encodeURIComponent(slug);
+const urlFicha = (slug) => '/admin/?ficha=' + encodeURIComponent(slug);
 const estadoLista = { vista: 'lista' };
 let creando = false;
 const $ = (id) => document.getElementById(id);
@@ -252,7 +252,7 @@ function mostrarStats(empujar = true) {
   soloNav();
   $('cab-meta').textContent = '';
   setEstado('', true);
-  if (empujar) history.pushState({ vista: 'stats' }, '', '/estudio/?vista=stats');
+  if (empujar) history.pushState({ vista: 'stats' }, '', '/admin/?vista=stats');
   if (!statsCargadas) cargarStats();
 }
 function mostrarComentarios(empujar = true) {
@@ -262,7 +262,7 @@ function mostrarComentarios(empujar = true) {
   soloNav();
   $('cab-meta').textContent = '';
   setEstado('', true);
-  if (empujar) history.pushState({ vista: 'comentarios' }, '', '/estudio/?vista=comentarios');
+  if (empujar) history.pushState({ vista: 'comentarios' }, '', '/admin/?vista=comentarios');
   if (!peticiones.length) cargarPeticiones();
 }
 
@@ -423,8 +423,8 @@ function abrirNueva(empujar = true) {
   $('dlg-nueva-titulo').textContent = 'Nueva ficha';
   $('dlg-nueva-nota').innerHTML = 'Se crea como borrador con el bloque de la ficha base. Después cambias la letra y mueves los acordes.';
   const estado = { vista: 'nueva' };
-  if (empujar) history.pushState(estado, '', '/estudio/?nueva=1');
-  else history.replaceState(estado, '', '/estudio/?nueva=1');
+  if (empujar) history.pushState(estado, '', '/admin/?nueva=1');
+  else history.replaceState(estado, '', '/admin/?nueva=1');
   $('dlg-nueva').showModal();
 }
 
@@ -1264,7 +1264,7 @@ document.querySelectorAll('#nav-vistas button').forEach((b) => {
     const v = b.dataset.vista;
     if (v === 'editor') {
       mostrarLista();
-      history.pushState({ vista: 'lista' }, '', '/estudio/');
+      history.pushState({ vista: 'lista' }, '', '/admin/');
     } else if (v === 'stats') {
       mostrarStats();
     } else {
@@ -1320,7 +1320,7 @@ $('b-inicio').onclick = (e) => {
   mostrarLista();
   cerrarAviso();
   if (desdeFicha) history.back();
-  else history.replaceState({ vista: 'lista' }, '', '/estudio/');
+  else history.replaceState({ vista: 'lista' }, '', '/admin/');
 };
 $('b-nueva').onclick = () => abrirNueva();
 $('dlg-nueva').addEventListener('close', () => {
@@ -1488,7 +1488,7 @@ window.addEventListener('beforeunload', (e) => {
   pintarLista();
   // La entrada base del historial es la lista: así el atrás desde una ficha
   // vuelve aquí y no sale del panel.
-  history.replaceState(estadoLista, '', '/estudio/');
+  history.replaceState(estadoLista, '', '/admin/');
   const vista = params.get('vista');
   if (vista === 'stats') mostrarStats();
   else if (vista === 'comentarios') mostrarComentarios();
@@ -1496,6 +1496,6 @@ window.addEventListener('beforeunload', (e) => {
   else if (params.get('nueva')) abrirNueva();
   $('pie').innerHTML = MODO_LOCAL
     ? '<span title="Sin sesión de GitHub: se usa el token del .env">Modo local · sin sesión</span>'
-    : '<a href="/estudio/api/salir">Salir</a>';
+    : '<a href="/admin/api/salir">Salir</a>';
 })();
 

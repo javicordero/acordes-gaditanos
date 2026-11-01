@@ -3,7 +3,7 @@
 //
 // Lo usan los dos lados:
 //   - el revisor local (`scripts/revisar-acordes.mjs`), desde Node;
-//   - el panel `/estudio`, desde el navegador.
+//   - el panel `/admin`, desde el navegador.
 //
 // El glosario se inyecta con `initPreAcordes(json)` para que este módulo no
 // dependa de `fs` y pueda viajar al navegador.

@@ -1,4 +1,4 @@
-// Ruta de desarrollo para ejecutar las funciones de Netlify del panel /estudio.
+// Ruta de desarrollo para ejecutar las funciones de Netlify del panel /admin.
 //
 // Se inyecta solo con `astro dev` (ver astro.config.mjs). En producción las
 // ejecuta Netlify con la redirección de `netlify.toml`; en desarrollo no existen,

@@ -1,7 +1,7 @@
 // Cola de coplas pendientes de revisión a mano.
 //
 // La fuente de verdad es `src/data/revision-acordes.json`, que también lee el
-// panel `/estudio` (pestaña «Por revisar»). Aquí se consulta y se edita desde la
+// panel `/admin` (pestaña «Por revisar»). Aquí se consulta y se edita desde la
 // consola, por si el panel no está a mano.
 //
 //   node scripts/revision-acordes.mjs                     lista las pendientes

@@ -1,6 +1,6 @@
 ---
 name: prs-acordes3
-description: Revisa y fusiona las PRs pendientes de los borradores de acordes3 (las que se crean desde el panel /estudio en el móvil). Usar cuando el usuario diga "mira las PRs pendientes", "fusiona las PRs", "trae lo que subí desde el móvil", "¿qué tengo pendiente en acordes3?" o vuelva al ordenador después de editar desde el teléfono.
+description: Revisa y fusiona las PRs pendientes de los borradores de acordes3 (las que se crean desde el panel /admin en el móvil). Usar cuando el usuario diga "mira las PRs pendientes", "fusiona las PRs", "trae lo que subí desde el móvil", "¿qué tengo pendiente en acordes3?" o vuelva al ordenador después de editar desde el teléfono.
 license: MIT
 metadata:
   author: local
@@ -9,7 +9,7 @@ metadata:
 
 # PRs pendientes de acordes3
 
-Las fichas que se editan desde el móvil en `/estudio` se guardan en una rama y
+Las fichas que se editan desde el móvil en `/admin` se guardan en una rama y
 abren una PR. Esta skill las lista y las fusiona cuando vuelves al ordenador.
 
 ## Cuándo usarla

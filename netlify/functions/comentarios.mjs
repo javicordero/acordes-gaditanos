@@ -1,4 +1,4 @@
-// Proxy del worker de comentarios para el panel /estudio.
+// Proxy del worker de comentarios para el panel /admin.
 //
 // El panel entra con la sesión de GitHub y esta función manda el token de
 // GitHub de la sesión al worker. El worker comprueba con la API de GitHub que
@@ -9,10 +9,10 @@
 // todavía no acepte tokens de GitHub; si no está, no pasa nada.
 //
 // Rutas:
-//   GET    /estudio/api/comentarios?path=/pedir-copla
-//   POST   /estudio/api/comentarios            { path, author, content, parentId }
-//   PATCH  /estudio/api/comentarios?id=<id>    { completed }
-//   DELETE /estudio/api/comentarios?id=<id>
+//   GET    /admin/api/comentarios?path=/pedir-copla
+//   POST   /admin/api/comentarios            { path, author, content, parentId }
+//   PATCH  /admin/api/comentarios?id=<id>    { completed }
+//   DELETE /admin/api/comentarios?id=<id>
 import { sesion, sinSesion, json } from './_lib.mjs';
 
 const WORKER = 'https://comments-worker.javiercorderotoscano.workers.dev';

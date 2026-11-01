@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import remarkAcordesColumna from './src/lib/remark-acordes-columna.mjs';
 import enlacesConBarra from './src/integrations/enlaces-con-barra.mjs';
 
-// En `astro dev` no existen las Netlify Functions del panel /estudio, así que se
+// En `astro dev` no existen las Netlify Functions del panel /admin, así que se
 // inyecta una ruta real que las ejecuta con la petición completa. `prerender: false`
 // es imprescindible: sin él, la ruta hereda el `prerender: true` del output estático
 // y Astro pide `getStaticPaths` (404 en dev).
@@ -14,7 +14,7 @@ const estudioApiDev = {
     'astro:config:setup': ({ command, injectRoute }) => {
       if (command !== 'dev') return;
       injectRoute({
-        pattern: '/estudio/api/[...ruta]',
+        pattern: '/admin/api/[...ruta]',
         entrypoint: './src/integrations/estudio-api.ts',
         prerender: false,
       });
@@ -49,7 +49,8 @@ export default defineConfig({
         !page.includes('/acordes3') &&
         !page.includes('/lista2') &&
         !page.includes('/reconocer-acorde') &&
-        // Panel privado de edición: noindex y fuera del sitemap.
+        // Panel privado de edición: noindex y fuera del sitemap (también el viejo /estudio).
+        !page.includes('/admin') &&
         !page.includes('/estudio') &&
         // Página de resultados: noindex y fuera del sitemap.
         !page.includes('/buscar'),

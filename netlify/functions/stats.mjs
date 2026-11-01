@@ -1,7 +1,7 @@
 // Proxy de las estadísticas del worker de Cloudflare.
 //
 // El worker no manda CORS, así que el navegador no puede llamarlo desde
-// /estudio. Esta función lo pide desde el servidor y solo responde con sesión
+// /admin. Esta función lo pide desde el servidor y solo responde con sesión
 // del panel (el mismo login de GitHub que el resto del estudio).
 import { sesion, sinSesion, json } from './_lib.mjs';
 
