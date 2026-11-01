@@ -16,11 +16,11 @@ fraseClave: Cinco años llevo tragándome lo que siento
 Cinco años llevo tragándome lo que siento
                                                <a>Mi7</a>
 Y aunque mi amigo del alma ya no está para escucharme
-       <a>Rem</a>                         <a>Mi7</a>
+       <a>Rem</a>                               <a>Mi7</a>
 Como aquí le canta to el mundo por lo que veo
-                       <a>Sim7b5</a>       <a>Mi7</a>       <a>Lam</a>
+                       <a>Sim7b5</a>       <a>Mi7</a>            <a>Lam</a>
 Me da igual lo que nos digan porque hoy vamos a cantarle
-    <a>Sol6</a>          <a>Fa</a>              <a>Mi7</a>
+           <a>Sol6</a>        <a>Fa</a>         <a>Mi7</a>
 Y vamos a hacerlo como él nos enseñara
           <a>Sol6</a>         <a>Fa</a>           <a>Mi7</a>
 Con la verdad rabiando desde el corazón
@@ -28,9 +28,9 @@ Con la verdad rabiando desde el corazón
 Y me avergüenza como gaditano
        <a>Lam</a>
 Que al autor que tanto añoramos
-      <a>Sim7b5</a>              <a>Mi7</a>        <a>Lam</a>  <a>La7</a>
+      <a>Sim7b5</a>              <a>Mi7</a>           <a>Lam</a>   <a>La7</a>
 No le dieran en vida el calor de sus paisanos
-            <a>Rem</a>           <a>Sol7</a>
+            <a>Rem</a>               <a>Sol7</a>
 Juan Carlos no tiene estrella
                         <a>Do</a>
 Ni en una calle esta su nombre presente
@@ -42,18 +42,18 @@ Prometieran con su cuerpo aún caliente
 Juan se marchó con la pena y un desconsuelo profundo
                      <a>Fa</a>            <a>Mi7</a>          <a>LaM7</a>
 No ser profeta en su tierra aunque lo fuese pal mundo
-<a>LaM7</a>   <a>Mi7</a>     <a>LaM7</a>
-Ay que gran colgao apaleado
+<a>LaM7</a> <a>Mi7</a>      <a>LaM7</a>
+Ay   el gran colgao apaleado
 
 y humillado tantas veces
-                        <a>Fa#7</a>         <a>Sim7</a>
+                        <a>Fa#7</a>           <a>Sim7</a>
 Por compañeros por periodistas y por jurados
-                <a>Mi7</a>            <a>Sim7</a>               <a>Mi7</a>
+           <a>Mi7</a>           <a>Sim7</a>                    <a>Mi7</a>
 Ay el niño malo con la palabra más rebelde y verdadera
-         <a>LaM7</a>
-Pa donde siempre
- <a>Mi7</a>             <a>LaM7</a>                 <a>La7</a>
-Iban todos los palos incluso llamaron secta
+                                <a>LaM7</a>
+Pa donde siempre iban todos los palos
+ <a>Mi7</a>             <a>LaM7</a>                    <a>La7</a>
+Incluso llamaron secta a la chusma mas selecta
                         <a>Re</a>
 Que con orgullo lo defendió
                       <a>Rem</a>
@@ -64,11 +64,11 @@ A todos los falsos que ahora
 Si escuchan el credo echan de menos a Juan Carlos
   <a>Fa#7</a>              <a>Sim7</a>   <a>Mi7</a>              <a>Lam</a>
 Pero que antes le decían borracho, loco y niñato
-     <a>Sol6</a>      <a>Fa</a>                   <a>Sim7b5</a> <a>Mi7</a>
+     <a>Sol6</a>      <a>Fa</a>            <a>Sim7b5</a>      <a>Mi7</a>
 Al poeta más valiente que ha parido este teatro
-           <a>Re</a>            <a>Sim7</a>                     <a>Mi7</a>
-Que me avergüenza que el mas grande entre los grandes
-           <a>Sim7</a>                      <a>Mi7</a>
+          <a>Re</a>           <a>Sim7</a>                   <a>Mi7</a>
+Es de vergüenza que el mas grande entre los grandes
+                 <a>Sim7</a>                     <a>Mi7</a>
 Se tuviera que morir pa hacerle justicia aqui
 
 Y por esa puerta tuvo que salir
