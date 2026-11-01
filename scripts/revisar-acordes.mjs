@@ -19,6 +19,7 @@ import { join } from 'node:path';
 import { exec } from 'node:child_process';
 import {
   desenvolver, envolver, montarMd, revisar, clasificar, esAcorde, tieneDiagrama,
+  ANCHO_MAX, cortePorAncho,
 } from './lib/pre-acordes.mjs';
 import { leerFicha, hermanasDetalle } from './lib/acordes-letra.mjs';
 
@@ -103,22 +104,46 @@ async function main() {
 
   // ---------- pintado del texto para las referencias ----------
   const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const spanHtml = (txt, cls) => (cls ? `<span class="${cls}">${esc(txt)}</span>` : esc(txt));
+
+  /** HTML de una línea, con lo que pasa de ANCHO_MAX en rojo subrayado. */
+  function htmlLinea(linea, tipo) {
+    const corte = cortePorAncho(linea);
+    const piezas = [];
+    if (tipo === 'acordes' || tipo === 'acordes-sucio') {
+      let ultimo = 0;
+      for (const mm of linea.matchAll(/\S+/g)) {
+        if (mm.index > ultimo) piezas.push([linea.slice(ultimo, mm.index), '']);
+        const t = mm[0];
+        piezas.push([t, /^\(.*\)$/.test(t) ? 'anot' : (etiquetas.has(t) ? 'ac' : 'nuevo')]);
+        ultimo = mm.index + t.length;
+      }
+      if (ultimo < linea.length) piezas.push([linea.slice(ultimo), '']);
+    } else {
+      piezas.push([linea, '']);
+    }
+    let pos = 0;
+    let out = '';
+    for (const [txt, cls] of piezas) {
+      const fin = pos + txt.length;
+      if (corte < 0 || fin <= corte) out += spanHtml(txt, cls);
+      else if (pos >= corte) out += spanHtml(txt, cls ? cls + ' pasado' : 'pasado');
+      else {
+        const k = corte - pos;
+        out += spanHtml(txt.slice(0, k), cls);
+        out += spanHtml(txt.slice(k), cls ? cls + ' pasado' : 'pasado');
+      }
+      pos = fin;
+    }
+    return out;
+  }
+
   function pintar(texto) {
     const lineas = String(texto).split('\n');
     const conocido = new Set(etiquetas);
     return lineas.map((linea, i) => {
       const c = clasificar(linea, lineas[i + 1] || '', conocido);
-      if (c.tipo !== 'acordes' && c.tipo !== 'acordes-sucio') return esc(linea);
-      let out = '';
-      let ultimo = 0;
-      for (const mm of linea.matchAll(/\S+/g)) {
-        out += esc(linea.slice(ultimo, mm.index));
-        const t = mm[0];
-        const cls = /^\(.*\)$/.test(t) ? 'anot' : (etiquetas.has(t) ? 'ac' : 'nuevo');
-        out += `<span class="${cls}">${esc(t)}</span>`;
-        ultimo = mm.index + t.length;
-      }
-      return out + esc(linea.slice(ultimo));
+      return htmlLinea(linea, c.tipo);
     }).join('\n');
   }
 
@@ -130,6 +155,7 @@ async function main() {
     base: base ? base.slug : null,
     total: d.texto.split('\n').length,
     etiquetas: sugerencias,
+    ancho: ANCHO_MAX,
   };
 
   const html = `<!doctype html>
@@ -159,6 +185,8 @@ async function main() {
   section:last-child { border-right:0; }
   .cab { padding:6px 12px; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--suave); border-bottom:1px solid var(--linea); display:flex; gap:8px; }
   .cab b { color:var(--tinta); font-weight:600; letter-spacing:0; text-transform:none; font-size:12px; }
+  .cab .mal { color:var(--mal); }
+  #ancho-meta { margin-left:auto; font-variant-numeric:tabular-nums; }
   .lienzo { position:relative; flex:1 1 auto; min-height:0; overflow:hidden; }
   section.editor { min-height: 340px; }
   pre, textarea {
@@ -173,10 +201,15 @@ async function main() {
   }
   textarea::selection { background:rgba(180,85,43,.22); }
   #capa { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+  /* Guía del ancho previsto: la columna 56 empieza justo aquí. Se desplaza con
+     el scroll del textarea (el JS le pone transform). */
+  #regla { position:absolute; top:0; bottom:0; left:calc(16px + 55ch); width:0; border-left:1px dashed rgba(180,85,43,.42); pointer-events:none; font:13.5px/1.55 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; }
   .ac { color:var(--acento); }
   .nuevo { color:var(--nuevo); text-decoration:underline dotted; }
   .anot, .mal { color:var(--suave); }
   .mal { color:var(--mal); text-decoration:underline wavy; }
+  /* Lo que pasa de la columna 55: rojo y subrayado (no hay salto de línea). */
+  .pasado { color:var(--mal); text-decoration:underline; text-underline-offset:2px; }
   footer { flex:0 0 auto; border-top:1px solid var(--linea); padding:5px 14px; font-size:11.5px; color:var(--suave); display:flex; gap:14px; flex-wrap:wrap; }
   kbd { font:11px ui-monospace, monospace; border:1px solid var(--linea); border-bottom-width:2px; border-radius:4px; padding:0 4px; background:#fff; }
   #sug { position:absolute; z-index:10; background:#fff; border:1px solid var(--linea); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.12); padding:4px; display:none; max-height:220px; overflow:auto; }
@@ -208,10 +241,11 @@ async function main() {
     <pre id="ref-izq">${pintar(d.texto)}</pre>
   </section>
   <section class="editor">
-    <div class="cab"><b>Editor</b><span>acordes encima de la letra · Alt+←/→ los mueve una columna</span></div>
+    <div class="cab"><b>Editor</b><span>acordes encima de la letra · Alt+←/→ los mueve una columna</span><span id="ancho-meta"></span></div>
     <div class="lienzo">
       <pre id="capa"></pre>
       <textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+      <div id="regla" aria-hidden="true"></div>
       <div id="sug"></div>
       <div class="aviso" id="aviso"></div>
     </div>
@@ -234,6 +268,8 @@ const CONOCIDOS = new Set(DATOS.etiquetas);
 
 const ta = document.getElementById('editor');
 const capa = document.getElementById('capa');
+const regla = document.getElementById('regla');
+regla.style.left = 'calc(16px + ' + DATOS.ancho + 'ch)';
 const estado = document.getElementById('estado');
 const aviso = document.getElementById('aviso');
 const sug = document.getElementById('sug');
@@ -274,33 +310,80 @@ function tipoLinea(linea, siguiente) {
   if (validos.length === tokens.length && tiene) return 'acordes';
   return 'letra';
 }
-function pintarEditor() {
-  const texto = ta.value;
-  const lineas = texto.split('\\n');
-  let html = '';
-  for (let i = 0; i < lineas.length; i++) {
-    const linea = lineas[i];
-    const tipo = tipoLinea(linea, lineas[i + 1] || '');
-    if (tipo !== 'acordes') { html += esc(linea) + '\\n'; continue; }
-    let out = '';
+const ANCHO = DATOS.ancho;
+function claseCss() {
+  return Array.prototype.filter.call(arguments, Boolean).join(' ');
+}
+function spanHtml(txt, cls) {
+  return cls ? '<span class="' + cls + '">' + esc(txt) + '</span>' : esc(txt);
+}
+function columnasLinea(linea) {
+  const limpia = linea.replace(/\\s+$/, '');
+  let col = 0;
+  for (let i = 0; i < limpia.length; i++) col += limpia[i] === '\\t' ? 4 - (col % 4) : 1;
+  return col;
+}
+function cortePorAncho(linea) {
+  const limpia = linea.replace(/\\s+$/, '');
+  let col = 0;
+  for (let i = 0; i < limpia.length; i++) {
+    const salto = limpia[i] === '\\t' ? 4 - (col % 4) : 1;
+    if (col + salto > ANCHO) return i;
+    col += salto;
+  }
+  return -1;
+}
+function htmlLinea(linea, tipo) {
+  const corte = cortePorAncho(linea);
+  const piezas = [];
+  if (tipo === 'acordes') {
     let ultimo = 0;
     const re = /\\S+/g;
     let m;
     while ((m = re.exec(linea))) {
-      out += esc(linea.slice(ultimo, m.index));
+      if (m.index > ultimo) piezas.push([linea.slice(ultimo, m.index), '']);
       const t = m[0];
       let cls = 'ac';
       if (esAnotacion(t) && !CONOCIDOS.has(t)) cls = 'anot';
       else if (!CONOCIDOS.has(t)) cls = 'nuevo';
-      out += '<span class="' + cls + '">' + esc(t) + '</span>';
+      piezas.push([t, cls]);
       ultimo = m.index + t.length;
     }
-    out += esc(linea.slice(ultimo));
-    html += out + '\\n';
+    if (ultimo < linea.length) piezas.push([linea.slice(ultimo), '']);
+  } else {
+    piezas.push([linea, '']);
+  }
+  let pos = 0;
+  let out = '';
+  for (let i = 0; i < piezas.length; i++) {
+    const txt = piezas[i][0];
+    const cls = piezas[i][1];
+    const fin = pos + txt.length;
+    if (corte < 0 || fin <= corte) out += spanHtml(txt, cls);
+    else if (pos >= corte) out += spanHtml(txt, claseCss(cls, 'pasado'));
+    else {
+      const k = corte - pos;
+      out += spanHtml(txt.slice(0, k), cls);
+      out += spanHtml(txt.slice(k), claseCss(cls, 'pasado'));
+    }
+    pos = fin;
+  }
+  return out;
+}
+function pintarEditor() {
+  const lineas = ta.value.split('\\n');
+  let html = '';
+  for (let i = 0; i < lineas.length; i++) {
+    html += htmlLinea(lineas[i], tipoLinea(lineas[i], lineas[i + 1] || '')) + '\\n';
   }
   capa.innerHTML = html;
   capa.scrollTop = ta.scrollTop;
   capa.scrollLeft = ta.scrollLeft;
+  let max = 0;
+  for (let i = 0; i < lineas.length; i++) max = Math.max(max, columnasLinea(lineas[i]));
+  const meta = document.getElementById('ancho-meta');
+  meta.textContent = max + '/' + ANCHO;
+  meta.className = max > ANCHO ? 'mal' : '';
 }
 
 function marcarSucio() {
@@ -466,6 +549,7 @@ ta.addEventListener('input', function () {
 ta.addEventListener('scroll', function () {
   capa.scrollTop = ta.scrollTop;
   capa.scrollLeft = ta.scrollLeft;
+  regla.style.transform = 'translateX(' + (-ta.scrollLeft) + 'px)';
 });
 ta.addEventListener('keydown', function (e) {
   if (e.altKey && e.key === 'ArrowLeft') { e.preventDefault(); return mover(-1); }
