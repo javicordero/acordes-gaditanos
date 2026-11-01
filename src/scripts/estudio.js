@@ -1207,6 +1207,30 @@ function marcarSug() {
   sug.querySelectorAll('button').forEach((b, i) => b.classList.toggle('sel', i === sugSel));
 }
 
+/* Arrastre horizontal a mano: en móvil el textarea se queda el gesto y mueve
+   el cursor en vez de desplazar el lienzo. Se lo quitamos cuando el gesto es
+   claramente horizontal y movemos el scroll nosotros. */
+let toque = null;
+ta.addEventListener('touchstart', (e) => {
+  toque = e.touches.length === 1
+    ? { x: e.touches[0].clientX, y: e.touches[0].clientY, scroll: lienzo.scrollLeft, horizontal: false }
+    : null;
+}, { passive: true });
+ta.addEventListener('touchmove', (e) => {
+  if (!toque || e.touches.length !== 1) return;
+  const dx = e.touches[0].clientX - toque.x;
+  const dy = e.touches[0].clientY - toque.y;
+  if (!toque.horizontal) {
+    if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return;
+    toque.horizontal = true;
+  }
+  e.preventDefault();
+  lienzo.scrollLeft = toque.scroll - dx;
+}, { passive: false });
+const finToque = () => { toque = null; };
+ta.addEventListener('touchend', finToque, { passive: true });
+ta.addEventListener('touchcancel', finToque, { passive: true });
+
 window.addEventListener('beforeunload', (e) => {
   if (sucio) { e.preventDefault(); e.returnValue = ''; }
 });
