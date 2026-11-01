@@ -139,6 +139,10 @@ export const prerender = true;
   .anot { color:var(--suave); }
   /* Lo que pasa de la columna 55: rojo y subrayado (no hay salto de línea). */
   .pasado { color:var(--mal); text-decoration:underline; text-underline-offset:2px; }
+  /* Estado de la ficha local: banda en el flujo, no un aviso flotante que tape
+     el editor (en móvil se comía las últimas líneas). */
+  #nota-local { flex:0 0 auto; display:flex; align-items:flex-start; gap:8px; padding:6px 10px; font-size:12px; line-height:1.35; color:var(--suave); background:#fff; border-bottom:1px solid var(--linea); border-left:3px solid var(--nuevo); }
+  #nota-local .cerrar { margin-left:auto; flex:0 0 auto; padding:0 4px; border:0; background:transparent; color:var(--suave); font-size:12px; }
   footer { flex:0 0 auto; border-top:1px solid var(--linea); padding:5px 12px; font-size:11.5px; color:var(--suave); display:flex; gap:12px; flex-wrap:wrap; }
   kbd { font:11px ui-monospace, monospace; border:1px solid var(--linea); border-bottom-width:2px; border-radius:4px; padding:0 4px; background:#fff; }
   #sug { position:fixed; z-index:30; background:#fff; border:1px solid var(--linea); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.15); padding:4px; display:none; max-height:200px; overflow:auto; }
@@ -258,6 +262,10 @@ export const prerender = true;
         <div class="campo"><label>Autor del cover</label><input name="autorCover" placeholder="opcional"></div>
       </div>
     </details>
+    <div id="nota-local" hidden>
+      <span id="nota-local-texto"></span>
+      <button type="button" id="nota-local-cerrar" class="cerrar" aria-label="Cerrar el aviso">✕</button>
+    </div>
     <div class="tabs">
       <button data-pane="der">Base</button>
       <button data-pane="cen" class="sel">Editor</button>

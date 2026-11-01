@@ -54,6 +54,12 @@ function mostrarAviso(txt, color) {
   $('av-cerrar2').onclick = () => { aviso.style.display = 'none'; };
 }
 function cerrarAviso() { aviso.style.display = 'none'; }
+/** Banda de estado de la ficha local (no tapa el editor). */
+function mostrarNotaLocal(txt) {
+  $('nota-local-texto').textContent = txt;
+  $('nota-local').hidden = false;
+}
+function cerrarNotaLocal() { $('nota-local').hidden = true; }
 
 /* ---------------- autenticación ---------------- */
 /** Cuenta y modo (`{ login, local }`), o null si no hay sesión. */
@@ -217,6 +223,7 @@ function pintarLista() {
 /** Vuelve a la lista (el historial lo decide quien llama). */
 function mostrarLista() {
   $('vista-editor').hidden = true;
+  cerrarNotaLocal();
   $('vista-lista').hidden = false;
   $('b-nueva').hidden = false;
   $('b-letra').hidden = false;
@@ -390,9 +397,11 @@ async function abrirFicha(slug, empujar = true) {
     await cargarBase(slug);
     if (empujar) history.pushState({ vista: 'ficha', slug }, '', urlFicha(slug));
     if (MODO_LOCAL) {
-      mostrarAviso(datos.local
-        ? 'Ficha local: al guardar se escribe en el archivo del proyecto, sin PR.' + (datos.desync ? '\nEn GitHub hay otra versión; esta es la de tu ordenador.' : '')
-        : 'Esta ficha está solo en GitHub: al guardar se creará el archivo en tu ordenador.', 'var(--acento)');
+      mostrarNotaLocal(datos.local
+        ? 'Ficha local: se guarda en el archivo del proyecto, sin PR.' + (datos.desync ? ' En GitHub hay otra versión; esta es la de tu ordenador.' : '')
+        : 'Esta ficha está solo en GitHub: al guardar se creará en tu ordenador.');
+    } else {
+      cerrarNotaLocal();
     }
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
@@ -401,6 +410,7 @@ async function abrirFicha(slug, empujar = true) {
 
 /** Prepara el editor con un `.md` ya cargado (de master o de una rama recién creada). */function montarEditor(slug, md, pr, zona, rama) {
   zonaFicha = zona === 'acordes3' ? 'acordes3' : 'acordes';
+  cerrarNotaLocal();
   const d = desenvolver(md);
   conocidos.clear();
   d.registros.flat().forEach((x) => conocidos.add(x.etiqueta));
@@ -1108,6 +1118,7 @@ $('b-publicar').onclick = publicar;
 $('b-avisos').onclick = abrirAvisos;
 $('m-izq').onclick = () => mover(-1);
 $('m-der').onclick = () => mover(1);
+$('nota-local-cerrar').onclick = cerrarNotaLocal;
 $('av-cerrar').onclick = () => $('dlg-aviso').close();
 $('av-copiar').onclick = async () => {
   try { await navigator.clipboard.writeText($('aviso-texto').value); $('av-copiar').textContent = 'Copiado'; }
