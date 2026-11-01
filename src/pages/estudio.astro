@@ -23,6 +23,8 @@ export const prerender = true;
   a { color:var(--acento); }
   header { flex:0 0 auto; border-bottom:1px solid var(--linea); padding:8px 14px; display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; }
   h1 { font-size:15px; margin:0; font-weight:650; }
+  h1 a { color:inherit; text-decoration:none; }
+  h1 a:hover, h1 a:focus-visible { text-decoration:underline; }
   .meta { color:var(--suave); font-size:12.5px; }
   .barra { display:flex; gap:8px; align-items:center; margin-left:auto; flex-wrap:wrap; }
   button, .boton { font:inherit; font-size:12.5px; padding:5px 10px; border:1px solid var(--linea); background:#fff; color:var(--tinta); border-radius:6px; cursor:pointer; text-decoration:none; display:inline-block; }
@@ -101,7 +103,7 @@ export const prerender = true;
   .datos-grid .ancho { grid-column:1 / -1; }
   @media (max-width: 620px) {
     .datos-resumen { display:none; }
-    .datos-grid { grid-template-columns:1fr 1fr; max-height:46vh; }
+    .datos-grid { grid-template-columns:1fr; max-height:46vh; }
   }
   /* editor */
   #vista-editor { flex:1; display:flex; flex-direction:column; min-height:0; }
@@ -148,6 +150,7 @@ export const prerender = true;
     .fila { grid-template-columns:1fr; gap:5px; }
     .fila-acciones { justify-content:flex-end; }
     .f-agr { white-space:normal; }
+    .dos { grid-template-columns:1fr; }
   }
   @media (max-width: 900px) {
     .cols, .cols.sin-base { grid-template-columns: 1fr; }
@@ -164,7 +167,7 @@ export const prerender = true;
 </head>
 <body>
 <header>
-  <h1>Estudio</h1>
+  <h1><a href="/estudio/" id="b-inicio" title="Volver al inicio del estudio">Estudio</a></h1>
   <span class="meta" id="cab-meta"></span>
   <span class="estado" id="cab-estado"></span>
   <div class="barra">

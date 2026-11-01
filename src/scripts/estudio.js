@@ -880,6 +880,14 @@ $('b-lista').onclick = () => {
   // Si venimos de una ficha, el atrás deja el historial en la lista.
   if (history.state && history.state.vista === 'ficha') history.back();
 };
+$('b-inicio').onclick = (e) => {
+  e.preventDefault();
+  const desdeFicha = history.state && history.state.vista === 'ficha';
+  mostrarLista();
+  cerrarAviso();
+  if (desdeFicha) history.back();
+  else history.replaceState({ vista: 'lista' }, '', '/estudio/');
+};
 $('b-nueva').onclick = () => abrirNueva();
 $('dlg-nueva').addEventListener('close', () => {
   // Cerrar el formulario (Cancelar, Esc o la ✕) devuelve a la vista anterior.
