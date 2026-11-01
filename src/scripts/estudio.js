@@ -93,7 +93,7 @@ function filaLista(x) {
     '</button>' +
     '<div class="fila-acciones">' +
       boton('editar', 'Editar') +
-      (x.zona === 'acordes3' ? boton('publicar', 'Publicar', ' principal') : '') +
+      (x.zona === 'acordes3' ? boton('publicar', MODO_LOCAL ? 'Promover' : 'Publicar', ' principal') : '') +
       boton('clonar', '＋', ' icono') +
     '</div>' +
   '</article>';
@@ -265,6 +265,10 @@ async function abrirFicha(slug) {
   ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos'].forEach((id) => { $(id).hidden = false; });
   $('b-nueva').hidden = true;
   $('b-publicar').hidden = zonaFicha !== 'acordes3';
+  $('b-publicar').textContent = MODO_LOCAL ? 'Promover' : 'Publicar';
+  $('b-publicar').title = MODO_LOCAL
+    ? 'Mueve el borrador a acordes en el proyecto: sin PR y sin publicar en la web'
+    : 'Pasa el borrador a acordes y abre la PR';
   if (pr) {
     $('b-pr').hidden = false;
     $('b-fusionar').hidden = false;
@@ -364,15 +368,6 @@ async function guardar() {
   if (!datos.year) { mostrarAviso('Falta el año.', 'var(--mal)'); return; }
   if (!datos.img) { mostrarAviso('Falta la imagen: el esquema la exige.', 'var(--mal)'); return; }
 
-  const slugCalculado = slugDeDatos(datos);
-  // Renombrar solo si los campos del slug han cambiado respecto a los originales.
-  const slugNuevo = slugCalculado !== ficha.slugBase ? slugCalculado : ficha.slug;
-  const renombra = slugCalculado !== ficha.slugBase && slugNuevo !== ficha.slug;
-  if (renombra) {
-    const ruta = zonaFicha === 'acordes3' ? '/acordes3/' : '/acordes/';
-    if (!confirm('La ficha cambia de URL:\n' + ruta + ficha.slug + '/\n→  ' + ruta + slugNuevo + '/\n\nAl guardar se renombra el archivo. ¿Seguir?')) return;
-  }
-
   try {
     const fm = cambiarFrontmatter(ficha.d.frontmatter, {
       pieza: datos.pieza,
@@ -397,7 +392,6 @@ async function guardar() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         slug: ficha.slug,
-        ...(renombra ? { slugNuevo } : {}),
         md,
         zona: zonaFicha,
         ...(ficha.rama ? { rama: ficha.rama } : {}),
@@ -406,13 +400,6 @@ async function guardar() {
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo guardar');
 
-    if (renombra) {
-      const viejo = ficha.slug;
-      ficha.slug = d.slug || slugNuevo;
-      const enIndice = indice.find((x) => x.slug === viejo);
-      if (enIndice) enIndice.slug = ficha.slug;
-      $('cab-meta').textContent = ficha.slug;
-    }
     ficha.d.frontmatter = fm;
     ficha.md = md;
     ficha.rama = d.rama || (d.local ? null : ficha.rama);
@@ -424,8 +411,7 @@ async function guardar() {
       $('b-fusionar').hidden = true;
       setEstado('guardado en local', true);
       const ruta = 'src/content/' + (zonaFicha === 'acordes3' ? 'acordes3' : 'acordes') + '/' + ficha.slug + '.md';
-      mostrarAviso('Guardado en ' + ruta + '.\nEn local no se crea PR: el archivo queda escrito en el proyecto.' +
-        (renombra ? '\nLa ficha ha cambiado de nombre de archivo.' : ''), 'var(--ok)');
+      mostrarAviso('Guardado en ' + ruta + '.\nEn local no se crea PR: el archivo queda escrito en el proyecto.', 'var(--ok)');
       return;
     }
 
@@ -434,7 +420,6 @@ async function guardar() {
     $('b-fusionar').hidden = false;
     $('b-pr').onclick = () => window.open(d.pr.url, '_blank');
     mostrarAviso('Guardado en la rama ' + d.rama + '.\nPR #' + d.pr.numero + ': ' + d.pr.url +
-      (renombra ? '\nOjo: al fusionar, la URL antigua dejará de existir.' : '') +
       '\nNetlify está construyendo el preview; en un par de minutos lo tienes en la PR.', 'var(--ok)');
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
@@ -470,7 +455,9 @@ async function fusionar() {
 async function publicar() {
   if (!ficha) return;
   if (sucio) { mostrarAviso('Guarda los cambios antes de publicar (Ctrl+S).', 'var(--nuevo)'); return; }
-  if (!confirm('¿Publicar esta ficha? Se moverá de acordes3 a acordes y, al fusionar, saldrá el aviso.')) return;
+  if (!confirm(MODO_LOCAL
+    ? '¿Promover esta ficha a acordes?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
+    : '¿Publicar esta ficha? Se moverá de acordes3 a acordes y, al fusionar, saldrá el aviso.')) return;
   try {
     const r = await fetch(API + '/publicar', {
       method: 'POST',
@@ -482,9 +469,9 @@ async function publicar() {
     const md = montarMd(ficha.d.frontmatter, envolver(ta.value, ficha.d.registros, ficha.d.originales).pre);
     montarEditor(ficha.slug, md, d.pr, 'acordes', d.rama);
     if (d.local) {
-      setEstado('publicado en local', true);
+      setEstado('promovida a acordes', true);
       $('b-publicar').hidden = true;
-      mostrarAviso('Publicado en local: movido a src/content/acordes/' + ficha.slug + '.md.\nSigue en el proyecto; para la web, súbelo con `subir-acorde`.', 'var(--ok)');
+      mostrarAviso('Promovida a acordes: ' + 'src/content/acordes/' + ficha.slug + '.md.\nEn el proyecto ya cuenta como publicada, pero la web no cambia hasta que hagas commit y push (`subir-acorde`).', 'var(--ok)');
       return;
     }
     setEstado('publicando · PR #' + d.pr.numero, true);
@@ -497,7 +484,9 @@ async function publicar() {
 
 /** Publica un borrador desde la propia lista, sin abrir el editor. */
 async function publicarDesdeLista(slug, boton) {
-  if (!confirm('¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes y se abrirá la PR. Al fusionar saldrá el aviso.')) return;
+  if (!confirm(MODO_LOCAL
+    ? '¿Promover «' + slug + '» a acordes?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
+    : '¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes y se abrirá la PR. Al fusionar saldrá el aviso.')) return;
   const antes = boton.textContent;
   boton.disabled = true;
   boton.textContent = '…';
@@ -513,7 +502,7 @@ async function publicarDesdeLista(slug, boton) {
     if (x) { x.zona = 'acordes'; x.enPR = d.pr ? d.pr.numero : null; }
     pintarLista();
     mostrarAviso(d.local
-      ? 'Publicada en local: «' + slug + '» ya está en src/content/acordes/.\nPara la web, súbela con `subir-acorde`.'
+      ? 'Promovida a acordes: «' + slug + '» ya está en src/content/acordes/.\nLa web no cambia hasta que hagas commit y push (`subir-acorde`).'
       : 'Publicada «' + slug + '» en la PR #' + d.pr.numero + '.\nAl fusionar, Telegram avisa solo; WhatsApp y X, desde el PC.\n' + d.pr.url, 'var(--ok)');
   } catch (e) {
     boton.disabled = false;
@@ -554,10 +543,7 @@ function leerFrontmatter(fm) {
 function pintarDatos(fmTexto) {
   const fm = leerFrontmatter(fmTexto);
   for (const el of $('f-datos').querySelectorAll('[name]')) el.value = fm[el.name] ?? '';
-  // Slug que saldría de los datos originales: sirve para saber si el usuario
-  // ha tocado pieza/agrupación/título (muchas fichas tienen slug propio).
-  if (ficha) ficha.slugBase = slugDeDatos(datosDelEditor());
-  actualizarSlug();
+  actualizarDatos();
 }
 
 /** Valores actuales del formulario de datos. */
@@ -571,19 +557,14 @@ function datosDelEditor() {
 const slugDeDatos = (d) => (d.pieza + '-' + d.agrupacion + (d.letraTitulo ? '-' + d.letraTitulo : ''))
   .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-/** Pinta el resumen de la cabecera y avisa si el slug va a cambiar. */
-function actualizarSlug() {
+/** Resumen del panel de datos. La URL no cambia al editar los campos. */
+function actualizarDatos() {
   if (!ficha) return;
   const d = datosDelEditor();
-  const calculado = slugDeDatos(d);
-  // Solo cambia el archivo si se han tocado los campos que forman el slug.
-  const objetivo = calculado !== ficha.slugBase ? calculado : ficha.slug;
-  const cambia = objetivo !== ficha.slug;
   const el = $('datos-slug');
-  const ruta = (zonaFicha === 'acordes3' ? '/acordes3/' : '/acordes/') + objetivo + '/';
-  el.textContent = (cambia ? '→ ' : '') + ruta;
-  el.classList.toggle('mal', cambia);
-  el.title = cambia ? 'Al guardar cambiará la URL de la ficha' : 'URL de la ficha';
+  el.textContent = (zonaFicha === 'acordes3' ? '/acordes3/' : '/acordes/') + ficha.slug + '/';
+  el.title = 'URL de la ficha: no cambia al editar los datos';
+  el.classList.remove('mal');
   $('datos-resumen').textContent = [d.pieza, d.agrupacion, d.year].filter(Boolean).join(' · ');
 }
 
@@ -652,8 +633,7 @@ async function crear(e) {
     mostrarAviso('Escribe el título de la letra nueva: es lo que distingue esta ficha de la original.', 'var(--mal)');
     return;
   }
-  const slug = (pieza + '-' + v('agrupacion') + (v('letraTitulo') ? '-' + v('letraTitulo') : ''))
-    .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const slug = slugDeDatos({ pieza, agrupacion: v('agrupacion'), letraTitulo: v('letraTitulo') });
   if (indice.some((x) => x.slug === slug)) {
     mostrarAviso('Ya existe una ficha con el slug «' + slug + '».\nEscribe un título de letra distinto para diferenciarla.', 'var(--mal)');
     return;
@@ -759,7 +739,7 @@ function insertarSug(t) {
 /* ---------------- eventos ---------------- */
 $('q').oninput = () => pintarLista();
 $('f-datos').addEventListener('input', () => {
-  actualizarSlug();
+  actualizarDatos();
   sucio = true;
   setEstado('sin guardar', false);
 });
