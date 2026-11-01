@@ -1,18 +1,18 @@
 ---
 pieza: Pasodoble
-agrupacion:  DSAS3
+agrupacion: DSAS3
 year: 2026
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://www.andaluciainformacion.es/asset/thumbnail,1280,720,center,center/media/andaluciainformacion/images/2026/01/26/2026012600593049219.jpg
+img: 'https://www.andaluciainformacion.es/asset/thumbnail,1280,720,center,center/media/andaluciainformacion/images/2026/01/26/2026012600593049219.jpg'
 cejilla: 5
 modalidad: Comparsa
 date: 29/01/2026
-video: https://www.youtube.com/embed/kT5Y42bf7sc?si=qT2Vml4ytMUYuAN4
-cover: https://www.youtube.com/embed/e9YQSwqyMzM?si=-4FoweJe5S7h2DvK
+video: 'https://www.youtube.com/embed/kT5Y42bf7sc?si=qT2Vml4ytMUYuAN4'
+cover: 'https://www.youtube.com/embed/e9YQSwqyMzM?si=-4FoweJe5S7h2DvK'
 autorCover: Acordes Gaditanos
 fraseClave: La quiere vestida de negro la quiere callada
-
+letraTitulo: La quiere vestida de negro
 ---
 <pre>
    <a>LaM7</a>   <a>Sim7b5</a>    <a>LaM7</a>      <a>Sim7b5</a>   <a>LaM7</a>
