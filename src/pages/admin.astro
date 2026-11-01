@@ -260,10 +260,8 @@ export const prerender = true;
   .respuesta-form textarea { width:100%; min-height:70px; padding:9px 10px; border:2px solid #000; font:400 12px var(--mono); resize:vertical; }
   .respuesta-form .acciones { margin-top:0; }
 
-  /* Pestañas y flechas (solo pantallas estrechas) */
+  /* Pestañas (solo pantallas estrechas) */
   .tabs { display:none; }
-  .mover { display:none; gap:8px; padding:8px 10px; border-top:2px solid #000; background:var(--papel); }
-  .mover button { flex:1; padding:12px; font-size:16px; }
 
   @media (max-width:1000px) {
     .cols, .cols.sin-base { grid-template-columns:1fr; }
@@ -272,7 +270,6 @@ export const prerender = true;
     .tabs { display:flex; gap:6px; padding:8px 10px; background:var(--papel); border-bottom:2px solid #000; }
     .tabs button { flex:1; padding:10px 6px; font-size:10px; box-shadow:none; }
     .tabs button.sel { background:#000; border-color:#000; color:var(--acento); }
-    .mover { display:flex; }
     .datos-resumen { display:none; }
     .barra { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
     .barra::-webkit-scrollbar { display:none; }
@@ -308,8 +305,6 @@ export const prerender = true;
     #editor-meta { font-size:9.5px; }
     .tabs { padding:6px 8px; }
     .tabs button { padding:11px 4px; }
-    .mover { padding:6px 8px; }
-    .mover button { padding:13px; }
     #nota-local { padding:6px 10px; font-size:10.5px; }
     footer { padding:6px 10px; font-size:10px; }
     #aviso { left:8px; right:8px; bottom:8px; padding:10px 12px; font-size:11.5px; }
@@ -435,10 +430,6 @@ export const prerender = true;
             <div class="regla" id="regla" aria-hidden="true"></div>
           </div>
           <div id="sug"></div>
-        </div>
-        <div class="mover">
-          <button id="m-izq" title="Mover el acorde una columna a la izquierda">◀</button>
-          <button id="m-der" title="Mover el acorde una columna a la derecha">▶</button>
         </div>
       </section>
       <section class="pane" data-pane="izq">

@@ -1349,8 +1349,6 @@ $('b-comprobar').onclick = comprobar;
 $('b-fusionar').onclick = fusionar;
 $('b-publicar').onclick = publicar;
 $('b-avisos').onclick = abrirAvisos;
-$('m-izq').onclick = () => mover(-1);
-$('m-der').onclick = () => mover(1);
 $('nota-local-cerrar').onclick = cerrarNotaLocal;
 $('av-cerrar').onclick = () => $('dlg-aviso').close();
 $('av-copiar').onclick = async () => {
