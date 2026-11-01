@@ -13,6 +13,15 @@ const capitalize = (text: string) => (text ? text.charAt(0).toUpperCase() + text
 /** `1 copla` / `3 coplas`: la cifra con su palabra en singular o plural. */
 const plural = (n: number, uno: string, varios: string) => `${n} ${n === 1 ? uno : varios}`;
 
+/**
+ * `38 coplas` o `49 coplas y 2 letras extras`: la parte de letras solo aparece
+ * cuando hay alguna; un año sin letras alternativas se queda en las coplas.
+ */
+const textoRecuento = ({ coplas, letras }: { coplas: number; letras: number }) => {
+  const base = plural(coplas, 'copla', 'coplas');
+  return letras ? `${base} y ${plural(letras, 'letra extra', 'letras extras')}` : base;
+};
+
 const recuento = contarCoplas(acordes);
 
 const normalizePieza = (pieza: string) =>
@@ -99,7 +108,7 @@ const itemListSchema = {
           <p class='subtitle'>
             Aquí encontrarás, agrupadas por año, todas las coplas que hemos transcrito para tocarlas
             con la guitarra. Ahora mismo hay{' '}
-            <strong class='subtitle-count'>{recuento.coplas}</strong> {recuento.coplas === 1 ? 'copla' : 'coplas'} y <strong class='subtitle-count'>{recuento.letras}</strong> {recuento.letras === 1 ? 'letra extra' : 'letras extras'}, y seguimos sumando.
+            <strong class='subtitle-count'>{recuento.coplas}</strong> {recuento.coplas === 1 ? 'copla' : 'coplas'}{recuento.letras > 0 && <> y <strong class='subtitle-count'>{recuento.letras}</strong> {recuento.letras === 1 ? 'letra extra' : 'letras extras'}</>}, y seguimos sumando.
           </p>
         </header>
 
@@ -108,7 +117,7 @@ const itemListSchema = {
             <section class='year-group' aria-labelledby={`year-${year}`}>
               <h2 id={`year-${year}`}>
                 <span class='year-label'>{year}</span>{' '}
-                <span class='year-count'>({plural(recuento.coplas, 'copla', 'coplas')} y {plural(recuento.letras, 'letra extra', 'letras extras')})</span>
+                <span class='year-count'>({textoRecuento(recuento)})</span>
               </h2>
               <ul class='copla-list'>
                 {acordes.map((acorde) => (

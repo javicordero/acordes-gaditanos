@@ -124,7 +124,7 @@ Todo en `src/lib/orden.ts`, con dos comparadores que comparten las piezas (`comp
 
 **`date` ↓** es la fecha de alta en la web, no la de la copla; para cerrar empates se usa pieza A-Z y slug A-Z (antes, las fichas empatadas quedaban en el orden en que `getCollection` devuelve los ficheros). **`/lista` es la excepción**: conserva su orden local por tipo de pieza, que es lo que anuncia su meta description.
 
-**Recuento de `/lista`**: la página separa **coplas** y **letras extras** («534 coplas y 4 letras extras») con `contarCoplas` (`src/lib/letras.ts`), que agrupa igual que las letras alternativas (tipo base + agrupación + año): cada grupo es una copla y el resto de fichas son letras. No sirve mirar qué fichas llevan `letraTitulo`: las originales de DSAS3, La Azotea y Los Colgaos también lo llevan. `/lista2` usa el mismo recuento.
+**Recuento de `/lista`**: la página separa **coplas** y **letras extras** («534 coplas y 4 letras extras») con `contarCoplas` (`src/lib/letras.ts`), que agrupa igual que las letras alternativas (tipo base + agrupación + año): cada grupo es una copla y el resto de fichas son letras. No sirve mirar qué fichas llevan `letraTitulo`: las originales de DSAS3, La Azotea y Los Colgaos también lo llevan. Si un año no tiene letras, solo se ponen las coplas («38 coplas»). `/lista2` usa el mismo recuento.
 
 ### Postura predeterminada por acorde
 En el `<pre>` se puede fijar la postura con la que se abre un acorde con `data-postura`:
