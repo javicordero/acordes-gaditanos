@@ -49,7 +49,7 @@ export const prerender = true;
   :focus-visible { outline:3px solid var(--acento); outline-offset:2px; }
 
   /* Cabecera: como la de la web (negra con filo ámbar y logo Bodoni). */
-  header { flex:0 0 auto; position:relative; z-index:5; background:#000; color:#fff; border-bottom:4px solid var(--acento); padding:0 14px; min-height:56px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  body > header { flex:0 0 auto; position:relative; z-index:5; background:#000; color:#fff; border-bottom:4px solid var(--acento); padding:0 14px; min-height:56px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
   h1 { margin:0; font:normal 1.45rem/1 var(--serif); letter-spacing:.4px; }
   h1 a { color:var(--acento); text-decoration:none; }
   h1 a:hover, h1 a:focus-visible { text-decoration:underline; }
@@ -58,12 +58,12 @@ export const prerender = true;
   .estado.ok { color:var(--acento); }
   .estado.mal { color:#ff8a8a; }
   .barra { display:flex; align-items:center; gap:6px; margin-left:auto; flex-wrap:wrap; }
-  header button { border-color:var(--acento); background:transparent; color:var(--acento); box-shadow:none; }
-  header button:hover { background:var(--acento); color:#000; border-color:var(--acento); }
-  header button.principal { background:var(--acento); color:#000; border-color:var(--acento); }
-  header button.principal:hover { filter:brightness(1.06); }
-  header button.revisado { background:var(--ok); border-color:var(--ok); color:#fff; }
-  header button.revisado:hover { filter:brightness(1.08); }
+  body > header button { border-color:var(--acento); background:transparent; color:var(--acento); box-shadow:none; }
+  body > header button:hover { background:var(--acento); color:#000; border-color:var(--acento); }
+  body > header button.principal { background:var(--acento); color:#000; border-color:var(--acento); }
+  body > header button.principal:hover { filter:brightness(1.06); }
+  body > header button.revisado { background:var(--ok); border-color:var(--ok); color:#fff; }
+  body > header button.revisado:hover { filter:brightness(1.08); }
 
   /* Botones: rectos, con borde negro y sombra dura. */
   button, .boton { font:700 11px/1 var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:8px 11px; border:2px solid var(--linea); border-radius:0; background:var(--papel); color:var(--tinta); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:6px; box-shadow:var(--sombra-sm); transition:transform .12s ease, box-shadow .12s ease, background .12s ease, color .12s ease; }
@@ -205,6 +205,61 @@ export const prerender = true;
   .dos { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
   .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:14px; flex-wrap:wrap; }
 
+  /* Navegación superior: Editor / Estadísticas / Comentarios */
+  .vistas { flex:0 0 auto; display:flex; gap:0; background:var(--papel); border-bottom:2px solid #000; padding:0 10px; overflow-x:auto; scrollbar-width:none; }
+  .vistas::-webkit-scrollbar { display:none; }
+  .vistas button { flex:0 0 auto; border:0; border-bottom:3px solid transparent; background:transparent; box-shadow:none; padding:11px 14px; font-size:10px; letter-spacing:.08em; color:#000; }
+  .vistas button.sel { border-bottom-color:var(--acento); background:#000; color:var(--acento); }
+  .vistas button:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
+
+  /* Estadísticas y comentarios */
+  #vista-stats, #vista-comentarios { flex:1; overflow:auto; background:var(--fondo); }
+  .stats-panel, .comentarios-panel { width:100%; max-width:1000px; margin:0 auto; padding:18px 14px 40px; }
+  .stats-cab, .comentarios-cab { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
+  .stats-cab h2, .comentarios-cab h2 { margin:0 0 4px; font:normal 1.7rem/1.1 var(--serif); }
+  .stats-cab .meta, .comentarios-cab .meta { margin:0; color:var(--suave); font-size:10.5px; }
+  .stats-cab .meta code, .comentarios-cab .meta code { background:#fff; border:1px solid #000; padding:0 3px; font-size:10px; }
+  .comentarios-acciones { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  #orden-peticiones { font:400 12px var(--mono); padding:8px 10px; border:2px solid #000; background:var(--papel); color:var(--tinta); }
+  .stats-contenido { display:grid; gap:16px; }
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:10px; }
+  .stat-card { background:var(--papel); border:2px solid #000; box-shadow:var(--sombra-sm); padding:14px; }
+  .stat-card--total { background:var(--navy); color:#fff; }
+  .stat-label { display:block; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--suave); }
+  .stat-card--total .stat-label { color:#c9d4e8; }
+  .stat-valor { margin-top:8px; font:700 1.8rem/1 var(--mono); }
+  .stats-bloque { background:var(--papel); border:2px solid #000; box-shadow:var(--sombra-sm); }
+  .stats-bloque h3 { margin:0; padding:10px 12px; font-size:9.5px; text-transform:uppercase; letter-spacing:.1em; border-bottom:2px solid #000; background:var(--papel); }
+  .stats-bloque h3 .tabla-nota { float:right; font-size:9px; font-weight:400; letter-spacing:0; text-transform:none; color:var(--suave); }
+  .tabla-scroll { overflow-x:auto; }
+  .stats-tabla { width:100%; border-collapse:collapse; font-size:11.5px; }
+  .stats-tabla th { background:#000; color:var(--acento); padding:7px 10px; text-align:left; font-size:9px; text-transform:uppercase; letter-spacing:.08em; }
+  .stats-tabla td { padding:7px 10px; border-bottom:1px solid #ddd; }
+  .stats-tabla tr:last-child td { border-bottom:0; }
+  .stats-tabla .num { text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
+  .stats-tabla .ruta { word-break:break-word; }
+  .stats-tabla .progress { height:8px; min-width:70px; background:#ddd; border:1px solid #000; }
+  .stats-tabla .progress span { display:block; height:100%; background:var(--acento); }
+  .cargando, .error { margin:0; padding:24px 12px; text-align:center; font-size:12px; color:var(--suave); }
+  .error { color:var(--mal); }
+  .peticiones { display:grid; gap:10px; }
+  .peticion { background:var(--papel); border:2px solid #000; box-shadow:var(--sombra-sm); padding:12px 14px; }
+  .peticion.completada { opacity:.62; }
+  .peticion-cab { display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:10px; color:var(--suave); }
+  .peticion-rank { font-weight:700; color:#000; }
+  .peticion-autor { font-weight:700; color:#000; }
+  .peticion-votos { color:var(--mal); font-weight:700; }
+  .peticion-texto { margin:8px 0 10px; font-size:12.5px; line-height:1.55; white-space:pre-wrap; word-break:break-word; }
+  .peticion-pie { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .peticion-respuestas { font-size:9.5px; color:var(--suave); }
+  .peticion-acciones { display:flex; gap:6px; flex-wrap:wrap; }
+  .peticion-acciones button { padding:7px 9px; font-size:9px; box-shadow:none; }
+  .peticion-acciones .completar { background:var(--ok); border-color:#000; color:#fff; }
+  .peticion-acciones .peligro { background:var(--mal); border-color:#000; color:#fff; }
+  .peticion-respuesta .respuesta-form { display:grid; gap:8px; margin-top:10px; }
+  .respuesta-form textarea { width:100%; min-height:70px; padding:9px 10px; border:2px solid #000; font:400 12px var(--mono); resize:vertical; }
+  .respuesta-form .acciones { margin-top:0; }
+
   /* Pestañas y flechas (solo pantallas estrechas) */
   .tabs { display:none; }
   .mover { display:none; gap:8px; padding:8px 10px; border-top:2px solid #000; background:var(--papel); }
@@ -231,14 +286,14 @@ export const prerender = true;
 
   @media (max-width:640px) {
     body { font-size:13px; }
-    header { padding:8px 10px; gap:6px 8px; min-height:0; }
+    body > header { padding:8px 10px; gap:6px 8px; min-height:0; }
     h1 { font-size:1.25rem; }
     .meta { display:none; }
     .estado { font-size:9.5px; }
     .barra { width:100%; margin-left:0; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; gap:6px; }
     .barra::-webkit-scrollbar { display:none; }
     #quien, .pie-teclas { display:none; }
-    header button { flex:0 0 auto; padding:8px 9px; font-size:9.5px; }
+    body > header button { flex:0 0 auto; padding:8px 9px; font-size:9.5px; }
     #b-lista { order:-2; }
     #b-guardar { order:-1; }
     .lista-cab { padding:10px; gap:8px; }
@@ -265,6 +320,15 @@ export const prerender = true;
     .acciones button { flex:1; }
     #login { padding:16px; }
     #login .caja { padding:22px 18px; }
+    .vistas { padding:0 8px; }
+    .vistas button { padding:10px 11px; font-size:9.5px; }
+    .stats-panel, .comentarios-panel { padding:12px 10px 32px; }
+    .stats-grid { grid-template-columns:1fr 1fr; }
+    .stat-valor { font-size:1.45rem; }
+    .stats-cab h2, .comentarios-cab h2 { font-size:1.4rem; }
+    .stats-tabla .progreso { display:none; }
+    .stats-tabla th, .stats-tabla td { padding:7px 8px; font-size:10.5px; }
+    .peticion-acciones button { padding:8px 9px; }
   }
 </style>
 </head>
@@ -287,6 +351,12 @@ export const prerender = true;
     <span id="quien" class="meta"></span>
   </div>
 </header>
+
+<nav class="vistas" id="nav-vistas" hidden>
+  <button type="button" data-vista="editor" class="sel">Editor</button>
+  <button type="button" data-vista="stats">Estadísticas</button>
+  <button type="button" data-vista="comentarios">Comentarios</button>
+</nav>
 
 <main>
   <div id="login" hidden>
@@ -375,6 +445,40 @@ export const prerender = true;
         <div class="cab"><b>Original</b></div>
         <pre id="ref-izq"></pre>
       </section>
+    </div>
+  </div>
+
+  <div id="vista-stats" hidden>
+    <div class="stats-panel">
+      <header class="stats-cab">
+        <div>
+          <h2>Estadísticas</h2>
+          <p class="meta">Contando desde 19/01/2025 · Datos en tiempo real desde Cloudflare D1</p>
+        </div>
+        <button type="button" id="b-stats-refrescar">Actualizar</button>
+      </header>
+      <div id="stats-contenido" class="stats-contenido"><p class="cargando">Cargando…</p></div>
+    </div>
+  </div>
+
+  <div id="vista-comentarios" hidden>
+    <div class="comentarios-panel">
+      <header class="comentarios-cab">
+        <div>
+          <h2>Comentarios</h2>
+          <p class="meta">Peticiones de <code>/pedir-copla</code></p>
+        </div>
+        <div class="comentarios-acciones">
+          <select id="orden-peticiones" title="Ordenar las peticiones">
+            <option value="pendientes">Pendientes y votos</option>
+            <option value="votos">Más votadas</option>
+            <option value="fecha">Más recientes</option>
+            <option value="autor">Autor A-Z</option>
+          </select>
+          <button type="button" id="b-comentarios-refrescar">Actualizar</button>
+        </div>
+      </header>
+      <div id="peticiones" class="peticiones"><p class="cargando">Cargando…</p></div>
     </div>
   </div>
 </main>

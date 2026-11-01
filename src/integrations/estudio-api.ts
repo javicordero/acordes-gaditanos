@@ -17,6 +17,8 @@ const FUNCIONES: Record<string, () => Promise<{ default: (req: Request) => Promi
   fusionar: () => import('../../netlify/functions/fusionar.mjs'),
   aviso: () => import('../../netlify/functions/aviso.mjs'),
   letra: () => import('../../netlify/functions/letra.mjs'),
+  stats: () => import('../../netlify/functions/stats.mjs'),
+  comentarios: () => import('../../netlify/functions/comentarios.mjs'),
 };
 
 export const ALL: APIRoute = async ({ request, params, url }) => {

@@ -19,6 +19,32 @@
   status = 200
   force = true
 
+# Los antiguos paneles de admin viven ahora dentro de /estudio, con la misma
+# sesión de GitHub.
+[[redirects]]
+  from = "/admin/stats"
+  to = "/estudio/?vista=stats"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/stats/*"
+  to = "/estudio/?vista=stats"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/comentarios"
+  to = "/estudio/?vista=comentarios"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/comentarios/*"
+  to = "/estudio/?vista=comentarios"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/estudio/*"
   [headers.values]

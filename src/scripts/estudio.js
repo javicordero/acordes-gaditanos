@@ -222,15 +222,195 @@ function pintarLista() {
 
 /** Vuelve a la lista (el historial lo decide quien llama). */
 function mostrarLista() {
-  $('vista-editor').hidden = true;
+  ocultarVistas();
   cerrarNotaLocal();
   $('vista-lista').hidden = false;
   $('b-nueva').hidden = false;
   $('b-letra').hidden = false;
-  ['b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado'].forEach((id) => { $(id).hidden = true; });
+  ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado'].forEach((id) => { $(id).hidden = true; });
+  marcarNav('editor');
   $('cab-meta').textContent = '';
   setEstado('', true);
   if (indice.length) pintarLista();
+}
+
+/* ---------------- vistas del panel ---------------- */
+function ocultarVistas() {
+  ['vista-lista', 'vista-editor', 'vista-stats', 'vista-comentarios'].forEach((id) => { $(id).hidden = true; });
+}
+function marcarNav(vista) {
+  const v = vista === 'editor' || vista === 'lista' ? 'editor' : vista;
+  document.querySelectorAll('#nav-vistas button').forEach((b) => b.classList.toggle('sel', b.dataset.vista === v));
+}
+function soloNav() {
+  ['b-nueva', 'b-letra', 'b-lista', 'b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado'].forEach((id) => { $(id).hidden = true; });
+}
+function mostrarStats(empujar = true) {
+  ocultarVistas();
+  $('vista-stats').hidden = false;
+  marcarNav('stats');
+  soloNav();
+  $('cab-meta').textContent = '';
+  setEstado('', true);
+  if (empujar) history.pushState({ vista: 'stats' }, '', '/estudio/?vista=stats');
+  if (!statsCargadas) cargarStats();
+}
+function mostrarComentarios(empujar = true) {
+  ocultarVistas();
+  $('vista-comentarios').hidden = false;
+  marcarNav('comentarios');
+  soloNav();
+  $('cab-meta').textContent = '';
+  setEstado('', true);
+  if (empujar) history.pushState({ vista: 'comentarios' }, '', '/estudio/?vista=comentarios');
+  if (!peticiones.length) cargarPeticiones();
+}
+
+/* ---------------- estadísticas ---------------- */
+let statsCargadas = false;
+const fmtNum = (n) => Number(n || 0).toLocaleString('es-ES');
+
+async function cargarStats() {
+  const cont = $('stats-contenido');
+  cont.innerHTML = '<p class="cargando">Cargando…</p>';
+  try {
+    const r = await fetch(API + '/stats', { cache: 'no-store' });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudieron cargar las estadísticas');
+    statsCargadas = true;
+    pintarStats(d);
+  } catch (e) {
+    cont.innerHTML = '<p class="error">' + esc(String(e.message || e)) + '</p>';
+  }
+}
+
+function tablaStats(titulo, cabeceras, filas, nota) {
+  const th = cabeceras.map((c) => {
+    const cls = [c.num ? 'num' : '', c.cls || ''].filter(Boolean).join(' ');
+    return '<th' + (cls ? ' class="' + cls + '"' : '') + '>' + esc(c.t) + '</th>';
+  }).join('');
+  const cuerpo = filas.map((fila) => '<tr>' + fila.map((c) => {
+    const cls = [c.num ? 'num' : '', c.cls || ''].filter(Boolean).join(' ');
+    return '<td' + (cls ? ' class="' + cls + '"' : '') + '>' + (c.html || esc(String(c.t))) + '</td>';
+  }).join('') + '</tr>').join('');
+  return '<section class="stats-bloque"><h3>' + esc(titulo) + (nota ? ' <span class="tabla-nota">' + esc(nota) + '</span>' : '') + '</h3><div class="tabla-scroll"><table class="stats-tabla"><thead><tr>' + th + '</tr></thead><tbody>' + cuerpo + '</tbody></table></div></section>';
+}
+
+function pintarStats(d) {
+  const history = d.history || [];
+  const monthly = d.monthly || [];
+  const total = d.total || 0;
+  const hoy = history[0]?.count || 0;
+  const mediaDia = history.length ? Math.round(history.reduce((s, x) => s + x.count, 0) / history.length) : 0;
+  const mesActual = new Date().toISOString().slice(0, 7);
+  const meses = monthly.filter((m) => m.month !== '2026-01' && m.month !== mesActual);
+  const mediaMes = meses.length ? Math.round(meses.reduce((s, x) => s + x.count, 0) / meses.length) : 0;
+  const nombres = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  const cards = [
+    { label: 'Visitas de hoy', valor: hoy },
+    { label: 'Visitas totales', valor: total, total: true },
+    { label: 'Media diaria', valor: mediaDia },
+    { label: 'Media mensual', valor: mediaMes },
+  ];
+  const htmlCards = cards.map((c) =>
+    '<div class="stat-card' + (c.total ? ' stat-card--total' : '') + '"><span class="stat-label">' + c.label + '</span><span class="stat-valor">' + fmtNum(c.valor) + '</span></div>').join('');
+  const filasMes = monthly.map((m) => {
+    const [y, mm] = m.month.split('-');
+    return [{ t: (nombres[Number(mm) - 1] || m.month) + '/' + y }, { t: fmtNum(m.count), num: true }];
+  });
+  const filasDia = history.map((x) => [{ t: x.date }, { t: fmtNum(x.count), num: true }]);
+  const filasFuente = (d.sources || []).map((x) => [{ t: x.source || '(directo)' }, { t: fmtNum(x.count), num: true }]);
+  const paginas = [...(d.pages || [])].sort((a, b) => b.count - a.count);
+  const topRutas = paginas.slice(0, 50);
+  const filasRuta = topRutas.map((x) => [
+    { t: x.path, cls: 'ruta' },
+    { t: fmtNum(x.count), num: true },
+    { html: '<div class="progress"><span style="width:' + (total ? Math.round((x.count / total) * 100) : 0) + '%"></span></div>', cls: 'progreso' },
+  ]);
+  $('stats-contenido').innerHTML =
+    '<div class="stats-grid">' + htmlCards + '</div>' +
+    tablaStats('Visitas por mes', [{ t: 'Mes' }, { t: 'Visitas', num: true }], filasMes) +
+    tablaStats('Evolución últimos 30 días', [{ t: 'Fecha' }, { t: 'Visitas', num: true }], filasDia) +
+    tablaStats('Fuentes de tráfico', [{ t: 'Origen' }, { t: 'Visitas', num: true }], filasFuente) +
+    tablaStats('Rutas más visitadas', [{ t: 'Ruta' }, { t: 'Visitas', num: true }, { t: 'Popularidad', cls: 'progreso' }], filasRuta,
+      paginas.length > topRutas.length ? 'top ' + topRutas.length + ' de ' + paginas.length : '');
+}
+
+/* ---------------- comentarios / peticiones ---------------- */
+let peticiones = [];
+let comentariosTodos = [];
+const escAttr = (t) => esc(String(t || '')).replace(/"/g, '&quot;');
+
+function fechaCorta(iso) {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return '';
+  const p = (n) => String(n).padStart(2, '0');
+  return p(d.getDate()) + '/' + p(d.getMonth() + 1) + '/' + d.getFullYear();
+}
+
+async function cargarPeticiones() {
+  const cont = $('peticiones');
+  cont.innerHTML = '<p class="cargando">Cargando…</p>';
+  try {
+    const r = await fetch(API + '/comentarios?path=' + encodeURIComponent('/pedir-copla'));
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudieron cargar las peticiones');
+    comentariosTodos = d.comments || [];
+    peticiones = comentariosTodos.filter((c) => !c.parentId);
+    pintarPeticiones();
+  } catch (e) {
+    cont.innerHTML = '<p class="error">' + esc(String(e.message || e)) + '</p>';
+  }
+}
+
+function pintarPeticiones() {
+  const cont = $('peticiones');
+  if (!peticiones.length) {
+    cont.innerHTML = '<p class="cargando">No hay peticiones.</p>';
+    return;
+  }
+  const orden = $('orden-peticiones').value;
+  const lista = [...peticiones];
+  if (orden === 'votos') lista.sort((a, b) => (b.votes || 0) - (a.votes || 0) || new Date(b.date) - new Date(a.date));
+  else if (orden === 'fecha') lista.sort((a, b) => new Date(b.date) - new Date(a.date));
+  else if (orden === 'autor') lista.sort((a, b) => String(a.author || '').localeCompare(String(b.author || ''), 'es'));
+  else lista.sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0) || (b.votes || 0) - (a.votes || 0) || new Date(b.date) - new Date(a.date));
+
+  cont.innerHTML = lista.map((c, i) => {
+    const respuestas = comentariosTodos.filter((x) => x.parentId === c.id).length;
+    const autor = c.author && c.author.trim() ? c.author.trim() : 'Anónimo';
+    return '<article class="peticion' + (c.completed ? ' completada' : '') + '" data-id="' + escAttr(c.id) + '">' +
+      '<div class="peticion-cab">' +
+        '<span class="peticion-rank">#' + (i + 1) + '</span>' +
+        '<span>' + fechaCorta(c.date) + '</span>' +
+        '<span class="peticion-autor">' + esc(autor) + '</span>' +
+        '<span class="peticion-votos">❤ ' + (c.votes || 0) + '</span>' +
+        (c.completed ? '<span class="marca">COMPLETADA</span>' : '') +
+      '</div>' +
+      '<p class="peticion-texto">' + esc(c.content || '') + '</p>' +
+      '<div class="peticion-pie">' +
+        '<span class="peticion-respuestas">' + (respuestas ? respuestas + ' respuesta' + (respuestas === 1 ? '' : 's') : '') + '</span>' +
+        '<div class="peticion-acciones">' +
+          '<button type="button" class="completar" data-accion="completar" data-id="' + escAttr(c.id) + '">' + (c.completed ? 'Descompletar' : 'Completar') + '</button>' +
+          '<button type="button" data-accion="responder" data-id="' + escAttr(c.id) + '" data-autor="' + escAttr(autor) + '">Responder</button>' +
+          '<button type="button" class="peligro" data-accion="eliminar" data-id="' + escAttr(c.id) + '">Eliminar</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="peticion-respuesta"></div>' +
+    '</article>';
+  }).join('');
+}
+
+async function apiComentarios(metodo, id, cuerpo) {
+  const url = API + '/comentarios' + (id ? '?id=' + encodeURIComponent(id) : '');
+  const r = await fetch(url, {
+    method: metodo,
+    headers: { 'Content-Type': 'application/json' },
+    body: cuerpo ? JSON.stringify(cuerpo) : undefined,
+  });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || 'no se pudo completar la acción');
+  return d;
 }
 
 /** Abre el formulario de ficha nueva (con su entrada en el historial). */
@@ -422,8 +602,9 @@ async function abrirFicha(slug, empujar = true) {
   pintarDatos(d.frontmatter);
   mostrarBase(false);
   $('cab-meta').textContent = slug;
-  $('vista-lista').hidden = true;
+  ocultarVistas();
   $('vista-editor').hidden = false;
+  marcarNav('editor');
   pintar();
   aplicarZoom();
   ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos'].forEach((id) => { $(id).hidden = false; });
@@ -1078,6 +1259,56 @@ document.querySelectorAll('#filtros button').forEach((b) => {
     pintarLista();
   };
 });
+document.querySelectorAll('#nav-vistas button').forEach((b) => {
+  b.onclick = () => {
+    const v = b.dataset.vista;
+    if (v === 'editor') {
+      mostrarLista();
+      history.pushState({ vista: 'lista' }, '', '/estudio/');
+    } else if (v === 'stats') {
+      mostrarStats();
+    } else {
+      mostrarComentarios();
+    }
+  };
+});
+$('b-stats-refrescar').onclick = () => cargarStats();
+$('b-comentarios-refrescar').onclick = () => cargarPeticiones();
+$('orden-peticiones').onchange = () => pintarPeticiones();
+$('peticiones').addEventListener('click', async (e) => {
+  const b = e.target.closest('button[data-accion]');
+  if (!b) return;
+  const id = b.dataset.id;
+  const accion = b.dataset.accion;
+  const card = b.closest('.peticion');
+  try {
+    if (accion === 'completar') {
+      const c = peticiones.find((x) => x.id === id);
+      if (!c) return;
+      await apiComentarios('PATCH', id, { completed: !c.completed });
+      await cargarPeticiones();
+    } else if (accion === 'eliminar') {
+      if (!confirm('¿Eliminar esta petición y todas sus respuestas?')) return;
+      await apiComentarios('DELETE', id);
+      await cargarPeticiones();
+    } else if (accion === 'responder') {
+      const caja = card.querySelector('.peticion-respuesta');
+      if (caja.innerHTML) { caja.innerHTML = ''; return; }
+      caja.innerHTML = '<div class="respuesta-form"><textarea maxlength="1000" placeholder="Respondiendo a ' + escAttr(b.dataset.autor) + '…"></textarea><div class="acciones"><button type="button" data-accion="cancelar">Cancelar</button><button type="button" class="principal" data-accion="enviar" data-id="' + escAttr(id) + '">Enviar</button></div></div>';
+      caja.querySelector('textarea').focus();
+    } else if (accion === 'cancelar') {
+      card.querySelector('.peticion-respuesta').innerHTML = '';
+    } else if (accion === 'enviar') {
+      const caja = card.querySelector('.peticion-respuesta');
+      const texto = caja.querySelector('textarea').value.trim();
+      if (!texto) return;
+      await apiComentarios('POST', null, { path: '/pedir-copla', author: '', content: texto, parentId: id });
+      await cargarPeticiones();
+    }
+  } catch (err) {
+    mostrarAviso(String(err.message || err), 'var(--mal)');
+  }
+});
 $('b-lista').onclick = () => {
   mostrarLista();
   // Si venimos de una ficha, el atrás deja el historial en la lista.
@@ -1099,6 +1330,8 @@ $('dlg-nueva').addEventListener('close', () => {
 });
 window.addEventListener('popstate', (e) => {
   const st = e.state;
+  if (st && st.vista === 'stats') { mostrarStats(false); return; }
+  if (st && st.vista === 'comentarios') { mostrarComentarios(false); return; }
   if (st && st.vista === 'ficha' && st.slug) { abrirFicha(st.slug, false); return; }
   if ($('dlg-nueva').open) $('dlg-nueva').close();
   mostrarLista();
@@ -1244,6 +1477,7 @@ window.addEventListener('beforeunload', (e) => {
   if (!cuenta) { $('login').hidden = false; return; } // sin sesión: pantalla de login
   MODO_LOCAL = MODO_LOCAL || cuenta.local === true;
   $('login').hidden = true;
+  $('nav-vistas').hidden = false;
   $('quien').textContent = cuenta.login;
   $('vista-lista').hidden = false;
   $('b-nueva').hidden = false;
@@ -1255,7 +1489,10 @@ window.addEventListener('beforeunload', (e) => {
   // La entrada base del historial es la lista: así el atrás desde una ficha
   // vuelve aquí y no sale del panel.
   history.replaceState(estadoLista, '', '/estudio/');
-  if (params.get('ficha')) await abrirFicha(params.get('ficha'));
+  const vista = params.get('vista');
+  if (vista === 'stats') mostrarStats();
+  else if (vista === 'comentarios') mostrarComentarios();
+  else if (params.get('ficha')) await abrirFicha(params.get('ficha'));
   else if (params.get('nueva')) abrirNueva();
   $('pie').innerHTML = MODO_LOCAL
     ? '<span title="Sin sesión de GitHub: se usa el token del .env">Modo local · sin sesión</span>'
