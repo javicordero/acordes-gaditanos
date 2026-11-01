@@ -92,12 +92,16 @@ function tipo(pr) {
   const rama = pr.head.ref;
   if (rama.startsWith('publica/')) return 'publicar';
   if (rama.startsWith('estudio/')) return 'borrador';
+  if (rama.startsWith('letras/')) return 'letra';
   return 'otra';
 }
 
 function fichaDe(pr) {
   const m = (pr.body || '').match(/Ficha:\s*`([^`]+)`/);
   if (m) return m[1];
+  if (pr.head.ref.startsWith('letras/')) {
+    return 'nº ' + pr.head.ref.replace(/^letras\//, '').replace(/-[a-z0-9]+$/, '');
+  }
   return pr.head.ref.replace(/^(estudio|publica)\//, '').replace(/-[a-z0-9]+$/, '');
 }
 

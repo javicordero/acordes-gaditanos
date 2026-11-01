@@ -52,7 +52,10 @@ export default async (req) => {
     return json({
       slug,
       titulo: [datos.pieza, datos.agrupacion, datos.year].filter(Boolean).join(' · '),
-      texto: mensajeUna({ slug, datos }, 'plano'),
+      // Para copiar a WhatsApp: negrita con asteriscos (igual que difundir.mjs).
+      // Para X se manda sin marcas, que allí se verían como asteriscos literales.
+      texto: mensajeUna({ slug, datos }, 'whatsapp'),
+      textoX: mensajeUna({ slug, datos }, 'plano'),
       url: `https://acordesgaditanos.com/acordes/${slug}/`,
     });
   } catch (e) {
