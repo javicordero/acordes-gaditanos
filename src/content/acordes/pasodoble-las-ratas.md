@@ -4,12 +4,12 @@ agrupacion: Las Ratas
 year: 2025
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/03/05/ratas-R0eL5wy91ngmWwGP4ms8iYK-1200x840@abc.jpg
+img: 'https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/03/05/ratas-R0eL5wy91ngmWwGP4ms8iYK-1200x840@abc.jpg'
 cejilla: 1
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/zpAP3fNLL5Q?si=LypGaLiUJFH4PqyE'
-
 fraseClave: Volver     con la sien más plateada que ocho años
+letraTitulo: Volver
 ---
 <pre>
    <a>LaM7</a> <a>Fa</a>        <a>Mi7</a>           <a>LaM7</a>

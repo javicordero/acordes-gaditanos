@@ -1,16 +1,14 @@
 // Entra con GitHub: manda al usuario a la pantalla de autorización.
-import { randomBytes } from 'node:crypto';
-import { urlAutorizacion, COOKIE_ESTADO } from './_lib.mjs';
+//
+// El `state` va firmado (nonce.firma) en la propia URL, sin cookie: así la
+// comprobación anti-CSRF del callback no depende de que el navegador conserve
+// la cookie en el salto por GitHub (Safari/WebView en móvil la descartaban).
+import { urlAutorizacion, estadoNuevo } from './_lib.mjs';
 
-export default async () => {
-  const estado = randomBytes(16).toString('base64url');
-  const cookie = `${COOKIE_ESTADO}=${estado}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=600`;
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: urlAutorizacion(estado),
-      'Set-Cookie': cookie,
-      'Cache-Control': 'no-store',
-    },
-  });
-};
+export default async () => new Response(null, {
+  status: 302,
+  headers: {
+    Location: urlAutorizacion(estadoNuevo()),
+    'Cache-Control': 'no-store',
+  },
+});

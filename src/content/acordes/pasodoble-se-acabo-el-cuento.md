@@ -5,7 +5,7 @@ year: 2012
 musica: Antonio Martín
 letra: Antonio Martín
 modalidad: Comparsa
-img: https://static.grupojoly.com/clip/e29ef4a0-fa2f-4c9e-ab7f-e83250669727_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/e29ef4a0-fa2f-4c9e-ab7f-e83250669727_source-aspect-ratio_1600w_0.jpg'
 cejilla: 4
 video: 'https://www.youtube.com/embed/9Iam2oqSJ2M'
 date: "31/08/2026"
@@ -44,6 +44,7 @@ creí que me moría que pena que pena
 pero soñé que mi pena se acabó yo no se si lo soñé
 <a>Fa#7</a>                     <a>Sim</a>    <a>Fa#7</a>     <a>Sim</a>
 o ahora es cuando estoy soñando que regresé
+
 con mi gente y mi aficción,
                       <a>Mi7</a> <a>Fa</a>                <a>Mi7</a>
 no se si entonces lloré pero ahora estoy llorando
@@ -54,4 +55,5 @@ yo ya volveré al falla a pisar digo yo
            <a>Fa</a>                 <a>Mi7</a>
 vive dios ya verá que se equivoca
  <a>Fa</a>               <a>Mi7</a>                       <a>La</a>
-para otro año será que hoy aquí vuelve mi copla</pre>
+para otro año será que hoy aquí vuelve mi copla
+</pre>

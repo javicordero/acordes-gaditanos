@@ -3,10 +3,19 @@
 // disco (creados con `acordes:aplicar --destino acordes3` y aún sin subir).
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { sesion, sinSesion, json, gh, REPO, BASE, CARPETAS } from './_lib.mjs';
+
+const ejecutar = promisify(execFile);
+const git = (args) => ejecutar('git', args, { cwd: process.cwd(), maxBuffer: 8 * 1024 * 1024 });
 
 // Lo activa la ruta de desarrollo (`src/integrations/estudio-api.ts`).
 const LOCAL = process.env.ESTUDIO_LOCAL === '1';
+
+// Cola de coplas pendientes de revisión (una sola, compartida por el panel y
+// `npm run revisar`). Se versiona para que el panel la lea de master.
+const RUTA_REVISION = 'src/data/revision-acordes.json';
 
 const campo = (md, k) => {
   const fm = (md.match(/^---\n([\s\S]*?)\n---/) || [])[1] || '';
@@ -21,6 +30,17 @@ const datos = (slug, md) => ({
   year: campo(md, 'year'),
   letraTitulo: campo(md, 'letraTitulo'),
 });
+
+/** Slugs de una carpeta del proyecto (solo en dev). */
+async function slugsLocales(carpeta) {
+  if (!LOCAL) return new Set();
+  try {
+    const nombres = await readdir(join(process.cwd(), carpeta));
+    return new Set(nombres.filter((n) => n.endsWith('.md')).map((n) => n.slice(0, -3)));
+  } catch {
+    return new Set();
+  }
+}
 
 /** Borradores de `src/content/acordes3` que aún no están en GitHub (solo en dev). */
 async function borradoresLocales() {
@@ -43,11 +63,106 @@ async function borradoresLocales() {
   return out;
 }
 
+/**
+ * Fichas de `acordes` que están en el ordenador pero no en git: sin rastrear,
+ * modificadas, borradas o en commits locales sin push. Solo tiene sentido en
+ * dev, donde existe el working tree; en Netlify devuelve [].
+ */
+async function pendientesGit() {
+  if (!LOCAL) return [];
+
+  const mapa = new Map();
+  const borradores = new Set();
+
+  try {
+    const { stdout } = await git([
+      'status', '--porcelain=v1', '-z', '--no-renames', '--',
+      CARPETAS.acordes, CARPETAS.acordes3,
+    ]);
+    for (const entrada of stdout.split('\0').filter(Boolean)) {
+      const xy = entrada.slice(0, 2);
+      const ruta = entrada.slice(3);
+      if (!ruta.endsWith('.md')) continue;
+      const slug = ruta.split('/').pop().slice(0, -3);
+
+      if (ruta.startsWith(`${CARPETAS.acordes3}/`)) {
+        // La baja del borrador viaja en el mismo commit que su ficha nueva.
+        if (xy.includes('D')) borradores.add(slug);
+        continue;
+      }
+      if (!ruta.startsWith(`${CARPETAS.acordes}/`)) continue;
+
+      const estado = xy === '??' || xy[0] === 'A'
+        ? 'nueva'
+        : xy.includes('D') ? 'borrada' : 'modificada';
+      mapa.set(slug, { slug, estado, ruta });
+    }
+  } catch { /* sin git o sin repo: la pestaña sale vacía */ }
+
+  // Commits locales que aún no están en origin (un push que falló, por ejemplo).
+  try {
+    const { stdout } = await git(['diff', '--name-status', `origin/${BASE}..HEAD`, '--', CARPETAS.acordes]);
+    for (const linea of stdout.split(/\r?\n/)) {
+      if (!linea.trim()) continue;
+      const [cambio, ruta] = linea.split('\t');
+      if (!ruta || !ruta.endsWith('.md')) continue;
+      const slug = ruta.split('/').pop().slice(0, -3);
+      if (mapa.has(slug)) continue;
+      const tipo = cambio[0] === 'A' ? 'nueva' : cambio[0] === 'D' ? 'borrada' : 'modificada';
+      mapa.set(slug, { slug, estado: 'sin-push', cambio: tipo, ruta });
+    }
+  } catch { /* sin remoto o sin commits pendientes */ }
+
+  const out = [];
+  for (const item of mapa.values()) {
+    let md = '';
+    const borrada = item.estado === 'borrada' || item.cambio === 'borrada';
+    if (borrada) {
+      // En el working tree la ficha sigue en HEAD; en un commit sin push, en origin.
+      for (const ref of ['HEAD', `origin/${BASE}`]) {
+        try { md = (await git(['show', `${ref}:${item.ruta}`])).stdout; break; } catch { /* siguiente */ }
+      }
+    } else {
+      try { md = await readFile(join(process.cwd(), item.ruta), 'utf8'); } catch { /* ilegible */ }
+    }
+    out.push({
+      ...datos(item.slug, md),
+      ...item,
+      ...(borradores.has(item.slug) ? { borrador: true } : {}),
+    });
+  }
+
+  out.sort((a, b) => `${b.year}${b.agrupacion}`.localeCompare(`${a.year}${a.agrupacion}`, 'es'));
+  return out;
+}
+
+/** Slugs pendientes de revisión. En local manda el archivo del ordenador. */
+async function pendientesRevision(token) {
+  try {
+    if (LOCAL) {
+      const { readFile } = await import('node:fs/promises');
+      const json = JSON.parse(await readFile(join(process.cwd(), RUTA_REVISION), 'utf8'));
+      return Array.isArray(json.pendientes) ? json.pendientes : [];
+    }
+    const d = await gh(`/repos/${REPO}/contents/${RUTA_REVISION}?ref=${BASE}`, { token });
+    const json = JSON.parse(Buffer.from(d.content, 'base64').toString('utf8'));
+    return Array.isArray(json.pendientes) ? json.pendientes : [];
+  } catch {
+    return [];
+  }
+}
+
 export default async (req) => {
   const s = sesion(req);
   if (!s) return sinSesion();
 
   try {
+    // En local manda el disco: un borrador que ya está en `acordes` (promovido
+    // en el ordenador) no se vuelve a ofrecer como borrador, y los que están en
+    // `acordes3` se marcan como locales para poder promoverlos.
+    const locales3 = await slugsLocales(CARPETAS.acordes3);
+    const localesPublicadas = await slugsLocales(CARPETAS.acordes);
+
     const arbol = await gh(`/repos/${REPO}/git/trees/${BASE}?recursive=1`, { token: s.token });
     const prefijo = `${CARPETAS.acordes3}/`;
     const rutas = (arbol.tree || [])
@@ -55,7 +170,7 @@ export default async (req) => {
       .map((x) => x.path)
       .slice(0, 80);
 
-    const fichas = await Promise.all(rutas.map(async (ruta) => {
+    const fichas = (await Promise.all(rutas.map(async (ruta) => {
       const slug = ruta.slice(prefijo.length, -3);
       try {
         const d = await gh(`/repos/${REPO}/contents/${ruta}?ref=${BASE}`, { token: s.token });
@@ -63,7 +178,8 @@ export default async (req) => {
       } catch {
         return { slug, pieza: '', agrupacion: '', year: '', letraTitulo: '', zona: 'acordes3' };
       }
-    }));
+    }))).filter((f) => !(LOCAL && localesPublicadas.has(f.slug)));
+    if (LOCAL) for (const f of fichas) f.local = locales3.has(f.slug);
 
     // Fichas que aún viven en una PR abierta: los borradores (`estudio/*`) y las
     // ya publicadas en una PR de publicación (`publica/*`), para que sigan
@@ -76,10 +192,14 @@ export default async (req) => {
       const m = (pr.body || '').match(/Ficha:\s*`([^`]+)`/);
       const slug = m ? m[1] : ref.replace(/^(estudio|publica)\//, '').replace(/-[a-z0-9]+$/, '');
       if (!slug || fichas.some((f) => f.slug === slug)) continue;
+      // Un borrador que ya está publicado en el disco no se repite.
+      if (LOCAL && !esPublicacion && localesPublicadas.has(slug)) continue;
       const zona = esPublicacion ? 'acordes' : 'acordes3';
       try {
         const d = await gh(`/repos/${REPO}/contents/${CARPETAS[zona]}/${slug}.md?ref=${encodeURIComponent(ref)}`, { token: s.token });
-        fichas.push({ ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona, enPR: pr.number, rama: ref });
+        const item = { ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona, enPR: pr.number, rama: ref };
+        if (LOCAL && !esPublicacion) item.local = locales3.has(slug);
+        fichas.push(item);
       } catch { /* la PR no toca esa carpeta */ }
     }
 
@@ -89,7 +209,11 @@ export default async (req) => {
     }
 
     fichas.sort((a, b) => `${b.year}${b.agrupacion}`.localeCompare(`${a.year}${a.agrupacion}`, 'es'));
-    return json({ borradores: fichas });
+    return json({
+      borradores: fichas,
+      revision: await pendientesRevision(s.token),
+      pendientes: await pendientesGit(),
+    });
   } catch (e) {
     return json({ error: String(e.message || e) }, 502);
   }

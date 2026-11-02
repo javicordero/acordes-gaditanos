@@ -5,10 +5,9 @@ year: 1960
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 5
-img: https://static.grupojoly.com/clip/bb8bfb3f-6160-4178-8ece-56359b95bd11_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/bb8bfb3f-6160-4178-8ece-56359b95bd11_source-aspect-ratio_1600w_0.jpg'
 date: 06/04/2026
-video: https://www.youtube.com/embed/emvDOu101bk?si=ifZwBXoPHP61YeUD
-
+video: 'https://www.youtube.com/embed/emvDOu101bk?si=ifZwBXoPHP61YeUD'
 fraseClave: Porque a Dios le dio la gana y a sus divinos caprichos
 ---
 <pre>

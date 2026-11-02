@@ -10,6 +10,7 @@ date: "27/11/2025"
 video: 'https://www.youtube.com/embed/_npa5hu-etc?si=EgRj_HHbeM4-Xro-'
 fraseClave: Cuentan que el brujo
 recomendada: true
+letraTitulo: Cuentan que el brujo
 ---
 <pre>
 <a>Re</a>                               <a>La7</a>

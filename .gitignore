@@ -66,3 +66,6 @@ x-enviados.json
 # Revision de videos: se generan con 'npm run videos -- --buscar'
 videos-candidatos.md
 src/data/videos-candidatos.json
+
+# Cola local de acordes pendientes de revisión
+pendientes-revision.md

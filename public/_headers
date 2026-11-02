@@ -3,6 +3,11 @@
 /indice-busqueda.json
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
+# Fuentes autoalojadas (woff2). Nombres sin versión: si se regenera un archivo,
+# renombrarlo para no servir la versión vieja durante el max-age.
+/fonts/*
+  Cache-Control: public, max-age=31536000
+
 # Service worker: nunca debe cachearse en CDN/edge, o se serviría una versión
 # vieja y la app no se actualizaría.
 /sw.js

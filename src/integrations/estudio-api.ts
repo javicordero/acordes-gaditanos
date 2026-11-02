@@ -1,4 +1,4 @@
-// Ruta de desarrollo para ejecutar las funciones de Netlify del panel /estudio.
+// Ruta de desarrollo para ejecutar las funciones de Netlify del panel /admin.
 //
 // Se inyecta solo con `astro dev` (ver astro.config.mjs). En producción las
 // ejecuta Netlify con la redirección de `netlify.toml`; en desarrollo no existen,
@@ -17,6 +17,9 @@ const FUNCIONES: Record<string, () => Promise<{ default: (req: Request) => Promi
   fusionar: () => import('../../netlify/functions/fusionar.mjs'),
   aviso: () => import('../../netlify/functions/aviso.mjs'),
   letra: () => import('../../netlify/functions/letra.mjs'),
+  stats: () => import('../../netlify/functions/stats.mjs'),
+  comentarios: () => import('../../netlify/functions/comentarios.mjs'),
+  'publicar-local': () => import('../../netlify/functions/publicar-local.mjs'),
 };
 
 export const ALL: APIRoute = async ({ request, params, url }) => {

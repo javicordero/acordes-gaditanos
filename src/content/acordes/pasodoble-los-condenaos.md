@@ -5,15 +5,15 @@ year: 2001
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://letrasdecarnaval.com/assets/images/agrupaciones/ff36867c8530075d1cca1842c.jpg
+img: 'https://letrasdecarnaval.com/assets/images/agrupaciones/ff36867c8530075d1cca1842c.jpg'
 cejilla: 0
-video: https://www.youtube.com/embed/T-v6l5CibyI?si=3R1sqhm16aW-lX9t
+video: 'https://www.youtube.com/embed/T-v6l5CibyI?si=3R1sqhm16aW-lX9t'
 cover: null
 autorCover: null
 date: 03/12/2025
 fraseClave: Si se cumple la condena
+letraTitulo: Si se cumple la condena
 ---
-
 <pre>
 <a>Lam</a>                <a>Mi7</a>                  <a>Lam</a>
 Si se cumple la condena rubita de mis amores

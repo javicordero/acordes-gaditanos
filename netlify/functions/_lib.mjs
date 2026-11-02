@@ -1,18 +1,17 @@
-// Utilidades comunes del panel /estudio.
+// Utilidades comunes del panel /admin.
 //
 // Todo lo que toca GitHub pasa por aquí: sesión en cookie cifrada, llamadas a la
 // API y comprobación del propietario. El token de GitHub no sale nunca del
 // servidor: viaja dentro de la cookie cifrada (HttpOnly) y solo lo leen estas
 // funciones.
 
-import { createCipheriv, createDecipheriv, createHash, randomBytes } from 'node:crypto';
+import { createCipheriv, createDecipheriv, createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 
 export const REPO = process.env.GITHUB_REPO || 'javicordero/acordes-gaditanos';
 export const OWNER = (process.env.OWNER_LOGIN || 'javicordero').toLowerCase();
 export const SITE = (process.env.URL || 'https://acordesgaditanos.com').replace(/\/+$/, '');
 export const BASE = 'master';
-export const COOKIE = 'estudio';
-export const COOKIE_ESTADO = 'estudio_estado';
+export const COOKIE = 'admin';
 export const CARPETA = 'src/content/acordes';
 export const CARPETAS = { acordes: 'src/content/acordes', acordes3: 'src/content/acordes3' };
 // En `astro dev` el panel trabaja contra los archivos del ordenador, no contra
@@ -20,7 +19,16 @@ export const CARPETAS = { acordes: 'src/content/acordes', acordes3: 'src/content
 export const LOCAL = process.env.ESTUDIO_LOCAL === '1';
 export const MAX_EDAD = 60 * 60 * 12; // 12 h
 
-const clave = () => createHash('sha256').update(String(process.env.SESSION_SECRET || 'sin-secreto')).digest();
+// En producción no se admite el secreto de ejemplo: si falta SESSION_SECRET,
+// las cookies y el state del OAuth no se pueden firmar de forma segura. En
+// local se mantiene el valor de ejemplo para no obligar a configurarlo.
+function secreto() {
+  const s = process.env.SESSION_SECRET;
+  if (!s && !LOCAL) throw new Error('Falta SESSION_SECRET en el entorno del panel');
+  return String(s || 'sin-secreto');
+}
+
+const clave = () => createHash('sha256').update(secreto()).digest();
 
 export function cifrar(obj) {
   const iv = randomBytes(12);
@@ -55,7 +63,9 @@ export function cookies(req) {
   for (const parte of crudo.split(';')) {
     const i = parte.indexOf('=');
     if (i < 0) continue;
-    out[parte.slice(0, i).trim()] = decodeURIComponent(parte.slice(i + 1).trim());
+    const valor = parte.slice(i + 1).trim();
+    try { out[parte.slice(0, i).trim()] = decodeURIComponent(valor); }
+    catch { out[parte.slice(0, i).trim()] = valor; }
   }
   return out;
 }
@@ -64,8 +74,23 @@ export function cookieSesion(valor, maxAge = MAX_EDAD) {
   return `${COOKIE}=${valor}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
 }
 
+// Sesión de desarrollo: en `astro dev` no se pasa por GitHub. Se activa solo con
+// los tres cerrojos puestos: la marca que pone la ruta de dev (ESTUDIO_LOCAL), el
+// opt-in explícito del `.env` y un token disponible. En Netlify el primero nunca
+// está, así que esto no se ejecuta en producción.
+function sesionLocal() {
+  if (!LOCAL) return null;
+  if (process.env.ESTUDIO_SIN_LOGIN !== '1') return null;
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) return null;
+  return { login: OWNER, token, exp: Number.MAX_SAFE_INTEGER, local: true };
+}
+
 /** Sesión válida o null. */
 export function sesion(req) {
+  const local = sesionLocal();
+  if (local) return local;
+
   const s = descifrar(cookies(req)[COOKIE]);
   if (!s || !s.token || !s.login) return null;
   if (Date.now() > Number(s.exp || 0)) return null;
@@ -101,11 +126,35 @@ export async function gh(ruta, { token, method = 'GET', body } = {}) {
   return datos;
 }
 
+/** Firma HMAC-SHA256 con SESSION_SECRET (para el `state` del OAuth). */
+export function firmar(valor) {
+  return createHmac('sha256', secreto())
+    .update(String(valor)).digest('base64url');
+}
+
+/** `state` para el OAuth: `nonce.firma`, sin depender de cookies. */
+export function estadoNuevo() {
+  const nonce = randomBytes(16).toString('base64url');
+  return `${nonce}.${firmar(nonce)}`;
+}
+
+/** Comprueba que un `state` devuelto por GitHub lleve la firma correcta. */
+export function estadoValido(estado) {
+  if (typeof estado !== 'string') return false;
+  const i = estado.lastIndexOf('.');
+  if (i <= 0) return false;
+  const nonce = estado.slice(0, i);
+  const firma = estado.slice(i + 1);
+  const esperada = firmar(nonce);
+  return firma.length === esperada.length &&
+    timingSafeEqual(Buffer.from(firma), Buffer.from(esperada));
+}
+
 /** URL de autorización de GitHub. */
 export function urlAutorizacion(estado) {
   const p = new URLSearchParams({
     client_id: process.env.GITHUB_CLIENT_ID || '',
-    redirect_uri: `${SITE}/estudio/api/auth-callback`,
+    redirect_uri: `${SITE}/admin/api/auth-callback`,
     scope: 'public_repo',
     state: estado,
   });

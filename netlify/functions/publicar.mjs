@@ -48,7 +48,7 @@ export default async (req) => {
       try {
         md = await readFile(origen, 'utf8');
       } catch {
-        return json({ error: 'no encuentro el borrador en acordes3' }, 404);
+        return json({ error: 'ese borrador no está en el ordenador (solo en GitHub): ábrelo y guárdalo para traerlo, o haz git pull' }, 404);
       }
       md = md.replace(/^date:[^\n]*/m, `date: "${hoy()}"`);
       const destinoDir = join(process.cwd(), CARPETAS.acordes);
@@ -77,12 +77,13 @@ export default async (req) => {
     }
 
     // 2. Leer el borrador (de la rama si ya había PR; si no, de master).
+    //    Si ya hay una ficha publicada con ese slug, no se toca: el `PUT` sin
+    //    `sha` daría un 422 de GitHub en vez de un error que se entienda.
+    const enAcordes = await contenido(s.token, CARPETAS.acordes, slug, rama);
+    if (enAcordes) return json({ error: 'esa ficha ya está publicada' }, 409);
+
     const borrador = await contenido(s.token, CARPETAS.acordes3, slug, rama);
-    if (!borrador) {
-      const enAcordes = await contenido(s.token, CARPETAS.acordes, slug, rama);
-      if (enAcordes) return json({ error: 'esa ficha ya está publicada' }, 409);
-      return json({ error: 'no encuentro el borrador en acordes3' }, 404);
-    }
+    if (!borrador) return json({ error: 'no encuentro el borrador en acordes3' }, 404);
 
     const md = borrador.md.replace(/^date:[^\n]*/m, `date: "${hoy()}"`);
     const titulo = [campo(md, 'pieza'), campo(md, 'agrupacion'), campo(md, 'year')].filter(Boolean).join(' · ');

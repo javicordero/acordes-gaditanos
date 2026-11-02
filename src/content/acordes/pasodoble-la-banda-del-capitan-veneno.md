@@ -4,13 +4,13 @@ agrupacion: La banda del capitán veneno
 year: 2008
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg'
 cejilla: 5
 date: "03/12/2025"
-video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
+video: 'https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8'
 fraseClave: Si caminito del falla
 recomendada: true
-
+letraTitulo: Si caminito del falla
 ---
 <pre>
 <a>Mim</a>              <a>Si7</a>                   <a>Mim</a>

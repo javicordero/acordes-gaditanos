@@ -92,7 +92,7 @@ export default async (req) => {
         head: rama,
         base: BASE,
         body: [
-          'Añade una entrada a la cola de letras pendientes desde el panel `/estudio`.',
+          'Añade una entrada a la cola de letras pendientes desde el panel `/admin`.',
           '',
           `- Entrada: **${n}**`,
           `- Frase: ${frase}`,

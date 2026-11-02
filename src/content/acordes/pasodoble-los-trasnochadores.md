@@ -4,14 +4,13 @@ agrupacion: Los Trasnochadores
 year: 2009
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://static.grupojoly.com/clip/3b6431e9-7a37-47fe-aee6-e05332d51d6e_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/3b6431e9-7a37-47fe-aee6-e05332d51d6e_source-aspect-ratio_1600w_0.jpg'
 cejilla: 5
 date: 22/12/2025
-video: https://www.youtube.com/embed/V8lK8q-W8Rg?si=M8mpjOiQTQkYZ-f_
+video: 'https://www.youtube.com/embed/V8lK8q-W8Rg?si=M8mpjOiQTQkYZ-f_'
 fraseClave: Si me han visto alguna noche
-
+letraTitulo: Si me han visto alguna noche
 ---
-
 <pre>
 <a>LaM7</a>                                           <a>Sim7</a>
 Si me han visto alguna noche perdido, hablando solo

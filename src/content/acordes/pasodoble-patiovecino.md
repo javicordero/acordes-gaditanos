@@ -5,7 +5,7 @@ year: 1998
 musica: Antonio Martín
 letra: Antonio Martín
 modalidad: Comparsa
-img: https://i.ytimg.com/vi/UAxRlSSy7vk/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-BIAC4AOKAgwIABABGGUgTShRMA8=&rs=AOn4CLCsczPBC-Cn66i2ttC0YUAvLrlEiw
+img: 'https://i.ytimg.com/vi/UAxRlSSy7vk/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-BIAC4AOKAgwIABABGGUgTShRMA8=&rs=AOn4CLCsczPBC-Cn66i2ttC0YUAvLrlEiw'
 cejilla: 1
 video: 'https://www.youtube.com/embed/FOGxFSQ8Hvs'
 date: "07/09/2026"
@@ -38,6 +38,7 @@ Si estoy hecho un chavalillo,
 por mí no sufras, le dices, mujer.
                                     <a>La7</a>      <a>Re</a>
 Un explosión y una guerra, medio siglo de trabajo,
+
 cuántas miseras tragedias ese cuerpo ha soportao
      <a>Si7</a>           <a>Mim</a>
 ay, padre de mis amores.

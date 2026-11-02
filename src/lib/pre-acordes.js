@@ -3,7 +3,7 @@
 //
 // Lo usan los dos lados:
 //   - el revisor local (`scripts/revisar-acordes.mjs`), desde Node;
-//   - el panel `/estudio`, desde el navegador.
+//   - el panel `/admin`, desde el navegador.
 //
 // El glosario se inyecta con `initPreAcordes(json)` para que este módulo no
 // dependa de `fs` y pueda viajar al navegador.
@@ -25,6 +25,34 @@ export const tieneDiagrama = (t) => (INDICE ? buscarEnIndice(INDICE, t) !== null
 
 /** Anotaciones tipo «(Sorda)» que van en la línea de acordes sin ser acordes. */
 export const esAnotacion = (t) => /^\(.*\)$/.test(t);
+
+/** Ancho previsto del bloque `<pre>`: las columnas 1-55 caben, la 56 se marca. */
+export const ANCHO_MAX = 55;
+
+/** Columnas visuales de una línea (tabulador = 4, sin contar espacios finales). */
+export function columnasLinea(linea) {
+  const limpia = String(linea).replace(/\s+$/, '');
+  let col = 0;
+  for (let i = 0; i < limpia.length; i++) {
+    col += limpia[i] === '\t' ? 4 - (col % 4) : 1;
+  }
+  return col;
+}
+
+/**
+ * Índice del carácter donde empieza lo que pasa de `max` columnas, o -1 si la
+ * línea cabe. Los espacios finales no cuentan (no ensucian el ancho del `<pre>`).
+ */
+export function cortePorAncho(linea, max = ANCHO_MAX) {
+  const limpia = String(linea).replace(/\s+$/, '');
+  let col = 0;
+  for (let i = 0; i < limpia.length; i++) {
+    const salto = limpia[i] === '\t' ? 4 - (col % 4) : 1;
+    if (col + salto > max) return i;
+    col += salto;
+  }
+  return -1;
+}
 
 const RE_ETIQUETA = /<a([^>]*)>([\s\S]*?)<\/a>/g;
 
@@ -117,8 +145,19 @@ export function envolver(texto, registros = [], originales = []) {
       out += linea.slice(ultimo, mm.index);
       const token = mm[0];
       if (!esAcorde(token)) {
-        if (esAnotacion(token) && !conocidos.has(token)) {
-          out += token;
+        if (esAnotacion(token)) {
+          // «(Sorda)» y similares no son acordes, pero van en la línea de
+          // acordes. Si ya venían envueltas se conserva su etiqueta (y su
+          // postura); si no, se quedan como texto.
+          const deLinea = registros[i] || [];
+          const gastados = usados.get(`${i}|${token}`) || 0;
+          const elegido = deLinea.filter((r) => r.etiqueta === token)[gastados] || null;
+          if (elegido) {
+            usados.set(`${i}|${token}`, gastados + 1);
+            out += `${elegido.abre}</a>`.replace('</a>', `${token}</a>`);
+          } else {
+            out += token;
+          }
         } else if (c.tipo === 'acordes') {
           throw new Error(`línea ${i + 1}, columna ${mm.index + 1}: «${token}» no es un acorde`);
         } else {

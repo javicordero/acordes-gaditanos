@@ -1,15 +1,18 @@
 ﻿// Vuelta de GitHub: cambia el código por un token, comprueba que eres tú y deja
 // la sesión en una cookie cifrada.
 import {
-  SITE, OWNER, COOKIE_ESTADO, cifrar, cookies, cookieSesion, gh,
+  SITE, OWNER, cifrar, cookieSesion, gh, estadoValido,
 } from './_lib.mjs';
+
+const esc = (t) => String(t == null ? '' : t)
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const error = (mensaje, detalle = '') => new Response(
   `<!doctype html><meta charset="utf-8"><title>No se pudo entrar</title>
    <body style="font:16px/1.5 system-ui;padding:40px;max-width:640px;margin:auto">
    <h1 style="font-size:20px">No se pudo entrar</h1>
-   <p>${mensaje}</p>${detalle ? `<pre style="white-space:pre-wrap;color:#8a8175">${detalle}</pre>` : ''}
-   <p><a href="/estudio">Volver</a></p></body>`,
+   <p>${esc(mensaje)}</p>${detalle ? `<pre style="white-space:pre-wrap;color:#8a8175">${esc(detalle)}</pre>` : ''}
+   <p><a href="/admin">Volver</a></p></body>`,
   { status: 403, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } },
 );
 
@@ -17,11 +20,10 @@ export default async (req) => {
   const url = new URL(req.url);
   const codigo = url.searchParams.get('code');
   const estado = url.searchParams.get('state');
-  const cookieEstado = cookies(req)[COOKIE_ESTADO];
 
   if (!codigo) return error('GitHub no ha devuelto el código de autorización.');
-  if (!estado || !cookieEstado || estado !== cookieEstado) {
-    return error('La comprobación de seguridad no cuadra. Vuelve a intentarlo desde /estudio.');
+  if (!estadoValido(estado)) {
+    return error('La comprobación de seguridad no cuadra. Vuelve a intentarlo desde /admin.');
   }
 
   let token;
@@ -33,7 +35,7 @@ export default async (req) => {
         client_id: process.env.GITHUB_CLIENT_ID,
         client_secret: process.env.GITHUB_CLIENT_SECRET,
         code: codigo,
-        redirect_uri: `${SITE}/estudio/api/auth-callback`,
+        redirect_uri: `${SITE}/admin/api/auth-callback`,
       }),
     });
     const d = await r.json();
@@ -52,16 +54,13 @@ export default async (req) => {
   }
 
   if (String(login).toLowerCase() !== OWNER) {
-    return error(`La cuenta ${login} no es la propietaria de este panel.`);
+    return error(`La cuenta ${esc(login)} no es la propietaria de este panel.`);
   }
 
-  // Dos cookies: la de sesión y la de estado (que se borra). Se añaden con
-  // `append` porque un `Set-Cookie` con array se serializa mal y el navegador
-  // se queda sin sesión.
+  // Solo la cookie de sesión; el `state` ya no usa cookie (va firmado en la URL).
   const cabeceras = new Headers();
-  cabeceras.set('Location', `${SITE}/estudio/`);
+  cabeceras.set('Location', `${SITE}/admin/`);
   cabeceras.append('Set-Cookie', cookieSesion(cifrar({ login, token, exp: Date.now() + 12 * 60 * 60 * 1000 })));
-  cabeceras.append('Set-Cookie', `${COOKIE_ESTADO}=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0`);
   cabeceras.set('Cache-Control', 'no-store');
   return new Response(null, { status: 302, headers: cabeceras });
 };

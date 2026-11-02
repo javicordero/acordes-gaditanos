@@ -5,15 +5,15 @@ year: 2002
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://static.grupojoly.com/clip/f44701fe-fb8f-49ee-912e-3cbd7f14c85c_16-9-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/f44701fe-fb8f-49ee-912e-3cbd7f14c85c_16-9-aspect-ratio_1600w_0.jpg'
 cejilla: 2
-video: https://www.youtube.com/embed/eJ4ltG-NQUE?si=cACRL8mGicPqj8k7
+video: 'https://www.youtube.com/embed/eJ4ltG-NQUE?si=cACRL8mGicPqj8k7'
 cover: null
 autorCover: null
 date: 03/12/2025
 fraseClave: Yo no le temo al castigo
+letraTitulo: Yo no le temo al castigo
 ---
-
 <pre>
 <a>Mim</a>       <a>Si7</a>      <a>Mim</a>              <a>Si7</a>        <a>Mim</a>
 Yo no le temo al castigo, y en medio la calle nueva

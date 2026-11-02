@@ -33,9 +33,8 @@ export function sinTildes(texto) {
     .trim();
 }
 
-export function leerFrontmatter(ruta) {
-  const texto = readFileSync(ruta, 'utf8');
-  const bloque = texto.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+export function frontmatterDeTexto(texto) {
+  const bloque = (texto || '').match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!bloque) return {};
 
   const datos = {};
@@ -54,6 +53,10 @@ export function leerFrontmatter(ruta) {
     datos[clave] = valor.trim();
   }
   return datos;
+}
+
+export function leerFrontmatter(ruta) {
+  return frontmatterDeTexto(readFileSync(ruta, 'utf8'));
 }
 
 export function fechaDe(texto) {

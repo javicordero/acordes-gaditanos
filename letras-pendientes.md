@@ -73,6 +73,11 @@ llevan `?` hay que resolverlas mirando el listado de agrupaciones del cancionero
 | 41 | Cuando pienso en un genio | Los comparsistas se la dan de artistas | pasodoble-los-comparsistas-se-la-dan-de-artistas | con acordes | pasodoble-los-comparsistas-se-la-dan-de-artistas-cuando-pienso-en-un-genio | http://letrasdesdeelparaiso.blogspot.com/2019/01/pasodoble-cuando-pienso-en-un-genio-y.html | revisar metricas v25, 29, 36 |
 | 42 | Voy a contar hasta 20 | Los Trasnochadores | pasodoble-los-trasnochadores | con acordes | pasodoble-los-trasnochadores-voy-a-contar-hasta-20 | http://carnavaldecadiz-elio.blogspot.com/2010/09/los-trasnochadores.html | el .txt traia dos pasodobles; cortado a 16 lineas; 2 avisos (v12, v13) |
 | 43 | La amistad tiene la llave | Los Trasnochadores | pasodoble-los-trasnochadores | con acordes | pasodoble-los-trasnochadores-la-amistad-tiene-la-llave | http://carnavaldecadiz-elio.blogspot.com/2010/09/los-trasnochadores.html | el .txt traia dos pasodobles; cortado a 18 lineas; 1 aviso (v20) |
+| 44 | Un amigo es un amigo | Los Condenaos | pasodoble-los-condenaos | pendiente | |  |  |
+| 45 | Era un 4 de diciembre | Los piratas | pasodoble-los-piratas | pendiente | |  |  |
+| 46 | Con permiso buenas tardes | Los Piratas | pasodoble-los-piratas | pendiente | |  |  |
+| 47 | La muerte es una playa | Los comparsistas se la dan de artistas | pasodoble-los-comparsistas-se-la-dan-de-artistas | pendiente | |  |  |
+| 48 | Vecina estandarte del barrio | Dsas3 | pasodoble-dsas3 | pendiente | |  |  |
 
 ## Historial
 

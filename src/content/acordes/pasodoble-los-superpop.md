@@ -4,13 +4,12 @@ agrupacion: Los Superpop
 year: 2015
 musica: Vera Luque
 letra: Vera Luque
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/chirigota-superpop.jpeg
+img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/chirigota-superpop.jpeg'
 cejilla: 1
 date: "21/12/2025"
-video: https://www.youtube.com/embed/5fpULO0IIyo?si=LJpLeYz9BlyPwelF
+video: 'https://www.youtube.com/embed/5fpULO0IIyo?si=LJpLeYz9BlyPwelF'
 fraseClave: Finales del falla las de los ochenta
 recomendada: true
-
 ---
 <pre>
 <a>LaM7</a>        <a>Do#m7</a>     <a>Sim7</a>     <a>Mi7</a>
@@ -25,7 +24,7 @@ y la gente disfrazada desde las butacas
 hasta el gallinero aguantando con tanguillos,
             <a>Mi7</a>             <a>Lam</a>
 copitas de vino y vasito puchero.
-                    <a>Mi7</a>     <a>Lam</a>
+                    
 Y después de la más larga y bella madrugada
 <a>Sol</a>                                      <a>Fa#</a>
 y con las primeras luces de ese nuevo día

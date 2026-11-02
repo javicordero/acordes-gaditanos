@@ -4,12 +4,11 @@ agrupacion: Los senadores romanos
 year: 1968
 musica: Paco Alba
 letra: Paco Alba
-img: https://static.grupojoly.com/clip/4768528c-9d31-425c-a71c-75059962deb4_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/4768528c-9d31-425c-a71c-75059962deb4_source-aspect-ratio_1600w_0.jpg'
 date: 27/04/2026
-video: https://www.youtube.com/embed/w5K17KRZm9c?si=oWSLwSs6JbIei9bC
+video: 'https://www.youtube.com/embed/w5K17KRZm9c?si=oWSLwSs6JbIei9bC'
 fraseClave: Un buen amigo y paisano el año pasado
 cejilla: 6
-
 ---
 <pre>
 <a>Lam</a>
@@ -42,6 +41,7 @@ recorriendo en sus aguajes
 la extensión de su escollera
                     <a>Re</a>    <a>Mi7</a>               <a>La</a>
 donde aquél antiguo Gades posiblemente estuviera.
+
 Por eso no le dejo de cantar
                      <a>Re</a>
 por eso no le dejo de escribir

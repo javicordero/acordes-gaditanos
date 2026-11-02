@@ -9,12 +9,9 @@
 // El blog sirve el texto completo en el feed aunque la página no lo traiga en el
 // HTML (el cuerpo se carga aparte), así que esta es la vía fiable.
 
-const BLOG = (() => {
-  const i = args.indexOf('--blog');
-  return (i >= 0 && args[i + 1]) || 'letrasdesdeelparaiso.blogspot.com';
-})();
-const iBlog = args.indexOf('--blog');
 const args = process.argv.slice(2);
+const iBlog = args.indexOf('--blog');
+const BLOG = (iBlog >= 0 && args[iBlog + 1]) || 'letrasdesdeelparaiso.blogspot.com';
 const iAgr = args.indexOf('--agrupacion');
 const agrupacion = iAgr >= 0 ? args[iAgr + 1] : '';
 const iN = args.indexOf('-n');
