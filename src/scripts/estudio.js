@@ -1,5 +1,5 @@
-import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho } from '../lib/pre-acordes.js';
-import { separarLetra, juntarLetra, palabraBajoCursor, moverAcordeLinea } from '../lib/editar-lineas.js';
+import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho, esAcorde, esAnotacion } from '../lib/pre-acordes.js';
+import { separarLetra, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes } from '../lib/editar-lineas.js';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
@@ -851,7 +851,7 @@ function posicionDe(linea, col) {
   return Math.min(pos + col, ta.value.length);
 }
 
-function aplicarEdicion(r) {
+function aplicarEdicion(r, enfocar = true) {
   if (r.error) { mostrarAviso(r.error, 'var(--nuevo)'); return; }
   hist.push(snapshot());
   if (hist.length > 300) hist.shift();
@@ -865,7 +865,7 @@ function aplicarEdicion(r) {
   setEstado('sin guardar', false);
   const pos = posicionDe(r.cursor.linea, r.cursor.col);
   ta.setSelectionRange(pos, pos);
-  ta.focus();
+  if (enfocar) ta.focus();
   pintar();
   verCaret();
 }
@@ -924,6 +924,254 @@ function moverAcorde(dir) {
     col,
     dir,
   }));
+}
+
+/* ---------------- arrastrar acordes ---------------- */
+// En táctil hay que mantener pulsado un acorde ~350 ms para «levantarlo»; así
+// no se confunde con el scroll ni con colocar el cursor. Con ratón basta con
+// arrastrar unos píxeles. El destino es siempre una línea de acordes.
+const LARGO_TOQUE = 350;
+const UMBRAL_ARRASTRE = 8;
+
+let arrastre = null;
+let raton = null;
+let toque = null;
+let toqueLargo = null;
+let fantasma = null;
+let bandaDestino = null;
+let lineaDestino = null;
+let rafScroll = 0;
+let ignorarClick = false;
+
+/** Métricas reales del textarea: padding, alto de línea y ancho de carácter. */
+function metricasEditor() {
+  const rect = ta.getBoundingClientRect();
+  const est = getComputedStyle(ta);
+  const padL = parseFloat(est.paddingLeft) || 14;
+  const padT = parseFloat(est.paddingTop) || 12;
+  const lh = parseFloat(est.lineHeight) || 20;
+  // La regla está a `padL + ANCHO_MAX ch`; de ahí sale el ancho de un carácter.
+  const medido = (regla.offsetLeft - padL) / ANCHO_MAX;
+  const ch = medido > 0 ? medido : anchoCaracter13();
+  return { rect, padL, padT, lh, ch };
+}
+
+/** Índice de carácter de una columna visual (los tabuladores ocupan 4). */
+function indiceVisual(linea, colVisual) {
+  let v = 0;
+  for (let k = 0; k < linea.length; k++) {
+    const ancho = linea[k] === '\t' ? 4 - (v % 4) : 1;
+    if (colVisual < v + ancho) return k;
+    v += ancho;
+  }
+  return linea.length;
+}
+
+/** Columna visual donde empieza el carácter `indice`. */
+function columnaVisual(linea, indice) {
+  let v = 0;
+  for (let k = 0; k < indice && k < linea.length; k++) {
+    v += linea[k] === '\t' ? 4 - (v % 4) : 1;
+  }
+  return v;
+}
+
+/** Línea, texto y columna (carácter) bajo un punto de la pantalla. */
+function puntoEditor(clientX, clientY) {
+  const m = metricasEditor();
+  const lineas = ta.value.split('\n');
+  let linea = Math.floor((clientY - m.rect.top - m.padT) / m.lh);
+  linea = Math.max(0, Math.min(lineas.length - 1, linea));
+  const texto = lineas[linea] ?? '';
+  const colVis = Math.max(0, Math.floor((clientX - m.rect.left - m.padL) / m.ch));
+  return { linea, texto, col: indiceVisual(texto, colVis), colVis, m, lineas };
+}
+
+/** Acorde (o anotación) bajo el dedo/ratón, o null si no hay ninguno. */
+function acordeEnPunto(clientX, clientY) {
+  if (!ficha) return null;
+  const p = puntoEditor(clientX, clientY);
+  const t = tipo(p.texto, p.lineas[p.linea + 1] || '');
+  if (t !== 'acordes' && t !== 'acordes-sucio') return null;
+  const tokens = [...p.texto.matchAll(/\S+/g)].map((x) => ({ token: x[0], col: x.index }));
+  const tok = tokens.find((x) => p.col >= x.col && p.col < x.col + x.token.length);
+  if (!tok || (!esAcorde(tok.token) && !esAnotacion(tok.token))) return null;
+  return { linea: p.linea, col: tok.col, fin: tok.col + tok.token.length, token: tok.token };
+}
+
+/** Línea de acordes bajo el dedo/ratón, o null si no se puede soltar ahí. */
+function destinoEnPunto(clientX, clientY) {
+  if (!ficha) return null;
+  const r = lienzo.getBoundingClientRect();
+  if (clientY < r.top || clientY > r.bottom) return null;
+  const p = puntoEditor(clientX, clientY);
+  if (!esLineaAcordes(p.lineas, p.linea, conocidos)) return null;
+  return { linea: p.linea, col: p.col, texto: p.texto, m: p.m };
+}
+
+/** Crea el fantasma y las marcas de destino la primera vez que se usan. */
+function prepararPiezasArrastre() {
+  if (!fantasma) {
+    fantasma = document.createElement('div');
+    fantasma.className = 'fantasma-acorde';
+    fantasma.hidden = true;
+    hoja.appendChild(fantasma);
+  }
+  if (!bandaDestino) {
+    bandaDestino = document.createElement('div');
+    bandaDestino.className = 'destino-banda';
+    bandaDestino.hidden = true;
+    hoja.appendChild(bandaDestino);
+  }
+  if (!lineaDestino) {
+    lineaDestino = document.createElement('div');
+    lineaDestino.className = 'destino-linea';
+    lineaDestino.hidden = true;
+    hoja.appendChild(lineaDestino);
+  }
+}
+
+function moverFantasma(clientX, clientY) {
+  if (!fantasma || fantasma.hidden) return;
+  const m = metricasEditor();
+  const r = lienzo.getBoundingClientRect();
+  const ancho = fantasma.offsetWidth;
+  const alto = fantasma.offsetHeight;
+  const margen = 12;
+  let x = clientX - m.rect.left + margen;
+  let y = clientY - m.rect.top + margen;
+  const minX = r.left - m.rect.left + 4;
+  const maxX = r.right - m.rect.left - 8;
+  const minY = r.top - m.rect.top + 4;
+  const maxY = r.bottom - m.rect.top - 8;
+  if (x + ancho > maxX) x = clientX - m.rect.left - ancho - margen;
+  if (y + alto > maxY) y = clientY - m.rect.top - alto - margen;
+  x = Math.max(minX, Math.min(x, maxX - ancho));
+  y = Math.max(minY, Math.min(y, maxY - alto));
+  fantasma.style.left = Math.round(x) + 'px';
+  fantasma.style.top = Math.round(y) + 'px';
+}
+
+/** Repinta el fantasma y la marca de la línea/columna de destino. */
+function actualizarDestinoArrastre() {
+  if (!arrastre) return;
+  moverFantasma(arrastre.x, arrastre.y);
+  const d = destinoEnPunto(arrastre.x, arrastre.y);
+  let valido = !!d;
+  if (valido && d.linea === arrastre.linea && d.col >= arrastre.col && d.col <= arrastre.fin) {
+    valido = false;
+  }
+  arrastre.destino = valido ? { linea: d.linea, col: d.col } : null;
+  if (fantasma) fantasma.classList.toggle('invalido', !valido);
+
+  if (!d) {
+    if (bandaDestino) bandaDestino.hidden = true;
+    if (lineaDestino) lineaDestino.hidden = true;
+    return;
+  }
+
+  const colVis = columnaVisual(d.texto || '', d.col);
+  const top = d.m.padT + d.linea * d.m.lh;
+  if (bandaDestino) {
+    bandaDestino.style.top = top + 'px';
+    bandaDestino.style.height = d.m.lh + 'px';
+    bandaDestino.hidden = false;
+  }
+  if (lineaDestino) {
+    lineaDestino.style.left = (d.m.padL + colVis * d.m.ch) + 'px';
+    lineaDestino.style.top = top + 'px';
+    lineaDestino.style.height = d.m.lh + 'px';
+    lineaDestino.hidden = false;
+  }
+}
+
+function iniciarArrastre(origen, clientX, clientY) {
+  if (!ficha || arrastre) return;
+  prepararPiezasArrastre();
+  arrastre = { ...origen, x: clientX, y: clientY, destino: null };
+  fantasma.textContent = origen.token;
+  fantasma.classList.remove('invalido');
+  fantasma.hidden = false;
+  ta.style.cursor = 'grabbing';
+  document.body.classList.add('arrastrando');
+  // Quita la selección que pueda haber dejado la pulsación larga nativa.
+  try { ta.setSelectionRange(ta.selectionStart, ta.selectionStart); } catch { /* sin foco */ }
+  try { window.getSelection()?.removeAllRanges(); } catch { /* sin selección */ }
+  try { navigator.vibrate?.(12); } catch { /* sin vibración */ }
+  actualizarDestinoArrastre();
+  iniciarAutoScroll();
+}
+
+/** Desplaza el lienzo cuando el dedo se acerca a un borde. */
+function iniciarAutoScroll() {
+  if (rafScroll) return;
+  const paso = () => {
+    if (!arrastre) { rafScroll = 0; return; }
+    const r = lienzo.getBoundingClientRect();
+    const margen = 48;
+    let dx = 0;
+    let dy = 0;
+    if (arrastre.x < r.left + margen) dx = -Math.ceil((r.left + margen - arrastre.x) / 6);
+    else if (arrastre.x > r.right - margen) dx = Math.ceil((arrastre.x - (r.right - margen)) / 6);
+    if (arrastre.y < r.top + margen) dy = -Math.ceil((r.top + margen - arrastre.y) / 6);
+    else if (arrastre.y > r.bottom - margen) dy = Math.ceil((arrastre.y - (r.bottom - margen)) / 6);
+    dx = Math.max(-16, Math.min(16, dx));
+    dy = Math.max(-16, Math.min(16, dy));
+    if (dx || dy) {
+      lienzo.scrollLeft += dx;
+      lienzo.scrollTop += dy;
+      actualizarDestinoArrastre();
+    }
+    rafScroll = requestAnimationFrame(paso);
+  };
+  rafScroll = requestAnimationFrame(paso);
+}
+
+function detenerAutoScroll() {
+  if (rafScroll) cancelAnimationFrame(rafScroll);
+  rafScroll = 0;
+}
+
+function limpiarArrastre() {
+  arrastre = null;
+  detenerAutoScroll();
+  document.body.classList.remove('arrastrando');
+  document.body.classList.remove('posible-arrastre');
+  ta.style.cursor = '';
+  if (fantasma) { fantasma.hidden = true; fantasma.classList.remove('invalido'); }
+  if (bandaDestino) bandaDestino.hidden = true;
+  if (lineaDestino) lineaDestino.hidden = true;
+  if (toqueLargo) { clearTimeout(toqueLargo.timer); toqueLargo = null; }
+}
+
+function cancelarArrastre() {
+  limpiarArrastre();
+  raton = null;
+  toque = null;
+}
+
+function soltarArrastre() {
+  if (!arrastre) return;
+  ignorarClick = true;
+  setTimeout(() => { ignorarClick = false; }, 400);
+  const a = arrastre;
+  limpiarArrastre();
+  if (!a.destino || !ficha) return;
+  if (!estructuraOk()) return avisoEstructura();
+  const r = moverAcordeA({
+    lineas: ta.value.split('\n'),
+    registros: ficha.d.registros,
+    originales: ficha.d.originales,
+    conocidos,
+    i: a.linea,
+    col: a.col,
+    destino: a.destino,
+  });
+  if (r.error) {
+    if (!r.noop) mostrarAviso(r.error, 'var(--nuevo)');
+    return;
+  }
+  aplicarEdicion(r, false);
 }
 
 /** Cambia el title de los botones según si el cursor está en acordes o en letra. */
@@ -1804,29 +2052,182 @@ function marcarSug() {
   sug.querySelectorAll('button').forEach((b, i) => b.classList.toggle('sel', i === sugSel));
 }
 
-/* Arrastre horizontal a mano: en móvil el textarea se queda el gesto y mueve
-   el cursor en vez de desplazar el lienzo. Se lo quitamos cuando el gesto es
-   claramente horizontal y movemos el scroll nosotros. */
-let toque = null;
+/* Arrastre horizontal/vertical a mano y arrastre de acordes. En móvil el
+   textarea se queda el gesto y, al mantener pulsado, el navegador empieza a
+   seleccionar texto. Si el toque cae en un acorde tomamos el control:
+   - el toque corto coloca el cursor a mano;
+   - el desplazamiento mueve el lienzo (horizontal o vertical);
+   - la pulsación larga (~350 ms) levanta el acorde para arrastrarlo. */
 ta.addEventListener('touchstart', (e) => {
-  toque = e.touches.length === 1
-    ? { x: e.touches[0].clientX, y: e.touches[0].clientY, scroll: lienzo.scrollLeft, horizontal: false }
-    : null;
-}, { passive: true });
+  if (e.touches.length !== 1) {
+    toque = null;
+    if (toqueLargo) { clearTimeout(toqueLargo.timer); toqueLargo = null; }
+    document.body.classList.remove('posible-arrastre');
+    if (arrastre) cancelarArrastre();
+    return;
+  }
+  const t = e.touches[0];
+  toque = {
+    x0: t.clientX,
+    y0: t.clientY,
+    x: t.clientX,
+    y: t.clientY,
+    scroll: lienzo.scrollLeft,
+    scrollTop: lienzo.scrollTop,
+    horizontal: false,
+    movido: false,
+    acorde: null,
+  };
+  document.body.classList.remove('posible-arrastre');
+  if (arrastre) return;
+  if (toqueLargo) { clearTimeout(toqueLargo.timer); toqueLargo = null; }
+  const acorde = acordeEnPunto(t.clientX, t.clientY);
+  if (acorde) {
+    toque.acorde = acorde;
+    // Si no tomamos el gesto, el textarea empieza a seleccionar texto.
+    e.preventDefault();
+    document.body.classList.add('posible-arrastre');
+    toqueLargo = {
+      timer: setTimeout(() => {
+        if (!toque) return;
+        toqueLargo = null;
+        iniciarArrastre(acorde, toque.x, toque.y);
+      }, LARGO_TOQUE),
+    };
+  }
+}, { passive: false });
+
 ta.addEventListener('touchmove', (e) => {
   if (!toque || e.touches.length !== 1) return;
-  const dx = e.touches[0].clientX - toque.x;
-  const dy = e.touches[0].clientY - toque.y;
+  const t = e.touches[0];
+  toque.x = t.clientX;
+  toque.y = t.clientY;
+
+  if (arrastre) {
+    e.preventDefault();
+    arrastre.x = t.clientX;
+    arrastre.y = t.clientY;
+    actualizarDestinoArrastre();
+    return;
+  }
+
+  const dx = t.clientX - toque.x0;
+  const dy = t.clientY - toque.y0;
+  if (toqueLargo && Math.hypot(dx, dy) > UMBRAL_ARRASTRE) {
+    clearTimeout(toqueLargo.timer);
+    toqueLargo = null;
+    document.body.classList.remove('posible-arrastre');
+    toque.movido = true;
+  }
   if (!toque.horizontal) {
-    if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return;
+    if (Math.abs(dx) < UMBRAL_ARRASTRE || Math.abs(dx) < Math.abs(dy)) {
+      // En un acorde el gesto es nuestro: desplazamos el lienzo a mano.
+      if (toque.acorde && Math.abs(dy) >= UMBRAL_ARRASTRE) {
+        e.preventDefault();
+        toque.movido = true;
+        lienzo.scrollTop = toque.scrollTop - dy;
+      }
+      return;
+    }
     toque.horizontal = true;
   }
   e.preventDefault();
   lienzo.scrollLeft = toque.scroll - dx;
 }, { passive: false });
-const finToque = () => { toque = null; };
-ta.addEventListener('touchend', finToque, { passive: true });
-ta.addEventListener('touchcancel', finToque, { passive: true });
+
+ta.addEventListener('touchend', (e) => {
+  document.body.classList.remove('posible-arrastre');
+  if (arrastre) {
+    if (e.cancelable) e.preventDefault();
+    soltarArrastre();
+  } else if (toque?.acorde && !toque.movido) {
+    // Toque corto en un acorde: como hemos bloqueado el gesto nativo, el
+    // cursor lo colocamos nosotros en el punto donde estaba el dedo.
+    const t = e.changedTouches?.[0];
+    const p = puntoEditor(t ? t.clientX : toque.x, t ? t.clientY : toque.y);
+    const pos = posicionDe(p.linea, p.col);
+    if (e.cancelable) e.preventDefault();
+    ta.focus();
+    ta.setSelectionRange(pos, pos);
+  }
+  if (toqueLargo) { clearTimeout(toqueLargo.timer); toqueLargo = null; }
+  toque = null;
+}, { passive: false });
+
+ta.addEventListener('touchcancel', () => {
+  document.body.classList.remove('posible-arrastre');
+  if (toqueLargo) { clearTimeout(toqueLargo.timer); toqueLargo = null; }
+  toque = null;
+  if (arrastre) cancelarArrastre();
+}, { passive: true });
+
+/* Ratón: se empieza a arrastrar en cuanto el puntero se mueve unos píxeles.
+   Si solo se hace clic, el cursor se coloca como siempre. */
+ta.addEventListener('mousedown', (e) => {
+  if (toque || e.button !== 0 || e.shiftKey || arrastre) return;
+  const acorde = acordeEnPunto(e.clientX, e.clientY);
+  raton = acorde ? { x0: e.clientX, y0: e.clientY, origen: acorde } : null;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (arrastre) {
+    e.preventDefault();
+    arrastre.x = e.clientX;
+    arrastre.y = e.clientY;
+    actualizarDestinoArrastre();
+    return;
+  }
+  if (!raton) return;
+  if (Math.hypot(e.clientX - raton.x0, e.clientY - raton.y0) < 5) return;
+  e.preventDefault();
+  iniciarArrastre(raton.origen, e.clientX, e.clientY);
+});
+
+document.addEventListener('mouseup', () => {
+  if (arrastre) soltarArrastre();
+  raton = null;
+});
+
+/* Un arrastre no debe acabar colocando el cursor ni pulsando un botón. */
+document.addEventListener('click', (e) => {
+  if (!ignorarClick) return;
+  e.preventDefault();
+  e.stopPropagation();
+  ignorarClick = false;
+}, true);
+
+/* Pista visual: sobre un acorde el cursor es «grab». */
+ta.addEventListener('mousemove', (e) => {
+  if (arrastre || raton) return;
+  ta.style.cursor = acordeEnPunto(e.clientX, e.clientY) ? 'grab' : '';
+});
+ta.addEventListener('mouseleave', () => {
+  if (!arrastre && !raton) ta.style.cursor = '';
+});
+
+ta.addEventListener('contextmenu', (e) => {
+  if (arrastre || toqueLargo || ignorarClick) e.preventDefault();
+});
+
+document.addEventListener('selectstart', (e) => {
+  if (arrastre || toqueLargo) e.preventDefault();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && arrastre) {
+    e.preventDefault();
+    cancelarArrastre();
+  }
+});
+
+if (window) {
+  window.addEventListener('blur', () => {
+    if (toqueLargo) { clearTimeout(toqueLargo.timer); toqueLargo = null; }
+    document.body.classList.remove('posible-arrastre');
+    if (arrastre) cancelarArrastre();
+    raton = null;
+  });
+}
 
 window.addEventListener('beforeunload', (e) => {
   if (sucio) { e.preventDefault(); e.returnValue = ''; }

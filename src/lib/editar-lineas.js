@@ -14,15 +14,28 @@ import { clasificar, esAcorde, esAnotacion } from './pre-acordes.js';
 const tokensDe = (linea) => [...String(linea).matchAll(/\S+/g)]
   .map((m) => ({ token: m[0], col: m.index }));
 
+/** Hueco necesario para poner un token en su columna, sin pegarlo al anterior. */
+function hueco(out, col) {
+  if (col > out.length) return ' '.repeat(col - out.length);
+  if (out.length > 0 && col <= out.length) return ' ';
+  return '';
+}
+
 /** Coloca los tokens en sus columnas. Si dos chocan, se separan un espacio. */
 function lineaDe(tokens) {
+  return lineaDeConCol(tokens, null).linea;
+}
+
+/** Como `lineaDe`, pero devuelve también la columna donde empieza `objetivo`. */
+function lineaDeConCol(tokens, objetivo) {
   let out = '';
+  let col = 0;
   for (const t of tokens) {
-    if (t.col > out.length) out += ' '.repeat(t.col - out.length);
-    else if (t.col < out.length) out += ' ';
+    out += hueco(out, t.col);
+    if (t === objetivo) col = out.length;
     out += t.token;
   }
-  return out;
+  return { linea: out, col };
 }
 
 /** Asocia a cada token su etiqueta de apertura (con data-postura si la tenía). */
@@ -36,13 +49,17 @@ function conEtiquetas(tokens, registros) {
   });
 }
 
-/** Reconstruye la línea con etiquetas, conservando la postura de cada acorde. */
-function originalDe(tokens) {
+/**
+ * Reconstruye la línea con etiquetas, conservando la postura de cada acorde.
+ * Con `envolverTodos`, los acordes sin registro se envuelven con un `<a>`
+ * normal: así `envolver()` puede copiar la línea tal cual.
+ */
+function originalDe(tokens, envolverTodos = false) {
   let out = '';
   for (const t of tokens) {
-    if (t.col > out.length) out += ' '.repeat(t.col - out.length);
-    else if (t.col < out.length) out += ' ';
-    out += t.abre ? `${t.abre}</a>`.replace('</a>', `${t.token}</a>`) : t.token;
+    out += hueco(out, t.col);
+    const abre = t.abre || (envolverTodos && esAcorde(t.token) ? '<a>' : null);
+    out += abre ? `${abre}</a>`.replace('</a>', `${t.token}</a>`) : t.token;
   }
   return out;
 }
@@ -246,7 +263,7 @@ export function juntarLetra({ lineas, registros, originales, conocidos, i, col }
  * una «sucia» (acordes con algún token raro) y una línea vacía que está justo
  * encima de una letra (la línea de acordes de un verso sin acordes).
  */
-function esLineaAcordes(lineas, j, conocidos) {
+export function esLineaAcordes(lineas, j, conocidos) {
   const t = tipoDe(lineas, j, conocidos);
   if (t === 'acordes' || t === 'acordes-sucio') return true;
   return t === 'blanco' && tipoDe(lineas, j + 1, conocidos) === 'letra';
@@ -306,5 +323,93 @@ export function moverAcordeLinea({ lineas, registros, originales, conocidos, i, 
     registros: nuevosRegs,
     originales: nuevosOrig,
     cursor: { linea: destino, col: colNueva },
+  };
+}
+
+/**
+ * Mueve el acorde que empieza en la columna `col` de la línea `i` a la
+ * columna `destino.col` de la línea `destino.linea`. Es la operación del
+ * arrastre: el destino puede ser cualquier punto de una línea de acordes.
+ * Conserva la etiqueta de apertura (y su `data-postura`) del acorde movido.
+ */
+export function moverAcordeA({ lineas, registros, originales, conocidos, i, col, destino }) {
+  const tipoOrigen = tipoDe(lineas, i, conocidos);
+  if (tipoOrigen !== 'acordes' && tipoOrigen !== 'acordes-sucio') {
+    return { error: 'Esa línea no es de acordes.' };
+  }
+
+  const tokensOrigen = conEtiquetas(tokensDe(lineas[i]), registros[i]);
+  const elegido = tokensOrigen.find((t) => col >= t.col && col < t.col + t.token.length) || null;
+  if (!elegido) return { error: 'No hay ningún acorde en ese punto.' };
+  if (!esAcorde(elegido.token) && !esAnotacion(elegido.token)) {
+    return { error: `«${elegido.token}» no es un acorde.` };
+  }
+
+  const j = Number(destino?.linea);
+  if (!Number.isInteger(j) || j < 0 || j >= lineas.length) {
+    return { error: 'Esa línea no existe.' };
+  }
+  if (!esLineaAcordes(lineas, j, conocidos)) {
+    return { error: 'Los acordes solo se pueden soltar en una línea de acordes.' };
+  }
+
+  // Soltar sobre el mismo acorde no cambia nada.
+  if (j === i && destino.col >= elegido.col && destino.col <= elegido.col + elegido.token.length) {
+    return { error: 'El acorde ya está ahí.', noop: true };
+  }
+
+  const base = j === i
+    ? tokensOrigen.filter((t) => t !== elegido)
+    : conEtiquetas(tokensDe(lineas[j]), registros[j]);
+
+  let colDestino = Math.max(0, Math.trunc(Number(destino.col) || 0));
+  colDestino = Math.min(colDestino, (lineas[j] || '').length);
+
+  // Si la columna cae dentro de otro token, se coloca antes o después según
+  // la mitad: así no se parte ningún acorde.
+  const choque = base.find((t) => colDestino > t.col && colDestino < t.col + t.token.length);
+  if (choque) {
+    const mitad = choque.col + choque.token.length / 2;
+    colDestino = colDestino < mitad ? choque.col : choque.col + choque.token.length + 1;
+  }
+
+  const movido = { ...elegido, col: colDestino };
+  const tokensDestino = [...base, movido];
+  // A igual columna, el acorde movido va delante: se inserta antes del token
+  // que ya estaba en esa posición.
+  tokensDestino.sort((a, b) => a.col - b.col || (a === movido ? -1 : b === movido ? 1 : 0));
+
+  const nuevas = [...lineas];
+  const nuevosRegs = [...registros];
+  const nuevosOrig = [...originales];
+
+  if (j === i) {
+    const { linea, col: colFinal } = lineaDeConCol(tokensDestino, movido);
+    nuevas[i] = linea;
+    nuevosRegs[i] = registrosDe(tokensDestino);
+    nuevosOrig[i] = originalDe(tokensDestino, true);
+    return {
+      lineas: nuevas,
+      registros: nuevosRegs,
+      originales: nuevosOrig,
+      cursor: { linea: i, col: colFinal },
+    };
+  }
+
+  const quedan = tokensOrigen.filter((t) => t !== elegido);
+  nuevas[i] = lineaDe(quedan);
+  nuevosRegs[i] = registrosDe(quedan);
+  nuevosOrig[i] = originalDe(quedan, true);
+
+  const { linea, col: colFinal } = lineaDeConCol(tokensDestino, movido);
+  nuevas[j] = linea;
+  nuevosRegs[j] = registrosDe(tokensDestino);
+  nuevosOrig[j] = originalDe(tokensDestino, true);
+
+  return {
+    lineas: nuevas,
+    registros: nuevosRegs,
+    originales: nuevosOrig,
+    cursor: { linea: j, col: colFinal },
   };
 }

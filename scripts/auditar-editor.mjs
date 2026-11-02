@@ -3,7 +3,7 @@
 //
 //   node --experimental-strip-types scripts/auditar-editor.mjs
 
-import { separarLetra, juntarLetra, palabraBajoCursor, moverAcordeLinea } from '../src/lib/editar-lineas.js';
+import { separarLetra, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA } from '../src/lib/editar-lineas.js';
 import { envolver } from '../src/lib/pre-acordes.js';
 
 const conocidos = new Set(['Do', 'Sol', 'Re', 'Mi', 'Si7', 'Lam7', '(Sorda)']);
@@ -196,6 +196,95 @@ const conSucia = {
 const aSucia = moverAcordeLinea({ ...conSucia, i: 0, col: 10, dir: 1 });
 comprobar('línea sucia: destino', aSucia.cursor.linea, 2);
 comprobar('línea sucia: acorde al final', aSucia.lineas[2].endsWith('Si7'), true);
+
+/* 11. Arrastrar un acorde dentro de la misma línea. */
+const arrastreBase = {
+  lineas: ['Mi        Si7       Mi', 'Si vengo, no vengo ni yo lo comprendo'],
+  registros: [
+    [
+      { etiqueta: 'Mi', abre: '<a>' },
+      { etiqueta: 'Si7', abre: '<a data-postura="x 2 4 4 4 2">' },
+      { etiqueta: 'Mi', abre: '<a>' },
+    ],
+    [],
+  ],
+  originales: [
+    '<a>Mi</a>        <a data-postura="x 2 4 4 4 2">Si7</a>       <a>Mi</a>',
+    'Si vengo, no vengo ni yo lo comprendo',
+  ],
+  conocidos,
+};
+const mismo = moverAcordeA({ ...arrastreBase, i: 0, col: 10, destino: { linea: 0, col: 0 } });
+comprobar('arrastre: mueve Si7 al principio', mismo.lineas[0].startsWith('Si7'), true);
+comprobar('arrastre: conserva data-postura', pre(mismo).includes('<a data-postura="x 2 4 4 4 2">Si7</a>'), true);
+comprobar('arrastre: cursor en el acorde', mismo.cursor, { linea: 0, col: 0 });
+
+/* 12. Arrastrar a otra línea de acordes. */
+const otraLinea = moverAcordeA({ ...dosVersos, i: 0, col: 22, destino: { linea: 2, col: 0 } });
+comprobar('arrastre abajo: sale del origen', otraLinea.lineas[0].includes('Si7'), false);
+comprobar('arrastre abajo: entra al principio', otraLinea.lineas[2].startsWith('Si7'), true);
+comprobar('arrastre abajo: conserva data-postura', pre(otraLinea).includes('<a data-postura="x 2 4 4 4 2">Si7</a>'), true);
+
+/* 13. No se puede soltar en una línea de letra. */
+comprobar(
+  'arrastre a letra: error',
+  moverAcordeA({ ...dosVersos, i: 0, col: 22, destino: { linea: 1, col: 0 } }).error,
+  'Los acordes solo se pueden soltar en una línea de acordes.',
+);
+
+/* 14. Soltar sobre el mismo acorde no hace nada. */
+comprobar(
+  'arrastre al mismo sitio: noop',
+  moverAcordeA({ ...dosVersos, i: 0, col: 22, destino: { linea: 0, col: 22 } }).noop,
+  true,
+);
+
+/* 15. Línea de acordes vacía (la que está encima de una letra sin acordes). */
+const arrastreVacia = moverAcordeA({ ...conVacia, i: 0, col: 10, destino: { linea: 2, col: 0 } });
+comprobar('arrastre a línea vacía: acorde al principio', arrastreVacia.lineas[2], 'Si7');
+comprobar('arrastre a línea vacía: sale del origen', arrastreVacia.lineas[0].includes('Si7'), false);
+
+/* 16. Los acordes sin etiqueta del destino se envuelven al guardar. */
+const sinEtiqueta = {
+  lineas: ['Mi        Si7', 'Letra', 'Re'],
+  registros: [
+    [{ etiqueta: 'Mi', abre: '<a>' }, { etiqueta: 'Si7', abre: '<a data-postura="x 2 4 4 4 2">' }],
+    [],
+    [],
+  ],
+  originales: ['<a>Mi</a>        <a data-postura="x 2 4 4 4 2">Si7</a>', 'Letra', 'Re'],
+  conocidos,
+};
+const aSinEtiqueta = moverAcordeA({ ...sinEtiqueta, i: 0, col: 10, destino: { linea: 2, col: 0 } });
+comprobar(
+  'arrastre: envuelve los acordes del destino',
+  pre(aSinEtiqueta),
+  ['<a>Mi</a>', 'Letra', '<a data-postura="x 2 4 4 4 2">Si7</a> <a>Re</a>'].join('\n'),
+);
+
+/* 17. Con dos acordes iguales, la postura sigue al acorde movido. */
+const gemelos = {
+  lineas: ['Mi        Mi       Si7', 'Letra'],
+  registros: [
+    [
+      { etiqueta: 'Mi', abre: '<a data-postura="x 0 2 2 2 0">' },
+      { etiqueta: 'Mi', abre: '<a data-postura="x 0 2 2 0 0">' },
+      { etiqueta: 'Si7', abre: '<a>' },
+    ],
+    [],
+  ],
+  originales: [
+    '<a data-postura="x 0 2 2 2 0">Mi</a>        <a data-postura="x 0 2 2 0 0">Mi</a>       <a>Si7</a>',
+    'Letra',
+  ],
+  conocidos,
+};
+const gemelosMov = moverAcordeA({ ...gemelos, i: 0, col: 10, destino: { linea: 0, col: 0 } });
+comprobar(
+  'arrastre: la postura sigue al acorde movido',
+  pre(gemelosMov).startsWith('<a data-postura="x 0 2 2 0 0">Mi</a>'),
+  true,
+);
 
 if (fallos) {
   console.log(`\n${fallos} caso(s) fallido(s).`);

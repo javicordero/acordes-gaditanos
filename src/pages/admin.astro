@@ -176,6 +176,15 @@ export const prerender = true;
   .anot { color:var(--suave); }
   .pasado { color:var(--mal); text-decoration:underline; text-underline-offset:2px; }
 
+  /* Arrastrar acordes: fantasma que sigue al dedo y marcas de destino. */
+  body.arrastrando { cursor:grabbing; user-select:none; -webkit-user-select:none; }
+  body.arrastrando .lienzo textarea { cursor:grabbing; user-select:none; -webkit-user-select:none; }
+  body.posible-arrastre .lienzo textarea { -webkit-touch-callout:none; user-select:none; -webkit-user-select:none; }
+  .fantasma-acorde { position:absolute; z-index:4; pointer-events:none; padding:3px 7px; background:var(--azul); color:#fff; border:2px solid #000; box-shadow:3px 3px 0 #000; font:700 13px/1.2 var(--mono); white-space:pre; }
+  .fantasma-acorde.invalido { background:var(--mal); }
+  .destino-banda { position:absolute; left:0; right:0; z-index:2; background:rgba(0,68,204,.10); pointer-events:none; }
+  .destino-linea { position:absolute; z-index:3; width:2px; background:var(--azul); pointer-events:none; }
+
   /* Estado de ficha local: banda en el flujo, no un aviso flotante. */
   #nota-local { flex:0 0 auto; display:flex; align-items:flex-start; gap:8px; padding:7px 12px; font-size:11px; line-height:1.4; color:var(--tinta); background:#fff8ec; border-bottom:2px solid #000; border-left:6px solid var(--acento); }
   #nota-local .cerrar { margin-left:auto; flex:0 0 auto; padding:0 5px; border:0; background:transparent; color:#000; font-size:12px; box-shadow:none; }
@@ -486,6 +495,7 @@ export const prerender = true;
 
 <footer>
   <span class="pie-teclas"><kbd>Alt</kbd>+<kbd>←</kbd><kbd>→</kbd> mover acorde</span>
+  <span class="pie-teclas">Arrastra un acorde (mantén pulsado en móvil)</span>
   <span class="pie-teclas"><kbd>Alt</kbd>+<kbd>Enter</kbd> separar / bajar acorde</span>
   <span class="pie-teclas"><kbd>Alt</kbd>+<kbd>⌫</kbd> juntar / subir acorde</span>
   <span class="pie-teclas"><kbd>Ctrl</kbd>+<kbd>S</kbd> guardar</span>
