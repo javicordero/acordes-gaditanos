@@ -19,6 +19,7 @@ const FUNCIONES: Record<string, () => Promise<{ default: (req: Request) => Promi
   letra: () => import('../../netlify/functions/letra.mjs'),
   stats: () => import('../../netlify/functions/stats.mjs'),
   comentarios: () => import('../../netlify/functions/comentarios.mjs'),
+  'publicar-local': () => import('../../netlify/functions/publicar-local.mjs'),
 };
 
 export const ALL: APIRoute = async ({ request, params, url }) => {

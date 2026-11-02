@@ -204,6 +204,7 @@ export const prerender = true;
   .campo input:focus, .campo select:focus, .campo textarea:focus { outline:3px solid var(--acento); outline-offset:1px; }
   .dos { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
   .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:14px; flex-wrap:wrap; }
+  .log { max-height:44vh; overflow:auto; margin:0; padding:10px 12px; background:#fff; border:2px solid #000; font:11px/1.5 var(--mono); white-space:pre-wrap; word-break:break-word; }
 
   /* Navegación superior: Editor / Estadísticas / Comentarios */
   .vistas { flex:0 0 auto; display:flex; gap:0; background:var(--papel); border-bottom:2px solid #000; padding:0 10px; overflow-x:auto; scrollbar-width:none; }
@@ -305,7 +306,11 @@ export const prerender = true;
     #editor-meta { font-size:9.5px; }
     .tabs { padding:6px 8px; }
     .tabs button { padding:11px 4px; }
-    #nota-local { padding:6px 10px; font-size:10.5px; }
+    /* En el móvil la banda de estado quita altura al editor: el estado ya se
+       ve en la lista (LOCAL / EN GITHUB) y en el pie. */
+    #nota-local { display:none !important; }
+    /* En local el pie solo dice «Modo local · sin sesión»; en el móvil estorba. */
+    body.modo-local footer { display:none; }
     footer { padding:6px 10px; font-size:10px; }
     #aviso { left:8px; right:8px; bottom:8px; padding:10px 12px; font-size:11.5px; }
     dialog { width:96vw; max-height:94dvh; box-shadow:5px 5px 0 #000; }
@@ -373,6 +378,7 @@ export const prerender = true;
         <button type="button" data-filtro="todas" class="sel">Todas <span class="cuenta" data-cuenta="todas"></span></button>
         <button type="button" data-filtro="pendientes" title="Borradores de acordes3 y fichas con una PR abierta">Acordes3 <span class="cuenta" data-cuenta="pendientes"></span></button>
         <button type="button" data-filtro="publicadas" title="Fichas de acordes (publicadas)">Acordes <span class="cuenta" data-cuenta="publicadas"></span></button>
+        <button type="button" data-filtro="porPublicar" id="f-por-publicar" hidden title="Fichas de acordes que están en el proyecto pero aún no en git (solo en local)">Por publicar <span class="cuenta" data-cuenta="porPublicar"></span></button>
         <button type="button" data-filtro="revisar" title="Coplas que aún no se han revisado a mano">Por revisar <span class="cuenta" data-cuenta="revisar"></span></button>
       </div>
     </div>
@@ -536,6 +542,18 @@ export const prerender = true;
       <button type="button" id="av-copiar">Copiar</button>
       <button type="button" id="av-tuit">Abrir en X</button>
       <button type="button" id="av-cerrar" class="principal">Cerrar</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-publicar">
+  <div class="cuerpo">
+    <h2>Publicar</h2>
+    <p class="nota" id="publicar-plan"></p>
+    <pre class="log" id="publicar-log"></pre>
+    <div class="acciones">
+      <button type="button" id="publicar-avisos" hidden>Copiar aviso</button>
+      <button type="button" id="publicar-cerrar" class="principal">Cerrar</button>
     </div>
   </div>
 </dialog>

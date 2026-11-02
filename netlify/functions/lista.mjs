@@ -3,7 +3,12 @@
 // disco (creados con `acordes:aplicar --destino acordes3` y aún sin subir).
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { sesion, sinSesion, json, gh, REPO, BASE, CARPETAS } from './_lib.mjs';
+
+const ejecutar = promisify(execFile);
+const git = (args) => ejecutar('git', args, { cwd: process.cwd(), maxBuffer: 8 * 1024 * 1024 });
 
 // Lo activa la ruta de desarrollo (`src/integrations/estudio-api.ts`).
 const LOCAL = process.env.ESTUDIO_LOCAL === '1';
@@ -55,6 +60,79 @@ async function borradoresLocales() {
       out.push({ ...datos(nombre.slice(0, -3), md), zona: 'acordes3', local: true });
     } catch { /* ficha ilegible: se omite */ }
   }
+  return out;
+}
+
+/**
+ * Fichas de `acordes` que están en el ordenador pero no en git: sin rastrear,
+ * modificadas, borradas o en commits locales sin push. Solo tiene sentido en
+ * dev, donde existe el working tree; en Netlify devuelve [].
+ */
+async function pendientesGit() {
+  if (!LOCAL) return [];
+
+  const mapa = new Map();
+  const borradores = new Set();
+
+  try {
+    const { stdout } = await git([
+      'status', '--porcelain=v1', '-z', '--no-renames', '--',
+      CARPETAS.acordes, CARPETAS.acordes3,
+    ]);
+    for (const entrada of stdout.split('\0').filter(Boolean)) {
+      const xy = entrada.slice(0, 2);
+      const ruta = entrada.slice(3);
+      if (!ruta.endsWith('.md')) continue;
+      const slug = ruta.split('/').pop().slice(0, -3);
+
+      if (ruta.startsWith(`${CARPETAS.acordes3}/`)) {
+        // La baja del borrador viaja en el mismo commit que su ficha nueva.
+        if (xy.includes('D')) borradores.add(slug);
+        continue;
+      }
+      if (!ruta.startsWith(`${CARPETAS.acordes}/`)) continue;
+
+      const estado = xy === '??' || xy[0] === 'A'
+        ? 'nueva'
+        : xy.includes('D') ? 'borrada' : 'modificada';
+      mapa.set(slug, { slug, estado, ruta });
+    }
+  } catch { /* sin git o sin repo: la pestaña sale vacía */ }
+
+  // Commits locales que aún no están en origin (un push que falló, por ejemplo).
+  try {
+    const { stdout } = await git(['diff', '--name-status', `origin/${BASE}..HEAD`, '--', CARPETAS.acordes]);
+    for (const linea of stdout.split(/\r?\n/)) {
+      if (!linea.trim()) continue;
+      const [cambio, ruta] = linea.split('\t');
+      if (!ruta || !ruta.endsWith('.md')) continue;
+      const slug = ruta.split('/').pop().slice(0, -3);
+      if (mapa.has(slug)) continue;
+      const tipo = cambio[0] === 'A' ? 'nueva' : cambio[0] === 'D' ? 'borrada' : 'modificada';
+      mapa.set(slug, { slug, estado: 'sin-push', cambio: tipo, ruta });
+    }
+  } catch { /* sin remoto o sin commits pendientes */ }
+
+  const out = [];
+  for (const item of mapa.values()) {
+    let md = '';
+    const borrada = item.estado === 'borrada' || item.cambio === 'borrada';
+    if (borrada) {
+      // En el working tree la ficha sigue en HEAD; en un commit sin push, en origin.
+      for (const ref of ['HEAD', `origin/${BASE}`]) {
+        try { md = (await git(['show', `${ref}:${item.ruta}`])).stdout; break; } catch { /* siguiente */ }
+      }
+    } else {
+      try { md = await readFile(join(process.cwd(), item.ruta), 'utf8'); } catch { /* ilegible */ }
+    }
+    out.push({
+      ...datos(item.slug, md),
+      ...item,
+      ...(borradores.has(item.slug) ? { borrador: true } : {}),
+    });
+  }
+
+  out.sort((a, b) => `${b.year}${b.agrupacion}`.localeCompare(`${a.year}${a.agrupacion}`, 'es'));
   return out;
 }
 
@@ -131,7 +209,11 @@ export default async (req) => {
     }
 
     fichas.sort((a, b) => `${b.year}${b.agrupacion}`.localeCompare(`${a.year}${a.agrupacion}`, 'es'));
-    return json({ borradores: fichas, revision: await pendientesRevision(s.token) });
+    return json({
+      borradores: fichas,
+      revision: await pendientesRevision(s.token),
+      pendientes: await pendientesGit(),
+    });
   } catch (e) {
     return json({ error: String(e.message || e) }, 502);
   }

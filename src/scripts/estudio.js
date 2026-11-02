@@ -75,6 +75,8 @@ async function quien() {
 let filtroTipo = 'todas';
 // Coplas que faltan por revisar (cola de `src/data/revision-acordes.json`).
 let revision = new Set();
+// Fichas de `acordes` en el ordenador pero aún sin subir a git (solo en local).
+let pendientesPublicar = [];
 
 const normalizar = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 /** Pendiente = borrador, ficha solo local o cualquiera con una PR abierta. */
@@ -93,12 +95,21 @@ async function cargarIndice() {
       const j = await b.json();
       borradores = j.borradores.map((x) => ({ ...x, zona: x.zona || 'acordes3' }));
       revision = new Set(j.revision || []);
+      pendientesPublicar = Array.isArray(j.pendientes) ? j.pendientes : [];
     }
   } catch { /* sin borradores */ }
   indice = [...borradores, ...publicadas];
   const dl = $('slugs');
   dl.innerHTML = indice.slice(0, 400).map((x) => '<option value="' + esc(x.slug) + '">' + esc(x.pieza + ' · ' + x.agrupacion + ' · ' + x.year) + '</option>').join('');
   return indice;
+}
+
+/** Vuelve a pedir la lista (tras publicar cambia lo pendiente de subir). */
+async function recargarIndice() {
+  indice = [];
+  pendientesPublicar = [];
+  await cargarIndice();
+  pintarLista();
 }
 
 const marcas = (x) => [
@@ -137,10 +148,38 @@ function filaLista(x) {
   '</article>';
 }
 
-function grupoLista(titulo, items, clase) {
+function grupoLista(titulo, items, clase, render = filaLista) {
   return '<div class="grupo' + (clase ? ' ' + clase : '') + '">' +
     '<span class="grupo-tit">' + esc(titulo) + '</span><i></i><span class="grupo-n">' + items.length + '</span></div>' +
-    items.map(filaLista).join('');
+    items.map(render).join('');
+}
+
+/** Fila de la pestaña «Por publicar» (fichas de acordes sin subir a git). */
+function filaPorPublicar(x) {
+  const etiqueta = x.estado === 'nueva' ? 'NUEVA'
+    : x.estado === 'borrada' ? 'BORRADA'
+    : x.estado === 'sin-push' ? 'SIN PUSH'
+    : 'MODIFICADA';
+  const clase = x.estado === 'nueva' ? 'local' : x.estado === 'sin-push' ? 'pr' : 'remoto';
+  const boton = (accion, texto, extra) =>
+    '<button type="button" class="acc' + (extra || '') + '" data-accion="' + accion + '" data-slug="' + esc(x.slug) + '">' + texto + '</button>';
+
+  return '<article class="fila pendiente">' +
+    '<button type="button" class="fila-info" data-slug="' + esc(x.slug) + '">' +
+      '<span class="f-agr">' + esc(x.agrupacion) + '</span>' +
+      '<span class="f-meta">' +
+        '<span class="f-year">' + esc(String(x.year || '—')) + '</span>' +
+        '<span>' + esc(x.pieza) + '</span>' +
+        (x.letraTitulo ? '<span class="f-letra">' + esc(x.letraTitulo) + '</span>' : '') +
+        '<span class="marca ' + clase + '">' + etiqueta + '</span>' +
+        (x.borrador ? '<span class="marca">BORRADOR</span>' : '') +
+      '</span>' +
+    '</button>' +
+    '<div class="fila-acciones">' +
+      (x.estado !== 'borrada' ? boton('editar', 'Editar') : '') +
+      boton('publicarLocal', x.estado === 'nueva' ? 'Publicar' : 'Subir', ' principal') +
+    '</div>' +
+  '</article>';
 }
 
 function pintarLista() {
@@ -157,6 +196,8 @@ function pintarLista() {
   const publicadas = resultado.filter((x) => !esPendiente(x));
   const revisar = resultado.filter(porRevisar)
     .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || a.agrupacion.localeCompare(b.agrupacion, 'es'));
+  const porPublicar = pendientesPublicar.filter(coincide)
+    .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || String(a.agrupacion).localeCompare(String(b.agrupacion), 'es'));
 
   $('q-limpiar').hidden = !$('q').value;
   for (const el of document.querySelectorAll('[data-cuenta]')) {
@@ -164,6 +205,7 @@ function pintarLista() {
     el.textContent = k === 'todas' ? resultado.length
       : k === 'pendientes' ? pendientes.length
       : k === 'publicadas' ? publicadas.length
+      : k === 'porPublicar' ? porPublicar.length
       : revisar.length;
   }
 
@@ -178,6 +220,8 @@ function pintarLista() {
   let html = '';
   if (filtroTipo === 'revisar') {
     if (revisar.length) html += grupoLista('Por revisar', recorta(revisar), 'pend');
+  } else if (filtroTipo === 'porPublicar') {
+    if (porPublicar.length) html += grupoLista('Por publicar', recorta(porPublicar), 'pend', filaPorPublicar);
   } else {
     if (filtroTipo !== 'publicadas' && pendientes.length) {
       html += grupoLista('Pendientes', recorta(pendientes), 'pend');
@@ -204,18 +248,25 @@ function pintarLista() {
     b.onclick = () => {
       if (accion === 'editar') return abrirFicha(b.dataset.slug);
       if (accion === 'publicar') return publicarDesdeLista(b.dataset.slug, b);
+      if (accion === 'publicarLocal') return publicarLocal(b.dataset.slug);
       if (accion === 'clonar') return clonar(b.dataset.slug);
     };
   });
 
-  const mostradas = filtroTipo === 'revisar' ? revisar.length : resultado.length;
+  const mostradas = filtroTipo === 'revisar' ? revisar.length
+    : filtroTipo === 'porPublicar' ? porPublicar.length
+    : resultado.length;
   $('lista-vacio').hidden = mostradas > 0;
   if (!mostradas) {
     const q = $('q').value.trim();
     $('lista-vacio').innerHTML = filtroTipo === 'revisar' && !q && indice.length
       ? '<b>Nada pendiente</b>No queda ninguna copla por revisar.'
-      : '<b>' + (indice.length ? 'Sin resultados' : 'Cargando…') + '</b>' +
-        (indice.length && q ? 'Ninguna ficha casa con «' + esc(q) + '».' : indice.length ? 'No hay fichas todavía: crea la primera.' : '');
+      : filtroTipo === 'porPublicar' && !q
+        ? (MODO_LOCAL
+          ? '<b>Nada pendiente</b>Todo lo que está en <code>acordes</code> ya está subido a git.'
+          : '<b>Solo en local</b>Esta pestaña necesita el proyecto abierto con <code>astro dev</code>.')
+        : '<b>' + (indice.length ? 'Sin resultados' : 'Cargando…') + '</b>' +
+          (indice.length && q ? 'Ninguna ficha casa con «' + esc(q) + '».' : indice.length ? 'No hay fichas todavía: crea la primera.' : '');
   }
   $('lista-tope').hidden = mostradas <= MAX;
 }
@@ -950,6 +1001,135 @@ async function publicarDesdeLista(slug, boton) {
   }
 }
 
+/* ---------------- publicar en local ---------------- */
+let publicando = null;
+let avisoSlug = null;
+
+async function publicarLocal(slug) {
+  const item = pendientesPublicar.find((x) => x.slug === slug);
+  if (!item) return;
+
+  const avisa = item.estado === 'nueva' || (item.estado === 'sin-push' && item.cambio === 'nueva');
+  const que = item.estado === 'nueva'
+    ? 'Se publica en la web (Telegram avisa solo). Al terminar podrás copiar el aviso para WhatsApp y X.'
+    : item.estado === 'borrada'
+      ? 'Se sube la eliminación. No hay aviso.'
+      : item.estado === 'sin-push'
+        ? 'Se suben los commits que ya están hechos.' + (avisa ? ' Al ser nueva, al terminar podrás copiar el aviso.' : ' No hay aviso.')
+        : 'Se suben los cambios. No hay aviso.';
+  const nombre = item.pieza ? item.pieza + ' · ' + item.agrupacion : slug;
+  if (!confirm('¿Publicar «' + nombre + '»?\n\n' + que)) return;
+
+  try {
+    const r = await fetch(API + '/publicar-local', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slugs: [slug], sinAviso: false }),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
+    abrirPublicacion(d.id, d.plan);
+    seguirPublicacion(d.id);
+  } catch (e) {
+    mostrarAviso(String(e.message || e), 'var(--mal)');
+  }
+}
+
+/** Plan que devuelve el servidor antes de lanzar el trabajo. */
+function textoPlan(plan) {
+  const items = (plan && plan.items) || [];
+  if (!items.length) return 'Sin cambios.';
+  return items.map((x) => {
+    const nombre = [x.pieza, x.agrupacion].filter(Boolean).join(' · ') || x.slug;
+    const cola = x.fecha ? 'fecha ' + x.fecha + ' · ' : '';
+    return '<b>' + esc(nombre) + '</b><br>' + cola + (x.avisar ? 'aviso disponible para copiar' : 'sin aviso');
+  }).join('<br><br>');
+}
+
+function abrirPublicacion(id, plan) {
+  publicando = id;
+  avisoSlug = null;
+  $('publicar-avisos').hidden = true;
+  $('publicar-plan').innerHTML = textoPlan(plan);
+  $('publicar-log').textContent = '';
+  if (!$('dlg-publicar').open) $('dlg-publicar').showModal();
+}
+
+/** Sigue el trabajo en segundo plano y refresca la lista al terminar. */
+async function seguirPublicacion(id) {
+  while (true) {
+    await new Promise((listo) => setTimeout(listo, 2000));
+    let d;
+    try {
+      const r = await fetch(API + '/publicar-local?id=' + encodeURIComponent(id));
+      if (!r.ok) throw new Error('no se pudo leer el estado');
+      d = await r.json();
+    } catch (e) {
+      $('publicar-log').textContent += '\n' + String(e.message || e);
+      return;
+    }
+
+    if (Array.isArray(d.lineas)) {
+      const texto = d.lineas.map((l) => (l.nivel === 'error' ? '✖ ' : '') + (l.msg || '')).join('\n');
+      if (texto && $('publicar-log').textContent !== texto) {
+        $('publicar-log').textContent = texto;
+        $('publicar-log').scrollTop = $('publicar-log').scrollHeight;
+      }
+    }
+
+    if (d.estado && d.estado !== 'ejecutando') {
+      const ok = d.estado === 'ok';
+      $('publicar-log').textContent += '\n' + (ok ? '✔ Publicado.' : '✖ ' + (d.error || 'falló'));
+      publicando = null;
+
+      // Si hay fichas nuevas, el aviso queda listo para copiar a WhatsApp y X.
+      const avisos = ok && d.resumen && Array.isArray(d.resumen.avisos) ? d.resumen.avisos : [];
+      if (avisos.length) {
+        avisoSlug = avisos[0];
+        $('publicar-avisos').hidden = false;
+        $('publicar-avisos').textContent = avisos.length === 1 ? 'Copiar aviso' : 'Copiar avisos';
+        if (!$('dlg-publicar').open) $('dlg-publicar').showModal();
+      }
+
+      await recargarIndice();
+      mostrarAviso(ok
+        ? (avisos.length ? 'Publicado. Pulsa «Copiar aviso» para WhatsApp y X.' : 'Publicado.')
+        : 'Falló la publicación: ' + (d.error || 'mira el registro'),
+      ok ? 'var(--ok)' : 'var(--mal)');
+      return;
+    }
+  }
+}
+
+/** Si se recarga la página con un trabajo en marcha, lo retoma. */
+async function reanudarPublicacion() {
+  try {
+    const r = await fetch(API + '/publicar-local?ultimo=1');
+    if (!r.ok) return;
+    const d = await r.json();
+    if (d && d.estado === 'ejecutando' && d.id) {
+      abrirPublicacion(d.id, d.plan);
+      seguirPublicacion(d.id);
+    }
+  } catch { /* sin trabajo */ }
+}
+
+/** Compone y abre el aviso de una ficha ya publicada, para copiarlo. */
+async function abrirAvisosSlug(slug) {
+  try {
+    const r = await fetch(API + '/aviso?slug=' + encodeURIComponent(slug));
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudo componer el aviso');
+    $('aviso-meta').textContent = d.titulo;
+    $('aviso-texto').value = d.texto;
+    avisoX = d.textoX || d.texto;
+    $('dlg-publicar').close();
+    $('dlg-aviso').showModal();
+  } catch (e) {
+    mostrarAviso(String(e.message || e), 'var(--mal)');
+  }
+}
+
 /* ---------------- avisos ---------------- */
 async function abrirAvisos() {
   if (!ficha) return;
@@ -1351,6 +1531,8 @@ $('b-publicar').onclick = publicar;
 $('b-avisos').onclick = abrirAvisos;
 $('nota-local-cerrar').onclick = cerrarNotaLocal;
 $('av-cerrar').onclick = () => $('dlg-aviso').close();
+$('publicar-cerrar').onclick = () => $('dlg-publicar').close();
+$('publicar-avisos').onclick = () => { if (avisoSlug) abrirAvisosSlug(avisoSlug); };
 $('av-copiar').onclick = async () => {
   try { await navigator.clipboard.writeText($('aviso-texto').value); $('av-copiar').textContent = 'Copiado'; }
   catch { $('aviso-texto').select(); document.execCommand('copy'); }
@@ -1474,6 +1656,7 @@ window.addEventListener('beforeunload', (e) => {
   const cuenta = await quien();
   if (!cuenta) { $('login').hidden = false; return; } // sin sesión: pantalla de login
   MODO_LOCAL = MODO_LOCAL || cuenta.local === true;
+  document.body.classList.toggle('modo-local', MODO_LOCAL);
   $('login').hidden = true;
   $('nav-vistas').hidden = false;
   $('quien').textContent = cuenta.login;
@@ -1484,6 +1667,8 @@ window.addEventListener('beforeunload', (e) => {
   setEstado('', true);
   await cargarIndice();
   pintarLista();
+  $('f-por-publicar').hidden = !MODO_LOCAL;
+  if (MODO_LOCAL) reanudarPublicacion();
   // La entrada base del historial es la lista: así el atrás desde una ficha
   // vuelve aquí y no sale del panel.
   history.replaceState(estadoLista, '', '/admin/');

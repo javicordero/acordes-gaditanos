@@ -1,0 +1,332 @@
+// scripts/publicar-acorde.mjs
+//
+// Sube a git las fichas de `src/content/acordes` que están en el ordenador pero
+// no en el remoto, ajusta la fecha de las nuevas y, si se pide con `--avisar`,
+// lanza los avisos de WhatsApp y X. Es la parte mecánica de la skill
+// `subir-acorde`, para que también la pueda disparar el botón «Publicar» del
+// panel /admin (que solo publica y deja el aviso listo para copiar).
+//
+// Uso:
+//   node scripts/publicar-acorde.mjs --solo <slug>[,<slug>] [--sin-aviso]
+//   node scripts/publicar-acorde.mjs --solo <slug> --plan --json
+//   node scripts/publicar-acorde.mjs --todos [--sin-aviso] [--avisar]
+//
+// Opciones:
+//   --solo <slugs>   fichas a publicar (separadas por coma)
+//   --todos          todas las pendientes del working tree
+//   --sin-aviso      no marca el aviso en Telegram (commit con [sin aviso])
+//   --avisar         lanza WhatsApp y X desde este equipo (por defecto no: el
+//                    panel solo publica y deja el aviso listo para copiar)
+//   --plan           no toca nada: imprime el plan y sale
+//   --json           log en líneas JSON (lo consume el panel)
+//   --id <id>        identificador del trabajo para .cache/publicar/estado.json
+//
+// Códigos de salida: 0 bien, 1 error (nada se revierte: si el push ya salió, la
+// web queda publicada y solo se informa de lo que falló).
+
+import { execFileSync } from 'node:child_process';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { frontmatterDeTexto } from './lib/aviso.mjs';
+
+const RAIZ = process.cwd();
+const CARPETA = 'src/content/acordes';
+const BORRADORES = 'src/content/acordes3';
+const ESTADO = join(RAIZ, '.cache/publicar/estado.json');
+
+const opciones = { slugs: [], todos: false, sinAviso: false, avisar: false, plan: false, json: false, id: '' };
+const args = process.argv.slice(2);
+for (let i = 0; i < args.length; i++) {
+  const a = args[i];
+  if (a === '--solo') opciones.slugs = String(args[++i] || '').split(',').map((s) => s.trim()).filter(Boolean);
+  else if (a === '--todos') opciones.todos = true;
+  else if (a === '--sin-aviso') opciones.sinAviso = true;
+  else if (a === '--avisar') opciones.avisar = true;
+  else if (a === '--plan') opciones.plan = true;
+  else if (a === '--json') opciones.json = true;
+  else if (a === '--id') opciones.id = String(args[++i] || '');
+}
+
+const log = (msg, nivel = 'info') => {
+  if (opciones.json) console.log(JSON.stringify({ t: Date.now(), nivel, msg: String(msg) }));
+  else console.log(msg);
+};
+
+/** Ejecuta git y devuelve la salida (sin CR). Con `permitirFallo` no lanza. */
+function git(argumentos, { permitirFallo = false } = {}) {
+  try {
+    return execFileSync('git', argumentos, {
+      cwd: RAIZ,
+      encoding: 'utf8',
+      maxBuffer: 16 * 1024 * 1024,
+    }).replace(/\r\n/g, '\n');
+  } catch (e) {
+    if (permitirFallo) return '';
+    const detalle = String(e.stderr || e.stdout || e.message || '').trim();
+    throw new Error(`git ${argumentos.join(' ')}: ${detalle}`);
+  }
+}
+
+/** Estado del working tree en `acordes` y bajas pendientes en `acordes3`. */
+function estadoWorkingTree() {
+  const mapa = new Map();
+  const borradores = new Set();
+  const salida = git(['status', '--porcelain=v1', '-z', '--no-renames', '--', CARPETA, BORRADORES], { permitirFallo: true });
+
+  for (const entrada of salida.split('\0').filter(Boolean)) {
+    const xy = entrada.slice(0, 2);
+    const ruta = entrada.slice(3);
+    if (!ruta.endsWith('.md')) continue;
+    const slug = ruta.split('/').pop().slice(0, -3);
+
+    if (ruta.startsWith(`${BORRADORES}/`)) {
+      if (xy.includes('D')) borradores.add(slug);
+      continue;
+    }
+    if (!ruta.startsWith(`${CARPETA}/`)) continue;
+
+    const estado = xy === '??' || xy[0] === 'A'
+      ? 'nueva'
+      : xy.includes('D') ? 'borrada' : 'modificada';
+    mapa.set(slug, { slug, estado, ruta });
+  }
+  return { mapa, borradores };
+}
+
+/** Fichas que ya están en commits locales pero todavía no en origin. */
+function sinPush() {
+  const mapa = new Map();
+  const salida = git(['diff', '--name-status', 'origin/master..HEAD', '--', CARPETA], { permitirFallo: true });
+  for (const linea of salida.split('\n')) {
+    if (!linea.trim()) continue;
+    const [cambio, ruta] = linea.split('\t');
+    if (!ruta || !ruta.endsWith('.md')) continue;
+    const slug = ruta.split('/').pop().slice(0, -3);
+    const tipo = cambio[0] === 'A' ? 'nueva' : cambio[0] === 'D' ? 'borrada' : 'modificada';
+    mapa.set(slug, { slug, estado: 'sin-push', cambio: tipo, ruta });
+  }
+  return mapa;
+}
+
+/** Frontmatter de una ficha: del disco o, si está borrada, de HEAD/origin. */
+function datosDe(item) {
+  let texto = '';
+  if (item.estado === 'borrada' || item.cambio === 'borrada') {
+    for (const ref of ['HEAD', 'origin/master']) {
+      texto = git(['show', `${ref}:${item.ruta}`], { permitirFallo: true });
+      if (texto) break;
+    }
+  } else {
+    try { texto = readFileSync(join(RAIZ, item.ruta), 'utf8'); } catch { /* ilegible */ }
+  }
+  return frontmatterDeTexto(texto);
+}
+
+/** Última fecha publicada en HEAD (tolera días inválidos como 31/09). */
+function ultimaFecha() {
+  const salida = git(['grep', '-h', '^date:', 'HEAD', '--', CARPETA], { permitirFallo: true });
+  let max = 0;
+  for (const linea of salida.split('\n')) {
+    const m = /date:\s*["']?(\d{1,2})[/-](\d{1,2})[/-](\d{4})/.exec(linea);
+    if (!m) continue;
+    const clave = Number(m[3]) * 10000 + Number(m[2]) * 100 + Number(m[1]);
+    if (clave > max) max = clave;
+  }
+  if (!max) return new Date();
+  return new Date(Math.floor(max / 10000), Math.floor((max % 10000) / 100) - 1, max % 100);
+}
+
+const dos = (n) => String(n).padStart(2, '0');
+const formatear = (d) => `${dos(d.getDate())}/${dos(d.getMonth() + 1)}/${d.getFullYear()}`;
+
+/** Plan: qué se publica, con qué fecha y si lleva aviso. */
+function construirPlan() {
+  const { mapa, borradores } = estadoWorkingTree();
+  const todos = new Map([...sinPush(), ...mapa]); // el working tree manda
+  const pedidos = opciones.todos ? [...todos.keys()] : opciones.slugs;
+
+  const errores = [];
+  const items = [];
+  for (const slug of pedidos) {
+    const item = todos.get(slug);
+    if (!item) {
+      errores.push({ slug, error: 'no está pendiente de publicar' });
+      continue;
+    }
+    items.push({ ...item, ...datosDe(item), borrador: borradores.has(slug) });
+  }
+
+  // Fechas consecutivas solo para las nuevas, en orden alfabético de archivo.
+  const nuevas = items.filter((x) => x.estado === 'nueva').sort((a, b) => a.slug.localeCompare(b.slug));
+  let base = ultimaFecha();
+  nuevas.forEach((x, i) => {
+    x.fecha = formatear(new Date(base.getFullYear(), base.getMonth(), base.getDate() + i + 1));
+  });
+
+  for (const x of items) {
+    x.avisar = !opciones.sinAviso && (x.estado === 'nueva' || (x.estado === 'sin-push' && x.cambio === 'nueva'));
+  }
+
+  return { items, errores, avisos: items.filter((x) => x.avisar).length };
+}
+
+/** Guarda el estado que consulta el panel (solo si lo lanza el panel). */
+function escribirEstado(extra) {
+  if (!opciones.id) return;
+  try {
+    mkdirSync(join(RAIZ, '.cache/publicar'), { recursive: true });
+    const previo = existsSync(ESTADO) ? JSON.parse(readFileSync(ESTADO, 'utf8')) : {};
+    writeFileSync(ESTADO, JSON.stringify({ ...previo, ...extra, id: opciones.id }, null, 2), 'utf8');
+  } catch { /* el panel lo marcará como error por PID */ }
+}
+
+/** Lanza un script de `package.json` y devuelve su código de salida. */
+function correrScript(nombre, extra = [], { heredar = false } = {}) {
+  let programa;
+  let argumentos;
+  try {
+    const paquete = JSON.parse(readFileSync(join(RAIZ, 'package.json'), 'utf8'));
+    const comando = String((paquete.scripts || {})[nombre] || '').trim();
+    if (!comando) throw new Error(`no existe el script ${nombre} en package.json`);
+    const partes = comando.split(/\s+/);
+    // Los scripts del proyecto son `node scripts/...`: se lanzan sin npm ni shell.
+    programa = partes[0] === 'node' ? process.execPath : partes[0];
+    argumentos = [...partes.slice(1), ...extra];
+  } catch (e) {
+    return { codigo: 1, salida: String(e.message || e) };
+  }
+
+  try {
+    const salida = execFileSync(programa, argumentos, {
+      cwd: RAIZ,
+      encoding: 'utf8',
+      maxBuffer: 32 * 1024 * 1024,
+      stdio: heredar ? 'inherit' : ['ignore', 'pipe', 'pipe'],
+    });
+    return { codigo: 0, salida: salida || '' };
+  } catch (e) {
+    return {
+      codigo: typeof e.status === 'number' ? e.status : 1,
+      salida: `${String(e.stdout || '')}${String(e.stderr || '')}`,
+    };
+  }
+}
+
+(async () => {
+  try {
+    const plan = construirPlan();
+
+    if (opciones.plan) {
+      console.log(JSON.stringify({ ok: plan.errores.length === 0, ...plan }));
+      process.exitCode = plan.errores.length ? 1 : 0;
+      return;
+    }
+
+    if (plan.errores.length) {
+      throw new Error(plan.errores.map((e) => `${e.slug}: ${e.error}`).join('; '));
+    }
+    if (!plan.items.length) throw new Error('no hay fichas pendientes que publicar');
+
+    escribirEstado({ estado: 'ejecutando', inicio: Date.now(), pid: process.pid, plan });
+
+    // 1. Fecha de las nuevas.
+    for (const x of plan.items) {
+      if (x.estado !== 'nueva') continue;
+      const ruta = join(RAIZ, x.ruta);
+      const md = readFileSync(ruta, 'utf8');
+      const nuevo = md.replace(/^date:.*$/m, `date: "${x.fecha}"`);
+      if (nuevo === md && !/^date:/m.test(md)) throw new Error(`no encuentro date en ${x.ruta}`);
+      writeFileSync(ruta, nuevo, 'utf8');
+      log(`Fecha de ${x.slug}: ${x.fecha}`);
+    }
+
+    // 2. Auditorías antes de commitear.
+    for (const script of ['auditar:pre', 'auditar:acordes']) {
+      log(`Ejecutando ${script}…`);
+      const r = correrScript(script);
+      if (r.codigo !== 0) {
+        const cola = r.salida.split('\n').slice(-15).join('\n');
+        throw new Error(`${script} falló:\n${cola}`);
+      }
+      log(`${script} OK`);
+    }
+
+    // 3. Un commit por ficha, tocando solo sus rutas.
+    const commits = [];
+    for (const x of plan.items) {
+      if (x.estado === 'sin-push') continue;
+      const rutas = [];
+      if (x.estado !== 'borrada') rutas.push(`${CARPETA}/${x.slug}.md`);
+      if (x.borrador) rutas.push(`${BORRADORES}/${x.slug}.md`);
+      if (!rutas.length) continue;
+
+      git(['add', '-A', '--', ...rutas]);
+      const nombre = [x.pieza, x.agrupacion].filter(Boolean).join(' ') || x.slug;
+      const prefijo = x.estado === 'nueva' ? 'acordes' : x.estado === 'borrada' ? 'quita' : 'actualiza';
+      const mensaje = `${prefijo} ${nombre}${opciones.sinAviso ? ' [sin aviso]' : ''}`;
+      try {
+        git(['commit', '-m', mensaje, '--', ...rutas]);
+        commits.push({ slug: x.slug, mensaje });
+        log(`Commit: ${mensaje}`);
+      } catch {
+        log(`Sin cambios que commitear en ${x.slug}`, 'aviso');
+      }
+    }
+
+    // 4. Qué fichas nuevas entran en el push (lo mismo que verá la Action).
+    let avisos = [];
+    if (!opciones.sinAviso) {
+      const salida = git(['diff', '--diff-filter=A', '--name-only', 'origin/master..HEAD', '--', CARPETA], { permitirFallo: true });
+      avisos = salida.split('\n').filter((r) => r.endsWith('.md')).map((r) => r.split('/').pop().slice(0, -3));
+    }
+
+    // 5. Push.
+    const porSubir = Number(git(['rev-list', '--count', 'origin/master..HEAD'], { permitirFallo: true }).trim() || 0);
+    let push = 'nada';
+    if (porSubir > 0) {
+      log(`Subiendo ${porSubir} commit(s)…`);
+      git(['push', 'origin', 'master']);
+      push = 'ok';
+      log('Push OK');
+    } else {
+      log('No hay commits nuevos que subir.');
+    }
+
+    // 6. Avisos. Por defecto no se envía nada: el panel deja el texto listo
+    //    para copiar. Con `--avisar` se lanzan WhatsApp y X desde este equipo.
+    let wa = 'no';
+    let x = 'no';
+    if (avisos.length && opciones.avisar) {
+      log(`Lanzando avisos de: ${avisos.join(', ')}`);
+      const solo = ['--solo', avisos.join(',')];
+
+      log('Lanzando WhatsApp…');
+      const rw = correrScript('wa', solo, { heredar: true });
+      wa = rw.codigo === 0 ? 'ok' : `error ${rw.codigo}`;
+      if (rw.codigo === 2) log('WhatsApp: sesión caducada. Ejecuta `npm run wa:login`.', 'error');
+      else if (rw.codigo) log(`WhatsApp terminó con código ${rw.codigo}.`, 'error');
+
+      log('Lanzando X…');
+      const rx = correrScript('x', solo, { heredar: true });
+      x = rx.codigo === 0 ? 'ok' : `error ${rx.codigo}`;
+      if (rx.codigo === 2) log('X: sesión caducada. Ejecuta `npm run x:login`.', 'error');
+      else if (rx.codigo) log(`X terminó con código ${rx.codigo}.`, 'error');
+    } else if (avisos.length) {
+      log(`Aviso listo para copiar: ${avisos.join(', ')}`);
+    } else {
+      log('Nada que avisar (no hay fichas nuevas).');
+    }
+
+    escribirEstado({
+      estado: 'ok',
+      fin: Date.now(),
+      resumen: { commits, push, avisos, wa, x },
+    });
+    log('Terminado.', 'ok');
+  } catch (e) {
+    const mensaje = String(e.message || e);
+    log(mensaje, 'error');
+    escribirEstado({ estado: 'error', fin: Date.now(), error: mensaje });
+    process.exitCode = 1;
+  }
+})();
