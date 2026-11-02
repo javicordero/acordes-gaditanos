@@ -7,6 +7,8 @@ letra: Lolo Molina
 img: https://8cadiz.es/wp-content/uploads/2018/02/Los-sirenitas.jpg
 cejilla: 0
 date: "01/12/2026"
+video: https://www.youtube.com/embed/XgTMqxN36JI?si=vafXei0408vZdfpT
+
 ---
 <pre>
 <a>Sol</a>                    <a>Re7</a> <a>Mim</a>                   <a>Sim</a>
