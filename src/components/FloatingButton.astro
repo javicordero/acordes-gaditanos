@@ -1,11 +1,17 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 const { class: className } = Astro.props;
 ---
 
 <div class:list={['fab-container', className]}>
-  <a href='/pedir-copla' class='fab' aria-label='Pedir una copla'>
+  <a href='/pedir-copla' class='fab fab--pedir' aria-label='Pedir una copla'>
     <span class='fab-text'>Pedir una copla</span>
   </a>
+  <button type='button' class='fab fab--instalar' aria-label='Instalar la app' hidden>
+    <Icon name='descargar' width={15} height={15} />
+    <span class='fab-text'>Instalar app</span>
+  </button>
 </div>
 
 <style>
@@ -29,10 +35,16 @@ const { class: className } = Astro.props;
     display: none;
   }
 
+  /* Si aparece el anuncio ancla de Auto Ads (barra fija inferior), el botón sube
+     para no taparlo (política AdSense). */
+  .fab-container.fab--sobre-ancla {
+    bottom: 150px;
+  }
+
   .fab {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     padding: 10px 16px;
     border: 2px solid var(--on-bright-color);
     border-radius: 0;
@@ -50,11 +62,21 @@ const { class: className } = Astro.props;
       box-shadow 0.15s ease;
     white-space: nowrap;
     pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .fab[hidden] {
+    display: none;
   }
 
   .fab:hover {
     transform: translate(-2px, -2px);
     box-shadow: 6px 6px 0 0 var(--on-bright-color);
+  }
+
+  .fab :global(svg) {
+    display: block;
+    flex: none;
   }
 
   @media (min-width: 640px) {
@@ -68,6 +90,10 @@ const { class: className } = Astro.props;
       bottom: 16px;
     }
 
+    .fab-container.fab--sobre-ancla {
+      bottom: 140px;
+    }
+
     .fab {
       padding: 8px 12px;
       font-size: 0.75rem;
@@ -77,14 +103,73 @@ const { class: className } = Astro.props;
 </style>
 
 <script>
+  import { instalar, puedeInstalar } from '../lib/pwa/instalacion';
+  import { eventoPwa } from '../lib/pwa/analytics';
+
+  const SEL_ANCLA = 'ins[data-anchor-status], ins[data-anchor-shown="true"], div[id^="google_anchor"]';
+
+  let promptMostrado = false;
+
+  function ajustarPorAncla() {
+    const container = document.querySelector('.fab-container');
+    if (!container) return;
+    const ancla = document.querySelector(SEL_ANCLA);
+    container.classList.toggle('fab--sobre-ancla', Boolean(ancla));
+  }
+
+  function aplicarEstado() {
+    const container = document.querySelector('.fab-container');
+    if (!container) return;
+    const pedir = container.querySelector('.fab--pedir');
+    const instalarBtn = container.querySelector('.fab--instalar');
+    if (!pedir || !instalarBtn) return;
+
+    if (puedeInstalar()) {
+      pedir.setAttribute('hidden', '');
+      instalarBtn.removeAttribute('hidden');
+      if (!promptMostrado) {
+        promptMostrado = true;
+        eventoPwa('pwa_prompt_shown', { ubicacion: 'portada' });
+      }
+    } else {
+      pedir.removeAttribute('hidden');
+      instalarBtn.setAttribute('hidden', '');
+    }
+    ajustarPorAncla();
+  }
+
   function initFAB() {
     const container = document.querySelector('.fab-container');
     if (!container) return;
-
-    localStorage.removeItem('fab-pedir-copla-closed');
     container.classList.remove('hidden');
+
+    const instalarBtn = container.querySelector('.fab--instalar');
+    if (instalarBtn && !instalarBtn.dataset.wired) {
+      instalarBtn.dataset.wired = 'true';
+      instalarBtn.addEventListener('click', () => {
+        eventoPwa('pwa_home_banner_click', { ubicacion: 'portada' });
+        instalar();
+      });
+    }
+
+    aplicarEstado();
   }
 
   initFAB();
   document.addEventListener('astro:page-load', initFAB);
+  // El prompt nativo de Android puede llegar después de cargar la página.
+  window.addEventListener('ag:beforeinstallprompt', aplicarEstado);
+  // Tras instalar o descartar, el botón vuelve a «Pedir una copla».
+  window.addEventListener('ag:pwa-estado', aplicarEstado);
+
+  // Observa la aparición del anuncio ancla para apartar el botón.
+  if (typeof MutationObserver !== 'undefined') {
+    const observer = new MutationObserver(ajustarPorAncla);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['data-anchor-status', 'data-anchor-shown'],
+    });
+  }
 </script>

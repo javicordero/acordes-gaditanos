@@ -1,3 +1,9 @@
 name = "comments-worker"
 main = "src/index.js"
 compatibility_date = "2024-01-01"
+
+# El worker acepta el token de GitHub del panel /estudio y comprueba que el
+# usuario sea este. `ADMIN_TOKEN` (secreto del worker) sigue valiendo como
+# respaldo, pero el panel ya no lo necesita.
+[vars]
+OWNER_LOGIN = "javicordero"

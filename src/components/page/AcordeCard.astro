@@ -8,6 +8,7 @@ import RecomendacionInline from './RecomendacionInline.astro';
 import Anuncio from '../right-column/anuncios/Anuncio.astro';
 import AcordesDeLaPieza from './AcordesDeLaPieza.astro';
 import GlosarioPopover from './GlosarioPopover.astro';
+import BannerInstalarApp from '../pwa/BannerInstalarApp.astro';
 import glosarioJson from '../../data/glosario-acordes.json';
 import { acordesDePieza, crearIndice, type Glosario } from '../../lib/acordes';
 import { mapaGlosarioConTransportes } from '../../lib/transporte';
@@ -176,6 +177,8 @@ const headingId = `acorde-${slug}`;
       <Icon name='cejilla' width={18} height={18} />
       <span>Cejilla: {cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
+
+    <BannerInstalarApp ubicacion='ficha' />
 
     <div class='acorde-content'>
       <div class='autoscroll-wrapper'>

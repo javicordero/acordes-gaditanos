@@ -1,0 +1,104 @@
+// src/lib/pwa/instalacion.ts
+//
+// Lógica de instalación de la PWA: disparo del prompt nativo en Android y panel
+// de instrucciones en iOS/otros navegadores.
+// El evento beforeinstallprompt lo captura un script inline del <head> y lo deja
+// en window.__agPwa.
+
+import {
+  detectarOs,
+  esStandalone,
+  eventoPwa,
+  iniciarAnaliticaPwa,
+} from './analytics';
+
+interface AgPwa {
+  prompt: { prompt: () => void; userChoice: Promise<{ outcome: string }> } | null;
+  installed: boolean;
+}
+
+function esMovil(): boolean {
+  const o = detectarOs();
+  return o === 'android' || o === 'ios';
+}
+
+function agPwa(): AgPwa | undefined {
+  return (window as unknown as { __agPwa?: AgPwa }).__agPwa;
+}
+
+// ¿Mostramos la invitación a instalar? Siempre en móvil, salvo que el usuario ya
+// esté dentro de la app (display-mode standalone). No depende de clics ni de
+// descartes: el aviso permanece hasta que se abre la app instalada.
+export function puedeInstalar(): boolean {
+  return esMovil() && !esStandalone();
+}
+
+// pwa_installed se emite una sola vez por sesión de página.
+let instaladoReportado = false;
+function reportarInstalado() {
+  if (instaladoReportado) return;
+  instaladoReportado = true;
+  eventoPwa('pwa_installed');
+}
+
+function abrirPanel() {
+  const panel = document.getElementById('ag-instalar-panel');
+  if (!panel) return;
+  const esIos = detectarOs() === 'ios';
+  panel.querySelector('[data-ag-ios]')?.classList.toggle('ag-activo', esIos);
+  panel.querySelector('[data-ag-otro]')?.classList.toggle('ag-activo', !esIos);
+  panel.hidden = false;
+}
+
+function cerrarPanel() {
+  const panel = document.getElementById('ag-instalar-panel');
+  if (panel) panel.hidden = true;
+}
+
+export function instalar() {
+  if (detectarOs() === 'ios') {
+    eventoPwa('pwa_ios_instructions_shown');
+    abrirPanel();
+    return;
+  }
+
+  const prompt = agPwa()?.prompt;
+  if (prompt) {
+    prompt.prompt();
+    prompt.userChoice
+      .then((choice: { outcome: string }) => {
+        eventoPwa(
+          choice.outcome === 'accepted' ? 'pwa_prompt_accepted' : 'pwa_prompt_dismissed',
+        );
+        const ctx = agPwa();
+        if (ctx) ctx.prompt = null;
+        if (choice.outcome === 'accepted') reportarInstalado();
+      })
+      .catch(() => {
+        /* el usuario cerró el prompt sin elegir */
+      });
+    return;
+  }
+
+  // Sin prompt disponible: instrucciones genéricas en el panel.
+  abrirPanel();
+}
+
+export function initPwa() {
+  iniciarAnaliticaPwa();
+
+  // `appinstalled` lo captura el script inline y llega como evento propio.
+  window.addEventListener('ag:appinstalled', () => {
+    reportarInstalado();
+  });
+
+  // Cerrar el panel al pulsar la X o el fondo. El aviso NO se oculta: solo se
+  // cierra el panel.
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement | null;
+    if (target && target.closest('[data-ag-cerrar]')) cerrarPanel();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') cerrarPanel();
+  });
+}

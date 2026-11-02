@@ -8,6 +8,7 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import Anuncios from '../components/page/Anuncios.astro';
 import AnuncioSobreFooter from '../components/right-column/anuncios/AnuncioSobreFooter.astro';
+import InstalarAppPanel from '../components/pwa/InstalarAppPanel.astro';
 import canales from '../data/canales.json';
 
 interface Props {
@@ -49,6 +50,12 @@ const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acord
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta name='theme-color' content='#e5e5e5' id='theme-color-meta' />
 
+    <!-- PWA / iOS: instalable a pantalla de inicio -->
+    <meta name='mobile-web-app-capable' content='yes' />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta name='apple-mobile-web-app-status-bar-style' content='black' />
+    <meta name='apple-mobile-web-app-title' content='Acordes Gaditanos' />
+
     <!-- Aplica el tema oscuro antes del primer pintado para evitar destellos -->
     <script is:inline>
       (function () {
@@ -59,6 +66,26 @@ const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acord
         if (dark) document.documentElement.setAttribute('data-theme', 'dark');
         var meta = document.getElementById('theme-color-meta');
         if (meta) meta.setAttribute('content', dark ? '#12141a' : '#e5e5e5');
+      })();
+    </script>
+
+    <!-- PWA: captura el beforeinstallprompt antes de que carguen los módulos.
+         En la portada suprimimos el aviso nativo de Chrome (ahí va nuestro botón
+         flotante). En el resto lo dejamos aparecer Y capturamos el evento para
+         poder mostrar la tarjeta de la columna derecha. -->
+    <script is:inline>
+      (function () {
+        window.__agPwa = { prompt: null, installed: false };
+        window.addEventListener('beforeinstallprompt', function (e) {
+          var esIndex = location.pathname === '/' || location.pathname === '/index.html';
+          if (esIndex) e.preventDefault();
+          window.__agPwa.prompt = e;
+          window.dispatchEvent(new CustomEvent('ag:beforeinstallprompt'));
+        });
+        window.addEventListener('appinstalled', function () {
+          window.__agPwa.installed = true;
+          window.dispatchEvent(new CustomEvent('ag:appinstalled'));
+        });
       })();
     </script>
 
@@ -74,6 +101,7 @@ const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acord
     <link rel='icon' type='image/png' sizes='192x192' href='/favicon-192.png' />
     <link rel='alternate icon' type='image/x-icon' href='/favicon.ico' />
     <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+    <link rel='manifest' href='/manifest.webmanifest' />
     <link rel='sitemap' href='/sitemap-index.xml' />
     <link rel='canonical' href={canonicalURL} />
 
@@ -322,6 +350,7 @@ const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acord
     <!-- Sobre footer -->
     <AnuncioSobreFooter />
     <Footer />
+    <InstalarAppPanel />
     <ContactInit />
     <AnchoPreInit />
     <FitTextInit />
@@ -342,6 +371,11 @@ const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acord
         }
       </script>
     )}
+
+    <!-- PWA: registra el service worker e inicializa la analítica de instalación -->
+    <script>
+      import '../pwa';
+    </script>
 
   </body>
 </html>

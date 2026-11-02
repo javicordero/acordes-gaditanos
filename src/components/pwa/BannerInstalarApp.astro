@@ -1,0 +1,144 @@
+---
+// src/components/pwa/BannerInstalarApp.astro
+//
+// Banner propio (estilo del antiguo NovedadCallout del «listado de todas las
+// coplas») que invita a instalar la app. Se usa tras el título de «Novedades»
+// (portada) y bajo la cejilla en las fichas. Solo en móvil, oculto si ya está
+// instalada o descartada.
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  /** Para la analítica: 'portada' o 'ficha'. */
+  ubicacion: string;
+}
+
+const { ubicacion } = Astro.props;
+---
+
+<div class='banner-instalar' data-pwa-banner data-ubicacion={ubicacion}>
+  <span class='banner-instalar__badge'>Novedad</span>
+  <p class='banner-instalar__texto'>Instala la aplicación Acordes Gaditanos en tu móvil.</p>
+  <button type='button' class='banner-instalar__accion' data-pwa-instalar>
+    <Icon name='descargar' width={15} height={15} />
+    <span>Instalar app</span>
+  </button>
+</div>
+
+<script>
+  import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
+  import { eventoPwa } from '../../lib/pwa/analytics';
+
+  let promptMostrado = false;
+
+  function init() {
+    const banner = document.querySelector<HTMLElement>('[data-pwa-banner]');
+    if (!banner) return;
+
+    if (puedeInstalar()) {
+      banner.classList.add('banner-instalar--visible');
+      if (!promptMostrado) {
+        promptMostrado = true;
+        eventoPwa('pwa_prompt_shown', { ubicacion: banner.dataset.ubicacion });
+      }
+      const btn = banner.querySelector<HTMLElement>('[data-pwa-instalar]');
+      if (btn && !btn.dataset.wired) {
+        btn.dataset.wired = 'true';
+        btn.addEventListener('click', () => {
+          eventoPwa('pwa_home_banner_click', { ubicacion: banner.dataset.ubicacion });
+          instalar();
+        });
+      }
+    } else {
+      banner.classList.remove('banner-instalar--visible');
+    }
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+  window.addEventListener('ag:beforeinstallprompt', init);
+  window.addEventListener('ag:pwa-estado', init);
+</script>
+
+<style>
+  .banner-instalar {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 12px 14px;
+    background: var(--callout-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .banner-instalar--visible {
+    display: flex;
+  }
+
+  .banner-instalar__texto {
+    margin: 0;
+  }
+
+  /* Insignia arriba (Novedad), texto debajo y botón debajo, como el antiguo
+     NovedadCallout. */
+  .banner-instalar__badge {
+    flex: none;
+    display: inline-block;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+  }
+
+  .banner-instalar__accion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    min-height: 32px;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    text-align: center;
+    padding: 5px 12px;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .banner-instalar__accion:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 0 var(--on-bright-color);
+  }
+
+  .banner-instalar__accion:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 3px;
+  }
+
+  .banner-instalar__accion :global(svg) {
+    display: block;
+    flex: none;
+  }
+</style>

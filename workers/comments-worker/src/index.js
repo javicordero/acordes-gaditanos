@@ -4,6 +4,8 @@
 const RATE_LIMIT = 5;
 const RATE_WINDOW = 60 * 60 * 1000; // 1 hour in ms
 const rateLimitMap = new Map();
+// Cache de tokens de GitHub ya verificados (token -> { ok, exp }).
+const tokenCache = new Map();
 
 function getCorsHeaders() {
   return {
@@ -42,13 +44,65 @@ function checkRateLimit(ip) {
   return { allowed: true, remaining: RATE_LIMIT - record.count };
 }
 
-function verifyAdmin(request, env) {
+const ADMIN_RATE_LIMIT = 30;
+const ADMIN_RATE_WINDOW = 60 * 1000;
+const adminRateMap = new Map();
+
+function checkAdminRateLimit(ip) {
+  const now = Date.now();
+  const record = adminRateMap.get(ip);
+  if (!record || now - record.start > ADMIN_RATE_WINDOW) {
+    adminRateMap.set(ip, { start: now, count: 1 });
+    return true;
+  }
+  if (record.count >= ADMIN_RATE_LIMIT) return false;
+  record.count++;
+  return true;
+}
+
+function igualSeguro(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let dif = 0;
+  for (let i = 0; i < a.length; i++) dif |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return dif === 0;
+}
+
+async function verifyAdmin(request, env) {
   const authHeader = request.headers.get('Authorization');
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return false;
   }
-  const token = authHeader.slice(7);
-  return token === env.ADMIN_TOKEN;
+  const token = authHeader.slice(7).trim();
+  if (!token) return false;
+
+  // Compatibilidad con el token de administrador antiguo.
+  if (env.ADMIN_TOKEN && igualSeguro(token, env.ADMIN_TOKEN)) return true;
+
+  // Token de GitHub del panel /admin: tiene que ser el propietario.
+  const ahora = Date.now();
+  const cache = tokenCache.get(token);
+  if (cache && cache.exp > ahora) return cache.ok;
+
+  try {
+    const r = await fetch('https://api.github.com/user', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'User-Agent': 'acordes-gaditanos-comments-worker',
+        Accept: 'application/vnd.github+json',
+      },
+    });
+    if (!r.ok) {
+      tokenCache.set(token, { ok: false, exp: ahora + 60 * 1000 });
+      return false;
+    }
+    const usuario = await r.json();
+    const propietario = String(env.OWNER_LOGIN || 'javicordero').toLowerCase();
+    const ok = String(usuario.login || '').toLowerCase() === propietario;
+    tokenCache.set(token, { ok, exp: ahora + 5 * 60 * 1000 });
+    return ok;
+  } catch {
+    return false;
+  }
 }
 
 function generateId() {
@@ -56,10 +110,17 @@ function generateId() {
 }
 
 function getAllChildIds(comments, parentId) {
-  const children = comments.filter((c) => c.parentId === parentId);
-  let ids = [parentId];
-  for (const child of children) {
-    ids = ids.concat(getAllChildIds(comments, child.id));
+  // Iterativo: una cadena de respuestas muy profunda no debe reventar la pila.
+  const ids = [parentId];
+  const pendientes = [parentId];
+  while (pendientes.length) {
+    const actual = pendientes.pop();
+    for (const c of comments) {
+      if (c.parentId === actual) {
+        ids.push(c.id);
+        pendientes.push(c.id);
+      }
+    }
   }
   return ids;
 }
@@ -229,23 +290,36 @@ export default {
       } catch {
         return jsonResponse({ error: 'Invalid JSON body' }, 400);
       }
+      if (!body || typeof body !== 'object') {
+        return jsonResponse({ error: 'Invalid JSON body' }, 400);
+      }
 
       const { path: pagePath, author, content, parentId } = body;
 
-      if (!pagePath) {
-        return jsonResponse({ error: 'path is required' }, 400);
+      if (typeof pagePath !== 'string' || !pagePath.startsWith('/') || pagePath.length > 200) {
+        return jsonResponse({ error: 'path inválido' }, 400);
       }
 
-      if (!content || !content.trim()) {
+      if (typeof content !== 'string' || !content.trim()) {
         return jsonResponse({ error: 'Content is required' }, 400);
       }
+      if (content.trim().length > 1000) {
+        return jsonResponse({ error: 'Content too long' }, 400);
+      }
+      if (parentId != null && typeof parentId !== 'string') {
+        return jsonResponse({ error: 'parentId inválido' }, 400);
+      }
+      const autor = typeof author === 'string' ? author.trim() : '';
+      if (autor.length > 60) {
+        return jsonResponse({ error: 'Author too long' }, 400);
+      }
 
-      const isAdmin = verifyAdmin(request, env);
+      const isAdmin = await verifyAdmin(request, env);
 
       const comment = {
         id: generateId(),
         path: pagePath,
-        author: (author && author.trim()) || '',
+        author: autor,
         content: content.trim(),
         date: new Date().toISOString(),
         isAdmin,
@@ -270,7 +344,9 @@ export default {
     if (method === 'PATCH' && patchMatch) {
       const commentId = patchMatch[1];
 
-      if (!verifyAdmin(request, env)) {
+      const ip = request.headers.get('cf-connecting-ip') || 'unknown';
+      if (!checkAdminRateLimit(ip)) return jsonResponse({ error: 'Rate limit exceeded' }, 429);
+      if (!(await verifyAdmin(request, env))) {
         return jsonResponse({ error: 'Unauthorized' }, 401);
       }
 
@@ -279,6 +355,18 @@ export default {
         body = await request.json();
       } catch {
         return jsonResponse({ error: 'Invalid JSON body' }, 400);
+      }
+      if (!body || typeof body !== 'object') {
+        return jsonResponse({ error: 'Invalid JSON body' }, 400);
+      }
+      if (body.completed !== undefined && typeof body.completed !== 'boolean') {
+        return jsonResponse({ error: 'completed inválido' }, 400);
+      }
+      if (body.content !== undefined) {
+        if (typeof body.content !== 'string' || !body.content.trim() || body.content.trim().length > 1000) {
+          return jsonResponse({ error: 'content inválido' }, 400);
+        }
+        body.content = body.content.trim();
       }
 
       try {
@@ -312,7 +400,9 @@ export default {
     if (method === 'DELETE' && deleteMatch) {
       const commentId = deleteMatch[1];
 
-      if (!verifyAdmin(request, env)) {
+      const ip = request.headers.get('cf-connecting-ip') || 'unknown';
+      if (!checkAdminRateLimit(ip)) return jsonResponse({ error: 'Rate limit exceeded' }, 429);
+      if (!(await verifyAdmin(request, env))) {
         return jsonResponse({ error: 'Unauthorized' }, 401);
       }
 
