@@ -161,11 +161,13 @@ export const prerender = true;
   .editor-acciones button { padding:4px 7px; font-size:11px; line-height:1; box-shadow:none; }
   .editor-acciones button:disabled { opacity:.35; }
   #base-sel { flex:1; min-width:0; max-width:100%; font:400 11px var(--mono); padding:3px 4px; border:1.5px solid #000; background:var(--papel); color:var(--tinta); }
-  #b-zoom { margin-left:0; flex:0 0 auto; padding:5px 8px; font-size:9.5px; letter-spacing:.04em; text-transform:uppercase; box-shadow:none; }
+  #b-zoom, .b-zoom-pane { flex:0 0 auto; padding:5px 8px; font-size:9.5px; letter-spacing:.04em; text-transform:uppercase; box-shadow:none; }
+  #b-zoom { margin-left:0; }
+  .b-zoom-pane { margin-left:auto; }
   /* Un solo scroller: la hoja mide lo que el texto y el textarea la cubre entera. */
   .lienzo { position:relative; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; background:var(--papel); }
-  .hoja { position:relative; width:max-content; min-width:100%; min-height:100%; --pre-size:13px; font:var(--pre-size)/1.55 var(--mono); }
-  .pane pre { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:13px/1.55 var(--mono); white-space:pre; overflow:auto; tab-size:4; color:var(--tinta); }
+  .hoja { position:relative; width:max-content; min-width:100%; min-height:100%; font:var(--pre-size,13px)/1.55 var(--mono); }
+  .pane pre { margin:0; padding:12px 14px; border:0; width:100%; height:100%; font:var(--pre-size,13px)/1.55 var(--mono); white-space:pre; overflow:auto; tab-size:4; color:var(--tinta); }
   #capa { width:max-content; height:auto; overflow:visible; font:inherit; pointer-events:none; }
   .lienzo textarea { position:absolute; inset:0; margin:0; padding:12px 14px; border:0; width:100%; height:100%; resize:none; background:transparent; color:transparent; caret-color:var(--azul); outline:none; font:inherit; white-space:pre; overflow:hidden; tab-size:4; }
   .lienzo textarea::selection { background:rgba(252,163,17,.35); }
@@ -442,7 +444,7 @@ export const prerender = true;
     </div>
     <div class="cols" id="cols">
       <section class="pane" data-pane="der">
-        <div class="cab"><b>Base</b><select id="base-sel" title="Elige la ficha con la que comparar"></select></div>
+        <div class="cab"><b>Base</b><select id="base-sel" title="Elige la ficha con la que comparar"></select><button type="button" class="b-zoom-pane" hidden>Ajustar</button></div>
         <pre id="ref-der"></pre>
       </section>
       <section class="pane activo" data-pane="cen">
@@ -460,7 +462,7 @@ export const prerender = true;
         </div>
       </section>
       <section class="pane" data-pane="izq">
-        <div class="cab"><b>Original</b></div>
+        <div class="cab"><b>Original</b><button type="button" class="b-zoom-pane" hidden>Ajustar</button></div>
         <pre id="ref-izq"></pre>
       </section>
     </div>

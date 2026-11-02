@@ -615,34 +615,46 @@ function anchoCaracter13() {
     m.id = 'medidor-ch';
     m.setAttribute('aria-hidden', 'true');
     m.style.cssText = 'position:absolute;left:-9999px;top:0;visibility:hidden;white-space:pre';
-    hoja.appendChild(m);
+    document.body.appendChild(m);
   }
   m.style.font = '13px/1.55 ' + FUENTE_PRE;
   m.textContent = '0'.repeat(100);
   return m.getBoundingClientRect().width / 100 || 7.8;
 }
 
+/** Ancho útil del editor: si la pestaña Editor está oculta, el de la pestaña activa. */
+function anchoEditor() {
+  if (lienzo.clientWidth) return lienzo.clientWidth;
+  const activo = document.querySelector('.pane.activo');
+  return activo ? activo.clientWidth : $('cols').clientWidth;
+}
+
 /** Tamaño al que caben ANCHO_MAX columnas en el ancho actual (9–13 px). */
-function tamAjustado() {
-  const disp = lienzo.clientWidth - 28 - 4;
+function tamAjustado(ancho = anchoEditor()) {
+  const disp = ancho - 28 - 4;
   if (disp <= 0) return 13;
   const tam = (13 * disp) / (ANCHO_MAX * anchoCaracter13());
   return Math.max(9, Math.min(13, Math.floor(tam * 2) / 2));
 }
 
-/** Muestra u oculta «Ajustar» y aplica el tamaño. */
+/** Muestra u oculta «Ajustar» y aplica el tamaño a las tres columnas. */
 function aplicarZoom() {
-  const b = $('b-zoom');
-  if (!b) return;
-  if (!lienzo.clientWidth) { b.hidden = true; return; }
-  const tam = tamAjustado();
+  const botones = [$('b-zoom'), ...document.querySelectorAll('.b-zoom-pane')].filter(Boolean);
+  const ancho = anchoEditor();
+  if (!ancho) {
+    botones.forEach((b) => { b.hidden = true; });
+    return;
+  }
+  const tam = tamAjustado(ancho);
   const cabe = tam >= 13;
-  b.hidden = cabe;
-  b.textContent = zoomAjustado ? 'Ampliar' : 'Ajustar';
-  b.title = zoomAjustado
-    ? 'Vuelve a la letra normal'
-    : 'Reduce la letra para que quepan las ' + ANCHO_MAX + ' columnas sin arrastrar';
-  hoja.style.setProperty('--pre-size', (zoomAjustado && !cabe ? tam : 13) + 'px');
+  for (const b of botones) {
+    b.hidden = cabe;
+    b.textContent = zoomAjustado ? 'Ampliar' : 'Ajustar';
+    b.title = zoomAjustado
+      ? 'Vuelve a la letra normal en Editor, Base y Original'
+      : 'Reduce la letra de Editor, Base y Original para que quepan las ' + ANCHO_MAX + ' columnas';
+  }
+  $('cols').style.setProperty('--pre-size', (zoomAjustado && !cabe ? tam : 13) + 'px');
 }
 
 /** Deja visible el cursor dentro del scroller (al mover con Alt+flechas o al aceptar una sugerencia). */
@@ -766,7 +778,7 @@ async function cargarBase(slug, elegida) {
       || (a.pieza === actual.pieza ? 0 : 1) - (b.pieza === actual.pieza ? 0 : 1)
       || String(b.year).localeCompare(String(a.year), 'es')
       || a.slug.localeCompare(b.slug, 'es'));
-  if (!candidatas.length) { mostrarBase(false); return; }
+  if (!candidatas.length) { mostrarBase(false); aplicarZoom(); return; }
 
   const base = (elegida && candidatas.find((x) => x.slug === elegida))
     || candidatas.find((x) => x.pieza === actual.pieza)
@@ -786,6 +798,7 @@ async function cargarBase(slug, elegida) {
     const d = desenvolver(datos.md);
     pintarTexto(d.texto, $('ref-der'));
     mostrarBase(true);
+    aplicarZoom();
   } catch { /* sin base */ }
 }
 
@@ -1994,16 +2007,19 @@ document.querySelectorAll('.tabs button').forEach((b) => {
     paneActivo = b.dataset.pane;
     document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('sel', x === b));
     document.querySelectorAll('.pane').forEach((p) => p.classList.toggle('activo', p.dataset.pane === paneActivo));
-    if (paneActivo === 'cen') aplicarZoom();
+    aplicarZoom();
+    if (paneActivo === 'cen') verCaret();
   };
 });
 
-$('b-zoom').onclick = () => {
+function alternarZoom() {
   zoomAjustado = !zoomAjustado;
   try { localStorage.setItem(CLAVE_ZOOM, zoomAjustado ? '1' : '0'); } catch { /* sin almacenamiento */ }
   aplicarZoom();
   verCaret();
-};
+}
+$('b-zoom').onclick = alternarZoom;
+document.querySelectorAll('.b-zoom-pane').forEach((b) => { b.onclick = alternarZoom; });
 $('b-separar').onclick = separar;
 $('b-juntar').onclick = juntar;
 $('b-deshacer').onclick = deshacer;
