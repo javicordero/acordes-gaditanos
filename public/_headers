@@ -7,3 +7,14 @@
 # renombrarlo para no servir la versión vieja durante el max-age.
 /fonts/*
   Cache-Control: public, max-age=31536000
+
+# Service worker: nunca debe cachearse en CDN/edge, o se serviría una versión
+# vieja y la app no se actualizaría.
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+  Service-Worker-Allowed: /
+
+# Manifest de la PWA: caché corta para que los cambios lleguen pronto.
+/manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=3600
