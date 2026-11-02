@@ -24,6 +24,10 @@ const estudioApiDev = {
 
 export default defineConfig({
   site: 'https://acordesgaditanos.com',
+  // Fuera la barra de herramientas de desarrollo de Astro: solo estorba en
+  // `astro dev` (tapa la esquina del cifrado) y no se usa ninguna de sus
+  // utilidades. Solo afecta al modo desarrollo, no al build.
+  devToolbar: { enabled: false },
   // Precarga el HTML de los enlaces al pasar el ratón (escritorio).
   // Astro descarta conexiones lentas (saveData / 2g) y enlaces externos.
   // En móvil el prefetch se dispara desde PrefetchTap.astro.
