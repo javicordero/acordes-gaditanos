@@ -196,9 +196,14 @@ export const prerender = true;
   kbd { font:10px var(--mono); border:1.5px solid #777; border-bottom-width:2px; padding:0 4px; background:#222; color:#fff; }
 
   /* Sugerencias */
-  #sug { position:fixed; z-index:30; background:var(--papel); border:2px solid #000; box-shadow:6px 6px 0 #000; padding:4px; display:none; max-height:220px; overflow:auto; }
-  #sug button { display:block; width:100%; text-align:left; border:0; box-shadow:none; padding:6px 8px; font:400 12.5px var(--mono); background:transparent; text-transform:none; letter-spacing:0; }
-  #sug button.sel, #sug button:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
+  #sug { position:fixed; z-index:30; display:flex; flex-direction:column; background:var(--papel); border:2px solid #000; box-shadow:6px 6px 0 #000; max-height:260px; max-width:calc(100vw - 16px); }
+  #sug[hidden] { display:none !important; }
+  .sug-cab { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:4px 6px; background:var(--papel); border-bottom:1.5px solid #000; font:700 9px/1 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--suave); }
+  #sug .sug-cerrar { flex:0 0 auto; width:20px; height:20px; padding:0; display:flex; align-items:center; justify-content:center; border:0; box-shadow:none; background:transparent; color:var(--tinta); font:700 12px/1 var(--mono); text-transform:none; letter-spacing:0; }
+  #sug .sug-cerrar:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
+  .sug-lista { padding:4px; overflow:auto; max-height:220px; }
+  #sug .sug-lista button { display:block; width:100%; text-align:left; border:0; box-shadow:none; padding:6px 8px; font:400 12.5px var(--mono); background:transparent; text-transform:none; letter-spacing:0; }
+  #sug .sug-lista button.sel, #sug .sug-lista button:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
 
   /* Aviso flotante (solo mensajes pasajeros) */
   #aviso { position:fixed; left:14px; right:14px; bottom:14px; z-index:25; background:var(--papel); border:2px solid #000; border-left:8px solid var(--acento); padding:12px 14px; font-size:12px; display:none; white-space:pre-wrap; box-shadow:6px 6px 0 #000; max-height:50vh; overflow:auto; }
@@ -448,7 +453,10 @@ export const prerender = true;
             <textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
             <div class="regla" id="regla" aria-hidden="true"></div>
           </div>
-          <div id="sug"></div>
+          <div id="sug" hidden>
+            <div class="sug-cab"><span>Sugerencias</span><button type="button" class="sug-cerrar" id="sug-cerrar" aria-label="Cerrar sugerencias">✕</button></div>
+            <div class="sug-lista" id="sug-lista"></div>
+          </div>
         </div>
       </section>
       <section class="pane" data-pane="izq">

@@ -25,6 +25,7 @@ const regla = $('regla');
 regla.style.left = 'calc(14px + ' + ANCHO_MAX + 'ch)';
 const aviso = $('aviso');
 const sug = $('sug');
+const sugLista = $('sug-lista');
 
 let indice = [];
 let ficha = null;      // { slug, md, d, pr }
@@ -692,6 +693,7 @@ async function abrirFicha(slug, empujar = true) {
 /** Prepara el editor con un `.md` ya cargado (de master o de una rama recién creada). */function montarEditor(slug, md, pr, zona, rama) {
   zonaFicha = zona === 'acordes3' ? 'acordes3' : 'acordes';
   cerrarNotaLocal();
+  cerrarSug();
   const d = desenvolver(md);
   conocidos.clear();
   d.registros.flat().forEach((x) => conocidos.add(x.etiqueta));
@@ -799,6 +801,7 @@ function tokenCursor() {
 }
 
 function mover(dir) {
+  cerrarSug();
   const texto = ta.value;
   const { ini, fin } = tokenCursor();
   if (ini === fin) return;
@@ -853,6 +856,7 @@ function posicionDe(linea, col) {
 
 function aplicarEdicion(r, enfocar = true) {
   if (r.error) { mostrarAviso(r.error, 'var(--nuevo)'); return; }
+  cerrarSug();
   hist.push(snapshot());
   if (hist.length > 300) hist.shift();
   actualizarDeshacer();
@@ -1087,6 +1091,7 @@ function actualizarDestinoArrastre() {
 
 function iniciarArrastre(origen, clientX, clientY) {
   if (!ficha || arrastre) return;
+  cerrarSug();
   prepararPiezasArrastre();
   arrastre = { ...origen, x: clientX, y: clientY, destino: null };
   fantasma.textContent = origen.token;
@@ -1263,6 +1268,7 @@ async function enviarGuardar(extra = {}) {
 
 async function guardar() {
   if (!ficha) return;
+  cerrarSug();
   if (!comprobarObligatorios()) return;
 
   try {
@@ -1805,6 +1811,25 @@ function tokenAntesCaret() {
   while (ini > 0 && !/\s/.test(texto[ini - 1])) ini--;
   return texto.slice(ini, pos);
 }
+function posicionarSug() {
+  const m = metricasEditor();
+  const texto = ta.value;
+  const pos = ta.selectionStart;
+  const ini = texto.lastIndexOf('\n', pos - 1) + 1;
+  const fila = texto.slice(0, ini).split('\n').length - 1;
+  let col = 0;
+  for (const c of texto.slice(ini, pos)) col += c === '\t' ? 4 - (col % 4) : 1;
+  const x = m.rect.left + m.padL + col * m.ch;
+  const y = m.rect.top + m.padT + fila * m.lh;
+  const ancho = sug.offsetWidth || 200;
+  const alto = sug.offsetHeight || 220;
+  let left = x;
+  let top = y + m.lh + 4;
+  if (left + ancho > window.innerWidth - 8) left = window.innerWidth - ancho - 8;
+  if (top + alto > window.innerHeight - 8) top = y - alto - 4;
+  sug.style.left = Math.max(8, Math.round(left)) + 'px';
+  sug.style.top = Math.max(8, Math.round(top)) + 'px';
+}
 function abrirSug() {
   const t = tokenAntesCaret();
   if (t.length < 2) return cerrarSug();
@@ -1813,18 +1838,18 @@ function abrirSug() {
   if (!lista.length) return cerrarSug();
   sugerencias = lista;
   sugSel = 0;
-  sug.innerHTML = lista.map((x, i) => '<button data-i="' + i + '" class="' + (i === 0 ? 'sel' : '') + '">' + esc(x) + '</button>').join('');
-  sug.querySelectorAll('button').forEach((b) => {
-    b.onmousedown = (ev) => { ev.preventDefault(); insertarSug(b.textContent); };
+  sugLista.innerHTML = lista.map((x, i) => '<button data-i="' + i + '" class="' + (i === 0 ? 'sel' : '') + '">' + esc(x) + '</button>').join('');
+  sugLista.querySelectorAll('button').forEach((b) => {
+    b.addEventListener('pointerdown', (ev) => { ev.preventDefault(); insertarSug(b.textContent); });
   });
-  // El popover cuelga del lienzo visible, no del textarea: al scrollear a los
-  // lados el textarea se sale de la pantalla y el popover aparecía en negativo.
-  const r = lienzo.getBoundingClientRect();
-  sug.style.left = Math.max(8, Math.min(window.innerWidth - 200, r.left + 14)) + 'px';
-  sug.style.top = Math.max(8, Math.min(window.innerHeight - 220, r.top + 40)) + 'px';
-  sug.style.display = 'block';
+  sug.hidden = false;
+  posicionarSug();
 }
-function cerrarSug() { sug.style.display = 'none'; sug.innerHTML = ''; sugerencias = []; }
+function cerrarSug() {
+  sug.hidden = true;
+  sugLista.innerHTML = '';
+  sugerencias = [];
+}
 function insertarSug(t) {
   const texto = ta.value;
   const pos = ta.selectionStart;
@@ -1986,7 +2011,7 @@ $('b-deshacer').onclick = deshacer;
 let rafAjuste = 0;
 window.addEventListener('resize', () => {
   cancelAnimationFrame(rafAjuste);
-  rafAjuste = requestAnimationFrame(() => { aplicarZoom(); verCaret(); });
+  rafAjuste = requestAnimationFrame(() => { aplicarZoom(); verCaret(); cerrarSug(); });
 });
 
 /** En iOS el teclado no encoge el layout: se ajusta el alto con visualViewport. */
@@ -2042,15 +2067,29 @@ ta.addEventListener('keydown', (e) => {
     return rehacer();
   }
   if (e.key === 'Escape') return cerrarSug();
-  if (sug.style.display === 'block') {
+  if (!sug.hidden && ['ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageUp', 'PageDown'].includes(e.key)) {
+    cerrarSug();
+  }
+  if (!sug.hidden) {
     if (e.key === 'ArrowDown') { e.preventDefault(); sugSel = (sugSel + 1) % sugerencias.length; marcarSug(); return; }
     if (e.key === 'ArrowUp') { e.preventDefault(); sugSel = (sugSel - 1 + sugerencias.length) % sugerencias.length; marcarSug(); return; }
     if (e.key === 'Enter' || e.key === 'Tab') { e.preventDefault(); return insertarSug(sugerencias[sugSel]); }
   }
 });
 function marcarSug() {
-  sug.querySelectorAll('button').forEach((b, i) => b.classList.toggle('sel', i === sugSel));
+  sugLista.querySelectorAll('button').forEach((b, i) => b.classList.toggle('sel', i === sugSel));
 }
+
+$('sug-cerrar').addEventListener('pointerdown', (e) => { e.preventDefault(); cerrarSug(); });
+document.addEventListener('pointerdown', (e) => {
+  if (sug.hidden) return;
+  if (sug.contains(e.target)) return;
+  cerrarSug();
+}, true);
+ta.addEventListener('blur', () => {
+  setTimeout(() => { if (document.activeElement !== ta) cerrarSug(); }, 0);
+});
+lienzo.addEventListener('scroll', cerrarSug, { passive: true });
 
 /* Arrastre horizontal/vertical a mano y arrastre de acordes. En móvil el
    textarea se queda el gesto y, al mantener pulsado, el navegador empieza a
