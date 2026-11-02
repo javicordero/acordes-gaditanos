@@ -29,7 +29,8 @@
     "auditar:pre": "node scripts/auditar-pre.mjs",
     "promover": "node scripts/promover-acordes3.mjs",
     "prs": "node scripts/prs-acordes3.mjs",
-    "revisar": "node scripts/revision-acordes.mjs"
+    "revisar": "node scripts/revision-acordes.mjs",
+    "auditar:editor": "node --experimental-strip-types scripts/auditar-editor.mjs"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",

@@ -1,4 +1,5 @@
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho } from '../lib/pre-acordes.js';
+import { separarLetra, juntarLetra, palabraBajoCursor } from '../lib/editar-lineas.js';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
@@ -29,7 +30,7 @@ let indice = [];
 let ficha = null;      // { slug, md, d, pr }
 let hist = [];
 let futuro = [];
-let anterior = '';
+let anterior = null;
 let sucio = false;
 let sugerencias = [];
 let sugSel = 0;
@@ -40,6 +41,53 @@ let avisoX = '';
 
 const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const hoy = () => { const d = new Date(); const p = (n) => String(n).padStart(2, '0'); return p(d.getDate()) + '/' + p(d.getMonth() + 1) + '/' + d.getFullYear(); };
+
+/**
+ * Instantánea para deshacer: texto y capas con etiquetas. Al separar o juntar
+ * cambian los índices de línea, así que no basta con guardar el texto.
+ */
+function snapshot() {
+  return {
+    texto: ta.value,
+    registros: (ficha?.d?.registros || []).map((r) => r.map((x) => ({ ...x }))),
+    originales: [...(ficha?.d?.originales || [])],
+  };
+}
+
+function restaurar(s) {
+  if (!s) return;
+  ta.value = s.texto;
+  if (ficha) {
+    ficha.d.registros = s.registros.map((r) => r.map((x) => ({ ...x })));
+    ficha.d.originales = [...s.originales];
+  }
+  anterior = snapshot();
+}
+
+function actualizarDeshacer() {
+  const b = $('b-deshacer');
+  if (b) b.disabled = !hist.length;
+}
+
+function deshacer() {
+  if (!hist.length) return;
+  futuro.push(snapshot());
+  restaurar(hist.pop());
+  sucio = true;
+  setEstado('sin guardar', false);
+  pintar();
+  actualizarDeshacer();
+}
+
+function rehacer() {
+  if (!futuro.length) return;
+  hist.push(snapshot());
+  restaurar(futuro.pop());
+  sucio = true;
+  setEstado('sin guardar', false);
+  pintar();
+  actualizarDeshacer();
+}
 
 function setEstado(txt, ok) {
   const e = $('cab-estado');
@@ -276,6 +324,7 @@ function mostrarLista() {
   ocultarVistas();
   cerrarNotaLocal();
   $('vista-lista').hidden = false;
+  $('nav-vistas').hidden = false;
   $('b-nueva').hidden = false;
   $('b-letra').hidden = false;
   ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado'].forEach((id) => { $(id).hidden = true; });
@@ -299,6 +348,7 @@ function soloNav() {
 function mostrarStats(empujar = true) {
   ocultarVistas();
   $('vista-stats').hidden = false;
+  $('nav-vistas').hidden = false;
   marcarNav('stats');
   soloNav();
   $('cab-meta').textContent = '';
@@ -309,6 +359,7 @@ function mostrarStats(empujar = true) {
 function mostrarComentarios(empujar = true) {
   ocultarVistas();
   $('vista-comentarios').hidden = false;
+  $('nav-vistas').hidden = false;
   marcarNav('comentarios');
   soloNav();
   $('cab-meta').textContent = '';
@@ -644,17 +695,19 @@ async function abrirFicha(slug, empujar = true) {
   conocidos.clear();
   d.registros.flat().forEach((x) => conocidos.add(x.etiqueta));
   ficha = { slug, md, d, pr: pr || null, rama: rama || null };
-  anterior = d.texto;
   hist = [];
   futuro = [];
+  actualizarDeshacer();
   sucio = false;
   ta.value = d.texto;
+  anterior = snapshot();
   pintarTexto(d.texto, $('ref-izq'));
   pintarDatos(d.frontmatter);
   mostrarBase(false);
   $('cab-meta').textContent = slug;
   ocultarVistas();
   $('vista-editor').hidden = false;
+  $('nav-vistas').hidden = true;
   marcarNav('editor');
   pintar();
   aplicarZoom();
@@ -764,10 +817,12 @@ function mover(dir) {
     nueva = linea.slice(0, a) + ' ' + linea.slice(a, b) + linea.slice(b + 1);
   }
   if (nueva === linea) return;
-  hist.push(texto);
+  hist.push(snapshot());
   if (hist.length > 300) hist.shift();
+  actualizarDeshacer();
   futuro = [];
   ta.value = texto.slice(0, iniLinea) + nueva + texto.slice(fl);
+  anterior = snapshot();
   const p = iniLinea + (dir < 0 ? a - 1 : a + 1);
   ta.setSelectionRange(p, p);
   ta.focus();
@@ -776,6 +831,87 @@ function mover(dir) {
   pintar();
   verCaret();
 }
+
+/* ---------------- separar / juntar versos ---------------- */
+/** Línea y columna (carácter) del cursor. */
+function cursorLineaCol() {
+  const pos = ta.selectionStart;
+  const antes = ta.value.slice(0, pos);
+  const linea = antes.split('\n').length - 1;
+  const ini = antes.lastIndexOf('\n') + 1;
+  return { linea, col: pos - ini };
+}
+
+/** Índice absoluto en el textarea de una línea y columna. */
+function posicionDe(linea, col) {
+  const lineas = ta.value.split('\n');
+  let pos = 0;
+  for (let i = 0; i < linea && i < lineas.length; i++) pos += lineas[i].length + 1;
+  return Math.min(pos + col, ta.value.length);
+}
+
+function aplicarEdicion(r) {
+  if (r.error) { mostrarAviso(r.error, 'var(--nuevo)'); return; }
+  hist.push(snapshot());
+  if (hist.length > 300) hist.shift();
+  actualizarDeshacer();
+  futuro = [];
+  ta.value = r.lineas.join('\n');
+  ficha.d.registros = r.registros;
+  ficha.d.originales = r.originales;
+  anterior = snapshot();
+  sucio = true;
+  setEstado('sin guardar', false);
+  const pos = posicionDe(r.cursor.linea, r.cursor.col);
+  ta.setSelectionRange(pos, pos);
+  ta.focus();
+  pintar();
+  verCaret();
+}
+
+/** Separa la letra en el cursor y crea la línea de acordes de la parte que baja. */
+function separar() {
+  if (!ficha) return;
+  if (!estructuraOk()) return avisoEstructura();
+  const { linea, col } = cursorLineaCol();
+  const lineas = ta.value.split('\n');
+  const palabra = palabraBajoCursor(lineas[linea], col);
+  aplicarEdicion(separarLetra({
+    lineas,
+    registros: ficha.d.registros,
+    originales: ficha.d.originales,
+    conocidos,
+    i: linea,
+    col: palabra ? palabra.ini : col,
+  }));
+}
+
+/** Junta con el verso anterior lo que queda a la izquierda del cursor. */
+function juntar() {
+  if (!ficha) return;
+  if (!estructuraOk()) return avisoEstructura();
+  const { linea, col } = cursorLineaCol();
+  const lineas = ta.value.split('\n');
+  const palabra = palabraBajoCursor(lineas[linea], col);
+  aplicarEdicion(juntarLetra({
+    lineas,
+    registros: ficha.d.registros,
+    originales: ficha.d.originales,
+    conocidos,
+    i: linea,
+    col: palabra ? palabra.fin : col,
+  }));
+}
+
+function estructuraOk() {
+  const n = ta.value.split('\n').length;
+  return !!ficha && ficha.d.registros.length === n && ficha.d.originales.length === n;
+}
+
+function avisoEstructura() {
+  mostrarAviso('La estructura de líneas no cuadra (¿has añadido un salto de línea a mano?). Deshaz ese cambio o guarda y vuelve a abrir la ficha.', 'var(--mal)');
+}
+
 
 /* ---------------- guardar / comprobar ---------------- */
 /** Frontmatter con los valores que hay ahora mismo en el panel de datos. */
@@ -1002,7 +1138,6 @@ async function publicarDesdeLista(slug, boton) {
 }
 
 /* ---------------- publicar en local ---------------- */
-let publicando = null;
 let avisoSlug = null;
 
 async function publicarLocal(slug) {
@@ -1047,7 +1182,6 @@ function textoPlan(plan) {
 }
 
 function abrirPublicacion(id, plan) {
-  publicando = id;
   avisoSlug = null;
   $('publicar-avisos').hidden = true;
   $('publicar-plan').innerHTML = textoPlan(plan);
@@ -1080,7 +1214,6 @@ async function seguirPublicacion(id) {
     if (d.estado && d.estado !== 'ejecutando') {
       const ok = d.estado === 'ok';
       $('publicar-log').textContent += '\n' + (ok ? '✔ Publicado.' : '✖ ' + (d.error || 'falló'));
-      publicando = null;
 
       // Si hay fichas nuevas, el aviso queda listo para copiar a WhatsApp y X.
       const avisos = ok && d.resumen && Array.isArray(d.resumen.avisos) ? d.resumen.avisos : [];
@@ -1412,8 +1545,12 @@ function insertarSug(t) {
   const pos = ta.selectionStart;
   let ini = pos;
   while (ini > 0 && !/\s/.test(texto[ini - 1])) ini--;
-  hist.push(texto);
+  hist.push(snapshot());
+  if (hist.length > 300) hist.shift();
+  actualizarDeshacer();
+  futuro = [];
   ta.value = texto.slice(0, ini) + t + texto.slice(pos);
+  anterior = snapshot();
   const p = ini + t.length;
   ta.setSelectionRange(p, p);
   cerrarSug();
@@ -1557,6 +1694,9 @@ $('b-zoom').onclick = () => {
   aplicarZoom();
   verCaret();
 };
+$('b-separar').onclick = separar;
+$('b-juntar').onclick = juntar;
+$('b-deshacer').onclick = deshacer;
 
 let rafAjuste = 0;
 window.addEventListener('resize', () => {
@@ -1582,34 +1722,36 @@ if (window.visualViewport) {
 ta.addEventListener('input', () => {
   hist.push(anterior);
   if (hist.length > 300) hist.shift();
+  actualizarDeshacer();
   futuro = [];
-  anterior = ta.value;
+  anterior = snapshot();
   sucio = true;
   setEstado('sin guardar', false);
   pintar();
   if (tokenAntesCaret().length >= 2) abrirSug(); else cerrarSug();
 });
+ta.addEventListener('focus', () => {
+  // Al escribir, el panel de Datos estorba: se pliega y deja más alto el editor.
+  const datos = $('datos');
+  if (datos && datos.open) datos.open = false;
+});
+ta.addEventListener('pointerdown', () => {
+  const datos = $('datos');
+  if (datos && datos.open) datos.open = false;
+});
 ta.addEventListener('keydown', (e) => {
   if (e.altKey && e.key === 'ArrowLeft') { e.preventDefault(); return mover(-1); }
   if (e.altKey && e.key === 'ArrowRight') { e.preventDefault(); return mover(1); }
+  if (e.altKey && e.key === 'Enter') { e.preventDefault(); return separar(); }
+  if (e.altKey && e.key === 'Backspace') { e.preventDefault(); return juntar(); }
   if (e.ctrlKey && (e.key === 's' || e.key === 'S')) { e.preventDefault(); return guardar(); }
   if (e.ctrlKey && !e.shiftKey && (e.key === 'z' || e.key === 'Z')) {
     e.preventDefault();
-    if (!hist.length) return;
-    futuro.push(ta.value);
-    ta.value = hist.pop();
-    sucio = true;
-    setEstado('sin guardar', false);
-    pintar();
-    return;
+    return deshacer();
   }
   if (e.ctrlKey && (e.key === 'y' || (e.shiftKey && (e.key === 'z' || e.key === 'Z')))) {
     e.preventDefault();
-    if (!futuro.length) return;
-    hist.push(ta.value);
-    ta.value = futuro.pop();
-    pintar();
-    return;
+    return rehacer();
   }
   if (e.key === 'Escape') return cerrarSug();
   if (sug.style.display === 'block') {

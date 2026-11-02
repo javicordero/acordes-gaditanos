@@ -157,8 +157,11 @@ export const prerender = true;
   .cab b { color:#000; font-weight:700; letter-spacing:0; text-transform:none; font-size:12px; }
   .cab .mal { color:var(--mal); }
   #editor-meta { color:var(--suave); font-size:10px; }
+  .editor-acciones { display:flex; gap:4px; margin-left:auto; }
+  .editor-acciones button { padding:4px 7px; font-size:11px; line-height:1; box-shadow:none; }
+  .editor-acciones button:disabled { opacity:.35; }
   #base-sel { flex:1; min-width:0; max-width:100%; font:400 11px var(--mono); padding:3px 4px; border:1.5px solid #000; background:var(--papel); color:var(--tinta); }
-  #b-zoom { margin-left:auto; flex:0 0 auto; padding:5px 8px; font-size:9.5px; letter-spacing:.04em; text-transform:uppercase; box-shadow:none; }
+  #b-zoom { margin-left:0; flex:0 0 auto; padding:5px 8px; font-size:9.5px; letter-spacing:.04em; text-transform:uppercase; box-shadow:none; }
   /* Un solo scroller: la hoja mide lo que el texto y el textarea la cubre entera. */
   .lienzo { position:relative; flex:1; min-height:0; overflow:auto; overscroll-behavior:contain; scrollbar-width:thin; background:var(--papel); }
   .hoja { position:relative; width:max-content; min-width:100%; min-height:100%; --pre-size:13px; font:var(--pre-size)/1.55 var(--mono); }
@@ -268,8 +271,8 @@ export const prerender = true;
     .cols, .cols.sin-base { grid-template-columns:1fr; }
     .pane { display:none; border-right:0; }
     .pane.activo { display:flex; }
-    .tabs { display:flex; gap:6px; padding:8px 10px; background:var(--papel); border-bottom:2px solid #000; }
-    .tabs button { flex:1; padding:10px 6px; font-size:10px; box-shadow:none; }
+    .tabs { display:flex; gap:5px; padding:7px 8px; background:var(--papel); border-bottom:2px solid #000; }
+    .tabs button { flex:1; padding:7px 5px; font-size:9px; box-shadow:none; }
     .tabs button.sel { background:#000; border-color:#000; color:var(--acento); }
     .datos-resumen { display:none; }
     .barra { flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
@@ -304,8 +307,9 @@ export const prerender = true;
     .datos-slug { display:none; }
     .cab { padding:6px 8px; gap:6px; min-height:34px; }
     #editor-meta { font-size:9.5px; }
-    .tabs { padding:6px 8px; }
-    .tabs button { padding:11px 4px; }
+    .tabs { padding:5px 6px; gap:4px; }
+    .tabs button { padding:7px 3px; }
+    .editor-acciones button { padding:3px 5px; font-size:10px; }
     /* En el móvil la banda de estado quita altura al editor: el estado ya se
        ve en la lista (LOCAL / EN GITHUB) y en el pie. */
     #nota-local { display:none !important; }
@@ -428,7 +432,7 @@ export const prerender = true;
         <pre id="ref-der"></pre>
       </section>
       <section class="pane activo" data-pane="cen">
-        <div class="cab"><b>Editor</b><span id="editor-meta"></span><button type="button" id="b-zoom" hidden>Ajustar</button></div>
+        <div class="cab"><b>Editor</b><span id="editor-meta"></span><span class="editor-acciones"><button type="button" id="b-deshacer" title="Deshacer (Ctrl+Z)" aria-label="Deshacer">↶</button><button type="button" id="b-separar" title="Separar por palabras: la palabra del cursor baja a una línea nueva (Alt+Enter)" aria-label="Separar la palabra del cursor">✂</button><button type="button" id="b-juntar" title="Juntar por palabras: la palabra del cursor sube al verso anterior (Alt+Retroceso)" aria-label="Juntar la palabra del cursor">⤴</button></span><button type="button" id="b-zoom" hidden>Ajustar</button></div>
         <div class="lienzo" id="lienzo">
           <div class="hoja" id="hoja">
             <pre id="capa"></pre>
@@ -482,6 +486,8 @@ export const prerender = true;
 
 <footer>
   <span class="pie-teclas"><kbd>Alt</kbd>+<kbd>←</kbd><kbd>→</kbd> mover acorde</span>
+  <span class="pie-teclas"><kbd>Alt</kbd>+<kbd>Enter</kbd> separar palabra</span>
+  <span class="pie-teclas"><kbd>Alt</kbd>+<kbd>⌫</kbd> juntar palabra</span>
   <span class="pie-teclas"><kbd>Ctrl</kbd>+<kbd>S</kbd> guardar</span>
   <span class="pie-teclas"><kbd>Ctrl</kbd>+<kbd>Z</kbd> deshacer</span>
   <span id="pie"></span>
