@@ -1,5 +1,5 @@
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho } from '../lib/pre-acordes.js';
-import { separarLetra, juntarLetra, palabraBajoCursor } from '../lib/editar-lineas.js';
+import { separarLetra, juntarLetra, palabraBajoCursor, moverAcordeLinea } from '../lib/editar-lineas.js';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
@@ -592,6 +592,7 @@ function pintar() {
   const meta = $('editor-meta');
   meta.textContent = lineas.length + ' líneas · ' + max + '/' + ANCHO_MAX;
   meta.classList.toggle('mal', max > ANCHO_MAX);
+  actualizarAcciones();
 }
 
 function pintarTexto(texto, el) {
@@ -875,6 +876,9 @@ function separar() {
   if (!estructuraOk()) return avisoEstructura();
   const { linea, col } = cursorLineaCol();
   const lineas = ta.value.split('\n');
+  const t = tipo(lineas[linea] || '', lineas[linea + 1] || '');
+  if (t === 'acordes') return moverAcorde(1);
+  if (t !== 'letra') return mostrarAviso('Pon el cursor en una línea de letra o de acordes.', 'var(--nuevo)');
   const palabra = palabraBajoCursor(lineas[linea], col);
   aplicarEdicion(separarLetra({
     lineas,
@@ -892,6 +896,9 @@ function juntar() {
   if (!estructuraOk()) return avisoEstructura();
   const { linea, col } = cursorLineaCol();
   const lineas = ta.value.split('\n');
+  const t = tipo(lineas[linea] || '', lineas[linea + 1] || '');
+  if (t === 'acordes') return moverAcorde(-1);
+  if (t !== 'letra') return mostrarAviso('Pon el cursor en una línea de letra o de acordes.', 'var(--nuevo)');
   const palabra = palabraBajoCursor(lineas[linea], col);
   aplicarEdicion(juntarLetra({
     lineas,
@@ -901,6 +908,36 @@ function juntar() {
     i: linea,
     col: palabra ? palabra.fin : col,
   }));
+}
+
+/** Mueve el acorde bajo el cursor a la línea de acordes siguiente o anterior. */
+function moverAcorde(dir) {
+  if (!ficha) return;
+  if (!estructuraOk()) return avisoEstructura();
+  const { linea, col } = cursorLineaCol();
+  aplicarEdicion(moverAcordeLinea({
+    lineas: ta.value.split('\n'),
+    registros: ficha.d.registros,
+    originales: ficha.d.originales,
+    conocidos,
+    i: linea,
+    col,
+    dir,
+  }));
+}
+
+/** Cambia el title de los botones según si el cursor está en acordes o en letra. */
+function actualizarAcciones() {
+  if (!ficha) return;
+  const { linea } = cursorLineaCol();
+  const lineas = ta.value.split('\n');
+  const enAcordes = tipo(lineas[linea] || '', lineas[linea + 1] || '') === 'acordes';
+  $('b-separar').title = enAcordes
+    ? 'Bajar el acorde a la línea de acordes siguiente (Alt+Enter)'
+    : 'Separar por palabras: la palabra del cursor baja a una línea nueva (Alt+Enter)';
+  $('b-juntar').title = enAcordes
+    ? 'Subir el acorde a la línea de acordes anterior (Alt+Retroceso)'
+    : 'Juntar por palabras: la palabra del cursor sube al verso anterior (Alt+Retroceso)';
 }
 
 function estructuraOk() {
@@ -1739,6 +1776,9 @@ ta.addEventListener('pointerdown', () => {
   const datos = $('datos');
   if (datos && datos.open) datos.open = false;
 });
+ta.addEventListener('click', actualizarAcciones);
+ta.addEventListener('keyup', actualizarAcciones);
+document.addEventListener('selectionchange', actualizarAcciones);
 ta.addEventListener('keydown', (e) => {
   if (e.altKey && e.key === 'ArrowLeft') { e.preventDefault(); return mover(-1); }
   if (e.altKey && e.key === 'ArrowRight') { e.preventDefault(); return mover(1); }

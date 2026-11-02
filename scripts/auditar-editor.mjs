@@ -3,7 +3,7 @@
 //
 //   node --experimental-strip-types scripts/auditar-editor.mjs
 
-import { separarLetra, juntarLetra, palabraBajoCursor } from '../src/lib/editar-lineas.js';
+import { separarLetra, juntarLetra, palabraBajoCursor, moverAcordeLinea } from '../src/lib/editar-lineas.js';
 import { envolver } from '../src/lib/pre-acordes.js';
 
 const conocidos = new Set(['Do', 'Sol', 'Re', 'Mi', 'Si7', 'Lam7', '(Sorda)']);
@@ -115,6 +115,53 @@ const sinAcordes = separarLetra({
   col: 12,
 });
 comprobar('separar sin acordes', sinAcordes.lineas, ['Esto es una', 'letra larga']);
+
+/* 7. Mover un acorde a la línea de acordes siguiente (al final). */
+const dosVersos = {
+  lineas: [
+    'Mi                    Si7       Mi',
+    'Si vengo, no vengo ni yo lo comprendo',
+    '   Do#7         Fa#m7',
+    'Si pienso en faltarte',
+  ],
+  registros: [
+    [
+      { etiqueta: 'Mi', abre: '<a>' },
+      { etiqueta: 'Si7', abre: '<a data-postura="x 2 4 4 4 2">' },
+      { etiqueta: 'Mi', abre: '<a>' },
+    ],
+    [],
+    [{ etiqueta: 'Do#7', abre: '<a>' }, { etiqueta: 'Fa#m7', abre: '<a>' }],
+    [],
+  ],
+  originales: [
+    '<a>Mi</a>                    <a data-postura="x 2 4 4 4 2">Si7</a>       <a>Mi</a>',
+    'Si vengo, no vengo ni yo lo comprendo',
+    '   <a>Do#7</a>         <a>Fa#m7</a>',
+    'Si pienso en faltarte',
+  ],
+  conocidos,
+};
+const abajo = moverAcordeLinea({ ...dosVersos, i: 0, col: 22, dir: 1 });
+comprobar('mover acorde abajo: sale del origen', abajo.lineas[0].includes('Si7'), false);
+comprobar('mover acorde abajo: acaba en el destino', abajo.lineas[2].endsWith('Si7'), true);
+comprobar('mover acorde abajo: cursor en el destino', abajo.cursor.linea, 2);
+comprobar('mover acorde abajo: conserva data-postura', pre(abajo).includes('<a data-postura="x 2 4 4 4 2">Si7</a>'), true);
+
+const arriba = moverAcordeLinea({ ...dosVersos, i: 2, col: 4, dir: -1 });
+comprobar('mover acorde arriba: acaba en el destino', arriba.lineas[0].endsWith('Do#7'), true);
+comprobar('mover acorde arriba: sale del origen', arriba.lineas[2].includes('Do#7'), false);
+
+comprobar(
+  'mover acorde: sin destino',
+  moverAcordeLinea({ ...dosVersos, i: 2, col: 4, dir: 1 }).error,
+  'No hay otra línea de acordes debajo.',
+);
+comprobar(
+  'mover acorde: cursor en un espacio',
+  moverAcordeLinea({ ...dosVersos, i: 0, col: 5, dir: 1 }).error,
+  'Pon el cursor sobre un acorde.',
+);
 
 if (fallos) {
   console.log(`\n${fallos} caso(s) fallido(s).`);

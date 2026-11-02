@@ -9,7 +9,7 @@
 // Devuelven copias nuevas (no mutan las entradas) y la posición del cursor.
 // Son puras: no tocan el DOM, así se pueden probar desde Node.
 
-import { clasificar } from './pre-acordes.js';
+import { clasificar, esAcorde, esAnotacion } from './pre-acordes.js';
 
 const tokensDe = (linea) => [...String(linea).matchAll(/\S+/g)]
   .map((m) => ({ token: m[0], col: m.index }));
@@ -238,5 +238,61 @@ export function juntarLetra({ lineas, registros, originales, conocidos, i, col }
     registros: nuevosRegs,
     originales: nuevosOrig,
     cursor: { linea: prevFinal, col: joinCol },
+  };
+}
+
+/**
+ * Mueve el acorde bajo el cursor a la siguiente (`dir > 0`) o anterior
+ * (`dir < 0`) línea de acordes, al final del todo. Conserva su data-postura.
+ */
+export function moverAcordeLinea({ lineas, registros, originales, conocidos, i, col, dir }) {
+  if (tipoDe(lineas, i, conocidos) !== 'acordes') {
+    return { error: 'Pon el cursor en una línea de acordes.' };
+  }
+  const tokens = conEtiquetas(tokensDe(lineas[i]), registros[i]);
+  const elegido = tokens.find((t) => col >= t.col && col <= t.col + t.token.length) || null;
+  if (!elegido) return { error: 'Pon el cursor sobre un acorde.' };
+  if (!esAcorde(elegido.token) && !esAnotacion(elegido.token)) {
+    return { error: `«${elegido.token}» no es un acorde.` };
+  }
+
+  let destino = -1;
+  if (dir > 0) {
+    for (let j = i + 1; j < lineas.length; j++) {
+      if (tipoDe(lineas, j, conocidos) === 'acordes') { destino = j; break; }
+    }
+  } else {
+    for (let j = i - 1; j >= 0; j--) {
+      if (tipoDe(lineas, j, conocidos) === 'acordes') { destino = j; break; }
+    }
+  }
+  if (destino < 0) {
+    return { error: dir > 0 ? 'No hay otra línea de acordes debajo.' : 'No hay otra línea de acordes arriba.' };
+  }
+
+  const quedan = tokens.filter((t) => t !== elegido);
+  const destinoTokens = conEtiquetas(tokensDe(lineas[destino]), registros[destino]);
+  const ultimo = destinoTokens[destinoTokens.length - 1];
+  const colNueva = ultimo ? ultimo.col + ultimo.token.length + 1 : 0;
+  const movido = { ...elegido, col: colNueva };
+  const nuevosDestino = [...destinoTokens, movido];
+
+  const nuevas = [...lineas];
+  const nuevosRegs = [...registros];
+  const nuevosOrig = [...originales];
+
+  nuevas[i] = lineaDe(quedan);
+  nuevosRegs[i] = registrosDe(quedan);
+  nuevosOrig[i] = originalDe(quedan);
+
+  nuevas[destino] = lineaDe(nuevosDestino);
+  nuevosRegs[destino] = registrosDe(nuevosDestino);
+  nuevosOrig[destino] = originalDe(nuevosDestino);
+
+  return {
+    lineas: nuevas,
+    registros: nuevosRegs,
+    originales: nuevosOrig,
+    cursor: { linea: destino, col: colNueva },
   };
 }
