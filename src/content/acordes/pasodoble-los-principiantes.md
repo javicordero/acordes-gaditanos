@@ -5,7 +5,7 @@ year: 1995
 musica: Antonio Martín
 letra: Antonio Martín
 modalidad: Comparsa
-img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTJRw7UNB0KAISUb9QHR2PpmE3r3VnraLQtRfrjC1l2dJFxE0m4qDQFRo&s=10
+img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTJRw7UNB0KAISUb9QHR2PpmE3r3VnraLQtRfrjC1l2dJFxE0m4qDQFRo&s=10'
 cejilla: 1
 video: 'https://www.youtube.com/embed/x5Wh-DiLZHU'
 date: "10/09/2026"
@@ -46,6 +46,7 @@ en la alameda la luna suspira
 vaporcito del puerto tanto y tanto nuestro
                 <a>La</a>
 fue lo que escuché.
+
 Y desde aquel momento entendí
 <a>Mi</a>
 que nadie había nacio como él

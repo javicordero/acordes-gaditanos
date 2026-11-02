@@ -4,11 +4,12 @@ agrupacion: Araka La Kana
 year: 2007
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2021/02/carnaval-2007-imagenes-cadiz-fotografias-15.jpg
+img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2021/02/carnaval-2007-imagenes-cadiz-fotografias-15.jpg'
 cejilla: 4
 date: "25/11/2025"
-video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
+video: 'https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8'
 fraseClave: Ni las noches de mayo
+letraTitulo: Ni las noches de mayo
 ---
 <pre>
 <a>Lam</a>                                 <a>Mi7</a>

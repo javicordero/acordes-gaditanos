@@ -5,10 +5,9 @@ year: 1957
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 5
-img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/04/sarracenos-paco-alba-chirigota-especial_1112899106_65565899_667x375.jpg
+img: 'https://unplatillodesal.wordpress.com/wp-content/uploads/2017/04/sarracenos-paco-alba-chirigota-especial_1112899106_65565899_667x375.jpg'
 date: 01/04/2026
-video: https://www.youtube.com/embed/diteJMo6siE?si=o6sFjfE4F93v6EFn
-
+video: 'https://www.youtube.com/embed/diteJMo6siE?si=o6sFjfE4F93v6EFn'
 fraseClave: Oh Cádiz a cantarte yo vengo a ti
 ---
 <pre>
@@ -20,13 +19,13 @@ Siempre fue mi ilusión el poderte ver
 Bella tierra que yo soñé
    <a>Sol7</a>                <a>Do</a>       <a>Mi7</a>               <a>Lam</a>
 No sé que tiene esta ciudad que tanto me hace recordar
-  <a>Sol7</a>                  <a>Do</a>      <a>Mi7</a>               <a>Lam</a>
+  <a>Sol7</a>                  <a>Do</a>      <a>Mi7</a>              <a>Lam</a>
 Se ve que el moro te habitó porque su acento se dejó
                 <a>Mi7</a>          <a>Lam</a>
 Con razón yo me considero español
 <a>Re</a>                             <a>La</a>
 Cuando escucho un cante por soleá
-         <a>Fa#7</a>          <a>Sim7</a>
+         <a>Fa#7</a>           <a>Sim7</a>
 hasta me dan ganas de llorar
 <a>Mi7</a>                       <a>La</a>
 porque lo llevo en el corazón

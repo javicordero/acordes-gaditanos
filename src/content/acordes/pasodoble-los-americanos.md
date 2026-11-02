@@ -7,14 +7,13 @@ letra: Juan Carlos Aragón
 modalidad: Comparsa
 img: 'https://i.ytimg.com/vi/qEdKOfNiu0I/maxresdefault.jpg'
 cejilla: 2
-video: https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm
+video: 'https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm'
 cover: null
 autorCover: null
 date: 01/12/2025
 fraseClave: Hay amores que nacen en primavera
-
+letraTitulo: Ay amores que nacen
 ---
-
 <pre>
 <a>Mim</a>            <a>Si7</a>           <a>Mim</a>
 Hay amores que nacen en primavera

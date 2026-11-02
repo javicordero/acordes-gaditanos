@@ -6,7 +6,7 @@ musica: El Noly
 letra: Joaquín Sánchez Alba
 modalidad: Chirigota
 cejilla: 2
-img: https://i.ytimg.com/vi/9BQDchuN0Q0/maxresdefault.jpg
+img: 'https://i.ytimg.com/vi/9BQDchuN0Q0/maxresdefault.jpg'
 date: "07/05/2026"
 video: 'https://www.youtube.com/embed/V8Sbw6XwSlA'
 fraseClave: Aunque nos vean terroristas
@@ -14,7 +14,7 @@ fraseClave: Aunque nos vean terroristas
 <pre>
 <a>Re</a>               <a>La7</a>  <a>Re</a>
 Aunque nos vean terroristas
-   <a>La7</a>     <a>Re</a>        <a>La7</a>       <a>Re</a>
+   <a>La7</a>        <a>Re</a>     <a>La7</a>       <a>Re</a>
 no tenemos maldad ni sabemos matar,
                               <a>La7</a>
 nos gusta el camarón y los burgaíllos,

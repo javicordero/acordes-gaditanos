@@ -5,7 +5,7 @@ year: 1996
 musica: Antonio Martín
 letra: Antonio Martín
 modalidad: Comparsa
-img: https://i.ytimg.com/vi/5zUUyDDzXdE/maxresdefault.jpg
+img: 'https://i.ytimg.com/vi/5zUUyDDzXdE/maxresdefault.jpg'
 cejilla: 1
 video: 'https://www.youtube.com/embed/4Q13E3neNls'
 date: "09/09/2026"
