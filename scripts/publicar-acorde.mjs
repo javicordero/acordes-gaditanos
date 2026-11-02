@@ -292,6 +292,10 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       log('No hay commits nuevos que subir.');
     }
 
+    if (avisos.length) {
+      log('Netlify tarda 1-2 min en publicar la ficha: el enlace puede tardar en responder.');
+    }
+
     // 6. Avisos. Por defecto no se envía nada: el panel deja el texto listo
     //    para copiar. Con `--avisar` se lanzan WhatsApp y X desde este equipo.
     let wa = 'no';
