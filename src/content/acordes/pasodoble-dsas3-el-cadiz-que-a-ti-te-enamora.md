@@ -39,8 +39,10 @@ Cádiz hecha con la plata que a ti te arrebata
 Y te mata de amor
 <a>LaM7</a>
 Es lo mismo que sentía cuando la quería
-                                       <a>Fa#7</a>                   <a>Sim7</a>
-Con las mismas ganas y la misma pasión con la que tú ahora la quieres
+
+Con las mismas ganas y la misma pasión
+<a>Fa#7</a>                   <a>Sim7</a>
+con la que tú ahora la quieres
 
 Lo que pasa es que mi suerte
                     <a>Mi7</a>
