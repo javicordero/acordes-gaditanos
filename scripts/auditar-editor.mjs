@@ -163,6 +163,40 @@ comprobar(
   'Pon el cursor sobre un acorde.',
 );
 
+/* 8. Línea de acordes vacía (la que está encima de una letra sin acordes). */
+const conVacia = {
+  lineas: ['Mi        Si7', 'Letra uno', '   ', 'Letra dos'],
+  registros: [[{ etiqueta: 'Mi', abre: '<a>' }, { etiqueta: 'Si7', abre: '<a>' }], [], [], []],
+  originales: ['<a>Mi</a>        <a>Si7</a>', 'Letra uno', '   ', 'Letra dos'],
+  conocidos,
+};
+const aVacia = moverAcordeLinea({ ...conVacia, i: 0, col: 10, dir: 1 });
+comprobar('mover a línea vacía: destino', aVacia.cursor.linea, 2);
+comprobar('mover a línea vacía: acorde al principio', aVacia.lineas[2], 'Si7');
+comprobar('mover a línea vacía: sale del origen', aVacia.lineas[0].includes('Si7'), false);
+
+/* 9. Un blanco separador (seguido de otra línea de acordes) no es destino. */
+const conSeparador = {
+  lineas: ['Mi        Si7', 'Letra uno', '', 'Re        Mi', 'Letra dos'],
+  registros: [[{ etiqueta: 'Mi', abre: '<a>' }, { etiqueta: 'Si7', abre: '<a>' }], [], [], [{ etiqueta: 'Re', abre: '<a>' }, { etiqueta: 'Mi', abre: '<a>' }], []],
+  originales: ['<a>Mi</a>        <a>Si7</a>', 'Letra uno', '', '<a>Re</a>        <a>Mi</a>', 'Letra dos'],
+  conocidos,
+};
+const conBlanco = moverAcordeLinea({ ...conSeparador, i: 0, col: 10, dir: 1 });
+comprobar('blanco separador: salta a la línea de acordes', conBlanco.cursor.linea, 3);
+comprobar('blanco separador: acorde al final', conBlanco.lineas[3].endsWith('Si7'), true);
+
+/* 10. Una línea de acordes «sucia» también vale como destino. */
+const conSucia = {
+  lineas: ['Mi        Si7', 'Letra uno', '   Re   Mi raro', 'Letra dos'],
+  registros: [[{ etiqueta: 'Mi', abre: '<a>' }, { etiqueta: 'Si7', abre: '<a>' }], [], [{ etiqueta: 'Re', abre: '<a>' }, { etiqueta: 'Mi', abre: '<a>' }], []],
+  originales: ['<a>Mi</a>        <a>Si7</a>', 'Letra uno', '   <a>Re</a>   <a>Mi</a> raro', 'Letra dos'],
+  conocidos,
+};
+const aSucia = moverAcordeLinea({ ...conSucia, i: 0, col: 10, dir: 1 });
+comprobar('línea sucia: destino', aSucia.cursor.linea, 2);
+comprobar('línea sucia: acorde al final', aSucia.lineas[2].endsWith('Si7'), true);
+
 if (fallos) {
   console.log(`\n${fallos} caso(s) fallido(s).`);
   process.exitCode = 1;

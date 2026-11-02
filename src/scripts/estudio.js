@@ -877,7 +877,7 @@ function separar() {
   const { linea, col } = cursorLineaCol();
   const lineas = ta.value.split('\n');
   const t = tipo(lineas[linea] || '', lineas[linea + 1] || '');
-  if (t === 'acordes') return moverAcorde(1);
+  if (t === 'acordes' || t === 'acordes-sucio') return moverAcorde(1);
   if (t !== 'letra') return mostrarAviso('Pon el cursor en una línea de letra o de acordes.', 'var(--nuevo)');
   const palabra = palabraBajoCursor(lineas[linea], col);
   aplicarEdicion(separarLetra({
@@ -897,7 +897,7 @@ function juntar() {
   const { linea, col } = cursorLineaCol();
   const lineas = ta.value.split('\n');
   const t = tipo(lineas[linea] || '', lineas[linea + 1] || '');
-  if (t === 'acordes') return moverAcorde(-1);
+  if (t === 'acordes' || t === 'acordes-sucio') return moverAcorde(-1);
   if (t !== 'letra') return mostrarAviso('Pon el cursor en una línea de letra o de acordes.', 'var(--nuevo)');
   const palabra = palabraBajoCursor(lineas[linea], col);
   aplicarEdicion(juntarLetra({
@@ -931,7 +931,7 @@ function actualizarAcciones() {
   if (!ficha) return;
   const { linea } = cursorLineaCol();
   const lineas = ta.value.split('\n');
-  const enAcordes = tipo(lineas[linea] || '', lineas[linea + 1] || '') === 'acordes';
+  const enAcordes = ['acordes', 'acordes-sucio'].includes(tipo(lineas[linea] || '', lineas[linea + 1] || ''));
   $('b-separar').title = enAcordes
     ? 'Bajar el acorde a la línea de acordes siguiente (Alt+Enter)'
     : 'Separar por palabras: la palabra del cursor baja a una línea nueva (Alt+Enter)';

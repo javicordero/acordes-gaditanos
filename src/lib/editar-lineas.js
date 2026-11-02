@@ -242,11 +242,23 @@ export function juntarLetra({ lineas, registros, originales, conocidos, i, col }
 }
 
 /**
+ * ¿La línea `j` hace de línea de acordes? Vale una línea de acordes normal,
+ * una «sucia» (acordes con algún token raro) y una línea vacía que está justo
+ * encima de una letra (la línea de acordes de un verso sin acordes).
+ */
+function esLineaAcordes(lineas, j, conocidos) {
+  const t = tipoDe(lineas, j, conocidos);
+  if (t === 'acordes' || t === 'acordes-sucio') return true;
+  return t === 'blanco' && tipoDe(lineas, j + 1, conocidos) === 'letra';
+}
+
+/**
  * Mueve el acorde bajo el cursor a la siguiente (`dir > 0`) o anterior
  * (`dir < 0`) línea de acordes, al final del todo. Conserva su data-postura.
  */
 export function moverAcordeLinea({ lineas, registros, originales, conocidos, i, col, dir }) {
-  if (tipoDe(lineas, i, conocidos) !== 'acordes') {
+  const tipoOrigen = tipoDe(lineas, i, conocidos);
+  if (tipoOrigen !== 'acordes' && tipoOrigen !== 'acordes-sucio') {
     return { error: 'Pon el cursor en una línea de acordes.' };
   }
   const tokens = conEtiquetas(tokensDe(lineas[i]), registros[i]);
@@ -259,11 +271,11 @@ export function moverAcordeLinea({ lineas, registros, originales, conocidos, i, 
   let destino = -1;
   if (dir > 0) {
     for (let j = i + 1; j < lineas.length; j++) {
-      if (tipoDe(lineas, j, conocidos) === 'acordes') { destino = j; break; }
+      if (esLineaAcordes(lineas, j, conocidos)) { destino = j; break; }
     }
   } else {
     for (let j = i - 1; j >= 0; j--) {
-      if (tipoDe(lineas, j, conocidos) === 'acordes') { destino = j; break; }
+      if (esLineaAcordes(lineas, j, conocidos)) { destino = j; break; }
     }
   }
   if (destino < 0) {
