@@ -136,16 +136,18 @@ export function piezaConTitulo(data: {
  *   `Acordes Pasodoble Los Ángeles caídos "Ay si yo fuera un enano" Carnaval 2002`
  *   `Acordes Popurrí Los Ángeles Caídos Carnaval 2002`
  *
- * El nombre de la copla sale de `letraTitulo`; si la pieza ya lo trae
- * entrecomillado (`Cuarteta "Castigo divino"`), no se repite.
+ * El nombre de la copla sale de `letraTitulo` y, si no lo hay, de la
+ * `fraseClave` (el primer verso, que es lo que se busca). Si la pieza ya lo
+ * trae entrecomillado (`Cuarteta "Castigo divino"`), no se repite.
  */
 export function tituloSeo(acorde: FichaConLetra): string {
   const data = acorde.data;
   const pieza = (data.pieza || '').trim();
   const agrupacion = (data.agrupacion || '').trim();
   const year = String(data.year ?? '').trim();
-  const letra = (data.letraTitulo || '').trim();
-  const titulo = letra && !pieza.includes(`"${letra}"`) ? `"${letra}"` : '';
+  const nombre = (data.letraTitulo || '').trim() || (data.fraseClave || '').trim();
+  const yaEnPieza = /"[^"]+"/.test(pieza) || (!!nombre && pieza.includes(nombre));
+  const titulo = nombre && !yaEnPieza ? `"${nombre}"` : '';
 
   return ['Acordes', pieza, agrupacion, titulo, year ? `Carnaval ${year}` : '']
     .filter(Boolean)
