@@ -1,12 +1,15 @@
 // Proxy del worker de comentarios para el panel /admin.
 //
-// El panel entra con la sesión de GitHub y esta función manda el token de
-// GitHub de la sesión al worker. El worker comprueba con la API de GitHub que
-// el usuario es el propietario, así que no hay un segundo login ni un token
+// El panel entra con la sesión de GitHub y esta función manda al worker el
+// token de GitHub de la sesión: el worker nuevo comprueba con la API de GitHub
+// que el usuario es el propietario, así que no hay un segundo login ni un token
 // aparte que pedir en el navegador.
 //
-// `COMMENTS_ADMIN_TOKEN` queda solo como respaldo para un worker antiguo que
-// todavía no acepte tokens de GitHub; si no está, no pasa nada.
+// Si existe `COMMENTS_ADMIN_TOKEN` (el `ADMIN_TOKEN` del worker) se manda ese
+// primero, porque la versión desplegada del worker solo acepta ese: sin él, el
+// POST guardaba la respuesta con `isAdmin: false` (salía «Anónimo») y el
+// PATCH/DELETE devolvía 401. En un 401 se reintenta con la otra credencial, así
+// que vale tanto el worker antiguo como el nuevo.
 //
 // Rutas:
 //   GET    /admin/api/comentarios?path=/pedir-copla
@@ -16,7 +19,7 @@
 import { sesion, sinSesion, json } from './_lib.mjs';
 
 const WORKER = 'https://comments-worker.javiercorderotoscano.workers.dev';
-const RESPALDO = process.env.COMMENTS_ADMIN_TOKEN || '';
+const TOKEN_ADMIN = process.env.COMMENTS_ADMIN_TOKEN || '';
 
 export default async (req) => {
   const s = sesion(req);
@@ -40,7 +43,7 @@ export default async (req) => {
       : WORKER;
   const opciones = {
     method: req.method,
-    headers: { Authorization: `Bearer ${s.token}`, Accept: 'application/json' },
+    headers: { Accept: 'application/json' },
   };
 
   if (req.method === 'POST' || req.method === 'PATCH') {
@@ -49,15 +52,19 @@ export default async (req) => {
     opciones.body = cuerpo;
   }
 
+  // Primero el token de administrador (si está) y luego el de GitHub de la
+  // sesión. Se prueban en orden hasta que uno no devuelva 401.
+  const credenciales = [...new Set([TOKEN_ADMIN, s.token].filter(Boolean))];
+  if (!credenciales.length) return json({ error: 'sin credenciales' }, 500);
+
   try {
-    let r = await fetch(destino, opciones);
-    // Transición: si el worker aún es el antiguo y rechaza el token de GitHub,
-    // se reintenta con el token de administrador si está configurado.
-    if (r.status === 401 && RESPALDO) {
+    let r = null;
+    for (const credencial of credenciales) {
       r = await fetch(destino, {
         ...opciones,
-        headers: { ...opciones.headers, Authorization: `Bearer ${RESPALDO}` },
+        headers: { ...opciones.headers, Authorization: `Bearer ${credencial}` },
       });
+      if (r.status !== 401) break;
     }
     const texto = await r.text();
     return new Response(texto, {
