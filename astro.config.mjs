@@ -86,6 +86,18 @@ export default defineConfig({
             purpose: 'maskable',
           },
         ],
+        // Acceso al panel privado desde el icono de la app: mantener pulsado
+        // Acordes Gaditanos → «Admin». Solo lo pinta Android; en el navegador
+        // normal no existe.
+        shortcuts: [
+          {
+            name: 'Admin',
+            short_name: 'Admin',
+            description: 'Panel de edición',
+            url: '/admin/',
+            icons: [{ src: '/icon-192.png', sizes: '192x192', type: 'image/png' }],
+          },
+        ],
       },
       workbox: {
         // Solo el "chasis" (assets). Sin HTML: hay ~1.150 páginas y precargarlas
