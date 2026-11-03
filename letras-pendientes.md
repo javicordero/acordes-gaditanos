@@ -57,7 +57,7 @@ llevan `?` hay que resolverlas mirando el listado de agrupaciones del cancionero
 | 25 | Ay si yo fuera un enano | Los Ángeles caídos | pasodoble-los-angeles-caidos | con acordes | pasodoble-los-angeles-caidos-ay-si-yo-fuera-un-enano | https://www.alsondelcarnaval.es/letras/comparsa-los-angeles-caidos | 2 avisos de metrica (v9, v18) |
 | 26 | En un rincón del planeta | La canción de Cádiz | pasodoble-la-cancion-de-cadiz | duplicada |  |  | repetida: ver 12 |
 | 27 | Miércoles azul de carnavales | Los Esclavos | pasodoble-los-esclavos | con acordes | pasodoble-los-esclavos-miercoles-azul-de-carnavales | https://www.alsondelcarnaval.es/letras/letra-comparsa-los-esclavos | sin avisos |
-| 28 | Cuéntame de cuando salías | Los templarios | pasodoble-los-templarios | pendiente |  | https://www.codigocarnaval.com/articulos/pasodobles-ineditos-de-martinez-ares | el unico articulo mezcla comentario y letra; se busca de nuevo mas adelante |
+| 28 | Cuéntame de cuando salías | Los templarios | pasodoble-los-templarios | con acordes | pasodoble-los-templarios-cuentame-de-cuando-salias | https://www.facebook.com/ElCarnavalysuArte/posts/10152463119812236 | transcripcion de un post de Facebook; 3 avisos (v13, 17, 19); confirmar con el audio |
 | 29 | Dios mío que me estoy secando | Los templarios | pasodoble-los-templarios | con acordes | pasodoble-los-templarios-dios-mio-que-me-estoy-secando | https://letrasdecarnaval.com/letra/comparsa-los-templarios-1999-pasodoble-dios-mio-que-me-estoy-secando | extraida de <p id=letra>; 1 aviso (v10) |
 | 30 | Era un 4 de diciembre | Los Piratas | pasodoble-los-piratas | con acordes | pasodoble-los-piratas-era-un-cuatro-de-diciembre | https://compasgaditano.com/2011/12/era-un-cuatro-de-diciembre-los-piratas.html | sin avisos |
 | 31 | La venganza y la locura | Los Condenaos | pasodoble-los-condenaos | con acordes | pasodoble-los-condenaos-la-venganza-y-la-locura | http://letrasdesdeelparaiso.blogspot.com/2018/01/pasodoble-la-venganza-y-la-locura-los.html | 1 aviso de metrica (v11) |
@@ -73,11 +73,15 @@ llevan `?` hay que resolverlas mirando el listado de agrupaciones del cancionero
 | 41 | Cuando pienso en un genio | Los comparsistas se la dan de artistas | pasodoble-los-comparsistas-se-la-dan-de-artistas | con acordes | pasodoble-los-comparsistas-se-la-dan-de-artistas-cuando-pienso-en-un-genio | http://letrasdesdeelparaiso.blogspot.com/2019/01/pasodoble-cuando-pienso-en-un-genio-y.html | revisar metricas v25, 29, 36 |
 | 42 | Voy a contar hasta 20 | Los Trasnochadores | pasodoble-los-trasnochadores | con acordes | pasodoble-los-trasnochadores-voy-a-contar-hasta-20 | http://carnavaldecadiz-elio.blogspot.com/2010/09/los-trasnochadores.html | el .txt traia dos pasodobles; cortado a 16 lineas; 2 avisos (v12, v13) |
 | 43 | La amistad tiene la llave | Los Trasnochadores | pasodoble-los-trasnochadores | con acordes | pasodoble-los-trasnochadores-la-amistad-tiene-la-llave | http://carnavaldecadiz-elio.blogspot.com/2010/09/los-trasnochadores.html | el .txt traia dos pasodobles; cortado a 18 lineas; 1 aviso (v20) |
-| 44 | Un amigo es un amigo | Los Condenaos | pasodoble-los-condenaos | pendiente | |  |  |
-| 45 | Era un 4 de diciembre | Los piratas | pasodoble-los-piratas | pendiente | |  |  |
-| 46 | Con permiso buenas tardes | Los Piratas | pasodoble-los-piratas | pendiente | |  |  |
-| 47 | La muerte es una playa | Los comparsistas se la dan de artistas | pasodoble-los-comparsistas-se-la-dan-de-artistas | pendiente | |  |  |
-| 48 | Vecina estandarte del barrio | Dsas3 | pasodoble-dsas3 | pendiente | |  |  |
+| 44 | Un amigo es un amigo | Los Condenaos | pasodoble-los-condenaos | con acordes | pasodoble-los-condenaos-un-amigo-es-un-amigo | http://letrasdesdeelparaiso.blogspot.com/2018/01/pasodoble-un-amigo-es-un-amigo-los.html | 4 avisos de metrica (v5, 11, 13, 17) |
+| 45 | Era un 4 de diciembre | Los piratas | pasodoble-los-piratas | con acordes | pasodoble-los-piratas-era-un-cuatro-de-diciembre |  | borrador local en acordes3, aun sin publicar |
+| 46 | Con permiso buenas tardes | Los Piratas | pasodoble-los-piratas | con acordes | pasodoble-los-piratas-con-permiso-buenas-tardes | https://letrasdecarnaval.com/letra/comparsa-los-piratas-1998-pasodoble-con-permiso-buenas-tardes | 5 avisos (v2, 5, 9, 12, 14); revisar cortes largos |
+| 47 | La muerte es una playa | Los comparsistas se la dan de artistas | pasodoble-los-comparsistas-se-la-dan-de-artistas | con acordes | pasodoble-los-comparsistas-se-la-dan-de-artistas-la-muerte-es-una-playa | https://letrasdecarnaval.com/letra/comparsa-los-comparsistas-se-la-dan-de-artistas-2009-pasodoble-la-muerte-es-una-playa-con-cara-de-pena | 5 avisos (v4, 8, 24, 25, 30); letra larga |
+| 48 | Vecina estandarte del barrio | Dsas3 | pasodoble-dsas3 | con acordes | pasodoble-dsas3-vecina-estandarte-del-barrio | https://letrasdecarnaval.com/letra/comparsa-dsas3-2026-pasodoble-vecina | 1 aviso (v19) |
+| 49 | ay si yo fuera un en enano | los angeles caidos | pasodoble-los-angeles-caidos | duplicada | pasodoble-los-angeles-caidos-ay-si-yo-fuera-un-enano |  | es la misma que la 25; la ficha ya estaba publicada |
+| 50 | me han dicho que la locura | los angeles caidos | pasodoble-los-angeles-caidos | con acordes | pasodoble-los-angeles-caidos-me-han-dicho-que-la-locura | http://letrasdesdeelparaiso.blogspot.com/2018/01/pasodoble-me-han-dicho-que-la-locura.html | 4 avisos (v9, 14, 15, 19); revisar v14-v15 |
+| 51 | La mujer es enemiga | Los condenaos | pasodoble-los-condenaos | pendiente | |  |  |
+| 52 | Se de mujeres mas bonitas | Flamenkito apaleao | pasodoble-flamenkito-apaleao | pendiente | |  |  |
 
 ## Historial
 
