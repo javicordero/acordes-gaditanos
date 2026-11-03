@@ -163,48 +163,56 @@ export default async (req) => {
     const locales3 = await slugsLocales(CARPETAS.acordes3);
     const localesPublicadas = await slugsLocales(CARPETAS.acordes);
 
-    const arbol = await gh(`/repos/${REPO}/git/trees/${BASE}?recursive=1`, { token: s.token });
-    const prefijo = `${CARPETAS.acordes3}/`;
-    const rutas = (arbol.tree || [])
-      .filter((x) => x.type === 'blob' && x.path.startsWith(prefijo) && x.path.endsWith('.md'))
-      .map((x) => x.path)
-      .slice(0, 80);
+    let fichas = [];
+    try {
+      const arbol = await gh(`/repos/${REPO}/git/trees/${BASE}?recursive=1`, { token: s.token });
+      const prefijo = `${CARPETAS.acordes3}/`;
+      const rutas = (arbol.tree || [])
+        .filter((x) => x.type === 'blob' && x.path.startsWith(prefijo) && x.path.endsWith('.md'))
+        .map((x) => x.path)
+        .slice(0, 80);
 
-    const fichas = (await Promise.all(rutas.map(async (ruta) => {
-      const slug = ruta.slice(prefijo.length, -3);
-      try {
-        const d = await gh(`/repos/${REPO}/contents/${ruta}?ref=${BASE}`, { token: s.token });
-        return { ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona: 'acordes3' };
-      } catch {
-        return { slug, pieza: '', agrupacion: '', year: '', letraTitulo: '', zona: 'acordes3' };
+      fichas = (await Promise.all(rutas.map(async (ruta) => {
+        const slug = ruta.slice(prefijo.length, -3);
+        try {
+          const d = await gh(`/repos/${REPO}/contents/${ruta}?ref=${BASE}`, { token: s.token });
+          return { ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona: 'acordes3' };
+        } catch {
+          return { slug, pieza: '', agrupacion: '', year: '', letraTitulo: '', zona: 'acordes3' };
+        }
+      }))).filter((f) => !(LOCAL && localesPublicadas.has(f.slug)));
+      if (LOCAL) for (const f of fichas) f.local = locales3.has(f.slug);
+
+      // Fichas que aún viven en una PR abierta: los borradores (`estudio/*`) y las
+      // ya publicadas en una PR de publicación (`publica/*`), para que sigan
+      // apareciendo en la lista marcadas como EN PR hasta fusionarlas.
+      const abiertas = await gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token: s.token });
+      for (const pr of abiertas) {
+        const ref = pr.head.ref || '';
+        const esPublicacion = ref.startsWith('publica/');
+        if (!ref.startsWith('estudio/') && !esPublicacion) continue;
+        const m = (pr.body || '').match(/Ficha:\s*`([^`]+)`/);
+        const slug = m ? m[1] : ref.replace(/^(estudio|publica)\//, '').replace(/-[a-z0-9]+$/, '');
+        if (!slug || fichas.some((f) => f.slug === slug)) continue;
+        // Un borrador que ya está publicado en el disco no se repite.
+        if (LOCAL && !esPublicacion && localesPublicadas.has(slug)) continue;
+        const zona = esPublicacion ? 'acordes' : 'acordes3';
+        try {
+          const d = await gh(`/repos/${REPO}/contents/${CARPETAS[zona]}/${slug}.md?ref=${encodeURIComponent(ref)}`, { token: s.token });
+          const item = { ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona, enPR: pr.number, rama: ref };
+          if (LOCAL && !esPublicacion) item.local = locales3.has(slug);
+          fichas.push(item);
+        } catch { /* la PR no toca esa carpeta */ }
       }
-    }))).filter((f) => !(LOCAL && localesPublicadas.has(f.slug)));
-    if (LOCAL) for (const f of fichas) f.local = locales3.has(f.slug);
-
-    // Fichas que aún viven en una PR abierta: los borradores (`estudio/*`) y las
-    // ya publicadas en una PR de publicación (`publica/*`), para que sigan
-    // apareciendo en la lista marcadas como EN PR hasta fusionarlas.
-    const abiertas = await gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token: s.token });
-    for (const pr of abiertas) {
-      const ref = pr.head.ref || '';
-      const esPublicacion = ref.startsWith('publica/');
-      if (!ref.startsWith('estudio/') && !esPublicacion) continue;
-      const m = (pr.body || '').match(/Ficha:\s*`([^`]+)`/);
-      const slug = m ? m[1] : ref.replace(/^(estudio|publica)\//, '').replace(/-[a-z0-9]+$/, '');
-      if (!slug || fichas.some((f) => f.slug === slug)) continue;
-      // Un borrador que ya está publicado en el disco no se repite.
-      if (LOCAL && !esPublicacion && localesPublicadas.has(slug)) continue;
-      const zona = esPublicacion ? 'acordes' : 'acordes3';
-      try {
-        const d = await gh(`/repos/${REPO}/contents/${CARPETAS[zona]}/${slug}.md?ref=${encodeURIComponent(ref)}`, { token: s.token });
-        const item = { ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona, enPR: pr.number, rama: ref };
-        if (LOCAL && !esPublicacion) item.local = locales3.has(slug);
-        fichas.push(item);
-      } catch { /* la PR no toca esa carpeta */ }
+    } catch (e) {
+      // Sin GitHub (límite de la API, red caída o token caducado) en local seguimos
+      // con lo que hay en el disco: es lo que se puede editar de todas formas.
+      if (!LOCAL) throw e;
     }
 
     // Borradores que solo están en el disco (en local, aún sin subir).
     for (const l of await borradoresLocales()) {
+      if (localesPublicadas.has(l.slug)) continue;
       if (!fichas.some((f) => f.slug === l.slug)) fichas.push(l);
     }
 
