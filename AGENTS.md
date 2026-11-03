@@ -268,6 +268,18 @@ Credenciales en `.env` (gitignored): `TRELLO_KEY` y `TRELLO_TOKEN` con scope `re
 - **Flujo** (skill `trello`): leer `pendientes` → `ver` la tarjeta → `empezar` (la pasa a En curso) → comentar el **plan** en modo plan (solo lectura) → **parar y pedir aprobación** → solo entonces implementar y verificar → `terminar` con el resumen y `--commit <sha>`. «Siguiente tarea» es una orden de planificar: nunca se implementa en el mismo turno sin un «adelante» explícito. Si se bloquea o el plan se descarta, no se cierra: se comenta y se queda en En curso o vuelve a Pendiente.
 - La API de Trello exige `key`+`token` incluso en tableros públicos: sin credenciales no hay lectura. Si el token caduca, se repite el enlace `https://trello.com/1/authorize?...&key=<TRELLO_KEY>`.
 
+### Watcher de Trello (`npm run trello:watch`)
+Vigila el tablero y arranca un agente headless (`opencode run`) cuando aparece una tarjeta nueva o un comentario nuevo del usuario. Es la vía para el «charla por Trello»: el usuario crea/comenta y el agente contesta en la tarjeta.
+
+- **Sondeo**: `scripts/trello-watch.mjs` pega una llamada a la API de Trello cada 60 s (configurable con `TRELLO_WATCH_INTERVALO`, en segundos). El sondeo no cuesta tokens (es Node puro); solo el arranque del agente los gasta.
+- **Modelo fijado**: `opencode-go/deepseek-v4.1-flash` (no se usa otro). Ojo: `opencode/deepseek-v4.1-flash` (sin `-go`) da «Insufficient account funds».
+- **Flujo**: tarjeta nueva → agente la lee, la pasa a «En curso», escribe el **plan** como comentario y **para**. Un comentario de aprobación («adelante», «dale», «implementa», «hazlo») dispara la implementación; un comentario de cambios reescribe el plan; cualquier otro comentario solo se responde. **Nunca implementa sin aprobación explícita** y **no hace commit ni push** salvo que se pida.
+- **Primera pasada** solo registra el estado actual en `.cache/trello-watch.json` y no dispara nada (así no procesa de golpe lo que ya hubiera). Tras cada agente relee el nº de comentarios para no re-disparar con la respuesta del propio agente.
+- **Lock** de una sola instancia en `.cache/trello-watch.lock` (si hay otro watcher vivo, sale). Estado y lock están en `.cache/` (gitignored).
+- **Puertos**: el agente puede usar 4322/4323/4324, nunca el 4321 (del usuario).
+- Órdenes: `--una-vez` (una pasada, para probar) y `--seco` (no arranca agente ni escribe estado).
+- **Arranque permanente** (Windows): Programador de tareas con `Programa: C:\Program Files\nodejs\node.exe`, `Argumentos: C:\Users\Usuario\Desktop\acordes-gaditanos\scripts\trello-watch.mjs` y `Iniciar en: C:\Users\Usuario\Desktop\acordes-gaditanos`.
+
 ### Redirects
 - `public/ads.txt` — archivo estático de AdSense (`google.com, pub-3280015847198273, DIRECT, f08c47fec0942fa0`)
 - `public/redirects.json` — mapa de 300+ URLs legacy → nuevas rutas (usado client-side)
