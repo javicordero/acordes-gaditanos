@@ -417,6 +417,16 @@ body > footer :focus-visible,
   outline-color: var(--primary-contrast-color);
 }
 
+/* ===== Anuncios apagados (desarrollo y rutas privadas) =====
+   El loader de AdSense no se carga fuera de producción (ver src/lib/anuncios.ts),
+   así que los <ins> se quedan vacíos: se ocultan para no dejar huecos ni márgenes. */
+html[data-anuncios='off'] .adsbygoogle,
+html[data-anuncios='off'] .anuncio-wrapper,
+html[data-anuncios='off'] .anuncio-sobre-pagina,
+html[data-anuncios='off'] .anuncio-sobre-footer {
+  display: none !important;
+}
+
 /* ===== Primitivas brutalist =====
    Se usan en las páginas de contenido para no repetir estilos. */
 :root {

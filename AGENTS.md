@@ -273,12 +273,14 @@ Vigila el tablero y arranca un agente headless (`opencode run`) cuando aparece u
 
 - **Sondeo**: `scripts/trello-watch.mjs` pega una llamada a la API de Trello cada 60 s (configurable con `TRELLO_WATCH_INTERVALO`, en segundos). El sondeo no cuesta tokens (es Node puro); solo el arranque del agente los gasta.
 - **Modelo fijado**: `opencode-go/deepseek-v4.1-flash` (no se usa otro). Ojo: `opencode/deepseek-v4.1-flash` (sin `-go`) da «Insufficient account funds».
+- **Una sesión de OpenCode por tarjeta**: el id es fijo (`ses_trello_<idTarjeta>`) y se guarda en `.cache/trello-watch.json` (campo `sesion`), así cada tarjeta vive siempre en **su misma sesión**, también al reiniciar el watcher. Sesión nueva solo al empezar otra tarjeta. `--nueva-sesion [id|shortLink]` (o `TRELLO_WATCH_SESION_NUEVA=<id|1>`) estrena sesión limpia en la próxima pasada; sin valor vale para cualquier tarjeta. El título de la sesión es `Trello: <nombre de la tarjeta>` (recortado).
+- **Baseline por id de comentario**: el estado guarda `ultimoComentario` (id) y `comments` (contador de respaldo). Así un contador que no cuadre no repite la respuesta ni se pierde un comentario que llegue mientras corre el agente. Al procesar varios comentarios nuevos se pasan juntos, del más antiguo al más nuevo.
 - **Flujo**: tarjeta nueva → agente la lee, la pasa a «En curso», escribe el **plan** como comentario y **para**. Un comentario de aprobación («adelante», «dale», «implementa», «hazlo») dispara la implementación; un comentario de cambios reescribe el plan; cualquier otro comentario solo se responde. **Nunca implementa sin aprobación explícita** y **no hace commit ni push** salvo que se pida.
 - **Marca de los comentarios del agente**: todos sus comentarios empiezan por `🤖` (configurable con `TRELLO_WATCH_MARCA`), para distinguirlos de los del usuario. El watcher los usa también para no re-disparar con sus propias respuestas.
-- **Primera pasada** solo registra el estado actual en `.cache/trello-watch.json` y no dispara nada (así no procesa de golpe lo que ya hubiera). Tras cada agente relee el nº de comentarios para no re-disparar con la respuesta del propio agente.
+- **Primera pasada** solo registra el estado actual en `.cache/trello-watch.json` y no dispara nada (así no procesa de golpe lo que ya hubiera). Tras cada agente se relee el último comentario y se avanza el baseline para no re-disparar con la respuesta del propio agente. **Hay que reiniciar el watcher** para que coja cambios de este script: mata el proceso (`scripts/trello-watch.lock` guarda el pid) y vuelve a arrancarlo; las sesiones por tarjeta se conservan porque viven en el estado, no en el proceso.
 - **Lock** de una sola instancia en `.cache/trello-watch.lock` (si hay otro watcher vivo, sale). Estado y lock están en `.cache/` (gitignored).
 - **Puertos**: el agente puede usar 4322/4323/4324, nunca el 4321 (del usuario).
-- Órdenes: `--una-vez` (una pasada, para probar) y `--seco` (no arranca agente ni escribe estado).
+- Órdenes: `--una-vez` (una pasada, para probar), `--seco` (no arranca agente ni escribe estado) y `--nueva-sesion [id]` (estrena sesión limpia en la próxima pasada; sin valor, en cualquier tarjeta).
 - **Arranque permanente** (Windows): Programador de tareas con `Programa: C:\Program Files\nodejs\node.exe`, `Argumentos: C:\Users\Usuario\Desktop\acordes-gaditanos\scripts\trello-watch.mjs` y `Iniciar en: C:\Users\Usuario\Desktop\acordes-gaditanos`.
 
 ### Redirects
@@ -335,6 +337,17 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 - Eventos de "ver más" de la home: `ver_mas_novedades_click` y `ver_mas_autores_click` (parámetros `link_type` y `location`).
 - Eventos de las cards de autor: `click_autor_card`, `click_autor_card_musicas` y `click_autor_card_letras` (parámetros `autor` y `ubicacion`).
 - Eventos de los canales de avisos: `click_canal_home`, `click_canal_pedir_copla` y `click_canal_suscribirse` (parámetros `canal` y `ubicacion`), más `click_canal_info_pedir_copla` para el enlace a `/suscribirse`. Un evento por página para verlo directo en GA4.
+
+### Anuncios: solo fuera de desarrollo
+Los anuncios de AdSense (y la medición de GA) **no se cargan** en los hosts de desarrollo ni en las rutas privadas. El criterio es una **lista negra**, no una lista blanca: la web sigue anunciando en cualquier dominio que no esté en la lista (incluidos dominios nuevos o previews de otros servicios).
+
+- La lista vive en `src/lib/anuncios.ts`: `HOSTS_SIN_ANUNCIOS` (local), `SUFIJOS_SIN_ANUNCIOS` (`.local`, `.devtunnels.ms`, `.ngrok*`, `.trycloudflare.com`, `.loca.lt`, `.netlify.app`), cualquier IPv4 literal y `RUTAS_PRIVADAS` (`/estudio`, `/acordes2`, `/acordes3`, `/lista2`, `/admin`, `/reconocer-acorde`). `anunciosPermitidos(hostname, pathname)` es la función pura que lo decide.
+- **Si aparece un proveedor de túnel nuevo** (o un preview de otro servicio), hay que añadir su sufijo en `SUFIJOS_SIN_ANUNCIOS`. Es el único sitio que hay que tocar.
+- `Layout.astro` lleva un `<script is:inline>` en el `<head>` (recibe las listas con `define:vars`) que calcula `window.__agAnuncios` y, si no se permite, marca `<html data-anuncios="off">` y apaga GA (`ga-disable-…`). Justo después, otro `<script is:inline>` **inyecta** el loader de `adsbygoogle.js` solo si `__agAnuncios`; **no** volver a ponerlo como `<script src>` fijo en el head (se cargaría en túneles, previews y local).
+- `global.css` oculta los `.adsbygoogle` y sus contenedores (`[data-anuncios="off"]`), para que no queden huecos ni márgenes.
+- Los componentes `<ins>` no se tocan: sin la librería cargada son un `<ins>` vacío y el `push({})` no hace nada.
+- `SCRIPT_ADSENSE` (en `src/lib/anuncios.ts`) monta la URL desde `SEO.adsenseAccount`; `loadAdsense()` de `cookiesConsent.ts` mantiene el mismo guardia como red de seguridad.
+- El `<meta google-adsense-account>` y el `ca-pub` de los `.ins` siguen en el HTML: son estáticos y sirven para verificar el dominio.
 
 ### PostCSS
 `postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.
