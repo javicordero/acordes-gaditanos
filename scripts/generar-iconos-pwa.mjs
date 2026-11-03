@@ -43,15 +43,14 @@ if (!soloBadge) {
   await generar('apple-touch-icon.png', 180, 0.72);
 }
 
-// Badge de las notificaciones push: Android y Windows lo pintan como una
-// silueta (solo el canal alfa), así que tiene que ser monocromo y transparente.
-// Con un icono a color sale un círculo blanco liso.
+// Badge de las notificaciones push: Android lo pinta como silueta (usa solo el
+// canal alfa y lo recolorea con el tema), Windows lo enseña tal cual. Por eso va
+// en negro, como el monograma de la web, y con el dibujo grande.
 async function generarBadge() {
   const TAM = 96;
-  const ancho = Math.round(TAM * 0.78);
+  const ancho = Math.round(TAM * 0.92);
   const logo = await sharp(LOGO)
     .resize({ width: ancho })
-    .negate({ alpha: false })
     .png()
     .toBuffer();
   const meta = await sharp(logo).metadata();
@@ -69,7 +68,7 @@ async function generarBadge() {
     .composite([{ input: logo, left, top }])
     .png()
     .toFile(fileURLToPath(new URL('../public/badge-96.png', import.meta.url)));
-  console.log(`✓ public/badge-96.png (${TAM}x${TAM}, monocromo)`);
+  console.log(`✓ public/badge-96.png (${TAM}x${TAM}, negro sobre transparente)`);
 }
 
 await generarBadge();
