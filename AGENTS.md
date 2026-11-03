@@ -232,6 +232,18 @@ Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astr
 - **La imagen conserva su recorte original**: la card usa `height: 220px` (180 px en móvil) y la ficha `360px` de ancho con `min/max-height` 225/240. Como las proporciones no coinciden (la card es casi cuadrada y la ficha 3:2), el morph de la imagen es un zoom con cambio de encuadre, no un morph perfecto. Si algún día se igualan las proporciones, el morph queda limpio; si se desactiva, basta con quitar `img-${slug}` de las dos imágenes.
 - `node scripts/auditar-view-transitions.mjs` (después de `npm run build`) falla si algún HTML repite un `view-transition-name` en la misma página o si `@view-transition` no sobrevive al build.
 
+### Tareas en Trello
+El trabajo pendiente vive en el tablero `https://trello.com/b/vwbp5cJ5/acordes-gadiranos` (tres columnas: **Pendiente**, **En curso**, **Finalizado**). Se llega a él por dos vías que comparten credenciales:
+
+- **MCP** (lo normal en una sesión de agente): `opencode.json` declara `mcp.servers.trello`, que arranca `scripts/lib/mcp-trello.mjs`. Ese lanzador lee `.env` y ejecuta `atlassian-trello-mcp` (devDependency, 50 herramientas: tableros, listas, tarjetas, comentarios, checklists…). Así el `opencode.json` no lleva secretos y el `.env` sigue siendo el único sitio con claves. Las herramientas se ven como `trello_*` (`move_card`, `trello_add_comment`, `trello_get_list_cards`…).
+- **CLI** (`npm run trello`): para lo encadenado o cuando no hay sesión de agente.
+
+Credenciales en `.env` (gitignored): `TRELLO_KEY` y `TRELLO_TOKEN` con scope `read,write`, sacados en <https://trello.com/power-ups/admin> → aplicación → **Autorización** → **Autenticación Trello** → **Añadir** (el `SECRETO` no se usa). `TRELLO_TABLERO` (por defecto `vwbp5cJ5`) y, si se renombran las columnas, `TRELLO_LISTA_PENDIENTE`, `TRELLO_LISTA_CURSO` y `TRELLO_LISTA_FINAL`. Sin credenciales, el CLI sale con código 2 y el lanzador del MCP con el mismo código y el motivo.
+
+- **Órdenes del CLI**: `listas`, `pendientes [--json]`, `ver <tarjeta>`, `empezar <tarjeta>`, `terminar <tarjeta>`, `mover <tarjeta> <lista>` y `comentar <tarjeta>`. `<tarjeta>` acepta el id, el `shortLink` o un trozo del título (si es ambiguo lista los candidatos y sale con código 4). El texto de los comentarios va con `--texto`, `--texto-archivo` o por stdin; `--simular` enseña lo que haría sin escribir.
+- **Flujo** (skill `trello`): leer `pendientes` → `ver` la tarjeta → `empezar` (la pasa a En curso antes de tocar código) → comentar el **plan** → implementar y verificar → `terminar` con el resumen y `--commit <sha>`. Si se bloquea, no se cierra: se comenta el bloqueo.
+- La API de Trello exige `key`+`token` incluso en tableros públicos: sin credenciales no hay lectura. Si el token caduca, se repite el enlace `https://trello.com/1/authorize?...&key=<TRELLO_KEY>`.
+
 ### Redirects
 - `public/ads.txt` — archivo estático de AdSense (`google.com, pub-3280015847198273, DIRECT, f08c47fec0942fa0`)
 - `public/redirects.json` — mapa de 300+ URLs legacy → nuevas rutas (usado client-side)
@@ -298,6 +310,7 @@ Skills en `.agents/skills/` para tareas comunes:
 - `promover-acorde` — mover acordes revisados de `acordes2` a `acordes` (local, no versionada)
 - `letra-alternativa` — aplicar los acordes de una ficha a una letra nueva de la misma música
 - `prs-acordes3` — listar y fusionar las PRs de los borradores que se guardaron desde el móvil
+- `trello` — leer las tarjetas pendientes del tablero, pasarlas a «En curso», planificarlas, implementarlas y cerrarlas
 - `subir-acorde` — ajustar la fecha al día siguiente del último publicado y hacer commit + push
 - `transportar` — transponer acordes de tonalidad
 - `tweet-acorde` — generar tweet para anunciar acorde

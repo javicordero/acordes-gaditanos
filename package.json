@@ -30,7 +30,8 @@
     "promover": "node scripts/promover-acordes3.mjs",
     "prs": "node scripts/prs-acordes3.mjs",
     "revisar": "node scripts/revision-acordes.mjs",
-    "auditar:editor": "node --experimental-strip-types scripts/auditar-editor.mjs"
+    "auditar:editor": "node --experimental-strip-types scripts/auditar-editor.mjs",
+    "trello": "node scripts/trello.mjs"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",
@@ -45,6 +46,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@vite-pwa/astro": "^1.2.0",
+    "atlassian-trello-mcp": "^1.7.2",
     "autoprefixer": "^10.4.22",
     "cheerio": "^1.0.0",
     "playwright-core": "^1.64.1",
