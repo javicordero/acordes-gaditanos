@@ -55,9 +55,11 @@ function cerrarPanel() {
   if (panel) panel.hidden = true;
 }
 
-export function instalar() {
+// `componente` identifica el botón que lanzó la instalación (`flotante`,
+// `banner_novedad`, `tarjeta_ficha`), para poder abrir el embudo por superficie.
+export function instalar(componente = 'desconocido') {
   if (detectarOs() === 'ios') {
-    eventoPwa('pwa_ios_instructions_shown');
+    eventoPwa('pwa_ios_instructions_shown', { componente });
     abrirPanel();
     return;
   }
@@ -69,6 +71,7 @@ export function instalar() {
       .then((choice: { outcome: string }) => {
         eventoPwa(
           choice.outcome === 'accepted' ? 'pwa_prompt_accepted' : 'pwa_prompt_dismissed',
+          { componente },
         );
         const ctx = agPwa();
         if (ctx) ctx.prompt = null;

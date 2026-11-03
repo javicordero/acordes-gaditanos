@@ -35,11 +35,14 @@ const { class: className } = Astro.props;
       card.classList.add('instalar-app--visible');
       if (!promptMostrado) {
         promptMostrado = true;
-        eventoPwa('pwa_prompt_shown', { ubicacion: 'ficha' });
+        eventoPwa('pwa_prompt_shown', { ubicacion: 'ficha', componente: 'tarjeta_ficha' });
       }
       if (btn && !btn.dataset.wired) {
         btn.dataset.wired = 'true';
-        btn.addEventListener('click', () => instalar());
+        btn.addEventListener('click', () => {
+          eventoPwa('pwa_home_banner_click', { ubicacion: 'ficha', componente: 'tarjeta_ficha' });
+          instalar('tarjeta_ficha');
+        });
       }
     } else {
       card.classList.remove('instalar-app--visible');

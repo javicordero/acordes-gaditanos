@@ -129,7 +129,7 @@ const { class: className } = Astro.props;
       instalarBtn.removeAttribute('hidden');
       if (!promptMostrado) {
         promptMostrado = true;
-        eventoPwa('pwa_prompt_shown', { ubicacion: 'portada' });
+        eventoPwa('pwa_prompt_shown', { ubicacion: 'portada', componente: 'flotante' });
       }
     } else {
       pedir.removeAttribute('hidden');
@@ -147,8 +147,8 @@ const { class: className } = Astro.props;
     if (instalarBtn && !instalarBtn.dataset.wired) {
       instalarBtn.dataset.wired = 'true';
       instalarBtn.addEventListener('click', () => {
-        eventoPwa('pwa_home_banner_click', { ubicacion: 'portada' });
-        instalar();
+        eventoPwa('pwa_home_banner_click', { ubicacion: 'portada', componente: 'flotante' });
+        instalar('flotante');
       });
     }
 
