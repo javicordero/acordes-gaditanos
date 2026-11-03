@@ -23,6 +23,7 @@ No hay scripts de test ni lint configurados.
 ## Build Guidelines
 - **NO** hacer build tras cada cambio pequeño
 - **SÍ** hacer build solo antes de un commit
+- **El agente no ejecuta `npm run build` ni `npm run preview` tras cada cambio**: solo cuando el usuario lo pida expresamente o justo antes de un commit. Para verificar mientras se trabaja, se usa el `astro dev` del usuario (4321) o el 4322 si el 4321 no está ocupado.
 - Para verificar: `npm run dev` y probar en navegador
 - Build exitoso no garantiza funcionamiento, solo que compila
 

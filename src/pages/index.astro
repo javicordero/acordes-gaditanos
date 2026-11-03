@@ -8,7 +8,7 @@ import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
 import BannerCoac2026 from '../components/page/BannerCoac2026.astro';
 import AnunciateAqui from '../components/right-column/AnunciateAqui.astro';
 import AnunciateIndex from '../components/page/AnunciateIndex.astro';
-import BannerCoplasComunidad from '../components/page/BannerCoplasComunidad.astro';
+import Hero from '../components/page/Hero.astro';
 import BannerInstalarApp from '../components/pwa/BannerInstalarApp.astro';
 import { parseSpanishDate, sortByYearDesc } from '../lib/index';
 import { contarCreditosAutores } from '../lib/autores';
@@ -41,15 +41,13 @@ const autoresDestacados = [...autores]
   description='La mayor colección de acordes de guitarra del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
   <!-- <BannerCoac2026 /> -->
 
-  <BannerCoplasComunidad />
+  <Hero gaEvent='click_pedir_copla_hero' />
   <div class='main-container'>
     <!-- <AnunciateIndex /> -->
 
     <div class='section section--novedades'>
       <CardsGroup year={'Novedades'} acordes={ultimos}>
-        <div slot='notice'>
-          <BannerInstalarApp ubicacion='portada' />
-        </div>
+        <BannerInstalarApp slot='notice' ubicacion='portada' />
       </CardsGroup>
       <div class='container-layout ver-mas-wrapper'>
         <a

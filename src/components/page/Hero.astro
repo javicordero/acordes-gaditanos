@@ -1,0 +1,248 @@
+---
+// src/components/page/Hero.astro
+//
+// Hero de la portada. Todo lo que cambia de un año a otro (título, textos,
+// imagen, CTA) va por props, para pasar al COAC 2027 sin tocar el componente.
+import DonationIndicator from '../DonationIndicator.astro';
+
+interface Props {
+  titulo?: string;
+  texto?: string;
+  textoSecundario?: string;
+  ctaTexto?: string;
+  ctaUrl?: string;
+  imagen?: string;
+  gaEvent?: string;
+  mostrarDonacion?: boolean;
+}
+
+const {
+  titulo = 'Vuestras coplas',
+  texto = 'Desde hoy hasta el COAC 2027 aprovechamos para recoger las coplas que echa de menos la comunidad, vuestras coplas.',
+  textoSecundario = 'Pide la copla que quieras y vota las de los demás. Las más votadas (y las que más me gusten) se irán subiendo.',
+  ctaTexto = 'Pedir una copla',
+  ctaUrl = '/pedir-copla',
+  imagen = 'https://static.grupojoly.com/clip/e68a84a7-37c4-4bbe-a35c-f859862ca005_source-aspect-ratio_1600w_0.jpg',
+  gaEvent = 'click_hero_cta',
+  mostrarDonacion = true,
+} = Astro.props;
+---
+
+<section class='hero' style={`background-image: url('${imagen}')`}>
+  <div class='container-layout'>
+    <div class='text'>
+      <header>
+        <h2>{titulo}</h2>
+        <div class='subtitle'>
+          <p>{texto}</p>
+          <p>{textoSecundario}</p>
+          <a class='hero-cta' href={ctaUrl} data-hero-cta data-ga-event={gaEvent}>
+            <span>{ctaTexto}</span>
+            <svg
+              width='20'
+              height='20'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              stroke-width='2'
+              stroke-linecap='square'
+              stroke-linejoin='miter'
+              aria-hidden='true'>
+              <path d='M7 17 17 7'></path>
+              <path d='M9 7h8v8'></path>
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      {mostrarDonacion && (
+        <div class='apoyar'>
+          <DonationIndicator
+            variant='timeline'
+            messageC='Ayuda a que siga subiendo más coplas'
+            listStyle='pills'
+          />
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  section.hero {
+    margin-top: 46px;
+    --banner-overlay-opacity: 0.78;
+    position: relative;
+    display: flex;
+    color: #fff;
+    background-position: center;
+    background-size: cover;
+    border-bottom: 4px solid var(--primary-contrast-color);
+    height: calc(var(--vh, 1vh) * 100 - 45px);
+    height: calc(100svh - 45px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      backdrop-filter: brightness(0.2);
+      background: transparent;
+    }
+
+    & .text {
+      position: relative;
+      z-index: 2;
+      padding: 0;
+      max-width: 620px;
+      height: calc(var(--vh, 1vh) * 100 - 45px);
+      height: calc(100svh - 45px);
+      padding: 180px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      font-family: 'Roboto Mono', monospace;
+
+      & header {
+        padding: 0;
+      }
+
+      & h2 {
+        margin: 0 0 24px;
+        font-size: 3.2rem;
+        font-weight: 800;
+        letter-spacing: 1px;
+        line-height: 1;
+        text-transform: uppercase;
+        max-width: fit-content;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 95%;
+          height: 6px;
+          margin-top: 10px;
+          background-color: var(--primary-contrast-color);
+        }
+      }
+
+      & p {
+        margin: 0 0 12px;
+        font-size: 1.05rem;
+        line-height: 1.45;
+        text-wrap: balance;
+      }
+
+      & .apoyar {
+        margin-top: 56px;
+      }
+
+      & a:not(.hero-cta) {
+        color: var(--primary-contrast-color);
+        text-decoration: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      & {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      &::before {
+        backdrop-filter: brightness(0.15);
+      }
+
+      & .text {
+        padding: 40px 0 100px;
+
+        & header {
+          padding: 0;
+        }
+
+        & h2 {
+          font-size: 2rem;
+          margin-bottom: 16px;
+        }
+
+        & p {
+          font-size: 0.95rem;
+        }
+
+        & .apoyar {
+          margin-top: 24px;
+        }
+      }
+    }
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    padding: 12px 20px;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .hero-cta:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 var(--on-bright-color);
+  }
+
+  .hero-cta :global(svg) {
+    display: block;
+    flex: none;
+  }
+
+  @media (max-width: 640px) {
+    .hero-cta {
+      justify-content: center;
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-cta {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function initHero() {
+    document.querySelectorAll<HTMLElement>('[data-hero-cta]').forEach((el) => {
+      if (el.dataset.wired) return;
+      el.dataset.wired = 'true';
+
+      el.addEventListener('click', () => {
+        const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+        if (typeof w.gtag !== 'function') return;
+
+        w.gtag('event', el.dataset.gaEvent || 'click_hero_cta', {
+          ubicacion: 'hero',
+          destino: el.getAttribute('href'),
+          transport_type: 'beacon',
+        });
+      });
+    });
+  }
+
+  initHero();
+  document.addEventListener('astro:page-load', initHero);
+</script>
