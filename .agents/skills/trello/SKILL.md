@@ -1,10 +1,10 @@
 ---
 name: trello
-description: Lee las tarjetas de la columna «Pendiente» del tablero de Trello, las pasa a «En curso», escribe el plan como comentario, implementa el cambio y las pasa a «Finalizado». Usar cuando el usuario diga "mira el trello", "coge la siguiente tarea del trello", "¿qué hay pendiente en Trello?", "haz la tarea del trello", "pasa la tarjeta a en curso/finalizado" o similar.
+description: Lee las tarjetas de la columna «Pendiente» del tablero de Trello, las pasa a «En curso», escribe el plan como comentario y PARA. Solo implementa y pasa a «Finalizado» cuando el usuario aprueba el plan. Usar cuando el usuario diga "mira el trello", "coge la siguiente tarea del trello", "¿qué hay pendiente en Trello?", "planifica la tarea del trello", "implementa el plan aprobado", "pasa la tarjeta a en curso/finalizado" o similar.
 license: MIT
 metadata:
   author: local
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Tablero de Trello
@@ -18,7 +18,8 @@ Tablero por defecto: `vwbp5cJ5` (`https://trello.com/b/vwbp5cJ5/acordes-gadirano
 ## Cuándo usarla
 
 - "mira el trello", "¿qué tengo pendiente?", "coge la siguiente tarea"
-- "haz la tarjeta de X", "implementa lo del trello"
+- "haz la tarjeta de X", "planifica lo del trello"
+- "adelante con el plan", "implementa esto"
 - "pasa esa tarjeta a en curso", "márcala como finalizada"
 
 ## Credenciales
@@ -50,6 +51,10 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
 
 ## Flujo obligatorio
 
+> **Primero se planifica y se para.** «Siguiente tarea del Trello», «coge la siguiente»,
+> «mira qué hay pendiente» son órdenes de **planificar**, no de implementar. Sin un
+> «adelante» explícito del usuario no se edita ni un archivo.
+
 1. **Leer la cola**
 
    ```bash
@@ -66,36 +71,56 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
    npm run trello -- ver <id|shortLink>
    ```
 
-   La descripción y los comentarios son el encargo. Si falta contexto, se pregunta antes
-   de tocar código.
+   La descripción y los comentarios son el encargo. Si falta contexto, se pregunta **en el
+   plan**, no se rellena a base de suposiciones.
 
-3. **Pasarla a «En curso» antes de empezar**
-
-   ```bash
-   npm run trello -- empezar <tarjeta>
-   ```
-
-   Así se ve desde el móvil qué se está haciendo. No se empieza a editar archivos antes
-   de este paso.
-
-4. **Plan primero, siempre.** Se escribe el plan y se deja en la tarjeta **antes** de
-   implementar:
+3. **Pasarla a «En curso»** (solo la que se va a trabajar)
 
    ```bash
-   npm run trello -- comentar <tarjeta> --texto "$(cat .cache/plan-trello.md)"
+   npm run trello -- empezar <tarjeta> --texto "En curso: preparando el plan"
    ```
 
-   El plan lleva: qué hay que cambiar, en qué archivos, cómo se comprueba y qué puede
-   romperse. Si el plan cambia a mitad, se comenta el cambio. Para textos largos en
-   Windows, mejor `--texto-archivo .cache/plan-trello.md` que comillas anidadas.
+   Si el usuario pide el plan de **varias** tarjetas a la vez para comparar, no se mueve
+   ninguna.
 
-5. **Implementar** siguiendo las reglas de `AGENTS.md` (build solo antes del commit,
-   `auditar:pre` / `auditar:acordes` cuando se toquen `<pre>`, etc.).
+4. **Escribir el plan, en modo plan.** Sin editar archivos, sin builds, sin comandos que
+   cambien el repo: solo lectura. El plan se entrega en el chat **y** se deja como
+   comentario en la tarjeta:
 
-6. **Verificar** de verdad: `npm run astro check`, los auditores que apliquen y, si toca
+   ```bash
+   npm run trello -- comentar <tarjeta> --texto-archivo .cache/plan-trello.md
+   ```
+
+   Estructura del plan:
+
+   - **Objetivo**: qué problema se resuelve y cómo se sabrá que está bien.
+   - **Cambios**: archivo por archivo, qué se toca.
+   - **Pasos**: en orden.
+   - **Comprobación**: qué comandos (`astro check`, auditores, dev en el 4322) y qué se
+     mira a mano.
+   - **Riesgos y dudas**: lo que puede romperse y las preguntas abiertas.
+
+   Para textos largos en Windows, mejor `--texto-archivo .cache/plan-trello.md` que
+   comillas anidadas.
+
+5. **Parar y pedir aprobación.** El turno termina con el plan y una pregunta clara
+   («¿lo implemento así?»). No se encadenan los pasos 6-8 en el mismo turno.
+
+   - Cuenta como aprobación: «adelante», «dale», «implementa», «hazlo».
+   - **No** cuenta: silencio, un «ok» suelto cuando el plan llevaba preguntas abiertas, o
+     responder solo a una de las dudas.
+   - Si el usuario corrige el plan, se reescribe el plan, se vuelve a comentar y se para
+     otra vez.
+
+6. **Implementar** solo tras la aprobación, siguiendo las reglas de `AGENTS.md` (build solo
+   antes del commit, `auditar:pre` / `auditar:acordes` cuando se toquen `<pre>`, etc.). Si
+   aparece algo que no estaba en el plan y cambia el alcance, se para y se comenta antes de
+   seguir.
+
+7. **Verificar** de verdad: `npm run astro check`, los auditores que apliquen y, si toca
    interfaz, el servidor de desarrollo en el **puerto 4322** (el 4321 es del usuario).
 
-7. **Pasar a «Finalizado»** con el resumen de lo hecho:
+8. **Pasar a «Finalizado»** con el resumen de lo hecho:
 
    ```bash
    npm run trello -- terminar <tarjeta> --texto "Hecho: …" --commit <sha>
@@ -105,10 +130,12 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
 
 ## Reglas
 
+- **Nunca** se implementa en el mismo turno en que se planifica, salvo que el usuario lo
+  pida explícitamente («planifícalo y hazlo»).
 - Una tarjeta = un plan = una entrega. Nada de cerrar una tarjeta con trabajo a medias.
 - Si se bloquea (falta un dato, un token, una decisión del usuario), **no** se pasa a
-  Finalizado: se comenta el bloqueo y se deja en «En curso» (o se devuelve a «Pendiente»
-  con `npm run trello -- mover <tarjeta> Pendiente`).
+  Finalizado: se comenta el bloqueo y se deja en «En curso».
+- Si el usuario descarta el plan, la tarjeta vuelve a «Pendiente» y se comenta por qué.
 - Comentarios en español, cortos y con el resultado por delante. Markdown de Trello
   (negritas con `**`).
 - No se mueven ni se cierran tarjetas que no se hayan trabajado en esta sesión sin
