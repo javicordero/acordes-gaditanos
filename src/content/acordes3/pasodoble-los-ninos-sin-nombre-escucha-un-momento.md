@@ -5,11 +5,10 @@ year: 2019
 musica: El Tomate
 letra: El Piru
 letraTitulo: Escucha un momento
-img: https://static.grupojoly.com/clip/379453f2-2837-4ebc-bc6a-babe8121bd04_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/379453f2-2837-4ebc-bc6a-babe8121bd04_source-aspect-ratio_1600w_0.jpg'
 cejilla: 5
 date: "01/11/2026"
 video: 'https://www.youtube.com/embed/bg9I1bfy9ws?feature=player_embedded'
-
 fraseClave: Al machismo
 ---
 <pre>
@@ -25,19 +24,19 @@ porque aunque tú creas que las vuelven locas
 solo sienten asco
                               <a>Fa</a>
 por cada basura que suelta tu boca.
-                            <a>Rem</a>
+                               <a>Rem</a>
 Escucha un momento, machito de turno,
                    <a>Fa</a>                <a>Mi7</a>
 que el mundo ha cambiado y te toca callar.
 <a>Lam</a>                     <a>Mim</a>
 Piropear es agarrar las manos blancas de tu madre
-             <a>Fa</a>                             <a>Mi7</a>
+                  <a>Fa</a>                           <a>Mi7</a>
 y sin que te des cuenta notar que se te escapa un te quiero.
-<a>Lam</a>                 <a>Mim</a>
+<a>Lam</a>                      <a>Mim</a>
 Piropear es recitar las coplas que salen del alma
-             <a>Fa</a>             <a>Mi7</a>
+             <a>Fa</a>                 <a>Mi7</a>
 y cantarle a Cai delante de tu pueblo.
-               <a>LaM7</a> <a>Rem(add9)/La</a> <a>LaM7</a>
+              <a>LaM7</a> <a>Rem(add9)/La</a>    <a>LaM7</a>
 Piropo es el poema que en una servilleta
                                     <a>Fa#7</a>
 cada sábado el abuelo con falta y borrones
@@ -48,13 +47,13 @@ Piropos en la cama rendidos y extasiados
                    <a>Re</a>                   <a>Mi7</a>
 cuando amaina el deseo y contemplo a la diosa
                   <a>LaM7</a>
-que descansa a mi lado.
-<a>La7</a>         <a>Re</a>                               <a>Mi7</a>
-Te falta tu verbo, el amor, la ternura, la pasión, el
+que descansa a mi lado
+<a>La7</a>         <a>Re</a>                     <a>Mi7</a>
+Te falta tu verbo, el amor, la ternura,
 <a>(Sorda)</a>
-cariño y le falta el respeto, le falta la decencia,
-                  <a>Fa#7</a>
-le faltan modales y el consentimiento, le faltan
+la pasión,el cariño y le falta el respeto,
+               <a>Fa#7</a>
+le falta la decencia, le faltan modales y el consentimiento, le faltan
                  <a>Sim7</a>                           <a>Mi7</a>
 tantas cosas que más que un piropo solo es rebuznar.
                                     <a>LaM7</a>
