@@ -195,6 +195,44 @@ function tanda(lista, tamano) {
   return tandas;
 }
 
+/**
+ * El navegador descarga la imagen al pintar la notificación. Si el servidor de
+ * la foto va lento o la bloquea, el móvil enseñaría un hueco roto, así que se
+ * comprueba antes: si no responde a tiempo, se quita y sale el icono de la app.
+ */
+async function comprobarImagen(payload) {
+  if (!payload.icono) return;
+
+  const control = new AbortController();
+  const reloj = setTimeout(() => control.abort(), 4000);
+
+  try {
+    let res = await fetch(payload.icono, {
+      method: 'HEAD',
+      redirect: 'follow',
+      signal: control.signal,
+    });
+
+    // Algunos servidores de fotos no contestan a HEAD: se prueba con GET.
+    if (res.status === 405 || res.status === 501) {
+      res = await fetch(payload.icono, { method: 'GET', redirect: 'follow', signal: control.signal });
+    }
+
+    const tipo = res.headers.get('content-type') || '';
+    if (!res.ok || (tipo && !tipo.startsWith('image/'))) {
+      delete payload.icono;
+      console.warn(
+        `La foto de la ficha no vale (${res.status}${tipo ? `, ${tipo}` : ''}): sale el icono de la app.`,
+      );
+    }
+  } catch {
+    delete payload.icono;
+    console.warn('La foto de la ficha no carga a tiempo: sale el icono de la app.');
+  } finally {
+    clearTimeout(reloj);
+  }
+}
+
 async function suscriptores() {
   const todos = [];
   let cursor = '';
@@ -223,7 +261,9 @@ async function enviar(payload, subs, seco) {
     console.log(`Notificación preparada (no enviada) para ${subs.length} móvil(es):\n`);
     console.log(`  ${payload.titulo}`);
     console.log(`  ${payload.cuerpo}`);
-    console.log(`  → ${payload.url}\n`);
+    console.log(`  → ${payload.url}`);
+    if (payload.icono) console.log(`  (con foto de la ficha: ${payload.icono})`);
+    console.log('');
     return { ok: 0, muertas: 0, fallos: 0 };
   }
 
@@ -330,6 +370,7 @@ async function principal() {
   }
 
   const subs = await suscriptores();
+  if (!opciones.seco) await comprobarImagen(payload);
   const resultado = await enviar(payload, subs, opciones.seco);
 
   if (opciones.seco) return;

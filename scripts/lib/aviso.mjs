@@ -178,6 +178,17 @@ export function textoDe(coplas, tope = 10, formato = 'plano') {
 }
 
 /**
+ * Imagen de la ficha para el lado derecho de la notificación. Tiene que ser una
+ * URL absoluta; si en el .md viene relativa se completa con el dominio.
+ */
+function imagenDe(datos) {
+  const img = (datos.img || '').trim();
+  if (!img) return '';
+  if (/^https?:\/\//i.test(img)) return img;
+  return `${SITE}${img.startsWith('/') ? '' : '/'}${img}`;
+}
+
+/**
  * Payload corto de la notificación push: título, cuerpo y a dónde lleva al
  * pulsarla. Se parece al aviso de Telegram, pero sin autores ni negritas (la
  * notificación del móvil recorta el texto a dos líneas).
@@ -190,6 +201,7 @@ export function notificacionDe(coplas, tope = 10) {
       titulo: 'Nuevos acordes',
       cuerpo: nombreDe(coplas[0].datos),
       url: urlAcorde(coplas[0]),
+      icono: imagenDe(coplas[0].datos) || undefined,
       tag: 'coplas',
     };
   }
