@@ -132,6 +132,12 @@ export function piezaConTitulo(data: {
 /** Caracteres a los que se recorta la frase clave dentro del título. */
 const MAX_FRASE_SEO = 35;
 
+/** Caracteres a los que se intenta ajustar el título entero. */
+const MAX_TITULO_SEO = 100;
+
+/** Longitud mínima que se le deja a la agrupación al recortar. */
+const MIN_AGRUPACION_SEO = 25;
+
 /** Frase cortada por palabra completa (y sin la puntuación que quede al final). */
 function recortarFrase(frase: string, max = MAX_FRASE_SEO): string {
   const limpia = (frase || '').trim();
@@ -148,6 +154,60 @@ function recortarFrase(frase: string, max = MAX_FRASE_SEO): string {
 }
 
 /**
+ * Frases de tarareo (`ba ba ba`, `tutu tutu`, `uuuh`), que no sirven de título:
+ * todas sus palabras son cortas o la misma sílaba repetida.
+ */
+function esRelleno(frase: string): boolean {
+  const palabras = (frase || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .split(' ');
+
+  if (!palabras[0]) return true;
+
+  return palabras.every((palabra) => {
+    if (palabra.length <= 3) return true;
+    for (let k = 1; k <= Math.min(4, palabra.length - 1); k++) {
+      let periodica = true;
+      for (let i = k; i < palabra.length; i++) {
+        if (palabra[i] !== palabra[i - k]) {
+          periodica = false;
+          break;
+        }
+      }
+      if (periodica) return true;
+    }
+    return false;
+  });
+}
+
+/**
+ * Agrupación recortada por el sitio más natural que quepa en `max`: antes de un
+ * paréntesis o una coma si cae cerca, y si no por palabra completa. Siempre
+ * con puntos suspensivos, para que se vea que el nombre está cortado.
+ */
+function acortarNombre(nombre: string, max: number): string {
+  if (!nombre || nombre.length <= max) return nombre;
+
+  const corte = nombre.slice(0, max);
+  const natural = Math.max(
+    corte.lastIndexOf('('),
+    corte.lastIndexOf(','),
+    corte.lastIndexOf(';'),
+  );
+  const desde =
+    natural >= Math.min(12, Math.floor(max / 2))
+      ? nombre.slice(0, natural)
+      : corte.slice(0, Math.max(corte.lastIndexOf(' '), 0));
+  const limpio = desde.trim().replace(/[,;(]+$/, '').trim();
+
+  return `${limpio || corte.trim()}…`;
+}
+
+/**
  * Título de la pestaña y del resultado de Google: pieza, agrupación, nombre de
  * la copla y año, sin la marca, para que quepa entero en Google.
  *
@@ -156,8 +216,10 @@ function recortarFrase(frase: string, max = MAX_FRASE_SEO): string {
  *
  * El nombre de la copla sale de `letraTitulo` y, si no lo hay, de la
  * `fraseClave` (el primer verso, que es lo que se busca), recortada a
- * `MAX_FRASE_SEO` caracteres por palabra completa. Si la pieza ya lo trae
- * entrecomillado (`Cuarteta "Castigo divino"`), no se repite.
+ * `MAX_FRASE_SEO` caracteres por palabra completa; si la frase es puro
+ * tarareo, se deja sin nombre. Si la pieza ya lo trae entrecomillado
+ * (`Cuarteta "Castigo divino"`), no se repite. La agrupación se acorta solo
+ * cuando el título pasa de `MAX_TITULO_SEO`.
  */
 export function tituloSeo(acorde: FichaConLetra): string {
   const data = acorde.data;
@@ -165,11 +227,17 @@ export function tituloSeo(acorde: FichaConLetra): string {
   const agrupacion = (data.agrupacion || '').trim();
   const year = String(data.year ?? '').trim();
   const letraTitulo = (data.letraTitulo || '').trim();
-  const nombre = letraTitulo || recortarFrase(data.fraseClave || '');
+  const frase = (data.fraseClave || '').trim();
+  const nombre = letraTitulo || (esRelleno(frase) ? '' : recortarFrase(frase));
   const yaEnPieza = /"[^"]+"/.test(pieza) || (!!nombre && pieza.includes(nombre));
   const titulo = nombre && !yaEnPieza ? `"${nombre}"` : '';
+  const cola = year ? `- Carnaval ${year}` : '';
 
-  return ['Acordes', pieza, agrupacion, titulo, year ? `- Carnaval ${year}` : '']
+  // Hueco que le queda a la agrupación: el resto del título ya está ocupado.
+  const resto = ['Acordes', pieza, titulo, cola].filter(Boolean).join(' ');
+  const hueco = Math.max(MIN_AGRUPACION_SEO, MAX_TITULO_SEO - resto.length - 1);
+
+  return ['Acordes', pieza, acortarNombre(agrupacion, hueco), titulo, cola]
     .filter(Boolean)
     .join(' ');
 }
