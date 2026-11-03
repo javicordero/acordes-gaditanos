@@ -15,7 +15,6 @@ import {
 interface AgPwa {
   prompt: { prompt: () => void; userChoice: Promise<{ outcome: string }> } | null;
   installed: boolean;
-  suprimido?: boolean;
 }
 
 function esMovil(): boolean {
@@ -50,17 +49,14 @@ function ubicacionActual(): string {
 }
 
 // El navegador ofrece instalar la app (beforeinstallprompt). Se mide una sola vez
-// por carga y se indica si lo hemos suprimido nosotros (en la portada).
+// por carga.
 let promptNativoReportado = false;
 function reportarPromptNativo() {
   if (promptNativoReportado) return;
   const ctx = agPwa();
   if (!ctx || !ctx.prompt) return;
   promptNativoReportado = true;
-  eventoPwa('pwa_native_prompt_available', {
-    ubicacion: ubicacionActual(),
-    suprimido: ctx.suprimido ? 'si' : 'no',
-  });
+  eventoPwa('pwa_native_prompt_available', { ubicacion: ubicacionActual() });
 }
 
 function abrirPanel() {
@@ -77,11 +73,27 @@ function cerrarPanel() {
   if (panel) panel.hidden = true;
 }
 
-// `componente` identifica el botón que lanzó la instalación (`flotante`,
+// Nombre del evento por acción y botón: `pwa_install_<accion>_<sufijo>`, para
+// poder abrir el embudo de cada botón sin depender de dimensiones de GA4.
+const SUFIJO: Record<string, string> = {
+  cabecera: 'cabecera',
+  banner_novedad: 'banner',
+  tarjeta_ficha: 'tarjeta',
+};
+
+export function eventoInstalar(
+  accion: 'click' | 'ios' | 'accepted' | 'dismissed',
+  componente: string,
+) {
+  const sufijo = SUFIJO[componente] ?? 'otro';
+  eventoPwa(`pwa_install_${accion}_${sufijo}`, { componente });
+}
+
+// `componente` identifica el botón que lanzó la instalación (`cabecera`,
 // `banner_novedad`, `tarjeta_ficha`), para poder abrir el embudo por superficie.
 export function instalar(componente = 'desconocido') {
   if (detectarOs() === 'ios') {
-    eventoPwa('pwa_ios_instructions_shown', { componente });
+    eventoInstalar('ios', componente);
     abrirPanel();
     return;
   }
@@ -91,10 +103,7 @@ export function instalar(componente = 'desconocido') {
     prompt.prompt();
     prompt.userChoice
       .then((choice: { outcome: string }) => {
-        eventoPwa(
-          choice.outcome === 'accepted' ? 'pwa_prompt_accepted' : 'pwa_prompt_dismissed',
-          { componente },
-        );
+        eventoInstalar(choice.outcome === 'accepted' ? 'accepted' : 'dismissed', componente);
         const ctx = agPwa();
         if (ctx) ctx.prompt = null;
         if (choice.outcome === 'accepted') reportarInstalado();
@@ -117,9 +126,8 @@ export function initPwa() {
     reportarInstalado();
   });
 
-  // El prompt nativo del navegador: se mide cuándo está disponible y si lo hemos
-  // suprimido (portada). También se comprueba al arrancar por si llegó antes que
-  // este módulo.
+  // El prompt nativo del navegador: se mide cuándo está disponible. También se
+  // comprueba al arrancar por si llegó antes que este módulo.
   window.addEventListener('ag:beforeinstallprompt', reportarPromptNativo);
   reportarPromptNativo();
 

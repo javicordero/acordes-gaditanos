@@ -21,8 +21,7 @@ const { class: className } = Astro.props;
 </RightColumnCard>
 
 <script>
-  import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
-  import { eventoPwa } from '../../lib/pwa/analytics';
+  import { eventoInstalar, instalar, puedeInstalar } from '../../lib/pwa/instalacion';
 
   function init() {
     const card = document.querySelector('.instalar-app') as HTMLElement | null;
@@ -34,7 +33,7 @@ const { class: className } = Astro.props;
       if (btn && !btn.dataset.wired) {
         btn.dataset.wired = 'true';
         btn.addEventListener('click', () => {
-          eventoPwa('pwa_install_click_tarjeta', { ubicacion: 'ficha', componente: 'tarjeta_ficha' });
+          eventoInstalar('click', 'tarjeta_ficha');
           instalar('tarjeta_ficha');
         });
       }

@@ -25,8 +25,7 @@ const { ubicacion } = Astro.props;
 </div>
 
 <script>
-  import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
-  import { eventoPwa } from '../../lib/pwa/analytics';
+  import { eventoInstalar, instalar, puedeInstalar } from '../../lib/pwa/instalacion';
 
   function init() {
     const banner = document.querySelector<HTMLElement>('[data-pwa-banner]');
@@ -38,10 +37,7 @@ const { ubicacion } = Astro.props;
       if (btn && !btn.dataset.wired) {
         btn.dataset.wired = 'true';
         btn.addEventListener('click', () => {
-          eventoPwa('pwa_install_click_banner', {
-            ubicacion: banner.dataset.ubicacion,
-            componente: 'banner_novedad',
-          });
+          eventoInstalar('click', 'banner_novedad');
           instalar('banner_novedad');
         });
       }

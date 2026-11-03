@@ -51,6 +51,16 @@ import SugerenciasBusqueda from './SugerenciasBusqueda.astro';
         <SugerenciasBusqueda />
       </div>
 
+      <button
+        type='button'
+        class='install-btn'
+        data-pwa-instalar-cabecera
+        aria-label='Instalar la app'
+        title='Instalar la app'
+        hidden>
+        <Icon name='descargar' width={20} height={20} />
+      </button>
+
       <div class='theme-container'>
         <ThemeToggle />
       </div>
@@ -197,6 +207,35 @@ import SugerenciasBusqueda from './SugerenciasBusqueda.astro';
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+  }
+
+  /* Botón de instalar la app (solo móvil y si no está instalada) */
+  .install-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: max-content;
+    height: max-content;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--primary-contrast-color);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+
+  .install-btn[hidden] {
+    display: none;
+  }
+
+  .install-btn:hover {
+    transform: translate(-2px, -2px);
+  }
+
+  .install-btn :global(svg) {
+    display: block;
+    flex: none;
   }
 
   /* Botón de lupa */
@@ -453,6 +492,11 @@ import SugerenciasBusqueda from './SugerenciasBusqueda.astro';
     .right-controls {
       gap: 8px;
       min-width: 0;
+    }
+
+    /* Con el buscador abierto no cabe: se oculta para no empujar el campo */
+    header.is-search-open .install-btn {
+      display: none;
     }
 
     /* Tema y menú nunca se comprimen ni salen de pantalla */
@@ -713,4 +757,33 @@ import SugerenciasBusqueda from './SugerenciasBusqueda.astro';
   } else {
     initHeader();
   }
+</script>
+
+<script>
+  import { eventoInstalar, instalar, puedeInstalar } from '../../lib/pwa/instalacion';
+
+  let cableado = false;
+
+  function initBotonInstalar() {
+    const btn = document.querySelector<HTMLElement>('[data-pwa-instalar-cabecera]');
+    if (!btn) return;
+
+    const visible = puedeInstalar();
+    btn.hidden = !visible;
+
+    if (visible && !cableado) {
+      cableado = true;
+      btn.addEventListener('click', () => {
+        eventoInstalar('click', 'cabecera');
+        instalar('cabecera');
+      });
+    }
+
+    window.dispatchEvent(new CustomEvent('ag:instalar-boton', { detail: { visible } }));
+  }
+
+  initBotonInstalar();
+  document.addEventListener('astro:page-load', initBotonInstalar);
+  window.addEventListener('ag:beforeinstallprompt', initBotonInstalar);
+  window.addEventListener('ag:pwa-estado', initBotonInstalar);
 </script>
