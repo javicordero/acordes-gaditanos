@@ -79,8 +79,11 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
 3. **Pasarla a «En curso» y renombrar la sesión** (solo la que se va a trabajar)
 
    ```bash
-   npm run trello -- empezar <tarjeta> --texto "En curso: preparando el plan"
+   npm run trello -- empezar <tarjeta> --texto "🤖 En curso: preparando el plan"
    ```
+
+   El comentario tiene que empezar por `🤖`: si no, el watcher lo toma por un comentario
+   del usuario y arranca un agente para contestárselo.
 
    Y en cuanto se sepa el encargo, se renombra la pestaña de la sesión con el título de la
    tarjeta, en corto: `Trello: <título de la tarjeta>` (3-6 palabras, sin id). Así la

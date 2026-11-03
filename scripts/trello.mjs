@@ -385,14 +385,14 @@ async function cmdEmpezar() {
   const texto = leerTexto(false);
   if (!SIMULAR) await api(`/cards/${t.id}`, { metodo: 'PUT', consulta: { idList: destino.id } });
   console.log(`→ En curso: «${destino.name}»`);
-  await comentar(t.id, texto || '🟡 En curso. Primero escribo el plan y después lo implemento.');
+  await comentar(t.id, texto || '🤖 En curso. Primero escribo el plan y después lo implemento.');
 }
 
 async function cmdTerminar() {
   const t = await resolverTarjeta(orden[1]);
   const abiertas = await listas();
   const destino = emparejarLista(abiertas, NOMBRES.final);
-  let texto = leerTexto(false) || '✅ Hecho.';
+  let texto = leerTexto(false) || '🤖 ✅ Hecho.';
   if (typeof args.commit === 'string') texto += `\n\nCommit: ${args.commit}`;
   if (typeof args.pr === 'string') texto += `\nPR: ${args.pr}`;
   if (!SIMULAR) await api(`/cards/${t.id}`, { metodo: 'PUT', consulta: { idList: destino.id } });
