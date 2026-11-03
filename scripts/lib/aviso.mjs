@@ -192,9 +192,13 @@ function imagenDe(datos) {
  * Payload corto de la notificación push: título, cuerpo y a dónde lleva al
  * pulsarla. Se parece al aviso de Telegram, pero sin autores ni negritas (la
  * notificación del móvil recorta el texto a dos líneas).
+ *
+ * Una sola copla abre su ficha; cuando el aviso agrupa varias, abre
+ * `/novedades/`, que es donde se ven las últimas subidas.
  */
 export function notificacionDe(coplas, tope = 10) {
   const total = coplas.length;
+  const destino = total === 1 ? urlAcorde(coplas[0]) : `${SITE}/novedades/`;
 
   if (total === 1) {
     const datos = coplas[0].datos;
@@ -204,7 +208,7 @@ export function notificacionDe(coplas, tope = 10) {
     return {
       titulo: nombreDe(datos) || 'Nuevos acordes',
       cuerpo: autores || 'Nueva copla en el cancionero',
-      url: urlAcorde(coplas[0]),
+      url: destino,
       icono: imagenDe(datos) || undefined,
       tag: 'coplas',
     };
@@ -214,7 +218,7 @@ export function notificacionDe(coplas, tope = 10) {
     return {
       titulo: `${total} coplas nuevas`,
       cuerpo: 'Hoy hemos subido un montón de coplas al cancionero.',
-      url: `${SITE}/novedades/`,
+      url: destino,
       tag: 'coplas',
     };
   }
@@ -226,7 +230,7 @@ export function notificacionDe(coplas, tope = 10) {
   return {
     titulo: `${total} coplas nuevas`,
     cuerpo: resto > 0 ? `${visibles} y ${resto} más` : visibles,
-    url: `${SITE}/lista/`,
+    url: destino,
     tag: 'coplas',
   };
 }
