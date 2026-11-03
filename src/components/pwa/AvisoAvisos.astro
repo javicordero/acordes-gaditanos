@@ -1,0 +1,403 @@
+---
+// src/components/pwa/AvisoAvisos.astro
+//
+// Barra flotante para activar los avisos push. Sale solo dentro de la app
+// instalada, la primera vez (y de nuevo a los 30 días si se dijo «Ahora no»).
+// Es el mismo patrón y el mismo aire que la barra de instalar: entra desde
+// abajo, se puede descartar y se aparta del anuncio ancla de Auto Ads.
+//
+// Para revisar el estilo sin instalar la app: añade `?avisos=si` a la URL.
+import { Icon } from 'astro-icon/components';
+---
+
+<div class='aviso-avisos' data-avisos-aviso hidden>
+  <button
+    type='button'
+    class='aviso-avisos__cerrar'
+    data-avisos-descartar
+    aria-label='Cerrar'
+  >
+    <Icon name='cruz' width={16} height={16} />
+  </button>
+
+  <p class='aviso-avisos__titulo'>Notificaciones de nuevas coplas</p>
+  <p class='aviso-avisos__texto'>
+    Una notificación cada vez que se sube unos nuevos acordes. Y puedes desactivarlas cuando
+    quieras en el pie de página.
+  </p>
+  <p class='aviso-avisos__nota' data-avisos-nota hidden></p>
+
+  <div class='aviso-avisos__acciones'>
+    <button type='button' class='aviso-avisos__activar' data-avisos-activar>
+      <Icon name='campana' width={19} height={19} />
+      <span>Activar notificaciones</span>
+    </button>
+    <button type='button' class='aviso-avisos__ahora-no' data-avisos-ahora-no>
+      Ahora no
+    </button>
+  </div>
+
+  <div class='aviso-avisos__bloqueo' data-avisos-bloqueo hidden>
+    <p data-avisos-ayuda-android hidden>
+      Están bloqueados en Chrome: toca el candado de la barra → <strong>Permisos</strong> →
+      <strong>Notificaciones</strong> → <strong>Permitir</strong>.
+    </p>
+    <p data-avisos-ayuda-ios hidden>
+      Están bloqueados: <strong>Ajustes</strong> → <strong>Notificaciones</strong> → Acordes
+      Gaditanos → activa <strong>Permitir notificaciones</strong>.
+    </p>
+    <button type='button' class='aviso-avisos__ahora-no' data-avisos-entendido>
+      Entendido
+    </button>
+  </div>
+</div>
+
+<script>
+  import { detectarOs, eventoPwa } from '../../lib/pwa/analytics';
+  import {
+    activarAvisos,
+    avisosDescartados,
+    descartarAvisos,
+    estadoAvisos,
+  } from '../../lib/pwa/avisos';
+
+  const SEL_ANCLA =
+    'ins[data-anchor-status], ins[data-anchor-shown="true"], div[id^="google_anchor"]';
+  // Revisión del estilo sin la app instalada: `?avisos=si`.
+  const DEPURAR = new URLSearchParams(location.search).get('avisos') === 'si';
+
+  let cableado = false;
+  let decidiendo = false;
+
+  function ajustarPorAncla(wrap: HTMLElement) {
+    wrap.classList.toggle('aviso-avisos--sobre-ancla', Boolean(document.querySelector(SEL_ANCLA)));
+  }
+
+  function mostrar(wrap: HTMLElement) {
+    if (!wrap.hidden) {
+      ajustarPorAncla(wrap);
+      return;
+    }
+    wrap.hidden = false;
+    ajustarPorAncla(wrap);
+    requestAnimationFrame(() => wrap.classList.add('aviso-avisos--visible'));
+  }
+
+  function ocultar(wrap: HTMLElement, animar = true) {
+    if (!animar) {
+      wrap.classList.remove('aviso-avisos--visible');
+      wrap.hidden = true;
+      return;
+    }
+    wrap.classList.remove('aviso-avisos--visible');
+    const fin = () => {
+      if (!wrap.classList.contains('aviso-avisos--visible')) wrap.hidden = true;
+      wrap.removeEventListener('transitionend', fin);
+    };
+    wrap.addEventListener('transitionend', fin, { once: true });
+    setTimeout(fin, 400);
+  }
+
+  function mostrarAyuda(wrap: HTMLElement, estado: 'denegado' | 'error') {
+    const bloqueo = wrap.querySelector<HTMLElement>('[data-avisos-bloqueo]');
+    const nota = wrap.querySelector<HTMLElement>('[data-avisos-nota]');
+    const acciones = wrap.querySelector<HTMLElement>('.aviso-avisos__acciones');
+
+    if (estado === 'error') {
+      if (nota) {
+        nota.hidden = false;
+        nota.textContent = 'No se han podido activar. Inténtalo de nuevo en un rato.';
+      }
+      return;
+    }
+
+    if (acciones) acciones.hidden = true;
+    if (bloqueo) {
+      bloqueo.hidden = false;
+      const ayudaAndroid = wrap.querySelector<HTMLElement>('[data-avisos-ayuda-android]');
+      const ayudaIos = wrap.querySelector<HTMLElement>('[data-avisos-ayuda-ios]');
+      if (ayudaAndroid) ayudaAndroid.hidden = detectarOs() !== 'android';
+      if (ayudaIos) ayudaIos.hidden = detectarOs() !== 'ios';
+    }
+  }
+
+  async function aplicar() {
+    const wrap = document.querySelector<HTMLElement>('[data-avisos-aviso]');
+    if (!wrap) return;
+
+    if (DEPURAR) {
+      mostrar(wrap);
+      return;
+    }
+
+    const estado = await estadoAvisos();
+    if (estado !== 'sin-decidir' || avisosDescartados()) {
+      ocultar(wrap, false);
+      return;
+    }
+
+    if (estado === 'sin-decidir') eventoPwa('pwa_push_visto', { ubicacion: 'barra' });
+    mostrar(wrap);
+  }
+
+  function init() {
+    const wrap = document.querySelector<HTMLElement>('[data-avisos-aviso]');
+    if (!wrap) return;
+
+    if (!cableado) {
+      cableado = true;
+
+      wrap.querySelector('[data-avisos-activar]')?.addEventListener('click', async () => {
+        if (decidiendo) return;
+        decidiendo = true;
+
+        const boton = wrap.querySelector<HTMLElement>('[data-avisos-activar]');
+        const texto = boton?.querySelector('span');
+        if (boton) boton.setAttribute('aria-busy', 'true');
+        if (texto) texto.textContent = 'Activando…';
+        eventoPwa('pwa_push_activar', { ubicacion: 'barra' });
+
+        const estado = await activarAvisos();
+
+        if (estado === 'activado') {
+          eventoPwa('pwa_push_activado', { ubicacion: 'barra' });
+          if (texto) texto.textContent = 'Notificaciones activadas';
+          if (boton) boton.removeAttribute('aria-busy');
+          setTimeout(() => ocultar(wrap), 1800);
+          return;
+        }
+
+        if (boton) boton.removeAttribute('aria-busy');
+        if (texto) texto.textContent = 'Activar notificaciones';
+        decidiendo = false;
+        mostrarAyuda(wrap, estado === 'denegado' ? 'denegado' : 'error');
+      });
+
+      const decirNo = () => {
+        eventoPwa('pwa_push_ahora_no', { ubicacion: 'barra' });
+        descartarAvisos();
+        ocultar(wrap);
+      };
+
+      wrap.querySelector('[data-avisos-ahora-no]')?.addEventListener('click', decirNo);
+      wrap.querySelector('[data-avisos-descartar]')?.addEventListener('click', decirNo);
+      wrap.querySelector('[data-avisos-entendido]')?.addEventListener('click', decirNo);
+
+      if (typeof MutationObserver !== 'undefined') {
+        const observer = new MutationObserver(() => ajustarPorAncla(wrap));
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['data-anchor-status', 'data-anchor-shown'],
+        });
+      }
+    }
+
+    aplicar();
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .aviso-avisos {
+    position: fixed;
+    left: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-sizing: border-box;
+    width: calc(100% - 24px);
+    max-width: 460px;
+    padding: 14px 16px;
+    background: var(--surface-color);
+    color: var(--on-surface-color);
+    border: 2px solid var(--on-surface-color);
+    box-shadow: 6px 6px 0 0 var(--on-surface-color);
+    transform: translate(-50%, calc(100% + 40px));
+    transition: transform 0.3s ease;
+  }
+
+  .aviso-avisos[hidden] {
+    display: none;
+  }
+
+  /* Un `display: flex` de una regla propia gana al `hidden` del navegador. */
+  .aviso-avisos [hidden] {
+    display: none !important;
+  }
+
+  .aviso-avisos--visible {
+    transform: translate(-50%, 0);
+  }
+
+  /* Deja hueco al anuncio ancla de Auto Ads (barra fija inferior). */
+  .aviso-avisos--sobre-ancla {
+    bottom: calc(150px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .aviso-avisos__titulo {
+    margin: 0;
+    padding-right: 36px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .aviso-avisos__texto {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--on-surface-color);
+    text-wrap: balance;
+  }
+
+  .aviso-avisos__nota {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--primary-contrast-color);
+  }
+
+  .aviso-avisos__cerrar {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--on-surface-color);
+    cursor: pointer;
+  }
+
+  .aviso-avisos__cerrar:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .aviso-avisos__acciones {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .aviso-avisos__activar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .aviso-avisos__activar span {
+    white-space: nowrap;
+  }
+
+  .aviso-avisos__activar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 var(--on-bright-color);
+  }
+
+  .aviso-avisos__activar:focus-visible,
+  .aviso-avisos__ahora-no:focus-visible,
+  .aviso-avisos__cerrar:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 3px;
+  }
+
+  .aviso-avisos__activar :global(svg) {
+    display: block;
+    flex: none;
+  }
+
+  .aviso-avisos__ahora-no {
+    padding: 10px 12px;
+    border: 2px solid transparent;
+    background: transparent;
+    color: var(--on-surface-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .aviso-avisos__ahora-no:hover {
+    color: var(--primary-contrast-color);
+  }
+
+  .aviso-avisos__bloqueo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 4px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--on-surface-color);
+  }
+
+  .aviso-avisos__bloqueo p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  @media (max-width: 640px) {
+    .aviso-avisos--sobre-ancla {
+      bottom: calc(140px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* En el móvil el botón va solo en su línea: «Activar notificaciones» no
+       cabe junto a «Ahora no» sin partirse. */
+    .aviso-avisos__acciones {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+    }
+
+    .aviso-avisos__activar {
+      width: 100%;
+    }
+
+    .aviso-avisos__ahora-no {
+      align-self: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aviso-avisos {
+      transition: none;
+    }
+  }
+</style>

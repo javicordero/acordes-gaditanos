@@ -17,9 +17,9 @@ import canales from '../data/canales.json';
       <header class='suscribirse__cabecera'>
         <h1 id='suscribirse-title'>Avisos de coplas nuevas</h1>
         <p class='suscribirse__entradilla'>
-          Cuando subo una copla nueva al cancionero, lo aviso en dos canales. Solo eso: el aviso con
-          el enlace directo al cifrado. Sin resúmenes semanales, sin publicidad y sin tener que
-          darme tu teléfono.
+          Cuando subo una copla nueva al cancionero, lo aviso en dos canales y en la propia app.
+          Solo eso: el aviso con el enlace directo al cifrado. Sin resúmenes semanales, sin
+          publicidad y sin tener que darme tu teléfono.
         </p>
       </header>
 
@@ -99,6 +99,50 @@ import canales from '../data/canales.json';
         </div>
       </section>
 
+      <section class='avisos-app' aria-labelledby='avisos-app-title'>
+        <h2 class='suscribirse__subtitulo' id='avisos-app-title'>Avisos en la app</h2>
+
+        <div class='avisos-app__caja' data-avisos-caja>
+          <div class='avisos-app__cabecera'>
+            <span class='avisos-app__icono' aria-hidden='true'>
+              <Icon name='campana' width={24} height={24} />
+            </span>
+            <div class='avisos-app__texto'>
+              <h3>Notificaciones en el móvil</h3>
+              <p data-avisos-texto>
+                Los avisos se activan desde la app instalada en el móvil.
+              </p>
+            </div>
+          </div>
+
+          <div class='avisos-app__acciones'>
+            <button type='button' class='canal__btn' data-avisos-activar hidden>
+              Activar notificaciones
+            </button>
+            <button type='button' class='avisos-app__baja' data-avisos-desactivar hidden>
+              Desactivar notificaciones
+            </button>
+          </div>
+
+          <div class='avisos-app__ayuda' data-avisos-ayuda hidden>
+            <p data-avisos-ayuda-android hidden>
+              Bloqueados en Chrome: toca el candado de la barra → <strong>Permisos</strong> →
+              <strong>Notificaciones</strong> → <strong>Permitir</strong>.
+            </p>
+            <p data-avisos-ayuda-ios hidden>
+              Bloqueados: <strong>Ajustes</strong> → <strong>Notificaciones</strong> → Acordes
+              Gaditanos → activa <strong>Permitir notificaciones</strong>.
+            </p>
+          </div>
+
+          <p class='avisos-app__nota'>
+            Se guarda solo la dirección de tu móvil y el navegador desde el que activas los avisos:
+            ni nombre, ni correo, ni IP. Para dejarlo, desactívalo aquí o desde los ajustes de
+            notificaciones del móvil; si lo desinstalas, el aviso deja de llegar solo.
+          </p>
+        </div>
+      </section>
+
       <section aria-labelledby='recibes-title'>
         <h2 class='suscribirse__subtitulo' id='recibes-title'>Qué te va a llegar</h2>
         <ul class='lista'>
@@ -123,6 +167,9 @@ import canales from '../data/canales.json';
 </Layout>
 
 <script>
+  import { detectarOs, eventoPwa } from '../lib/pwa/analytics';
+  import { activarAvisos, desactivarAvisos, estadoAvisos } from '../lib/pwa/avisos';
+
   declare const gtag: (...args: unknown[]) => void;
 
   document.querySelectorAll<HTMLElement>('[data-ga-event^="click_canal"]').forEach((enlace) => {
@@ -134,6 +181,79 @@ import canales from '../data/canales.json';
       });
     });
   });
+
+  // -------------------------------------------------------------------------
+  // Avisos push: interruptor de la app instalada
+  // -------------------------------------------------------------------------
+
+  const TEXTOS: Record<string, string> = {
+    'no-soportado':
+      'Tu navegador no admite notificaciones. En iPhone o iPad necesitas iOS 16.4 o superior.',
+    'solo-app': 'Abre la app instalada desde la pantalla de inicio y activa los avisos desde aquí.',
+    'sin-decidir':
+      'Activa las notificaciones y te llegará un aviso cada vez que suba una copla nueva.',
+    activado: 'Notificaciones activadas en este móvil.',
+    denegado: 'Están bloqueados en los ajustes del móvil.',
+    error: 'No se han podido comprobar los avisos. Recarga la página e inténtalo otra vez.',
+  };
+
+  function initAvisos() {
+    const caja = document.querySelector<HTMLElement>('[data-avisos-caja]');
+    if (!caja) return;
+    const cajaEl: HTMLElement = caja;
+
+    const texto = cajaEl.querySelector<HTMLElement>('[data-avisos-texto]');
+    const btnActivar = cajaEl.querySelector<HTMLButtonElement>('[data-avisos-activar]');
+    const btnBaja = cajaEl.querySelector<HTMLButtonElement>('[data-avisos-desactivar]');
+    const ayuda = cajaEl.querySelector<HTMLElement>('[data-avisos-ayuda]');
+
+    function pintar(estado: string) {
+      if (texto) texto.textContent = TEXTOS[estado] ?? TEXTOS.error;
+      if (btnActivar) btnActivar.hidden = estado !== 'sin-decidir';
+      if (btnBaja) btnBaja.hidden = estado !== 'activado';
+
+      if (ayuda) {
+        ayuda.hidden = estado !== 'denegado';
+        if (estado === 'denegado') {
+          const android = cajaEl.querySelector<HTMLElement>('[data-avisos-ayuda-android]');
+          const ios = cajaEl.querySelector<HTMLElement>('[data-avisos-ayuda-ios]');
+          if (android) android.hidden = detectarOs() !== 'android';
+          if (ios) ios.hidden = detectarOs() !== 'ios';
+        }
+      }
+
+      cajaEl.dataset.estado = estado;
+    }
+
+    if (cajaEl.dataset.cableado !== '1') {
+      cajaEl.dataset.cableado = '1';
+
+      btnActivar?.addEventListener('click', async () => {
+        const original = btnActivar.textContent;
+        btnActivar.disabled = true;
+        btnActivar.textContent = 'Activando…';
+        eventoPwa('pwa_push_activar', { ubicacion: 'suscribirse' });
+
+        const estado = await activarAvisos();
+
+        btnActivar.disabled = false;
+        btnActivar.textContent = original;
+        pintar(estado);
+      });
+
+      btnBaja?.addEventListener('click', async () => {
+        btnBaja.disabled = true;
+        await desactivarAvisos();
+        btnBaja.disabled = false;
+        pintar('sin-decidir');
+      });
+    }
+
+    estadoAvisos().then(pintar);
+  }
+
+  initAvisos();
+  document.addEventListener('astro:page-load', initAvisos);
 </script>
 
 <style>
@@ -314,6 +434,122 @@ import canales from '../data/canales.json';
     gap: 10px;
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+
+  /* Avisos push (app instalada) */
+  .avisos-app {
+    display: block;
+  }
+
+  /* Los botones con clase traen su propio `display`: `hidden` no basta. */
+  .avisos-app [hidden] {
+    display: none !important;
+  }
+
+  .avisos-app__caja {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    color: var(--text-color);
+  }
+
+  .avisos-app__cabecera {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .avisos-app__icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 42px;
+    height: 42px;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .avisos-app__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    & h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    & p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text-secondary-color);
+    }
+  }
+
+  .avisos-app__acciones {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .avisos-app__acciones .canal__btn {
+    flex: 0 1 auto;
+    min-width: 200px;
+    white-space: nowrap;
+  }
+
+  .avisos-app__baja {
+    min-height: 44px;
+    padding: 10px 14px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-contrast-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .avisos-app__baja:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .avisos-app__baja:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 3px;
+  }
+
+  .avisos-app__nota {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+  }
+
+  .avisos-app__ayuda {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--primary-contrast-color);
+    background: var(--callout-bg);
+
+    & p {
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
   }
 
   :global(html[data-theme='dark']) .canal__btn {

@@ -247,7 +247,9 @@ async function comentar(id, texto) {
     console.log(`(simulado) comentaría en ${id}:\n${texto}`);
     return;
   }
-  await api(`/cards/${id}/actions/comments`, { metodo: 'POST', consulta: { text: texto } });
+  // El texto va en el cuerpo, no en la query: un comentario largo (el plan entero)
+  // desbordaba la URL y Trello respondía 414.
+  await api(`/cards/${id}/actions/comments`, { metodo: 'POST', cuerpo: { text: texto } });
 }
 
 async function moverA(id, lista, nombreLista) {

@@ -12,6 +12,13 @@ export const ANALYTICS = {
   statsWorkerUrl: 'https://stats-worker.javiercorderotoscano.workers.dev',
 } as const;
 
+// Avisos push de la PWA. La clave privada VAPID no está aquí: vive en .env y en
+// los secretos de GitHub. La pública es la que usa el móvil para suscribirse.
+export const AVISOS = {
+  workerUrl: 'https://push-worker.javiercorderotoscano.workers.dev',
+  vapidPublicKey: 'BOwt_TO_ZSNmimMsQ-s0v5eo6NWcN17NcPxpXwgyB_McqIgcBopZOHJ9iyky5QnJqD9JOf2TRquf9R2atw35CFI',
+} as const;
+
 export const SEO = {
   googleSearchConsole: 'rcKUCESBALVUqnlrzW0AnQh8FqUzluPR9L1zex9eMw0',
   adsenseAccount: 'ca-pub-3280015847198273',

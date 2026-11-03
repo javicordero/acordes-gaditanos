@@ -177,6 +177,44 @@ export function textoDe(coplas, tope = 10, formato = 'plano') {
   return coplas.length > tope ? mensajeResumen(coplas, formato) : mensajeVarias(coplas, formato);
 }
 
+/**
+ * Payload corto de la notificación push: título, cuerpo y a dónde lleva al
+ * pulsarla. Se parece al aviso de Telegram, pero sin autores ni negritas (la
+ * notificación del móvil recorta el texto a dos líneas).
+ */
+export function notificacionDe(coplas, tope = 10) {
+  const total = coplas.length;
+
+  if (total === 1) {
+    return {
+      titulo: 'Nuevos acordes',
+      cuerpo: nombreDe(coplas[0].datos),
+      url: urlAcorde(coplas[0]),
+      tag: 'coplas',
+    };
+  }
+
+  if (total > tope) {
+    return {
+      titulo: `${total} coplas nuevas`,
+      cuerpo: 'Hoy hemos subido un montón de coplas al cancionero.',
+      url: `${SITE}/novedades/`,
+      tag: 'coplas',
+    };
+  }
+
+  const nombres = coplas.map((copla) => nombreDe(copla.datos));
+  const visibles = nombres.slice(0, 3).join(' · ');
+  const resto = nombres.length - 3;
+
+  return {
+    titulo: `${total} coplas nuevas`,
+    cuerpo: resto > 0 ? `${visibles} y ${resto} más` : visibles,
+    url: `${SITE}/lista/`,
+    tag: 'coplas',
+  };
+}
+
 export function ficherosAnadidos(antes, despues) {
   const base = !antes || /^0+$/.test(antes) ? `${despues}~1` : antes;
 

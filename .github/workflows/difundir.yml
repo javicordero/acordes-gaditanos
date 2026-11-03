@@ -1,4 +1,4 @@
-name: Avisar en Telegram
+name: Avisar de coplas nuevas
 
 # Solo cuando un push a master añade ficheros en src/content/acordes.
 # El script vuelve a comprobar que sean .md NUEVOS: editar una copla no avisa.
@@ -80,4 +80,47 @@ jobs:
             esac
           else
             node scripts/difundir.mjs --antes "${ANTES}" --despues "${DESPUES}"
+          fi
+
+      - name: Avisar por push
+        # Independiente de Telegram: si uno falla, el otro ya ha salido (o sale igual).
+        if: always()
+        env:
+          PUSH_WORKER_URL: ${{ vars.PUSH_WORKER_URL }}
+          PUSH_SEND_TOKEN: ${{ secrets.PUSH_SEND_TOKEN }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          MODO: ${{ inputs.modo }}
+          SLUGS: ${{ inputs.slugs }}
+          ANTES: ${{ github.event.before }}
+          DESPUES: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${PUSH_SEND_TOKEN:-}" ] || [ -z "${PUSH_WORKER_URL:-}" ]; then
+            echo "Sin PUSH_SEND_TOKEN / PUSH_WORKER_URL: no se avisa por push."
+            exit 0
+          fi
+
+          # web-push no está en las dependencias: se instala solo para este paso.
+          npm install --no-save --no-audit --no-fund web-push@3 >/dev/null 2>&1
+
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+            case "${MODO}" in
+              prueba)
+                node scripts/push.mjs --test
+                ;;
+              seco)
+                if [ -n "${SLUGS}" ]; then
+                  node scripts/push.mjs --solo "${SLUGS}" --dry-run
+                else
+                  node scripts/push.mjs --antes HEAD~1 --dry-run
+                fi
+                ;;
+              reenviar)
+                node scripts/push.mjs --solo "${SLUGS}"
+                ;;
+            esac
+          else
+            node scripts/push.mjs --antes "${ANTES}" --despues "${DESPUES}"
           fi
