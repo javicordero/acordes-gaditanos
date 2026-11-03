@@ -146,6 +146,9 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
   (negritas con `**`).
 - No se mueven ni se cierran tarjetas que no se hayan trabajado en esta sesión sin
   pedirlo.
+- **«Despriorizadas» no se toca nunca**: ni se planifica ni se implementa lo que esté en esa
+  columna. Si una tarjeta sale de ahí a Pendiente o Prioritarias, entonces sí, y se trata
+  como nueva.
 - `--simular` en cualquier orden de escritura enseña qué haría sin tocar el tablero:
   úsalo cuando la tarjeta no esté clara.
 - Al terminar, di al usuario el título de la tarjeta, qué se ha hecho y en qué columna

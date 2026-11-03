@@ -16,6 +16,8 @@
  *   - Varios comentarios seguidos = un solo encargo: antes de arrancar el agente
  *     se espera `TRELLO_WATCH_AGRUPAR` segundos (45) y se leen todos juntos, para
  *     que haga un plan único y no uno por comentario.
+ *   - **Despriorizadas**: columna que no se toca nunca. Si una tarjeta sale de
+ *     ahí a Pendiente/Prioritarias, cuenta como nueva y se planifica.
  *   - Una sola sesión de OpenCode por tarjeta: el id es fijo
  *     (`ses_trello_<idTarjeta>`) y se guarda en el estado, así cada tarjeta vive
  *     siempre en su misma sesión (también al reiniciar el watcher). Sesión nueva
@@ -121,6 +123,10 @@ const NOMBRES = {
   pendiente: process.env.TRELLO_LISTA_PENDIENTE || ENV.TRELLO_LISTA_PENDIENTE || 'Pendiente',
   prioritaria:
     process.env.TRELLO_LISTA_PRIORITARIAS || ENV.TRELLO_LISTA_PRIORITARIAS || 'Prioritarias',
+  despriorizada:
+    process.env.TRELLO_LISTA_DESPRIORIZADAS ||
+    ENV.TRELLO_LISTA_DESPRIORIZADAS ||
+    'Despriorizadas',
   curso: process.env.TRELLO_LISTA_CURSO || ENV.TRELLO_LISTA_CURSO || 'En curso',
   final: process.env.TRELLO_LISTA_FINAL || ENV.TRELLO_LISTA_FINAL || 'Finalizado',
 };
@@ -207,6 +213,13 @@ function esVigilada(nombreLista) {
     clave === sinTildes(NOMBRES.prioritaria) ||
     clave === sinTildes(NOMBRES.curso)
   );
+}
+
+// Columna donde el usuario aparca lo que no quiere que se toque: no se atiende
+// nunca, ni al planificar ni al implementar. Si saca una tarjeta de ahí a
+// Pendiente o Prioritarias, cuenta como nueva y sí se planifica.
+function esDespriorizada(nombreLista) {
+  return Boolean(nombreLista) && sinTildes(nombreLista) === sinTildes(NOMBRES.despriorizada);
 }
 
 // Orden de la cola:
@@ -453,6 +466,17 @@ function ejecutarAgente(prompt, t, previo) {
 
 async function pasada(estado, primera) {
   const { tarjetas } = await snapshot();
+
+  // Despriorizadas: no se tocan nunca. Solo se apunta en qué columna están, para
+  // saber si más adelante las pasan a Pendiente o Prioritarias (entonces sí
+  // cuentan como nuevas y se planifican). Se apunta igual para cualquier columna
+  // fuera de la cola (Finalizado incluido), así el cambio se detecta.
+  for (const t of tarjetas) {
+    if (esVigilada(t.lista)) continue;
+    const previo = estado.cards[t.id];
+    if (previo) previo.lista = t.lista;
+  }
+
   const vigiladas = tarjetas
     .filter((t) => esVigilada(t.lista))
     .sort(
@@ -473,22 +497,28 @@ async function pasada(estado, primera) {
     const previo = estado.cards[t.id];
     const actuales = t.badges?.comments ?? 0;
 
-    if (!previo) {
-      if (primera) {
+    if (!previo || esDespriorizada(previo.lista)) {
+      if (!previo && primera) {
         // Primera pasada: registrar el estado actual sin disparar nada. Se
         // apunta el id del último comentario para no procesarlo luego.
         const { ultimoId } = await comentariosNuevos(t.id, { comments: actuales }, actuales);
         estado.cards[t.id] = {
           comments: actuales,
           nombre: t.name,
+          lista: t.lista,
           sesion: sesionDe(t, {}),
           ultimoComentario: ultimoId,
         };
         continue;
       }
-      // Tarjeta nueva desde la última pasada.
-      log('🆕 tarjeta nueva:', t.name);
-      const ficha = { comments: actuales, nombre: t.name, sesion: sesionDe(t, {}) };
+      // Tarjeta nueva o que vuelve de Despriorizadas.
+      log(previo ? '🔁 vuelve de Despriorizadas:' : '🆕 tarjeta nueva:', t.name);
+      const ficha = {
+        comments: actuales,
+        nombre: t.name,
+        lista: t.lista,
+        sesion: sesionDe(t, previo || {}),
+      };
       if (!SECO) {
         await ejecutarAgente(promptNuevaTarjeta(t), t, ficha);
         const ahora = await contarComentarios(t.id);
@@ -503,6 +533,7 @@ async function pasada(estado, primera) {
     }
 
     if (!previo.sesion) previo.sesion = sesionDe(t, {});
+    previo.lista = t.lista;
 
     // ¿Hay algo que mirar? El contador manda para no pegar una llamada por
     // tarjeta y pasada; el id del comentario cierra los empates.
@@ -559,8 +590,10 @@ async function main() {
         '    y dentro de cada tramo, la más antigua primero.',
         '',
         '  Los comentarios seguidos se agrupan en un solo encargo (un plan para todos).',
+        '  La columna «Despriorizadas» no se toca nunca; si una tarjeta sale de ahí',
+        '  a Pendiente o Prioritarias, se planifica como nueva.',
         '',
-        'Env: TRELLO_WATCH_INTERVALO (segundos, 30), TRELLO_WATCH_AGRUPAR (segundos de agrupación, 45), TRELLO_WATCH_MARCA (prefijo de los comentarios del agente, por defecto 🤖), TRELLO_WATCH_SESION_NUEVA (id de tarjeta o `1`), TRELLO_LISTA_PRIORITARIAS (por defecto «Prioritarias»). Una sesión de OpenCode por tarjeta: ses_trello_<idTarjeta>. Modelo: opencode-go/deepseek-v4.1-flash.',
+        'Env: TRELLO_WATCH_INTERVALO (segundos, 30), TRELLO_WATCH_AGRUPAR (segundos de agrupación, 45), TRELLO_WATCH_MARCA (prefijo de los comentarios del agente, por defecto 🤖), TRELLO_WATCH_SESION_NUEVA (id de tarjeta o `1`), TRELLO_LISTA_PRIORITARIAS («Prioritarias»), TRELLO_LISTA_DESPRIORIZADAS («Despriorizadas»). Una sesión de OpenCode por tarjeta: ses_trello_<idTarjeta>. Modelo: opencode-go/deepseek-v4.1-flash.',
       ].join('\n'),
     );
     return;
