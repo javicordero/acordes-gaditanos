@@ -3,6 +3,11 @@
 ## Idioma
 - Commits y mensajes: siempre en español
 
+## Sesiones
+- **Renombrar la pestaña al empezar**: en cuanto se sepa qué se va a hacer, poner a la sesión un título explícito y corto (3-6 palabras) con el renombrador de sesión, en vez de dejar el texto del primer mensaje ("siguiente tarea trello", "haz commit de esto"). Formato `<tema>: <qué se hace>` — `Trello: quitar Anuncio2 y Anuncio3`, `Letras: acordes de "Cinco años"`.
+- Si a mitad de la sesión el trabajo cambia de tema, se vuelve a renombrar con el encargo nuevo.
+- El título es para el usuario (pestañas y lista de sesiones): en español, sin id de tarjeta ni ruta de archivo.
+
 ## Commands
 | Comando | Uso |
 |---|---|
