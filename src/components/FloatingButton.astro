@@ -147,7 +147,7 @@ const { class: className } = Astro.props;
     if (instalarBtn && !instalarBtn.dataset.wired) {
       instalarBtn.dataset.wired = 'true';
       instalarBtn.addEventListener('click', () => {
-        eventoPwa('pwa_home_banner_click', { ubicacion: 'portada', componente: 'flotante' });
+        eventoPwa('pwa_install_click_flotante', { ubicacion: 'portada', componente: 'flotante' });
         instalar('flotante');
       });
     }

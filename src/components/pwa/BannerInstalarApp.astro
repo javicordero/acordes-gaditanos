@@ -47,7 +47,7 @@ const { ubicacion } = Astro.props;
       if (btn && !btn.dataset.wired) {
         btn.dataset.wired = 'true';
         btn.addEventListener('click', () => {
-          eventoPwa('pwa_home_banner_click', {
+          eventoPwa('pwa_install_click_banner', {
             ubicacion: banner.dataset.ubicacion,
             componente: 'banner_novedad',
           });

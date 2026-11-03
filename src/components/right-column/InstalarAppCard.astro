@@ -40,7 +40,7 @@ const { class: className } = Astro.props;
       if (btn && !btn.dataset.wired) {
         btn.dataset.wired = 'true';
         btn.addEventListener('click', () => {
-          eventoPwa('pwa_home_banner_click', { ubicacion: 'ficha', componente: 'tarjeta_ficha' });
+          eventoPwa('pwa_install_click_tarjeta', { ubicacion: 'ficha', componente: 'tarjeta_ficha' });
           instalar('tarjeta_ficha');
         });
       }
