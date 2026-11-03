@@ -198,12 +198,12 @@ export function notificacionDe(coplas, tope = 10) {
 
   if (total === 1) {
     const datos = coplas[0].datos;
-    // Misma info que el aviso de Telegram, pero sin el enlace: al pulsar ya se
-    // abre la ficha. Los autores van en una línea para no comerse el cuerpo.
+    // El título es la copla (siempre se ve entero) y el cuerpo, los autores como
+    // en el aviso de Telegram. Sin enlace: al pulsar ya se abre la ficha.
     const autores = lineasAutores(datos).join(' · ');
     return {
-      titulo: 'Nuevos acordes',
-      cuerpo: [nombreDe(datos), autores].filter(Boolean).join('\n'),
+      titulo: nombreDe(datos) || 'Nuevos acordes',
+      cuerpo: autores || 'Nueva copla en el cancionero',
       url: urlAcorde(coplas[0]),
       icono: imagenDe(datos) || undefined,
       tag: 'coplas',

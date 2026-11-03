@@ -16,10 +16,15 @@ self.addEventListener('push', (evento) => {
   }
 
   const titulo = datos.titulo || 'Acordes Gaditanos';
+  // Android solo usa la silueta del badge (y la recolorea), así que necesita el
+  // monocromo; Windows lo enseña tal cual y ahí va la AG sobre el círculo ámbar.
+  const esAndroid = /android/i.test(
+    (typeof navigator !== 'undefined' && navigator.userAgent) || '',
+  );
   const opciones = {
     body: datos.cuerpo || 'Hay coplas nuevas en el cancionero.',
     icon: datos.icono || '/icon-192.png',
-    badge: '/badge-96.png',
+    badge: esAndroid ? '/badge-96.png' : '/badge-color-96.png',
     // Mismo tag para que un aviso nuevo sustituya al anterior y no se apilen.
     tag: datos.tag || 'coplas',
     renotify: false,
