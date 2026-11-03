@@ -260,7 +260,7 @@ async function enviar(payload, subs, seco) {
   if (seco) {
     console.log(`Notificación preparada (no enviada) para ${subs.length} móvil(es):\n`);
     console.log(`  ${payload.titulo}`);
-    console.log(`  ${payload.cuerpo}`);
+    console.log(`  ${payload.cuerpo.replace(/\n/g, '\n  ')}`);
     console.log(`  → ${payload.url}`);
     if (payload.icono) console.log(`  (con foto de la ficha: ${payload.icono})`);
     console.log('');
