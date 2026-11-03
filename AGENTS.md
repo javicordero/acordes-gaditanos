@@ -274,6 +274,7 @@ Vigila el tablero y arranca un agente headless (`opencode run`) cuando aparece u
 - **Sondeo**: `scripts/trello-watch.mjs` pega una llamada a la API de Trello cada 60 s (configurable con `TRELLO_WATCH_INTERVALO`, en segundos). El sondeo no cuesta tokens (es Node puro); solo el arranque del agente los gasta.
 - **Modelo fijado**: `opencode-go/deepseek-v4.1-flash` (no se usa otro). Ojo: `opencode/deepseek-v4.1-flash` (sin `-go`) da «Insufficient account funds».
 - **Flujo**: tarjeta nueva → agente la lee, la pasa a «En curso», escribe el **plan** como comentario y **para**. Un comentario de aprobación («adelante», «dale», «implementa», «hazlo») dispara la implementación; un comentario de cambios reescribe el plan; cualquier otro comentario solo se responde. **Nunca implementa sin aprobación explícita** y **no hace commit ni push** salvo que se pida.
+- **Marca de los comentarios del agente**: todos sus comentarios empiezan por `🤖` (configurable con `TRELLO_WATCH_MARCA`), para distinguirlos de los del usuario. El watcher los usa también para no re-disparar con sus propias respuestas.
 - **Primera pasada** solo registra el estado actual en `.cache/trello-watch.json` y no dispara nada (así no procesa de golpe lo que ya hubiera). Tras cada agente relee el nº de comentarios para no re-disparar con la respuesta del propio agente.
 - **Lock** de una sola instancia en `.cache/trello-watch.lock` (si hay otro watcher vivo, sale). Estado y lock están en `.cache/` (gitignored).
 - **Puertos**: el agente puede usar 4322/4323/4324, nunca el 4321 (del usuario).

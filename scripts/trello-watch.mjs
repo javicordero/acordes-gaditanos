@@ -17,6 +17,8 @@
  * Modelo del agente: opencode-go/deepseek-v4.1-flash (fijado; no se usa otro).
  * Puertos: el agente puede usar 4322/4323/4324, nunca el 4321.
  * Sin commit ni push salvo que el usuario lo pida explícitamente.
+ * Los comentarios del agente empiezan por «🤖» (TRELLO_WATCH_MARCA) para
+ *   distinguirlos de los del usuario y para no re-disparar con sus respuestas.
  *
  * Uso:
  *   node scripts/trello-watch.mjs              vigilar en bucle
@@ -40,6 +42,9 @@ const LOCK = join(CACHE, 'trello-watch.lock');
 const API = 'https://api.trello.com/1';
 const MODELO = 'opencode-go/deepseek-v4.1-flash';
 const INTERVALO_MS = (parseInt(process.env.TRELLO_WATCH_INTERVALO || '60', 10) || 60) * 1000;
+// Prefijo que el agente pone al principio de sus comentarios para distinguirlos
+// de los del usuario. Sirve también para que el watcher ignore sus respuestas.
+const MARCA = process.env.TRELLO_WATCH_MARCA || '🤖';
 
 const UNA_VEZ = process.argv.includes('--una-vez');
 const SECO = process.argv.includes('--seco');
@@ -147,12 +152,22 @@ async function contarComentarios(idTarjeta) {
   return c?.badges?.comments ?? 0;
 }
 
-async function ultimoComentario(idTarjeta) {
+function esComentarioDelAgente(texto) {
+  return String(texto || '').trim().startsWith(MARCA);
+}
+
+// Último comentario que NO es del agente (el del usuario). Devuelve null si los
+// comentarios recientes son todos del agente.
+async function ultimoComentarioUsuario(idTarjeta) {
   const acciones = await api(`/cards/${idTarjeta}/actions`, {
-    consulta: { filter: 'commentCard', limit: 3 },
+    consulta: { filter: 'commentCard', limit: 8 },
   });
-  if (!Array.isArray(acciones) || acciones.length === 0) return null;
-  return acciones[0]?.data?.text || null;
+  if (!Array.isArray(acciones)) return null;
+  for (const a of acciones) {
+    const texto = a?.data?.text || '';
+    if (!esComentarioDelAgente(texto)) return texto;
+  }
+  return null;
 }
 
 // ---------------------------------------------------------------------------
@@ -216,7 +231,7 @@ function promptNuevaTarjeta(t) {
     '3. Escribe el plan (objetivo, cambios archivo por archivo, pasos, comprobación, riesgos y dudas) y coméntalo en la tarjeta con `npm run trello -- comentar <id> --texto-archivo .cache/plan-trello.md`.',
     '4. PARA. No implementes nada todavía: espera a que el usuario apruebe el plan con un comentario en la tarjeta.',
     '',
-    'Reglas: trabaja en local (sin commit ni push). No uses el puerto 4321 (es del usuario); si necesitas servidor, 4322/4323/4324. Mensajes y comentarios en español.',
+    `Reglas: trabaja en local (sin commit ni push). No uses el puerto 4321 (es del usuario); si necesitas servidor, 4322/4323/4324. Mensajes y comentarios en español. Todos tus comentarios en Trello deben empezar con «${MARCA}» para distinguirlos de los del usuario.`,
   ].join('\n');
 }
 
@@ -238,7 +253,7 @@ function promptNuevoComentario(t, texto) {
     '- Si pide cambios o correcciones al plan: reescribe el plan, coméntalo en la tarjeta y vuelve a parar.',
     '- Si es otra cosa (una pregunta, un "ok", información): respóndele en un comentario de la tarjeta y no toques nada más.',
     '',
-    'Reglas: trabaja en local (sin commit ni push). No uses el puerto 4321 (es del usuario); si necesitas servidor, 4322/4323/4324. Mensajes y comentarios en español.',
+    `Reglas: trabaja en local (sin commit ni push). No uses el puerto 4321 (es del usuario); si necesitas servidor, 4322/4323/4324. Mensajes y comentarios en español. Todos tus comentarios en Trello deben empezar con «${MARCA}» para distinguirlos de los del usuario.`,
   ].join('\n');
 }
 
@@ -294,8 +309,13 @@ async function pasada(estado, primera) {
 
     const actuales = t.badges?.comments ?? 0;
     if (actuales > previo.comments) {
-      const ultimo = await ultimoComentario(t.id);
-      log('💬 comentario nuevo en', t.name, ':', String(ultimo || '').slice(0, 80));
+      const ultimo = await ultimoComentarioUsuario(t.id);
+      if (!ultimo) {
+        // Solo comentarios del agente: re-baseline sin disparar.
+        estado.cards[t.id].comments = actuales;
+        continue;
+      }
+      log('💬 comentario del usuario en', t.name, ':', String(ultimo).slice(0, 80));
       if (!SECO) {
         await ejecutarAgente(promptNuevoComentario(t, ultimo));
         estado.cards[t.id].comments = await contarComentarios(t.id);
@@ -314,7 +334,7 @@ async function main() {
         '  node scripts/trello-watch.mjs --una-vez  una sola pasada',
         '  node scripts/trello-watch.mjs --seco     no arranca agente, solo avisa',
         '',
-        'Env: TRELLO_WATCH_INTERVALO (segundos). Modelo: opencode-go/deepseek-v4.1-flash.',
+        'Env: TRELLO_WATCH_INTERVALO (segundos), TRELLO_WATCH_MARCA (prefijo de los comentarios del agente, por defecto 🤖). Modelo: opencode-go/deepseek-v4.1-flash.',
       ].join('\n'),
     );
     return;
