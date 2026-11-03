@@ -33,8 +33,9 @@ No hay scripts de test ni lint configurados.
 Sitio 100% estático (SSG) con Astro content collections. Middleware solo redirige `/formateadores` y `/coming-soon` → 404.
 
 ### Content Collections (`src/content/config.ts`)
-- **`acordes`** — 400+ entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`.
-- **`autores`** — 11 autores. Frontmatter: `nombre`, `img`, `type` (`musica`|`letra`), `order`, `destacado`.
+- **`acordes`** — más de 570 entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`, `modalidad` y `letraTitulo` (opcionales).
+- **`autores`** — 12 autores. Frontmatter: `nombre`, `img`, `type` (`musica`|`letra`), `order`, `destacado`.
+- **`donaciones`** — un solo `datos.md` con la lista de donantes (`donaciones: [{ fecha, importe, donante? }]`); la pinta `DonationIndicator.astro`.
 - **`acordes3`** — borradores del panel `/admin`: fichas nuevas o a medias que aún no se publican. Se promueven a `acordes` con `npm run promover`. Una ficha que solo existe en el ordenador (sin subir) vive aquí, no en `acordes`: el panel la lista con la marca LOCAL y `npm run letras -- auditar` la da por buena aunque no esté publicada.
 - **`acordes2`** — colección provisional para los acordes importados del cancionero. Mismo esquema que `acordes`, pero su contenido (`.md`) no se versiona y los acordes van sin envolver en `<a>` hasta que se promueven.
 
@@ -64,12 +65,12 @@ Cuando una música tiene otra letra, los acordes caen sobre las mismas sílabas.
 - Marcas en el `.txt` de la letra: `---` sola corta entre líneas, `|` corta entre palabras (`Apaleado | y humillado`) y `-` sola salta un verso de la base sin gastar letra. Sin marcas, el reparto es automático (programación dinámica).
 - `npm run acordes:aplicar -- --base <slug> --letra <txt> --titulo "..."` — escribe `src/content/acordes/<pieza>-<agrupación>-<título>.md` con el frontmatter de la base (cambia `letraTitulo`, `fraseClave` y `date`, y autores/vídeo si se pasan). `--hermanas` añade las fichas de la misma pieza, agrupación, año **y autoría de música** como candidatas; `--destino acordes2` escribe en la colección provisional. El informe marca `⚠️` (más de una sílaba de desfase) y `~` (una).
 - `npm run acordes:revisar -- --slug <slug> [--base <slug>]` — editor local en el puerto 4324, **en modo texto**: tres columnas con la ficha original a la izquierda, el `<pre>` editable en el centro (acordes sin las etiquetas, encima de su sílaba) y la ficha base a la derecha. **Alt+←/→** mueve el acorde una columna, se puede escribir y pegar como en cualquier editor, y al guardar se vuelven a envolver los acordes en `<a>` conservando los `data-postura`. Antes de escribir comprueba que no haya tokens inválidos, acordes perdidos ni columnas fuera de la letra, y deja respaldo en `.cache/planes/<slug>.bak.md`. Los acordes que no están en el glosario salen en ámbar (y avisan al guardar). Marca igual que el panel lo que pasa de 55 columnas. Con `--silabas` se abre el revisor antiguo, que mueve por sílaba en vez de por columna.
-- `npm run auditar:pre` — red de seguridad del editor: desenvolver y volver a envolver las 603 fichas tiene que dar exactamente el mismo `<pre>` (incluidos `data-postura`, `(Sorda)` y los espacios). Si falla, el editor no es de fiar.
+- `npm run auditar:pre` — red de seguridad del editor: desenvolver y volver a envolver todas las fichas de `acordes` tiene que dar exactamente el mismo `<pre>` (incluidos `data-postura`, `(Sorda)` y los espacios). Si falla, el editor no es de fiar.
 
 - `npm run auditar:editor` — prueba las operaciones de estructura del editor (separar y juntar por palabras) con casos fijos: `data-postura`, `(Sorda)`, corte por el inicio/fin de la palabra, ida y vuelta y ficha sin línea de acordes. Falla si el `<pre>` resultante no es el esperado.
 
 - `npm run acordes:evaluar` — mide aplicando los acordes de una ficha a la letra de su hermana. Empareja por orden de aparición (no «el mismo acorde más cercano») y cuenta exactos / ±1 / **>1 sílaba**. Contra fichas hechas a mano el 100 % exacto no existe (se llevan ±1 entre sí), así que el número que importa es el de >1. `--pares a>b,c>d` elige pares, `--max-fuera 12` lo usa como tope y sale con 1 si empeora. Baseline de las fichas actuales: ~61 % exactos, ~28 % ±1, ~9 % >1.
-- `npm run auditar:acordes` — relee y repinta las 562 fichas y comprueba que no se pierde ningún acorde ni cambia de sitio. La primera pasada normaliza (quita espacios de más y pega cada acorde a su sílaba); a partir de ahí el dibujo tiene que ser idéntico. Falla si una ficha no se puede leer o pierde acordes.
+- `npm run auditar:acordes` — relee y repinta todas las fichas de `acordes` y comprueba que no se pierde ningún acorde ni cambia de sitio. La primera pasada normaliza (quita espacios de más y pega cada acorde a su sílaba); a partir de ahí el dibujo tiene que ser idéntico. Falla si una ficha no se puede leer o pierde acordes.
 
 ### Buscar la letra en internet y llevar la cola
 `letras-pendientes.md` es la lista de coplas de las que solo tenemos una frase y el nombre de la agrupación (a veces aproximado). La tabla es la fuente de verdad y lleva el estado de cada una.
@@ -138,9 +139,9 @@ Todo en `src/lib/orden.ts`, con dos comparadores que comparten las piezas (`comp
 
 **Tipo de pieza** (`ORDEN_PIEZAS`): popurrí, final de popurrí, cuarteta, estribillo, pasodoble, tango, presentación. Se compara por prefijo, así encajan «Final de popurrí/popurri/popurí», «Presentación Original» o «Pasodoble Inédito»; lo que no case va al final por orden alfabético. Las equivalencias puntuales van en `EQUIVALENCIAS_PIEZAS`: el `Credo` y el `Testamento` cuentan como cuarteta.
 
-**`date` ↓** es la fecha de alta en la web, no la de la copla; para cerrar empates se usa pieza A-Z y slug A-Z (antes, las fichas empatadas quedaban en el orden en que `getCollection` devuelve los ficheros). **`/lista` es la excepción**: conserva su orden local por tipo de pieza, que es lo que anuncia su meta description.
+**`date` ↓** es la fecha de alta en la web, no la de la copla; para cerrar empates se usa pieza A-Z y slug A-Z. **`/lista` es la excepción**: conserva su orden local por tipo de pieza, que es lo que anuncia su meta description.
 
-**Recuento de `/lista`**: la página separa **coplas** y **letras extras** («534 coplas y 4 letras extras») con `contarCoplas` (`src/lib/letras.ts`), que agrupa igual que las letras alternativas (tipo base + agrupación + año): cada grupo es una copla y el resto de fichas son letras. No sirve mirar qué fichas llevan `letraTitulo`: las originales de DSAS3, La Azotea y Los Colgaos también lo llevan. Si un año no tiene letras, solo se ponen las coplas («38 coplas»). `/lista2` usa el mismo recuento.
+**Recuento de `/lista`**: la página separa **coplas** y **letras extras** («554 coplas y 22 letras extras») con `contarCoplas` (`src/lib/letras.ts`), que agrupa igual que las letras alternativas (tipo base + agrupación + año): cada grupo es una copla y el resto de fichas son letras. No sirve mirar qué fichas llevan `letraTitulo`: las originales de DSAS3, La Azotea y Los Colgaos también lo llevan. Si un año no tiene letras, solo se ponen las coplas («38 coplas»). `/lista2` usa el mismo recuento.
 
 ### Postura predeterminada por acorde
 En el `<pre>` se puede fijar la postura con la que se abre un acorde con `data-postura`:
@@ -153,6 +154,7 @@ La postura se escribe de la 6ª a la 1ª cuerda (`x` = muda) y debe coincidir ex
 | Route | File |
 |---|---|
 | `/acordes/[id]` | `pages/acordes/[id].astro` |
+| `/acordes3/[id]` | `pages/acordes3/[id].astro` — previsualización de una ficha en borrador (`noindex`, fuera del sitemap; no se enlaza desde ningún listado) |
 | `/acordes2/[id]` | `pages/acordes2/[id].astro` — previsualización local de acordes importados (no versionada; `noindex`, fuera del sitemap) |
 | `/lista2` | `pages/lista2.astro` — listado local de `acordes2` (no versionada; `noindex`, fuera del sitemap) |
 | `/autor/musica/[autorSlug]` | `pages/autor/musica/[autorSlug].astro` |
@@ -168,11 +170,11 @@ La postura se escribe de la 6ª a la 1ª cuerda (`x` = muda) y debe coincidir ex
 | `/api/fetch-url` | `pages/api/fetch-url.ts` — proxy CORS (GET `?url=...`) |
 | `/formateadores/*` | Redirigido a 404 por middleware (páginas existen pero ocultas) |
 
-**Importante**: `/coming-soon`, `/en-construccion`, `/acordes2`, `/lista2` y `/reconocer-acorde` se filtran del sitemap. `/acordes2`, `/lista2` y `/reconocer-acorde` además emiten `noindex`. `/formateadores` redirige a 404.
+**Importante**: la lista de rutas que quedan fuera del sitemap está en `astro.config.mjs` (es la fuente de verdad: `/coming-soon`, `/en-construccion`, `/acordes2`, `/acordes3`, `/lista2`, `/reconocer-acorde`, `/admin`, `/estudio` y `/buscar`). Además emiten `noindex` `/acordes2`, `/acordes3`, `/lista2`, `/reconocer-acorde`, `/admin` y `/buscar`. `/formateadores` redirige a 404.
 
 ### Glosario de acordes
 Los acordes del `<pre>` son interactivos: al pulsarlos se abre un popover con su diagrama.
-- Datos: `src/data/glosario-acordes.json` (481 acordes, ~1.278 posiciones), generados una sola vez con `node scripts/importar-glosario.mjs` a partir del glosario público de LaCuerda.net. El script cachea en `.cache/glosario` (ignorado por git) y no se ejecuta en build.
+- Datos: `src/data/glosario-acordes.json` (529 acordes, ~1.342 posiciones), generados una sola vez con `node scripts/importar-glosario.mjs` a partir del glosario público de LaCuerda.net. El script cachea en `.cache/glosario` (ignorado por git) y no se ejecuta en build.
 - Renderizador único: `src/lib/diagrama.ts` (`svgDiagrama`) genera el SVG en build y en el navegador. No hay imágenes externas.
 - Parser de notación española: `src/lib/acordes.ts` (`parsearAcorde`, `buscarEnIndice`, `slugAcorde`). Admite enarmonías, `7M`/`M7`, `m7/5`, `/add9`, bajos con barra y raíces en mayúsculas (`MIm`, `SI7`).
 - Componentes: `DiagramaAcorde.astro`, `GlosarioPopover.astro` y `AcordesDeLaPieza.astro` (incluye la nota «Pincha en cualquier acorde…», encima del transportador).
@@ -181,7 +183,7 @@ Los acordes del `<pre>` son interactivos: al pulsarlos se abre un popover con su
 - Cobertura: `node --experimental-strip-types scripts/auditar-glosario.ts` falla si algún acorde válido del cancionero no tiene diagrama.
 
 ### Autoscroll
-Implementado en `src/components/page/AcordeCard.astro`. Activado por el botón de play y regulado con 1x–5x, que se despliegan en vertical bajo el botón. El control flota en la esquina superior derecha del cifrado (`top: -22px`) y el contenedor del `<pre>` lleva `padding-top: 26px` para que no tape la primera línea; en móvil el botón mide 28 px. El antiguo tutorial del botón «?» se eliminó.
+Implementado en `src/components/page/AcordeCard.astro`. Activado por el botón de play y regulado con 1x–5x, que se despliegan en vertical bajo el botón. El control flota en la esquina superior derecha del cifrado (`top: -22px`) y el contenedor del `<pre>` lleva `padding-top: 26px` para que no tape la primera línea; en móvil el botón mide 28 px.
 
 ### Transportador
 Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astro` (debajo de la cejilla). La lógica está en `src/lib/transporte.ts` (`transportarEtiqueta`): cambia solo la raíz y el bajo, y conserva el sufijo y los espacios. `#glosario-datos` incluye las 12 transposiciones de cada acorde de la pieza, así que el popover y los diagramas del panel funcionan en cualquier tono. Tras transportar, `AcordeCard.astro` reparte los espacios de cada línea para que los acordes sigan sobre su sílaba. Sin persistencia; la cejilla no cambia.
@@ -202,55 +204,11 @@ Los botones viven en el bloque «Transportar acordes» de `AcordesDeLaPieza.astr
 - `node --experimental-strip-types scripts/auditar-busqueda.ts` comprueba el top-1 de 12 consultas reales (erratas, prefijos, orden libre, año, autor, tipo) y falla si el ranking se degrada.
 - Eventos: `buscar_sugerencia_click` (con `origen`: `raton`|`teclado`), `buscar_ver_resultados` (con `origen`: `panel`|`formulario` y `total` en el panel) y `buscar_sin_resultados` (consulta truncada a 40 caracteres). Los que navegan fuera de la página se mandan con `transport_type: 'beacon'` para que no se pierdan al descargar la siguiente.
 
-### Canales de avisos (WhatsApp y Telegram)
-- Enlaces únicos en `src/data/canales.json` (`whatsapp` y `telegram`); se usan en el footer, en la banda de suscripción y en `Layout.astro` (`sameAs` de `Organization`).
-- **Telegram se publica solo**: `.github/workflows/difundir.yml` se dispara en cada push a `master` que toque `src/content/acordes/**` y llama a `scripts/difundir.mjs`. El script vuelve a comprobar con `git diff --diff-filter=A` que sean **`.md` añadidos** en `src/content/acordes/`: editar, corregir o cambiar la fecha de una copla ya publicada **no avisa**. Los PDFs de `scripts/generate-pdf.mjs` y la carpeta local `acordes2` tampoco cuentan.
-- **Modo silencioso**: si el asunto del último commit lleva `[sin aviso]`, `difundir.mjs` no envía nada (también con `SALTAR_AVISO=1`). Es lo que usa la skill cuando se pide «súbelo sin avisos»: la copla se publica igual, pero no salta ningún canal.
-- El mensaje se agrupa por push: 1 copla → ficha; de 2 a 10 → lista `• Pieza Agrupación` + enlace a `/lista/`; más de 10 (importación) → resumen con enlace a `/novedades/`. Antes de enviar espera hasta 5 minutos a que la ficha responda 200 (Netlify tarda 1-2 min), para no publicar un enlace roto.
-- Formato acordado (sin paréntesis en el año; pieza y agrupación en negrita y sin año, y línea en blanco antes de los autores):
-  ```
-  🎶 Nuevos acordes
+### Canales de avisos (WhatsApp, Telegram, X y push)
 
-  *Pasodoble La Marea*
+Resumen: los enlaces de los canales viven en `src/data/canales.json` y `CanalCallout.astro` los pinta en la home y en `/pedir-copla`. **Telegram se publica solo** desde `.github/workflows/difundir.yml` cuando el push añade `.md` en `src/content/acordes/`; con `[sin aviso]` en el asunto (o `SALTAR_AVISO=1`) no sale nada. El mismo workflow lanza `scripts/push.mjs` para las notificaciones de la PWA. WhatsApp (`npm run wa`) y X (`npm run x`) se lanzan desde el PC con tu Chrome, nunca desde CI, y no tienen API oficial. El texto de todos los canales sale de `scripts/lib/aviso.mjs`.
 
-  Música: Tatán
-  Letra: Antonio Martín
-
-  https://acordesgaditanos.com/acordes/pasodoble-la-marea/
-  ```
-  WhatsApp marca la negrita con `*…*`; Telegram con `<b>…</b>` y `parse_mode: HTML` (lo pone `difundir.mjs`). El año no se pone en el aviso. Si música y letra son la misma persona se juntan en `Música y letra: …`. La vista previa la pone Telegram (y WhatsApp) con el `og:image` de la ficha.
-- Local: `npm run difundir -- --solo <slug> --dry-run`, `--test`, `--antes <sha>`. La Action también admite `workflow_dispatch` con modo `prueba` (manda un mensaje de prueba al canal), `seco` (con `slugs` previsualiza esas coplas; sin ellos compara `HEAD~1`) o `reenviar`.
-- **Secretos**: `TELEGRAM_BOT_TOKEN` (repo → Settings → Secrets → Actions) y, si se quiere cambiar, la variable `TELEGRAM_CHAT_ID` (por defecto `@acordesgaditanos`). El token no se imprime nunca. El bot debe ser administrador del canal con «Publicar mensajes», o Telegram devuelve `403`.
-- **WhatsApp no tiene API oficial**: las APIs no oficiales (Whapi, Baileys…) van contra los términos de WhatsApp, cuestan 10-30 €/mes y arriesgan el número y el canal, así que no se usan. En su lugar, `scripts/whatsapp.mjs` controla WhatsApp Web con Playwright y **tu Chrome** (perfil propio `wa-profile/`, gitignored) desde este equipo: escribe el aviso en el canal «Acordes Gaditanos» y **envía solo** tras 15 s de margen (si se cierra la ventana, no se envía). Se lanza desde la skill `subir-acorde` después del push (`npm run wa -- --solo <slug>`), nunca desde CI: no hay runner ni secretos.
-  - `npm run wa:login` — una sola vez (y cuando caduque): abre Chrome con el QR, se escanea y se cierra solo. Código de salida `2` = sesión caducada.
-  - `npm run wa -- --solo <slug>[,<slug>]` — espera a que la ficha responda 200, abre el canal, vacía el borrador si lo hubiera, escribe (saltos con Shift+Enter) y envía solo a los 15 s. `--manual` deja el mensaje escrito y espera el Enter; `--margen <seg>` cambia el margen; `--dry-run` solo enseña el texto; `--comprobar` abre el canal y captura sin escribir; `--forzar` republica.
-  - **Vista previa con imagen**: WhatsApp busca la página y el `og:image` en paralelo mientras se escribe; si se envía antes de que llegue, el aviso sale sin imagen y la tarjeta se descarta (pasó con «El Cádiz que a ti te enamora» y «Los Sirenitas»). Por eso, antes de enviar, el script espera a que el pie del compositor tenga ya una miniatura (`#main footer img`), hasta `--espera-previa <seg>` (45). Si no llega, reescribe el aviso una vez para relanzar la búsqueda y, si sigue sin llegar, **envía igualmente** avisando por consola y dejando captura `previa-sin-imagen` en `wa-debug/`: nunca bloquea la publicación. `--sin-previa` se salta la espera (comportamiento antiguo).
-  - Selectores por `role`/`aria-label`/`title` (nunca clases: WhatsApp las ofusca), con variantes es/en. Ante fallo deja captura en `wa-debug/` y sale con `3` (canal), `4` (compositor) o `5` (no enviado).
-  - `wa-enviados.json` (gitignored) evita publicar dos veces el mismo aviso: solo se marca cuando se detecta el envío.
-  - El texto sale de `scripts/lib/aviso.mjs`, el mismo módulo que usa `difundir.mjs`, así que Telegram y WhatsApp nunca se separan.
-  - Si el mensaje se pega a mano, se copia el mismo texto del canal de Telegram; el enlace genera la vista previa.
-- **X (@AcordesGaditano)**: `scripts/x.mjs` hace lo mismo con tu Chrome (perfil `x-profile/`, gitignored): escribe el tuit, lo **publica solo** a los 15 s (`--manual` para dejarlo escrito y esperar «Publicar») y lo confirma en el perfil. `npm run x:login` una vez (comprueba que la cuenta es la esperada); `npm run x -- --solo <slug>`. Formato: «🆕 Nuevos acordes en la web», `🎭 Pieza – Agrupación`, línea en blanco, `🎵` música y `✏️` letra (una sola línea si es la misma persona) y `🔗` al final. Contador tipo X (enlace = 23, emoji = 2, tope 280; si se pasa, quita autores y luego recorta el nombre, nunca la URL). Adjunta el `img` del `.md` validado por bytes mágicos y tamaño (≤5 MB). Verifica el tuit en `x.com/<cuenta>` antes de marcarlo en `x-enviados.json`.
-  - **Etiquetas en la imagen**: se etiquetan las cuentas de `ETIQUETAS` (`scripts/lib/tuit.mjs`): @Carnavaladictos y @Orteguilla25, en cada tuit con imagen. Va por la UI de X («Etiquetar personas»), es best-effort (si una cuenta no aparece se avisa y se publica igual) y se puede cambiar con `--etiquetar @a,@b` o quitar con `--sin-etiquetas`.
-  - Los enlaces externos **no tienen penalización escrita** en el algoritmo publicado (`open_link` pesa +0,2), pero sí un efecto medido de menos alcance. Por eso: un tuit por copla, con imagen, texto que se entiende sin el enlace y sin repetir avisos.
-- Web: `src/components/page/CanalCallout.astro` con dos variantes: `linea` (home, tras «Ver más novedades»: «¿Te aviso…? Únete a nuestros canales de WhatsApp y Telegram» con dos enlaces) y `destacado` (`/pedir-copla`, encima de `PeticionesStats`: párrafo con el formato del texto de la página y dos botones con icono). Texto propio por `ubicacion`.
-- `/suscribirse` explica qué llega y cómo darse de baja, con QR en escritorio. Los QR se generan una sola vez con `npm run qr` y van versionados en `public/qr-*.svg` (no se generan en el build). Las tarjetas de WhatsApp y Telegram son enlaces a los canales; la sección «Avisos en la app» es el interruptor de las notificaciones push (ver más abajo).
-
-### Avisos push de la PWA
-Notificación al móvil cuando se publica una copla, **solo para quien tiene la app instalada** (en iOS/iPadOS, además, 16.4 o superior; en Safari normal no existe). Es independiente de los canales: no hereda suscriptores, cada móvil se da de alta una vez.
-
-- **Disparo**: el mismo que Telegram. `.github/workflows/difundir.yml` ejecuta `scripts/push.mjs` en un paso aparte, después del de Telegram y con `if: always()` (si falla uno, el otro ya ha salido). Solo cuentan los `.md` **añadidos** en `src/content/acordes`; `[sin aviso]` y `SALTAR_AVISO=1` lo silencian igual.
-- **Worker**: `workers/push-worker` (Cloudflare, binding KV `PUSH`, secreto `PUSH_SEND_TOKEN`). Solo guarda suscripciones: `POST /subscribe`, `POST /unsubscribe`, `GET /subs` y `DELETE /subs/:id` (estas dos con Bearer), `GET /count`. Clave de KV = `sub:<sha256(endpoint)>`, así que repetir la suscripción no duplica. Acepta POST solo desde `acordesgaditanos.com` y `localhost:4321-4323`.
-- **Despliegue a mano**: *Edit code* → pegar `workers/push-worker/src/index.js` → *Deploy*. **No hay `wrangler.toml` a propósito**: el binding se declara en *Settings → Bindings* y un `wrangler deploy` desde el repo lo borraría (como pasó con `comments-worker`). Instrucciones en `workers/push-worker/README.md`.
-- **Servicio worker**: `public/push-sw.js` (handlers `push` y `notificationclick`, enfoca la pestaña si ya está abierta) se engancha con `workbox.importScripts: ['push-sw.js']` en `astro.config.mjs`. No precachea nada nuevo. El badge (`badge-96.png`, que genera `node scripts/generar-iconos-pwa.mjs --solo-badge`) es la AG blanca sobre transparente: Android y Windows usan solo la silueta y la pintan con su color, así que un badge a color sale como un círculo liso. No se puede elegir el color del círculo; lo pone el sistema.
-- **Cliente**: `src/lib/pwa/avisos.ts` (`estadoAvisos`, `activarAvisos`, `desactivarAvisos`, `sincronizarAvisos`). El permiso del sistema se pide **siempre tras un clic**; pedirlo al cargar hace que Chrome lo bloquee. `src/pwa.ts` llama a `sincronizarAvisos()` en cada carga: si el permiso se revocó en los ajustes del móvil, borra la suscripción; si concedió pero falta la suscripción, la vuelve a crear.
-- **Dónde se ofrece**: barra flotante `AvisoAvisos.astro` la primera vez que se abre la app instalada (y a los 30 días si dijo «Ahora no», igual que la de instalar; se aparta del anuncio ancla de Auto Ads). Para revisar el estilo sin instalar: `?avisos=si` en la URL. El interruptor permanente (activar/desactivar/estado bloqueado) está en la sección «Avisos en la app» de `/suscribirse`, a la que ya lleva el enlace «Recibir avisos» del footer.
-- **Baja**: desde el interruptor (unsubscribe + `POST /unsubscribe`), desde los ajustes de notificaciones del móvil o desinstalando. En los dos últimos casos el push falla con 404/410 y `push.mjs` borra la suscripción del worker.
-- **Texto**: `notificacionDe()` en `scripts/lib/aviso.mjs`, junto a los mensajes de Telegram/WhatsApp. 1 copla → título con la pieza y la agrupación y cuerpo con los autores (`Música: … · Letra: …`, o `Música y letra: …`), sin enlace porque al pulsar ya se abre la ficha. 2-10 → «N coplas nuevas» con tres nombres; más de 10 → resumen. **Al pulsarla, una sola copla abre su ficha y varias abren `/novedades/`** (antes, 2-10 abría `/lista/`). El payload lleva `titulo`, `cuerpo`, `url`, `tag` y, si es una sola copla, `icono` con la `img` de la ficha (la foto de la agrupación). Esa imagen se comprueba antes de enviar (`comprobarImagen`, HEAD con 4 s): si no responde o no es una imagen, se quita y sale el icono de la app, para no pintar un hueco roto. iOS ignora `icono` y muestra siempre el icono de la app.
-- **Envío**: `scripts/push.mjs` con `web-push` en Node (no en el worker: el cifrado de Web Push en el edge es más frágil y la clave privada se quedaría en Cloudflare). `--solo`, `--antes/--despues`, `--dry-run`, `--test`, `--tope`, `--generar-claves`. Lista los suscriptores del worker por páginas y envía en tandas de 10; borra las 404/410.
-- **Claves VAPID**: `npm run push -- --generar-claves` crea el par y **escribe la pública en `AVISOS.vapidPublicKey`** (`src/lib/constants.ts`); la privada se pega en `.env` y en los secretos. Si se regeneran, **todas** las suscripciones dejan de valer.
-- **Secretos/variables de la Action**: `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` (`mailto:…`), `PUSH_SEND_TOKEN` y la variable `PUSH_WORKER_URL`. En local, los mismos en `.env` (el script los lee, como `trello.mjs`).
-- **Eventos**: `pwa_push_visto`, `pwa_push_activar`, `pwa_push_activado`, `pwa_push_denegado`, `pwa_push_ahora_no`, `pwa_push_desactivado`, `pwa_push_error` (con `ubicacion`: `barra` o `suscribirse`).
-- **Privacidad**: se guarda el endpoint del móvil, sus dos claves y el `user-agent` (para saber en qué plataforma falla un envío); ni nombre, ni correo, ni IP. La clave privada VAPID no está en el repo.
+El detalle (formato del mensaje, flags de cada script, worker de push, VAPID, secretos y eventos) está en `docs/operativa/avisos.md`: **léelo antes de tocar avisos**.
 
 ### Prefetch y transiciones de página
 - **Prefetch**: `prefetch: { prefetchAll: true, defaultStrategy: 'hover' }` en `astro.config.mjs`. Precarga el HTML de los enlaces al pasar el ratón o al enfocar con teclado, descarta conexiones lentas (`saveData`, 2g) y enlaces externos. En táctil no hay hover, así que `src/components/utils/PrefetchTap.astro` precarga en `pointerdown` con `prefetch()` de `astro:prefetch` (comparte la lista de URLs ya precargadas; no duplica peticiones).
@@ -273,23 +231,10 @@ Credenciales en `.env` (gitignored): `TRELLO_KEY` y `TRELLO_TOKEN` con scope `re
 - La API de Trello exige `key`+`token` incluso en tableros públicos: sin credenciales no hay lectura. Si el token caduca, se repite el enlace `https://trello.com/1/authorize?...&key=<TRELLO_KEY>`.
 
 ### Watcher de Trello (`npm run trello:watch`)
-Vigila el tablero y arranca un agente headless (`opencode run`) cuando aparece una tarjeta nueva o un comentario nuevo del usuario. Es la vía para el «charla por Trello»: el usuario crea/comenta y el agente contesta en la tarjeta.
 
-- **Sondeo**: `scripts/trello-watch.mjs` pega una llamada a la API de Trello cada 30 s (configurable con `TRELLO_WATCH_INTERVALO`, en segundos). El sondeo no cuesta tokens (es Node puro); solo el arranque del agente los gasta.
-- **Cola por tramos**: primero las de **En curso con comentario nuevo**, después **Prioritarias** y después **Pendiente**. Las de «En curso» se ordenan por su **posición en la columna** (arriba primero); «Prioritarias» y «Pendiente» por **fecha de creación** (los 8 primeros hex del id), la más antigua primero, porque ahí Trello apila las nuevas arriba. Para mantener ese orden, `empezar`/`terminar`/`mover` dejan la tarjeta al final de la columna. `npm run trello -- pendientes` lista Prioritarias y Pendiente por antigüedad.
-- **Una planificación por pasada**: se planifica **la primera tarjeta de la cola que no tenga plan** (nueva, salida de Despriorizadas o que quedó registrada sin planificar) y se para; la siguiente espera a la pasada de 30 s. El estado guarda `planificado`; al arrancar, las tarjetas sin ese campo se marcan como planificadas si ya tienen algún comentario del agente.
-- **Comentarios agrupados**: antes de arrancar el agente espera `TRELLO_WATCH_AGRUPAR` segundos (45) y relee, así varios comentarios seguidos van en **un solo encargo** y el agente hace un plan único, no uno por comentario.
-- **Despriorizadas**: la columna «Despriorizadas» (`TRELLO_LISTA_DESPRIORIZADAS`) no se toca **nunca**: ni se planifica ni se implementa. El estado apunta en qué columna está cada tarjeta; si una sale de ahí a Pendiente o Prioritarias, cuenta como nueva y se planifica. Para que no se coja por error, `esVigilada` solo acepta Pendiente, Prioritarias y En curso.
-- **Modelo fijado**: `opencode-go/deepseek-v4.1-flash` (no se usa otro). Ojo: `opencode/deepseek-v4.1-flash` (sin `-go`) da «Insufficient account funds».
-- **Una sesión de OpenCode por tarjeta**: el id es fijo (`ses_trello_<idTarjeta>`) y se guarda en `.cache/trello-watch.json` (campo `sesion`), así cada tarjeta vive siempre en **su misma sesión**, también al reiniciar el watcher. Sesión nueva solo al empezar otra tarjeta. `--nueva-sesion [id|shortLink]` (o `TRELLO_WATCH_SESION_NUEVA=<id|1>`) estrena sesión limpia en la próxima pasada; sin valor vale para cualquier tarjeta. El título de la sesión es `Trello: <nombre de la tarjeta>` (recortado).
-- **Baseline por id de comentario**: el estado guarda `ultimoComentario` (id) y `comments` (contador de respaldo). Así un contador que no cuadre no repite la respuesta ni se pierde un comentario que llegue mientras corre el agente. Al procesar varios comentarios nuevos se pasan juntos, del más antiguo al más nuevo.
-- **Flujo**: tarjeta nueva → agente la lee, la pasa a «En curso», escribe el **plan** como comentario y **para**. Un comentario de aprobación («adelante», «dale», «implementa», «hazlo») dispara la implementación (sin commit): al terminar comenta «ya está implementado» y se queda en «En curso». Solo con «haz commit y push» hace commit + push y pasa a «Finalizado» con la URL del commit; «finaliza sin commit» (o tareas sin commit, como las letras) pasa directo a «Finalizado». Un comentario de cambios reescribe el plan; cualquier otro comentario solo se responde. **Nunca implementa sin aprobación explícita**. **Excepción**: las tarjetas de letras se hacen directamente (sin plan), se comentan al terminar y solo se para para preguntar por la base o la letra.
-- **Marca de los comentarios del agente**: todos sus comentarios empiezan por `🤖` (configurable con `TRELLO_WATCH_MARCA`), para distinguirlos de los del usuario. El watcher los usa también para no re-disparar con sus propias respuestas.
-- **Primera pasada** solo registra el estado actual en `.cache/trello-watch.json` y no dispara nada (así no procesa de golpe lo que ya hubiera). Tras cada agente se relee el último comentario y se avanza el baseline para no re-disparar con la respuesta del propio agente. **Hay que reiniciar el watcher** para que coja cambios de este script: mata el proceso (`scripts/trello-watch.lock` guarda el pid) y vuelve a arrancarlo; las sesiones por tarjeta se conservan porque viven en el estado, no en el proceso.
-- **Lock** de una sola instancia en `.cache/trello-watch.lock` (si hay otro watcher vivo, sale). Estado y lock están en `.cache/` (gitignored).
-- **Puertos**: el agente puede usar 4322/4323/4324, nunca el 4321 (del usuario).
-- Órdenes: `--una-vez` (una pasada, para probar), `--seco` (no arranca agente ni escribe estado) y `--nueva-sesion [id]` (estrena sesión limpia en la próxima pasada; sin valor, en cualquier tarjeta).
-- **Arranque permanente** (Windows): Programador de tareas con `Programa: C:\Program Files\nodejs\node.exe`, `Argumentos: C:\Users\Usuario\Desktop\acordes-gaditanos\scripts\trello-watch.mjs` y `Iniciar en: C:\Users\Usuario\Desktop\acordes-gaditanos`.
+`scripts/trello-watch.mjs` sondea el tablero cada 30 s y arranca un agente headless (`opencode run`) cuando hay una tarjeta nueva o un comentario nuevo del usuario, para «charlar por Trello». Una planificación por pasada, comentarios agrupados, una sesión de OpenCode por tarjeta (`ses_trello_<id>`), baseline por id de comentario, lock en `.cache/trello-watch.lock` y la columna **Despriorizadas** no se toca nunca. El agente usa 4322/4323/4324, nunca el 4321.
+
+El detalle (cola por tramos, `--una-vez`, `--seco`, `--nueva-sesion`, modelo fijado y arranque permanente en Windows) está en `docs/operativa/trello-watcher.md`: **léelo antes de tocar el watcher**.
 
 ### Redirects
 - `public/ads.txt` — archivo estático de AdSense (`google.com, pub-3280015847198273, DIRECT, f08c47fec0942fa0`)
@@ -361,7 +306,9 @@ Los anuncios de AdSense (y la medición de GA) **no se cargan** en los hosts de 
 `postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.
 
 ## Available Agent Skills
-Skills en `.agents/skills/` para tareas comunes:
+Skills en `.agents/skills/`. Solo hay dos externas a propósito: **no añadir genéricas** (Node, TypeScript, SEO, diseño, README…) salvo que se vayan a usar de verdad, y apuntarlas aquí.
+
+**Propias** (el flujo del proyecto):
 - `chord-formatting` — envolver acordes en `<a>` tags
 - `postura-predeterminada` — fijar la postura con la que se abre un acorde concreto con `data-postura`
 - `cifrado-a-formato` — convertir cifrado pegado de otra web al formato propio (línea de acordes + letra con palabras completas)
@@ -373,10 +320,10 @@ Skills en `.agents/skills/` para tareas comunes:
 - `subir-acorde` — ajustar la fecha al día siguiente del último publicado y hacer commit + push
 - `transportar` — transponer acordes de tonalidad
 - `tweet-acorde` — generar tweet para anunciar acorde
-- `seo` — optimizaciones SEO
-- `accessibility` — auditoría WCAG
-- `astro` / `astro-framework` — guías de Astro
-- `frontend-design` — diseño UI
+
+**Externas** (opcionales):
+- `astro-framework` — APIs de Astro 5 que este documento no cubre (content layer, view transitions, server islands, sessions). Referencias en `.agents/skills/astro-framework/references/`.
+- `accessibility` — auditoría WCAG 2.2.
 
 ## Content Template
 Usar `src/content/template.md` como referencia:
@@ -386,6 +333,8 @@ agrupacion: Nombre de la agrupación
 year: 2025
 musica: Autor1, Autor2 (separados por coma)
 letra: Autor1, Autor2
+letraTitulo: "Título de la letra alternativa" (opcional, solo en la variante)
+modalidad: comparsa (opcional)
 img: URL de imagen
 cejilla: 1-12 (opcional)
 video: URL YouTube embed

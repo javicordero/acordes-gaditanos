@@ -12,7 +12,7 @@ Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cu
 
 ## ¿Qué es?
 
-Acordes Gaditanos es un sitio web estático con más de **470 acordes** del Carnaval de Cádiz, organizados por pieza, agrupación, autor y año. Cada ficha incluye la letra con los acordes intercalados, el vídeo de YouTube de la actuación original y un reproductor con **autoscroll** para seguir la canción sin soltar la guitarra.
+Acordes Gaditanos es un sitio web estático con más de **570 acordes** del Carnaval de Cádiz, organizados por pieza, agrupación, autor y año. Cada ficha incluye la letra con los acordes intercalados, el vídeo de YouTube de la actuación original y un reproductor con **autoscroll** para seguir la canción sin soltar la guitarra.
 
 ## Features
 
@@ -124,7 +124,7 @@ Los **slugs** (autor, agrupación) se generan automáticamente a partir del nomb
 | `/agrupacion/[agrupacionSlug]` | Acordes de una agrupación |
 | `/carnaval/[year]` | Acordes de un año del COAC |
 | `/buscar` | Búsqueda en cliente |
-| `/admin/stats` | Estadísticas internas |
+| `/admin` | Panel privado de edición (login con GitHub) |
 | `/api/fetch-url` | Proxy CORS (`GET ?url=...`) |
 
 ## Despliegue
