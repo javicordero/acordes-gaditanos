@@ -1,7 +1,7 @@
 {
-  "actualizado": "2026-10-26",
+  "actualizado": "2026-11-03",
   "resumen": {
-    "ok": 422,
+    "ok": 423,
     "muerto": 0,
     "bloqueado": 0,
     "desconocido": 0
@@ -2538,6 +2538,12 @@
       "http": 200,
       "autor": "carnavalsur",
       "titulo": "CORO Tiempos modernos | Semifinales COAC 2018"
+    },
+    "Y8YthSp8A_A": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Jonatan Perez Ginel",
+      "titulo": "Pasodoble \"El día en que\" - Comparsa Los Originales"
     }
   }
 }
