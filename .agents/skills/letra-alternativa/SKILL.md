@@ -21,6 +21,17 @@ que el usuario parte en dos líneas y estribillos.
   una ficha que ya existe.
 - El usuario pide "poner los acordes", "aplicar los acordes de X a esta letra",
   "es la misma música que pasodoble-la-azotea"…
+- La petición llega como **tarjeta de Trello**: «nueva letra comparsa el cementerio»,
+  «pasodoble el cementerio», o con la letra/URL en la descripción.
+
+## Entrada desde Trello
+
+Reconoce la copla con `npm run letras -- reconocer "<título + descripción>"` para sacar
+agrupación, año y **base**, y sigue esta skill. La ficha se escribe en
+`src/content/acordes/` (local, sin commit), como siempre. Al terminar, apúntala en
+`letras-pendientes.md` (`estado "con acordes"`) y métela en «Por revisar» con
+`npm run revisar -- --anadir <slug>`. Si falta la base o hay varias candidatas, pregunta
+en la tarjeta antes de escribir.
 
 ## Datos de entrada
 
@@ -111,11 +122,15 @@ mueve por sílaba, sigue disponible con `--silabas`.
 
 ```bash
 npm run auditar:letras
+npm run letras -- estado <n> "con acordes" --ficha <slug> --fuente <url>
+npm run revisar -- --anadir <slug>
 ```
 
 Comprueba que el título no se repite en el grupo y que las fichas comparten
 música. La ficha ya lleva `letraTitulo`, así que entra sola en el bloque «Letras
-de este pasodoble».
+de este pasodoble». La última orden la deja en la pestaña **Por revisar** del
+panel; tú la publicas cuando quieras con la skill `subir-acorde` (o desde el
+panel).
 
 **No commitees**: de eso se encarga la skill `subir-acorde` (que además ajusta la
 fecha). Si el usuario pide subirlo, pásale el relevo.

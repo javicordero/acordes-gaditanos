@@ -9,12 +9,14 @@
 //   node scripts/letras-pendientes.mjs estado 5 "con acordes" --ficha <slug>
 //   node scripts/letras-pendientes.mjs auditar            (estados contra fichas)
 //   node scripts/letras-pendientes.mjs anadir "frase" --agrupacion "Los X"
+//   node scripts/letras-pendientes.mjs reconocer "nueva letra comparsa el cementerio"
 //
 // El archivo es la fuente de verdad y se edita solo en la tabla: la cabecera, la
 // explicación y el historial se conservan tal cual.
 
 import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import matter from 'gray-matter';
 
 const ARCHIVO = 'letras-pendientes.md';
 const CARPETA = 'src/content/acordes';
@@ -92,6 +94,287 @@ function comprobar(f) {
   return problemas;
 }
 
+// ---------------------------------------------------------------------------
+// Reconocer una petición de letra escrita a mano (tarjeta de Trello, chat…)
+// ---------------------------------------------------------------------------
+
+const CARPETAS_FICHAS = [
+  ['acordes', 'src/content/acordes'],
+  ['acordes3', 'src/content/acordes3'],
+];
+
+const sinTildes = (t) =>
+  String(t || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+const norm = (t) => sinTildes(t).replace(/[^a-z0-9]+/g, ' ').trim();
+
+/** Distancia de Levenshtein, para tolerar erratas en nombres cortos. */
+function distancia(a, b) {
+  const fila = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    let anterior = fila[0];
+    fila[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const guardado = fila[j];
+      fila[j] = Math.min(fila[j] + 1, fila[j - 1] + 1, anterior + (a[i - 1] === b[j - 1] ? 0 : 1));
+      anterior = guardado;
+    }
+  }
+  return fila[b.length];
+}
+
+/** Fichas de `acordes` y `acordes3`. Si un slug está en las dos, manda `acordes`. */
+function leerFichas() {
+  const porSlug = new Map();
+  for (const [carpeta, ruta] of CARPETAS_FICHAS) {
+    if (!existsSync(ruta)) continue;
+    for (const archivo of readdirSync(ruta)) {
+      if (!archivo.endsWith('.md')) continue;
+      const slug = archivo.slice(0, -3);
+      if (porSlug.has(slug)) continue;
+      const { data } = matter(readFileSync(join(ruta, archivo), 'utf8'));
+      porSlug.set(slug, {
+        slug,
+        carpeta,
+        pieza: String(data.pieza || ''),
+        agrupacion: String(data.agrupacion || ''),
+        year: String(data.year || ''),
+        musica: String(data.musica || ''),
+        letraTitulo: String(data.letraTitulo || ''),
+        fraseClave: String(data.fraseClave || ''),
+      });
+    }
+  }
+  return [...porSlug.values()];
+}
+
+// Palabras que forman parte del encargo y no del nombre de la agrupación.
+const DISPARADORES = [
+  /nueva\s+letra/g,
+  /letra\s+nueva/g,
+  /\bletra\b/g,
+  /\bfinal\s+de\s+popurri\b/g,
+  /\bpopurri\b/g,
+  /\bpresentacion\b/g,
+  /\bcuarteta\b/g,
+  /\bestribillo\b/g,
+  /\bpasodoble\b/g,
+  /\btango\b/g,
+  /\bcomparsa\b/g,
+  /\bchirigota\b/g,
+  /\bcoro\b/g,
+  /\bcuarteto\b/g,
+  /\bponer(le)?\s+acordes\b/g,
+  /\bacordes\b/g,
+];
+
+const TIPOS = [
+  ['final de popurrí', /final de popurri/],
+  ['popurrí', /popurri/],
+  ['presentación', /presentacion/],
+  ['cuarteta', /cuarteta/],
+  ['estribillo', /estribillo/],
+  ['pasodoble', /pasodoble/],
+  ['tango', /tango/],
+];
+
+function tipoDeTexto(texto) {
+  const t = norm(texto);
+  return TIPOS.find(([, re]) => re.test(t))?.[0] || 'pasodoble';
+}
+
+function limpiar(texto) {
+  let t = norm(texto);
+  for (const re of DISPARADORES) t = t.replace(re, ' ');
+  return t.replace(/\s+/g, ' ').trim();
+}
+
+/** Puntos de 0 a ~100 de lo bien que encaja una agrupación con el texto. */
+function puntuarAgrupacion(nombre, limpio, palabras) {
+  const n = norm(nombre);
+  if (!n) return 0;
+  const suyas = n.split(' ');
+  if (` ${limpio} `.includes(` ${n} `)) return 100 + n.length;
+  const presentes = suyas.filter((p) => palabras.includes(p)).length;
+  if (presentes === suyas.length) return 80 + n.length;
+  let cerca = 0;
+  for (const p of suyas) {
+    if (
+      palabras.some(
+        (x) => x === p || (p.length >= 4 && x.length >= 4 && distancia(p, x) <= 1),
+      )
+    ) {
+      cerca++;
+    }
+  }
+  if (cerca === suyas.length) return 60 + n.length;
+  if (presentes) return 40 * (presentes / suyas.length);
+  return 0;
+}
+
+/** ¿Dos textos son el mismo título (o uno contiene al otro)? */
+function seParecen(a, b) {
+  const A = norm(a);
+  const B = norm(b);
+  if (A.length < 8 || B.length < 8) return false;
+  return A === B || A.includes(B) || B.includes(A);
+}
+
+function reconocer(texto) {
+  const fichas = leerFichas();
+  const limpio = limpiar(texto);
+  const palabras = limpio.split(' ').filter(Boolean);
+
+  const porAgrupacion = new Map();
+  for (const f of fichas) {
+    const clave = norm(f.agrupacion);
+    if (!clave) continue;
+    const puntos = puntuarAgrupacion(f.agrupacion, limpio, palabras);
+    if (!porAgrupacion.has(clave) || porAgrupacion.get(clave).puntos < puntos) {
+      porAgrupacion.set(clave, { agrupacion: f.agrupacion, clave, puntos });
+    }
+  }
+
+  const candidatos = [...porAgrupacion.values()]
+    .filter((c) => c.puntos >= 40)
+    .sort((a, b) => b.puntos - a.puntos)
+    .slice(0, 3)
+    .map((c) => {
+      const suyas = fichas
+        .filter((f) => norm(f.agrupacion) === c.clave)
+        .sort(
+          (a, b) =>
+            (Number(b.year) || 0) - (Number(a.year) || 0) ||
+            a.pieza.localeCompare(b.pieza) ||
+            a.slug.localeCompare(b.slug),
+        );
+      const pasodobles = suyas.filter((f) => /^pasodoble/i.test(f.pieza));
+      const sinLetra = pasodobles.filter((f) => !f.letraTitulo);
+      const base = sinLetra[0] || pasodobles[0] || null;
+      const años = [...new Set(pasodobles.map((f) => f.year).filter(Boolean))];
+      return {
+        agrupacion: c.agrupacion,
+        year: suyas[0]?.year || '',
+        base: base?.slug || '',
+        baseYear: base?.year || '',
+        ambiguoBase: años.length > 1,
+        fichas: suyas.map(({ slug, pieza, year, letraTitulo }) => ({
+          slug,
+          pieza,
+          year,
+          letraTitulo,
+        })),
+      };
+    });
+
+  // Duplicados: una ficha que ya es letra alternativa de esa música.
+  const cabecera = norm(texto).slice(0, 300);
+  const duplicados = [];
+  for (const f of fichas) {
+    if (!f.letraTitulo) continue;
+    const porTitulo = seParecen(f.letraTitulo, texto);
+    const porSlug = seParecen(f.slug.replace(/-/g, ' '), texto);
+    if (porTitulo || porSlug) {
+      duplicados.push({ slug: f.slug, titulo: f.letraTitulo, tipo: 'letra' });
+    } else if (f.fraseClave && seParecen(f.fraseClave, cabecera)) {
+      duplicados.push({ slug: f.slug, titulo: f.letraTitulo || f.fraseClave, tipo: 'frase' });
+    }
+  }
+  // Una ficha ya publicada con ese título entrecomillado en la pieza.
+  for (const f of fichas) {
+    const tituloPieza = f.pieza.match(/"([^"]+)"/)?.[1];
+    if (tituloPieza && seParecen(tituloPieza, texto)) {
+      duplicados.push({ slug: f.slug, titulo: tituloPieza, tipo: 'pieza' });
+    }
+  }
+
+  const url = String(texto).match(/https?:\/\/\S+/)?.[0] || '';
+  const lineas = String(texto).split(/\r?\n/).filter((l) => l.trim()).length;
+  const letraPegada = lineas >= 6 || String(texto).trim().length > 400;
+  const pieza = tipoDeTexto(texto);
+
+  return {
+    texto: String(texto).trim(),
+    pieza,
+    soportado: pieza === 'pasodoble',
+    limpio,
+    candidatos,
+    duplicados: [...new Map(duplicados.map((d) => [d.slug, d])).values()],
+    url,
+    letraPegada,
+  };
+}
+
+function imprimirReconocimiento(r) {
+  console.log(`«${r.texto}»\n`);
+  console.log(`Pieza: ${r.pieza}`);
+  if (!r.soportado) {
+    console.log('⚠ Las letras alternativas solo están previstas para pasodobles (TIPOS_CON_LETRAS).');
+    console.log('  Para este tipo hay que decidir si va como ficha propia o si se amplía la agrupación de letras.');
+  }
+
+  if (!r.candidatos.length) {
+    console.log('\nNo he encontrado ninguna agrupación que case con el texto.');
+    console.log('Prueba con el nombre exacto de la agrupación, o apunta la letra con --base ? y se resuelve luego.');
+  } else {
+    r.candidatos.forEach((c, i) => {
+      if (i === 0) {
+        console.log(`\nAgrupación: ${c.agrupacion}${c.year ? ` (${c.year})` : ''}`);
+      } else {
+        console.log(`\nOtra posible agrupación: ${c.agrupacion}${c.year ? ` (${c.year})` : ''}`);
+      }
+      if (c.base) {
+        console.log(`Base propuesta: ${c.base}${c.baseYear ? ` (${c.baseYear})` : ''}`);
+        if (c.ambiguoBase) {
+          console.log('⚠ Hay pasodobles de varios años: confirma cuál es la música antes de aplicar los acordes.');
+        }
+      } else {
+        console.log('⚠ No hay ningún pasodoble de esta agrupación: no puedo proponer base.');
+      }
+      console.log('Fichas:');
+      for (const f of c.fichas) {
+        const marca = f.slug === c.base ? '  ← base' : '';
+        console.log(`  ${f.year || '—'} · ${f.pieza || '—'} · ${f.slug}${marca}`);
+      }
+    });
+  }
+
+  if (r.duplicados.length) {
+    console.log('');
+    for (const d of r.duplicados) {
+      if (d.tipo === 'letra') {
+        console.log(`⚠ Ya existe una ficha para esa letra: ${d.slug} («${d.titulo}»).`);
+      } else if (d.tipo === 'pieza') {
+        console.log(`⚠ Ya existe una ficha con ese título: ${d.slug} («${d.titulo}»).`);
+      } else {
+        console.log(`⚠ Parece que ya hay una ficha que empieza así: ${d.slug} («${d.titulo}»). Compruébalo antes de crearla.`);
+      }
+    }
+  }
+
+  if (r.candidatos.length > 1) {
+    console.log('\n⚠ Hay más de una agrupación posible: confirma cuál es antes de seguir.');
+  }
+
+  if (r.url) {
+    console.log(`\nHe visto una URL: ${r.url}`);
+    console.log('  → npm run letra:decarnaval -- <url>  (letrasdecarnaval)');
+    console.log('  → npm run letra:web -- <url> --salida .cache/letra-<n>.txt');
+  }
+  if (r.letraPegada) {
+    console.log('\nEl texto parece la letra pegada: guárdala en `.cache/letra-<n>.txt` antes de aplicar los acordes.');
+  }
+
+  const primero = r.candidatos[0];
+  if (primero?.base && r.soportado && !r.duplicados.some((d) => d.tipo !== 'frase')) {
+    console.log('\nSiguiente:');
+    console.log(`  npm run letras -- anadir "<frase o título>" --agrupacion "${primero.agrupacion}" --base ${primero.base}`);
+    console.log(`  npm run acordes:plan -- --base ${primero.base} --letra .cache/letra-<n>.txt`);
+  }
+}
+
 function listar(filas, filtro) {
   const porEstado = {};
   for (const f of filas) porEstado[f.estado] = (porEstado[f.estado] || 0) + 1;
@@ -159,11 +442,12 @@ if (orden === 'listar') {
 } else if (orden === 'anadir') {
   const frase = args[1];
   const o = opciones(args.slice(2));
-  if (!frase) { console.error('Uso: npm run letras -- anadir "frase" [--agrupacion "Los X"] [--base slug]'); process.exit(1); }
+  if (!frase) { console.error('Uso: npm run letras -- anadir "frase" [--agrupacion "Los X"] [--base slug] [--fuente url] [--notas "..."]'); process.exit(1); }
   const { lineas } = leer();
   const { filas } = leer();
   const n = Math.max(0, ...filas.map((f) => f.n)) + 1;
-  const fila = `| ${n} | ${frase} | ${o.agrupacion || '?'} | ${o.base || '?'} | pendiente | | | |`;
+  const celda = (t) => String(t || '').replace(/\|/g, '/').replace(/\s+/g, ' ').trim();
+  const fila = `| ${n} | ${celda(frase)} | ${celda(o.agrupacion) || '?'} | ${celda(o.base) || '?'} | pendiente | | ${celda(o.fuente)} | ${celda(o.notas)} |`;
   const iCabecera = lineas.findIndex((l) => /^\|\s*#\s*\|/.test(l));
   let iUltima = iCabecera;
   for (let i = iCabecera; i < lineas.length; i++) {
@@ -172,7 +456,16 @@ if (orden === 'listar') {
   lineas.splice(iUltima + 1, 0, fila);
   writeFileSync(ARCHIVO, lineas.join('\n'));
   console.log(`+ ${n}. ${frase}`);
+} else if (orden === 'reconocer') {
+  const texto = args[1];
+  if (!texto) {
+    console.error('Uso: npm run letras -- reconocer "<título o frase>" [--json]');
+    process.exit(1);
+  }
+  const r = reconocer(texto);
+  if (opciones(args.slice(2)).json) console.log(JSON.stringify(r, null, 2));
+  else imprimirReconocimiento(r);
 } else {
-  console.error('Órdenes: listar · siguiente · estado · auditar · anadir');
+  console.error('Órdenes: listar · siguiente · estado · auditar · anadir · reconocer');
   process.exit(1);
 }
