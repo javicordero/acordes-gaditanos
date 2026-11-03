@@ -19,7 +19,7 @@ self.addEventListener('push', (evento) => {
   const opciones = {
     body: datos.cuerpo || 'Hay coplas nuevas en el cancionero.',
     icon: datos.icono || '/icon-192.png',
-    badge: '/favicon-192.png',
+    badge: '/badge-96.png',
     // Mismo tag para que un aviso nuevo sustituya al anterior y no se apilen.
     tag: datos.tag || 'coplas',
     renotify: false,

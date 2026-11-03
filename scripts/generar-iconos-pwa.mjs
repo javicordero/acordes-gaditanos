@@ -34,7 +34,42 @@ async function generar(nombre, px, fraccion) {
 }
 
 // `any` rellena todo el lienzo; `maskable` deja el monograma dentro del safe zone (~60 %).
-await generar('icon-192.png', 192, 0.72);
-await generar('icon-512.png', 512, 0.72);
-await generar('maskable-512.png', 512, 0.58);
-await generar('apple-touch-icon.png', 180, 0.72);
+const soloBadge = process.argv.includes('--solo-badge');
+
+if (!soloBadge) {
+  await generar('icon-192.png', 192, 0.72);
+  await generar('icon-512.png', 512, 0.72);
+  await generar('maskable-512.png', 512, 0.58);
+  await generar('apple-touch-icon.png', 180, 0.72);
+}
+
+// Badge de las notificaciones push: Android y Windows lo pintan como una
+// silueta (solo el canal alfa), así que tiene que ser monocromo y transparente.
+// Con un icono a color sale un círculo blanco liso.
+async function generarBadge() {
+  const TAM = 96;
+  const ancho = Math.round(TAM * 0.78);
+  const logo = await sharp(LOGO)
+    .resize({ width: ancho })
+    .negate({ alpha: false })
+    .png()
+    .toBuffer();
+  const meta = await sharp(logo).metadata();
+  const left = Math.round((TAM - (meta.width ?? ancho)) / 2);
+  const top = Math.round((TAM - (meta.height ?? ancho)) / 2);
+
+  await sharp({
+    create: {
+      width: TAM,
+      height: TAM,
+      channels: 4,
+      background: { r: 0, g: 0, b: 0, alpha: 0 },
+    },
+  })
+    .composite([{ input: logo, left, top }])
+    .png()
+    .toFile(fileURLToPath(new URL('../public/badge-96.png', import.meta.url)));
+  console.log(`✓ public/badge-96.png (${TAM}x${TAM}, monocromo)`);
+}
+
+await generarBadge();
