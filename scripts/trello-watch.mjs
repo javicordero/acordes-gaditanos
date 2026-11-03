@@ -13,6 +13,9 @@
  *     (por fecha de creación del id, no por la posición, porque Trello apila las
  *     nuevas arriba de la columna) y por tramos: primero las de «En curso» con
  *     comentario nuevo, después «Prioritarias» y después «Pendiente».
+ *   - Una planificación por pasada: la primera tarjeta de la cola que no tenga
+ *     plan (nueva, salida de Despriorizadas o registrada sin planificar) se
+ *     planifica sola; las demás esperan a la pasada siguiente.
  *   - Varios comentarios seguidos = un solo encargo: antes de arrancar el agente
  *     se espera `TRELLO_WATCH_AGRUPAR` segundos (45) y se leen todos juntos, para
  *     que haga un plan único y no uno por comentario.
@@ -222,6 +225,25 @@ function esDespriorizada(nombreLista) {
   return Boolean(nombreLista) && sinTildes(nombreLista) === sinTildes(NOMBRES.despriorizada);
 }
 
+// ¿Hay que planificarla? Solo las de la cola (Pendiente/Prioritarias), y solo si
+// no tienen plan todavía o si acaban de salir de Despriorizadas. Las de «En
+// curso» se atienden por comentarios, no se vuelven a planificar.
+function necesitaPlan(t, previo) {
+  const clave = sinTildes(t.lista);
+  const enCola =
+    clave === sinTildes(NOMBRES.pendiente) || clave === sinTildes(NOMBRES.prioritaria);
+  if (!enCola) return false;
+  if (!previo) return true;
+  if (esDespriorizada(previo.lista)) return true;
+  return !previo.planificado;
+}
+
+function etiquetaPlan(t, previo) {
+  if (!previo) return '🆕 tarjeta nueva:';
+  if (esDespriorizada(previo.lista)) return '🔁 vuelve de Despriorizadas:';
+  return '📝 sin plan todavía:';
+}
+
 // Orden de la cola:
 //   0 · En curso con comentario nuevo del usuario (algo que corregir)
 //   1 · Prioritarias
@@ -294,18 +316,39 @@ async function agruparComentarios(t, previo, iniciales) {
 }
 
 // Estado antiguo sin `ultimoComentario` (o tarjeta recién añadida al estado): se
-// alinea con lo último que haya en la tarjeta para no reenviar comentarios ya
-// atendidos al arrancar.
-async function alinearBaselines(estado) {
+// alinea lo que falte para no reenviar comentarios ya atendidos ni volver a
+// planificar lo que ya tiene plan.
+async function alinearEstado(estado) {
   const { tarjetas } = await snapshot();
   for (const t of tarjetas.filter((x) => esVigilada(x.lista))) {
     const previo = estado.cards[t.id];
-    if (!previo || previo.ultimoComentario) continue;
+    if (!previo) continue;
     const actuales = t.badges?.comments ?? 0;
-    const { ultimoId } = await comentariosNuevos(t.id, { comments: previo.comments ?? 0 }, actuales);
-    previo.ultimoComentario = ultimoId;
-    previo.comments = actuales;
-    log('baseline alineado:', String(t.name).slice(0, 50));
+
+    if (!previo.ultimoComentario) {
+      const { ultimoId } = await comentariosNuevos(
+        t.id,
+        { comments: previo.comments ?? 0 },
+        actuales,
+      );
+      previo.ultimoComentario = ultimoId;
+      previo.comments = actuales;
+      log('baseline alineado:', String(t.name).slice(0, 50));
+    }
+
+    // Estado de antes de la marca `planificado`: se da por planificada si algún
+    // agente ya comentó algo en la tarjeta (sus comentarios llevan la marca).
+    if (typeof previo.planificado !== 'boolean') {
+      const acciones = await api(`/cards/${t.id}/actions`, {
+        consulta: { filter: 'commentCard', limit: 100 },
+      });
+      const lista = Array.isArray(acciones) ? acciones : [];
+      previo.planificado = lista.some((a) => esComentarioDelAgente(a?.data?.text));
+      log(
+        previo.planificado ? 'ya planificada:' : 'pendiente de plan:',
+        String(t.name).slice(0, 50),
+      );
+    }
   }
 }
 
@@ -497,26 +540,16 @@ async function pasada(estado, primera) {
     const previo = estado.cards[t.id];
     const actuales = t.badges?.comments ?? 0;
 
-    if (!previo || esDespriorizada(previo.lista)) {
-      if (!previo && primera) {
-        // Primera pasada: registrar el estado actual sin disparar nada. Se
-        // apunta el id del último comentario para no procesarlo luego.
-        const { ultimoId } = await comentariosNuevos(t.id, { comments: actuales }, actuales);
-        estado.cards[t.id] = {
-          comments: actuales,
-          nombre: t.name,
-          lista: t.lista,
-          sesion: sesionDe(t, {}),
-          ultimoComentario: ultimoId,
-        };
-        continue;
-      }
-      // Tarjeta nueva o que vuelve de Despriorizadas.
-      log(previo ? '🔁 vuelve de Despriorizadas:' : '🆕 tarjeta nueva:', t.name);
+    // Planificar: una tarjeta por pasada y la primera de la cola. Entra aquí la
+    // nueva, la que vuelve de Despriorizadas y la que nunca llegó a tener plan
+    // (se quedó registrada sin que ningún agente la mirase).
+    if (necesitaPlan(t, previo)) {
+      log(etiquetaPlan(t, previo), t.name);
       const ficha = {
         comments: actuales,
         nombre: t.name,
         lista: t.lista,
+        planificado: true,
         sesion: sesionDe(t, previo || {}),
       };
       if (!SECO) {
@@ -529,6 +562,21 @@ async function pasada(estado, primera) {
         ficha.ultimoComentario = nuevos.length ? nuevos[nuevos.length - 1].id : ultimoId;
       }
       estado.cards[t.id] = ficha;
+      return; // una planificación por pasada: la siguiente, en la próxima
+    }
+
+    if (!previo) {
+      // En curso sin estado: se registra sin lanzar nada; se atiende por
+      // comentarios.
+      const { ultimoId } = await comentariosNuevos(t.id, { comments: actuales }, actuales);
+      estado.cards[t.id] = {
+        comments: actuales,
+        nombre: t.name,
+        lista: t.lista,
+        planificado: true,
+        sesion: sesionDe(t, {}),
+        ultimoComentario: ultimoId,
+      };
       continue;
     }
 
@@ -590,6 +638,7 @@ async function main() {
         '    y dentro de cada tramo, la más antigua primero.',
         '',
         '  Los comentarios seguidos se agrupan en un solo encargo (un plan para todos).',
+        '  Se planifica una tarjeta por pasada, la primera de la cola que no tenga plan.',
         '  La columna «Despriorizadas» no se toca nunca; si una tarjeta sale de ahí',
         '  a Pendiente o Prioritarias, se planifica como nueva.',
         '',
@@ -606,7 +655,7 @@ async function main() {
   const primera = Object.keys(estado.cards).length === 0;
   if (!SECO) {
     try {
-      await alinearBaselines(estado);
+      await alinearEstado(estado);
       guardarEstado(estado);
     } catch (e) {
       console.error('no se pudo alinear el baseline:', e.message);
