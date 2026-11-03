@@ -18,3 +18,9 @@
 /manifest.webmanifest
   Content-Type: application/manifest+json
   Cache-Control: public, max-age=3600
+
+# Manifest del icono «Admin» del panel. Solo se enlaza desde /admin: sirve para
+# instalarlo como app aparte en el móvil.
+/admin-manifest.webmanifest
+  Content-Type: application/manifest+json
+  Cache-Control: public, max-age=3600
