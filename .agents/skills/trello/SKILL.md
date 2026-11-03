@@ -61,9 +61,11 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
    npm run trello -- pendientes
    ```
 
-   Si el usuario no dice cuál, se coge la **primera** de la lista (el orden del tablero).
-   Si hay varias y no está claro, se listan y se pregunta; no se elige a ciegas una tarea
-   grande.
+   Si el usuario no dice cuál, se coge la **primera** de la lista: primero las de
+   **Prioritarias** y después las de **Pendiente**, y dentro de cada columna la **más
+   antigua** (la cola va por fecha de creación, no por la posición en la columna, porque
+   Trello apila las nuevas arriba). Si hay varias y no está claro, se listan y se pregunta;
+   no se elige a ciegas una tarea grande.
 
 2. **Leer la tarjeta entera**
 
@@ -154,7 +156,7 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
 | Orden | Qué hace |
 |---|---|
 | `listas` | columnas con su id y nº de tarjetas (comprueba que existen las tres) |
-| `pendientes [--json]` | tarjetas de «Pendiente» por orden del tablero |
+| `pendientes [--json]` | tarjetas de «Pendiente», de la más antigua a la más nueva |
 | `ver <tarjeta>` | descripción, checklists y últimos comentarios |
 | `empezar <tarjeta>` | → «En curso» + comentario |
 | `terminar <tarjeta>` | → «Finalizado» + comentario (`--commit`, `--pr`) |

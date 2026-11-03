@@ -14,7 +14,8 @@
  *
  * Órdenes:
  *   listas                          columnas del tablero, con id y nº de tarjetas
- *   pendientes [--json] [--todas]   tarjetas de la lista de pendientes
+ *   pendientes [--json] [--todas]   cola: «Prioritarias» y después «Pendiente»,
+ *                                   de la más antigua a la más nueva
  *   ver <tarjeta> [--json]          ficha completa: descripción, checklist, últimos comentarios
  *   empezar <tarjeta> [--texto …]   mueve a «En curso» y comenta
  *   terminar <tarjeta> [--texto …]  mueve a «Finalizado» y comenta (admite --commit y --pr)
@@ -77,6 +78,8 @@ const TABLERO = process.env.TRELLO_TABLERO || ENV.TRELLO_TABLERO || 'vwbp5cJ5';
 
 const NOMBRES = {
   pendiente: process.env.TRELLO_LISTA_PENDIENTE || ENV.TRELLO_LISTA_PENDIENTE || 'Pendiente',
+  prioritaria:
+    process.env.TRELLO_LISTA_PRIORITARIAS || ENV.TRELLO_LISTA_PRIORITARIAS || 'Prioritarias',
   curso: process.env.TRELLO_LISTA_CURSO || ENV.TRELLO_LISTA_CURSO || 'En curso',
   final: process.env.TRELLO_LISTA_FINAL || ENV.TRELLO_LISTA_FINAL || 'Finalizado',
 };
@@ -293,23 +296,47 @@ async function cmdListas() {
 
 async function cmdPendientes() {
   const abiertas = await listas();
-  const lista = emparejarLista(abiertas, NOMBRES.pendiente);
-  const tarjetas = (lista.cards || [])
-    .map((c) => ({ ...c, idList: c.idList || lista.id, lista: lista.name }))
-    .sort((a, b) => a.pos - b.pos);
+  // Cola de trabajo: primero «Prioritarias» y luego «Pendiente». Dentro de cada
+  // columna, de la más antigua a la más nueva. No vale el orden de la columna,
+  // porque Trello apila las tarjetas nuevas arriba; la fecha de creación va en
+  // los 8 primeros hex del id (ObjectId de Mongo).
+  const creadaEn = (t) => {
+    const segundos = parseInt(String(t.id || '').slice(0, 8), 16);
+    return Number.isFinite(segundos) ? segundos : 0;
+  };
+
+  const grupos = [];
+  for (const nombre of [NOMBRES.prioritaria, NOMBRES.pendiente]) {
+    let lista;
+    try {
+      lista = emparejarLista(abiertas, nombre);
+    } catch {
+      continue; // la columna de prioritarias puede no existir
+    }
+    if (grupos.some((g) => g.lista.id === lista.id)) continue;
+    const tarjetas = (lista.cards || [])
+      .map((c) => ({ ...c, idList: c.idList || lista.id, lista: lista.name }))
+      .sort((a, b) => creadaEn(a) - creadaEn(b) || (a.pos ?? 0) - (b.pos ?? 0));
+    grupos.push({ lista, tarjetas });
+  }
 
   if (JSON_OUT) {
-    console.log(JSON.stringify(tarjetas, null, 2));
+    console.log(JSON.stringify(grupos.flatMap((g) => g.tarjetas), null, 2));
     return;
   }
-  if (tarjetas.length === 0) {
-    console.log(`«${lista.name}» está vacía.`);
+  const total = grupos.reduce((n, g) => n + g.tarjetas.length, 0);
+  if (total === 0) {
+    console.log(`«${NOMBRES.prioritaria}» y «${NOMBRES.pendiente}» están vacías.`);
     return;
   }
-  console.log(`«${lista.name}»: ${tarjetas.length} tarjeta(s)\n`);
-  for (const t of tarjetas) {
-    console.log(`- ${t.name}`);
-    console.log(`  id ${t.id}  ·  ${t.shortLink || ''}`);
+  for (const { lista, tarjetas } of grupos) {
+    if (!tarjetas.length) continue;
+    console.log(`«${lista.name}»: ${tarjetas.length} tarjeta(s)\n`);
+    for (const t of tarjetas) {
+      console.log(`- ${t.name}`);
+      console.log(`  id ${t.id}  ·  ${t.shortLink || ''}`);
+    }
+    console.log('');
   }
 }
 
@@ -407,7 +434,8 @@ async function main() {
       [
         'Órdenes:',
         '  listas                        columnas con id y nº de tarjetas',
-        '  pendientes [--json]           tarjetas de la columna de pendientes',
+        '  pendientes [--json]           cola: Prioritarias y luego Pendiente,',
+        '                                de la más antigua a la más nueva',
         '  ver <tarjeta> [--json]        descripción, checklist y comentarios',
         '  empezar <tarjeta>             → En curso (+ comentario)',
         '  terminar <tarjeta>            → Finalizado (+ comentario)',
