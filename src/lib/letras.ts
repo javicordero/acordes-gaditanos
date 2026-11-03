@@ -129,27 +129,47 @@ export function piezaConTitulo(data: {
   return titulo ? `${pieza} "${titulo}"` : pieza;
 }
 
+/** Caracteres a los que se recorta la frase clave dentro del título. */
+const MAX_FRASE_SEO = 35;
+
+/** Frase cortada por palabra completa (y sin la puntuación que quede al final). */
+function recortarFrase(frase: string, max = MAX_FRASE_SEO): string {
+  const limpia = (frase || '').trim();
+  if (limpia.length <= max) return limpia;
+
+  let corte = '';
+  for (const palabra of limpia.split(/\s+/)) {
+    const siguiente = corte ? `${corte} ${palabra}` : palabra;
+    if (siguiente.length > max && corte) break;
+    corte = siguiente;
+  }
+
+  return corte.replace(/[,;:.!?¡¿"'…]+$/, '').trim();
+}
+
 /**
  * Título de la pestaña y del resultado de Google: pieza, agrupación, nombre de
  * la copla y año, sin la marca, para que quepa entero en Google.
  *
- *   `Acordes Pasodoble Los Ángeles caídos "Ay si yo fuera un enano" Carnaval 2002`
- *   `Acordes Popurrí Los Ángeles Caídos Carnaval 2002`
+ *   `Acordes Pasodoble Los Colgaos "Y en el Gran Astillero" - Carnaval 2024`
+ *   `Acordes Popurrí Los Ángeles Caídos - Carnaval 2002`
  *
  * El nombre de la copla sale de `letraTitulo` y, si no lo hay, de la
- * `fraseClave` (el primer verso, que es lo que se busca). Si la pieza ya lo
- * trae entrecomillado (`Cuarteta "Castigo divino"`), no se repite.
+ * `fraseClave` (el primer verso, que es lo que se busca), recortada a
+ * `MAX_FRASE_SEO` caracteres por palabra completa. Si la pieza ya lo trae
+ * entrecomillado (`Cuarteta "Castigo divino"`), no se repite.
  */
 export function tituloSeo(acorde: FichaConLetra): string {
   const data = acorde.data;
   const pieza = (data.pieza || '').trim();
   const agrupacion = (data.agrupacion || '').trim();
   const year = String(data.year ?? '').trim();
-  const nombre = (data.letraTitulo || '').trim() || (data.fraseClave || '').trim();
+  const letraTitulo = (data.letraTitulo || '').trim();
+  const nombre = letraTitulo || recortarFrase(data.fraseClave || '');
   const yaEnPieza = /"[^"]+"/.test(pieza) || (!!nombre && pieza.includes(nombre));
   const titulo = nombre && !yaEnPieza ? `"${nombre}"` : '';
 
-  return ['Acordes', pieza, agrupacion, titulo, year ? `Carnaval ${year}` : '']
+  return ['Acordes', pieza, agrupacion, titulo, year ? `- Carnaval ${year}` : '']
     .filter(Boolean)
     .join(' ');
 }
