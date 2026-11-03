@@ -475,7 +475,7 @@ function pintarPeticiones() {
   const orden = $('orden-peticiones').value;
   const lista = [...peticiones];
   if (orden === 'votos') lista.sort((a, b) => (b.votes || 0) - (a.votes || 0) || new Date(b.date) - new Date(a.date));
-  else if (orden === 'fecha') lista.sort((a, b) => new Date(b.date) - new Date(a.date));
+  else if (orden === 'fecha') lista.sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0) || new Date(b.date) - new Date(a.date));
   else if (orden === 'autor') lista.sort((a, b) => String(a.author || '').localeCompare(String(b.author || ''), 'es'));
   else lista.sort((a, b) => (a.completed ? 1 : 0) - (b.completed ? 1 : 0) || (b.votes || 0) - (a.votes || 0) || new Date(b.date) - new Date(a.date));
 
