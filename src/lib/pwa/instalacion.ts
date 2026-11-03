@@ -27,8 +27,8 @@ function agPwa(): AgPwa | undefined {
 }
 
 // ¿Mostramos la invitación a instalar? Siempre en móvil, salvo que el usuario ya
-// esté dentro de la app (display-mode standalone). No depende de clics ni de
-// descartes: el aviso permanece hasta que se abre la app instalada.
+// esté dentro de la app (display-mode standalone). El aviso flotante se puede
+// descartar (vuelve pasados unos días); la tarjeta y el banner no.
 export function puedeInstalar(): boolean {
   return esMovil() && !esStandalone();
 }
@@ -79,6 +79,7 @@ const SUFIJO: Record<string, string> = {
   cabecera: 'cabecera',
   banner_novedad: 'banner',
   tarjeta_ficha: 'tarjeta',
+  aviso: 'aviso',
 };
 
 export function eventoInstalar(

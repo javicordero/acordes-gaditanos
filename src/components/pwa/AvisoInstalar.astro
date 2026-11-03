@@ -1,0 +1,254 @@
+---
+// src/components/pwa/AvisoInstalar.astro
+//
+// Barra flotante de instalar la app. Entra deslizándose desde abajo, se puede
+// descartar (y vuelve a salir pasados unos días) y no aparece dentro de la app
+// instalada ni en escritorio.
+import { Icon } from 'astro-icon/components';
+---
+
+<div class='aviso-instalar' data-aviso hidden>
+  <button type='button' class='aviso-instalar__cerrar' data-aviso-descartar aria-label='Descartar'>
+    <Icon name='cruz' width={16} height={16} />
+  </button>
+  <p class='aviso-instalar__texto'>
+    Instala la aplicación de Acordes Gaditanos en tu móvil.
+  </p>
+  <div class='aviso-instalar__acciones'>
+    <button type='button' class='aviso-instalar__instalar' data-aviso-boton>
+      <Icon name='descargar' width={20} height={20} />
+      <span>Instalar</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  import { eventoPwa } from '../../lib/pwa/analytics';
+  import { eventoInstalar, instalar, puedeInstalar } from '../../lib/pwa/instalacion';
+
+  // Días que tarda en volver a salir después de descartarlo.
+  const DIAS_DESCARTADO = 30;
+  const CLAVE = 'ag_aviso_instalar_descartado';
+  const SEL_ANCLA =
+    'ins[data-anchor-status], ins[data-anchor-shown="true"], div[id^="google_anchor"]';
+
+  let cableado = false;
+
+  function descartado(): boolean {
+    try {
+      const valor = localStorage.getItem(CLAVE);
+      if (!valor) return false;
+      const ts = Number(valor);
+      if (!Number.isFinite(ts)) return true;
+      return Date.now() - ts < DIAS_DESCARTADO * 24 * 60 * 60 * 1000;
+    } catch {
+      return false;
+    }
+  }
+
+  function marcarDescartado() {
+    try {
+      localStorage.setItem(CLAVE, String(Date.now()));
+    } catch {
+      /* sin localStorage vuelve a salir en la próxima visita */
+    }
+  }
+
+  function ajustarPorAncla(wrap: HTMLElement) {
+    const ancla = document.querySelector(SEL_ANCLA);
+    wrap.classList.toggle('aviso-instalar--sobre-ancla', Boolean(ancla));
+  }
+
+  function mostrar(wrap: HTMLElement) {
+    if (!wrap.hidden) {
+      ajustarPorAncla(wrap);
+      return;
+    }
+    wrap.hidden = false;
+    ajustarPorAncla(wrap);
+    requestAnimationFrame(() => wrap.classList.add('aviso-instalar--visible'));
+  }
+
+  function ocultar(wrap: HTMLElement, animar = true) {
+    if (!animar) {
+      wrap.classList.remove('aviso-instalar--visible');
+      wrap.hidden = true;
+      return;
+    }
+    wrap.classList.remove('aviso-instalar--visible');
+    const fin = () => {
+      if (!wrap.classList.contains('aviso-instalar--visible')) wrap.hidden = true;
+      wrap.removeEventListener('transitionend', fin);
+    };
+    wrap.addEventListener('transitionend', fin, { once: true });
+    setTimeout(fin, 400);
+  }
+
+  function aplicar() {
+    const wrap = document.querySelector<HTMLElement>('[data-aviso]');
+    if (!wrap) return;
+
+    if (!puedeInstalar() || descartado()) {
+      ocultar(wrap, false);
+      return;
+    }
+
+    mostrar(wrap);
+  }
+
+  function init() {
+    const wrap = document.querySelector<HTMLElement>('[data-aviso]');
+    if (!wrap) return;
+
+    if (!cableado) {
+      cableado = true;
+
+      wrap.querySelector('[data-aviso-boton]')?.addEventListener('click', () => {
+        eventoInstalar('click', 'aviso');
+        instalar('aviso');
+      });
+
+      wrap.querySelector('[data-aviso-descartar]')?.addEventListener('click', () => {
+        eventoPwa('pwa_install_descartado_aviso');
+        marcarDescartado();
+        ocultar(wrap);
+      });
+
+      window.addEventListener('ag:pwa-estado', aplicar);
+      window.addEventListener('ag:beforeinstallprompt', aplicar);
+
+      // Si aparece el anuncio ancla de Auto Ads (barra fija inferior), la barra
+      // sube para no taparlo.
+      if (typeof MutationObserver !== 'undefined') {
+        const observer = new MutationObserver(() => ajustarPorAncla(wrap));
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['data-anchor-status', 'data-anchor-shown'],
+        });
+      }
+    }
+
+    aplicar();
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .aviso-instalar {
+    position: fixed;
+    left: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    width: calc(100% - 24px);
+    max-width: 460px;
+    padding: 14px 16px;
+    background: var(--surface-color);
+    color: var(--on-surface-color);
+    border: 2px solid var(--on-surface-color);
+    box-shadow: 6px 6px 0 0 var(--on-surface-color);
+    transform: translate(-50%, calc(100% + 40px));
+    transition: transform 0.3s ease;
+  }
+
+  .aviso-instalar[hidden] {
+    display: none;
+  }
+
+  .aviso-instalar--visible {
+    transform: translate(-50%, 0);
+  }
+
+  /* Deja hueco al anuncio ancla de Auto Ads (barra fija inferior). */
+  .aviso-instalar--sobre-ancla {
+    bottom: calc(150px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .aviso-instalar__texto {
+    margin: 0;
+    padding-right: 36px;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--on-surface-color);
+    text-wrap: balance;
+  }
+
+  .aviso-instalar__cerrar {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--on-surface-color);
+    cursor: pointer;
+  }
+
+  .aviso-instalar__cerrar:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .aviso-instalar__acciones {
+    display: flex;
+    align-items: center;
+  }
+
+  .aviso-instalar__instalar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex: 1;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 0 var(--on-bright-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .aviso-instalar__instalar:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 0 var(--on-bright-color);
+  }
+
+  .aviso-instalar__instalar :global(svg) {
+    display: block;
+    flex: none;
+  }
+
+  @media (max-width: 640px) {
+    .aviso-instalar--sobre-ancla {
+      bottom: calc(140px + env(safe-area-inset-bottom, 0px));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aviso-instalar {
+      transition: none;
+    }
+  }
+</style>

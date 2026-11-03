@@ -9,6 +9,7 @@ import Footer from '../components/layout/Footer.astro';
 import Anuncios from '../components/page/Anuncios.astro';
 import AnuncioSobreFooter from '../components/right-column/anuncios/AnuncioSobreFooter.astro';
 import InstalarAppPanel from '../components/pwa/InstalarAppPanel.astro';
+import AvisoInstalar from '../components/pwa/AvisoInstalar.astro';
 import canales from '../data/canales.json';
 
 interface Props {
@@ -353,6 +354,7 @@ const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acord
     <AnuncioSobreFooter />
     <Footer />
     <InstalarAppPanel />
+    {!sinAnalitica && <AvisoInstalar />}
     <ContactInit />
     <AnchoPreInit />
     <FitTextInit />
