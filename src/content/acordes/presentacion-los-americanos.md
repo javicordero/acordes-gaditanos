@@ -7,51 +7,49 @@ letra: Juan Carlos Aragón
 modalidad: Comparsa
 img: 'https://i.ytimg.com/vi/qEdKOfNiu0I/maxresdefault.jpg'
 cejilla: 3
-video: https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm
+video: 'https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm'
 cover: null
 autorCover: null
 date: 03/12/2025
 fraseClave: Esta tribu de idioma salvaje
-
 ---
-
 <pre>
 <a>Sol</a>    <a>Re</a>    <a>Sol</a>   <a>Sol</a>    <a>Re</a>    <a>Sol</a>
 Aahhhh ahhh ahhhh Aahhhh ahhh ahhhh
       <a>Sol</a>
 Esta tribu de idioma salvaje que América llama
+
 poblado de plata con puertas de tierra
        <a>Re</a>
 sus guitarras que son como arcos disparan gargantas
+
 que cantan sonando a tambores de guerra
       <a>Do</a>
-esta tribu que en vez de en canoa navega
-en barquilla
+esta tribu que en vez de en canoa navega en barquilla
                         <a>Re</a>        <a>Do</a>
 y tiene su orilla a la orilla del mar
-                   <a>Mim</a>
-esta tribu sin colonizar que parece tan
-        <a>Sol</a>
-carnavalera
-                          <a>Re</a>
-tambien sabe ademas de cantar arrancar las
-      <a>Mim</a>                        <a>Re</a>
-cabelleras ay arrancar las cabelleras!
+                   <a>Mim</a>                          <a>Sol</a>
+esta tribu sin colonizar que parece tan carnavalera
+                          <a>Re</a>                     <a>Mim</a>
+tambien sabe ademas de cantar arrancar las cabelleras
+                      <a>Re</a>
+ay arrancar las cabelleras!
 <a>Sol</a>
 si yo fuera gaditano sin muralla ni cañón
                                             <a>Re</a>
 con mi canoa en la orilla levantaria un espigón
+
 con piedras de maravilla donde cada corazón
-                             <a>Mim</a>
-pudiera atracar la pasión en vez de en canoa
-en barquilla
+
+pudiera atracar la pasión
+   <a>Mim</a>
+en vez de en canoa en barquilla
                 <a>Sol</a>
 si yo fuera gaditano el viento seria mi barca
-y si un dia me hace falta
-                 <a>Re</a>
-para crusar los siete mares necesito que mi mare
-                   <a>Do</a>
-antes me bese las manos
+                                           <a>Re</a>
+y si un dia me hace falta para crusar los siete mares
+                                        <a>Do</a>
+necesito que mi mare antes me bese las manos
                         <a>Mim</a>
 por si por ser gaditano no se las devuelvo como antes
                 <a>Re</a>  <a>Mim</a>                  <a>Re</a>

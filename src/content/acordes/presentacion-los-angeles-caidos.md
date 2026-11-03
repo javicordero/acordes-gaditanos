@@ -5,20 +5,18 @@ year: 2002
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://static.grupojoly.com/clip/f44701fe-fb8f-49ee-912e-3cbd7f14c85c_16-9-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/f44701fe-fb8f-49ee-912e-3cbd7f14c85c_16-9-aspect-ratio_1600w_0.jpg'
 cejilla: 0
-video: https://www.youtube.com/embed/eJ4ltG-NQUE?si=cACRL8mGicPqj8k7
+video: 'https://www.youtube.com/embed/eJ4ltG-NQUE?si=cACRL8mGicPqj8k7'
 cover: null
 autorCover: null
 date: 02/12/2025
 fraseClave: La puerta estaba cerrada
 recomendada: true
 ---
-
 <pre>
 <a>Do</a>
-La puerta estaba cerrada la suerte junto a Dios
-Padre
+La puerta estaba cerrada la suerte junto a Dios Padre
 <a>Sol</a>             <a>Lam</a>                     <a>Fa</a>
 a su derecha sentada y un ángel viejo mirando
                   <a>Sol</a>                  <a>Do</a>
@@ -27,20 +25,20 @@ y encogiéndose de alas y con su lira cantando
 ay, si esto fuera una guitarra
                     <a>Fa</a>               <a>Sol</a>
 con la que seguir tocando gaditana gaditana
-<a>Do</a>                                 <a>Sol</a>
-la más bonita y galana divina las ganas de estarte
-  <a>Lam</a>
-besando
+<a>Do</a>
+la más bonita y galana
+            <a>Sol</a>               <a>Lam</a>
+divina las ganas de estarte besando
                 <a>Fa</a>                       <a>Sol</a>
 y con su lira cantando, y encogiéndose de alas
                  <a>Do</a>   <a>Sol</a>                  <a>Lam</a>
 y las mía que de balas negras se fueron quedando
                 <a>Fa</a>                <a>Sol</a>
 Aquí me quedo tocando gaditana gaditana
-<a>Do</a>                                   <a>Sol</a>
-la más bonita y galana contigo en la tierra y te
-      <a>Lam</a>
-sigo besando
+<a>Do</a>
+la más bonita y galana
+              <a>Sol</a>               <a>Lam</a>
+contigo en la tierra y te sigo besando
                    <a>Fa</a>                         <a>Sol</a>
 San Pedro estaba pescando la puerta estaba cerrada
 <a>Lam</a>       <a>Sol</a>
@@ -54,20 +52,17 @@ Mirar de arriba las nubes, es todo lo que te pido
 <a>Sol</a>
 Y valorar lo que tuve, mientras estuve contigo
 <a>Lam</a>
-Y ya me senté a la izquierda de los reyes de este
-        <a>Sol</a>
-mundo apaleao
+Y ya me senté a la izquierda de los reyes
+                <a>Sol</a>
+de este mundo apaleao
  <a>Lam</a>
-Y por ser de sangre roja y alas negras, también yo
-    <a>Sol</a>
-fui condenao
-<a>Lam</a>
-No voy a sentarme a tu derecha si tu no me das
-  <a>Fa</a>
-permiso
+Y por ser de sangre roja y alas negras,
+               <a>Sol</a>
+también yo fui condenao
+<a>Lam</a>                                              <a>Fa</a>
+No voy a sentarme a tu derecha si tu no me das permiso
                                      <a>Rem</a>
-Pero déjame caer en Cádiz, que es la forma
-redentora
+Pero déjame caer en Cádiz, que es la forma redentora
                              <a>Sol</a>       <a>Lam</a>
 que yo tengo solamente de volver al paraíso
 <a>Lam</a>         <a>Sol</a>

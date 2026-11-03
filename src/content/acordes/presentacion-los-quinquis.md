@@ -4,17 +4,15 @@ agrupacion: Los Quinquis
 year: 2022
 musica: Vera Luque
 letra: Vera Luque
-img: https://static.grupojoly.com/clip/953049e1-32a2-40dc-ab4e-4517173e20ac_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/953049e1-32a2-40dc-ab4e-4517173e20ac_source-aspect-ratio_1600w_0.jpg'
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rbdtTcmUshY'
-
 fraseClave: Nonaino naino nonainonona Nonaino naino
 ---
-<pre>        <a>Fa</a>             <a>Mi7</a>        <a>Fa</a>
-Nonaino naino nonainonona Nonaino naino
-        <a>Mi7</a>
-nonainonona
+<pre>
+        <a>Fa</a>             <a>Mi7</a>        <a>Fa</a>            <a>Mi7</a>
+Nonaino naino nonainonona Nonaino naino nonainonona
         <a>Lam</a>           <a>Sol</a>         <a>Fa</a>            <a>Mi7</a>
 Nonaino naino nonainonona Nonaino naino nonainonona
 <a>Lam</a>
@@ -85,4 +83,5 @@ nonainonona
        <a>Fa</a>
 Dame veneno que quiero morir que por esta te juro
                <a>Mi7</a>        <a>La</a>
-que me entrego yo ohh ohh ohh</pre>
+que me entrego yo ohh ohh ohh
+</pre>

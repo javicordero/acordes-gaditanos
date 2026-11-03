@@ -4,10 +4,10 @@ agrupacion: Los muñecos de Cádiz
 year: 2011
 musica: David Carapapa, Javier Carapapa
 letra: David Carapapa, Javier Carapapa
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1299832509-munecos.jpeg
+img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1299832509-munecos.jpeg'
 cejilla: 0
 date: "26/11/2025"
-video: https://www.youtube.com/embed/Rjj7ZnYe7J8?si=V5V_IJqdsAKLlhCU
+video: 'https://www.youtube.com/embed/Rjj7ZnYe7J8?si=V5V_IJqdsAKLlhCU'
 fraseClave: Dicen los libros de la magia negra
 recomendada: true
 ---
@@ -42,19 +42,20 @@ de todos los gaditanos
 para amarrarle los pies pa amarrarlo
          <a>Lam7</a>                        <a>Si7</a>
 por el cuello pa amarrarle bien las manos
-          <a>Lam</a>                              <a>Sim</a>
-con dos botones le hizo los ojos cosió su boca
-con hilos rojos
-           <a>Do</a>           <a>Lam7</a>             <a>Do</a>
-y haciendo uso de sus poderes le fue clavando
-        <a>Si7</a>
-los alfileres
+          <a>Lam</a>
+con dos botones le hizo los ojos
+          <a>Sim</a>
+cosió su boca con hilos rojos
+           <a>Do</a>           <a>Lam7</a>
+y haciendo uso de sus poderes
+           <a>Do</a>           <a>Si7</a>
+le fue clavando los alfileres
 <a>Mim</a>                                       <a>Lam</a>
 pero aquel pobre chaman o aprendiz de hechicero
                                   <a>Si7</a>
-no contaba con la fuerza ni el poder de la magia
-   <a>Mim</a>
-de febrero
+no contaba con la fuerza ni el poder
+               <a>Mim</a>
+de la magia de febrero
           <a>Mi7</a>                          <a>Lam</a>
 y aunque no sea el remedio a nuestros males
                    <a>Do</a>                       <a>Lam7</a>
@@ -62,13 +63,13 @@ nos inventamos una copla y nos descosemos la boca
         <a>Do</a>            <a>Si7</a>
 y la cantamos en carnavales
 <a>Lam</a>
-quien hace de ti un muñeco roto y te enreda
-       <a>Sim</a>
-con su hilo
-<a>Do</a>                          <a>Lam7</a>          <a>Do</a>
-quien te clava a ti los alfileres que te llegan
-  <a>Si7</a>
-al sentido
+quien hace de ti un muñeco roto
+                   <a>Sim</a>
+y te enreda con su hilo
+<a>Do</a>                          <a>Lam7</a>
+quien te clava a ti los alfileres
+        <a>Do</a>      <a>Si7</a>
+que te llegan al sentido
 <a>Lam</a>
 quien clava en tus manos y no te deja trabajar
 <a>Sim</a>
@@ -84,4 +85,5 @@ quien te hace a ti daño, dime cadiz quien
         <a>Mim</a>            <a>Re</a>        <a>Do</a>          <a>Si7</a>
 el que quiera hacerte daño y clavarte un alfiler
           <a>Mim</a>
-que se vuelva contra él</pre>
+que se vuelva contra él
+</pre>
