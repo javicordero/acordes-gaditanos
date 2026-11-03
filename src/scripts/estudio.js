@@ -748,13 +748,18 @@ async function abrirFicha(slug, empujar = true) {
   }
 }
 
-/** Muestra u oculta la columna de la ficha base (solo tiene sentido si hay base). */
+/** Marca la columna de la ficha base: con ficha la pinta; sin ella deja el hueco vacío. */
 function mostrarBase(si) {
   const pane = document.querySelector('.pane[data-pane="der"]');
   const tab = document.querySelector('.tabs button[data-pane="der"]');
-  if (pane) pane.hidden = !si;
+  // En escritorio la columna de Base se queda aunque no haya con qué comparar
+  // (vacía, sin select): así Editor y Original no cambian de sitio entre fichas.
+  // En móvil se oculta, que ahí cada columna es una pestaña.
+  if (pane) {
+    pane.classList.toggle('vacia', !si);
+    pane.title = si ? '' : 'No hay otra ficha de la misma agrupación con la que comparar';
+  }
   if (tab) tab.hidden = !si;
-  $('cols').classList.toggle('sin-base', !si);
   if (!si) {
     if (pane) pane.classList.remove('activo');
     $('base-sel').innerHTML = '';

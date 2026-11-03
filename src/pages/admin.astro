@@ -150,7 +150,13 @@ export const prerender = true;
   #vista-editor { flex:1; display:flex; flex-direction:column; min-height:0; background:var(--fondo); }
   .cols { flex:1; display:grid; grid-template-columns:1fr 1.35fr 1fr; min-height:0; background:var(--fondo); }
   .cols.una { grid-template-columns:1fr; }
-  .cols.sin-base { grid-template-columns:1.35fr 1fr; }
+  /* Sin ficha con la que comparar, el hueco de Base se queda vacío pero ocupa su
+     sitio: si la columna desaparece, Editor y Original se separan y cuesta
+     compararlos verso a verso. En móvil (pestañas) sí se oculta. */
+  .pane.vacia { background:var(--fondo); }
+  .pane.vacia > .cab { background:var(--fondo); border-bottom-color:transparent; }
+  .pane.vacia .cab b { color:var(--suave); font-weight:400; }
+  .pane.vacia #base-sel, .pane.vacia .b-zoom-pane { display:none; }
   .pane { min-width:0; min-height:0; display:flex; flex-direction:column; background:var(--papel); border-right:2px solid #000; }
   .pane:last-child { border-right:0; }
   .cab { padding:7px 10px; min-height:38px; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#000; background:var(--papel); border-bottom:2px solid #000; display:flex; gap:8px; align-items:center; }
@@ -284,9 +290,10 @@ export const prerender = true;
   .tabs { display:none; }
 
   @media (max-width:1000px) {
-    .cols, .cols.sin-base { grid-template-columns:1fr; }
+    .cols { grid-template-columns:1fr; }
     .pane { display:none; border-right:0; }
     .pane.activo { display:flex; }
+    .pane.vacia { display:none; }
     .tabs { display:flex; gap:5px; padding:7px 8px; background:var(--papel); border-bottom:2px solid #000; }
     .tabs button { flex:1; padding:7px 5px; font-size:9px; box-shadow:none; }
     .tabs button.sel { background:#000; border-color:#000; color:var(--acento); }
