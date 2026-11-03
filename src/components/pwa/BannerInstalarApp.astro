@@ -28,21 +28,12 @@ const { ubicacion } = Astro.props;
   import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
   import { eventoPwa } from '../../lib/pwa/analytics';
 
-  let promptMostrado = false;
-
   function init() {
     const banner = document.querySelector<HTMLElement>('[data-pwa-banner]');
     if (!banner) return;
 
     if (puedeInstalar()) {
       banner.classList.add('banner-instalar--visible');
-      if (!promptMostrado) {
-        promptMostrado = true;
-        eventoPwa('pwa_prompt_shown', {
-          ubicacion: banner.dataset.ubicacion,
-          componente: 'banner_novedad',
-        });
-      }
       const btn = banner.querySelector<HTMLElement>('[data-pwa-instalar]');
       if (btn && !btn.dataset.wired) {
         btn.dataset.wired = 'true';

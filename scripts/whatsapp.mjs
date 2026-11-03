@@ -95,6 +95,8 @@ const AYUDA = [
   '  --forzar                publicar aunque ya esté en wa-enviados.json',
   '  --manual                dejar el mensaje escrito y esperar tu Enter',
   '  --margen <seg>          segundos de margen antes de enviar solo (15)',
+  '  --espera-previa <seg>   espera a que cargue la vista previa con imagen (45)',
+  '  --sin-previa            no espera la vista previa: envía directamente',
   '  --comprobar             abrir el canal y hacer captura, sin escribir',
   '  --dry-run               enseña el mensaje y sale',
 ].join('\n');
@@ -111,6 +113,8 @@ function leerArgumentos(argv) {
     esperaManual: 10,
     manual: false,
     margen: 15,
+    esperaPrevia: 45,
+    sinPrevia: false,
     forzar: false,
     seco: false,
     comprobar: false,
@@ -133,6 +137,12 @@ function leerArgumentos(argv) {
       const segundos = Number(siguiente);
       opciones.margen = Number.isFinite(segundos) ? segundos : 15;
       i++;
+    } else if (arg === '--espera-previa') {
+      const segundos = Number(siguiente);
+      opciones.esperaPrevia = Number.isFinite(segundos) ? segundos : 45;
+      i++;
+    } else if (arg === '--sin-previa') {
+      opciones.sinPrevia = true;
     } else if (arg === '--comprobar') {
       opciones.comprobar = true;
     } else if (arg === '--sin-esperar') {
@@ -352,44 +362,97 @@ async function abrirCanal(page, canal) {
   return true;
 }
 
+/** Vacía el compositor (WhatsApp deja lo que quedó sin enviar como borrador). */
+async function vaciarCompositor(page, compositor) {
+  const previo = (await compositor.innerText().catch(() => '')) || '';
+  if (!previo.trim()) return false;
+
+  await page.keyboard.press('Control+A').catch(() => {});
+  await page.keyboard.press('Delete').catch(() => {});
+  await esperar(400);
+
+  const resto = (await compositor.innerText().catch(() => '')) || '';
+  if (resto.trim()) {
+    await page.keyboard.press('Control+A').catch(() => {});
+    await page.keyboard.press('Backspace').catch(() => {});
+    await esperar(300);
+  }
+
+  return true;
+}
+
 /** Escribe el texto respetando los saltos de línea con Shift+Enter. */
+async function escribirLineas(page, texto) {
+  const lineas = texto.split('\n');
+  for (let i = 0; i < lineas.length; i++) {
+    if (lineas[i]) await page.keyboard.insertText(lineas[i]);
+    if (i < lineas.length - 1) await page.keyboard.press('Shift+Enter');
+  }
+}
+
+/** Enfoca el compositor, vacía el borrador anterior y escribe el aviso. */
 async function escribir(page, texto, marca) {
   await cerrarAvisos(page);
   const compositor = await localizar(page, SELECTORES.compositor, 20_000);
-  if (!compositor) return { compositor: null, antes: 0 };
+  if (!compositor) return { compositor: null, antes: 0, antesPrevia: 0 };
 
   await pulsar(page, compositor);
   await esperar(300);
 
-  // WhatsApp guarda como borrador lo que quedó sin enviar: si hay algo, se vacía
-  // antes de escribir o el aviso saldría mezclado con el intento anterior.
-  const previo = (await compositor.innerText().catch(() => '')) || '';
-  if (previo.trim()) {
-    await page.keyboard.press('Control+A').catch(() => {});
-    await page.keyboard.press('Delete').catch(() => {});
-    await esperar(400);
-
-    const resto = (await compositor.innerText().catch(() => '')) || '';
-    if (resto.trim()) {
-      await page.keyboard.press('Control+A').catch(() => {});
-      await page.keyboard.press('Backspace').catch(() => {});
-      await esperar(300);
-    }
-
+  if (await vaciarCompositor(page, compositor)) {
     console.log('(Había un borrador en el canal: se ha vaciado antes de escribir.)');
   }
 
   // Se cuenta con el compositor ya vacío: si se contara antes, el borrador
   // contaría como mensaje publicado y la confirmación nunca cuadraría.
   const antes = await contarMarca(page, marca);
+  const antesPrevia = await contarMiniaturas(page);
 
-  const lineas = texto.split('\n');
-  for (let i = 0; i < lineas.length; i++) {
-    if (lineas[i]) await page.keyboard.insertText(lineas[i]);
-    if (i < lineas.length - 1) await page.keyboard.press('Shift+Enter');
+  await escribirLineas(page, texto);
+
+  return { compositor, antes, antesPrevia };
+}
+
+/**
+ * Miniaturas cargadas en el pie del canal. La vista previa del enlace vive
+ * encima del compositor y, mientras WhatsApp busca la página y la imagen, se
+ * queda como una tarjeta con solo la URL; cuando llega, aparece el `<img>`
+ * (viene de mmg.whatsapp.net o de un blob, así que se cuenta, no se busca por src).
+ * Si se le pasa el enlace del aviso, solo cuenta cuando la tarjeta es la suya:
+ * así no cuela una previa vieja que se haya quedado pegada al compositor.
+ */
+async function contarMiniaturas(page, enlace = '') {
+  const pie = page.locator('#main footer');
+
+  if (enlace) {
+    const texto = (await pie.innerText().catch(() => '')) || '';
+    if (!texto.includes(enlace)) return 0;
   }
 
-  return { compositor, antes };
+  return pie
+    .locator('img')
+    .evaluateAll((imagenes) =>
+      imagenes.filter((img) => img.naturalWidth >= 80 && img.naturalHeight >= 40).length,
+    )
+    .catch(() => 0);
+}
+
+/**
+ * Espera a que la vista previa del enlace tenga ya su imagen. WhatsApp la pide
+ * mientras se escribe y, si se envía antes de que llegue, el mensaje sale sin
+ * imagen y la tarjeta se descarta: por eso se espera aquí y no con el margen fijo.
+ */
+async function esperarPrevia(page, segundos, antes, enlace = '') {
+  const limite = Date.now() + segundos * 1000;
+
+  while (Date.now() < limite) {
+    const miniaturas = await contarMiniaturas(page, enlace);
+    if (enlace ? miniaturas > 0 : miniaturas > antes) return true;
+    if (page.isClosed()) return false;
+    await esperar(1000);
+  }
+
+  return false;
 }
 
 /** Pulsa el botón de enviar; si no aparece, Enter (como haría una persona). */
@@ -554,11 +617,43 @@ async function publicar(opciones) {
       return 0;
     }
 
-    const { compositor, antes } = await escribir(page, texto, marca);
+    const { compositor, antes, antesPrevia } = await escribir(page, texto, marca);
     if (!compositor) {
       await captura(page, 'compositor-no-encontrado');
       console.error('✗ No se encontró el compositor del canal. Mira wa-debug/.');
       return 4;
+    }
+
+    // La vista previa la busca WhatsApp en paralelo: si se envía antes de que
+    // llegue la imagen, el aviso sale sin ella. Se espera y, si no aparece, se
+    // reescribe una vez (reescribir la URL relanza la búsqueda) y se envía igual.
+    if (!opciones.sinPrevia) {
+      const inicio = Date.now();
+      // El enlace que WhatsApp previsualiza es el primero del aviso.
+      const enlace = (texto.match(/https?:\/\/\S+/) || [])[0] || '';
+      console.log(
+        `Esperando la vista previa con imagen (hasta ${opciones.esperaPrevia} s)…`,
+      );
+
+      let previa = await esperarPrevia(page, opciones.esperaPrevia, antesPrevia, enlace);
+
+      if (!previa) {
+        console.log('No ha llegado: se reescribe el aviso para volver a pedirla…');
+        await vaciarCompositor(page, compositor);
+        await escribirLineas(page, texto);
+        previa = await esperarPrevia(page, opciones.esperaPrevia, antesPrevia, enlace);
+      }
+
+      const segundos = Math.round((Date.now() - inicio) / 1000);
+      if (previa) {
+        console.log(`✓ Vista previa lista a los ${segundos} s.`);
+      } else {
+        const ruta = await captura(page, 'previa-sin-imagen');
+        console.warn(
+          `⚠ Sin vista previa tras ${segundos} s: el aviso se envía igualmente, sin imagen.`,
+        );
+        if (ruta) console.warn(`  Captura: ${ruta}`);
+      }
     }
 
     console.log('');

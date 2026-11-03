@@ -1721,7 +1721,7 @@ async function crear(e) {
       letraTitulo: v('letraTitulo') || (clon ? null : undefined),
       cejilla: v('cejilla') || undefined,
       video: v('video') || undefined,
-      img: v('img') || (base ? undefined : '/og-image.png'),
+      img: v('img') || (base ? undefined : '/og-image.jpg'),
       fraseClave: clon ? (v('fraseClave') || null) : (v('fraseClave') || undefined),
       date: hoy(),
       // La copia no hereda el sitio en portada ni el destacado de la original.

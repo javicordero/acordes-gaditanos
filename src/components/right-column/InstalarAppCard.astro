@@ -24,8 +24,6 @@ const { class: className } = Astro.props;
   import { instalar, puedeInstalar } from '../../lib/pwa/instalacion';
   import { eventoPwa } from '../../lib/pwa/analytics';
 
-  let promptMostrado = false;
-
   function init() {
     const card = document.querySelector('.instalar-app') as HTMLElement | null;
     if (!card) return;
@@ -33,10 +31,6 @@ const { class: className } = Astro.props;
 
     if (puedeInstalar()) {
       card.classList.add('instalar-app--visible');
-      if (!promptMostrado) {
-        promptMostrado = true;
-        eventoPwa('pwa_prompt_shown', { ubicacion: 'ficha', componente: 'tarjeta_ficha' });
-      }
       if (btn && !btn.dataset.wired) {
         btn.dataset.wired = 'true';
         btn.addEventListener('click', () => {

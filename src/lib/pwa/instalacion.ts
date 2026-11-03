@@ -15,6 +15,7 @@ import {
 interface AgPwa {
   prompt: { prompt: () => void; userChoice: Promise<{ outcome: string }> } | null;
   installed: boolean;
+  suprimido?: boolean;
 }
 
 function esMovil(): boolean {
@@ -39,6 +40,27 @@ function reportarInstalado() {
   if (instaladoReportado) return;
   instaladoReportado = true;
   eventoPwa('pwa_installed');
+}
+
+function ubicacionActual(): string {
+  const path = typeof location === 'undefined' ? '' : location.pathname;
+  if (path === '/' || path === '/index.html') return 'portada';
+  if (path.startsWith('/acordes/')) return 'ficha';
+  return 'otra';
+}
+
+// El navegador ofrece instalar la app (beforeinstallprompt). Se mide una sola vez
+// por carga y se indica si lo hemos suprimido nosotros (en la portada).
+let promptNativoReportado = false;
+function reportarPromptNativo() {
+  if (promptNativoReportado) return;
+  const ctx = agPwa();
+  if (!ctx || !ctx.prompt) return;
+  promptNativoReportado = true;
+  eventoPwa('pwa_native_prompt_available', {
+    ubicacion: ubicacionActual(),
+    suprimido: ctx.suprimido ? 'si' : 'no',
+  });
 }
 
 function abrirPanel() {
@@ -94,6 +116,12 @@ export function initPwa() {
   window.addEventListener('ag:appinstalled', () => {
     reportarInstalado();
   });
+
+  // El prompt nativo del navegador: se mide cuándo está disponible y si lo hemos
+  // suprimido (portada). También se comprueba al arrancar por si llegó antes que
+  // este módulo.
+  window.addEventListener('ag:beforeinstallprompt', reportarPromptNativo);
+  reportarPromptNativo();
 
   // Cerrar el panel al pulsar la X o el fondo. El aviso NO se oculta: solo se
   // cierra el panel.

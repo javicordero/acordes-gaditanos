@@ -15,7 +15,7 @@ export const ANALYTICS = {
 export const SEO = {
   googleSearchConsole: 'rcKUCESBALVUqnlrzW0AnQh8FqUzluPR9L1zex9eMw0',
   adsenseAccount: 'ca-pub-3280015847198273',
-  defaultOgImage: '/og-image.png',
+  defaultOgImage: '/og-image.jpg',
 } as const;
 
 export const CONTENT = {

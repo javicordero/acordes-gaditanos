@@ -25,7 +25,7 @@ interface Props {
 const {
   title = 'Acordes Gaditanos - Acordes del Carnaval de Cádiz',
   description = 'La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.',
-  image = '/og-image.png',
+  image = '/og-image.jpg',
   noindex = false,
   keywords = 'carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval',
   noInPagePush = false,
@@ -75,11 +75,12 @@ const sinAnalitica = /^\/(estudio|acordes2|acordes3|lista2|admin|reconocer-acord
          poder mostrar la tarjeta de la columna derecha. -->
     <script is:inline>
       (function () {
-        window.__agPwa = { prompt: null, installed: false };
+        window.__agPwa = { prompt: null, installed: false, suprimido: false };
         window.addEventListener('beforeinstallprompt', function (e) {
           var esIndex = location.pathname === '/' || location.pathname === '/index.html';
           if (esIndex) e.preventDefault();
           window.__agPwa.prompt = e;
+          window.__agPwa.suprimido = esIndex;
           window.dispatchEvent(new CustomEvent('ag:beforeinstallprompt'));
         });
         window.addEventListener('appinstalled', function () {

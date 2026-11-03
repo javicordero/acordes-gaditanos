@@ -108,8 +108,6 @@ const { class: className } = Astro.props;
 
   const SEL_ANCLA = 'ins[data-anchor-status], ins[data-anchor-shown="true"], div[id^="google_anchor"]';
 
-  let promptMostrado = false;
-
   function ajustarPorAncla() {
     const container = document.querySelector('.fab-container');
     if (!container) return;
@@ -127,10 +125,6 @@ const { class: className } = Astro.props;
     if (puedeInstalar()) {
       pedir.setAttribute('hidden', '');
       instalarBtn.removeAttribute('hidden');
-      if (!promptMostrado) {
-        promptMostrado = true;
-        eventoPwa('pwa_prompt_shown', { ubicacion: 'portada', componente: 'flotante' });
-      }
     } else {
       pedir.removeAttribute('hidden');
       instalarBtn.setAttribute('hidden', '');

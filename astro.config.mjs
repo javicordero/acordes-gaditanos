@@ -91,7 +91,7 @@ export default defineConfig({
         // Solo el "chasis" (assets). Sin HTML: hay ~1.150 páginas y precargarlas
         // todas serían decenas de MB en el móvil. Las páginas se cachean al visitarlas.
         globPatterns: ['**/*.{js,css,woff2,woff,png,svg,ico,webmanifest}'],
-        globIgnores: ['**/og-image.png'],
+        globIgnores: ['**/og-image.jpg'],
         maximumFileSizeToCacheInBytes: 2 * 1024 * 1024,
         // Desactivamos el navigateFallback por defecto ("/") y servimos la página
         // offline explícita a través del precacheFallback de la ruta de navegación.
