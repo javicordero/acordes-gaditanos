@@ -17,9 +17,9 @@
  *   pendientes [--json] [--todas]   cola: «Prioritarias» y después «Pendiente»,
  *                                   de la más antigua a la más nueva
  *   ver <tarjeta> [--json]          ficha completa: descripción, checklist, últimos comentarios
- *   empezar <tarjeta> [--texto …]   mueve a «En curso» y comenta
- *   terminar <tarjeta> [--texto …]  mueve a «Finalizado» y comenta (admite --commit y --pr)
- *   mover <tarjeta> <lista>         mueve a la lista indicada (nombre o id)
+ *   empezar <tarjeta> [--texto …]   mueve al final de «En curso» y comenta
+ *   terminar <tarjeta> [--texto …]  mueve al final de «Finalizado» y comenta (admite --commit y --pr)
+ *   mover <tarjeta> <lista>         mueve al final de la lista indicada (nombre o id)
  *   comentar <tarjeta> --texto …    comenta sin mover
  *
  * Texto largo: `--texto "…"`, `--texto-archivo .cache/plan.md` o por stdin.
@@ -260,7 +260,7 @@ async function moverA(id, lista, nombreLista) {
     console.log(`(simulado) movería ${id} a «${lista.name}»`);
     return;
   }
-  await api(`/cards/${id}`, { metodo: 'PUT', consulta: { idList: lista.id } });
+  await api(`/cards/${id}`, { metodo: 'PUT', consulta: { idList: lista.id, pos: 'bottom' } });
   console.log(`→ ${nombreLista}: «${lista.name}»`);
 }
 
@@ -383,7 +383,7 @@ async function cmdEmpezar() {
   const abiertas = await listas();
   const destino = emparejarLista(abiertas, NOMBRES.curso);
   const texto = leerTexto(false);
-  if (!SIMULAR) await api(`/cards/${t.id}`, { metodo: 'PUT', consulta: { idList: destino.id } });
+  if (!SIMULAR) await api(`/cards/${t.id}`, { metodo: 'PUT', consulta: { idList: destino.id, pos: 'bottom' } });
   console.log(`→ En curso: «${destino.name}»`);
   await comentar(t.id, texto || '🤖 En curso. Primero escribo el plan y después lo implemento.');
 }
@@ -395,7 +395,7 @@ async function cmdTerminar() {
   let texto = leerTexto(false) || '🤖 ✅ Hecho.';
   if (typeof args.commit === 'string') texto += `\n\nCommit: ${args.commit}`;
   if (typeof args.pr === 'string') texto += `\nPR: ${args.pr}`;
-  if (!SIMULAR) await api(`/cards/${t.id}`, { metodo: 'PUT', consulta: { idList: destino.id } });
+  if (!SIMULAR) await api(`/cards/${t.id}`, { metodo: 'PUT', consulta: { idList: destino.id, pos: 'bottom' } });
   console.log(`→ Finalizado: «${destino.name}»`);
   await comentar(t.id, texto);
 }
@@ -437,9 +437,9 @@ async function main() {
         '  pendientes [--json]           cola: Prioritarias y luego Pendiente,',
         '                                de la más antigua a la más nueva',
         '  ver <tarjeta> [--json]        descripción, checklist y comentarios',
-        '  empezar <tarjeta>             → En curso (+ comentario)',
-        '  terminar <tarjeta>            → Finalizado (+ comentario)',
-        '  mover <tarjeta> <lista>       mover a una columna',
+        '  empezar <tarjeta>             → En curso, al final de la columna (+ comentario)',
+        '  terminar <tarjeta>            → Finalizado, al final de la columna (+ comentario)',
+        '  mover <tarjeta> <lista>       mover al final de una columna',
         '  comentar <tarjeta> --texto …  comentar sin mover',
         '',
         'Texto: --texto "…" | --texto-archivo ruta.md | stdin',

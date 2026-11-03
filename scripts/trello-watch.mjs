@@ -9,10 +9,11 @@
  *     cuesta tokens: es Node puro pegando llamadas a la API.
  *   - Detecta tarjetas nuevas en «En curso», «Prioritarias» y «Pendiente», y
  *     comentarios nuevos.
- *   - Cola FIFO: las tarjetas se atienden de la **más antigua a la más nueva**
- *     (por fecha de creación del id, no por la posición, porque Trello apila las
- *     nuevas arriba de la columna) y por tramos: primero las de «En curso» con
- *     comentario nuevo, después «Prioritarias» y después «Pendiente».
+ *   - Cola por tramos: primero las de «En curso» con comentario nuevo, después
+ *     «Prioritarias» y después «Pendiente». Las de «En curso» se ordenan por su
+ *     posición en la columna (arriba primero); «Prioritarias» y «Pendiente» por
+ *     fecha de creación (la más antigua primero, porque Trello apila las nuevas
+ *     arriba de la columna).
  *   - Una planificación por pasada: la primera tarjeta de la cola que no tenga
  *     plan (nueva, salida de Despriorizadas o registrada sin planificar) se
  *     planifica sola; las demás esperan a la pasada siguiente.
@@ -249,7 +250,8 @@ function etiquetaPlan(t, previo) {
 //   1 · Prioritarias
 //   2 · Pendiente
 //   3 · En curso sin novedades (solo se refresca el nombre)
-// Dentro de cada tramo, la más antigua primero.
+// Dentro de «En curso», por posición en la columna (arriba primero); en
+// «Prioritarias» y «Pendiente», la más antigua primero (ver compararCola).
 function rangoDe(t, previo) {
   const clave = sinTildes(t.lista);
   const actuales = t.badges?.comments ?? 0;
@@ -259,6 +261,22 @@ function rangoDe(t, previo) {
   if (clave === sinTildes(NOMBRES.curso)) return hayNovedad ? 0 : 3;
   if (clave === sinTildes(NOMBRES.prioritaria)) return 1;
   return 2;
+}
+
+// Orden dentro de cada tramo de la cola (ver rangoDe):
+//   - «En curso» (con o sin novedad): por posición en la columna, de arriba abajo.
+//     El usuario mantiene esa columna como una cola: arriba lo que toca atender
+//     antes, abajo lo que acaba de entrar (los movimientos dejan la tarjeta al
+//     final de la columna).
+//   - «Prioritarias» y «Pendiente»: por fecha de creación, la más antigua primero,
+//     porque Trello apila las tarjetas nuevas arriba y ahí la posición no refleja
+//     el orden de llegada.
+function compararCola(a, b, estado) {
+  const ra = rangoDe(a, estado.cards[a.id]);
+  const rb = rangoDe(b, estado.cards[b.id]);
+  if (ra !== rb) return ra - rb;
+  if (ra === 0 || ra === 3) return (a.pos ?? 0) - (b.pos ?? 0);
+  return compararAntiguedad(a, b);
 }
 
 async function contarComentarios(idTarjeta) {
@@ -438,13 +456,15 @@ function promptNuevaTarjeta(t) {
     `Enlace: https://trello.com/c/${t.shortLink}`,
     `ID: ${t.id}`,
     '',
-    'Sigue la skill `trello`:',
+    'Si el título o la descripción es una petición de letra (por ejemplo «nueva letra comparsa el cementerio» o «pasodoble el cementerio», o trae una letra o una URL), NO hagas el plan genérico: pásala a «En curso» y sigue el apartado «Tarjetas de letras» de la skill `trello`. Reconoce la copla con `npm run letras -- reconocer`, apúntala en `letras-pendientes.md`, busca y formatea la letra con los acordes de la ficha base y déjala en «Por revisar» del panel. Hazlo directamente, sin esperar aprobación; para y pregunta en la tarjeta solo si falta la base, no encuentras la letra o hay varias candidatas. El barrido de la cola de letras es otra tarea: no lo hagas aquí.',
+    '',
+    'Para el resto de tarjetas, sigue la skill `trello`:',
     `1. Léela entera: \`npm run trello -- ver ${t.id}\`.`,
     `2. Pásala a «En curso»: \`npm run trello -- empezar ${t.id}\`.`,
     '3. Escribe el plan (objetivo, cambios archivo por archivo, pasos, comprobación, riesgos y dudas) y coméntalo en la tarjeta con `npm run trello -- comentar <id> --texto-archivo .cache/plan-trello.md`.',
     '4. PARA. No implementes nada todavía: espera a que el usuario apruebe el plan con un comentario en la tarjeta.',
     '',
-    `Reglas: trabaja en local (sin commit ni push). No uses el puerto 4321 (es del usuario); si necesitas servidor, 4322/4323/4324. Mensajes y comentarios en español. Todos tus comentarios en Trello deben empezar con «${MARCA}» para distinguirlos de los del usuario.`,
+    `Reglas: trabaja en local y no hagas commit ni push salvo que el usuario lo pida explícitamente («haz commit y push»). No uses el puerto 4321 (es del usuario); si necesitas servidor, 4322/4323/4324. Mensajes y comentarios en español. Todos tus comentarios en Trello deben empezar con «${MARCA}» para distinguirlos de los del usuario.`,
   ].join('\n');
 }
 
@@ -463,11 +483,14 @@ function promptNuevoComentario(t, texto) {
     '',
     'Decide qué hacer según el comentario:',
     '- Si el encargo trae **varios comentarios** (van separados por «---»), léelos todos juntos y haz **un solo plan** que los cubra todos. No los apliques uno a uno ni pidas aprobación por separado.',
-    '- Si es una aprobación del plan ("adelante", "dale", "implementa", "hazlo"): implementa el plan siguiendo AGENTS.md y la skill correspondiente, verifica (`npm run astro check` y los auditores que apliquen) y comenta el resultado en la tarjeta. Si el plan no está visible, léelo antes con `npm run trello -- ver <id>`. No hagas commit ni push salvo que el usuario lo pida explícitamente.',
+    '- Si es una aprobación del plan ("adelante", "dale", "implementa", "hazlo"): si la tarjeta es de letras, haz el flujo de «Tarjetas de letras» de la skill `trello`; si es una tarea de código, implementa el plan siguiendo AGENTS.md y la skill correspondiente y verifica (`npm run astro check` y los auditores que apliquen). Al terminar, comenta «ya está implementado» y qué has hecho, y deja la tarjeta en «En curso»: no hagas commit ni push todavía y no la pases a «Finalizado». Si el plan no está visible, léelo antes con `npm run trello -- ver <id>`.',
+    '- Si el usuario dice «haz commit y push» (o «sube», «publícalo»): haz el commit y el push (sigue la skill `subir-acorde` si toca) y después pasa la tarjeta a «Finalizado» con `npm run trello -- terminar <id> --commit <url-del-commit>`. Pasa la URL completa del commit (no solo el sha) en el comentario y en el chat.',
+    '- Si el usuario dice «finaliza sin commit» (o la tarea no requiere commit, como las letras nuevas): pasa la tarjeta a «Finalizado» directamente con el resumen, sin commit.',
+    '- Si pide el **barrido de la cola de letras** (pasar todas las pendientes por la skill y ponerles acordes), recuerda que es otra tarea: no lo hagas aquí y responde que se hará en su tarjeta.',
     '- Si pide cambios o correcciones al plan: reescribe el plan, coméntalo en la tarjeta y vuelve a parar.',
     '- Si es otra cosa (una pregunta, un "ok", información): respóndele en un comentario de la tarjeta y no toques nada más.',
     '',
-    `Reglas: trabaja en local (sin commit ni push). No uses el puerto 4321 (es del usuario); si necesitas servidor, 4322/4323/4324. Mensajes y comentarios en español. Todos tus comentarios en Trello deben empezar con «${MARCA}» para distinguirlos de los del usuario.`,
+    `Reglas: trabaja en local y no hagas commit ni push salvo que el usuario lo pida explícitamente («haz commit y push»). No uses el puerto 4321 (es del usuario); si necesitas servidor, 4322/4323/4324. Mensajes y comentarios en español. Todos tus comentarios en Trello deben empezar con «${MARCA}» para distinguirlos de los del usuario.`,
   ].join('\n');
 }
 
@@ -522,11 +545,7 @@ async function pasada(estado, primera) {
 
   const vigiladas = tarjetas
     .filter((t) => esVigilada(t.lista))
-    .sort(
-      (a, b) =>
-        rangoDe(a, estado.cards[a.id]) - rangoDe(b, estado.cards[b.id]) ||
-        compararAntiguedad(a, b),
-    );
+    .sort((a, b) => compararCola(a, b, estado));
 
   log(
     `pasada${primera ? ' (primera)' : ''}: ${tarjetas.length} tarjetas abiertas, ` +
@@ -635,12 +654,16 @@ async function main() {
         '',
         '  Atiende la cola en este orden:',
         '    1) En curso con comentario nuevo  2) Prioritarias  3) Pendiente',
-        '    y dentro de cada tramo, la más antigua primero.',
+        '    En «En curso», de arriba abajo de la columna; en Prioritarias y',
+        '    Pendiente, la más antigua primero.',
         '',
         '  Los comentarios seguidos se agrupan en un solo encargo (un plan para todos).',
         '  Se planifica una tarjeta por pasada, la primera de la cola que no tenga plan.',
         '  La columna «Despriorizadas» no se toca nunca; si una tarjeta sale de ahí',
         '  a Pendiente o Prioritarias, se planifica como nueva.',
+        '',
+        '  Las tarjetas de letras («nueva letra…», «pasodoble…») se atienden directamente,',
+        '  sin plan: se busca la letra, se ponen los acordes y se dejan en «Por revisar».',
         '',
         'Env: TRELLO_WATCH_INTERVALO (segundos, 30), TRELLO_WATCH_AGRUPAR (segundos de agrupación, 45), TRELLO_WATCH_MARCA (prefijo de los comentarios del agente, por defecto 🤖), TRELLO_WATCH_SESION_NUEVA (id de tarjeta o `1`), TRELLO_LISTA_PRIORITARIAS («Prioritarias»), TRELLO_LISTA_DESPRIORIZADAS («Despriorizadas»). Una sesión de OpenCode por tarjeta: ses_trello_<idTarjeta>. Modelo: opencode-go/deepseek-v4.1-flash.',
       ].join('\n'),

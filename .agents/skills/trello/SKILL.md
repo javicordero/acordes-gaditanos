@@ -1,10 +1,10 @@
 ---
 name: trello
-description: Lee las tarjetas de la columna «Pendiente» del tablero de Trello, las pasa a «En curso», escribe el plan como comentario y PARA. Solo implementa y pasa a «Finalizado» cuando el usuario aprueba el plan. Usar cuando el usuario diga "mira el trello", "coge la siguiente tarea del trello", "¿qué hay pendiente en Trello?", "planifica la tarea del trello", "implementa el plan aprobado", "pasa la tarjeta a en curso/finalizado" o similar.
+description: Lee las tarjetas de la columna «Pendiente» del tablero de Trello, las pasa a «En curso», escribe el plan como comentario y PARA. Solo implementa y pasa a «Finalizado» cuando el usuario aprueba el plan. Las tarjetas de letras nuevas se hacen directamente, sin plan previo. Usar cuando el usuario diga "mira el trello", "coge la siguiente tarea del trello", "¿qué hay pendiente en Trello?", "planifica la tarea del trello", "implementa el plan aprobado", "pasa la tarjeta a en curso/finalizado", o cuando la tarjeta pida una letra nueva («nueva letra comparsa el cementerio», «pasodoble el cementerio»).
 license: MIT
 metadata:
   author: local
-  version: "1.1"
+  version: "1.2"
 ---
 
 # Tablero de Trello
@@ -21,6 +21,7 @@ Tablero por defecto: `vwbp5cJ5` (`https://trello.com/b/vwbp5cJ5/acordes-gadirano
 - "haz la tarjeta de X", "planifica lo del trello"
 - "adelante con el plan", "implementa esto"
 - "pasa esa tarjeta a en curso", "márcala como finalizada"
+- una tarjeta que pide una letra nueva: «nueva letra comparsa el cementerio», «pasodoble el cementerio»
 
 ## Credenciales
 
@@ -54,6 +55,10 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
 > **Primero se planifica y se para.** «Siguiente tarea del Trello», «coge la siguiente»,
 > «mira qué hay pendiente» son órdenes de **planificar**, no de implementar. Sin un
 > «adelante» explícito del usuario no se edita ni un archivo.
+>
+> **Excepción: tarjetas de letras.** Si la tarjeta pide una letra nueva, se hace el flujo
+> de «Tarjetas de letras» **directamente, sin plan previo**, y solo se para para preguntar
+> (base, letra o ambigüedad). El barrido de la cola de letras pendientes es otra tarea.
 
 1. **Leer la cola**
 
@@ -122,26 +127,113 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
      otra vez.
 
 6. **Implementar** solo tras la aprobación, siguiendo las reglas de `AGENTS.md` (build solo
-   antes del commit, `auditar:pre` / `auditar:acordes` cuando se toquen `<pre>`, etc.). Si
-   aparece algo que no estaba en el plan y cambia el alcance, se para y se comenta antes de
-   seguir.
+   antes del commit, `auditar:pre` / `auditar:acordes` cuando se toquen `<pre>`, etc.), sin
+   commit ni push. Si aparece algo que no estaba en el plan y cambia el alcance, se para y
+   se comenta antes de seguir.
 
 7. **Verificar** de verdad: `npm run astro check`, los auditores que apliquen y, si toca
    interfaz, el servidor de desarrollo en el **puerto 4322** (el 4321 es del usuario).
 
-8. **Pasar a «Finalizado»** con el resumen de lo hecho:
+8. **Comentar «ya está implementado» y quedarse en «En curso».** No se hace commit, ni push,
+   ni se pasa a «Finalizado» todavía:
 
    ```bash
-   npm run trello -- terminar <tarjeta> --texto "Hecho: …" --commit <sha>
+   npm run trello -- comentar <tarjeta> --texto "🤖 Ya está implementado: …"
    ```
 
-   `--pr <url>` añade la PR si la hubo. Con `--commit` se enlaza el cambio a la tarjeta.
+9. **Cerrar solo cuando el usuario lo diga:**
+
+   - «haz commit y push» (o «sube», «publícalo») → commit + push (skill `subir-acorde` si
+     toca) y **después**:
+
+     ```bash
+     npm run trello -- terminar <tarjeta> --texto "Hecho: …" --commit <url-del-commit>
+     ```
+
+     `--commit` lleva la **URL completa del commit** (p. ej.
+     `https://github.com/<repo>/commit/<sha>`), no solo el sha. `--pr <url>` añade la PR si
+     la hubo. Se da el enlace del commit en el comentario y en el chat.
+
+   - «finaliza sin commit» → se pasa a «Finalizado» directamente con el resumen, sin commit.
+     También van directas las tareas que no llevan commit (p. ej. las letras nuevas).
+
+## Tarjetas de letras
+
+Una tarjeta puede pedir una **letra nueva** en vez de una tarea de código. No hace falta
+formato: vale «nueva letra comparsa el cementerio», «pasodoble el cementerio» o
+«letra de <frase>». La descripción puede traer la letra entera, una URL, frases sueltas o
+nada.
+
+El panel `/admin` **no se toca**: sigue siendo el sitio donde revisas y publicas.
+
+### Reconocer la copla
+
+```bash
+npm run letras -- reconocer "<título + descripción>"
+npm run letras -- reconocer "<...>" --json
+```
+
+Devuelve agrupación, año, pieza, fichas y **base propuesta** (el pasodoble original de la
+misma música), y avisa si la letra ya existe o si el título ya está en otra ficha. Si no
+hay candidata clara o la base es dudosa, se pregunta en la tarjeta.
+
+Si la pieza no es un pasodoble, el script avisa: las letras alternativas solo están
+previstas para pasodobles (`TIPOS_CON_LETRAS`).
+
+### Flujo
+
+1. **Leer la tarjeta**: `npm run trello -- ver <id>`. Si la letra viene en un comentario o
+   el texto es largo, usa `--json`: el resumen normal recorta los comentarios a 300
+   caracteres.
+2. **Reconocer** con el título y la descripción juntos.
+3. **Si ya existe** la letra, comenta cuál es la ficha y para. No se duplica.
+4. **Apuntarla en la cola**:
+
+   ```bash
+   npm run letras -- anadir "<frase o título>" --agrupacion "<...>" --base <slug> --notas "tarjeta <url>"
+   ```
+
+5. **Conseguir la letra**:
+   - pegada en la tarjeta → guárdala tal cual en `.cache/letra-<n>.txt`;
+   - URL de letrasdecarnaval → `npm run letra:decarnaval -- <url>`;
+   - otra URL → `npm run letra:web -- <url> --desde "<primera frase>" --salida .cache/letra-<n>.txt`;
+   - Blogger → `npm run letra:blog -- "<frase>" [--agrupacion "<...>"]`;
+   - sin pistas → buscar por la frase y la agrupación.
+
+   Se acepta solo si la frase aparece literal y la agrupación y el año cuadran; se
+   descartan traducciones y montajes.
+6. **Poner los acordes** con la skill `letra-alternativa`: `acordes:plan`, reparto verso a
+   verso, `acordes:aplicar` (escribe en `acordes` por defecto). Lee el informe y corrige
+   los `⚠️` antes de seguir.
+7. **Cerrar**:
+
+   ```bash
+   npm run letras -- estado <n> "con acordes" --ficha <slug> --fuente <url>
+   npm run revisar -- --anadir <slug>
+   npm run auditar:letras
+   ```
+
+   `auditar:letras` comprueba el grupo; `auditar:pre` y `auditar:acordes` si se han tocado
+   los `<pre>`.
+8. **Comentar** en la tarjeta: copla, base, fuente, informe (exactos / ±1 / >1), ruta del
+   `.md` y que está en «Por revisar». Después, **Finalizado**: la ficha queda guardada en
+   local y tú la publicas cuando quieras (`subir-acorde` o panel).
+9. **Si falta la base, la letra o hay varias candidatas**: comenta la pregunta y deja la
+   tarjeta en «En curso». No inventes una base ni una letra.
+
+El barrido de la cola (pasar todas las `pendiente`/`encontrada` por el flujo) es **otra
+tarea**: no se hace al atender una tarjeta de letra.
 
 ## Reglas
 
 - **Nunca** se implementa en el mismo turno en que se planifica, salvo que el usuario lo
-  pida explícitamente («planifícalo y hazlo»).
+  pida explícitamente («planifícalo y hazlo»). **Las tarjetas de letras son la excepción**:
+  se hacen directamente, sin plan previo.
 - Una tarjeta = un plan = una entrega. Nada de cerrar una tarjeta con trabajo a medias.
+- **No se pasa a «Finalizado» hasta que el usuario lo diga**: se implementa sin commit, se
+  comenta «ya está implementado» y se espera. Se cierra con «haz commit y push» (commit +
+  push + `terminar` con la URL del commit) o con «finaliza sin commit» (o si la tarea no
+  lleva commit, como las letras nuevas).
 - Si se bloquea (falta un dato, un token, una decisión del usuario), **no** se pasa a
   Finalizado: se comenta el bloqueo y se deja en «En curso».
 - Si el usuario descarta el plan, la tarjeta vuelve a «Pendiente» y se comenta por qué.
@@ -164,9 +256,9 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
 | `listas` | columnas con su id y nº de tarjetas (comprueba que existen las tres) |
 | `pendientes [--json]` | tarjetas de «Pendiente», de la más antigua a la más nueva |
 | `ver <tarjeta>` | descripción, checklists y últimos comentarios |
-| `empezar <tarjeta>` | → «En curso» + comentario |
-| `terminar <tarjeta>` | → «Finalizado» + comentario (`--commit`, `--pr`) |
-| `mover <tarjeta> <lista>` | mover a una columna concreta |
+| `empezar <tarjeta>` | → «En curso» (al final de la columna) + comentario |
+| `terminar <tarjeta>` | → «Finalizado» (al final de la columna) + comentario (`--commit`, `--pr`) |
+| `mover <tarjeta> <lista>` | mover al final de una columna concreta |
 | `comentar <tarjeta>` | comentar sin mover |
 
 `<tarjeta>` acepta el id, el `shortLink` o un trozo del título (si es ambiguo, lista los
