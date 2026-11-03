@@ -43,14 +43,17 @@ if (!soloBadge) {
   await generar('apple-touch-icon.png', 180, 0.72);
 }
 
-// Badges de las notificaciones push. Android pinta solo la silueta (canal alfa)
-// y la recolorea con el tema, así que necesita un PNG monocromo con
-// transparencia. Windows enseña la imagen tal cual: ahí va la AG sobre el
-// círculo ámbar de la web. El service worker elige según la plataforma.
-async function generarBadgeMonocromo() {
+// Badge de las notificaciones push: Android y Windows lo pintan como silueta
+// (solo el canal alfa), así que va monocromo y con transparencia. Pintarlo a
+// color no sirve: sale un círculo liso.
+async function generarBadge() {
   const TAM = 96;
-  const ancho = Math.round(TAM * 0.92);
-  const logo = await sharp(LOGO).resize({ width: ancho }).png().toBuffer();
+  const ancho = Math.round(TAM * 0.78);
+  const logo = await sharp(LOGO)
+    .resize({ width: ancho })
+    .negate({ alpha: false })
+    .png()
+    .toBuffer();
   const meta = await sharp(logo).metadata();
   const left = Math.round((TAM - (meta.width ?? ancho)) / 2);
   const top = Math.round((TAM - (meta.height ?? ancho)) / 2);
@@ -66,27 +69,7 @@ async function generarBadgeMonocromo() {
     .composite([{ input: logo, left, top }])
     .png()
     .toFile(fileURLToPath(new URL('../public/badge-96.png', import.meta.url)));
-  console.log(`✓ public/badge-96.png (${TAM}x${TAM}, negro sobre transparente)`);
+  console.log(`✓ public/badge-96.png (${TAM}x${TAM}, blanco sobre transparente)`);
 }
 
-async function generarBadgeColor() {
-  const TAM = 96;
-  const ancho = Math.round(TAM * 0.62);
-  const logo = await sharp(LOGO).resize({ width: ancho }).png().toBuffer();
-  const meta = await sharp(logo).metadata();
-  const left = Math.round((TAM - (meta.width ?? ancho)) / 2);
-  const top = Math.round((TAM - (meta.height ?? ancho)) / 2);
-  const fondo = Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${TAM}" height="${TAM}">` +
-      `<circle cx="${TAM / 2}" cy="${TAM / 2}" r="${TAM / 2}" fill="#fca311"/></svg>`,
-  );
-
-  await sharp(fondo)
-    .composite([{ input: logo, left, top }])
-    .png()
-    .toFile(fileURLToPath(new URL('../public/badge-color-96.png', import.meta.url)));
-  console.log(`✓ public/badge-color-96.png (${TAM}x${TAM}, ámbar con la AG)`);
-}
-
-await generarBadgeMonocromo();
-await generarBadgeColor();
+await generarBadge();
