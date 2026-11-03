@@ -48,7 +48,7 @@ if (!soloBadge) {
 // color no sirve: sale un círculo liso.
 async function generarBadge() {
   const TAM = 96;
-  const ancho = Math.round(TAM * 0.78);
+  const ancho = Math.round(TAM * 0.88);
   const logo = await sharp(LOGO)
     .resize({ width: ancho })
     .negate({ alpha: false })
