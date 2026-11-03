@@ -8,7 +8,6 @@ import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
 import BannerCoac2026 from '../components/page/BannerCoac2026.astro';
 import AnunciateAqui from '../components/right-column/AnunciateAqui.astro';
 import AnunciateIndex from '../components/page/AnunciateIndex.astro';
-import Anuncio from '../components/right-column/anuncios/Anuncio.astro';
 import BannerCoplasComunidad from '../components/page/BannerCoplasComunidad.astro';
 import FloatingButton from '../components/FloatingButton.astro';
 import BannerInstalarApp from '../components/pwa/BannerInstalarApp.astro';
@@ -78,9 +77,6 @@ const autoresDestacados = [...autores]
           Ver más autores destacados
         </a>
       </div>
-    </div>
-    <div class='container-layout anuncio-autores'>
-      <Anuncio adSlot='9620700067' />
     </div>
     <!-- <div class='section'><CardsGroup year={'Destacando'} acordes={destacadas} /></div> -->
     <div class='section'>
@@ -161,11 +157,6 @@ const autoresDestacados = [...autores]
     background-color: var(--brand-navy);
     border-top: 4px solid var(--primary-contrast-color);
     border-bottom: 4px solid var(--primary-contrast-color);
-  }
-
-  .anuncio-autores ins[data-ad-status='filled'] {
-    margin-top: var(--main-container-gap);
-    margin-bottom: var(--main-container-gap);
   }
 
   .ver-mas-wrapper {
@@ -303,11 +294,6 @@ const autoresDestacados = [...autores]
 
     :global(.section--autores .acordes-grid > *:nth-child(n + 6)) {
       display: none;
-    }
-
-    .anuncio-autores ins[data-ad-status='filled'] {
-      margin-top: var(--main-container-gap-sm);
-      margin-bottom: var(--main-container-gap-sm);
     }
   }
 </style>

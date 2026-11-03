@@ -14,8 +14,6 @@ import InstalarAppCard from '../../components/right-column/InstalarAppCard.astro
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
-import Anuncio2 from '../../components/right-column/anuncios/Anuncio2.astro';
-import Anuncio3 from '../../components/right-column/anuncios/Anuncio3.astro';
 import { busquedaYoutube, enlaceYoutube, estadoDeVideo } from '../../lib/videos';
 import { hermanasDe, nombrePieza, tituloSeo } from '../../lib/letras';
 
@@ -229,8 +227,6 @@ const webPageSchema = {
 
       <PedirCoplaCard class='pedir-copla' />
 
-      <Anuncio2 class='anuncio-2' />
-
       <SigueTocando
         class='sigue-tocando'
         agrupacion={agrupacion}
@@ -243,8 +239,6 @@ const webPageSchema = {
       />
 
       <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
-
-      <Anuncio3 class='anuncio-3' />
     </div>
 
     <style>
@@ -300,7 +294,7 @@ const webPageSchema = {
           flex-direction: column;
         }
 
-        /* Orden en móvil: Anuncio1 → Apoyar → Instalar → Pedir una copla → SigueTocando → Recomendados → Anuncio2 → ApareceAqui/VideoCover → Video → Anuncio3 */
+        /* Orden en móvil: Anuncio1 → Apoyar → Instalar → Pedir una copla → SigueTocando → Recomendados → ApareceAqui/VideoCover → Video */
         .right-column > :global(.anuncio-1) {
           order: 1;
         }
@@ -325,10 +319,6 @@ const webPageSchema = {
           order: 6;
         }
 
-        .right-column > :global(.anuncio-2) {
-          display: none !important;
-        }
-
         .right-column > :global(.video-cover),
         .right-column > :global(.aparece-aqui) {
           order: 7;
@@ -336,10 +326,6 @@ const webPageSchema = {
 
         .right-column > :global(.video-oficial) {
           order: 8;
-        }
-
-        .right-column > :global(.anuncio-3) {
-          display: none !important;
         }
 
         :global(.anuncio-sobre-footer) {

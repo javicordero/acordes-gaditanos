@@ -71,14 +71,6 @@ const acordesPorYear = years.map((year) => {
   return { year, acordes: delYear, recuento: contarCoplas(delYear) };
 });
 
-const MAX_ANUNCIOS = 8;
-let anunciosColocados = 0;
-const bloques = acordesPorYear.map(({ year, acordes, recuento }, index) => {
-  const conAnuncio = index % 2 === 0 && anunciosColocados < MAX_ANUNCIOS;
-  if (conAnuncio) anunciosColocados++;
-  return { year, acordes, recuento, conAnuncio };
-});
-
 const title = 'Todas las coplas - Acordes del Carnaval de Cádiz';
 const description =
   'Listado completo de todas las coplas con acordes de guitarra del Carnaval de Cádiz, agrupadas por año y ordenadas por tipo de pieza.';
@@ -113,7 +105,7 @@ const itemListSchema = {
         </header>
 
         {
-          bloques.map(({ year, acordes, recuento, conAnuncio }) => (
+          acordesPorYear.map(({ year, acordes, recuento }) => (
             <section class='year-group' aria-labelledby={`year-${year}`}>
               <h2 id={`year-${year}`}>
                 <span class='year-label'>{year}</span>{' '}
@@ -129,30 +121,12 @@ const itemListSchema = {
                   </li>
                 ))}
               </ul>
-              {conAnuncio && (
-                <div class='anuncio-lista'>
-                  <ins
-                    class='adsbygoogle adsbygoogle-lista'
-                    style='display:block'
-                    data-ad-client='ca-pub-3280015847198273'
-                    data-ad-slot='7003931546'
-                    data-ad-format='auto'
-                    data-full-width-responsive='true'
-                  />
-                </div>
-              )}
             </section>
           ))
         }
       </article>
     </section>
   </div>
-
-  <script>
-    document.querySelectorAll('ins.adsbygoogle-lista').forEach(() => {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    });
-  </script>
 </Layout>
 
 <style>
@@ -219,14 +193,6 @@ const itemListSchema = {
       padding: 1px 8px;
       border-radius: 0;
     }
-  }
-
-  .anuncio-lista {
-    margin-top: 8px;
-  }
-
-  .anuncio-lista:has(ins[data-ad-status='unfilled']) {
-    display: none;
   }
 
   .year-group {
