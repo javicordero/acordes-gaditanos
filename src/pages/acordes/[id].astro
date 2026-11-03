@@ -17,7 +17,7 @@ import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
 import Anuncio2 from '../../components/right-column/anuncios/Anuncio2.astro';
 import Anuncio3 from '../../components/right-column/anuncios/Anuncio3.astro';
 import { busquedaYoutube, enlaceYoutube, estadoDeVideo } from '../../lib/videos';
-import { hermanasDe, nombrePieza } from '../../lib/letras';
+import { hermanasDe, nombrePieza, tituloSeo } from '../../lib/letras';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -48,6 +48,10 @@ const {
 // El título de la ficha no incluye el nombre de la letra: la letra se muestra
 // en el badge de la card y en el bloque de hermanas.
 const tituloPagina = `${pieza} ${agrupacion}`;
+
+// Título de la pestaña y del resultado de Google: pieza, agrupación, copla y
+// año, sin la marca, para que no se corte (`tituloSeo`).
+const tituloPestana = tituloSeo(acorde);
 
 // Estado del vídeo principal (npm run videos). Si está caído o bloqueado, la
 // ficha no pinta un iframe roto: muestra un enlace útil en su lugar.
@@ -154,7 +158,7 @@ const webPageSchema = {
 ---
 
 <Layout
-  title={`Acordes ${tituloPagina} - Carnaval ${year} - Acordes Gaditanos`}
+  title={tituloPestana}
   description={description}
   keywords={keywords}
   image={img}

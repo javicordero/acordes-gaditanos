@@ -292,6 +292,7 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 - Google Adsense: `ca-pub-3280015847198273`
 - Claves en `src/lib/constants.ts`
 - OG image por defecto: `/og-image.png`
+- **`<title>` de la ficha** (`tituloSeo` en `src/lib/letras.ts`): pieza, agrupación, nombre de la copla y año, sin la marca, para que no se corte en Google. `Acordes Pasodoble Los Ángeles caídos "Ay si yo fuera un enano" Carnaval 2002`; sin copla, `Acordes Popurrí Los Ángeles Caídos Carnaval 2002`. El nombre sale de `letraTitulo` y, si la `pieza` ya lo trae entrecomillado (`Cuarteta "Castigo divino"`), no se repite. De ahí salen también `og:title` y `twitter:title`; el H1, el breadcrumb y los schemas no cambian.
 - Eventos del glosario: `click_novedad_glosario`, `click_acordes_usados_ver_mas` / `click_acordes_usados_ver_menos`, `click_acorde_pre`, `click_acorde_usado`, `click_acorde_glosario` y `click_glosario_acordes_usados`.
 - Eventos del transportador: `transpose_acorde` (parámetros `direccion` y `semitonos`).
 - Eventos de "ver más" de la home: `ver_mas_novedades_click` y `ver_mas_autores_click` (parámetros `link_type` y `location`).

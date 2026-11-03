@@ -129,6 +129,29 @@ export function piezaConTitulo(data: {
   return titulo ? `${pieza} "${titulo}"` : pieza;
 }
 
+/**
+ * Título de la pestaña y del resultado de Google: pieza, agrupación, nombre de
+ * la copla y año, sin la marca, para que quepa entero en Google.
+ *
+ *   `Acordes Pasodoble Los Ángeles caídos "Ay si yo fuera un enano" Carnaval 2002`
+ *   `Acordes Popurrí Los Ángeles Caídos Carnaval 2002`
+ *
+ * El nombre de la copla sale de `letraTitulo`; si la pieza ya lo trae
+ * entrecomillado (`Cuarteta "Castigo divino"`), no se repite.
+ */
+export function tituloSeo(acorde: FichaConLetra): string {
+  const data = acorde.data;
+  const pieza = (data.pieza || '').trim();
+  const agrupacion = (data.agrupacion || '').trim();
+  const year = String(data.year ?? '').trim();
+  const letra = (data.letraTitulo || '').trim();
+  const titulo = letra && !pieza.includes(`"${letra}"`) ? `"${letra}"` : '';
+
+  return ['Acordes', pieza, agrupacion, titulo, year ? `Carnaval ${year}` : '']
+    .filter(Boolean)
+    .join(' ');
+}
+
 /** Nombre completo: `Pasodoble "La mujer nube" Los Colgaos`. */
 export function nombrePieza(acorde: FichaConLetra): string {
   const agrupacion = (acorde.data.agrupacion || '').trim();
