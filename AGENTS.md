@@ -232,7 +232,7 @@ Credenciales en `.env` (gitignored): `TRELLO_KEY` y `TRELLO_TOKEN` con scope `re
 
 ### Watcher de Trello (`npm run trello:watch`)
 
-`scripts/trello-watch.mjs` sondea el tablero cada 30 s y arranca un agente headless (`opencode run`) cuando hay una tarjeta nueva o un comentario nuevo del usuario, para «charlar por Trello». Una planificación por pasada, comentarios agrupados, una sesión de OpenCode por tarjeta (`ses_trello_<id>`), baseline por id de comentario, lock en `.cache/trello-watch.lock` y la columna **Despriorizadas** no se toca nunca. El agente usa 4322/4323/4324, nunca el 4321.
+`scripts/trello-watch.mjs` sondea el tablero cada 10 s (2 s justo después de lanzar un agente) y arranca un agente headless (`opencode run`) cuando hay una tarjeta nueva o un comentario nuevo del usuario, para «charlar por Trello». Una planificación por pasada, comentarios agrupados (arranca tras 8 s de silencio, con tope de 45 s), una sesión de OpenCode por tarjeta (`ses_trello_<id>`), baseline por id de comentario, lock en `.cache/trello-watch.lock` y la columna **Despriorizadas** no se toca nunca. El agente usa 4322/4323/4324, nunca el 4321.
 
 El detalle (cola por tramos, `--una-vez`, `--seco`, `--nueva-sesion`, modelo fijado y arranque permanente en Windows) está en `docs/operativa/trello-watcher.md`: **léelo antes de tocar el watcher**.
 

@@ -5,8 +5,11 @@
  * responde en la tarjeta siguiendo la skill `trello`.
  *
  * Diseño:
- *   - Sondea la API de Trello cada N segundos (por defecto 30). El sondeo NO
- *     cuesta tokens: es Node puro pegando llamadas a la API.
+ *   - Sondea la API de Trello cada N segundos (por defecto 10). El sondeo NO
+ *     cuesta tokens: es Node puro pegando llamadas a la API (una petición y
+ *     ~0,4 s por pasada), y el límite de Trello está muy por encima.
+ *   - Si una pasada arranca un agente, la siguiente va enseguida (2 s por
+ *     defecto) para vaciar la cola sin esperar el intervalo entero.
  *   - Detecta tarjetas nuevas en «En curso», «Prioritarias» y «Pendiente», y
  *     comentarios nuevos.
  *   - Cola por tramos: primero las de «En curso» con comentario nuevo, después
@@ -18,8 +21,10 @@
  *     plan (nueva, salida de Despriorizadas o registrada sin planificar) se
  *     planifica sola; las demás esperan a la pasada siguiente.
  *   - Varios comentarios seguidos = un solo encargo: antes de arrancar el agente
- *     se espera `TRELLO_WATCH_AGRUPAR` segundos (45) y se leen todos juntos, para
- *     que haga un plan único y no uno por comentario.
+ *     se espera a que el usuario lleve `TRELLO_WATCH_SILENCIO` segundos (8) sin
+ *     comentar (comprobando cada 2 s) y se leen todos juntos, para que haga un
+ *     plan único y no uno por comentario. `TRELLO_WATCH_AGRUPAR` (45) es el tope
+ *     de la espera, no una espera fija: quien comenta seguido arranca en 8 s.
  *   - **Despriorizadas**: columna que no se toca nunca. Si una tarjeta sale de
  *     ahí a Pendiente/Prioritarias, cuenta como nueva y se planifica.
  *   - Una sola sesión de OpenCode por tarjeta: el id es fijo
@@ -46,8 +51,12 @@
  *   node scripts/trello-watch.mjs --seco       no arranca agente, solo avisa
  *
  * Env (opcional):
- *   TRELLO_WATCH_INTERVALO       segundos entre pasadas (por defecto 30)
- *   TRELLO_WATCH_AGRUPAR         segundos de espera para juntar comentarios (45)
+ *   TRELLO_WATCH_INTERVALO       segundos entre pasadas (por defecto 10)
+ *   TRELLO_WATCH_REPOSO          segundos entre pasadas cuando la anterior ha
+ *                                arrancado un agente (por defecto 2)
+ *   TRELLO_WATCH_SILENCIO        segundos sin comentarios nuevos para dejar de
+ *                                agrupar y arrancar el agente (por defecto 8)
+ *   TRELLO_WATCH_AGRUPAR         tope en segundos de esa espera (por defecto 45)
  *   TRELLO_LISTA_PRIORITARIAS    nombre de la columna (por defecto «Prioritarias»)
  *   TRELLO_WATCH_SESION_NUEVA    id/shortLink de una tarjeta (o `1` para todas)
  *                                para que el próximo turno estrene sesión limpia
@@ -66,14 +75,27 @@ const LOCK = join(CACHE, 'trello-watch.lock');
 
 const API = 'https://api.trello.com/1';
 const MODELO = 'opencode-go/deepseek-v4.1-flash';
-const INTERVALO_MS = (parseInt(process.env.TRELLO_WATCH_INTERVALO || '30', 10) || 30) * 1000;
-// Espera de agrupación: antes de arrancar el agente se espera este tiempo por si
-// llegan más comentarios seguidos, y se mandan **todos juntos** en un solo
-// encargo (un plan para todos, no uno por comentario). 0 lo desactiva.
+const INTERVALO_MS = (parseInt(process.env.TRELLO_WATCH_INTERVALO || '10', 10) || 10) * 1000;
+// Espera entre pasadas cuando la anterior ha arrancado un agente: la cola se
+// vacía sin pagar el intervalo entero por cada tarjeta. Suelo de 1 s para no
+// machacar la API si alguien lo pone a cero.
+const REPOSO_MS = Math.max(
+  1000,
+  (parseInt(process.env.TRELLO_WATCH_REPOSO || '2', 10) || 0) * 1000,
+);
+// Agrupación de comentarios: se espera a que el usuario lleve SILENCIO_MS sin
+// escribir (comprobando cada PASO_MS) y AGRUPAR_MS es el tope de la espera, no
+// una espera fija. Antes eran 45 s siempre. 0 en cualquiera de las dos desactiva
+// la espera y se arranca con lo que haya.
+const SILENCIO_MS = Math.max(
+  0,
+  (parseInt(process.env.TRELLO_WATCH_SILENCIO || '8', 10) || 0) * 1000,
+);
 const AGRUPAR_MS = Math.max(
   0,
   (parseInt(process.env.TRELLO_WATCH_AGRUPAR || '45', 10) || 0) * 1000,
 );
+const PASO_MS = 2000;
 // Prefijo que el agente pone al principio de sus comentarios para distinguirlos
 // de los del usuario. Sirve también para que el watcher ignore sus respuestas.
 const MARCA = process.env.TRELLO_WATCH_MARCA || '🤖';
@@ -316,17 +338,44 @@ async function comentariosNuevos(idTarjeta, previo, actuales) {
   return { nuevos, candidatos, ultimoId };
 }
 
-// Espera de agrupación: cuando hay comentarios nuevos espera unos segundos y
-// vuelve a leer. Los que hayan llegado entretanto se suman al mismo encargo, así
-// el agente hace **un solo plan para todos** en vez de uno por comentario.
+// Espera de agrupación: cuando hay comentarios nuevos se espera a que el usuario
+// lleve un rato sin escribir y se vuelve a leer. Los que hayan llegado entretanto
+// se suman al mismo encargo, así el agente hace **un solo plan para todos** en
+// vez de uno por comentario. No es una espera fija: AGRUPAR_MS es el tope.
 async function agruparComentarios(t, previo, iniciales) {
-  if (!AGRUPAR_MS) return iniciales;
-  log(`⏳ ${AGRUPAR_MS / 1000} s para agrupar más comentarios en`, t.name);
-  await new Promise((r) => setTimeout(r, AGRUPAR_MS));
-  const actuales = await contarComentarios(t.id);
-  const { nuevos } = await comentariosNuevos(t.id, previo, actuales);
+  const todos = [...iniciales];
+  if (!SILENCIO_MS || !AGRUPAR_MS) return todos;
+
   const vistos = new Set(iniciales.map((a) => a.id));
-  const todos = [...iniciales, ...nuevos.filter((a) => !vistos.has(a.id))];
+  const inicio = Date.now();
+  let ultimo = inicio;
+  log(
+    `⏳ hasta ${SILENCIO_MS / 1000} s de silencio para agrupar más comentarios en`,
+    t.name,
+    `(tope ${AGRUPAR_MS / 1000} s)`,
+  );
+
+  while (true) {
+    const espera = Math.min(
+      SILENCIO_MS - (Date.now() - ultimo),
+      AGRUPAR_MS - (Date.now() - inicio),
+    );
+    if (espera <= 0) break;
+    await new Promise((r) => setTimeout(r, Math.min(PASO_MS, espera)));
+
+    // Con baseline por id basta una llamada; el contador solo hace falta en
+    // estados antiguos, que no lo tienen.
+    const actuales = previo.ultimoComentario ? 0 : await contarComentarios(t.id);
+    const { nuevos } = await comentariosNuevos(t.id, previo, actuales);
+    const añadidos = nuevos.filter((a) => !vistos.has(a.id));
+    if (añadidos.length) {
+      for (const a of añadidos) vistos.add(a.id);
+      todos.push(...añadidos);
+      ultimo = Date.now();
+      log(`   ${todos.length} comentarios en el encargo`);
+    }
+  }
+
   if (todos.length > iniciales.length) {
     log(`   agrupados ${todos.length} comentarios en un solo encargo`);
   }
@@ -532,6 +581,7 @@ function ejecutarAgente(prompt, t, previo) {
 
 async function pasada(estado, primera) {
   const { tarjetas } = await snapshot();
+  let trabajo = false;
 
   // Despriorizadas: no se tocan nunca. Solo se apunta en qué columna están, para
   // saber si más adelante las pasan a Pendiente o Prioritarias (entonces sí
@@ -551,8 +601,17 @@ async function pasada(estado, primera) {
     `pasada${primera ? ' (primera)' : ''}: ${tarjetas.length} tarjetas abiertas, ` +
       `${vigiladas.length} en la cola`,
   );
-  for (const t of vigiladas) {
-    log(`   · [${t.lista}] ${String(t.name).slice(0, 45)}`);
+  // La lista de la cola solo se pinta cuando hay algo que hacer (o con
+  // `--una-vez`): a 10 s de sondeo, si no, llena la consola todos los minutos.
+  const hayAlgo =
+    UNA_VEZ ||
+    vigiladas.some(
+      (t) => necesitaPlan(t, estado.cards[t.id]) || rangoDe(t, estado.cards[t.id]) === 0,
+    );
+  if (hayAlgo) {
+    for (const t of vigiladas) {
+      log(`   · [${t.lista}] ${String(t.name).slice(0, 45)}`);
+    }
   }
 
   for (const t of vigiladas) {
@@ -581,7 +640,7 @@ async function pasada(estado, primera) {
         ficha.ultimoComentario = nuevos.length ? nuevos[nuevos.length - 1].id : ultimoId;
       }
       estado.cards[t.id] = ficha;
-      return; // una planificación por pasada: la siguiente, en la próxima
+      return true; // una planificación por pasada: la siguiente, en la próxima
     }
 
     if (!previo) {
@@ -636,7 +695,9 @@ async function pasada(estado, primera) {
     // Baseline = comentario más nuevo procesado (no la respuesta del agente), así
     // un comentario que llegue mientras corre se recoge en la pasada siguiente.
     previo.ultimoComentario = lote[lote.length - 1].id;
+    trabajo = true;
   }
+  return trabajo;
 }
 
 async function main() {
@@ -645,7 +706,7 @@ async function main() {
       [
         'trello-watch — vigila el tablero y arranca un agente headless ante lo nuevo.',
         '',
-        '  node scripts/trello-watch.mjs            vigilar en bucle (cada 30 s)',
+        '  node scripts/trello-watch.mjs            vigilar en bucle (cada 10 s)',
         '  node scripts/trello-watch.mjs --una-vez  una sola pasada',
         '  node scripts/trello-watch.mjs --seco     no arranca agente, solo avisa',
         '',
@@ -665,7 +726,7 @@ async function main() {
         '  Las tarjetas de letras («nueva letra…», «pasodoble…») se atienden directamente,',
         '  sin plan: se busca la letra, se ponen los acordes y se dejan en «Por revisar».',
         '',
-        'Env: TRELLO_WATCH_INTERVALO (segundos, 30), TRELLO_WATCH_AGRUPAR (segundos de agrupación, 45), TRELLO_WATCH_MARCA (prefijo de los comentarios del agente, por defecto 🤖), TRELLO_WATCH_SESION_NUEVA (id de tarjeta o `1`), TRELLO_LISTA_PRIORITARIAS («Prioritarias»), TRELLO_LISTA_DESPRIORIZADAS («Despriorizadas»). Una sesión de OpenCode por tarjeta: ses_trello_<idTarjeta>. Modelo: opencode-go/deepseek-v4.1-flash.',
+        'Env: TRELLO_WATCH_INTERVALO (segundos entre pasadas, 10), TRELLO_WATCH_REPOSO (segundos tras arrancar un agente, 2), TRELLO_WATCH_SILENCIO (segundos de silencio para dejar de agrupar, 8), TRELLO_WATCH_AGRUPAR (tope de esa espera, 45), TRELLO_WATCH_MARCA (prefijo de los comentarios del agente, por defecto 🤖), TRELLO_WATCH_SESION_NUEVA (id de tarjeta o `1`), TRELLO_LISTA_PRIORITARIAS («Prioritarias»), TRELLO_LISTA_DESPRIORIZADAS («Despriorizadas»). Una sesión de OpenCode por tarjeta: ses_trello_<idTarjeta>. Modelo: opencode-go/deepseek-v4.1-flash.',
       ].join('\n'),
     );
     return;
@@ -687,17 +748,23 @@ async function main() {
 
   log(
     `arrancando (${UNA_VEZ ? 'una vez' : 'bucle a ' + INTERVALO_MS / 1000 + ' s'}` +
+      `${UNA_VEZ ? '' : ', ' + REPOSO_MS / 1000 + ' s tras un agente'}` +
       `${SECO ? ', seco' : ''}${NUEVA_SESION ? ', nueva sesión: ' + NUEVA_SESION : ''})`,
   );
 
   do {
+    let trabajo = false;
     try {
-      await pasada(estado, primera);
+      trabajo = await pasada(estado, primera);
       if (!SECO) guardarEstado(estado);
     } catch (e) {
       console.error('error en la pasada:', e.message);
     }
-    if (!UNA_VEZ) await new Promise((r) => setTimeout(r, INTERVALO_MS));
+    // Si la pasada ha arrancado un agente, la siguiente va enseguida para vaciar
+    // la cola; si no, se espera el intervalo normal.
+    if (!UNA_VEZ) {
+      await new Promise((r) => setTimeout(r, trabajo ? REPOSO_MS : INTERVALO_MS));
+    }
   } while (!UNA_VEZ);
 
   log('fin.');
