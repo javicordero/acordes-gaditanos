@@ -437,11 +437,23 @@ const headingId = `acorde-${slug}`;
     padding: 0;
   }
 
+  /* Todos los chips miden lo mismo: el ancho del más largo.
+     La medida la pone el script en `--letras-chip`; sin él se quedan como antes. */
+  .letras-hermanas li {
+    display: flex;
+    width: var(--letras-chip, auto);
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .letras-hermanas a,
   .letras-hermanas__actual {
     display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
     max-width: 100%;
     padding: 4px 10px;
+    text-align: center;
     border: 2px solid var(--primary-color);
     background-color: var(--card-background-color);
     color: var(--primary-color);
@@ -457,6 +469,14 @@ const headingId = `acorde-${slug}`;
   .letras-hermanas__actual {
     background-color: var(--primary-contrast-color);
     color: var(--on-bright-color);
+  }
+
+  /* En móvil, siempre una letra debajo de otra, cada una al ancho del más largo. */
+  @media (max-width: 640px) {
+    .letras-hermanas ul {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .acorde-content :global(pre) {
@@ -1083,6 +1103,59 @@ const headingId = `acorde-${slug}`;
       document.addEventListener('DOMContentLoaded', initAutoscroll);
     } else {
       initAutoscroll();
+    }
+  })();
+</script>
+
+<script>
+  // «Letras de este pasodoble»: todos los chips al ancho del más largo.
+  (function () {
+    function ajustarChipsLetras() {
+      var ul = document.querySelector<HTMLElement>('.letras-hermanas ul');
+      if (!ul) return;
+
+      // Se vuelve al ancho natural para poder medir cada etiqueta.
+      ul.style.removeProperty('--letras-chip');
+
+      var ancho = 0;
+      for (var i = 0; i < ul.children.length; i++) {
+        var li = ul.children[i];
+        if (!(li instanceof HTMLElement)) continue;
+        ancho = Math.max(ancho, li.getBoundingClientRect().width, li.scrollWidth);
+      }
+      if (!ancho) return;
+
+      // Se redondea hacia arriba (y un píxel de más) para que la etiqueta más
+      // larga no parta por culpa del subpíxel.
+      var medida = Math.ceil(ancho) + 1;
+
+      // Si el ancho natural no cabe (pantallas muy estrechas), se limita al hueco.
+      // Se mide el contenedor, no la lista: en móvil la lista se encoge al texto.
+      var contenedor = (ul.parentElement || ul).getBoundingClientRect().width;
+      var hueco = Math.floor(contenedor);
+      ul.style.setProperty('--letras-chip', Math.min(medida, hueco) + 'px');
+    }
+
+    var temporizador: ReturnType<typeof setTimeout> | undefined;
+
+    function programarAjuste() {
+      clearTimeout(temporizador);
+      temporizador = setTimeout(ajustarChipsLetras, 150);
+    }
+
+    function iniciar() {
+      ajustarChipsLetras();
+      // La tipografía mono cambia las medidas al cargar.
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(ajustarChipsLetras);
+      }
+      window.addEventListener('resize', programarAjuste);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', iniciar);
+    } else {
+      iniciar();
     }
   })();
 </script>
