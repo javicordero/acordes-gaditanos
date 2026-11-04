@@ -21,3 +21,54 @@ Vigila el tablero y arranca un agente headless (`opencode run`) cuando aparece u
 - **Puertos**: el agente puede usar 4322/4323/4324, nunca el 4321 (del usuario).
 - Órdenes: `--una-vez` (una pasada, para probar), `--seco` (no arranca agente, no publica ni escribe estado; además no toma el lock, así se puede probar una pasada con el watcher real corriendo) y `--nueva-sesion [id]` (estrena sesión limpia en la próxima pasada; sin valor, en cualquier tarjeta).
 - **Arranque permanente** (Windows): Programador de tareas con `Programa: C:\Program Files\nodejs\node.exe`, `Argumentos: C:\Users\Usuario\Desktop\acordes-gaditanos\scripts\trello-watch.mjs` y `Iniciar en: C:\Users\Usuario\Desktop\acordes-gaditanos`.
+
+## Avisos al móvil (cuenta bot)
+
+Trello **no notifica tus propias acciones**: un comentario escrito con tu token aparece en
+la tarjeta, pero ni enciende la campanita del panel ni manda push al móvil, porque Trello lo
+apunta como acción tuya (`memberCreator = tú`). No se arregla desde la API: el endpoint de
+notificaciones es solo de lectura y mencionarte a ti mismo en el comentario tampoco notifica
+(probado). El tablero tiene un solo miembro, así que hoy todo lo que se escribe sale a tu
+nombre.
+
+La solución es una **cuenta bot** invitada al tablero, que es quien escribe los comentarios:
+
+1. Crear una cuenta de Trello aparte (por ejemplo `acordesbot`) con un email que no uses en
+   tu cuenta.
+2. Invitarla al tablero como **miembro normal** (no administrador) y aceptar la invitación.
+3. Entrar con ella en <https://trello.com/power-ups/admin> → su Power-Up → copiar la clave y
+   autorizar el token (`read,write`).
+4. Pegar las dos claves en `.env`:
+
+   ```
+   TRELLO_BOT_KEY=...
+   TRELLO_BOT_TOKEN=...
+   ```
+
+No hay que reiniciar el watcher: las claves se leen en cada ejecución del CLI.
+
+**Qué usa cada credencial**
+
+- `scripts/trello.mjs` usa las del bot **solo al comentar** (`comentar()`, y con él
+  `empezar`, `terminar` y `comentar`). Leer (`ver`, `pendientes`) y **mover** siguen con tu
+  token, para no llenar el móvil de avisos de movimientos.
+- `scripts/lib/mcp-trello.mjs` (herramientas `trello_*`) va **siempre** con tu token, porque
+  también mueve tarjetas. Por eso un `trello_add_comment` **no avisa**: para comentar se usa
+  el CLI (`npm run trello -- comentar …`).
+- `scripts/subir-ficha.mjs` llama al CLI, así que hereda el bot sin tocar nada.
+- El watcher no cambia: reconoce los comentarios del agente por el prefijo `🤖`, no por el
+  autor.
+
+Si faltan las claves no se rompe nada: el comentario sale con tu token y el CLI avisa por
+consola de que no notificará.
+
+**Comprobación**: `npm run trello -- comentar <tarjeta> --texto "🤖 prueba"` y mirar la
+campanita del móvil (hace falta la app de Trello con las notificaciones activadas). Por API,
+`GET /1/members/me/notifications` tiene que devolver una acción `mentionedOnCard` cuyo autor
+sea el bot.
+
+**La mención es obligatoria, no un extra**: probado que un comentario del bot en una tarjeta
+de la que no eres miembro **no genera ninguna notificación**. Por eso `comentar()` añade
+`@<usuario>` al final del comentario (si no estaba ya), con el usuario de
+`TRELLO_AVISAR_A` (por defecto `javicordero1`). El prefijo `🤖` se queda delante, que es lo
+que mira el watcher para no responderse a sí mismo.

@@ -8,6 +8,12 @@
  * sitio (`.env`, que está gitignored), igual que el resto de scripts del
  * proyecto.
  *
+ * Va **siempre con tu token**, no con el de la cuenta bot: el MCP también mueve
+ * tarjetas y los movimientos no tienen que notificar. Como Trello no avisa de
+ * tus propias acciones, un comentario escrito con las herramientas `trello_*`
+ * **no enciende la campanita**: para comentar se usa el CLI
+ * (`npm run trello -- comentar`), que sí escribe con el bot.
+ *
  * Prueba rápida de que el servidor arranca:
  *   node scripts/lib/mcp-trello.mjs
  * (se queda esperando por stdin: es normal, es un servidor MCP)

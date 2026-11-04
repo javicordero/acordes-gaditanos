@@ -7,6 +7,13 @@
  *   TRELLO_TOKEN=...    token con scope read,write
  *   TRELLO_TABLERO=...  id o nombre corto del tablero (por defecto vwbp5cJ5)
  *
+ * Avisos al móvil: Trello no notifica tus propias acciones, así que un comentario
+ * hecho con TU token no enciende la campanita. Si están las claves de la cuenta
+ * bot, los comentarios se escriben con ella y entonces sí llega la notificación
+ * al móvil. Leer y mover sigue con tu token.
+ *   TRELLO_BOT_KEY=...    clave de la cuenta bot
+ *   TRELLO_BOT_TOKEN=...  token de la cuenta bot (miembro del tablero)
+ *
  * Nombres de lista configurables si algún día se renombran las columnas:
  *   TRELLO_LISTA_PENDIENTE  (por defecto «Pendiente»)
  *   TRELLO_LISTA_CURSO      (por defecto «En curso»)
@@ -54,6 +61,7 @@ for (let i = 2; i < process.argv.length; i++) {
 const comando = (orden[0] || 'pendientes').toLowerCase();
 const SIMULAR = Boolean(args.simular);
 const JSON_OUT = Boolean(args.json);
+let AVISO_SIN_BOT_DADO = false;
 
 // ---------------------------------------------------------------------------
 // Entorno
@@ -74,6 +82,12 @@ function leerEnv() {
 const ENV = leerEnv();
 const KEY = process.env.TRELLO_KEY || ENV.TRELLO_KEY || '';
 const TOKEN = process.env.TRELLO_TOKEN || ENV.TRELLO_TOKEN || '';
+// Cuenta bot: solo para escribir comentarios (ver «comentar» más abajo).
+const BOT_KEY = process.env.TRELLO_BOT_KEY || ENV.TRELLO_BOT_KEY || '';
+const BOT_TOKEN = process.env.TRELLO_BOT_TOKEN || ENV.TRELLO_BOT_TOKEN || '';
+const HAY_BOT = Boolean(BOT_KEY && BOT_TOKEN);
+// A quién se menciona para que la notificación llegue (usuario de Trello del dueño).
+const AVISAR_A = process.env.TRELLO_AVISAR_A || ENV.TRELLO_AVISAR_A || 'javicordero1';
 const TABLERO = process.env.TRELLO_TABLERO || ENV.TRELLO_TABLERO || 'vwbp5cJ5';
 
 const NOMBRES = {
@@ -110,10 +124,12 @@ function faltanCredenciales() {
 // Cliente
 // ---------------------------------------------------------------------------
 
-async function api(ruta, { metodo = 'GET', consulta = {}, cuerpo } = {}) {
+async function api(ruta, { metodo = 'GET', consulta = {}, cuerpo, credenciales } = {}) {
+  const clave = credenciales?.key || KEY;
+  const token = credenciales?.token || TOKEN;
   const url = new URL(API + ruta);
-  url.searchParams.set('key', KEY);
-  url.searchParams.set('token', TOKEN);
+  url.searchParams.set('key', clave);
+  url.searchParams.set('token', token);
   for (const [k, v] of Object.entries(consulta)) {
     if (v !== undefined && v !== null) url.searchParams.set(k, String(v));
   }
@@ -254,7 +270,35 @@ async function comentar(id, texto) {
   }
   // El texto va en el cuerpo, no en la query: un comentario largo (el plan entero)
   // desbordaba la URL y Trello respondía 414.
-  await api(`/cards/${id}/actions/comments`, { metodo: 'POST', cuerpo: { text: texto } });
+  //
+  // Se escribe con la cuenta bot si está configurada: Trello NO notifica las
+  // acciones del propio usuario, así que un comentario con tu token no enciende
+  // la campanita ni manda push al móvil. El bot sí, pero solo si te menciona:
+  // comentar en una tarjeta de la que no eres miembro no genera notificación
+  // (probado: sin mención no salta nada, con @usuario sale «mentionedOnCard»).
+  const credenciales = HAY_BOT ? { key: BOT_KEY, token: BOT_TOKEN } : undefined;
+  let cuerpo = texto;
+  if (HAY_BOT) {
+    // Solo cuenta si la mención está al **final**: el texto puede nombrar el
+    // usuario a mitad (p. ej. explicando esto mismo) y eso no notifica nada.
+    const mencion = `@${AVISAR_A}`;
+    const yaAlFinal = new RegExp(`${mencion}\\s*$`, 'i').test(texto.trim());
+    if (!yaAlFinal) cuerpo = `${texto.trimEnd()}\n\n${mencion}`;
+  }
+  await api(`/cards/${id}/actions/comments`, {
+    metodo: 'POST',
+    cuerpo: { text: cuerpo },
+    credenciales,
+  });
+
+  if (!HAY_BOT && !AVISO_SIN_BOT_DADO) {
+    AVISO_SIN_BOT_DADO = true;
+    console.warn(
+      '⚠️  Comentario escrito con TU token: Trello no te avisará al móvil. ' +
+        'Para que llegue la notificación, pon TRELLO_BOT_KEY y TRELLO_BOT_TOKEN en .env ' +
+        '(ver docs/operativa/trello-watcher.md).',
+    );
+  }
 }
 
 async function moverA(id, lista, nombreLista) {

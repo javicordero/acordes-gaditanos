@@ -42,6 +42,15 @@ Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
 `TRELLO_LISTA_CURSO`, `TRELLO_LISTA_FINAL`, `TRELLO_LISTA_SUBIR` («Subir ficha») y
 `TRELLO_LISTA_SUBIDAS` («Subidas»).
 
+**Comentar siempre con el CLI.** Trello no notifica tus propias acciones, así que el
+comentario tiene que escribirlo la **cuenta bot** (`TRELLO_BOT_KEY` / `TRELLO_BOT_TOKEN` en
+`.env`): es lo que hace `scripts/trello.mjs` al comentar, y además le añade `@<usuario>` al
+final (`TRELLO_AVISAR_A`, por defecto `javicordero1`) porque sin mención Trello no avisa de
+un comentario en una tarjeta de la que no eres miembro. Las herramientas MCP `trello_*` van
+con tu token (también mueven tarjetas), así que **`trello_add_comment` no avisa al móvil**:
+para comentar se usa `npm run trello -- comentar`. Si faltan las claves del bot no se rompe
+nada, pero el comentario no enciende la campanita (el CLI lo advierte).
+
 ## Dos caminos
 
 - **Herramientas MCP** (`trello_*` en la sesión): existen porque `opencode.json` arranca
