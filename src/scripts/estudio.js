@@ -245,7 +245,7 @@ function pintarLista() {
   const publicadas = resultado.filter((x) => !esPendiente(x));
   const revisar = resultado.filter(porRevisar)
     .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || a.agrupacion.localeCompare(b.agrupacion, 'es'));
-  const porPublicar = pendientesPublicar.filter(coincide)
+  const porPublicar = pendientesPublicar.filter((x) => coincide(x) && !revision.has(x.slug))
     .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || String(a.agrupacion).localeCompare(String(b.agrupacion), 'es'));
 
   $('q-limpiar').hidden = !$('q').value;
