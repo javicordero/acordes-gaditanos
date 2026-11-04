@@ -85,7 +85,20 @@ const autoresDestacados = [...autores]
             href='/lista'
             data-ga-event='click_listado_carnavales'
             data-ga-params='{"link_type":"lista","location":"index_carnavales"}'>
-            Ver el listado completo de coplas
+            <span>Ver lista de todas las coplas</span>
+            <svg
+              width='16'
+              height='16'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              stroke-width='2'
+              stroke-linecap='square'
+              stroke-linejoin='miter'
+              aria-hidden='true'>
+              <path d='M7 17 17 7'></path>
+              <path d='M9 7h8v8'></path>
+            </svg>
           </a>
         </p>
       </YearsList>
@@ -165,27 +178,93 @@ const autoresDestacados = [...autores]
 
   .listado-link {
     margin: 0;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
   }
 
   .listado-link a {
-    color: var(--link-color);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background-color: var(--surface-color);
+    color: var(--primary-contrast-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    box-shadow: 3px 3px 0 0 var(--primary-color);
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
   }
 
-  .listado-link a:hover {
-    color: var(--link-hover-color);
+  .listado-link a :global(svg) {
+    display: block;
+    flex: none;
+  }
+
+  /* Con ratón: el color y el levantado van en el :hover; al pulsar, el botón
+     se hunde. Con el dedo no hay hover de verdad (se queda pegado al toque),
+     así que el color no cambia y el levantado se hace en el :active. */
+  @media (hover: hover) and (pointer: fine) {
+    .listado-link a:hover {
+      background-color: var(--primary-contrast-color);
+      color: var(--on-bright-color);
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 0 var(--primary-color);
+    }
+
+    .listado-link a:active {
+      transform: translate(0, 0);
+      box-shadow: 1px 1px 0 0 var(--primary-color);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .listado-link a:hover,
+      .listado-link a:active {
+        transform: none;
+      }
+    }
+  }
+
+  @media (hover: none) {
+    .listado-link a:active {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 0 var(--primary-color);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .listado-link a:active {
+        transform: none;
+      }
+    }
   }
 
   .listado-link a:focus-visible {
     outline: 3px solid var(--primary-contrast-color);
     outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .listado-link a {
+      transition: none;
+    }
+  }
+
+  /* En pantallas muy estrechas el texto cabe en una línea si aprieta un poco */
+  @media (max-width: 360px) {
+    .listado-link a {
+      gap: 6px;
+      padding: 8px 12px;
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
+    }
   }
 
   .ver-mas {
