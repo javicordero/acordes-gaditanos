@@ -11,15 +11,28 @@ import { parseSpanishDate, sortByYearDesc } from './date.ts';
  * "Final de popurí", "Presentación Original", "Pasodoble Inédito"...).
  * Lo que no case va al final, por orden alfabético.
  */
-export const ORDEN_PIEZAS = [
-  'popurri',
-  'final de popur',
-  'cuarteta',
-  'estribillo',
-  'pasodoble',
-  'tango',
-  'presentacion',
+const TIPOS_PIEZA: Array<[TipoPiezaId, string]> = [
+  ['popurri', 'popurri'],
+  ['final-de-popurri', 'final de popur'],
+  ['cuarteta', 'cuarteta'],
+  ['estribillo', 'estribillo'],
+  ['pasodoble', 'pasodoble'],
+  ['tango', 'tango'],
+  ['presentacion', 'presentacion'],
 ];
+
+export const ORDEN_PIEZAS = TIPOS_PIEZA.map(([, prefijo]) => prefijo);
+
+/** Identificador de cada tipo de pieza, ya sin variantes de escritura. */
+export type TipoPiezaId =
+  | 'popurri'
+  | 'final-de-popurri'
+  | 'cuarteta'
+  | 'estribillo'
+  | 'pasodoble'
+  | 'tango'
+  | 'presentacion'
+  | 'otro';
 
 /**
  * Tipos de pieza que se ordenan como otro tipo: el `Credo` de Los Peregrinos
@@ -37,6 +50,22 @@ export function rangoPieza(pieza: string): number {
   const tipo = EQUIVALENCIAS_PIEZAS[normalizada] ?? normalizada;
   const indice = ORDEN_PIEZAS.findIndex((prefijo) => tipo.startsWith(prefijo));
   return indice === -1 ? ORDEN_PIEZAS.length : indice;
+}
+
+/**
+ * Tipo de pieza de una ficha, agrupando las variantes de escritura del
+ * cancionero (`Final de popurri`/`popurrí`/`popurí`, `Pasodoble Inédito`,
+ * `Cuarteta "…"`, `Presentación Original`). El `Credo` y el `Testamento`
+ * cuentan como cuarteta, igual que al ordenar.
+ */
+export function tipoPiezaId(pieza: string): TipoPiezaId {
+  const normalizada = normalizeText(pieza ?? '')
+    .replace(/"[^"]*"/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+  const tipo = EQUIVALENCIAS_PIEZAS[normalizada] ?? normalizada;
+  const encontrado = TIPOS_PIEZA.find(([, prefijo]) => tipo.startsWith(prefijo));
+  return encontrado ? encontrado[0] : 'otro';
 }
 
 /** Comparación alfabética en español, sin tildes ni mayúsculas. */

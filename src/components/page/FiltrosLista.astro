@@ -1,0 +1,998 @@
+---
+// Panel de filtros del listado `/lista`.
+//
+// No genera páginas ni URLs nuevas: filtra en el navegador las coplas que ya
+// están pintadas y sincroniza el estado con la query (`?pieza=pasodoble,tango`)
+// con `history.replaceState`, para poder compartirlo y no perderlo al volver
+// de una ficha.
+//
+// Los seis filtros admiten varios valores: dentro de una faceta se suma y entre
+// facetas se cruza. Cada uno parece un `select` pero abre un panel con
+// checkboxes (FiltroMultiple.astro); aquí vive todo el estado.
+
+import FiltroMultiple from './FiltroMultiple.astro';
+import { textoRecuento, type RecuentoCoplas } from '../../lib/letras';
+import type { OpcionFiltro } from '../../lib/filtros-lista';
+
+interface Props {
+  opciones: {
+    pieza: OpcionFiltro[];
+    musica: OpcionFiltro[];
+    letra: OpcionFiltro[];
+    anio: OpcionFiltro[];
+    decada: OpcionFiltro[];
+  };
+  /** Recuento de todas las fichas, para el contador sin JS. */
+  recuento: RecuentoCoplas;
+}
+
+const { opciones, recuento } = Astro.props;
+
+const filtros = [
+  { faceta: 'pieza', id: 'filtro-pieza', etiqueta: 'Pieza', vacio: 'Todas', lista: opciones.pieza, buscable: false },
+  { faceta: 'musica', id: 'filtro-musica', etiqueta: 'Música', vacio: 'Cualquiera', lista: opciones.musica, buscable: true },
+  { faceta: 'letra', id: 'filtro-letra', etiqueta: 'Letra', vacio: 'Cualquiera', lista: opciones.letra, buscable: true },
+  { faceta: 'anio', id: 'filtro-anio', etiqueta: 'Año', vacio: 'Todos', lista: opciones.anio, buscable: false },
+  { faceta: 'decada', id: 'filtro-decada', etiqueta: 'Década', vacio: 'Todas', lista: opciones.decada, buscable: false },
+] as const;
+---
+
+<section class='filtros-lista' data-filtros-lista aria-labelledby='filtros-lista-titulo'>
+  <div class='filtros-lista-cabecera'>
+    <h2 id='filtros-lista-titulo'>Filtrar</h2>
+    <p class='filtros-lista-contador' role='status' aria-live='polite' data-contador>
+      {textoRecuento(recuento)}
+    </p>
+    <button
+      type='button'
+      class='filtros-lista-toggle'
+      data-toggle
+      aria-expanded='true'
+      aria-controls='filtros-lista-panel'
+    >
+      <span data-toggle-texto>Ocultar filtros</span>
+      <span class='filtros-lista-toggle-num' data-toggle-num hidden></span>
+    </button>
+  </div>
+
+  <div class='filtros-lista-plegable' data-plegable>
+    <div class='filtros-lista-plegable-interior' data-plegable-interior>
+      <div class='filtros-lista-panel' id='filtros-lista-panel'>
+        <div class='filtros-lista-multiples'>
+          {
+            filtros.map(({ faceta, id, etiqueta, vacio, lista, buscable }) => (
+              <FiltroMultiple
+                faceta={faceta}
+                id={id}
+                etiqueta={etiqueta}
+                vacio={vacio}
+                opciones={[...lista]}
+                buscable={buscable}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='filtros-lista-activos' data-activos hidden>
+    <span class='filtros-lista-titulo'>Filtros</span>
+    <ul class='filtros-lista-activos-lista' data-activos-lista></ul>
+    <button type='button' class='filtro-limpiar-todos' data-limpiar-todos>Borrar todos</button>
+  </div>
+
+  <p class='filtros-lista-vacio' data-vacio hidden>
+    No hay coplas con estos filtros. <button type='button' class='filtro-limpiar-todos' data-limpiar-todos
+      >Borrar todos</button
+    >
+  </p>
+</section>
+
+<style is:global>
+  /* `is:global` porque los chips activos y las opciones de los filtros los pinta
+     el script, y esos nodos no llevan el `data-astro-cid`. Todo va prefijado con
+     `.filtros-lista` para no salir de este panel. */
+  .filtros-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .filtros-lista [hidden] {
+    display: none !important;
+  }
+
+  .filtros-lista-cabecera {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+
+    & h2 {
+      margin: 0;
+      color: var(--primary-color);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+
+  .filtros-lista-contador {
+    margin: 0 0 0 auto;
+    color: var(--text-secondary-color, var(--text-color));
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+  }
+
+  .filtros-lista-toggle,
+  .filtro-limpiar-todos {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: transparent;
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      background 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .filtros-lista-toggle:hover,
+  .filtro-limpiar-todos:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .filtros-lista-toggle-num {
+    padding: 0 5px;
+    border: 1px solid currentColor;
+    font-size: 0.65rem;
+  }
+
+  /* Plegado animado: `grid-template-rows` pasa de 0fr a 1fr y el interior
+     (que recorta) se lleva el borde y la sombra del panel. */
+  .filtros-lista-plegable {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.28s ease;
+  }
+
+  .filtros-lista-plegable[data-plegado] {
+    grid-template-rows: 0fr;
+  }
+
+  .filtros-lista-plegable-interior {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .filtros-lista-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Aire a la derecha y abajo para que no se recorte la sombra dura. */
+    margin: 0 6px 6px 0;
+    padding: 16px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .filtros-lista-plegable {
+      transition: none;
+    }
+  }
+
+  .filtros-lista-titulo {
+    margin: 0;
+    color: var(--text-secondary-color, var(--text-color));
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .filtros-lista-multiples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+    gap: 12px;
+  }
+
+  .filtro-multiple {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .filtro-multiple-boton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .filtro-multiple-boton:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 1px;
+  }
+
+  .filtro-multiple-boton[aria-expanded='true'] {
+    border-color: var(--primary-contrast-color);
+    box-shadow: 3px 3px 0 0 var(--primary-contrast-color);
+  }
+
+  .filtro-multiple-resumen {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .filtro-multiple-resumen.is-activo {
+    font-weight: 700;
+  }
+
+  .filtro-select-flecha {
+    flex: none;
+    color: var(--text-secondary-color, var(--text-color));
+    font-size: 0.7rem;
+    pointer-events: none;
+  }
+
+  /* El panel cuelga del botón, pero con `position: fixed` porque el plegable
+     recorta (`overflow: hidden`) y aquí tiene que poder salirse. El z-index va
+     por encima de la cabecera fija del sitio (9999). */
+  .filtro-multiple-panel {
+    position: fixed;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    max-height: min(420px, 80vh);
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .filtro-multiple-buscar {
+    margin: 8px;
+    padding: 6px 8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  .filtro-multiple-buscar:focus {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 1px;
+  }
+
+  .filtro-multiple-lista {
+    flex: 1;
+    margin: 0;
+    padding: 4px 0;
+    overflow-y: auto;
+    list-style: none;
+  }
+
+  .filtro-multiple-opcion-caja {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+
+  .filtro-multiple-opcion-caja:hover {
+    background: var(--hover-bg);
+  }
+
+  .filtro-multiple-opcion-caja input {
+    flex: none;
+    width: 14px;
+    height: 14px;
+    accent-color: var(--primary-contrast-color);
+    cursor: pointer;
+  }
+
+  .filtro-multiple-nombre {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .filtro-chip-num {
+    color: var(--text-secondary-color, var(--text-color));
+    font-size: 0.62rem;
+  }
+
+  .filtro-multiple-nota {
+    margin: 0;
+    padding: 10px;
+    color: var(--text-secondary-color, var(--text-color));
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+  }
+
+  .filtro-multiple-pie {
+    display: flex;
+    justify-content: flex-end;
+    padding: 6px 8px;
+    border-top: 1px solid var(--primary-color);
+  }
+
+  .filtro-multiple-limpiar {
+    padding: 4px 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: transparent;
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .filtro-multiple-limpiar:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .filtros-lista-activos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+  }
+
+  .filtros-lista-activos-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .filtro-activo {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+      background 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .filtro-activo:hover {
+    background: var(--on-bright-color);
+    color: var(--primary-contrast-color);
+  }
+
+  .filtro-activo-x {
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  .filtros-lista-vacio {
+    margin: 0;
+    padding: 14px 16px;
+    border-left: 4px solid var(--primary-contrast-color);
+    background: var(--callout-bg);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    .filtros-lista-contador {
+      order: 3;
+      width: 100%;
+      margin: 0;
+    }
+
+    .filtros-lista-panel {
+      padding: 12px;
+    }
+
+    .filtros-lista-multiples {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { contarCoplas, textoRecuento } from '../../lib/letras';
+  import { normalizeText } from '../../lib/text';
+  import type { TipoPiezaId } from '../../lib/orden';
+  import {
+    contarFiltrosActivos,
+    filtrarFicha,
+    parsearFiltros,
+    serializarFiltros,
+    type Faceta,
+    type FichaFiltrable,
+    type FiltrosLista,
+  } from '../../lib/filtros-lista';
+
+  declare const gtag: (...args: unknown[]) => void;
+
+  const FACETAS: Faceta[] = ['pieza', 'musica', 'letra', 'anio', 'decada'];
+
+  interface RefMultiple {
+    raiz: HTMLElement;
+    boton: HTMLButtonElement;
+    panel: HTMLElement;
+    resumen: HTMLElement;
+    buscar: HTMLInputElement | null;
+    nota: HTMLElement | null;
+    limpiar: HTMLButtonElement | null;
+    opciones: HTMLElement[];
+    lista: HTMLUListElement;
+    inputs: HTMLInputElement[];
+    vacioTexto: string;
+    nombres: Map<string, string>;
+    /** Lo que se está escribiendo en la caja de búsqueda (si la hay). */
+    consulta: string;
+    /** Temporizador del evento de búsqueda. */
+    temporizador?: number;
+  }
+
+  const raiz = document.querySelector<HTMLElement>('[data-filtros-lista]');
+
+  if (raiz) iniciar(raiz);
+
+  function iniciar(contenedor: HTMLElement) {
+    const secciones = [...document.querySelectorAll<HTMLElement>('[data-year-group]')];
+    const coplas = [...document.querySelectorAll<HTMLElement>('[data-copla]')];
+
+    const fichas = new Map<HTMLElement, FichaFiltrable>();
+    coplas.forEach((li) => {
+      fichas.set(li, {
+        slug: li.dataset.slug ?? '',
+        tipo: (li.dataset.t ?? 'otro') as TipoPiezaId,
+        decada: li.dataset.d ?? '',
+        year: li.dataset.y ?? '',
+        agrupacion: li.dataset.a ?? '',
+        musica: (li.dataset.m ?? '').split(' ').filter(Boolean),
+        letra: (li.dataset.l ?? '').split(' ').filter(Boolean),
+      });
+    });
+
+    const contador = contenedor.querySelector<HTMLElement>('[data-contador]');
+    const toggle = contenedor.querySelector<HTMLButtonElement>('[data-toggle]');
+    const toggleTexto = contenedor.querySelector<HTMLElement>('[data-toggle-texto]');
+    const toggleNum = contenedor.querySelector<HTMLElement>('[data-toggle-num]');
+    const plegable = contenedor.querySelector<HTMLElement>('[data-plegable]');
+    const interior = contenedor.querySelector<HTMLElement>('[data-plegable-interior]');
+    const activos = contenedor.querySelector<HTMLElement>('[data-activos]');
+    const activosLista = contenedor.querySelector<HTMLElement>('[data-activos-lista]');
+    const vacio = contenedor.querySelector<HTMLElement>('[data-vacio]');
+
+    const multiples = new Map<Faceta, RefMultiple>();
+
+    contenedor.querySelectorAll<HTMLElement>('[data-multiple]').forEach((nodo) => {
+      const faceta = nodo.dataset.multiple as Faceta;
+      const boton = nodo.querySelector<HTMLButtonElement>('[data-multiple-boton]');
+      const panel = nodo.querySelector<HTMLElement>('[data-multiple-panel]');
+      const resumen = nodo.querySelector<HTMLElement>('[data-multiple-resumen]');
+      if (!boton || !panel || !resumen) return;
+
+      const inputs = [...nodo.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')];
+      const nombres = new Map<string, string>();
+      inputs.forEach((input) => {
+        const nombre = input.parentElement?.querySelector('.filtro-multiple-nombre')?.textContent;
+        nombres.set(input.value, (nombre ?? input.value).trim());
+      });
+
+      const ref: RefMultiple = {
+        raiz: nodo,
+        boton,
+        panel,
+        resumen,
+        buscar: nodo.querySelector<HTMLInputElement>('[data-multiple-buscar]'),
+        nota: nodo.querySelector<HTMLElement>('[data-multiple-vacio]'),
+        limpiar: nodo.querySelector<HTMLButtonElement>('[data-multiple-limpiar]'),
+        opciones: [...nodo.querySelectorAll<HTMLElement>('[data-multiple-opcion]')],
+        lista: nodo.querySelector<HTMLUListElement>('[data-multiple-lista]') as HTMLUListElement,
+        inputs,
+        vacioTexto: (resumen.textContent ?? '').trim(),
+        nombres,
+        consulta: '',
+      };
+
+      multiples.set(faceta, ref);
+
+      boton.addEventListener('click', () => alternar(faceta));
+
+      inputs.forEach((input) => {
+        input.addEventListener('change', () => {
+          const valor = input.value;
+          const puestos = filtros[faceta];
+          filtros[faceta] = input.checked
+            ? [...puestos.filter((puesto) => puesto !== valor), valor]
+            : puestos.filter((puesto) => puesto !== valor);
+          aplicar();
+          avisar('filtrar_lista', { faceta, valor, marcado: input.checked, total: visiblesTotales });
+        });
+      });
+
+      ref.buscar?.addEventListener('input', () => {
+        const consulta = ref.buscar?.value ?? '';
+        filtrarOpciones(faceta, consulta);
+
+        // Un solo evento por búsqueda, cuando se deja de escribir.
+        window.clearTimeout(ref.temporizador);
+        ref.temporizador = window.setTimeout(() => {
+          const resultados = ref.opciones.filter((nodo) => !nodo.hidden).length;
+          avisar('buscar_en_filtro', {
+            faceta,
+            consulta: consulta.trim().slice(0, 40),
+            resultados,
+          });
+        }, 600);
+      });
+
+      ref.limpiar?.addEventListener('click', () => {
+        filtros[faceta] = [];
+        aplicar();
+        avisar('limpiar_filtros_lista', { alcance: 'uno', faceta });
+      });
+    });
+
+    let filtros: FiltrosLista = cargarFiltros();
+    let visiblesTotales = 0;
+    let panelAbierto = true;
+    let abierto: Faceta | null = null;
+    let disponibles = new Map<Faceta, Map<string, number>>();
+
+    document.addEventListener('pointerdown', (evento) => {
+      if (!abierto) return;
+      const ref = multiples.get(abierto);
+      const objetivo = evento.target as Node;
+      if (ref && (ref.panel.contains(objetivo) || ref.boton.contains(objetivo))) return;
+      cerrarMultiple(false);
+    });
+
+    document.addEventListener('keydown', (evento) => {
+      if (evento.key !== 'Escape' || !abierto) return;
+      evento.preventDefault();
+      cerrarMultiple(true);
+    });
+
+    window.addEventListener(
+      'scroll',
+      (evento) => {
+        if (!abierto) return;
+        const ref = multiples.get(abierto);
+        // Al hacer scroll dentro del propio panel (la lista), nada que recolocar.
+        if (ref && evento.target instanceof Node && ref.panel.contains(evento.target)) return;
+        recolocar();
+      },
+      true,
+    );
+
+    // Al cambiar el tamaño (o abrirse el teclado del móvil) no se cierra: se
+    // vuelve a colgar del botón, que es lo que espera quien está escribiendo.
+    window.addEventListener('resize', recolocar);
+
+    contenedor.addEventListener('click', (evento) => {
+      const objetivo = evento.target as HTMLElement;
+
+      if (objetivo.closest('[data-toggle]')) {
+        const abriendo = !panelAbierto;
+        juegoPanel(abriendo);
+        if (abriendo) avisar('abrir_filtros', { filtros: contarFiltrosActivos(filtros) });
+        return;
+      }
+
+      const quitar = objetivo.closest<HTMLElement>('[data-quitar]');
+      if (quitar) {
+        const faceta = quitar.dataset.quitarFaceta as Faceta | undefined;
+        const valor = quitar.dataset.quitarValor ?? '';
+        if (faceta) quitarFiltro(faceta, valor);
+        return;
+      }
+
+      if (objetivo.closest('[data-limpiar-todos]')) {
+        filtros = { pieza: [], musica: [], letra: [], anio: [], decada: [] };
+        aplicar();
+        avisar('limpiar_filtros_lista', { alcance: 'todos' });
+      }
+    });
+
+    juegoPanel(!window.matchMedia('(max-width: 640px)').matches);
+    aplicar();
+
+    /* ----------------------------- estado ----------------------------- */
+
+    function cargarFiltros(): FiltrosLista {
+      const cargados = parsearFiltros(new URLSearchParams(window.location.search));
+      FACETAS.forEach((faceta) => {
+        const ref = multiples.get(faceta);
+        cargados[faceta] = ref
+          ? cargados[faceta].filter((valor) => ref.nombres.has(valor))
+          : [];
+      });
+      return cargados;
+    }
+
+    function nombreDe(faceta: Faceta, id: string): string {
+      return multiples.get(faceta)?.nombres.get(id) ?? id;
+    }
+
+    function filtrosPuestos(): Array<{ faceta: Faceta; valor: string; nombre: string }> {
+      const puestos: Array<{ faceta: Faceta; valor: string; nombre: string }> = [];
+
+      FACETAS.forEach((faceta) => {
+        filtros[faceta].forEach((valor) => {
+          puestos.push({ faceta, valor, nombre: nombreDe(faceta, valor) });
+        });
+      });
+
+      return puestos;
+    }
+
+    function quitarFiltro(faceta: Faceta, valor: string) {
+      filtros[faceta] = filtros[faceta].filter((puesto) => puesto !== valor);
+      aplicar();
+      avisar('limpiar_filtros_lista', { alcance: 'uno', faceta });
+    }
+
+    /* ----------------------------- pintado ----------------------------- */
+
+    /**
+     * Cuántas coplas quedarían en cada opción de cada faceta con el resto de
+     * filtros puestos. Es lo que hace que, al marcar «estribillo», en música ya
+     * no salga quien no tiene estribillos. La faceta que se calcula se mira sin
+     * su propio filtro, para poder marcar varios valores de ella.
+     */
+    function calcularDisponibles() {
+      disponibles = new Map();
+
+      FACETAS.forEach((faceta) => {
+        const otros: FiltrosLista = { ...filtros };
+        otros[faceta] = [];
+
+        const cuenta = new Map<string, number>();
+        fichas.forEach((ficha) => {
+          if (!filtrarFicha(ficha, otros)) return;
+          valoresDe(ficha, faceta).forEach((valor) => {
+            cuenta.set(valor, (cuenta.get(valor) ?? 0) + 1);
+          });
+        });
+
+        disponibles.set(faceta, cuenta);
+      });
+    }
+
+    /** Valores de una ficha para una faceta (sin repetir autores). */
+    function valoresDe(ficha: FichaFiltrable, faceta: Faceta): string[] {
+      switch (faceta) {
+        case 'pieza':
+          return [ficha.tipo];
+        case 'musica':
+          return [...new Set(ficha.musica)];
+        case 'letra':
+          return [...new Set(ficha.letra)];
+        case 'anio':
+          return [ficha.year];
+        case 'decada':
+          return [ficha.decada];
+      }
+    }
+
+    function aplicar() {
+      let visibles = 0;
+      const visiblesDelDocumento: HTMLElement[] = [];
+
+      fichas.forEach((ficha, li) => {
+        const pasa = filtrarFicha(ficha, filtros);
+        li.hidden = !pasa;
+        if (!pasa) return;
+        visibles += 1;
+        visiblesDelDocumento.push(li);
+      });
+
+      secciones.forEach((seccion) => {
+        const delYear = [...seccion.querySelectorAll<HTMLElement>('[data-copla]')].filter((li) => !li.hidden);
+        seccion.hidden = delYear.length === 0;
+        const cuenta = seccion.querySelector<HTMLElement>('[data-count]');
+        if (cuenta) cuenta.textContent = `(${textoRecuento(contarCoplas(delYear.map(aFichaLetra)))})`;
+      });
+
+      if (contador) contador.textContent = textoRecuento(contarCoplas(visiblesDelDocumento.map(aFichaLetra)));
+      if (vacio) vacio.hidden = visibles > 0;
+
+      visiblesTotales = visibles;
+      calcularDisponibles();
+      FACETAS.forEach(pintarOpciones);
+      pintarMultiples();
+      pintarActivos();
+      sincronizarUrl();
+
+      if (toggleNum) {
+        const puestos = contarFiltrosActivos(filtros);
+        toggleNum.textContent = String(puestos);
+        toggleNum.hidden = panelAbierto || puestos === 0;
+      }
+    }
+
+    /** Lo mínimo para reutilizar `contarCoplas` con lo que hay en el DOM. */
+    function aFichaLetra(li: HTMLElement) {
+      return {
+        slug: li.dataset.slug ?? '',
+        data: {
+          // La pieza original, no el tipo: `contarCoplas` la usa tal cual.
+          pieza: li.dataset.p ?? li.dataset.t ?? '',
+          agrupacion: li.dataset.a ?? '',
+          agrupacionSlug: li.dataset.a ?? '',
+          year: li.dataset.y ?? '',
+          letraTitulo: li.dataset.lt ?? '',
+        },
+      };
+    }
+
+    function pintarMultiples() {
+      multiples.forEach((ref, faceta) => {
+        const puestos = filtros[faceta];
+
+        ref.inputs.forEach((input) => {
+          input.checked = puestos.includes(input.value);
+        });
+
+        if (puestos.length === 0) ref.resumen.textContent = ref.vacioTexto;
+        else if (puestos.length === 1) ref.resumen.textContent = ref.nombres.get(puestos[0]) ?? puestos[0];
+        else ref.resumen.textContent = `${puestos.length} seleccionadas`;
+
+        ref.resumen.classList.toggle('is-activo', puestos.length > 0);
+        // El resumen se recorta si no cabe: al pasar el ratón se ve entero.
+        ref.boton.title = (ref.resumen.textContent ?? '').trim();
+      });
+    }
+
+    function pintarActivos() {
+      const puestos = filtrosPuestos();
+      if (activos) activos.hidden = puestos.length === 0;
+      if (!activosLista) return;
+
+      activosLista.innerHTML = '';
+      puestos.forEach(({ faceta, valor, nombre }) => {
+        const item = document.createElement('li');
+        const boton = document.createElement('button');
+        boton.type = 'button';
+        boton.className = 'filtro-activo';
+        boton.dataset.quitar = '1';
+        boton.dataset.quitarFaceta = faceta;
+        boton.dataset.quitarValor = valor;
+        boton.setAttribute('aria-label', `Quitar el filtro ${nombre}`);
+
+        const texto = document.createElement('span');
+        texto.textContent = nombre;
+        const aspa = document.createElement('span');
+        aspa.className = 'filtro-activo-x';
+        aspa.setAttribute('aria-hidden', 'true');
+        aspa.textContent = '×';
+
+        boton.append(texto, aspa);
+        item.append(boton);
+        activosLista.append(item);
+      });
+    }
+
+    function sincronizarUrl() {
+      const query = serializarFiltros(filtros).toString();
+      const url = `${window.location.pathname}${query ? `?${query}` : ''}`;
+      if (url !== `${window.location.pathname}${window.location.search}`) {
+        window.history.replaceState(null, '', url);
+      }
+    }
+
+    /* --------------------------- desplegables --------------------------- */
+
+    function alternar(faceta: Faceta) {
+      if (abierto === faceta) {
+        cerrarMultiple(true);
+        return;
+      }
+      cerrarMultiple(false);
+      abrirMultiple(faceta);
+    }
+
+    function abrirMultiple(faceta: Faceta) {
+      const ref = multiples.get(faceta);
+      if (!ref) return;
+
+      ref.panel.hidden = false;
+      ref.boton.setAttribute('aria-expanded', 'true');
+      abierto = faceta;
+
+      if (ref.buscar) ref.buscar.value = '';
+      filtrarOpciones(faceta, '');
+      colocarPanel(ref);
+
+      window.requestAnimationFrame(() => {
+        colocarPanel(ref);
+        // El foco en la caja de búsqueda solo en ratón: en táctil abriría el
+        // teclado nada más desplegar el filtro.
+        if (window.matchMedia('(pointer: fine)').matches) ref.buscar?.focus();
+      });
+    }
+
+    /** Vuelve a colgar el panel abierto de su botón (scroll, resize, teclado). */
+    function recolocar() {
+      if (!abierto) return;
+      const ref = multiples.get(abierto);
+      if (ref && !ref.panel.hidden) colocarPanel(ref);
+    }
+
+    function cerrarMultiple(devolverFoco: boolean) {
+      if (!abierto) return;
+      const ref = multiples.get(abierto);
+      abierto = null;
+      if (!ref) return;
+
+      ref.panel.hidden = true;
+      ref.boton.setAttribute('aria-expanded', 'false');
+      if (devolverFoco) ref.boton.focus();
+    }
+
+    /** Cuelga el panel del botón y lo voltea si no cabe abajo. */
+    function colocarPanel(ref: RefMultiple) {
+      const rect = ref.boton.getBoundingClientRect();
+      const margen = 8;
+      const ancho = Math.max(rect.width, 260);
+      const izquierda = Math.max(margen, Math.min(rect.left, window.innerWidth - ancho - margen));
+
+      // La cabecera del sitio va fija: el panel no puede meterse debajo de ella.
+      const cabecera = document.querySelector<HTMLElement>('header[role="banner"]');
+      const limiteArriba = Math.max(margen, (cabecera?.getBoundingClientRect().bottom ?? 0) + margen);
+
+      ref.panel.style.width = `${ancho}px`;
+      ref.panel.style.left = `${izquierda}px`;
+
+      // Se abre hacia el lado con más sitio y se limita al hueco disponible, para
+      // que no se salga cuando el móvil abre el teclado.
+      const abajo = window.innerHeight - rect.bottom - 2 - margen;
+      const arriba = rect.top - 2 - limiteArriba;
+      const haciaAbajo = abajo >= arriba && abajo > 0;
+      const disponible = Math.max(120, Math.min(420, haciaAbajo ? abajo : Math.max(arriba, 120)));
+
+      ref.panel.style.maxHeight = `${disponible}px`;
+
+      if (haciaAbajo) {
+        ref.panel.style.top = `${rect.bottom + 2}px`;
+      } else {
+        const alto = ref.panel.offsetHeight;
+        ref.panel.style.top = `${Math.max(limiteArriba, rect.top - 2 - alto)}px`;
+      }
+    }
+
+    function filtrarOpciones(faceta: Faceta, consulta: string) {
+      const ref = multiples.get(faceta);
+      if (!ref) return;
+
+      ref.consulta = consulta;
+      pintarOpciones(faceta);
+    }
+
+    /**
+     * Pinta las opciones de una faceta con las dos condiciones a la vez: que
+     * sigan teniendo coplas con el resto de filtros puestos y que casen con lo
+     * escrito en su caja de búsqueda.
+     */
+    function pintarOpciones(faceta: Faceta) {
+      const ref = multiples.get(faceta);
+      if (!ref) return;
+
+      const texto = normalizeText(ref.consulta).trim();
+      const cuenta = disponibles.get(faceta);
+      let visibles = 0;
+
+      ref.opciones.forEach((nodo) => {
+        const input = nodo.querySelector('input');
+        const valor = input?.value ?? '';
+        const total = cuenta?.get(valor) ?? 0;
+        const nombre = ref.nombres.get(valor) ?? '';
+        const disponible = total > 0 || filtros[faceta].includes(valor);
+        const coincide = !texto || normalizeText(nombre).includes(texto);
+        const mostrar = disponible && coincide;
+
+        nodo.hidden = !mostrar;
+        if (mostrar) visibles += 1;
+
+        const numero = nodo.querySelector<HTMLElement>('.filtro-chip-num');
+        if (numero) numero.textContent = String(total);
+      });
+
+      if (ref.nota) ref.nota.hidden = visibles > 0;
+
+      // Los autores se reordenan por las coplas que quedan con los demás
+      // filtros; años y décadas mantienen su orden (cronológico).
+      if (faceta === 'musica' || faceta === 'letra') {
+        [...ref.opciones]
+          .sort((a, b) => {
+            const valorA = a.querySelector('input')?.value ?? '';
+            const valorB = b.querySelector('input')?.value ?? '';
+            const totalA = cuenta?.get(valorA) ?? 0;
+            const totalB = cuenta?.get(valorB) ?? 0;
+            if (totalA !== totalB) return totalB - totalA;
+            return (ref.nombres.get(valorA) ?? '').localeCompare(ref.nombres.get(valorB) ?? '', 'es', {
+              sensitivity: 'base',
+            });
+          })
+          .forEach((nodo) => ref.lista.append(nodo));
+      }
+    }
+
+    /* ------------------------------ panel ------------------------------ */
+
+    function juegoPanel(abiertoPanel: boolean) {
+      panelAbierto = abiertoPanel;
+      if (!abiertoPanel) cerrarMultiple(false);
+
+      if (plegable) {
+        if (abiertoPanel) plegable.removeAttribute('data-plegado');
+        else plegable.setAttribute('data-plegado', '');
+      }
+
+      if (interior) {
+        interior.inert = !abiertoPanel;
+        interior.setAttribute('aria-hidden', String(!abiertoPanel));
+      }
+
+      if (toggle) toggle.setAttribute('aria-expanded', String(abiertoPanel));
+      if (toggleTexto) toggleTexto.textContent = abiertoPanel ? 'Ocultar filtros' : 'Abrir filtros';
+
+      if (toggleNum) {
+        const puestos = contarFiltrosActivos(filtros);
+        toggleNum.textContent = String(puestos);
+        toggleNum.hidden = abiertoPanel || puestos === 0;
+      }
+    }
+
+    function avisar(evento: string, params: Record<string, unknown>) {
+      if (typeof gtag !== 'function') return;
+      gtag('event', evento, { ...params, page_location: window.location.href });
+    }
+  }
+</script>

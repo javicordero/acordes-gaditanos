@@ -1,0 +1,78 @@
+---
+// Filtro de una faceta de /lista con varios valores a la vez.
+//
+// Visualmente es un botón que parece un `select`, pero despliega un panel con
+// checkboxes nativos (y caja de búsqueda donde la lista es larga). El estado,
+// el posicionamiento del panel y el teclado los lleva el script de
+// FiltrosLista.astro, que es el que conoce todos los filtros.
+
+import type { OpcionFiltro } from '../../lib/filtros-lista';
+
+interface Props {
+  /** Faceta a la que pertenece. */
+  faceta: 'pieza' | 'decada' | 'anio' | 'agrupacion' | 'musica' | 'letra';
+  /** Identificador base del botón y del panel. */
+  id: string;
+  /** Texto visible encima del botón. */
+  etiqueta: string;
+  /** Resumen cuando no hay nada marcado. */
+  vacio: string;
+  /** Valores posibles, con su recuento. */
+  opciones: OpcionFiltro[];
+  /** Si la lista es larga, se ofrece una caja para buscar. */
+  buscable?: boolean;
+}
+
+const { faceta, id, etiqueta, vacio, opciones, buscable = false } = Astro.props;
+---
+
+<div class='filtro-multiple' data-multiple={faceta}>
+  <span class='filtros-lista-titulo' id={`${id}-etiqueta`}>{etiqueta}</span>
+
+  <button
+    type='button'
+    class='filtro-multiple-boton'
+    id={id}
+    data-multiple-boton
+    aria-expanded='false'
+    aria-haspopup='true'
+    aria-controls={`${id}-panel`}
+    aria-labelledby={`${id}-etiqueta ${id}-resumen`}
+  >
+    <span class='filtro-multiple-resumen' id={`${id}-resumen`} data-multiple-resumen>{vacio}</span>
+    <span class='filtro-select-flecha' aria-hidden='true'>▾</span>
+  </button>
+
+  <div class='filtro-multiple-panel' id={`${id}-panel`} data-multiple-panel hidden>
+    {
+      buscable && (
+        <input
+          type='search'
+          class='filtro-multiple-buscar'
+          data-multiple-buscar
+          placeholder='Buscar…'
+          aria-label={`Buscar ${etiqueta.toLowerCase()}`}
+          autocomplete='off'
+          spellcheck='false'
+        />
+      )
+    }
+    <p class='filtro-multiple-nota' data-multiple-vacio hidden>Sin resultados</p>
+    <ul class='filtro-multiple-lista' data-multiple-lista>
+      {
+        opciones.map((opcion) => (
+          <li data-multiple-opcion>
+            <label class='filtro-multiple-opcion-caja'>
+              <input type='checkbox' value={opcion.id} />
+              <span class='filtro-multiple-nombre'>{opcion.nombre}</span>
+              <span class='filtro-chip-num'>{opcion.total}</span>
+            </label>
+          </li>
+        ))
+      }
+    </ul>
+    <div class='filtro-multiple-pie'>
+      <button type='button' class='filtro-multiple-limpiar' data-multiple-limpiar>Limpiar</button>
+    </div>
+  </div>
+</div>

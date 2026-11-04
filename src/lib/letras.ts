@@ -58,6 +58,20 @@ export function contarCoplas(fichas: FichaConLetra[]): RecuentoCoplas {
 /** Tipos de pieza en los que varias fichas pueden compartir música. */
 export const TIPOS_CON_LETRAS = new Set(['pasodoble']);
 
+/** `1 copla` / `3 coplas`: la cifra con su palabra en singular o plural. */
+export function plural(n: number, uno: string, varios: string): string {
+  return `${n} ${n === 1 ? uno : varios}`;
+}
+
+/**
+ * `38 coplas` o `49 coplas y 2 letras extras`: la parte de letras solo aparece
+ * cuando hay alguna; un año sin letras alternativas se queda en las coplas.
+ */
+export function textoRecuento({ coplas, letras }: RecuentoCoplas): string {
+  const base = plural(coplas, 'copla', 'coplas');
+  return letras ? `${base} y ${plural(letras, 'letra extra', 'letras extras')}` : base;
+}
+
 function normalizar(texto: string): string {
   return (texto || '')
     .toLowerCase()

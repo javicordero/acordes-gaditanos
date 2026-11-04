@@ -3,50 +3,23 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Banner320X50 from '../components/ads/Banner320x50.astro';
 import Banner468X60 from '../components/ads/Banner468x60.astro';
+import FiltrosLista from '../components/page/FiltrosLista.astro';
 import { parseSpanishDate, sortByYearDesc } from '../lib/index';
-import { contarCoplas } from '../lib/letras';
+import { contarCoplas, textoRecuento } from '../lib/letras';
+import {
+  aFichaFiltrable,
+  opcionesAnio,
+  opcionesAutores,
+  opcionesDecada,
+  opcionesPieza,
+  rangoPiezaLista,
+} from '../lib/filtros-lista';
 
 const acordes = await getCollection('acordes');
 
 const capitalize = (text: string) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
 
-/** `1 copla` / `3 coplas`: la cifra con su palabra en singular o plural. */
-const plural = (n: number, uno: string, varios: string) => `${n} ${n === 1 ? uno : varios}`;
-
-/**
- * `38 coplas` o `49 coplas y 2 letras extras`: la parte de letras solo aparece
- * cuando hay alguna; un año sin letras alternativas se queda en las coplas.
- */
-const textoRecuento = ({ coplas, letras }: { coplas: number; letras: number }) => {
-  const base = plural(coplas, 'copla', 'coplas');
-  return letras ? `${base} y ${plural(letras, 'letra extra', 'letras extras')}` : base;
-};
-
 const recuento = contarCoplas(acordes);
-
-const normalizePieza = (pieza: string) =>
-  pieza
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .trim();
-
-const PIEZA_ORDER = [
-  'final de popur',
-  'cuarteta',
-  'popurri',
-  'estribillo',
-  'presentacion',
-  'pasodoble',
-  'tango',
-  'cuple',
-];
-
-const piezaRank = (pieza: string) => {
-  const normalized = normalizePieza(pieza);
-  const index = PIEZA_ORDER.findIndex((prefix) => normalized.startsWith(prefix));
-  return index === -1 ? PIEZA_ORDER.length : index;
-};
 
 const acordesOrdenados = [...acordes].sort((a, b) => {
   const yearA = a.data.year;
@@ -64,12 +37,23 @@ const acordesPorYear = years.map((year) => {
   const delYear = acordesOrdenados
     .filter((acorde) => acorde.data.year === year)
     .sort((a, b) => {
-      const rankDiff = piezaRank(a.data.pieza) - piezaRank(b.data.pieza);
+      const rankDiff = rangoPiezaLista(a.data.pieza) - rangoPiezaLista(b.data.pieza);
       if (rankDiff !== 0) return rankDiff;
       return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
     });
   return { year, acordes: delYear, recuento: contarCoplas(delYear) };
 });
+
+// Datos de cada ficha y opciones de los filtros, calculados una sola vez.
+const filtrables = new Map(acordes.map((acorde) => [acorde.slug, aFichaFiltrable(acorde)]));
+const fichas = [...filtrables.values()];
+const opciones = {
+  pieza: opcionesPieza(fichas),
+  decada: opcionesDecada(fichas),
+  anio: opcionesAnio(fichas),
+  musica: opcionesAutores(acordes, 'musica'),
+  letra: opcionesAutores(acordes, 'letra'),
+};
 
 const title = 'Todas las coplas - Acordes del Carnaval de Cádiz';
 const description =
@@ -104,22 +88,38 @@ const itemListSchema = {
           </p>
         </header>
 
+        <FiltrosLista opciones={opciones} recuento={recuento} />
+
         {
           acordesPorYear.map(({ year, acordes, recuento }) => (
-            <section class='year-group' aria-labelledby={`year-${year}`}>
+            <section class='year-group' aria-labelledby={`year-${year}`} data-year-group>
               <h2 id={`year-${year}`}>
                 <span class='year-label'>{year}</span>{' '}
-                <span class='year-count'>({textoRecuento(recuento)})</span>
+                <span class='year-count' data-count>({textoRecuento(recuento)})</span>
               </h2>
               <ul class='copla-list'>
-                {acordes.map((acorde) => (
-                  <li>
-                    <a href={`/acordes/${acorde.slug}`}>
-                      <span class='pieza'>{capitalize(acorde.data.pieza)}{acorde.data.letraTitulo ? ` "${acorde.data.letraTitulo}"` : ''}</span>{' '}
-                      <span class='agrupacion'>{acorde.data.agrupacion}</span>
-                    </a>
-                  </li>
-                ))}
+                {acordes.map((acorde) => {
+                  const ficha = filtrables.get(acorde.slug);
+                  return (
+                    <li
+                      data-copla
+                      data-slug={acorde.slug}
+                      data-p={acorde.data.pieza}
+                      data-t={ficha?.tipo}
+                      data-d={ficha?.decada}
+                      data-y={acorde.data.year}
+                      data-a={ficha?.agrupacion}
+                      data-m={ficha?.musica.join(' ')}
+                      data-l={ficha?.letra.join(' ')}
+                      data-lt={acorde.data.letraTitulo ? '1' : undefined}
+                    >
+                      <a href={`/acordes/${acorde.slug}`}>
+                        <span class='pieza'>{capitalize(acorde.data.pieza)}{acorde.data.letraTitulo ? ` "${acorde.data.letraTitulo}"` : ''}</span>{' '}
+                        <span class='agrupacion'>{acorde.data.agrupacion}</span>
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </section>
           ))
@@ -202,6 +202,11 @@ const itemListSchema = {
     padding-top: 20px;
     border-top: 2px solid var(--primary-color);
 
+    /* El filtro esconde años enteros y coplas sueltas desde el navegador. */
+    &[hidden] {
+      display: none;
+    }
+
     & h2 {
       color: var(--primary-color);
       font-size: 1.5rem;
@@ -248,6 +253,10 @@ const itemListSchema = {
       position: relative;
       padding-left: 18px;
       line-height: 1.5;
+
+      &[hidden] {
+        display: none;
+      }
 
       &::before {
         content: '';
