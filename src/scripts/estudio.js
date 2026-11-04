@@ -1,5 +1,5 @@
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho, esAcorde, esAnotacion } from '../lib/pre-acordes.js';
-import { separarLetra, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes } from '../lib/editar-lineas.js';
+import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura } from '../lib/editar-lineas.js';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
@@ -864,6 +864,30 @@ function cursorLineaCol() {
   return { linea, col: pos - ini };
 }
 
+// Última posición buena del cursor dentro del editor. Al pulsar un botón el
+// foco se va de él y algunos navegadores (iOS) devuelven la selección en 0.
+let cursorUltimo = null;
+
+/** Guarda el cursor mientras el textarea tenga el foco. */
+function recordarCursor() {
+  if (!ficha || document.activeElement !== ta) return;
+  const { linea, col } = cursorLineaCol();
+  const lineas = ta.value.split('\n');
+  if (linea < 0 || linea >= lineas.length) return;
+  cursorUltimo = { linea, col: Math.min(col, lineas[linea].length) };
+}
+
+/** Cursor para separar/juntar: el actual, o el último bueno si el botón se llevó el foco. */
+function cursorDeAccion() {
+  const lineas = ta.value.split('\n');
+  const acotar = (p) => {
+    if (!p || p.linea < 0 || p.linea >= lineas.length) return null;
+    return { linea: p.linea, col: Math.max(0, Math.min(p.col, lineas[p.linea].length)) };
+  };
+  if (document.activeElement === ta) return acotar(cursorLineaCol());
+  return acotar(cursorUltimo);
+}
+
 /** Índice absoluto en el textarea de una línea y columna. */
 function posicionDe(linea, col) {
   const lineas = ta.value.split('\n');
@@ -872,8 +896,31 @@ function posicionDe(linea, col) {
   return Math.min(pos + col, ta.value.length);
 }
 
+/**
+ * Si el texto ha ganado o perdido líneas a mano (Enter, borrar un salto, pegar
+ * varias), vuelve a cuadrar las capas de etiquetas. Sin esto, `estructuraOk()`
+ * falla y separar/juntar/mover dejan de funcionar hasta reabrir la ficha.
+ */
+function reajustarEstructura() {
+  if (!ficha) return;
+  const lineas = ta.value.split('\n');
+  if (ficha.d.registros.length === lineas.length && ficha.d.originales.length === lineas.length) return;
+  const r = realinearEstructura({
+    lineas,
+    registros: ficha.d.registros,
+    originales: ficha.d.originales,
+    conocidos,
+  });
+  ficha.d.registros = r.registros;
+  ficha.d.originales = r.originales;
+  if (r.perdidas) {
+    mostrarAviso('Se ha reajustado la estructura de líneas.\nRevisa la postura de los acordes de las líneas nuevas.', 'var(--nuevo)');
+  }
+}
+
 function aplicarEdicion(r, enfocar = true) {
   if (r.error) { mostrarAviso(r.error, 'var(--nuevo)'); return; }
+  cerrarAviso();
   cerrarSug();
   hist.push(snapshot());
   if (hist.length > 300) hist.shift();
@@ -896,19 +943,34 @@ function aplicarEdicion(r, enfocar = true) {
 function separar() {
   if (!ficha) return;
   if (!estructuraOk()) return avisoEstructura();
-  const { linea, col } = cursorLineaCol();
+  const pos = cursorDeAccion();
+  if (!pos) return mostrarAviso('Toca primero la línea de letra donde quieres cortar.', 'var(--nuevo)');
+  const { linea, col } = pos;
   const lineas = ta.value.split('\n');
   const t = tipo(lineas[linea] || '', lineas[linea + 1] || '');
-  if (t === 'acordes' || t === 'acordes-sucio') return moverAcorde(1);
+  if (t === 'acordes' || t === 'acordes-sucio') return moverAcorde(1, pos);
   if (t !== 'letra') return mostrarAviso('Pon el cursor en una línea de letra o de acordes.', 'var(--nuevo)');
   const palabra = palabraBajoCursor(lineas[linea], col);
+  const corte = palabra ? palabra.ini : col;
+  // Al principio de la línea no hay nada que se quede arriba: el verso se
+  // despega del bloque de arriba con su propia línea de acordes vacía.
+  if (corte === 0) {
+    aplicarEdicion(separarVerso({
+      lineas,
+      registros: ficha.d.registros,
+      originales: ficha.d.originales,
+      conocidos,
+      i: linea,
+    }));
+    return;
+  }
   aplicarEdicion(separarLetra({
     lineas,
     registros: ficha.d.registros,
     originales: ficha.d.originales,
     conocidos,
     i: linea,
-    col: palabra ? palabra.ini : col,
+    col: corte,
   }));
 }
 
@@ -916,10 +978,12 @@ function separar() {
 function juntar() {
   if (!ficha) return;
   if (!estructuraOk()) return avisoEstructura();
-  const { linea, col } = cursorLineaCol();
+  const pos = cursorDeAccion();
+  if (!pos) return mostrarAviso('Toca primero la línea de letra que quieres juntar.', 'var(--nuevo)');
+  const { linea, col } = pos;
   const lineas = ta.value.split('\n');
   const t = tipo(lineas[linea] || '', lineas[linea + 1] || '');
-  if (t === 'acordes' || t === 'acordes-sucio') return moverAcorde(-1);
+  if (t === 'acordes' || t === 'acordes-sucio') return moverAcorde(-1, pos);
   if (t !== 'letra') return mostrarAviso('Pon el cursor en una línea de letra o de acordes.', 'var(--nuevo)');
   const palabra = palabraBajoCursor(lineas[linea], col);
   aplicarEdicion(juntarLetra({
@@ -933,10 +997,10 @@ function juntar() {
 }
 
 /** Mueve el acorde bajo el cursor a la línea de acordes siguiente o anterior. */
-function moverAcorde(dir) {
+function moverAcorde(dir, pos = null) {
   if (!ficha) return;
   if (!estructuraOk()) return avisoEstructura();
-  const { linea, col } = cursorLineaCol();
+  const { linea, col } = pos || cursorDeAccion() || cursorLineaCol();
   aplicarEdicion(moverAcordeLinea({
     lineas: ta.value.split('\n'),
     registros: ficha.d.registros,
@@ -1200,6 +1264,7 @@ function soltarArrastre() {
 /** Cambia el title de los botones según si el cursor está en acordes o en letra. */
 function actualizarAcciones() {
   if (!ficha) return;
+  recordarCursor();
   const { linea } = cursorLineaCol();
   const lineas = ta.value.split('\n');
   const enAcordes = ['acordes', 'acordes-sucio'].includes(tipo(lineas[linea] || '', lineas[linea + 1] || ''));
@@ -2029,6 +2094,14 @@ $('b-separar').onclick = separar;
 $('b-juntar').onclick = juntar;
 $('b-deshacer').onclick = deshacer;
 
+// El cursor se apunta antes de que el foco se vaya al botón: en iOS un
+// textarea sin foco devuelve la selección en 0 y el corte caería al principio.
+['b-separar', 'b-juntar'].forEach((id) => {
+  const b = $(id);
+  b.addEventListener('pointerdown', recordarCursor);
+  b.addEventListener('mousedown', (e) => { recordarCursor(); e.preventDefault(); });
+});
+
 let rafAjuste = 0;
 window.addEventListener('resize', () => {
   cancelAnimationFrame(rafAjuste);
@@ -2051,6 +2124,7 @@ if (window.visualViewport) {
 }
 
 ta.addEventListener('input', () => {
+  reajustarEstructura();
   hist.push(anterior);
   if (hist.length > 300) hist.shift();
   actualizarDeshacer();

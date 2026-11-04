@@ -3,7 +3,7 @@
 //
 //   node --experimental-strip-types scripts/auditar-editor.mjs
 
-import { separarLetra, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA } from '../src/lib/editar-lineas.js';
+import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, realinearEstructura } from '../src/lib/editar-lineas.js';
 import { envolver } from '../src/lib/pre-acordes.js';
 
 const conocidos = new Set(['Do', 'Sol', 'Re', 'Mi', 'Si7', 'Lam7', '(Sorda)']);
@@ -285,6 +285,109 @@ comprobar(
   pre(gemelosMov).startsWith('<a data-postura="x 0 2 2 0 0">Mi</a>'),
   true,
 );
+
+/* 18. ✂ al principio de un verso lo separa del bloque de arriba. */
+const pegados = {
+  lineas: [
+    'Mi   Lam7',
+    'Dando equilibrio con tu porte y elegancia',
+    'En salesianos en el complejo en el portillo',
+  ],
+  registros: [
+    [
+      { etiqueta: 'Mi', abre: '<a>' },
+      { etiqueta: 'Lam7', abre: '<a data-postura="x 0 2 2 0 0">' },
+    ],
+    [],
+    [],
+  ],
+  originales: [
+    '<a>Mi</a>   <a data-postura="x 0 2 2 0 0">Lam7</a>',
+    'Dando equilibrio con tu porte y elegancia',
+    'En salesianos en el complejo en el portillo',
+  ],
+  conocidos,
+};
+const verso = separarVerso({ ...pegados, i: 2 });
+comprobar('separar verso: aparece la línea vacía', verso.lineas, [
+  'Mi   Lam7',
+  'Dando equilibrio con tu porte y elegancia',
+  '',
+  'En salesianos en el complejo en el portillo',
+]);
+comprobar('separar verso: cursor al principio de la letra', verso.cursor, { linea: 3, col: 0 });
+comprobar('separar verso: conserva la postura de arriba', pre(verso), [
+  '<a>Mi</a>   <a data-postura="x 0 2 2 0 0">Lam7</a>',
+  'Dando equilibrio con tu porte y elegancia',
+  '',
+  'En salesianos en el complejo en el portillo',
+].join('\n'));
+comprobar(
+  'separar verso: ya tiene acordes encima',
+  separarVerso({ ...pegados, i: 1 }).error,
+  'Este verso ya tiene su línea de acordes encima.',
+);
+comprobar(
+  'separar verso: ya está separado',
+  separarVerso({ ...conVacia, i: 3 }).error,
+  'Este verso ya está separado del de arriba.',
+);
+
+/* 19. Enter a mano: las capas se reajustan y no se pierde la postura de arriba. */
+const lineasRoto = [
+  'Mi   Lam7',
+  'Dando equilibrio con tu porte',
+  'y elegancia',
+  'En salesianos en el complejo en el portillo',
+];
+const re = realinearEstructura({
+  lineas: lineasRoto,
+  registros: pegados.registros,
+  originales: pegados.originales,
+  conocidos,
+});
+comprobar('realinear: las tres capas cuadran', [re.registros.length, re.originales.length], [4, 4]);
+comprobar('realinear: la línea de arriba conserva la postura', pre({ lineas: lineasRoto, registros: re.registros, originales: re.originales }), [
+  '<a>Mi</a>   <a data-postura="x 0 2 2 0 0">Lam7</a>',
+  'Dando equilibrio con tu porte',
+  'y elegancia',
+  'En salesianos en el complejo en el portillo',
+].join('\n'));
+comprobar('realinear: sin pérdidas (lo partido es letra)', re.perdidas, 0);
+
+const juntadas = realinearEstructura({
+  lineas: ['Mi   Lam7', 'Dando equilibrio con tu porte y elegancia En salesianos en el complejo en el portillo'],
+  registros: pegados.registros,
+  originales: pegados.originales,
+  conocidos,
+});
+comprobar('realinear: juntar dos líneas cuadra', [juntadas.registros.length, juntadas.originales.length], [2, 2]);
+
+const nuevaAcordes = realinearEstructura({
+  lineas: ['Mi   Lam7', 'Re   Mi', 'Dando equilibrio con tu porte y elegancia'],
+  registros: pegados.registros,
+  originales: pegados.originales,
+  conocidos,
+});
+comprobar('realinear: avisa de la línea de acordes nueva', nuevaAcordes.perdidas, 1);
+
+/* 20. ⤴ en un verso separado lo junta con el de arriba y no deja el blanco suelto. */
+const junto = juntarLetra({
+  lineas: verso.lineas,
+  registros: verso.registros,
+  originales: verso.originales,
+  conocidos,
+  i: 3,
+  col: 0,
+});
+comprobar('juntar verso separado: letras', junto.lineas, [
+  'Mi   Lam7',
+  'Dando equilibrio con tu porte y elegancia En salesianos en el complejo en el portillo',
+]);
+comprobar('juntar verso separado: conserva la postura de arriba', pre(junto), [
+  '<a>Mi</a>   <a data-postura="x 0 2 2 0 0">Lam7</a>',
+  'Dando equilibrio con tu porte y elegancia En salesianos en el complejo en el portillo',
+].join('\n'));
 
 if (fallos) {
   console.log(`\n${fallos} caso(s) fallido(s).`);

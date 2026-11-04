@@ -1,6 +1,8 @@
 // Operaciones de estructura del editor de coplas: separar una línea de letra
-// en dos (creando su línea de acordes) y juntar la parte izquierda del cursor
-// con el verso anterior. Trabajan sobre las tres capas del editor:
+// en dos (creando su línea de acordes), separar un verso del bloque de arriba,
+// juntar la parte izquierda del cursor con el verso anterior y reajustar las
+// capas cuando se añaden o quitan líneas a mano. Trabajan sobre las tres capas
+// del editor:
 //
 //   - `lineas`:     texto plano, sin etiquetas (lo que se ve en el textarea)
 //   - `registros`:  por línea, [{ etiqueta, abre }] para conservar data-postura
@@ -99,8 +101,11 @@ export function separarLetra({ lineas, registros, originales, conocidos, i, col 
   }
   const linea = lineas[i];
   const p = Math.max(0, Math.min(col, linea.length));
-  if (p === 0 || p === linea.length) {
-    return { error: 'Coloca el cursor dentro de la línea, no en un extremo.' };
+  if (p === 0) {
+    return { error: 'El cursor está al principio de la línea: ponlo antes de la palabra que quieres bajar.' };
+  }
+  if (p === linea.length) {
+    return { error: 'El cursor está al final de la línea: ponlo antes de las palabras que quieres bajar.' };
   }
 
   const izq = linea.slice(0, p).replace(/\s+$/, '');
@@ -141,6 +146,82 @@ export function separarLetra({ lineas, registros, originales, conocidos, i, col 
     originales: nuevosOrig,
     cursor: { linea: i + inserta.length, col: 0 },
   };
+}
+
+/**
+ * Separa el verso `i` del bloque de arriba: le crea su propia línea de
+ * acordes (vacía) justo encima. Así deja de compartir la línea de acordes del
+ * verso anterior y se le pueden bajar acordes. Las tres capas crecen a la vez
+ * para que la estructura siga cuadrando. El cursor se queda al principio de la
+ * letra, ya una fila más abajo.
+ */
+export function separarVerso({ lineas, registros, originales, conocidos, i }) {
+  if (tipoDe(lineas, i, conocidos) !== 'letra') {
+    return { error: 'Pon el cursor en una línea de letra.' };
+  }
+  if (i > 0) {
+    const arriba = tipoDe(lineas, i - 1, conocidos);
+    if (arriba === 'acordes' || arriba === 'acordes-sucio') {
+      return { error: 'Este verso ya tiene su línea de acordes encima.' };
+    }
+    if (arriba === 'blanco') {
+      return { error: 'Este verso ya está separado del de arriba.' };
+    }
+  }
+
+  const nuevas = [...lineas];
+  const nuevosRegs = [...registros];
+  const nuevosOrig = [...originales];
+  nuevas.splice(i, 0, '');
+  nuevosRegs.splice(i, 0, []);
+  nuevosOrig.splice(i, 0, '');
+
+  return {
+    lineas: nuevas,
+    registros: nuevosRegs,
+    originales: nuevosOrig,
+    cursor: { linea: i + 1, col: 0 },
+    separado: true,
+  };
+}
+
+const sinEtiquetas = (linea) => String(linea ?? '').replace(/<a[^>]*>([\s\S]*?)<\/a>/g, '$1');
+
+/**
+ * Vuelve a cuadrar las capas de etiquetas cuando el texto gana o pierde líneas
+ * a mano (Enter, borrar un salto, pegar varias líneas). Casa cada línea nueva
+ * con la vieja que tenía exactamente el mismo texto; las que no casan (las que
+ * acabas de partir o juntar) se quedan sin etiquetas, y `envolver()` las
+ * envuelve al guardar. Devuelve cuántas líneas de acordes se han quedado sin
+ * etiqueta, para poder avisar.
+ */
+export function realinearEstructura({ lineas, registros = [], originales = [], conocidos = new Set() }) {
+  const set = conocidos instanceof Set ? conocidos : new Set(conocidos || []);
+  registros.flat().forEach((r) => set.add(r.etiqueta));
+  const viejas = originales.map(sinEtiquetas);
+  const usadas = new Set();
+  const nuevosRegs = [];
+  const nuevosOrig = [];
+  let perdidas = 0;
+
+  lineas.forEach((linea, j) => {
+    let k = -1;
+    for (let m = 0; m < viejas.length; m++) {
+      if (!usadas.has(m) && viejas[m] === linea) { k = m; break; }
+    }
+    if (k >= 0) {
+      usadas.add(k);
+      nuevosRegs.push((registros[k] || []).map((x) => ({ ...x })));
+      nuevosOrig.push(originales[k]);
+      return;
+    }
+    nuevosRegs.push([]);
+    nuevosOrig.push('');
+    const t = clasificar(linea, lineas[j + 1] || '', set).tipo;
+    if ((t === 'acordes' || t === 'acordes-sucio') && String(linea).trim() !== '') perdidas++;
+  });
+
+  return { registros: nuevosRegs, originales: nuevosOrig, perdidas };
 }
 
 /**
@@ -235,6 +316,14 @@ export function juntarLetra({ lineas, registros, originales, conocidos, i, col }
       nuevosRegs.splice(cActualFinal, 1);
       nuevosOrig.splice(cActualFinal, 1);
       if (iFinal > cActualFinal) iFinal--;
+    }
+    // Si el verso venía separado del de arriba con un blanco, se va con él:
+    // así no queda una línea vacía suelta al juntar.
+    if (iFinal > 0 && tipoDe(nuevas, iFinal - 1, conocidos) === 'blanco') {
+      nuevas.splice(iFinal - 1, 1);
+      nuevosRegs.splice(iFinal - 1, 1);
+      nuevosOrig.splice(iFinal - 1, 1);
+      iFinal--;
     }
     nuevas.splice(iFinal, 1);
     nuevosRegs.splice(iFinal, 1);
