@@ -2,13 +2,14 @@
 pieza: Presentación
 agrupacion: Los duendes coloraos
 year: 2012
-musica: Hermanos Márquez Mateo "Los Carapapa"
-letra: Hermanos Márquez Mateo "Los Carapapa"
+musica: David Carapapa, Javier Carapapa
+letra: David Carapapa, Javier Carapapa
 modalidad: Comparsa
 cejilla: 6
-img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/03/05/ratas-R0eL5wy91ngmWwGP4ms8iYK-1200x840@abc.jpg
+img: https://static.grupojoly.com/clip/5cdba07f-98b5-477b-90a2-29c3e36ee778_source-aspect-ratio_1600w_0.jpg
 date: "06/12/2026"
-video: 'https://www.youtube.com/embed/kIrVYcVJZCA'
+video: https://www.youtube.com/embed/fmhqLiKcHJY?si=gkhsqnIeqngLOrhs
+
 ---
 <pre>
                               <a>Lam</a>
