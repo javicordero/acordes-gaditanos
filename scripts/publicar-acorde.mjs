@@ -17,6 +17,9 @@
 //   --sin-aviso      no marca el aviso en Telegram (commit con [sin aviso])
 //   --avisar         lanza WhatsApp y X desde este equipo (por defecto no: el
 //                    panel solo publica y deja el aviso listo para copiar)
+//   --sin-wa         con --avisar, no manda WhatsApp
+//   --sin-x          con --avisar, no publica el tuit
+//   --sin-etiquetas  con --avisar, el tuit va sin etiquetar a nadie en la imagen
 //   --plan           no toca nada: imprime el plan y sale
 //   --json           log en líneas JSON (lo consume el panel)
 //   --id <id>        identificador del trabajo para .cache/publicar/estado.json
@@ -34,7 +37,7 @@ const CARPETA = 'src/content/acordes';
 const BORRADORES = 'src/content/acordes3';
 const ESTADO = join(RAIZ, '.cache/publicar/estado.json');
 
-const opciones = { slugs: [], todos: false, sinAviso: false, avisar: false, plan: false, json: false, id: '' };
+const opciones = { slugs: [], todos: false, sinAviso: false, avisar: false, sinWa: false, sinX: false, sinEtiquetas: false, plan: false, json: false, id: '' };
 const args = process.argv.slice(2);
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
@@ -42,6 +45,9 @@ for (let i = 0; i < args.length; i++) {
   else if (a === '--todos') opciones.todos = true;
   else if (a === '--sin-aviso') opciones.sinAviso = true;
   else if (a === '--avisar') opciones.avisar = true;
+  else if (a === '--sin-wa') opciones.sinWa = true;
+  else if (a === '--sin-x') opciones.sinX = true;
+  else if (a === '--sin-etiquetas') opciones.sinEtiquetas = true;
   else if (a === '--plan') opciones.plan = true;
   else if (a === '--json') opciones.json = true;
   else if (a === '--id') opciones.id = String(args[++i] || '');
@@ -304,17 +310,28 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       log(`Lanzando avisos de: ${avisos.join(', ')}`);
       const solo = ['--solo', avisos.join(',')];
 
-      log('Lanzando WhatsApp…');
-      const rw = correrScript('wa', solo, { heredar: true });
-      wa = rw.codigo === 0 ? 'ok' : `error ${rw.codigo}`;
-      if (rw.codigo === 2) log('WhatsApp: sesión caducada. Ejecuta `npm run wa:login`.', 'error');
-      else if (rw.codigo) log(`WhatsApp terminó con código ${rw.codigo}.`, 'error');
+      if (!opciones.sinWa) {
+        log('Lanzando WhatsApp…');
+        const rw = correrScript('wa', solo, { heredar: true });
+        wa = rw.codigo === 0 ? 'ok' : `error ${rw.codigo}`;
+        if (rw.codigo === 2) log('WhatsApp: sesión caducada. Ejecuta `npm run wa:login`.', 'error');
+        else if (rw.codigo) log(`WhatsApp terminó con código ${rw.codigo}.`, 'error');
+        log(`Aviso WhatsApp: ${wa}`);
+      } else {
+        log('WhatsApp: omitido (--sin-wa).');
+      }
 
-      log('Lanzando X…');
-      const rx = correrScript('x', solo, { heredar: true });
-      x = rx.codigo === 0 ? 'ok' : `error ${rx.codigo}`;
-      if (rx.codigo === 2) log('X: sesión caducada. Ejecuta `npm run x:login`.', 'error');
-      else if (rx.codigo) log(`X terminó con código ${rx.codigo}.`, 'error');
+      if (!opciones.sinX) {
+        log('Lanzando X…');
+        const extra = opciones.sinEtiquetas ? ['--sin-etiquetas'] : [];
+        const rx = correrScript('x', [...solo, ...extra], { heredar: true });
+        x = rx.codigo === 0 ? 'ok' : `error ${rx.codigo}`;
+        if (rx.codigo === 2) log('X: sesión caducada. Ejecuta `npm run x:login`.', 'error');
+        else if (rx.codigo) log(`X terminó con código ${rx.codigo}.`, 'error');
+        log(`Aviso X: ${x}${opciones.sinEtiquetas ? ' (sin etiquetas)' : ''}`);
+      } else {
+        log('X: omitido (--sin-x).');
+      }
     } else if (avisos.length) {
       log(`Aviso listo para copiar: ${avisos.join(', ')}`);
     } else {

@@ -33,7 +33,8 @@
     "revisar": "node scripts/revision-acordes.mjs",
     "auditar:editor": "node --experimental-strip-types scripts/auditar-editor.mjs",
     "trello": "node scripts/trello.mjs",
-    "trello:watch": "node scripts/trello-watch.mjs"
+    "trello:watch": "node scripts/trello-watch.mjs",
+    "subir:ficha": "node scripts/subir-ficha.mjs"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",

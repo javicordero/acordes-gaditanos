@@ -27,6 +27,11 @@
  *     de la espera, no una espera fija: quien comenta seguido arranca en 8 s.
  *   - **Despriorizadas**: columna que no se toca nunca. Si una tarjeta sale de
  *     ahí a Pendiente/Prioritarias, cuenta como nueva y se planifica.
+ *   - **Subir ficha**: columna de fichas listas para publicar. No se planifica
+ *     nada: crear la tarjeta no hace nada. Solo cuando el usuario comenta (una
+ *     orden de subir) se lanza `scripts/subir-ficha.mjs`, que publica la copla
+ *     con la mecánica de la skill `subir-acorde`, comenta el resultado y mueve
+ *     la tarjeta a «Subidas». Sin orden en el comentario, no se publica nada.
  *   - Una sola sesión de OpenCode por tarjeta: el id es fijo
  *     (`ses_trello_<idTarjeta>`) y se guarda en el estado, así cada tarjeta vive
  *     siempre en su misma sesión (también al reiniciar el watcher). Sesión nueva
@@ -58,6 +63,9 @@
  *                                agrupar y arrancar el agente (por defecto 8)
  *   TRELLO_WATCH_AGRUPAR         tope en segundos de esa espera (por defecto 45)
  *   TRELLO_LISTA_PRIORITARIAS    nombre de la columna (por defecto «Prioritarias»)
+ *   TRELLO_LISTA_DESPRIORIZADAS  nombre de la columna (por defecto «Despriorizadas»)
+ *   TRELLO_LISTA_SUBIR           columna de fichas por subir («Subir ficha»)
+ *   TRELLO_LISTA_SUBIDAS         columna de fichas subidas («Subidas»)
  *   TRELLO_WATCH_SESION_NUEVA    id/shortLink de una tarjeta (o `1` para todas)
  *                                para que el próximo turno estrene sesión limpia
  */
@@ -155,6 +163,8 @@ const NOMBRES = {
     'Despriorizadas',
   curso: process.env.TRELLO_LISTA_CURSO || ENV.TRELLO_LISTA_CURSO || 'En curso',
   final: process.env.TRELLO_LISTA_FINAL || ENV.TRELLO_LISTA_FINAL || 'Finalizado',
+  subir: process.env.TRELLO_LISTA_SUBIR || ENV.TRELLO_LISTA_SUBIR || 'Subir ficha',
+  subidas: process.env.TRELLO_LISTA_SUBIDAS || ENV.TRELLO_LISTA_SUBIDAS || 'Subidas',
 };
 
 function log(...partes) {
@@ -246,6 +256,17 @@ function esVigilada(nombreLista) {
 // Pendiente o Prioritarias, cuenta como nueva y sí se planifica.
 function esDespriorizada(nombreLista) {
   return Boolean(nombreLista) && sinTildes(nombreLista) === sinTildes(NOMBRES.despriorizada);
+}
+
+// Columna de fichas listas para publicar. Igual que Despriorizadas, no entra en
+// la cola de planificación: sacar el agente cuesta tokens y aquí lo que hay es
+// una orden mecánica («sube esta ficha»). Solo se atiende cuando hay comentario.
+function esSubir(nombreLista) {
+  return Boolean(nombreLista) && sinTildes(nombreLista) === sinTildes(NOMBRES.subir);
+}
+
+function esSubidas(nombreLista) {
+  return Boolean(nombreLista) && sinTildes(nombreLista) === sinTildes(NOMBRES.subidas);
 }
 
 // ¿Hay que planificarla? Solo las de la cola (Pendiente/Prioritarias), y solo si
@@ -575,6 +596,25 @@ function ejecutarAgente(prompt, t, previo) {
   });
 }
 
+function ejecutarSubida(t, texto) {
+  return new Promise((resolver) => {
+    log('📤 publicando la ficha de', t.name);
+    const hijo = spawn(
+      process.execPath,
+      ['scripts/subir-ficha.mjs', '--tarjeta', t.id, '--comentario', texto],
+      { cwd: RAIZ, stdio: 'inherit' },
+    );
+    hijo.on('error', (e) => {
+      console.error('No se pudo lanzar subir-ficha:', e.message);
+      resolver();
+    });
+    hijo.on('close', (codigo) => {
+      log('subir-ficha terminado (código', codigo ?? '?', ')');
+      resolver();
+    });
+  });
+}
+
 // ---------------------------------------------------------------------------
 // Bucle
 // ---------------------------------------------------------------------------
@@ -597,9 +637,72 @@ async function pasada(estado, primera) {
     .filter((t) => esVigilada(t.lista))
     .sort((a, b) => compararCola(a, b, estado));
 
+  // «Subir ficha»: aquí no se planifica nunca. La tarjeta recién creada se
+  // registra y se queda quieta; solo un comentario del usuario dispara la
+  // publicación (`scripts/subir-ficha.mjs`, que también comenta y mueve la
+  // tarjeta a «Subidas»). Se atiende una por pasada.
+  const porSubir = tarjetas
+    .filter((t) => esSubir(t.lista))
+    .sort((a, b) => (a.pos ?? 0) - (b.pos ?? 0));
+
+  for (const t of porSubir) {
+    const previo = estado.cards[t.id];
+    const actuales = t.badges?.comments ?? 0;
+
+    if (!previo) {
+      // Primera vez que se ve la tarjeta: se apunta el baseline sin hacer nada,
+      // así crear la tarjeta (o arrancar el watcher con tarjetas dentro) no
+      // publica nada.
+      const { ultimoId } = await comentariosNuevos(t.id, { comments: actuales }, actuales);
+      estado.cards[t.id] = {
+        comments: actuales,
+        nombre: t.name,
+        lista: t.lista,
+        planificado: false,
+        subir: true,
+        ultimoComentario: ultimoId,
+      };
+      log('· [Subir ficha] registrada, sin orden de subir:', String(t.name).slice(0, 45));
+      continue;
+    }
+
+    previo.lista = t.lista;
+    previo.nombre = t.name;
+
+    const sinNovedad = actuales === (previo.comments ?? 0);
+    if (sinNovedad && (previo.ultimoComentario || actuales === 0)) continue;
+
+    const { nuevos, candidatos, ultimoId } = await comentariosNuevos(t.id, previo, actuales);
+    previo.comments = actuales;
+
+    if (!nuevos.length) {
+      if ((candidatos.length || !previo.ultimoComentario) && ultimoId) {
+        previo.ultimoComentario = ultimoId;
+      }
+      continue;
+    }
+
+    const lote = await agruparComentarios(t, previo, nuevos);
+    const texto = lote.map((a) => a.data?.text || '').join('\n\n---\n\n');
+    log(
+      `📤 ${lote.length} comentario(s) en «${NOMBRES.subir}»:`,
+      t.name,
+      '·',
+      texto.replace(/\s+/g, ' ').slice(0, 80),
+    );
+    if (!SECO) {
+      await ejecutarSubida(t, texto);
+    }
+    // Baseline = último comentario del usuario procesado (no la respuesta del
+    // script), así un comentario que llegue mientras corre se recoge después.
+    previo.ultimoComentario = lote[lote.length - 1].id;
+    return true; // una publicación por pasada
+  }
+
   log(
     `pasada${primera ? ' (primera)' : ''}: ${tarjetas.length} tarjetas abiertas, ` +
-      `${vigiladas.length} en la cola`,
+      `${vigiladas.length} en la cola, ${porSubir.length} en «${NOMBRES.subir}», ` +
+      `${tarjetas.filter((t) => esSubidas(t.lista)).length} en «${NOMBRES.subidas}»`,
   );
   // La lista de la cola solo se pinta cuando hay algo que hacer (o con
   // `--una-vez`): a 10 s de sondeo, si no, llena la consola todos los minutos.
@@ -723,6 +826,12 @@ async function main() {
         '  La columna «Despriorizadas» no se toca nunca; si una tarjeta sale de ahí',
         '  a Pendiente o Prioritarias, se planifica como nueva.',
         '',
+        '  «Subir ficha» es la columna de fichas listas para publicar: crear la tarjeta',
+        '  no hace nada y solo un comentario con orden («sube», «súbelo», «publica»…)',
+        '  publica la ficha con la mecánica de `subir-acorde` y mueve la tarjeta a',
+        '  «Subidas». Modificadores: «sin tuit», «sin whatsapp», «sin etiquetar»,',
+        '  «sin aviso».',
+        '',
         '  Las tarjetas de letras («nueva letra…», «pasodoble…») se atienden directamente,',
         '  sin plan: se busca la letra, se ponen los acordes y se dejan en «Por revisar».',
         '',
@@ -733,7 +842,9 @@ async function main() {
   }
 
   faltanCredenciales();
-  tomarLock();
+  // `--seco` no escribe estado: no necesita el lock, así se puede probar una
+  // pasada sin parar el watcher que esté corriendo.
+  if (!SECO) tomarLock();
 
   const estado = leerEstado();
   const primera = Object.keys(estado.cards).length === 0;

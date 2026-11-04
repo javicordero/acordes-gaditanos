@@ -82,6 +82,8 @@ const NOMBRES = {
     process.env.TRELLO_LISTA_PRIORITARIAS || ENV.TRELLO_LISTA_PRIORITARIAS || 'Prioritarias',
   curso: process.env.TRELLO_LISTA_CURSO || ENV.TRELLO_LISTA_CURSO || 'En curso',
   final: process.env.TRELLO_LISTA_FINAL || ENV.TRELLO_LISTA_FINAL || 'Finalizado',
+  subir: process.env.TRELLO_LISTA_SUBIR || ENV.TRELLO_LISTA_SUBIR || 'Subir ficha',
+  subidas: process.env.TRELLO_LISTA_SUBIDAS || ENV.TRELLO_LISTA_SUBIDAS || 'Subidas',
 };
 
 function faltanCredenciales() {

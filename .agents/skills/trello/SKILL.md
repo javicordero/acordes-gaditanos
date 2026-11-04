@@ -39,7 +39,8 @@ faltan, el script lo dice y sale con código 2: no inventes valores ni pidas el 
 chat si ya está en `.env`.
 
 Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
-`TRELLO_LISTA_CURSO` y `TRELLO_LISTA_FINAL`.
+`TRELLO_LISTA_CURSO`, `TRELLO_LISTA_FINAL`, `TRELLO_LISTA_SUBIR` («Subir ficha») y
+`TRELLO_LISTA_SUBIDAS` («Subidas»).
 
 ## Dos caminos
 
@@ -223,6 +224,47 @@ previstas para pasodobles (`TIPOS_CON_LETRAS`).
 
 El barrido de la cola (pasar todas las `pendiente`/`encontrada` por el flujo) es **otra
 tarea**: no se hace al atender una tarjeta de letra.
+
+## Subir fichas (columna «Subir ficha»)
+
+Las coplas que ya están revisadas y solo esperan salir a la web se aparcan en la columna
+**«Subir ficha»**, con una tarjeta por copla y el **nombre hablado o el slug** en el título
+(`pasodoble las ratas manuel`, `pasodoble-la-marea`). **Crear la tarjeta no publica nada.**
+
+Lo atiende el watcher (`trello-watch.mjs`) sin sacar agente: en cuanto hay un **comentario
+del usuario** en una tarjeta de esa columna, ejecuta
+`npm run subir:ficha -- --tarjeta <id> --comentario "<texto>"`, que
+
+1. resuelve la ficha (`scripts/lib/fichas.mjs`: slug, pieza + agrupación, título de la letra;
+   si encajan varias, las lista y no publica),
+2. la **promueve** si todavía está en `acordes3`,
+3. la publica con `scripts/publicar-acorde.mjs` (fecha del día siguiente al último
+   publicado, `auditar:pre`, `auditar:acordes`, un commit por ficha y push) y lanza los
+   avisos,
+4. comenta el resultado con el commit y **mueve la tarjeta a «Subidas»**.
+
+El comentario tiene que llevar una **orden de subir** (`sube`, `súbelo`, `publica`, `dale`…);
+si no, solo se pregunta y no se toca nada. Modificadores:
+
+| En el comentario | Efecto |
+|---|---|
+| `sube` | WhatsApp + tuit con las etiquetas de siempre |
+| `sin etiquetar` | tuit sin etiquetar a nadie en la imagen |
+| `sin tuit` | solo WhatsApp |
+| `sin whatsapp` / `sin wa` | solo tuit |
+| `sin aviso` / `sin avisos` | ninguno (y commit con `[sin aviso]`, que también para Telegram) |
+
+Para hacerlo a mano, sin esperar al watcher (el `--seco` enseña qué haría y no toca nada):
+
+```bash
+npm run subir:ficha -- --tarjeta <id|shortLink> --comentario "sube sin tuit"
+npm run subir:ficha -- --slug pasodoble-la-marea --comentario "sube" --seco
+```
+
+Si algo falla, la tarjeta **se queda en «Subir ficha»** con el error comentado, para
+reintentar con otro comentario. Para volver a subir algo que ya está en «Subidas», se
+arrastra a «Subir ficha» y se comenta otra vez. No se planifica ni se pide aprobación: es
+una orden mecánica.
 
 ## Reglas
 
