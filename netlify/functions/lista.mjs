@@ -171,9 +171,74 @@ async function pendientesRevision(token) {
   }
 }
 
+/** La PR trae la ficha en `acordes`: publica un borrador o corrige una ya publicada. */
+function esPublicacion(pr) {
+  const ref = pr.head.ref || '';
+  if (ref.startsWith('publica/')) return true;
+  const cuerpo = pr.body || '';
+  return /Archivo:\s*`src\/content\/acordes\//.test(cuerpo) || /Zona:\s*\*\*acordes\*\*/.test(cuerpo);
+}
+
+/** Slug de la ficha de una PR (del cuerpo o, si no está, de la rama). */
+function slugDePr(pr) {
+  const m = (pr.body || '').match(/Ficha:\s*`([^`]+)`/);
+  if (m) return m[1];
+  return (pr.head.ref || '').replace(/^(estudio|publica)\//, '').replace(/-[a-z0-9]+$/, '');
+}
+
+/**
+ * Fichas de `acordes` con una PR abierta (una corrección hecha desde el móvil o una
+ * publicación pendiente de fusionar): la web todavía no las tiene. Es lo que el
+ * panel enseña en «Por publicar» en producción.
+ */
+async function fichasEnPR(token) {
+  const out = [];
+  let abiertas;
+  try {
+    abiertas = await gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token });
+  } catch {
+    return out;
+  }
+  for (const pr of abiertas) {
+    const ref = pr.head.ref || '';
+    if (!ref.startsWith('estudio/') && !ref.startsWith('publica/')) continue;
+    if (!esPublicacion(pr)) continue;
+    const slug = slugDePr(pr);
+    if (!slug) continue;
+    try {
+      const d = await gh(`/repos/${REPO}/contents/${CARPETAS.acordes}/${slug}.md?ref=${encodeURIComponent(ref)}`, { token });
+      out.push({
+        ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')),
+        zona: 'acordes',
+        enPR: pr.number,
+        rama: ref,
+      });
+    } catch { /* la PR no lleva la ficha en acordes */ }
+  }
+  return out;
+}
+
 export default async (req) => {
   const s = sesion(req);
   if (!s) return sinSesion();
+
+  // `?solo=pendientes` devuelve únicamente lo que cambia al guardar o promover una
+  // ficha (lo que falta subir, la cola de revisión y las PRs abiertas de fichas ya
+  // publicadas), sin las llamadas a GitHub de la lista completa. El panel lo pide
+  // tras cada guardado.
+  let url = null;
+  try { url = new URL(req.url); } catch { /* petición sin URL absoluta */ }
+  if (url && url.searchParams.get('solo') === 'pendientes') {
+    try {
+      return json({
+        revision: await pendientesRevision(s.token),
+        pendientes: await pendientesGit(),
+        prs: await fichasEnPR(s.token),
+      });
+    } catch (e) {
+      return json({ error: String(e.message || e) }, 502);
+    }
+  }
 
   try {
     // En local manda el disco: un borrador que ya está en `acordes` (promovido
@@ -208,24 +273,24 @@ export default async (req) => {
       }))).filter((f) => !(LOCAL && localesPublicadas.has(f.slug)));
       if (LOCAL) for (const f of fichas) f.local = locales3.has(f.slug);
 
-      // Fichas que aún viven en una PR abierta: los borradores (`estudio/*`) y las
-      // ya publicadas en una PR de publicación (`publica/*`), para que sigan
+      // Fichas que aún viven en una PR abierta: los borradores (`estudio/*` sobre
+      // `acordes3`) y las ya publicadas en una PR de publicación o corrección
+      // (`publica/*`, o una `estudio/*` que trae `acordes/`), para que sigan
       // apareciendo en la lista marcadas como EN PR hasta fusionarlas.
       const abiertas = await gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token: s.token });
       for (const pr of abiertas) {
         const ref = pr.head.ref || '';
-        const esPublicacion = ref.startsWith('publica/');
-        if (!ref.startsWith('estudio/') && !esPublicacion) continue;
-        const m = (pr.body || '').match(/Ficha:\s*`([^`]+)`/);
-        const slug = m ? m[1] : ref.replace(/^(estudio|publica)\//, '').replace(/-[a-z0-9]+$/, '');
+        const publicacion = esPublicacion(pr);
+        if (!ref.startsWith('estudio/') && !ref.startsWith('publica/')) continue;
+        const slug = slugDePr(pr);
         if (!slug || fichas.some((f) => f.slug === slug)) continue;
         // Un borrador que ya está publicado en el disco no se repite.
-        if (LOCAL && !esPublicacion && localesPublicadas.has(slug)) continue;
-        const zona = esPublicacion ? 'acordes' : 'acordes3';
+        if (LOCAL && !publicacion && localesPublicadas.has(slug)) continue;
+        const zona = publicacion ? 'acordes' : 'acordes3';
         try {
           const d = await gh(`/repos/${REPO}/contents/${CARPETAS[zona]}/${slug}.md?ref=${encodeURIComponent(ref)}`, { token: s.token });
           const item = { ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona, enPR: pr.number, rama: ref };
-          if (LOCAL && !esPublicacion) item.local = locales3.has(slug);
+          if (LOCAL && !publicacion) item.local = locales3.has(slug);
           fichas.push(item);
         } catch { /* la PR no toca esa carpeta */ }
       }

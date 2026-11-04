@@ -128,7 +128,7 @@ const LEYENDAS = {
   todas: 'Todo el cancionero. Cada ficha está en una sola pestaña de las de abajo.',
   revisar: 'Ya están en la web y les falta el repaso a mano. <b>Revisado ✓</b> las saca de la cola.',
   borradores: 'Aún no están en la web. <b>Revisado ✓</b> las marca y, si es un borrador, lo promueve para poder subirlo.',
-  porPublicar: 'En <code>acordes</code>, revisadas y sin commit. <b>Publicar</b> = commit + push.',
+  porPublicar: 'En <code>acordes</code>, con cambios que la web aún no tiene: sin commit (se suben) o en una PR abierta (se fusiona).',
   publicadas: 'Ya están en la web y revisadas.',
 };
 
@@ -154,6 +154,10 @@ let revision = new Set();
 // Fichas de `acordes` en el ordenador pero aún sin subir a git (solo en local).
 let pendientesPublicar = [];
 let sinSubirClaves = new Set();
+// Tipo de cada ficha pendiente de subir: `nueva` (aún no en git), `modificada`,
+// `borrada` o `sin-push` (commit local sin push). Una publicada y modificada en
+// el ordenador ya está en la web: lo que falta es el commit.
+let estadoPendiente = new Map();
 
 const normalizar = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 /** Ficha de la cola «Por revisar». */
@@ -162,16 +166,35 @@ const porRevisar = (x) => revision.has(x.slug);
 const sinSubir = (x) => sinSubirClaves.has(x.slug);
 /** En `acordes` y ya en git: está en la web. */
 const enGit = (x) => x.zona === 'acordes' && !sinSubir(x);
+/** Ficha de `acordes` con una PR abierta: la web todavía no lleva el cambio. */
+const enPRPublicar = (x) => x.zona === 'acordes' && Boolean(x.enPR);
+
+/** Lo que hay que hacer con una ficha pendiente, en corto: `nueva` | `modificada` | `borrada`. */
+const tipoPendiente = (x) => (x.estado === 'sin-push' ? x.cambio || 'modificada' : x.estado);
+/** La ficha pendiente aún no está en git (no está en la web). */
+const esNuevaPendiente = (slug) => estadoPendiente.get(slug) === 'nueva';
+
+/** Deja el estado de lo que falta subir (lo comparten la carga y el refresco). */
+function fijarPendientes(lista) {
+  pendientesPublicar = Array.isArray(lista) ? lista : [];
+  sinSubirClaves = new Set(pendientesPublicar.map((x) => x.slug));
+  estadoPendiente = new Map(pendientesPublicar.map((x) => [x.slug, tipoPendiente(x)]));
+}
 
 // Las cuatro categorías, excluyentes: cada ficha cae en una sola pestaña.
 //   sin revisar + en git  → Por revisar
-//   sin revisar + sin git → Borradores
-//   revisada + sin git    → Por publicar
-//   revisada + en git     → Publicadas
-const esPorRevisar = (x) => enGit(x) && porRevisar(x);
-const esBorrador = (x) => x.zona === 'acordes3' || (sinSubir(x) && porRevisar(x));
-const esPorPublicar = (x) => sinSubir(x) && !porRevisar(x);
-const esPublicada = (x) => enGit(x) && !porRevisar(x);
+//   sin revisar + sin git → Borradores (solo si además es nueva: una publicada que
+//                           se ha modificado en local ya está en la web y va a Por publicar)
+//   revisada    + sin git → Por publicar
+//   revisada    + en git  → Publicadas
+// «Sin git» vale para lo modificado en el ordenador y para lo que está en una PR
+// abierta (una corrección hecha desde el móvil); una PR manda sobre «Por revisar»,
+// porque lo que queda es publicarla.
+const esPorRevisar = (x) => enGit(x) && porRevisar(x) && !enPRPublicar(x);
+const esPorPublicar = (x) => enPRPublicar(x) ||
+  (sinSubir(x) && !(porRevisar(x) && esNuevaPendiente(x.slug)));
+const esBorrador = (x) => x.zona === 'acordes3' || (sinSubir(x) && porRevisar(x) && esNuevaPendiente(x.slug));
+const esPublicada = (x) => enGit(x) && !porRevisar(x) && !enPRPublicar(x);
 /** Ficha pendiente de algo: se pinta con el fondo destacado. */
 const esPendiente = (x) => esBorrador(x) || esPorRevisar(x) || esPorPublicar(x);
 
@@ -186,8 +209,7 @@ async function cargarIndice() {
       const j = await b.json();
       borradores = j.borradores.map((x) => ({ ...x, zona: x.zona || 'acordes3' }));
       revision = new Set(j.revision || []);
-      pendientesPublicar = Array.isArray(j.pendientes) ? j.pendientes : [];
-      sinSubirClaves = new Set(pendientesPublicar.map((x) => x.slug));
+      fijarPendientes(j.pendientes);
     }
   } catch { /* sin borradores */ }
   // Una misma ficha puede venir de `/lista` (con `zona`, `local` y la PR) y del
@@ -212,8 +234,40 @@ async function recargarIndice() {
   indice = [];
   pendientesPublicar = [];
   sinSubirClaves = new Set();
+  estadoPendiente = new Map();
   await cargarIndice();
   pintarLista();
+}
+
+/**
+ * Refresca solo lo que cambia al editar una ficha: la cola de revisión, lo que hay
+ * en el ordenador sin subir y las PRs abiertas de fichas ya publicadas. Es lo que
+ * hace que una ficha modificada pase a «Por publicar» al guardarla, sin recargar la
+ * página ni volver a pedir la lista entera a GitHub.
+ */
+async function refrescarPendientes() {
+  try {
+    const r = await fetch(API + '/lista?solo=pendientes');
+    if (!r.ok) return;
+    const j = await r.json();
+    revision = new Set(j.revision || []);
+    fijarPendientes(j.pendientes);
+    // Las PRs abiertas: se marcan en el índice (o se añaden si aún no estaban) para
+    // que la ficha cuente como pendiente de publicar.
+    for (const p of j.prs || []) {
+      const i = indice.findIndex((x) => x.slug === p.slug);
+      if (i >= 0) Object.assign(indice[i], { zona: 'acordes', enPR: p.enPR, rama: p.rama });
+      else indice.push({ ...p, zona: 'acordes' });
+    }
+    if (indice.length) pintarLista();
+  } catch { /* sin red: se queda el estado que ya había */ }
+}
+
+/** La PR ya está fusionada: la ficha deja de estar pendiente de publicar en la lista. */
+function quitarPR(slug) {
+  const x = indice.find((i) => i.slug === slug);
+  if (x) { delete x.enPR; x.rama = null; }
+  if (indice.length) pintarLista();
 }
 
 const marcas = (x) => [
@@ -263,20 +317,26 @@ function grupoLista(titulo, items, clase, render = filaLista) {
     items.map(render).join('');
 }
 
-/** Fila de la pestaña «Por publicar» (fichas de acordes sin subir a git). */
+/**
+ * Fila de la pestaña «Por publicar»: lo que está en `acordes` pero la web todavía no
+ * tiene. O son cambios del ordenador sin commit (`NUEVA`, `MODIFICADA`, `BORRADA`,
+ * `SIN PUSH`, se suben desde aquí) o una PR abierta (`EN PR`, se publica fusionándola).
+ */
 function filaPorPublicar(x) {
-  const etiqueta = x.estado === 'nueva' ? 'NUEVA'
+  const conPR = Boolean(x.enPR);
+  const etiqueta = conPR ? 'EN PR'
+    : x.estado === 'nueva' ? 'NUEVA'
     : x.estado === 'borrada' ? 'BORRADA'
     : x.estado === 'sin-push' ? 'SIN PUSH'
     : 'MODIFICADA';
-  const clase = x.estado === 'nueva' ? 'local' : x.estado === 'sin-push' ? 'pr' : 'remoto';
+  const clase = conPR || x.estado === 'sin-push' ? 'pr' : x.estado === 'nueva' ? 'local' : 'remoto';
   const boton = (accion, texto, extra) =>
     '<button type="button" class="acc' + (extra || '') + '" data-accion="' + accion + '" data-slug="' + esc(x.slug) + '">' + texto + '</button>';
   // Vista previa: la ficha ya está en `acordes` en el disco, así que `astro dev`
   // la pinta en su URL (con barra final, que es la que sirve la web). Se abre en
   // la misma pestaña: «atrás» devuelve al panel. Una ficha borrada no tiene nada
-  // que enseñar.
-  const ver = x.estado === 'borrada' || x.cambio === 'borrada' ? ''
+  // que enseñar, y una que está en una PR no está en el disco: se mira en la PR.
+  const ver = conPR || x.estado === 'borrada' || x.cambio === 'borrada' ? ''
     : '<a class="acc boton" href="/acordes/' + encodeURIComponent(x.slug) + '/"' +
       ' title="Ver la ficha como está ahora en el ordenador (vuelve con «atrás»)">Ver</a>';
 
@@ -288,13 +348,16 @@ function filaPorPublicar(x) {
         '<span>' + esc(x.pieza) + '</span>' +
         (x.letraTitulo ? '<span class="f-letra">' + esc(x.letraTitulo) + '</span>' : '') +
         '<span class="marca ' + clase + '">' + etiqueta + '</span>' +
+        (revision.has(x.slug) ? '<span class="marca revisar">SIN REVISAR</span>' : '') +
         (x.borrador ? '<span class="marca" title="Estaba en acordes3 y se ha promovido: falta publicarla">PROMOVIDA</span>' : '') +
       '</span>' +
     '</button>' +
     '<div class="fila-acciones">' +
       ver +
       (x.estado !== 'borrada' ? boton('editar', 'Editar') : '') +
-      boton('publicarLocal', x.estado === 'nueva' ? 'Publicar' : 'Subir', ' principal') +
+      (conPR
+        ? boton('fusionarPr', 'Publicar', ' principal')
+        : boton('publicarLocal', x.estado === 'nueva' ? 'Publicar' : 'Subir', ' principal')) +
     '</div>' +
   '</article>';
 }
@@ -330,9 +393,21 @@ function pintarLista() {
   const borradoresCompletos = borradores.filter((x) => !x.incompleta);
   const borradoresAMedias = borradores.filter((x) => x.incompleta);
   const publicadas = resultado.filter(esPublicada);
-  const porPublicar = pendientesPublicar
-    .filter((x) => coincide(x) && !revision.has(x.slug))
-    .sort((a, b) => rangoEstado(a) - rangoEstado(b) || porAnioYAgra(a, b));
+  // «Por publicar»: lo que está en `acordes` pero la web aún no tiene. En local, los
+  // cambios del ordenador sin commit; en cualquier modo, las PRs abiertas (una
+  // corrección guardada desde el móvil). Una ficha que esté en las dos solo sale una
+  // vez: manda la del ordenador, que es la que se puede subir desde aquí.
+  const porPublicar = [];
+  const yaEsta = new Set();
+  for (const x of [
+    ...pendientesPublicar.filter((x) => coincide(x) && (!revision.has(x.slug) || !esNuevaPendiente(x.slug))),
+    ...resultado.filter(enPRPublicar),
+  ]) {
+    if (yaEsta.has(x.slug)) continue;
+    yaEsta.add(x.slug);
+    porPublicar.push(x);
+  }
+  porPublicar.sort((a, b) => rangoEstado(a) - rangoEstado(b) || porAnioYAgra(a, b));
 
   $('q-limpiar').hidden = !$('q').value;
   const cuentas = {
@@ -417,6 +492,7 @@ function pintarLista() {
       if (accion === 'editar') return abrirFicha(b.dataset.slug);
       if (accion === 'publicar') return publicarDesdeLista(b.dataset.slug, b);
       if (accion === 'publicarLocal') return pedirPublicar(b.dataset.slug);
+      if (accion === 'fusionarPr') return fusionarDesdeLista(b.dataset.slug, b);
       if (accion === 'revisar') return revisarDesdeLista(b.dataset.slug, b);
       if (accion === 'clonar') return clonar(b.dataset.slug);
     };
@@ -435,8 +511,8 @@ function pintarLista() {
             ? '<b>Nada en borradores</b>No hay fichas sin publicar.'
             : filtroTipo === 'porPublicar'
               ? (MODO_LOCAL
-                ? '<b>Nada pendiente</b>Todo lo que está en <code>acordes</code> ya está subido a git.'
-                : '<b>Solo en local</b>Esta pestaña necesita el proyecto abierto con <code>astro dev</code>.')
+                ? '<b>Nada pendiente</b>Todo lo que está en <code>acordes</code> ya está subido a git y sin PR abierta.'
+                : '<b>Nada pendiente</b>No hay ninguna PR abierta de una ficha publicada.')
               : filtroTipo === 'publicadas'
                 ? '<b>Nada publicado</b>Todavía no hay fichas en la web.'
                 : '<b>Sin fichas</b>No hay nada todavía: crea la primera.';
@@ -1488,6 +1564,14 @@ async function guardar() {
       $('b-fusionar').hidden = true;
       setEstado('guardado en local', true);
       const ruta = 'src/content/' + (zonaFicha === 'acordes3' ? 'acordes3' : 'acordes') + '/' + ficha.slug + '.md';
+      if (zonaFicha === 'acordes') {
+        // Ya está en la web: lo que falta es el commit, así que pasa a «Por publicar».
+        await refrescarPendientes();
+        mostrarAviso('Guardado en ' + ruta + '.\n' + (sinSubir({ slug: ficha.slug })
+          ? 'La web no cambia hasta que la subas: la ficha está en «Por publicar» (lista → «Subir»).'
+          : 'El archivo es igual al de git: no hay nada pendiente de subir.'), 'var(--ok)');
+        return;
+      }
       mostrarAviso('Guardado en ' + ruta + '.\nEn local no se crea PR: el archivo queda escrito en el proyecto.', 'var(--ok)');
       return;
     }
@@ -1496,7 +1580,10 @@ async function guardar() {
     $('b-pr').hidden = false;
     $('b-fusionar').hidden = false;
     $('b-pr').onclick = () => window.open(d.pr.url, '_blank');
+    // La corrección vive en una PR: la ficha pasa al momento a «Por publicar».
+    if (zonaFicha === 'acordes') await refrescarPendientes();
     mostrarAviso('Guardado en la rama ' + d.rama + '.\nPR #' + d.pr.numero + ': ' + d.pr.url +
+      '\nLa web no cambia hasta fusionarla: la ficha está en «Por publicar».' +
       '\nNetlify está construyendo el preview; en un par de minutos lo tienes en la PR.', 'var(--ok)');
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
@@ -1539,13 +1626,17 @@ async function revisarFicha() {
         const x = indice.find((i) => i.slug === ficha.slug);
         if (x) { x.zona = 'acordes'; x.local = false; }
         setEstado('revisada y promovida', true);
+        await refrescarPendientes();
         mostrarAviso('Guardada, marcada como revisada y promovida a acordes.' + cola +
           '\nYa aparece en «Por publicar»; el commit lo haces luego (`subir-acorde`).', 'var(--ok)');
         return;
       }
       setEstado('revisada', true);
+      await refrescarPendientes();
       mostrarAviso('Guardada y marcada como revisada.' + cola +
-        '\nEn local no se crea PR: el commit lo haces luego (`subir-acorde`).', 'var(--ok)');
+        (sinSubir({ slug: ficha.slug })
+          ? '\nTiene cambios locales: está en «Por publicar».'
+          : '\nEn local no se crea PR: el commit lo haces luego (`subir-acorde`).'), 'var(--ok)');
       return;
     }
 
@@ -1562,6 +1653,7 @@ async function revisarFicha() {
     $('b-pr').hidden = true;
     $('b-fusionar').hidden = true;
     setEstado('revisada y fusionada', true);
+    quitarPR(ficha.slug);
     mostrarAviso('Revisada y fusionada. Netlify publica en un par de minutos.' + cola +
       (j.url ? '\n' + j.url : ''), 'var(--ok)');
   } catch (e) {
@@ -1589,6 +1681,7 @@ async function fusionar() {
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo fusionar');
     setEstado('fusionada', true);
+    quitarPR(ficha.slug);
     mostrarAviso('Fusionada. Netlify publicará en un par de minutos.\n' + (d.url || ''), 'var(--ok)');
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
@@ -1616,6 +1709,7 @@ async function publicar() {
     if (d.local) {
       setEstado('promovida a acordes', true);
       $('b-publicar').hidden = true;
+      await refrescarPendientes();
       mostrarAviso('Promovida a acordes: ' + 'src/content/acordes/' + ficha.slug + '.md.\nEn el proyecto ya cuenta como publicada, pero la web no cambia hasta que hagas commit y push (`subir-acorde`).', 'var(--ok)');
       return;
     }
@@ -1649,13 +1743,44 @@ async function publicarDesdeLista(slug, boton) {
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
     if (item) { item.zona = 'acordes'; item.local = false; item.enPR = d.pr ? d.pr.numero : null; }
-    pintarLista();
+    if (d.local) await refrescarPendientes();
+    else pintarLista();
     mostrarAviso(d.local
       ? 'Promovida a acordes: «' + slug + '» ya está en src/content/acordes/.\nLa web no cambia hasta que hagas commit y push (`subir-acorde`).'
       : 'Publicada «' + slug + '» en la PR #' + d.pr.numero + '.\nAl fusionar, Telegram avisa solo; WhatsApp y X, desde el PC.\n' + d.pr.url, 'var(--ok)');
   } catch (e) {
     boton.disabled = false;
     boton.textContent = antes;
+    mostrarAviso(String(e.message || e), 'var(--mal)');
+  }
+}
+
+/**
+ * «Publicar» de una ficha que está en una PR (una corrección guardada desde el móvil):
+ * fusiona la PR en master. Netlify reconstruye y, si era una ficha nueva, Telegram
+ * avisa solo; una corrección no manda aviso.
+ */
+async function fusionarDesdeLista(slug, boton) {
+  const item = indice.find((x) => x.slug === slug);
+  if (!confirm('¿Publicar «' + slug + '»?\nSe fusiona su PR en master y Netlify reconstruye la web.' +
+    (MODO_LOCAL ? '\nDespués tendrás que hacer `git pull` en el ordenador.' : ''))) return;
+  const antes = boton ? boton.textContent : '';
+  if (boton) { boton.disabled = true; boton.textContent = '…'; }
+  try {
+    const r = await fetch(API + '/fusionar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug, ...(item && item.rama ? { rama: item.rama } : {}) }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
+    await recargarIndice();
+    mostrarAviso('PR fusionada: la ficha ya está en la web.' +
+      (d.url ? '\n' + d.url : '') +
+      '\nNetlify publica en un par de minutos.' +
+      (MODO_LOCAL ? '\nEn local, haz `git pull` para traerte el cambio.' : ''), 'var(--ok)');
+  } catch (e) {
+    if (boton) { boton.disabled = false; boton.textContent = antes; }
     mostrarAviso(String(e.message || e), 'var(--mal)');
   }
 }
@@ -2653,7 +2778,9 @@ window.addEventListener('beforeunload', (e) => {
   await cargarIndice();
   pintarLista();
   $('leyenda-filtro').innerHTML = LEYENDAS[filtroTipo] || '';
-  $('f-por-publicar').hidden = !MODO_LOCAL;
+  // «Por publicar» vale en los dos modos: en local son los cambios sin commit; en
+  // producción (y también en local) las PRs abiertas de fichas publicadas.
+  $('f-por-publicar').hidden = false;
   // Recupera la pestaña que se estaba viendo (p. ej. al volver de una previa).
   try {
     const f = sessionStorage.getItem('admin-filtro');

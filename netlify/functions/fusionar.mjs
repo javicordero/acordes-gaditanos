@@ -1,11 +1,9 @@
 ﻿// Fusiona la PR abierta de una ficha (squash) si estÃ¡ en verde.
-import { REPO, LOCAL, sesion, sinSesion, json, gh } from './_lib.mjs';
+import { REPO, sesion, sinSesion, json, gh } from './_lib.mjs';
 
 export default async (req) => {
   const s = sesion(req);
   if (!s) return sinSesion();
-
-  if (LOCAL) return json({ error: 'En local no hay PR que fusionar: guardar escribe el archivo y publicar lo mueve a acordes.' }, 400);
 
   let cuerpo;
   try { cuerpo = await req.json(); } catch { return json({ error: 'cuerpo invÃ¡lido' }, 400); }
@@ -17,7 +15,8 @@ export default async (req) => {
     const abiertas = await gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token: s.token });
     const pr =
       abiertas.find((p) => ramaPedida && p.head.ref === ramaPedida) ||
-      abiertas.find((p) => p.head.ref === `estudio/${slug}` || p.head.ref.startsWith(`estudio/${slug}-`));
+      abiertas.find((p) => p.head.ref === `estudio/${slug}` || p.head.ref.startsWith(`estudio/${slug}-`)) ||
+      abiertas.find((p) => p.head.ref === `publica/${slug}` || p.head.ref.startsWith(`publica/${slug}-`));
     if (!pr) return json({ error: 'no hay ninguna PR abierta para esta ficha' }, 404);
 
     // Si Netlify aÃºn estÃ¡ construyendo, GitHub lo dirÃ¡; lo devolvemos tal cual.
