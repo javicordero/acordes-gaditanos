@@ -25,7 +25,9 @@
 //   --id <id>        identificador del trabajo para .cache/publicar/estado.json
 //
 // Códigos de salida: 0 bien, 1 error (nada se revierte: si el push ya salió, la
-// web queda publicada y solo se informa de lo que falló).
+// web queda publicada y solo se informa de lo que falló). El push se reintenta
+// hasta 3 veces si el fallo es transitorio (500 de GitHub, corte de red); un
+// auth o un non-fast-forward fallan a la primera.
 
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -176,8 +178,70 @@ function construirPlan() {
   return { items, errores, avisos: items.filter((x) => x.avisar).length };
 }
 
-/** Guarda el estado que consulta el panel (solo si lo lanza el panel). */
-function escribirEstado(extra) {
+// ---------------------------------------------------------------------------
+// Push con reintentos
+// ---------------------------------------------------------------------------
+
+// Fallos de GitHub que se pasan solos: un 500 del servidor o un corte de red.
+// Un auth, un «non-fast-forward» o un rechazo de permisos no se reintenta:
+// volver a probar no lo arregla y solo hace esperar.
+const FALLO_TRANSITORIO =
+  /Internal Server Error|HTTP 5\d\d|requested URL returned error: 5\d\d|Could not resolve host|Connection reset|Connection refused|Failed to connect|Connection timed out|Operation timed out|RPC failed|remote end hung up|early EOF|TLS handshake timeout|unexpected disconnect|temporary failure/i;
+
+const INTENTOS_PUSH = 3;
+const ESPERAS_PUSH_MS = [3000, 6000];
+
+/** Como `git`, pero devuelve el error en vez de lanzarlo. */
+function gitResultado(argumentos) {
+  try {
+    const salida = execFileSync('git', argumentos, {
+      cwd: RAIZ,
+      encoding: 'utf8',
+      maxBuffer: 16 * 1024 * 1024,
+    }).replace(/\r\n/g, '\n');
+    return { ok: true, salida, error: '' };
+  } catch (e) {
+    return {
+      ok: false,
+      salida: String(e.stdout || '').replace(/\r\n/g, '\n'),
+      error: String(e.stderr || e.message || '').trim(),
+    };
+  }
+}
+
+const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * `git push` con reintentos ante fallos transitorios (los 500 de GitHub, cortes
+ * de red). Devuelve el número de intento en que salió. Si el fallo no es
+ * transitorio, o se agotan los intentos, lanza como antes.
+ */
+async function empujar() {
+  for (let intento = 1; intento <= INTENTOS_PUSH; intento++) {
+    const r = gitResultado(['push', 'origin', 'master']);
+    if (r.ok) {
+      if (intento > 1) log(`Push OK en el intento ${intento}/${INTENTOS_PUSH}.`);
+      return intento;
+    }
+
+    const detalle = r.error || r.salida;
+    const ultimo = intento === INTENTOS_PUSH;
+    if (ultimo || !FALLO_TRANSITORIO.test(detalle)) {
+      throw new Error(`git push origin master: ${detalle}`);
+    }
+
+    const espera = ESPERAS_PUSH_MS[intento - 1] ?? 3000;
+    const motivo = detalle.split('\n').map((l) => l.trim()).filter(Boolean).pop() || detalle;
+    log(
+      `Push falló (intento ${intento}/${INTENTOS_PUSH}): ${motivo.slice(0, 160)}. ` +
+        `Reintento en ${espera / 1000} s…`,
+    );
+    await dormir(espera);
+  }
+  return INTENTOS_PUSH;
+}
+
+/** Guarda el estado que consulta el panel (solo si lo lanza el panel). */function escribirEstado(extra) {
   if (!opciones.id) return;
   try {
     mkdirSync(join(RAIZ, '.cache/publicar'), { recursive: true });
@@ -286,14 +350,14 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       avisos = salida.split('\n').filter((r) => r.endsWith('.md')).map((r) => r.split('/').pop().slice(0, -3));
     }
 
-    // 5. Push.
+    // 5. Push (con reintentos si GitHub devuelve un 500 o se corta la red).
     const porSubir = Number(git(['rev-list', '--count', 'origin/master..HEAD'], { permitirFallo: true }).trim() || 0);
     let push = 'nada';
     if (porSubir > 0) {
       log(`Subiendo ${porSubir} commit(s)…`);
-      git(['push', 'origin', 'master']);
+      const intento = await empujar();
       push = 'ok';
-      log('Push OK');
+      log(intento > 1 ? `Push OK (intento ${intento}/${INTENTOS_PUSH}).` : 'Push OK');
     } else {
       log('No hay commits nuevos que subir.');
     }

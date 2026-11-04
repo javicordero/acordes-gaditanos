@@ -32,6 +32,9 @@
  *     orden de subir) se lanza `scripts/subir-ficha.mjs`, que publica la copla
  *     con la mecánica de la skill `subir-acorde`, comenta el resultado y mueve
  *     la tarjeta a «Subidas». Sin orden en el comentario, no se publica nada.
+ *     Un comentario del usuario que se quede sin respuesta se atiende igual,
+ *     aunque el baseline ya lo hubiera dado por visto (tarjeta creada y
+ *     comentada entre dos pasadas).
  *   - Una sola sesión de OpenCode por tarjeta: el id es fijo
  *     (`ses_trello_<idTarjeta>`) y se guarda en el estado, así cada tarjeta vive
  *     siempre en su misma sesión (también al reiniciar el watcher). Sesión nueva
@@ -329,6 +332,19 @@ async function contarComentarios(idTarjeta) {
 
 function esComentarioDelAgente(texto) {
   return String(texto || '').trim().startsWith(MARCA);
+}
+
+// ¿El último comentario de la tarjeta es del usuario? Entonces hay una orden (o
+// una pregunta) que todavía no se ha contestado. Se usa en «Subir ficha», donde
+// el baseline por id puede quedarse por delante: si la tarjeta se crea y se
+// comenta entre dos pasadas, al registrarla se apuntaba su comentario como «ya
+// visto» y no se atendía nunca (un «sube» se perdía sin más).
+async function pendienteDeRespuesta(idTarjeta) {
+  const acciones = await api(`/cards/${idTarjeta}/actions`, {
+    consulta: { filter: 'commentCard', limit: 1 },
+  });
+  const ultimo = Array.isArray(acciones) ? acciones[0] : null;
+  return Boolean(ultimo) && !esComentarioDelAgente(ultimo?.data?.text);
 }
 
 // Comentarios nuevos desde el último procesado. Devuelve los del usuario (del
@@ -646,33 +662,53 @@ async function pasada(estado, primera) {
     .sort((a, b) => (a.pos ?? 0) - (b.pos ?? 0));
 
   for (const t of porSubir) {
-    const previo = estado.cards[t.id];
     const actuales = t.badges?.comments ?? 0;
+    let previo = estado.cards[t.id];
+    const primeraVez = !previo;
 
-    if (!previo) {
-      // Primera vez que se ve la tarjeta: se apunta el baseline sin hacer nada,
-      // así crear la tarjeta (o arrancar el watcher con tarjetas dentro) no
-      // publica nada.
-      const { ultimoId } = await comentariosNuevos(t.id, { comments: actuales }, actuales);
-      estado.cards[t.id] = {
+    if (primeraVez) {
+      // Se registra antes de decidir nada: crear la tarjeta no publica.
+      previo = {
         comments: actuales,
         nombre: t.name,
         lista: t.lista,
         planificado: false,
         subir: true,
-        ultimoComentario: ultimoId,
+        ultimoComentario: null,
       };
-      log('· [Subir ficha] registrada, sin orden de subir:', String(t.name).slice(0, 45));
-      continue;
+      estado.cards[t.id] = previo;
     }
 
     previo.lista = t.lista;
     previo.nombre = t.name;
 
-    const sinNovedad = actuales === (previo.comments ?? 0);
-    if (sinNovedad && (previo.ultimoComentario || actuales === 0)) continue;
+    // Arranque en frío (estado vacío): solo se apunta el baseline, así levantar
+    // el watcher con tarjetas dentro no publica nada de golpe.
+    if (primeraVez && primera) {
+      const { ultimoId } = await comentariosNuevos(t.id, { comments: actuales }, actuales);
+      previo.ultimoComentario = ultimoId;
+      log('· [Subir ficha] registrada sin atender:', String(t.name).slice(0, 45));
+      continue;
+    }
 
-    const { nuevos, candidatos, ultimoId } = await comentariosNuevos(t.id, previo, actuales);
+    const sinNovedad = actuales === (previo.comments ?? 0);
+    // El contador no cambia cuando el baseline se quedó por delante (tarjeta
+    // creada y comentada entre dos pasadas): si el último comentario es del
+    // usuario, sigue sin respuesta y hay que atenderlo.
+    const sinAtender = sinNovedad && actuales > 0 ? await pendienteDeRespuesta(t.id) : false;
+    if (sinNovedad && !sinAtender && (previo.ultimoComentario || actuales === 0)) {
+      if (primeraVez) {
+        log('· [Subir ficha] registrada, sin orden de subir:', String(t.name).slice(0, 45));
+      }
+      continue;
+    }
+
+    if (sinAtender) {
+      log('· [Subir ficha] comentario sin responder:', String(t.name).slice(0, 45));
+    }
+
+    const base = sinAtender ? { comments: 0 } : previo;
+    const { nuevos, candidatos, ultimoId } = await comentariosNuevos(t.id, base, actuales);
     previo.comments = actuales;
 
     if (!nuevos.length) {

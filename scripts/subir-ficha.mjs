@@ -22,7 +22,9 @@
  *   sin tuit · sin whatsapp (o sin wa) · sin etiquetar · sin aviso
  *
  * El comentario tiene que llevar una orden de subir (`sube`, `súbelo`,
- * `publica`, `dale`…). Si no la lleva, no se publica nada: se pregunta.
+ * `publica`, `dale`…). Si no la lleva, no se publica nada: se responde con lo
+ * que ha pasado en el último intento (fallo con su error, ficha ya publicada o
+ * falta la orden), no con un texto fijo.
  *
  * Códigos de salida: 0 subida (o pregunta contestada), 1 error.
  */
@@ -68,6 +70,8 @@ function leerEnv() {
 
 const ENV = leerEnv();
 const LISTA_SUBIDAS = process.env.TRELLO_LISTA_SUBIDAS || ENV.TRELLO_LISTA_SUBIDAS || 'Subidas';
+const TRELLO_KEY = process.env.TRELLO_KEY || ENV.TRELLO_KEY || '';
+const TRELLO_TOKEN = process.env.TRELLO_TOKEN || ENV.TRELLO_TOKEN || '';
 
 function git(argumentos, { permitirFallo = false } = {}) {
   try {
@@ -164,6 +168,106 @@ function describirAvisos(ins) {
 }
 
 // ---------------------------------------------------------------------------
+// Qué ha pasado antes en la tarjeta
+// ---------------------------------------------------------------------------
+
+const MARCA_BOT = /^\s*🤖/;
+const FALLO = /❌|No la subo|No hay nada que subir|Hay varias fichas|No encuentro|No he podido mover/;
+
+/** Comentarios de la tarjeta, del más nuevo al más antiguo. */
+async function comentariosDeTarjeta(id, limite = 10) {
+  if (!TRELLO_KEY || !TRELLO_TOKEN) return [];
+  const url = new URL(`https://api.trello.com/1/cards/${id}/actions`);
+  url.searchParams.set('filter', 'commentCard');
+  url.searchParams.set('limit', String(limite));
+  url.searchParams.set('key', TRELLO_KEY);
+  url.searchParams.set('token', TRELLO_TOKEN);
+  const res = await fetch(url);
+  if (!res.ok) return [];
+  const datos = await res.json().catch(() => []);
+  return Array.isArray(datos) ? datos : [];
+}
+
+function horaLocal(iso) {
+  const fecha = new Date(iso);
+  if (Number.isNaN(fecha.getTime())) return '';
+  return fecha.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+}
+
+/** Último comentario del bot en la tarjeta: si salió bien y, si falló, por qué. */
+async function ultimoIntento(id) {
+  const acciones = await comentariosDeTarjeta(id);
+  const bot = acciones.find((a) => MARCA_BOT.test(String(a.data?.text || '')));
+  if (!bot) return null;
+
+  const texto = String(bot.data.text);
+  const codigo = /```([\s\S]*?)```/.exec(texto);
+  const lineas = (codigo?.[1] || '')
+    .split('\n')
+    .map((l) => l.trim())
+    .filter(Boolean);
+
+  return {
+    bien: texto.includes('✅'),
+    hora: horaLocal(bot.date),
+    error: FALLO.test(texto) ? String(lineas[lineas.length - 1] || '').slice(0, 240) : '',
+  };
+}
+
+// Respuesta a un comentario que no es una orden: en vez del texto fijo de antes
+// (que parecía que no se había leído el comentario anterior), cuenta lo que ha
+// pasado de verdad con la ficha. No publica nada.
+async function respuestaSinOrden(ficha, id) {
+  const intento = id ? await ultimoIntento(id) : null;
+  const pendiente = planDePublicacion(ficha.slug);
+  const cuando = intento?.hora ? ` a las ${intento.hora}` : '';
+  const lineas = [`🤖 Ficha: ${describir(ficha)}.`];
+
+  if (ficha.borrador) {
+    lineas.push(
+      '',
+      'Sigue **en borradores** (`acordes3`). Comenta **«sube»** y la paso a `acordes` antes de publicarla.',
+    );
+    return lineas.join('\n');
+  }
+
+  if (intento && !intento.bien) {
+    lineas.push('', `Sí te he leído: el último intento de subirla falló${cuando}.`);
+    if (intento.error) lineas.push('', '```', intento.error, '```');
+    lineas.push(
+      '',
+      pendiente.ok
+        ? 'Los commits están hechos: comenta **«sube»** y se reintenta sin duplicar nada.'
+        : 'Ahora mismo no hay nada pendiente de publicar.',
+    );
+    return lineas.join('\n');
+  }
+
+  if (intento?.bien) {
+    lineas.push('', `Ya la subí${cuando}.`);
+    lineas.push(
+      pendiente.ok
+        ? 'Hay cambios nuevos sin publicar: comenta **«sube»** si quieres subirlos.'
+        : 'No queda nada pendiente.',
+    );
+    return lineas.join('\n');
+  }
+
+  if (!pendiente.ok) {
+    lineas.push('', `No hay nada que subir: ${pendiente.motivo}.`);
+    return lineas.join('\n');
+  }
+
+  const fecha = pendiente.item.fecha ? ` (fecha ${pendiente.item.fecha})` : '';
+  lineas.push(
+    '',
+    'Este comentario no lleva la orden, así que no la he subido.',
+    `Comenta **«sube»** para publicarla${fecha}. Opciones: «sin tuit», «sin whatsapp», «sin etiquetar», «sin aviso».`,
+  );
+  return lineas.join('\n');
+}
+
+// ---------------------------------------------------------------------------
 // Tarjeta
 // ---------------------------------------------------------------------------
 
@@ -236,11 +340,7 @@ async function main() {
 
   const ins = leerInstrucciones(opciones.comentario);
   if (!ins.ordena) {
-    const texto = [
-      `🤖 No la subo todavía: el comentario no lleva la orden. Ficha: ${describir(ficha)}.`,
-      '',
-      'Comenta «sube» para publicarla. Opciones: «sin tuit», «sin whatsapp», «sin etiquetar», «sin aviso».',
-    ].join('\n');
+    const texto = await respuestaSinOrden(ficha, id);
     if (id) comentar(id, texto);
     else log(texto);
     return;
