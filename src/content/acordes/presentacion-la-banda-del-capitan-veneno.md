@@ -4,12 +4,11 @@ agrupacion: La banda del capitán veneno
 year: 2008
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg'
 cejilla: 0
 date: "03/12/2025"
-video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
+video: 'https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8'
 fraseClave: Dicen que pueblo que canta
-
 ---
 <pre>
 <a>Lam</a>                  <a>Sol</a>   <a>Fa</a>                     <a>Mi7</a>
@@ -37,22 +36,21 @@ Y hace una banda que esta banda de carnavales
  <a>Lam</a>                                 <a>Sol</a>
 Capitán corazón corazón capitán ay Veneno
     <a>Lam</a>
-Me robaste del alma y rebujaste en mi piel lo malo con
-   <a>Sol</a>
-lo bueno
+Me robaste del alma y rebujaste en mi piel
+               <a>Sol</a>
+lo malo con lo bueno
                    <a>Lam</a>                   <a>Sol</a>
-Y conseguiste al final que loco me enamorara de una
-        <a>Lam</a>
-mujer especial
-                        <a>Rem</a>
-que en casa le llamaban Cádiz y en la calle le llamaban
-               <a>Mi7</a>
-Ay la Tacita de Plata
+Y conseguiste al final que loco me enamorara
+               <a>Lam</a>                            <a>Rem</a>
+de una mujer especial que en casa le llamaban Cádiz
+                                         <a>Mi7</a>
+y en la calle le llamaban Ay la Tacita de Plata
                     <a>Lam</a>
 Tú me elegiste a la suerte y yo también
                                  <a>Sol</a>
 malditas fueron las ganas de los dos
-Q por tu culpa ya no sé lo q es el bien
+
+Que por tu culpa ya no sé lo q es el bien
                                            <a>Lam</a>
 y no distingo los cariños del dolor ay pero ya
                        <a>Mi7</a>           <a>Lam</a>
