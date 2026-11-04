@@ -35,12 +35,12 @@ y con su lira cantando, y encogiéndose de alas
 y las mía que de balas negras se fueron quedando
                 <a>Fa</a>                <a>Sol</a>
 Aquí me quedo tocando gaditana gaditana
-<a>Do</a>
-la más bonita y galana
-              <a>Sol</a>               <a>Lam</a>
-contigo en la tierra y te sigo besando
-                   <a>Fa</a>                         <a>Sol</a>
-San Pedro estaba pescando la puerta estaba cerrada
+<a>Do</a>                                   <a>Sol</a>
+la más bonita y galana contigo en la tierra
+           <a>Lam</a>                       <a>Fa</a>
+y te sigo besando San Pedro estaba pescando
+                    <a>Sol</a>
+la puerta estaba cerrada
 <a>Lam</a>       <a>Sol</a>
 ahhh ahhh ahhh
                           <a>Lam</a>
