@@ -272,6 +272,9 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       encoding: 'utf8',
       maxBuffer: 32 * 1024 * 1024,
       stdio: heredar ? 'inherit' : ['ignore', 'pipe', 'pipe'],
+      // Los avisos abren Chrome: si se queda colgado, no puede dejar el trabajo
+      // «ejecutando» para siempre. A los 5 minutos se corta y se informa.
+      timeout: heredar ? 5 * 60 * 1000 : 0,
     });
     return { codigo: 0, salida: salida || '' };
   } catch (e) {
@@ -402,10 +405,23 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       log('Nada que avisar (no hay fichas nuevas).');
     }
 
+    // 7. Resumen de los avisos: si alguno falló, se dice cuál. La ficha ya está
+    //    publicada igualmente, así que no se cambia el estado del trabajo.
+    const fallos = [];
+    if (String(wa).startsWith('error')) fallos.push('WhatsApp');
+    if (String(x).startsWith('error')) fallos.push('X');
+    if (avisos.length && opciones.avisar) {
+      if (fallos.length) {
+        log(`Avisos fallidos: ${fallos.join(' y ')}. La ficha sí se ha publicado: el texto sigue en «Copiar aviso».`, 'error');
+      } else {
+        log('Avisos: WhatsApp y X enviados.', 'ok');
+      }
+    }
+
     escribirEstado({
       estado: 'ok',
       fin: Date.now(),
-      resumen: { commits, push, avisos, wa, x },
+      resumen: { commits, push, avisos, wa, x, fallos },
     });
     log('Terminado.', 'ok');
   } catch (e) {

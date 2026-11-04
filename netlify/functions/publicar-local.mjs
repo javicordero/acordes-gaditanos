@@ -80,6 +80,12 @@ export default async (req) => {
   if (!slugs.length || slugs.length > 20) return json({ error: 'fichas inválidas' }, 400);
   if (slugs.some((x) => !/^[a-z0-9][a-z0-9-]*$/.test(x))) return json({ error: 'slug inválido' }, 400);
   const sinAviso = cuerpo.sinAviso === true;
+  const sinWa = cuerpo.sinWa === true;
+  const sinX = cuerpo.sinX === true;
+  const sinEtiquetas = cuerpo.sinEtiquetas === true;
+  // Desde local se mandan también WhatsApp y X al terminar. Si el aviso está
+  // apagado (`sinAviso`), no se lanza nada.
+  const avisar = cuerpo.avisar === false ? false : !sinAviso;
 
   const anterior = leerEstado();
   if (anterior && anterior.estado === 'ejecutando' && vivo(anterior.pid)) {
@@ -110,6 +116,12 @@ export default async (req) => {
   const fd = openSync(join(CARPETA, `${id}.log`), 'a');
   const argumentos = ['scripts/publicar-acorde.mjs', '--solo', slugs.join(','), '--json', '--id', id];
   if (sinAviso) argumentos.push('--sin-aviso');
+  if (avisar) {
+    argumentos.push('--avisar');
+    if (sinWa) argumentos.push('--sin-wa');
+    if (sinX) argumentos.push('--sin-x');
+    if (sinEtiquetas) argumentos.push('--sin-etiquetas');
+  }
 
   const hijo = spawn(process.execPath, argumentos, {
     cwd: RAIZ,
@@ -128,6 +140,10 @@ export default async (req) => {
     pid: hijo.pid,
     slugs,
     sinAviso,
+    avisar,
+    sinWa,
+    sinX,
+    sinEtiquetas,
     plan,
   }, null, 2), 'utf8');
 

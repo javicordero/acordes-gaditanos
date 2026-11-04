@@ -23,13 +23,32 @@ const campo = (md, k) => {
   return m ? m[1].trim().replace(/^['"]|['"]$/g, '') : '';
 };
 
-const datos = (slug, md) => ({
-  slug,
-  pieza: campo(md, 'pieza'),
-  agrupacion: campo(md, 'agrupacion'),
-  year: campo(md, 'year'),
-  letraTitulo: campo(md, 'letraTitulo'),
-});
+const datos = (slug, md) => {
+  // Los `.md` del disco pueden venir con CRLF: el frontmatter se busca con `\n`.
+  const t = md.replace(/\r\n/g, '\n');
+  return {
+    slug,
+    pieza: campo(t, 'pieza'),
+    agrupacion: campo(t, 'agrupacion'),
+    year: campo(t, 'year'),
+    letraTitulo: campo(t, 'letraTitulo'),
+    incompleta: incompleta(t),
+  };
+};
+
+/**
+ * Marca de ficha a medias: `sinLetra` si el `<pre>` está vacío (o solo tiene
+ * comentarios) y `sinAcordes` si la letra no lleva ningún acorde. Vacío si está
+ * completa. Así el panel avisa antes de promover un borrador.
+ */
+const incompleta = (md) => {
+  const m = /<pre>([\s\S]*?)<\/pre>/.exec(md);
+  if (!m) return 'sinLetra';
+  const cuerpo = m[1].replace(/<!--[\s\S]*?-->/g, '').replace(/\s+/g, '');
+  if (!cuerpo) return 'sinLetra';
+  if (!/<a[\s>]/.test(m[1])) return 'sinAcordes';
+  return '';
+};
 
 /** Slugs de una carpeta del proyecto (solo en dev). */
 async function slugsLocales(carpeta) {
@@ -176,9 +195,15 @@ export default async (req) => {
         const slug = ruta.slice(prefijo.length, -3);
         try {
           const d = await gh(`/repos/${REPO}/contents/${ruta}?ref=${BASE}`, { token: s.token });
-          return { ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona: 'acordes3' };
+          // En local manda el archivo del disco: es el que se edita (y el que
+          // dice si la ficha está completa). El de GitHub puede ir por detrás.
+          let md = Buffer.from(d.content, 'base64').toString('utf8');
+          if (LOCAL && locales3.has(slug)) {
+            try { md = await readFile(join(process.cwd(), CARPETAS.acordes3, `${slug}.md`), 'utf8'); } catch { /* se queda el de GitHub */ }
+          }
+          return { ...datos(slug, md), zona: 'acordes3' };
         } catch {
-          return { slug, pieza: '', agrupacion: '', year: '', letraTitulo: '', zona: 'acordes3' };
+          return { slug, pieza: '', agrupacion: '', year: '', letraTitulo: '', incompleta: '', zona: 'acordes3' };
         }
       }))).filter((f) => !(LOCAL && localesPublicadas.has(f.slug)));
       if (LOCAL) for (const f of fichas) f.local = locales3.has(f.slug);

@@ -10,12 +10,15 @@
 //   node scripts/revision-acordes.mjs --auditar           comprueba que existen
 //   node scripts/revision-acordes.mjs --sincronizar [md]  rehace la cola desde
 //                                                         un markdown de `- [ ]`
+//
+// Vale tanto una ficha publicada (`acordes`) como un borrador (`acordes3`): el
+// panel enseña los dos en «Por revisar».
 import { readFile, writeFile, access } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const RAIZ = process.cwd();
 const JSON_REVISION = join(RAIZ, 'src/data/revision-acordes.json');
-const CARPETA_ACORDES = join(RAIZ, 'src/content/acordes');
+const CARPETAS = [join(RAIZ, 'src/content/acordes'), join(RAIZ, 'src/content/acordes3')];
 const COLA_POR_DEFECTO = join(RAIZ, 'pendientes-revision.md');
 
 const hoy = () => new Date().toISOString().slice(0, 10);
@@ -33,12 +36,15 @@ async function guardar(json) {
 }
 
 const existe = async (slug) => {
-  try {
-    await access(join(CARPETA_ACORDES, `${slug}.md`));
-    return true;
-  } catch {
-    return false;
+  for (const carpeta of CARPETAS) {
+    try {
+      await access(join(carpeta, `${slug}.md`));
+      return true;
+    } catch {
+      // se prueba en la siguiente carpeta
+    }
   }
+  return false;
 };
 
 const args = process.argv.slice(2);
@@ -60,7 +66,7 @@ if (valor('--marcar')) {
   const slugs = String(valor('--anadir')).split(',').map((s) => s.trim()).filter(Boolean);
   for (const s of slugs) {
     if (!(await existe(s))) {
-      console.error(`No existe src/content/acordes/${s}.md`);
+      console.error(`No existe ${s}.md en acordes ni en acordes3`);
       process.exitCode = 1;
       continue;
     }

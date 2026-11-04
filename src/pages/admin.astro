@@ -100,6 +100,15 @@ export const prerender = true;
   .filtros button.sel { background:#000; border-color:#000; color:var(--acento); }
   .filtros button.sel .cuenta { color:var(--acento); opacity:.85; }
   .filtros .cuenta { font-size:10px; opacity:.7; }
+  .leyenda-filtro { margin:0; font-size:11px; line-height:1.45; color:#333; }
+  .leyenda-filtro b { color:#000; }
+  .leyenda-filtro code { font-size:10.5px; background:#eee; padding:0 3px; }
+  /* Tira del flujo: sin revisar → borradores → por publicar → publicadas. */
+  .pasos { display:flex; flex-wrap:wrap; align-items:center; gap:5px; padding:9px max(14px, calc((100% - 1000px) / 2)); background:var(--papel); border-bottom:2px solid #000; font-size:10px; }
+  .pasos:empty { display:none; }
+  .pasos button { padding:4px 7px; font-size:10px; box-shadow:none; }
+  .pasos button b { font-variant-numeric:tabular-nums; }
+  .pasos .flecha { color:var(--suave); font-size:11px; }
   .lista-cuerpo { max-width:1000px; margin:0 auto; padding:8px 14px 40px; }
   .grupo { display:flex; align-items:center; gap:10px; padding:20px 2px 8px; }
   .grupo-tit { font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#000; }
@@ -130,6 +139,9 @@ export const prerender = true;
   .marca.local { background:#d4d4d4; }
   .marca.remoto { background:#c9b8ff; }
   .marca.revisar { background:#a8d5ff; }
+  .marca.sinletra { background:#ffb3b3; }
+  .marca.sinacordes { background:#ffd28a; }
+  .acc.revisado { border-color:#000; font-weight:700; }
   .nota { margin:0 0 12px; font-size:11.5px; color:var(--suave); line-height:1.5; }
 
   /* Datos de la ficha */
@@ -229,6 +241,11 @@ export const prerender = true;
   .campo input:focus, .campo select:focus, .campo textarea:focus { outline:3px solid var(--acento); outline-offset:1px; }
   .dos { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
   .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:14px; flex-wrap:wrap; }
+  /* Opciones de aviso al publicar (solo en local). */
+  .opciones-aviso { display:grid; gap:8px; margin:14px 0 4px; font-size:12.5px; }
+  .opciones-aviso label { display:flex; gap:8px; align-items:center; cursor:pointer; }
+  .opciones-aviso input { width:16px; height:16px; margin:0; accent-color:#000; }
+  .opciones-aviso .nota { margin:4px 0 0; }
   .log { max-height:44vh; overflow:auto; margin:0; padding:10px 12px; background:#fff; border:2px solid #000; font:11px/1.5 var(--mono); white-space:pre-wrap; word-break:break-word; }
 
   /* Navegación superior: Editor / Estadísticas / Comentarios */
@@ -403,12 +420,14 @@ export const prerender = true;
       </div>
       <div class="filtros" id="filtros">
         <button type="button" data-filtro="todas" class="sel">Todas <span class="cuenta" data-cuenta="todas"></span></button>
-        <button type="button" data-filtro="pendientes" title="Borradores de acordes3 y fichas con una PR abierta">Acordes3 <span class="cuenta" data-cuenta="pendientes"></span></button>
-        <button type="button" data-filtro="publicadas" title="Fichas de acordes (publicadas)">Acordes <span class="cuenta" data-cuenta="publicadas"></span></button>
-        <button type="button" data-filtro="porPublicar" id="f-por-publicar" hidden title="Fichas de acordes que están en el proyecto pero aún no en git (solo en local)">Por publicar <span class="cuenta" data-cuenta="porPublicar"></span></button>
-        <button type="button" data-filtro="revisar" title="Coplas que aún no se han revisado a mano">Por revisar <span class="cuenta" data-cuenta="revisar"></span></button>
+        <button type="button" data-filtro="revisar" title="Ya están en la web y les falta el repaso a mano">Por revisar <span class="cuenta" data-cuenta="revisar"></span></button>
+        <button type="button" data-filtro="borradores" title="Aún no están en la web: fichas de acordes3 y las de acordes sin commit ni revisar">Borradores <span class="cuenta" data-cuenta="borradores"></span></button>
+        <button type="button" data-filtro="porPublicar" id="f-por-publicar" hidden title="Fichas de acordes revisadas que están en el proyecto pero aún no en git (solo en local)">Por publicar <span class="cuenta" data-cuenta="porPublicar"></span></button>
+        <button type="button" data-filtro="publicadas" title="Fichas de acordes ya en git (en la web) y revisadas">Publicadas <span class="cuenta" data-cuenta="publicadas"></span></button>
       </div>
+      <p class="leyenda-filtro" id="leyenda-filtro"></p>
     </div>
+    <div class="pasos" id="pasos"></div>
     <div class="lista-cuerpo">
       <div class="filas" id="filas"></div>
       <p class="lista-vacio" id="lista-vacio" hidden></p>
@@ -577,6 +596,22 @@ export const prerender = true;
       <button type="button" id="av-cerrar" class="principal">Cerrar</button>
     </div>
   </div>
+</dialog>
+
+<dialog id="dlg-subir">
+  <form id="f-subir">
+    <h2>Publicar</h2>
+    <p class="nota" id="subir-plan"></p>
+    <div class="opciones-aviso" id="subir-opciones">
+      <label><input type="checkbox" name="sinX"> Sin tuit (solo WhatsApp)</label>
+      <label><input type="checkbox" name="sinEtiquetas"> Sin etiquetar a nadie en el tuit</label>
+      <p class="nota">Telegram sale siempre. WhatsApp y X se mandan desde este PC; si alguno falla, te lo digo al terminar.</p>
+    </div>
+    <div class="acciones">
+      <button type="button" id="subir-cancelar">Cancelar</button>
+      <button type="submit" class="principal">Publicar</button>
+    </div>
+  </form>
 </dialog>
 
 <dialog id="dlg-publicar">

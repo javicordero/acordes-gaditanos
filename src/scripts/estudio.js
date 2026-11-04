@@ -122,16 +122,58 @@ async function quien() {
 
 /* ---------------- lista ---------------- */
 let filtroTipo = 'todas';
+
+/** Qué explica cada pestaña (se pinta bajo los botones, también en móvil). */
+const LEYENDAS = {
+  todas: 'Todo el cancionero. Cada ficha está en una sola pestaña de las de abajo.',
+  revisar: 'Ya están en la web y les falta el repaso a mano. <b>Revisado ✓</b> las saca de la cola.',
+  borradores: 'Aún no están en la web. <b>Revisado ✓</b> las marca y, si es un borrador, lo promueve para poder subirlo.',
+  porPublicar: 'En <code>acordes</code>, revisadas y sin commit. <b>Publicar</b> = commit + push.',
+  publicadas: 'Ya están en la web y revisadas.',
+};
+
+/**
+ * Cambia la pestaña de la lista y la recuerda en la sesión: al abrir una vista
+ * previa y volver con «atrás», la página se recarga y se recupera la pestaña.
+ */
+function aplicarFiltro(tipo) {
+  // La pestaña de borradores se llamaba `pendientes` antes de separar la
+  // revisión; si viene guardada con el nombre viejo, se traduce.
+  if (tipo === 'pendientes') tipo = 'borradores';
+  const b = tipo && document.querySelector('#filtros button[data-filtro="' + tipo + '"]');
+  if (!b || b.hidden) return;
+  filtroTipo = tipo;
+  document.querySelectorAll('#filtros button').forEach((x) => x.classList.toggle('sel', x === b));
+  const leyenda = $('leyenda-filtro');
+  if (leyenda) leyenda.innerHTML = LEYENDAS[tipo] || '';
+  try { sessionStorage.setItem('admin-filtro', tipo); } catch { /* sin almacenamiento */ }
+  pintarLista();
+}
 // Coplas que faltan por revisar (cola de `src/data/revision-acordes.json`).
 let revision = new Set();
 // Fichas de `acordes` en el ordenador pero aún sin subir a git (solo en local).
 let pendientesPublicar = [];
+let sinSubirClaves = new Set();
 
 const normalizar = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-/** Pendiente = borrador, ficha solo local o cualquiera con una PR abierta. */
-const esPendiente = (x) => x.zona === 'acordes3' || !!x.enPR || !!x.local;
 /** Ficha de la cola «Por revisar». */
 const porRevisar = (x) => revision.has(x.slug);
+/** Está en `acordes` en el ordenador pero todavía no en git. */
+const sinSubir = (x) => sinSubirClaves.has(x.slug);
+/** En `acordes` y ya en git: está en la web. */
+const enGit = (x) => x.zona === 'acordes' && !sinSubir(x);
+
+// Las cuatro categorías, excluyentes: cada ficha cae en una sola pestaña.
+//   sin revisar + en git  → Por revisar
+//   sin revisar + sin git → Borradores
+//   revisada + sin git    → Por publicar
+//   revisada + en git     → Publicadas
+const esPorRevisar = (x) => enGit(x) && porRevisar(x);
+const esBorrador = (x) => x.zona === 'acordes3' || (sinSubir(x) && porRevisar(x));
+const esPorPublicar = (x) => sinSubir(x) && !porRevisar(x);
+const esPublicada = (x) => enGit(x) && !porRevisar(x);
+/** Ficha pendiente de algo: se pinta con el fondo destacado. */
+const esPendiente = (x) => esBorrador(x) || esPorRevisar(x) || esPorPublicar(x);
 
 async function cargarIndice() {
   if (indice.length) return indice;
@@ -145,9 +187,21 @@ async function cargarIndice() {
       borradores = j.borradores.map((x) => ({ ...x, zona: x.zona || 'acordes3' }));
       revision = new Set(j.revision || []);
       pendientesPublicar = Array.isArray(j.pendientes) ? j.pendientes : [];
+      sinSubirClaves = new Set(pendientesPublicar.map((x) => x.slug));
     }
   } catch { /* sin borradores */ }
-  indice = [...borradores, ...publicadas];
+  // Una misma ficha puede venir de `/lista` (con `zona`, `local` y la PR) y del
+  // índice del build: se queda una sola, con los datos de la API y el texto
+  // (música, letra) del índice, que es el que usa el buscador.
+  const porSlug = new Map();
+  for (const x of borradores) porSlug.set(x.slug, x);
+  for (const x of publicadas) {
+    const api = porSlug.get(x.slug);
+    porSlug.set(x.slug, api
+      ? { ...x, ...api, musica: api.musica || x.musica, letra: api.letra || x.letra }
+      : x);
+  }
+  indice = [...porSlug.values()];
   const dl = $('slugs');
   dl.innerHTML = indice.slice(0, 400).map((x) => '<option value="' + esc(x.slug) + '">' + esc(x.pieza + ' · ' + x.agrupacion + ' · ' + x.year) + '</option>').join('');
   return indice;
@@ -157,6 +211,7 @@ async function cargarIndice() {
 async function recargarIndice() {
   indice = [];
   pendientesPublicar = [];
+  sinSubirClaves = new Set();
   await cargarIndice();
   pintarLista();
 }
@@ -168,16 +223,20 @@ const marcas = (x) => [
     ? '<span class="marca remoto" title="Solo está en GitHub: ábrelo y guárdalo para traerlo al ordenador">EN GITHUB</span>'
     : '',
   x.enPR ? '<span class="marca pr">EN PR</span>' : '',
-  porRevisar(x) ? '<span class="marca revisar">POR REVISAR</span>' : '',
+  porRevisar(x) ? '<span class="marca revisar">SIN REVISAR</span>' : '',
+  x.incompleta === 'sinLetra' ? '<span class="marca sinletra" title="El bloque de la letra está vacío">SIN LETRA</span>' : '',
+  x.incompleta === 'sinAcordes' ? '<span class="marca sinacordes" title="La letra no tiene ningún acorde">SIN ACORDES</span>' : '',
 ].filter(Boolean).join(' ');
 
 function filaLista(x) {
-  const boton = (accion, texto, extra) =>
+  const boton = (accion, texto, extra, titulo) =>
     '<button type="button" class="acc' + (extra || '') + '" data-accion="' + accion + '" data-slug="' + esc(x.slug) + '"' +
-      (accion === 'clonar' ? ' title="Crear otra ficha (otra letra) a partir de esta misma música" aria-label="Crear otra ficha a partir de esta música"' : '') +
+      (titulo ? ' title="' + esc(titulo) + '" aria-label="' + esc(titulo) + '"' : '') +
       '>' + texto + '</button>';
-  // En local solo se puede promover lo que está en el disco.
-  const puedePublicar = x.zona === 'acordes3' && (!MODO_LOCAL || x.local);
+  // El avance va en la fila: «Revisado ✓» saca la ficha de la cola y, si es un
+  // borrador, lo promueve (en local). «Publicar» solo en las ya promovidas.
+  const avanza = esPorRevisar(x) || esBorrador(x);
+  const puedePublicar = esPorPublicar(x) && (!MODO_LOCAL || sinSubir(x));
 
   return '<article class="fila' + (esPendiente(x) ? ' pendiente' : '') + '">' +
     '<button type="button" class="fila-info" data-slug="' + esc(x.slug) + '">' +
@@ -190,9 +249,10 @@ function filaLista(x) {
       '</span>' +
     '</button>' +
     '<div class="fila-acciones">' +
+      (avanza ? boton('revisar', 'Revisado ✓', ' revisado', x.zona === 'acordes3' ? 'Marca la ficha como revisada y la promueve a acordes' : 'Marca la ficha como revisada') : '') +
+      (puedePublicar ? boton('publicarLocal', 'Publicar', ' principal') : '') +
       boton('editar', 'Editar') +
-      (puedePublicar ? boton('publicar', MODO_LOCAL ? 'Promover' : 'Publicar', ' principal') : '') +
-      boton('clonar', '＋', ' icono') +
+      boton('clonar', '＋', ' icono', 'Crear otra ficha (otra letra) a partir de esta misma música') +
     '</div>' +
   '</article>';
 }
@@ -212,6 +272,13 @@ function filaPorPublicar(x) {
   const clase = x.estado === 'nueva' ? 'local' : x.estado === 'sin-push' ? 'pr' : 'remoto';
   const boton = (accion, texto, extra) =>
     '<button type="button" class="acc' + (extra || '') + '" data-accion="' + accion + '" data-slug="' + esc(x.slug) + '">' + texto + '</button>';
+  // Vista previa: la ficha ya está en `acordes` en el disco, así que `astro dev`
+  // la pinta en su URL (con barra final, que es la que sirve la web). Se abre en
+  // la misma pestaña: «atrás» devuelve al panel. Una ficha borrada no tiene nada
+  // que enseñar.
+  const ver = x.estado === 'borrada' || x.cambio === 'borrada' ? ''
+    : '<a class="acc boton" href="/acordes/' + encodeURIComponent(x.slug) + '/"' +
+      ' title="Ver la ficha como está ahora en el ordenador (vuelve con «atrás»)">Ver</a>';
 
   return '<article class="fila pendiente">' +
     '<button type="button" class="fila-info" data-slug="' + esc(x.slug) + '">' +
@@ -221,15 +288,32 @@ function filaPorPublicar(x) {
         '<span>' + esc(x.pieza) + '</span>' +
         (x.letraTitulo ? '<span class="f-letra">' + esc(x.letraTitulo) + '</span>' : '') +
         '<span class="marca ' + clase + '">' + etiqueta + '</span>' +
-        (x.borrador ? '<span class="marca">BORRADOR</span>' : '') +
+        (x.borrador ? '<span class="marca" title="Estaba en acordes3 y se ha promovido: falta publicarla">PROMOVIDA</span>' : '') +
       '</span>' +
     '</button>' +
     '<div class="fila-acciones">' +
+      ver +
       (x.estado !== 'borrada' ? boton('editar', 'Editar') : '') +
       boton('publicarLocal', x.estado === 'nueva' ? 'Publicar' : 'Subir', ' principal') +
     '</div>' +
   '</article>';
 }
+
+/** Orden de una pestaña: año de más nuevo a más viejo y agrupación A-Z. */
+const porAnioYAgra = (a, b) =>
+  (Number(b.year) || 0) - (Number(a.year) || 0) ||
+  String(a.agrupacion).localeCompare(String(b.agrupacion), 'es') ||
+  String(a.pieza).localeCompare(String(b.pieza), 'es');
+
+/**
+ * «Por publicar» va primero por lo que hay que hacer: las modificadas (una
+ * corrección de algo ya publicado) delante, después las nuevas, las de commits
+ * sin push y, al final, las borradas.
+ */
+const rangoEstado = (x) => {
+  const e = x.estado === 'sin-push' ? (x.cambio || 'modificada') : x.estado;
+  return e === 'modificada' ? 0 : e === 'nueva' ? 1 : e === 'borrada' ? 3 : 2;
+};
 
 function pintarLista() {
   const palabras = normalizar($('q').value).split(/\s+/).filter(Boolean);
@@ -240,22 +324,36 @@ function pintarLista() {
   };
 
   const resultado = indice.filter(coincide);
-  const pendientes = resultado.filter(esPendiente)
-    .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || a.agrupacion.localeCompare(b.agrupacion, 'es'));
-  const publicadas = resultado.filter((x) => !esPendiente(x));
-  const revisar = resultado.filter(porRevisar)
-    .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || a.agrupacion.localeCompare(b.agrupacion, 'es'));
-  const porPublicar = pendientesPublicar.filter((x) => coincide(x) && !revision.has(x.slug))
-    .sort((a, b) => (Number(b.year) || 0) - (Number(a.year) || 0) || String(a.agrupacion).localeCompare(String(b.agrupacion), 'es'));
+  const revisar = resultado.filter(esPorRevisar).sort(porAnioYAgra);
+  // Los borradores a medias, primero: son los que hay que tocar.
+  const borradores = resultado.filter(esBorrador).sort(porAnioYAgra);
+  const borradoresCompletos = borradores.filter((x) => !x.incompleta);
+  const borradoresAMedias = borradores.filter((x) => x.incompleta);
+  const publicadas = resultado.filter(esPublicada);
+  const porPublicar = pendientesPublicar
+    .filter((x) => coincide(x) && !revision.has(x.slug))
+    .sort((a, b) => rangoEstado(a) - rangoEstado(b) || porAnioYAgra(a, b));
 
   $('q-limpiar').hidden = !$('q').value;
+  const cuentas = {
+    todas: resultado.length,
+    revisar: revisar.length,
+    borradores: borradores.length,
+    porPublicar: porPublicar.length,
+    publicadas: publicadas.length,
+  };
   for (const el of document.querySelectorAll('[data-cuenta]')) {
-    const k = el.dataset.cuenta;
-    el.textContent = k === 'todas' ? resultado.length
-      : k === 'pendientes' ? pendientes.length
-      : k === 'publicadas' ? publicadas.length
-      : k === 'porPublicar' ? porPublicar.length
-      : revisar.length;
+    el.textContent = cuentas[el.dataset.cuenta] ?? 0;
+  }
+  // Tira del flujo: los tres pasos y la revisión, cada uno como atajo.
+  const pasos = $('pasos');
+  if (pasos) {
+    const flecha = '<span class="flecha" aria-hidden="true">→</span>';
+    const paso = (k, texto) => '<button type="button" data-paso="' + k + '">' + texto +
+      ' <b data-cuenta="' + k + '">' + (cuentas[k] || 0) + '</b></button>';
+    pasos.innerHTML = paso('revisar', 'Por revisar') + flecha + paso('borradores', 'Borradores') +
+      flecha + paso('porPublicar', 'Por publicar') + flecha + paso('publicadas', 'Publicadas');
+    pasos.querySelectorAll('[data-paso]').forEach((b) => { b.onclick = () => aplicarFiltro(b.dataset.paso); });
   }
 
   const MAX = 300;
@@ -266,16 +364,12 @@ function pintarLista() {
     return r;
   };
 
-  let html = '';
-  if (filtroTipo === 'revisar') {
-    if (revisar.length) html += grupoLista('Por revisar', recorta(revisar), 'pend');
-  } else if (filtroTipo === 'porPublicar') {
-    if (porPublicar.length) html += grupoLista('Por publicar', recorta(porPublicar), 'pend', filaPorPublicar);
-  } else {
-    if (filtroTipo !== 'publicadas' && pendientes.length) {
-      html += grupoLista('Pendientes', recorta(pendientes), 'pend');
-    }
-    if (filtroTipo !== 'pendientes' && publicadas.length) {
+  const grupos = [];
+  if (filtroTipo === 'todas') {
+    if (revisar.length) grupos.push({ titulo: 'Por revisar', items: revisar, clase: 'pend' });
+    if (borradores.length) grupos.push({ titulo: 'Borradores', items: [...borradoresAMedias, ...borradoresCompletos], clase: 'pend' });
+    if (porPublicar.length) grupos.push({ titulo: 'Por publicar', items: porPublicar, clase: 'pend', render: filaPorPublicar });
+    if (publicadas.length) {
       const porAnio = new Map();
       for (const x of publicadas) {
         const y = String(x.year || 'Sin año');
@@ -284,11 +378,36 @@ function pintarLista() {
       }
       const anios = [...porAnio.keys()].sort((a, b) => (Number(b) || 0) - (Number(a) || 0) || a.localeCompare(b, 'es'));
       for (const anio of anios) {
-        const items = porAnio.get(anio)
-          .sort((a, b) => a.agrupacion.localeCompare(b.agrupacion, 'es') || String(a.pieza).localeCompare(String(b.pieza), 'es'));
-        html += grupoLista(anio, recorta(items));
+        grupos.push({ titulo: anio, items: porAnio.get(anio).sort(porAnioYAgra) });
       }
     }
+  } else if (filtroTipo === 'revisar') {
+    grupos.push({ titulo: 'Por revisar', items: revisar, clase: 'pend' });
+  } else if (filtroTipo === 'borradores') {
+    grupos.push({ titulo: 'Borradores a medias', items: borradoresAMedias, clase: 'pend' });
+    grupos.push({ titulo: 'Borradores', items: borradoresCompletos, clase: 'pend' });
+  } else if (filtroTipo === 'porPublicar') {
+    grupos.push({ titulo: 'Por publicar', items: porPublicar, clase: 'pend', render: filaPorPublicar });
+  } else if (filtroTipo === 'publicadas') {
+    const porAnio = new Map();
+    for (const x of publicadas) {
+      const y = String(x.year || 'Sin año');
+      if (!porAnio.has(y)) porAnio.set(y, []);
+      porAnio.get(y).push(x);
+    }
+    const anios = [...porAnio.keys()].sort((a, b) => (Number(b) || 0) - (Number(a) || 0) || a.localeCompare(b, 'es'));
+    for (const anio of anios) grupos.push({ titulo: anio, items: porAnio.get(anio).sort(porAnioYAgra) });
+  }
+
+  let html = '';
+  let mostradas = 0;
+  let total = 0;
+  for (const g of grupos) {
+    if (!g.items.length) continue;
+    total += g.items.length;
+    const items = recorta(g.items);
+    mostradas += items.length;
+    html += grupoLista(g.titulo, items, g.clase, g.render);
   }
 
   $('filas').innerHTML = html;
@@ -297,27 +416,32 @@ function pintarLista() {
     b.onclick = () => {
       if (accion === 'editar') return abrirFicha(b.dataset.slug);
       if (accion === 'publicar') return publicarDesdeLista(b.dataset.slug, b);
-      if (accion === 'publicarLocal') return publicarLocal(b.dataset.slug);
+      if (accion === 'publicarLocal') return pedirPublicar(b.dataset.slug);
+      if (accion === 'revisar') return revisarDesdeLista(b.dataset.slug, b);
       if (accion === 'clonar') return clonar(b.dataset.slug);
     };
   });
 
-  const mostradas = filtroTipo === 'revisar' ? revisar.length
-    : filtroTipo === 'porPublicar' ? porPublicar.length
-    : resultado.length;
   $('lista-vacio').hidden = mostradas > 0;
   if (!mostradas) {
     const q = $('q').value.trim();
-    $('lista-vacio').innerHTML = filtroTipo === 'revisar' && !q && indice.length
-      ? '<b>Nada pendiente</b>No queda ninguna copla por revisar.'
-      : filtroTipo === 'porPublicar' && !q
-        ? (MODO_LOCAL
-          ? '<b>Nada pendiente</b>Todo lo que está en <code>acordes</code> ya está subido a git.'
-          : '<b>Solo en local</b>Esta pestaña necesita el proyecto abierto con <code>astro dev</code>.')
-        : '<b>' + (indice.length ? 'Sin resultados' : 'Cargando…') + '</b>' +
-          (indice.length && q ? 'Ninguna ficha casa con «' + esc(q) + '».' : indice.length ? 'No hay fichas todavía: crea la primera.' : '');
+    $('lista-vacio').innerHTML = q
+      ? '<b>Sin resultados</b>Ninguna ficha casa con «' + esc(q) + '».'
+      : !indice.length
+        ? '<b>Cargando…</b>'
+        : filtroTipo === 'revisar'
+          ? '<b>Nada pendiente</b>No queda ninguna copla por revisar.'
+          : filtroTipo === 'borradores'
+            ? '<b>Nada en borradores</b>No hay fichas sin publicar.'
+            : filtroTipo === 'porPublicar'
+              ? (MODO_LOCAL
+                ? '<b>Nada pendiente</b>Todo lo que está en <code>acordes</code> ya está subido a git.'
+                : '<b>Solo en local</b>Esta pestaña necesita el proyecto abierto con <code>astro dev</code>.')
+              : filtroTipo === 'publicadas'
+                ? '<b>Nada publicado</b>Todavía no hay fichas en la web.'
+                : '<b>Sin fichas</b>No hay nada todavía: crea la primera.';
   }
-  $('lista-tope').hidden = mostradas <= MAX;
+  $('lista-tope').hidden = total <= MAX;
 }
 
 /** Vuelve a la lista (el historial lo decide quien llama). */
@@ -727,8 +851,10 @@ async function abrirFicha(slug, empujar = true) {
   pintar();
   aplicarZoom();
   ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos'].forEach((id) => { $(id).hidden = false; });
-  $('b-revisado').hidden = !(zonaFicha === 'acordes' && porRevisar({ slug }));
-  $('b-revisado').title = 'Guarda, marca la copla como revisada y fusiona la PR';
+  $('b-revisado').hidden = !porRevisar({ slug });
+  $('b-revisado').title = zonaFicha === 'acordes3'
+    ? 'Guarda, marca la copla como revisada y la promueve a acordes'
+    : 'Guarda, marca la copla como revisada y fusiona la PR';
   $('b-nueva').hidden = true;
   $('b-letra').hidden = true;
   $('b-publicar').hidden = zonaFicha !== 'acordes3';
@@ -1381,9 +1507,14 @@ async function guardar() {
 async function revisarFicha() {
   if (!ficha) return;
   if (!comprobarObligatorios()) return;
+  const borrador = zonaFicha === 'acordes3';
   const seguro = MODO_LOCAL
-    ? '¿Marcar esta copla como revisada?\nSe guarda el archivo y sale de «Por revisar». El commit lo haces luego.'
-    : '¿Marcar esta copla como revisada?\nSe guarda, se marca y se fusiona la PR: el cambio queda publicado.';
+    ? (borrador
+      ? '¿Marcar esta copla como revisada?\nSe guarda, sale de la cola y se promueve a acordes: aparecerá en «Por publicar».'
+      : '¿Marcar esta copla como revisada?\nSe guarda el archivo y sale de la cola. El commit lo haces luego.')
+    : (borrador
+      ? '¿Marcar esta copla como revisada?\nSe guarda en la PR del borrador. Para publicarla, usa Promover.'
+      : '¿Marcar esta copla como revisada?\nSe guarda, se marca y se fusiona la PR: el cambio queda publicado.');
   if (!confirm(seguro)) return;
 
   try {
@@ -1394,6 +1525,24 @@ async function revisarFicha() {
 
     if (d.local) {
       $('b-revisado').hidden = true;
+      if (borrador) {
+        // Opción A: marcar un borrador lo promueve para poder subirlo.
+        const p = await fetch(API + '/publicar', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slug: ficha.slug }),
+        });
+        const pd = await p.json();
+        if (!p.ok) throw new Error('se marcó como revisada, pero no se pudo promover: ' + (pd.error || 'error'));
+        zonaFicha = 'acordes';
+        $('b-publicar').hidden = true;
+        const x = indice.find((i) => i.slug === ficha.slug);
+        if (x) { x.zona = 'acordes'; x.local = false; }
+        setEstado('revisada y promovida', true);
+        mostrarAviso('Guardada, marcada como revisada y promovida a acordes.' + cola +
+          '\nYa aparece en «Por publicar»; el commit lo haces luego (`subir-acorde`).', 'var(--ok)');
+        return;
+      }
       setEstado('revisada', true);
       mostrarAviso('Guardada y marcada como revisada.' + cola +
         '\nEn local no se crea PR: el commit lo haces luego (`subir-acorde`).', 'var(--ok)');
@@ -1511,29 +1660,129 @@ async function publicarDesdeLista(slug, boton) {
   }
 }
 
+/**
+ * «Revisado ✓» desde la lista: guarda, saca la ficha de la cola y, si es un
+ * borrador en local, lo promueve a `acordes` para que pase a «Por publicar».
+ */
+async function revisarDesdeLista(slug, boton) {
+  const item = indice.find((x) => x.slug === slug);
+  if (!item) return;
+  const borrador = item.zona === 'acordes3';
+  const promover = borrador && MODO_LOCAL;
+  const partes = ['¿Marcar «' + slug + '» como revisada?'];
+  if (borrador) {
+    partes.push(promover
+      ? 'Se guarda, sale de la cola y se promueve a acordes: aparecerá en «Por publicar».'
+      : 'Se guarda y sale de la cola. Para pasarla a acordes, usa Promover.');
+  } else {
+    partes.push('Se guarda y sale de la cola.');
+  }
+  if (item.incompleta === 'sinLetra') partes.push('\nOjo: el bloque de la letra está vacío.');
+  if (item.incompleta === 'sinAcordes') partes.push('\nOjo: la letra no tiene ningún acorde.');
+  if (!confirm(partes.join('\n'))) return;
+
+  const antes = boton ? boton.textContent : '';
+  if (boton) { boton.disabled = true; boton.textContent = '…'; }
+  try {
+    const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(slug) + '&zona=' + encodeURIComponent(item.zona));
+    const f = await r.json();
+    if (!r.ok) throw new Error(f.error || 'no se pudo leer la ficha');
+
+    const g = await fetch(API + '/guardar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        slug,
+        md: f.md,
+        zona: item.zona,
+        revisado: true,
+        ...(f.rama ? { rama: f.rama } : {}),
+      }),
+    });
+    const gd = await g.json();
+    if (!g.ok) throw new Error(gd.error || 'no se pudo guardar');
+    revision.delete(slug);
+
+    if (promover) {
+      const p = await fetch(API + '/publicar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug }),
+      });
+      const pd = await p.json();
+      if (!p.ok) throw new Error(pd.error || 'se marcó como revisada, pero no se pudo promover');
+      item.zona = 'acordes';
+      item.local = false;
+    }
+
+    await recargarIndice();
+    mostrarAviso(promover
+      ? 'Revisada y promovida: «' + slug + '» ya está en acordes y aparece en «Por publicar».'
+      : 'Revisada: «' + slug + '» sale de la cola.', 'var(--ok)');
+  } catch (e) {
+    if (boton) { boton.disabled = false; boton.textContent = antes; }
+    mostrarAviso(String(e.message || e), 'var(--mal)');
+  }
+}
+
 /* ---------------- publicar en local ---------------- */
 let avisoSlug = null;
+let slugPublicar = null;
 
-async function publicarLocal(slug) {
+/** Texto de qué va a pasar al publicar una ficha de `pendientesPublicar`. */
+function textoPublicacion(item) {
+  const avisa = item.estado === 'nueva' || (item.estado === 'sin-push' && item.cambio === 'nueva');
+  if (item.estado === 'nueva') return 'Se publica en la web.';
+  if (item.estado === 'borrada') return 'Se sube la eliminación. No hay aviso.';
+  if (item.estado === 'sin-push') {
+    return 'Se suben los commits que ya están hechos.' + (avisa ? '' : ' No hay aviso.');
+  }
+  return 'Se suben los cambios. No hay aviso.';
+}
+
+/** Opciones de aviso recordadas entre publicaciones. */
+function leerOpcionesAviso() {
+  try {
+    const j = JSON.parse(localStorage.getItem('admin-avisos') || '{}');
+    return { sinX: j.sinX === true, sinEtiquetas: j.sinEtiquetas === true };
+  } catch {
+    return { sinX: false, sinEtiquetas: false };
+  }
+}
+function guardarOpcionesAviso(o) {
+  try { localStorage.setItem('admin-avisos', JSON.stringify(o)); } catch { /* sin almacenamiento */ }
+}
+
+/** Abre el diálogo de publicación con las opciones de aviso. */
+function pedirPublicar(slug) {
   const item = pendientesPublicar.find((x) => x.slug === slug);
   if (!item) return;
-
+  slugPublicar = slug;
   const avisa = item.estado === 'nueva' || (item.estado === 'sin-push' && item.cambio === 'nueva');
-  const que = item.estado === 'nueva'
-    ? 'Se publica en la web (Telegram avisa solo). Al terminar podrás copiar el aviso para WhatsApp y X.'
-    : item.estado === 'borrada'
-      ? 'Se sube la eliminación. No hay aviso.'
-      : item.estado === 'sin-push'
-        ? 'Se suben los commits que ya están hechos.' + (avisa ? ' Al ser nueva, al terminar podrás copiar el aviso.' : ' No hay aviso.')
-        : 'Se suben los cambios. No hay aviso.';
   const nombre = item.pieza ? item.pieza + ' · ' + item.agrupacion : slug;
-  if (!confirm('¿Publicar «' + nombre + '»?\n\n' + que)) return;
+  $('subir-plan').innerHTML = '<b>' + esc(nombre) + '</b><br>' + textoPublicacion(item);
+  const o = leerOpcionesAviso();
+  $('f-subir').sinX.checked = o.sinX;
+  $('f-subir').sinEtiquetas.checked = o.sinEtiquetas;
+  // En producción no hay avisos que lanzar: el botón solo publica.
+  $('subir-opciones').hidden = !MODO_LOCAL || !avisa;
+  if (!$('dlg-subir').open) $('dlg-subir').showModal();
+}
+
+async function publicarLocal(slug, opciones = {}) {
+  const item = pendientesPublicar.find((x) => x.slug === slug);
+  if (!item) return;
 
   try {
     const r = await fetch(API + '/publicar-local', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slugs: [slug], sinAviso: false }),
+      body: JSON.stringify({
+        slugs: [slug],
+        sinAviso: false,
+        avisar: MODO_LOCAL,
+        ...opciones,
+      }),
     });
     const d = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
@@ -1551,7 +1800,9 @@ function textoPlan(plan) {
   return items.map((x) => {
     const nombre = [x.pieza, x.agrupacion].filter(Boolean).join(' · ') || x.slug;
     const cola = x.fecha ? 'fecha ' + x.fecha + ' · ' : '';
-    return '<b>' + esc(nombre) + '</b><br>' + cola + (x.avisar ? 'aviso disponible para copiar' : 'sin aviso');
+    return '<b>' + esc(nombre) + '</b><br>' + cola + (x.avisar
+      ? (MODO_LOCAL ? 'aviso por WhatsApp y X al terminar' : 'aviso disponible para copiar')
+      : 'sin aviso');
   }).join('<br><br>');
 }
 
@@ -1589,20 +1840,29 @@ async function seguirPublicacion(id) {
       const ok = d.estado === 'ok';
       $('publicar-log').textContent += '\n' + (ok ? '✔ Publicado.' : '✖ ' + (d.error || 'falló'));
 
-      // Si hay fichas nuevas, el aviso queda listo para copiar a WhatsApp y X.
-      const avisos = ok && d.resumen && Array.isArray(d.resumen.avisos) ? d.resumen.avisos : [];
+      // Avisos: si se lanzaron WhatsApp y X y alguno falló, se dice cuál.
+      const resumen = (ok && d.resumen) || {};
+      const fallos = Array.isArray(resumen.fallos) ? resumen.fallos : [];
+      const avisos = ok && Array.isArray(resumen.avisos) ? resumen.avisos : [];
+
       if (avisos.length) {
+        // El texto queda siempre a mano por si hay que mandarlo a mano.
         avisoSlug = avisos[0];
         $('publicar-avisos').hidden = false;
         $('publicar-avisos').textContent = avisos.length === 1 ? 'Copiar aviso' : 'Copiar avisos';
         if (!$('dlg-publicar').open) $('dlg-publicar').showModal();
       }
 
+      let texto;
+      if (!ok) texto = 'Falló la publicación: ' + (d.error || 'mira el registro');
+      else if (fallos.length) texto = 'Publicado, pero no se pudo avisar por ' + fallos.join(' y ') +
+        '.\nEl texto está en «Copiar aviso» para mandarlo a mano.';
+      else if (avisos.length) texto = 'Publicado. Avisos enviados por WhatsApp y X.';
+      else texto = 'Publicado.';
+      if (fallos.length) $('publicar-log').textContent += '\n✖ Avisos fallidos: ' + fallos.join(' y ');
+
       await recargarIndice();
-      mostrarAviso(ok
-        ? (avisos.length ? 'Publicado. Pulsa «Copiar aviso» para WhatsApp y X.' : 'Publicado.')
-        : 'Falló la publicación: ' + (d.error || 'mira el registro'),
-      ok ? 'var(--ok)' : 'var(--mal)');
+      mostrarAviso(texto, ok ? (fallos.length ? 'var(--nuevo)' : 'var(--ok)') : 'var(--mal)');
       return;
     }
   }
@@ -1963,11 +2223,7 @@ $('f-datos').addEventListener('input', () => {
 $('q-limpiar').onclick = () => { $('q').value = ''; $('q').focus(); pintarLista(); };
 $('base-sel').onchange = () => { if (ficha) cargarBase(ficha.slug, $('base-sel').value); };
 document.querySelectorAll('#filtros button').forEach((b) => {
-  b.onclick = () => {
-    filtroTipo = b.dataset.filtro;
-    document.querySelectorAll('#filtros button').forEach((x) => x.classList.toggle('sel', x === b));
-    pintarLista();
-  };
+  b.onclick = () => aplicarFiltro(b.dataset.filtro);
 });
 document.querySelectorAll('#nav-vistas button').forEach((b) => {
   b.onclick = () => {
@@ -2053,6 +2309,18 @@ $('b-letra').onclick = () => { $('f-letra').reset(); pintarBaseLetra(); $('dlg-l
 $('f-letra').addEventListener('input', pintarBaseLetra);
 $('l-cancelar').onclick = () => $('dlg-letra').close();
 $('f-letra').onsubmit = anadirLetra;
+$('subir-cancelar').onclick = () => $('dlg-subir').close();
+$('f-subir').onsubmit = (e) => {
+  e.preventDefault();
+  const opciones = {
+    sinX: $('f-subir').sinX.checked,
+    sinEtiquetas: $('f-subir').sinEtiquetas.checked,
+  };
+  guardarOpcionesAviso(opciones);
+  const slug = slugPublicar;
+  $('dlg-subir').close();
+  if (slug) publicarLocal(slug, opciones);
+};
 $('b-guardar').onclick = guardar;
 $('b-revisado').onclick = revisarFicha;
 $('b-comprobar').onclick = comprobar;
@@ -2384,7 +2652,13 @@ window.addEventListener('beforeunload', (e) => {
   setEstado('', true);
   await cargarIndice();
   pintarLista();
+  $('leyenda-filtro').innerHTML = LEYENDAS[filtroTipo] || '';
   $('f-por-publicar').hidden = !MODO_LOCAL;
+  // Recupera la pestaña que se estaba viendo (p. ej. al volver de una previa).
+  try {
+    const f = sessionStorage.getItem('admin-filtro');
+    if (f && f !== 'todas') aplicarFiltro(f);
+  } catch { /* sin almacenamiento */ }
   if (MODO_LOCAL) reanudarPublicacion();
   // La entrada base del historial es la lista: así el atrás desde una ficha
   // vuelve aquí y no sale del panel.
