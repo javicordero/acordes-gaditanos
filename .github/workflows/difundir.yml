@@ -86,10 +86,12 @@ jobs:
         # Independiente de Telegram: si uno falla, el otro ya ha salido (o sale igual).
         if: always()
         env:
-          PUSH_WORKER_URL: ${{ vars.PUSH_WORKER_URL }}
-          PUSH_SEND_TOKEN: ${{ secrets.PUSH_SEND_TOKEN }}
-          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
-          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          # Vale secreto o variable del repo: la URL estuvo guardada como secreto y el
+          # paso se quedaba en verde sin avisar porque solo miraba `vars`.
+          PUSH_WORKER_URL: ${{ secrets.PUSH_WORKER_URL || vars.PUSH_WORKER_URL }}
+          PUSH_SEND_TOKEN: ${{ secrets.PUSH_SEND_TOKEN || vars.PUSH_SEND_TOKEN }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY || vars.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT || vars.VAPID_SUBJECT || 'https://acordesgaditanos.com' }}
           MODO: ${{ inputs.modo }}
           SLUGS: ${{ inputs.slugs }}
           ANTES: ${{ github.event.before }}
@@ -97,10 +99,17 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [ -z "${PUSH_SEND_TOKEN:-}" ] || [ -z "${PUSH_WORKER_URL:-}" ]; then
-            echo "Sin PUSH_SEND_TOKEN / PUSH_WORKER_URL: no se avisa por push."
-            exit 0
+          # Si falta la configuración no se puede avisar: que se vea en rojo. Antes
+          # salía con 0 y una copla publicada se quedaba sin notificación sin rastro.
+          faltan=""
+          [ -n "${PUSH_WORKER_URL:-}" ] || faltan="${faltan} PUSH_WORKER_URL"
+          [ -n "${PUSH_SEND_TOKEN:-}" ] || faltan="${faltan} PUSH_SEND_TOKEN"
+          [ -n "${VAPID_PRIVATE_KEY:-}" ] || faltan="${faltan} VAPID_PRIVATE_KEY"
+          if [ -n "${faltan}" ]; then
+            echo "::error::Faltan${faltan} (secreto o variable del repo): el aviso push no ha salido."
+            exit 1
           fi
+          echo "Worker de push: ${PUSH_WORKER_URL}"
 
           # web-push no está en las dependencias: se instala solo para este paso.
           npm install --no-save --no-audit --no-fund web-push@3 >/dev/null 2>&1

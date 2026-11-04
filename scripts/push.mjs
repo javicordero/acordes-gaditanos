@@ -370,6 +370,9 @@ async function principal() {
   }
 
   const subs = await suscriptores();
+  // Siempre, aunque no haya nada que enviar: así el log del run dice si hay
+  // móviles suscritos cuando una notificación no llega.
+  console.log(`Push: ${subs.length} móvil(es) suscrito(s).`);
   if (!opciones.seco) await comprobarImagen(payload);
   const resultado = await enviar(payload, subs, opciones.seco);
 
