@@ -8,6 +8,17 @@
 /fonts/*
   Cache-Control: public, max-age=31536000
 
+# Imágenes del aviso push (badge e icono). El navegador las descarga al pintar
+# la notificación y, si no las tiene en caché, las vuelve a pedir en cada push:
+# con `max-age=0` ese viaje se hace en el momento menos oportuno y, si falla, el
+# móvil pierde la AG y Android pinta su campana por defecto. Como /fonts/*, si se
+# regeneran hay que renombrarlas para no servir la vieja durante un año.
+/badge-96.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/icon-192.png
+  Cache-Control: public, max-age=31536000, immutable
+
 # Service worker: nunca debe cachearse en CDN/edge, o se serviría una versión
 # vieja y la app no se actualizaría.
 /sw.js

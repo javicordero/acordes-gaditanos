@@ -7,6 +7,23 @@
 // El payload lo manda scripts/push.mjs:
 //   { titulo, cuerpo, url, icono, tag }
 
+const ICONO = '/icon-192.png';
+const BADGE = '/badge-96.png';
+
+/**
+ * Las dos imágenes del aviso se piden con URL absoluta. Dentro de una PWA
+ * instalada (WebAPK) una ruta relativa no siempre cae en el dominio, y si el
+ * navegador no consigue el badge Android pinta su **campana** por defecto en
+ * lugar de la AG. Con la URL entera no hay duda de dónde está el fichero.
+ */
+function absoluta(src, porDefecto) {
+  try {
+    return new URL(src || porDefecto, self.location.origin).href;
+  } catch {
+    return new URL(porDefecto, self.location.origin).href;
+  }
+}
+
 self.addEventListener('push', (evento) => {
   let datos = {};
   try {
@@ -18,10 +35,10 @@ self.addEventListener('push', (evento) => {
   const titulo = datos.titulo || 'Acordes Gaditanos';
   const opciones = {
     body: datos.cuerpo || 'Hay coplas nuevas en el cancionero.',
-    icon: datos.icono || '/icon-192.png',
+    icon: absoluta(datos.icono, ICONO),
     // Monocromo y transparente: Android y Windows usan solo la silueta y la
     // recolorean ellos. Un badge a color sale como un círculo liso.
-    badge: '/badge-96.png',
+    badge: absoluta(BADGE, BADGE),
     // Mismo tag para que un aviso nuevo sustituya al anterior y no se apilen.
     tag: datos.tag || 'coplas',
     renotify: false,
