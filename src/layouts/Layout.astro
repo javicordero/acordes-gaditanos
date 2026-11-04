@@ -48,7 +48,7 @@ const imageURL = new URL(image, Astro.site);
 
 // Páginas privadas (panel, borradores, listas internas, stats): son visitas del
 // propietario, así que no se miden ni llevan anuncios. La lista vive en
-// src/lib/anuncios.ts y la comparte el <script> del <head>.
+// src/lib/anuncios.ts y la comparte el script del head.
 const sinAnalitica = esRutaPrivada(Astro.url.pathname);
 ---
 
