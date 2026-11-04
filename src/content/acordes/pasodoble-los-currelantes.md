@@ -4,14 +4,13 @@ agrupacion: Los Currelantes
 year: 2011
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://static.grupojoly.com/clip/1f89f490-9f4f-438a-8145-c577a042d573_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/1f89f490-9f4f-438a-8145-c577a042d573_source-aspect-ratio_1600w_0.jpg'
 cejilla: 3
 date: "26/11/2025"
-video: "https://www.youtube.com/embed/PIesjujD7vM?si=-2aGiz7O5Ankj7sw"
-cover: https://www.youtube.com/embed/vTWUxxnBXGQ?si=9jjsYY6jyrC75rvW
+video: 'https://www.youtube.com/embed/PIesjujD7vM?si=-2aGiz7O5Ankj7sw'
+cover: 'https://www.youtube.com/embed/vTWUxxnBXGQ?si=9jjsYY6jyrC75rvW'
 autorCover: Acordes Gaditanos
 recomendada: true
-
 fraseClave: No tengo un vientre preñado y fértil
 ---
 <pre>
@@ -44,10 +43,10 @@ Yo te prometo olvidarme hasta de mí
                 <a>Mi</a>
 para que seas feliz.
 
-Tendrás la suerte de abrir tu rumbo
-   <a>Fa#m7</a>   <a>Sol#m7</a> <a>Fa#m7</a> <a>Sol#m7</a>    <a>Fa#m7</a>
-hermosa del mundo  lere lere lere lere
-         <a>Do#7</a>             <a>Fa#m7</a>
+Tendrás la suerte de abrir tu rumbo 
+   <a>Fa#m7</a>           <a>Sol#m7</a>    <a>Fa#m7</a> <a>Sol#m7</a>    <a>Fa#m7</a>
+en la ciudad más hermosa del mundo  lere lere lere lere
+            <a>Do#7</a>             <a>Fa#m7</a>
 hermosa del mundo que te irá dando
                            <a>Si7</a>
 mil penas que tendrás que ahogar
