@@ -12,7 +12,7 @@ video: 'https://www.youtube.com/embed/loVpLX6wnls'
 fraseClave: Involución, destrucción de una raza que camina
 ---
 <pre>
-<a>Lam</a> <a>Si7</a> <a>Mi7</a> (x5) <a>Lam</a> <a>Mi7</a>
+<a>Lam</a> <a>Si7</a> <a>Mi7</a> <a>(x5)</a> <a>Lam</a> <a>Mi7</a>
 <a>Lam</a>                         <a>Fa</a>
 Involución, destrucción de una raza
          <a>Sol</a>           <a>Lam</a>
