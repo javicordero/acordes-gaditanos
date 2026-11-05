@@ -4,13 +4,11 @@ agrupacion: La Eternidad
 year: 2017
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/la-eternidad-3.jpg
+img: 'https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/la-eternidad-3.jpg'
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rZ5z2aR7jpk?feature=player_embedded'
 fraseClave: Si caminito del Falla eres
-
-
 ---
 <pre>
 <a>Mim</a>             <a>Sim</a>         <a>Do</a>     <a>Si7</a>
@@ -77,8 +75,8 @@ La biblia de los gaditanos,
 historias cantás por su gente.
 <a>Lam</a>  <a>Do</a>              <a>Si7</a>
 No están en ningún museo,
-<a>Lam</a> <a>Do</a> <a>Si7</a>
-(Pito)
+     <a>Lam</a>             <a>Do</a>       <a>Si7</a>
+Turuturuturu tuurururuutu turururuutu
 <a>Lam7</a>            <a>Si7</a>
 Pero yo las tarareo
       <a>Lam7</a>        <a>Si7</a>           <a>Mim</a>
