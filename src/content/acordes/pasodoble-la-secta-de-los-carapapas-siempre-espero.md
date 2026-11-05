@@ -49,7 +49,7 @@ Su colonia la peino y ya está Mi niña limpita
 Su pijamita su batín Un pellizquito en la nariz
          <a>Mim</a>        <a>La7</a>          <a>Re</a>    <a>Re7</a>
 Algo de fruta Dos besitos y a dormir
-<a>Sol</a>                                  <a>Fa#m</a>         <a>Mim</a>
+         <a>Sol</a>                         <a>Fa#m</a>         <a>Mim</a>
 Ella lo mismo hizo por mí Y ahora es quién me necesita
                <a>La7</a>                      <a>Re</a>
 Los 80 va a cumplir Y es mi niña chiquitita
