@@ -57,6 +57,49 @@ export function cortePorAncho(linea, max = ANCHO_MAX) {
 const RE_ETIQUETA = /<a([^>]*)>([\s\S]*?)<\/a>/g;
 
 /**
+ * Texto de una línea con una marca por carácter: `true` si el carácter venía
+ * dentro de una etiqueta `<a>…</a>`. Sirve para distinguir un acorde envuelto de
+ * otro que se quedó suelto en la misma línea.
+ */
+function textoYEnvuelto(linea) {
+  let texto = '';
+  const envuelto = [];
+  let ultimo = 0;
+  RE_ETIQUETA.lastIndex = 0;
+  let mm;
+  while ((mm = RE_ETIQUETA.exec(linea))) {
+    const antes = linea.slice(ultimo, mm.index);
+    texto += antes;
+    for (let k = 0; k < antes.length; k++) envuelto.push(false);
+    texto += mm[2];
+    for (let k = 0; k < mm[2].length; k++) envuelto.push(true);
+    ultimo = mm.index + mm[0].length;
+  }
+  const resto = linea.slice(ultimo);
+  texto += resto;
+  for (let k = 0; k < resto.length; k++) envuelto.push(false);
+  return { texto, envuelto };
+}
+
+/** Acordes válidos que están fuera de una etiqueta `<a>` en esta línea. */
+function acordesSinEnvolver(linea) {
+  const { texto, envuelto } = textoYEnvuelto(linea);
+  const sueltos = [];
+  const re = /\S+/g;
+  let mm;
+  while ((mm = re.exec(texto))) {
+    const token = mm[0];
+    if (!esAcorde(token)) continue;
+    let dentro = true;
+    for (let k = mm.index; k < mm.index + token.length; k++) {
+      if (!envuelto[k]) { dentro = false; break; }
+    }
+    if (!dentro) sueltos.push(token);
+  }
+  return sueltos;
+}
+
+/**
  * Del `.md` al texto del editor. Sustituye cada `<a …>X</a>` por `X` sin tocar
  * los espacios, así las columnas quedan exactamente iguales.
  */
@@ -128,10 +171,18 @@ export function envolver(texto, registros = [], originales = []) {
     // envuelve aunque la línea no haya cambiado, para que salga en azul en la web.
     const conAnotacion = linea.split(/\s+/).some((t) => t && esAnotacion(t));
 
+    // Un acorde suelto en una línea de acordes tampoco se copia tal cual: si no
+    // se envuelve, en la web sale como texto (sin color, popover ni diagrama).
+    const original = originales[i];
+    const sinTocar = original !== undefined && desenvuelto(original) === linea;
+    const sueltos = sinTocar && c.tipo === 'acordes' ? acordesSinEnvolver(original) : [];
+    if (sueltos.length) {
+      avisos.push(`línea ${i + 1}: «${sueltos.join('», «')}» sin envolver; se envuelve al guardar`);
+    }
+
     // Línea sin tocar: se copia la original tal cual. Así una ficha con etiquetas
     // raras («La7 Re», «(Sorda )») sale idéntica y el editor no la estropea.
-    const original = originales[i];
-    if (!conAnotacion && original !== undefined && desenvuelto(original) === linea) {
+    if (!conAnotacion && !sueltos.length && sinTocar) {
       salida.push(original);
       for (const mm of original.matchAll(RE_ETIQUETA)) {
         if (esAcorde(mm[2].trim()) || conocidos.has(mm[2].trim())) acordes++;

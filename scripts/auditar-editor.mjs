@@ -409,6 +409,32 @@ comprobar(
   '<a>Re7</a>   <a>Sol</a>   <a>(Sorda)</a>',
 );
 
+/* 22. Un acorde suelto en una línea sin tocar se envuelve al guardar. */
+comprobar(
+  'envolver: acorde suelto en línea sin tocar se envuelve',
+  envolver('    Sib             Solm', [], ['    Sib             <a>Solm</a>']).pre,
+  '    <a>Sib</a>             <a>Solm</a>',
+);
+comprobar(
+  'envolver: avisa del acorde suelto',
+  envolver('    Sib             Solm', [], ['    Sib             <a>Solm</a>']).avisos,
+  ['línea 1: «Sib» sin envolver; se envuelve al guardar'],
+);
+comprobar(
+  'envolver: el acorde suelto conserva la postura del que ya estaba',
+  envolver(
+    '    Sib             Solm',
+    [[{ etiqueta: 'Solm', abre: '<a data-postura="x 0 2 0 0 0">' }]],
+    ['    Sib             <a data-postura="x 0 2 0 0 0">Solm</a>'],
+  ).pre,
+  '    <a>Sib</a>             <a data-postura="x 0 2 0 0 0">Solm</a>',
+);
+comprobar(
+  'envolver: una etiqueta rara con espacio se conserva',
+  envolver('La7 Re', [], ['<a>La7 Re</a>']).pre,
+  '<a>La7 Re</a>',
+);
+
 if (fallos) {
   console.log(`\n${fallos} caso(s) fallido(s).`);
   process.exitCode = 1;
