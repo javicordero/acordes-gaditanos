@@ -851,8 +851,8 @@ function aplicarZoom() {
     b.hidden = cabe;
     b.textContent = zoomAjustado ? 'Ampliar' : 'Ajustar';
     b.title = zoomAjustado
-      ? 'Vuelve a la letra normal en Editor, Base y Original'
-      : 'Reduce la letra de Editor, Base y Original para que quepan las ' + ANCHO_MAX + ' columnas';
+      ? 'Vuelve a la letra normal en Editor y Base'
+      : 'Reduce la letra de Editor y Base para que quepan las ' + ANCHO_MAX + ' columnas';
   }
   $('cols').style.setProperty('--pre-size', (zoomAjustado && !cabe ? tam : 13) + 'px');
 }
@@ -916,7 +916,6 @@ async function abrirFicha(slug, empujar = true) {
   sucio = false;
   ta.value = d.texto;
   anterior = snapshot();
-  pintarTexto(d.texto, $('ref-izq'));
   pintarDatos(d.frontmatter);
   mostrarBase(false);
   $('cab-meta').textContent = slug;
@@ -955,7 +954,7 @@ function mostrarBase(si) {
   const pane = document.querySelector('.pane[data-pane="der"]');
   const tab = document.querySelector('.tabs button[data-pane="der"]');
   // En escritorio la columna de Base se queda aunque no haya con qué comparar
-  // (vacía, sin select): así Editor y Original no cambian de sitio entre fichas.
+  // (gris, sin select): así el Editor no cambia de ancho entre fichas.
   // En móvil se oculta, que ahí cada columna es una pestaña.
   if (pane) {
     pane.classList.toggle('vacia', !si);

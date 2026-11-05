@@ -160,11 +160,12 @@ export const prerender = true;
 
   /* Editor */
   #vista-editor { flex:1; display:flex; flex-direction:column; min-height:0; background:var(--fondo); }
-  .cols { flex:1; display:grid; grid-template-columns:1fr 1.35fr 1fr; min-height:0; background:var(--fondo); }
+  /* Editor a la izquierda (más ancho) y Base a la derecha. */
+  .cols { flex:1; display:grid; grid-template-columns:1.35fr 1fr; min-height:0; background:var(--fondo); }
   .cols.una { grid-template-columns:1fr; }
-  /* Sin ficha con la que comparar, el hueco de Base se queda vacío pero ocupa su
-     sitio: si la columna desaparece, Editor y Original se separan y cuesta
-     compararlos verso a verso. En móvil (pestañas) sí se oculta. */
+  /* Sin ficha con la que comparar, el hueco de Base se queda en gris pero ocupa
+     su sitio: así el Editor no cambia de ancho entre fichas. En móvil
+     (pestañas) sí se oculta. */
   .pane.vacia { background:var(--fondo); }
   .pane.vacia > .cab { background:var(--fondo); border-bottom-color:transparent; }
   .pane.vacia .cab b { color:var(--suave); font-weight:400; }
@@ -464,15 +465,10 @@ export const prerender = true;
       <button type="button" id="nota-local-cerrar" class="cerrar" aria-label="Cerrar el aviso">✕</button>
     </div>
     <div class="tabs">
-      <button data-pane="der">Base</button>
       <button data-pane="cen" class="sel">Editor</button>
-      <button data-pane="izq">Original</button>
+      <button data-pane="der">Base</button>
     </div>
     <div class="cols" id="cols">
-      <section class="pane" data-pane="der">
-        <div class="cab"><b>Base</b><select id="base-sel" title="Elige la ficha con la que comparar"></select><button type="button" class="b-zoom-pane" hidden>Ajustar</button></div>
-        <pre id="ref-der"></pre>
-      </section>
       <section class="pane activo" data-pane="cen">
         <div class="cab"><b>Editor</b><span id="editor-meta"></span><span class="editor-acciones"><button type="button" id="b-deshacer" title="Deshacer (Ctrl+Z)" aria-label="Deshacer">↶</button><button type="button" id="b-separar" title="Separar por palabras: la palabra del cursor baja a una línea nueva (Alt+Enter)" aria-label="Separar la palabra del cursor">✂</button><button type="button" id="b-juntar" title="Juntar por palabras: la palabra del cursor sube al verso anterior (Alt+Retroceso)" aria-label="Juntar la palabra del cursor">⤴</button></span><button type="button" id="b-zoom" hidden>Ajustar</button></div>
         <div class="lienzo" id="lienzo">
@@ -487,9 +483,9 @@ export const prerender = true;
           </div>
         </div>
       </section>
-      <section class="pane" data-pane="izq">
-        <div class="cab"><b>Original</b><button type="button" class="b-zoom-pane" hidden>Ajustar</button></div>
-        <pre id="ref-izq"></pre>
+      <section class="pane" data-pane="der">
+        <div class="cab"><b>Base</b><select id="base-sel" title="Elige la ficha con la que comparar"></select><button type="button" class="b-zoom-pane" hidden>Ajustar</button></div>
+        <pre id="ref-der"></pre>
       </section>
     </div>
   </div>
