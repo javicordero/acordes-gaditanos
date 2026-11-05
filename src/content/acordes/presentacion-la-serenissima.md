@@ -19,7 +19,7 @@ recomendada: true
 Oh donna mia  veneziana, maschera bianca di mio cuore
 
 Di mia urbe e mia razza
-                    <a>Si7</a>                        <a>Do7</a> <a>Ssi7</a>
+                    <a>Si7</a>                        <a>Do7</a> <a>Si7</a>
 Oh mia góndola finale, apre tu anima al cantare
                                 <a>Mim</a>
 Di mia serena comparsa. Serenissima

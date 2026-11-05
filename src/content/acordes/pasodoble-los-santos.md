@@ -4,12 +4,11 @@ agrupacion: Los Santos
 year: 2010
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://static.grupojoly.com/clip/06245f8e-5957-4264-8fac-7798e211dd56_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/06245f8e-5957-4264-8fac-7798e211dd56_source-aspect-ratio_1600w_0.jpg'
 cejilla: 3
 date: 28/12/2025
-video: https://www.youtube.com/embed/GbdSdTQi9-Y?si=tfuGUs3qjUegne8t
+video: 'https://www.youtube.com/embed/GbdSdTQi9-Y?si=tfuGUs3qjUegne8t'
 fraseClave: Fuego, le alumbra el fuego
-
 ---
 <pre>
 <a>Mim</a>    <a>Si7</a>           <a>Mim</a>  <a>Lam7</a>                   <a>Si7</a>
@@ -30,6 +29,7 @@ Sentada en su escalón en su oscuro rincón
 Quién sabe en qué planeta va de galaxia en galaxia
 <a>Lam7</a>    <a>Do</a>    <a>Si7</a>                        <a>Mi</a>
 Sin distancias ni maletas, sin distancia ni maletas
+
 Y aunque su madre rezara porque a su niña
                                      <a>Fa#m7</a>
 Se le acabara la maldición que la consumía
@@ -51,6 +51,7 @@ Y ahora cuando paso por la calle si me ve
 vuelve a guiñarme y grita desde la esquina,
                     <a>Si7</a>
 Y grita desde la esquina: olé los niños bonitos
+
 ¡Ay! Quién pudiera volver atrás
                           <a>Mi</a>
 Y vivir la vida, vivir la vida.
