@@ -23,7 +23,7 @@ Tú mi desgarro de anhelos, tu la voz de mis desvelo
 Tú mi ausente tempestad
     <a>Lam7 Si7    Mim </a>            <a>Lam7 Si7   Do  Mim</a>
 Devuélveme la libertad, devuélveme la libertad
-Mim                          Sim7
+<a>Mim</a>                          <a>Sim7</a>
 Tu que desenredas nuestra sombra,
 <a>Do</a>                     <a>Si7</a>
 tú que resucitas mi compás
@@ -41,29 +41,29 @@ Tú mi trono en piedra ostionera,
 tú el que manda en mi trinchera
                              <a>Si7</a>
 Tu mi vicio y mi pecado más mortal
-    Lam                     Re7
+    <a>Lam</a>                     <a>Re7</a>
 Mi realidad más pura y más bonita
-        Sol                    <a>Mim</a>
+        <a>Sol</a>                    <a>Mim</a>
 de diez a doce encerrao en un local
-   Lam                Re
+   <a>Lam</a>                <a>Re</a>
 Allí donde mis sueños cobran vida
-  Sol                   Mim
+  <a>Sol</a>                   <a>Mim</a>
 allí donde me haces especial
-Lam
+<a>Lam</a>
 Soñando con que abras cortinas y otra vez contigo
             <a> Mim </a>
 Y otra vez mi hogar
-Lam                          Si7
+<a>Lam</a>                          <a>Si7</a>
 Soñando con venirte aquí a cantar,
-           Do  Si7 <a>Mim</a>
+           <a>Do</a>  <a>Si7</a> <a>Mim</a>
 Oh capitán, mi capitán
 <a>Mim</a>                <a>Re</a>
 Oh capitán eres música y letra,
        <a>Do</a>                   <a>Si7</a>
 un estribillo un trabalenguas
-Mim               Lam7
+<a>Mim</a>               <a>Lam7</a>
 Y eres piñata, disfraz y canción
-   Re7                      <a>Sol</a>
+   <a>Re7</a>                      <a>Sol</a>
 y eres guitarra y mi clave de sol
 <a>Lam</a>               <a>Mim</a>
 Y eres tanguillo, bombo y platillo,
