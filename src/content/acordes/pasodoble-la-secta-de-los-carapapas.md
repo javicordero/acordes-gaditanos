@@ -51,7 +51,7 @@ enterrado en una fosa común, igual que los perros.
 Yo no pretendo destapar ni remover tiempos atrás,
         <a>Mim</a>         <a>La7</a>           <a>Re</a> <a>Re7</a>
 yo sólo pido que me digan dónde está.
-<a>Sol</a>                        <a>La7</a>
+           <a>Sol</a>             <a>La7</a>
 Sólo es cuestión de humanidad,
           <a>Fa#m</a>         <a>Mim</a>
 busco los restos de mi padre
