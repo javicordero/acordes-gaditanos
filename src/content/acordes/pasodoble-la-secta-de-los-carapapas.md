@@ -10,6 +10,7 @@ img: 'https://static.grupojoly.com/clip/e07a8591-d566-435a-bafd-d42d1ec416a1_sou
 date: "14/12/2026"
 video: 'https://www.youtube.com/embed/VYToOaAqBPU'
 fraseClave: Era pequeño y me arrebataron
+letraTitulo: Era pequeño
 ---
 <pre>
 <a>Rem</a>           <a>Re7</a>     <a>Solm</a>
