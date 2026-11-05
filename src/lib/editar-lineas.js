@@ -53,14 +53,15 @@ function conEtiquetas(tokens, registros) {
 
 /**
  * Reconstruye la línea con etiquetas, conservando la postura de cada acorde.
- * Con `envolverTodos`, los acordes sin registro se envuelven con un `<a>`
- * normal: así `envolver()` puede copiar la línea tal cual.
+ * Con `envolverTodos`, los acordes y las anotaciones («(Sorda)») sin registro
+ * se envuelven con un `<a>` normal: así `envolver()` puede copiar la línea tal
+ * cual.
  */
 function originalDe(tokens, envolverTodos = false) {
   let out = '';
   for (const t of tokens) {
     out += hueco(out, t.col);
-    const abre = t.abre || (envolverTodos && esAcorde(t.token) ? '<a>' : null);
+    const abre = t.abre || (envolverTodos && (esAcorde(t.token) || esAnotacion(t.token)) ? '<a>' : null);
     out += abre ? `${abre}</a>`.replace('</a>', `${t.token}</a>`) : t.token;
   }
   return out;

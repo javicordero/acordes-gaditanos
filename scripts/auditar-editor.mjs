@@ -4,7 +4,7 @@
 //   node --experimental-strip-types scripts/auditar-editor.mjs
 
 import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, realinearEstructura } from '../src/lib/editar-lineas.js';
-import { envolver } from '../src/lib/pre-acordes.js';
+import { envolver, clasificar } from '../src/lib/pre-acordes.js';
 
 const conocidos = new Set(['Do', 'Sol', 'Re', 'Mi', 'Si7', 'Lam7', '(Sorda)']);
 let fallos = 0;
@@ -388,6 +388,26 @@ comprobar('juntar verso separado: conserva la postura de arriba', pre(junto), [
   '<a>Mi</a>   <a data-postura="x 0 2 2 0 0">Lam7</a>',
   'Dando equilibrio con tu porte y elegancia En salesianos en el complejo en el portillo',
 ].join('\n'));
+
+/* 21. Una línea que solo lleva una anotación cuenta como acordes y se envuelve. */
+comprobar('clasificar: (Sorda) sola es línea de acordes', clasificar('(Sorda)', '').tipo, 'acordes');
+comprobar('clasificar: una letra con (x3) sigue siendo letra', clasificar('Se va (x3) y no vuelve', '').tipo, 'letra');
+comprobar('envolver: (Sorda) nueva se envuelve', envolver('(Sorda)', [], []).pre, '<a>(Sorda)</a>');
+comprobar(
+  'envolver: (Sorda) con acordes se envuelve y el acorde también',
+  envolver('(Sorda)   Do', [], []).pre,
+  '<a>(Sorda)</a>   <a>Do</a>',
+);
+comprobar(
+  'envolver: (Sorda) sin etiqueta se envuelve aunque la línea no se toque',
+  envolver('(Sorda)', [], ['(Sorda)']).pre,
+  '<a>(Sorda)</a>',
+);
+comprobar(
+  'envolver: una anotación suelta en línea sin tocar se envuelve',
+  envolver('Re7   Sol   (Sorda)', [], ['<a>Re7</a>   Sol   (Sorda)']).pre,
+  '<a>Re7</a>   <a>Sol</a>   <a>(Sorda)</a>',
+);
 
 if (fallos) {
   console.log(`\n${fallos} caso(s) fallido(s).`);

@@ -93,7 +93,10 @@ export function clasificar(linea, siguiente = '', conocidos = new Set()) {
   if (/^<strong>[\s\S]*<\/strong>$/.test(crudo.trim())) return { tipo: 'meta' };
   const tokens = crudo.trim().split(/\s+/);
   const validos = tokens.filter((t) => esAcorde(t) || esAnotacion(t) || conocidos.has(t));
-  if (validos.length === tokens.length && tokens.some((t) => esAcorde(t) || conocidos.has(t))) {
+  // Una línea con solo anotaciones («(Sorda)», «(Pito)»…) es de acordes: van
+  // encima de su verso y se envuelven como un acorde más al guardar.
+  const soloAnotaciones = tokens.every((t) => esAnotacion(t));
+  if (validos.length === tokens.length && (tokens.some((t) => esAcorde(t) || conocidos.has(t)) || soloAnotaciones)) {
     return { tipo: 'acordes', tokens };
   }
   const acordes = tokens.filter((t) => esAcorde(t));
@@ -119,10 +122,16 @@ export function envolver(texto, registros = [], originales = []) {
   let acordes = 0;
 
   lineas.forEach((linea, i) => {
+    const sig = lineas[i + 1] ?? '';
+    const c = clasificar(linea, sig, conocidos);
+    // Una anotación sin envolver («(Sorda)» suelta) no se copia tal cual: se
+    // envuelve aunque la línea no haya cambiado, para que salga en azul en la web.
+    const conAnotacion = linea.split(/\s+/).some((t) => t && esAnotacion(t));
+
     // Línea sin tocar: se copia la original tal cual. Así una ficha con etiquetas
     // raras («La7 Re», «(Sorda )») sale idéntica y el editor no la estropea.
     const original = originales[i];
-    if (original !== undefined && desenvuelto(original) === linea) {
+    if (!conAnotacion && original !== undefined && desenvuelto(original) === linea) {
       salida.push(original);
       for (const mm of original.matchAll(RE_ETIQUETA)) {
         if (esAcorde(mm[2].trim()) || conocidos.has(mm[2].trim())) acordes++;
@@ -130,8 +139,6 @@ export function envolver(texto, registros = [], originales = []) {
       return;
     }
 
-    const sig = lineas[i + 1] ?? '';
-    const c = clasificar(linea, sig, conocidos);
     if (c.tipo === 'blanco' || c.tipo === 'meta' || c.tipo === 'letra') {
       salida.push(linea);
       return;
@@ -148,7 +155,7 @@ export function envolver(texto, registros = [], originales = []) {
         if (esAnotacion(token)) {
           // «(Sorda)» y similares no son acordes, pero van en la línea de
           // acordes. Si ya venían envueltas se conserva su etiqueta (y su
-          // postura); si no, se quedan como texto.
+          // postura); si no, se envuelven como cualquier acorde nuevo.
           const deLinea = registros[i] || [];
           const gastados = usados.get(`${i}|${token}`) || 0;
           const elegido = deLinea.filter((r) => r.etiqueta === token)[gastados] || null;
@@ -156,7 +163,7 @@ export function envolver(texto, registros = [], originales = []) {
             usados.set(`${i}|${token}`, gastados + 1);
             out += `${elegido.abre}</a>`.replace('</a>', `${token}</a>`);
           } else {
-            out += token;
+            out += `<a>${token}</a>`;
           }
         } else if (c.tipo === 'acordes') {
           throw new Error(`línea ${i + 1}, columna ${mm.index + 1}: «${token}» no es un acorde`);

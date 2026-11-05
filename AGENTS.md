@@ -50,6 +50,8 @@ Bendita suerte pal aficionao que más de un mes de
 
 En los popurrís, los cambios de cejilla a mitad de copla se marcan con `<strong>Cejilla: 4</strong>` (o `<strong>Cejilla: No</strong>` cuando se toca al aire), **solos en su línea y sin espacios alrededor**: `AcordeCard.astro` los pinta como el chip `.acorde-meta` (icono de cejilla + texto en mayúsculas, centrado).
 
+Las anotaciones entre paréntesis que van en la línea de acordes (`<a>(Sorda)</a>`, `(Pito)`…) **también se envuelven en `<a>`**: cuentan como línea de acordes aunque estén solas, y el editor las reconoce (en gris) y las envuelve al guardar, **también las que ya estaban sin etiqueta aunque la línea no se toque**. Con su etiqueta se conserva la `data-postura` si la tenía.
+
 ### Letras alternativas de una misma música
 Una misma música puede tener varias letras. Cada letra es una ficha propia (`.md` + URL), para que se pueda buscar por el título de esa letra; no se meten varias letras en la misma página.
 - Campo opcional `letraTitulo` en el frontmatter (solo en la ficha de la letra alternativa). El título se muestra en el badge de la card, en el bloque «Letras de este pasodoble» y en los avisos; el título de la ficha sigue siendo `Pasodoble Los Colgaos`.
