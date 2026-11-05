@@ -194,7 +194,7 @@ Mismo patrón que WhatsApp, después del push y también solo para `.md` **nuevo
 npm run x -- --solo <slug>[,<slug>]
 ```
 
-- Formato: cabecera «🆕 Nuevos acordes en la web», línea `🎭 Pieza – Agrupación`,
+- Formato: cabecera «🆕 Nuevos acordes en la web», línea `🎭 Pieza Agrupación` (sin guion),
   línea en blanco, `🎵 música` y `✏️ letra` (si son la misma persona, una sola línea)
   y el enlace al final.
 - Descarga el `img` del `.md`, lo valida (WebP/JPEG/PNG/GIF y ≤5 MB) y lo adjunta.

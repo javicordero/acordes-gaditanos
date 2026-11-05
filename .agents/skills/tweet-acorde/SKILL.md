@@ -25,7 +25,7 @@ El usuario puede proporcionar:
 ```
 🆕 Nuevos acordes en la web
 
-🎭 Presentación – Los Humanos
+🎭 Presentación Los Humanos
 
 🎵 Antonio Martínez Ares
 
@@ -108,7 +108,7 @@ Autor: Antonio Martínez Ares
 ```
 🆕 Nuevos acordes en la web
 
-🎭 Presentación – Los Humanos
+🎭 Presentación Los Humanos
 
 🎵 Antonio Martínez Ares
 
