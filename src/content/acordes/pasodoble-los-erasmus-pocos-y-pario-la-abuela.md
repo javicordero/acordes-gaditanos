@@ -14,7 +14,7 @@ fraseClave: Europa está al pie de guera
 ---
 <pre>
 <a>LaM7</a>
-Europa está al pie de guera 
+Europa está al pie de guera
                              <a>Re</a>
 igual que ocurriera hace años ya
 <a>Mi7</a>                   <a>Sim7</a>                  <a>Mi7</a>
@@ -43,14 +43,14 @@ El símbolo del euro fue quien lo sustituyó
 Sus aliados hoy son los mercados, la banca
     <a>Fa#7</a>        <a>Sim7</a>
 El poder, los gobiernos
-<a>Mi7</a>      <a>Sim7</a>      <a>Mi7</a>      <a>Sim7</a> 
-Que como buenos perritos falderos 
+<a>Mi7</a>      <a>Sim7</a>      <a>Mi7</a>      <a>Sim7</a>
+Que como buenos perritos falderos
      <a>Mi7</a>             <a>Lam</a>
 van atados con un collar
        <a>Rem</a>                               <a>Lam</a>
 Es la tercera guerra mundial, nuestra milicia
                         <a>Mi7</a>
-se formará con nuestras manos 
+se formará con nuestras manos
                              <a>Lam</a>  <a>La7</a>
 con nuestra lucha nuestro heroísmo
      <a>Rem</a>                        <a>LaM7</a>

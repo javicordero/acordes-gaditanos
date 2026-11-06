@@ -24,11 +24,11 @@ nunca ganan razones, mis razones las voy a perder.
                    <a>Lam7</a>   <a>Re7</a>                 <a>Sol</a>
 Ya se cual es tu ventana, por si se abre algun dia
 <a>Mim</a>              <a>Lam7</a>               <a>Si7</a>
-la luz de cada mañana se meta en tu cama 
+la luz de cada mañana se meta en tu cama
                <a>Mim</a> <a>Mi7</a>
 y te de la alegría
 <a>Lam</a>               <a>Mim</a>   <a>Si7</a>
-y con las manos vacias abras la que yo sabia 
+y con las manos vacias abras la que yo sabia
               <a>Mi</a>
 que fue tu ventana.
 

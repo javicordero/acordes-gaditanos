@@ -31,7 +31,7 @@ Era una noche de invierno que iba yo con mi guitarra
       <a>La7</a>         <a>Sol</a>   <a>Re</a>
 y la lluvia pal ensayo
 <a>La7</a>
-Y en el resplandor que el rayo dejaba 
+Y en el resplandor que el rayo dejaba
               <a>Sim</a>
 alumbrando el cielo
 <a>Fa#m</a>                 <a>Fa#7</a>            <a>La7</a>
@@ -40,22 +40,22 @@ Vi la silueta de mi Tacita resplandeciendo
 Como un recortable que me enseñaba de cuerpo entero
                 <a>Fa#m</a>                    <a>Mim</a>
 Sus techitos de papel donde a Cádiz pude ver
-                        <a>Fa#m</a>  
-Que es bonita hasta lloviendo 
+                        <a>Fa#m</a>
+Que es bonita hasta lloviendo
          <a>La7</a>         <a>Sol</a>
-Que es bonita hasta lloviendo 
+Que es bonita hasta lloviendo
 
-Cuando todo se calmó 
+Cuando todo se calmó
                            <a>Re</a>
 y la lluvia del cielo se despejaba
-                                <a>Mim</a> 
-Con los últimos restos de chaparrón 
+                                <a>Mim</a>
+Con los últimos restos de chaparrón
 <a>La7</a>                       <a>Sim</a>
 por la calle brillante ya me marchaba
 <a>Sol</a>                                            <a>Re</a>
 Y así terminaba yo un bonito camino que se hizo eterno
-                            <a>La7</a> 
-La puerta del ensayo se me abrió 
+                            <a>La7</a>
+La puerta del ensayo se me abrió
    <a>Sol</a>           <a>La7</a>
 y Cádiz me acompañó
                     <a>Sol</a>  <a>La</a> <a>Re</a>

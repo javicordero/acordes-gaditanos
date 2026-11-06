@@ -14,20 +14,20 @@ fraseClave: "Entramos por tus butacas,"
 <pre>
 <a>Sol</a>  <a>Sol7</a>           <a>Do</a>      <a>Lam7</a>
 Entramos por tus butacas, entramos por tu telón
-             <a>Re7</a>                           
-Pero ya necesitamos cantarte Cádiz 
+             <a>Re7</a>
+Pero ya necesitamos cantarte Cádiz
         <a>Do</a>    <a>Re7</a>       <a>Sol</a>
 para robarte a ti el corazón
 <a>Sol</a>    <a>Re7</a>        <a>Sol</a>
 Ay mi diosa del plumero otra vez vuelvo,
           <a>Mi7</a>              <a>Lam7</a>
 Otra vez vuelvo, otra vez vuelvo
-<a>Re7</a>          <a>Sol</a>                 <a>Re7</a>   
-Endulza mi guitarra, yo pongo mi alma, 
+<a>Re7</a>          <a>Sol</a>                 <a>Re7</a>
+Endulza mi guitarra, yo pongo mi alma,
    <a>Do</a> <a>Re7</a>     <a>Sol</a>
 tu me das te quieros
-<a>Sol</a>        <a>Re7</a>   <a>Sol</a>     
-Yo quiero cantar mirando, 
+<a>Sol</a>        <a>Re7</a>   <a>Sol</a>
+Yo quiero cantar mirando,
                <a>Mi7</a>      <a>Lam7</a>
 asomaito, asomaito a la caleta
 <a>Re7</a>           <a>Sol</a>           <a>Re7</a>

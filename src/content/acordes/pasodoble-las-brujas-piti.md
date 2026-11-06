@@ -40,8 +40,8 @@ que es la fiesta del Dios Momo popular
 cuando el pueblo disfrazado en libertad
                   <a>Mi7</a>               <a>La</a>   <a>La7</a>
 muestra una expresión graciosa y sincera
-<a>Re</a>           <a>Mi7</a>        <a>La</a>  
-Y le canto a Cádiz con amor 
+<a>Re</a>           <a>Mi7</a>        <a>La</a>
+Y le canto a Cádiz con amor
             <a>Mi7</a>            <a>La</a>
  con el corazón tierra marinera
  </pre>

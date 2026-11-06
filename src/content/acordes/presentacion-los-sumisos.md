@@ -13,7 +13,7 @@ fraseClave: Por cantar coplas prohibidas acudió la policía y en
 ---
 <pre>
 <a>Mim</a>
-Por cantar coplas prohibidas acudió la policía 
+Por cantar coplas prohibidas acudió la policía
 
 y en la cárcel yo me vi
 
@@ -25,11 +25,11 @@ Y hoy viernes de carnavales esposao por la calle
                   <a>Si7</a>
 salgo de la prevención
      <a>Do</a>           <a>Si7</a>          <a>Do</a>          <a>Si7</a>
-A cantar señor alcalde y a la chusma más notable 
+A cantar señor alcalde y a la chusma más notable
          <a>Do</a>        <a>Si7</a>
 en casa del gobernador
-<a>Do</a>          <a>Si7</a>        <a>Mim</a>   
-Las mismas coplas prohibidas 
+<a>Do</a>          <a>Si7</a>        <a>Mim</a>
+Las mismas coplas prohibidas
             <a>Do</a>        <a>Si7</a>
 las mismas coplas prohibidas por las que se me apreso
 <a>Mim</a>                                        <a>Sim7</a>
@@ -39,7 +39,7 @@ De toda la vida espero que gocen después de robarle
               <a>Mim</a>
 la fiesta al pueblo
 <a>Mim</a>                                       <a>Sim7</a>
-Este palacio, no sé  me recuerda a una comparsa, 
+Este palacio, no sé  me recuerda a una comparsa,
 
 su puesta en escena
            <a>Do</a>                 <a>Si7</a>               <a>Mim</a>
@@ -54,24 +54,24 @@ después de esta noche
 Vamos señores camino al desastre cuanto más nos quiten
              <a>Do</a>                <a>Si7</a>
  as vamos a darle, mas vamos a darle
-<a>Mim</a>                                 
-Empecemos que se me sale el corazón 
+<a>Mim</a>
+Empecemos que se me sale el corazón
        <a>Do</a>
 que se note que llega el rebelde bufón
-         <a>Si7</a>                                 
-Quieren vernos bailar quieren vernos reír 
+         <a>Si7</a>
+Quieren vernos bailar quieren vernos reír
    <a>Mim</a>
 es pa lo que nos quieren siempre han sido así
-      <a>Mim</a>                          
-Ya me tienen donde me querían tener 
+      <a>Mim</a>
+Ya me tienen donde me querían tener
        <a>Do</a>
 ya me tienes aquí obligado a la vejez
-    <a>Si7</a>                                
-Pero no, yo no soy soy otro sumiso mas 
+    <a>Si7</a>
+Pero no, yo no soy soy otro sumiso mas
               <a>Mim</a>                                <a>Si7</a>
 que pone la mejilla no voy a tragar no me pienso callar
 <a>Mim</a>
-Por cantar coplas prohibidas acudió la policía 
+Por cantar coplas prohibidas acudió la policía
 
 y en la cárcel fui a parar
                                           <a>Si7</a>

@@ -62,7 +62,7 @@ Al final va a resultar
                     <a>Mim</a>
 Que el problema de España es España nada mas
                  <a>Si7</a>
-Y que fuera de España tú tienes tu patria 
+Y que fuera de España tú tienes tu patria
               <a>Mim</a>
 y yo tengo la mía
                                  <a>Fa#</a>          <a>Si7</a>

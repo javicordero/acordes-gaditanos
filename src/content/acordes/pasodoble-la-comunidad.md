@@ -17,7 +17,7 @@ recomendada: true
     <a>La7M</a>                                   <a>Fa#7</a>  <a>Sim7</a>
 Sentadito a la orilla del mar en un rincón de la Caleta
                          <a>Mi7</a>
-mi guitarra volvió a pasear 
+mi guitarra volvió a pasear
            <a>Sim7</a>       <a>Mi7</a>         <a>La7M</a>
 para encontrar la solución en la receta
                      <a>La7</a>                       <a>Re</a>
@@ -26,10 +26,10 @@ la receta de la que bebí desde que yo era un comino
 y que al parecer debí perder por el camino.
        <a>Rem</a>                      <a>Lam</a>
 Y pregunté a las olas cómo se hacía
-       <a>Mi7</a>                   <a>La7</a>  
-para juntar las notas de la manera 
+       <a>Mi7</a>                   <a>La7</a>
+para juntar las notas de la manera
              <a>Rem</a>                   <a>Lam</a>
-que yo encontrara la más linda melodía 
+que yo encontrara la más linda melodía
                     <a>Si7</a>      <a>Mi7</a>     <a>La7M</a>
 que guardara la alegría que Cádiz tuviera.
 
@@ -52,12 +52,12 @@ me mostraste la receta con la que crecí cantando
 y canté bajo la luna, la luna para ti Tacita mía
                      <a>Mi7</a>        <a>Sim7</a>      <a>Mi7</a>  <a>La7M</a>
 como una canción de amor el pasodoble, mi pasodoble,
-   <a>Fa#7</a> <a>Sim7</a> <a>Mi7</a>     <a>La7M</a> 
-el pasodoble de este poeta 
+   <a>Fa#7</a> <a>Sim7</a> <a>Mi7</a>     <a>La7M</a>
+el pasodoble de este poeta
 <a>Rem</a>                     <a>La7M</a>
 que ahora sí que suena a Cai
-                     <a>Sim7</a> 
-porque lo rasqué del fondo 
+                     <a>Sim7</a>
+porque lo rasqué del fondo
            <a>Mi7</a>        <a>La7M</a>
 de las entrañas de la Caleta.
 </pre>

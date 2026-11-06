@@ -15,12 +15,12 @@ video: 'https://www.youtube.com/embed/brzCarIN80o?feature=player_embedded'
 De nuevo volví con mi guitarra ecendí ya mi garganta
                    <a>Re7</a>
 Otra vez vuelve tu hijo
-                    <a>Do</a>                           <a>Re7</a>            
+                    <a>Do</a>                           <a>Re7</a>
 Olores a calle Paco Alba San Pascual, mi luz mi agua
                        <a>Sol</a>
 Plaza Pinto mi escondrijo
               <a>Re7</a>        <a>Sol</a>
-No aguanto ninguna reprimenda 
+No aguanto ninguna reprimenda
        <a>Re7</a>            <a>Sol</a>     <a>Sol7</a>               <a>Do</a>
 Solo espero que me entienda cuando escuchen el redoble
   <a>Re7</a>                    <a>Sol</a>        <a>Mi7</a>        <a>Lam7</a>
@@ -31,7 +31,7 @@ Al  compás de un pasodoble
 Yo solo tiro de ingenio
 
 Pues sabes bien que pa mí los premios
-                           <a>Lam7</a>          
+                           <a>Lam7</a>
 Son solamente pal que los quiera
    <a>Re7</a>               <a>Do</a>
 Podrás tacharme de idiota
@@ -47,12 +47,12 @@ y lo que me plazca Porque mi sangre es carnavalera
 Y otra vez aquí me veis mi cejilla puesta al seis
                    <a>Sol</a>   <a>Sol7</a>
 Y oficializar mis coplas
-<a>Do</a>  <a>Re7</a>        <a>Sol</a>                       <a>Mi7</a> 
+<a>Do</a>  <a>Re7</a>        <a>Sol</a>                       <a>Mi7</a>
 Un añito sin tenerte un año sin poder quererte
                                         <a>Lam7</a>
 A ti mi aficionao que te mueres por mis coplas
 <a>Re7</a>     <a>Do</a>         <a>Re7</a>       <a>Do</a>          <a>Re7</a>
 Por tus ganas de vivir tan solamente por ti
  <a>Do</a>             <a>Re7</a>  <a>Sol</a>
-Aquí vuelve mi chirigota  
+Aquí vuelve mi chirigota
 </pre>

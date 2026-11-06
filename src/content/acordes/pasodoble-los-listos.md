@@ -12,11 +12,11 @@ fraseClave: Y cuando yo era un tonto
 ---
 <pre>
 <a>Do</a>
-Y cuando yo era un tonto 
+Y cuando yo era un tonto
                         <a>La7</a>      <a>Rem</a>
 Cádiz me sopló y me dio la inteligencia
                    <a>Sol7</a>
-Y cuando estaba histérico 
+Y cuando estaba histérico
                          <a>Do</a>
 y desesperado me dio la paciencia
                 <a>Sol7</a>                   <a>Do</a>
@@ -28,11 +28,11 @@ Y cuando estaba oscuro me dio Cádiz claridad
                              <a>Do</a>
 Y en los inviernos me dio la mar
 
-Y cuando yo estaba solo 
+Y cuando yo estaba solo
                            <a>Sol7</a>
 me dio su cuerpo rojo y caliente
 
-Y cuando yo estaba triste 
+Y cuando yo estaba triste
                            <a>Do</a>
 me dijo toma y me dio a la gente
              <a>Sol7</a>               <a>Do</a>
@@ -43,8 +43,8 @@ Y me dio sin condición las risas blancas
 La rabia negra me dio su carne y sus espinas
 
 Y me dio, me dio palabra, me dio las coplas
-            <a>La7</a>              <a>Rem</a>  
-Me dio el compás de esta musiquita 
+            <a>La7</a>              <a>Rem</a>
+Me dio el compás de esta musiquita
      <a>Sol7</a>           <a>Do</a> <a>Do7</a>
 y me dio gloria bendita
       <a>Fa</a>                  <a>Sol7</a>              <a>Mim</a>
@@ -54,7 +54,7 @@ Cuando estaba preso me entreabrió la jaula
                <a>Sol7</a>              <a>Do</a>
 Cuando estaba ciego Cádiz me dio luz
 <a>Fam</a>
-Cuando yo era solo un ratoncillo 
+Cuando yo era solo un ratoncillo
                   <a>Do</a>
 Cádiz me hizo un hombre
              <a>La7</a>                  <a>Rem</a>

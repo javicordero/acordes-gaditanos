@@ -17,15 +17,15 @@ Cada noche comparto contigo la luna,
               <a>La7</a>                <a>Rem</a>
 cada noche contamos juntos las estrellas
              <a>Mi7</a>              <a>Lam</a>
-Cada noche regreso desde mi locura, 
+Cada noche regreso desde mi locura,
                   <a>Fa</a>                          <a>Mi7</a>
 tú siempre con tus dudas, yo loco porque me quieras
                <a>Fa</a>       <a>Mi7</a>   <a>Lam</a>
-Cada noche comparto contigo la luna, 
+Cada noche comparto contigo la luna,
               <a>La7</a>                 <a>Rem</a>
 cada noche te canto todo lo que escribo
                <a>Mi7</a>                <a>Lam</a>
-Cada noche lo intento y nunca lo consigo, 
+Cada noche lo intento y nunca lo consigo,
            <a>Fa</a> <a>Mi7</a>                 <a>Lam</a>    <a>Fa</a> <a>Mi7</a>
 todo es diferente cuando estoy contigo
 <a>Lam</a>                  <a>Fa</a>
@@ -37,10 +37,10 @@ Muchos son los que lo intentan uno el que lo consigue
 <a>Mi7</a>                                  <a>Lam</a>
 Uno vive contigo, los demás sin ti no viven
          <a>Rem</a>                      <a>Mi7</a>
-Y siento celos de los versos y te quieros 
+Y siento celos de los versos y te quieros
                <a>Lam</a>
 que te vienen desde afuera
-         <a>Rem</a>                       <a>Fa</a>    
+         <a>Rem</a>                       <a>Fa</a>
 Y siento pena de tanto y tanto quererte
       <a>Mi7</a>             <a>Lam</a>
 y de saber que tú no quieras
@@ -61,7 +61,7 @@ Con forillo y con atrezo vamos a ver lo que pasa
 <a>Rem</a>                   <a>Fa</a>                       <a>Mi7</a>
 Que yo he venido a buscarte y Cádiz para conquistarte
                       <a>Lam</a>
-Te he traído una comparsa 
+Te he traído una comparsa
                 <a>Sol</a>     <a>Fa</a>      <a>Mi7</a>
 (cada noche comparto contigo la luna)
         <a>Fa</a>   <a>Mi7</a>     <a>Lam</a>

@@ -30,36 +30,36 @@ Una guitarra malherida se ha puesto en pie
 Se abren las puertas, un silencio atronador
          <a>Rem</a>             <a>Sol7</a>
 Sus huerfanitos lloran de pena
-         <a>Do</a>             
+         <a>Do</a>
 Sus adversarios, su chusma selecta
      <a>Fa</a>              <a>Rem</a>                  <a>Fa</a>   <a>Mi7</a>
 Le brindan el ultimo credo en la plaza de su corazón
           <a>Lam(add9)</a>
 Por el castillo del Falla corre un rumor
-          <a>Lam7/Sol</a>                        
+          <a>Lam7/Sol</a>
 Un triste duelo se escucha desde el salón
        <a>Readd9/Fa#</a>       <a>Mi7</a>
 Vienen a miles los Peregrinos
- <a>Lam(add9)</a>                             <a>Lam7/Sol</a> 
+ <a>Lam(add9)</a>                             <a>Lam7/Sol</a>
 (Creo en ti Oh todopoderoso carnaval de Cádiz)
-     <a>Readd9/Fa#</a>                     
+     <a>Readd9/Fa#</a>
 (Creador del cielo inmenso de los pobres)
 <a>Fa</a>              <a>Mi7</a>
 (Y de la tierra como calle)
 <a>Lam(add9)</a>
 (Creo en el espíritu libre y santo)
-         <a>Lam7/Sol</a>                        
+         <a>Lam7/Sol</a>
 (En la iglesia de los compases celestiales)
     <a>Readd9/Fa#</a>                       <a>Mi7</a>    <a>Lam</a>
 (Y creo en la vida eterna de los carnavales)
-                     <a>Sol</a>    
-Y si alguien jura venganza 
+                     <a>Sol</a>
+Y si alguien jura venganza
           <a>Fa</a>             <a>Mi7</a>
 por esta copla a un compañero
                      <a>Lam</a>
 No sabe con quién ha dao yo llevo el mismo veneno
-                
-Canta gaditano canta que es el milagro 
+
+Canta gaditano canta que es el milagro
          <a>Lam/Fa#</a>     <a>Sol</a>
 de este sur tan desgraciao
                                         <a>Fa</a>
@@ -67,7 +67,7 @@ Canta hasta que te sepa a sangre la garganta
           <a>Sim7b5</a>                      <a>Mi7</a>
 Canta alma mía y que nos quiten lo cantao
                  <a>Lam</a>
-Canta, canta la Tacita 
+Canta, canta la Tacita
                     <a>Lam/Fa#</a>     <a>Sol</a>
 porque la vida solo dura un estribillo
                               <a>Fa</a>
@@ -79,15 +79,15 @@ Otra batalla, otra pasión, otra pelea, la misma ilusión
         <a>Fa</a>                 <a>Sim7b5</a>              <a>Mi7</a>
 De la ceniza de un pobre caníbal nació un caballero
 <a>Lam</a>
-Cielito mío ya estoy aquí, 
+Cielito mío ya estoy aquí,
    <a>Mim</a>
 para ganar, pa perder, pa sufrir
           <a>Fa</a>                <a>Sim7b5</a>                <a>Mi7</a>
 Dale al compás tu bendito compás otra vez por febrero
 <a>Lam</a>                <a>Sol</a>         <a>Fa</a>            <a>Mi7</a> <a>Fa</a> <a>Mi7</a>
 Que Cádiz no tiene reyes solo poetas de carnaval
-             <a>Lam</a>   <a>Mi7</a>   <a>Lam</a>  <a>Mi7</a>    <a>Lam</a> 
-Y pa poeta, poeta, mi capitán, mi capitán, 
+             <a>Lam</a>   <a>Mi7</a>   <a>Lam</a>  <a>Mi7</a>    <a>Lam</a>
+Y pa poeta, poeta, mi capitán, mi capitán,
 <a>Mi7</a>   <a>Lam</a>
 mi capitán
 </pre>

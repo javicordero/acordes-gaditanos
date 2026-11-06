@@ -29,15 +29,15 @@ Con los mismo que un buen dia ya viniera aquí
                  <a>Fa#7</a>              <a>Sim7</a>
 Ofreciéndote mis coplas como un juvenil
                              <a>Mi7</a>
-Con los nervios que en tus tablas 
+Con los nervios que en tus tablas
                         <a>Lam</a>
 otra noche volvemos a sentir
                   <a>Mi7</a>                    <a>Lam</a>
 Puede que fuera el ego, puede que la avaricia
-                     <a>Sol</a> 
-Puede que el propio miedo 
-      <a>Do</a>           <a>Fa</a>     <a>Sim7b5</a>    <a>Mi7</a>   
-a pensar que mis coplas Son poco pa ti, 
+                     <a>Sol</a>
+Puede que el propio miedo
+      <a>Do</a>           <a>Fa</a>     <a>Sim7b5</a>    <a>Mi7</a>
+a pensar que mis coplas Son poco pa ti,
    <a>Rem</a>     <a>Lam</a>      <a>Sim7b5</a>    <a>Mi7</a>  <a>La</a>
 ay Cai, ay Cai, perdóname por ser así
                          <a>Mi7</a>                   <a>La</a>
@@ -57,19 +57,19 @@ Gracias a cada Lucero al que oí decir
            <a>La</a>               <a>Fa#7</a>
 Suerte y valor compañero no dejes de insistir
            <a>Sim7</a>                    <a>Mi7</a>
-Que el carnaval es tan rápido y fugaz 
+Que el carnaval es tan rápido y fugaz
                          <a>La</a>  <a>La7</a>
 que se escapa entre tus dedos
         <a>Re</a>                    <a>Rem</a>
 Por eso esa misma noche en aquel lugar
             <a>La</a>                     <a>Fa#7</a>
-Bajo el cristal de tu luna y mil barcas 
+Bajo el cristal de tu luna y mil barcas
                   <a>Sim7</a>
 te compuse esta coplilla
 
 Con mi Cádiz por bandera y al compás de un mostrador
                                           <a>Sim7</a>
 Cantaito por mis niños que es como suena mejor
-                            <a>Mi7</a>                 <a>La</a>              
+                            <a>Mi7</a>                 <a>La</a>
 Pa que te llegue, pa que te llegue hasta el corazón
 </pre>

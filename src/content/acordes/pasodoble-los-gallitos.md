@@ -17,25 +17,25 @@ Amor de nieve, amor de fuego
           <a>Sol</a>                  <a>Mim</a>                <a>Fa#</a>
 amor que gana y pierde todo o nada en este viejo juego
           <a>Sim</a>
-amor que habita en el deseo ardiente 
+amor que habita en el deseo ardiente
                   <a>La</a>
 de un millón de alcobas
                         <a>Sol</a>   <a>Mim</a>                 <a>Fa#</a>
 y otras veces hay que hacerlo en un dormitorio a solas
           <a>Sim</a>
-el viejo amor que siempre es nuevo y muere 
+el viejo amor que siempre es nuevo y muere
            <a>Fa#m</a>
 y a veces renace
                     <a>Sol</a>     <a>Mi7</a>            <a>La</a>
 entre los cuerpos calientes de volcanicos amantes
            <a>Re</a>                               <a>Fa#m</a>
 el viejo amor y su ruleta grande de deseo y rabia
-                        <a>Sol</a>  
-que hoy nos tiene aquí sentao 
+                        <a>Sol</a>
+que hoy nos tiene aquí sentao
   <a>Mi7</a>                <a>La</a>
 mientras te miro a la cara
 <a>Sol</a>                    <a>La</a>
-piensa que en to los sitios lanzan 
+piensa que en to los sitios lanzan
                      <a>Fa#m</a>
 los amores sus dados al aire
           <a>Si7</a>

@@ -19,15 +19,15 @@ Chernóbil es igual que Cádiz con más mutaciones
 Y Cádiz es igual que Chernóbil bañada de sal
     <a>Fa#7</a>              <a>Sim7</a>   <a>Fa#7</a>     <a>Sim7</a>
 Chernóbil tiene gente rara y muchos mutantes
-     <a>Mi7</a>                  
-Y en Cádiz con el levante 
+     <a>Mi7</a>
+Y en Cádiz con el levante
              <a>Sim7</a>       <a>Mi7</a>    <a>LaM7</a>
 no hay un habitante que sea normal
 <a>La7</a>                   <a>Re</a>  <a>Si7</a>                <a>Mi7</a>
 La radiación en Chernóbil tuvo un impacto brutal
                      <a>Lam</a>           <a>Sim7b5</a> <a>Mi7</a>   <a>Lam</a>
 Y te cala hasta los huesos como en Cádiz la humedad
-           <a>Si7</a>       <a>Mi7</a> 
+           <a>Si7</a>       <a>Mi7</a>
 Haya en Ucrania en el 86
                               <a>Lam</a>
  un desastre nuclear el caos desata

@@ -43,7 +43,7 @@ Yo te prometo olvidarme hasta de mí
                 <a>Mi</a>
 para que seas feliz.
 
-Tendrás la suerte de abrir tu rumbo 
+Tendrás la suerte de abrir tu rumbo
    <a>Fa#m7</a>           <a>Sol#m7</a>    <a>Fa#m7</a> <a>Sol#m7</a>    <a>Fa#m7</a>
 en la ciudad más hermosa del mundo  lere lere lere lere
             <a>Do#7</a>             <a>Fa#m7</a>

@@ -23,7 +23,7 @@ y en tus calles antiguas echarlo a rodar
 Mas son tantísimos versos y tan inmensas las ganas
 <a>Mim</a>             <a>Re</a>    <a>Do</a>                  <a>Si7</a>
 Que de una sola tacada cantarlos todos no puedo
-<a>Mim</a>                <a>Si7</a> <a>Mim</a>       <a>Sol</a>         <a>Si7</a> 
+<a>Mim</a>                <a>Si7</a> <a>Mim</a>       <a>Sol</a>         <a>Si7</a>
 Divido pues la función en cuatro formas de amarte
 <a>Mim</a>                 <a>Sol</a> <a>La</a>               <a>Si7</a>
 para empezar a cantarte Para empezar a decirte,
@@ -72,5 +72,5 @@ Y tu resistirás, llena de juventud, llena de carnaval,
                 <a>Sol</a> <a>Mim</a>         <a>Fa#</a>
 mientras seas la cuna de la libertad
           <a>Sim</a>
-Y tu resistirás 
+Y tu resistirás
 </pre>

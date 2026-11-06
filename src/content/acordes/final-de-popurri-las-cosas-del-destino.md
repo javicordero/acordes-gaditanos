@@ -28,17 +28,17 @@ Porque Cádiz tu destino es donde vaya la prisa
 <a>Rem</a>                     <a>Sol7</a>
 Y maquillar tus problemas dibujando una sonrisa
 <a>Do</a>                    <a>Mim</a>
-Cádiz dime cual es el destino 
+Cádiz dime cual es el destino
                       <a>Rem</a>                     <a>Sol7</a>
 pa no perderme en el camino que me lleve junto a ti
 <a>Do</a>                      <a>Mim</a>
-Cádiz dime cual es el destino 
+Cádiz dime cual es el destino
                      <a>Rem</a>                 <a>Sol7</a>
 para volver a lo que fuimos, el vivir para reír
 <a>Lam</a>                   <a>Mim</a>
 No le temas al destino yo sé bien lo que me digo
-<a>Rem</a>                               
-Que, aunque a veces es caprichoso, 
+<a>Rem</a>
+Que, aunque a veces es caprichoso,
 <a>Sol7</a>
 elige el mejor camino
 <a>Lam</a>                   <a>Mim</a>

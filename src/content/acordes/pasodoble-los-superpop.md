@@ -24,7 +24,7 @@ y la gente disfrazada desde las butacas
 hasta el gallinero aguantando con tanguillos,
             <a>Mi7</a>             <a>Lam</a>
 copitas de vino y vasito puchero.
-                    
+
 Y después de la más larga y bella madrugada
 <a>Sol</a>                                      <a>Fa#</a>
 y con las primeras luces de ese nuevo día

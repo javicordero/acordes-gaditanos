@@ -38,7 +38,7 @@ Y si cantando las digo las oye la luna llena
 Y si por eso hay condena yo no le temo al castigo
 <a>Mim</a>                <a>Re</a>    <a>Do</a>                 <a>Si7</a>
 Y si por eso hay condena yo no le temo al castigo
-<a>Mim</a>                     <a>Re</a> 
+<a>Mim</a>                     <a>Re</a>
 La condena de los besos largos
         <a>Mim</a>              <a>Re</a>
 en las plazas de las catedrales

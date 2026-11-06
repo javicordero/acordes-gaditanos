@@ -24,14 +24,14 @@ Y entendí que las musas
 no eran diosas divinas ni ninfas de cuento,
             <a>Fa#</a>        <a>Sim</a>
 que aquella noche tus celos
-                         <a>Re</a>                  
-me hicieron ver que las musas 
+                         <a>Re</a>
+me hicieron ver que las musas
               <a>Do#7</a>
 y eran de carne y de hueso,
                <a>Re</a>   <a>Mi7</a>                 <a>LaM7</a>
 y mi pasión de poeta con tu pasión despertaste
             <a>Fa#</a>    <a>Sim</a>    <a>Si7</a>
-de noche en tu casapuerta, 
+de noche en tu casapuerta,
                         <a>Mi7</a>
 que no se enteren tus padres
                           <a>LaM7</a>      <a>Mi7</a>          <a>LaM7</a>

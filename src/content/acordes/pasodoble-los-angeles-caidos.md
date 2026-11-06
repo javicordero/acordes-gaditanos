@@ -24,14 +24,14 @@ y si me ven delirando, yo no le temo al castigo
                     <a>Lam7</a>    <a>Do</a>               <a>Si7</a>
 y en medio la calle nueva, contigo sigo charlando
 <a>Mim</a>                                  <a>Re</a>
-Tu me gustas porque tienes alas como yo, 
+Tu me gustas porque tienes alas como yo,
                                  <a>Do</a>
-vencidas y arrugadas como los tambores 
+vencidas y arrugadas como los tambores
                                <a>Si7</a>
 del castigo eterno de todos nosotros
 <a>Mim</a>                                   <a>Re</a>
 Y te quiero por tu forma de pisar la calle,
-                              <a>Do</a>   
+                              <a>Do</a>
 compañera mia que hasta las aceras
          <a>Lam7</a>                      <a>Si7</a>
 se van a creer que siempre estas bailando.
@@ -42,7 +42,7 @@ solo se puede querer cuando se quiere tanto.
 
 Y no te he confundio con un cielo perdío
 
-con una noche larga, divina y amarga 
+con una noche larga, divina y amarga
    <a>Do#7</a>     <a>Fa#m</a>
 de las borracheras
                     <a>Si7</a>                <a>Fa#m</a>

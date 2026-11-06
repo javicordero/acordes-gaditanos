@@ -27,19 +27,19 @@ un oficio del ayer
 <a>La</a>             <a>Si7</a> <a>Sol#7</a>                     <a>Do#m7</a>
 Como David a Goliat echándole un pulso a los tiempos
 <a>La</a>
-Aquí sigo mi camino aunque sea a base de palos 
+Aquí sigo mi camino aunque sea a base de palos
                         <a>Si</a>
 y aunque soplen otros vientos
-<a>Mi</a>               <a>Sol#m7</a>         
-Tengo un encargo, un viejo barco, 
+<a>Mi</a>               <a>Sol#m7</a>
+Tengo un encargo, un viejo barco,
     <a>La</a>                     <a>Si</a>
 la nave más antigua de occidente
-<a>Mi</a>             <a>Sol#m7</a>              
-Que sus maderas, son tan antiguas, 
+<a>Mi</a>             <a>Sol#m7</a>
+Que sus maderas, son tan antiguas,
         <a>La</a>                          <a>Si</a>
 que es hora ya que alguien se la remiende
         <a>La</a>                      <a>Si7</a>
-Quiero ser yo tu carpintero de ribera, 
+Quiero ser yo tu carpintero de ribera,
        <a>Sol#7</a>                         <a>Do#m7</a>
 quiero ser yo quien ponga guapas tus maderas
        <a>La</a>
@@ -54,15 +54,15 @@ No hay una barca mas bonita en la bahía
          <a>Sol#7</a>                                  <a>Do#m7</a>
 No hay una barca mas bonita en tos los mares del sur
 <a>La</a>                        <a>Sol#m7</a>
-Digamos que se llama Andalucía, 
+Digamos que se llama Andalucía,
           <a>La</a>           <a>Si</a>
 que es mi madre y eres tú
 <a>Do#m</a>
-Vamos todo el mundo manos a la obra, 
+Vamos todo el mundo manos a la obra,
 <a>Sol#m7</a>
 vamos a cambiar de rumbo mi tierra
 <a>La</a>                           <a>Sol#m7</a>
-Vamos a volver a ser lo que fuimos, 
+Vamos a volver a ser lo que fuimos,
                       <a>La</a>
 a lo que un día construimos
                        <a>Si</a>

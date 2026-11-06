@@ -63,7 +63,7 @@ Il gaditano que io pido, el che in Cadi no se encierra
 E no confunde suo ombligo, con il amore a la terra
               <a>Lam7</a>        <a>Do</a>           <a>Si7</a>
 Il gaditano natale, universale, cosmopolita
-Che por obra del destino, 
+Che por obra del destino,
                      <a>Mim</a>
 al mondo vino en la Tacita
 </pre>

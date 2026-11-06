@@ -46,7 +46,7 @@ cuando sabe que hay gente en la cama de enfrente
   <a>Do#7</a>          <a>Fa#m</a>
 y la cama de al lao.
                     <a>Si7</a>               <a>Fa#m</a>
-Ay si yo no supiera que añitos que cumpliera 
+Ay si yo no supiera que añitos que cumpliera
 <a>Si7</a>              <a>La</a>                <a>Si7</a>            <a>Mi</a>
 las velas las apagaba porque las soplaba con él abrazao.
 <a>Si7</a>           <a>Mi</a>     <a>Mi7</a>           <a>Lam7</a>

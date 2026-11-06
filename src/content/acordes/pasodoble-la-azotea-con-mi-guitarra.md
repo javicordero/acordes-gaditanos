@@ -47,7 +47,7 @@ cuando me he caio
 Tu que me has visto la gloria tocando
                   <a>Do#7</a>               <a>Fa#m</a>
 Y me has visto llorando como un niño chico
-                                        
+
 Hago las cuentas y son tantas las horas
                 <a>Si7</a>
 las que te he robao

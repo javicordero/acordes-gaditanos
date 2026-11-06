@@ -11,28 +11,28 @@ video: 'https://www.youtube.com/embed/x05jE_VnclA'
 fraseClave: "Yo tengo la Viña, yo"
 ---
 <pre>
-  <a>Do</a>                 <a>Mim</a>               
+  <a>Do</a>                 <a>Mim</a>
 Yo tengo la Viña, yo tengo Triana ,
    <a>Rem</a>               <a>Sol7</a>
 yo tengo campiña, yo tengo la playa
-   <a>Do</a>              <a>Mim</a>           
-La torre Tavira pa mí es un tesoro, 
+   <a>Do</a>              <a>Mim</a>
+La torre Tavira pa mí es un tesoro,
     <a>Rem</a>               <a>Sol7</a>
 lo mismo que pa mi es la torre del Oro
  <a>Lam</a>                      <a>Mim</a>
-Yo tengo al Nazareno y yo tengo al Gran Poder, 
+Yo tengo al Nazareno y yo tengo al Gran Poder,
    <a>Rem</a>                         <a>Mi7</a>
 yo tengo al carnaval, yo tengo feria
        <a>Lam</a>                       <a>Mim</a>
 Yo al Sevilla en primera y yo al Cádiz pa ascender
      <a>Fa</a>                          <a>Sol</a>
 Pero con una afición que es de primera
-<a>Lam</a>                   <a>Mim</a>  
+<a>Lam</a>                   <a>Mim</a>
 Yo tengo coches de caballos
-<a>Fa</a>                    <a>Sol</a> 
+<a>Fa</a>                    <a>Sol</a>
 yo tengo barcas de caballa
-<a>Fa</a>                 <a>Sol</a>           
-No hay diferencia, somos iguales, 
+<a>Fa</a>                 <a>Sol</a>
+No hay diferencia, somos iguales,
 <a>Mim</a>               <a>Lam</a>
 paguemos a medias este peaje
         <a>Fa</a>            <a>Sol</a>

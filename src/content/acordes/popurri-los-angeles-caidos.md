@@ -13,20 +13,20 @@ recomendada: true
 fraseClave: Oh padre nuestro, eres tan gaditano, que hasta tu
 ---
 <pre>
-<a>Lam</a>                    <a>Sol</a>                 
-Oh padre nuestro, eres tan gaditano, 
+<a>Lam</a>                    <a>Sol</a>
+Oh padre nuestro, eres tan gaditano,
 <a>Fa</a>                        <a>Mi7</a>
 que hasta tu madre, tiene nombre de barrio
-<a>Lam</a>                <a>Sol</a>              
-Santa María, llena eres de gracia, 
+<a>Lam</a>                <a>Sol</a>
+Santa María, llena eres de gracia,
      <a>Fa</a>                               <a>Mi7</a>
 perdonando pecados, las coplas las de nuestra comparsa
 <a>Lam</a>              <a>Re</a>         <a>Do</a>      <a>Lam</a>
-Por no amar a mi Dios sobre todas las cosas, 
+Por no amar a mi Dios sobre todas las cosas,
                 <a>Re</a>            <a>Do</a>       <a>Lam</a>
 por no tomar su nombre ni en vino ni en vano
-                               <a>Re</a> 
-Por no santificar las fiestas suyas 
+                               <a>Re</a>
+Por no santificar las fiestas suyas
      <a>Do</a>         <a>Lam</a>
 aburridas y religiosas
                     <a>Do</a>                      <a>Sol</a>
@@ -34,11 +34,11 @@ Por deshonrar a mis padres y no morir con mi hermano
                     <a>Lam</a>
 Por matar a los que matan, por matar
                     <a>Do</a>
-Por cometer con mi amada los actos, 
+Por cometer con mi amada los actos,
                       <a>Sol</a>
 los más impuros, los más bonitos
                      <a>Fa</a>
-Por robar a quien me roba lo que es mío, 
+Por robar a quien me roba lo que es mío,
                <a>Mi7</a>
 lo que tengo y necesito
 <a>Do</a>                        <a>Sol</a>
@@ -47,14 +47,14 @@ Por mentir, por desear lo que prohíbes
 por codiciar el bien ajeno
                        <a>Mi7</a>
 En manos de quien nunca sirve
-<a>Lam</a>                <a>Sol</a>            
-Fuera del cielo y volando caliente 
+<a>Lam</a>                <a>Sol</a>
+Fuera del cielo y volando caliente
         <a>Fa</a>                              <a>Mi7</a>
 y en tus alas grabado mi nombre, pa que sepa la gente
 <a>Lam</a>                 <a>Sol</a>
 Fuera del cielo y devuelve la espada
       <a>Fa</a>
-Aquí tienes tu espada, tu reino, 
+Aquí tienes tu espada, tu reino,
           <a>Mi7</a>
 que yo el mío lo tengo, mi amada
 
@@ -65,7 +65,7 @@ Dios no es todopoderoso y se bien de lo que hablo
                     <a>La</a>  <a>Do#7</a>             <a>Fa#m</a>
 Dicen que lo puede todo y no le puede al diablo
                           <a>Sim</a>
-Dios no es justo si en la brecha 
+Dios no es justo si en la brecha
                      <a>Do#7</a>
 de la historia imperialista
                    <a>Sim</a> <a>Do#7</a>              <a>Fa#m</a>
@@ -73,31 +73,31 @@ Ha sentado a su derecha a su hijo el comunista
           <a>Sim</a>      <a>Mi7</a>           <a>La</a>        <a>Fa#m</a>
 Y no es tampoco creador, como escribió Jerusalén
              <a>Sim</a>         <a>Do#7</a>
-El hombre no es obra de Dios 
+El hombre no es obra de Dios
                 <a>Fa#m</a> <a>Do#7</a> <a>Fa#m</a>
 que es Dos quien es obra de él
-<a>Fa#7</a>   <a>Sim</a>               <a>Mi7</a>  
-Y como yo le dije tantas veces 
+<a>Fa#7</a>   <a>Sim</a>               <a>Mi7</a>
+Y como yo le dije tantas veces
           <a>Do#7</a>                  <a>Fa#m</a>
 si nos condena no habrá quien le rece
           <a>Sim</a>                <a>Fa#m</a>
-Ni tierra tanta, ni tantas guerras, 
+Ni tierra tanta, ni tantas guerras,
           <a>Re</a>                 <a>Mi</a>
 ni santa tierra, ni guerra santa
 
 
 <a>Lam</a>
 Historia de capitanes, de religiones enterradas
-                       <a>Re</a>         <a>Do</a>         
-Si en algo reconozco el rostro de Dios padre 
+                       <a>Re</a>         <a>Do</a>
+Si en algo reconozco el rostro de Dios padre
     <a>Lam</a>            <a>Sol</a>
 es en el agua de los mares
 <a>Lam7</a>
-En la perfección de la calma, 
+En la perfección de la calma,
 
 la espuma en la misericordia
 
-En la justicia como el alma 
+En la justicia como el alma
 
 de sus misterios como su fondo
                                        <a>Sol</a>
@@ -111,7 +111,7 @@ Y en el infinito como horizonte de los mares
 <a>Lam</a>
 Historia de capitanes de los secretos escondidos
                       <a>Re</a>             <a>Do</a>
-Y te llamas como la mujer que más me ama 
+Y te llamas como la mujer que más me ama
       <a>Lam7</a>      <a>Sol</a>
 y he querido ,ay mare
 <a>Lam7</a>                 <a>Re</a>  <a>Lam7</a>                   <a>Re</a>
@@ -138,77 +138,77 @@ Y tengo abierta las alas pa que te vengas conmigo.
 <a>Mi7</a>
 Porque lo que tu me has dao no me lo quita naide prima
 <a>Do</a>
-Cada mañana la guerra, y el amor cada tarde 
+Cada mañana la guerra, y el amor cada tarde
                                      <a>Sol</a>
 y noches, y noches de amnistía y libertad.
-<a>Do</a>        <a>Sol</a>         <a>Lam</a>    
-Yo quiero ser tu compañero 
+<a>Do</a>        <a>Sol</a>         <a>Lam</a>
+Yo quiero ser tu compañero
          <a>Fa</a>            <a>Sol</a>           <a>Lam</a> <a>Sol7</a>
 y cuando digas cruz por mí, por ti primero
-<a>Do</a>        <a>Sol</a>         <a>Lam</a>    
-Yo quiero ser tu compañero 
+<a>Do</a>        <a>Sol</a>         <a>Lam</a>
+Yo quiero ser tu compañero
          <a>Fa</a>             <a>Mi7</a>
-y cuando digas cruz por mí, 
+y cuando digas cruz por mí,
 
 
     <a>Lam</a>
-Y primero es el Juicio Final 
+Y primero es el Juicio Final
 
 y el final es el Juicio Primero.
-      <a>Sol</a>                      
-Donde cada nacido mortal 
+      <a>Sol</a>
+Donde cada nacido mortal
 
 que provoque la ira del Padre,
    <a>Lam</a>
-Pagará su pecado con fuego, 
+Pagará su pecado con fuego,
 
 como yo lo pagué desterrado.
      <a>Sol</a>
 Y cuidado con estos que digo,
 
 que del Padre provocan la ira.
-              <a>Lam</a>               
-Los que en su nombre construyen 
+              <a>Lam</a>
+Los que en su nombre construyen
    <a>Sol</a>              <a>Lam</a>  <a>Fa</a> <a>Mi7</a>
 y adoran becerros de oro.
               <a>Lam</a>                  <a>Sol</a>
-Los que en su nombre hacen las catedrales 
+Los que en su nombre hacen las catedrales
             <a>Lam</a>  <a>Sol7</a>
 y fundan imperios.
               <a>Do</a>                  <a>Sol</a>
-Los que en su nombre provocan la guerra 
+Los que en su nombre provocan la guerra
               <a>Lam</a>
 y derraman la sangre.
          <a>Fa</a>                                      <a>Mi7</a>
 Y en su nombre bendicen demonios que inventan sus leyes
-            <a>Lam</a>               <a>Sol</a>     
-Los que en su nombre predican pobreza 
+            <a>Lam</a>               <a>Sol</a>
+Los que en su nombre predican pobreza
            <a>Lam</a>  <a>Fa</a> <a>Mi7</a>
 de oro cubiertos
               <a>Lam</a>               <a>Sol</a>
-Los que en su nombre asustan al hombre 
+Los que en su nombre asustan al hombre
                <a>Lam</a>   <a>Sol7</a>
 abrazando al Estado.
                <a>Do</a>                  <a>Sol</a>
-Los que en su nombre quebrantan la vida civil 
+Los que en su nombre quebrantan la vida civil
        <a>Lam</a>
 con el miedo.
        <a>Fa</a>                                   <a>Mi7</a>
 En su nombre también sufrirán los castigos divinos.
-                 
-(castigo divino): 
+
+(castigo divino):
       <a>Lam</a>
 no amarán ni serán nunca amados.
 
-(castigo divino): 
+(castigo divino):
 
 no tendrán descendencia en tres vidas.
 
-(castigo divino): 
+(castigo divino):
         <a>Sol</a>
 no hallarán mas hogar que el desierto.
 
-(castigo divino): 
+(castigo divino):
 
 no verán un eclipse de luna.
 
@@ -216,17 +216,17 @@ no verán un eclipse de luna.
       <a>Lam</a>
 no podrán pronunciar sus palabras.
 
-(castigo divino): 
+(castigo divino):
 
 no serán libres como cualquiera.
 
-(castigo divino): 
+(castigo divino):
        <a>Sol</a>
 no querrán que los mire la gente.
 
-(castigo divino): 
+(castigo divino):
 
-y no irán a Conil una noche 
+y no irán a Conil una noche
         <a>Lam</a>  <a>La7</a>      <a>Re</a>
 de primavera, de primavera
 

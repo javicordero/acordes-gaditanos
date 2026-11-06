@@ -74,56 +74,56 @@ el ancla lanzar de nuevo para cantarle a mi pueblo
 
 <strong>Cejilla: No</strong>
 
-<a>Lam</a>             <a>Mim</a>        
-Turbulencias cuidado timonel 
+<a>Lam</a>             <a>Mim</a>
+Turbulencias cuidado timonel
 <a>Fa</a>                 <a>Mi7</a>
 los malos vientos quieren arrastrarte
-<a>Lam</a>             <a>Do</a>              
-Hay que ganar altura y ascender 
+<a>Lam</a>             <a>Do</a>
+Hay que ganar altura y ascender
     <a>Re</a>               <a>Mi7</a>
 deprisa Cádiz corre, corre y suelta el lastre
-<a>Lam</a> <a>Do</a> <a>Re</a>    <a>Mi7</a>                   
-Uhhhhhhhhh, Cádiz suelta el lastre, 
-<a>Lam</a> <a>Do</a> <a>Re</a>    <a>Mi7</a>                   
-Uhhhhhhhhh, Cádiz suelta el lastre, 
-<a>Lam</a>                  <a>Mi7</a>            
-Los que te usaron pa sus trapicheos 
+<a>Lam</a> <a>Do</a> <a>Re</a>    <a>Mi7</a>
+Uhhhhhhhhh, Cádiz suelta el lastre,
+<a>Lam</a> <a>Do</a> <a>Re</a>    <a>Mi7</a>
+Uhhhhhhhhh, Cádiz suelta el lastre,
+<a>Lam</a>                  <a>Mi7</a>
+Los que te usaron pa sus trapicheos
 <a>Lam</a>            <a>Mim</a>
 alcaldes de promesas milagreas
 <a>Rem</a>                   <a>Lam</a>
-Tantos traidores a su gente y su pueblo 
+Tantos traidores a su gente y su pueblo
        <a>Mi7</a>
 por la borda por la borda pa fuera
-<a>Lam</a>                  <a>Mi7</a>            
-Mas pisos turísticos en candelaria 
+<a>Lam</a>                  <a>Mi7</a>
+Mas pisos turísticos en candelaria
 <a>Lam</a>             <a>Mim</a>
 la gente mía viviendo en ratoneras
-<a>Rem</a>                <a>Lam</a>               
+<a>Rem</a>                <a>Lam</a>
 El gran cortijo de las inmobiliarias
        <a>Mi7</a>
 por la borda por la borda pa fuera
-<a>Sim</a>                            
-Chovinistas de patio de recreo 
+<a>Sim</a>
+Chovinistas de patio de recreo
               <a>Sol</a>
 gaditas de boquilla y posturitas pajilleras
      <a>Re</a>
-Que cuando hay que luchar no mueve un deo 
+Que cuando hay que luchar no mueve un deo
        <a>Fa#7</a>
 por la borda pa fuera
 <a>Do#m</a>
-Diarios de carcoma y de mentiras 
+Diarios de carcoma y de mentiras
                 <a>La</a>
 hosteleros esclavistas de sucia billetera
      <a>Mi</a>
-Los tontos que revientan de la envidia 
+Los tontos que revientan de la envidia
               <a>Sol#</a>
 al mismísimo carajo por la borda pa fuera
       <a>La</a>
-Las vecinas pa dentro los rentistas pa fuera 
+Las vecinas pa dentro los rentistas pa fuera
        <a>Si7</a>                                      <a>Sol#m7</a>
 la alegría pa dentro la llantina la llantina pa fuera
                <a>La</a>                   <a>Fa#m7</a>
-Astilleros pa dentro el ruinaso pa fuera 
+Astilleros pa dentro el ruinaso pa fuera
                 <a>La</a>                   <a>Si7</a>
 la juventud pa dentro los concejales fuera
        <a>Mi</a>
@@ -135,13 +135,13 @@ Mi catedral va pa dentro pero el obispo pa fuera
      <a>Si7</a>
 Paco Alba pa dentro y Pemán a la mierda
      <a>Mi</a>
-Y tu cara pa dentro y tus máscaras fuera 
+Y tu cara pa dentro y tus máscaras fuera
       <a>Do#m</a>
 y tus besos pa dentro y las uñas pa fuera
-       <a>La</a>                                
-Ya ganamos altura y en el hueco que queda 
-      <a>Fa#m7</a>                <a>Si7</a>  
-la pasión y el calor de mi gente 
+       <a>La</a>
+Ya ganamos altura y en el hueco que queda
+      <a>Fa#m7</a>                <a>Si7</a>
+la pasión y el calor de mi gente
                       <a>Mi</a> <a>Lam7</a>
 que se suban cuando quieran
 
@@ -207,25 +207,25 @@ Estrellita esta noche yo os rezo por mi tierra
 
 
 <a>Lam</a>                     <a>Do</a>                <a>Sol</a>
-Y mirando al mar y su reflejo con este catalejo 
+Y mirando al mar y su reflejo con este catalejo
        <a>Mi7</a>       <a>Lam</a>
 yo vi venir a lo lejos
 <a>Fa</a>                       <a>Do</a>                     <a>Sol</a>
 La gran ola enorme del futuro no veas si viene oscuro
                     <a>Fa</a>
-Y mientras ustedes ahí unos que no 
+Y mientras ustedes ahí unos que no
                        <a>Mi7</a>
 otros que si que no que si
     <a>Lam</a>             <a>Do</a>       <a>Sol</a>          <a>Fa</a>
 Que viene ya el maremoto el nuevo milenio ya veras
-    <a>Lam</a>                 <a>Do</a> 
-Que viene a por tos vosotros 
+    <a>Lam</a>                 <a>Do</a>
+Que viene a por tos vosotros
        <a>Re</a>              <a>Mi7</a>
 y amo a vé de ustedes quien lo va a parar
     <a>Lam</a>             <a>Do</a>      <a>Sol</a>         <a>Fa</a>
 Que llega dentro de poco la ola gigante viene ya
      <a>Lam</a>            <a>Do</a>        <a>Re</a>
-Ahí viene el futuro loco como no frenéis a tiempo 
+Ahí viene el futuro loco como no frenéis a tiempo
          <a>Mi7</a>
 y lo cambiéis tu verá
           <a>Fa</a>
@@ -242,8 +242,8 @@ ni echarle la culpa al otro
 Aunque sea por vuestros hijos y vuestras hijas parad
       <a>Fa</a>                                     <a>Mi7</a>
 Menos mal que del mundo mi Cádiz ha echado a volar
-            <a>Lam</a> <a>Do</a> <a>Mi7</a> <a>Lam</a>                 
-y no va a estaaaaaaaaaaaar 
+            <a>Lam</a> <a>Do</a> <a>Mi7</a> <a>Lam</a>
+y no va a estaaaaaaaaaaaar
                 <a>Lam</a> <a>Do</a> <a>Re</a> <a>Mi7</a>
 arriba capitán ahhhh
 

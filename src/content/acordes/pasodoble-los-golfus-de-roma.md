@@ -14,18 +14,18 @@ fraseClave: En frente del Sindicato, con un retrato del Ché
 <pre>
 <a>Mim</a>                <a>Si7</a> <a>Do7</a>          <a>Si7</a>          <a>Mim</a>
 En frente del Sindicato con un retrato del Ché Guevara
-<a>Mim</a>                <a>Re</a>  
-fueron tantísimos besos 
+<a>Mim</a>                <a>Re</a>
+fueron tantísimos besos
               <a>Do</a>             <a>Si7</a>
 que ya no recuerdo porqué protestaba.
 
 
-<a>Mim</a>                <a>Si7</a>  
+<a>Mim</a>                <a>Si7</a>
 En frente del Sindicato,
                   <a>Mim</a>
 y por detrás de la mar columela,
 
-Verla junto a mi en esos instantes, 
+Verla junto a mi en esos instantes,
                                              <a>Re</a>
 con la voz manifestante de mi pueblo en rebeldia,
 
@@ -36,16 +36,16 @@ con la suya todavia,
 apretando que podia pedir Patria y Libertad,
                        <a>Do</a>    <a>Lam7</a>                 <a>Si7</a>
 que estaba en juego la Paz y el resto de nuestras vidas
-<a>Mim</a>                <a>Re</a>   
-La foto del Ché Guevara 
+<a>Mim</a>                <a>Re</a>
+La foto del Ché Guevara
                <a>Do</a>             <a>Si7</a>
 nos volvió la cara porque sonreía.
-<a>Mi</a>                 <a>Fa#m</a>   <a>Si7</a>           <a>Mi</a> 
-Y despues vino del cielo, una noche colosal 
+<a>Mi</a>                 <a>Fa#m</a>   <a>Si7</a>           <a>Mi</a>
+Y despues vino del cielo, una noche colosal
   <a>Do#7</a>              <a>Fa#M</a>   <a>Si7</a>              <a>Mi</a>
 de la que los guerrilleros nunca pueden olvidar.
-        <a>MiM7</a> <a>Sol#m</a> <a>Do#7</a>   <a>Fa#m</a>   
-La luna nos presto su luz tambien, 
+        <a>MiM7</a> <a>Sol#m</a> <a>Do#7</a>   <a>Fa#m</a>
+La luna nos presto su luz tambien,
              <a>Si7</a>         <a>Mi</a>
 la humedad se vino con nosotros.
 <a>Mi</a>   <a>MiM7</a> <a>Sol#m</a> <a>Do#7</a>  <a>Fa#m</a>  <a>La</a>       <a>Si7</a>        <a>Mi</a>

@@ -16,7 +16,7 @@ fraseClave: Contemplando el Campo del Sur sólo me queda decir
 <a>LaM7</a>            <a>Sim7</a>      <a>Mi7</a>                 <a>LaM7</a>
 Contemplando el Campo del Sur sólo me queda decir
          <a>Fa#7</a>       <a>Sim7</a>
-Ay qué bonito es mi Cai 
+Ay qué bonito es mi Cai
                                                 <a>Mi7</a>
 Y del Puente Hierro al Canal Se produce una quietud
 <a>Sim7</a>       <a>Mi7</a>        <a>LaM7</a>

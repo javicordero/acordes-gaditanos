@@ -16,40 +16,40 @@ fraseClave: Ábre los ojos, abre los ojos, mira la multitud
 Ábre los ojos, abre los ojos, mira la multitud
                                 <a>Sol</a>
 Mira la gente buena y corriente que nos regala luz
-                                   <a>Re</a>    
-Que nunca nos falte la luz pa que veamos 
+                                   <a>Re</a>
+Que nunca nos falte la luz pa que veamos
 <a>Mim</a>                           <a>Doadd9</a>
 a quien de mañana nos da buenos días
                                 <a>Sim7</a>
-A quien no se da por vencido a tu lado 
+A quien no se da por vencido a tu lado
                         <a>Lam7</a>             <a>Re7</a>
 y a quienes comparten tus llantos y tus risas
-<a>Sol</a>                                 <a>Re</a>  
-La luz pequeñita que brilla en los faros 
+<a>Sol</a>                                 <a>Re</a>
+La luz pequeñita que brilla en los faros
 <a>Mim</a>                           <a>Doadd9</a>
 la risa encendida de quienes nos aman
                                  <a>Sim7</a>
-Tu madre diciendo aquí están mis manos, 
+Tu madre diciendo aquí están mis manos,
                        <a>Lam7</a>       <a>Re7</a>
 tu padre diciendo aquí está tu casa
 <a>Sol</a>                             <a>Doadd9</a>
 Cuantos luceros cuantos fareros hay a tu alrededor
                               <a>Sol</a>
 Mira de nuevo, mira sin miedo, mira su resplandor
-                                       <a>Re</a>  
-La luz de un amor que no es mío ni es tuyo 
+                                       <a>Re</a>
+La luz de un amor que no es mío ni es tuyo
 <a>Mim</a>                          <a>Doadd9</a>
 tu amigo y tu amiga ahí siempre contigo
                            <a>Sim7</a>
-Tu niña diciendo papá yo te ayudo, 
+Tu niña diciendo papá yo te ayudo,
                        <a>Lam7</a>         <a>Re7</a>
 tu hermano que dice tú cuenta conmigo
-<a>Sol</a>                                <a>Re</a> 
-Sonrisas que brillan por las escaleras 
+<a>Sol</a>                                <a>Re</a>
+Sonrisas que brillan por las escaleras
 <a>Mim</a>                            <a>Doadd9</a>
 por calles y aceras por bloques y barrios
                                  <a>Sim7</a>
-De aquel lucerito que tiembla en el cielo 
+De aquel lucerito que tiembla en el cielo
               <a>Mi7</a>         <a>Lam7</a>            <a>Re7</a>
 y que es el recuerdo de quienes marcharon
 
@@ -60,9 +60,9 @@ Son la luz resplandeciente que ilumina nuestros días
 Son el faro verdadero, son las luces que más brillan
                          <a>Lam7</a>             <a>Dom7</a>
 Son los benditos luceros, son los benditos luceros
-<a>Re</a>                     <a>Sol</a>  
-Que iluminan nuestras vidas, 
-<a>Do</a>                     <a>Sol</a>  
+<a>Re</a>                     <a>Sol</a>
+Que iluminan nuestras vidas,
+<a>Do</a>                     <a>Sol</a>
 que iluminan nuestras vidas
 <a>Do</a>                  <a>Dom7</a> <a>Sol</a>
 Que iluminan nuestras vidas

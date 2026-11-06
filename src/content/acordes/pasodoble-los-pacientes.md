@@ -14,51 +14,51 @@ fraseClave: Dios hizo la marea, la lluvia y el relente,
 <pre>
               <a>Lam</a> <a>Mi7</a>                <a>Lam</a>
 Dios hizo la marea, la lluvia y el relente,
-Dios hizo la paciencia 
+Dios hizo la paciencia
                                   <a>Mi7</a>
 para que los hombres todo lo entendiesen.
 
 Dios hizo el oleaje, la roca, el cangrejo.
                      <a>Rem</a>          <a>Fa</a>
-El hombre hizo de espejo para reflejarse 
+El hombre hizo de espejo para reflejarse
                 <a>Mi7</a>
 en el fondo del mar.
                        <a>Lam</a>  <a>La7</a>                <a>Rem</a>
 Y el hombre que hoy les lanza coplas en sus aparejos
 
-Tiene tan vivo el recuerdo de niño 
+Tiene tan vivo el recuerdo de niño
                                  <a>Lam</a>
 cuando dijo “abuelo, yo quiero pescar”.
-El viejo entonces le dijo sonriente, 
+El viejo entonces le dijo sonriente,
                                 <a>Mi7</a>
 “Puedo enseñarte a que seas paciente,
                     <a>Rem</a>                <a>Mi7</a>
-Todo llega en su momento, pero estate atento, 
+Todo llega en su momento, pero estate atento,
              <a>Lam</a>
 no pierdas puntá”.
      <a>La7</a>          <a>Rem</a>
-Le enseñó… a encarnarse, dar el alma y corazón 
+Le enseñó… a encarnarse, dar el alma y corazón
                     <a>Lam</a>
 en cada uno de sus lances,
                                               <a>Mi7</a>
 A colocar anzuelos, mirar los vientos, echar anguaje
-Hoy ya creció ese niño, ¡ya no busca en ríos, 
+Hoy ya creció ese niño, ¡ya no busca en ríos,
                 <a>La</a>
 hoy pesca en el mar!
 
-Y en el jardín de las aguas benditas, 
+Y en el jardín de las aguas benditas,
 
 planta su caña de noche y de día,
-                                            
-El oficio más noble, va tirando pasodobles, 
+
+El oficio más noble, va tirando pasodobles,
 <a>Fa#7</a>          <a>Sim</a>
 aaaay a ver si pican.
-                           <a>Mi7</a>      
-Ya no le pide permiso a la historia, 
+                           <a>Mi7</a>
+Ya no le pide permiso a la historia,
 <a>Sim7</a>                            <a>Mi7</a>
 ni a las estrellas que exigen su gloria,
-               <a>Sim</a>             <a>Mi7</a> 
-Guarda en su memoria cada decepción 
+               <a>Sim</a>             <a>Mi7</a>
+Guarda en su memoria cada decepción
                 <a>La</a>
 le sirve y resucita
    <a>Mi7</a>                           <a>La</a>
@@ -68,13 +68,13 @@ Porque eres su esperanza, su fe, su templanza,
             <a>Re</a>
 su sal y su mar.
 <a>Rem</a>                           <a>Lam</a>
-Mares, tan profundos, tan vulgares, 
+Mares, tan profundos, tan vulgares,
                  <a>Mi7</a>
 tan divinos, tan salvajes,
                    <a>Lam</a> <a>La7</a>
 Tanto dan y quitan vidas.
 <a>Rem</a>                                   <a>Lam</a>
-Mares de los gaditanos que cantan sus coplas, 
+Mares de los gaditanos que cantan sus coplas,
                                <a>Mi7</a>
 que en escolleras venden sus derrotas.
 

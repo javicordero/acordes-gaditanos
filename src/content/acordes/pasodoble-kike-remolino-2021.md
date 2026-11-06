@@ -26,10 +26,10 @@ me quedo yo en mi casa
    <a>Rem</a>    <a>La</a> <a>Fa#7</a>            <a>Sim7</a>  <a>Mi7</a>         <a>LaM7</a>
 Que no, o si ya veremos qué pasa, ya veremos qué pasa
            <a>Mi7</a>                   <a>LaM7</a>
-De momento Septiembre con la melancolía  
+De momento Septiembre con la melancolía
                   <a>Mi7</a>                  <a>LaM7</a>
 de tirar para el ensayo con la mirada perdía
-<a>La7</a>               <a>Re</a>   <a>Rem</a>                <a>La</a>    <a>Fa#7</a> 
+<a>La7</a>               <a>Re</a>   <a>Rem</a>                <a>La</a>    <a>Fa#7</a>
 Luego vi entrar Octubre con sus días tan grises,
              <a>Sim7</a>     <a>Mi7</a>         <a>LaM7</a>
 qué pena mi guitarra, nunca la ví tan triste
@@ -42,15 +42,15 @@ Que no, que no, que no , que no , que no , que no,
 <a>Sim7b5</a>      <a>La</a>
 como voy a aguantarme
 <a>La7</a>          <a>Re</a>         <a>Mi7</a>
-Si es que Febrero no es solo 
-                         <a>Do#m7</a> 
-ese mes chiquitito del almanaque 
+Si es que Febrero no es solo
+                         <a>Do#m7</a>
+ese mes chiquitito del almanaque
          <a>Fa#7</a>                         <a>Sim7</a>
 que me libera y me vuelve loquito de remate,
 <a>Mi7</a>              <a>Sim7</a>  <a>Mi7</a>     <a>La</a>
 Que como a tantos locos ay de remate
-    <a>Re</a>                   <a>Mi7</a>         <a>Do#m7</a>   
-Que no de sobra sabe el teatro que volveremos, 
+    <a>Re</a>                   <a>Mi7</a>         <a>Do#m7</a>
+Que no de sobra sabe el teatro que volveremos,
 <a>Fa#7</a>       <a>Sim7</a> <a>Mi7</a>                <a>Sim7</a>     <a>Mi7</a>
 pero yo necesito un rincón pequeñito, ay pequeñito
 <a>Sim7</a>             <a>Mi7</a>          <a>Sim7b5</a>      <a>La</a>

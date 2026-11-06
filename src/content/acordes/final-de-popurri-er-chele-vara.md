@@ -13,39 +13,39 @@ fraseClave: "Llegó ese final que el"
 ---
 <pre>
 <a>Lam</a>                          <a>Rem</a>
-Llegó ese final que el público esperó, 
+Llegó ese final que el público esperó,
                       <a>Sol7</a>
 entre la incosnita y el resquemor
                             <a>Do</a>        <a>Fa</a>        <a>Mi7</a>
 De que es lo que aquí se cantó será ironía por favor
 <a>Lam</a>                  <a>Rem</a>
-Ajolá sea una crítica original, 
+Ajolá sea una crítica original,
                     <a>Sol7</a>
 doble sentido fino y señorial
-                      <a>Do</a>    
+                      <a>Do</a>
 Del que derrocha esta ciudad
            <a>Fa</a>          <a>Mi7</a>
 en cuanto llega el carnaval
-<a>Lam7</a>                       <a>Rem</a>        
+<a>Lam7</a>                       <a>Rem</a>
 Y resulte que lo que aquí se defendió
         <a>Mi7</a>             <a>Lam</a>
 sea un Cádiz más cosmopolita
- <a>Lam7</a>                     <a>Rem</a>   
-Una forma de abrir a esta tierra 
+ <a>Lam7</a>                     <a>Rem</a>
+Una forma de abrir a esta tierra
              <a>Mi7</a>                 <a>Lam</a>
 por fin más allá de la propia Tacita
                          <a>Rem</a>
-Po no ¿Tengo la cara yo de irónico? 
+Po no ¿Tengo la cara yo de irónico?
                     <a>Sol7</a>
 ¿Parezcole un recurso cómico?
                        <a>Do</a>     <a>Fa</a>                 <a>Mi7</a>
 No se me vaya a esquivocá lo estoy diciendo de verdad
-   <a>Lam7</a>                  <a>Rem</a>            
-Gaditano a luchar por su tierra y tu mar 
+   <a>Lam7</a>                  <a>Rem</a>
+Gaditano a luchar por su tierra y tu mar
        <a>Mi7</a>                <a>Lam</a>
 que si los Chele Vara triunfamos
-     <a>Lam7</a>                 <a>Rem</a>        
-Esta hermosa ciudad algún día, ajolá, 
+     <a>Lam7</a>                 <a>Rem</a>
+Esta hermosa ciudad algún día, ajolá,
     <a>Mi7</a>               <a>Lam</a>
 será solo pa los gaditanos
 
@@ -53,15 +53,15 @@ Con la seguridad que el alcalde estará
 
 con el Chere, si, mano con mano
 
-Porque si no lo está en las municipal, 
+Porque si no lo está en las municipal,
                       <a>Lam</a>
 ahora vamos votar ciudadanos
-   <a>Lam7</a>                  <a>Rem</a>            
-Gaditano a luchar por su tierra y tu mar 
+   <a>Lam7</a>                  <a>Rem</a>
+Gaditano a luchar por su tierra y tu mar
        <a>Mi7</a>                <a>Lam</a>
 que si los Chele Vara triunfamos
-     <a>Lam7</a>                 <a>Rem</a>        
-Esta hermosa ciudad algún día, ajolá, 
+     <a>Lam7</a>                 <a>Rem</a>
+Esta hermosa ciudad algún día, ajolá,
     <a>Mi7</a>               <a>Lam</a>
 será solo pa los gaditanos
      <a>Mi7</a>                            <a>Lam</a>

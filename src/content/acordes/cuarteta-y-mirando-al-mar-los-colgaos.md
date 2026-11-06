@@ -12,25 +12,25 @@ fraseClave: Y mirando al mar y su reflejo con este catalejo
 ---
 <pre>
 <a>Lam</a>                     <a>Do</a>                <a>Sol</a>
-Y mirando al mar y su reflejo con este catalejo 
+Y mirando al mar y su reflejo con este catalejo
        <a>Mi7</a>       <a>Lam</a>
 yo vi venir a lo lejos
 <a>Fa</a>                       <a>Do</a>                     <a>Sol</a>
 La gran ola enorme del futuro no veas si viene oscuro
                     <a>Fa</a>
-Y mientras ustedes ahí unos que no 
+Y mientras ustedes ahí unos que no
                        <a>Mi7</a>
 otros que si que no que si
     <a>Lam</a>             <a>Do</a>       <a>Sol</a>          <a>Fa</a>
 Que viene ya el maremoto el nuevo milenio ya veras
-    <a>Lam</a>                 <a>Do</a> 
-Que viene a por tos vosotros 
+    <a>Lam</a>                 <a>Do</a>
+Que viene a por tos vosotros
        <a>Re</a>              <a>Mi7</a>
 y amo a vé de ustedes quien lo va a parar
     <a>Lam</a>             <a>Do</a>      <a>Sol</a>         <a>Fa</a>
 Que llega dentro de poco la ola gigante viene ya
      <a>Lam</a>            <a>Do</a>        <a>Re</a>
-Ahí viene el futuro loco como no frenéis a tiempo 
+Ahí viene el futuro loco como no frenéis a tiempo
          <a>Mi7</a>
 y lo cambiéis tu verá
           <a>Fa</a>
@@ -47,8 +47,8 @@ ni echarle la culpa al otro
 Aunque sea por vuestros hijos y vuestras hijas parad
       <a>Fa</a>                                     <a>Mi7</a>
 Menos mal que del mundo mi Cádiz ha echado a volar
-            <a>Lam</a> <a>Do</a> <a>Mi7</a> <a>Lam</a>                 
-y no va a estaaaaaaaaaaaar 
+            <a>Lam</a> <a>Do</a> <a>Mi7</a> <a>Lam</a>
+y no va a estaaaaaaaaaaaar
                 <a>Lam</a> <a>Do</a> <a>Re</a> <a>Mi7</a>
 arriba capitán ahhhh
 </pre>

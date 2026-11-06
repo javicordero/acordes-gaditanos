@@ -30,25 +30,25 @@ Porque no se leer ni se escribir
 Por comerme los puntos y las comas
    <a>Fa#m</a>       <a>Fa#7</a>      <a>Si7</a>
 Yo soy mala persona para ti
-         <a>La</a>     <a>Si7</a>           
-La analfabeta aprende carnaval 
+         <a>La</a>     <a>Si7</a>
+La analfabeta aprende carnaval
                  <a>Sol#m7</a>
 en un banquito de la caleta
          <a>Do#7</a>
-Y voy contando las olas de tu mar 
+Y voy contando las olas de tu mar
       <a>Fa#m7</a>
 y multiplico los te quieros
          <a>Do</a>           <a>Si7</a>      <a>Do#m7</a>
 Con mi guitarra por febrero en carnaval
          <a>La</a>          <a>Si7</a>
-La analfabeta da clasecitas de carnaval 
+La analfabeta da clasecitas de carnaval
               <a>Sol#m7</a>
 en un banquito de la caleta
          <a>Do#7</a>
-Y voy contando las olas de tu mar 
+Y voy contando las olas de tu mar
       <a>Fa#m7</a>
 y multiplico los te quieros
-         <a>Do</a>           <a>Si7</a>  
+         <a>Do</a>           <a>Si7</a>
 Con mi guitarra por febrero
     <a>La</a>                  <a>Si7</a>
 No tengo profesión ni estudios ni carrera

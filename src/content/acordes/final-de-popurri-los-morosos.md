@@ -12,20 +12,20 @@ video: 'https://www.youtube.com/embed/bivvVH5Dzw0?feature=player_embedded'
 fraseClave: Me pregunte a mí mismo que tendrá este rinconcito
 ---
 <pre>
-<a>Sol</a>                   
-Me pregunte a mí mismo 
+<a>Sol</a>
+Me pregunte a mí mismo
        <a>Do</a>             <a>Re7</a>     <a>Sol</a>
 que tendrá este rinconcito plateao
 
-Que todo el que aquí pisa cuando sale, 
+Que todo el que aquí pisa cuando sale,
               <a>Sim7</a>
 sale ya loco perdio
    <a>Do</a>
-Que lleva tan adentro en sus entrañas 
+Que lleva tan adentro en sus entrañas
 
 que pa siempre esta entrampao
-    <a>Re7</a>                     <a>Do</a>   
-Y yo te llevo tanto y tan adentro 
+    <a>Re7</a>                     <a>Do</a>
+Y yo te llevo tanto y tan adentro
         <a>Re7</a>         <a>Sol</a>
 que te juro que no vivo
                                   <a>Sol</a>
@@ -43,11 +43,11 @@ El agua mas clarita y más salada
                             <a>Re7</a>
 y un techo de estrellitas plateás
              <a>Sol</a>
-Te debo una calle que abraza y calienta 
+Te debo una calle que abraza y calienta
            <a>Sim7</a>
 te debo un teatro rojo que alimenta
             <a>Do</a>
-Debo mi sonrisa, que en alma llevo, 
+Debo mi sonrisa, que en alma llevo,
             <a>Re7</a>
 Cádiz de mi alma, ay cuanto te debo
            <a>Sol</a>
@@ -55,11 +55,11 @@ Debo una guitarra que explota en mi pecho, debo
       <a>Sim7</a>
 unos acordes que rompe el silencio
                    <a>Do</a>
-Debo el tres por cuatro más chirigotero, 
+Debo el tres por cuatro más chirigotero,
           <a>Re7</a>
 debo siete años de un amor sincero
-                  
-Mi corazón me dijo 
+
+Mi corazón me dijo
          <a>Do</a>            <a>Re7</a>          <a>Sol</a>
 que por qué no iba a venir acantarte Cádiz
 </pre>

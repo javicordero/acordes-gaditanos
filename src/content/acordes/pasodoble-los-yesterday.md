@@ -41,7 +41,7 @@ Menos rollo de verdes mares,
                     <a>La7</a>
 de campiñas y de olivares,
                           <a>Re</a>
-que así luego nos luce el pelo. 
+que así luego nos luce el pelo.
 
 Casta, después te ponen la serie de Emilio Aragón,
              <a>La</a>

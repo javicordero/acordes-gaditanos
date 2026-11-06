@@ -13,15 +13,15 @@ fraseClave: "Años, cuarenta y pico de"
 ---
 <pre>
 <a>Rem</a> <a>La7</a>               <a>Rem</a>
-Años, cuarenta y pico de años 
+Años, cuarenta y pico de años
                              <a>Sol7</a>             <a>Do7</a>
 que me he llevao hincando el pespunte la almohada.
      <a>Sol7</a>                    <a>Do7</a>
-Años mientras que andaba soñando 
+Años mientras que andaba soñando
 <a>Sol7</a>               <a>Do7</a>   <a>Fa7</a>                   <a>Sib7</a>
 cómo estaría esta tierra el día en el que despertara.
                       <a>Solm7</a>
-Años pa sufrir el desengaño de comprobar 
+Años pa sufrir el desengaño de comprobar
      <a>Do7</a>         <a>Sib7</a>       <a>La7</a>
 que la cosa sigue estando regular.
 <a>Rem</a> <a>La7</a>               <a>Rem</a>  <a>Sol7</a>                  <a>Do7</a>
@@ -31,11 +31,11 @@ De puestecitos y jardines, de fachada y pandereta,
                  <a>Solm7</a>   <a>Mi7</a>            <a>La7</a>
 Que solamente persigue enmascarar su verdad.
                      <a>Solm7</a> <a>Solm7M</a> <a>Solm7</a>
-Cádiz sin lucha ni obreros,                  
+Cádiz sin lucha ni obreros,
                     <a>Rem</a>
 Cádiz sin los astilleros,
                         <a>Sib</a>
-Cádiz al que ni el vaporcito 
+Cádiz al que ni el vaporcito
                       <a>Solm7</a>      <a>Mi7</a>        <a>La7</a>
 ya se acerca a sus barquitos pa ponerse a ronear.
            <a>Re</a>     <a>Sol</a>      <a>La7</a>           <a>Re</a>
@@ -45,11 +45,11 @@ Cádiz sin calles ni aceras taconeadas por cigarreras
                   <a>Mim</a>
 Cádiz sin muelle pesquero,
                   <a>La7</a>
-Cádiz de risas y llantos, de contrabando, 
+Cádiz de risas y llantos, de contrabando,
                                                <a>Re</a>
 cuentas de embargo, Cádiz de fiesta y de cachondeo.
 <a>Sol</a>
-Cai la tierra que sostiene sus miserias 
+Cai la tierra que sostiene sus miserias
         <a>Fa#m</a>
 en cañas de pescar
                             <a>Si7</a>             <a>Mim</a>

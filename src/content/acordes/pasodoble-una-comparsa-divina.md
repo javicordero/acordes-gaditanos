@@ -25,21 +25,21 @@ Y por su alegría, le di compañera
    <a>Mim</a>        <a>Lam7</a>     <a>Si7</a>       <a>Mim</a>
 Y lo que os contaron de Eva fue cierto
 
-Adán en un sueño cayó 
+Adán en un sueño cayó
                                      <a>Re</a>
 en la tarde que yo, le arranqué la costilla
 
-Y fue tan divino el amor con que el escultor, 
+Y fue tan divino el amor con que el escultor,
                  <a>Lam7</a>
 le tallara aquél hueso.
      <a>Do</a>            <a>Lam7</a>                <a>Do7/Sib</a>
-Que núnca le supe decir, que saliera de mí, 
+Que núnca le supe decir, que saliera de mí,
             <a>Si7</a>
 aquella maravilla.
                <a>Mim</a>                  <a>Sol</a>
 De su rubisimo pelo una trenza le colgó
                         <a>Re</a>      <a>Sol</a>
-Que hasta su vientre desnudo cubrió 
+Que hasta su vientre desnudo cubrió
                   <a>Re</a>
 lo demás no quise verlo.
                                             <a>Sol</a>
@@ -63,13 +63,13 @@ Y desde aquel mismo instante arrastro la penitencia
                   <a>Si7</a>                     <a>Mim</a>
 De verla sobre la tierra, sin tenerla para mi
 <a>Mi7</a>             <a>Lam7</a>                 <a>Si7</a>
-Y si vuelvo a repetir, una creación divina 
+Y si vuelvo a repetir, una creación divina
                     <a>Mim</a>
 y hago una cosa tan bella
 <a>Lam7</a>                                        <a>Si7</a>
 En vez de seguir siendo Dios maldiciendo mi nombre.
 <a>Lam7</a>                 <a>Si7</a>
-Yo me convierto en el hombre, 
+Yo me convierto en el hombre,
                       <a>Lam7</a>
 yo me convierto en el hombre
      <a>Si7</a>        <a>Mim</a>

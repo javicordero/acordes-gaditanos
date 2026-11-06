@@ -15,15 +15,15 @@ fraseClave: Pararara Parara Pararara Pararara Parara Parara
 <a>LaM7</a>     <a>Mim</a> <a>La7</a>      <a>Re</a>  <a>Mi7</a> <a>LaM7</a>    <a>Mim</a> <a>La7</a> <a>Re</a>  <a>Mi7</a>
 Pararara Parara Pararara Pararara Parara Parara
 <a>LaM7</a>                             <a>Fa#m</a>
-La vida es como el andén de una estación 
+La vida es como el andén de una estación
                     <a>Re</a>
 que marcará la dirección
                         <a>Rem</a>          <a>Mi7</a>
 De los que suben a este tren llamado mundo
 <a>LaM7</a>                           <a>Fa#m</a>
 La vida es tan caprichosa que te da una lección
-                               
-A cambio de romperte el corazón 
+
+A cambio de romperte el corazón
            <a>Rem</a>              <a>Mi7</a>
 y en la garganta te hace un nudo
 <a>Fa#m</a>
@@ -50,17 +50,17 @@ Quien dijo que la felicidad es imposible de alcanzar
 Es porque no ha conocido este hermoso lugar
 <a>LaM7</a>     <a>Mim</a> <a>La7</a>      <a>Re</a>  <a>Mi7</a> <a>LaM7</a>    <a>Mim</a> <a>La7</a> <a>Re</a>  <a>Mi7</a>
 Pararara Parara Pararara Pararara Parara Parara
-                             <a>Fa#m</a>     
-Soy ese niño que aprendí desde pequeño 
-<a>Do#m7</a>      
+                             <a>Fa#m</a>
+Soy ese niño que aprendí desde pequeño
+<a>Do#m7</a>
 tantas lecciones que al final me hice mayor
 <a>Sol</a>
-Soy tan feliz con lo poquito que tengo 
+Soy tan feliz con lo poquito que tengo
    <a>Fa#m</a>
 que yo los días grises los pinto de color
 <a>La</a>                                        <a>Fa#m</a>
 Vine a parar a un lugar donde brillan las estrellas
-                                            <a>Re</a>  
+                                            <a>Re</a>
 Y el valor de la amistad puede hacerse indispensable
                   <a>Mi7</a>
 para volver a empezar
@@ -83,7 +83,7 @@ Es porque no ha conocido este hermoso lugar
  <a>Mim</a>   <a>La7</a> <a>Re</a>  <a>Mi7</a>   <a>LaM7</a>  <a>Mim</a> <a>La7</a> <a>Re</a> <a>Mi7</a>
 Parara este hermoso lugar
 
-Por suerte nuestra felicidad 
+Por suerte nuestra felicidad
                               <a>La</a>
 no es imposible de alcanzar alcanzar
 </pre>

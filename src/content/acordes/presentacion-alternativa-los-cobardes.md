@@ -13,13 +13,13 @@ fraseClave: Mi Cádiz es un camaleón porque muda su tragedia y
 ---
 <pre>
 <a>Do</a>                                        <a>Lam</a>
-Mi Cádiz es un camaleón porque muda su tragedia 
+Mi Cádiz es un camaleón porque muda su tragedia
                <a>Mim</a>
 y remienda su miseria
                 <a>La7</a>                <a>Rem</a>
 Ocultando su agonía en el pan de cada día.
                            <a>Fam</a>
-Y echando al sol se vuelve copla 
+Y echando al sol se vuelve copla
                    <a>Do</a>
 y la escupe por la boca,
                       <a>Re</a>   <a>Sol7</a>           <a>Do</a>
@@ -38,8 +38,8 @@ Y le sacan los colores a esta vida que no es vida.
 Y el canto canta su canción y nuestro ruego lo camufla
                        <a>Mim</a>
 en la escoba de una bruja.
-                         <a>La7</a>  
-Y cuando el sol muere de celos 
+                         <a>La7</a>
+Y cuando el sol muere de celos
                  <a>Rem</a>
 ella misma se echa al fuego.
                <a>Fam</a>                          <a>Do</a>

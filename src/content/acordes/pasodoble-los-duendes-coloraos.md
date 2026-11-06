@@ -17,16 +17,16 @@ fraseClave: Pa un añito que escucho tranquilo
 Pa un añito que escucho tranquilo en la ciudad de cádiz
         <a>Mi7</a>                  <a>Lam</a>
 otro cajonazo y eso es lo que hay
-                                         
-no veas que drama, todo el mundo llorando 
-             <a>Sol</a>       <a>Do7</a>                <a>Fa</a>  
-tos enmorecidos y el subiela diciendo tranquilos 
+
+no veas que drama, todo el mundo llorando
+             <a>Sol</a>       <a>Do7</a>                <a>Fa</a>
+tos enmorecidos y el subiela diciendo tranquilos
        <a>Rem</a>           <a>Mi7</a>
 repartiendo antidepresivos
         <a>Lam</a>                                  <a>Sol</a>
 ya nos veíamos en la gran final con esa florecita
-                 <a>Fa</a>                <a>Rem</a>   
-y acabé en una barraca comprando pistacho, 
+                 <a>Fa</a>                <a>Rem</a>
+y acabé en una barraca comprando pistacho,
            <a>Mi7</a>
 anacardo y gomitas
         <a>Do</a>                        <a>Mim</a>
@@ -47,11 +47,11 @@ y en cada noche y en cada escenario
 donde me esperabas tanto cariño encontraba
 
 que me hicistes olvidar el fallo de un jurado
-<a>Fa#7</a>           <a>Sim7</a> 
-super hiper preprado 
-              <a>Mi7</a>                   <a>Sim7</a>      
-que con sus puestos, sus tablas y sus cuentas 
-          <a>Mi7</a>                         <a>Sim7</a>     
+<a>Fa#7</a>           <a>Sim7</a>
+super hiper preprado
+              <a>Mi7</a>                   <a>Sim7</a>
+que con sus puestos, sus tablas y sus cuentas
+          <a>Mi7</a>                         <a>Sim7</a>
 como ha resultado demostró con dos cojones
                    <a>Mi7</a>               <a>La</a>
  que el resto del mundo estaba equivocado
@@ -64,7 +64,7 @@ que yo otro año como el que he vivido lo firmo otra vez
              <a>Fa#7</a>               <a>Sim7</a>
 así que tranquilo y hagan lo que quieran
                <a>Mi7</a>               <a>Sim7</a>
-y luego en la calle después cada palo 
+y luego en la calle después cada palo
                 <a>Mi7</a>
 que aguante su vela
                       <a>Sim7</a>

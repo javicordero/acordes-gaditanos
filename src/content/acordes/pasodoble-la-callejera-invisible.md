@@ -33,7 +33,7 @@ De mis pamplinas y de mis coplas
 Ay de mis coplas ay de mis coplas
             <a>Mi7</a>           <a>La</a>
 Si qui lo bonito es disfrutar
-              <a>Fa#7</a> 
+              <a>Fa#7</a>
 De tanta variedad como ofrece mi concurso
 <a>Sim7</a>                    <a>Mi7</a>                <a>Sim7</a>
 Si no te gusta esta de aquí escucha la de alli

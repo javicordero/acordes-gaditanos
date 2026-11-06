@@ -35,13 +35,13 @@ En vez de buscarle los tres pies al gato
         <a>Lam</a>                        <a>Si7</a>
 Que la luna es como un queso y la noche es una trampa
        <a>Mi7</a>
-Y aquí llegan los listos del barrio 
+Y aquí llegan los listos del barrio
         <a>Lam</a>
 y aquí está mi banda
 <a>Lam</a>                                <a>Si7</a>
 Que la luna es como un queso y la noche es una trampa
-<a>Mi7</a>                          
-Y aquí está este pequeño ratón 
+<a>Mi7</a>
+Y aquí está este pequeño ratón
                 <a>Lam</a>     <a>Si7</a> <a>Mi7</a>
 y aquí está mi comparsa
 <a>Lam</a>
@@ -50,7 +50,7 @@ Y no te confundas conmigo cuidao
 a mi no es tan fácil cazarme
 <a>Mi7</a>                           <a>Lam</a>
 Que yo no soy una cobaya de laboratorio
-        
+
 Ni un hámster obediente que está dando
 <a>Si7</a>
 vueltas y vueltas, y vueltas
@@ -77,8 +77,8 @@ Que unas veces me has dado la vida pero otras me matas
         <a>Lam</a>                       <a>Si7</a>
 Que la luna es como un queso y la noche es una trapa
          <a>Mi7</a>
-Y aquí está esté ratón corazón 
-                 <a>Lam</a> 
+Y aquí está esté ratón corazón
+                 <a>Lam</a>
 y aquí está mi comparsa
 <a>Mi7</a>                <a>Lam</a>   <a>Mi7</a>           <a>Fa</a>  <a>Mi7</a>
 Y aquí está mi comparsa, ay ratón corazón

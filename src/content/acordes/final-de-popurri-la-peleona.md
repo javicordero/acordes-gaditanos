@@ -13,19 +13,19 @@ fraseClave: "Perdón, quiero pedirles perdón,"
 ---
 <pre>
  <a>Sol</a>                     <a>Sim</a>
-Perdón, quiero pedirles perdón, 
+Perdón, quiero pedirles perdón,
                         <a>Do</a>
 por si a alguno os molesté
                             <a>Re7</a>           <a>Sol</a>  <a>Do</a> <a>Re7</a>
 Pero me pudo el querer por mi vieja tradición
- <a>Sol</a>   <a>Si7</a>                  <a>Mim</a> 
-Razón, que no me puedo esconder, 
+ <a>Sol</a>   <a>Si7</a>                  <a>Mim</a>
+Razón, que no me puedo esconder,
                    <a>Do</a>                      <a>Re7</a>
 la palabra no va a ser más fuerte que el corazón
            <a>Si7</a>                      <a>Mim</a>
 Y al gran maestro que está en los cielos
           <a>Do</a>
-Darle las gracias 
+Darle las gracias
                                  <a>Re7</a>
 por tanta elegancia que a Cádiz le dio
 
@@ -38,7 +38,7 @@ La cosa más sencilla que le vistió un coplero
                  <a>Do</a>                           <a>Re</a>
 Y no mandaba el dinero ni en su pluma ni en su voz
 <a>Sol</a>         <a>Si7</a>                    <a>Mim</a>
-Comparsa gaditana, de viejos carnavales 
+Comparsa gaditana, de viejos carnavales
                   <a>Do</a>             <a>Re7</a>       <a>Sol</a>
 que todo Cádiz la sabe y es tan grande recordar
               <a>Si7</a>                      <a>Mim</a>
@@ -46,7 +46,7 @@ Cantar como cantaba: "yo tengo una barquilla
                       <a>Do</a>                       <a>Re</a>
 Con una gracia en la quilla que pa que te via contá"
 <a>Sol</a>                       <a>Sim</a>
-Perdón, quiero pedirles perdón, 
+Perdón, quiero pedirles perdón,
                        <a>Mim</a>
 por si a alguno os molesté
                    <a>Do</a> <a>Re7</a>               <a>Sol</a> <a>Do</a> <a>Re7</a> <a>Sol</a>

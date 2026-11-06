@@ -48,32 +48,32 @@ Un carnaval muy distinto del nuestro que yo te pinto
 con los tonos más profundos
 <a>Re</a>                  <a>La</a>           <a>Re</a>                <a>Mi</a>
 donde dicen que no pueden caber pero cabe todo el mundo
-<a>Fa#m</a>          <a>Do#m</a>              
-Quiero pintar    con el pincel 
+<a>Fa#m</a>          <a>Do#m</a>
+Quiero pintar    con el pincel
 <a>Re</a>                                 <a>La</a>
 que me devuelvan los colores de tu esencia
-<a>Fa#m</a>                 <a>Do#m</a>         
-donde valga lo más bello por hacer 
+<a>Fa#m</a>                 <a>Do#m</a>
+donde valga lo más bello por hacer
    <a>Re</a>                 <a>Mi</a>
 y calle de una vez la voz de la indecencia
 <a>Si</a>
-Un carnaval más bonito donde se pongan juntitos 
+Un carnaval más bonito donde se pongan juntitos
                  <a>Mi</a>
 lo clásico y lo moderno,
 <a>Si</a>
 donde se dejen de guerra donde se cante a mi tierra
                     <a>Fa#</a>
 y no le pongan los cuernos
-<a>Sol#m</a>                <a>Re#m</a>                      <a>Mi</a> 
+<a>Sol#m</a>                <a>Re#m</a>                      <a>Mi</a>
 y por mas rabia que tenga se callen las malas lenguas
                 <a>Fa#</a>
 y la voz de los tiranos
 <a>Mi</a>                     <a>Si</a>       <a>Mi</a>
-que mi tierra tenga su carnaval,   
+que mi tierra tenga su carnaval,
                    <a>Fa#</a>
 pero hablando en gaditano
 <a>Mi</a>                     <a>Si</a>       <a>Mi</a>
-que mi tierra tenga su carnaval,   
+que mi tierra tenga su carnaval,
                    <a>Fa#</a>
 pero hablando en gaditano
 <a>Si</a>                   <a>Fa#</a>                    <a>Sol</a>

@@ -15,8 +15,8 @@ date: 29/03/2025
 Desde el templo consagrado de la Caleta
                       <a>Fa#m7</a>    <a>Si7</a>    <a>Mi</a>
 donde el sol tiene la suerte de descansar,
-          <a>Solm7</a>      <a>Fa#m7</a>        <a>Si7</a>      
-donde a rumiar sus hazañas se fue mi menda 
+          <a>Solm7</a>      <a>Fa#m7</a>        <a>Si7</a>
+donde a rumiar sus hazañas se fue mi menda
 <a>Do</a>              <a>Lam</a> <a>Si7</a> <a>Mi</a>
 hace tantos años ya.
                     <a>Fa#m7</a> <a>Si7</a> <a>Mi</a>

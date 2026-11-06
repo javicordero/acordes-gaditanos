@@ -30,8 +30,8 @@ cuyas manos no conocen ni el más diminuto roce
 del rastrillo o azadón,
 <a>La7</a>                   <a>Rem</a>  <a>Si7</a>              <a>Mi7</a>
 tierras que son propiedad de una duquesa caduca,
-<a>Rem</a>                     <a>Fa</a>  
-que es la Cleopatra impoluta 
+<a>Rem</a>                     <a>Fa</a>
+que es la Cleopatra impoluta
    <a>Rem</a>       <a>Fa</a>  <a>Si7</a>      <a>Mi7</a>
 de la prostituta alta sociedad.
    <a>LaM7</a>         <a>Do#m7</a>         <a>Fa#7</a>      <a>Sim7</a>

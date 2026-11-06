@@ -68,5 +68,5 @@ Empuja mare que viene y que ya no se detiene
                  <a>Re</a>
 El milagro de la vida
 <a>Mi7</a>              <a>LaM7</a>
-El milagro de la vida 
+El milagro de la vida
 </pre>

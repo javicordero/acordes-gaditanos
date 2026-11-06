@@ -11,26 +11,26 @@ video: 'https://www.youtube.com/embed/zLEptCYqShw'
 fraseClave: "Ya me voy que sube"
 ---
 <pre>
-    <a>Re</a>      <a>La7</a>      <a>Re</a>       
+    <a>Re</a>      <a>La7</a>      <a>Re</a>
 Ya me voy que sube la marea
        <a>Re7</a>               <a>Sol</a>
 ya me voy regreso a la playita
              <a>La7</a>             <a>Fa#m</a>
-Donde va a bañarse la luna lunera 
+Donde va a bañarse la luna lunera
            <a>La7</a>           <a>Re</a>
 y viven como reinas las mojarritas
-              <a>La7</a>            <a>Re</a>   
-Ya me voy pa bañarme en sus aguas, 
+              <a>La7</a>            <a>Re</a>
+Ya me voy pa bañarme en sus aguas,
         <a>Re7</a>             <a>Sol</a>
 pa empaparme en su sal infinita
                   <a>La7</a>              <a>Fa#m</a>
-Que hace que esta tierra rebose de gracia 
+Que hace que esta tierra rebose de gracia
             <a>La7</a>              <a>Re</a>
 y que las gaditanas sean tan bonitas
             <a>La7</a>              <a>Re</a>
 y que las gaditanas sean tan bonitas
 <a>Re7</a>                 <a>Sol</a>
-Ya me voy para esa playa de arenas doras 
+Ya me voy para esa playa de arenas doras
                    <a>Fa#m</a>
 en donde aprendí de niño a querer y a cantar
                  <a>Sol</a>

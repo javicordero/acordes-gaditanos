@@ -35,22 +35,22 @@ Y en medio de esta aventura que suena tan triste
                <a>Mim</a>
 tan negra y sombría
                    <a>Do</a>
-Las de la alegre figura 
+Las de la alegre figura
                                 <a>Re7</a>
 por grupos de quince forman compañía
 <a>Si7</a>                                 <a>Do</a>
-Pa combatir las penitas de nuestra tacita 
+Pa combatir las penitas de nuestra tacita
                   <a>Re7</a>
 con un poco de alegría
 <a>La</a>
-Por eso en esta batalla te ofrezco mi espada, 
+Por eso en esta batalla te ofrezco mi espada,
                <a>Fa#m</a>
 mi escudo y mi lanza
                   <a>Re</a>
-Y el arte carnavalesco contra los entuertos 
+Y el arte carnavalesco contra los entuertos
               <a>Mi</a>
 y las malas andanzas
-<a>Do#7</a>                                       <a>Fa#m</a> 
+<a>Do#7</a>                                       <a>Fa#m</a>
 Y que se entere la gente que el Cádiz presente
 <a>Re</a>                    <a>Mi</a>
 en el mundo no es la mancha
@@ -59,7 +59,7 @@ Con el alma de mujeres que ya tienen su armadura
 <a>Do#7</a>                                <a>Fa#m</a>
 Un poquito de sentido y una pizca de locura
                       <a>Re</a>
-Se presentan ante ustedes 
+Se presentan ante ustedes
                          <a>Mi</a>
 (se presentan ante usetedes)
                     <a>La</a> <a>Mi7</a>                  <a>La</a>

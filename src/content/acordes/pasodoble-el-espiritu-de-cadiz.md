@@ -40,15 +40,15 @@ yo sé de un hombre bueno que ganó y no fue arrogante,
                             <a>Si7</a>          <a>Mim</a>
 sé de un carnavalero que vivió para esta fiesta,
    <a>La7</a>            <a>Mim</a>          <a>La7</a>
-yo sé de un padre que su tradición 
+yo sé de un padre que su tradición
            <a>Re</a>   <a>La7</a> <a>Rem</a>
 dejó en herencia.
 <a>(Sorda)</a>
-Por las tablas del teatro 
+Por las tablas del teatro
 
 poca gente habrá pasao que te puedan igualar
 
-y aunque has ganao tantas veces 
+y aunque has ganao tantas veces
                                               <a>La7</a>
 déjame con esta copla que hoy te pueda yo premiar.
 <a>Sol</a>          <a>La7</a>         <a>Re</a>    <a>Fa#7</a>                <a>Sol</a>

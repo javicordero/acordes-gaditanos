@@ -15,14 +15,14 @@ fraseClave: Yo no soy libre ni soy esclavo
 ---
 
 <pre>
-<a>Mim</a>                        <a>Re</a>  
-Yo no soy libre ni soy esclavo 
+<a>Mim</a>                        <a>Re</a>
+Yo no soy libre ni soy esclavo
        <a>Do</a>    <a>Lam7</a>       <a>Si7</a>
 ni millonario No soy Paris
-          <a>Mim</a>             <a>Re</a>    
-Yo no soy moro ni soy cristiano 
-          <a>Do</a>   <a>Lam7</a>     <a>Si7</a>    
-yo soy el barrio Donde nací. 
+          <a>Mim</a>             <a>Re</a>
+Yo no soy moro ni soy cristiano
+          <a>Do</a>   <a>Lam7</a>     <a>Si7</a>
+yo soy el barrio Donde nací.
    <a>Mim</a>
 El barrio donde yo nací
 
@@ -30,7 +30,7 @@ Está en una ciudad que para mí es el mundo
               <a>Si7</a>
 Pero que anda presa de otro mundo
 
-Y dentro de un país Con nombre y con escudo 
+Y dentro de un país Con nombre y con escudo
       <a>Mim</a>
 y con una bandera que no me representa
 

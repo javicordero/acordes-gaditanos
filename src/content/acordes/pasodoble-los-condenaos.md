@@ -30,7 +30,7 @@ míralo cantando con su gente en sus divinos carnavales
 <a>Sol</a>
 píntalo de negro el diecinueve del mes de la primavera
 <a>Fa</a>
-piénsalo de blanco en navidad 
+piénsalo de blanco en navidad
 
 y espéralo por la escalera
 

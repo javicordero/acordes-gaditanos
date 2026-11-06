@@ -30,8 +30,8 @@ Por tantas miradas y silencios impasibles
 Libre, frente a su dolor
 <a>Mim</a>              <a>Sim7</a>   <a>Lam7</a>                <a>Si7</a>
 Y levantan en sus mentes, sobre lágrimas de arena
-<a>Mim</a>              <a>Sim7</a>  
-Una isla que los guarde 
+<a>Mim</a>              <a>Sim7</a>
+Una isla que los guarde
    <a>Lam7</a>                          <a>Si7</a>
 de mil tiburones que acechan sus penas
 <a>Mim</a>                    <a>Sim7</a> <a>Lam7</a>                <a>Si7</a>
@@ -49,7 +49,7 @@ Soy orilla en el estrecho y patria para el refugiao
 <a>Mim</a>
 Soy abrigo del sintecho y la canción del olvidao
 <a>Doadd9</a>
-Soy la mano que te aprieta 
+Soy la mano que te aprieta
 
 si el dolor llama a tu puerta
 <a>Re</a>
@@ -63,7 +63,7 @@ Soy mordisco en la manzana, ante los dioses y el pecao
       <a>Re</a>
 Soy un beso sin complejo en cada amor que han censurao
 <a>Si7</a>                              <a>Mim</a>
-Soy el punto de partida y el destino 
+Soy el punto de partida y el destino
            <a>Sim7</a>         <a>Do</a>
 del que en vida ha naufragao
        <a>Re</a>           <a>Sol</a>     <a>Mim</a> <a>Doadd9</a> <a>Re</a>

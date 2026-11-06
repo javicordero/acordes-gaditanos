@@ -24,30 +24,30 @@ no tiene pies ni cabeza
 Hace años que este concurso parece un final de curso
                      <a>Re</a>
 brillo, confeti, ilusion
-              <a>Do#m7</a>     <a>Sim7</a>   
-Que hay que ganarse el derecho 
+              <a>Do#m7</a>     <a>Sim7</a>
+Que hay que ganarse el derecho
 <a>Mi7</a>                  <a>LaM7</a>
 para abrir estas cortinas
                 <a>Fa</a>              <a>Mi7</a>     <a>LaM7</a>
 Qué bonito quedaría aquí una hermosa guillotina
-                                       
-Que corte de un tajo autores mediocres, 
+
+Que corte de un tajo autores mediocres,
    <a>Fa#7</a>                <a>Sim7</a>          <a>Fa#7</a>
 peleas de castrati, murgas de colega
-  <a>Sim7</a>                 <a>Mi7</a>             
-Fantoches sin gracia, coristas a sueldo, 
+  <a>Sim7</a>                 <a>Mi7</a>
+Fantoches sin gracia, coristas a sueldo,
 <a>Sim7</a>             <a>Mi7</a>           <a>LaM7</a>
 tobuses de pueblo, viñeros de pega
-<a>Lam</a>                <a>Sol</a>             
-Promesas viejunas, todos campeones, 
+<a>Lam</a>                <a>Sol</a>
+Promesas viejunas, todos campeones,
      <a>Fa</a>    <a>Sim7b5</a>   <a>Mi7</a>
 cuarteteros con depresión
-<a>Rem</a>       <a>Mi7</a>   <a>Lam</a>            
-La roja paloma atrae más romero 
+<a>Rem</a>       <a>Mi7</a>   <a>Lam</a>
+La roja paloma atrae más romero
      <a>Mi7</a>             <a>LaM7</a>
 la chusma quiere diversión
 
-Tan solo vemos negocio el olor a dinero, 
+Tan solo vemos negocio el olor a dinero,
                               <a>Sim7</a> <a>Fa#7</a> <a>Sim7</a>
 olvidando las coplas lo más sagrao
 
@@ -69,7 +69,7 @@ Y en menos de tres febreros mas calidad y más respeto
 <a>La7</a>          <a>Rem</a>          <a>Mi7</a>         <a>LaM7</a>
 Pende de un hilo la fiesta nuestro folclore
 <a>Do#m7</a>     <a>Dom7</a>      <a>Sim7</a>
-Hay que matar a la bestia antes que crezca 
+Hay que matar a la bestia antes que crezca
                  <a>Sim7</a>  <a>Mi7</a>   <a>LaM7</a>
 antes que crezca ayy y nos devore
 </pre>

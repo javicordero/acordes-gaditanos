@@ -41,7 +41,7 @@ Ahhh ahh    ahhh ahh
 <a>Lam</a>             <a>Sol</a>
 Oh revolución de la humanidad
 <a>Lam</a>                   <a>Sol</a>
-Oh revolución eres la última esperanza 
+Oh revolución eres la última esperanza
 
 de los parias y sé que algún día llegara
         <a>Lam</a>                     <a>Sol</a>
@@ -49,22 +49,22 @@ A caballo de la ley de la desobediencia
            <a>Lam</a>                     <a>Sol</a>
 Como un huracán que sale de los corazones
                    <a>Lam</a>
-De la infinita resistencia 
+De la infinita resistencia
                                         <a>Sol</a>
 la voz pasiva de la violencia de nuestras voces
-<a>Lam</a> 
-La sangre de los poderosos 
+<a>Lam</a>
+La sangre de los poderosos
 <a>Sol</a>
 es la venganza de los pobres
-<a>Lam</a> 
-La sangre de los poderosos 
+<a>Lam</a>
+La sangre de los poderosos
 <a>Sol</a>
 es la venganza de los pobres
 <a>Lam</a>                     <a>Sol</a>
 Oh revolución de la humanidad
 <a>Lam</a>                   <a>Sol</a>
-Oh revolución eres la última esperanza 
-                      
+Oh revolución eres la última esperanza
+
 de los parias y sé que un día llegara
 
 
@@ -78,13 +78,13 @@ La plata te arruina el alma la soledad no te abandona
 <a>Rem</a>              <a>Fa</a>                       <a>Mi7</a>
 Se te retira la calma y te hace malvada persona
 <a>Lam</a> <a>Sol</a>  <a>Fa</a>      <a>Sol</a>      <a>Lam</a>    <a>Sol</a>
-Ricos     y son pobres convencidos 
+Ricos     y son pobres convencidos
 <a>Fa</a>        <a>Sol</a>        <a>Lam</a>    <a>Sol</a>
-de que el llanto y el olvido  
+de que el llanto y el olvido
 <a>Fa</a> <a>Sol</a>          <a>Lam</a> <a>Fa</a> <a>Mi7</a>
 nunca le retorcerán
 <a>Lam</a>                      <a>Sol</a>
-Y mientras los cuernos le salen 
+Y mientras los cuernos le salen
                      <a>Fa</a>
 como la mayor de sus joyas
 <a>Rem</a>                <a>Fa</a>                       <a>Mi7</a>
@@ -96,41 +96,41 @@ Chai lailailailai morirme pobre prefiero
 
 
 
-<a>Mim</a>             <a>Re</a>          <a>Mim</a>        
-Desde siempre llevo a donde voy 
+<a>Mim</a>             <a>Re</a>          <a>Mim</a>
+Desde siempre llevo a donde voy
         <a>Re</a>         <a>Mim</a> <a>Re</a> <a>Mim</a> <a>Re</a>
 como mi segunda bandera
-<a>Mim</a>        <a>Re</a>          <a>Mim</a>      
-Al primero de los continentes, 
+<a>Mim</a>        <a>Re</a>          <a>Mim</a>
+Al primero de los continentes,
     <a>Re</a>               <a>Mim</a>     <a>Re</a> <a>Mim</a> <a>Re</a>
 el nuevo para los de afuera
 <a>Sol</a>                <a>Re</a>     <a>La7</a>                <a>Mim</a>
 Donde aprendí la palabra, donde nació la canción
 <a>Sol</a>              <a>Re</a>       <a>La7</a>           <a>Mim</a>
 Donde Sandino y Guevara, donde la revolución
-<a>Mim</a>        <a>Re</a>        <a>Mim</a>  <a>Re</a> 
+<a>Mim</a>        <a>Re</a>        <a>Mim</a>  <a>Re</a>
 Donde el calor se derrama,
 <a>Mim</a>     <a>Re</a>      <a>Mim</a> <a>Re</a> <a>Mim</a> <a>Re</a>
 donde tomaban café
 <a>Sol</a>                   <a>Re</a>    <a>La7</a>                <a>Mim</a>
 Entre la selva y la habana negros iguales que usted
-<a>Mim</a>           <a>Re</a>        <a>Mim</a>   
-Cinco siglos lleva Sudamérica 
+<a>Mim</a>           <a>Re</a>        <a>Mim</a>
+Cinco siglos lleva Sudamérica
    <a>Re</a>           <a>Mim</a> <a>Re</a> <a>Mim</a> <a>Re</a>
 bailándole al tirano
-<a>Mim</a>        <a>Re</a>             <a>Mim</a>  
-Si los españoles fueron crueles, 
+<a>Mim</a>        <a>Re</a>             <a>Mim</a>
+Si los españoles fueron crueles,
           <a>Re</a>        <a>Mim</a> <a>Re</a> <a>Mim</a> <a>Re</a>
 peores los norteamicanos
 <a>Sim</a>
 Va por el Gaucho, va por la Pamba
 
-Va por el rio del Amazonas, 
+Va por el rio del Amazonas,
 
 va por Neruda y va por Martí
 <a>Mi</a>
 Va por Allende, por Santiago
-                               
+
 Va por el indio, por el mestizo,
           <a>Sol</a>         <a>Sim</a>
 va por el Boca y el Guaraní
@@ -148,15 +148,15 @@ Con letra, música y voz ha fabricado sus armas
 <a>Lam</a>             <a>Sol</a>                           <a>Lam</a>
 Y así por cada corazón que haya abierto con mi canto
 <a>Lam</a>                 <a>Sol</a>
-Habrá valido esta revolución 
+Habrá valido esta revolución
                        <a>Lam</a>
 más que lo que estoy cantando
-<a>Lam</a>                 <a>Sol</a>                
-Cuando las palabras pasen a la historia 
+<a>Lam</a>                 <a>Sol</a>
+Cuando las palabras pasen a la historia
 <a>Fa</a>              <a>Do</a>
 será la memoria revolucionaria
-   <a>Rem</a>           <a>Lam</a>                
-La que solidaria con toda su gloria 
+   <a>Rem</a>           <a>Lam</a>
+La que solidaria con toda su gloria
 <a>Sol</a>              <a>Fa</a>
 reconocerá la victoria a los parias
 <a>Lam</a>                  <a>Sol</a>                     <a>Lam</a>
@@ -175,8 +175,8 @@ Que hagan ruido en la calle, que hagan ruido en la vida
 Ahh ahh ahh ahh ahh ahh
 <a>Sim</a>       <a>La</a>      <a>Sol</a>   <a>Sim</a>     <a>La</a>       <a>Sol</a>
 Para que siga cantando contigo junto los dos
-<a>Sim</a>  <a>La</a>       <a>Sol</a>                        <a>Sim</a> <a>La</a>  
-Para si hay un final que lo hagamos tú y yo, 
+<a>Sim</a>  <a>La</a>       <a>Sol</a>                        <a>Sim</a> <a>La</a>
+Para si hay un final que lo hagamos tú y yo,
     <a>Sim</a>
 tú y yo
 </pre>

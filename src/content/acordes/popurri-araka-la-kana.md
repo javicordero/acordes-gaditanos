@@ -13,27 +13,27 @@ fraseClave: Araka es la murga compañera, allende el charco
 ---
 <pre>
 <a>Lam</a>                    <a>Rem</a>
-Araka es la murga compañera, 
-                   <a>Mi7</a>               <a>Lam</a>  
+Araka es la murga compañera,
+                   <a>Mi7</a>               <a>Lam</a>
 allende el charco llega hasta la linda Gades
                       <a>Rem</a>
 Para, y por encima de todo,
                 <a>Mi7</a>                 <a>Lam</a>
 cantar codo con codo, en vuestros Carnavales,
 
-pueblo gaditano que gritó, 
+pueblo gaditano que gritó,
 
 sin el miedo al mundo y su verdad,
 <a>Lam</a>                        <a>Rem</a>
-desde el Uruguay siempre quisimos 
-                  <a>Mi7</a>           <a>Lam</a> 
-que en el mismo camino la murga nos uniera. 
+desde el Uruguay siempre quisimos
+                  <a>Mi7</a>           <a>Lam</a>
+que en el mismo camino la murga nos uniera.
 <a>La7</a>  <a>Rem</a>                    <a>Lam</a>
 Y Araka, que es la murga compañera
                      <a>Mi7</a>                     <a>Lam</a>
 y no entiende de fronteras, más allá del Carnaval
 <a>La7</a> <a>Rem</a>                   <a>Lam</a>
-Y Araka, solidaria y verdadera, 
+Y Araka, solidaria y verdadera,
                     <a>Mi7</a>                   <a>Lam</a>
 viene para que a tu vera, florezca la libertad
 
@@ -54,8 +54,8 @@ porque piensa que la murga que se calla
                  <a>Mi7</a>                       <a>Lam</a>
 y no dice lo que siente sienta bien a los poderes,
         <a>Rem</a>                <a>Do</a>
-si los poderes te dan los premios, 
-          <a>Rem</a>                <a>Do</a>   
+si los poderes te dan los premios,
+          <a>Rem</a>                <a>Do</a>
 yo no los quiero, si tú los quieres,
        <a>Fa</a>                <a>Mi7</a>
  carnavalero.. ¡qué pobre eres!.
@@ -80,14 +80,14 @@ que el premio real siempre será el que te de el pueblo
 
     <a>Sol</a>                       <a>Lam</a>
 Ay gurí que no me lo creo, ay gurí que no me lo creo
-    <a>Do</a>               <a>Re7</a>            
-si llego a saberlo antes de venir 
+    <a>Do</a>               <a>Re7</a>
+si llego a saberlo antes de venir
     <a>Do</a>         <a>Re7</a> <a>Sol</a>
 me quedo en Montevideo
     <a>Sol</a>                       <a>Lam</a>
 Ay gurí que no me lo creo, ay gurí que no me lo creo
-    <a>Do</a>               <a>Re7</a>            
-si llego a saberlo antes de venir 
+    <a>Do</a>               <a>Re7</a>
+si llego a saberlo antes de venir
     <a>Do</a>         <a>Re7</a> <a>Sol</a>
 me quedo en Montevideo
                   <a>Sol</a>                  <a>Lam</a>
@@ -113,18 +113,18 @@ si llego a saberlo antes de venir me quedo en
 Montevideo.
     <a>Sol</a>                       <a>Lam</a>
 Ay gurí que no me lo creo, ay gurí que no me lo creo
-    <a>Do</a>               <a>Re7</a>            
-si llego a saberlo antes de venir 
+    <a>Do</a>               <a>Re7</a>
+si llego a saberlo antes de venir
     <a>Do</a>         <a>Re7</a> <a>Sol</a>
 me quedo en Montevideo
                     <a>Sol</a>                    <a>Lam</a>
 También me contó la gente de la Tacita de Plata,
-                  <a>Do</a>   
-en el Carnaval de Cádiz 
+                  <a>Do</a>
+en el Carnaval de Cádiz
     <a>Re7</a>            <a>Sol</a>
 no vayas a perderte la cabalgata,
 
-que es igual que la que vos tenés 
+que es igual que la que vos tenés
                    <a>Do</a>
 cerquita allá en Brasil
                      <a>Re7</a>         <a>Sol</a>
@@ -137,20 +137,20 @@ y la pongo en tó lo alto la carroza,
 porque va tan horrorosa, que parece disfrazada.
     <a>Sol</a>                       <a>Lam</a>
 Ay gurí que no me lo creo, ay gurí que no me lo creo
-    <a>Do</a>               <a>Re7</a>            
-si llego a saberlo antes de venir 
+    <a>Do</a>               <a>Re7</a>
+si llego a saberlo antes de venir
     <a>Do</a>         <a>Re7</a> <a>Sol</a>
 me quedo en Montevideo
     <a>Sol</a>                       <a>Lam</a>
 Ay gurí que no me lo creo, ay gurí que no me lo creo
-    <a>Do</a>               <a>Re7</a>            
-si llego a saberlo antes de venir 
+    <a>Do</a>               <a>Re7</a>
+si llego a saberlo antes de venir
     <a>Do</a>         <a>Re7</a> <a>Sol</a>
 me quedo en Montevideo
 
 
-<a>Re</a>                         
-También me cuenta la gente 
+<a>Re</a>
+También me cuenta la gente
 <a>La</a>                   <a>Fa#7</a>
 que aquí durante el franquismo,
                   <a>Sol</a>                     <a>La</a>
@@ -174,7 +174,7 @@ y si tuvimos respuesta con cárceles y torturas,
                        <a>La</a>
 pero por nuestros carnavales,
 
-la voz del pueblo fue del pueblo 
+la voz del pueblo fue del pueblo
                    <a>Sim</a>
 y ahora ya más que nunca
                    <a>La</a>          <a>Sim</a>

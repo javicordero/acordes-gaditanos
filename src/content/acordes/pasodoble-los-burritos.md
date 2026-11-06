@@ -34,8 +34,8 @@ Con mi grupo a cantar y las caras pintás
 Pa bailarlo y disfrutarlo
           <a>La7</a>             <a>Re</a>
 Que esta tierra se merece todo
-     <a>Mi7</a>              <a>La</a> 
-Y yo te lo pienso regalar 
+     <a>Mi7</a>              <a>La</a>
+Y yo te lo pienso regalar
          <a>Fa#7</a>         <a>Sim7</a>
 con rancheras por carnaval
                     <a>Mi7</a>       <a>Sim7</a>          <a>Mi7</a>

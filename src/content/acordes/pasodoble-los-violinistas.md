@@ -29,7 +29,7 @@ Y allí estaba yo mirando, pero se me fue pasando,
                       <a>Do</a>  <a>Re7</a>
 me acerqué y te dije guapa
 <a>Sol</a>               <a>Sim</a>        <a>Re</a>          <a>Do</a>
-Cuando te vi los ojitos todavía no me explico 
+Cuando te vi los ojitos todavía no me explico
      <a>Re7</a>         <a>Sol</a>
 que conmigo se venían
 <a>Mim</a>                 <a>Do</a>                       <a>Re</a>
@@ -49,6 +49,6 @@ Mientras que yo me recuerde que nunca ni azul ni verde
                   <a>Re</a>
 a mi me lo pone en duda
 <a>Do</a>                 <a>Sol</a>                    <a>Re</a>
-Y el día que yo me vaya me lleve para mi playa 
+Y el día que yo me vaya me lleve para mi playa
               <a>Do</a>  <a>Re7</a> <a>Sol</a>
 tus dos hermosuras</pre>

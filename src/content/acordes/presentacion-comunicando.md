@@ -32,8 +32,8 @@ Donde todavía por suerte son familia el vecindario
          <a>Lam</a>                         <a>Mim</a>
 Y sigue igual, la decadencia en el trabajo
             <a>Lam</a>
-Y sigue el paro y las mentiras 
-          <a>Mim</a>                         <a>Lam</a>       
+Y sigue el paro y las mentiras
+          <a>Mim</a>                         <a>Lam</a>
 que el gobierno va contando (Y sigue igual)
                      <a>Mim</a>                     <a>Fa</a>
  Y a las mujeres les cueste másrabajo el carnaval

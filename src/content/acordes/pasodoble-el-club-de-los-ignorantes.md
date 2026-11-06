@@ -21,19 +21,19 @@ Si fuera Cádiz un precipicio me tiraría de vicio
            <a>Si7</a>    <a>Mi/add9</a>
 buscando abrazos volantes
 <a>Mi/add9</a>  <a>Si7</a>     <a>Mi/add9</a>                <a>Mi7</a>
-Si fuera Cádiz filosofía la vida me pasaría 
+Si fuera Cádiz filosofía la vida me pasaría
                <a>La</a>
 entre sus interrogantes
                          <a>Si7</a>            <a>Sol#m</a>
-Ay, y si fuera un reloj que marcara las diez 
+Ay, y si fuera un reloj que marcara las diez
 
 yo sería el cantor
 <a>Do#7</a>             <a>Fa#m</a>                    <a>Si7</a>
-De su noche estrellada, cada una de las cuerdas 
+De su noche estrellada, cada una de las cuerdas
          <a>Mi</a>
 de su guitarra
      <a>Mi7</a>              <a>La</a>
-Y si Cádiz no fuera cobarde quien 
+Y si Cádiz no fuera cobarde quien
                            <a>Sol#m7</a>
 no sería soldado que fuera delante
     <a>Do#7</a>                                 <a>Fa#m</a>
@@ -41,7 +41,7 @@ Dime quien alzaría el fusil ante tanto mangante
                    <a>Lam7</a>      <a>Si7</a>        <a>Mi/add</a>
 Si mi Cádiz fuera guerra yo sería su almirante
 <a>Mi/add9</a>    <a>Fa#m7</a>       <a>Sol#m7</a>   <a>La</a>     <a>Sol#m7</a>
-Y si Cádiz tuviera la suerte de ser el rincón 
+Y si Cádiz tuviera la suerte de ser el rincón
     <a>Fa#m7</a>     <a>Mi/add9</a>
 más bonito del mundo
 El primero tal vez el segundo si mi Cádiz fuera
@@ -53,8 +53,8 @@ Si Cádiz fuera una canción, una letra, una voz
 Yo sería comparsa que asalte verdades y credos
 <a>Mi7</a>                <a>La</a>    <a>Fa#7</a>            <a>Si7</a>
 Si Cádiz fuera escenario yo su juglar invidente
-<a>La</a>         <a>Si7</a>      <a>Mi</a>   
-Si fuera un bello palacio 
+<a>La</a>         <a>Si7</a>      <a>Mi</a>
+Si fuera un bello palacio
 <a>Do#7</a>     <a>Fa#m</a> <a>Si7</a>      <a>Mi</a>
 aquí estaría su fiel sirviente
 <a>La</a>          <a>Si7</a>      <a>Mi</a>    <a>Do#7</a>            <a>Fa#m</a>

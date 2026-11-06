@@ -22,12 +22,12 @@ En tiempos del todo vale de amantes insatisfechos
 Yo quiero enamorarme imaginándome el deseo
        <a>Fa#7</a>                     <a>Si7</a>
 En los brazos del amor más verdadero
-                     <a>Mim</a>  
+                     <a>Mim</a>
 Amor salvaje y despeinada
         <a>Re7</a>                     <a>Sol</a>
 que a girones en la noche clave su puñal
     <a>Si7</a>                     <a>Mim</a>
-Una sobremesa larga y a charlar  
+Una sobremesa larga y a charlar
                <a>Re7</a>                         <a>Sol</a>
 sin reloj ni final Tu voz quiebra al despertar
         <a>Si7</a>         <a>Mim</a>
@@ -45,19 +45,19 @@ Me baje al suelo para desplegar mis alas
                                  <a>Si7</a>
 Que haga de mi seguridad pura fortaleza
                   <a>La</a>                   <a>Si7</a>
-Contra la adversidad mi mano agarre en paz 
+Contra la adversidad mi mano agarre en paz
              <a>Mi</a>
 para entregar su guerra
-<a>Mi7</a>          <a>La</a>                    <a>Si7</a>                      
-Ayy, hogar y casa asomándome a sus ojos 
+<a>Mi7</a>          <a>La</a>                    <a>Si7</a>
+Ayy, hogar y casa asomándome a sus ojos
                    <a>Sol#m</a>
 vea a mi niño reflejado, mare
 <a>Do#7</a>            <a>Fa#m</a>                   <a>Si7</a>
-Ayy, y que las canas solo sean los testigos 
+Ayy, y que las canas solo sean los testigos
                     <a>Mi</a>
 de tanto que hemos luchado
 <a>Mi7</a>             <a>Lam</a>              <a>Si7</a>
-Hoy que todo es vano y son desechables 
+Hoy que todo es vano y son desechables
                        <a>Mi</a>
 las personas y los te quiero
              <a>Do#7</a>

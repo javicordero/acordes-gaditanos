@@ -18,8 +18,8 @@ Si yo canto carnavales en la playa
 Es porque todas las revoluciones no son pasajeras
      <a>Fa</a>                         <a>Mim</a>
 Y mi canto de batalla es lo que escupe la marea
-           <a>Do</a> <a>Lam7</a>           <a>Si7</a>         
-Brotan del mar lágrimas de sirena, 
+           <a>Do</a> <a>Lam7</a>           <a>Si7</a>
+Brotan del mar lágrimas de sirena,
               <a>Mim</a>   <a>Sim7</a> <a>Do</a> <a>Si7</a> <a>Mim</a> <a>Sim7</a> <a>Do</a> <a>Si7</a>
 de plástico y algas
      <a>Mim</a>     <a>Sim7</a>    <a>Mim</a>             <a>Sim7</a>  <a>Mim</a>
@@ -27,7 +27,7 @@ Recogiendo la vida salvaje poseidón urbano soy
                <a>Si7</a>        <a>Mim</a>           <a>Re</a>
 El progreso que compramos hoy ahoga los mares
             <a>Do</a>              <a>Si7</a>
-Y antes de ver muerto mi santuario 
+Y antes de ver muerto mi santuario
           <a>Mim</a>               <a>Si7</a>                <a>Mim</a>
 en mi barquilla navego El legado de amor de Fernando
                         <a>Si7</a>
@@ -45,27 +45,27 @@ La Caleta es sagrada
         <a>Sol</a>                      <a>Sim7</a>
 Dame tu luz quiero volver a enamorarme
                    <a>Mi7</a>
-Recomponerte los pedazos 
+Recomponerte los pedazos
                         <a>Lam7</a>
 y que sientas que todo es como antes
-                            <a>Dom7</a> 
-Que el tiempo corre hacia atrás 
-<a>Re</a>                   <a>Mim</a>       <a>Sim7</a>           <a>Lam7</a>     
-pero ha llegado el momento De poner velas al viento 
+                            <a>Dom7</a>
+Que el tiempo corre hacia atrás
+<a>Re</a>                   <a>Mim</a>       <a>Sim7</a>           <a>Lam7</a>
+pero ha llegado el momento De poner velas al viento
 <a>Si7</a>                        <a>Mim</a> <a>Sim7</a> <a>Do</a> <a>Si7</a>
 y que juntos empecemos a remar
 <a>Mim</a>       <a>Sim7</a>        <a>Do</a>   <a>Si7</a>
-Yo quiero ver la esperanza 
+Yo quiero ver la esperanza
 <a>Mim</a>     <a>Sim7</a>         <a>Do</a> <a>Si7</a>
 bien clavaita en la pena
 <a>Mim</a>        <a>Sim7</a>          <a>Do</a> <a>Si7</a>
-La insurrección de las almas 
+La insurrección de las almas
        <a>Do</a>                       <a>Si7</a>
 que castillos en el aire los bajamos en la arena
-<a>Mim</a>    <a>Sim7</a>       <a>Do</a>  <a>Si7</a> 
+<a>Mim</a>    <a>Sim7</a>       <a>Do</a>  <a>Si7</a>
 Los caleteros plantamos
 <a>Mim</a>   <a>Sim7</a>        <a>Do</a>   <a>SI7</a>
-revolución insurgente 
+revolución insurgente
 <a>Mim</a>       <a>Sim7</a>      <a>Do</a>  <a>Si7</a>
 Aguas de plástico inerte
 <a>Do</a>          <a>Sim7</a>        <a>Do</a>         <a>Sim7</a>

@@ -21,31 +21,31 @@ La custodia de Cristo, el pasado bajo palio, de feria
                                         <a>Mim</a>
 vino, bailes y en el aire aquel dos… de mayo
 
-Mayo, de moritos y cristianos, 
+Mayo, de moritos y cristianos,
                  <a>Mi</a>
 los trucos y los tratos, el castigo del solano,
                  <a>Si7</a>                   <a>Re7</a>
 La muerte pinta cuernos  y la vida crea patios,
-                                 
-La calle del infierno, esos ojos, 
+
+La calle del infierno, esos ojos,
        <a>Do</a>
 esos cuerpos de las pavas y los gallos
-<a>Mim</a>                   <a>La</a>          
-¿Que donde están los lechuginos? 
+<a>Mim</a>                   <a>La</a>
+¿Que donde están los lechuginos?
    <a>Mim</a>               <a>La</a>
 ¿Y dónde, dónde mis guacamayos?
 
 Callaos están, callaos, callaos están
 <a>Mim</a>
-Y qué hago ahora con esta furia, 
+Y qué hago ahora con esta furia,
 
 con este nervio con estas ganas
-                           
-Quién lo diría que te vería 
+
+Quién lo diría que te vería
              <a>Do</a>        <a>Si7</a>
 de fiestas típicas gaditanas,
 
-cómo me trago esta mascarada, 
+cómo me trago esta mascarada,
 
 (lloro, lloro, yo lloro)
 <a>Mim</a>                        <a>Re</a>
@@ -72,12 +72,12 @@ Maribel, alquiler, hacienda, autónomo, impuestos,
 imposible, estoy tieso y estamos a día tres
       <a>Lam7</a>             <a>Re7</a>         <a>Sol</a>             <a>Do</a>
 Y si llego a la jubilación, lo mismito no me queda ná
-        <a>Fa#7</a>             <a>Si7</a>           
-pues mi rey el pedazo borbón de titanio 
+        <a>Fa#7</a>             <a>Si7</a>
+pues mi rey el pedazo borbón de titanio
     <a>Do7</a>        <a>Si7</a>       <a>Do7</a>       <a>Si7</a>
 la tiene en verdad… a callar y a Qatar…
    <a>Mim</a>
-Gasolina, cómo nos dominan con la manguerita, 
+Gasolina, cómo nos dominan con la manguerita,
               <a>Si7</a>
 da un poquito más.
 
@@ -89,7 +89,7 @@ O la gente está domesticada o está muerta,
                 <a>Do</a>
 no entiendo, no sé,
 
-si después de lo que hemos vivío, 
+si después de lo que hemos vivío,
                         <a>Si7</a>
 digo yo o estoy loco perdío, el país debería de arder
 
@@ -97,7 +97,7 @@ digo yo o estoy loco perdío, el país debería de arder
        <a>Mi</a>
 El problema ahora es la carne no las macrogranjas
                  <a>Si7</a>
-que llena el congreso, 
+que llena el congreso,
 
 el problema no somos nosotros, nosotros, Vosotros
                  <a>Do</a>        <a>Re</a>         <a>Do</a>
@@ -114,7 +114,7 @@ jambre, la vamos, la vamos a sentir
 <strong>Cejilla: 3</strong>
 
 <a data-postura="5 7 7 6 5 5">La</a>
-Máscara, te vas como viniste 
+Máscara, te vas como viniste
                     <a data-postura="3 5 5 4 3 3">Sol</a>
 a este mundo con tu máscara
                                            <a>Fa</a>
@@ -122,7 +122,7 @@ con tu primer recuerdo de un soldado y una máscara
               <a>Mi7</a>                       <a data-postura="5 7 7 6 5 5">La</a>
 república y corona, años grises con sus máscaras
 <a data-postura="5 7 7 6 5 5">La</a>
-Máscara, la guerra, la primera, 
+Máscara, la guerra, la primera,
                       <a data-postura="3 5 5 4 3 3">Sol</a>
 barrio pobre hecho de máscaras
                                    <a>Fa</a>
@@ -133,8 +133,8 @@ no hay nada que comer llegó el amor baile de máscaras
 Máscara, España se desangra pa Alemania y una máscara,
                                                 <a data-postura="x 5 7 5 6 5">Rem7</a>
 la segunda gran guerra, el sexo, Dios, familia, máscara
-               <a>Mi7</a>           
-llegamos a la luna, tu casita 
+               <a>Mi7</a>
+llegamos a la luna, tu casita
       <a data-postura="5 7 7 6 5 5">La</a>
 y una vida de hipotecas y de máscaras
 <a data-postura="5 7 7 6 5 5">La</a>                                             <a data-postura="x 5 7 5 6 5">Rem7</a>
@@ -185,14 +185,14 @@ sexual, chachachá
 
 <strong>Cejilla: 3</strong>
 
-        <a>Lam</a>                  <a>Mim</a> 
-Cómo me gusta ir al cuarto oscuro 
+        <a>Lam</a>                  <a>Mim</a>
+Cómo me gusta ir al cuarto oscuro
          <a>Lam</a>         <a>Mim</a>
 de la Caleta en la bajamar,
       <a>Lam</a>               <a>Mim</a>       <a>Fa</a>        <a>Sol</a>
 Acuclillado desalar tu flujo y palpar la humedad
-    <a>Lam</a>                   <a>Mim</a>   
-Semidesnuda empalmar tus barrios, 
+    <a>Lam</a>                   <a>Mim</a>
+Semidesnuda empalmar tus barrios,
           <a>Lam</a>                   <a>Mim</a>
 Sí, penetrarte al norte o bien al sur
        <a>Lam</a>                     <a>Mim</a>        <a>Fa</a>     <a>Sol</a>
@@ -207,11 +207,11 @@ Tú, mirar, puedes mirar, pero solo toco yo
 cómo galopa mi sangre, noto muy cerca tus dunas
           <a>Lam</a>                    <a>Mim</a>
 Soy tu perrito (Auuu) tu fiel esclavo,
-            <a>Fa</a>                   
-soy lo que quieras lo que quieras 
+            <a>Fa</a>
+soy lo que quieras lo que quieras
       <a>Mi7</a>
 calla calla calla callo…
-<a>Sim</a>                   <a>Fa#m</a> 
+<a>Sim</a>                   <a>Fa#m</a>
 Están llamando a los grises.
   <a>Sol</a>              <a>Fa#m</a>
 Señores, con dignidad.
@@ -250,7 +250,7 @@ con esposas y cardenales, por favor,
 pero gracias por esta noche padre, alcalde
                 <a>La7</a> <a>Re</a>
 a sus pies, gobernador
-<a>Re</a>                              
+<a>Re</a>
 Viva España que rima con cizaña,
     <a>Sol</a>    <a>La7</a>
 patraña, engaña y extraña

@@ -51,10 +51,10 @@ Porque elegí morir de pie a cantarte de rodillas
                      <a>Rem</a>                    <a>Do</a>
 Será que soy como mi tierra llenito de cardenales
                        <a>Sib</a>
-Y por mas palos que me dan y me dan, 
+Y por mas palos que me dan y me dan,
                        <a>La7</a>
 y me dan y me dan y me dan
-<a>Sib</a>  <a>La7</a>        <a>Rem</a>     <a>Sib</a>  <a>La7</a>           <a>Rem</a>  
-Me vuelvo más indomable, me vuelvo más indomable 
+<a>Sib</a>  <a>La7</a>        <a>Rem</a>     <a>Sib</a>  <a>La7</a>           <a>Rem</a>
+Me vuelvo más indomable, me vuelvo más indomable
 <a>Sib</a> <a>La7</a>      <a>Rem</a>
 me vuelvo mas indomable</pre>

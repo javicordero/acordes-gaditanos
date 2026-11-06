@@ -36,7 +36,7 @@ Un papel que hay veces que se pierde
 Un papel que esconde lo que encierra en tu interior
 <a>Dom</a>                   <a>Sol</a>        <a>Do</a>
 Ese es el caramelo el dulce verdadero
-       <a>Re7</a>          <a>Sol</a> 
+       <a>Re7</a>          <a>Sol</a>
 Lo que si tiene sabor
                                <a>Lam7</a>
 Que la vida es así un regalo pa ti

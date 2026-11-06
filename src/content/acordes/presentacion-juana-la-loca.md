@@ -19,53 +19,53 @@ Hay veces que tus sueños valen menos que un lamento
      <a>Do</a>          <a>Mi7</a>                     <a>Sol</a>
 Hay veces que la vida no te cuida con respeto
     <a>Rem</a>           <a>Fa</a>
-y en una de esas veces está mi vida 
+y en una de esas veces está mi vida
               <a>Lam</a>  <a>Mi7</a>  <a>Lam</a>  <a>Mi7</a>
 que hoy les cuento.
               <a>Lam</a>  <a>Mi7</a>          <a>Lam</a>
-Dicen que el alma con los ojos habla 
+Dicen que el alma con los ojos habla
         <a>La7</a>             <a>Rem</a>
 y de eso yo puedo dar lecciones,
-                    <a>Mi7</a>         <a>Lam</a>  
-que desde niños me clavan sus miradas 
+                    <a>Mi7</a>         <a>Lam</a>
+que desde niños me clavan sus miradas
         <a>Si7</a>   <a>Fa</a>        <a>Mi7</a>
 como puñales, hembras y varones.
-          <a>Lam</a>   <a>Mi7</a>        <a>Lam</a>   
-Miradas frías de ojos que acusan, 
+          <a>Lam</a>   <a>Mi7</a>        <a>Lam</a>
+Miradas frías de ojos que acusan,
          <a>Do</a>                 <a>Sol</a>
 miradas necias que no me comprenden,
-     <a>Rem</a>                 <a>Lam</a> 
-Ojo asesino que mira y apunta, 
+     <a>Rem</a>                 <a>Lam</a>
+Ojo asesino que mira y apunta,
           <a>Si7</a>      <a>Fa</a>         <a>Mi7</a>   <a>Sol</a>
 miradas ciegas que ven y no sienten.
                   <a>Do</a>                   <a>Mim</a>
 Y por mirarles a la cara y no mirar para otro lado,
                      <a>Fa</a>
-Aquellos que tanto miraban, 
+Aquellos que tanto miraban,
                       <a>Sol</a>
 me vieron como un bicho raro.
                      <a>Do</a>                      <a>Fa</a>
 Y por mirarles a la cara cuando sus ojos me clavaron
                    <a>Rem</a>
-Aquellos que tanto miraban, 
+Aquellos que tanto miraban,
                  <a>Sol</a>
 Juana la loca me llamaron,
                     <a>Lam</a>  <a>Fa</a> <a>Mi7</a>
 Juana la loca me llamaron.
-<a>Lam</a>                  <a>Sim7b5</a> 
-Hay quien camina por la vida 
+<a>Lam</a>                  <a>Sim7b5</a>
+Hay quien camina por la vida
 <a>Fa</a>        <a>Mi7</a>        <a>Lam</a>
 y en su camino abre verea.
-<a>Do</a>                      <a>Lam</a>  
-Son caminantes de la historia 
+<a>Do</a>                      <a>Lam</a>
+Son caminantes de la historia
      <a>Fa</a>   <a>Sim7b5</a>    <a>Mi7</a>
 que tiran muros y barreras.
-<a>Lam</a>                 <a>Fa</a>             <a>Mi7</a> 
-Yo soy aquel que soportó la humillación 
+<a>Lam</a>                 <a>Fa</a>             <a>Mi7</a>
+Yo soy aquel que soportó la humillación
 <a>Lam</a>                    <a>Fa</a>           <a>Mi7</a>
 que a la moral y a los poderes se enfrentó,
-<a>Lam</a>              <a>Fa</a>           <a>Mi7</a>  
-Al que llamaban hijo puta maricón, 
+<a>Lam</a>              <a>Fa</a>           <a>Mi7</a>
+Al que llamaban hijo puta maricón,
 <a>Lam</a>                 <a>Fa</a>           <a>Mi7</a>      <a>La7</a>
 llené el camino con mi sangre y mi dolor.
                      <a>Rem</a>

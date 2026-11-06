@@ -29,33 +29,33 @@ Y aunque yo aprendiera a nadar en este mar de coplas
                        <a>Sol7</a>                    <a>Do</a>
 Ahora que veo que este mar se ha convertido en río
                      <a>Re7</a>  <a>Sol</a>
-Yo me siento tan extraño aquí, 
-                  <a>Sim7</a>  <a>Lam7</a> 
-extranjero en mi propio país, 
+Yo me siento tan extraño aquí,
+                  <a>Sim7</a>  <a>Lam7</a>
+extranjero en mi propio país,
            <a>Re7</a>        <a>Sol</a>  <a>Sol7</a>
 en un concurso desconocido
-  <a>Do</a>           <a>Re7</a>    <a>Sol</a>  
-En donde el sabor gaditano 
+  <a>Do</a>           <a>Re7</a>    <a>Sol</a>
+En donde el sabor gaditano
 <a>Mi7</a>         <a>Lam7</a> <a>Re7</a>        <a>Sol</a>
 o se ha olvidado o se ha perdido
 
-Pero es que siento una cosita 
+Pero es que siento una cosita
                     <a>Mi7</a>    <a>Lam7</a>
 cuando yo escucho esta musiquita
                <a>Do</a>                 <a>Re7</a>
-Que aunque los males me rompan el alma 
-        <a>Do</a>     <a>Re7</a>     <a>Sol</a> 
+Que aunque los males me rompan el alma
+        <a>Do</a>     <a>Re7</a>     <a>Sol</a>
 la chirigota en mi resucita
-                      <a>Re7</a>     <a>Sol</a>  
-Y no me importa si algunos critican 
+                      <a>Re7</a>     <a>Sol</a>
+Y no me importa si algunos critican
           <a>Sol7</a>            <a>Do</a>
 que soy antiguo y muy localista
-              <a>Re7</a>     <a>Sol</a>          <a>Mi7</a>    
-Si el público cambia y los gustos cambian 
+              <a>Re7</a>     <a>Sol</a>          <a>Mi7</a>
+Si el público cambia y los gustos cambian
     <a>Lam7</a>      <a>Re7</a>      <a>Sol</a>
 que me manden a hacer puñetas
    <a>Do</a>                 <a>Re7</a>
-Que yo te seguiré cantando en la orillita, 
+Que yo te seguiré cantando en la orillita,
          <a>Do</a>      <a>Re7</a>   <a>Sol</a>
 en la orillita de la Caleta
 </pre>

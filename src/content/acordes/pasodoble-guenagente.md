@@ -10,8 +10,8 @@ img: https://i.ytimg.com/vi/uQpc-Aa21TM/hqdefault.jpg
 date: "06/11/2026"
 video: https://www.youtube.com/embed/PcAK9VMF5wQ
 ---
-<pre> 
-   <a>Mim</a>                 
+<pre>
+   <a>Mim</a>
 Se ve por las calles sin fin
                          <a>Do</a>      <a>Si7</a>
 una pobre infeliz con su pelo plateado
@@ -41,7 +41,7 @@ que no hacen na por ella y sola sufre en el olvio
 que da pena verla abandonada
                 <a>Si7</a>       <a>La</a>      <a>Si7</a>      <a>Mi</a>
 con su ropa manchada no existe vergüenza mayor.
-                                <a>Si7</a>              
+                                <a>Si7</a>
 Y dicen que tiene tres mil años ya
                   <a>Lam</a>
 y en sus canas de plata

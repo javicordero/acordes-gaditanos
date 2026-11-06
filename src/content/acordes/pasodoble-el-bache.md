@@ -15,7 +15,7 @@ fraseClave: "La Luna vino a la fragua"
 <a>Lam</a>                <a>Mi7</a>                    <a>Lam</a>
 La Luna vino a la fragua con su polisón de nardos,
 <a>Sol7</a>            <a>Do</a>                     <a>Fa</a>
-El niño la mira mira, el niño la mira mira, 
+El niño la mira mira, el niño la mira mira,
                   <a>Mi7</a>
 el niño la está mirando.
 <a>La7</a>                 <a>Rem</a>  <a>Sol7</a>               <a>Do</a>
@@ -24,8 +24,8 @@ Niño, mira que te traigo, un martillito de plata;
 Luna, no quiero martillo, Luna no quiero martillo,
          <a>Sim7b5</a>         <a>Mi7</a>
 dale un duende a mi garganta,
-      <a>Rem</a>                   <a>Lam</a>  
-Y la Luna se lo dio, bendita sea, 
+      <a>Rem</a>                   <a>Lam</a>
+Y la Luna se lo dio, bendita sea,
          <a>Mi7</a>                   <a>LaM7</a>
 y el chiquillo se durmió, ea la ea.
        <a>Mi7</a>                   <a>LaM7</a>
@@ -33,15 +33,15 @@ Duende, pa tu garganta los duendes, duendes,
                                              <a>Mi7</a>
 Pa el corazón del gitano yunque, clavos y alcayatas
 
-Muerte, qué vienes buscando, muerte, 
+Muerte, qué vienes buscando, muerte,
                                            <a>LaM7</a>
 deja tranquilo al hermano, déjalo no seas ingrata.
 <a>La7</a>                   <a>Rem</a>
-Hoy la fragua huele a muerte, 
+Hoy la fragua huele a muerte,
                       <a>Lam</a>
 y a tu tumba otra vez vengo;
    <a>Fa</a>               <a>Mi7</a>
-Ya sé que no puedo verte, 
+Ya sé que no puedo verte,
                                 <a>LaM7</a>
 vengo a partirme la camisita que tengo.
 </pre>

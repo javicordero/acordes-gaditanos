@@ -35,8 +35,8 @@ me van a cerrar las puertas.
 Cuando me echen del convento, ay, ay, ay
 <a>Fa#m7</a> <a>Si7</a>            <a>Mi</a>
 cantaré en las casapuertas.
-                           
-Y tú, ¿qué estás empezando? 
+
+Y tú, ¿qué estás empezando?
         <a>Do#7</a>            <a>Fa#m7</a>
 Escucha bien la voz del viejo,
             <a>Fa#m7M</a>  <a>Fa#m7</a>
@@ -53,8 +53,8 @@ Bebe siempre de la risa, de la luz de candelaria,
 de una charla ya sin prisa
            <a>Si7</a>       <a>Mi</a>
 en nuestra calle, de las palabras.
-<a>Mi7</a>                   <a>La</a>    
-Aquí no hay pobres ni ricos, 
+<a>Mi7</a>                   <a>La</a>
+Aquí no hay pobres ni ricos,
           <a>Si7</a>        <a>Mi</a>
 y no hay héroes ni cobardes,
 <a>Do#7</a>                  <a>Fa#m7</a>                  <a>Si7</a>

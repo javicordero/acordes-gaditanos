@@ -44,7 +44,7 @@ Que si arde en fueguecito el Dios bendito
               <a>Mim</a>
 se termina el carnaval.
       <a>Fa</a>
-Y las palmas de los tangos en la plaza 
+Y las palmas de los tangos en la plaza
                      <a>Do</a>
 o el chimpún del pasacalles dejarán ya de sonar,
         <a>Fa</a>

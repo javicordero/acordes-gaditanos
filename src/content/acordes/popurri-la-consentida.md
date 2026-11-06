@@ -215,7 +215,7 @@ Que es el mes de los amores por eso te traigo
  <a>Sib7</a> <a>Solm</a>       <a>Sib7</a>       <a>La7</a>
 flores   y  una nota con un verso
     <a>Sib7</a>              <a>La7</a>        <a>Sib</a>        <a>La7</a>
-Sin pausa vendrá septiembre el otoño me desnuda 
+Sin pausa vendrá septiembre el otoño me desnuda
 
 y yo inventare otra muda
                      <a>Rem</a>  <a>Solm</a>  <a>La7</a>

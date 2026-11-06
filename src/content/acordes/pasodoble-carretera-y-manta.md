@@ -11,23 +11,23 @@ video: 'https://www.youtube.com/embed/OZOQ1jyV8vY'
 fraseClave: "¿Que hago ahora con las coplas,"
 
 ---
-<pre> 
+<pre>
 <a>Mi</a>
-¿Que hago ahora con las coplas, que le guardaba 
+¿Que hago ahora con las coplas, que le guardaba
        <a>Fa#m</a>
 a mi tacita?
  <a>Si7</a>
-¿Que hago ahora con las notas, con estas ganas 
+¿Que hago ahora con las notas, con estas ganas
           <a>Mi</a>
 y esta espinita?
  <a>Mi</a>                                            <a>Fa#m</a>
 Si es que ya te tengo dicho que esto es una enfermedad
 <a>Si7</a>
-Y en la lucha contra el bicho 
-                      <a>Mi</a> 
+Y en la lucha contra el bicho
+                      <a>Mi</a>
 vamos a ver quién puede más.
                                             <a>Mi7</a>
-Extremando la cautela, otra vez encendí la vela 
+Extremando la cautela, otra vez encendí la vela
               <a>La</a>
 y me puse a cavilar.
                     <a>Mi</a>                         <a>Fa#m</a>
@@ -48,19 +48,19 @@ tratamelo con cariño y guardalo pa’ febrero.
 Y guardalo pa febrero para marzo o abril,
                  <a>Si7</a>                           <a>Mi</a>
 guardatelo para siempre que esta letra es para ti.
-<a>Mi7</a>                    <a>La</a>              
-Y aunque no tenga muy claro mi destino, 
+<a>Mi7</a>                    <a>La</a>
+Y aunque no tenga muy claro mi destino,
 <a>Si7</a>              <a>Sol#m</a>
 el viaje quiero hacerlo contigo
 <a>Do#7</a>            <a>Fa#m</a>                     <a>Si7</a>
-y que juntos caminemos para que juntos soñemos 
+y que juntos caminemos para que juntos soñemos
                     <a>Mi</a>
 con la noche del estreno.
 <a>Mi7</a>                 <a>Lam</a>
 Y cuando llegue ese dia, cuando vuelva la alegria,
                    <a>Mi</a>
 se que nos encontraremos,
-                                         <a>Fa#m</a> 
-Brindaremos por la vida y este bendito veneno 
+                                         <a>Fa#m</a>
+Brindaremos por la vida y este bendito veneno
 <a>Si7</a>                        <a>Mi</a>
 y si quieres junto lo cantaremos.</pre>

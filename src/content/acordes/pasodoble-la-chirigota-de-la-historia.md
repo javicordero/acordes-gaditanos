@@ -14,8 +14,8 @@ fraseClave: "Yo siempre me he preguntado"
 <pre>
 <a>Sol</a>                    <a>Re</a>                 <a>Mim</a>
 Yo siempre me he preguntado mirando a Febrero,
-                <a>Do</a>    
-Por qué soy chirigotero 
+                <a>Do</a>
+Por qué soy chirigotero
                     <a>Re7</a>           <a>Sol</a>  <a>Do</a> <a>Re7</a> <a>Sol</a>
 y no he sido, con respeto, comparsista,
            <a>Si7</a>        <a>Mim</a>                   <a>Do</a>
@@ -45,18 +45,18 @@ Son más que suficientes pa' que yo aprenda,
                                <a>Do</a>           <a>Sol</a>
 Que no me compren, que no me venda por los dineros
            <a>Do</a>
-Y el buen amigo, que ahora mismo está conmigo 
+Y el buen amigo, que ahora mismo está conmigo
                 <a>Re7</a>            <a>Sol</a>
 si se marcha, no se puede convertir
-      <a>Re7</a>                      <a>Do</a>      
-En enemigo, que me cante convencido 
+      <a>Re7</a>                      <a>Do</a>
+En enemigo, que me cante convencido
     <a>Re7</a>        <a>Sol</a>     <a>Sol7</a>
 sus corajes contra mí.
-            <a>Do</a>                           
-Y si en febrero yo le falto solo un pero 
+            <a>Do</a>
+Y si en febrero yo le falto solo un pero
   <a>Re7</a>                          <a>Sol</a>
 a tan solo un ingrediente de mi lista,
-   <a>Sim</a>                         <a>Do</a>    
+   <a>Sim</a>                         <a>Do</a>
 Entonces tú no me llames chirigotero,
    <a>Re7</a>          <a>Do</a>
 y llámame comparsista,

@@ -13,8 +13,8 @@ fraseClave: "Llevo escuchando hace tiempo la"
 ---
 <pre>
 <a>Mim</a>                    <a>Si7</a>
-Llevo escuchando hace tiempo 
-                      <a>Mim</a> 
+Llevo escuchando hace tiempo
+                      <a>Mim</a>
 la chirigota está en crisis
                    <a>Re</a>                          <a>Do</a>
 Que pasa malos momentos que no hay Fletillas modernos
@@ -22,8 +22,8 @@ Que pasa malos momentos que no hay Fletillas modernos
 que está la cosa difícil
                                            <a>Mim</a>
 Que esté desgadinizandose y perdiéndose la gracia
-<a>Lam</a>                  <a>Mim</a>  
-Cuando de verdad la crisis 
+<a>Lam</a>                  <a>Mim</a>
+Cuando de verdad la crisis
            <a>Si7</a>           <a>Mim</a>
 quien la tiene es la comparsa
      <a>Si7</a>       <a>Mim</a>                   <a>Sol</a>
@@ -37,15 +37,15 @@ Cádiz tes quiero y ya está y enfermedades mu raras
 <a>Lam</a>                  <a>Mim</a>   <a>Si7</a>                <a>Mi</a>
 Cádiz tes quiero y ya está y enfermedades mu raras
 
-La rodilla pa fuera y ajín torcía 
+La rodilla pa fuera y ajín torcía
                <a>Si7</a>                  <a>Mi</a>
 una mano en el pecho y la otra escondía
                    <a>Do#7</a>          <a>Fa#m</a>
-Postura que no son propias de carnavales, 
+Postura que no son propias de carnavales,
                                 <a>Si7</a>
 porque si tu no respeta la ergonomía
 
-Lo único que propicia 
+Lo único que propicia
                           <a>Mi</a>
 es la aparición de hernias discales
 <a>Mim</a>                 <a>Si7</a>                  <a>Mim</a>
@@ -53,13 +53,13 @@ Remember aquellos bigotes remember la porpurina
                    <a>Si7</a>                 <a>Mim</a>
 Remember la gracia fina, Paco Alba la creó
 <a>Mi7</a>          <a>Lam</a>
-Y después degeneró en una pelea de gallo 
+Y después degeneró en una pelea de gallo
                      <a>Mim</a>
 y ahora todos tienen barba
 <a>Lam</a>                                       <a>Si7</a>
 Por eso flipe el día que se hundió el vaporcito
 
-Porque la culpa repito, porque la culpa repito 
+Porque la culpa repito, porque la culpa repito
            <a>Mim</a>
 fue de Paco Alba
 </pre>

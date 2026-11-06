@@ -25,8 +25,8 @@ Es que mil cosas bonitas van a pasarte esta noche
 Sentirás que por fin a tu puerta otra vez
       <a>Si7</a>         <a>Mim</a>  <a>Si7</a> <a>Mim</a>
 han llamado los dioses.
-              <a>Lam7</a> 
-Te lo digo paisano 
+              <a>Lam7</a>
+Te lo digo paisano
                                 <a>Re7</a>
 porque yo he vivido una noche de esas
                  <a>Sol</a>                       <a>Si7</a>
@@ -34,7 +34,7 @@ no quedaban más gritos que el de nuestras manos
               <a>Mim</a>
 llamando a la suerte,
                   <a>Lam7</a>               <a>Do</a>
-ni más miedos que ver como a cada mujer 
+ni más miedos que ver como a cada mujer
       <a>Lam7</a>       <a>Si7</a>
 le temblaban las piernas.
 <a>Mim</a>
@@ -65,8 +65,8 @@ Y mira si lo que te acabo de contar
 fue más bonito y más tremendo que ganar esa final
                     <a>Lam7</a>         <a>Do</a>         <a>Si7</a>
 y más divino y celestial ¡ay, queridísmo paisano!
-                  <a>Lam</a>                   <a>Do</a>   
-Que loquito de envidia, hasta Dios esa noche 
+                  <a>Lam</a>                   <a>Do</a>
+Que loquito de envidia, hasta Dios esa noche
                   <a>Si7</a>               <a>Mim</a>
 volvió a hacerse hombre por ser gaditano.
 </pre>

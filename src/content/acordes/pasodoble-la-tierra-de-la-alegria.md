@@ -12,22 +12,22 @@ video: 'https://www.youtube.com/embed/IK3DzVdec-s?feature=player_embedded'
 fraseClave: Como yo en Cádiz he nacido y he crecido siendo un
 ---
 <pre>
-            <a>Sol</a>       <a>Re</a>         <a>Mim</a>    
-Como yo en Cádiz he nacido y he crecido 
+            <a>Sol</a>       <a>Re</a>         <a>Mim</a>
+Como yo en Cádiz he nacido y he crecido
           <a>Sim7</a>     <a>Do</a>    <a>Lam7</a>
 siendo un niño gaditano
-                        <a>Sim7</a>  
-Que en Cádiz tuve mi infancia 
+                        <a>Sim7</a>
+Que en Cádiz tuve mi infancia
 <a>Re</a>                  <a>Do</a>
 con las primeras fragancias
       <a>Lam7</a>       <a>La7</a>               <a>Re</a>  <a>Reaug</a>
 De los libros y cuadernos por mis manos
-          <a>Sol</a>        <a>Si7</a>           <a>Mim</a>   
-Y como en Cádiz cada día de mi existencia 
+          <a>Sol</a>        <a>Si7</a>           <a>Mim</a>
+Y como en Cádiz cada día de mi existencia
 <a>Re</a>                   <a>Do</a>
 me ha tostado el mismo sol
                <a>Sol</a>                 <a>Lam7</a>
-Cádiz fue forillo de mi adolescencia 
+Cádiz fue forillo de mi adolescencia
                <a>Si7</a>
 y de mi primer amor
 <a>Mim</a>             <a>Lam</a>       <a>Si7</a>      <a>Mim</a>  <a>Re</a>
@@ -36,8 +36,8 @@ Y donde precisamente el destino predijo
 Que en los añitos siguientes nacieran mis hijos
            <a>Do</a>             <a>La7</a>           <a>Re</a>
 Y tuviese mi familia y mi fiesta y mi pasión
-          <a>Sol</a>            <a>Re</a>         <a>Do</a> 
-Y como es Cádiz quién me dio to lo vivío, 
+          <a>Sol</a>            <a>Re</a>         <a>Do</a>
+Y como es Cádiz quién me dio to lo vivío,
 <a>Re7</a>                  <a>Sol</a>   <a>Re</a>
 ya no tengo otra canción
 <a>Sol</a>                                    <a>Re</a>
@@ -45,11 +45,11 @@ Por eso con la guitarra sentada en mi falda
 <a>Mim</a>                                  <a>Sim</a>
 Perdóname si con Cádiz ya llego a cansarte
            <a>Do</a>
-Pero no es más que un contratiempo 
+Pero no es más que un contratiempo
          <a>Sol</a>
 que ha surgido en mi guitarra
-  <a>Lam</a>                                     <a>Sim7</a> 
-Que yo la cojo y siento Cádiz en cada traste, 
+  <a>Lam</a>                                     <a>Sim7</a>
+Que yo la cojo y siento Cádiz en cada traste,
 <a>Re</a>       <a>Do</a>
 por cada traste
 <a>Sol</a>                               <a>Re</a>

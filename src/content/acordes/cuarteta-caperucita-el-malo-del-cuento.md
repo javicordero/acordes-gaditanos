@@ -13,22 +13,22 @@ fraseClave: La de Caperucita fue la historia más bella y más
 ---
 <pre>
              <a>Mi</a>                      <a>Sol#m7</a>
-La de Caperucita fue la historia más bella 
+La de Caperucita fue la historia más bella
        <a>Sol#7</a>          <a>Do#m7</a>
 y más bonita que este lobo vivió,
                <a>Sol#m7</a>                        <a>La</a>
 Una historia prohibida de amor, una historia de esas
                <a>Mi</a>
-Que te dejan marcao pa' toa la via 
+Que te dejan marcao pa' toa la via
     <a>La</a>                         <a>Lam7</a>
 y esconden sentimientos que ya nunca más se olvidan.
     <a>Mi</a>                       <a>Sol#7</a>
-Fue mi bosque el fiel testigo mudo 
+Fue mi bosque el fiel testigo mudo
                    <a>Do#m7</a>
 del romance que nunca contarán,
                       <a>Sol#m7</a>
 Porque hasta en estos tiempos en que vivimos
- <a>Lam7</a>                        <a>Sol#m7</a>      
+ <a>Lam7</a>                        <a>Sol#m7</a>
 existen los prejuicios, Y un lobo como yo
   <a>Fa#m7</a>              <a>Sol#7</a>
 es muy poquita cosa para un cuento de amor
@@ -51,14 +51,14 @@ la niña de la capa colorá,
     <a>La</a>                       <a>Fa#</a>        <a>Si7</a>
 El cuento más bonito que no quisieron contar,
     <a>Mi</a>                      <a>Sol#7</a>
-Que pena que hasta en los corazones 
+Que pena que hasta en los corazones
                              <a>Do#m7</a>
 pongan condiciones y pinten fronteras,
                    <a>Mi7</a>
 Cuando un amor tan puro no entiende de pueblos,
          <a>La</a>
 reyes ni banderas,
-                <a>Mi</a>               
+                <a>Mi</a>
 Que solamente entiende de pasión,
     <a>Fa#m</a>      <a>Fa#7</a>                       <a>Si7</a>
 por eso sigo aullándole a la luna esta canción

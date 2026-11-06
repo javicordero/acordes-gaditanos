@@ -20,26 +20,26 @@ Entra es mi vida, entra es mi show este es mi cabaret
 Venga a la acera que nunca pisó, no te voy a morder,
 <a>La</a>         <a>Si7</a>    <a>Sol#m</a>       <a>Do#m</a> <a>Si7</a>           <a>Mi</a>
 Entra es mi vida, entra es mi show este es mi cabaret
-<a>Lam</a>                    <a>Mi</a>        <a>La</a>      <a>Fa#m</a>  
+<a>Lam</a>                    <a>Mi</a>        <a>La</a>      <a>Fa#m</a>
 Deja el temor y la opresión, libérate de tus sospechas,
    <a>Si7</a>           <a>Mi</a>
 igual te llevas una sorpresa.
-<a>Mi</a>                                  
-Basta de oír más prejuicios de mí, 
+<a>Mi</a>
+Basta de oír más prejuicios de mí,
  <a>Mi7</a>
 aquí so les desmontaré,
 <a>La</a>         <a>Si7</a>    <a>Sol#m</a>       <a>Do#m</a> <a>Si7</a>           <a>Mi</a>
 Entra es mi vida, entra es mi show este es mi cabaret
 <a>Mi</a>
-Mi primo tenía fama de sarasa, 
+Mi primo tenía fama de sarasa,
 
 un día se soltó y se coló en casa
   <a>Lam</a>                              <a>Si7</a>
-Vestido como una emperatriz y dije yo, 
+Vestido como una emperatriz y dije yo,
                <a>Mi</a>
 yo quiero ser así.
 
-Basta de oír más prejuicios de mí, 
+Basta de oír más prejuicios de mí,
  <a>Mi7</a>
 aquí so les desmontaré,
 <a>La</a>         <a>Si7</a>    <a>Sol#m</a>       <a>Do#m</a> <a>Si7</a>           <a>Mi</a>
@@ -51,11 +51,11 @@ Y aunque aquí me vea, tan seguro de mí mismo,
               <a>Do</a>                        <a>Fa</a>
 Debo de reconocerle que no siempre fue sencillo,
 <a>Rem</a>
-Que algunas veces por la gente 
+Que algunas veces por la gente
                     <a>Do</a>
 pasé mi vida sin sentido
-                      <a>La7</a> 
-Y algunas veces de repente 
+                      <a>La7</a>
+Y algunas veces de repente
                       <a>Rem</a> <a>La7</a>  <a>Rem</a>
 sentía que no estaba vivo.
 <a>Rem</a>                                          <a>Solm</a>
@@ -72,20 +72,20 @@ Y ese día no esperaba que volviesen pronto a casa,
 Cuando quise darme cuenta ya mi suerte estaba echada.
    <a>La7</a>               <a>Rem</a>                        <a>Solm</a>
 Mi papá que abrió la puerta se encontró este panorama
-                             
-Comprendí que era el momento 
+
+Comprendí que era el momento
                      <a>Re</a> <a>La7</a> <a>Re</a>
 de contarles qué pasaba.
                       <a>Si7</a>             <a>Mim</a>
 Ni Picasso ni Van Gogh, ni Murillo ni Dalí,
-                  <a>Solm</a>           <a>La7</a> 
-Tú no has visto papaíto en to tu vía 
+                  <a>Solm</a>           <a>La7</a>
+Tú no has visto papaíto en to tu vía
            <a>Rem</a> <a>La7</a> <a>Rem</a>
 un cuadro así.
                       <a>La7</a>                    <a>Rem</a>  <a>La7</a>
 Desde aquél día tuve claro que tendría que elegir
-<a>Solm</a>                   <a>Rem</a>  
-vivir tapado y sin problemas 
+<a>Solm</a>                   <a>Rem</a>
+vivir tapado y sin problemas
        <a>Solm</a>          <a>La7</a>          <a>Rem</a>
 o desnudarme, ser yo mismo y ser feliz.
 
@@ -93,54 +93,54 @@ o desnudarme, ser yo mismo y ser feliz.
 Ah, cha cha cha.
    <a>Re</a>     <a>Si7</a>     <a>Mim</a>      <a>La7</a>             <a>Re</a>
 De noche Juana la loca, de día Juan el fantoche,
-          <a>Si7</a>              <a>Mim</a> 
-Al sol corbata, mantón de noche, 
+          <a>Si7</a>              <a>Mim</a>
+Al sol corbata, mantón de noche,
     <a>La7</a>                           <a>Re</a>
 y a ver cuál de los dos prefieres tú, cha cha cha.
-                  <a>Mim</a>      
-El Juan de día es un tostón 
+                  <a>Mim</a>
+El Juan de día es un tostón
      <a>La7</a>                 <a>Re</a>
 que siempre da gato por liebre
-   <a>Si7</a>                  <a>Mim</a>    
-La Juana de noche da el corazón 
+   <a>Si7</a>                  <a>Mim</a>
+La Juana de noche da el corazón
     <a>La7</a>                 <a>Re</a>
 a aquél que le suba la fiebre.
-    <a>Re7</a>                <a>Sol</a>        
-Las noches de Juana no tienen fin, 
+    <a>Re7</a>                <a>Sol</a>
+Las noches de Juana no tienen fin,
      <a>La7</a>                <a>Fa#m</a>
 que siempre le espera una alcoba,
-    <a>Si7</a>                 <a>Mim</a>        
-Los días de Juan son un sin vivir 
+    <a>Si7</a>                 <a>Mim</a>
+Los días de Juan son un sin vivir
  <a>La7</a>                        <a>Re</a>
 desesperao por que pasen las horas
 
 Cansado de tanto fingir,  cha cha cha.
    <a>Re</a>     <a>Si7</a>     <a>Mim</a>      <a>La7</a>             <a>Re</a>
 De noche Juana la loca, de día Juan el fantoche,
-          <a>Si7</a>              <a>Mim</a> 
-Al sol corbata, mantón de noche, 
+          <a>Si7</a>              <a>Mim</a>
+Al sol corbata, mantón de noche,
     <a>La7</a>                           <a>Re</a>
 y a ver cuál de los dos prefieres tú, cha cha cha.
                   <a>Mim</a>        <a>La7</a>                <a>Re</a>
 Si va de boda el pobre Juan ligando se pone muy fino
-   <a>Si7</a>                    <a>Mim</a> 
-La Juana cuando va a las bodas 
+   <a>Si7</a>                    <a>Mim</a>
+La Juana cuando va a las bodas
     <a>La7</a>               <a>Re</a>
 le tira los tejos al padrino.
-   <a>Re7</a>                 <a>Sol</a>      
+   <a>Re7</a>                 <a>Sol</a>
 La Juana los bares suele cerrar,
     <a>La7</a>                 <a>Fa#m</a>
 brindando a la luz de la luna,
-  <a>Si7</a>                  <a>Mim</a>          
-Abrir la oficina es lo que hace Juan 
+  <a>Si7</a>                  <a>Mim</a>
+Abrir la oficina es lo que hace Juan
      <a>La7</a>                   <a>Re</a>
 con sueño y maldiciendo su fortuna
 
 Y es que ya no puede más,  cha cha cha.
    <a>Re</a>     <a>Si7</a>     <a>Mim</a>      <a>La7</a>             <a>Re</a>
 De noche Juana la loca, de día Juan el fantoche,
-          <a>Si7</a>              <a>Mim</a> 
-Al sol corbata, mantón de noche, 
+          <a>Si7</a>              <a>Mim</a>
+Al sol corbata, mantón de noche,
     <a>La7</a>                           <a>Re</a>
 y a ver cuál de los dos prefieres tú, cha cha cha.
 
@@ -172,14 +172,14 @@ Con un naipe marcado no gano esta partida.
    <a>Re</a>                <a>Fa#m</a>
 Mañana será el día, mañana es el momento,
  <a>Sol</a>           <a>La7</a>                  <a>Re</a>
-Mañana sabrán todos que soy lo que siento. 
+Mañana sabrán todos que soy lo que siento.
 
 
 
    <a>La</a>                            <a>Mi</a>
 Y aquí se acabó esta historia de dos.
   <a>Do#7</a>                        <a>Fa#m</a>
-A quien le importó le dije cuál era mi condición 
+A quien le importó le dije cuál era mi condición
    <a>Re</a>        <a>Rem</a>     <a>La</a>
 y alguno exclamó ¡lo sabía!,
    <a>Do#7</a>                      <a>Fa#m</a>
@@ -188,8 +188,8 @@ En cambio hubo otros que al decirles quién yo era
 Descubrí no sin sorpresa que me miraban de otra manera
       <a>Re7</a>           <a>Sol</a>         <a>Fa#m</a>
 Y también por qué negarlo hubo alguna que otra dama
-       <a>Sol</a>            <a>Fa#m</a>      <a>Si7</a>  
-Que al saber de la noticia comentó, 
+       <a>Sol</a>            <a>Fa#m</a>      <a>Si7</a>
+Que al saber de la noticia comentó,
 <a>Mi7</a>
 ¡ay! ¡con lo bueno que el tío estaba!
 <a>La</a>                    <a>Mi</a>
@@ -197,18 +197,18 @@ Espero que mi historia haya sido de su agrado,
 <a>Do#7</a>                          <a>Fa#m</a>
 Hubo momentos alegres y otros tristes como un fado.
 <a>La</a>
-En fin, en fin, en fin, señores, y ahora sí, 
+En fin, en fin, en fin, señores, y ahora sí,
            <a>Mi</a>
 damas y caballeros el show de mi vida se ha acabado
-   <a>La</a>              <a>Mi</a>           
+   <a>La</a>              <a>Mi</a>
 De nuevo función mañana tendré,
    <a>Mi7</a>              <a>La</a>
 espero que deseen volver
- <a>Mi</a>                  <a>La</a>              
-Pues para mí ha sido todo un placer, 
+ <a>Mi</a>                  <a>La</a>
+Pues para mí ha sido todo un placer,
  <a>Si7</a>                  <a>Mi</a>
 aquí se cierra el cabaret.
-   <a>La</a>              <a>Mi</a>           
+   <a>La</a>              <a>Mi</a>
 De nuevo función mañana tendré,
    <a>Mi7</a>              <a>La</a>  <a>Re</a> <a>Mi7</a> <a>La</a>
 espero que deseen volver

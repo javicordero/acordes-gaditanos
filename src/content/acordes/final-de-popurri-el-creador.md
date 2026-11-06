@@ -13,15 +13,15 @@ fraseClave: "Este rapsoda que se empeña"
 ---
 <pre>
         <a>Mi</a>
-Este rapsoda que se empeña aunque no quiera, 
+Este rapsoda que se empeña aunque no quiera,
              <a>Sol#m</a>
 que lleva el riesgo tatuado a flor de piel,
           <a>La</a>
-Con su creador, se la ha jugado su manera, 
+Con su creador, se la ha jugado su manera,
         <a>Fa#m</a>                        <a>Si7</a>
 que pa ganar, antes ya aprendió a perder.
             <a>Mi</a>
-Así es que primo, si este tipo te molesta, 
+Así es que primo, si este tipo te molesta,
           <a>Sol#m</a>
 pues lo lamento que no vengo yo a empatar,
           <a>La</a>
@@ -37,22 +37,22 @@ Que yo lo hago pa ti, pa que esté más contento,
                 <a>La</a>        <a>Fa#m</a>          <a>Si7</a>
 Que tu mes favorito quiero yo que sea febrero.
          <a>Mi</a>                              <a>Sol#m</a>
-Que yo sin ti, soy una novia sin luna de miel, 
+Que yo sin ti, soy una novia sin luna de miel,
                          <a>La</a>
 un corazón que no sabe latir,
          <a>Fa#m</a>                <a>Si7</a>
 Soy un sediento que niega su sed.
                             <a>Mi</a>
-Pero que yo, mira tú, que sin ti 
+Pero que yo, mira tú, que sin ti
                              <a>Sol#m</a>
 soy como un ave emigrante sin sur,
                                 <a>La</a>
-Soy como un verso sin rima y pasión, 
+Soy como un verso sin rima y pasión,
                      <a>Fa#m</a>           <a>Si7</a>
 que yo no soy el que soy, si no estás tú,
                              <a>Do#m</a>
-Que yo sin ti no sería un creador 
-                <a>Sol#m</a> 
+Que yo sin ti no sería un creador
+                <a>Sol#m</a>
 y no tendría canción,
                <a>La</a>         <a>Fa#m</a>   <a>Si7</a>
 Y callaría mi voz, y perdería mi flow,

@@ -18,8 +18,8 @@ Tú, ¿dónde te va a poner Tú, ¿pa dónde va a lanzar?
 Tú, ¿dónde te va a poner Tú, ¿pa dónde va a lanzar?
 <a>Mi</a>                 <a>Fa#m7</a> <a>Si7</a>                 <a>Sol#m7</a>
 Buenas noches, gaditanos, aquí estamos Los Pacientes
-<a>Do#7</a>              <a>Fa#m7</a>    <a>Si7</a>    
-Muy felices y dispuestos a esperar 
+<a>Do#7</a>              <a>Fa#m7</a>    <a>Si7</a>
+Muy felices y dispuestos a esperar
          <a>Sol#m7</a>       <a>Do#7</a>
 lo que haya que esperar.
                 <a>Lam7</a>                         <a>Sol#m7</a>
@@ -32,8 +32,8 @@ Y aquí yo sueño a diario que hoy me toca triunfar,
 ¡Que me llega un bicharraco que no pueda ni sacar!,
                   <a>Fa#m7</a> <a>Si7</a>                <a>Sol#m7</a>
 Pero si me voy pa casa y no he cogío ni un pescao,
-<a>Do#7</a>                <a>Fa#m7</a>   
-Me iré sin más que yo mismo, 
+<a>Do#7</a>                <a>Fa#m7</a>
+Me iré sin más que yo mismo,
       <a>Si7</a>             <a>Mi</a>
 y el ratito que hemos echao.
 <a>Mi</a>                <a>Fa#m7</a> <a>Si7</a>                   <a>Sol#m7</a>
@@ -47,9 +47,9 @@ A ver si cambian los vientos, via mirar esta primitiva
              <a>Fa#m7</a>         <a>Si7</a>         <a>Sol#m7</a>
 Y así yo vivo la vida, desde chico lo he mamao,
                    <a>Mi7</a>
-Intentar lo que se pueda, y si algo llega, 
+Intentar lo que se pueda, y si algo llega,
     <a>La</a>
-amigo mío, has triunfao. 
+amigo mío, has triunfao.
                      <a>Fa#m7</a> <a>Si7</a>               <a>Sol#m7</a>
 Cuando vaya al otro barrio, ¡que me quiten lo bailao!
 <a>Do#7</a>                  <a>Fa#m</a>  <a>Si7</a>                 <a>Sol#m7</a>
@@ -78,7 +78,7 @@ Pacientes, los gaditanos, que esperan dando carrete,
      <a>Lam7</a>                 <a>Do</a>              <a>Si7</a>
 Que viven aprovechando lo que traiga la corriente.
          <a>Lam</a>
-Que esperaban a los turistas, 
+Que esperaban a los turistas,
           <a>Mim</a>
 y ahora esperan que no los echen,
        <a>Fa#7</a>                      <a>Do</a>          <a>Si7</a>
@@ -93,8 +93,8 @@ Y esperan a su museo, hospital que se promete,
 Un castillo abandonado, ¡gaditano, sé paciente!
   <a>Lam7</a>           <a>Sim7</a>     <a>Lam7</a>           <a>Sim7</a>
 Y así seguirá mi gente, feliz en su indolencia,
- <a>Lam7</a>             <a>Sim7</a>    
-Y así seguirán las cosas, 
+ <a>Lam7</a>             <a>Sim7</a>
+Y así seguirán las cosas,
              <a>Lam7</a>              <a>Si7</a>
 hasta que un día, hasta que un día
              <a>Lam7</a>         <a>Si7</a>         <a>Mim</a>

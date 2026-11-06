@@ -12,8 +12,8 @@ fraseClave: "No tengo fortuna ninguna tampoco"
 
 ---
 <pre>
-   <a>Lam</a>             <a>La7</a>                <a>Rem</a>    
-No tengo fortuna ninguna tampoco la espero, 
+   <a>Lam</a>             <a>La7</a>                <a>Rem</a>
+No tengo fortuna ninguna tampoco la espero,
    <a>Sol7</a>                             <a>Do</a>
 yo no tengo cuando me muera ni donde caer
    <a>Lam</a>                  <a>La7</a>                  <a>Rem</a>
@@ -21,21 +21,21 @@ No tengo ni perras, ni tierra, tampoco las quiero
      <a>Fa</a>              <a>Sim7b5</a>              <a>Mi7</a>
 Y usted pensará po valiente mojón de marqués
 <a>Lam</a>                        <a>Mi7</a>
-Espere que enseguida se lo explico, 
+Espere que enseguida se lo explico,
                                   <a>Lam</a>
 no encontrara un marques que sea más rico
-                             <a>Sol</a> 
+                             <a>Sol</a>
 Yo no tengo delirios de grandeza,
            <a>Do</a>         <a>Fa</a>
 no vivo rodeado de riqueza
     <a>Sim7b5</a>                  <a>Mi7</a>
 Ni envidio lo que no puedo tener
           <a>Lam</a>
-Porque yo tengo una vieja guitarra 
+Porque yo tengo una vieja guitarra
               <a>Sol</a>
 y tengo un cuaderno
                       <a>Do</a>    <a>Fa</a>
-Tengo una melodía pa cada invierno 
+Tengo una melodía pa cada invierno
              <a>Sim7b5</a>            <a>Mi7</a>
 y por cada febrero tengo un disfraz
             <a>Lam</a>                                <a>Sol</a>
@@ -52,9 +52,9 @@ Y tengo también caballero el amor verdadero
 durmiendo en mi cama
   <a>Re</a>             <a>Sim7</a>       <a>Fa#7</a>        <a>Sim7</a>
 Yo tengo si lo necesito el abrazo de un padre
-    <a>Mi7</a>                                    <a>LaM7</a>  
+    <a>Mi7</a>                                    <a>LaM7</a>
 Los besos más puros y bonitos me los da mi madre
-  <a>La7</a>           <a>Re</a>      <a>Mi7</a>            <a>Do#m7</a> 
+  <a>La7</a>           <a>Re</a>      <a>Mi7</a>            <a>Do#m7</a>
 En el paraíso nací y en el paraíso me siento
    <a>Fa#7</a>                 <a>Sim7</a>
 el más rico del mundo entero

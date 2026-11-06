@@ -12,11 +12,11 @@ fraseClave: Que envidia a mí me da ver cómo los catalanes,
 letraTitulo: Que envidia a mí me da
 ---
 <pre>
-<a>LaM7</a> <a>Mi7</a>          <a>LaM7</a> <a>Fa#7</a>             <a>Sim7</a> 
+<a>LaM7</a> <a>Mi7</a>          <a>LaM7</a> <a>Fa#7</a>             <a>Sim7</a>
 Que envidia a mí me da ver cómo los catalanes,
 <a>Mi7</a>                 <a>Do#m7</a>
 aunque los llamen rufianes
-<a>Fa#7</a>             <a>Sim7</a> <a>Mi7</a>             <a>LaM7</a> 
+<a>Fa#7</a>             <a>Sim7</a> <a>Mi7</a>             <a>LaM7</a>
 Condicionan los planes del gobierno central
 <a>LaM7</a> <a>Mi7</a>         <a>LaM7</a> <a>La7</a>                <a>Re</a>
 Que envidia de verdad ver tantos parlamentarios
@@ -26,36 +26,36 @@ Vascos, gallegos, canarios
 representando a su tierra allí en la capital
 <a>(Sorda)</a>
 Fíjese que hasta Teruel allí tiene un diputado
-                                                 <a>Mi7</a> 
+                                                 <a>Mi7</a>
 En qué coño hemos fallado y si no dígame usted
 <a>Lam</a>
-Donde están los andaluces allí, 
+Donde están los andaluces allí,
                       <a>Sol</a>
 donde esta nuestra presencia
 <a>Fa</a>                 <a>Mi7</a> <a>Sim7</a>     <a>Mi7</a>      <a>LaM7</a>
 Que somos ocho millones y nadie nos representa
 
-Si hubiera un grupo de gente 
+Si hubiera un grupo de gente
 
 enseñando los dientes por Andalucía
 <a>Do#m7</a>
-Peleando por la sangre, la pena 
+Peleando por la sangre, la pena
                              <a>Dom7</a>
 y el hambre de la tierra mía
-<a>Sim7</a>              <a>Re</a>   <a>Sim7</a>             
+<a>Sim7</a>              <a>Re</a>   <a>Sim7</a>
 Empuñando la arbonaida y despojao de complejo
-<a>Re</a>                     
-Ocupando en el congreso 
+<a>Re</a>
+Ocupando en el congreso
                 <a>Si7</a>                <a>Mi7</a>
 los sitios que hoy no nos sirven de na
 <a>Re</a>
-Si defendieran mi tierra, mi habla, mis cunas, 
+Si defendieran mi tierra, mi habla, mis cunas,
 
 mis males y mi gente
 <a>Do#7</a>                                          <a>Fa#m</a>
 Y en Madrid por fin tuvieran a Blas Infante presente
-<a>Rem</a>                                   <a>Fa</a>  
-Si por fin se reclamara que nuestra región 
+<a>Rem</a>                                   <a>Fa</a>
+Si por fin se reclamara que nuestra región
                 <a>Mi7</a>
 también es una nación
 <a>(Sorda)</a>

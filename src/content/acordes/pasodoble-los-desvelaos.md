@@ -25,11 +25,11 @@ Controlar a la gente, su copla y disfraz
 <a>Rem</a>                                  <a>Rem7</a>
 Ni la cruel dictadura que Franco instalara
 <a>Rem</a>                              <a>Fa</a>
-Consiguió que evitara los carnavaleros 
+Consiguió que evitara los carnavaleros
              <a>Mi7</a>                  <a>Lam</a>
 jugarse el pellejo hasta la democracia
 <a>Fa</a>                     <a>Mi7</a>
-Y ahora resulta que algunos 
+Y ahora resulta que algunos
 
 que no entienden de lo nuestro
                     <a>Si7</a>                    <a>Mi7</a>
@@ -49,7 +49,7 @@ Cuando vienes y me acusas y amenazas con denuncia
    <a>Mi7</a>                 <a>Lam</a>
 por un chiste de un coplero
  <a>Sol</a>     <a>Fa</a>                <a>Mi7</a>
-Porque aquí no hay más censura 
+Porque aquí no hay más censura
 
 que el aplauso de mi pueblo
 <a>Lam</a>                 <a>Mi7</a>
@@ -57,11 +57,11 @@ Sigue si quieres lo intentas,
                         <a>Lam</a>        <a>La7</a>
 sigue que te vas a estrellar,a estrellar
 <a>Rem</a>                  <a>Lam</a>
-Por encima de constituciones, 
+Por encima de constituciones,
                 <a>Mi7</a>                            <a>Lam</a> <a>La7</a>
 de gobiernos dictadores nuestras coplas siguen vivas
 <a>Rem</a>                           <a>Lam</a>
-Porque en Cádiz no tenemos miedo 
+Porque en Cádiz no tenemos miedo
  <a>Sol7</a>     <a>Fa</a>       <a>Mi7</a> <a>Sol7</a>      <a>Fa</a>         <a>Mi7</a>
 y este coplero te reta venga denuncia mis letras
                                             <a>LaM7</a>
