@@ -28,6 +28,9 @@
  *   terminar <tarjeta> [--texto …]  mueve al final de «Finalizado» y comenta (admite --commit y --pr)
  *   mover <tarjeta> <lista>         mueve al final de la lista indicada (nombre o id)
  *   comentar <tarjeta> --texto …    comenta sin mover
+ *   titular <tarjeta> --titulo …    pasa el título largo a la descripción y pone
+ *                                   un título corto numerado (#1, #2…)
+ *   listar <columna> [--json]       tarjetas de una columna (p. ej. «Finalizado»)
  *
  * Texto largo: `--texto "…"`, `--texto-archivo .cache/plan.md` o por stdin.
  * Cualquier orden de escritura acepta `--simular` para ver qué haría sin tocar nada.
@@ -36,7 +39,7 @@
  * trozo del título. Si el trozo coincide con varias, se listan y se sale con código 4.
  */
 
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 const API = 'https://api.trello.com/1';
 
@@ -96,8 +99,6 @@ const NOMBRES = {
     process.env.TRELLO_LISTA_PRIORITARIAS || ENV.TRELLO_LISTA_PRIORITARIAS || 'Prioritarias',
   curso: process.env.TRELLO_LISTA_CURSO || ENV.TRELLO_LISTA_CURSO || 'En curso',
   final: process.env.TRELLO_LISTA_FINAL || ENV.TRELLO_LISTA_FINAL || 'Finalizado',
-  subir: process.env.TRELLO_LISTA_SUBIR || ENV.TRELLO_LISTA_SUBIR || 'Subir ficha',
-  subidas: process.env.TRELLO_LISTA_SUBIDAS || ENV.TRELLO_LISTA_SUBIDAS || 'Subidas',
 };
 
 function faltanCredenciales() {
@@ -263,6 +264,26 @@ function recortar(texto, max = 220) {
   return limpio.length > max ? `${limpio.slice(0, max - 1)}…` : limpio;
 }
 
+// Contador de numeración de tareas (gitignored, en .cache). Guarda el siguiente
+// número a usar; `consumirNumero` lo devuelve y avanza el contador.
+const CONTADOR = '.cache/trello-contador.json';
+
+function leerSiguiente() {
+  if (!existsSync(CONTADOR)) return 1;
+  try {
+    const n = parseInt(JSON.parse(readFileSync(CONTADOR, 'utf8')).siguiente, 10);
+    return Number.isFinite(n) && n > 0 ? n : 1;
+  } catch {
+    return 1;
+  }
+}
+
+function consumirNumero() {
+  const n = leerSiguiente();
+  writeFileSync(CONTADOR, JSON.stringify({ siguiente: n + 1 }, null, 2) + '\n', 'utf8');
+  return n;
+}
+
 async function comentar(id, texto) {
   if (SIMULAR) {
     console.log(`(simulado) comentaría en ${id}:\n${texto}`);
@@ -295,8 +316,7 @@ async function comentar(id, texto) {
     AVISO_SIN_BOT_DADO = true;
     console.warn(
       '⚠️  Comentario escrito con TU token: Trello no te avisará al móvil. ' +
-        'Para que llegue la notificación, pon TRELLO_BOT_KEY y TRELLO_BOT_TOKEN en .env ' +
-        '(ver docs/operativa/trello-watcher.md).',
+        'Para que llegue la notificación, pon TRELLO_BOT_KEY y TRELLO_BOT_TOKEN en .env.',
     );
   }
 }
@@ -386,6 +406,25 @@ async function cmdPendientes() {
   }
 }
 
+async function cmdListar() {
+  const columna = orden[1];
+  if (!columna) throw new Error('Falta la columna: listar <columna>');
+  const abiertas = await listas();
+  const destino = emparejarLista(abiertas, columna);
+  const tarjetas = (destino.cards || [])
+    .map((c) => ({ ...c, idList: c.idList || destino.id, lista: destino.name }))
+    .sort((a, b) => (a.pos ?? 0) - (b.pos ?? 0));
+  if (JSON_OUT) {
+    console.log(JSON.stringify(tarjetas, null, 2));
+    return;
+  }
+  console.log(`«${destino.name}»: ${tarjetas.length} tarjeta(s)\n`);
+  for (const t of tarjetas) {
+    console.log(`- ${t.name}`);
+    console.log(`  id ${t.id}  ·  ${t.shortLink || ''}`);
+  }
+}
+
 async function cmdVer() {
   const t = await resolverTarjeta(orden[1]);
   const tarjeta = await api(`/cards/${t.id}`, {
@@ -462,16 +501,67 @@ async function cmdComentar() {
   if (!SIMULAR) console.log('💬 Comentario añadido.');
 }
 
+async function cmdTitular() {
+  const t = await resolverTarjeta(orden[1]);
+  const titulo = typeof args.titulo === 'string' ? args.titulo.trim() : '';
+  if (!titulo) throw new Error('Falta el título corto: titular <tarjeta> --titulo "…"');
+
+  const tarjeta = await api(`/cards/${t.id}`, { consulta: { fields: 'name,desc' } });
+  const nombreViejo = String(tarjeta.name || '').trim();
+  const descVieja = String(tarjeta.desc || '').trim();
+
+  // Número: por defecto el siguiente del contador; --numero lo fuerza; --sin-numero lo quita.
+  let prefijo = '';
+  if (!args['sin-numero']) {
+    if (typeof args.numero === 'string') {
+      const n = parseInt(args.numero, 10);
+      if (!Number.isFinite(n) || n < 1) {
+        throw new Error(`Número inválido: «${args.numero}» (tiene que ser ≥ 1).`);
+      }
+      prefijo = `#${n} `;
+    } else if (SIMULAR) {
+      prefijo = `#${leerSiguiente()} `; // en simular se enseña sin consumir
+    } else {
+      prefijo = `#${consumirNumero()} `;
+    }
+  }
+
+  const nombreNuevo = `${prefijo}${titulo}`;
+
+  // El título largo de antes pasa a la descripción (arriba), salvo que sea idéntico.
+  let descNueva = descVieja;
+  if (nombreViejo && nombreViejo !== titulo) {
+    descNueva = descVieja ? `${nombreViejo}\n\n${descVieja}` : nombreViejo;
+  }
+
+  if (SIMULAR) {
+    console.log(`(simulado) título  → «${nombreNuevo}»`);
+    console.log(
+      `(simulado) descripción ← título anterior${descVieja ? ' + lo que ya había' : ''}`,
+    );
+    return;
+  }
+
+  await api(`/cards/${t.id}`, {
+    metodo: 'PUT',
+    cuerpo: { name: nombreNuevo, desc: descNueva },
+  });
+  console.log(`→ Título: «${nombreNuevo}»`);
+  console.log(`→ Descripción: guardado el título anterior${descVieja ? ' + lo que ya había' : ''}.`);
+}
+
 // ---------------------------------------------------------------------------
 
 const ACCIONES = {
   listas: cmdListas,
   pendientes: cmdPendientes,
+  listar: cmdListar,
   ver: cmdVer,
   empezar: cmdEmpezar,
   terminar: cmdTerminar,
   mover: cmdMover,
   comentar: cmdComentar,
+  titular: cmdTitular,
 };
 
 async function main() {
@@ -482,11 +572,13 @@ async function main() {
         '  listas                        columnas con id y nº de tarjetas',
         '  pendientes [--json]           cola: Prioritarias y luego Pendiente,',
         '                                de la más antigua a la más nueva',
+        '  listar <columna> [--json]     tarjetas de una columna (p. ej. «Finalizado»)',
         '  ver <tarjeta> [--json]        descripción, checklist y comentarios',
         '  empezar <tarjeta>             → En curso, al final de la columna (+ comentario)',
         '  terminar <tarjeta>            → Finalizado, al final de la columna (+ comentario)',
         '  mover <tarjeta> <lista>       mover al final de una columna',
         '  comentar <tarjeta> --texto …  comentar sin mover',
+        '  titular <tarjeta> --titulo …  título largo → descripción + título corto numerado',
         '',
         'Texto: --texto "…" | --texto-archivo ruta.md | stdin',
         'Escritura: añade --simular para verlo sin tocar Trello.',

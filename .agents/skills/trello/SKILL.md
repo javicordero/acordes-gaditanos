@@ -39,26 +39,14 @@ faltan, el script lo dice y sale con código 2: no inventes valores ni pidas el 
 chat si ya está en `.env`.
 
 Los nombres de columna se pueden redefinir con `TRELLO_LISTA_PENDIENTE`,
-`TRELLO_LISTA_CURSO`, `TRELLO_LISTA_FINAL`, `TRELLO_LISTA_SUBIR` («Subir ficha») y
-`TRELLO_LISTA_SUBIDAS` («Subidas»).
+`TRELLO_LISTA_CURSO` y `TRELLO_LISTA_FINAL`.
 
 **Comentar siempre con el CLI.** Trello no notifica tus propias acciones, así que el
 comentario tiene que escribirlo la **cuenta bot** (`TRELLO_BOT_KEY` / `TRELLO_BOT_TOKEN` en
 `.env`): es lo que hace `scripts/trello.mjs` al comentar, y además le añade `@<usuario>` al
 final (`TRELLO_AVISAR_A`, por defecto `javicordero1`) porque sin mención Trello no avisa de
-un comentario en una tarjeta de la que no eres miembro. Las herramientas MCP `trello_*` van
-con tu token (también mueven tarjetas), así que **`trello_add_comment` no avisa al móvil**:
-para comentar se usa `npm run trello -- comentar`. Si faltan las claves del bot no se rompe
-nada, pero el comentario no enciende la campanita (el CLI lo advierte).
-
-## Dos caminos
-
-- **Herramientas MCP** (`trello_*` en la sesión): existen porque `opencode.json` arranca
-  `scripts/lib/mcp-trello.mjs`, que lee `.env`. Sirven para leer y mover tarjetas sueltas
-  (`trello_get_list_cards`, `move_card`, `trello_add_comment`).
-- **CLI** (`npm run trello`): hace el ciclo completo de una vez y devuelve texto limpio.
-  Es el camino preferido para el flujo de abajo, porque `empezar` / `terminar` mueven y
-  comentan en una sola llamada.
+un comentario en una tarjeta de la que no eres miembro. Si faltan las claves del bot no se
+rompe nada, pero el comentario no enciende la campanita (el CLI lo advierte).
 
 ## Flujo obligatorio
 
@@ -93,12 +81,19 @@ nada, pero el comentario no enciende la campanita (el CLI lo advierte).
 
 3. **Pasarla a «En curso» y renombrar la sesión** (solo la que se va a trabajar)
 
+   Antes de moverla, si el título es largo (el usuario suele escribirlo todo en el título),
+   límpialo con `titular`, que pasa el título largo a la descripción y le antepone un número:
+
+   ```bash
+   npm run trello -- titular <tarjeta> --titulo "Título corto con sentido"
+   ```
+
+   El número (`#1`, `#2`…) sale solo del contador de `.cache/trello-contador.json`. Si el
+   título ya es corto y claro, no hace falta.
+
    ```bash
    npm run trello -- empezar <tarjeta> --texto "🤖 En curso: preparando el plan"
    ```
-
-   El comentario tiene que empezar por `🤖`: si no, el watcher lo toma por un comentario
-   del usuario y arranca un agente para contestárselo.
 
    Y en cuanto se sepa el encargo, se renombra la pestaña de la sesión con el título de la
    tarjeta, en corto: `Trello: <título de la tarjeta>` (3-6 palabras, sin id). Así la
@@ -234,47 +229,6 @@ previstas para pasodobles (`TIPOS_CON_LETRAS`).
 El barrido de la cola (pasar todas las `pendiente`/`encontrada` por el flujo) es **otra
 tarea**: no se hace al atender una tarjeta de letra.
 
-## Subir fichas (columna «Subir ficha»)
-
-Las coplas que ya están revisadas y solo esperan salir a la web se aparcan en la columna
-**«Subir ficha»**, con una tarjeta por copla y el **nombre hablado o el slug** en el título
-(`pasodoble las ratas manuel`, `pasodoble-la-marea`). **Crear la tarjeta no publica nada.**
-
-Lo atiende el watcher (`trello-watch.mjs`) sin sacar agente: en cuanto hay un **comentario
-del usuario** en una tarjeta de esa columna, ejecuta
-`npm run subir:ficha -- --tarjeta <id> --comentario "<texto>"`, que
-
-1. resuelve la ficha (`scripts/lib/fichas.mjs`: slug, pieza + agrupación, título de la letra;
-   si encajan varias, las lista y no publica),
-2. la **promueve** si todavía está en `acordes3`,
-3. la publica con `scripts/publicar-acorde.mjs` (fecha del día siguiente al último
-   publicado, `auditar:pre`, `auditar:acordes`, un commit por ficha y push) y lanza los
-   avisos,
-4. comenta el resultado con el commit y **mueve la tarjeta a «Subidas»**.
-
-El comentario tiene que llevar una **orden de subir** (`sube`, `súbelo`, `publica`, `dale`…);
-si no, solo se pregunta y no se toca nada. Modificadores:
-
-| En el comentario | Efecto |
-|---|---|
-| `sube` | WhatsApp + tuit con las etiquetas de siempre |
-| `sin etiquetar` | tuit sin etiquetar a nadie en la imagen |
-| `sin tuit` | solo WhatsApp |
-| `sin whatsapp` / `sin wa` | solo tuit |
-| `sin aviso` / `sin avisos` | ninguno (y commit con `[sin aviso]`, que también para Telegram) |
-
-Para hacerlo a mano, sin esperar al watcher (el `--seco` enseña qué haría y no toca nada):
-
-```bash
-npm run subir:ficha -- --tarjeta <id|shortLink> --comentario "sube sin tuit"
-npm run subir:ficha -- --slug pasodoble-la-marea --comentario "sube" --seco
-```
-
-Si algo falla, la tarjeta **se queda en «Subir ficha»** con el error comentado, para
-reintentar con otro comentario. Para volver a subir algo que ya está en «Subidas», se
-arrastra a «Subir ficha» y se comenta otra vez. No se planifica ni se pide aprobación: es
-una orden mecánica.
-
 ## Reglas
 
 - **Nunca** se implementa en el mismo turno en que se planifica, salvo que el usuario lo
@@ -288,6 +242,9 @@ una orden mecánica.
 - Si se bloquea (falta un dato, un token, una decisión del usuario), **no** se pasa a
   Finalizado: se comenta el bloqueo y se deja en «En curso».
 - Si el usuario descarta el plan, la tarjeta vuelve a «Pendiente» y se comenta por qué.
+- Para reabrir una tarjeta ya finalizada: se arrastra de «Finalizado» a «Pendiente» en
+  Trello y se trata como nueva; `ver <tarjeta>` (o `ver <tarjeta> --json`) recupera el
+  resumen y los comentarios anteriores.
 - Comentarios en español, cortos y con el resultado por delante. Markdown de Trello
   (negritas con `**`).
 - No se mueven ni se cierran tarjetas que no se hayan trabajado en esta sesión sin
@@ -311,6 +268,7 @@ una orden mecánica.
 | `terminar <tarjeta>` | → «Finalizado» (al final de la columna) + comentario (`--commit`, `--pr`) |
 | `mover <tarjeta> <lista>` | mover al final de una columna concreta |
 | `comentar <tarjeta>` | comentar sin mover |
+| `titular <tarjeta> --titulo …` | título largo → descripción + título corto numerado |
 
 `<tarjeta>` acepta el id, el `shortLink` o un trozo del título (si es ambiguo, lista los
 candidatos y sale con código 4).

@@ -251,4 +251,3 @@ Y un solo `git push origin master` al final (siempre y cuando la intención del 
 - Herramientas: `git add`, `git commit`, `git push` y la edición del `date` del frontmatter.
 - Flujo típico: `promover-acorde` → `chord-formatting` → **`subir-acorde`**.
 - El panel `/admin` tiene una pestaña **Por publicar** que lanza `scripts/publicar-acorde.mjs` para las fichas locales sin subir. Hace lo mismo que esta skill (fechas, auditorías, commit por ficha y push) pero **no** lanza WhatsApp ni X: deja el aviso listo para copiar. Para que los lance desde el PC, `--avisar`.
-- La columna **«Subir ficha»** de Trello usa ese mismo script a través de `npm run subir:ficha` (ver skill `trello`): un comentario en la tarjeta publica la copla con fecha nueva, commit, push y avisos, con `--avisar` y, según lo que diga el comentario, `--sin-wa`, `--sin-x` o `--sin-etiquetas`.
