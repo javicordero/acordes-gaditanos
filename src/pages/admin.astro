@@ -99,6 +99,17 @@ export const prerender = true;
   .filtros button.sel { background:#000; border-color:#000; color:var(--acento); }
   .filtros button.sel .cuenta { color:var(--acento); opacity:.85; }
   .filtros .cuenta { font-size:10px; opacity:.7; }
+  /* Selección múltiple de «Por publicar»: subir varias fichas de una vez. */
+  .lote { display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:8px 10px; background:var(--acento); border:2px solid #000; box-shadow:var(--sombra-sm); }
+  .lote[hidden] { display:none; }
+  .lote-n { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+  .lote-acciones { display:flex; align-items:center; gap:6px; margin-left:auto; flex-wrap:wrap; }
+  .lote button { padding:6px 9px; font-size:9.5px; background:var(--papel); box-shadow:none; }
+  .lote button.principal { background:#000; border-color:#000; color:var(--acento); }
+  .lote button.principal:hover { background:#000; color:#fff; transform:none; box-shadow:2px 2px 0 #000; }
+  .fila.con-sel { grid-template-columns:auto minmax(0,1fr) auto; }
+  .fila.con-sel:has(.fila-sel:checked) { background:#fff3d6; }
+  .fila-sel { width:18px; height:18px; margin:0; accent-color:#000; cursor:pointer; }
   .leyenda-filtro { margin:0; font-size:11px; line-height:1.45; color:#333; }
   .leyenda-filtro b { color:#000; }
   .leyenda-filtro code { font-size:10.5px; background:#eee; padding:0 3px; }
@@ -340,6 +351,12 @@ export const prerender = true;
     .lista-cab { padding:10px; gap:8px; }
     .lista-cuerpo { padding:6px 10px 32px; }
     .fila { grid-template-columns:1fr; gap:8px; padding:10px; }
+    .fila.con-sel { grid-template-columns:auto minmax(0,1fr); }
+    .fila.con-sel .fila-acciones { grid-column:1 / -1; }
+    .fila-sel { width:22px; height:22px; }
+    .lote { padding:7px 8px; }
+    .lote-acciones { margin-left:0; width:100%; }
+    .lote-acciones button { flex:1 1 auto; }
     .fila-acciones { justify-content:flex-end; }
     .f-agr { white-space:normal; }
     .datos-grid { grid-template-columns:1fr; max-height:46vh; padding:2px 10px 12px; }
@@ -387,6 +404,7 @@ export const prerender = true;
     <button id="b-letra" hidden>＋ Letra</button>
     <button id="b-publicar" hidden title="Pasa el borrador a acordes y abre la PR">Publicar</button>
     <button id="b-comprobar" hidden>Comprobar</button>
+    <button id="b-preview" hidden>Vista previa</button>
     <button id="b-pr" hidden>Ver PR</button>
     <button id="b-fusionar" hidden>Fusionar</button>
     <button id="b-avisos" hidden>Avisos</button>
@@ -425,6 +443,14 @@ export const prerender = true;
         <button type="button" data-filtro="porPublicar" id="f-por-publicar" hidden title="Fichas de acordes con cambios que la web aún no tiene: en local, sin commit; en una PR abierta, sin fusionar">Por publicar <span class="cuenta" data-cuenta="porPublicar"></span></button>
         <button type="button" data-filtro="publicadas" title="Fichas de acordes ya en git (en la web) y revisadas">Publicadas <span class="cuenta" data-cuenta="publicadas"></span></button>
         <button type="button" data-filtro="acordes2" id="f-acordes2" hidden title="Fichas importadas del cancionero (acordes2), con los acordes todavía sin envolver: «A borradores» las pasa a acordes3 para revisarlas. Solo en local">Acordes2 <span class="cuenta" data-cuenta="acordes2"></span></button>
+      </div>
+      <div class="lote" id="lote" hidden>
+        <span class="lote-n" id="lote-n" aria-live="polite">Ninguna seleccionada</span>
+        <div class="lote-acciones">
+          <button type="button" id="lote-todo">Seleccionar todo</button>
+          <button type="button" id="lote-limpiar" disabled>Limpiar</button>
+          <button type="button" id="lote-publicar" class="principal" disabled>Publicar</button>
+        </div>
       </div>
       <p class="leyenda-filtro" id="leyenda-filtro"></p>
     </div>
@@ -596,7 +622,7 @@ export const prerender = true;
 
 <dialog id="dlg-subir">
   <form id="f-subir">
-    <h2>Publicar</h2>
+    <h2 id="subir-titulo">Publicar</h2>
     <p class="nota" id="subir-plan"></p>
     <div class="opciones-aviso" id="subir-opciones">
       <label><input type="checkbox" name="sinX"> Sin tuit (solo WhatsApp)</label>

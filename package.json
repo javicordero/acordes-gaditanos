@@ -35,6 +35,7 @@
     "prs": "node scripts/prs-acordes3.mjs",
     "revisar": "node scripts/revision-acordes.mjs",
     "auditar:editor": "node --experimental-strip-types scripts/auditar-editor.mjs",
+    "auditar:lote": "node scripts/auditar-panel-lote.mjs",
     "auditar:filtros": "node --experimental-strip-types scripts/auditar-filtros-lista.ts",
     "auditar:orden": "node --experimental-strip-types scripts/auditar-orden.ts",
     "auditar:glosario-paginas": "node scripts/auditar-glosario-paginas.mjs",

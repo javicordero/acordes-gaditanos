@@ -1,5 +1,6 @@
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho, esAcorde, esAnotacion } from '../lib/pre-acordes.js';
 import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura } from '../lib/editar-lineas.js';
+import { puedeSubir, dividirLote, enTandas, avisa as avisaFicha } from '../lib/panel-lote.js';
 import { escaparHtml } from '../lib/escape.js';
 import glosario from '../data/glosario-acordes.json';
 
@@ -166,6 +167,11 @@ let sinSubirClaves = new Set();
 // `borrada` o `sin-push` (commit local sin push). Una publicada y modificada en
 // el ordenador ya está en la web: lo que falta es el commit.
 let estadoPendiente = new Map();
+// Selección de «Por publicar» para subir varias fichas de una vez. `loteVisibles`
+// son las filas pintadas (las de la pestaña, recortadas a 300): «Seleccionar
+// todo» no marca fichas que no se ven.
+let seleccion = new Set();
+let loteVisibles = [];
 
 const normalizar = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 /** Ficha de la cola «Por revisar». */
@@ -245,6 +251,9 @@ async function recargarIndice() {
   importados = [];
   sinSubirClaves = new Set();
   estadoPendiente = new Map();
+  // Lo seleccionado puede haberse publicado: no se arrastra a la lista nueva.
+  seleccion.clear();
+  loteVisibles = [];
   await cargarIndice();
   pintarLista();
 }
@@ -332,7 +341,7 @@ function grupoLista(titulo, items, clase, render = filaLista) {
  * tiene. O son cambios del ordenador sin commit (`NUEVA`, `MODIFICADA`, `BORRADA`,
  * `SIN PUSH`, se suben desde aquí) o una PR abierta (`EN PR`, se publica fusionándola).
  */
-function filaPorPublicar(x) {
+function filaPorPublicar(x, conSel = false) {
   const conPR = Boolean(x.enPR);
   const etiqueta = conPR ? 'EN PR'
     : x.estado === 'nueva' ? 'NUEVA'
@@ -350,7 +359,16 @@ function filaPorPublicar(x) {
     : '<a class="acc boton" href="/acordes/' + encodeURIComponent(x.slug) + '/"' +
       ' title="Ver la ficha como está ahora en el ordenador (vuelve con «atrás»)">Ver</a>';
 
-  return '<article class="fila pendiente">' +
+  // Casilla solo en la pestaña «Por publicar»: en «Todas» la barra de lote no
+  // tiene sentido y el resto de pestañas no se suben desde aquí.
+  const casilla = conSel && puedeSubir(x, MODO_LOCAL)
+    ? '<input type="checkbox" class="fila-sel" data-sel value="' + esc(x.slug) + '"' +
+      (seleccion.has(x.slug) ? ' checked' : '') +
+      ' aria-label="Seleccionar ' + esc([x.pieza, x.agrupacion].filter(Boolean).join(' · ')) + '">'
+    : '';
+
+  return '<article class="fila pendiente' + (casilla ? ' con-sel' : '') + '">' +
+    casilla +
     '<button type="button" class="fila-info" data-slug="' + esc(x.slug) + '">' +
       '<span class="f-agr">' + esc(x.agrupacion) + '</span>' +
       '<span class="f-meta">' +
@@ -415,6 +433,29 @@ const rangoEstado = (x) => {
   return e === 'modificada' ? 0 : e === 'nueva' ? 1 : e === 'borrada' ? 3 : 2;
 };
 
+/** Barra de lote: solo en «Por publicar» y sobre lo que hay pintado. */
+function pintarLote() {
+  const barra = $('lote');
+  if (!barra) return;
+  // Slugs que ya no están en la pestaña (se publicaron, cambió la búsqueda…).
+  const enTabla = new Set(loteVisibles.map((x) => x.slug));
+  for (const s of [...seleccion]) if (!enTabla.has(s)) seleccion.delete(s);
+
+  const visible = filtroTipo === 'porPublicar' && loteVisibles.length > 0;
+  barra.hidden = !visible;
+  if (!visible) return;
+
+  const n = seleccion.size;
+  $('lote-n').textContent = n
+    ? n + ' seleccionada' + (n === 1 ? '' : 's') + ' de ' + loteVisibles.length
+    : 'Ninguna seleccionada';
+  const publicar = $('lote-publicar');
+  publicar.disabled = n === 0;
+  publicar.textContent = n > 1 ? 'Publicar (' + n + ')' : 'Publicar';
+  $('lote-limpiar').disabled = n === 0;
+  $('lote-todo').textContent = n > 0 && n === loteVisibles.length ? 'Quitar todo' : 'Seleccionar todo';
+}
+
 function pintarLista() {
   const palabras = normalizar($('q').value).split(/\s+/).filter(Boolean);
   const coincide = (x) => {
@@ -473,6 +514,9 @@ function pintarLista() {
   }
 
   const MAX = 300;
+  // La selección solo existe en «Por publicar», y sobre lo que de verdad se
+  // pinta: «Seleccionar todo» no marca fichas que no se ven.
+  loteVisibles = filtroTipo === 'porPublicar' ? porPublicar.slice(0, MAX) : [];
   let pintadas = 0;
   const recorta = (items) => {
     const r = items.slice(0, Math.max(0, MAX - pintadas));
@@ -484,7 +528,7 @@ function pintarLista() {
   if (filtroTipo === 'todas') {
     if (revisar.length) grupos.push({ titulo: 'Por revisar', items: revisar, clase: 'pend' });
     if (borradores.length) grupos.push({ titulo: 'Borradores', items: [...borradoresAMedias, ...borradoresCompletos], clase: 'pend' });
-    if (porPublicar.length) grupos.push({ titulo: 'Por publicar', items: porPublicar, clase: 'pend', render: filaPorPublicar });
+    if (porPublicar.length) grupos.push({ titulo: 'Por publicar', items: porPublicar, clase: 'pend', render: (x) => filaPorPublicar(x, filtroTipo === 'porPublicar') });
     if (publicadas.length) {
       const porAnio = new Map();
       for (const x of publicadas) {
@@ -503,7 +547,7 @@ function pintarLista() {
     grupos.push({ titulo: 'Borradores a medias', items: borradoresAMedias, clase: 'pend' });
     grupos.push({ titulo: 'Borradores', items: borradoresCompletos, clase: 'pend' });
   } else if (filtroTipo === 'porPublicar') {
-    grupos.push({ titulo: 'Por publicar', items: porPublicar, clase: 'pend', render: filaPorPublicar });
+    grupos.push({ titulo: 'Por publicar', items: porPublicar, clase: 'pend', render: (x) => filaPorPublicar(x, filtroTipo === 'porPublicar') });
   } else if (filtroTipo === 'publicadas') {
     const porAnio = new Map();
     for (const x of publicadas) {
@@ -542,6 +586,15 @@ function pintarLista() {
       if (accion === 'aBorradores') return pasarABorradores(b.dataset.slug, b);
     };
   });
+  // Casillas de «Por publicar»: marcar no repinta la lista (perdería el foco).
+  $('filas').querySelectorAll('input[data-sel]').forEach((c) => {
+    c.onchange = () => {
+      if (c.checked) seleccion.add(c.value);
+      else seleccion.delete(c.value);
+      pintarLote();
+    };
+  });
+  pintarLote();
 
   $('lista-vacio').hidden = mostradas > 0;
   if (!mostradas) {
@@ -575,7 +628,7 @@ function mostrarLista() {
   $('nav-vistas').hidden = false;
   $('b-nueva').hidden = false;
   $('b-letra').hidden = false;
-  ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado'].forEach((id) => { $(id).hidden = true; });
+  ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado', 'b-preview'].forEach((id) => { $(id).hidden = true; });
   marcarNav('editor');
   $('cab-meta').textContent = '';
   setEstado('', true);
@@ -591,7 +644,7 @@ function marcarNav(vista) {
   document.querySelectorAll('#nav-vistas button').forEach((b) => b.classList.toggle('sel', b.dataset.vista === v));
 }
 function soloNav() {
-  ['b-nueva', 'b-letra', 'b-lista', 'b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado'].forEach((id) => { $(id).hidden = true; });
+  ['b-nueva', 'b-letra', 'b-lista', 'b-comprobar', 'b-guardar', 'b-avisos', 'b-pr', 'b-fusionar', 'b-publicar', 'b-revisado', 'b-preview'].forEach((id) => { $(id).hidden = true; });
 }
 function mostrarStats(empujar = true) {
   ocultarVistas();
@@ -973,6 +1026,11 @@ async function abrirFicha(slug, empujar = true) {
   pintar();
   aplicarZoom();
   ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos'].forEach((id) => { $(id).hidden = false; });
+  // Vista previa: en local también para los borradores (`/acordes3/`). En
+  // producción un borrador no está en el build, así que solo se ofrece si la
+  // ficha ya está en `acordes`.
+  $('b-preview').hidden = zonaFicha === 'acordes3' && !MODO_LOCAL;
+  $('b-preview').title = 'Ver «' + slug + '» como la pinta la web (en otra pestaña)';
   $('b-revisado').hidden = !porRevisar({ slug });
   $('b-revisado').title = zonaFicha === 'acordes3'
     ? 'Guarda, marca la copla como revisada y la promueve a acordes'
@@ -1719,6 +1777,18 @@ async function comprobar() {
   }
 }
 
+/** Abre la ficha tal como la pinta la web, en otra pestaña para no perder el editor. */
+function abrirVistaPrevia() {
+  if (!ficha) return;
+  const ruta = (zonaFicha === 'acordes3' ? '/acordes3/' : '/acordes/') +
+    encodeURIComponent(ficha.slug) + '/';
+  // La vista previa lee el archivo guardado: lo que esté sin guardar no sale.
+  if (sucio && !confirm('Hay cambios sin guardar: la vista previa muestra la última versión guardada.\n¿Abrirla igual?')) {
+    return;
+  }
+  window.open(ruta, '_blank', 'noopener');
+}
+
 async function fusionar() {
   if (!ficha || !ficha.pr) return;
   if (!confirm('¿Fusionar la PR #' + ficha.pr.numero + '? Se publicará en la web.')) return;
@@ -1928,16 +1998,17 @@ async function revisarDesdeLista(slug, boton) {
 }
 
 /* ---------------- publicar en local ---------------- */
-let avisoSlug = null;
-let slugPublicar = null;
+let avisoSlugs = [];
+// Lo que hay en el diálogo de subida: qué fichas se suben y qué PRs se fusionan.
+let publicacionPendiente = null;
 
 /** Texto de qué va a pasar al publicar una ficha de `pendientesPublicar`. */
 function textoPublicacion(item) {
-  const avisa = item.estado === 'nueva' || (item.estado === 'sin-push' && item.cambio === 'nueva');
+  const llevaAviso = avisaFicha(item);
   if (item.estado === 'nueva') return 'Se publica en la web.';
   if (item.estado === 'borrada') return 'Se sube la eliminación. No hay aviso.';
   if (item.estado === 'sin-push') {
-    return 'Se suben los commits que ya están hechos.' + (avisa ? '' : ' No hay aviso.');
+    return 'Se suben los commits que ya están hechos.' + (llevaAviso ? '' : ' No hay aviso.');
   }
   return 'Se suben los cambios. No hay aviso.';
 }
@@ -1955,42 +2026,154 @@ function guardarOpcionesAviso(o) {
   try { localStorage.setItem('admin-avisos', JSON.stringify(o)); } catch { /* sin almacenamiento */ }
 }
 
-/** Abre el diálogo de publicación con las opciones de aviso. */
+/** Abre el diálogo de subida con una ficha sola (botón «Publicar» de la fila). */
 function pedirPublicar(slug) {
   const item = pendientesPublicar.find((x) => x.slug === slug);
   if (!item) return;
-  slugPublicar = slug;
-  const avisa = item.estado === 'nueva' || (item.estado === 'sin-push' && item.cambio === 'nueva');
+  publicacionPendiente = { subir: [slug], fusionar: [], omitidos: 0 };
   const nombre = item.pieza ? item.pieza + ' · ' + item.agrupacion : slug;
+  $('subir-titulo').textContent = 'Publicar';
   $('subir-plan').innerHTML = '<b>' + esc(nombre) + '</b><br>' + textoPublicacion(item);
+  abrirDialogoSubir(avisaFicha(item));
+}
+
+/** Diálogo de subida de la selección de «Por publicar». */
+function pedirPublicarLote() {
+  const items = loteVisibles.filter((x) => seleccion.has(x.slug));
+  const { subir, fusionar, omitidos } = dividirLote(items, MODO_LOCAL);
+  if (!subir.length && !fusionar.length) {
+    mostrarAviso('Ninguna de las seleccionadas se puede publicar desde aquí.', 'var(--nuevo)');
+    return;
+  }
+
+  publicacionPendiente = {
+    subir: subir.map((x) => x.slug),
+    fusionar: fusionar.map((x) => ({ slug: x.slug, rama: x.rama || null })),
+    omitidos: omitidos.length,
+  };
+
+  const conAviso = subir.filter((x) => avisaFicha(x)).length;
+  const lineas = [];
+  if (subir.length) {
+    lineas.push('<b>' + subir.length + (subir.length === 1 ? ' ficha se sube' : ' fichas se suben') + '</b>' +
+      (conAviso ? ' · ' + conAviso + ' con aviso' : ' · sin aviso'));
+  }
+  if (fusionar.length) {
+    lineas.push('<b>' + fusionar.length + (fusionar.length === 1 ? ' PR se fusiona' : ' PRs se fusionan') + '</b>' +
+      ' · Telegram avisa solo si es una copla nueva');
+  }
+  if (omitidos.length) {
+    lineas.push(omitidos.length + (omitidos.length === 1 ? ' se queda fuera' : ' se quedan fuera') +
+      ': ya no está pendiente de subir');
+  }
+  const total = subir.length + fusionar.length;
+  $('subir-titulo').textContent = 'Publicar ' + total + (total === 1 ? ' ficha' : ' fichas');
+  $('subir-plan').innerHTML = lineas.join('<br>');
+  abrirDialogoSubir(conAviso > 0);
+}
+
+/** Casillas de aviso del diálogo de subida (se recuerdan entre veces). */
+function abrirDialogoSubir(llevaAviso) {
   const o = leerOpcionesAviso();
   $('f-subir').sinX.checked = o.sinX;
   $('f-subir').sinEtiquetas.checked = o.sinEtiquetas;
   // En producción no hay avisos que lanzar: el botón solo publica.
-  $('subir-opciones').hidden = !MODO_LOCAL || !avisa;
+  $('subir-opciones').hidden = !MODO_LOCAL || !llevaAviso;
   if (!$('dlg-subir').open) $('dlg-subir').showModal();
 }
 
-async function publicarLocal(slug, opciones = {}) {
-  const item = pendientesPublicar.find((x) => x.slug === slug);
-  if (!item) return;
-
-  try {
-    const r = await fetch(API + '/publicar-local', {
+/** Fusiona las PRs de un lote (una llamada por ficha). */
+async function fusionarLote(entradas) {
+  for (let i = 0; i < entradas.length; i++) {
+    const { slug, rama } = entradas[i];
+    if (entradas.length > 1) $('lote-n').textContent = 'Fusionando ' + (i + 1) + '/' + entradas.length + '…';
+    const r = await fetch(API + '/fusionar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        slugs: [slug],
-        sinAviso: false,
-        avisar: MODO_LOCAL,
-        ...opciones,
-      }),
+      body: JSON.stringify({ slug, ...(rama ? { rama } : {}) }),
     });
     const d = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
-    abrirPublicacion(d.id, d.plan);
-    seguirPublicacion(d.id);
+    if (!r.ok) throw new Error(d.error ? slug + ': ' + d.error : 'no se pudo fusionar ' + slug);
+  }
+}
+
+/** Sube las fichas de un lote, en tandas de 20 (límite de publicar-local). */
+async function publicarLocal(slugs, opciones = {}) {
+  const lista = (Array.isArray(slugs) ? slugs : [slugs]).filter(Boolean);
+  if (!lista.length) return;
+
+  const tandas = enTandas(lista, 20);
+  const avisos = [];
+  const fallos = [];
+  let error = '';
+
+  for (let i = 0; i < tandas.length; i++) {
+    try {
+      const r = await fetch(API + '/publicar-local', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          slugs: tandas[i],
+          sinAviso: false,
+          avisar: MODO_LOCAL,
+          ...opciones,
+        }),
+      });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
+      abrirPublicacion(d.id, d.plan, tandas.length > 1 ? 'Tanda ' + (i + 1) + '/' + tandas.length : '');
+      const res = await seguirPublicacion(d.id, true);
+      avisos.push(...res.avisos);
+      for (const f of res.fallos) if (!fallos.includes(f)) fallos.push(f);
+      if (!res.ok) {
+        error = res.error || 'mira el registro';
+        break;
+      }
+    } catch (e) {
+      error = String(e.message || e);
+      break;
+    }
+  }
+
+  await recargarIndice();
+  if (avisos.length) {
+    avisoSlugs = avisos;
+    $('publicar-avisos').hidden = false;
+    $('publicar-avisos').textContent = avisos.length === 1 ? 'Copiar aviso' : 'Copiar avisos';
+    if (!$('dlg-publicar').open) $('dlg-publicar').showModal();
+  }
+
+  const n = lista.length;
+  let texto;
+  if (error) texto = 'Falló la publicación: ' + error;
+  else if (fallos.length) {
+    texto = 'Publicado, pero no se pudo avisar por ' + fallos.join(' y ') +
+      '.\nEl texto está en «Copiar aviso» para mandarlo a mano.';
+  } else if (avisos.length) {
+    texto = (n > 1 ? 'Publicadas ' + n + ' fichas' : 'Publicado') + '. Avisos enviados por WhatsApp y X.';
+  } else {
+    texto = n > 1 ? 'Publicadas ' + n + ' fichas.' : 'Publicado.';
+  }
+  mostrarAviso(texto, error ? 'var(--mal)' : (fallos.length ? 'var(--nuevo)' : 'var(--ok)'));
+}
+
+/** Publica lo que haya en el diálogo: primero las PRs y después las locales. */
+async function ejecutarPublicacion(pendiente, opciones) {
+  if (!pendiente) return;
+  try {
+    if (pendiente.fusionar.length) {
+      await fusionarLote(pendiente.fusionar);
+      if (!pendiente.subir.length) {
+        await recargarIndice();
+        mostrarAviso(pendiente.fusionar.length === 1
+          ? 'PR fusionada: la ficha ya está en la web.'
+          : 'Fusionadas ' + pendiente.fusionar.length + ' PRs: ya están en la web.', 'var(--ok)');
+        return;
+      }
+    }
+    if (pendiente.subir.length) await publicarLocal(pendiente.subir, opciones);
   } catch (e) {
+    await recargarIndice();
     mostrarAviso(String(e.message || e), 'var(--mal)');
   }
 }
@@ -2008,16 +2191,19 @@ function textoPlan(plan) {
   }).join('<br><br>');
 }
 
-function abrirPublicacion(id, plan) {
-  avisoSlug = null;
+function abrirPublicacion(id, plan, nota = '') {
+  avisoSlugs = [];
   $('publicar-avisos').hidden = true;
-  $('publicar-plan').innerHTML = textoPlan(plan);
+  $('publicar-plan').innerHTML = (nota ? '<b>' + esc(nota) + '</b><br>' : '') + textoPlan(plan);
   $('publicar-log').textContent = '';
   if (!$('dlg-publicar').open) $('dlg-publicar').showModal();
 }
 
-/** Sigue el trabajo en segundo plano y refresca la lista al terminar. */
-async function seguirPublicacion(id) {
+/**
+ * Sigue el trabajo en segundo plano. Con `callar` no refresca ni avisa: lo hace
+ * quien lo lanza, que puede estar encadenando varias tandas.
+ */
+async function seguirPublicacion(id, callar = false) {
   while (true) {
     await new Promise((listo) => setTimeout(listo, 2000));
     let d;
@@ -2026,8 +2212,9 @@ async function seguirPublicacion(id) {
       if (!r.ok) throw new Error('no se pudo leer el estado');
       d = await r.json();
     } catch (e) {
-      $('publicar-log').textContent += '\n' + String(e.message || e);
-      return;
+      const error = String(e.message || e);
+      $('publicar-log').textContent += '\n' + error;
+      return { ok: false, error, avisos: [], fallos: [] };
     }
 
     if (Array.isArray(d.lineas)) {
@@ -2046,17 +2233,20 @@ async function seguirPublicacion(id) {
       const resumen = (ok && d.resumen) || {};
       const fallos = Array.isArray(resumen.fallos) ? resumen.fallos : [];
       const avisos = ok && Array.isArray(resumen.avisos) ? resumen.avisos : [];
+      const error = ok ? '' : (d.error || 'mira el registro');
+
+      if (callar) return { ok, error, avisos, fallos };
 
       if (avisos.length) {
         // El texto queda siempre a mano por si hay que mandarlo a mano.
-        avisoSlug = avisos[0];
+        avisoSlugs = avisos;
         $('publicar-avisos').hidden = false;
         $('publicar-avisos').textContent = avisos.length === 1 ? 'Copiar aviso' : 'Copiar avisos';
         if (!$('dlg-publicar').open) $('dlg-publicar').showModal();
       }
 
       let texto;
-      if (!ok) texto = 'Falló la publicación: ' + (d.error || 'mira el registro');
+      if (!ok) texto = 'Falló la publicación: ' + error;
       else if (fallos.length) texto = 'Publicado, pero no se pudo avisar por ' + fallos.join(' y ') +
         '.\nEl texto está en «Copiar aviso» para mandarlo a mano.';
       else if (avisos.length) texto = 'Publicado. Avisos enviados por WhatsApp y X.';
@@ -2065,7 +2255,7 @@ async function seguirPublicacion(id) {
 
       await recargarIndice();
       mostrarAviso(texto, ok ? (fallos.length ? 'var(--nuevo)' : 'var(--ok)') : 'var(--mal)');
-      return;
+      return { ok, error, avisos, fallos };
     }
   }
 }
@@ -2083,15 +2273,32 @@ async function reanudarPublicacion() {
   } catch { /* sin trabajo */ }
 }
 
-/** Compone y abre el aviso de una ficha ya publicada, para copiarlo. */
-async function abrirAvisosSlug(slug) {
+/**
+ * Compone y abre el aviso, o los avisos de un lote, para copiarlos. Con varias
+ * fichas se juntan en un solo texto separado por una línea.
+ */
+async function abrirAvisosSlug(slugs) {
+  const lista = (Array.isArray(slugs) ? slugs : [slugs]).filter(Boolean);
+  if (!lista.length) return;
   try {
-    const r = await fetch(API + '/aviso?slug=' + encodeURIComponent(slug));
-    const d = await r.json();
-    if (!r.ok) throw new Error(d.error || 'no se pudo componer el aviso');
-    $('aviso-meta').textContent = d.titulo;
-    $('aviso-texto').value = d.texto;
-    avisoX = d.textoX || d.texto;
+    const textos = [];
+    let titulo = 'Aviso';
+    let textoX = '';
+    for (const slug of lista) {
+      const r = await fetch(API + '/aviso?slug=' + encodeURIComponent(slug));
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || 'no se pudo componer el aviso de ' + slug);
+      textos.push(d.texto);
+      if (lista.length === 1) {
+        titulo = d.titulo || titulo;
+        textoX = d.textoX || d.texto;
+      } else {
+        textoX += (textoX ? '\n\n' : '') + String(d.textoX || d.texto).replace(/\*/g, '');
+      }
+    }
+    $('aviso-meta').textContent = titulo;
+    $('aviso-texto').value = textos.join('\n\n———\n\n');
+    avisoX = textoX;
     $('dlg-publicar').close();
     $('dlg-aviso').showModal();
   } catch (e) {
@@ -2511,7 +2718,7 @@ $('b-letra').onclick = () => { $('f-letra').reset(); pintarBaseLetra(); $('dlg-l
 $('f-letra').addEventListener('input', pintarBaseLetra);
 $('l-cancelar').onclick = () => $('dlg-letra').close();
 $('f-letra').onsubmit = anadirLetra;
-$('subir-cancelar').onclick = () => $('dlg-subir').close();
+$('subir-cancelar').onclick = () => { publicacionPendiente = null; $('dlg-subir').close(); };
 $('f-subir').onsubmit = (e) => {
   e.preventDefault();
   const opciones = {
@@ -2519,20 +2726,30 @@ $('f-subir').onsubmit = (e) => {
     sinEtiquetas: $('f-subir').sinEtiquetas.checked,
   };
   guardarOpcionesAviso(opciones);
-  const slug = slugPublicar;
+  const pendiente = publicacionPendiente;
+  publicacionPendiente = null;
   $('dlg-subir').close();
-  if (slug) publicarLocal(slug, opciones);
+  if (pendiente) ejecutarPublicacion(pendiente, opciones);
 };
+$('lote-todo').onclick = () => {
+  const todos = seleccion.size > 0 && seleccion.size === loteVisibles.length;
+  if (todos) seleccion.clear();
+  else for (const x of loteVisibles) seleccion.add(x.slug);
+  pintarLista();
+};
+$('lote-limpiar').onclick = () => { seleccion.clear(); pintarLista(); };
+$('lote-publicar').onclick = pedirPublicarLote;
 $('b-guardar').onclick = guardar;
 $('b-revisado').onclick = revisarFicha;
 $('b-comprobar').onclick = comprobar;
+$('b-preview').onclick = abrirVistaPrevia;
 $('b-fusionar').onclick = fusionar;
 $('b-publicar').onclick = publicar;
 $('b-avisos').onclick = abrirAvisos;
 $('nota-local-cerrar').onclick = cerrarNotaLocal;
 $('av-cerrar').onclick = () => $('dlg-aviso').close();
 $('publicar-cerrar').onclick = () => $('dlg-publicar').close();
-$('publicar-avisos').onclick = () => { if (avisoSlug) abrirAvisosSlug(avisoSlug); };
+$('publicar-avisos').onclick = () => { if (avisoSlugs.length) abrirAvisosSlug(avisoSlugs); };
 $('av-copiar').onclick = async () => {
   try { await navigator.clipboard.writeText($('aviso-texto').value); $('av-copiar').textContent = 'Copiado'; }
   catch { $('aviso-texto').select(); document.execCommand('copy'); }

@@ -60,6 +60,17 @@ recargar la página, porque es una corrección de algo que ya está en la web:
 El panel lo refresca con `/admin/api/lista?solo=pendientes` (cola de revisión + `git status`
 + PRs abiertas de fichas publicadas), sin las llamadas a GitHub de la lista completa.
 
+## Vista previa desde el editor
+
+La cabecera del editor lleva **Vista previa** entre **Comprobar** y **Avisos**. Abre la ficha
+como la pinta la web en **otra pestaña**, para no perder el editor ni el cursor:
+
+- en local, los borradores van a `/acordes3/<slug>/` y las publicadas a `/acordes/<slug>/`
+  (la misma ruta que enseña `datos-slug`);
+- en producción solo se ofrece en las fichas de `acordes`: un borrador de `acordes3` no está
+  en el build desplegado y su vista previa es el deploy preview de la PR;
+- si hay cambios sin guardar, avisa de que la vista muestra la **última versión guardada**.
+
 ## De dónde sale cada dato
 
 - **`/admin/api/lista`** (`netlify/functions/lista.mjs`): los borradores (`acordes3`), las
@@ -82,6 +93,27 @@ El panel lo refresca con `/admin/api/lista?solo=pendientes` (cola de revisión +
 
 Vive en `src/scripts/estudio.js` (`esPorRevisar`, `esBorrador`, `esPorPublicar`,
 `esPublicada`) y se pinta en `pintarLista()`.
+
+## Subir en lote
+
+En **Por publicar** cada fila lleva una casilla y la cabecera una barra con **Publicar (n)**,
+**Seleccionar todo** y **Limpiar**. La selección se vacía al cambiar de pestaña, de búsqueda
+o al recargar la lista, y solo abarca las fichas pintadas (máximo 300).
+
+Al pulsar **Publicar** se separan las dos fuentes de la pestaña:
+
+- las **`EN PR`** se fusionan una a una; si una no está en verde se **para** y se dice cuál
+  (las anteriores ya están en la web);
+- las **locales** van a `/admin/api/publicar-local` en **tandas de 20** (el límite del
+  endpoint). Un trabajo por tanda: fechas consecutivas para las nuevas, un commit por ficha,
+  un push y los avisos al final.
+
+Las casillas **Sin tuit** y **Sin etiquetar** valen para todo el lote. **Copiar avisos** pide
+el texto de cada ficha publicada y los junta en uno solo, separados por una línea.
+
+Qué filas entran y cómo se reparten lo decide `src/lib/panel-lote.js` (puro):
+`puedeSubir`, `accionDe`, `dividirLote` y `enTandas`. `npm run auditar:lote` lo prueba con
+casos fijos (nueva, modificada, borrada, sin push, EN PR, borrador y lote mixto).
 
 ## La pestaña «Acordes2» (solo en local)
 
