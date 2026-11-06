@@ -14,8 +14,9 @@ import InstalarAppCard from '../../components/right-column/InstalarAppCard.astro
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
-import { busquedaYoutube, enlaceYoutube, estadoDeVideo } from '../../lib/videos';
+import { busquedaYoutube, datosDeVideo, enlaceYoutube, estadoDeVideo, idYoutube } from '../../lib/videos';
 import { hermanasDe, nombrePieza, tituloSeo } from '../../lib/letras';
+import { fechaISO, videoYouTube } from '../../lib/schema';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -56,6 +57,8 @@ const tituloPestana = tituloSeo(acorde);
 const estadoVideo = estadoDeVideo(video);
 const enlaceVideo = enlaceYoutube(video);
 const busquedaVideo = busquedaYoutube(pieza, agrupacion, year);
+const datosVideo = datosDeVideo(video);
+const idVideo = idYoutube(video);
 
 // Obtener acordes recomendados
 const todosLosAcordes = await getCollection('acordes');
@@ -104,20 +107,31 @@ const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitar
 // Generar URL canónica
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-// Imagen absoluta para OG / Twitter / Schema
+// Imagen absoluta para OG / Twitter / Schema (la foto de la agrupación).
 const imageUrl = img
   ? new URL(img, Astro.site).toString()
-  : new URL('/og-default.jpg', Astro.site).toString();
+  : new URL('/og-image.jpg', Astro.site).toString();
 
-// Convertir fecha DD/MM/YYYY a ISO 8601
-function dateToISO(dateStr: string): string {
-  if (!dateStr) return '';
-  const parts = dateStr.split('/');
-  if (parts.length !== 3) return '';
-  return `${parts[2]}-${parts[1]}-${parts[0]}T00:00:00Z`;
-}
+// Fecha de alta en ISO 8601.
+const isoDate = fechaISO(data.date);
 
-const isoDate = dateToISO(data.date);
+// Vídeo de YouTube como VideoObject. Solo si el iframe está operativo y la
+// auditoría conoce la fecha de subida (`npm run videos -- --detalles`), que es
+// un dato obligatorio para que Google lo trate como vídeo.
+const videoSchema =
+  estadoVideo === 'ok' && idVideo && datosVideo?.fecha
+    ? {
+        '@context': 'https://schema.org',
+        ...videoYouTube({
+          id: idVideo,
+          nombre: datosVideo.titulo || `${nombreCompleto} - Carnaval ${year}`,
+          descripcion: `${nombreCompleto}, Carnaval de Cádiz ${year}.${fraseClave ? ` ${fraseClave}.` : ''}`,
+          fecha: datosVideo.fecha,
+          duracion: datosVideo.duracion,
+          pagina: canonicalURL,
+        }),
+      }
+    : null;
 
 // Build Article schema
 const articleSchema = {
@@ -176,6 +190,7 @@ const webPageSchema = {
 
   <script type='application/ld+json' set:html={JSON.stringify(articleSchema)} />
   <script type='application/ld+json' set:html={JSON.stringify(webPageSchema)} />
+  {videoSchema && <script type='application/ld+json' set:html={JSON.stringify(videoSchema)} />}
 
   <Breadcrumb
     year={year}

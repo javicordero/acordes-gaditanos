@@ -57,6 +57,7 @@ function leerArgumentos(argv) {
     aplicar: false,
     seco: false,
     json: false,
+    detalles: false,
     solo: [],
     espera: 600,
     ayuda: false,
@@ -70,6 +71,7 @@ function leerArgumentos(argv) {
     else if (arg === '--aplicar') opciones.aplicar = true;
     else if (arg === '--dry-run' || arg === '--seco') opciones.seco = true;
     else if (arg === '--json') opciones.json = true;
+    else if (arg === '--detalles') opciones.detalles = true;
     else if (arg === '--ayuda' || arg === '--help' || arg === '-h') opciones.ayuda = true;
     else if (arg === '--espera') {
       opciones.espera = Number(siguiente) || 600;
@@ -92,11 +94,13 @@ function ayuda() {
 Auditoría de los vídeos de YouTube de las fichas.
 
   npm run videos                    audita y escribe ${RUTA_ESTADO}
+  npm run videos -- --detalles      además completa fecha de subida y duración
   npm run videos -- --buscar        busca recambio para los caídos
   npm run videos -- --aplicar       aplica los recambios (respeta "aplicar": false)
   npm run videos -- --solo <texto>  limita a lo que coincida (slug o agrupación)
 
 Opciones:
+  --detalles      completa fecha de subida y duración (para el VideoObject)
   --espera <ms>   pausa entre búsquedas por canal (por defecto 600)
   --dry-run       enseña los cambios pero no toca las fichas
   --json          resumen final en JSON
@@ -477,6 +481,78 @@ function aplicarCandidatos(fichas, estado, opciones) {
 }
 
 // ---------------------------------------------------------------------------
+// Fecha de subida y duración (VideoObject)
+// ---------------------------------------------------------------------------
+
+// La página del vídeo trae `uploadDate` y `lengthSeconds` en el JSON inicial.
+// Solo se piden para los vídeos a los que les falta algún dato: es una petición
+// más por vídeo y estos datos no cambian con el tiempo.
+async function detallesVideo(id, intentos = 3) {
+  for (let intento = 1; intento <= intentos; intento++) {
+    try {
+      const respuesta = await pedir(`https://www.youtube.com/watch?v=${id}`);
+
+      // YouTube corta a la nada cuando se piden muchas páginas seguidas: se
+      // espera y se reintenta en vez de dar el vídeo por perdido.
+      if (respuesta.status === 429) {
+        await esperar(10000 * intento);
+        continue;
+      }
+      if (respuesta.status >= 500) {
+        await esperar(1500 * intento);
+        continue;
+      }
+      if (!respuesta.ok) return null;
+
+      const html = await respuesta.text();
+      const fecha = (html.match(/"uploadDate":"(\d{4}-\d{2}-\d{2})/) || [])[1] || '';
+      const segundos = Number((html.match(/"lengthSeconds":"(\d+)"/) || [])[1] || 0);
+
+      if (!fecha && !segundos) return null;
+      return {
+        ...(fecha ? { fecha } : {}),
+        ...(segundos ? { duracion: segundos } : {}),
+      };
+    } catch {
+      await esperar(800 * intento);
+    }
+  }
+
+  return null;
+}
+
+async function completarDetalles(videos, ids, opciones) {
+  const pendientes = ids.filter(
+    (id) => videos[id]?.estado === 'ok' && (!videos[id].fecha || !videos[id].duracion),
+  );
+
+  if (!pendientes.length) return 0;
+
+  console.log(`\nDetalles de ${pendientes.length} vídeos (fecha de subida y duración)...`);
+
+  let hechos = 0;
+  const cola = [...pendientes];
+
+  async function trabajador() {
+    while (cola.length) {
+      const id = cola.pop();
+      const datos = await detallesVideo(id);
+      if (datos) {
+        videos[id] = { ...videos[id], ...datos };
+        hechos++;
+      }
+      if (!opciones.json) process.stdout.write('.');
+      await esperar(350);
+    }
+  }
+
+  await Promise.all(Array.from({ length: 3 }, trabajador));
+  if (!opciones.json) console.log('');
+
+  return hechos;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -510,8 +586,23 @@ async function main() {
   const videos = opciones.solo.length ? { ...anteriores } : {};
   for (const id of ids) {
     const nuevo = nuevos[id];
-    if (!nuevo.estado && anteriores[id]) videos[id] = anteriores[id];
-    else videos[id] = nuevo;
+    if (!nuevo.estado && anteriores[id]) {
+      videos[id] = anteriores[id];
+    } else {
+      // La auditoría solo mira estado/autor/título: la fecha y la duración ya
+      // conocidas se conservan para no perderlas en cada pasada.
+      const previo = anteriores[id] || {};
+      videos[id] = {
+        ...nuevo,
+        ...(previo.fecha ? { fecha: previo.fecha } : {}),
+        ...(previo.duracion ? { duracion: previo.duracion } : {}),
+      };
+    }
+  }
+
+  if (opciones.detalles) {
+    const completados = await completarDetalles(videos, ids, opciones);
+    console.log(`Detalles: ${completados} vídeos completados`);
   }
 
   const cuenta = { ok: 0, muerto: 0, bloqueado: 0, desconocido: 0 };

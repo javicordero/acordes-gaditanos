@@ -1,7 +1,7 @@
 {
-  "actualizado": "2026-11-03",
+  "actualizado": "2026-11-06",
   "resumen": {
-    "ok": 423,
+    "ok": 428,
     "muerto": 0,
     "bloqueado": 0,
     "desconocido": 0
@@ -11,2539 +11,3425 @@
       "estado": "ok",
       "http": 200,
       "autor": "OzeWe",
-      "titulo": "Final Popurrí Comparsa Los Peregrinos (2017). Credo. Juan Carlos Aragón"
+      "titulo": "Final Popurrí Comparsa Los Peregrinos (2017). Credo. Juan Carlos Aragón",
+      "fecha": "2017-01-30",
+      "duracion": 254
     },
     "Qs_dNLU57Lk": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los humanos - Preliminares"
+      "titulo": "Comparsa, Los humanos - Preliminares",
+      "fecha": "2026-01-28",
+      "duracion": 1800
     },
     "eB-ROxMxE64": {
       "estado": "ok",
       "http": 200,
       "autor": "Alberto DF",
-      "titulo": "Comparsa El malo del cuento - La de caperucita  2016"
-    },
-    "iXoyBUQvGEs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los del otro barrio - Preliminares"
-    },
-    "KJFxI9y1o-o": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los colgaos - Cuartos"
-    },
-    "kT5Y42bf7sc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, DSAS3 - Preliminares"
-    },
-    "tNNXjlGJFew": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Isabelo Bejarano",
-      "titulo": "Cuarteta  de Los Equilibristas"
-    },
-    "s80OxTYrvP4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa,  Los Locos - Preliminares"
-    },
-    "LIuuMgG-gbM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El cementerio - Preliminares"
-    },
-    "zpAP3fNLL5Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Las ratas - Preliminares"
-    },
-    "eW_NCC5dqNU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "KikeCai",
-      "titulo": "Cuarteta \"Que Sencillo Es Querer\" - Lo Siento Pisha, No To Er Mundo Puede Ser De Cai, Letra."
-    },
-    "vmgeVynOI-U": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El cantón independiente (Que vivan las mujeres de Cádiz) - Preliminares"
-    },
-    "NFBC3HS-U_8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los Sacrificaos - Final"
-    },
-    "m9l0la0BD9Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El ángel de Cádiz - Preliminares"
-    },
-    "VWOr5cihJMw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CuartetasDePopurris",
-      "titulo": "Vas cosiendo - Tic tac, tic tac"
-    },
-    "ch8hjI0xkuQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El manicomio - Cuartos"
-    },
-    "iap5lRmMha0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CuartetasDePopurris",
-      "titulo": "No todo tiene un precio - Los originales (Final popurrí)"
-    },
-    "yqRuT6aWVjM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Al cielo con él - Semifinal"
-    },
-    "H4Sa9aFMKmI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Cádiz que bonita eres con tu puta madre ( los bipolares ) - Cuartos"
-    },
-    "bcr1vKPpYfc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, ¡Cadizcadabra! Las brujas - Cuartos"
-    },
-    "x05jE_VnclA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Cai de mi arma (7'20) - Cuartos"
-    },
-    "aHqFL-kpkoU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Çembrando copla (La comparça er pueblo) - Preliminares"
-    },
-    "JrgnnwCIj8g": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Comparsa Los Calaíta (Fuimos a por tabaco) una chirigota de toda la vida... - Preliminar"
-    },
-    "MFwtj8A9l3U": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El creador - Preliminares"
-    },
-    "Kx_R68flzoI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "jcc93",
-      "titulo": "Última Cuarteta El Perro Andalú con Letra"
-    },
-    "LATI6SA-2xE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavalea365",
-      "titulo": "Chirigota er chele vara - Popurri Cuartos de Final"
-    },
-    "3eNmBAR_52Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota. Flamenkito Apaleao FINAL | Actuación Completa | Carnaval de Cádiz 2000"
-    },
-    "jwrgDkn016k": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Desdelalaja",
-      "titulo": "Final de popurrí - Frente talibán de la republica irreverente de Kadi Kadistan"
-    },
-    "LnoGsmFQ8ew": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Final de popurrí de 'Hoy no me puedo levantar'"
-    },
-    "xmehVD588hE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La cara oculta de la luna - Cuartos"
-    },
-    "zLEptCYqShw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, La maldición de la lapa negra - Cuartos"
-    },
-    "23eSN-eBwW4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La oveja negra - Preliminares"
-    },
-    "W2UlvWEa0l0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La peleona - Preliminares"
-    },
-    "Qzs_uLHx8cg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, La última y nos vamos - Preliminares"
-    },
-    "UCuUwb2FjLQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Las cosas del destino - Preliminar"
-    },
-    "URRCPxm15rQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Amísh del mono, fuimos a por piononos (La decepción) - Preliminares"
-    },
-    "ifWnZYRuYyw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Lo Mejor Del 3x4",
-      "titulo": "Cuarteta POPURRI LOS ANTEYESTERDAY Comparsa LA BANDA DEL CAPITAN VENENO   Salesianos Cadiz"
-    },
-    "cmzEn7Ep2Yo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Antiguos - Preliminares"
-    },
-    "5hTizeqXA9M": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "El Pasacalles de Carnaval",
-      "titulo": "El homenaje a Manolo Santander de Los Burritos"
-    },
-    "G4nM1WFd8aY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los butaneros chirigota de CAI/CDC - Preliminares"
-    },
-    "fF55zwK5TEc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "BalugTek23",
-      "titulo": "Ultima cuarteta popurri, Los Chabolis / Preliminares"
-    },
-    "ual-7SOW39I": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Compay - Preliminares"
-    },
-    "ld0PTV1Dlxc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavaleros de Cádiz",
-      "titulo": "Chirigota 2013: Los de Gris - Cuarteta final popurrí con letra"
-    },
-    "JLaLLeafkc4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "palopita82",
-      "titulo": "CUARTETA COMPARSA LOS DE LA CHARCA"
-    },
-    "VRNdvG7rjgg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Hombres de Paco - Preliminares"
-    },
-    "oIB6AMdRXBU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los inhumanos - Preliminares"
-    },
-    "RMvM1clSABs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los James Bond que da gloria verlos - Semifinal"
-    },
-    "u5TgnhkVxGg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los luceros - Cuartos"
-    },
-    "GgU6ALIHG0w": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los mafiosos - Preliminares"
-    },
-    "bivvVH5Dzw0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los morosos - Preliminar"
-    },
-    "4A44HlY0hIQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los muchachos del congelao - Preliminares"
-    },
-    "dJ1Dn0Yy_Kk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "rikopelada",
-      "titulo": "final popurri los muñecos"
-    },
-    "g5UhmY7oasM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Plácidos Domingos - Preliminares"
-    },
-    "dJh7S98ageU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los que la tienen de mármol -Preliminares"
-    },
-    "cs6P2vqtYVM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Elmangla de Cádiz",
-      "titulo": "Comparsa-\"Los Regaera\" (2004) Popurri-by mangla.MPG"
-    },
-    "mXzok4zdm6M": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Robins - Preliminares"
-    },
-    "Z_yu2lHewCU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Semicuraos - Preliminares"
-    },
-    "WHmt4_Lq_K4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota infantil, Mushu Carnaval - Semifinales"
-    },
-    "_j1KYd8RwNk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Ni los buenos son tan buenos, ni los malos son tan malos - Preliminares"
-    },
-    "DgbbmphSSNM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Nos hemos venío arriba - Preliminares (2)"
-    },
-    "mgIFmw8Jg2Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, OBDC. Me quedo contigo ! - Preliminares"
-    },
-    "V6DSke1ks-A": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, ¡Oh capitán, mi capitán! - Preliminar"
-    },
-    "B9Utf8Cjaas": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Javier Campos",
-      "titulo": "Chirigota \"Pa religión la mía\". Final popurrí"
-    },
-    "NNG1dfsLepk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Seguimos cayendo mal - Preliminares"
-    },
-    "3QWp0v1Okuc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, SSSHHHHH!!!  - Preliminares"
-    },
-    "HKpMaFZOL_A": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Tic-tac, Tic-tac - Preliminares"
-    },
-    "6uzKJ74K17I": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Pedro J. Sánchez",
-      "titulo": "CORO Tiempos modernos - Este mundo es de la gente"
-    },
-    "I-sGXVxkAPY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Una chirigota con shoniket3 - Preliminares"
-    },
-    "K51_kGMyWps": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El marqués de Cádiz - Preliminar"
-    },
-    "CAOEU5qrz60": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota, Los que van por Derecho FINAL | Actuación Completa | Carnaval de Cádiz 2010"
-    },
-    "MQE7wRVr3Eg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa 1800 LOS INMORTALES - 1ª SEMIFINAL [Actuación Completa] Carnaval de Cádiz 2004"
-    },
-    "oyB_23PEaVE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa A FUEGO VIVO, FINAL | Actuación Completa | Carnaval de Cádiz 1987"
-    },
-    "NFrDqSF41tk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Con la ropa de trabajo prepará\" de 'A los pies de La Caleta'"
-    },
-    "bTk8TX4FJlQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "2Maria7",
-      "titulo": "A los que se le ve la pluma - sentado a divisar(fotos)"
-    },
-    "WwR3qlbRxgU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Al borde del precipicio... \"los rancios\" - Cuartos"
-    },
-    "_X18tdTuwlE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "José Miguel Molina Durán",
-      "titulo": "Aquí mando yo y mis Leones - Pasodoble '' Amanece son las seis de la mañana'' (Chirigota 1989)"
-    },
-    "TF3vtXIDWUc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval de Pablo",
-      "titulo": "Comparsa \"Araka La Kana\" (2007) - Actuacion en la Final y Repertorio Completo. 2007"
-    },
-    "P6qRgGqGYTE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CarnavalDeCadizAntiguo",
-      "titulo": "Atila rey de los nervios - 1990 - Chirigota - Pasodoble - Nervioso abri - audio del teatro"
-    },
-    "6Df-8uT_g6I": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota BEBÉ A BORDO - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1991"
-    },
-    "RlidVDxdA28": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota BIEN NOS DISTE COBA CRISTOBA - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1992"
-    },
-    "rQf4RBQPvxs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Caminito del Falla - Preliminares"
-    },
-    "OZOQ1jyV8vY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "La Comparsa de David Carapapa",
-      "titulo": "Pasodoble de la comparsa: Carretera y Manta, \"¿Qué hago ahora?\""
-    },
-    "Jgup12Il-_E": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Comparsa Catastrophic Magic Band, SEMIFINALES del Carnaval de Cádiz 2013"
-    },
-    "fjXCMghOODg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, ¡Cazafantasmas! - Cuartos"
-    },
-    "0XLKexiK1ag": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Chernobyl 'el musical' - Preliminar"
-    },
-    "q4jYI3V6Ky8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CarnavalDeCadizAntiguo",
-      "titulo": "Con gancho - 1987 - comparsa - Pasodoble - Entra y ponte decente - del teatro"
-    },
-    "NbYS5gt5C2c": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota: Cuando tú vas yo vengo - Preliminares"
-    },
-    "y5FWgukHH1A": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota ¡¡CUIDAO QUE VOY!! PRELIMINARES [Actuación Completa] Carnaval de Cádiz 2010"
-    },
-    "psNjYVpzGwo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "NikoMB",
-      "titulo": "Comparsa \"Dando Leña\" 1997 - Pasodoble \"Sin ganas, una noche lloviznando\""
-    },
-    "JG7HRTvK3d0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, DESOBDC !!!! - Preliminares"
-    },
-    "qsMTh2bXSIY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Después de Cádiz, ni hablar - Preliminares"
-    },
-    "4AnmLJvFI7k": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Donde fuimos felices - Preliminares"
-    },
-    "4jaJIHmnoqA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El amante - Preliminares"
-    },
-    "g0OcUODah-8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Pasodoble EL AMOR PUEDE MÁS QUE SU INFIERNO - Comparsa EL ÁNGEL DE CÁDIZ «Cuartos Carnaval 2017»"
-    },
-    "mYyK29S4zJM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Always - Idel",
-      "titulo": "Comparsa El Bache - Pasodoble \"La luna vino a la fragua\" (1993) Idel de Cai"
-    },
-    "kayAOTJMW_Y": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Manu Montaño",
-      "titulo": "Jesús Bienvenido - Pasodoble El Balsero (Directo 'YO ME QUEDO EN CASA')"
-    },
-    "93flpG6BIBs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa El Cielo de Cádiz FINAL | Actuación Completa | Carnaval de Cádiz 1998"
-    },
-    "IWLDJekdEfM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa El Circo FINAL | Actuación Completa | Carnaval de Cádiz 1999"
-    },
-    "HC-wkM_W7Ds": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El club de los ignorantes - Preliminar"
-    },
-    "bZvuf2aGxWw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El Desguace - Preliminares"
-    },
-    "I_Ff7pfjhuw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El embrujo de Cádiz"
-    },
-    "_npa5hu-etc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa EL ESPÍRITU DE CÁDIZ - FINAL [Calidad Mejorada] - Carnaval de Cádiz 2005"
-    },
-    "zw-NrqhwiJs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnacadiz",
-      "titulo": "''1800 Los Inmortales''-Popurrí"
-    },
-    "Yxf365RspM4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, El Grinch de Cai - Preliminares"
-    },
-    "xf3Wx41hXtE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, El hombre que susurraba a las almohadas - Preliminares"
-    },
-    "p-0H0KFVJ9s": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El Joyero - Preliminares"
-    },
-    "avP_XroRzmg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavalea365",
-      "titulo": "Comparsa el marqués de Cádiz - Pasodoble \"No tengo fortuna\""
-    },
-    "bDiqGnJhwN8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Elmangla de Cádiz",
-      "titulo": "Comparsa-\"El Mercado de las Maravillas\" (2008) -\"Otra vez me ha vuelto loco \"-by mangla.MPG"
-    },
-    "D1WEpOGgcGc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Chirigota de casapuerta",
-      "titulo": "Chirigota de casapuerta 2022. El Millonario. Pasodoble"
-    },
-    "jyRWXLmboL8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, El nombre me lo estoy pensando - Preliminar"
-    },
-    "o8tKhI61ZN8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, El patriota - Preliminares"
-    },
-    "UPobm_dDcrs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "COMPARSA El perro andalú (Pasodoble a Paco Alba) | FINAL COAC 2018"
-    },
-    "eUaEf0M8R_Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Archivo Municipal de Cádiz",
-      "titulo": "Comparsa  El revuelo (los viejos copleros nunca mueren)."
-    },
-    "lLp4a_seB8I": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa EL TITIRITERO - FINAL [Calidad Mejorada] Carnaval de Cádiz 1993"
-    },
-    "aB5g7ke760U": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Леонид Стависюк",
-      "titulo": "Comparsa \"El Último Escuadrón\" (2008) - Cuartos - Pasodoble \"Por la Alameda\" 2016"
-    },
-    "GKD6z0ykZa4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa ENCAJEBOLILLOS - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1991"
-    },
-    "fDYKirJsC08": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Er Chele vara - Cuartos"
-    },
-    "azOwZIve4_U": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CarnavalDeCadizAntiguo",
-      "titulo": "Estampas goyescas - Pasodoble - La guitarra española - 1973 - Comparsa - del Falla"
-    },
-    "y3qY5k7zZvQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota. Esto si que es una Chirigota FINAL | Carnaval de Cádiz 2014"
-    },
-    "gWOEBGOj06A": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Frente talibán de la república irreverente de Kadikadistán - Preliminares"
-    },
-    "j8bkXQj9V_Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Gente con chispa - Semifinales"
-    },
-    "R-snHXkg1Jc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Miiguel866",
-      "titulo": "Comparsa Guadalupe - Muchos sueñan con quererte"
-    },
-    "PcAK9VMF5wQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. Güenagente SEMIFINALES 'Presentación y Pasodobles' | Carnaval de Cádiz 1994"
-    },
-    "iCblucA6fTg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota HASTA QUE LA MUERTE NOS SEPARE - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1990"
-    },
-    "xKV33ICPGlQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Señor de Cai\" de 'Huele a romero'"
-    },
-    "r043uPQUzVM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Amira Sedai",
-      "titulo": "¡Cadizcadabra! Las brujas. La playita de Santa María. Pasodoble con música inédita"
-    },
-    "dyVclXWbmCI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Dorremifasoleando",
-      "titulo": "Comparsa Juana la loca - Presentación  *1º Premio*"
-    },
-    "tQwsJq2MFPw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Kike Remolino",
-      "titulo": "PASODOBLE 2021"
-    },
-    "MWxjDKo-f7w": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota juvenil, La alergia de Cádiz - Semifinal"
-    },
-    "p9Ms0a0IoTI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Elmangla de Cádiz",
-      "titulo": "Comparsa-\"La Atlántida\" (2005) Pasodoble-\"Sentado en la orilla del Mar\"-by mangla.avi"
-    },
-    "Wc7rY5Nta8g": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La azotea - Preliminares"
-    },
-    "f6oBEVNV_aE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "caletavane",
-      "titulo": "la bella escondida en madrid,pasodoble la musica suena en nuestros corazones"
-    },
-    "zYWVy398stA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Elmangla de Cádiz",
-      "titulo": "Comparsa-\"La Bicentenaria\" (2012) 2º Pasodoble Cuartos-by mangla.mpg"
-    },
-    "yU36-52l9uE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La brigada - Preliminares"
-    },
-    "-F4tBKSENfo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Gaditanorum",
-      "titulo": "Comparsa \"La Caldera\" - Pasodoble \"En mi guitarra\""
-    },
-    "WmaaZrGwT9o": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, La callejera invisible - Preliminares"
-    },
-    "PN4gjw8tOJ8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La camorra - Preliminares"
-    },
-    "pCW000SWnOw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La canción de Cádiz - Cuartos"
-    },
-    "aVvHhSPDC_g": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La canción de la laguna - Cuartos"
-    },
-    "GbMfHj6T8gk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Lo mejor del Carnaval",
-      "titulo": "Comparsa La Cárcel Vieja (2004) pasodoble ''De la mano los dos''"
-    },
-    "OJml_gdcRNc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota juvenil, La casa de papel colorao - Semifinal"
-    },
-    "YOdpz3ZyMZA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, La chirigota clásica - Preliminares"
-    },
-    "OwfRx5yP_6Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Elmangla de Cádiz",
-      "titulo": "Chirigota-\"La Chirigota de la Historia\" (2013) Pasodoble-\"Yo siempre me he preguntado\"-by mangla"
-    },
-    "PF08FGBfQsc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La chusma selecta - Final"
-    },
-    "Nc2YZUx5rzk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La ciudad de Dios - Preliminar"
-    },
-    "tpI4FrOW2JM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La ciudad invisible - Preliminares"
-    },
-    "KniOwE_poS8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. La Comparsa del Genio FINAL | Actuación Completa | Carnaval de Cádiz 2013"
-    },
-    "E5Og0lcWdI4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La comparsa Los Invencibles - Preliminares"
-    },
-    "t-xrzn15gbY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La comunidad - Preliminares"
-    },
-    "7W4aPNvgGwA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La consentida - Preliminares"
-    },
-    "5D42dDdcflc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa - La Corona - Preliminares"
-    },
-    "YvUE4FJkSV8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavaleando 4",
-      "titulo": "La miniantología de Jona (Pasodoble La escuela del Carnaval - Siete de la mañana) - BD8"
-    },
-    "rZ5z2aR7jpk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Pasodoble SI CAMINITO DEL FALLA - Comparsa LA ETERNIDAD «Final Carnaval de Cádiz 2017»"
-    },
-    "2Hx-ZfTR8Uo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La gaditanissima - Preliminar"
-    },
-    "j-c3nNcUpFk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La luz de Cádiz - Preliminar"
-    },
-    "GLMmRisDIGA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Gaditanorum",
-      "titulo": "Chirigota \"La maldición de la lapa negra\" (2019) - Pasodoble \"Con la maldición\""
-    },
-    "XD4C0pxMdxk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa LA MAR DE COPLAS - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1990"
-    },
-    "3WOnJdhwiOg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. La Mare que me parió FINAL | Actuación Completa | Carnaval de Cádiz 2009"
-    },
-    "PlNnK5hT9Ig": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La marea - Preliminares"
-    },
-    "qQj6nQGdwxM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, La misión (El evangelio según Santander) - Preliminares"
-    },
-    "ngrqV0OZ9wQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Javito Yyasta",
-      "titulo": "Pasodoble Niña/ Comparsa La Niña del Viento"
-    },
-    "km7dayE1pRI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa 'La Playa de los Secretos' FINAL | Actuación Completa | Carnaval de Cádiz 2007"
-    },
-    "46yCMAikAW4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Codigo Carnaval",
-      "titulo": "Comparsa LA PREDICADORA - Pasodoble 'Que sea el principio'"
-    },
-    "OhFKVtblEV8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa La Quintaesencia FINAL | Actuación Completa | Carnaval de Cádiz 2006"
-    },
-    "V7v3gtfHBhg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La resbalaera, una comparsa de toda la vida - Preliminares"
-    },
-    "aGXdeGWhhGk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La resistencia - Preliminares"
-    },
-    "CpxE47MMPf4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Comparsa \"La serenisima\" FINAL completo. Carnaval Cadiz 2012"
-    },
-    "ONvbvu3463Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Vestido de viudo\" de 'La tengo en el bote'"
-    },
-    "IK3DzVdec-s": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La tierra de la alegría - Preliminar"
-    },
-    "nNON_XtbUzg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La tregua - Preliminares"
-    },
-    "A8lJkL3i8vw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La tribu - Preliminares"
-    },
-    "loEI4Cm17mY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La valla - Preliminares"
-    },
-    "XSOTISLxlQE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Dami Molina",
-      "titulo": "Las Adolfas Coñetada 2024"
-    },
-    "HbvLetbZg8o": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Titto Rosales",
-      "titulo": "Hay que ver como cambian los tiempos - Pasodoble Las belloteras - 1.999"
-    },
-    "NAIvccRpkPE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CarnavalDeCadizAntiguo",
-      "titulo": "Las brujas piti - 1984 - chirigota - Pasodoble"
-    },
-    "AjpUdP8QWmg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Siempre me pasa lo mismo\" de 'Las del tacatá'"
-    },
-    "OgheZwG_bLg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Las guerrilleras - Cuartos"
-    },
-    "V8-QSFCRyio": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CarnavalDeCadizAntiguo",
-      "titulo": "La hueste de Don Nuño - 1959 - pasodoble - Tenemos nuestro Condado"
-    },
-    "809svjKwZgU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Las irrepetibles - Preliminares"
-    },
-    "H1mQHAdwsgg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa - Las Locuras de Martín Burton PRELIMINARES | Actuación Completa | Carnaval de Cádiz 2011"
-    },
-    "3_GRFI-KXn8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Jesús Bienvenido Saucedo",
-      "titulo": "La banda de los enclenques"
-    },
-    "23ZpHdPwP6c": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota. Las Pito-Risas FINAL | Actuación Completa | Carnaval de Cádiz 2008"
-    },
-    "oEl608Sxw0A": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval De Calidad",
-      "titulo": "Las Que Salieron Del Bote - Tengo Una Espina Clavá [2006]"
-    },
-    "2o-H5GN9uBI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa LAS VERDADES DEL BARQUERO - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1994"
-    },
-    "KHVzUL0nSqY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavaditana",
-      "titulo": "1994_Pas. Vuelve ya el 3x4.LAS VIUDAS."
-    },
-    "OVpCvhIHz3Y": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Lasssss envenenasssss - Preliminar"
-    },
-    "C8SuDiIzTZw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval De Calidad",
-      "titulo": "Ley De Vida - Perdóname Cádiz Mío [2017]"
-    },
-    "8gkwHARG6FA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa - Llamame Jesús | PRELIMINARES | Actuación Completa | Carnaval 2012"
-    },
-    "Sipso0MhMpA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Hartito de racanear\" de 'Los agarraos'"
-    },
-    "aEthyrSZhhs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los aislados - Preliminar"
-    },
-    "o9MPUfX3bCU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa Los Americanos FINAL [Actuación Completa] Carnaval de Cádiz 2003"
-    },
-    "eJ4ltG-NQUE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa Los Ángeles Caídos FINAL [Actuación Completa] Carnaval de Cádiz 2002"
-    },
-    "2p5ifLTJ5is": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Comparsa los ángeles de la guarda - Preliminares"
-    },
-    "8i6Tq-3_EZk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Se siente nostalgia constante\" de 'Los beduinos'"
-    },
-    "MR8BLf8Nf44": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Mu güenas noches\" de 'Los belloteros'"
-    },
-    "x3HYLkgwTQc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota LOS BICHOS: FUERZAS NASALES - SEMIFINALES 'Actuación Completa' Carnaval de Cádiz 2008"
-    },
-    "22n7ckoXK5w": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Manuel Fernández Carrasco",
-      "titulo": "Los bisabuelos de los viejos del 55, chirigota de Cádiz. Que culpa tengo pare. Carnaval 1993."
-    },
-    "2XIZOXopiog": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. Los Blanco y Negro (1970) | Pasodoble de la Caracola 'con letra' Audio del Teatro Falla"
-    },
-    "NsFyisl0ju4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los brujos titis - Preliminares"
-    },
-    "_sDQ0pQAoOU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Viruten",
-      "titulo": "Chirigota \"Los bufones de Doña Teófila\" - \"Si te quiero de verdad\" Pasodoble Preliminares"
-    },
-    "c2aNUDTU-Ls": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota juvenil, Los burritos - Semifinal"
-    },
-    "5lCo-f5AL5g": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los buscadores - Preliminar"
-    },
-    "c85hVH4p8O0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. Los Buscavidas FINAL | Actuación Completa | Carnaval de Cádiz 1997"
-    },
-    "g1j47VNVZz8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Cintas de Carnaval De Cádiz",
-      "titulo": "Chirigota Los Caballeros de la Edad Media  1995   Final Pasodoble Le pido Sr Carranza"
-    },
-    "L2g8YWZO6BM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa, Los Caballeros de la Piera Reonda FINAL 'Actuación Completa' Carnaval de Cádiz 2010"
-    },
-    "tasyumPNSd4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los cachitopan - Preliminar"
-    },
-    "wiR8QueoHAE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los cadisapiens (La involución) - Preliminares"
-    },
-    "D4b4zyLN5yc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los cadizfornia - Semifinales"
-    },
-    "_SvHuxnRTto": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los cagones - Preliminares"
-    },
-    "XP-pOx_DzE4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. Los Callejeros | Hay veces (Pasodoble Semifinales)  | Carnaval de Cádiz 1996"
-    },
-    "OXyOrMNPMes": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los camballá - Preliminares"
-    },
-    "KJdF-MBfOdM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Kike Remolino",
-      "titulo": "Pasodoble a Tino.Los Campaneros."
-    },
-    "R8lrQPkEsRY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Campeones por cojones - Preliminares"
-    },
-    "Ov7yWWdRu4w": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los camper del sur - Preliminares"
-    },
-    "kF_F3DC8f9A": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los carnívales - Preliminar"
-    },
-    "cDLpVjVYZJg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Chabolis - Preliminares"
-    },
-    "maeE5d51OaY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los colaores, una comparsa de toda la vida - Preliminares"
-    },
-    "pm79P9BHtco": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los colgaos - Preliminares"
-    },
-    "cqX97SFjeXA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavaleros",
-      "titulo": "Comparsa Los comparsistas se la dan de artistas. Semifinales completa."
-    },
-    "T-v6l5CibyI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa LOS CONDENAOS - Final [Actuación Completa] - Carnaval de Cádiz 2001"
-    },
-    "CKO17BTghBc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Comparsa OBDC",
-      "titulo": "Pasodoble de medida \"Se me clava en los siete sentidos\" - Comparsa COAC 2022 Los conquistadores"
-    },
-    "X1HGoNi6-xk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa Los Contrabandistas | Repertorio Completo | Carnaval de Cádiz 1999"
-    },
-    "peadLcrma9c": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Me dijeron que Cádiz\" de 'Los corrusquillos gaditanos'"
-    },
-    "VUWTb1SYUn8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Archivo Municipal de Cádiz",
-      "titulo": "Chirigota Los cubatas"
-    },
-    "PIesjujD7vM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa Los Currelantes SEMIFINALES [Actuación Completa] Carnaval de Cádiz 2011"
-    },
-    "g9aG5rh2Iyo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Elmangla de Cádiz",
-      "titulo": "Chirigota-\"Los dela Roca\" (2007) Pasodoble-\"Que de vueltas da la vida\"-by mangla.MPG"
-    },
-    "OkMLqVqDW0o": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Frikydelascoplas",
-      "titulo": "Año: 1955- Chirigota: Los del Bocho.-Pasodoble:  Dando nuestro saludo.- LETRA."
-    },
-    "9LgBEE3uymE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Isidoro Benitez Hernandez",
-      "titulo": "Chirigota Los de Cádiz Norte - Pasodoble \"Si hay alguno que pensó\""
-    },
-    "t72JfNHZHSE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa infantil, Los del patio de mi casa (La última savia) - Semifinales"
-    },
-    "aRZ7GbpQCKw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Comparsa Los del piso de abajo, SEMIFINALES del Carnaval de Cádiz 20133"
-    },
-    "NZsjfGhVTZo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavaleros",
-      "titulo": "Chirigota Los del planeta rojo, pero rojo rojo. Final. Pasodoble No hay un planeta más rojo."
-    },
-    "h0xTc2_92lc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los del puntazo en el coco - Preliminares"
-    },
-    "4caALxC2d0k": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los del veredicto - Preliminares"
-    },
-    "0eI9rSEyaSQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota LOS DESTRIPADORES DE LA CALLE LONDRES Preliminares | Actuación Completa | Carnaval 2014"
-    },
-    "p3nXBE3JopY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los desvelaos - Cuartos"
-    },
-    "JBxHjJgnWT8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los doce - Preliminares"
-    },
-    "fmhqLiKcHJY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa - Los Duendes Coloraos - Preliminares"
-    },
-    "ZL-HltnVYI8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavaleros",
-      "titulo": "Comparsa Los encaidenaos. Preliminares. Pasodoble Me ha pedido de tu boca."
-    },
-    "AP1gHd-DXf8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota LOS ENTERAOS - FINAL [Actuación Completa] - Carnaval de Cádiz 2009"
-    },
-    "KnVkmHgDDU0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval de Cádiz",
-      "titulo": "Pasodoble, Mostradores de la Viña, Los Enterradores del Siglo XX (2000) de Paco Cárdenas y el Noly"
-    },
-    "9Et0t_2T46Y": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval De Calidad",
-      "titulo": "Los Equilibristas - Presentación [2017]"
-    },
-    "I9w4ygMzc7Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Chirigota Los erasmus pocos y parió la abuela, FINAL del Carnaval de Cádiz 2013"
-    },
-    "k_kKNVmFaIA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los esclavos - Preliminares"
-    },
-    "tjEFpHydMwE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Por mucho que homenajeen\" de 'Los estamos enamoraos'"
-    },
-    "pjYB09EE3G0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los estorninos coloraos - Preliminares"
-    },
-    "woHn7zNm3aM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CarnavalDeCadizAntiguo",
-      "titulo": "Los fabulistas - 1969 - Comparsa - Pasodoble - No cabe la menor duda"
-    },
-    "KZqQfMYXHEk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CarnavalDeCadizAntiguo",
-      "titulo": "Los Figaros - No es que la luna - Pasodoble - 1964"
-    },
-    "OUecjtSL1ag": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CarnavalDeCadizAntiguo",
-      "titulo": "Los forjaores - Comparsa - Pasodoble - Ese rinconcito - Paco Alba 1971"
-    },
-    "L2tc-j41xYg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Comparsa “Los gadiritas” | SEMIFINALES del Carnaval de Cádiz 2015"
-    },
-    "IH_HvgcJyDA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Comparsa: \"Los gallitos\" (2ª Semifinal COAC 2014)"
-    },
-    "rbcpEZJ33OU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Jesus M",
-      "titulo": "Antología Juánn Carlos Aragón - Enfrente del sindicato - Pasodoble - HD (Letra)"
-    },
-    "nWcI8vzIDSY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa, Los Héroes del 3x4 - PRELIMINARES [Actuación Completa] Carnaval de Cádiz 2008"
-    },
-    "XzvQGaIAmOs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los hijos de Cádiz - Preliminares"
-    },
-    "tMI8Q0Hi_4Y": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa, Los Hijos de la Libertad FINAL 'Actuación Completa' Carnaval de Cádiz 2007"
-    },
-    "AzMCkY15PW8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota LOS HINCHAPELOTAS - SEMIFINALES [Actuación Completa] Carnaval de Cádiz 2012"
-    },
-    "OH8JzUNRsRA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los hippytanos - Clasificatorias"
-    },
-    "lLiFQRsAEnk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval De Calidad",
-      "titulo": "Los Hojillas - Ay Cádiz Bonito [2003]"
-    },
-    "2moZDBc0Hks": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Frikydelascoplas",
-      "titulo": "LLega a esta tierra un barquito- Pasodoble - Año -1965 - Comparsa Los Hombres del Mar.- LETRA."
-    },
-    "8NL8k1OUBNs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los imprescindibles - Preliminares"
-    },
-    "RzxO9o6kdbA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Indiana Jones de los callejones - Preliminares"
-    },
-    "I_yCwGqRNK8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Pasodoble \"Llegó Febrero\" | Chirigota Los Inventores | Preliminares 2002"
-    },
-    "B3SEJEGG2gE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los invisibles - Gran Final"
-    },
-    "loVpLX6wnls": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los Irracionales - Preliminares"
-    },
-    "1hnjZDgKmIw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Edel León",
-      "titulo": "Hay quien dice que Cádiz - Los julianes"
-    },
-    "7knXq_hNfVE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Laura Riera",
-      "titulo": "Los Ladrones HD (Alcal de Guadara 31/01/2014)"
-    },
-    "K0sHnaxAAmk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los listos - Semifinales"
-    },
-    "H6VRXCjGYnU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavalandia",
-      "titulo": "1986 Chirigota los locos de la colina 08 - Antiguo rincón"
-    },
-    "4v0YM0xstmA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CHRISTOPHER Vázquez Azogue",
-      "titulo": "Primer pasodoble de Preliminares Comparsa \" Los Luceros\""
-    },
-    "H0Pp0N9ny7E": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Hugo Bernal",
-      "titulo": "Pasodoble \"De ver\" con letra - LOS MAFIOSOS (Preliminares)"
-    },
-    "UokgL_Gn-zk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota LOS MÁKINA - PRELIMINARES [Actuación Completa] - Carnaval de Cádiz 2009"
-    },
-    "ApqSbIScrCM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa Los Mendas Lerendas FINAL [Actuación Completa] Carnaval de Cádiz 2008"
-    },
-    "g1OK_EWgi3s": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Falla Carnaval",
-      "titulo": "Pasodoble con Letra \"Que porque vuelvo\". Chirigota \"Los mi alma\" (2023)"
-    },
-    "Y9yyzfG7Gvs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los millonarios - Cuartos"
-    },
-    "R_S-giStoiE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavalea365",
-      "titulo": "Chirigota los morosos - Pasodoble \"Comido por las deudas\""
-    },
-    "ZKsn6YzHYuc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota: Los muerting planner, una chirigota pa to tus muertos - Cuartos"
-    },
-    "i12amRhI4Og": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Anoche me encerré\" de 'Los murciélogos'"
-    },
-    "EiWfVzHi34Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "PericoGuitarra",
-      "titulo": "Pasodoble Los Naturales"
-    },
-    "bg9I1bfy9ws": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los niños sin nombre - Preliminar"
-    },
-    "gdQFGYMRs7s": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "'Los okupas de la luna', Comparsa"
-    },
-    "ACszzsYB7nM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los originales - Preliminares"
-    },
-    "yiQ8_EO0jG8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los pacientes - Preliminar"
-    },
-    "emvDOu101bk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Viruten",
-      "titulo": "Los pajeros (1960) - Pasodoble \"Porque a Dios\""
-    },
-    "NguUxVqZ-rg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval de Pablo",
-      "titulo": "Chirigota ``Los Panteras´´ (2001) - Actuacion completa Final y Repertorio completo."
-    },
-    "Kmz6jADMW-U": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa Los Parias FINAL | Actuación Completa | Carnaval de Cádiz 2006"
-    },
-    "9koJ-dv7xew": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los peliculeros - Semifinales"
-    },
-    "eNPZ8-VCRUI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los peregrinos - Preliminares"
-    },
-    "Jy0YXF0kJWo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los pimpinelas de La Plaza Fragela - Preliminares"
-    },
-    "yVnLGn_CCTY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnacadiz",
-      "titulo": "''Los Piratas''-pasodoble-''Carnecita de gallina''"
-    },
-    "STBX3qfwKlg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Chirigota Los polvos egipcios | FINAL del Carnaval de Cádiz 2016"
-    },
-    "x5Wh-DiLZHU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa LOS PRINCIPIANTES - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1995"
-    },
-    "LpDEgD99UG8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota Los Pringaos FINAL [Actuación Completa] Carnaval de Cádiz 2003"
-    },
-    "HEJg8sX6S8E": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Javier Campos",
-      "titulo": "Comparsa \"Los Prisioneros\" - Pasodoble \"Cádiz, abuela y niña\" - Preliminares"
-    },
-    "2p9ulwVQTwg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los que no se pierden una - Preliminar"
-    },
-    "jV2LZVcjAG0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los que salieron perdiendo - Preliminares"
-    },
-    "cd5QrsXK9mc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota. Los que se mojan de verdad PRELIMINARES, Actuación Completa | Carnaval de Cádiz 2011"
-    },
-    "4Q13E3neNls": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa LOS QUIJOTES DEL SUR - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1996"
-    },
-    "rbdtTcmUshY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los quinquis - Preliminares"
-    },
-    "WY-WEzLBeW8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Adrián Muñoz García",
-      "titulo": "2º pasodoble, los quitapupas, preliminares, 2018, \"hay quien persigue milagros\""
-    },
-    "W9u3qLBbgmc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los renacidos - Preliminares"
-    },
-    "qPrqSFSqu1Q": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los resilientes - Preliminar"
-    },
-    "5mspBvZqGIA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota LOS ROBÓ DE COCINA - PRELIMINARES [Actuación Completa] Carnaval de Cádiz 2009"
-    },
-    "GbdSdTQi9-Y": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa, Los Santos FINAL | Actuación Completa | Carnaval de Cádiz 2010"
-    },
-    "diteJMo6siE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Oh Cádiz\" de 'Los sarracenos'"
-    },
-    "w5K17KRZm9c": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Un buen amigo\" de 'Los senadores romanos'"
-    },
-    "qN8p9dNyHO0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Chirigota Los Serenissimos | SEMIFINALES del Carnaval de Cádiz 2016"
-    },
-    "C5483kWZ38g": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Sherijuegos - Preliminares"
-    },
-    "dq43OFuT6qQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CHRISTOPHER Vázquez Azogue",
-      "titulo": "Chirigota Los Sirenitas  Pasodoble  \"como si fuera un milagro\""
-    },
-    "fZvk4gCYq8M": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los sumisos - Preliminares"
-    },
-    "5fpULO0IIyo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "Chirigota “Los Superpop” | FINAL del Carnaval de Cádiz 2015"
-    },
-    "5kfixJ041J8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa, Los Templarios FINAL | Actuación Completa | Carnaval de Cádiz 1999"
-    },
-    "V8Sbw6XwSlA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnavalandia",
-      "titulo": "1987 Chirigota Los Terroristas del Paseo Marítimo 12 - Una letrilla sencilla"
-    },
-    "V8lK8q-W8Rg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa, Los Trasnochadores FINAL 'Actuación Completa' Carnaval de Cádiz 2009"
-    },
-    "ivWuc5Fm8xM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa LOS TROTAMÚSICOS - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1992"
-    },
-    "iv8vjLSPOxU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota LOS VALIENTES - FINAL [Actuación Completa] - Carnaval de Cádiz 2004"
-    },
-    "qkJByXdm7mg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los veleros, una comparsa de toda la vida - Semifinales"
-    },
-    "FQQh4YhUPPg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota Los Veteranos del Vietnam FINAL [Actuación Completa] Carnaval de Cádiz 2004"
-    },
-    "qouI91bo7eI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los viajantes - Preliminares"
-    },
-    "3GUXfLlWaVg": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa Los Vikingos FINAL [Actuación Completa] Carnaval de Cádiz 2003"
-    },
-    "Tfh2qRH4w4s": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Los Viñanos - Preliminares"
-    },
-    "dsdbHJirKKI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "mgpregue92",
-      "titulo": "Los violinistas 2º Pasodoble."
-    },
-    "61aJ6VSl6dA": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los zincale - Preliminares"
-    },
-    "sRnCaBbeO6s": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, LXS Invencibles - Preliminares"
-    },
-    "PWS2vLHyLgY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota MAS PALLÁ QUE PACÁ - CUARTOS, Actuación Completa | Carnaval de Cádiz 2009"
-    },
-    "OKmoKUtuJ2I": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "CADIZBOOKTV",
-      "titulo": "CHIRIGOTA MEJO NO SALGO - PRELIMINARES - 21-01-12"
-    },
-    "7iHUZrj_IdE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavaditana",
-      "titulo": "1988_Pas. es muy bonito. NEPTUNO TEN CUIDAO CON LOS TRASMALLOS"
-    },
-    "jNGivChaLt0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, No aguantamos más..vamos de impacientes - Semifinales"
-    },
-    "6UxXB2TFu5Y": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, No me tires tiritos en el pecho - Preliminar"
-    },
-    "g44Exbn6vhU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Codigo Carnaval",
-      "titulo": "NO TE QUEMES TODAVÍA - Pasodoble 'Pensé que no iba a gustar'"
-    },
-    "bOp9Q3nEaRM": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, No te vayas todavía - Preliminares"
-    },
-    "MukynhdiJdo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, No tenemos el congo pa farolillos - Preliminares"
-    },
-    "93txQMYeNWI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, No valemos un duro - Cuartos"
-    },
-    "xF_oHP0G_bU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, OBDC, el joven obispo - Preliminares"
-    },
-    "S9Zcb4ebkHU": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Rubén de Dueñas",
-      "titulo": "Comparsa OBDC La última flor Pasodoble \"Bajo la Sombra\" Semifinales 2017"
-    },
-    "Q_mRLH--ppE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, OzBDC  - Preliminar"
-    },
-    "li9KINpXNoQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval y Punto",
-      "titulo": "Pasodoble 1 de \"Pa gusto los colores\""
-    },
-    "Yfc1DMU5Li0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Pa religión, la mía - Preliminares"
-    },
-    "Sal1yYNzYqQ": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Frikydelascoplas",
-      "titulo": "Año- 1961-  Comparsa: Pancho Albachi y sus mariachis -  Pasodoble:  Como Cai.- LETRA."
-    },
-    "FOGxFSQ8Hvs": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa Patiovecino FINAL | Actuación Completa | Carnaval 1998"
-    },
-    "i2cC-g5YjbE": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Gaditanorum",
-      "titulo": "Chirigota \"Pídeme lo que tu quieras\" (2020) - Pasodoble \"Este compás\""
-    },
-    "UGykCkg01wk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Piensa mal y acertarás (Los desconfiaos) - Semifinales"
-    },
-    "s9qxsY6c1qw": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, ¡Qué caló! - Preliminares"
-    },
-    "LOU2mTX8HSo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Que penita de concurso - Cuartos"
-    },
-    "J6sI1Js-gS4": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota. Que viene el Coco (1985) | Nueva chirigota, Pasodoble 'con letra' | Audio del Falla"
-    },
-    "lQMRq3NFqz0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Chirigota - Ricas y Maduras | PRELIMINARES | Actuación Completa | Carnaval 2011"
-    },
-    "9Iam2oqSJ2M": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. Se acabó el cuento | SEMIFINALES Actuación Completa | Carnaval de Cádiz 2012"
-    },
-    "mfXFf3fYUiI": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval y nada más",
-      "titulo": "Comparsa - Solo se que no se nada - Pasodoble a Manolito Santander de su hija Palmi."
-    },
-    "6mumLy8t46I": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "20Ruben20",
-      "titulo": "Suspiros de Cai - Sabía un camino - Quiñones 1992"
-    },
-    "9nE27LU6tv0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Javier Campos",
-      "titulo": "Comparsa \"Tic-tac, tic-tac\" - Pasodoble \"Toita la noche despierto\" - 2° Preliminares"
-    },
-    "t98mOLVaZQc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. Tras la Máscara FINAL | Actuación Completa | Carnaval de Cádiz 1989"
-    },
-    "TB6-AYau1Oc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota juvenil, Tu eres mi Bro - Semifinal"
-    },
-    "a31iqBpt4kc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "carnavalsur",
-      "titulo": "\"Una chirigota con clase\" | Carnaval Cádiz 1996 | Final"
-    },
-    "JocmCsI0q2A": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Una chirigota en teoría - Preliminares"
-    },
-    "UMV720MQxNY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "WaxiCarnaval",
-      "titulo": "Pasodoble INÉDITO de Juan Carlos Aragón grabado por @canalsur"
-    },
-    "6d1ZHBYxYco": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Al compás gaditano",
-      "titulo": "Pasodoble \"Se dice por ahí\" de 'Una especie en extinción (Los chirigoteros)'"
-    },
-    "1FqhyRhs0Yc": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Una excusa divina - Preliminares"
-    },
-    "6Y4mm2Qg_6c": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, We can do...Carnaval - Preliminares"
-    },
-    "If4hR1dfB8s": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Y seguimos cantando - Preliminares"
-    },
-    "nQ-aHrvx-ZY": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Sesión de Micros Abiertos",
-      "titulo": "Miguel Ángel Márquez (Antílopez) - Yo sé bien que cuando callas (acústicos SdMA)"
-    },
-    "oy-Vm_1sgsk": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Chirigota, Daddy cadi - Preliminar"
-    },
-    "G5tg5uyyA9o": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "MrJoshuaaaaaa",
-      "titulo": "Comparsa Araka la Kana (2007) - Popurrí (Final)"
-    },
-    "wEgaAr_AFz8": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Falla Carnaval",
-      "titulo": "Popurri con Letra Comparsa \"Después de Cádiz, ni Hablar\" (2022)"
-    },
-    "GYepEWp_Poo": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "mtag91",
-      "titulo": "Juana la loca - Pasen a mi cabaret (popurri).wmv"
-    },
-    "uynGARRr0M0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Grobix",
-      "titulo": "La banda del capitan Veneno - Popurri FINAL"
-    },
-    "zHucsI4MUo0": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La eternidad - Preliminares"
+      "titulo": "Comparsa El malo del cuento - La de caperucita  2016",
+      "fecha": "2016-01-12",
+      "duracion": 131
     },
     "cvjgMSLRXZ0": {
       "estado": "ok",
       "http": 200,
       "autor": "marikillarock",
-      "titulo": "Comparsa \"Los ángeles caídos\" popurrí -subtitulada-"
+      "titulo": "Comparsa \"Los ángeles caídos\" popurrí -subtitulada-",
+      "fecha": "2011-01-08",
+      "duracion": 470
     },
-    "9QCdqrlVzGs": {
+    "iXoyBUQvGEs": {
       "estado": "ok",
       "http": 200,
-      "autor": "Elmangla de Cádiz",
-      "titulo": "Comparsa-\"Los Condenaos\"(2001) Popurri-by mangla.MPG"
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los del otro barrio - Preliminares",
+      "fecha": "2025-02-08",
+      "duracion": 1695
     },
-    "ba__Js82ZQw": {
+    "GYepEWp_Poo": {
       "estado": "ok",
       "http": 200,
-      "autor": "DiscordiaCivilis",
-      "titulo": "Comparsa Los Mafiosos  Popurri Preliminares"
+      "autor": "mtag91",
+      "titulo": "Juana la loca - Pasen a mi cabaret (popurri).wmv",
+      "fecha": "2011-04-01",
+      "duracion": 496
+    },
+    "k_kKNVmFaIA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los esclavos - Preliminares",
+      "fecha": "2023-02-01",
+      "duracion": 1695
+    },
+    "uynGARRr0M0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Grobix",
+      "titulo": "La banda del capitan Veneno - Popurri FINAL",
+      "fecha": "2008-02-01",
+      "duracion": 440
+    },
+    "wEgaAr_AFz8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Falla Carnaval",
+      "titulo": "Popurri con Letra Comparsa \"Después de Cádiz, ni Hablar\" (2022)",
+      "fecha": "2022-05-19",
+      "duracion": 589
+    },
+    "KJFxI9y1o-o": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los colgaos - Cuartos",
+      "fecha": "2024-01-31",
+      "duracion": 1685
+    },
+    "kT5Y42bf7sc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, DSAS3 - Preliminares",
+      "fecha": "2026-01-25",
+      "duracion": 1995
     },
     "iMr_gmISLdk": {
       "estado": "ok",
       "http": 200,
       "autor": "PuraLetra ",
-      "titulo": "comparsa los sumisos popurrit Martinez Ares"
+      "titulo": "comparsa los sumisos popurrit Martinez Ares",
+      "fecha": "2022-05-19",
+      "duracion": 579
+    },
+    "tNNXjlGJFew": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Isabelo Bejarano",
+      "titulo": "Cuarteta  de Los Equilibristas",
+      "fecha": "2017-02-04",
+      "duracion": 121
+    },
+    "s80OxTYrvP4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa,  Los Locos - Preliminares",
+      "fecha": "2026-01-21",
+      "duracion": 1715
+    },
+    "LIuuMgG-gbM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El cementerio - Preliminares",
+      "fecha": "2025-02-02",
+      "duracion": 1730
+    },
+    "zpAP3fNLL5Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Las ratas - Preliminares",
+      "fecha": "2025-01-29",
+      "duracion": 1795
+    },
+    "2Hx-ZfTR8Uo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La gaditanissima - Preliminar",
+      "fecha": "2019-02-05",
+      "duracion": 1708
+    },
+    "eW_NCC5dqNU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "KikeCai",
+      "titulo": "Cuarteta \"Que Sencillo Es Querer\" - Lo Siento Pisha, No To Er Mundo Puede Ser De Cai, Letra.",
+      "fecha": "2024-02-19",
+      "duracion": 90
+    },
+    "vmgeVynOI-U": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El cantón independiente (Que vivan las mujeres de Cádiz) - Preliminares",
+      "fecha": "2023-02-01",
+      "duracion": 1500
+    },
+    "G5tg5uyyA9o": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "MrJoshuaaaaaa",
+      "titulo": "Comparsa Araka la Kana (2007) - Popurrí (Final)",
+      "fecha": "2012-10-04",
+      "duracion": 455
+    },
+    "W9u3qLBbgmc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los renacidos - Preliminares",
+      "fecha": "2022-05-23",
+      "duracion": 1745
+    },
+    "NFBC3HS-U_8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los Sacrificaos - Final",
+      "fecha": "2024-02-09",
+      "duracion": 1615
+    },
+    "m9l0la0BD9Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El ángel de Cádiz - Preliminares",
+      "fecha": "2017-02-09",
+      "duracion": 1745
+    },
+    "zHucsI4MUo0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La eternidad - Preliminares",
+      "fecha": "2017-02-05",
+      "duracion": 1800
+    },
+    "VWOr5cihJMw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CuartetasDePopurris",
+      "titulo": "Vas cosiendo - Tic tac, tic tac",
+      "fecha": "2018-04-06",
+      "duracion": 135
+    },
+    "ch8hjI0xkuQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El manicomio - Cuartos",
+      "fecha": "2026-01-31",
+      "duracion": 1725
+    },
+    "ba__Js82ZQw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "DiscordiaCivilis",
+      "titulo": "Comparsa Los Mafiosos  Popurri Preliminares",
+      "fecha": "2018-01-26",
+      "duracion": 551
+    },
+    "9QCdqrlVzGs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Elmangla de Cádiz",
+      "titulo": "Comparsa-\"Los Condenaos\"(2001) Popurri-by mangla.MPG",
+      "fecha": "2012-03-28",
+      "duracion": 519
+    },
+    "iap5lRmMha0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CuartetasDePopurris",
+      "titulo": "No todo tiene un precio - Los originales (Final popurrí)",
+      "fecha": "2022-06-02",
+      "duracion": 125
+    },
+    "yqRuT6aWVjM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Al cielo con él - Semifinal",
+      "fecha": "2025-02-26",
+      "duracion": 1660
+    },
+    "H4Sa9aFMKmI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Cádiz que bonita eres con tu puta madre ( los bipolares ) - Cuartos",
+      "fecha": "2023-02-06",
+      "duracion": 1315
+    },
+    "bcr1vKPpYfc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, ¡Cadizcadabra! Las brujas - Cuartos",
+      "fecha": "2014-02-18",
+      "duracion": 1321
+    },
+    "x05jE_VnclA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Cai de mi arma (7'20) - Cuartos",
+      "fecha": "2018-02-02",
+      "duracion": 1681
+    },
+    "aHqFL-kpkoU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Çembrando copla (La comparça er pueblo) - Preliminares",
+      "fecha": "2023-01-26",
+      "duracion": 1365
+    },
+    "JrgnnwCIj8g": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Comparsa Los Calaíta (Fuimos a por tabaco) una chirigota de toda la vida... - Preliminar",
+      "fecha": "2025-01-24",
+      "duracion": 1810
+    },
+    "MFwtj8A9l3U": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El creador - Preliminares",
+      "fecha": "2016-01-17",
+      "duracion": 1707
+    },
+    "Kx_R68flzoI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "jcc93",
+      "titulo": "Última Cuarteta El Perro Andalú con Letra",
+      "fecha": "2018-01-19",
+      "duracion": 118
+    },
+    "LATI6SA-2xE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavalea365",
+      "titulo": "Chirigota er chele vara - Popurri Cuartos de Final",
+      "fecha": "2019-02-17",
+      "duracion": 703
+    },
+    "3eNmBAR_52Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota. Flamenkito Apaleao FINAL | Actuación Completa | Carnaval de Cádiz 2000",
+      "fecha": "2011-12-14",
+      "duracion": 1356
+    },
+    "jwrgDkn016k": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Desdelalaja",
+      "titulo": "Final de popurrí - Frente talibán de la republica irreverente de Kadi Kadistan",
+      "fecha": "2023-02-07",
+      "duracion": 109
+    },
+    "LnoGsmFQ8ew": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Final de popurrí de 'Hoy no me puedo levantar'",
+      "fecha": "2021-10-08",
+      "duracion": 92
+    },
+    "xmehVD588hE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La cara oculta de la luna - Cuartos",
+      "fecha": "2018-01-31",
+      "duracion": 1620
+    },
+    "YOdpz3ZyMZA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, La chirigota clásica - Preliminares",
+      "fecha": "2024-01-23",
+      "duracion": 1465
+    },
+    "zLEptCYqShw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, La maldición de la lapa negra - Cuartos",
+      "fecha": "2019-02-22",
+      "duracion": 1382
+    },
+    "23eSN-eBwW4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La oveja negra - Preliminares",
+      "fecha": "2024-01-11",
+      "duracion": 1725
+    },
+    "W2UlvWEa0l0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La peleona - Preliminares",
+      "fecha": "2015-01-19",
+      "duracion": 1250
+    },
+    "Qzs_uLHx8cg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, La última y nos vamos - Preliminares",
+      "fecha": "2024-01-21",
+      "duracion": 1430
+    },
+    "UCuUwb2FjLQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Las cosas del destino - Preliminar",
+      "fecha": "2019-01-27",
+      "duracion": 1385
+    },
+    "URRCPxm15rQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Amísh del mono, fuimos a por piononos (La decepción) - Preliminares",
+      "fecha": "2026-01-23",
+      "duracion": 1770
+    },
+    "ifWnZYRuYyw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Lo Mejor Del 3x4",
+      "titulo": "Cuarteta POPURRI LOS ANTEYESTERDAY Comparsa LA BANDA DEL CAPITAN VENENO   Salesianos Cadiz",
+      "fecha": "2022-02-11",
+      "duracion": 241
+    },
+    "cmzEn7Ep2Yo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Antiguos - Preliminares",
+      "fecha": "2026-01-16",
+      "duracion": 1586
+    },
+    "5hTizeqXA9M": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "El Pasacalles de Carnaval",
+      "titulo": "El homenaje a Manolo Santander de Los Burritos",
+      "fecha": "2020-01-19",
+      "duracion": 154
+    },
+    "G4nM1WFd8aY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los butaneros chirigota de CAI/CDC - Preliminares",
+      "fecha": "2025-02-01",
+      "duracion": 1660
+    },
+    "fF55zwK5TEc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "BalugTek23",
+      "titulo": "Ultima cuarteta popurri, Los Chabolis / Preliminares",
+      "fecha": "2024-02-04",
+      "duracion": 169
+    },
+    "ual-7SOW39I": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Compay - Preliminares",
+      "fecha": "2026-01-18",
+      "duracion": 1573
+    },
+    "ld0PTV1Dlxc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavaleros de Cádiz",
+      "titulo": "Chirigota 2013: Los de Gris - Cuarteta final popurrí con letra",
+      "fecha": "2013-09-09",
+      "duracion": 112
+    },
+    "JLaLLeafkc4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "palopita82",
+      "titulo": "CUARTETA COMPARSA LOS DE LA CHARCA",
+      "fecha": "2017-03-20",
+      "duracion": 134
+    },
+    "VRNdvG7rjgg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Hombres de Paco - Preliminares",
+      "fecha": "2026-01-11",
+      "duracion": 1515
+    },
+    "oIB6AMdRXBU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los inhumanos - Preliminares",
+      "fecha": "2025-01-24",
+      "duracion": 1575
+    },
+    "RMvM1clSABs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los James Bond que da gloria verlos - Semifinal",
+      "fecha": "2025-02-26",
+      "duracion": 1675
+    },
+    "u5TgnhkVxGg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los luceros - Cuartos",
+      "fecha": "2019-02-22",
+      "duracion": 1682
+    },
+    "GgU6ALIHG0w": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los mafiosos - Preliminares",
+      "fecha": "2018-01-22",
+      "duracion": 1718
+    },
+    "bivvVH5Dzw0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los morosos - Preliminar",
+      "fecha": "2019-02-03",
+      "duracion": 1658
+    },
+    "4A44HlY0hIQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los muchachos del congelao - Preliminares",
+      "fecha": "2025-01-25",
+      "duracion": 1565
+    },
+    "dJ1Dn0Yy_Kk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "rikopelada",
+      "titulo": "final popurri los muñecos",
+      "fecha": "2011-03-23",
+      "duracion": 185
+    },
+    "Kmz6jADMW-U": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa Los Parias FINAL | Actuación Completa | Carnaval de Cádiz 2006",
+      "fecha": "2011-12-27",
+      "duracion": 1478
+    },
+    "g5UhmY7oasM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Plácidos Domingos - Preliminares",
+      "fecha": "2024-01-24",
+      "duracion": 1320
+    },
+    "dJh7S98ageU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los que la tienen de mármol -Preliminares",
+      "fecha": "2026-01-26",
+      "duracion": 1740
+    },
+    "cs6P2vqtYVM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Elmangla de Cádiz",
+      "titulo": "Comparsa-\"Los Regaera\" (2004) Popurri-by mangla.MPG",
+      "fecha": "2012-04-25",
+      "duracion": 463
+    },
+    "mXzok4zdm6M": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Robins - Preliminares",
+      "fecha": "2026-01-14",
+      "duracion": 1746
+    },
+    "Z_yu2lHewCU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Semicuraos - Preliminares",
+      "fecha": "2026-01-11",
+      "duracion": 1565
+    },
+    "XgTMqxN36JI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los sirenitas - Preliminares",
+      "fecha": "2018-01-24",
+      "duracion": 1528
+    },
+    "WHmt4_Lq_K4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota infantil, Mushu Carnaval - Semifinales",
+      "fecha": "2025-01-17",
+      "duracion": 1340
+    },
+    "_j1KYd8RwNk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Ni los buenos son tan buenos, ni los malos son tan malos - Preliminares",
+      "fecha": "2018-01-27",
+      "duracion": 1659
+    },
+    "DgbbmphSSNM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Nos hemos venío arriba - Preliminares (2)",
+      "fecha": "2026-01-13",
+      "duracion": 1590
+    },
+    "mgIFmw8Jg2Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, OBDC. Me quedo contigo ! - Preliminares",
+      "fecha": "2026-01-22",
+      "duracion": 1690
+    },
+    "V6DSke1ks-A": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, ¡Oh capitán, mi capitán! - Preliminar",
+      "fecha": "2020-01-23",
+      "duracion": 1836
+    },
+    "B9Utf8Cjaas": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Javier Campos",
+      "titulo": "Chirigota \"Pa religión la mía\". Final popurrí",
+      "fecha": "2017-02-10",
+      "duracion": 157
+    },
+    "NNG1dfsLepk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Seguimos cayendo mal - Preliminares",
+      "fecha": "2026-01-13",
+      "duracion": 1585
+    },
+    "3QWp0v1Okuc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, SSSHHHHH!!!  - Preliminares",
+      "fecha": "2026-01-27",
+      "duracion": 1580
+    },
+    "HKpMaFZOL_A": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Tic-tac, Tic-tac - Preliminares",
+      "fecha": "2018-01-24",
+      "duracion": 1721
+    },
+    "6uzKJ74K17I": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Pedro J. Sánchez",
+      "titulo": "CORO Tiempos modernos - Este mundo es de la gente",
+      "fecha": "2018-02-27",
+      "duracion": 199
+    },
+    "I-sGXVxkAPY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Una chirigota con shoniket3 - Preliminares",
+      "fecha": "2025-02-08",
+      "duracion": 1630
+    },
+    "K51_kGMyWps": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El marqués de Cádiz - Preliminar",
+      "fecha": "2019-02-13",
+      "duracion": 1567
+    },
+    "CAOEU5qrz60": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota, Los que van por Derecho FINAL | Actuación Completa | Carnaval de Cádiz 2010",
+      "fecha": "2011-11-11",
+      "duracion": 1260
+    },
+    "MQE7wRVr3Eg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa 1800 LOS INMORTALES - 1ª SEMIFINAL [Actuación Completa] Carnaval de Cádiz 2004",
+      "fecha": "2011-09-20",
+      "duracion": 1044
+    },
+    "oyB_23PEaVE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa A FUEGO VIVO, FINAL | Actuación Completa | Carnaval de Cádiz 1987",
+      "fecha": "2012-11-02",
+      "duracion": 1098
+    },
+    "NFrDqSF41tk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Con la ropa de trabajo prepará\" de 'A los pies de La Caleta'",
+      "fecha": "2022-05-27",
+      "duracion": 157
+    },
+    "bTk8TX4FJlQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "2Maria7",
+      "titulo": "A los que se le ve la pluma - sentado a divisar(fotos)",
+      "fecha": "2009-07-27",
+      "duracion": 139
+    },
+    "WwR3qlbRxgU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Al borde del precipicio... \"los rancios\" - Cuartos",
+      "fecha": "2017-02-17",
+      "duracion": 1484
+    },
+    "brzCarIN80o": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota Adultos, Aquí huele a verdín - Preliminares",
+      "fecha": "2022-05-16",
+      "duracion": 1655
+    },
+    "_X18tdTuwlE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "José Miguel Molina Durán",
+      "titulo": "Aquí mando yo y mis Leones - Pasodoble '' Amanece son las seis de la mañana'' (Chirigota 1989)",
+      "fecha": "2011-08-27",
+      "duracion": 101
+    },
+    "TF3vtXIDWUc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval de Pablo",
+      "titulo": "Comparsa \"Araka La Kana\" (2007) - Actuacion en la Final y Repertorio Completo. 2007",
+      "fecha": "2011-03-24",
+      "duracion": 1923
+    },
+    "P6qRgGqGYTE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CarnavalDeCadizAntiguo",
+      "titulo": "Atila rey de los nervios - 1990 - Chirigota - Pasodoble - Nervioso abri - audio del teatro",
+      "fecha": "2014-08-19",
+      "duracion": 91
+    },
+    "6Df-8uT_g6I": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota BEBÉ A BORDO - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1991",
+      "fecha": "2026-01-09",
+      "duracion": 1352
+    },
+    "RlidVDxdA28": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota BIEN NOS DISTE COBA CRISTOBA - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1992",
+      "fecha": "2025-05-14",
+      "duracion": 1111
+    },
+    "rQf4RBQPvxs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Caminito del Falla - Preliminares",
+      "fecha": "2023-01-26",
+      "duracion": 1695
+    },
+    "OZOQ1jyV8vY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "La Comparsa de David Carapapa",
+      "titulo": "Pasodoble de la comparsa: Carretera y Manta, \"¿Qué hago ahora?\"",
+      "fecha": "2020-11-16",
+      "duracion": 132
+    },
+    "Jgup12Il-_E": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Comparsa Catastrophic Magic Band, SEMIFINALES del Carnaval de Cádiz 2013",
+      "fecha": "2013-02-05",
+      "duracion": 1607
+    },
+    "fjXCMghOODg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, ¡Cazafantasmas! - Cuartos",
+      "fecha": "2016-01-25",
+      "duracion": 1485
+    },
+    "0XLKexiK1ag": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Chernobyl 'el musical' - Preliminar",
+      "fecha": "2020-01-24",
+      "duracion": 1528
+    },
+    "q4jYI3V6Ky8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CarnavalDeCadizAntiguo",
+      "titulo": "Con gancho - 1987 - comparsa - Pasodoble - Entra y ponte decente - del teatro",
+      "fecha": "2014-10-08",
+      "duracion": 101
+    },
+    "NbYS5gt5C2c": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota: Cuando tú vas yo vengo - Preliminares",
+      "fecha": "2025-01-24",
+      "duracion": 1460
+    },
+    "y5FWgukHH1A": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota ¡¡CUIDAO QUE VOY!! PRELIMINARES [Actuación Completa] Carnaval de Cádiz 2010",
+      "fecha": "2018-09-04",
+      "duracion": 1269
+    },
+    "psNjYVpzGwo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "NikoMB",
+      "titulo": "Comparsa \"Dando Leña\" 1997 - Pasodoble \"Sin ganas, una noche lloviznando\"",
+      "fecha": "2013-08-06",
+      "duracion": 128
+    },
+    "JG7HRTvK3d0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, DESOBDC !!!! - Preliminares",
+      "fecha": "2025-02-11",
+      "duracion": 1595
+    },
+    "qsMTh2bXSIY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Después de Cádiz, ni hablar - Preliminares",
+      "fecha": "2022-05-17",
+      "duracion": 1715
+    },
+    "4AnmLJvFI7k": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Donde fuimos felices - Preliminares",
+      "fecha": "2024-01-23",
+      "duracion": 1580
+    },
+    "4jaJIHmnoqA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El amante - Preliminares",
+      "fecha": "2015-01-20",
+      "duracion": 1497
+    },
+    "g0OcUODah-8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Pasodoble EL AMOR PUEDE MÁS QUE SU INFIERNO - Comparsa EL ÁNGEL DE CÁDIZ «Cuartos Carnaval 2017»",
+      "fecha": "2017-02-19",
+      "duracion": 199
+    },
+    "mYyK29S4zJM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Always - Idel",
+      "titulo": "Comparsa El Bache - Pasodoble \"La luna vino a la fragua\" (1993) Idel de Cai",
+      "fecha": "2014-07-02",
+      "duracion": 90
+    },
+    "kayAOTJMW_Y": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Manu Montaño",
+      "titulo": "Jesús Bienvenido - Pasodoble El Balsero (Directo 'YO ME QUEDO EN CASA')",
+      "fecha": "2020-03-17",
+      "duracion": 117
+    },
+    "93flpG6BIBs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa El Cielo de Cádiz FINAL | Actuación Completa | Carnaval de Cádiz 1998",
+      "fecha": "2011-09-30",
+      "duracion": 1006
+    },
+    "IWLDJekdEfM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa El Circo FINAL | Actuación Completa | Carnaval de Cádiz 1999",
+      "fecha": "2011-11-29",
+      "duracion": 1333
+    },
+    "HC-wkM_W7Ds": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El club de los ignorantes - Preliminar",
+      "fecha": "2022-05-16",
+      "duracion": 1605
+    },
+    "bZvuf2aGxWw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El Desguace - Preliminares",
+      "fecha": "2026-01-11",
+      "duracion": 1780
+    },
+    "I_Ff7pfjhuw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El embrujo de Cádiz",
+      "fecha": "2023-01-25",
+      "duracion": 1703
+    },
+    "_npa5hu-etc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa EL ESPÍRITU DE CÁDIZ - FINAL [Calidad Mejorada] - Carnaval de Cádiz 2005",
+      "fecha": "2017-09-25",
+      "duracion": 1457
+    },
+    "zw-NrqhwiJs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnacadiz",
+      "titulo": "''1800 Los Inmortales''-Popurrí",
+      "fecha": "2011-07-26",
+      "duracion": 468
+    },
+    "Yxf365RspM4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, El Grinch de Cai - Preliminares",
+      "fecha": "2024-01-09",
+      "duracion": 1470
+    },
+    "xf3Wx41hXtE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, El hombre que susurraba a las almohadas - Preliminares",
+      "fecha": "2017-02-01",
+      "duracion": 1612
+    },
+    "p-0H0KFVJ9s": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El Joyero - Preliminares",
+      "fecha": "2024-01-21",
+      "duracion": 1655
+    },
+    "tB6dEzK2DyM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El malo del cuento - Cuartos",
+      "fecha": "2016-01-25",
+      "duracion": 1647
+    },
+    "avP_XroRzmg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavalea365",
+      "titulo": "Comparsa el marqués de Cádiz - Pasodoble \"No tengo fortuna\"",
+      "fecha": "2019-02-13",
+      "duracion": 165
+    },
+    "bDiqGnJhwN8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Elmangla de Cádiz",
+      "titulo": "Comparsa-\"El Mercado de las Maravillas\" (2008) -\"Otra vez me ha vuelto loco \"-by mangla.MPG",
+      "fecha": "2012-05-07",
+      "duracion": 109
+    },
+    "D1WEpOGgcGc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Chirigota de casapuerta",
+      "titulo": "Chirigota de casapuerta 2022. El Millonario. Pasodoble",
+      "fecha": "2022-03-02",
+      "duracion": 147
+    },
+    "jyRWXLmboL8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, El nombre me lo estoy pensando - Preliminar",
+      "fecha": "2019-02-03",
+      "duracion": 1436
+    },
+    "o8tKhI61ZN8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, El patriota - Preliminares",
+      "fecha": "2026-01-28",
+      "duracion": 1680
+    },
+    "UPobm_dDcrs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "COMPARSA El perro andalú (Pasodoble a Paco Alba) | FINAL COAC 2018",
+      "fecha": "2018-02-10",
+      "duracion": 225
+    },
+    "eUaEf0M8R_Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Archivo Municipal de Cádiz",
+      "titulo": "Comparsa  El revuelo (los viejos copleros nunca mueren).",
+      "fecha": "2024-03-07",
+      "duracion": 1285
+    },
+    "lLp4a_seB8I": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa EL TITIRITERO - FINAL [Calidad Mejorada] Carnaval de Cádiz 1993",
+      "fecha": "2025-11-30",
+      "duracion": 1347
+    },
+    "aB5g7ke760U": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Леонид Стависюк",
+      "titulo": "Comparsa \"El Último Escuadrón\" (2008) - Cuartos - Pasodoble \"Por la Alameda\" 2016",
+      "fecha": "2016-04-16",
+      "duracion": 116
+    },
+    "GKD6z0ykZa4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa ENCAJEBOLILLOS - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1991",
+      "fecha": "2025-11-20",
+      "duracion": 1257
+    },
+    "fDYKirJsC08": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Er Chele vara - Cuartos",
+      "fecha": "2019-02-17",
+      "duracion": 1682
+    },
+    "azOwZIve4_U": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CarnavalDeCadizAntiguo",
+      "titulo": "Estampas goyescas - Pasodoble - La guitarra española - 1973 - Comparsa - del Falla",
+      "fecha": "2014-06-18",
+      "duracion": 96
+    },
+    "y3qY5k7zZvQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota. Esto si que es una Chirigota FINAL | Carnaval de Cádiz 2014",
+      "fecha": "2014-02-28",
+      "duracion": 1740
+    },
+    "gWOEBGOj06A": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Frente talibán de la república irreverente de Kadikadistán - Preliminares",
+      "fecha": "2023-02-03",
+      "duracion": 1550
+    },
+    "j8bkXQj9V_Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Gente con chispa - Semifinales",
+      "fecha": "2022-05-29",
+      "duracion": 1460
+    },
+    "R-snHXkg1Jc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Miiguel866",
+      "titulo": "Comparsa Guadalupe - Muchos sueñan con quererte",
+      "fecha": "2013-08-23",
+      "duracion": 129
+    },
+    "PcAK9VMF5wQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa. Güenagente SEMIFINALES 'Presentación y Pasodobles' | Carnaval de Cádiz 1994",
+      "fecha": "2016-12-19",
+      "duracion": 403
+    },
+    "iCblucA6fTg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota HASTA QUE LA MUERTE NOS SEPARE - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1990",
+      "fecha": "2025-09-29",
+      "duracion": 1105
+    },
+    "xKV33ICPGlQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Señor de Cai\" de 'Huele a romero'",
+      "fecha": "2017-01-18",
+      "duracion": 134
+    },
+    "r043uPQUzVM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Amira Sedai",
+      "titulo": "¡Cadizcadabra! Las brujas. La playita de Santa María. Pasodoble con música inédita",
+      "fecha": "2014-03-25",
+      "duracion": 95
+    },
+    "dyVclXWbmCI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Dorremifasoleando",
+      "titulo": "Comparsa Juana la loca - Presentación  *1º Premio*",
+      "fecha": "2011-03-04",
+      "duracion": 224
+    },
+    "tQwsJq2MFPw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Kike Remolino",
+      "titulo": "PASODOBLE 2021",
+      "fecha": "2020-10-23",
+      "duracion": 119
+    },
+    "MWxjDKo-f7w": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota juvenil, La alergia de Cádiz - Semifinal",
+      "fecha": "2025-01-11",
+      "duracion": 1324
+    },
+    "p9Ms0a0IoTI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Elmangla de Cádiz",
+      "titulo": "Comparsa-\"La Atlántida\" (2005) Pasodoble-\"Sentado en la orilla del Mar\"-by mangla.avi",
+      "fecha": "2012-07-15",
+      "duracion": 131
+    },
+    "Wc7rY5Nta8g": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La azotea - Preliminares",
+      "fecha": "2017-01-24",
+      "duracion": 1809
+    },
+    "f6oBEVNV_aE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "caletavane",
+      "titulo": "la bella escondida en madrid,pasodoble la musica suena en nuestros corazones",
+      "fecha": "2009-01-09",
+      "duracion": 109
+    },
+    "zYWVy398stA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Elmangla de Cádiz",
+      "titulo": "Comparsa-\"La Bicentenaria\" (2012) 2º Pasodoble Cuartos-by mangla.mpg",
+      "fecha": "2012-02-11",
+      "duracion": 104
+    },
+    "yU36-52l9uE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La brigada - Preliminares",
+      "fecha": "2022-05-21",
+      "duracion": 1745
+    },
+    "-F4tBKSENfo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Gaditanorum",
+      "titulo": "Comparsa \"La Caldera\" - Pasodoble \"En mi guitarra\"",
+      "fecha": "2015-06-21",
+      "duracion": 135
+    },
+    "WmaaZrGwT9o": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, La callejera invisible - Preliminares",
+      "fecha": "2024-01-19",
+      "duracion": 1660
+    },
+    "PN4gjw8tOJ8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La camorra - Preliminares",
+      "fecha": "2026-01-17",
+      "duracion": 1665
+    },
+    "pCW000SWnOw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La canción de Cádiz - Cuartos",
+      "fecha": "2014-02-17",
+      "duracion": 1420
+    },
+    "aVvHhSPDC_g": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La canción de la laguna - Cuartos",
+      "fecha": "2020-02-13",
+      "duracion": 1575
+    },
+    "GbMfHj6T8gk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Lo mejor del Carnaval",
+      "titulo": "Comparsa La Cárcel Vieja (2004) pasodoble ''De la mano los dos''",
+      "fecha": "2014-09-14",
+      "duracion": 157
+    },
+    "OJml_gdcRNc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota juvenil, La casa de papel colorao - Semifinal",
+      "fecha": "2020-01-19",
+      "duracion": 1642
+    },
+    "OwfRx5yP_6Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Elmangla de Cádiz",
+      "titulo": "Chirigota-\"La Chirigota de la Historia\" (2013) Pasodoble-\"Yo siempre me he preguntado\"-by mangla",
+      "fecha": "2013-04-06",
+      "duracion": 121
+    },
+    "PF08FGBfQsc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La chusma selecta - Final",
+      "fecha": "2020-02-22",
+      "duracion": 1590
+    },
+    "Nc2YZUx5rzk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La ciudad de Dios - Preliminar",
+      "fecha": "2020-02-05",
+      "duracion": 1709
+    },
+    "tpI4FrOW2JM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La ciudad invisible - Preliminares",
+      "fecha": "2023-01-24",
+      "duracion": 1702
+    },
+    "KniOwE_poS8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa. La Comparsa del Genio FINAL | Actuación Completa | Carnaval de Cádiz 2013",
+      "fecha": "2013-02-09",
+      "duracion": 1531
+    },
+    "E5Og0lcWdI4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La comparsa Los Invencibles - Preliminares",
+      "fecha": "2016-01-15",
+      "duracion": 1603
+    },
+    "t-xrzn15gbY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La comunidad - Preliminares",
+      "fecha": "2016-01-19",
+      "duracion": 1787
+    },
+    "7W4aPNvgGwA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La consentida - Preliminares",
+      "fecha": "2024-01-19",
+      "duracion": 1404
+    },
+    "5D42dDdcflc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa - La Corona - Preliminares",
+      "fecha": "2014-01-17",
+      "duracion": 1541
+    },
+    "YvUE4FJkSV8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavaleando 4",
+      "titulo": "La miniantología de Jona (Pasodoble La escuela del Carnaval - Siete de la mañana) - BD8",
+      "fecha": "2019-08-17",
+      "duracion": 94
+    },
+    "rZ5z2aR7jpk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Pasodoble SI CAMINITO DEL FALLA - Comparsa LA ETERNIDAD «Final Carnaval de Cádiz 2017»",
+      "fecha": "2017-02-25",
+      "duracion": 222
+    },
+    "j-c3nNcUpFk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La luz de Cádiz - Preliminar",
+      "fecha": "2019-02-01",
+      "duracion": 1769
+    },
+    "GLMmRisDIGA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Gaditanorum",
+      "titulo": "Chirigota \"La maldición de la lapa negra\" (2019) - Pasodoble \"Con la maldición\"",
+      "fecha": "2019-02-11",
+      "duracion": 113
+    },
+    "XD4C0pxMdxk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa LA MAR DE COPLAS - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1990",
+      "fecha": "2025-10-15",
+      "duracion": 1292
+    },
+    "3WOnJdhwiOg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa. La Mare que me parió FINAL | Actuación Completa | Carnaval de Cádiz 2009",
+      "fecha": "2011-09-26",
+      "duracion": 1279
+    },
+    "PlNnK5hT9Ig": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La marea - Preliminares",
+      "fecha": "2026-01-17",
+      "duracion": 1360
+    },
+    "qQj6nQGdwxM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, La misión (El evangelio según Santander) - Preliminares",
+      "fecha": "2022-05-22",
+      "duracion": 1570
+    },
+    "ngrqV0OZ9wQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Javito Yyasta",
+      "titulo": "Pasodoble Niña/ Comparsa La Niña del Viento",
+      "fecha": "2018-01-17",
+      "duracion": 175
+    },
+    "km7dayE1pRI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa 'La Playa de los Secretos' FINAL | Actuación Completa | Carnaval de Cádiz 2007",
+      "fecha": "2011-10-22",
+      "duracion": 1061
+    },
+    "46yCMAikAW4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Codigo Carnaval",
+      "titulo": "Comparsa LA PREDICADORA - Pasodoble 'Que sea el principio'",
+      "fecha": "2022-06-18",
+      "duracion": 151
+    },
+    "OhFKVtblEV8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa La Quintaesencia FINAL | Actuación Completa | Carnaval de Cádiz 2006",
+      "fecha": "2012-01-04",
+      "duracion": 1394
+    },
+    "V7v3gtfHBhg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La resbalaera, una comparsa de toda la vida - Preliminares",
+      "fecha": "2024-01-14",
+      "duracion": 1580
+    },
+    "aGXdeGWhhGk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La resistencia - Preliminares",
+      "fecha": "2025-01-25",
+      "duracion": 1650
+    },
+    "VYToOaAqBPU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa LA SECTA DE LOS CARAPAPAS - PRELIMINARES [Actuación Completa] - Carnaval de Cádiz 2009",
+      "fecha": "2025-08-25",
+      "duracion": 1152
+    },
+    "CpxE47MMPf4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Comparsa \"La serenisima\" FINAL completo. Carnaval Cadiz 2012",
+      "fecha": "2012-02-17",
+      "duracion": 1681
+    },
+    "ONvbvu3463Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Vestido de viudo\" de 'La tengo en el bote'",
+      "fecha": "2022-01-05",
+      "duracion": 102
+    },
+    "IK3DzVdec-s": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La tierra de la alegría - Preliminar",
+      "fecha": "2020-02-06",
+      "duracion": 1303
+    },
+    "nNON_XtbUzg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La tregua - Preliminares",
+      "fecha": "2025-02-04",
+      "duracion": 1465
+    },
+    "A8lJkL3i8vw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La tribu - Preliminares",
+      "fecha": "2025-01-27",
+      "duracion": 1735
+    },
+    "loEI4Cm17mY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, La valla - Preliminares",
+      "fecha": "2025-01-31",
+      "duracion": 1540
+    },
+    "XSOTISLxlQE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Dami Molina",
+      "titulo": "Las Adolfas Coñetada 2024",
+      "fecha": "2024-02-11",
+      "duracion": 851
+    },
+    "HbvLetbZg8o": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Titto Rosales",
+      "titulo": "Hay que ver como cambian los tiempos - Pasodoble Las belloteras - 1.999",
+      "fecha": "2013-09-28",
+      "duracion": 106
+    },
+    "NAIvccRpkPE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CarnavalDeCadizAntiguo",
+      "titulo": "Las brujas piti - 1984 - chirigota - Pasodoble",
+      "fecha": "2014-10-10",
+      "duracion": 101
+    },
+    "AjpUdP8QWmg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Siempre me pasa lo mismo\" de 'Las del tacatá'",
+      "fecha": "2023-03-24",
+      "duracion": 121
+    },
+    "OgheZwG_bLg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Las guerrilleras - Cuartos",
+      "fecha": "2018-01-30",
+      "duracion": 1346
+    },
+    "V8-QSFCRyio": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CarnavalDeCadizAntiguo",
+      "titulo": "La hueste de Don Nuño - 1959 - pasodoble - Tenemos nuestro Condado",
+      "fecha": "2015-03-22",
+      "duracion": 128
+    },
+    "809svjKwZgU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Las irrepetibles - Preliminares",
+      "fecha": "2018-01-11",
+      "duracion": 1389
+    },
+    "H1mQHAdwsgg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa - Las Locuras de Martín Burton PRELIMINARES | Actuación Completa | Carnaval de Cádiz 2011",
+      "fecha": "2011-12-23",
+      "duracion": 1175
+    },
+    "3_GRFI-KXn8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Jesús Bienvenido Saucedo",
+      "titulo": "La banda de los enclenques",
+      "fecha": "2025-01-21",
+      "duracion": 113
+    },
+    "vATtC46tVOY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota. Las Momias de Güete pa Gua los Niños FINAL | Actuación Completa | Carnaval de Cádiz 1986",
+      "fecha": "2011-09-16",
+      "duracion": 1247
+    },
+    "23ZpHdPwP6c": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota. Las Pito-Risas FINAL | Actuación Completa | Carnaval de Cádiz 2008",
+      "fecha": "2011-12-26",
+      "duracion": 1715
+    },
+    "oEl608Sxw0A": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval De Calidad",
+      "titulo": "Las Que Salieron Del Bote - Tengo Una Espina Clavá [2006]",
+      "fecha": "2017-02-15",
+      "duracion": 118
+    },
+    "2o-H5GN9uBI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa LAS VERDADES DEL BARQUERO - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1994",
+      "fecha": "2026-09-30",
+      "duracion": 1197
+    },
+    "KHVzUL0nSqY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavaditana",
+      "titulo": "1994_Pas. Vuelve ya el 3x4.LAS VIUDAS.",
+      "fecha": "2008-04-13",
+      "duracion": 83
+    },
+    "OVpCvhIHz3Y": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Lasssss envenenasssss - Preliminar",
+      "fecha": "2019-01-28",
+      "duracion": 1579
+    },
+    "C8SuDiIzTZw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval De Calidad",
+      "titulo": "Ley De Vida - Perdóname Cádiz Mío [2017]",
+      "fecha": "2017-02-21",
+      "duracion": 207
+    },
+    "8gkwHARG6FA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa - Llamame Jesús | PRELIMINARES | Actuación Completa | Carnaval 2012",
+      "fecha": "2012-12-14",
+      "duracion": 1214
+    },
+    "Sipso0MhMpA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Hartito de racanear\" de 'Los agarraos'",
+      "fecha": "2017-01-09",
+      "duracion": 77
+    },
+    "aEthyrSZhhs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los aislados - Preliminar",
+      "fecha": "2020-01-28",
+      "duracion": 1711
+    },
+    "o9MPUfX3bCU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa Los Americanos FINAL [Actuación Completa] Carnaval de Cádiz 2003",
+      "fecha": "2011-11-10",
+      "duracion": 1500
+    },
+    "eJ4ltG-NQUE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa Los Ángeles Caídos FINAL [Actuación Completa] Carnaval de Cádiz 2002",
+      "fecha": "2011-12-30",
+      "duracion": 1054
+    },
+    "2p5ifLTJ5is": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Comparsa los ángeles de la guarda - Preliminares",
+      "fecha": "2018-01-15",
+      "duracion": 1623
+    },
+    "8i6Tq-3_EZk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Se siente nostalgia constante\" de 'Los beduinos'",
+      "fecha": "2017-06-19",
+      "duracion": 102
+    },
+    "MR8BLf8Nf44": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Mu güenas noches\" de 'Los belloteros'",
+      "fecha": "2016-11-23",
+      "duracion": 66
+    },
+    "x3HYLkgwTQc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota LOS BICHOS: FUERZAS NASALES - SEMIFINALES 'Actuación Completa' Carnaval de Cádiz 2008",
+      "fecha": "2019-08-31",
+      "duracion": 1121
+    },
+    "22n7ckoXK5w": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Manuel Fernández Carrasco",
+      "titulo": "Los bisabuelos de los viejos del 55, chirigota de Cádiz. Que culpa tengo pare. Carnaval 1993.",
+      "fecha": "2017-06-23",
+      "duracion": 116
+    },
+    "2XIZOXopiog": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa. Los Blanco y Negro (1970) | Pasodoble de la Caracola 'con letra' Audio del Teatro Falla",
+      "fecha": "2016-09-12",
+      "duracion": 85
+    },
+    "NsFyisl0ju4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los brujos titis - Preliminares",
+      "fecha": "2018-01-13",
+      "duracion": 1376
+    },
+    "_sDQ0pQAoOU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Viruten",
+      "titulo": "Chirigota \"Los bufones de Doña Teófila\" - \"Si te quiero de verdad\" Pasodoble Preliminares",
+      "fecha": "2015-09-23",
+      "duracion": 108
+    },
+    "c2aNUDTU-Ls": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota juvenil, Los burritos - Semifinal",
+      "fecha": "2020-01-18",
+      "duracion": 1506
+    },
+    "5lCo-f5AL5g": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los buscadores - Preliminar",
+      "fecha": "2019-01-30",
+      "duracion": 1608
+    },
+    "c85hVH4p8O0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa. Los Buscavidas FINAL | Actuación Completa | Carnaval de Cádiz 1997",
+      "fecha": "2011-10-04",
+      "duracion": 969
+    },
+    "g1j47VNVZz8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Cintas de Carnaval De Cádiz",
+      "titulo": "Chirigota Los Caballeros de la Edad Media  1995   Final Pasodoble Le pido Sr Carranza",
+      "fecha": "2022-02-01",
+      "duracion": 121
+    },
+    "L2g8YWZO6BM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa, Los Caballeros de la Piera Reonda FINAL 'Actuación Completa' Carnaval de Cádiz 2010",
+      "fecha": "2011-11-25",
+      "duracion": 1068
+    },
+    "tasyumPNSd4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los cachitopan - Preliminar",
+      "fecha": "2019-01-26",
+      "duracion": 1628
+    },
+    "wiR8QueoHAE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los cadisapiens (La involución) - Preliminares",
+      "fecha": "2026-01-15",
+      "duracion": 1550
+    },
+    "D4b4zyLN5yc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los cadizfornia - Semifinales",
+      "fecha": "2020-02-19",
+      "duracion": 1634
+    },
+    "_SvHuxnRTto": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los cagones - Preliminares",
+      "fecha": "2025-02-06",
+      "duracion": 1430
+    },
+    "XP-pOx_DzE4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa. Los Callejeros | Hay veces (Pasodoble Semifinales)  | Carnaval de Cádiz 1996",
+      "fecha": "2015-12-22",
+      "duracion": 112
+    },
+    "OXyOrMNPMes": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los camballá - Preliminares",
+      "fecha": "2017-02-11",
+      "duracion": 1515
+    },
+    "cD13ghttQjE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Comparsa Los camellos | FINAL del Carnaval de Cádiz 2016",
+      "fecha": "2016-02-05",
+      "duracion": 1468
+    },
+    "KJdF-MBfOdM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Kike Remolino",
+      "titulo": "Pasodoble a Tino.Los Campaneros.",
+      "fecha": "2018-02-11",
+      "duracion": 193
+    },
+    "R8lrQPkEsRY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Campeones por cojones - Preliminares",
+      "fecha": "2018-01-24",
+      "duracion": 1475
+    },
+    "Ov7yWWdRu4w": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los camper del sur - Preliminares",
+      "fecha": "2026-01-25",
+      "duracion": 1465
+    },
+    "kF_F3DC8f9A": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los carnívales - Preliminar",
+      "fecha": "2019-02-04",
+      "duracion": 1591
+    },
+    "cDLpVjVYZJg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Chabolis - Preliminares",
+      "fecha": "2024-01-25",
+      "duracion": 1565
+    },
+    "maeE5d51OaY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los colaores, una comparsa de toda la vida - Preliminares",
+      "fecha": "2023-02-02",
+      "duracion": 1385
+    },
+    "pm79P9BHtco": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los colgaos - Preliminares",
+      "fecha": "2024-01-22",
+      "duracion": 1695
+    },
+    "cqX97SFjeXA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavaleros",
+      "titulo": "Comparsa Los comparsistas se la dan de artistas. Semifinales completa.",
+      "fecha": "2015-11-11",
+      "duracion": 1506
+    },
+    "T-v6l5CibyI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa LOS CONDENAOS - Final [Actuación Completa] - Carnaval de Cádiz 2001",
+      "fecha": "2017-05-16",
+      "duracion": 1225
+    },
+    "CKO17BTghBc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Comparsa OBDC",
+      "titulo": "Pasodoble de medida \"Se me clava en los siete sentidos\" - Comparsa COAC 2022 Los conquistadores",
+      "fecha": "2022-05-26",
+      "duracion": 157
+    },
+    "peadLcrma9c": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Me dijeron que Cádiz\" de 'Los corrusquillos gaditanos'",
+      "fecha": "2016-11-23",
+      "duracion": 109
+    },
+    "VUWTb1SYUn8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Archivo Municipal de Cádiz",
+      "titulo": "Chirigota Los cubatas",
+      "fecha": "2020-12-29",
+      "duracion": 1465
+    },
+    "PIesjujD7vM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa Los Currelantes SEMIFINALES [Actuación Completa] Carnaval de Cádiz 2011",
+      "fecha": "2011-03-11",
+      "duracion": 1692
+    },
+    "g9aG5rh2Iyo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Elmangla de Cádiz",
+      "titulo": "Chirigota-\"Los dela Roca\" (2007) Pasodoble-\"Que de vueltas da la vida\"-by mangla.MPG",
+      "fecha": "2012-04-30",
+      "duracion": 117
+    },
+    "OkMLqVqDW0o": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Frikydelascoplas",
+      "titulo": "Año: 1955- Chirigota: Los del Bocho.-Pasodoble:  Dando nuestro saludo.- LETRA.",
+      "fecha": "2015-10-23",
+      "duracion": 88
+    },
+    "9LgBEE3uymE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Isidoro Benitez Hernandez",
+      "titulo": "Chirigota Los de Cádiz Norte - Pasodoble \"Si hay alguno que pensó\"",
+      "fecha": "2017-02-10",
+      "duracion": 113
+    },
+    "t72JfNHZHSE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa infantil, Los del patio de mi casa (La última savia) - Semifinales",
+      "fecha": "2023-01-19",
+      "duracion": 1433
+    },
+    "aRZ7GbpQCKw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Comparsa Los del piso de abajo, SEMIFINALES del Carnaval de Cádiz 20133",
+      "fecha": "2013-02-06",
+      "duracion": 1568
+    },
+    "NZsjfGhVTZo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavaleros",
+      "titulo": "Chirigota Los del planeta rojo, pero rojo rojo. Final. Pasodoble No hay un planeta más rojo.",
+      "fecha": "2020-05-16",
+      "duracion": 131
+    },
+    "h0xTc2_92lc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los del puntazo en el coco - Preliminares",
+      "fecha": "2015-01-24",
+      "duracion": 1385
+    },
+    "4caALxC2d0k": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los del veredicto - Preliminares",
+      "fecha": "2023-01-22",
+      "duracion": 1560
+    },
+    "0eI9rSEyaSQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota LOS DESTRIPADORES DE LA CALLE LONDRES Preliminares | Actuación Completa | Carnaval 2014",
+      "fecha": "2016-09-15",
+      "duracion": 1066
+    },
+    "p3nXBE3JopY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los desvelaos - Cuartos",
+      "fecha": "2018-01-30",
+      "duracion": 1573
+    },
+    "JBxHjJgnWT8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los doce - Preliminares",
+      "fecha": "2016-01-19",
+      "duracion": 1539
+    },
+    "fmhqLiKcHJY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa - Los Duendes Coloraos - Preliminares",
+      "fecha": "2014-01-17",
+      "duracion": 1672
+    },
+    "ZL-HltnVYI8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavaleros",
+      "titulo": "Comparsa Los encaidenaos. Preliminares. Pasodoble Me ha pedido de tu boca.",
+      "fecha": "2020-02-26",
+      "duracion": 140
+    },
+    "AP1gHd-DXf8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota LOS ENTERAOS - FINAL [Actuación Completa] - Carnaval de Cádiz 2009",
+      "fecha": "2011-09-23",
+      "duracion": 1234
+    },
+    "KnVkmHgDDU0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval de Cádiz",
+      "titulo": "Pasodoble, Mostradores de la Viña, Los Enterradores del Siglo XX (2000) de Paco Cárdenas y el Noly",
+      "fecha": "2012-10-10",
+      "duracion": 106
+    },
+    "9Et0t_2T46Y": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval De Calidad",
+      "titulo": "Los Equilibristas - Presentación [2017]",
+      "fecha": "2017-02-15",
+      "duracion": 193
+    },
+    "I9w4ygMzc7Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Chirigota Los erasmus pocos y parió la abuela, FINAL del Carnaval de Cádiz 2013",
+      "fecha": "2013-02-08",
+      "duracion": 1440
+    },
+    "tjEFpHydMwE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Por mucho que homenajeen\" de 'Los estamos enamoraos'",
+      "fecha": "2017-06-07",
+      "duracion": 87
+    },
+    "pjYB09EE3G0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los estorninos coloraos - Preliminares",
+      "fecha": "2015-01-24",
+      "duracion": 1455
+    },
+    "woHn7zNm3aM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CarnavalDeCadizAntiguo",
+      "titulo": "Los fabulistas - 1969 - Comparsa - Pasodoble - No cabe la menor duda",
+      "fecha": "2014-10-14",
+      "duracion": 101
+    },
+    "KZqQfMYXHEk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CarnavalDeCadizAntiguo",
+      "titulo": "Los Figaros - No es que la luna - Pasodoble - 1964",
+      "fecha": "2014-06-08",
+      "duracion": 98
+    },
+    "OUecjtSL1ag": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CarnavalDeCadizAntiguo",
+      "titulo": "Los forjaores - Comparsa - Pasodoble - Ese rinconcito - Paco Alba 1971",
+      "fecha": "2014-06-27",
+      "duracion": 90
+    },
+    "L2tc-j41xYg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Comparsa “Los gadiritas” | SEMIFINALES del Carnaval de Cádiz 2015",
+      "fecha": "2015-02-12",
+      "duracion": 1682
+    },
+    "IH_HvgcJyDA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Comparsa: \"Los gallitos\" (2ª Semifinal COAC 2014)",
+      "fecha": "2014-02-26",
+      "duracion": 1502
+    },
+    "rbcpEZJ33OU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Jesus M",
+      "titulo": "Antología Juánn Carlos Aragón - Enfrente del sindicato - Pasodoble - HD (Letra)",
+      "fecha": "2011-09-05",
+      "duracion": 107
+    },
+    "nWcI8vzIDSY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa, Los Héroes del 3x4 - PRELIMINARES [Actuación Completa] Carnaval de Cádiz 2008",
+      "fecha": "2015-12-22",
+      "duracion": 1165
+    },
+    "XzvQGaIAmOs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los hijos de Cádiz - Preliminares",
+      "fecha": "2026-01-22",
+      "duracion": 1580
+    },
+    "tMI8Q0Hi_4Y": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa, Los Hijos de la Libertad FINAL 'Actuación Completa' Carnaval de Cádiz 2007",
+      "fecha": "2012-09-12",
+      "duracion": 1153
+    },
+    "AzMCkY15PW8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota LOS HINCHAPELOTAS - SEMIFINALES [Actuación Completa] Carnaval de Cádiz 2012",
+      "fecha": "2012-02-15",
+      "duracion": 1360
+    },
+    "OH8JzUNRsRA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los hippytanos - Clasificatorias",
+      "fecha": "2014-02-14",
+      "duracion": 1545
+    },
+    "lLiFQRsAEnk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval De Calidad",
+      "titulo": "Los Hojillas - Ay Cádiz Bonito [2003]",
+      "fecha": "2017-02-15",
+      "duracion": 91
+    },
+    "2moZDBc0Hks": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Frikydelascoplas",
+      "titulo": "LLega a esta tierra un barquito- Pasodoble - Año -1965 - Comparsa Los Hombres del Mar.- LETRA.",
+      "fecha": "2015-11-06",
+      "duracion": 106
+    },
+    "8NL8k1OUBNs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los imprescindibles - Preliminares",
+      "fecha": "2015-01-23",
+      "duracion": 1727
+    },
+    "RzxO9o6kdbA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Indiana Jones de los callejones - Preliminares",
+      "fecha": "2017-02-11",
+      "duracion": 1809
+    },
+    "I_yCwGqRNK8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Pasodoble \"Llegó Febrero\" | Chirigota Los Inventores | Preliminares 2002",
+      "fecha": "2015-04-18",
+      "duracion": 96
+    },
+    "B3SEJEGG2gE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los invisibles - Gran Final",
+      "fecha": "2026-02-13",
+      "duracion": 1745
+    },
+    "loVpLX6wnls": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los Irracionales - Preliminares",
+      "fecha": "2017-01-30",
+      "duracion": 1815
+    },
+    "1hnjZDgKmIw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Edel León",
+      "titulo": "Hay quien dice que Cádiz - Los julianes",
+      "fecha": "2014-04-30",
+      "duracion": 128
+    },
+    "7knXq_hNfVE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Laura Riera",
+      "titulo": "Los Ladrones HD (Alcal de Guadara 31/01/2014)",
+      "fecha": "2014-03-10",
+      "duracion": 2091
+    },
+    "K0sHnaxAAmk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los listos - Semifinales",
+      "fecha": "2020-02-16",
+      "duracion": 1550
+    },
+    "H6VRXCjGYnU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavalandia",
+      "titulo": "1986 Chirigota los locos de la colina 08 - Antiguo rincón",
+      "fecha": "2021-04-23",
+      "duracion": 100
+    },
+    "4v0YM0xstmA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CHRISTOPHER Vázquez Azogue",
+      "titulo": "Primer pasodoble de Preliminares Comparsa \" Los Luceros\"",
+      "fecha": "2019-02-09",
+      "duracion": 165
+    },
+    "H0Pp0N9ny7E": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Hugo Bernal",
+      "titulo": "Pasodoble \"De ver\" con letra - LOS MAFIOSOS (Preliminares)",
+      "fecha": "2018-01-22",
+      "duracion": 173
+    },
+    "UokgL_Gn-zk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota LOS MÁKINA - PRELIMINARES [Actuación Completa] - Carnaval de Cádiz 2009",
+      "fecha": "2025-08-22",
+      "duracion": 1133
+    },
+    "ApqSbIScrCM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa Los Mendas Lerendas FINAL [Actuación Completa] Carnaval de Cádiz 2008",
+      "fecha": "2011-04-10",
+      "duracion": 1526
+    },
+    "g1OK_EWgi3s": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Falla Carnaval",
+      "titulo": "Pasodoble con Letra \"Que porque vuelvo\". Chirigota \"Los mi alma\" (2023)",
+      "fecha": "2023-01-25",
+      "duracion": 119
+    },
+    "Y9yyzfG7Gvs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los millonarios - Cuartos",
+      "fecha": "2015-02-02",
+      "duracion": 1748
+    },
+    "R_S-giStoiE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavalea365",
+      "titulo": "Chirigota los morosos - Pasodoble \"Comido por las deudas\"",
+      "fecha": "2019-02-03",
+      "duracion": 139
+    },
+    "ZKsn6YzHYuc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota: Los muerting planner, una chirigota pa to tus muertos - Cuartos",
+      "fecha": "2026-02-03",
+      "duracion": 1805
+    },
+    "i12amRhI4Og": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Anoche me encerré\" de 'Los murciélogos'",
+      "fecha": "2017-01-13",
+      "duracion": 111
+    },
+    "EiWfVzHi34Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "PericoGuitarra",
+      "titulo": "Pasodoble Los Naturales",
+      "fecha": "2020-08-09",
+      "duracion": 82
+    },
+    "bg9I1bfy9ws": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los niños sin nombre - Preliminar",
+      "fecha": "2019-01-28",
+      "duracion": 1728
+    },
+    "gdQFGYMRs7s": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "'Los okupas de la luna', Comparsa",
+      "fecha": "2021-06-30",
+      "duracion": 3267
+    },
+    "ACszzsYB7nM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los originales - Preliminares",
+      "fecha": "2022-05-19",
+      "duracion": 1745
+    },
+    "yiQ8_EO0jG8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los pacientes - Preliminar",
+      "fecha": "2020-02-03",
+      "duracion": 1572
+    },
+    "emvDOu101bk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Viruten",
+      "titulo": "Los pajeros (1960) - Pasodoble \"Porque a Dios\"",
+      "fecha": "2013-07-24",
+      "duracion": 79
+    },
+    "NguUxVqZ-rg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval de Pablo",
+      "titulo": "Chirigota ``Los Panteras´´ (2001) - Actuacion completa Final y Repertorio completo.",
+      "fecha": "2011-12-10",
+      "duracion": 1644
+    },
+    "9koJ-dv7xew": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los peliculeros - Semifinales",
+      "fecha": "2023-02-14",
+      "duracion": 1725
+    },
+    "eNPZ8-VCRUI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los peregrinos - Preliminares",
+      "fecha": "2017-01-28",
+      "duracion": 1837
+    },
+    "Jy0YXF0kJWo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los pimpinelas de La Plaza Fragela - Preliminares",
+      "fecha": "2025-01-25",
+      "duracion": 1780
+    },
+    "yVnLGn_CCTY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnacadiz",
+      "titulo": "''Los Piratas''-pasodoble-''Carnecita de gallina''",
+      "fecha": "2011-07-19",
+      "duracion": 178
+    },
+    "STBX3qfwKlg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Chirigota Los polvos egipcios | FINAL del Carnaval de Cádiz 2016",
+      "fecha": "2016-02-05",
+      "duracion": 1494
+    },
+    "x5Wh-DiLZHU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa LOS PRINCIPIANTES - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1995",
+      "fecha": "2025-05-21",
+      "duracion": 1253
+    },
+    "LpDEgD99UG8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota Los Pringaos FINAL [Actuación Completa] Carnaval de Cádiz 2003",
+      "fecha": "2011-12-02",
+      "duracion": 1465
+    },
+    "HEJg8sX6S8E": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Javier Campos",
+      "titulo": "Comparsa \"Los Prisioneros\" - Pasodoble \"Cádiz, abuela y niña\" - Preliminares",
+      "fecha": "2018-01-14",
+      "duracion": 161
+    },
+    "2p9ulwVQTwg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los que no se pierden una - Preliminar",
+      "fecha": "2019-01-29",
+      "duracion": 1464
+    },
+    "jV2LZVcjAG0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los que salieron perdiendo - Preliminares",
+      "fecha": "2024-01-24",
+      "duracion": 1455
+    },
+    "cd5QrsXK9mc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota. Los que se mojan de verdad PRELIMINARES, Actuación Completa | Carnaval de Cádiz 2011",
+      "fecha": "2016-06-02",
+      "duracion": 1175
+    },
+    "4Q13E3neNls": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa LOS QUIJOTES DEL SUR - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1996",
+      "fecha": "2025-06-08",
+      "duracion": 1298
+    },
+    "rbdtTcmUshY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los quinquis - Preliminares",
+      "fecha": "2022-05-21",
+      "duracion": 1585
+    },
+    "WY-WEzLBeW8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Adrián Muñoz García",
+      "titulo": "2º pasodoble, los quitapupas, preliminares, 2018, \"hay quien persigue milagros\"",
+      "fecha": "2018-01-11",
+      "duracion": 120
+    },
+    "qPrqSFSqu1Q": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los resilientes - Preliminar",
+      "fecha": "2020-02-02",
+      "duracion": 1473
+    },
+    "5mspBvZqGIA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota LOS ROBÓ DE COCINA - PRELIMINARES [Actuación Completa] Carnaval de Cádiz 2009",
+      "fecha": "2018-07-30",
+      "duracion": 1482
+    },
+    "GbdSdTQi9-Y": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa, Los Santos FINAL | Actuación Completa | Carnaval de Cádiz 2010",
+      "fecha": "2012-08-29",
+      "duracion": 1301
+    },
+    "diteJMo6siE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Oh Cádiz\" de 'Los sarracenos'",
+      "fecha": "2016-11-23",
+      "duracion": 98
+    },
+    "w5K17KRZm9c": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Un buen amigo\" de 'Los senadores romanos'",
+      "fecha": "2016-11-23",
+      "duracion": 117
+    },
+    "qN8p9dNyHO0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Chirigota Los Serenissimos | SEMIFINALES del Carnaval de Cádiz 2016",
+      "fecha": "2016-02-01",
+      "duracion": 1591
+    },
+    "C5483kWZ38g": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Sherijuegos - Preliminares",
+      "fecha": "2025-02-12",
+      "duracion": 1605
+    },
+    "dq43OFuT6qQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CHRISTOPHER Vázquez Azogue",
+      "titulo": "Chirigota Los Sirenitas  Pasodoble  \"como si fuera un milagro\"",
+      "fecha": "2018-01-23",
+      "duracion": 89
+    },
+    "fZvk4gCYq8M": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los sumisos - Preliminares",
+      "fecha": "2022-05-18",
+      "duracion": 1563
+    },
+    "5fpULO0IIyo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "Chirigota “Los Superpop” | FINAL del Carnaval de Cádiz 2015",
+      "fecha": "2015-02-13",
+      "duracion": 1499
+    },
+    "f10Nu3h_QEM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Codigo Carnaval",
+      "titulo": "Carli Brihuega, Subiela, Pacoli y Sergio - Los Templarios - 'Cuéntame de cuando salías' INÉDITO",
+      "fecha": "2016-11-03",
+      "duracion": 142
+    },
+    "5kfixJ041J8": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa, Los Templarios FINAL | Actuación Completa | Carnaval de Cádiz 1999",
+      "fecha": "2012-01-16",
+      "duracion": 1426
+    },
+    "V8Sbw6XwSlA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnavalandia",
+      "titulo": "1987 Chirigota Los Terroristas del Paseo Marítimo 12 - Una letrilla sencilla",
+      "fecha": "2021-06-13",
+      "duracion": 85
+    },
+    "V8lK8q-W8Rg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa, Los Trasnochadores FINAL 'Actuación Completa' Carnaval de Cádiz 2009",
+      "fecha": "2011-10-14",
+      "duracion": 1364
+    },
+    "ivWuc5Fm8xM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa LOS TROTAMÚSICOS - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1992",
+      "fecha": "2025-05-08",
+      "duracion": 1338
+    },
+    "iv8vjLSPOxU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota LOS VALIENTES - FINAL [Actuación Completa] - Carnaval de Cádiz 2004",
+      "fecha": "2025-03-28",
+      "duracion": 1172
+    },
+    "qkJByXdm7mg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los veleros, una comparsa de toda la vida - Semifinales",
+      "fecha": "2022-05-29",
+      "duracion": 1525
+    },
+    "FQQh4YhUPPg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota Los Veteranos del Vietnam FINAL [Actuación Completa] Carnaval de Cádiz 2004",
+      "fecha": "2012-09-27",
+      "duracion": 1374
+    },
+    "qouI91bo7eI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los viajantes - Preliminares",
+      "fecha": "2022-05-24",
+      "duracion": 1500
+    },
+    "3GUXfLlWaVg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa Los Vikingos FINAL [Actuación Completa] Carnaval de Cádiz 2003",
+      "fecha": "2011-12-05",
+      "duracion": 1346
+    },
+    "Tfh2qRH4w4s": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Los Viñanos - Preliminares",
+      "fecha": "2023-01-31",
+      "duracion": 1435
+    },
+    "dsdbHJirKKI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "mgpregue92",
+      "titulo": "Los violinistas 2º Pasodoble.",
+      "fecha": "2011-02-25",
+      "duracion": 118
+    },
+    "61aJ6VSl6dA": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Los zincale - Preliminares",
+      "fecha": "2018-01-27",
+      "duracion": 1498
+    },
+    "sRnCaBbeO6s": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, LXS Invencibles - Preliminares",
+      "fecha": "2026-01-24",
+      "duracion": 1720
+    },
+    "PWS2vLHyLgY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota MAS PALLÁ QUE PACÁ - CUARTOS, Actuación Completa | Carnaval de Cádiz 2009",
+      "fecha": "2019-09-20",
+      "duracion": 1355
+    },
+    "OKmoKUtuJ2I": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "CADIZBOOKTV",
+      "titulo": "CHIRIGOTA MEJO NO SALGO - PRELIMINARES - 21-01-12",
+      "fecha": "2012-01-21",
+      "duracion": 1379
+    },
+    "7iHUZrj_IdE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavaditana",
+      "titulo": "1988_Pas. es muy bonito. NEPTUNO TEN CUIDAO CON LOS TRASMALLOS",
+      "fecha": "2008-04-18",
+      "duracion": 80
+    },
+    "jNGivChaLt0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, No aguantamos más..vamos de impacientes - Semifinales",
+      "fecha": "2020-02-17",
+      "duracion": 1553
+    },
+    "6UxXB2TFu5Y": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, No me tires tiritos en el pecho - Preliminar",
+      "fecha": "2019-01-26",
+      "duracion": 1608
+    },
+    "g44Exbn6vhU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Codigo Carnaval",
+      "titulo": "NO TE QUEMES TODAVÍA - Pasodoble 'Pensé que no iba a gustar'",
+      "fecha": "2018-04-28",
+      "duracion": 150
+    },
+    "bOp9Q3nEaRM": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, No te vayas todavía - Preliminares",
+      "fecha": "2017-01-26",
+      "duracion": 1727
+    },
+    "MukynhdiJdo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, No tenemos el congo pa farolillos - Preliminares",
+      "fecha": "2018-01-15",
+      "duracion": 1582
+    },
+    "93txQMYeNWI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, No valemos un duro - Cuartos",
+      "fecha": "2017-02-13",
+      "duracion": 1553
+    },
+    "xF_oHP0G_bU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, OBDC, el joven obispo - Preliminares",
+      "fecha": "2018-01-20",
+      "duracion": 1603
+    },
+    "S9Zcb4ebkHU": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Rubén de Dueñas",
+      "titulo": "Comparsa OBDC La última flor Pasodoble \"Bajo la Sombra\" Semifinales 2017",
+      "fecha": "2017-02-21",
+      "duracion": 188
+    },
+    "Q_mRLH--ppE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, OzBDC  - Preliminar",
+      "fecha": "2019-02-06",
+      "duracion": 1470
+    },
+    "li9KINpXNoQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval y Punto",
+      "titulo": "Pasodoble 1 de \"Pa gusto los colores\"",
+      "fecha": "2011-02-10",
+      "duracion": 141
+    },
+    "Yfc1DMU5Li0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Pa religión, la mía - Preliminares",
+      "fecha": "2017-02-10",
+      "duracion": 1696
+    },
+    "Sal1yYNzYqQ": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Frikydelascoplas",
+      "titulo": "Año- 1961-  Comparsa: Pancho Albachi y sus mariachis -  Pasodoble:  Como Cai.- LETRA.",
+      "fecha": "2015-10-22",
+      "duracion": 99
+    },
+    "FOGxFSQ8Hvs": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa Patiovecino FINAL | Actuación Completa | Carnaval 1998",
+      "fecha": "2012-11-26",
+      "duracion": 1292
+    },
+    "rKv_uSm5gVg": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Archivo Municipal de Cádiz",
+      "titulo": "Comparsa infantil  Payasitos.",
+      "fecha": "2022-10-10",
+      "duracion": 1183
+    },
+    "i2cC-g5YjbE": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Gaditanorum",
+      "titulo": "Chirigota \"Pídeme lo que tu quieras\" (2020) - Pasodoble \"Este compás\"",
+      "fecha": "2020-01-29",
+      "duracion": 129
+    },
+    "UGykCkg01wk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Piensa mal y acertarás (Los desconfiaos) - Semifinales",
+      "fecha": "2026-02-10",
+      "duracion": 1610
+    },
+    "s9qxsY6c1qw": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, ¡Qué caló! - Preliminares",
+      "fecha": "2018-01-26",
+      "duracion": 1543
+    },
+    "LOU2mTX8HSo": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Que penita de concurso - Cuartos",
+      "fecha": "2017-02-17",
+      "duracion": 1604
+    },
+    "J6sI1Js-gS4": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota. Que viene el Coco (1985) | Nueva chirigota, Pasodoble 'con letra' | Audio del Falla",
+      "fecha": "2016-11-07",
+      "duracion": 103
+    },
+    "lQMRq3NFqz0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Chirigota - Ricas y Maduras | PRELIMINARES | Actuación Completa | Carnaval 2011",
+      "fecha": "2012-10-12",
+      "duracion": 1225
+    },
+    "9Iam2oqSJ2M": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval Por Un Tubo",
+      "titulo": "Comparsa. Se acabó el cuento | SEMIFINALES Actuación Completa | Carnaval de Cádiz 2012",
+      "fecha": "2012-02-14",
+      "duracion": 1225
+    },
+    "mfXFf3fYUiI": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Carnaval y nada más",
+      "titulo": "Comparsa - Solo se que no se nada - Pasodoble a Manolito Santander de su hija Palmi.",
+      "fecha": "2020-01-25",
+      "duracion": 223
+    },
+    "6mumLy8t46I": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "20Ruben20",
+      "titulo": "Suspiros de Cai - Sabía un camino - Quiñones 1992",
+      "fecha": "2008-02-28",
+      "duracion": 120
+    },
+    "9nE27LU6tv0": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Javier Campos",
+      "titulo": "Comparsa \"Tic-tac, tic-tac\" - Pasodoble \"Toita la noche despierto\" - 2° Preliminares",
+      "fecha": "2018-01-24",
+      "duracion": 180
+    },
+    "77sVfn_nK3M": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, To me pasa a mi: 'Los desgraciaitos' - Gran Final",
+      "fecha": "2023-02-17",
+      "duracion": 1855
+    },
+    "TB6-AYau1Oc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota juvenil, Tu eres mi Bro - Semifinal",
+      "fecha": "2019-01-20",
+      "duracion": 1509
+    },
+    "a31iqBpt4kc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "carnavalsur",
+      "titulo": "\"Una chirigota con clase\" | Carnaval Cádiz 1996 | Final",
+      "fecha": "2017-09-24",
+      "duracion": 575
+    },
+    "JocmCsI0q2A": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Una chirigota en teoría - Preliminares",
+      "fecha": "2026-01-14",
+      "duracion": 1748
+    },
+    "UMV720MQxNY": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "WaxiCarnaval",
+      "titulo": "Pasodoble INÉDITO de Juan Carlos Aragón grabado por @canalsur",
+      "fecha": "2020-01-28",
+      "duracion": 141
+    },
+    "6d1ZHBYxYco": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "Al compás gaditano",
+      "titulo": "Pasodoble \"Se dice por ahí\" de 'Una especie en extinción (Los chirigoteros)'",
+      "fecha": "2016-01-25",
+      "duracion": 106
+    },
+    "1FqhyRhs0Yc": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Una excusa divina - Preliminares",
+      "fecha": "2023-01-28",
+      "duracion": 1600
+    },
+    "6Y4mm2Qg_6c": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, We can do...Carnaval - Preliminares",
+      "fecha": "2022-05-17",
+      "duracion": 1441
+    },
+    "If4hR1dfB8s": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Comparsa, Y seguimos cantando - Preliminares",
+      "fecha": "2024-01-25",
+      "duracion": 1750
+    },
+    "oy-Vm_1sgsk": {
+      "estado": "ok",
+      "http": 200,
+      "autor": "ONDA CÁDIZ CARNAVAL",
+      "titulo": "Chirigota, Daddy cadi - Preliminar",
+      "fecha": "2019-01-28",
+      "duracion": 1493
     },
     "v6Ft81c7uUI": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, A base de palos - Preliminar"
+      "titulo": "Comparsa, A base de palos - Preliminar",
+      "fecha": "2019-01-27",
+      "duracion": 1524
     },
     "Xh72ScnkIpg": {
       "estado": "ok",
       "http": 200,
       "autor": "Antonio Martínez Ares",
-      "titulo": "Presentación alternativa de \"Los Cobardes\" en el ensayo"
+      "titulo": "Presentación alternativa de \"Los Cobardes\" en el ensayo",
+      "fecha": "2021-10-11",
+      "duracion": 184
     },
     "ARPHKup_8zE": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa. Caleta PRESENTACIÓN con letra (1980) | Audio del Teatro Falla"
+      "titulo": "Comparsa. Caleta PRESENTACIÓN con letra (1980) | Audio del Teatro Falla",
+      "fecha": "2016-08-24",
+      "duracion": 186
     },
     "oGMmkoq-W2o": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa juvenil, Comunicando - Semifinal"
+      "titulo": "Comparsa juvenil, Comunicando - Semifinal",
+      "fecha": "2020-01-18",
+      "duracion": 1625
     },
     "doWdRZWv8IE": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, ¡ Con lo bonito que era ! - Preliminares"
+      "titulo": "Comparsa, ¡ Con lo bonito que era ! - Preliminares",
+      "fecha": "2024-01-11",
+      "duracion": 1480
     },
     "qXpQwWpsfV4": {
       "estado": "ok",
       "http": 200,
       "autor": "Selu M. Mendoza",
-      "titulo": "Comparsa Dios Salve a La Reina (2018) Presentación"
+      "titulo": "Comparsa Dios Salve a La Reina (2018) Presentación",
+      "fecha": "2018-01-24",
+      "duracion": 162
     },
     "Avfovsj7tEI": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa EL BRUJO - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1995"
+      "titulo": "Comparsa EL BRUJO - FINAL [Calidad Mejorada] - Carnaval de Cádiz 1995",
+      "fecha": "2025-05-30",
+      "duracion": 1373
     },
     "wTh5QH7bP8U": {
       "estado": "ok",
       "http": 200,
       "autor": "Selu M. Mendoza",
-      "titulo": "Comparsa El Perro Andalú (2018) Presentación"
+      "titulo": "Comparsa El Perro Andalú (2018) Presentación",
+      "fecha": "2018-01-18",
+      "duracion": 207
     },
     "f10kKWSjCaI": {
       "estado": "ok",
       "http": 200,
       "autor": "Selu M. Mendoza",
-      "titulo": "Presentación Comparsa El Rincón Del Duende (2018)"
+      "titulo": "Presentación Comparsa El Rincón Del Duende (2018)",
+      "fecha": "2018-01-11",
+      "duracion": 241
     },
     "7i5eXpVqV4M": {
       "estado": "ok",
       "http": 200,
       "autor": "Radio Cádiz SERxCuatro",
-      "titulo": "Presentación comparsa \"El veneno del rincón\", COAC 2023"
+      "titulo": "Presentación comparsa \"El veneno del rincón\", COAC 2023",
+      "fecha": "2023-01-28",
+      "duracion": 182
     },
     "UgU4TOeYp-0": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La alegría de Cádiz - Preliminares"
+      "titulo": "Comparsa, La alegría de Cádiz - Preliminares",
+      "fecha": "2024-01-17",
+      "duracion": 1605
     },
     "zrh6-oX6QpA": {
       "estado": "ok",
       "http": 200,
       "autor": "Frikydelascoplas",
-      "titulo": "Comparsa= La boquita prestá. Presentación preliminares."
+      "titulo": "Comparsa= La boquita prestá. Presentación preliminares.",
+      "fecha": "2022-05-24",
+      "duracion": 208
     },
     "iVw8DL5qvKc": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La brigada - Semifinales"
+      "titulo": "Comparsa, La brigada - Semifinales",
+      "fecha": "2022-05-31",
+      "duracion": 1765
     },
     "TUIiSaIxCDs": {
       "estado": "ok",
       "http": 200,
       "autor": "Cruidecai",
-      "titulo": "Presentación de la comparsa \"La Caldera\""
+      "titulo": "Presentación de la comparsa \"La Caldera\"",
+      "fecha": "2007-06-03",
+      "duracion": 193
     },
     "TghkJHhbF8Y": {
       "estado": "ok",
       "http": 200,
       "autor": "Paujartible 🎭",
-      "titulo": "Comparsa \"La cara oculta de la luna\" - Presentación"
+      "titulo": "Comparsa \"La cara oculta de la luna\" - Presentación",
+      "fecha": "2018-03-02",
+      "duracion": 176
     },
     "s9L3ILnIUVo": {
       "estado": "ok",
       "http": 200,
       "autor": "Elmangla de Cádiz",
-      "titulo": "Comparsa-\"La Carcél Vieja\"(2004) Presentacion-by mangla.MPG"
+      "titulo": "Comparsa-\"La Carcél Vieja\"(2004) Presentacion-by mangla.MPG",
+      "fecha": "2012-04-25",
+      "duracion": 178
     },
     "HaFk-MwNCo8": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, La guasona - Preliminares"
+      "titulo": "Comparsa, La guasona - Preliminares",
+      "fecha": "2023-01-31",
+      "duracion": 1625
     },
     "oNVJy6VwTGk": {
       "estado": "ok",
       "http": 200,
       "autor": "Un Mando para un Manco",
-      "titulo": "Comparsa La Mare que me parió presentacion"
+      "titulo": "Comparsa La Mare que me parió presentacion",
+      "fecha": "2013-10-09",
+      "duracion": 147
     },
     "Aq24zf77eFM": {
       "estado": "ok",
       "http": 200,
       "autor": "Selu M. Mendoza",
-      "titulo": "Presentación Comparsa La Niña Del Viento (2018)"
+      "titulo": "Presentación Comparsa La Niña Del Viento (2018)",
+      "fecha": "2018-01-17",
+      "duracion": 208
     },
     "jFhsQQmj1mg": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa - Las de la alegre figura - Cuartos"
+      "titulo": "Comparsa - Las de la alegre figura - Cuartos",
+      "fecha": "2014-01-17",
+      "duracion": 1265
     },
     "onH4CXBzN8U": {
       "estado": "ok",
       "http": 200,
       "autor": "Luisapaternera",
-      "titulo": "las que viven como reinas presentacion carnaval de cadiz 2012"
+      "titulo": "las que viven como reinas presentacion carnaval de cadiz 2012",
+      "fecha": "2012-01-28",
+      "duracion": 161
     },
     "LSPfxfnujKM": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa \"Los Acuarela\" (2005) - Presentación en preliminares"
+      "titulo": "Comparsa \"Los Acuarela\" (2005) - Presentación en preliminares",
+      "fecha": "2009-10-25",
+      "duracion": 216
     },
     "NkdDvr0bhnI": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnavalea365",
-      "titulo": "Comparsa Los aislados - Presentación"
+      "titulo": "Comparsa Los aislados - Presentación",
+      "fecha": "2020-01-28",
+      "duracion": 208
     },
     "tWdqGUfuO08": {
       "estado": "ok",
       "http": 200,
       "autor": "Selu M. Mendoza",
-      "titulo": "Presentación Comparsa Los Ángeles De La Guarda (2018)"
+      "titulo": "Presentación Comparsa Los Ángeles De La Guarda (2018)",
+      "fecha": "2018-01-15",
+      "duracion": 197
     },
     "RMU7No1Hleg": {
       "estado": "ok",
       "http": 200,
       "autor": "Mati Saúco",
-      "titulo": "Presentación de la Comparsa \"Los Caballeros de la Piera Reonda\" - Carnaval de Cádiz 2010 (Final)"
+      "titulo": "Presentación de la Comparsa \"Los Caballeros de la Piera Reonda\" - Carnaval de Cádiz 2010 (Final)",
+      "fecha": "2010-02-16",
+      "duracion": 154
     },
     "vkrW30aatrc": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa Juvenil,  Comparsa Los cantananas - Semifinales"
+      "titulo": "Comparsa Juvenil,  Comparsa Los cantananas - Semifinales",
+      "fecha": "2022-05-15",
+      "duracion": 1235
     },
     "Z7cZ34FDgG8": {
       "estado": "ok",
       "http": 200,
       "autor": "carnavalsur",
-      "titulo": "Comparsa Los cobardes | FINAL del Carnaval de Cádiz 2016"
+      "titulo": "Comparsa Los cobardes | FINAL del Carnaval de Cádiz 2016",
+      "fecha": "2016-02-05",
+      "duracion": 1600
     },
     "51qUCrFAGG4": {
       "estado": "ok",
       "http": 200,
       "autor": "carnacadiz",
-      "titulo": "''Los Currelantes''-Presentación"
+      "titulo": "''Los Currelantes''-Presentación",
+      "fecha": "2011-07-21",
+      "duracion": 209
     },
     "7R6LYC-hdbQ": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los encaidenaos - Semifinales"
+      "titulo": "Comparsa, Los encaidenaos - Semifinales",
+      "fecha": "2020-02-19",
+      "duracion": 1697
     },
     "tgOPByNt2No": {
       "estado": "ok",
       "http": 200,
       "autor": "Falla Carnaval",
-      "titulo": "Presentación con Letra Comparsa \"Los Esclavos\" (2023)"
+      "titulo": "Presentación con Letra Comparsa \"Los Esclavos\" (2023)",
+      "fecha": "2023-02-01",
+      "duracion": 248
     },
     "JCXwB1cV4ZA": {
       "estado": "ok",
       "http": 200,
       "autor": "Falla Carnaval",
-      "titulo": "Presentación con LETRA Comparsa \"los Indomables\" (2022)"
+      "titulo": "Presentación con LETRA Comparsa \"los Indomables\" (2022)",
+      "fecha": "2022-02-19",
+      "duracion": 202
     },
     "lle-zDkjFls": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Los irresistibles - Preliminares"
+      "titulo": "Comparsa, Los irresistibles - Preliminares",
+      "fecha": "2016-01-14",
+      "duracion": 1442
     },
     "yWDbQsrs7Ys": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnavalea365",
-      "titulo": "Comparsa Los Listos - Presentación"
+      "titulo": "Comparsa Los Listos - Presentación",
+      "fecha": "2020-01-20",
+      "duracion": 185
     },
     "JF2ICP4ZMyU": {
       "estado": "ok",
       "http": 200,
       "autor": "Selu M. Mendoza",
-      "titulo": "Comparsa Los Mafiosos (2018) Presentación"
+      "titulo": "Comparsa Los Mafiosos (2018) Presentación",
+      "fecha": "2018-01-22",
+      "duracion": 201
     },
     "Rjj7ZnYe7J8": {
       "estado": "ok",
       "http": 200,
       "autor": "CADIZBOOKTV",
-      "titulo": "COMPARSA, LOS MUÑECOS DE CÁDIZ, SEMIFINALES"
+      "titulo": "COMPARSA, LOS MUÑECOS DE CÁDIZ, SEMIFINALES",
+      "fecha": "2011-03-24",
+      "duracion": 1562
     },
     "Ck3TOVT8fuI": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnavalea365",
-      "titulo": "Comparsa Los pacientes - Presentación"
+      "titulo": "Comparsa Los pacientes - Presentación",
+      "fecha": "2020-02-04",
+      "duracion": 218
     },
     "DugGO5xh5wA": {
       "estado": "ok",
       "http": 200,
       "autor": "Desdelalaja",
-      "titulo": "Presentación Los peliculeros"
+      "titulo": "Presentación Los peliculeros",
+      "fecha": "2023-02-01",
+      "duracion": 220
     },
     "opO94rdmLmE": {
       "estado": "ok",
       "http": 200,
       "autor": "Selu M. Mendoza",
-      "titulo": "Comparsa Los Peregrinos (2017) - Presentación"
+      "titulo": "Comparsa Los Peregrinos (2017) - Presentación",
+      "fecha": "2017-01-28",
+      "duracion": 258
     },
     "1-sQYtq5vZo": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnavaleros",
-      "titulo": "Comparsa Los Perfumistas. Presentación."
+      "titulo": "Comparsa Los Perfumistas. Presentación.",
+      "fecha": "2016-04-16",
+      "duracion": 167
     },
     "8Ac5Mr_qZpA": {
       "estado": "ok",
       "http": 200,
       "autor": "lacomparsadeljona",
-      "titulo": "Los plazoletas - Presentacion"
+      "titulo": "Los plazoletas - Presentacion",
+      "fecha": "2009-08-24",
+      "duracion": 128
     },
     "iPx8A4bpEEc": {
       "estado": "ok",
       "http": 200,
       "autor": "Javier Campos",
-      "titulo": "Comparsa \"Los Prisioneros\" - Presentación"
+      "titulo": "Comparsa \"Los Prisioneros\" - Presentación",
+      "fecha": "2018-01-14",
+      "duracion": 197
     },
     "S4wu1cXLjyQ": {
       "estado": "ok",
       "http": 200,
       "autor": "Pedro vaquero",
-      "titulo": "PRESENTACION LOS REGAERA"
+      "titulo": "PRESENTACION LOS REGAERA",
+      "fecha": "2017-02-24",
+      "duracion": 148
     },
     "sAcQPn2bTQI": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnaval Con Letra",
-      "titulo": "🎭LETRA [^ COMPARSA, LOS RESILIENTES - PRESENTACIÓN ^]"
+      "titulo": "🎭LETRA [^ COMPARSA, LOS RESILIENTES - PRESENTACIÓN ^]",
+      "fecha": "2020-02-02",
+      "duracion": 195
     },
     "6EkVvU10P3I": {
       "estado": "ok",
       "http": 200,
       "autor": "Guashilandia de Cai",
-      "titulo": "Comparsa \"Los Violinistas\" (2011) - Fotomontaje - Presentación"
+      "titulo": "Comparsa \"Los Violinistas\" (2011) - Fotomontaje - Presentación",
+      "fecha": "2018-05-22",
+      "duracion": 159
     },
     "sUGn95RVP1E": {
       "estado": "ok",
       "http": 200,
       "autor": "CAMBRIDGE",
-      "titulo": "Presentación de la Comparsa OBDC LA ÚLTIMA FLOR"
+      "titulo": "Presentación de la Comparsa OBDC LA ÚLTIMA FLOR",
+      "fecha": "2017-01-26",
+      "duracion": 217
     },
     "UIj5chFTNxI": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnaval Por Un Tubo",
-      "titulo": "Comparsa OBDC. La Vida es Bella! PRESENTACIÓN, Cuartos | Carnaval de Cádiz 2016"
+      "titulo": "Comparsa OBDC. La Vida es Bella! PRESENTACIÓN, Cuartos | Carnaval de Cádiz 2016",
+      "fecha": "2017-01-06",
+      "duracion": 209
     },
     "_HfEMaEBFhI": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Comparsa, Que corgaera - Preliminares"
+      "titulo": "Comparsa, Que corgaera - Preliminares",
+      "fecha": "2017-02-11",
+      "duracion": 1682
     },
     "Ke5z8JmXV-w": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnaval de Cádiz 2020",
-      "titulo": "Solo sé que no sé nada Presentacion Preliminares"
+      "titulo": "Solo sé que no sé nada Presentacion Preliminares",
+      "fecha": "2020-01-20",
+      "duracion": 145
     },
     "5zwwFSflHsY": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnavalea365",
-      "titulo": "Comparsa ¿Te lo cuento o te lo canto? - Presentación"
+      "titulo": "Comparsa ¿Te lo cuento o te lo canto? - Presentación",
+      "fecha": "2019-02-08",
+      "duracion": 195
     },
     "xZ_VB4MzlE8": {
       "estado": "ok",
       "http": 200,
       "autor": "Javier Campos",
-      "titulo": "Comparsa \"Tic-tac, tic-tac\" - Presentación"
+      "titulo": "Comparsa \"Tic-tac, tic-tac\" - Presentación",
+      "fecha": "2018-01-24",
+      "duracion": 210
     },
     "hny13dKLEJE": {
       "estado": "ok",
       "http": 200,
       "autor": "Carnavaleros",
-      "titulo": "Comparsa Un País llamado Cádiz. Preliminares. Presentación."
+      "titulo": "Comparsa Un País llamado Cádiz. Preliminares. Presentación.",
+      "fecha": "2020-08-13",
+      "duracion": 221
     },
     "Sj4px-mOP6E": {
       "estado": "ok",
       "http": 200,
       "autor": "JoseleSVQ",
-      "titulo": "Presentacion Comparsa Volver a empezar ( Tino Tovar) 2010"
+      "titulo": "Presentacion Comparsa Volver a empezar ( Tino Tovar) 2010",
+      "fecha": "2010-01-26",
+      "duracion": 222
     },
     "VYQ57KkDVXc": {
       "estado": "ok",
       "http": 200,
       "autor": "ONDA CÁDIZ CARNAVAL",
-      "titulo": "Coro, Los Martínez - Preliminares"
+      "titulo": "Coro, Los Martínez - Preliminares",
+      "fecha": "2023-01-23",
+      "duracion": 1755
     },
     "cC7V-XV6f6E": {
       "estado": "ok",
       "http": 200,
       "autor": "carnavalsur",
-      "titulo": "CORO Tiempos modernos | Semifinales COAC 2018"
-    },
-    "Y8YthSp8A_A": {
-      "estado": "ok",
-      "http": 200,
-      "autor": "Jonatan Perez Ginel",
-      "titulo": "Pasodoble \"El día en que\" - Comparsa Los Originales"
+      "titulo": "CORO Tiempos modernos | Semifinales COAC 2018",
+      "fecha": "2018-02-07",
+      "duracion": 1682
     }
   }
 }

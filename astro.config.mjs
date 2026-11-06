@@ -4,6 +4,16 @@ import sitemap from '@astrojs/sitemap';
 import AstroPWA from '@vite-pwa/astro';
 import remarkAcordesColumna from './src/lib/remark-acordes-columna.mjs';
 import enlacesConBarra from './src/integrations/enlaces-con-barra.mjs';
+import { fechasSitemap } from './scripts/lib/fechas-sitemap.mjs';
+
+// El sitemap necesita el `lastmod` real de cada ficha. Se lee del frontmatter
+// la primera vez que se serializa (solo en el build) para no tocar 586
+// archivos al arrancar `astro dev`.
+let fechasCache = null;
+const fechaDe = (url) => {
+  if (!fechasCache) fechasCache = fechasSitemap();
+  return fechasCache.get(new URL(url).pathname) || null;
+};
 
 // En `astro dev` no existen las Netlify Functions del panel /admin, así que se
 // inyecta una ruta real que las ejecuta con la petición completa. `prerender: false`
@@ -58,6 +68,13 @@ export default defineConfig({
         !page.includes('/estudio') &&
         // Página de resultados: noindex y fuera del sitemap.
         !page.includes('/buscar'),
+      // `lastmod` con la fecha de la ficha (o de su año en los listados), no la
+      // del build: así Google sabe qué rastrear antes.
+      serialize: (item) => {
+        const fecha = fechaDe(item.url);
+        if (fecha) item.lastmod = fecha;
+        return item;
+      },
     }),
     // PWA instalable. Se registra al final para que el service worker se genere
     // después del resto de hooks de build.

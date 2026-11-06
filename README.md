@@ -23,7 +23,7 @@ Acordes Gaditanos es un sitio **100 % estático** con más de **580 fichas** del
 - **PWA** instalable, con página offline y notificaciones push.
 - **Panel privado `/admin`** para editar desde el móvil: guarda borradores, abre PRs en GitHub, publica, y trae estadísticas y comentarios.
 - **Avisos** automáticos a Telegram al publicar, y a WhatsApp y X desde el ordenador.
-- **SEO** con sitemap, JSON-LD, canonical única con barra final y más de 300 *redirects* de URLs antiguas.
+- **SEO** con sitemap con `lastmod` real, `VideoObject` en las fichas, canonical única con barra final y más de 300 *redirects* de URLs antiguas.
 - **Rendimiento**: prefetch de enlaces, view transitions nativas, cero frameworks de UI y una sola fuente de diagramas.
 
 ## Stack
@@ -76,6 +76,7 @@ El resto de comandos son herramientas de contenido y de mantenimiento:
 | `npm run letras` | Cola de coplas pendientes de letra (ver, avanzar, auditar) |
 | `npm run letra:web` / `letra:blog` / `letra:decarnaval` | Extrae una letra de una web, de un blog o de letrasdecarnaval.com |
 | `npm run videos` | Audita los vídeos de YouTube y busca recambios |
+| `npm run videos:detalles` | Completa fecha de subida y duración (VideoObject) |
 | `npm run promover` | Pasa borradores de `acordes3` a `acordes` |
 | `npm run prs` | Lista y fusiona las PRs del panel |
 | `npm run revisar` | Cola de revisión de fichas |
@@ -216,6 +217,7 @@ No hay suite de tests ni linter: el type-check es `npm run astro check`. Lo que 
 | `node --experimental-strip-types scripts/auditar-busqueda.ts` | El top-1 del buscador en consultas reales |
 | `node scripts/auditar-enlaces.mjs` | Los enlaces internos llevan barra final (tras el build) |
 | `node scripts/auditar-view-transitions.mjs` | No hay `view-transition-name` repetidos (tras el build) |
+| `npm run auditar:seo` | `VideoObject` de las fichas y `lastmod` del sitemap (tras el build) |
 
 ## Despliegue
 
