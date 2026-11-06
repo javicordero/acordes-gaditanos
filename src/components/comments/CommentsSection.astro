@@ -289,6 +289,18 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 </style>
 
 <script>
+  type Comentario = {
+    id: string;
+    parentId?: string | null;
+    author?: string;
+    content: string;
+    date: string;
+    isAdmin?: boolean;
+    completed?: boolean;
+    votes?: number;
+    votedBy?: string[];
+  };
+
   function initCommentsSection() {
     document.querySelectorAll('.comments-section').forEach(async (section) => {
       if ((section as HTMLElement).dataset.loaded === 'true') return;
@@ -304,7 +316,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
           const { COMMENTS_CONFIG, getUserId } = await import('../../lib/comments.ts');
           const res = await fetch(`${COMMENTS_CONFIG.workerUrl}?path=${encodeURIComponent(pagePath)}`);
           const data = await res.json();
-          const comments = data.comments || [];
+          const comments: Comentario[] = data.comments || [];
 
           loading.style.display = 'none';
           list.innerHTML = '';
@@ -322,13 +334,19 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
         }
       }
 
-      function renderComments(comments, container, parentId, depth, userId) {
+      function renderComments(
+        comments: Comentario[],
+        container: HTMLElement,
+        parentId: string | null,
+        depth: number,
+        userId: string
+      ) {
         const children = comments.filter((c) => c.parentId === parentId);
         children.sort((a, b) => {
           const aCompleted = a.completed ? 1 : 0;
           const bCompleted = b.completed ? 1 : 0;
           if (aCompleted !== bCompleted) return aCompleted - bCompleted;
-          return new Date(b.date) - new Date(a.date);
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
         });
 
         for (const comment of children) {
@@ -373,7 +391,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
         }
       }
 
-      function escapeHtml(str) {
+      function escapeHtml(str: string) {
         const div = document.createElement('div');
         div.textContent = str;
         return div.innerHTML;
@@ -381,7 +399,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 
       // Handle vote button clicks
       section.addEventListener('click', async (e) => {
-        const btn = (e.target as HTMLElement).closest('.comment-vote-btn');
+        const btn = (e.target as HTMLElement).closest<HTMLElement>('.comment-vote-btn');
         if (!btn) return;
 
         const commentId = btn.dataset.commentId;
@@ -443,7 +461,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 
       // Handle reply button clicks
       section.addEventListener('click', async (e) => {
-        const btn = (e.target as HTMLElement).closest('.reply-trigger-btn');
+        const btn = (e.target as HTMLElement).closest<HTMLElement>('.reply-trigger-btn');
         if (!btn) return;
 
         const commentId = btn.dataset.commentId;
@@ -472,10 +490,11 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
         // Init form
         const form = replyContainer.querySelector('.comment-form');
         if (form) {
-          const contentInput = form.querySelector('.comment-content-input');
-          const cancelReplyBtn = form.querySelector('.cancel-reply-btn');
-          const submitBtn = form.querySelector('.submit-btn');
-          const status = form.querySelector('.form-status');
+          const contentInput = form.querySelector<HTMLTextAreaElement>('.comment-content-input');
+          const cancelReplyBtn = form.querySelector<HTMLButtonElement>('.cancel-reply-btn');
+          const submitBtn = form.querySelector<HTMLButtonElement>('.submit-btn');
+          const status = form.querySelector<HTMLElement>('.form-status');
+          if (!contentInput || !submitBtn || !status) return;
 
           cancelReplyBtn?.addEventListener('click', () => replyContainer.remove());
 
@@ -494,7 +513,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
 
             try {
               const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
-              const authorInput = form.querySelector('.comment-author-input');
+              const authorInput = form.querySelector<HTMLInputElement>('.comment-author-input');
               const adminToken = localStorage.getItem('adminToken');
               const headers: Record<string, string> = { 'Content-Type': 'application/json' };
               if (adminToken) headers['Authorization'] = `Bearer ${adminToken}`;

@@ -2,7 +2,7 @@
 
 ---
 
-<script type='module' client:load>
+<script>
   // AnchoPreInit: centraliza el ajuste de <pre> dentro de .acorde-card
   // Diseñado para ejecutarse en carga inicial y al navegar en la SPA.
   (function () {
@@ -16,7 +16,7 @@
       return parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
     }
 
-    async function waitForSectionLayout(section) {
+    async function waitForSectionLayout(section: HTMLElement) {
       // esperar un par de frames
       await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
       // esperar a las fuentes si están pendientes
@@ -46,7 +46,7 @@
       await new Promise((r) => requestAnimationFrame(r));
     }
 
-    function adjustPreInSection(section) {
+    function adjustPreInSection(section: HTMLElement | null) {
       if (!section) return;
       const content = section.querySelector('.acorde-content');
       if (!content) return;
@@ -70,7 +70,7 @@
           await waitForSectionLayout(section);
         } catch (e) {}
 
-        const origRem = parseFloat(pre.dataset.originalFontRem);
+        const origRem = parseFloat(pre.dataset.originalFontRem ?? '');
 
         // reintentar un par de veces si las mediciones todavía no están estabilizadas
         const retries = [0, 50, 150, 350];
@@ -79,7 +79,7 @@
         const doAdjustAttempt = () => {
           // restaurar al original antes de medir
           pre.style.fontSize = origRem + 'rem';
-          const ratio = parseFloat(pre.dataset.originalLineHeightRatio) || 1.2;
+          const ratio = parseFloat(pre.dataset.originalLineHeightRatio ?? '') || 1.2;
           pre.style.lineHeight = +(origRem * ratio).toFixed(4) + 'rem';
 
           // dejar padding de 8px a ambos lados para que el <pre> no quede pegado
@@ -131,13 +131,13 @@
     }
 
     function initAdjustments() {
-      const list = Array.from(document.querySelectorAll('.acorde-card'));
+      const list = Array.from(document.querySelectorAll<HTMLElement>('.acorde-card'));
       if (DEBUG) console.debug('[AnchoPreInit] initAdjustments', list.length);
       list.forEach((s) => adjustPreInSection(s));
     }
 
     // observer ligero para detectar cuando el router inyecta contenido
-    let observerTimeout = null;
+    let observerTimeout: ReturnType<typeof setTimeout> | null = null;
     const bodyObserver = new MutationObserver(() => {
       if (observerTimeout) clearTimeout(observerTimeout);
       observerTimeout = setTimeout(() => {
@@ -176,7 +176,7 @@
     }
 
     const debounced = (() => {
-      let t;
+      let t: ReturnType<typeof setTimeout> | undefined;
       return () => {
         clearTimeout(t);
         t = setTimeout(() => initAdjustments(), 80);

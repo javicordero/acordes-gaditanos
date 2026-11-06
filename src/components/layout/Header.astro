@@ -513,14 +513,14 @@ import SugerenciasBusqueda from './SugerenciasBusqueda.astro';
 <script>
   function initHeader() {
     const header = document.querySelector('header');
-    const toggle = document.querySelector('.menu-toggle');
+    const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
     const nav = document.querySelector('#primary-menu');
     const branding = document.querySelector('.branding');
     const brandingTitle = document.querySelector('.branding-title');
     const searchContainer = document.querySelector('.search-container');
     const themeContainer = document.querySelector('.theme-container');
-    const searchInput = document.querySelector('#header-search');
-    const clearButton = document.querySelector('.clear-search');
+    const searchInput = document.querySelector<HTMLInputElement>('#header-search');
+    const clearButton = document.querySelector<HTMLButtonElement>('.clear-search');
     const searchToggle = document.querySelector('.search-toggle');
     const searchWrapper = document.querySelector('.search-wrapper');
     const searchForm = document.querySelector('.search-form');

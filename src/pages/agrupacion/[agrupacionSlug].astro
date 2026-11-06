@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import CardsGroup from '../../components/page/CardsGroup.astro';
 
@@ -31,6 +32,11 @@ export async function getStaticPaths() {
       acordes: data.acordes,
     },
   }));
+}
+
+interface Props {
+  agrupacionName: string;
+  acordes: CollectionEntry<'acordes'>[];
 }
 
 const { agrupacionName, acordes } = Astro.props;

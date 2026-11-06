@@ -1,4 +1,10 @@
 ---
+interface Props {
+  years: Array<string | number>;
+  heading?: string;
+  headingId?: string;
+}
+
 const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' } = Astro.props;
 ---
 
@@ -11,7 +17,7 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
     <ul>
       {
         years.map((year) => (
-          <li key={year}>
+          <li>
             <a href={`/carnaval/${year}`}>{year}</a>
           </li>
         ))

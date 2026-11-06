@@ -178,7 +178,7 @@
   // UTILIDADES GENERALES
   // ============================
 
-  function setError(msg) {
+  function setError(msg: string) {
     const el = document.getElementById('juntos-error');
     if (el) el.textContent = msg || '';
   }
@@ -194,7 +194,7 @@
   // Acordes en español estilo: Lam, Mim, Sim7b5, Fa#7, etc.
   const chordTokenRegex1 = /^(Do|Re|Mi|Fa|Sol|La|Si)[#b]?[a-zA-Z0-9º°/+]*$/i;
 
-  function looksLikeChordLine(line) {
+  function looksLikeChordLine(line: string) {
     const trimmed = line.trim();
     if (!trimmed) return false;
     const tokens = trimmed.split(/\s+/);
@@ -207,17 +207,17 @@
   }
 
   // HTML de Blogger -> array de líneas de texto
-  function htmlToPlainLines(html) {
+  function htmlToPlainLines(html: string): string[] {
     const parser = new DOMParser();
     const doc = parser.parseFromString(`<body>${html}</body>`, 'text/html');
     const body = doc.body;
     let out = '';
 
-    function walk(node) {
+    function walk(node: Node) {
       if (node.nodeType === Node.TEXT_NODE) {
         out += node.textContent;
       } else if (node.nodeType === Node.ELEMENT_NODE) {
-        const tag = node.tagName;
+        const tag = (node as Element).tagName;
         if (tag === 'BR') {
           out += '\n';
         }
@@ -236,7 +236,7 @@
   }
 
   // Reflow de acordes según longitud de la línea de letra (sin cortar aún)
-  function reflowChordsLine(chordsLine, lyricLine) {
+  function reflowChordsLine(chordsLine: string, lyricLine: string) {
     const aLine = chordsLine.replace(/\u00A0/g, ' ');
     const lLine = lyricLine.replace(/\u00A0/g, ' ');
 
@@ -282,7 +282,7 @@
   }
 
   // Recorre todas las líneas y aplica reflow acordes+letra sin cortar
-  function processLinesWithReflow(lines) {
+  function processLinesWithReflow(lines: string[]) {
     const out = [];
     let i = 0;
 
@@ -314,7 +314,7 @@
     return out;
   }
 
-  function htmlToPreText(rawHtml) {
+  function htmlToPreText(rawHtml: string) {
     const lines = htmlToPlainLines(rawHtml);
     const processed = processLinesWithReflow(lines);
     const preBody = processed.join('\n');
@@ -329,14 +329,14 @@
 
   const MAX_COLS = 50;
 
-  function isChordToken2(token) {
+  function isChordToken2(token: string) {
     const t = token.trim();
     if (!t) return false;
     const re = /^(do|re|mi|fa|sol|la|si|c|d|e|f|g|a|b)(#|b)?[a-z0-9#/]*$/i;
     return re.test(t);
   }
 
-  function isChordLine2(line) {
+  function isChordLine2(line: string) {
     const trimmed = line.trim();
     if (!trimmed) return false;
     const tokens = trimmed.split(/\s+/);
@@ -347,7 +347,7 @@
   }
 
   // Envuelve cada acorde en <a> sin tocar espacios
-  function wrapChordLineWithAnchors(line) {
+  function wrapChordLineWithAnchors(line: string) {
     let res = '';
     let i = 0;
     while (i < line.length) {
@@ -371,7 +371,7 @@
   }
 
   // Corta una línea de texto a MAX_COLS respetando palabras si puede
-  function breakTextLine(line) {
+  function breakTextLine(line: string) {
     const chunks = [];
     const len = line.length;
     let start = 0;
@@ -409,7 +409,7 @@
 
   // Dada una línea de acordes y su línea de letra (ya alineadas),
   // corta ambas en trozos de 50 columnas manteniendo la relación
-  function wrapChordLyricsPair(chordLine, lyricLine) {
+  function wrapChordLyricsPair(chordLine: string | null, lyricLine: string) {
     const lyricChunks = breakTextLine(lyricLine);
     const result = [];
 
@@ -436,7 +436,7 @@
 
   // Núcleo del formateador-2: recibe el contenido interno de <pre> (alineado)
   // y devuelve el contenido interno de <pre> ya cortado + acordes envueltos
-  function processPreBlock(preContent) {
+  function processPreBlock(preContent: string) {
     const rawLines = preContent.split('\n');
     const lines = rawLines.filter((l) => l.trim().length > 0);
 
@@ -492,18 +492,18 @@
   // INTERACCIÓN UI
   // ============================
 
-  const inputUrl = document.getElementById('input-url');
-  const btnFetchUrl = document.getElementById('btn-fetch-url');
+  const inputUrl = document.getElementById('input-url') as HTMLInputElement | null;
+  const btnFetchUrl = document.getElementById('btn-fetch-url') as HTMLButtonElement | null;
 
-  const inputBlogger = document.getElementById('input-blogger');
-  const outputPre = document.getElementById('output-pre');
-  const btnBlogger = document.getElementById('btn-blogger');
-  const btnCopyPre = document.getElementById('btn-copy-pre');
+  const inputBlogger = document.getElementById('input-blogger') as HTMLTextAreaElement | null;
+  const outputPre = document.getElementById('output-pre') as HTMLTextAreaElement | null;
+  const btnBlogger = document.getElementById('btn-blogger') as HTMLButtonElement | null;
+  const btnCopyPre = document.getElementById('btn-copy-pre') as HTMLButtonElement | null;
 
-  const inputFormateador = document.getElementById('input-formateador');
-  const btnFormat = document.getElementById('btn-format');
-  const outputFinal = document.getElementById('output-final');
-  const btnCopyFinal = document.getElementById('btn-copy-final');
+  const inputFormateador = document.getElementById('input-formateador') as HTMLTextAreaElement | null;
+  const btnFormat = document.getElementById('btn-format') as HTMLButtonElement | null;
+  const outputFinal = document.getElementById('output-final') as HTMLTextAreaElement | null;
+  const btnCopyFinal = document.getElementById('btn-copy-final') as HTMLButtonElement | null;
 
   // 1) Cargar HTML desde URL antigua usando /api/fetch-url?url=...
   if (btnFetchUrl && inputUrl && inputBlogger) {
@@ -552,7 +552,7 @@
   }
 
   // 2) Ejecutar Formateador 1: Blogger -> <pre> alineado
-  if (btnBlogger) {
+  if (btnBlogger && inputBlogger && outputPre) {
     btnBlogger.onclick = () => {
       setError('');
       const raw = inputBlogger.value || '';
@@ -566,7 +566,7 @@
   }
 
   // 3) Copiar <pre> alineado al Formateador 2
-  if (btnCopyPre) {
+  if (btnCopyPre && inputFormateador && outputPre) {
     btnCopyPre.onclick = () => {
       setError('');
       inputFormateador.value = outputPre.value || '';
@@ -574,7 +574,7 @@
   }
 
   // 4) Ejecutar Formateador 2: corte 50 cols + <a> en acordes
-  if (btnFormat) {
+  if (btnFormat && inputFormateador && outputFinal) {
     btnFormat.onclick = () => {
       setError('');
       const rawPre = inputFormateador.value || '';
@@ -592,7 +592,7 @@
   }
 
   // 5) Copiar salida final
-  if (btnCopyFinal) {
+  if (btnCopyFinal && outputFinal) {
     btnCopyFinal.onclick = () => {
       if (!outputFinal) return;
       outputFinal.focus();
@@ -623,43 +623,51 @@
   }
 
   // 2) Cuando termina fetchFromUrl → lanzar automáticamente Formateador 1
-  const _origFetchUrlClick = btnFetchUrl.onclick;
-  btnFetchUrl.onclick = async () => {
-    await _origFetchUrlClick();
+  const _origFetchUrlClick = btnFetchUrl?.onclick;
+  if (btnFetchUrl) {
+    btnFetchUrl.onclick = async (ev) => {
+      await _origFetchUrlClick?.call(btnFetchUrl, ev);
 
-    // Si se ha rellenado inputBlogger, seguimos
-    if (inputBlogger?.value.trim().length > 0) {
-      setTimeout(() => btnBlogger?.click(), 150);
-    }
-  };
+      // Si se ha rellenado inputBlogger, seguimos
+      if (inputBlogger && inputBlogger.value.trim().length > 0) {
+        setTimeout(() => btnBlogger?.click(), 150);
+      }
+    };
+  }
 
   // 3) Cuando termina Formateador 1 → copiar al Formateador 2
-  const _origBloggerClick = btnBlogger.onclick;
-  btnBlogger.onclick = () => {
-    _origBloggerClick();
+  const _origBloggerClick = btnBlogger?.onclick;
+  if (btnBlogger) {
+    btnBlogger.onclick = (ev) => {
+      _origBloggerClick?.call(btnBlogger, ev);
 
-    // Si se generó un pre, seguimos
-    if (outputPre?.value.trim().length > 0) {
-      setTimeout(() => btnCopyPre?.click(), 150);
-    }
-  };
+      // Si se generó un pre, seguimos
+      if (outputPre && outputPre.value.trim().length > 0) {
+        setTimeout(() => btnCopyPre?.click(), 150);
+      }
+    };
+  }
 
   // 4) Cuando termina copiar al formateador → lanzar Formateador 2
-  const _origCopyPreClick = btnCopyPre.onclick;
-  btnCopyPre.onclick = () => {
-    _origCopyPreClick();
+  const _origCopyPreClick = btnCopyPre?.onclick;
+  if (btnCopyPre) {
+    btnCopyPre.onclick = (ev) => {
+      _origCopyPreClick?.call(btnCopyPre, ev);
 
-    if (inputFormateador?.value.trim().length > 0) {
-      setTimeout(() => btnFormat?.click(), 150);
-    }
-  };
+      if (inputFormateador && inputFormateador.value.trim().length > 0) {
+        setTimeout(() => btnFormat?.click(), 150);
+      }
+    };
+  }
 
   // 5) (OPCIONAL) copiar automáticamente la salida final
   // Descomenta si lo quieres activar:
 
-  const _origFormatClick = btnFormat.onclick;
-  btnFormat.onclick = () => {
-    _origFormatClick();
-    setTimeout(() => btnCopyFinal?.click(), 200);
-  };
+  const _origFormatClick = btnFormat?.onclick;
+  if (btnFormat) {
+    btnFormat.onclick = (ev) => {
+      _origFormatClick?.call(btnFormat, ev);
+      setTimeout(() => btnCopyFinal?.click(), 200);
+    };
+  }
 </script>

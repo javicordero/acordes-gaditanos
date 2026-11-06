@@ -59,7 +59,7 @@ let autores = await getCollection('autores');
       <div id='all-cards-groups' style='display: none;'>
         {
           Array.from(new Set(acordes.map((acorde) => acorde.data.year)))
-            .sort((a, b) => b - a)
+            .sort((a, b) => Number(b) - Number(a))
             .map((year) => (
               <CardsGroup
                 year={year}

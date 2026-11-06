@@ -80,7 +80,7 @@
   // Acordes en español: Do, Re, Mi, Fa, Sol, La, Si con sus cosas (m, 7, #, b, etc.)
   const chordTokenRegex = /^(Do|Re|Mi|Fa|Sol|La|Si)[#b]?[a-zA-Z0-9º°/+]*$/i;
 
-  function looksLikeChordLine(line) {
+  function looksLikeChordLine(line: string) {
     const trimmed = line.trim();
     if (!trimmed) return false;
     const tokens = trimmed.split(/\s+/);
@@ -94,18 +94,18 @@
   }
 
   // HTML -> líneas de texto
-  function htmlToPlainLines(html) {
+  function htmlToPlainLines(html: string): string[] {
     const parser = new DOMParser();
     const doc = parser.parseFromString(`<body>${html}</body>`, 'text/html');
     const body = doc.body;
 
     let out = '';
 
-    function walk(node) {
+    function walk(node: Node) {
       if (node.nodeType === Node.TEXT_NODE) {
         out += node.textContent;
       } else if (node.nodeType === Node.ELEMENT_NODE) {
-        const tag = node.tagName;
+        const tag = (node as Element).tagName;
 
         if (tag === 'BR') {
           out += '\n';
@@ -128,7 +128,7 @@
   }
 
   // Recoloca los acordes de una línea según la longitud de la letra
-  function reflowChordsLine(chordsLine, lyricLine) {
+  function reflowChordsLine(chordsLine: string, lyricLine: string) {
     const lenA = chordsLine.length || 1;
     const lenL = lyricLine.length || 1;
 
@@ -170,7 +170,7 @@
     return outArr.join('');
   }
 
-  function processLinesWithReflow(lines) {
+  function processLinesWithReflow(lines: string[]) {
     const out = [];
     let i = 0;
 
@@ -203,7 +203,7 @@
     return out;
   }
 
-  function htmlToPreText(rawHtml) {
+  function htmlToPreText(rawHtml: string) {
     const lines = htmlToPlainLines(rawHtml);
     const processed = processLinesWithReflow(lines);
     const preBody = processed.join('\n');
@@ -212,13 +212,14 @@
   }
 
   // ✅ Aquí NO usamos DOMContentLoaded porque el script está después del HTML
-  const inputEl = document.getElementById('blogger-input');
-  const outputEl = document.getElementById('blogger-output');
+  const inputEl = document.getElementById('blogger-input') as HTMLTextAreaElement | null;
+  const outputEl = document.getElementById('blogger-output') as HTMLTextAreaElement | null;
   const previewEl = document.getElementById('blogger-preview');
-  const btn = document.getElementById('blogger-format-btn');
+  const btn = document.getElementById('blogger-format-btn') as HTMLButtonElement | null;
 
   if (inputEl && outputEl && previewEl && btn) {
     function runFormat() {
+      if (!inputEl || !outputEl || !previewEl) return;
       const raw = inputEl.value ?? '';
       const { preText, preBody } = htmlToPreText(raw);
       outputEl.value = preText;
