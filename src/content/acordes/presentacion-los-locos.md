@@ -55,7 +55,7 @@ Sin avisar aquí el Levante se coló
 Loco por Cai que Cai es mi mare mi locura y mi pasión
 <a>(Sorda)</a>                                            <a>Sol</a> <a>Fa</a>
 En mi cabeza suena un chailo lolailo, lolailo lola
-                     <a>Mim</a> (Sorda)
+                     <a>Mim</a> <a>(Sorda)</a>
 Y ya estoy medio majareta chailo lolailo, lolailo lola
            <a>Fa</a>                       <a>Mi7</a>
 Y voy haciendo travesuras desde el barrio a la Caleta
