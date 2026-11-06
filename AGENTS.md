@@ -323,7 +323,7 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 
 ### SEO & Analytics
 - Site: `https://acordesgaditanos.com`
-- Google Tag Manager: `GTM-MZG7K2Q4`
+- **Analítica**: solo **gtag** (`G-CTX6DK49K4`, `ANALYTICS.gaId` en `src/lib/constants.ts`). **No hay Google Tag Manager**: se retiró porque descargaba `gtm.js` para nada y, si el contenedor llevaba GA4, contaba cada visita dos veces. El Consent Mode v2 y el callback de `googlefc` están enganchados a `gtag` en `Layout.astro`. No volver a añadir GTM sin quitar antes gtag (son dos cargas del mismo host y duplican la medición).
 - Google Adsense: `ca-pub-3280015847198273`
 - Claves en `src/lib/constants.ts`
 - **Imagen social**: la ficha manda como `og:image`/`twitter:image` la **foto de la agrupación** (`img` del frontmatter). El resto de páginas usa `/og-image.jpg`. No hay tarjetas generadas en el build.
@@ -350,6 +350,11 @@ Los anuncios de AdSense (y la medición de GA) **no se cargan** en los hosts de 
 - Los componentes `<ins>` no se tocan: sin la librería cargada son un `<ins>` vacío y el `push({})` no hace nada.
 - `SCRIPT_ADSENSE` (en `src/lib/anuncios.ts`) monta la URL desde `SEO.adsenseAccount`; `loadAdsense()` de `cookiesConsent.ts` mantiene el mismo guardia como red de seguridad.
 - El `<meta google-adsense-account>` y el `ca-pub` de los `.ins` siguen en el HTML: son estáticos y sirven para verificar el dominio.
+
+### Fuentes
+- **Bodoni**: la web pública solo la usa para el nombre de la cabecera («Acordes Gaditanos»), así que `global.css` y el `preload` de `Layout.astro` apuntan a **`public/fonts/bodoni-logo.woff2`**, un subset de ~1,9 KB con esos glifos. La fuente completa (`bodoni-72-oldstyle-book.woff2`, ~30 KB) se queda solo para `/admin`, que declara su propio `@font-face`.
+- `npm run subset:bodoni` regenera el subset (necesita Python 3 y `fonttools` + `brotli`). El texto vive en `scripts/subset-bodoni.mjs`; si cambia el rótulo, hay que actualizarlo y **renombrar** el archivo, porque `/fonts/*` se cachea un año.
+- **Roboto Mono**: un solo woff2 variable sirve los pesos 400 y 700; el resto se sintetiza.
 
 ### PostCSS
 `postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.

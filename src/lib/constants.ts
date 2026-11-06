@@ -6,7 +6,6 @@ export const CONFIG = {
 } as const;
 
 export const ANALYTICS = {
-  gtmId: 'GTM-MZG7K2Q4',
   gaId: 'G-CTX6DK49K4',
   cloudflareToken: '69575422c7ad4587aad9e1a1b02a5b43',
   statsWorkerUrl: 'https://stats-worker.javiercorderotoscano.workers.dev',

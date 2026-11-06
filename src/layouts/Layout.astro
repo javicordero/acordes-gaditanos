@@ -12,7 +12,7 @@ import InstalarAppPanel from '../components/pwa/InstalarAppPanel.astro';
 import AvisoInstalar from '../components/pwa/AvisoInstalar.astro';
 import AvisoAvisos from '../components/pwa/AvisoAvisos.astro';
 import canales from '../data/canales.json';
-import { SEO } from '../lib/constants';
+import { ANALYTICS, SEO } from '../lib/constants';
 import {
   HOSTS_SIN_ANUNCIOS,
   SUFIJOS_SIN_ANUNCIOS,
@@ -106,7 +106,7 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
 
     <!-- Preload critical fonts -->
     <link rel='preload' href='/fonts/roboto-mono-latin.woff2' as='font' type='font/woff2' crossorigin />
-    <link rel='preload' href='/fonts/bodoni-72-oldstyle-book.woff2' as='font' type='font/woff2' crossorigin />
+    <link rel='preload' href='/fonts/bodoni-logo.woff2' as='font' type='font/woff2' crossorigin />
 
     <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32.png' />
     <link rel='icon' type='image/png' sizes='192x192' href='/favicon-192.png' />
@@ -183,13 +183,13 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
       })}
     />
 
-    <!-- Sin anuncios ni medición en desarrollo: local, túneles de desarrollo
+    {/* Sin anuncios ni medición en desarrollo: local, túneles de desarrollo
          (devtunnels, ngrok, cloudflare…), deploy previews (*.netlify.app), IPs
          de la red local y páginas privadas del propietario. La lista vive en
-         src/lib/anuncios.ts. Tiene que ir antes de GA/GTM y del loader de AdSense. -->
+         src/lib/anuncios.ts. Tiene que ir antes de GA y del loader de AdSense. */}
     <script
       is:inline
-      define:vars={{ exactos: HOSTS_SIN_ANUNCIOS, sufijos: SUFIJOS_SIN_ANUNCIOS, rutas: RUTAS_PRIVADAS }}
+      define:vars={{ exactos: HOSTS_SIN_ANUNCIOS, sufijos: SUFIJOS_SIN_ANUNCIOS, rutas: RUTAS_PRIVADAS, gaId: ANALYTICS.gaId }}
     >
       (function () {
         var host = (location.hostname || '').toLowerCase().replace(/^\[|\]$/g, '');
@@ -208,7 +208,7 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
         window.__agAnuncios = anuncios;
         if (!anuncios) {
           document.documentElement.setAttribute('data-anuncios', 'off');
-          window['ga-disable-G-CTX6DK49K4'] = true;
+          window['ga-disable-' + gaId] = true;
         }
       })();
     </script>
@@ -250,28 +250,13 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
     </script>
     <!-- End Google Adsense -->
 
-    <!-- Google Tag Manager -->
-    {!sinAnalitica && (
-      <script is:inline>
-        (function (w, d, s, l, i) {
-          w[l] = w[l] || [];
-          w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-          var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s),
-            dl = l != 'dataLayer' ? '&l=' + l : '';
-          j.async = true;
-          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-          f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MZG7K2Q4');
-      </script>
-    )}
-    <!-- End Google Tag Manager -->
-
-    <!-- Google Analytics -->
+    {/* Google Analytics (solo gtag). No hay Google Tag Manager: tener los dos
+         descargaba gtm.js para nada y, si el contenedor llevaba GA4, contaba
+         cada visita dos veces. No volver a añadir GTM sin quitar gtag. */}
  {
       !import.meta.env.DEV && !sinAnalitica && (
         <>
-          <script is:inline>
+          <script is:inline define:vars={{ gaId: ANALYTICS.gaId }}>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
               window.dataLayer.push(arguments);
@@ -321,7 +306,7 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
 
             // Enviar visita (Consent Mode decide si se bloquea o no)
             function sendPageView() {
-              gtag('config', 'G-CTX6DK49K4', {
+              gtag('config', gaId, {
                 page_path: window.location.pathname,
                 page_location: window.location.href,
                 page_title: document.title,
@@ -335,7 +320,7 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
             }
           </script>
 
-          <script is:inline async src='https://www.googletagmanager.com/gtag/js?id=G-CTX6DK49K4'></script>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.gaId}`}></script>
         </>
       )
     }
@@ -371,17 +356,6 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
     
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    {!sinAnalitica && (
-      <noscript
-        ><iframe
-          src='https://www.googletagmanager.com/ns.html?id=GTM-MZG7K2Q4'
-          height='0'
-          width='0'
-          style='display:none;visibility:hidden'></iframe></noscript
-      >
-    )}
-<!-- End Google Tag Manager (noscript) -->
     <Header />
     <slot />
     <!-- Sobre footer -->

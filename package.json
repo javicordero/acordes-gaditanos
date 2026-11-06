@@ -14,6 +14,7 @@
     "x": "node scripts/x.mjs post",
     "x:login": "node scripts/x.mjs login",
     "qr": "node scripts/generar-qr.mjs",
+    "subset:bodoni": "node scripts/subset-bodoni.mjs",
     "auditar:letras": "node scripts/auditar-letras.mjs",
     "acordes:plan": "node scripts/aplicar-acordes.mjs --plan",
     "acordes:aplicar": "node scripts/aplicar-acordes.mjs",
