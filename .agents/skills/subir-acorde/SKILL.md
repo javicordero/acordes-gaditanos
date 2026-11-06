@@ -111,14 +111,43 @@ date: "DD/MM/AAAA"
 ```
 
 No modificar ningún otro campo ni el contenido (letra y acordes). **No** envolver nada
-en `<a>`.
+en `<a>`. La única excepción son los espacios finales de línea del `<pre>` (paso 4-bis).
+
+### 4-bis. Comprobar los espacios al final de línea (`<pre>`)
+
+Los espacios y tabuladores que quedan al final de una línea del `<pre>` no se ven,
+pero cuentan: `AnchoPreInit` mide el `scrollWidth` del bloque para encoger la letra de
+la copla, así que una línea de 52 columnas con 12 espacios detrás se trata como si
+midiera 64 y encoge toda la ficha; además el editor del panel los suma al límite de
+55 columnas y ensucian el diff.
+
+Comprobar **solo las fichas que se suben**, antes de commitear:
+
+```powershell
+node scripts/trim-pre-whitespace.mjs --check --archivo "src/content/acordes/<slug>.md"
+```
+
+- Sale `0` y termina en `✓ Sin espacios al final de línea` → seguir.
+- Sale `1` → lista las líneas (`L18 ············ (12)`) y hay que limpiarlas:
+
+```powershell
+node scripts/trim-pre-whitespace.mjs --archivo "src/content/acordes/<slug>.md"
+```
+
+Solo se toca el interior del `<pre>`: la indentación inicial (la alineación de los
+acordes), el frontmatter y el resto del archivo no cambian. Con varias fichas, repetir
+`--archivo` una vez por ficha. Anotar en el informe cuántas líneas se limpiaron.
+
+El botón **Publicar** del panel (`scripts/publicar-acorde.mjs`) hace esto solo, igual
+que la fecha, y no commitea si quedara alguna cola.
 
 ### 5. Verificar
 
 Comprobar, antes de commitear:
 
 - Cada fecha nueva es mayor que todas las fechas de HEAD.
-- Los archivos siguen teniendo el mismo contenido salvo la línea `date`.
+- Los archivos siguen teniendo el mismo contenido salvo la línea `date` y los espacios
+  finales de línea dentro del `<pre>` (paso 4-bis).
 
 Si la verificación falla, **abortar sin commitear** e informar.
 
@@ -215,6 +244,7 @@ npm run x -- --solo <slug>[,<slug>]
 Informar de:
 
 - Acordes subidos (ruta final, fecha anterior → fecha nueva).
+- Líneas con espacios al final del `<pre>` limpiadas, si hubo (paso 4-bis).
 - Mensaje de commit de cada uno.
 - Resultado del push.
 - Resultado del aviso de WhatsApp (enviado, pendiente de Enter o fallido con el motivo).
@@ -246,8 +276,9 @@ Y un solo `git push origin master` al final (siempre y cuando la intención del 
 - La fecha de un acorde ya publicado no se toca salvo que el usuario lo pida explícitamente.
 - El mensaje de commit respeta el frontmatter: `acordes <Pieza> <Agrupación>`.
 - Un commit por acorde; un solo push al final.
-- Solo se modifica la línea `date`; el contenido (letra y acordes) nunca se altera.
+- Solo se modifica la línea `date` y los espacios finales de línea del `<pre>` (paso
+  4-bis); el contenido (letra y acordes) nunca se altera.
 - No envolver acordes en `<a>` (eso es `chord-formatting`).
 - Herramientas: `git add`, `git commit`, `git push` y la edición del `date` del frontmatter.
 - Flujo típico: `promover-acorde` → `chord-formatting` → **`subir-acorde`**.
-- El panel `/admin` tiene una pestaña **Por publicar** que lanza `scripts/publicar-acorde.mjs` para las fichas locales sin subir. Hace lo mismo que esta skill (fechas, auditorías, commit por ficha y push) pero **no** lanza WhatsApp ni X: deja el aviso listo para copiar. Para que los lance desde el PC, `--avisar`.
+- El panel `/admin` tiene una pestaña **Por publicar** que lanza `scripts/publicar-acorde.mjs` para las fichas locales sin subir. Hace lo mismo que esta skill (fechas, limpieza de espacios finales del `<pre>`, auditorías, commit por ficha y push) pero **no** lanza WhatsApp ni X: deja el aviso listo para copiar. Para que los lance desde el PC, `--avisar`.

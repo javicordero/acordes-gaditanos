@@ -24,6 +24,11 @@
 //   --json           log en líneas JSON (lo consume el panel)
 //   --id <id>        identificador del trabajo para .cache/publicar/estado.json
 //
+// Antes de commitear limpia los espacios y tabuladores al final de línea dentro
+// del `<pre>` de cada ficha del plan (no se ven, pero `AnchoPreInit` los mide
+// para encoger la letra y el editor los cuenta en el límite de 55 columnas) y
+// falla si quedara alguno. `--plan` solo los cuenta, no toca nada.
+//
 // Códigos de salida: 0 bien, 1 error (nada se revierte: si el push ya salió, la
 // web queda publicada y solo se informa de lo que falló). El push se reintenta
 // hasta 3 veces si el fallo es transitorio (500 de GitHub, corte de red); un
@@ -33,6 +38,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { frontmatterDeTexto } from './lib/aviso.mjs';
+import { analizarPre, limpiarPre } from './lib/pre-espacios.mjs';
 
 const RAIZ = process.cwd();
 const CARPETA = 'src/content/acordes';
@@ -116,18 +122,16 @@ function sinPush() {
   return mapa;
 }
 
-/** Frontmatter de una ficha: del disco o, si está borrada, de HEAD/origin. */
-function datosDe(item) {
-  let texto = '';
+/** Texto de una ficha: del disco o, si está borrada, de HEAD/origin. */
+function textoDe(item) {
   if (item.estado === 'borrada' || item.cambio === 'borrada') {
     for (const ref of ['HEAD', 'origin/master']) {
-      texto = git(['show', `${ref}:${item.ruta}`], { permitirFallo: true });
-      if (texto) break;
+      const texto = git(['show', `${ref}:${item.ruta}`], { permitirFallo: true });
+      if (texto) return texto;
     }
-  } else {
-    try { texto = readFileSync(join(RAIZ, item.ruta), 'utf8'); } catch { /* ilegible */ }
+    return '';
   }
-  return frontmatterDeTexto(texto);
+  try { return readFileSync(join(RAIZ, item.ruta), 'utf8'); } catch { return ''; }
 }
 
 /** Última fecha publicada en HEAD (tolera días inválidos como 31/09). */
@@ -161,7 +165,15 @@ function construirPlan() {
       errores.push({ slug, error: 'no está pendiente de publicar' });
       continue;
     }
-    items.push({ ...item, ...datosDe(item), borrador: borradores.has(slug) });
+    const texto = textoDe(item);
+    items.push({
+      ...item,
+      ...frontmatterDeTexto(texto),
+      borrador: borradores.has(slug),
+      // Líneas del <pre> que acaban en espacios: se limpian al publicar.
+      // En `--plan` solo se cuentan, no se toca ningún archivo.
+      espacios: analizarPre(texto).total,
+    });
   }
 
   // Fechas consecutivas solo para las nuevas, en orden alfabético de archivo.
@@ -313,7 +325,44 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       log(`Fecha de ${x.slug}: ${x.fecha}`);
     }
 
-    // 2. Auditorías antes de commitear.
+    // 2. Espacios al final de línea dentro del <pre>. No se ven, pero cuentan:
+    //    AnchoPreInit mide el scrollWidth para encoger la letra de la copla y el
+    //    editor del panel los suma al límite de 55 columnas. Se limpian solo las
+    //    fichas que entran en un commit de este trabajo; las que ya están
+    //    commiteadas (`sin-push`) no se tocan, para no dejar cambios fuera del
+    //    commit.
+    const limpiadas = [];
+    for (const x of plan.items) {
+      if (x.estado === 'sin-push') {
+        if (x.espacios) {
+          log(`Espacios finales en ${x.slug}: ${x.espacios} línea(s). Ya está commiteada; se limpiará cuando se vuelva a publicar.`, 'aviso');
+        }
+        continue;
+      }
+      if (x.estado === 'borrada' || !x.espacios) continue;
+
+      const ruta = join(RAIZ, x.ruta);
+      const { texto, lineas } = limpiarPre(readFileSync(ruta, 'utf8'));
+      if (!lineas.length) continue;
+
+      writeFileSync(ruta, texto, 'utf8');
+      x.espacios = 0;
+      limpiadas.push({ slug: x.slug, lineas: lineas.length });
+      log(`Espacios finales: limpiadas ${lineas.length} línea(s) en ${x.slug} (${lineas.map((l) => `L${l.n}`).join(', ')})`);
+    }
+
+    // Red de seguridad: si quedara una cola, no se commitea nada.
+    const restos = plan.items
+      .filter((x) => x.estado !== 'sin-push' && x.estado !== 'borrada')
+      .map((x) => ({ slug: x.slug, ...analizarPre(readFileSync(join(RAIZ, x.ruta), 'utf8')) }))
+      .filter((x) => x.total);
+    if (restos.length) {
+      throw new Error(
+        `quedan espacios al final de línea en ${restos.map((r) => `${r.slug} (${r.total})`).join(', ')}; no se publica nada`,
+      );
+    }
+
+    // 3. Auditorías antes de commitear.
     for (const script of ['auditar:pre', 'auditar:acordes']) {
       log(`Ejecutando ${script}…`);
       const r = correrScript(script);
@@ -324,7 +373,7 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       log(`${script} OK`);
     }
 
-    // 3. Un commit por ficha, tocando solo sus rutas.
+    // 4. Un commit por ficha, tocando solo sus rutas.
     const commits = [];
     for (const x of plan.items) {
       if (x.estado === 'sin-push') continue;
@@ -346,14 +395,14 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       }
     }
 
-    // 4. Qué fichas nuevas entran en el push (lo mismo que verá la Action).
+    // 5. Qué fichas nuevas entran en el push (lo mismo que verá la Action).
     let avisos = [];
     if (!opciones.sinAviso) {
       const salida = git(['diff', '--diff-filter=A', '--name-only', 'origin/master..HEAD', '--', CARPETA], { permitirFallo: true });
       avisos = salida.split('\n').filter((r) => r.endsWith('.md')).map((r) => r.split('/').pop().slice(0, -3));
     }
 
-    // 5. Push (con reintentos si GitHub devuelve un 500 o se corta la red).
+    // 6. Push (con reintentos si GitHub devuelve un 500 o se corta la red).
     const porSubir = Number(git(['rev-list', '--count', 'origin/master..HEAD'], { permitirFallo: true }).trim() || 0);
     let push = 'nada';
     if (porSubir > 0) {
@@ -369,7 +418,7 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       log('Netlify tarda 1-2 min en publicar la ficha: el enlace puede tardar en responder.');
     }
 
-    // 6. Avisos. Por defecto no se envía nada: el panel deja el texto listo
+    // 7. Avisos. Por defecto no se envía nada: el panel deja el texto listo
     //    para copiar. Con `--avisar` se lanzan WhatsApp y X desde este equipo.
     let wa = 'no';
     let x = 'no';
@@ -405,7 +454,7 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       log('Nada que avisar (no hay fichas nuevas).');
     }
 
-    // 7. Resumen de los avisos: si alguno falló, se dice cuál. La ficha ya está
+    // 8. Resumen de los avisos: si alguno falló, se dice cuál. La ficha ya está
     //    publicada igualmente, así que no se cambia el estado del trabajo.
     const fallos = [];
     if (String(wa).startsWith('error')) fallos.push('WhatsApp');
@@ -421,7 +470,7 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
     escribirEstado({
       estado: 'ok',
       fin: Date.now(),
-      resumen: { commits, push, avisos, wa, x, fallos },
+      resumen: { commits, push, avisos, wa, x, fallos, limpiadas },
     });
     log('Terminado.', 'ok');
   } catch (e) {
