@@ -6,7 +6,7 @@ export interface Props {
   variant?: 'compact' | 'timeline'
   class?: string
   messageC?: string
-  listStyle?: 'inline' | 'destacado' | 'pills'
+  listStyle?: 'inline' | 'destacado' | 'pills' | 'rotativo'
 }
 
 const { variant = 'compact', class: className, messageC, listStyle = 'inline' } = Astro.props
@@ -50,6 +50,18 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
                 {name}
               </span>
             ))}
+          </div>
+        )}
+        {listStyle === 'rotativo' && (
+          <div class='donation-indicator__rotativo' data-rotador>
+            <span class='rotativo__etiqueta'>Gracias a</span>
+            <span class='rotativo__pista'>
+              {nombres.map((name, i) => (
+                <span class:list={['rotativo__nombre', { 'is-activo': i === 0 }]} data-rotador-nombre>
+                  {name}
+                </span>
+              ))}
+            </span>
           </div>
         )}
         {listStyle === 'inline' && (
@@ -113,6 +125,17 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
   :global(.timeline) .donation-indicator__message-c {
     font-size: 0.9rem;
     color: #fff;
+  }
+
+  /* En móvil el texto va justo: se aprieta un pelín para que quepa en una
+     línea y no robe altura al hero. */
+  @media (max-width: 640px) {
+    .donation-indicator__message-c,
+    :global(.timeline) .donation-indicator__message-c {
+      font-size: 0.85rem;
+      letter-spacing: -0.015em;
+      word-spacing: -0.05em;
+    }
   }
 
   .donation-indicator__count {
@@ -232,6 +255,72 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
     background: transparent;
   }
 
+  /* Rotativo: un donante cada vez, más grande y con entrada/salida animada.
+     La altura es fija (una línea) para que el bloque no cambie de tamaño. */
+  .donation-indicator__rotativo {
+    margin-bottom: 6px;
+  }
+
+  .rotativo__etiqueta {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-secondary-color);
+    margin-bottom: 2px;
+  }
+
+  .rotativo__pista {
+    position: relative;
+    display: block;
+    height: 1.5em;
+    font-size: clamp(1.1rem, 4.4vw, 1.5rem);
+    line-height: 1.5;
+  }
+
+  .rotativo__nombre {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: var(--acorde-color);
+    opacity: 0;
+    transform: translateY(0.45em);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .rotativo__nombre.is-activo {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .rotativo__nombre.is-saliendo {
+    opacity: 0;
+    transform: translateY(-0.45em);
+  }
+
+  :global(.timeline) .rotativo__etiqueta {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  :global(.timeline) .rotativo__nombre {
+    color: var(--primary-contrast-color);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rotativo__nombre {
+      transition: none;
+    }
+  }
+
   .donation-indicator .btn {
     display: inline-flex;
     align-items: center;
@@ -323,9 +412,65 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
     })
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupTracking)
-  } else {
-    setupTracking()
+  // Rotativo de donantes: pasa uno cada 2 s. Se para al pasar el ratón o al
+  // enfocar (para poder leerlo) y con prefers-reduced-motion se queda quieto.
+  function iniciarRotadores() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    document.querySelectorAll<HTMLElement>('[data-rotador]').forEach((cont) => {
+      if (cont.dataset.rotadorIniciado) return
+      const nombres = Array.from(cont.querySelectorAll('[data-rotador-nombre]'))
+      if (nombres.length < 2) return
+      cont.dataset.rotadorIniciado = 'true'
+
+      let actual = 0
+      let timer: number | null = null
+
+      const mostrar = (siguiente: number) => {
+        const previo = nombres[actual]
+        actual = siguiente
+        previo.classList.remove('is-activo')
+        previo.classList.add('is-saliendo')
+        nombres[actual].classList.remove('is-saliendo')
+        nombres[actual].classList.add('is-activo')
+        window.setTimeout(() => previo.classList.remove('is-saliendo'), 350)
+      }
+
+      const arrancar = () => {
+        if (timer !== null || reduce.matches) return
+        timer = window.setInterval(() => mostrar((actual + 1) % nombres.length), 2000)
+      }
+
+      const parar = () => {
+        if (timer !== null) window.clearInterval(timer)
+        timer = null
+      }
+
+      const widget = cont.closest('.donation-indicator')
+      if (widget) {
+        widget.addEventListener('mouseenter', parar)
+        widget.addEventListener('mouseleave', arrancar)
+        widget.addEventListener('focusin', parar)
+        widget.addEventListener('focusout', arrancar)
+      }
+
+      if (reduce.addEventListener) {
+        reduce.addEventListener('change', () => (reduce.matches ? parar() : arrancar()))
+      }
+
+      arrancar()
+    })
   }
+
+  function setup() {
+    setupTracking()
+    iniciarRotadores()
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup)
+  } else {
+    setup()
+  }
+  document.addEventListener('astro:page-load', setup)
 </script>
