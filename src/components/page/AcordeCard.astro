@@ -81,9 +81,9 @@ const headingId = `acorde-${slug}`;
   <!-- <AcordeAvisoMigracion /> -->
 
   <header>
-    <h2 id={headingId} class='is-title-minus' transition:name={`titulo-${slug}`}>
+    <h1 id={headingId} class='is-title-minus' transition:name={`titulo-${slug}`}>
       {tituloPieza}
-    </h2>
+    </h1>
 
     <section class='autores-year'>
       <div class='autores'>
@@ -225,7 +225,7 @@ const headingId = `acorde-${slug}`;
     /* text-transform: uppercase; */
   }
 
-  h2 {
+  h1 {
     color: var(--primary-color);
     font-size: 1.6rem;
     font-weight: 700;
@@ -254,7 +254,7 @@ const headingId = `acorde-${slug}`;
   }
 
   @media (max-width: 640px) {
-    h2 {
+    h1 {
       font-size: 1.25rem;
     }
   }

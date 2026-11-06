@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
   <div class='main-container'>
     <article class='colaborar-card container-layout' aria-labelledby='colaborar-title'>
       <header>
-        <h2 id='colaborar-title'>Colaborar</h2>
+        <h1 id='colaborar-title'>Colaborar</h1>
       </header>
 
       <div class='colaborar-body' role='region' aria-labelledby='colaborar-title'>
@@ -83,7 +83,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   header {
-    & h2 {
+    & h1 {
       margin: 0;
       color: var(--primary-color);
       font-family: 'Roboto Mono', monospace;
@@ -160,7 +160,7 @@ import Layout from '../layouts/Layout.astro';
         flex: none;
       }
 
-      & > header h2::after {
+      & > header h1::after {
         height: 4px;
         bottom: -4px;
       }

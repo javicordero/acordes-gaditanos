@@ -199,15 +199,6 @@ const webPageSchema = {
     pieza={pieza}
   />
 
-  <h1 class='seo-title'>
-    Acordes {tituloPagina} - Carnaval {year} - {textoMusica || textoLetra} - Acordes Gaditanos
-  </h1>
-
-  <p class='seo-text'>
-    Estos son los acordes de guitarra de {nombreCompleto}
-    {autores}, del Carnaval de Cádiz {year}.
-  </p>
-
   <div class='main-container container-layout'>
     <AcordeCard acorde={acorde} hermanas={hermanas} />
 
@@ -257,12 +248,6 @@ const webPageSchema = {
     </div>
 
     <style>
-      .seo-title,
-      .seo-text {
-        position: absolute;
-        left: -9999px;
-      }
-
       .main-container {
         display: flex;
         row-gap: 16px;

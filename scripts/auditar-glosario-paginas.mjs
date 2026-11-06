@@ -54,8 +54,10 @@ for (const [slug, etiqueta] of esperados) {
   const coplas = /class="coplas__resumen"/.test(html);
   if (coplas) conCoplas += 1;
 
-  if (!h1s.some((texto) => texto.includes(`Acorde ${etiqueta}`))) {
-    problemas.push(`${etiqueta} (${slug}): falta el H1 del acorde`);
+  if (h1s.length !== 1) {
+    problemas.push(`${etiqueta} (${slug}): ${h1s.length} H1 (debe haber 1)`);
+  } else if (!h1s[0].includes(`Acorde ${etiqueta}`)) {
+    problemas.push(`${etiqueta} (${slug}): el H1 no es el del acorde`);
   }
   if (svgs === 0) problemas.push(`${etiqueta} (${slug}): sin diagramas SVG`);
   if (!titulo) problemas.push(`${etiqueta} (${slug}): sin <title>`);

@@ -137,6 +137,59 @@ function auditarSitemap() {
   if (!leer(SITEMAP).includes('<lastmod>')) error('El sitemap no lleva ningún lastmod');
 }
 
+// Rutas que no entran en la comprobación de H1: privadas, borradores, listas
+// internas, el buscador y los formateadores (ocultos por el middleware).
+const RUTAS_SIN_H1 = [
+  'admin',
+  'estudio',
+  'acordes2',
+  'acordes3',
+  'lista2',
+  'formateadores',
+  'buscar',
+];
+
+function esPaginaH1Publica(relativa, html) {
+  const primera = relativa.split(path.sep)[0];
+  if (RUTAS_SIN_H1.includes(primera)) return false;
+  // Las páginas noindex quedan fuera del objetivo SEO (privadas, borradores...).
+  if (/<meta\s+name=['"]robots['"][^>]*content=['"][^'"]*noindex/i.test(html)) return false;
+  return true;
+}
+
+function recorrerHtml(dir) {
+  const salida = [];
+  for (const entrada of readdirSync(dir, { withFileTypes: true })) {
+    const ruta = path.join(dir, entrada.name);
+    if (entrada.isDirectory()) salida.push(...recorrerHtml(ruta));
+    else if (entrada.isFile() && entrada.name.endsWith('.html')) salida.push(ruta);
+  }
+  return salida;
+}
+
+function auditarH1() {
+  let revisadas = 0;
+
+  for (const fichero of recorrerHtml(DIST)) {
+    const relativa = path.relative(DIST, fichero);
+    const html = leer(fichero);
+    if (!esPaginaH1Publica(relativa, html)) continue;
+    revisadas++;
+
+    const h1s = html.match(/<h1\b/gi)?.length ?? 0;
+    if (h1s !== 1) error(`${relativa}: ${h1s} H1 (debe haber exactamente 1)`);
+
+    if (/class=['"][^'"]*\bseo-(?:title|text)\b/i.test(html)) {
+      error(`${relativa}: queda un bloque oculto .seo-title/.seo-text`);
+    }
+    if (/left:\s*-9999px/i.test(html)) {
+      error(`${relativa}: queda texto oculto con left:-9999px`);
+    }
+  }
+
+  return revisadas;
+}
+
 function main() {
   if (!existsSync(DIST)) {
     console.error(`No existe ${DIST}/. Ejecuta antes: npm run build`);
@@ -148,8 +201,10 @@ function main() {
 
   const { revisadas, conVideo } = auditarFichas(estadoVideos);
   auditarSitemap();
+  const paginasH1 = auditarH1();
 
   console.log(`Fichas revisadas: ${revisadas} · con VideoObject esperado: ${conVideo}`);
+  console.log(`Páginas públicas revisadas de H1: ${paginasH1}`);
 
   if (avisos.length) {
     console.log(`\nAvisos (${avisos.length}):`);

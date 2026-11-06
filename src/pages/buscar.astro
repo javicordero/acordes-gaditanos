@@ -42,6 +42,9 @@ let autores = await getCollection('autores');
   <div class='main-container'>
     <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
     <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
+    <div class='container-layout'>
+      <h1 class='search-title'>Buscar acordes</h1>
+    </div>
     <!-- Mensaje de sin resultados (oculto por defecto) -->
     <article class='no-results' role='region' aria-labelledby='no-results-heading' style='display: none'>
       <div class='container-layout inner-content'>
@@ -77,6 +80,16 @@ let autores = await getCollection('autores');
     display: flex;
     flex-direction: column;
     gap: var(--main-container-gap);
+  }
+
+  .search-title {
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
   }
 
   .results-container {
