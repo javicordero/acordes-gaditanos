@@ -2,37 +2,15 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import CardsGroup from '../components/page/CardsGroup.astro';
-import YearsList from '../components/page/YearsList.astro';
-import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
 import Banner468X60 from '../components/ads/Banner468x60.astro';
 import Banner320X50 from '../components/ads/Banner320x50.astro';
-import { parseSpanishDate, sortByYearDesc } from '../lib/index';
 
-let acordes = await getCollection('acordes');
-
-acordes = acordes.sort((a, b) => {
-  const yearA = a.data.year;
-  const yearB = b.data.year;
-
-  if (yearA !== yearB) {
-    return sortByYearDesc(yearA, yearB);
-  }
-
-  return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
-});
-
-// Serializar acordes para JavaScript (solo datos necesarios para búsqueda)
-const acordesData = acordes.map((acorde) => ({
-  id: acorde.id,
-  slug: acorde.slug,
-  pieza: acorde.data.pieza || '',
-  agrupacion: acorde.data.agrupacion || '',
-  musica: acorde.data.musica || '',
-  letra: acorde.data.letra || '',
-  letraTitulo: acorde.data.letraTitulo || '',
-}));
-
-let autores = await getCollection('autores');
+// La página no trae las cards: las pide a `/indice-tarjetas.json` y las pinta en
+// el navegador (antes eran 3,8 MB de HTML). Aquí solo se renderiza **una** card
+// dentro de un `<template>`: es el prototipo que el script clona para rellenar
+// cada resultado. Al ir en un `<template>` no se pinta ni descarga su imagen,
+// pero sí aporta el HTML, las clases y los estilos *scoped* de la card.
+const [prototipo] = await getCollection('acordes');
 ---
 
 <Layout
@@ -45,33 +23,31 @@ let autores = await getCollection('autores');
     <div class='container-layout'>
       <h1 class='search-title'>Buscar acordes</h1>
     </div>
-    <!-- Mensaje de sin resultados (oculto por defecto) -->
+    <!-- Mensaje de sin resultados (oculto por defecto): texto suelto, sin caja -->
     <article class='no-results' role='region' aria-labelledby='no-results-heading' style='display: none'>
-      <div class='container-layout inner-content'>
-        <header>
-          <h2 id='no-results-heading'>No se encontraron resultados</h2>
-        </header>
-        <p>No se encontraron acordes que coincidan con <strong class='search-query'></strong>.</p>
-        <p>Intenta con otros términos de búsqueda.</p>
+      <div class='container-layout no-results-texto'>
+        <h2 id='no-results-heading'>No se encontraron resultados para <strong class='search-query'></strong></h2>
+        <p>Prueba con otra palabra, con el nombre de la agrupación o con el año.</p>
         <p class='no-results-suggestion'>¿Buscas otra copla? <a href='/pedir-copla'>Pídela aquí</a>.</p>
       </div>
     </article>
 
-    <!-- Contenedor de resultados original -->
-    <div class='results-container'>
-      <div id='all-cards-groups' style='display: none;'>
-        {
-          Array.from(new Set(acordes.map((acorde) => acorde.data.year)))
-            .sort((a, b) => Number(b) - Number(a))
-            .map((year) => (
-              <CardsGroup
-                year={year}
-                acordes={acordes.filter((acorde) => acorde.data.year === year)}
-              />
-            ))
-        }
+    <!-- Aviso si el catálogo no se puede descargar (oculto por defecto) -->
+    <article class='no-results results-error' role='alert' style='display: none'>
+      <div class='container-layout no-results-texto'>
+        <h2>No se han podido cargar los resultados</h2>
+        <p>Ha fallado la descarga del listado de coplas. Recarga la página para volver a intentarlo.</p>
       </div>
-    </div>
+    </article>
+
+    <!-- Aquí se pintan los resultados -->
+    <div class='results-container'></div>
+
+    <!-- Prototipo que clona el script: una card de verdad, dentro de un
+         `<template>` para que no se pinte ni descargue su imagen. -->
+    <template id='plantilla-resultados'>
+      {prototipo && <CardsGroup year={prototipo.data.year} acordes={[prototipo]} />}
+    </template>
   </div>
 </Layout>
 
@@ -82,78 +58,108 @@ let autores = await getCollection('autores');
     gap: var(--main-container-gap);
   }
 
+  /* `.container-layout` lleva `margin: auto` (para centrarse en horizontal) y,
+     dentro de una columna flex, ese `auto` también se come el alto sobrante: en
+     una página corta el H1 y el aviso se iban al centro de la pantalla. Aquí se
+     quedan arriba, alineados con las cards. */
+  .main-container :global(.container-layout) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   .search-title {
+    position: relative;
     color: var(--primary-color);
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin: 0;
+    max-width: fit-content;
+    margin: 0 0 14px;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 95%;
+      height: 6px;
+      background: var(--primary-contrast-color);
+    }
+  }
+
+  /* El título de resultados no es el de la página: va más pequeño, sin la raya
+     naranja y con el término buscado en un chip. Se toca con `:global` porque
+     el bloque se clona desde el `<template>` (no lleva el cid de esta página). */
+  .results-container :global(.resultados-titulo) {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    max-width: none;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  /* El término buscado, entre comillas y en negrita: sin fondo ni caja, que el
+     título de resultados no compita con el de la página. */  .results-container :global(.resultados-consulta) {
+    color: var(--primary-color);
+    font-weight: 700;
   }
 
   .results-container {
     display: flex;
     flex-direction: column;
     gap: var(--main-container-gap);
+
+    &:empty {
+      display: none;
+    }
   }
 
-  #all-cards-groups {
-    display: none;
-  }
-
-  /* Card de sin resultados */
+  /* Sin resultados: texto suelto, en el mismo tono que la línea de resultados,
+     sin caja (con el H1 de la página ya hay jerarquía de sobra). */
   .no-results {
     display: none;
-    max-width: 100%;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    padding: var(--card-padding);
-    background: var(--card-background-color);
-    border: 2px solid var(--primary-color);
-    border-radius: 0;
-    box-shadow: 4px 4px 0 0 var(--primary-color);
 
-    & header {
-      margin-bottom: 16px;
-
-      & h2 {
-        position: relative;
-        color: var(--primary-color);
-        font-size: 1.5rem;
-        font-family: 'Roboto Mono', monospace;
-        letter-spacing: 1px;
-        font-weight: 800;
-        text-transform: uppercase;
-        max-width: fit-content;
-        margin: 0;
-
-        &::after {
-          content: '';
-          display: block;
-          position: absolute;
-          left: 0;
-          bottom: -6px;
-          width: 95%;
-          height: 6px;
-          background: var(--primary-contrast-color);
-        }
-      }
+    & .no-results-texto {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
-      & p {
-      font-size: 1rem;
-      line-height: 1.6;
+    & h2 {
       color: var(--text-color);
-      margin: 8px 0;
+      font-size: 1rem;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      line-height: 1.4;
+      text-transform: none;
+      margin: 0;
 
       & strong {
         color: var(--primary-color);
+        font-weight: 700;
       }
     }
 
+    & p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary-color, var(--text-color));
+      margin: 0;
+    }
+
     & .no-results-suggestion {
-      margin-top: 12px;
+      margin-top: 6px;
 
       & a {
         color: var(--link-color, #0070f3);
@@ -176,123 +182,263 @@ let autores = await getCollection('autores');
       gap: calc(var(--main-container-gap-sm) - 16px);
     }
 
+    .search-title {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+
+      &::after {
+        height: 4px;
+        bottom: -4px;
+      }
+    }
+
     .results-container {
       gap: calc(var(--main-container-gap-sm) - 16px);
     }
 
     .no-results {
-      padding: var(--card-padding-sm);
-
-      & header h2 {
-        font-size: 1.4rem;
-
-        &::after {
-          height: 4px;
-          bottom: -3px;
-        }
+      & h2 {
+        font-size: 0.95rem;
       }
 
       & p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
     }
   }
 </style>
 
-<script define:vars={{ acordesData }}>
+<script>
+  // Catálogo de las cards (`/indice-tarjetas.json`), cargado una sola vez.
+  type Tarjeta = {
+    slug: string;
+    year: string;
+    img: string;
+    agrupacion: string;
+    pieza: string;
+    piezaDisplay: string;
+    piezaTipo: string;
+    letraTitulo: string;
+    nombreCompleto: string;
+    autores: { nombre: string; href: string | null }[];
+    musica: string;
+    letra: string;
+    /** Texto normalizado donde se busca (se calcula al cargar). */
+    texto?: string;
+  };
+
+  const URL_CATALOGO = '/indice-tarjetas.json';
+
+  function normalizarTexto(texto: string): string {
+    return texto
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+  }
+
   function initSearch() {
-    const searchInput = document.querySelector('#header-search');
-    const searchForm = document.querySelector('.search-form');
-    const resultsContainer = document.querySelector('.results-container');
-    if (!resultsContainer) return;
+    const searchInput = document.querySelector<HTMLInputElement>('#header-search');
+    const searchForm = document.querySelector<HTMLFormElement>('.search-form');
+    const resultsContainer = document.querySelector<HTMLElement>('.results-container');
+    const plantilla = document.querySelector<HTMLTemplateElement>('#plantilla-resultados');
+    if (!resultsContainer || !plantilla) return;
 
-    const noResults = document.querySelector('.no-results');
+    const noResults = document.querySelector<HTMLElement>('.no-results:not(.results-error)');
     const searchQueryElement = noResults?.querySelector('.search-query');
+    const resultsError = document.querySelector<HTMLElement>('.results-error');
 
-    // Guardar el HTML original y crear un mapa de todas las cards
-    const originalContent = resultsContainer.innerHTML;
-    const allCardsMap = new Map();
+    const grupoPlantilla = plantilla.content.querySelector<HTMLElement>('.year-group');
+    const cardPlantilla = plantilla.content.querySelector<HTMLElement>('.card');
+    if (!grupoPlantilla || !cardPlantilla) return;
 
-    // Guardar todas las cards originales indexadas por slug
-    resultsContainer.querySelectorAll('a[href^="/acordes/"]').forEach((link) => {
-      const href = link.getAttribute('href');
-      // Los enlaces internos llevan barra final (/acordes/slug/).
-      const slug = href.replace('/acordes/', '').replace(/\/+$/, '');
-      const card = link.closest('article.card');
-      if (card) {
-        allCardsMap.set(slug, card.cloneNode(true));
-      }
-    });
+    // Astro marca los elementos de cada componente con `data-astro-cid-…`: los
+    // estilos de la card son *scoped* y un nodo creado en JS sin esas marcas
+    // saldría sin estilo. Se copian del prototipo a lo que haga falta crear.
+    const marcas = Array.from(cardPlantilla.attributes)
+      .map((atributo) => atributo.name)
+      .filter((nombre) => nombre.startsWith('data-astro-cid-'));
 
-    // Guardar una referencia al template del CardsGroup.astro
-    const originalYearCard = resultsContainer.querySelector('.year-group')?.cloneNode(true);
-
-    // Función para normalizar texto (quitar acentos)
-    function normalizeText(text) {
-      return text
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '');
+    function crearEtiqueta<T extends keyof HTMLElementTagNameMap>(
+      etiqueta: T,
+      clase: string,
+      campo: string,
+    ): HTMLElementTagNameMap[T] {
+      const nodo = document.createElement(etiqueta);
+      marcas.forEach((nombre) => nodo.setAttribute(nombre, ''));
+      nodo.className = clase;
+      nodo.dataset.campo = campo;
+      return nodo;
     }
 
-    // Función de búsqueda
-    function performSearch(query) {
-      if (!query.trim()) {
-        // Restaurar contenido original
-        resultsContainer.innerHTML = originalContent;
-        if (noResults) noResults.style.display = 'none';
+    let catalogo: Tarjeta[] | null = null;
+    let peticion: Promise<void> | null = null;
+
+    function cargarCatalogo(): Promise<void> {
+      if (peticion) return peticion;
+      peticion = fetch(URL_CATALOGO)
+        .then((respuesta) => {
+          if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
+          return respuesta.json() as Promise<Tarjeta[]>;
+        })
+        .then((datos) => {
+          catalogo = datos.map((tarjeta) => ({
+            ...tarjeta,
+            texto: normalizarTexto(
+              `${tarjeta.pieza} ${tarjeta.agrupacion} ${tarjeta.musica} ${tarjeta.letra} ${tarjeta.letraTitulo}`,
+            ),
+          }));
+          if (resultsError) resultsError.style.display = 'none';
+        })
+        .catch((error) => {
+          peticion = null;
+          catalogo = null;
+          console.error('No se pudo cargar el catálogo de la búsqueda', error);
+          if (resultsError) resultsError.style.display = 'block';
+        });
+      return peticion;
+    }
+
+    /** Rellena en la card clonada los huecos que deja `Card.astro` (`data-campo`). */
+    function pintarTarjeta(tarjeta: Tarjeta): HTMLElement {
+      const card = cardPlantilla!.cloneNode(true) as HTMLElement;
+      const campo = (nombre: string) => card.querySelector<HTMLElement>(`[data-campo="${nombre}"]`);
+
+      const enlace = campo('ancla') as HTMLAnchorElement | null;
+      if (enlace) {
+        enlace.href = `/acordes/${tarjeta.slug}/`;
+        enlace.setAttribute('aria-label', tarjeta.nombreCompleto);
+      }
+
+      const imagen = card.querySelector<HTMLImageElement>('.card-image');
+      if (imagen) {
+        imagen.src = tarjeta.img;
+        imagen.alt = `${tarjeta.nombreCompleto} - Carnaval de Cádiz ${tarjeta.year}`;
+        // El prototipo trae el nombre de transición de su instancia; el clon
+        // lleva el suyo para que el morph card → ficha siga funcionando.
+        imagen.removeAttribute('data-astro-transition-scope');
+        imagen.style.setProperty('view-transition-name', `img-${tarjeta.slug}`);
+      }
+
+      const pieza = campo('pieza');
+      if (pieza) {
+        pieza.textContent = tarjeta.piezaDisplay;
+        pieza.dataset.piezaType = tarjeta.piezaTipo;
+      }
+
+      const letra = campo('letra');
+      if (tarjeta.letraTitulo) {
+        const insignia = letra ?? crearEtiqueta('span', 'badge-letra', 'letra');
+        insignia.setAttribute('data-fit-text', '');
+        insignia.setAttribute('data-fit-parent', '');
+        insignia.setAttribute('data-fit-min', '8');
+        insignia.textContent = tarjeta.letraTitulo;
+        insignia.title = `Letra: ${tarjeta.letraTitulo}`;
+        if (!letra) campo('pieza')?.after(insignia);
+      } else if (letra) {
+        letra.remove();
+      }
+
+      const year = campo('year');
+      if (year) year.textContent = tarjeta.year;
+
+      const titulo = campo('titulo');
+      if (titulo) {
+        titulo.textContent = tarjeta.agrupacion;
+        titulo.id = `acordes-${tarjeta.slug}`;
+        titulo.removeAttribute('data-astro-transition-scope');
+        titulo.style.setProperty('view-transition-name', `titulo-${tarjeta.slug}`);
+      }
+
+      const contenedorAutores = campo('autores');
+      const autorPlantilla = contenedorAutores?.querySelector('a, span');
+      if (contenedorAutores && autorPlantilla) {
+        contenedorAutores.replaceChildren(
+          ...tarjeta.autores.map((autor) => {
+            const nodo = autorPlantilla.cloneNode(true) as HTMLElement;
+            nodo.textContent = autor.nombre;
+            nodo.title = autor.nombre;
+            if (autor.href) {
+              nodo.setAttribute('href', autor.href);
+              nodo.setAttribute('rel', 'noopener');
+            } else {
+              nodo.removeAttribute('href');
+            }
+            return nodo;
+          }),
+        );
+      }
+
+      card.setAttribute('aria-labelledby', `acordes-${tarjeta.slug}`);
+      return card;
+    }
+
+    /** Pinta el bloque «N resultados para [término]» con las cards que casen. */
+    function pintarResultados(tarjetas: Tarjeta[], consulta: string) {
+      const grupo = grupoPlantilla!.cloneNode(true) as HTMLElement;
+      const titulo = grupo.querySelector('h2');
+      const rejilla = grupo.querySelector('.acordes-grid');
+
+      if (titulo) {
+        titulo.classList.remove('is-title-minus');
+        titulo.classList.add('resultados-titulo');
+        // «3 resultados para "término"», sin caja: el término va entre comillas y
+        // en negrita.
+        const cita = document.createElement('strong');
+        cita.className = 'resultados-consulta';
+        cita.textContent = `"${consulta}"`;
+        titulo.replaceChildren(
+          `${tarjetas.length} ${tarjetas.length === 1 ? 'resultado' : 'resultados'} para `,
+          cita,
+        );
+        titulo.id = 'search-results-heading';
+      }
+      grupo.setAttribute('aria-labelledby', 'search-results-heading');
+      if (rejilla) {
+        rejilla.setAttribute('aria-labelledby', 'search-results-heading');
+        rejilla.replaceChildren(...tarjetas.map(pintarTarjeta));
+      }
+
+      resultsContainer!.replaceChildren(grupo);
+
+      // `FitTextInit` solo mide al cargar y al redimensionar: se le avisa.
+      window.dispatchEvent(new Event('resize'));
+    }
+
+    function limpiarResultados() {
+      resultsContainer!.replaceChildren();
+      if (noResults) noResults.style.display = 'none';
+    }
+
+    // Cada búsqueda lleva un número: si mientras se descarga el catálogo llega
+    // otra, la anterior se descarta.
+    let turno = 0;
+
+    async function performSearch(query: string) {
+      const consulta = query.trim();
+      if (!consulta) {
+        turno++;
+        limpiarResultados();
         return;
       }
 
-      const normalizedQuery = normalizeText(query);
+      const actual = ++turno;
+      await cargarCatalogo();
+      if (actual !== turno) return;
+      // Sin catálogo, `cargarCatalogo()` ya ha enseñado el aviso de error.
+      if (!catalogo) {
+        resultsContainer!.replaceChildren();
+        return;
+      }
 
-      // Filtrar acordes usando los datos serializados
-      const resultados = acordesData.filter((acorde) => {
-        const searchableText = normalizeText(
-          `${acorde.pieza} ${acorde.agrupacion} ${acorde.musica} ${acorde.letra} ${acorde.letraTitulo}`,
-        );
-        return searchableText.includes(normalizedQuery);
-      });
+      const buscado = normalizarTexto(consulta);
+      const encontradas = catalogo.filter((tarjeta) => tarjeta.texto!.includes(buscado));
 
-      if (resultados.length > 0) {
-        // Obtener las cards desde el mapa guardado
-        const matchingCards = [];
-        resultados.forEach((resultado) => {
-          const card = allCardsMap.get(resultado.slug);
-          if (card) {
-            matchingCards.push(card.cloneNode(true));
-          }
-        });
-
-        if (matchingCards.length > 0 && originalYearCard) {
-          // Clonar el CardsGroup.astro template
-          const newYearCard = originalYearCard.cloneNode(true);
-          const heading = newYearCard.querySelector('h2');
-          if (heading) {
-            heading.textContent = `Resultados para: "${query}"`;
-            heading.id = 'search-results-heading';
-          }
-
-          newYearCard.setAttribute('aria-labelledby', 'search-results-heading');
-          const grid = newYearCard.querySelector('.acordes-grid');
-          if (grid) {
-            grid.setAttribute('aria-labelledby', 'search-results-heading');
-            grid.innerHTML = '';
-            matchingCards.forEach((card) => {
-              grid.appendChild(card);
-            });
-          }
-
-          resultsContainer.innerHTML = '';
-          resultsContainer.appendChild(newYearCard);
-          if (noResults) noResults.style.display = 'none';
-        }
+      if (encontradas.length > 0) {
+        pintarResultados(encontradas, consulta);
+        if (noResults) noResults.style.display = 'none';
       } else {
-        // Sin resultados
-        resultsContainer.innerHTML = '';
-        if (searchQueryElement) {
-          searchQueryElement.textContent = `"${query}"`;
-        }
+        resultsContainer!.replaceChildren();
+        if (searchQueryElement) searchQueryElement.textContent = `"${consulta}"`;
         if (noResults) noResults.style.display = 'block';
       }
     }
@@ -303,11 +449,24 @@ let autores = await getCollection('autores');
     }
 
     // Último término renderizado (evita re-renderizar al volver con bfcache)
-    let renderedQuery = null;
+    let renderedQuery: string | null = null;
 
-    function renderQuery(query) {
+    function renderQuery(query: string) {
       renderedQuery = query;
-      performSearch(query);
+      void performSearch(query);
+    }
+
+    /**
+     * Deja la página arriba del todo y la cabecera a la vista. En móvil la
+     * cabecera se esconde al bajar y, como aquí la búsqueda no navega (los
+     * resultados se pintan en la misma página), podía quedarse escondida o a
+     * medio bajar al buscar. De paso cierra el teclado, que al plegarse mueve el
+     * viewport.
+     */
+    function mostrarCabeceraYArriba() {
+      document.querySelector('header[role="banner"]')?.classList.remove('header-hidden');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      if (window.matchMedia('(max-width: 640px)').matches) searchInput?.blur();
     }
 
     // Aplica la búsqueda indicada por la URL (al cargar o al ir atrás/adelante)
@@ -332,6 +491,12 @@ let autores = await getCollection('autores');
           history.pushState({ q: query }, '', url);
         }
         renderQuery(query);
+
+        // Al buscar se vuelve arriba y se asegura de que la cabecera esté a la
+        // vista: en móvil se esconde al bajar y, al no navegar (los resultados se
+        // pintan aquí mismo), podía quedarse escondida o a medio bajar. De paso se
+        // cierra el teclado, que al plegarse movía el viewport.
+        mostrarCabeceraYArriba();
       });
     }
 
@@ -349,8 +514,10 @@ let autores = await getCollection('autores');
       applySearchFromUrl();
     });
 
-    // Estado inicial a partir de la URL (?q=...)
+    // Estado inicial a partir de la URL (?q=...) + catálogo adelantado, para que
+    // la primera pulsación no espere a la descarga.
     applySearchFromUrl();
+    void cargarCatalogo();
   }
 
   if (document.readyState === 'loading') {

@@ -1,77 +1,42 @@
 ---
 import { Image } from 'astro:assets';
+import { prepararTarjeta } from '../../lib/tarjeta';
 
-const {
-  pieza,
-  agrupacion,
-  musica,
-  letra,
-  letraTitulo,
-  img,
-  year,
-  slug,
-  musicaList,
-  letraList,
-  musicaSlugs,
-  letraSlugs,
-  musicaSlug,
-  letraSlug,
-} = Astro.props;
+// Toda la lógica de presentación (pieza visible, color del badge, autores y
+// nombre completo) vive en `prepararTarjeta()`, que también usa el catálogo de
+// `/buscar`: así la card del build y la que se pinta en el navegador no se
+// separan nunca.
+const tarjeta = prepararTarjeta({
+  slug: Astro.props.slug,
+  agrupacion: Astro.props.agrupacion,
+  pieza: Astro.props.pieza,
+  year: Astro.props.year,
+  img: Astro.props.img,
+  letraTitulo: Astro.props.letraTitulo,
+  musica: Astro.props.musica,
+  letra: Astro.props.letra,
+  musicaList: Astro.props.musicaList,
+  letraList: Astro.props.letraList,
+  musicaSlugs: Astro.props.musicaSlugs,
+  letraSlugs: Astro.props.letraSlugs,
+  musicaSlug: Astro.props.musicaSlug,
+  letraSlug: Astro.props.letraSlug,
+});
+
+const { slug, agrupacion, year, img, letraTitulo, piezaDisplay, piezaTipo, nombreCompleto, autores } =
+  tarjeta;
 
 const headingId = `acordes-${slug}`;
 
-// Limpiar "Cuarteta" y comillas si es necesario
-let piezaDisplay = pieza;
-if (pieza) {
-  const cuartetaMatch = pieza.match(/^Cuarteta\s+"(.+)"$/i);
-  if (cuartetaMatch) {
-    piezaDisplay = cuartetaMatch[1];
-  }
-  piezaDisplay = piezaDisplay.replace(/\bfinal\s+de\s+popur(?:r\u00ED|ri)/gi, 'final popurr\u00ED');
-}
-
-const piezaLower = (piezaDisplay?.toLowerCase() || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-let piezaType = 'default';
-if (piezaLower.includes('presentacion')) {
-  piezaType = 'presentacion';
-} else if (piezaLower.includes('pasodoble')) {
-  piezaType = 'pasodoble';
-} else if (piezaLower.includes('tango')) {
-  piezaType = 'tango';
-} else if (piezaLower.includes('estribillo')) {
-  piezaType = 'estribillo';
-}
-
-// Nombre completo para lectores de pantalla y para el alt de la imagen.
-const nombreCompleto = [
-  letraTitulo ? `${piezaDisplay} "${letraTitulo}"` : piezaDisplay,
-  agrupacion,
-]
-  .filter(Boolean)
-  .join(' ');
-
-// Normalizar listas de autores
-const letraNombres = (letraList && letraList.length > 0 ? letraList : (letra ? [letra] : []));
-const musicaNombres = (musicaList && musicaList.length > 0 ? musicaList : (musica ? [musica] : []));
-
-function autorLink(tipo: 'letra' | 'musica', idx: number) {
-  const slugs = tipo === 'letra' ? letraSlugs : musicaSlugs;
-  const singleSlug = tipo === 'letra' ? letraSlug : musicaSlug;
-  const s = (slugs && slugs[idx]) || singleSlug;
-  if (!s) return null;
-  return tipo === 'letra' ? `/autor/letra/${s}` : `/autor/musica/${s}`;
-}
-
-// Combinar autores: primero música y después letra. Si alguien firma ambas,
-// se queda como música para que su enlace lleve a su página de música.
-const seenAutores = new Set();
-const autoresCombinados: { nombre: string; tipo: 'letra' | 'musica' }[] = [];
-musicaNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add(n); autoresCombinados.push({ nombre: n, tipo: 'musica' }); } });
-letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add(n); autoresCombinados.push({ nombre: n, tipo: 'letra' }); } });
+// Los `data-campo` son los huecos que rellena `/buscar` al clonar la card.
 ---
 
 <article class='card' aria-labelledby={headingId}>
-  <a href={`/acordes/${slug}`} class='card-stretch' aria-label={nombreCompleto}></a>
+  <a
+    href={`/acordes/${slug}/`}
+    class='card-stretch'
+    aria-label={nombreCompleto}
+    data-campo='ancla'></a>
 
   <figure class='card-media'>
     <Image
@@ -83,31 +48,29 @@ letraNombres.forEach((n: string) => { if (!seenAutores.has(n)) { seenAutores.add
       width={480}
       height={640}
       transition:name={`img-${slug}`}
+      data-campo='imagen'
     />
     <header class='card-header'>
-      <span class='badge badge--pieza' data-pieza-type={piezaType} data-fit-text data-fit-parent data-fit-min='8'>{piezaDisplay}</span>
-      {letraTitulo && <span class='badge-letra' data-fit-text data-fit-parent data-fit-min='8' title={`Letra: ${letraTitulo}`}>{letraTitulo}</span>}
+      <span class='badge badge--pieza' data-pieza-type={piezaTipo} data-fit-text data-fit-parent data-fit-min='8' data-campo='pieza'>{piezaDisplay}</span>
+      {letraTitulo && <span class='badge-letra' data-fit-text data-fit-parent data-fit-min='8' title={`Letra: ${letraTitulo}`} data-campo='letra'>{letraTitulo}</span>}
     </header>
-    <span class='card-year'>{year}</span>
+    <span class='card-year' data-campo='year'>{year}</span>
   </figure>
 
   <section class='card-body'>
-    <h3 id={headingId} class='card-title' transition:name={`titulo-${slug}`}>{agrupacion}</h3>
+    <h3 id={headingId} class='card-title' transition:name={`titulo-${slug}`} data-campo='titulo'>{agrupacion}</h3>
 
     <div class='card-meta'>
       <div class='card-authors'>
-        <span class='card-author-names'>
+        <span class='card-author-names' data-campo='autores'>
           {
-            autoresCombinados.map((item) => (
-              <>
-                {(() => {
-                  const lista = item.tipo === 'letra' ? letraNombres : musicaNombres;
-                  const idx = lista.indexOf(item.nombre);
-                  const href = autorLink(item.tipo, idx);
-                  return href ? <a href={href} rel='noopener' title={item.nombre}>{item.nombre}</a> : <span title={item.nombre}>{item.nombre}</span>;
-                })()}
-              </>
-            ))
+            autores.map((autor) =>
+              autor.href ? (
+                <a href={autor.href} rel='noopener' title={autor.nombre}>{autor.nombre}</a>
+              ) : (
+                <span title={autor.nombre}>{autor.nombre}</span>
+              ),
+            )
           }
         </span>
       </div>

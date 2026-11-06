@@ -3,6 +3,12 @@
 /indice-busqueda.json
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
+# Catálogo de cards de /buscar (lo pinta en el navegador). Es más grande que el
+# índice de sugerencias, así que se cachea una hora: si se publica una copla,
+# como mucho tarda eso en salir en los resultados de quien ya lo había bajado.
+/indice-tarjetas.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
 # Fuentes autoalojadas (woff2). Nombres sin versión: si se regenera un archivo,
 # renombrarlo para no servir la versión vieja durante el max-age.
 /fonts/*

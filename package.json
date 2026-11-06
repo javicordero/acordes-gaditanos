@@ -42,6 +42,7 @@
     "auditar:comentarios": "node scripts/auditar-comentarios.mjs",
     "auditar:hubs": "node --experimental-strip-types scripts/auditar-hubs.ts",
     "auditar:contenido": "node --experimental-strip-types scripts/auditar-contenido.ts",
+  "auditar:buscar": "node scripts/auditar-buscar.mjs",
     "normalizar:contenido": "node --experimental-strip-types scripts/normalizar-contenido.ts",
     "modalidad": "node scripts/completar-modalidad.mjs",
     "trello": "node scripts/trello.mjs",

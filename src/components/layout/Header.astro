@@ -152,6 +152,11 @@ const esInicio = Astro.url.pathname.replace(/\/+$/, '') === '';
       letter-spacing: 1.4px;
       white-space: nowrap;
       max-width: 20px;
+      /* El mismo tamaño que el H1 de la portada (2em del navegador). Con el
+         `div` a 16 px su caja medía ~10 px menos, y como `.branding` centra a
+         sus hijos, el logo y el nombre se veían ~3 px más arriba que en la
+         portada. */
+      font-size: 2rem;
       transition:
         opacity 0.3s ease,
         visibility 0.3s ease;
