@@ -82,13 +82,11 @@
           const ratio = parseFloat(pre.dataset.originalLineHeightRatio ?? '') || 1.2;
           pre.style.lineHeight = +(origRem * ratio).toFixed(4) + 'rem';
 
-          // dejar padding de 8px a ambos lados para que el <pre> no quede pegado
-          try {
-            pre.style.padding = '0';
-            pre.style.boxSizing = 'border-box';
-          } catch (e) {}
-
-          const contentWidth = Math.max(0, content.clientWidth - 8); // 8px por cada lado
+          // El ancho útil es el del propio <pre>, no el del contenedor: así el
+          // sangrado y el padding que ponga el CSS (AcordeCard) se respetan sin
+          // cuentas paralelas. Antes se restaban 8 px a content.clientWidth por
+          // un padding que ya no existe, y esos 8 px se quedaban de blanco.
+          const contentWidth = Math.max(0, pre.clientWidth);
           const preWidth = pre.scrollWidth;
 
           if (preWidth <= contentWidth) {
@@ -118,7 +116,7 @@
           }
 
           // si sigue habiendo overflow y quedan reintentos, programar uno más
-          const contentWidthAfter = Math.max(0, content.clientWidth - 8);
+          const contentWidthAfter = Math.max(0, pre.clientWidth);
           const preWidthAfter = pre.scrollWidth;
           if (preWidthAfter > contentWidthAfter && attempt < retries.length - 1) {
             attempt++;

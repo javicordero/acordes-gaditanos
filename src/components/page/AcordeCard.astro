@@ -578,6 +578,17 @@ const headingId = `acorde-${slug}`;
     }
   }
 
+  /* En móvil el cifrado sale 4 px por cada lado del contenedor (que va al 95%)
+     y se queda a ~4-5 px del borde de la pantalla: gana 8 px de ancho sin
+     pegarse al borde. AnchoPreInit mide `pre.clientWidth`, así que la talla se
+     recalcula sola con este ancho. */
+  @media (max-width: 640px) {
+    .acorde-content :global(pre) {
+      margin-inline: -4px;
+      width: calc(100% + 8px);
+    }
+  }
+
   .autoscroll-wrapper {
     position: absolute;
     top: -22px;
