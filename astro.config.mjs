@@ -133,6 +133,14 @@ export default defineConfig({
   ],
 
   vite: {
+    build: {
+      // Strobe exporta STROBE_SOURCEMAP=hidden al construir una variante para
+      // medirla: así escribe los mapas al lado de cada script (sin el comentario
+      // sourceMappingURL) y `strobe query hotspots` nombra el archivo y la
+      // función de verdad. En un build normal la variable no existe y el valor
+      // queda `undefined`, que es el comportamiento de siempre.
+      sourcemap: process.env.STROBE_SOURCEMAP,
+    },
     server: {
       // En `astro dev`, guardar un borrador desde el panel escribe en
       // `src/content/acordes3`; si el watcher lo ve, Astro recarga la página y

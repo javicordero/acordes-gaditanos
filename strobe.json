@@ -1,0 +1,12 @@
+{
+  "build": {
+    "command": "npm run build",
+    "output": "dist"
+  },
+  "serve": {
+    "command": "npm run preview -- --host 127.0.0.1 --port {port}",
+    "ready": "http://127.0.0.1:{port}/"
+  },
+  "benches": ["perf/**/*.bench.ts"],
+  "metrics": { "equivalence": "2%" }
+}
