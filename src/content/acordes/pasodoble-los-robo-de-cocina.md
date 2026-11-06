@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Robó de cocina
 year: 2009
+modalidad: Chirigota
 musica: Jesús Bienvenido
 letra: Javi El Ojo
 img: 'https://static.grupojoly.com/clip/30e404f4-52fe-420e-91ff-e5c7b47beee5_source-aspect-ratio_1600w_0.jpg'

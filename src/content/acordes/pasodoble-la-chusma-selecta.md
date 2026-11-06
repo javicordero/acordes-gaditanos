@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Chusma selecta
 year: 2020
+modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-chusma-selecta-2.jpg

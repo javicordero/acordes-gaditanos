@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El embrujo de Cádiz
 year: 2023
+modalidad: Comparsa
 musica: El Tomate
 letra: El Piru
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/02/22/embrujo(4)-RFBW91rrZVxsb1WuPZw6lYM-1200x840@abc.jpg

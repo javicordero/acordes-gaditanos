@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los prisioneros
 year: 2018
+modalidad: Comparsa
 musica: Jose Manuel Aranda
 letra: El Chapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/01/los-prisioneros-cuartos-1.jpg

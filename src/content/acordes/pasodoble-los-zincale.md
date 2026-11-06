@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los zincalé
 year: 2018
+modalidad: Comparsa
 musica: Tomy Alemania
 letra: Tomy Alemania
 img: https://ondacadiz.es/sites/default/files/styles/webp/public/noticias/2018-07/imagenes/noticias%20cadiz%20Los%20zincale.jpg.webp?itok=SgUqRO2I

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Julianes
 year: 1958
+modalidad: Chirigota
 musica: Paco Alba
 letra: Paco Alba
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxC23hjk67lyf0cGceivW_ZvjnZcaQzllJa3fAEBMQAX3QKuPeds4EZWrMMGhh8XkiDlAAS8yDAXJSTYlN7gwBas_in5Flo0rsEIpCYUjduOjR49qBLz69kVAlok3dBi1jyjDOJ9AU4exx/s1600/losjulianes.jpg

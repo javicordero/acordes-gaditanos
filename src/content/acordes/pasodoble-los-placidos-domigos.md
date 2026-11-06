@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Plácidos Domigos
 year: 2024
+modalidad: Chirigota
 img: https://static.grupojoly.com/clip/f9c5c1ce-e4b5-4392-893a-fcbe994cd3e4_source-aspect-ratio_1600w_0.jpg
 cejilla: 1
 date: "25/11/2025"

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Las Ratas
 year: 2025
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/03/05/ratas-R0eL5wy91ngmWwGP4ms8iYK-1200x840@abc.jpg

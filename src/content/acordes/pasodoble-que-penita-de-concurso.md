@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Qué penita de concurso
 year: 2017
+modalidad: Chirigota
 musica: Miguel Choza
 letra: Miguel Choza
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/quepenitadeconcurso_.jpeg

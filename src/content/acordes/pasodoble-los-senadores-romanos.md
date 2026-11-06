@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los senadores romanos
 year: 1968
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 img: 'https://static.grupojoly.com/clip/4768528c-9d31-425c-a71c-75059962deb4_source-aspect-ratio_1600w_0.jpg'

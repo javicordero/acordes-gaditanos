@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Resilientes
 year: 2020
+modalidad: Comparsa
 musica: Germán Rendón
 letra: Germán Rendón
 img: https://www.codigocarnaval.com/wp-content/uploads/2019/10/comparsa-los-resilientes.jpg.webp

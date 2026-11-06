@@ -2,6 +2,7 @@
 pieza: Pasodoble Original
 agrupacion: Los Irracionales
 year: 2017
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/los-irracionales-milian-oneto.jpeg

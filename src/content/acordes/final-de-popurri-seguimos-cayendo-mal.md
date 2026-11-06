@@ -6,7 +6,7 @@ musica: Diego Letrán
 letra: Diego Letrán
 img: https://www.portaldecadiz.com/images/igallery/resized/seguimos-cayendo-mal-3762/05-chirigota-seguimos-cayendo-mal-foto-gabinete-ayuntamiento-de-cadiz--reynafotografo-20-1600-1600-80.jpg
 cejilla: 2
-modalidad: Chrigota
+modalidad: Chirigota
 date: 27/02/2026
 video: https://www.youtube.com/embed/NNG1dfsLepk?si=fw1pYblxDMiXZTp9
 cover: https://www.youtube.com/embed/lmKR1niK9JY

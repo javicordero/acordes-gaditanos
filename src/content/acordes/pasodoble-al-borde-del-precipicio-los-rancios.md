@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Al borde del precipicio, Los rancios
 year: 2017
+modalidad: Chirigota
 musica: El Noly
 letra: El Noly
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/Albordedelprecipicio_.jpeg

@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: La Oveja negra
 year: 2024
+modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/10022024-la%20oveja%20negra-076.jpg

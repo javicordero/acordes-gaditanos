@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: El Creador
 year: 2016
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/creador_116918676ff49aebce8075a874be7e6d.jpeg

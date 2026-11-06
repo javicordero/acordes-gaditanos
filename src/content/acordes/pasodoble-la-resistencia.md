@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Resistencia
 year: 2025
+modalidad: Comparsa
 musica: David Carapapa
 letra: David Carapapa
 img: https://cadiznoticias.es/wp-content/uploads/2025/01/05-Comparsa-La-resistencia-Comparsa-de-David-Carapapa-GABINETE-DE-PRENSA-DEL-AYUNTAMENTO-DE-CADIZ-Foto-Reyna-9-1024x683.jpg

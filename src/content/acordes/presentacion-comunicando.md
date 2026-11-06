@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Comunicando
 year: 2020
+modalidad: Comparsa
 img: https://s3.abcstatics.com/media/MM/2020/02/14/v/comparsajuvenil(7)-k1I--1348x900@abc.JPG
 cejilla: 2
 date: "25/11/2025"

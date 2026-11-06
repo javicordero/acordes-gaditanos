@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: A base de palos
 year: 2019
+modalidad: Comparsa
 musica: Antonio Jesús Bazalo
 letra: Antonio Jesús Bazalo
 img: https://static.grupojoly.com/clip/c89f1535-2f98-4a23-ac23-c315eb6f662e_source-aspect-ratio_1600w_0.jpg

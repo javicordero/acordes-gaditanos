@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Una chirigota con clase
 year: 1996
+modalidad: Chirigota
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: 'https://www.codigocarnaval.com/wp-content/uploads/2021/01/Don-Adolfo-Una-chirigota-con-clase.jpg'

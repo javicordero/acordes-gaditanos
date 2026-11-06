@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los golfus de Roma
 year: 2005
+modalidad: Chirigota
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://static.grupojoly.com/clip/8e6dfa86-6596-4d94-b07a-5a1e7f07f738_16-9-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Que corgaera
 year: 2017
+modalidad: Comparsa
 musica: Iván Romero
 letra: Iván Romero
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comparsa-que-corgaera.jpeg

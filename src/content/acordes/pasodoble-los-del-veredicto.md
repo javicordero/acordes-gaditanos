@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los del veredicto
 year: 2023
+modalidad: Chirigota
 musica: El Sheriff
 letra: El Sheriff
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/01/23/chirigota-veredicto1(5)_xoptimizadax-U52740056041dKZ-1200x840@abc.jpg

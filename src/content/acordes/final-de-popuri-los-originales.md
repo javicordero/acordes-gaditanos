@@ -2,6 +2,7 @@
 agrupacion: Los Originales
 pieza: Final de popurí
 year: 2022
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/19052022-los-originales-066-scaled.jpg

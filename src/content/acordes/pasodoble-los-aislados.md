@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Aislados
 year: 2020
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://static.grupojoly.com/clip/119692aa-f30b-42d5-8170-78495489808f_source-aspect-ratio_1600w_0.jpg

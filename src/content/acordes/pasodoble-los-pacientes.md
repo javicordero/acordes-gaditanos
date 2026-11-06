@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Pacientes
 year: 2020
+modalidad: Comparsa
 musica: Fran Quintana
 letra: Fran Quintana
 img: https://s1.abcstatics.com/media/MM/2020/02/03/v/pacientes(7)_xoptimizadax-kyg--1248x698@abc-Home.jpg

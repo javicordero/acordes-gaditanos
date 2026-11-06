@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: A los pies de la Caleta
 year: 2022
+modalidad: Comparsa
 musica: Rubén Vallejo
 letra: Rubén Vallejo
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/14052022-a-los-pies-de-la-caleta-1-013-scaled.jpg

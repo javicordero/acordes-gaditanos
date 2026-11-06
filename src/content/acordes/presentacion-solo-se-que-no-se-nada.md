@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Solo sé que no sé nada
 year: 2020
+modalidad: Comparsa
 musica: Borja Romero
 letra: Borja Romero
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/9f47329d4e0d231920e58de71.jpg

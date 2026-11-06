@@ -40,6 +40,8 @@
     "auditar:reconocer": "node --experimental-strip-types scripts/auditar-reconocer.ts",
     "auditar:seo": "node scripts/auditar-seo.mjs",
     "auditar:comentarios": "node scripts/auditar-comentarios.mjs",
+    "auditar:hubs": "node --experimental-strip-types scripts/auditar-hubs.ts",
+    "modalidad": "node scripts/completar-modalidad.mjs",
     "trello": "node scripts/trello.mjs",
     "ajustar:borradores": "node scripts/ajustar-borradores.mjs",
     "perf:status": "strobe status",

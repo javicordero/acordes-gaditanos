@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Las que viven como reinas
 year: 2012
+modalidad: Comparsa
 musica: Faly Pastrana
 letra: Faly Pastrana
 img: https://static.grupojoly.com/clip/396ecced-7645-497e-a6db-823498c40acf_source-aspect-ratio_1600w_0.jpg

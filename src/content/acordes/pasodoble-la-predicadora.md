@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La predicadora
 year: 2022
+modalidad: Comparsa
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/19052022-la-predicadora-019-scaled.jpg

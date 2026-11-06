@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Cadizfornia
 year: 2020
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: 'https://s3.abcstatics.com/media/MM/2020/02/06/v/cadizfornia(1)-k7L--1248x698@abc-Home.JPG'

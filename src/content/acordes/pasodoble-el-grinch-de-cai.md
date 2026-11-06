@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El Grinch de Cai
 year: 2024
+modalidad: Chirigota
 musica: El Sheriff
 letra: El Sheriff
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/09/09012024-elgrinchdecai-004-U20232513182uzK-1200x840@abc.jpg

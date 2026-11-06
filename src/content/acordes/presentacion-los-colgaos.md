@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Colgaos
 year: 2024
+modalidad: Comparsa
 img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/07/colgaos-ReVEYnWZmk0pH97vfq71eOK-1200x840@abc.jpg
 cejilla: 3
 date: "25/11/2025"

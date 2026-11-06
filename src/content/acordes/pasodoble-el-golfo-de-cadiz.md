@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El golfo de Cádiz
 year: 2005
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/bbcc87c7dc2b474dd166014cb.jpg

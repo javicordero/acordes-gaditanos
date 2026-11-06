@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Carretera y manta
 year: 2021
+modalidad: Comparsa
 musica: David Carapapa
 letra: David Carapapa
 img: https://static.grupojoly.com/clip/02908232-1f2a-4f4e-8c34-3d4be70709c3_source-aspect-ratio_1600w_0.jpg

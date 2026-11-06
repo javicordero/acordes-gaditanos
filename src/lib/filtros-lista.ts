@@ -52,12 +52,11 @@ export interface Decada {
 }
 
 /**
- * Décadas del listado. `pre50` recoge lo anterior a 1950 (la copla de 1905 de
- * El Tío de la Tiza); ninguna ficha se queda sin década.
+ * Décadas del listado. `pre60` recoge lo anterior a 1960 (la copla de 1905 de
+ * El Tío de la Tiza y las de los 50); ninguna ficha se queda sin década.
  */
 export const DECADAS: Decada[] = [
-  { id: 'pre50', etiqueta: 'Antes de los 50', desde: 0, hasta: 1949 },
-  { id: '50s', etiqueta: '50s', desde: 1950, hasta: 1959 },
+  { id: 'pre60', etiqueta: 'Pre 60', desde: 0, hasta: 1959 },
   { id: '60s', etiqueta: '60s', desde: 1960, hasta: 1969 },
   { id: '70s', etiqueta: '70s', desde: 1970, hasta: 1979 },
   { id: '80s', etiqueta: '80s', desde: 1980, hasta: 1989 },
@@ -67,15 +66,15 @@ export const DECADAS: Decada[] = [
   { id: '2020s', etiqueta: '2020s', desde: 2020, hasta: 2029 },
 ];
 
-/** Década de un año; lo que no sea un año válido cae en `pre50`. */
+/** Década de un año; lo que no sea un año válido cae en `pre60`. */
 export function decadaDe(year: string | number): string {
   const numero = Number(year);
-  if (!Number.isFinite(numero)) return 'pre50';
+  if (!Number.isFinite(numero)) return 'pre60';
   const encontrada = DECADAS.find((decada) => numero >= decada.desde && numero <= decada.hasta);
-  return encontrada ? encontrada.id : 'pre50';
+  return encontrada ? encontrada.id : 'pre60';
 }
 
-/** Etiqueta visible de una década (`90s`, `2000s`, `Antes de los 50`). */
+/** Etiqueta visible de una década (`90s`, `2000s`, `Pre 60`). */
 export function etiquetaDecada(id: string): string {
   return DECADAS.find((decada) => decada.id === id)?.etiqueta ?? id;
 }

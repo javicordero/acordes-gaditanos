@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La cara oculta de la luna
 year: 2018
+modalidad: Comparsa
 musica: Juanma Romero Bey
 letra: Juanma Romero Bey
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/01/cara-oculta-luna-coac-2018.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La Alegría de Cádiz
 year: 2024
+modalidad: Comparsa
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/17/17012024-laalegradecdiz-014-U11230388178kOd-1200x840@abc.jpg
 cejilla: 4
 date: 10/01/2026

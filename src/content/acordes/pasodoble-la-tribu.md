@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Tribu
 year: 2025
+modalidad: Comparsa
 musica: Raúl Cabrera
 letra: El Chapa
 img: https://static.grupojoly.com/clip/f92c52c4-dbd2-497e-b8bf-73cea5495057_source-aspect-ratio_1600w_0.jpg

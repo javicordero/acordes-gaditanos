@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Caminito del falla
 year: 2023
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/02/08/caminito-falla-RwA2cvP63kIZXz5DrCj4YaJ-1200x840@abc.jpeg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Pancho Albachi y sus Mamarrachi
 year: 1961
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 6

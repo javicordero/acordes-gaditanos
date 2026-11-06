@@ -2,6 +2,7 @@
 pieza: Final de Popurrí
 agrupacion: Los Regaera
 year: 2004
+modalidad: Comparsa
 musica: José Luis Bustelo
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCbgULRnLMil-utA6GsU_08DFYGGufk1cU9FnIYBObkuuxrC7_hLYiHYtBW6rHbfiyrNLAUk6nuwr-eiAaccZB3nfwkYJkD8mIkx_xCl8GW5aoCu49oG_uJ5idq3kgT-cJS7TN1eEFjSV6/s0/Los-regaera.jpg
 cejilla: 2

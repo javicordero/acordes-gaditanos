@@ -2,6 +2,7 @@
 pieza: Popurrí
 agrupacion: La eternidad
 year: 2017
+modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/la-eternidad-3.jpg

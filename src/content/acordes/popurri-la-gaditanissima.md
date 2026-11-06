@@ -2,6 +2,7 @@
 pieza: Popurrí
 agrupacion: La Gaditaníssima
 year: 2019
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://www.canalsur.es/resources/archivos_offline/2019/2/6/1550743445135la_gaditanisima_1024x576.jpg

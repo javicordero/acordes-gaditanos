@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los mendas lerendas
 year: 2008
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 cejilla: 0

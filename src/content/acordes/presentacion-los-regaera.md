@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los regaera
 year: 2004
+modalidad: Comparsa
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzrQby6YzRNclq5yI8jfiQ57v-t6gLBjY1aFGgehRAP9R7KwPOwgLHtIz9p0vw9EVrwiooTAmJBq2wau_prElJtEWHzKXdlUIORbcD-zSZHwCNI-P8kzzdSyUf0HhpYIqghlJ0npt8hsyV/s320/Los_regaera.jpg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Pideme lo que tu quieras
 year: 2020
+modalidad: Chirigota
 musica: Lolo Molina
 letra: Lolo Molina
 img: https://s3.abcstatics.com/media/MM/2020/02/12/v/pideme(8)_xoptimizadax.jpg?width=600

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Las Maleducadas
 year: 2025
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://cadiznoticias.es/wp-content/uploads/2025/01/LAS-MALEDUCADAS-GABINETE-DE-PRENSA-DEL-AYUNTAMIENTO-DE-CADIZ-Foto-Reyna-12-1024x683.jpg

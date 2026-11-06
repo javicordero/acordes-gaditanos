@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El hombre que susurraba a las almohadas
 year: 2017
+modalidad: Chirigota
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://static.grupojoly.com/clip/84e6b03a-80b0-4237-ad09-0f20341e551a_source-aspect-ratio_1600w_0.jpg

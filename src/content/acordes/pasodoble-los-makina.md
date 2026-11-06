@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Mákina
 year: 2009
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: https://static.grupojoly.com/clip/106a93c7-c16b-4f79-9eeb-69e05b09a73e_source-aspect-ratio_1600w_0.jpg

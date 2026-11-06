@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Los de la charca
 year: 2017
+modalidad: Comparsa
 musica: Ángel Luis Silva Benzo
 letra: El Piru
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/Losdelacharca_0005.jpeg

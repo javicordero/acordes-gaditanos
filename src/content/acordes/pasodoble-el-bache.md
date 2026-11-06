@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El bache
 year: 1993
+modalidad: Comparsa
 musica: Paco Rosado
 letra: Paco Rosado
 img: https://static.grupojoly.com/clip/8a890cc8-8493-44af-a7de-151376ab630e_16-9-aspect-ratio_1600w_0.jpg

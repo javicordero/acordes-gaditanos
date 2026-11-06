@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: DESOBDC !!!!
 year: 2025
+modalidad: Comparsa
 musica: Germán Rendón
 letra: Germán Rendón
 img: https://static.grupojoly.com/clip/f502b996-90e1-437a-a5f1-0292c1f6f113_source-aspect-ratio_1600w_0.jpg

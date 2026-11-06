@@ -2,6 +2,7 @@
 pieza: Pasodoble Noly
 agrupacion: Los Esclavos
 year: 2023
+modalidad: Comparsa
 musica: El Noly
 letra: El Chapa
 img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/17022023-los-esclavos-041-scaled.jpg

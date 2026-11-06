@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Yesterday
 year: 1999
+modalidad: Chirigota
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: 'https://i.ytimg.com/vi/BWYrDPgoh6Y/maxresdefault.jpg'

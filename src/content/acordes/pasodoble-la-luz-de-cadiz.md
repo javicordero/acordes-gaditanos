@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La luz de Cádiz
 year: 2019
+modalidad: Comparsa
 musica: Kike Remolino
 letra: Kike Remolino
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2022/La%20luz%20de%20C%C3%A1diz%20-Cuartos%20%286%29.jpg

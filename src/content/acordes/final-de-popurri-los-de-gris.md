@@ -2,6 +2,7 @@
 pieza: Final de Popurrí
 agrupacion: Los de gris
 year: 2013
+modalidad: Chirigota
 musica: El Lacio
 letra: El Lacio
 img: https://resizer.lavozdigital.es/resizer/resizer.php?imagen=/deliverty/demo/resources/jpg/0/0/1360392196000.jpg&nuevoancho=950&nuevoalto=570&copyright=conCopyright&encrypt=false

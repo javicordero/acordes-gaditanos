@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La boquita prestá
 year: 2022
+modalidad: Comparsa
 musica: Kike Remolino
 letra: Kike Remolino
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/23052022-la-boquita-presta-071-scaled.jpg

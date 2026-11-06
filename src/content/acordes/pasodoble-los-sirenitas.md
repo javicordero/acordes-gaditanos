@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los sirenitas
 year: 2018
+modalidad: Chirigota
 musica: Lolo Molina
 letra: Lolo Molina
 img: https://8cadiz.es/wp-content/uploads/2018/02/Los-sirenitas.jpg

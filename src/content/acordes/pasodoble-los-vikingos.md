@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los vikingos
 year: 2003
+modalidad: Comparsa
 musica: El Noly
 letra: Joaquín Quiñones
 img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGXfE21FxWaV1SeCzRPzj0CYFayB3aiAqMYuL9Gu4GcBK4LfYAfAZHG1AsqwXk7zP-1PUWRBp7pOquSN6qETqf-hIbZMdI2APqk_5ct5Nvgk9tOECAGsb1gj5VNgipMJBUAta50MsYTj9A/s320/2006_Los_Vikingos.jpg'

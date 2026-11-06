@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Un país llamado Cádiz
 year: 2016
+modalidad: Comparsa
 musica: Pepito Martínez
 letra: Pepito Martínez
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/paisllamadocadiz-comparsa-rivas.jpeg

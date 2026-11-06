@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Te lo cuento o te lo canto
 year: 2019
+modalidad: Comparsa
 musica: Iván Romero
 letra: Iván Romero
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiVnbnvDKMFZthYA9yObaPCGVHQcmDW0gSO3jCr81mi8uBh697IJldqzwUwu4_6ZmItZoB-cZ9pt4Qh7Cc35clqAivkooW2ztZo-AquPbJqHbpOIvOl1ytSnF99xzajhlCY5_lZMugcIdm/s400/te+lo+cuento.jpg

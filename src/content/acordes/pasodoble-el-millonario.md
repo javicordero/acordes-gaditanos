@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El Millonario
 year: 2022
+modalidad: Chirigota
 musica: El Noly
 letra: El Noly
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgB9M0ZoEHEMRpcTNsTNbEC3KMz5DqfB1JX9PtHzx7yQ7JappAKBOzED2LZfMp8Ssr0_87arDkOAGFthTtZu-aZ6mxw3Ahhg9NqfGInDJuk_pxPnTZfoPV4f0hBi9ClxLzhYptbaSc83Z1LO5GROC70TVB9GKxKY4gPuISNrGU4xNPCN-7gOv7S8EHLPxP7/s320/millonario.jpg

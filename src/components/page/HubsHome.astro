@@ -1,0 +1,286 @@
+---
+import HubCard from '../ui/HubCard.astro';
+import { baseDeEje, type Hub } from '../../lib/hubs';
+
+interface Props {
+  modalidad: Hub<any>[];
+  pieza: Hub<any>[];
+  decada: Hub<any>[];
+}
+
+const { modalidad, pieza, decada } = Astro.props;
+
+const coplas = (total: number) => `${total} ${total === 1 ? 'copla' : 'coplas'}`;
+const metaDe = (hub: Hub<any>) => coplas(hub.total);
+
+// Etiqueta corta solo para la card de la home; la página del hub mantiene
+// «Finales de popurrí».
+const nombreCard = (hub: Hub<any>) =>
+  hub.id === 'final-de-popurri' ? 'Final popurrí' : hub.singular;
+
+// GA4 no admite guiones en el nombre del evento; el parámetro `hub` conserva
+// el slug exacto.
+const slugEvento = (slug: string) => slug.replace(/-/g, '_');
+
+// En la home solo van las dos modalidades principales; coros sigue en su
+// página de hub (cuartetos aún no tiene fichas).
+const modalidadesHome = modalidad.filter((hub) => hub.id === 'comparsa' || hub.id === 'chirigota');
+---
+
+<article class='hubs-home' aria-labelledby='hubs-home-title'>
+  <div class='container-layout inner-content'>
+    <header>
+      <h2 id='hubs-home-title'>Explora el cancionero</h2>
+    </header>
+
+    <section class='hubs-home-sub' aria-labelledby='hubs-home-decada'>
+      <h3 id='hubs-home-decada'>Por décadas</h3>
+      <div class='hubs-home-grid hubs-home-grid--decada'>
+        {
+          decada.map((hub) => (
+            <HubCard
+              nombre={hub.singular}
+              href={`${baseDeEje('decada')}/${hub.slug}`}
+              meta={metaDe(hub)}
+              kicker='Década'
+              sufijoMinuscula
+              gaEvent={`click_hub_decada_${slugEvento(hub.slug)}`}
+              gaParams={{ hub: hub.slug, ubicacion: 'index_hubs' }}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <section class='hubs-home-sub' aria-labelledby='hubs-home-modalidad'>
+      <h3 id='hubs-home-modalidad'>Por modalidad</h3>
+      <div class='hubs-home-grid hubs-home-grid--modalidad'>
+        {
+          modalidadesHome.map((hub) => (
+            <HubCard
+              nombre={hub.singular}
+              href={`${baseDeEje('modalidad')}/${hub.slug}`}
+              meta={metaDe(hub)}
+              kicker='Modalidad'
+              gaEvent={`click_hub_modalidad_${slugEvento(hub.slug)}`}
+              gaParams={{ hub: hub.slug, ubicacion: 'index_hubs' }}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <section class='hubs-home-sub' aria-labelledby='hubs-home-pieza'>
+      <h3 id='hubs-home-pieza'>Por pieza</h3>
+      <div class='hubs-home-grid hubs-home-grid--pieza'>
+        {
+          pieza.map((hub) => (
+            <HubCard
+              nombre={nombreCard(hub)}
+              href={`${baseDeEje('pieza')}/${hub.slug}`}
+              meta={metaDe(hub)}
+              kicker='Pieza'
+              gaEvent={`click_hub_pieza_${slugEvento(hub.slug)}`}
+              gaParams={{ hub: hub.slug, ubicacion: 'index_hubs' }}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <p class='hubs-home-cta'>
+      <a
+        class='hubs-home-ver-mas'
+        href='/lista'
+        data-ga-event='click_listado_carnavales'
+        data-ga-params='{"link_type":"lista","location":"index_hubs"}'>
+        Ver lista de todas las coplas
+        <svg
+          width='16'
+          height='16'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='square'
+          stroke-linejoin='miter'
+          aria-hidden='true'>
+          <path d='M7 17 17 7'></path>
+          <path d='M9 7h8v8'></path>
+        </svg>
+      </a>
+    </p>
+  </div>
+</article>
+
+<style>
+  .inner-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    & h2 {
+      position: relative;
+      color: var(--primary-color);
+      font-size: 1.6rem;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      max-width: fit-content;
+      margin: 0;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 95%;
+        height: 6px;
+        background: var(--primary-contrast-color);
+      }
+    }
+  }
+
+  .hubs-home-sub {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-padding-sm);
+
+    & + & {
+      padding-top: var(--card-padding);
+      border-top: 2px solid var(--primary-color);
+    }
+
+    & h3 {
+      position: relative;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      max-width: fit-content;
+      margin: 0;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 95%;
+        height: 4px;
+        background: var(--primary-contrast-color);
+      }
+    }
+  }
+
+  .hubs-home-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--card-padding);
+    align-items: stretch;
+  }
+
+  .hubs-home-cta {
+    margin: 0;
+    text-align: center;
+  }
+
+  .hubs-home-ver-mas {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--surface-color);
+    color: var(--primary-contrast-color);
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover {
+      background-color: var(--primary-contrast-color);
+      color: var(--on-bright-color);
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 0 var(--primary-color);
+    }
+
+    &:active {
+      transform: translate(0, 0);
+      box-shadow: 2px 2px 0 0 var(--primary-color);
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--primary-contrast-color);
+      outline-offset: 3px;
+    }
+  }
+
+  .hubs-home-ver-mas :global(svg) {
+    display: block;
+    flex: none;
+  }
+
+  :global(html[data-theme='dark']) .hubs-home-ver-mas {
+    background-color: var(--surface-color);
+    color: var(--primary-contrast-color);
+  }
+
+  :global(html[data-theme='dark']) .hubs-home-ver-mas:hover {
+    background-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hubs-home-ver-mas {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .inner-content {
+      gap: var(--main-container-gap-sm);
+    }
+
+    header h2 {
+      font-size: 1.25rem;
+    }
+
+    .hubs-home-sub {
+      gap: 10px;
+
+      & + & {
+        padding-top: var(--card-padding-sm);
+      }
+
+      & h3 {
+        font-size: 1rem;
+      }
+    }
+
+    .hubs-home-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+  }
+</style>

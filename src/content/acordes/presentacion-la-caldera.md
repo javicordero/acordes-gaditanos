@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La Caldera
 year: 2006
+modalidad: Comparsa
 musica: Nene Cheza
 letra: Joaquín Quiñones
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/f63d71f456feeb171c7bdb43a.jpg

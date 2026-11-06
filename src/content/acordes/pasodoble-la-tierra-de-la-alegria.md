@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Tierra de la alegría
 year: 2020
+modalidad: Comparsa
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://s2.abcstatics.com/media/MM/2020/02/06/v/tierra-alegria(5)_xoptimizadax-koGI--1064x800@abc-Home.jpg

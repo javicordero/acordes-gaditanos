@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La Brigada
 year: 2022
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://s1.abcstatics.com/media/MM/2022/05/31/v/labrigada(15).JPG?width=600

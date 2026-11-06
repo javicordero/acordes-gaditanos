@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los erasmus pocos y parió la abuela
 year: 2013
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: https://static.grupojoly.com/clip/b5336e73-9497-4db2-9b09-2c8e9045789f_source-aspect-ratio_1600w_0.jpg

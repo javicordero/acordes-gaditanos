@@ -2,6 +2,7 @@
 pieza: Final de Popurrí
 agrupacion: Hoy no me puedo levantar
 year: 2014
+modalidad: Chirigota
 musica: El Lacio
 letra: El Lacio
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2014/hoy-no-me-puedo-levantar-1.jpg

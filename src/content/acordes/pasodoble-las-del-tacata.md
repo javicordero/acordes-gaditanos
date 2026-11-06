@@ -2,6 +2,7 @@
 pieza: pasodoble
 agrupacion: Las del tacatá
 year: 2023
+modalidad: Comparsa
 musica: David Castro
 letra: David Castro
 img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/09022023-las-del-tacata-064-scaled.jpg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los campeones
 year: 2018
+modalidad: Chirigota
 musica: El Noly
 letra: El Noly
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKccNcS1pSeBBkWeCuCXUxJJcpZO3Iz9B-xy4TKfQYxjSetRMys2bTFrgACufSIRctEgIYiieqd-KWeAzM2uUJZrhCN80h7y3DXgBL-1TISDZTMUvBY9HvokNflUKGS5fM0X_JmcX-ocJL/s400/los-campeones-preliminares+%25289%2529-kBn--1353x900%2540abc.jpg

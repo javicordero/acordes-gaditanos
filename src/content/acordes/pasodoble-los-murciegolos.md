@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Murciegolos
 year: 2001
+modalidad: Chirigota
 musica: Juanma Romero Bey
 letra: Juanma Romero Bey
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDTJjDP1btSra5amgBqYmpi70nLxcKhcqDW776Qft7CxJciMpQhoEbsk9KRxAQrR_fhmFFLR6Xx2gLLKqgdF3p7bNUDRxBKD1BkBC1fI4FcVzAvqcWd3hJytZpUI2u1isWfS7r_emJCtsd/s1600/Los_murcielogos.jpg

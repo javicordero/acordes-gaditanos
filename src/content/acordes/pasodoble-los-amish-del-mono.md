@@ -6,7 +6,7 @@ musica: El Peluca
 letra: El Peluca
 img: https://static.grupojoly.com/clip/574e404d-d8a7-4c2a-9435-923420dc2a87_source-aspect-ratio_1600w_0.jpg
 cejilla: 2
-modalidad: Chrigota
+modalidad: Chirigota
 date: 26/01/2026
 video: https://www.youtube.com/embed/URRCPxm15rQ?si=KPRCdOF-MsvTvNby
 cover: https://www.youtube.com/embed/c0JxTC6o5DI?si=yQnP93z4gLFKuSxK

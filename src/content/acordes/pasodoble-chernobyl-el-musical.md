@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Chernobyl, el musical
 year: 2020
+modalidad: Chirigota
 musica: Jesús Bienvenido
 letra: El Canijo
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/24137.jpg

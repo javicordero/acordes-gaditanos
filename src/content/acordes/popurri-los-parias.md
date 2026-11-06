@@ -2,6 +2,7 @@
 pieza: Popurrí
 agrupacion: Los Parias
 year: 2006
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRldfgOpqE_mqMGRoY3KwLyk1SduRF0Jr0xvg&s

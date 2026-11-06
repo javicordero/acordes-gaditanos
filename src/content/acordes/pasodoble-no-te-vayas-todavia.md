@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: No te vayas todavía
 year: 2017
+modalidad: Chirigota
 musica: Manolín Santander
 letra: El Bizcocho
 img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/aNotevayatodavia_1(4).jpeg'

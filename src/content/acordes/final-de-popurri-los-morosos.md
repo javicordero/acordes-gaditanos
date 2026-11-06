@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Los Morosos
 year: 2019
+modalidad: Chirigota
 musica: Lolo Molina
 letra: Lolo Molina
 img: https://www.codigocarnaval.com/wp-content/uploads/2020/04/Chirigota-Los-Morosos.jpg

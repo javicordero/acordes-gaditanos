@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Y seguimos cantando
 year: 2024
+modalidad: Comparsa
 musica: El Tomate
 letra: El Piru
 img: https://static.grupojoly.com/clip/23abf22b-3b83-4968-bee0-24119b912229_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La Tregua
 year: 2025
+modalidad: Comparsa
 img: https://static.grupojoly.com/clip/e78f8930-aef6-41e7-a3dc-5c86f9f65454_source-aspect-ratio_1600w_0.jpg
 cejilla: 5
 date: "25/11/2025"

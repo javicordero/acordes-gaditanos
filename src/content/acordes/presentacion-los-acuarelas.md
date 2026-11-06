@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Acuarelas
 year: 2005
+modalidad: Comparsa
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://static.grupojoly.com/clip/563620d3-9769-4511-93c6-fb3ed096715c_source-aspect-ratio_1600w_0.jpg

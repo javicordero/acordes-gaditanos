@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Bicentenaria
 year: 2012
+modalidad: Comparsa
 musica: Nene Cheza
 letra: El Chapa
 img: https://static.grupojoly.com/clip/2548886e-380f-413c-bfde-96f3be608c42_source-aspect-ratio_1600w_0.jpg

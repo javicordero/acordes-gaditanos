@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Pa gusto los colores
 year: 2011
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/pagustoloscolores.jpeg

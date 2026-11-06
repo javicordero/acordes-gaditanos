@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Las huestes de don Nuño
 year: 1959
+modalidad: Chirigota
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 5

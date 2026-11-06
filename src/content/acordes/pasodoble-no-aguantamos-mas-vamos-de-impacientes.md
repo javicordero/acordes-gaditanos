@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: No aguantamos más, vamos de impacientes
 year: 2020
+modalidad: Chirigota
 musica: El Tomate
 letra: El Tomate
 img: https://static.grupojoly.com/clip/7bceb602-3c28-4bec-bebc-f78054e5a8b1_source-aspect-ratio_1600w_0.jpg

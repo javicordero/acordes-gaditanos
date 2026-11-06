@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Al cielo con él
 year: 2025
+modalidad: Chirigota
 musica: David Castro
 letra: David Castro
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/19/05AlCieloconelGABINETEDEpRENSADELAYUNTAMIENTODECADIZFotoReyna-171.jpg

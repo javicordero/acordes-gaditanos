@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Las Ratas
 year: 2025
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 letraTitulo: Manuel

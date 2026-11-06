@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La Cárcel vieja
 year: 2004
+modalidad: Comparsa
 musica: Nene Cheza
 letra: Joaquín Quiñones
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/402e97cb0f0953d27bf9a94cb.jpg

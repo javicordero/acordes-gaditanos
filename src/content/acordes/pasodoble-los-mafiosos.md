@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los mafiosos
 year: 2018
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://static.eldiario.es/clip/1cfe85cf-4b56-4c92-863e-beac3458a77a_16-9-aspect-ratio_default_0.jpg

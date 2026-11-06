@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El Amante
 year: 2015
+modalidad: Comparsa
 musica: Juanma Romero Bey
 letra: Juanma Romero Bey
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2015/el-amante-1.jpg

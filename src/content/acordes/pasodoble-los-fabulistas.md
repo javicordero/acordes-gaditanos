@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Fabulistas
 year: 1969
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/10/1969-los-fabulistas.jpg

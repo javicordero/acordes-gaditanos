@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El Club de los ignorantes
 year: 2022
+modalidad: Comparsa
 musica: Fran Quintana
 letra: Fran Quintana
 img: https://s3.abcstatics.com/media/provincia/2022/04/04/v/1ignorantes-kjKC--1248x698@abc.jpeg

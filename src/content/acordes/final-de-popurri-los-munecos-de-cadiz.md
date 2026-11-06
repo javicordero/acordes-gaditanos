@@ -2,6 +2,7 @@
 pieza: Final de Popurrí
 agrupacion: Los muñecos de Cádiz
 year: 2011
+modalidad: Comparsa
 musica: David Carapapa, Javier Carapapa
 letra: David Carapapa, Javier Carapapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1299832509-munecos.jpeg

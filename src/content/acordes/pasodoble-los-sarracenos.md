@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Sarracenos
 year: 1957
+modalidad: Chirigota
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 5

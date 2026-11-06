@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Cagones
 year: 2025
+modalidad: Chirigota
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://static.grupojoly.com/clip/1db5cf3f-81ea-408d-8885-b357af9d8ae6_source-aspect-ratio_1600w_0.jpg

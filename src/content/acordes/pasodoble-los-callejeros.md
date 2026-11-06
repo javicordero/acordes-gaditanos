@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los callejeros
 year: 1996
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDTm5nmkFCUmy45bwsnzimUEe0P1ov4MrIg54LSvHCdoI2uRpjWdqyvSLRVCy1GhBh-HIkMv6uX-9QVyH8TDh5zgNQJ8KJr7NTpy02CVyiZMa7POISyX6E0_w0JdNQ4pZ0qn79ZsSAiTrY/s400/los+callehjeros.jpg

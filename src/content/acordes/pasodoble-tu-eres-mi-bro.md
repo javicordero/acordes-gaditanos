@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Tú eres mi bro
 year: 2019
+modalidad: Chirigota
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/tu-eres-mi-bro-2.jpg

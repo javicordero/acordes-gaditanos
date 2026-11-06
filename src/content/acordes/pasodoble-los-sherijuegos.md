@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Sherijuegos
 year: 2025
+modalidad: Chirigota
 musica: El Sheriff
 letra: El Sheriff
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/02/20/05CHIRIGOTALossherijuegos-GABINETEDEPRENSADELAYUNTAMIENTODECDIZ-FotoReyna-3-RKhzmMWqFn4YrTHXH9ib3PP-1200x840@abc.jpg

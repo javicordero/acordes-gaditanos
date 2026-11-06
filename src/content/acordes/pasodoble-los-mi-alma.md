@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los mi alma
 year: 2023
+modalidad: Chirigota
 musica: El Bizcocho
 letra: El Bizcocho
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/02/18/alma(3)-U21246645120PKu-1200x840@abc.jpg

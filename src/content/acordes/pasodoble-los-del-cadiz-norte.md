@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los del Cádiz Norte
 year: 2017
+modalidad: Chirigota
 musica: Manolo Santander
 letra: Manolo Santander
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/aDeCadizNorte_1(7).jpeg

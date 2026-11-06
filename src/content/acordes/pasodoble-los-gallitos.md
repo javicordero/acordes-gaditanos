@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los gallitos
 year: 2014
+modalidad: Comparsa
 musica: Nene Cheza
 letra: El Chapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/vl_LosGallitos01.jpeg

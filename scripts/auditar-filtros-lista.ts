@@ -62,8 +62,8 @@ comprobar('Testamento → cuarteta', tipoPiezaId('Testamento'), 'cuarteta');
 comprobar('Cuplé desconocido', tipoPiezaId('Cuplé'), 'otro');
 
 /* 2. Décadas. */
-comprobar('1905 → antes de los 50', decadaDe(1905), 'pre50');
-comprobar('1955 → 50s', decadaDe(1955), '50s');
+comprobar('1905 → pre 60', decadaDe(1905), 'pre60');
+comprobar('1955 → pre 60', decadaDe(1955), 'pre60');
 comprobar('1969 → 60s', decadaDe('1969'), '60s');
 comprobar('1975 → 70s', decadaDe(1975), '70s');
 comprobar('1999 → 90s', decadaDe(1999), '90s');
@@ -179,7 +179,7 @@ comprobar('década reparte todas las fichas', suma(opcionesDecada(filtrables)), 
 comprobar('año reparte todas las fichas', suma(opcionesAnio(filtrables)), filtrables.length);
 comprobar('ninguna ficha sin tipo de pieza', filtrables.filter((f) => f.tipo === 'otro').length, 0);
 comprobar('piezas distintas', opcionesPieza(filtrables).length, 7);
-comprobar('décadas distintas', opcionesDecada(filtrables).length, 9);
+comprobar('décadas distintas', opcionesDecada(filtrables).length, 8);
 comprobar('años distintos', opcionesAnio(filtrables).length, 61);
 comprobar('autores de música distintos', opcionesAutores(fichas, 'musica').length, 83);
 comprobar('autores de letra distintos', opcionesAutores(fichas, 'letra').length, 93);

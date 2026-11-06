@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La canción de Cádiz
 year: 2014
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://www.portaldecadiz.com/images/igallery/resized/5001-5100/KTA_0046-5045-1200-1200-80-wm-center_bottom-100-portaldecadizpng.jpg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Valla
 year: 2025
+modalidad: Comparsa
 musica: Mar Muñoz
 letra: Mar Muñoz
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/01/31/03ComparsaLavallaGABINETEDEPRENSADELAYUNTAMIENTODECDIZ-FotoReyna-13-Rej89HXJ9Jf47pp0gbo52OI-1200x840@abc.jpg

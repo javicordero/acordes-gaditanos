@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Esto si que es una chirigota
 year: 2014
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: https://www.lavozdigital.es/cadiz/noticias/201403/01/Media/chirigota.jpg?uuid=fba854c4-a107-11e3-8926-43f3ea1e20e2

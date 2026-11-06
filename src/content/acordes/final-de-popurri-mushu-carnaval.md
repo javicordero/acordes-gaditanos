@@ -2,6 +2,7 @@
 pieza: Final de popurri
 agrupacion: Mushu Carnaval
 year: 2025
+modalidad: Chirigota
 musica: Cosme
 letra: Cosme
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsgiMIOYBmHurIEfEs2I3DDCb4YvVd15gO1e5RNVDrfP2dlcywtEW9FkqP&s=10

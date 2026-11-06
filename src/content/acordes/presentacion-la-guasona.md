@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La Guasona
 year: 2023
+modalidad: Comparsa
 img: https://static.grupojoly.com/clip/e183282f-2c22-44cf-8e36-ef7454f45500_source-aspect-ratio_1600w_0.jpg
 cejilla: 3
 date: "25/11/2025"

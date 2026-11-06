@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los violinistas
 year: 2011
+modalidad: Comparsa
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/losviolinistas.jpeg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los del planeta rojo, pero rojo, rojo
 year: 2017
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/vera.jpeg

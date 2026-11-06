@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Estampas Goyescas
 year: 1973
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 3

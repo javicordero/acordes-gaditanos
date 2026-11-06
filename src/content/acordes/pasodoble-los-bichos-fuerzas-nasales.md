@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Bichos (Fuerzas Nasales)
 year: 2008
+modalidad: Chirigota
 musica: El Noly
 letra: Manolo Santander
 cejilla: 5

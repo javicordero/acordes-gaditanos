@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Brujos Titis
 year: 2018
+modalidad: Chirigota
 musica: Manolo Santander
 letra: Manolo Santander
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22823.jpg

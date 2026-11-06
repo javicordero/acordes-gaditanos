@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: El veneno del rincón
 year: 2023
+modalidad: Comparsa
 img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/08022023-el-veneno-del-rincon-069-scaled.jpg
 cejilla: 5
 date: "25/11/2025"

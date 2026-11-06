@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El Joyero
 year: 2024
+modalidad: Comparsa
 musica: David Carapapa
 letra: David Carapapa
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/10/10022024-eljoyero-054-RtmwwflpfcQSb8V1oCWQIJK-1200x840@abc.jpg

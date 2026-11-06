@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Quitapupas
 year: 2018
+modalidad: Chirigota
 musica: El Sheriff.
 letra: El Sheriff.
 img: https://static.grupojoly.com/clip/0ae65656-f5bb-4d55-9d81-523490fbc3eb_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Peliculeros
 year: 2023
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://static.grupojoly.com/clip/684263ee-6200-4598-8231-99026c01db51_source-aspect-ratio_1600w_0.jpg

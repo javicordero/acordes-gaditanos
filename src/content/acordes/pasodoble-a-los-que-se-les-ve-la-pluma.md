@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: A los que se les ve la pluma
 year: 2009
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/96e4b0138ea7b35f0453d21a1.jpg

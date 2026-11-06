@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Indomables
 year: 2022
+modalidad: Comparsa
 musica: David Carapapa
 letra: David Carapapa
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/21052022-los-indomables-115-scaled.jpg

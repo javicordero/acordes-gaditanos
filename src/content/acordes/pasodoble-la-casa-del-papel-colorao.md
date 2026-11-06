@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La casa del papel colorao
 year: 2020
+modalidad: Chirigota
 musica: Tatán
 letra: Tatán
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-casa-de-papel-colorao-4.jpg

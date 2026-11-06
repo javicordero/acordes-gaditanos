@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La playa de los secretos
 year: 2007
+modalidad: Comparsa
 musica: El Noly
 letra: Joaquín Quiñones
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiSMeOI75OQSTjH4Y5tWXqnVuHagP_vIEPMe7qH_jBptMKHj2B88ZAosgZs3f8CyQsdJEFAbrA8UH6SQwEqaljmUnsQ1NZyAVOQPNlGBeHEhwoG9isN04R_1gKIQBbQXDB8L15AXS8-LFwf/s400/La_Playa_de_los_Secretos.jpg

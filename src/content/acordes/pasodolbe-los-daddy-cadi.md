@@ -2,6 +2,7 @@
 agrupacion: Los Daddy Cadi
 pieza: Pasodoble
 year: 2019
+modalidad: Chirigota
 musica: El Lacio
 letra: El Lacio
 img: https://static.grupojoly.com/clip/1102ae78-4c42-4d53-84ed-8596f4a82a84_source-aspect-ratio_1600w_0.jpg

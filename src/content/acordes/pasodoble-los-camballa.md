@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los camballá
 year: 2017
+modalidad: Comparsa
 musica: Tomy Alemania
 letra: Tomy Alemania
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/los-camball--9.JPG

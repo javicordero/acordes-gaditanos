@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los niños sin nombre
 year: 2019
+modalidad: Comparsa
 musica: El Tomate
 letra: El Piru
 img: https://static.grupojoly.com/clip/379453f2-2837-4ebc-bc6a-babe8121bd04_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: El rincón del duende
 year: 2018
+modalidad: Comparsa
 musica: Nene Cheza
 letra: Nene Cheza
 img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8ug1QJSJgJ3kHgBJxrXPfJ4UJMyDZ23iKug3U8IWEQcJeTf22M8pRxGqJ01MN8Mvj2YWHXgB1llutmAlS4LclUDZwaHKkVBCmfnQ6wEafUvyqqjUzXf__eyLcTw-ENQIwH-6sVLoX71Gh/s400/rinconduende-coac-2018.jpg'

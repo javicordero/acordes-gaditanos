@@ -4,6 +4,7 @@ agrupacion: Los Inhumanos
 musica: Víctor Jurado
 letra: Víctor Jurado
 year: 2025
+modalidad: Chirigota
 img: https://static.grupojoly.com/clip/5ce80485-065b-404e-913d-04156e8db305_source-aspect-ratio_1600w_0.jpg
 cejilla: 0
 date: "25/11/2025"

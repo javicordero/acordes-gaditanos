@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Con lo bonito que era
 year: 2024
+modalidad: Comparsa
 musica: David Principito
 letra: David Principito
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/11012024-con%20lo%20bonito%20que%20era-213.jpg

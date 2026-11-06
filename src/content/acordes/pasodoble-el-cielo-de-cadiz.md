@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El Cielo de Cádiz
 year: 1998
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://static-1.ivoox.com/audios/5/0/5/3/4261525883505_XXL.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación Original
 agrupacion: Los Cobardes
 year: 2016
+modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2016/los-cobardes-5.jpg

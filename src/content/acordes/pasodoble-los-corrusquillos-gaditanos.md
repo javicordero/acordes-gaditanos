@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los corrusquillos gaditanos
 year: 1963
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 1

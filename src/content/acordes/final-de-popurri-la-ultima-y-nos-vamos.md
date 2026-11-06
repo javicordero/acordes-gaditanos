@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: La última y nos vamos
 year: 2024
+modalidad: Chirigota
 musica: El Bizcocho
 letra: El Bizcocho
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/30012024-la%20%C3%BAltima%20y%20nos%20vamos-026.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Volver a empezar
 year: 2010
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://static.grupojoly.com/clip/33bd782b-4c9b-403b-a5b0-14992e783047_source-aspect-ratio_1600w_0.jpg

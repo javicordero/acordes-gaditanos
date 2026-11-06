@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: No te quemes todavía
 year: 2018
+modalidad: Chirigota
 musica: Manolín Santander
 letra: El Bizcocho
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/361624e952ea374997de60e81.jpg

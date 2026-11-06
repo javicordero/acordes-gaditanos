@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: No me tires tiritos en el pecho
 year: 2019
+modalidad: Chirigota
 musica: Antoñito Molina
 letra: Antoñito Molina
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23538.jpg

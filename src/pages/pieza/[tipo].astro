@@ -1,0 +1,20 @@
+---
+import HubLista from '../../components/page/HubLista.astro';
+import { cargarHubs } from '../../lib/hubs-contenido';
+import { resumirHub } from '../../lib/hubs';
+
+export async function getStaticPaths() {
+  const { pieza } = await cargarHubs();
+  return pieza.map((hub) => ({
+    params: { tipo: hub.slug },
+    props: {
+      hub,
+      hermanos: pieza.filter((otro) => otro.slug !== hub.slug).map(resumirHub),
+    },
+  }));
+}
+
+const { hub, hermanos } = Astro.props;
+---
+
+<HubLista hub={hub} hermanos={hermanos} eje='pieza' />

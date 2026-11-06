@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los encaidenaos
 year: 2020
+modalidad: Comparsa
 musica: Kike Remolino
 letra: Kike Remolino
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2020/02/comparsa-los-encaidenaos.jpg

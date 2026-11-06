@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La maldición de la lapa negra
 year: 2019
+modalidad: Chirigota
 musica: Manolo Santander
 letra: Manolo Santander
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23489.jpg

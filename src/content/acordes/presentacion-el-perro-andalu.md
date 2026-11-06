@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: El perro andalú
 year: 2018
+modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm5v5lnn4VH5dyZNrKSYcGx8dlmvATZTcPFguluUIGwXnVapYG9qkmJM0&s=10

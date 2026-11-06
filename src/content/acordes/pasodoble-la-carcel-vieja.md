@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Cárcel Vieja
 year: 2004
+modalidad: Comparsa
 musica: El Noly
 letra: Joaquín Quiñones
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/402e97cb0f0953d27bf9a94cb.jpg

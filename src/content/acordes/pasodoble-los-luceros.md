@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los luceros
 year: 2019
+modalidad: Comparsa
 musica: El Noly
 letra: El Chapa
 img: https://static.grupojoly.com/clip/0aa6a594-a9ed-4fd2-824a-86339774f3f0_source-aspect-ratio_1600w_0.jpg

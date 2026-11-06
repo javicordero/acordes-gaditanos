@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Veteranos del Vietnam
 year: 2004
+modalidad: Chirigota
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEji2hviaY8iD9neKO5nZloSFtVz1DRYUguT5Z4hKH_jJSLZVSY_bJUh7Frm9ES28Fv_ncgO7tM9Hb5CsH5x1OzGvhaH6FKc6FXc4K6N9j5et2CVKFeiiVdqs5kPvB12tSxSlji7KzLUFgrZ/s300/Los-veteranos-del-Vietnam.jpg

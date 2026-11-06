@@ -2,6 +2,7 @@
 pieza: pasodoble
 agrupacion: Los Indiana Jones de lo callejones
 year: 2017
+modalidad: Chirigota
 musica: Kike Remolino
 letra: Kike Remolino
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/los-indiana-jones-de-los-callejones-4.JPG

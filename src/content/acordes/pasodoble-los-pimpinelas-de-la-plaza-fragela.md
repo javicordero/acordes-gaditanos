@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los pimpinelas de la Plaza Fragela
 year: 2025
+modalidad: Chirigota
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/01/25/pimpinela(1)-R8xn7JQhhdAIwfuMG8tskeJ-1200x840@abc.jpg
 cejilla: 5
 date: "25/11/2025"

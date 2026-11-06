@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los campaneros
 year: 2018
+modalidad: Comparsa
 musica: Kike Remolino
 letra: Kike Remolino
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/los-campaneros-3.jpg

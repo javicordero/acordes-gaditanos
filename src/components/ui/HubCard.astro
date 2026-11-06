@@ -1,0 +1,117 @@
+---
+interface Props {
+  nombre: string;
+  href: string;
+  meta: string;
+  kicker: string;
+  sufijoMinuscula?: boolean;
+  gaEvent?: string;
+  gaParams?: Record<string, unknown>;
+}
+
+const {
+  nombre,
+  href,
+  meta,
+  kicker,
+  sufijoMinuscula = false,
+  gaEvent,
+  gaParams,
+} = Astro.props;
+
+const nombreBase =
+  sufijoMinuscula && nombre.endsWith('s') ? nombre.slice(0, -1) : nombre;
+const nombreSufijo = sufijoMinuscula && nombre.endsWith('s') ? 's' : '';
+---
+
+<a
+  class='hub-card'
+  href={href}
+  data-ga-event={gaEvent}
+  data-ga-params={gaParams ? JSON.stringify(gaParams) : undefined}
+>
+  <span class='hub-card-kicker'>{kicker}</span>
+  <span class='hub-card-title'
+    >{nombreBase}{nombreSufijo && <span class='hub-card-s'>{nombreSufijo}</span>}</span
+  >
+  <span class='hub-card-meta'>{meta}</span>
+</a>
+
+<style>
+  .hub-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    height: 100%;
+    min-width: 0;
+    padding: 8px 10px;
+    background-color: var(--primary-contrast-color);
+    border: 2px solid var(--on-bright-color);
+    box-shadow: 6px 6px 0 0 var(--hub-card-shadow, var(--on-bright-color));
+    color: var(--on-bright-color);
+    text-decoration: none;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0 0 var(--hub-card-shadow, var(--on-bright-color));
+    }
+
+    &:focus-visible {
+      outline: 3px solid var(--on-bright-color);
+      outline-offset: 3px;
+    }
+  }
+
+  .hub-card-kicker {
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .hub-card-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+
+  .hub-card-meta {
+    margin-top: auto;
+    padding-top: 3px;
+    border-top: 2px solid var(--on-bright-color);
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .hub-card-s {
+    text-transform: lowercase;
+  }
+
+  @media (max-width: 640px) {
+    .hub-card {
+      padding: 8px;
+      box-shadow: 4px 4px 0 0 var(--hub-card-shadow, var(--on-bright-color));
+
+      &:hover,
+      &:focus-visible {
+        transform: none;
+        box-shadow: 4px 4px 0 0 var(--hub-card-shadow, var(--on-bright-color));
+      }
+    }
+
+    .hub-card-title {
+      font-size: 0.9rem;
+    }
+  }
+</style>

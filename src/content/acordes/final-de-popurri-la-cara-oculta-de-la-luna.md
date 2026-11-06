@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: La cara oculta de la luna
 year: 2018
+modalidad: Comparsa
 musica: Juan Manuel Romero Bey
 letra: Juan Manuel Romero Bey
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/01/cara-oculta-luna-coac-2018.jpg

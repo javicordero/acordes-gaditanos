@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Pajeros
 year: 1960
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 5

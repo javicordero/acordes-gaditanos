@@ -2,6 +2,7 @@
 pieza: Popurrí
 agrupacion: Juana la loca
 year: 2011
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1298012614-juana.jpeg

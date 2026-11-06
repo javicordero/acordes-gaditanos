@@ -2,6 +2,7 @@
 pieza: Cuarteta "Turbulencias cuidado timonel"
 agrupacion: Los Colgaos
 year: 2024
+modalidad: Comparsa
 img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/07/colgaos-ReVEYnWZmk0pH97vfq71eOK-1200x840@abc.jpg
 cejilla: 0
 date: "09/11/2026"

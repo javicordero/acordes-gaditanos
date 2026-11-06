@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La niña del viento
 year: 2018
+modalidad: Comparsa
 musica: Faly Pastrana
 letra: Faly Pastrana
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/01/nina-viento-preliminares-coac.jpg

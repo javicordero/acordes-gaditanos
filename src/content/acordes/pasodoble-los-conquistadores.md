@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los conquistadores
 year: 2022
+modalidad: Comparsa
 musica: Germán Rendón
 letra: Germán Rendón
 img: https://s3.abcstatics.com/media/MM/2022/06/02/v/conquistadores-semis(9)_xoptimizadax.jpg

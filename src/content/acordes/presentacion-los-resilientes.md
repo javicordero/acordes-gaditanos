@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Resilientes
 year: 2020
+modalidad: Comparsa
 musica: Germán García Rendón
 letra: Germán García Rendón
 img: https://www.codigocarnaval.com/wp-content/uploads/2019/10/comparsa-los-resilientes.jpg.webp

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los del bocho
 year: 1955
+modalidad: Chirigota
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 5

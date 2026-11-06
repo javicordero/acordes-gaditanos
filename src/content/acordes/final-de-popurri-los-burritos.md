@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Los Burritos
 year: 2020
+modalidad: Chirigota
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://static.grupojoly.com/clip/59458108-2ac2-4bb6-9bff-3e7230b738c2_source-aspect-ratio_1600w_0.jpg

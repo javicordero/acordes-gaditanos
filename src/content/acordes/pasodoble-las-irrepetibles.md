@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Las irrepetibles
 year: 2018
+modalidad: Comparsa
 musica: David Castro
 letra: David Castro
 img: https://imagenes.cope.es/files/microformat_image/uploads/2024/07/12/66912c089573e.jpeg

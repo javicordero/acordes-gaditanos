@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Que caló
 year: 2018
+modalidad: Chirigota
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2019/05/que-calo-chirigota-canijo.jpg'

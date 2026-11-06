@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Okupas de la luna
 year: 2021
+modalidad: Comparsa
 musica: El Tomate
 letra: El Piru
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/7f9c1fb34bcd6a33fff6562df.jpg

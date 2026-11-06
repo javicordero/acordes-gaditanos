@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La Peleona
 year: 2015
+modalidad: Comparsa
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://www.portaldecadiz.com/images/igallery/resized/15301-15400/reportaje_02-15352-1200-1200-80-wm-center_bottom-100-portaldecadizpng.jpg

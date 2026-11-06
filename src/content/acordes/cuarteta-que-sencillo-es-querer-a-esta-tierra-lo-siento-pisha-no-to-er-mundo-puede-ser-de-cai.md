@@ -2,6 +2,7 @@
 pieza: cuarteta "Que sencillo es querer a esta tierra"
 agrupacion: Lo siento pisha, No to er mundo puede ser de Cai
 year: 2013
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://static.grupojoly.com/clip/54bc7a40-0877-4180-9401-89a3f06377dd_source-aspect-ratio_1600w_0.jpg

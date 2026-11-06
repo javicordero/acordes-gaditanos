@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Beduinos
 year: 1966
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/09/los-beduinos-comparsa-paco-alba.jpg?w=640

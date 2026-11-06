@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La escuela de carnaval
 year: 2008
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXWj4TZJnDqwwdwuY-8pATVgijk0pOCzXM2JgeJ18TTwnZWcwHMKbGlAnT9dprW_aRyjw8N4IiebLCQy5HEtXeVcJi7p2h4gBTPYVNMh5cPXG8rOeopW40u5DvIwXB_kjyHlX-pykEwXJL/s400/La_escuela_de_Carnaval_1.jpg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La mare que me parió
 year: 2009
+modalidad: Comparsa
 musica: Antonio Martín
 letra: Antonio Martín
 img: https://static.grupojoly.com/clip/85ff7885-182d-4c1c-b4e9-fea72f5d0140_source-aspect-ratio_1600w_0.jpg

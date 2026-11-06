@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Cuando tu vas yo vengo
 year: 2025
+modalidad: Chirigota
 musica: Carlitos Pérez
 letra: Carlitos Pérez
 img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2025/01/24/01CUANDOTVASYOVENGO-GABINETEDEPRENSADELAYUNTAMIENTODECDIZ-FotoReyna-3-RRMNL0ggkOUn22ydR0YAS9O-1200x840@abc.jpg

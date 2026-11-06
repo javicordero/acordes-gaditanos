@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los carnívales
 year: 2019
+modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://static.grupojoly.com/clip/6bd76fc7-e277-4ac1-921f-3fda1defb858_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Comparsa Los Calaíta (Fuimos a por tabaco) una chirigota de toda la vida...
 year: 2025
+modalidad: Comparsa
 musica: El Peluca
 letra: El Peluca
 img: https://static.grupojoly.com/clip/37c06769-030e-4ccd-b2fe-f32112158b24_source-aspect-ratio_1600w_0.jpg

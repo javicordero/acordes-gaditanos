@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La atlántida
 year: 2005
+modalidad: Comparsa
 musica: El Noly
 letra: Joaquín Quiñones
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgIJ0A9SO-9iD74U0sypcJiWN9Ha9cgFn1SzhQPb8A_1s7feDE6q7yiQtscPO7GOhul5Ry0sB3vORWFvOsVCraxluopW9FhL1oGEHrJKE2eFMSrFMi5gV8ZGtE61dvag0_c6ICvU7Cs7yCW/s400/la+atlantida.jpg

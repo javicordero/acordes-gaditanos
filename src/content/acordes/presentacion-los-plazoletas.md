@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los plazoletas
 year: 2007
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/179d99eee95c4590f3ae38520.jpg

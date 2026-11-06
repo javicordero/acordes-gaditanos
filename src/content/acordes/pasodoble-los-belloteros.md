@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Belloteros
 year: 1975
+modalidad: Chirigota
 musica: Paco Alba
 letra: Paco Alba
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaWVByllOH3k7dmyNB5cJGEE300r654jjl9Dds3a04ivvZ1S-m1r_ek-a1gRLJAEbZfyKeWNjJ77CECldrRR6-xyVNeXxAxvepjI4JSH8IJwroBzAAQ8W7hnSww6eLOJVDd-jZyjchuNQ3/s320/hqdefault.jpg

@@ -2,6 +2,7 @@
 pieza: Cuarteta "La dama inmortal"
 agrupacion: Los Sumisos
 year: 2022
+modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/18052022-los-sumisos-160-scaled.jpg

@@ -2,6 +2,7 @@
 pieza: presentación
 agrupacion: OBDC! La última flor
 year: 2017
+modalidad: Comparsa
 musica: German Rendón
 letra: German Rendón
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/OBDClaultimaflor-1.jpeg

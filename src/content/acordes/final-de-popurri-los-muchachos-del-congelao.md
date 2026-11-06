@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Los Muchachos del congelao
 year: 2025
+modalidad: Chirigota
 musica: Raúl Cabrera
 letra: El Canijo
 img: https://www.portaldecadiz.com/images/igallery/resized/los-muchachos-del-congelao-3542/07-chirigota-los-muchachos-del-congelao---gabinete-de-prensa-del-ayuntamiento-de-cadiz---foto-reyna-cuarto-final-11-1200-1200-80-wm-center_bottom-100-portaldecadizpng.jpg

@@ -2,6 +2,7 @@
 pieza: Cuarteta "Tú, mi trenecito"
 agrupacion: de el Ángel de Cádiz
 year: 2017
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/el-angel-de-cadiz-semifinales.jpeg

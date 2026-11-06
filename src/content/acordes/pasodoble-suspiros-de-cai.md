@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Suspiros de Cai
 year: 1992
+modalidad: Comparsa
 musica: Pepito Martínez
 letra: Joaquin Quiñones
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/dd6af8e6d80356b90e6e0079e.jpg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Neptuno, ten cuidaito con los trasmallos
 year: 1988
+modalidad: Chirigota
 musica: El Noly
 letra: Joaquín Sánchez Alba
 cejilla: 0

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los polvos egipcios
 year: 2016
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/polvosegipcios-comparsa-vera.jpeg'

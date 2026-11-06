@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Dios salve a la reina
 year: 2018
+modalidad: Comparsa
 musica: Juan Fernández
 letra: Juan Fernández
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCRauGYJch1xPZ__5cnIoadt13xrsapzJyUaMaICwdMWDbvBQYpB5ksCwt5QdihnTRe1AXdgGTe7jIHlIGfzoGvC022NKln-DRlLeZu3Q4Kxnwd9B8rGrZEmq2CPv6yVDuf1uebTJVkwNC/s400/dios+salve+a+la+reina.jpg

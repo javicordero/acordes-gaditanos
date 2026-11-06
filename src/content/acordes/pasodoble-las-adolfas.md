@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Las Adolfas
 year: 2024
+modalidad: Comparsa
 musica: Mar Muñoz
 letra: Mar Muñoz
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEje7aPmnSOZyltO8nFXrl8G4H9c32FCp7MYsjrgBuqoI3YAZtZOuIF8eYpPavl6B0IHfE-XcFHzgrqSFCZk4VXZWtgVMlxKzSFPnEddgx01ePByWs2kHomxT5PicHpHWfD2M-ba6FAh2UHcMuDKASm3z3MaSpU1ck1SuLihSuYY4hhnG8PCf3Nu7iWFeyFo/s320/GInv9TbXcAAMNr6.jpg

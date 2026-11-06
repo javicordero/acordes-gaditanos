@@ -1,0 +1,330 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from './Breadcrumb.astro';
+import Banner320X50 from '../ads/Banner320x50.astro';
+import Banner468X60 from '../ads/Banner468x60.astro';
+import { contarCoplas, textoRecuento } from '../../lib/letras';
+import { baseDeEje, etiquetaEje, type Eje, type Hub, type HubResumen } from '../../lib/hubs';
+
+interface Props {
+  hub: Hub<any>;
+  hermanos: HubResumen[];
+  eje: Eje;
+}
+
+const { hub, hermanos, eje } = Astro.props;
+
+const h1 = eje === 'decada' ? `Coplas de ${hub.nombre}` : hub.nombre;
+const h1Base = eje === 'decada' && h1.endsWith('s') ? h1.slice(0, -1) : h1;
+const h1Sufijo = eje === 'decada' && h1.endsWith('s') ? 's' : '';
+const recuentoHub = contarCoplas(hub.fichas);
+const capitalize = (text: string) => (text ? text.charAt(0).toUpperCase() + text.slice(1) : text);
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: hub.nombre,
+  numberOfItems: hub.total,
+  itemListElement: hub.fichas.map((ficha, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${ficha.data.pieza} - ${ficha.data.agrupacion}${
+      ficha.data.letraTitulo ? ` "${ficha.data.letraTitulo}"` : ''
+    }`,
+    item: `${Astro.site}acordes/${ficha.slug}`,
+  })),
+};
+---
+
+<Layout title={hub.titulo} description={hub.descripcion}>
+  <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
+  <Breadcrumb current={hub.nombre} currentSufijoMinuscula={eje === 'decada'} />
+  <div class='main-container'>
+    <section>
+      <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
+      <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
+
+      <article class='container-layout inner-content hub'>
+        <header>
+          <h1>{h1Base}{h1Sufijo && <span class='minuscula'>{h1Sufijo}</span>}</h1>
+          <p class='subtitle'>
+            En total, <strong class='subtitle-count'>{recuentoHub.coplas}</strong>{' '}
+            {recuentoHub.coplas === 1 ? 'copla' : 'coplas'}{recuentoHub.letras > 0 && (
+              <>
+                {' y '}
+                <strong class='subtitle-count'>{recuentoHub.letras}</strong>
+                {recuentoHub.letras === 1 ? ' letra extra' : ' letras extras'}
+              </>
+            )}{' de '}
+            <strong class='subtitle-count'>{hub.agrupaciones}</strong>
+            {hub.agrupaciones === 1 ? ' agrupación.' : ' agrupaciones.'}
+          </p>
+        </header>
+
+        <nav class='hub-hermanos' aria-label={`Más ${etiquetaEje(eje)}`}>
+          <h2>Explora también</h2>
+          <ul>
+            {
+              hermanos.map((hermano) => (
+                <li>
+                  <a href={`${baseDeEje(eje)}/${hermano.slug}`}>
+                    {hermano.nombre} <span>({hermano.total})</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        {
+          hub.porAnio.map(({ year, fichas }) => (
+            <section class='year-group' aria-labelledby={`year-${year}`}>
+              <h2 id={`year-${year}`}>
+                <span class='year-label'>{year}</span>{' '}
+                <span class='year-count'>({textoRecuento(contarCoplas(fichas))})</span>
+              </h2>
+              <ul class='copla-list'>
+                {fichas.map((ficha) => {
+                  const tituloPieza = ficha.data.pieza.match(/["“](.+?)["”]/)?.[1];
+                  const etiquetaPieza = eje === 'pieza'
+                    ? (tituloPieza ? `"${tituloPieza}"` : null)
+                    : capitalize(ficha.data.pieza);
+                  return (
+                    <li>
+                      <a href={`/acordes/${ficha.slug}`}>
+                        {etiquetaPieza && (
+                          <>
+                            <span class='pieza'>{etiquetaPieza}</span>{' '}
+                          </>
+                        )}
+                        <span class='agrupacion'>{ficha.data.agrupacion}</span>
+                        {ficha.data.letraTitulo ? ` "${ficha.data.letraTitulo}"` : ''}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          ))
+        }
+      </article>
+
+      <Banner320X50 adKey='dfd3df20af74dd22bc5fae2ddf874fa4' />
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inner-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--main-container-gap);
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-padding);
+
+    & h1 {
+      position: relative;
+      color: var(--primary-color);
+      font-size: 2rem;
+      font-family: 'Roboto Mono', monospace;
+      letter-spacing: 1px;
+      font-weight: 800;
+      text-transform: uppercase;
+      max-width: fit-content;
+      margin: 0;
+
+      & .minuscula {
+        text-transform: lowercase;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 95%;
+        height: 6px;
+        background: var(--primary-contrast-color);
+      }
+    }
+
+    & .subtitle {
+      color: var(--text-secondary-color, var(--text-color));
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 780px;
+    }
+
+    & .subtitle-count {
+      color: var(--on-bright-color);
+      background: var(--primary-contrast-color);
+      border: 2px solid var(--on-bright-color);
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      padding: 1px 8px;
+    }
+  }
+
+  .hub-hermanos {
+    margin: 0 6px 6px 0;
+    padding: 16px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+
+    & h2 {
+      margin: 0 0 10px;
+      color: var(--primary-color);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    & ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    & a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 600;
+
+      & span {
+        color: var(--text-secondary-color, var(--text-color));
+        font-weight: 400;
+      }
+
+      &:hover {
+        color: var(--link-hover-color);
+      }
+    }
+  }
+
+  .year-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 2px solid var(--primary-color);
+
+    & h2 {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      max-width: fit-content;
+      margin: 0;
+
+      & .year-label {
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: -6px;
+          width: 95%;
+          height: 6px;
+          background: var(--primary-contrast-color);
+        }
+      }
+
+      & .year-count {
+        color: var(--text-secondary-color, var(--text-color));
+        font-size: 0.65em;
+        font-weight: 400;
+        text-transform: none;
+      }
+    }
+  }
+
+  .copla-list {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    & li {
+      position: relative;
+      padding-left: 18px;
+      line-height: 1.5;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 2px;
+        top: 0.55em;
+        width: 6px;
+        height: 6px;
+        background: var(--primary-contrast-color);
+        border: 1px solid var(--primary-color);
+      }
+    }
+
+    & a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .main-container,
+    .inner-content {
+      gap: var(--main-container-gap-sm);
+    }
+
+    header {
+      gap: var(--card-padding-sm);
+
+      & h1 {
+        font-size: 1.6rem;
+      }
+
+      & .subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    .hub-hermanos {
+      padding: var(--card-padding-sm);
+    }
+
+    .year-group h2 {
+      font-size: 1.4rem;
+
+      & .year-label::after {
+        height: 4px;
+        bottom: -2px;
+      }
+    }
+  }
+</style>

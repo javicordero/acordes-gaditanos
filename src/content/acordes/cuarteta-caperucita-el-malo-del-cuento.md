@@ -2,6 +2,7 @@
 pieza: Cuarteta "Caperucita"
 agrupacion: El Malo del cuento
 year: 2016
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/malocuento-comparsa-jona.jpeg

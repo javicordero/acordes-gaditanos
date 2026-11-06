@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Perfumistas
 year: 2008
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://static.grupojoly.com/clip/3c35bcd0-f5ba-4b83-97b8-22504ce7ccfb_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Pa religión, la mía
 year: 2017
+modalidad: Chirigota
 musica: Lolo Molina
 letra: Lolo Molina
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/chirigota-pa-religion-la-mia(5).jpeg

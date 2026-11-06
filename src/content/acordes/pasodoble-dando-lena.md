@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Dando Leña
 year: 1997
+modalidad: Comparsa
 musica: Pepito Martínez
 letra: Joaquín Quiñones
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifH3VbqYxkGvlTkaFlTimWnKtoJnoJiVLtMxK_fi7RmFRm4wPt9nukZKwc1H-ybVSSr44hz2I7NeXVj5bIaHGq2VoqwtXZKLtFXTsmXyN-TJJKSRro3D2vNsqdVnDB8_G15EkXTWzfs-88/s320/dandole%25C3%25B1a.jpg

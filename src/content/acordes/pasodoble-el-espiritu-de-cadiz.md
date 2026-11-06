@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El espíritu de Cádiz
 year: 2005
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: 'https://i.ytimg.com/vi/_npa5hu-etc/maxresdefault.jpg'

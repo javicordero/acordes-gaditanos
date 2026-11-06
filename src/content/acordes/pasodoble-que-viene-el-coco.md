@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Que viene el coco
 year: 1985
+modalidad: Chirigota
 musica: El Noly
 letra: Joaquín Sánchez Alba
 img: 'https://i.ytimg.com/vi/NPUqh7660RY/maxresdefault.jpg'

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Guadalupe
 year: 2003
+modalidad: Comparsa
 musica: Luis Rivero
 letra: Luis Rivero
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHsvUW3JPkx_d8Sd_t1nAv6HSPtuzmzZks0nDHblMzWaKcaBozzRdX_u4vLGcdMR3dNGZusHngSYFXb48hmkXNx2TGTydBR26XEJPNF48YULP__0kOJX44oojpbQAo21IifkFCrB07C624/s320/Guadalupe.jpg

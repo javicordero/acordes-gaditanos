@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Chirigota clásica
 year: 2024
+modalidad: Chirigota
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://s2.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/23/23012024-lachirigotaclsica-057-U70864718313UmQ-1200x840@abc.jpg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El cantón independiente (Que vivan las mujeres de Cádiz)
 year: 2023
+modalidad: Comparsa
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/15022023-el-canton-independiente-033-scaled.jpg

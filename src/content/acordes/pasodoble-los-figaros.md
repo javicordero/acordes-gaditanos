@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Fígaros
 year: 1964
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 cejilla: 6

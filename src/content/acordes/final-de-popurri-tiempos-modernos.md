@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Tiempos modernos
 year: 2018
+modalidad: Coro
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/02/coro-tiempos-modernos-coac2018.jpg
 cejilla: 0
 date: "25/11/2025"

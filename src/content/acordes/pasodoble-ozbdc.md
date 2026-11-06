@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: OzBDC
 year: 2019
+modalidad: Comparsa
 musica: Germán Rendón
 letra: Germán Rendón
 img: https://static.grupojoly.com/clip/c13b10c0-2344-4d36-a257-02226633119d_source-aspect-ratio_1600w_0.jpg

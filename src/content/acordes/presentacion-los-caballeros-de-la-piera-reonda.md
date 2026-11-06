@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los caballeros de la piera reonda
 year: 2010
+modalidad: Comparsa
 musica: Antonio Martín
 letra: Antonio Martín
 img: https://static.grupojoly.com/clip/2b525acb-0121-4011-a948-2b4eed3023e5_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Er chele vara
 year: 2019
+modalidad: Chirigota
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/er-chele-vara-2.jpg

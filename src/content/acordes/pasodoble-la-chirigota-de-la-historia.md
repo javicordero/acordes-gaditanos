@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La chirigota de la historia
 year: 2013
+modalidad: Chirigota
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2013/la-chirigota-de-la-historia-7.jpg

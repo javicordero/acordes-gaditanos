@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: No tenemos el congo pa farolillos
 year: 2018
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: https://static.grupojoly.com/clip/7dcd67b2-54c0-4fac-bb46-acab3447c8b9_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La banda del capitán veneno
 year: 2008
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: 'https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg'

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Luceros
 year: 2019
+modalidad: Comparsa
 musica: José Manuel Aranda
 letra: El Chapa
 img: https://static.grupojoly.com/clip/0aa6a594-a9ed-4fd2-824a-86339774f3f0_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Las de la alegre figura
 year: 2013
+modalidad: Comparsa
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2013/las-de-la-alegre-figura-4.jpg

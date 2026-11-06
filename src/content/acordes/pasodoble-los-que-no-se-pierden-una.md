@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los que no se pierden una
 year: 2019
+modalidad: Chirigota
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://static.grupojoly.com/clip/55ebe345-f4c3-44e2-ac53-a603bea7954a_source-aspect-ratio_1600w_0.jpg

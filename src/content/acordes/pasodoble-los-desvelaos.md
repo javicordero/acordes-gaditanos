@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los desvelaos
 year: 2018
+modalidad: Comparsa
 musica: Fran Quintana
 letra: Fran Quintana
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/los-desvelaos-5.jpg

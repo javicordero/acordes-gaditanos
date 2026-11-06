@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Lasssss Envenenásssss
 year: 2019
+modalidad: Comparsa
 musica: Juanma Romero Bey
 letra: Juanma Romero Bey
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23480.jpg

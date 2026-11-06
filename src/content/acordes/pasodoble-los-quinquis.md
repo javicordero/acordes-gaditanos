@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Quinquis
 year: 2022
+modalidad: Comparsa
 musica: Vera Luque
 letra: Vera Luque
 img: 'https://static.grupojoly.com/clip/953049e1-32a2-40dc-ab4e-4517173e20ac_source-aspect-ratio_1600w_0.jpg'

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Veleros, una comparsa de toda la vida
 year: 2022
+modalidad: Comparsa
 musica: Nene Cheza
 letra: Nene Cheza
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/20052022-los-veleros-031-scaled.jpg

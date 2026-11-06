@@ -2,6 +2,7 @@
 pieza: Popurrí
 agrupacion: La Consentida
 year: 2024
+modalidad: Comparsa
 musica: David Castro
 letra: David Castro
 img: 'https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/19012024-la%20consentida-010.jpg'

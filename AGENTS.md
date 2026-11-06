@@ -3,6 +3,9 @@
 ## Idioma
 - Commits y mensajes: siempre en español
 
+## UI
+- **Nunca subrayar en hover**: el subrayado no se usa como efecto de hover. Los enlaces cambian de color, sombra o se desplazan; si ya van subrayados en reposo (por ejemplo, dentro de un párrafo legal), conservan su subrayado base.
+
 ## Sesiones
 - **Renombrar la pestaña al empezar**: en cuanto se sepa qué se va a hacer, poner a la sesión un título explícito y corto (3-6 palabras) con el renombrador de sesión, en vez de dejar el texto del primer mensaje ("siguiente tarea trello", "haz commit de esto"). Formato `<tema>: <qué se hace>` — `Trello: quitar Anuncio2 y Anuncio3`, `Letras: acordes de "Cinco años"`.
 - Si a mitad de la sesión el trabajo cambia de tema, se vuelve a renombrar con el encargo nuevo.
@@ -33,7 +36,7 @@ No hay scripts de test ni lint configurados.
 Sitio 100% estático (SSG) con Astro content collections. Middleware solo redirige `/formateadores` y `/coming-soon` → 404.
 
 ### Content Collections (`src/content/config.ts`)
-- **`acordes`** — más de 570 entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`, `modalidad` y `letraTitulo` (opcionales).
+- **`acordes`** — más de 570 entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`, `modalidad` y `letraTitulo` (opcionales). La `modalidad` está rellena en casi todas las fichas con `npm run modalidad`; las que falten quedan en `.cache/modalidad-dudas.csv`.
 - **`autores`** — 12 autores. Frontmatter: `nombre`, `img`, `type` (`musica`|`letra`), `order`, `destacado`.
 - **`donaciones`** — un solo `datos.md` con la lista de donantes (`donaciones: [{ fecha, importe, donante? }]`); la pinta `DonationIndicator.astro`.
 - **`acordes3`** — borradores del panel `/admin`: fichas nuevas o a medias que aún no se publican. Se promueven a `acordes` con `npm run promover`. Una ficha que solo existe en el ordenador (sin subir) vive aquí, no en `acordes`: el panel la lista con la marca LOCAL y `npm run letras -- auditar` la da por buena aunque no esté publicada.
@@ -151,6 +154,24 @@ Todo en `src/lib/orden.ts`, con dos comparadores que comparten las piezas (`comp
 
 **Filtros de `/lista`**: el panel filtra por pieza, música, letra, año y década **en el navegador**, sobre las coplas ya pintadas: no genera páginas ni URLs nuevas, la canonical sigue siendo `/lista` y el estado se guarda en la query (`?pieza=pasodoble,tango&musica=juan-carlos-aragon`) con `history.replaceState`. La lógica pura está en `src/lib/filtros-lista.ts` (décadas, opciones de cada faceta, `filtrarFicha`, `parsearFiltros`/`serializarFiltros`) y el panel lo pinta `FiltrosLista.astro` con un `FiltroMultiple.astro` por faceta, en ese orden: **se admiten varios valores por faceta** (OR dentro de una faceta, AND entre facetas). Cada filtro parece un `<select>` pero despliega un panel con **checkboxes** nativos (y caja de búsqueda en música y letra, que son las listas largas); no se cierra al marcar, se cierra con Escape, con el botón o pulsando fuera, y devuelve el foco al botón. El panel cuelga con `position: fixed` y `z-index` por encima de la cabecera fija (`9999`), se recoloca al hacer scroll o al abrirse el teclado del móvil, no se mete debajo de la cabecera y se limita al hueco disponible. Las opciones de pieza van en el orden presentación · pasodoble · tango · estribillo · cuarteta · final de popurrí · popurrí (distinto del orden de pieza de las cards, que empieza por el popurrí). El panel de filtros se pliega con una animación de altura (`grid-template-rows` de `0fr` a `1fr`, sin transición con `prefers-reduced-motion`; al plegarse el contenido queda `inert`) y el botón dice «Abrir filtros» / «Ocultar filtros». Los `<li>` de la página llevan los `data-*` que lee el script: `data-t` (tipo de pieza) para filtrar y `data-p` (pieza original) para recalcular coplas/letras con la misma regla que `contarCoplas`. Al filtrar, los años sin coplas se ocultan y los recuentos se actualizan. Las opciones de autor se agrupan por slug, muestran la variante de nombre más usada y van **ordenadas por número de coplas** (de más a menos, A-Z para desempatar). **Las facetas se recalculan entre sí**: al cambiar un filtro, las opciones de los demás se limitan a lo que sigue teniendo coplas (y sus recuentos se actualizan); el filtro que se recalcula se mira sin su propio valor, para poder marcar varios dentro de la misma faceta. Un valor ya marcado que se queda sin coplas sigue visible con 0, para poder quitarlo. `npm run auditar:filtros` comprueba el tipo de pieza, las décadas, las combinaciones, la URL y que los recuentos reparten las 611 fichas.
 
+### Hubs por modalidad, tipo de pieza y década
+Tres familias de páginas de navegación, todas públicas y en el sitemap:
+- `/modalidad/<slug>` — comparsas, chirigotas, coros, cuartetos (solo las que tienen fichas).
+- `/pieza/<slug>` — pasodobles, presentaciones, cuartetas, finales de popurrí, popurrís, tangos y estribillos.
+- `/decada/<slug>` — pre 60, los 60s…los 2020s.
+
+La lógica pura vive en `src/lib/hubs.ts`: `normalizarModalidad` (`Chrigota`→`chirigota`), `nombreDecada`/`slugDecada` (`90s` → «los 90s» / `anos-90`; `pre60` → «pre 60» / `pre-60`), `construirHubs` (agrupa y ordena con `ordenarAcordesYear`, descarta hubs vacíos) y `resumirHub` (para los enlaces cruzados sin arrastrar fichas). `src/lib/hubs-contenido.ts` (`cargarHubs`) carga `acordes` y `autores` y aplica la misma prioridad y recuento de coplas que `/carnaval` y `/lista`.
+
+`src/components/page/HubLista.astro` pinta la cabecera (H1 y recuento de coplas y agrupaciones), «Explora también» (un panel claro con los hermanos del mismo eje) y el listado compacto agrupado por año (texto, sin rejilla de imágenes). `src/components/ui/HubCard.astro` es la card de los índices, ámbar con borde negro y sombra dura, como las de autores. `src/components/page/HubsHome.astro` pinta el bloque «Explora el cancionero» de la home en tres subbloques, en este orden: «Por décadas» (las 8), «Por modalidad» (comparsas y chirigotas) y «Por pieza» (los 7). En la home van comparsas, chirigotas, las 7 piezas y las 8 décadas; coros sigue teniendo su página de hub (cuartetos aún no tiene fichas). Las tres páginas (`modalidad/[modalidad].astro`, `pieza/[tipo].astro`, `decada/[decada].astro`) usan `getStaticPaths` desde `cargarHubs`. Cada hub emite un `ItemList` y usa el `Breadcrumb` con `current`.
+
+Enlaces de entrada: el bloque `HubsHome` de la home (eventos `click_hub_<eje>_<slug>`, por ejemplo `click_hub_decada_anos_2020`, `click_hub_modalidad_comparsas` o `click_hub_pieza_pasodobles`; los guiones del slug pasan a `_` porque GA4 no los admite). El bloque «Todos los carnavales» de la home usa el fondo navy de autores (`section--colored section--carnavales`), con el título en blanco (`--years-list-heading-color`). El botón «Ver lista de todas las coplas» va al final del bloque «Explora el cancionero».
+
+Sitemap: entran solas (el `filter` de `astro.config.mjs` es una lista negra); no llevan `lastmod` (solo fichas, `/`, `/novedades/` y `/carnaval/<año>/`).
+
+`npm run auditar:hubs` comprueba con el cancionero real que los tres ejes reparten lo que toca (pieza y década 586 fichas, modalidad las que la tienen), que no hay hubs vacíos ni slugs repetidos, que el agrupado por año suma y que la normalización/slugs son estables.
+
+**Modalidad**: `npm run modalidad` (`scripts/completar-modalidad.mjs`) rellena la modalidad de las fichas que no la tienen. Fuentes en orden: la propia agrupación, el cancionero de guitarradegades (la tabla de cada ficha) y el título del vídeo de YouTube (oEmbed), más un mapa manual de revisión (hemeroteca/COAC). Por defecto no escribe: deja `.cache/modalidad-informe.md`, `.cache/modalidad-dudas.csv` y `.cache/modalidad-resolucion.csv`; con `--aplicar` escribe `modalidad:` (y corrige `Chrigota`). Opciones: `--sin-youtube`, `--sin-cancionero`, `--solo <texto>`, `--max-videos N`. Las fichas que no son modalidad COAC se quedan sin el campo (hoy «El Balsero», obra teatral, y «Kike Remolino 2021»). «Los Belloteros» (1975) se guarda como Chirigota: se inscribió como chirigota, aunque el jurado le dio el premio de comparsa.
+
 ### Postura predeterminada por acorde
 En el `<pre>` se puede fijar la postura con la que se abre un acorde con `data-postura`:
 ```html
@@ -170,6 +191,9 @@ La postura se escribe de la 6ª a la 1ª cuerda (`x` = muda) y debe coincidir ex
 | `/autores` | `pages/autores.astro` — listado de todos los autores (grid 2/1) |
 | `/agrupacion/[agrupacionSlug]` | `pages/agrupacion/[agrupacionSlug].astro` |
 | `/carnaval/[year]` | `pages/carnaval/[year].astro` |
+| `/modalidad/[modalidad]` | `pages/modalidad/[modalidad].astro` — coplas de una modalidad |
+| `/pieza/[tipo]` | `pages/pieza/[tipo].astro` — coplas de un tipo de pieza |
+| `/decada/[decada]` | `pages/decada/[decada].astro` — coplas de una década |
 | `/buscar` | `pages/buscar.astro` (búsqueda cliente con datos serializados) |
 | `/glosario` | `pages/glosario.astro` — glosario de acordes con diagramas y buscador |
 | `/glosario/[acorde]` | `pages/glosario/[acorde].astro` — página de un acorde (digitación, notas, coplas y relacionados) |
@@ -304,6 +328,7 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 - Eventos del reconocedor: `reconocer_acorde` (parámetros `acorde`, `exacto` y `postura`), `click_glosario_desde_reconocer` (`acorde` y `slug`), `limpiar_mastil`, `click_ejemplo_reconocer` (`acorde`) y los enlaces de entrada `click_reconocer_acorde_glosario`, `click_reconocer_acorde_pagina`, `click_reconocer_acorde_ficha` y `click_reconocer_acorde_footer` (un evento por sitio, sin `ubicacion`).
 - Eventos del transportador: `transpose_acorde` (parámetros `direccion` y `semitonos`).
 - Eventos de "ver más" de la home: `ver_mas_novedades_click` y `ver_mas_autores_click` (parámetros `link_type` y `location`).
+- Eventos de los hubs de la home: uno por card, `click_hub_<eje>_<slug>` (`click_hub_decada_anos_2020`, `click_hub_pieza_pasodobles`…), con los guiones del slug cambiados por `_` porque GA4 no los admite; parámetros `hub` (slug exacto, con guiones) y `ubicacion`.
 - Eventos de las cards de autor: `click_autor_card`, `click_autor_card_musicas` y `click_autor_card_letras` (parámetros `autor` y `ubicacion`).
 - Eventos de los canales de avisos: `click_canal_home`, `click_canal_pedir_copla` y `click_canal_suscribirse` (parámetros `canal` y `ubicacion`), más `click_canal_info_pedir_copla` para el enlace a `/suscribirse`. Un evento por página para verlo directo en GA4.
 - Eventos de los filtros de `/lista`: `filtrar_lista` (parámetros `faceta`, `valor`, `marcado` y `total`, las coplas que quedan), `limpiar_filtros_lista` (parámetros `alcance` —`uno` o `todos`— y `faceta`), `abrir_filtros` (parámetro `filtros`, cuántos había puestos al desplegar) y `buscar_en_filtro` (parámetros `faceta`, `consulta` truncada a 40 caracteres y `resultados`, con 600 ms de espera desde la última tecla).

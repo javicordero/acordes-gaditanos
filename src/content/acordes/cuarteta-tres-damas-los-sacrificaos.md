@@ -2,6 +2,7 @@
 pieza: Cuarteta "Tres damas"
 agrupacion: Los Sacrificaos
 year: 2024
+modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
 img: https://d3cyidimctrlqs.cloudfront.net/articulos/articulos-209080.jpg

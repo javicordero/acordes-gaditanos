@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Una excusa divina
 year: 2023
+modalidad: Comparsa
 musica: Juan Fernández
 letra: Juan Fernández
 img: https://elrincondelcarnaval.com/wp-content/uploads/2023/01/29012023-una-excusa-divina-037-scaled.jpg

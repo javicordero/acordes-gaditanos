@@ -2,6 +2,7 @@
 pieza: Popurrí
 agrupacion: Los Condenaos
 year: 2001
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/ff36867c8530075d1cca1842c.jpg

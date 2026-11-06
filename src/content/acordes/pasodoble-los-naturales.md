@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Naturales
 year: 2010
+modalidad: Chirigota
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn30TWTbjXCDUGQ_jDMo9-jFXwvB27D5Hbr4L9GHhyphenhyphenMVeOvOBxACelMdsieOfMk5LlHkJPv2Fw03U6i7BGtDh_ik51AjePAB0YzPsW5g1tYxnSilnEBtzJmpj4Fa1VSV0kFPXwkaO_dOUn/s1200/Chirigota-natural.jpg

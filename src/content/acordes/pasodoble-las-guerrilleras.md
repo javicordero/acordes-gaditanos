@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Las guerrilleras
 year: 2018
+modalidad: Comparsa
 musica: Borja Romero
 letra: Borja Romero
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22916.jpg

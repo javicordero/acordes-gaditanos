@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Gadiritas
 year: 2015
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/gadiritas-1024x682.jpeg

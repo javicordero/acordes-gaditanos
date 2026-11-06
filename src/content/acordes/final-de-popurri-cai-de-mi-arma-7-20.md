@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Cai de mi arma (7,20)
 year: 2018
+modalidad: Chirigota
 musica: Kike Remolino
 letra: Kike Remolino
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2018/22876.jpg

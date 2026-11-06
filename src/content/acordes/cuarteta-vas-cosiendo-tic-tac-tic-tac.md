@@ -2,6 +2,7 @@
 pieza: Cuarteta "Vas cosiendo"
 agrupacion: Tic-Tac, Tic-Tac
 year: 2018
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: https://static.grupojoly.com/clip/6ca3887e-7d65-4897-9471-989aed0efa36_source-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El mercado de las maravillas
 year: 2008
+modalidad: Comparsa
 musica: El Noly
 letra: Joaquín Quiñones
 img: https://static.grupojoly.com/clip/78243340-a687-4510-8491-e91cecb48c13_source-aspect-ratio_1600w_0.jpg

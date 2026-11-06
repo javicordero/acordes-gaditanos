@@ -45,7 +45,7 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
 
   header h2 {
     position: relative;
-    color: var(--primary-color);
+    color: var(--years-list-heading-color, var(--primary-color));
     font-size: 1.6rem;
     font-family: 'Roboto Mono', monospace;
     font-weight: 700;
@@ -105,14 +105,8 @@ const { years, heading = 'Todos los carnavales', headingId = 'years-list-title' 
 
   li:hover,
   li:focus-within {
-    background: var(--surface-color);
     transform: translate(-3px, -3px);
-    box-shadow: 7px 7px 0 0 var(--primary-contrast-color);
-  }
-
-  li:hover a,
-  li:focus-within a {
-    color: var(--primary-contrast-color);
+    box-shadow: 7px 7px 0 0 var(--primary-color);
   }
 
   @media (max-width: 640px) {

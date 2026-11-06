@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Hombres del mar
 year: 1965
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/07/1965-los-hombres-del-mar-3.jpg

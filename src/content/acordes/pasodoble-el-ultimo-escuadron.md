@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: El último escuadrón
 year: 2008
+modalidad: Comparsa
 musica: Nene Cheza
 letra: El Chapa
 img: https://static.grupojoly.com/clip/d9e17efa-8600-4832-8cfd-2d08a38af4f3_source-aspect-ratio_1600w_0.jpg

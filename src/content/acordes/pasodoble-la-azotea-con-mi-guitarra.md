@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Azotea
 year: 2017
+modalidad: Comparsa
 letraTitulo: Con mi guitarra
 musica: David Carapapa, Javier Carapapa
 letra: David Carapapa, Javier Carapapa

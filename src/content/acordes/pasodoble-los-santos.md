@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Santos
 year: 2010
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: 'https://static.grupojoly.com/clip/06245f8e-5957-4264-8fac-7798e211dd56_source-aspect-ratio_1600w_0.jpg'

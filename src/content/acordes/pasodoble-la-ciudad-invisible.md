@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La ciudad invisible
 year: 2023
+modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 img: https://i.ytimg.com/vi/tpI4FrOW2JM/maxresdefault.jpg

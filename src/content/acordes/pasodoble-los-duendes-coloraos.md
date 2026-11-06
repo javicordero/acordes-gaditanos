@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los duende coloraos
 year: 2012
+modalidad: Comparsa
 musica: David Carapapa, Javier Carapapa
 letra: David Carapapa, Javier Carapapa
 img: https://static.grupojoly.com/clip/5cdba07f-98b5-477b-90a2-29c3e36ee778_source-aspect-ratio_1600w_0.jpg

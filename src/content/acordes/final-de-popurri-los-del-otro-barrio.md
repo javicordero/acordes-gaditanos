@@ -2,6 +2,7 @@
 pieza: Final de Popurrí
 agrupacion: Los del otro barrio
 year: 2025
+modalidad: Comparsa
 musica: El Tomate
 letra: El Piru
 img: https://www.cope.es/files/og_thumbnail/uploads/2025/02/20/67b67cf778770.jpeg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Colaores, una comparsa de toda la vida
 year: 2023
+modalidad: Comparsa
 musica: Nene Cheza
 letra: Nene Cheza
 img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/16022023-los-colaores-010-scaled.jpg

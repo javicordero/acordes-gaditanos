@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Con gancho
 year: 1987
+modalidad: Comparsa
 musica: Aurelio del Real
 letra: Aurelio del Real
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgT2bIoRkpoBMcZBGOLoxiK0XhohOxmAbhsAlfTbwVE36Ww3OUvLZrkMGsmAgdn3o5sklNY0ZpwyIdF5Lo0MKIWvKgGwSx8kGd8Rl1xBlYyiW4t_wDiA8gLlSNcdImwpprLgSgdNrIW36aD/s320/Con+gancho+87.jpg

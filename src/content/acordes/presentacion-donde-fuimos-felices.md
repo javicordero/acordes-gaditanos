@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Donde fuimos felices
 year: 2024
+modalidad: Comparsa
 musica: Germán Rendón
 letra: Germán Rendón
 img: https://s3.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/23/23012024-dondefuimosfelices-106-RNkueAi4etG8jAUFgXCoNHI-1200x840@abc.jpg

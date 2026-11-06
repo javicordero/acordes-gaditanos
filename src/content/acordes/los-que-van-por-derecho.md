@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los que van por derecho
 year: 2010
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: https://static.grupojoly.com/clip/28f78742-76c5-4827-9a08-2c3b99e251b5_source-aspect-ratio_1600w_0.jpg

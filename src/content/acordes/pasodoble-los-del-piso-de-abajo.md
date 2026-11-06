@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los del piso de abajo
 year: 2013
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/VL_LOSDELPISODEABAJO02.jpeg

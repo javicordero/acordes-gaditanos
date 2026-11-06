@@ -2,6 +2,7 @@
 pieza: Final de popurri
 agrupacion: Los antesdeayesterday
 year: 2011
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 cejilla: 1

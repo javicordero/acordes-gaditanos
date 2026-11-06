@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los que salieron perdiendo
 year: 2024
+modalidad: Chirigota
 musica: Carlitos Pérez
 letra: Carlitos Pérez
 img: https://www.diariobahiadecadiz.com/wp-content/uploads/2024/01/0prelis16losquesalieronperdiendo-porti.jpg

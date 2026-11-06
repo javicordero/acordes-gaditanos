@@ -2,6 +2,7 @@
 pieza: Tango
 agrupacion: Los Martínez
 year: 2023
+modalidad: Coro
 musica: Julio Pardo
 letra: Julio Pardo
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2023/14022023-los%20mart%C3%ADnez-043.jpg

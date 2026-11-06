@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Las brujas Piti
 year: 1984
+modalidad: Chirigota
 musica: El Noly
 letra: Joaquín Sánchez Alba
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGxIZRO4U438OG6mCorst-3uCBSDhEg4DF_Q8qnp1aw5SBrdAkQ6TahaTdmj3h7CCV-Sp3cF-FdunraQXbVWJ_9EqlZis5eI7nOKBWYQ6Cf7JaU9-fpVbTocfqOvb36SFJ-qhw1kR478EV/s1600/lasbrujaspitis.jpg

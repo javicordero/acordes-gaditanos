@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Viajantes
 year: 2022
+modalidad: Comparsa
 musica: José Luis Bustelo
 letra: José Luis Bustelo
 img: https://elrincondelcarnaval.com/wp-content/uploads/2022/05/24052022-los-viajantes-080-scaled.jpg

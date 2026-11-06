@@ -6,7 +6,7 @@ musica: El Bizcocho
 letra: El Bizcocho
 img: https://www.portaldecadiz.com/images/igallery/resized/ssshhhh--3797/03-chirigota-ssshhhh-----gabinete-de-prensa-del-ayuntamiento-de-cadiz-foto--reyna-26-1600-1600-80.jpg
 cejilla: 1
-modalidad: Chrigota
+modalidad: Chirigota
 date: 01/02/2026
 video: https://www.youtube.com/embed/3QWp0v1Okuc?si=dT-MG8T_NJ8QAnzu
 cover: https://www.youtube.com/embed/BuUbn7MyYwg?si=cnrdAk_ZlhlYiXOy

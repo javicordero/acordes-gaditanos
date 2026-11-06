@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Cantananas
 year: 2022
+modalidad: Comparsa
 musica: Nene Cheza
 letra: Nene Cheza
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2022/Comparsa%20los%20cantananas%200012.jpg

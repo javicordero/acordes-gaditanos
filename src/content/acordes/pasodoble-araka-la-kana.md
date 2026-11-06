@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Araka La Kana
 year: 2007
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2021/02/carnaval-2007-imagenes-cadiz-fotografias-15.jpg'

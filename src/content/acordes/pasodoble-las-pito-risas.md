@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Las Pito-Risas
 year: 2008
+modalidad: Chirigota
 musica: Kike Remolino
 letra: Kike Remolino
 img: https://static.grupojoly.com/clip/e7ddeb45-dc1b-4456-b11a-a527f5469f84_source-aspect-ratio_1600w_0.jpg

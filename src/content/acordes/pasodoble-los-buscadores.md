@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los buscadores
 year: 2019
+modalidad: Comparsa
 musica: Fran Quintana
 letra: Fran Quintana
 img: https://static.grupojoly.com/clip/0791eaf9-0428-4435-889c-152fe4c8271d_source-aspect-ratio_1600w_0.jpg

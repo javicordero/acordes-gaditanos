@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: We can do... Carnaval
 year: 2022
+modalidad: Comparsa
 img: https://s3.abcstatics.com/media/carnaval/2022/06/17/v/wecandocarnaval3-k34C--1248x698@abc.jpg
 cejilla: 4
 date: "25/11/2025"

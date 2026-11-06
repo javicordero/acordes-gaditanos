@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La misión, el evangelio según Santander
 year: 2022
+modalidad: Chirigota
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://s2.abcstatics.com/media/carnaval/2022/06/04/v/mision-evangelio-kI4H--1248x698@abc.jpeg

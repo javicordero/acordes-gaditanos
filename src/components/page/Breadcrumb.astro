@@ -21,7 +21,13 @@ const {
   simple = false,
   parent,
   current,
+  currentSufijoMinuscula = false,
 } = Astro.props;
+
+const currentBase =
+  currentSufijoMinuscula && current && current.endsWith('s') ? current.slice(0, -1) : current;
+const currentSufijo =
+  currentSufijoMinuscula && current && current.endsWith('s') ? 's' : '';
 
 const site = Astro.site || new URL('https://acordesgaditanos.com');
 const breadcrumbItems = [];
@@ -141,7 +147,9 @@ const breadcrumbSchema = {
       current && (
         <>
           <span class='separator'>›</span>
-          <span class='breadcrumb-piece'>{current}</span>
+          <span class='breadcrumb-piece'
+            >{currentBase}{currentSufijo && <span class='minuscula'>{currentSufijo}</span>}</span
+          >
         </>
       )
     }
@@ -191,6 +199,9 @@ const breadcrumbSchema = {
       white-space: nowrap;
       display: inline-block;
       color: var(--text-secondary-color);
+    }
+    & .minuscula {
+      text-transform: lowercase;
     }
   }
   @media (max-width: 640px) {

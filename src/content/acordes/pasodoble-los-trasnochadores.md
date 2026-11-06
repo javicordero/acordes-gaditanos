@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Trasnochadores
 year: 2009
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: 'https://static.grupojoly.com/clip/3b6431e9-7a37-47fe-aee6-e05332d51d6e_source-aspect-ratio_1600w_0.jpg'

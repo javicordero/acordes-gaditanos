@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los viñanos
 year: 2023
+modalidad: Chirigota
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/18022023-los-vinanos-078-scaled.jpg

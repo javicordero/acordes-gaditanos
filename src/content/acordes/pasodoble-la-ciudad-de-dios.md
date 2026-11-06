@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La ciudad de Dios
 year: 2020
+modalidad: Comparsa
 musica: El Tomate
 letra: El Piru
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-ciudad-de-dios-1.jpg

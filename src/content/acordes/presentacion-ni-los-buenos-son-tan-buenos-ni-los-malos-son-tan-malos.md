@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Ni los buenos son tan buenos, ni los malos son tan malos
 year: 2018
+modalidad: Comparsa
 musica: Iván Romero
 letra: Iván Romero
 img: https://imagenes.cope.es/files/microformat_image/uploads/2024/07/10/668dc5edca53a.jpeg

@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La bella escondida
 year: 2006
+modalidad: Comparsa
 musica: Luis Rivero
 letra: Luis Rivero
 img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoSF17ox9nCQvk7RE0gK4NyAWk302_RYMjh6plCNXx2q_6OY4hL9uWAB7StdGZu3mN0hcOmRTIUjN-71yxOEouvWvgHiZ1oBgAchtXQjwPf7sd_fiBTptbzXzLxUGAIFXEPabcLIH9HwWj/s400/la+bella+escondida.jpg

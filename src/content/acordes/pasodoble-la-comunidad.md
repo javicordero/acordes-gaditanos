@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Comunidad
 year: 2016
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 cejilla: 2

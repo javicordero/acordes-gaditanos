@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Listos
 year: 2020
+modalidad: Comparsa
 musica: El Noly
 letra: El Chapa
 img: https://s3.abcstatics.com/media/provincia/2020/01/21/v/loslistos-kux--1248x698@abc-Home.jpg

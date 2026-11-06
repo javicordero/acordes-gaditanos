@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: El marqués de Cádiz
 year: 2019
+modalidad: Comparsa
 musica: David Carapapa
 letra: David Carapapa
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/el-marqu-s-de-c-diz-1.jpg

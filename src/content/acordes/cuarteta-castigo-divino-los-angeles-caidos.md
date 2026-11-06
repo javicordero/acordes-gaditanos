@@ -2,6 +2,7 @@
 pieza: Cuarteta "Castigo divino"
 agrupacion: Los Ángeles Caídos
 year: 2002
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://static.grupojoly.com/clip/f44701fe-fb8f-49ee-912e-3cbd7f14c85c_16-9-aspect-ratio_1600w_0.jpg

@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Irresistibles
 year: 2016
+modalidad: Comparsa
 musica: Juan Fernández
 letra: Juan Fernández
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/irresistibles.jpeg

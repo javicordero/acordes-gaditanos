@@ -2,6 +2,7 @@
 pieza: Tango
 agrupacion: Tiempos modernos
 year: 2018
+modalidad: Coro
 musica: Tino Tovar
 letra: El Chapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2018/02/coro-tiempos-modernos-coac2018.jpg

@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Los Chabolis
 year: 2024
+modalidad: Chirigota
 musica: Lolo Molina
 letra: Lolo Molina
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/01/25/molina-RuOvjiUxJT9W6MkpqBggHQI-1200x840@abc.jpg

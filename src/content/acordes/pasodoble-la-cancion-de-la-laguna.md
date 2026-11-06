@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La canción de la laguna
 year: 2020
+modalidad: Comparsa
 musica: David Carapapa
 letra: David Carapapa
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2020/la-canci-n-de-la-laguna-6.jpg

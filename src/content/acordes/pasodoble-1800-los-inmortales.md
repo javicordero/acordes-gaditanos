@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: 1800 Los Inmortales
 year: 2004
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://i.ytimg.com/vi/TVF1WRIwllE/sddefault.jpg

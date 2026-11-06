@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los del patio de mi casa (La última savia)
 year: 2023
+modalidad: Comparsa
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/fed485049f264d85e32985829.jpg

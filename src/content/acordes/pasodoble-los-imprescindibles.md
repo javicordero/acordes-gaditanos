@@ -2,6 +2,7 @@
 pieza: Pasodoble  
 agrupacion: Los Imprescindibles  
 year: 2015  
+modalidad: Comparsa
 musica: Jesús Bienvenido  
 letra: Jesús Bienvenido  
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/imprescindibles_2b66636acb3cee29eb2990dbc255f3a1.jpeg  

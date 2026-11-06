@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: OBDC El joven obispo
 year: 2018
+modalidad: Comparsa
 musica: Germán Rendón
 letra: Germán Rendón
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/15c0f1a31819b8902ada8b2cc.jpg

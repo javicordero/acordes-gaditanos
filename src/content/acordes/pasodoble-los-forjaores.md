@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: Los Forjaores
 year: 1971
+modalidad: Comparsa
 musica: Paco Alba
 letra: Paco Alba
 img: https://static.grupojoly.com/clip/07619650-aa70-45dc-9db6-79aec8bc9b0a_source-aspect-ratio_1600w_0.jpg

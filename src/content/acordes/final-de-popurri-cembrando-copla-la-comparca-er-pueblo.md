@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Çembrando copla (La comparça er pueblo)
 year: 2023
+modalidad: Chirigota
 musica: Mario Rodríguez
 letra: Mario Rodríguez
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2023/01/26/WhatsAppImage2023-01-26at22.20.49-Ryc6AMG0NHsgWHUu0S4HZYK-1200x840@abc.jpeg

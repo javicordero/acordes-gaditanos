@@ -2,6 +2,7 @@
 agrupacion: Los Peregrinos
 pieza: Credo
 year: 2017
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/comparsa-los-peregrinos-1.JPG

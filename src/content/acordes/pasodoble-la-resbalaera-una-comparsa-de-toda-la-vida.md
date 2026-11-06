@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La resbalaera, una comparsa de toda la vida
 year: 2024
+modalidad: Comparsa
 musica: Nene Cheza
 letra: Nene Cheza
 img: https://s1.abcstatics.com/lavozdigital/www/multimedia/carnaval/2024/02/05/05022024-laresbalaera-101-U40404724266bHb-1200x630@abc.jpg

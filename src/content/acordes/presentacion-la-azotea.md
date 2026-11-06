@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: La Azotea
 year: 2017
+modalidad: Comparsa
 musica: David Carapapa, Javier Carapapa
 letra: David Carapapa, Javier Carapapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/nico-garcia-la-azotea.jpeg

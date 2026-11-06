@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Oh Capitán My Capitán
 year: 2020
+modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
 img: 'https://static.grupojoly.com/clip/23ea30ae-2613-4ec8-97a9-81f2fe78334e_source-aspect-ratio_1600w_0.jpg'

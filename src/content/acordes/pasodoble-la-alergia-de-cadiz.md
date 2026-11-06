@@ -2,6 +2,7 @@
 pieza: Pasodoble
 agrupacion: La Alergia de Cádiz
 year: 2025
+modalidad: Chirigota
 musica: Manolín Santander
 letra: Manolín Santander
 img: https://cadiznoticias.es/wp-content/uploads/2025/01/Gabinete-de-prensa-ayuntamiento-de-cadiz-foto-Reyna-23.jpg

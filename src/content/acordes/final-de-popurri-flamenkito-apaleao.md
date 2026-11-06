@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Flamenkito Apaleao
 year: 2000
+modalidad: Chirigota
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/1e7c44b27be415581a10493e6.jpg

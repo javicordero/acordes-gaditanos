@@ -2,6 +2,7 @@
 pieza: Final de popurrí
 agrupacion: Frente talibán de la republica irreverente de Kadi Kadistán
 year: 2023
+modalidad: Chirigota
 musica: Vera Luque
 letra: Vera Luque
 img: https://www.codigocarnaval.com/wp-content/uploads/2022/11/chirigota-frente-taliban-de-la-republica-irreverente-de-kadikadistan.jpg

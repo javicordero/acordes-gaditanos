@@ -2,6 +2,7 @@
 pieza: Presentación
 agrupacion: Los Equilibristas
 year: 2017
+modalidad: Comparsa
 musica: José Manuel Aranda
 letra: El Chapa
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/comparsa-los-equilibristas-cuartos-2.jpeg
