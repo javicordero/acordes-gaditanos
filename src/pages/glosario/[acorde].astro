@@ -1,0 +1,712 @@
+---
+/**
+ * Página individual de un acorde del glosario: /glosario/<acorde>/
+ *
+ * Una por cada entrada con posiciones (529). Todo el contenido sale del JSON
+ * del glosario y de las coplas del cancionero, así que no hay texto a mano.
+ * Los diagramas se generan en build (sin JS y sin el JSON de 1,3 MB del
+ * índice).
+ */
+
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/page/Breadcrumb.astro';
+import DiagramaAcorde from '../../components/page/DiagramaAcorde.astro';
+import glosarioJson from '../../data/glosario-acordes.json';
+import type { EntradaGlosario, Glosario } from '../../lib/acordes';
+import {
+  acordesRelacionados,
+  describirPosicion,
+  nombreTipo,
+  notacionInglesa,
+  notasDelAcorde,
+  tituloAcorde,
+  tituloSeoAcorde,
+} from '../../lib/glosario-acordes';
+import { coplasPorAcorde, type CoplaConAcorde } from '../../lib/coplas-por-acorde';
+import { piezaConTitulo } from '../../lib/letras';
+
+const glosario = (glosarioJson as unknown as { acordes: Glosario }).acordes;
+
+interface AcordeUsado {
+  etiqueta: string;
+  slug: string;
+}
+
+interface Props {
+  etiqueta: string;
+  entrada: EntradaGlosario;
+  coplas: CoplaConAcorde[];
+  usadosDeLaRaiz: AcordeUsado[];
+}
+
+export async function getStaticPaths() {
+  const entradaGlosario = (glosarioJson as unknown as { acordes: Glosario }).acordes;
+  const coplas = await coplasPorAcorde();
+  const usados = new Set(coplas.keys());
+
+  return Object.entries(entradaGlosario)
+    .filter(([, entrada]) => entrada.posiciones.length > 0)
+    .map(([etiqueta, entrada]) => ({
+      params: { acorde: entrada.slug },
+      props: {
+        etiqueta,
+        entrada,
+        coplas: coplas.get(entrada.slug) ?? [],
+        usadosDeLaRaiz: Object.entries(entradaGlosario)
+          .filter(
+            ([, otra]) =>
+              otra.raiz === entrada.raiz && otra.slug !== entrada.slug && usados.has(otra.slug),
+          )
+          .map(([nombre, otra]) => ({ etiqueta: nombre, slug: otra.slug })),
+      } satisfies Props,
+    }));
+}
+
+const { etiqueta, entrada, coplas, usadosDeLaRaiz } = Astro.props as Props;
+
+const ingles = notacionInglesa(entrada);
+const nombreCompletoTipo = tituloAcorde(entrada);
+const notas = notasDelAcorde(entrada);
+const posiciones = entrada.posiciones.map(describirPosicion);
+const relacionados = acordesRelacionados(glosario, entrada);
+const totalPosiciones = entrada.posiciones.length;
+const primera = posiciones[0];
+
+const titulo = tituloSeoAcorde(etiqueta, ingles);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const description = `Cómo tocar ${etiqueta} (${ingles}) en guitarra: ${totalPosiciones} ${
+  totalPosiciones === 1 ? 'posición' : 'posiciones'
+} con diagrama, digitación de cada cuerda, las notas del acorde y las coplas del Carnaval de Cádiz que usan ${etiqueta}.`;
+const keywords = [
+  etiqueta,
+  ingles,
+  `acorde ${etiqueta}`,
+  `acorde ${ingles}`,
+  `cómo tocar ${etiqueta} en guitarra`,
+  `cómo se toca ${etiqueta}`,
+  nombreCompletoTipo,
+  notas.join(', '),
+  'glosario de acordes',
+  'acordes de guitarra',
+  'Carnaval de Cádiz',
+].join(', ');
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: `Acorde ${etiqueta} en guitarra`,
+  description,
+  url: canonicalURL,
+  inLanguage: 'es-ES',
+  about: {
+    '@type': 'Thing',
+    name: `Acorde ${etiqueta} (${ingles})`,
+    alternateName: [ingles, nombreCompletoTipo],
+  },
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Acordes Gaditanos',
+    url: Astro.site,
+  },
+};
+
+// Coplas agrupadas por año (ya vienen ordenadas de más reciente a más antigua).
+const coplasPorAnio = new Map<string, CoplaConAcorde[]>();
+for (const copla of coplas) {
+  const lista = coplasPorAnio.get(copla.year);
+  if (lista) lista.push(copla);
+  else coplasPorAnio.set(copla.year, [copla]);
+}
+
+const tipoPlural =
+  entrada.sufijo === ''
+    ? 'mayores'
+    : entrada.sufijo === 'm'
+      ? 'menores'
+      : `de ${nombreTipo(entrada.sufijo)}`;
+
+const textoNotas =
+  notas.length > 1 ? `${notas.slice(0, -1).join(', ')} y ${notas[notas.length - 1]}` : notas[0];
+
+const etiquetaEnarmonica = relacionados.enarmonico[0];
+const textoEnarmonico = etiquetaEnarmonica
+  ? `${etiquetaEnarmonica.etiqueta} (${notacionInglesa(etiquetaEnarmonica.entrada)})`
+  : '';
+---
+
+<Layout title={titulo} description={description} keywords={keywords}>
+  <script type='application/ld+json' set:html={JSON.stringify(webPageSchema)} />
+
+  <Breadcrumb
+    parent={{ name: 'Glosario de acordes', href: '/glosario' }}
+    current={`Acorde ${etiqueta}`}
+  />
+
+  <div class='main-container container-layout'>
+    <article class='acorde-pagina'>
+      <header class='acorde-pagina__header'>
+        <h1>Acorde {etiqueta} ({ingles}) en guitarra</h1>
+        <p class='acorde-pagina__intro'>
+          Aprende cómo tocar el acorde {etiqueta} ({ingles}) en guitarra: es {nombreCompletoTipo} y
+          aquí tienes {totalPosiciones} {totalPosiciones === 1 ? 'posición' : 'posiciones'} con
+          diagrama, la digitación de cada cuerda y las coplas del Carnaval de Cádiz que lo usan.
+        </p>
+        <ul class='acorde-pagina__fichas'>
+          <li>
+            <span class='acorde-pagina__etiqueta'>Notación española</span>
+            <strong>{etiqueta}</strong>
+          </li>
+          <li>
+            <span class='acorde-pagina__etiqueta'>Notación inglesa</span>
+            <strong>{ingles}</strong>
+          </li>
+          {notas.length > 0 && (
+            <li>
+              <span class='acorde-pagina__etiqueta'>Notas del acorde</span>
+              <strong>{notas.join(' · ')}</strong>
+            </li>
+          )}
+          <li>
+            <span class='acorde-pagina__etiqueta'>Nombre completo</span>
+            <strong>{nombreCompletoTipo}</strong>
+          </li>
+        </ul>
+        <p class='acorde-pagina__alias'>
+          También se escribe <strong>{ingles}</strong> (notación inglesa) y se conoce como{' '}
+          <strong>{nombreCompletoTipo}</strong>.
+          {
+            etiquetaEnarmonica && (
+              <>
+                {' '}
+                Su grafía enarmónica es <strong>{textoEnarmonico}</strong>.
+              </>
+            )
+          }
+        </p>
+      </header>
+
+      <section class='acorde-pagina__seccion'>
+        <h2>Cómo tocar {etiqueta} en guitarra</h2>
+        <p>
+          Para tocar {etiqueta} en guitarra, la forma más habitual es la primera posición:
+          {primera ? ` ${primera.resumen.replace(/\.$/, '')}.` : ''}
+          {totalPosiciones > 1
+            ? ' Según el registro de la copla puede convenir otra posición; abajo las tienes todas.'
+            : ''}
+        </p>
+        {textoNotas && (
+          <p>
+            El acorde {etiqueta} se forma con las notas {textoNotas}.
+          </p>
+        )}
+        <p class='acorde-pagina__nota'>
+          Los diagramas están en afinación estándar (Mi-La-Re-Sol-Si-Mi). La <strong>×</strong> es
+          una cuerda que no se toca y el <strong>○</strong> una cuerda que suena al aire. Cada
+          diagrama indica su posición en el mástil.
+        </p>
+      </section>
+
+      <section class='acorde-pagina__seccion' aria-labelledby='posiciones-titulo'>
+        <h2 id='posiciones-titulo'>
+          {totalPosiciones === 1 ? 'Posición' : 'Posiciones'} del acorde {etiqueta}
+        </h2>
+        <ol class='posiciones'>
+          {
+            entrada.posiciones.map((posicion, indice) => {
+              const descripcion = posiciones[indice];
+              return (
+                <li class='posicion'>
+                  <figure class='posicion__figura'>
+                    <DiagramaAcorde
+                      nombre={etiqueta}
+                      posicion={posicion}
+                      indice={indice}
+                      total={totalPosiciones}
+                      ancho={180}
+                      alto={228}
+                    />
+                    <figcaption class='posicion__datos'>
+                      <p class='posicion__titulo'>
+                        Posición {indice + 1}
+                        {totalPosiciones > 1 ? ` de ${totalPosiciones}` : ''}
+                      </p>
+                      <p class='posicion__resumen'>{descripcion?.resumen}</p>
+                      <table class='posicion__tabla'>
+                        <caption>Cuerdas de la posición {indice + 1}</caption>
+                        <thead>
+                          <tr>
+                            <th scope='col'>Cuerda</th>
+                            <th scope='col'>Traste</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {descripcion?.cuerdas.map((cuerda) => (
+                            <tr>
+                              <th scope='row'>{cuerda.cuerda}ª</th>
+                              <td>
+                                {cuerda.estado === 'muda'
+                                  ? '× muda'
+                                  : cuerda.estado === 'aire'
+                                    ? '○ al aire'
+                                    : `${cuerda.traste}${cuerda.cejilla ? ' (cejilla)' : ''}`}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </figcaption>
+                  </figure>
+                </li>
+              );
+            })
+          }
+        </ol>
+      </section>
+
+      <section class='acorde-pagina__seccion' aria-labelledby='coplas-titulo'>
+        <h2 id='coplas-titulo'>Coplas que usan {etiqueta}</h2>
+        {
+          coplas.length > 0 ? (
+            <details class='coplas' open={coplas.length <= 12}>
+              <summary class='coplas__resumen'>
+                {coplas.length} {coplas.length === 1 ? 'copla usa' : 'coplas usan'} {etiqueta} en el
+                cancionero
+              </summary>
+              {[...coplasPorAnio.entries()].map(([year, lista]) => (
+                <section class='coplas__anio'>
+                  <h3>Carnaval {year}</h3>
+                  <ul class='coplas__lista'>
+                    {lista.map((copla) => (
+                      <li>
+                        <a href={`/acordes/${copla.slug}`}>{piezaConTitulo(copla)}</a>{' '}
+                        <span class='coplas__agrupacion'>{copla.agrupacion}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </details>
+          ) : (
+            <>
+              <p>
+                Todavía no hay ninguna copla del cancionero que use {etiqueta}. El diagrama y las
+                posiciones sirven igual para acompañar cualquier letra.
+              </p>
+              {usadosDeLaRaiz.length > 0 && (
+                <p>
+                  Estos acordes de {entrada.raiz} sí aparecen en las coplas:{' '}
+                  {usadosDeLaRaiz.map((acorde, indice) => (
+                    <>
+                      {indice > 0 ? (indice === usadosDeLaRaiz.length - 1 ? ' y ' : ', ') : ''}
+                      <a href={`/glosario/${acorde.slug}`}>{acorde.etiqueta}</a>
+                    </>
+                  ))}
+                  .
+                </p>
+              )}
+            </>
+          )
+        }
+      </section>
+
+      <section class='acorde-pagina__seccion' aria-labelledby='relacionados-titulo'>
+        <h2 id='relacionados-titulo'>Acordes relacionados con {etiqueta}</h2>
+
+        {
+          etiquetaEnarmonica && (
+            <p class='acorde-pagina__nota'>
+              {etiqueta} también se escribe {textoEnarmonico}: son la misma posición en el mástil.
+              <a href={`/glosario/${etiquetaEnarmonica.entrada.slug}`}>Ver {etiquetaEnarmonica.etiqueta}</a>.
+            </p>
+          )
+        }
+
+        {
+          relacionados.mismaRaiz.length > 0 && (
+            <div class='relacionados__grupo'>
+              <h3>Otros acordes de {entrada.raiz}</h3>
+              <ul class='relacionados__lista'>
+                {relacionados.mismaRaiz.map((acorde) => (
+                  <li>
+                    <a
+                      href={`/glosario/${acorde.entrada.slug}`}
+                      data-ga-event='click_glosario_ver_acorde'
+                      data-ga-params={JSON.stringify({ acorde: acorde.etiqueta, ubicacion: 'relacionado' })}
+                    >
+                      {acorde.etiqueta} <span>{notacionInglesa(acorde.entrada)}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        {
+          relacionados.mismoSufijo.length > 0 && (
+            <div class='relacionados__grupo'>
+              <h3>Otros acordes {tipoPlural}</h3>
+              <ul class='relacionados__lista'>
+                {relacionados.mismoSufijo.map((acorde) => (
+                  <li>
+                    <a
+                      href={`/glosario/${acorde.entrada.slug}`}
+                      data-ga-event='click_glosario_ver_acorde'
+                      data-ga-params={JSON.stringify({ acorde: acorde.etiqueta, ubicacion: 'relacionado' })}
+                    >
+                      {acorde.etiqueta} <span>{notacionInglesa(acorde.entrada)}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+      </section>
+
+      <nav class='acorde-pagina__volver' aria-label='Seguir navegando'>
+        <a href='/glosario'>← Volver al glosario de acordes</a>
+        <a href='/lista'>Ver todas las coplas del Carnaval</a>
+      </nav>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .acorde-pagina {
+    padding: 18px 18px 22px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 6px 6px 0 0 var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-color);
+  }
+
+  .acorde-pagina__header h1 {
+    margin: 0 0 14px;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    max-width: fit-content;
+    position: relative;
+  }
+
+  .acorde-pagina__header h1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 95%;
+    height: 5px;
+    background: var(--primary-contrast-color);
+  }
+
+  .acorde-pagina__intro,
+  .acorde-pagina__alias,
+  .acorde-pagina__nota {
+    max-width: 75ch;
+    line-height: 1.6;
+  }
+
+  .acorde-pagina__intro {
+    margin-top: 14px;
+  }
+
+  .acorde-pagina__alias,
+  .acorde-pagina__nota {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--text-secondary-color);
+  }
+
+  .acorde-pagina__fichas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .acorde-pagina__fichas li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .acorde-pagina__fichas strong {
+    font-size: 0.9rem;
+    color: var(--acorde-color);
+  }
+
+  .acorde-pagina__etiqueta {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .acorde-pagina__seccion {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 2px solid var(--primary-color);
+  }
+
+  .acorde-pagina__seccion h2 {
+    margin: 8px 0 12px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .acorde-pagina__seccion h3 {
+    margin: 18px 0 8px;
+    font-size: 0.85rem;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .acorde-pagina__seccion p {
+    line-height: 1.6;
+    max-width: 80ch;
+  }
+
+  .acorde-pagina__seccion p + p {
+    margin-top: 10px;
+  }
+
+  .posiciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .posicion__figura {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    margin: 0;
+    padding: 12px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+
+  .posicion__figura:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .posicion__figura > :global(.diagrama-acorde) {
+    align-self: center;
+  }
+
+  .posicion__datos {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .posicion__titulo {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .posicion__resumen {
+    font-size: 0.76rem;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  .posicion__tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.7rem;
+  }
+
+  .posicion__tabla caption {
+    text-align: left;
+    padding-bottom: 4px;
+    font-size: 0.62rem;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--text-secondary-color);
+  }
+
+  .posicion__tabla th,
+  .posicion__tabla td {
+    padding: 2px 0;
+    border-bottom: 1px dashed var(--text-secondary-color);
+    text-align: left;
+  }
+
+  .posicion__tabla thead th {
+    color: var(--text-secondary-color);
+    font-weight: 700;
+  }
+
+  .posicion__tabla tbody th {
+    width: 5rem;
+    font-weight: 700;
+    color: var(--acorde-color);
+  }
+
+  .coplas {
+    margin-top: 4px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .coplas__resumen {
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    color: var(--primary-color);
+  }
+
+  .coplas__resumen:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: -3px;
+  }
+
+  .coplas__anio {
+    padding: 4px 12px 12px;
+  }
+
+  .coplas__anio h3 {
+    margin-top: 8px;
+  }
+
+  .coplas__lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 4px 16px;
+  }
+
+  .coplas__lista li {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .coplas__lista a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  .coplas__lista a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+
+  .coplas__agrupacion {
+    color: var(--text-secondary-color);
+  }
+
+  .relacionados__lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .relacionados__lista a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    padding: 3px 9px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .relacionados__lista a:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .relacionados__lista a span {
+    font-size: 0.66rem;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+  }
+
+  .relacionados__lista a:hover span {
+    color: var(--on-bright-color);
+  }
+
+  .acorde-pagina__volver {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-top: 30px;
+    padding-top: 14px;
+    border-top: 2px solid var(--primary-color);
+  }
+
+  .acorde-pagina__volver a {
+    color: var(--link-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .acorde-pagina__volver a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .acorde-pagina {
+      padding: 12px 10px 18px;
+      box-shadow: 4px 4px 0 0 var(--primary-color);
+    }
+
+    .acorde-pagina__header h1 {
+      font-size: 1.1rem;
+    }
+
+    .posiciones {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .coplas__lista {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { seguirEnlaces } from '../../lib/analitica';
+
+  seguirEnlaces('[data-ga-event="click_glosario_ver_acorde"]', 'glosario');
+</script>

@@ -1,61 +1,16 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
 import Breadcrumb from '../components/page/Breadcrumb.astro';
-import DiagramaAcorde from '../components/page/DiagramaAcorde.astro';
-import GlosarioPopover from '../components/page/GlosarioPopover.astro';
 import glosarioJson from '../data/glosario-acordes.json';
 import { slugAcorde, type EntradaGlosario, type Glosario } from '../lib/acordes';
+import {
+  ORDEN_RAICES,
+  ORDEN_SUFIJOS,
+  TIPO_NOMBRE,
+  notacionInglesa,
+} from '../lib/glosario-acordes';
 
 const glosario = (glosarioJson as unknown as { acordes: Glosario }).acordes;
-
-const ORDEN_RAICES = [
-  'Do', 'Do#', 'Reb', 'Re', 'Re#', 'Mib', 'Mi', 'Fa', 'Fa#',
-  'Solb', 'Sol', 'Sol#', 'Lab', 'La', 'La#', 'Sib', 'Si',
-];
-
-const ORDEN_SUFIJOS = [
-  '', 'm', '5', '6', 'm6', '7', 'm7', 'maj7', 'maj9', '9', 'm9', 'add9', 'madd9',
-  '11', '13', 'sus2', 'sus4', 'sus9', 'susb6add9', '7sus4', 'dim', 'dim7', 'aug', 'mmaj7',
-  '6add9', '7b5', '7maj5', 'm7b5',
-];
-
-const TIPO_NOMBRE: Record<string, string> = {
-  '': 'mayor',
-  m: 'menor',
-  '5': 'quinta',
-  '6': 'sexta',
-  m6: 'menor sexta',
-  '7': 'séptima',
-  m7: 'menor séptima',
-  maj7: 'séptima mayor',
-  maj9: 'novena mayor',
-  '9': 'novena',
-  m9: 'menor novena',
-  add9: 'novena añadida',
-  madd9: 'menor con novena añadida',
-  '11': 'oncena',
-  '13': 'trecena',
-  sus2: 'suspendida segunda',
-  sus4: 'suspendida cuarta',
-  sus9: 'suspendida con novena',
-  susb6add9: 'suspendida con b6 y novena',
-  '7sus4': 'séptima suspendida',
-  dim: 'disminuido',
-  dim7: 'disminuido séptima',
-  aug: 'aumentado',
-  mmaj7: 'menor séptima mayor',
-  '6add9': 'sexta con novena',
-  '7b5': 'séptima con quinta bemol',
-  '7maj5': 'séptima con quinta aumentada',
-  m7b5: 'semidisminuido',
-};
-
-const normalizar = (texto: string) =>
-  texto
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim();
 
 const rankSufijo = (entrada: EntradaGlosario) => {
   const i = ORDEN_SUFIJOS.indexOf(entrada.sufijo);
@@ -70,16 +25,11 @@ const grupos = ORDEN_RAICES.map((raiz) => {
       if (porTipo !== 0) return porTipo;
       return a[1].sufijo.localeCompare(b[1].sufijo, 'es');
     })
-    .map(([etiqueta, entrada]) => ({
-      etiqueta,
-      entrada,
-      tipo: TIPO_NOMBRE[entrada.sufijo] ?? entrada.sufijo,
-      buscar: normalizar(
-        `${etiqueta} ${entrada.raiz} ${entrada.sufijo} ${entrada.slug.replace(/-/g, ' ')} ${
-          TIPO_NOMBRE[entrada.sufijo] ?? ''
-        } ${entrada.bajo ? 'bajo ' + entrada.bajo : ''}`,
-      ),
-    }));
+    .map(([etiqueta, entrada]) => {
+      const tipo = TIPO_NOMBRE[entrada.sufijo] ?? entrada.sufijo;
+      const ingles = notacionInglesa(entrada);
+      return { etiqueta, entrada, tipo, ingles };
+    });
 
   return {
     raiz,
@@ -92,7 +42,7 @@ const totalAcordes = grupos.reduce((total, grupo) => total + grupo.acordes.lengt
 
 const title = 'Glosario de acordes de guitarra - Acordes Gaditanos';
 const description =
-  'Diccionario de acordes de guitarra con diagramas: aprende a tocar todas las posiciones de cada acorde, con cuerdas mudas, al aire y cejillas. Notación española (Do, Re, Mi…).';
+  'Diccionario de acordes de guitarra con diagramas: elige una fundamental o busca el acorde y accede a todas sus posiciones, con cuerdas mudas, al aire y cejillas. Notación española (Do, Re, Mi…) e inglesa (C, D, E…).';
 const keywords =
   'glosario de acordes, diccionario de acordes, acordes de guitarra, diagramas de acordes, cómo se tocan los acordes, acordes de Carnaval, Do Re Mi, cejillas';
 
@@ -124,25 +74,24 @@ const webPageSchema = {
         <header class='glosario__header'>
           <h1>Glosario de acordes de guitarra</h1>
           <p class='glosario__intro'>
-            Todas las formas de los acordes que suenan en el Carnaval de Cádiz, con su diagrama de
-            guitarra. Pincha en cualquier acorde para ver sus posiciones y cómo se coloca cada dedo
-            sobre las cuerdas.
+            Elige una fundamental o busca el acorde por su nombre (en notación española o inglesa) y
+            entra en su página: allí tienes todas las posiciones con diagrama, la digitación de cada
+            cuerda y las coplas del Carnaval de Cádiz que lo usan.
           </p>
           <p class='glosario__nota'>
-            Los diagramas muestran la forma estándar del acorde en afinación estándar (Mi-La-Re-Sol-Si-Mi).
-            Las cuerdas marcadas con <strong>×</strong> no se tocan y las marcadas con <strong>○</strong>
-            suenan al aire.
+            Los diagramas están en la página de cada acorde, en afinación estándar
+            (Mi-La-Re-Sol-Si-Mi). Las cuerdas marcadas con <strong>×</strong> no se tocan y las
+            marcadas con <strong>○</strong> suenan al aire.
           </p>
         </header>
 
-    <!-- Herramienta privada: sin enlace público hasta que se decida publicarla. -->
         <div class='glosario__buscador'>
           <label class='glosario__label' for='glosario-buscar'>Buscar acorde</label>
           <input
             id='glosario-buscar'
             class='glosario__input'
             type='search'
-            placeholder='Ej.: Mi7, Sib, semidisminuido…'
+            placeholder='Ej.: Mi7, C7, Sib, semidisminuido…'
             autocomplete='off'
             spellcheck='false'
           />
@@ -154,60 +103,56 @@ const webPageSchema = {
         <nav class='glosario__indice' aria-label='Fundamentales'>
           {
             grupos.map((grupo) => (
-              <a href={`#${grupo.id}`}>{grupo.raiz}</a>
+              <a href={`#${grupo.id}`} data-chip={grupo.id}>
+                {grupo.raiz}
+                <span class='glosario__indice-cuenta'>{grupo.acordes.length}</span>
+              </a>
             ))
           }
         </nav>
 
-        {
-          grupos.map((grupo) => (
-            <section class='glosario-grupo' id={grupo.id} aria-labelledby={`${grupo.id}-titulo`}>
-              <h2 id={`${grupo.id}-titulo`}>
-                {grupo.raiz}
-                <span class='glosario-grupo__cuenta'>({grupo.acordes.length})</span>
-              </h2>
+        <div class='glosario__lista'>
+          {
+            grupos.map((grupo) => (
+              <details class='glosario-grupo' id={grupo.id}>
+                <summary class='glosario-grupo__resumen'>
+                  <span class='glosario-grupo__raiz'>{grupo.raiz}</span>
+                  <span class='glosario-grupo__cuenta'>{grupo.acordes.length} acordes</span>
+                </summary>
 
-              <div class='glosario-grid'>
-                {grupo.acordes.map(({ etiqueta, entrada, tipo, buscar }) => (
-                  <article class='glosario-card' id={slugAcorde(entrada)} data-buscar={buscar}>
-                    <button
-                      type='button'
-                      class='glosario-card__btn'
-                      data-acorde={etiqueta}
-                      aria-haspopup='dialog'
-                      aria-expanded='false'
-                      aria-label={`Ver ${etiqueta} (${tipo}) y todas sus posiciones`}
-                    >
-                      <span class='glosario-card__nombre'>{etiqueta}</span>
-                      <DiagramaAcorde
-                        nombre={etiqueta}
-                        posicion={entrada.posiciones[0]!}
-                        total={entrada.posiciones.length}
-                        ancho={104}
-                        alto={132}
-                      />
-                      <span class='glosario-card__pos'>{entrada.posiciones.length} pos.</span>
-                    </button>
-                  </article>
-                ))}
-              </div>
-            </section>
-          ))
-        }
+                <ul class='glosario-acordes'>
+                  {grupo.acordes.map(({ etiqueta, entrada, tipo, ingles }) => (
+                    <li class='glosario-acorde-item' id={entrada.slug}>
+                      <a
+                        class='glosario-acorde'
+                        href={`/glosario/${entrada.slug}`}
+                        data-acorde={etiqueta}
+                        data-ga-event='click_glosario_ver_acorde'
+                      >
+                        <span class='glosario-acorde__nombre'>{etiqueta}</span>
+                        <span class='glosario-acorde__ingles'>{ingles}</span>
+                        <span class='glosario-acorde__tipo'>
+                          {tipo} · {entrada.posiciones.length} pos.
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))
+          }
+        </div>
 
         <p class='glosario__vacio' id='glosario-vacio' hidden>
           No hay acordes que coincidan con esa búsqueda. Prueba con otra grafía (por ejemplo,
-          <em>Sib</em>, <em>La#</em> o <em>m7</em>).
+          <em>Sib</em>, <em>Bb</em>, <em>La#</em> o <em>m7</em>).
         </p>
       </article>
     </section>
   </div>
-
-  <GlosarioPopover />
-  <script type='application/json' id='glosario-datos' set:html={JSON.stringify(glosario)} />
 </Layout>
 
-<style>
+<style is:global>
   .glosario__header {
     margin: 8px 0 20px;
 
@@ -293,9 +238,12 @@ const webPageSchema = {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
 
     & a {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
       padding: 3px 9px;
       border: 2px solid var(--primary-color);
       background: var(--card-background-color);
@@ -310,99 +258,164 @@ const webPageSchema = {
       background: var(--primary-contrast-color);
       color: var(--on-bright-color);
     }
+
+    & a[hidden] {
+      display: none;
+    }
+  }
+
+  .glosario__indice-cuenta {
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+  }
+
+  .glosario__indice a:hover .glosario__indice-cuenta {
+    color: var(--on-bright-color);
+  }
+
+  .glosario__lista {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .glosario-grupo {
-    margin-bottom: 28px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
     scroll-margin-top: calc(var(--nav-height) + 16px);
-
-    & h2 {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      margin: 0 0 12px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--primary-color);
-      font-size: 1.15rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--primary-color);
-    }
 
     &[hidden] {
       display: none;
     }
+  }
+
+  .glosario-grupo__resumen {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    list-style: none;
+    font-family: 'Roboto Mono', monospace;
+    color: var(--primary-color);
+  }
+
+  .glosario-grupo__resumen::-webkit-details-marker {
+    display: none;
+  }
+
+  .glosario-grupo__resumen::after {
+    content: '+';
+    margin-left: auto;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-contrast-color);
+  }
+
+  .glosario-grupo[open] > .glosario-grupo__resumen::after {
+    content: '−';
+  }
+
+  .glosario-grupo__resumen:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .glosario-grupo__resumen:hover .glosario-grupo__cuenta {
+    color: var(--on-bright-color);
+  }
+
+  .glosario-grupo__resumen:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: -3px;
+  }
+
+  .glosario-grupo__raiz {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   .glosario-grupo__cuenta {
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     font-weight: 500;
     color: var(--text-secondary-color);
-    letter-spacing: 0;
   }
 
-  .glosario-grid {
+  .glosario-acordes {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
-    gap: 8px;
-  }
-
-  .glosario-card {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 6px;
     margin: 0;
-    scroll-margin-top: calc(var(--nav-height) + 16px);
-
-    &[hidden] {
-      display: none;
-    }
-
-    &:target .glosario-card__btn {
-      border-color: var(--primary-contrast-color);
-      box-shadow: 4px 4px 0 0 var(--primary-contrast-color);
-    }
+    padding: 10px 12px 12px;
+    list-style: none;
+    border-top: 2px solid var(--primary-color);
   }
 
-  .glosario-card__btn {
-    width: 100%;
+  .glosario-acorde-item[hidden] {
+    display: none;
+  }
+
+  .glosario-acorde-item:target .glosario-acorde {
+    border-color: var(--primary-contrast-color);
+    box-shadow: 4px 4px 0 0 var(--primary-contrast-color);
+  }
+
+  .glosario-acorde-item {
+    scroll-margin-top: calc(var(--nav-height) + 16px);
+  }
+
+  .glosario-acorde {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0 8px;
+    height: 100%;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: 8px 4px 6px;
-    background: var(--card-background-color);
+    padding: 6px 8px;
     border: 2px solid var(--primary-color);
-    border-radius: 0;
+    background: var(--card-background-color);
     color: var(--primary-color);
-    cursor: pointer;
     font-family: 'Roboto Mono', monospace;
+    text-decoration: none;
     transition:
       transform 0.15s ease,
       box-shadow 0.15s ease;
   }
 
-  .glosario-card__btn:hover {
+  .glosario-acorde:hover {
     transform: translate(-2px, -2px);
     box-shadow: 4px 4px 0 0 var(--primary-color);
   }
 
-  .glosario-card__btn:focus-visible {
+  .glosario-acorde:focus-visible {
     outline: 3px solid var(--primary-contrast-color);
     outline-offset: 2px;
   }
 
-  .glosario-card__nombre {
-    font-size: 0.85rem;
+  .glosario-acorde__nombre {
+    font-size: 0.9rem;
     font-weight: 800;
     letter-spacing: 0.4px;
     color: var(--acorde-color);
   }
 
-  .glosario-card__pos {
+  .glosario-acorde__ingles {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-secondary-color);
+  }
+
+  .glosario-acorde__tipo {
+    grid-column: 1 / -1;
     font-size: 0.62rem;
     color: var(--text-secondary-color);
   }
 
   .glosario__vacio {
+    margin-top: 10px;
     padding: 14px;
     border: 2px dashed var(--primary-color);
     color: var(--text-color);
@@ -434,27 +447,34 @@ const webPageSchema = {
       gap: 6px;
     }
 
-    .glosario-grid {
-      grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
-      gap: 6px;
+    .glosario-acordes {
+      grid-template-columns: 1fr;
     }
   }
 </style>
 
 <script>
+  import { enviarEvento } from '../lib/analitica';
+
   const entrada = document.getElementById('glosario-buscar') as HTMLInputElement | null;
-  const tarjetas = Array.from(document.querySelectorAll<HTMLElement>('.glosario-card'));
-  const secciones = Array.from(document.querySelectorAll<HTMLElement>('.glosario-grupo'));
+  const secciones = Array.from(document.querySelectorAll<HTMLDetailsElement>('.glosario-grupo'));
+  const chips = Array.from(document.querySelectorAll<HTMLAnchorElement>('.glosario__indice a'));
   const contador = document.getElementById('glosario-resultados');
   const vacio = document.getElementById('glosario-vacio');
 
-  if (entrada && tarjetas.length > 0) {
+  if (entrada) {
     const normalizar = (texto: string) =>
       texto
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
         .trim();
+
+    // El texto visible (nombre, notación inglesa y tipo) es el índice de
+    // búsqueda: no hace falta guardarlo en cada enlace.
+    const tarjetas = Array.from(
+      document.querySelectorAll<HTMLElement>('.glosario-acorde-item'),
+    ).map((el) => ({ el, texto: normalizar(el.textContent ?? '') }));
 
     let temporizador: ReturnType<typeof setTimeout> | undefined;
 
@@ -470,18 +490,41 @@ const webPageSchema = {
       }, 600);
     };
 
+    /** Abre la fundamental del hash (o del clic en un chip) y lleva el foco. */
+    const abrirDelHash = () => {
+      if (!window.location.hash) return;
+      const objetivo = document.getElementById(window.location.hash.slice(1));
+      if (!objetivo) return;
+
+      const grupo =
+        objetivo instanceof HTMLDetailsElement
+          ? objetivo
+          : objetivo.closest<HTMLDetailsElement>('.glosario-grupo');
+      if (grupo) grupo.open = true;
+      objetivo.scrollIntoView({ block: 'start' });
+    };
+
     const filtrar = () => {
       const consulta = normalizar(entrada.value);
       let visibles = 0;
 
-      for (const tarjeta of tarjetas) {
-        const coincide = !consulta || (tarjeta.dataset.buscar ?? '').includes(consulta);
-        tarjeta.hidden = !coincide;
+      for (const { el, texto } of tarjetas) {
+        const coincide = !consulta || texto.includes(consulta);
+        el.hidden = !coincide;
         if (coincide) visibles += 1;
       }
 
       for (const seccion of secciones) {
-        seccion.hidden = !seccion.querySelector('.glosario-card:not([hidden])');
+        const tiene = !!seccion.querySelector('.glosario-acorde-item:not([hidden])');
+        seccion.hidden = !tiene;
+        // Al buscar, se despliegan las fundamentales con resultados; al
+        // borrar, vuelven a quedar plegadas (el índice arranca "vacío").
+        seccion.open = consulta ? tiene : false;
+      }
+
+      for (const chip of chips) {
+        const destino = chip.dataset.chip;
+        chip.hidden = !!destino && !!document.getElementById(destino)?.hidden;
       }
 
       if (contador) contador.textContent = `${visibles} acordes`;
@@ -492,11 +535,34 @@ const webPageSchema = {
 
     entrada.addEventListener('input', filtrar);
 
-    if (window.location.hash) {
-      const objetivo = document.getElementById(window.location.hash.slice(1));
-      if (objetivo) {
-        setTimeout(() => objetivo.scrollIntoView({ block: 'center' }), 50);
+    document.addEventListener('click', (e) => {
+      const objetivo = e.target as HTMLElement | null;
+      if (!objetivo) return;
+
+      const acorde = objetivo.closest<HTMLAnchorElement>('a.glosario-acorde');
+      if (acorde) {
+        enviarEvento(
+          'click_glosario_ver_acorde',
+          {
+            acorde: acorde.dataset.acorde ?? '',
+            ubicacion: 'indice',
+            transport_type: 'beacon',
+          },
+          'glosario',
+        );
+        return;
       }
+
+      const chip = objetivo.closest<HTMLAnchorElement>('.glosario__indice a');
+      if (!chip) return;
+      const destino = chip.dataset.chip;
+      const grupo = destino ? document.getElementById(destino) : null;
+      if (grupo instanceof HTMLDetailsElement) grupo.open = true;
+    });
+
+    window.addEventListener('hashchange', abrirDelHash);
+    if (window.location.hash) {
+      setTimeout(abrirDelHash, 50);
     }
   }
 </script>

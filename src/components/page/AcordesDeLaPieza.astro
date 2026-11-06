@@ -137,6 +137,14 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
                         alto={132}
                       />
                     </button>
+                    <a
+                      class='acorde-mini__pagina'
+                      href={`/glosario/${entrada.slug}`}
+                      data-ga-event='click_glosario_ver_acorde'
+                      data-ga-params={JSON.stringify({ acorde: etiqueta, ubicacion: 'ficha' })}
+                    >
+                      Ver acorde →
+                    </a>
                   </li>
                 );
               })}
@@ -420,6 +428,8 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
 
   .acorde-mini {
     margin: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   .acorde-mini__btn {
@@ -457,6 +467,28 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
     font-weight: 800;
     letter-spacing: 0.5px;
     color: var(--acorde-color);
+  }
+
+  .acorde-mini__pagina {
+    display: block;
+    margin-top: auto;
+    padding: 3px 2px 0;
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  .acorde-mini__pagina:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+
+  .acorde-mini__pagina:focus-visible {
+    outline: 2px solid var(--primary-contrast-color);
+    outline-offset: 1px;
   }
 
   .acordes-pieza__enlace {
@@ -544,7 +576,19 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
   document.querySelectorAll<HTMLElement>('.acordes-pieza [data-ga-event]').forEach((enlace) => {
     enlace.addEventListener('click', () => {
       const evento = enlace.getAttribute('data-ga-event');
-      if (evento) analitica(evento);
+      if (!evento) return;
+
+      let parametros: Record<string, unknown> = {};
+      try {
+        parametros = JSON.parse(enlace.getAttribute('data-ga-params') || '{}') as Record<
+          string,
+          unknown
+        >;
+      } catch {
+        parametros = {};
+      }
+
+      analitica(evento, parametros);
     });
   });
 </script>

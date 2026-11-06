@@ -20,6 +20,7 @@
   </button>
   <p class='glosario-popover__nombre' id='glosario-popover-nombre' data-nombre></p>
   <div class='glosario-popover__diagrama' data-diagrama></div>
+  <a class='glosario-popover__enlace' data-enlace href='/glosario/'>Ver acorde →</a>
   <div class='glosario-popover__posiciones' data-posiciones hidden>
     <button type='button' class='glosario-popover__flecha' data-prev aria-label='Posición anterior'>
       &lsaquo;
@@ -72,6 +73,27 @@
     justify-content: center;
     color: var(--primary-color);
     line-height: 0;
+  }
+
+  .glosario-popover__enlace {
+    display: inline-block;
+    padding: 2px 0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: var(--link-color);
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .glosario-popover__enlace:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+
+  .glosario-popover__enlace:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 1px;
   }
 
   .glosario-popover__diagrama :global(svg) {
@@ -181,6 +203,7 @@
 
     const elNombre = pop.querySelector<HTMLElement>('[data-nombre]');
     const elDiagrama = pop.querySelector<HTMLElement>('[data-diagrama]');
+    const elEnlace = pop.querySelector<HTMLAnchorElement>('[data-enlace]');
     const elPosiciones = pop.querySelector<HTMLElement>('[data-posiciones]');
     const elContador = pop.querySelector<HTMLElement>('[data-contador]');
     const btnPrev = pop.querySelector<HTMLButtonElement>('[data-prev]');
@@ -223,7 +246,6 @@
       ) {
         return;
       }
-
       const total = entrada.posiciones.length;
       const actual = entrada.posiciones[posicion] ?? entrada.posiciones[0];
       if (!actual) return;
@@ -275,6 +297,15 @@
       return indicePostura(dato, valor) ?? 0;
     }
 
+    /** Desde dónde se abrió el popover, para el evento del enlace a la página. */
+    function origenDe(disparador: HTMLElement | null): string {
+      if (!disparador) return 'glosario';
+      if (disparador.closest('pre')) return 'cifrado';
+      if (disparador.closest('.acordes-pieza')) return 'ficha';
+      if (disparador.closest('.glosario-card')) return 'indice';
+      return 'glosario';
+    }
+
     function abrir(disparador: HTMLElement) {
       const esEnlace = disparador.tagName === 'A';
       const texto = (esEnlace ? disparador.textContent : disparador.dataset.acorde)?.trim() || '';
@@ -299,6 +330,11 @@
       entrada = encontrado;
       textoActual = texto;
       posicion = posturaInicial(disparador, encontrado);
+
+      if (elEnlace) {
+        elEnlace.href = `/glosario/${encontrado.slug}/`;
+        elEnlace.setAttribute('aria-label', `Ver la página del acorde ${texto} en el glosario`);
+      }
 
       pop.hidden = false;
       pintar();
@@ -485,6 +521,16 @@
       },
       { passive: true },
     );
+
+    // Enlace a la página individual del acorde. Evento propio (distinto del de
+    // las cards): aquí se viene desde el popover.
+    elEnlace?.addEventListener('click', () => {
+      analitica('click_glosario_popover_ver_acorde', {
+        acorde: textoActual,
+        origen: origenDe(ancla),
+        transport_type: 'beacon',
+      });
+    });
 
     prepararAnclas();
   }
