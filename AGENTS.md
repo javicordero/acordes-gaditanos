@@ -322,6 +322,7 @@ Skills en `.agents/skills/`. Solo hay dos externas a propósito: **no añadir ge
 - `subir-acorde` — ajustar la fecha al día siguiente del último publicado y hacer commit + push
 - `transportar` — transponer acordes de tonalidad
 - `tweet-acorde` — generar tweet para anunciar acorde
+- `create-readme` — crear o actualizar el README del proyecto (es genérica, pero se usa)
 
 **Externas** (opcionales):
 - `astro-framework` — APIs de Astro 5 que este documento no cubre (content layer, view transitions, server islands, sessions). Referencias en `.agents/skills/astro-framework/references/`.
