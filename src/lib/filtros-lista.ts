@@ -93,22 +93,9 @@ export const NOMBRE_PIEZA: Record<TipoPiezaId, string> = {
 };
 
 /**
- * Orden de los tipos de pieza en `/lista` (el de sus grupos de año). No es el
- * mismo que el de las cards: la lista empieza por el final de popurrí.
- */
-export const ORDEN_PIEZAS_LISTA: TipoPiezaId[] = [
-  'final-de-popurri',
-  'cuarteta',
-  'popurri',
-  'estribillo',
-  'presentacion',
-  'pasodoble',
-  'tango',
-];
-
-/**
  * Orden de las opciones del filtro de pieza: el de siempre para buscar a ojo
- * (presentación, pasodoble, tango…) y no el de los grupos de la página.
+ * (presentación, pasodoble, tango…) y no el de las cards. También es la lista
+ * de tipos válidos en la URL.
  */
 export const ORDEN_OPCIONES_PIEZA: TipoPiezaId[] = [
   'presentacion',
@@ -119,12 +106,6 @@ export const ORDEN_OPCIONES_PIEZA: TipoPiezaId[] = [
   'final-de-popurri',
   'popurri',
 ];
-
-/** Posición de una pieza en el listado; lo desconocido va al final. */
-export function rangoPiezaLista(pieza: string): number {
-  const indice = ORDEN_PIEZAS_LISTA.indexOf(tipoPiezaId(pieza));
-  return indice === -1 ? ORDEN_PIEZAS_LISTA.length : indice;
-}
 
 /** Ficha de la colección con lo que necesita el filtro. */
 export interface FichaConDatos {
@@ -249,7 +230,7 @@ export function opcionesAutores(fichas: FichaConDatos[], tipo: 'musica' | 'letra
     .sort((a, b) => b.total - a.total || compararNombres(a.nombre, b.nombre));
 }
 
-const TIPOS_VALIDOS = new Set<string>([...ORDEN_PIEZAS_LISTA, 'otro']);
+const TIPOS_VALIDOS = new Set<string>([...ORDEN_OPCIONES_PIEZA, 'otro']);
 
 /** Valores válidos de una faceta a partir de un `?pieza=a,b` (o de uno solo). */
 function listaValores(valor: string | null, valido: (candidato: string) => boolean): string[] {

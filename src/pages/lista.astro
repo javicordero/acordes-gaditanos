@@ -4,15 +4,16 @@ import Layout from '../layouts/Layout.astro';
 import Banner320X50 from '../components/ads/Banner320x50.astro';
 import Banner468X60 from '../components/ads/Banner468x60.astro';
 import FiltrosLista from '../components/page/FiltrosLista.astro';
-import { parseSpanishDate, sortByYearDesc } from '../lib/index';
+import { sortByYearDesc } from '../lib/index';
 import { contarCoplas, textoRecuento } from '../lib/letras';
+import { contarCoplasAutores } from '../lib/autores';
+import { ordenarAcordesYear, prioridadDeAgrupaciones, prioridadDeAutores, prioridadPorCoplas } from '../lib/orden';
 import {
   aFichaFiltrable,
   opcionesAnio,
   opcionesAutores,
   opcionesDecada,
   opcionesPieza,
-  rangoPiezaLista,
 } from '../lib/filtros-lista';
 
 const acordes = await getCollection('acordes');
@@ -21,28 +22,24 @@ const capitalize = (text: string) => (text ? text.charAt(0).toUpperCase() + text
 
 const recuento = contarCoplas(acordes);
 
-const acordesOrdenados = [...acordes].sort((a, b) => {
-  const yearA = a.data.year;
-  const yearB = b.data.year;
+// Mismo orden que /carnaval/[year]: autores destacados → agrupaciones de los
+// autores con más coplas → agrupación → tipo de pieza → fecha ↓.
+const autores = await getCollection('autores');
+const prioridad = prioridadDeAgrupaciones(acordes, prioridadDeAutores(autores));
+const coplas = prioridadPorCoplas(acordes, contarCoplasAutores(acordes));
 
-  if (yearA !== yearB) {
-    return sortByYearDesc(yearA, yearB);
-  }
-
-  return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
-});
-
-const years = [...new Set(acordesOrdenados.map((acorde) => acorde.data.year))];
+const years = [...new Set(acordes.map((acorde) => acorde.data.year))].sort((a, b) =>
+  sortByYearDesc(a, b),
+);
 const acordesPorYear = years.map((year) => {
-  const delYear = acordesOrdenados
-    .filter((acorde) => acorde.data.year === year)
-    .sort((a, b) => {
-      const rankDiff = rangoPiezaLista(a.data.pieza) - rangoPiezaLista(b.data.pieza);
-      if (rankDiff !== 0) return rankDiff;
-      return parseSpanishDate(b.data.date).getTime() - parseSpanishDate(a.data.date).getTime();
-    });
+  const delYear = ordenarAcordesYear(
+    acordes.filter((acorde) => acorde.data.year === year),
+    prioridad,
+    coplas,
+  );
   return { year, acordes: delYear, recuento: contarCoplas(delYear) };
 });
+const acordesOrdenados = acordesPorYear.flatMap((grupo) => grupo.acordes);
 
 // Datos de cada ficha y opciones de los filtros, calculados una sola vez.
 const filtrables = new Map(acordes.map((acorde) => [acorde.slug, aFichaFiltrable(acorde)]));
@@ -57,7 +54,7 @@ const opciones = {
 
 const title = 'Todas las coplas - Acordes del Carnaval de Cádiz';
 const description =
-  'Listado completo de todas las coplas con acordes de guitarra del Carnaval de Cádiz, agrupadas por año y ordenadas por tipo de pieza.';
+  'Listado completo de todas las coplas con acordes de guitarra del Carnaval de Cádiz, agrupadas por año y ordenadas por autores destacados y tipo de pieza.';
 
 const itemListSchema = {
   '@context': 'https://schema.org',
@@ -114,8 +111,9 @@ const itemListSchema = {
                       data-lt={acorde.data.letraTitulo ? '1' : undefined}
                     >
                       <a href={`/acordes/${acorde.slug}`}>
-                        <span class='pieza'>{capitalize(acorde.data.pieza)}{acorde.data.letraTitulo ? ` "${acorde.data.letraTitulo}"` : ''}</span>{' '}
+                        <span class='pieza'>{capitalize(acorde.data.pieza)}</span>{' '}
                         <span class='agrupacion'>{acorde.data.agrupacion}</span>
+                        {acorde.data.letraTitulo ? ` "${acorde.data.letraTitulo}"` : ''}
                       </a>
                     </li>
                   );

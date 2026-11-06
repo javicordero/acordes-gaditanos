@@ -10,7 +10,9 @@ import {
   ordenarAcordesYear,
   prioridadDeAgrupaciones,
   prioridadDeAutores,
+  prioridadPorCoplas,
 } from '../../lib/index';
+import { contarCoplasAutores } from '../../lib/autores';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -32,10 +34,12 @@ export async function getStaticPaths() {
 const { year, acordes } = Astro.props;
 
 // Agrupaciones con autores del listado de /autores salen primero, en el orden
-// de esos autores; el resto queda detrás, alfabéticamente.
+// de esos autores; después, las de los autores con más coplas del cancionero.
 const autores = await getCollection('autores');
 const prioridad = prioridadDeAgrupaciones(acordes, prioridadDeAutores(autores));
-const acordesOrdenados = ordenarAcordesYear(acordes, prioridad);
+const todas = await getCollection('acordes');
+const coplas = prioridadPorCoplas(todas, contarCoplasAutores(todas));
+const acordesOrdenados = ordenarAcordesYear(acordes, prioridad, coplas);
 
 const title = `Carnaval de Cádiz ${year} - Acordes de guitarra`;
 const description = `Todos los acordes de guitarra del Carnaval de Cádiz ${year}. Encuentra acordes de chirigotas, comparsas, cuartetos y coros del año ${year}.`;

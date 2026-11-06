@@ -11,6 +11,26 @@ type AcordeConCreditos = {
   };
 };
 
+/**
+ * Coplas distintas de cada autor (música ∪ letra): una ficha cuenta una sola
+ * vez aunque el autor firme música y letra. Es el recuento que se usa para
+ * saber qué autores son los más prolíficos y ordenar los listados.
+ */
+export function contarCoplasAutores(acordes: AcordeConCreditos[]): Record<string, number> {
+  const coplas: Record<string, number> = {};
+
+  acordes.forEach((acorde) => {
+    const slugs = new Set(
+      [...(acorde.data.musicaSlugs ?? []), ...(acorde.data.letraSlugs ?? [])].filter(Boolean),
+    );
+    slugs.forEach((slug) => {
+      coplas[slug] = (coplas[slug] ?? 0) + 1;
+    });
+  });
+
+  return coplas;
+}
+
 export function contarCreditosAutores(
   acordes: AcordeConCreditos[]
 ): Record<string, CreditosAutor> {

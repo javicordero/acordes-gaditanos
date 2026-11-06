@@ -142,6 +142,33 @@ export function prioridadDeAgrupaciones(
 }
 
 /**
+ * Coplas del autor más prolífico de cada agrupación (`agrupacionSlug → nº`).
+ * Las agrupaciones sin autoría conocida no entran en el mapa y quedan detrás,
+ * por agrupación A-Z. El recuento se hace sobre todo el cancionero
+ * (`contarCoplasAutores`), no sobre el año que se esté listando.
+ */
+export function prioridadPorCoplas(
+  acordes: FichaOrdenable[],
+  coplasPorAutor: Record<string, number>,
+): PrioridadAgrupaciones {
+  const coplas: PrioridadAgrupaciones = new Map();
+
+  acordes.forEach((acorde) => {
+    const delAcorde = [...(acorde.data.musicaSlugs ?? []), ...(acorde.data.letraSlugs ?? [])]
+      .map((slug) => coplasPorAutor[slug] ?? 0)
+      .filter((total) => total > 0);
+
+    if (delAcorde.length === 0) return;
+
+    const clave = claveAgrupacion(acorde);
+    const mejor = Math.max(...delAcorde);
+    coplas.set(clave, Math.max(coplas.get(clave) ?? 0, mejor));
+  });
+
+  return coplas;
+}
+
+/**
  * Comparador de las páginas de autor: prioridad de agrupación (si la hay) →
  * agrupación A-Z → tipo de pieza → fecha ↓ → pieza A-Z → slug A-Z.
  */
@@ -159,19 +186,21 @@ export function compararFichas(
 }
 
 /**
- * Comparador de /carnaval/[year]: primero el tipo de pieza y, dentro de cada
- * tipo, las agrupaciones destacadas, la agrupación A-Z, la fecha ↓ y el
- * desempate determinista.
+ * Comparador de /carnaval/[year] y /lista: primero los autores destacados,
+ * después las agrupaciones de los autores con más coplas, luego la agrupación
+ * A-Z, el tipo de pieza, la fecha ↓ y el desempate determinista.
  */
 export function compararFichasYear(
   a: FichaOrdenable,
   b: FichaOrdenable,
   prioridad?: PrioridadAgrupaciones,
+  coplas?: PrioridadAgrupaciones,
 ): number {
   return (
-    compararTipo(a, b) ||
     compararPrioridad(a, b, prioridad) ||
+    compararCoplas(a, b, coplas) ||
     compararAgrupacion(a, b) ||
+    compararTipo(a, b) ||
     compararResto(a, b)
   );
 }
@@ -188,6 +217,24 @@ function compararPrioridad(
   if (prioridadA === prioridadB) return 0;
 
   return prioridadA - prioridadB;
+}
+
+/**
+ * Más coplas primero. Las agrupaciones sin autoría conocida (sin entrada en el
+ * mapa) van al final.
+ */
+function compararCoplas(
+  a: FichaOrdenable,
+  b: FichaOrdenable,
+  coplas?: PrioridadAgrupaciones,
+): number {
+  if (!coplas) return 0;
+
+  const coplasA = coplas.get(claveAgrupacion(a)) ?? 0;
+  const coplasB = coplas.get(claveAgrupacion(b)) ?? 0;
+  if (coplasA === coplasB) return 0;
+
+  return coplasB - coplasA;
 }
 
 function compararAgrupacion(a: FichaOrdenable, b: FichaOrdenable): number {
@@ -218,10 +265,14 @@ export function ordenarAcordesAutor<T extends FichaOrdenable>(acordes: readonly 
   });
 }
 
-/** /carnaval/[year]: un solo año, primero por tipo de pieza. */
+/**
+ * /carnaval/[year] y /lista: un solo año, con el orden común (destacados →
+ * más coplas → agrupación → pieza → fecha ↓).
+ */
 export function ordenarAcordesYear<T extends FichaOrdenable>(
   acordes: readonly T[],
   prioridad?: PrioridadAgrupaciones,
+  coplas?: PrioridadAgrupaciones,
 ): T[] {
-  return [...acordes].sort((a, b) => compararFichasYear(a, b, prioridad));
+  return [...acordes].sort((a, b) => compararFichasYear(a, b, prioridad, coplas));
 }
