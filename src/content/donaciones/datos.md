@@ -1,5 +1,8 @@
 ---
 donaciones:
+  - fecha: "06/11/2026"
+    importe: 1
+    donante: "José Carlos"
   - fecha: "30/06/2026"
     importe: 3
     donante: "joseangelsanzvillar"
