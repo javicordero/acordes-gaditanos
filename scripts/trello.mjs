@@ -23,7 +23,8 @@
  *   listas                          columnas del tablero, con id y nº de tarjetas
  *   pendientes [--json] [--todas]   cola: «Prioritarias» y después «Pendiente»,
  *                                   de la más antigua a la más nueva
- *   ver <tarjeta> [--json]          ficha completa: descripción, checklist, últimos comentarios
+ *   ver <tarjeta> [--json]          ficha completa: título, descripción, checklist y comentarios
+ *                                   enteros, de más antiguo a más nuevo (--limite N, --breve)
  *   empezar <tarjeta> [--texto …]   mueve al final de «En curso» y comenta
  *   terminar <tarjeta> [--texto …]  mueve al final de «Finalizado» y comenta (admite --commit y --pr)
  *   mover <tarjeta> <lista>         mueve al final de la lista indicada (nombre o id)
@@ -452,14 +453,34 @@ async function cmdVer() {
     console.log(`\nChecklist «${cl.name}» (${hechos}/${items.length})`);
     for (const i of items) console.log(`  ${i.state === 'complete' ? '[x]' : '[ ]'} ${i.name}`);
   }
+  // Los comentarios NO se recortan: muchas veces el encargo de verdad está ahí
+  // (corrige el título o la descripción), así que se leen enteros. `--breve`
+  // vuelve al resumen de 300 caracteres y `--limite N` cambia cuántos se traen.
+  const limite =
+    Number.isFinite(Number(args.limite)) && Number(args.limite) > 0 ? Number(args.limite) : 20;
+  const breve = Boolean(args.breve);
+  // Se pide uno de más para saber si hay comentarios anteriores que no se muestran.
   const comentarios = await api(`/cards/${t.id}/actions`, {
-    consulta: { filter: 'commentCard', limit: 5 },
+    consulta: { filter: 'commentCard', limit: limite + 1 },
   });
-  if (comentarios?.length) {
-    console.log('\nÚltimos comentarios:');
-    for (const c of comentarios.reverse()) {
-      console.log(`  ${c.date.slice(0, 10)}  ${recortar(c.data.text, 300)}`);
+  const hayMas = Array.isArray(comentarios) && comentarios.length > limite;
+  const visibles = hayMas ? comentarios.slice(0, limite) : comentarios || [];
+  if (visibles.length) {
+    console.log('\nComentarios (de más antiguo a más nuevo):');
+    for (const c of visibles.reverse()) {
+      const quien = c.memberCreator?.username || c.memberCreator?.fullName || '';
+      console.log(`\n  ${c.date.slice(0, 10)}${quien ? ` · ${quien}` : ''}`);
+      const texto = String(c.data?.text || '').replace(/\r/g, '').trim();
+      const cuerpo = breve ? recortar(texto, 300) : texto;
+      for (const linea of cuerpo.split('\n')) console.log(`  ${linea}`);
     }
+    if (hayMas) {
+      console.log(
+        `\n  (+ comentarios más antiguos sin mostrar; usa --limite N para leerlos)`,
+      );
+    }
+  } else {
+    console.log('\n(sin comentarios)');
   }
 }
 
@@ -573,7 +594,8 @@ async function main() {
         '  pendientes [--json]           cola: Prioritarias y luego Pendiente,',
         '                                de la más antigua a la más nueva',
         '  listar <columna> [--json]     tarjetas de una columna (p. ej. «Finalizado»)',
-        '  ver <tarjeta> [--json]        descripción, checklist y comentarios',
+        '  ver <tarjeta> [--json]        título, descripción, checklist y comentarios enteros',
+        '                                (--limite N, --breve para recortarlos)',
         '  empezar <tarjeta>             → En curso, al final de la columna (+ comentario)',
         '  terminar <tarjeta>            → Finalizado, al final de la columna (+ comentario)',
         '  mover <tarjeta> <lista>       mover al final de una columna',

@@ -4,7 +4,7 @@ description: Lee las tarjetas de la columna «Pendiente» del tablero de Trello,
 license: MIT
 metadata:
   author: local
-  version: "1.2"
+  version: "1.3"
 ---
 
 # Tablero de Trello
@@ -50,6 +50,11 @@ rompe nada, pero el comentario no enciende la campanita (el CLI lo advierte).
 
 ## Flujo obligatorio
 
+> **Antes de nada, leer la tarjeta entera.** El orden es siempre: **título → descripción
+> → comentarios** (de más antiguo a más nuevo). Muchas veces el encargo de verdad está en
+> tu comentario, no en el título, y corrige lo que dice la descripción. No se mueve la
+> tarjeta, no se planifica y no se toca nada hasta haber leído las tres partes.
+>
 > **Primero se planifica y se para.** «Siguiente tarea del Trello», «coge la siguiente»,
 > «mira qué hay pendiente» son órdenes de **planificar**, no de implementar. Sin un
 > «adelante» explícito del usuario no se edita ni un archivo.
@@ -70,14 +75,27 @@ rompe nada, pero el comentario no enciende la campanita (el CLI lo advierte).
    Trello apila las nuevas arriba). Si hay varias y no está claro, se listan y se pregunta;
    no se elige a ciegas una tarea grande.
 
-2. **Leer la tarjeta entera**
+2. **Leer la tarjeta entera, en orden: título → descripción → comentarios**
 
    ```bash
    npm run trello -- ver <id|shortLink>
    ```
 
-   La descripción y los comentarios son el encargo. Si falta contexto, se pregunta **en el
-   plan**, no se rellena a base de suposiciones.
+   Cada parte es un encargo distinto y se leen **las tres antes de hacer nada**:
+
+   1. **Título**: qué pide la tarjeta en corto (a veces es todo el texto, porque el usuario
+      escribe la tarea entera ahí).
+   2. **Descripción**: el detalle, los enlaces y las capturas.
+   3. **Comentarios**: **los lee todos**, de más antiguo a más nuevo. Tu comentario suele
+      llevar la corrección, el criterio o el «esto al final no» que no está en el título ni
+      en la descripción. Manda sobre lo anterior cuando se contradicen.
+
+   `ver` los saca enteros desde la versión 1.3 del script (antes los recortaba a 300
+   caracteres). Si una tarjeta tiene muchísimos, `--limite N`; `--breve` vuelve al resumen.
+   Con `--json` sale el objeto crudo de Trello (útil si el texto trae comillas raras).
+
+   Si después de las tres partes falta contexto, se pregunta **en el plan**, no se rellena a
+   base de suposiciones.
 
 3. **Pasarla a «En curso» y renombrar la sesión** (solo la que se va a trabajar)
 
@@ -187,9 +205,10 @@ previstas para pasodobles (`TIPOS_CON_LETRAS`).
 
 ### Flujo
 
-1. **Leer la tarjeta**: `npm run trello -- ver <id>`. Si la letra viene en un comentario o
-   el texto es largo, usa `--json`: el resumen normal recorta los comentarios a 300
-   caracteres.
+1. **Leer la tarjeta**: `npm run trello -- ver <id>`, en orden **título → descripción →
+   comentarios**. La letra puede venir en cualquiera de los tres: en el título («pasodoble
+   el cementerio»), en la descripción o pegada en un comentario. Si es larga, `--json` (el
+   resumen normal solo recorta con `--breve`).
 2. **Reconocer** con el título y la descripción juntos.
 3. **Si ya existe** la letra, comenta cuál es la ficha y para. No se duplica.
 4. **Apuntarla en la cola**:
@@ -231,6 +250,9 @@ tarea**: no se hace al atender una tarjeta de letra.
 
 ## Reglas
 
+- **Antes de mover, planificar o tocar nada**: título, descripción y **todos** los
+  comentarios de la tarjeta. Si el comentario contradice al título o a la descripción, manda
+  el comentario.
 - **Nunca** se implementa en el mismo turno en que se planifica, salvo que el usuario lo
   pida explícitamente («planifícalo y hazlo»). **Las tarjetas de letras son la excepción**:
   se hacen directamente, sin plan previo.
@@ -263,7 +285,7 @@ tarea**: no se hace al atender una tarjeta de letra.
 |---|---|
 | `listas` | columnas con su id y nº de tarjetas (comprueba que existen las tres) |
 | `pendientes [--json]` | tarjetas de «Pendiente», de la más antigua a la más nueva |
-| `ver <tarjeta>` | descripción, checklists y últimos comentarios |
+| `ver <tarjeta>` | título, descripción, checklists y comentarios enteros (de más antiguo a más nuevo; `--limite N`, `--breve`, `--json`) |
 | `empezar <tarjeta>` | → «En curso» (al final de la columna) + comentario |
 | `terminar <tarjeta>` | → «Finalizado» (al final de la columna) + comentario (`--commit`, `--pr`) |
 | `mover <tarjeta> <lista>` | mover al final de una columna concreta |
