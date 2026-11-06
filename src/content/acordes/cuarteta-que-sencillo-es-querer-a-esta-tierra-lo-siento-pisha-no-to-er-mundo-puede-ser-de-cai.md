@@ -1,5 +1,5 @@
 ---
-pieza: cuarteta "Que sencillo es querer a esta tierra"
+pieza: Cuarteta "Que sencillo es querer a esta tierra"
 agrupacion: Lo siento pisha, No to er mundo puede ser de Cai
 year: 2013
 modalidad: Comparsa

@@ -4,7 +4,7 @@ agrupacion: Suspiros de Cai
 year: 1992
 modalidad: Comparsa
 musica: Pepito Martínez
-letra: Joaquin Quiñones
+letra: Joaquín Quiñones
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/dd6af8e6d80356b90e6e0079e.jpg
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/6mumLy8t46I?feature=player_embedded'

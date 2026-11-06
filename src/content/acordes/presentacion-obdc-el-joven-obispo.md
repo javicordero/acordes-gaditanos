@@ -3,8 +3,8 @@ pieza: Presentación
 agrupacion: OBDC El joven obispo
 year: 2018
 modalidad: Comparsa
-musica: Germán García Rendón
-letra: Germán García Rendón
+musica: Germán Rendón
+letra: Germán Rendón
 img: https://letrasdecarnaval.com/assets/images/agrupaciones/15c0f1a31819b8902ada8b2cc.jpg
 cejilla: 1
 date: "25/11/2025"

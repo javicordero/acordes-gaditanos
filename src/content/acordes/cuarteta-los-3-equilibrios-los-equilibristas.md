@@ -1,6 +1,6 @@
 ---
 pieza: Cuarteta "Los 3 equilibrios"
-agrupacion: Los equilibristas
+agrupacion: Los Equilibristas
 year: 2017
 modalidad: Comparsa
 musica: José Manuel Aranda

@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Oh capitán, my Capitán
+agrupacion: Oh Capitán, My Capitán
 year: 2020
 modalidad: Comparsa
 musica: Tino Tovar

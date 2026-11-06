@@ -1,5 +1,5 @@
 ---
-pieza: Pasodoble Original
+pieza: Pasodoble original
 agrupacion: Los Irracionales
 year: 2017
 modalidad: Comparsa

@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Los Ángeles caídos
+agrupacion: Los Ángeles Caídos
 year: 2002
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón

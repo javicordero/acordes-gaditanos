@@ -1,5 +1,5 @@
 ---
-pieza: Final de popurri
+pieza: Final de popurrí
 agrupacion: Los antesdeayesterday
 year: 2011
 modalidad: Comparsa

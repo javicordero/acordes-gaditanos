@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Pa religión la mía
+agrupacion: Pa religión, la mía
 year: 2017
 modalidad: Chirigota
 musica: Lolo Molina

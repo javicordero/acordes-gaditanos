@@ -214,9 +214,9 @@ comprobar(`todos los años respetan destacados → coplas → agrupación`, roto
 
 const orden2024 = comprobarMonotonia('2024').orden;
 comprobar(
-  '2024 abre con La Oveja negra (Ares, el destacado de menor order del año)',
+  '2024 abre con La Oveja Negra (Ares, el destacado de menor order del año)',
   orden2024[0].data.agrupacion,
-  'La Oveja negra',
+  'La Oveja Negra',
 );
 comprobar(
   'la primera ficha de 2024 es su final de popurrí (orden de pieza)',

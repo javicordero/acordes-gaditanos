@@ -1,5 +1,5 @@
 ---
-pieza: Final de Popurrí
+pieza: Final de popurrí
 agrupacion: Una chirigota con shoniket3
 year: 2025
 modalidad: Chirigota

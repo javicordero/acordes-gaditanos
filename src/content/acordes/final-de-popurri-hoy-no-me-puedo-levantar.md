@@ -1,5 +1,5 @@
 ---
-pieza: Final de Popurrí
+pieza: Final de popurrí
 agrupacion: Hoy no me puedo levantar
 year: 2014
 modalidad: Chirigota

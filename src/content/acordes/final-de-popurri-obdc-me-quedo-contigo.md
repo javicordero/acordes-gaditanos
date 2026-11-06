@@ -1,5 +1,5 @@
 ---
-pieza: Final de popurri
+pieza: Final de popurrí
 agrupacion: OBDC! Me quedo contigo
 year: 2026
 musica: Germán Rendón

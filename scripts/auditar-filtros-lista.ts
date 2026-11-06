@@ -173,7 +173,7 @@ const fichas: FichaConDatos[] = fs
 const filtrables = fichas.map(aFichaFiltrable);
 
 const suma = (opciones: { total: number }[]) => opciones.reduce((total, opcion) => total + opcion.total, 0);
-comprobar('total de fichas', filtrables.length, 611);
+comprobar('total de fichas', filtrables.length, 586);
 comprobar('pieza reparte todas las fichas', suma(opcionesPieza(filtrables)), filtrables.length);
 comprobar('década reparte todas las fichas', suma(opcionesDecada(filtrables)), filtrables.length);
 comprobar('año reparte todas las fichas', suma(opcionesAnio(filtrables)), filtrables.length);
@@ -181,8 +181,8 @@ comprobar('ninguna ficha sin tipo de pieza', filtrables.filter((f) => f.tipo ===
 comprobar('piezas distintas', opcionesPieza(filtrables).length, 7);
 comprobar('décadas distintas', opcionesDecada(filtrables).length, 8);
 comprobar('años distintos', opcionesAnio(filtrables).length, 61);
-comprobar('autores de música distintos', opcionesAutores(fichas, 'musica').length, 83);
-comprobar('autores de letra distintos', opcionesAutores(fichas, 'letra').length, 93);
+comprobar('autores de música distintos', opcionesAutores(fichas, 'musica').length, 73);
+comprobar('autores de letra distintos', opcionesAutores(fichas, 'letra').length, 83);
 comprobar(
   'orden de las opciones de pieza',
   opcionesPieza(filtrables).map((opcion) => opcion.id),
@@ -191,19 +191,19 @@ comprobar(
 comprobar(
   'top de piezas',
   opcionesPieza(filtrables).slice(0, 3).map((opcion) => `${opcion.id}=${opcion.total}`),
-  ['presentacion=115', 'pasodoble=376', 'tango=3'],
+  ['presentacion=107', 'pasodoble=359', 'tango=3'],
 );
 comprobar(
   'autores ordenados por número de coplas',
   opcionesAutores(fichas, 'musica')
     .slice(0, 3)
     .map((opcion) => `${opcion.id}=${opcion.total}`),
-  ['juan-carlos-aragon=73', 'antonio-martinez-ares=42', 'el-noly=37'],
+  ['juan-carlos-aragon=72', 'el-noly=37', 'antonio-martinez-ares=35'],
 );
 comprobar(
   'un autor con nombre más usado',
   opcionesAutores(fichas, 'musica').find((opcion) => opcion.id === 'juan-carlos-aragon'),
-  { id: 'juan-carlos-aragon', nombre: 'Juan Carlos Aragón', total: 73 },
+  { id: 'juan-carlos-aragon', nombre: 'Juan Carlos Aragón', total: 72 },
 );
 
 console.log(fallos === 0 ? '\nTodo correcto.' : `\n${fallos} fallo(s).`);

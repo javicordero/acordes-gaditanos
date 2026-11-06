@@ -1,5 +1,5 @@
 ---
-pieza: Pasodoble Inédito
+pieza: Pasodoble inédito
 agrupacion: Una comparsa divina
 year: 2020
 modalidad: Comparsa

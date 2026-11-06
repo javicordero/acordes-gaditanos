@@ -1,5 +1,5 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: Los Indiana Jones de lo callejones
 year: 2017
 modalidad: Chirigota

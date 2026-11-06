@@ -1,6 +1,6 @@
 ---
 agrupacion: Los Originales
-pieza: Final de popurí
+pieza: Final de popurrí
 year: 2022
 modalidad: Comparsa
 musica: Jonathan Pérez Ginel

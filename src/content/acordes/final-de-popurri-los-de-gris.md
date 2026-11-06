@@ -1,5 +1,5 @@
 ---
-pieza: Final de Popurrí
+pieza: Final de popurrí
 agrupacion: Los de gris
 year: 2013
 modalidad: Chirigota

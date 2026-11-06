@@ -1,5 +1,5 @@
 ---
-pieza: Final de Popurrí
+pieza: Final de popurrí
 agrupacion: Los del otro barrio
 year: 2025
 modalidad: Comparsa

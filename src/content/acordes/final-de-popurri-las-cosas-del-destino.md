@@ -3,8 +3,8 @@ pieza: Final de popurrí
 agrupacion: Las cosas del destino
 year: 2019
 modalidad: Chirigota
-musica: Iván Romero.
-letra: Iván Romero.
+musica: Iván Romero
+letra: Iván Romero
 img: https://www.codigocarnaval.com/wp-content/uploads/2020/04/Chirigota-Las-Cosas-del-destino.jpg.webp
 cejilla: 0
 date: "25/11/2025"

@@ -1,6 +1,6 @@
 ---
 pieza: Presentación
-agrupacion: Los peregrinos
+agrupacion: Los Peregrinos
 year: 2017
 modalidad: Comparsa
 musica: Juan Carlos Aragón

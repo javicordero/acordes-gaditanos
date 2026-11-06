@@ -1,6 +1,6 @@
 ---
 pieza: Presentación
-agrupacion: Er chele vara
+agrupacion: Er Chele Vara
 year: 2019
 modalidad: Chirigota
 musica: Juan Carlos Aragón

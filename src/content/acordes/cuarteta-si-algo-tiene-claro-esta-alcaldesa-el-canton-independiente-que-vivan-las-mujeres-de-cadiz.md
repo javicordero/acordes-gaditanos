@@ -1,5 +1,5 @@
 ---
-pieza: cuarteta "Si algo tiene claro esta alcaldesa"
+pieza: Cuarteta "Si algo tiene claro esta alcaldesa"
 agrupacion: El cantón independiente (Que vivan las mujeres de Cádiz)
 year: 2023
 modalidad: Comparsa

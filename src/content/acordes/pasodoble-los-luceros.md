@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Los luceros
+agrupacion: Los Luceros
 year: 2019
 modalidad: Comparsa
 musica: El Noly

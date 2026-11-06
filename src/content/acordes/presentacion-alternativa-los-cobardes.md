@@ -1,5 +1,5 @@
 ---
-pieza: Presentación Original
+pieza: Presentación original
 agrupacion: Los Cobardes
 year: 2016
 modalidad: Comparsa

@@ -1,5 +1,5 @@
 ---
-pieza: Final de Popurrí
+pieza: Final de popurrí
 agrupacion: Los Regaera
 year: 2004
 modalidad: Comparsa

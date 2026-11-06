@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: La Chusma selecta
+agrupacion: La Chusma Selecta
 year: 2020
 modalidad: Comparsa
 musica: Antonio Martínez Ares

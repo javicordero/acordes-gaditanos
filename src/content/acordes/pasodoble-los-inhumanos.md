@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Los inhumanos
+agrupacion: Los Inhumanos
 year: 2025
 modalidad: Chirigota
 musica: Víctor Jurado

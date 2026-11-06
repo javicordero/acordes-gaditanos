@@ -1,6 +1,6 @@
 ---
 pieza: Final de popurrí
-agrupacion: La Oveja negra
+agrupacion: La Oveja Negra
 year: 2024
 modalidad: Comparsa
 musica: Antonio Martínez Ares

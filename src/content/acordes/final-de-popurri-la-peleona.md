@@ -1,5 +1,5 @@
 ---
-pieza: Final de Popurrí
+pieza: Final de popurrí
 agrupacion: La Peleona
 year: 2015
 modalidad: Comparsa

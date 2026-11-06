@@ -1,5 +1,5 @@
 ---
-pieza: pasodoble
+pieza: Pasodoble
 agrupacion: Las del tacatá
 year: 2023
 modalidad: Comparsa

@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+import { etiquetaModalidad, normalizarAgrupacion, normalizarPieza } from '../lib/contenido.ts';
 
 // Función para dividir autores por coma
 function splitAuthors(value: string | undefined): string[] {
@@ -22,8 +23,13 @@ function generateSlug(text: string): string {
 // Esquema compartido por la colección oficial y la provisional de importación
 const acordeSchema = z
   .object({
-    pieza: z.string(),
-    agrupacion: z.string(),
+    // El tipo base se normaliza al cargar (`Final de Popurrí` → `Final de popurrí`,
+    // `pasodoble` → `Pasodoble`), conservando el título entrecomillado y el
+    // calificador. La modalidad, igual (`Chrigota` → `Chirigota`). El criterio
+    // vive en `src/lib/contenido.ts`; `npm run auditar:contenido` avisa de lo
+    // que aún no esté en el `.md` con esa forma.
+    pieza: z.string().transform(normalizarPieza),
+    agrupacion: z.string().transform(normalizarAgrupacion),
     musica: z.string().optional(),
     letra: z.string().optional(),
     // Título de una letra alternativa de la misma música ("La mujer nube").
@@ -31,7 +37,10 @@ const acordeSchema = z
     letraTitulo: z.string().optional(),
     img: z.string(),
     year: z.number().transform((n) => n.toString()),
-    modalidad: z.string().optional(),
+    modalidad: z
+      .string()
+      .transform((valor) => etiquetaModalidad(valor) ?? valor)
+      .optional(),
     cejilla: z
       .number()
       .transform((n) => n.toString())

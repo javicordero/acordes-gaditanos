@@ -1,6 +1,6 @@
 ---
 pieza: Presentación
-agrupacion: Los regaera
+agrupacion: Los Regaera
 year: 2004
 modalidad: Comparsa
 musica: José Luis Bustelo

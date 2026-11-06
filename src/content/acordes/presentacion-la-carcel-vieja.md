@@ -1,6 +1,6 @@
 ---
 pieza: Presentación
-agrupacion: La Cárcel vieja
+agrupacion: La Cárcel Vieja
 year: 2004
 modalidad: Comparsa
 musica: Nene Cheza

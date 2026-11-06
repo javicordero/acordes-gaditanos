@@ -3,8 +3,8 @@ pieza: Pasodoble
 agrupacion: El nombre me lo estoy pensando
 year: 2019
 modalidad: Chirigota
-musica: Paco Rosado.
-letra: Paco Rosado.
+musica: Paco Rosado
+letra: Paco Rosado
 img: https://s1.abcstatics.com/media/MM/2019/02/03/v/chirigota-nombre-pensando%20(1)_xoptimizadax.jpg
 cejilla: 0
 date: "25/11/2025"

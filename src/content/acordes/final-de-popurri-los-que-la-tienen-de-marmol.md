@@ -1,5 +1,5 @@
 ---
-pieza: Final de popurri
+pieza: Final de popurrí
 agrupacion: Los que la tienen de mármol
 year: 2026
 musica: El Molina

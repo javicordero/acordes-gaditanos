@@ -1,5 +1,5 @@
 ---
-pieza: Final de Popurrí
+pieza: Final de popurrí
 agrupacion: Oh Capitán, My Capitán
 year: 2020
 modalidad: Comparsa

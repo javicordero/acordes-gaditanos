@@ -1,5 +1,5 @@
 ---
-pieza: Final de popurri
+pieza: Final de popurrí
 agrupacion: Mushu Carnaval
 year: 2025
 modalidad: Chirigota

@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: La banda del capitán veneno
+agrupacion: La banda del Capitán Veneno
 year: 2008
 modalidad: Comparsa
 musica: Juan Carlos Aragón

@@ -3,8 +3,8 @@ pieza: Pasodoble
 agrupacion: Los Cachitopan
 year: 2019
 modalidad: Chirigota
-musica: Kike Remolino.
-letra: Kike Remolino.
+musica: Kike Remolino
+letra: Kike Remolino
 img: https://s1.abcstatics.com/media/MM/2019/01/26/v/cachitopan%20(8)_xoptimizadax.jpg
 cejilla: 1
 date: "25/11/2025"

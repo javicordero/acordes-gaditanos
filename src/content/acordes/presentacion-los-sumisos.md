@@ -1,6 +1,6 @@
 ---
 pieza: Presentación
-agrupacion: Los sumisos
+agrupacion: Los Sumisos
 year: 2022
 modalidad: Comparsa
 musica: Antonio Martínez Ares

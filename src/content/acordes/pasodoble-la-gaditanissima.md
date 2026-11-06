@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: La gaditaníssima
+agrupacion: La Gaditaníssima
 year: 2019
 modalidad: Comparsa
 musica: Juan Carlos Aragón

@@ -3,8 +3,8 @@ pieza: Presentación
 agrupacion: Juana la loca
 year: 2011
 modalidad: Comparsa
-musica: Tino Tovar.
-letra: Tino Tovar.
+musica: Tino Tovar
+letra: Tino Tovar
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1298012614-juana.jpeg
 cejilla: 1
 date: "25/11/2025"

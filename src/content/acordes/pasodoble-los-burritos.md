@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Los burritos
+agrupacion: Los Burritos
 year: 2020
 modalidad: Chirigota
 musica: Manolín Santander

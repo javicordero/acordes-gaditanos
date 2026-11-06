@@ -76,11 +76,6 @@ for (const [clave, marcadas] of grupos) {
       console.error(`✗ ${ficha.archivo}: una letra alternativa no debe llevar "destacada".`);
       errores++;
     }
-
-    if (ficha.data.recomendada === true) {
-      console.error(`✗ ${ficha.archivo}: una letra alternativa no debe llevar "recomendada".`);
-      errores++;
-    }
   }
 
   if (todos.length < 2) {

@@ -1,5 +1,5 @@
 ---
-pieza: Final de popurri
+pieza: Final de popurrí
 agrupacion: Los butaneros, chirigota de CAI/CDC
 year: 2025
 musica: Kike Remolino, Javi El Ojo

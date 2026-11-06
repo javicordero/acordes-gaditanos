@@ -64,6 +64,45 @@
   status = 301
   force = true
 
+# Autores que se unificaron con su alias (`ALIAS_AUTORES` en
+# src/lib/contenido.ts): su página antigua ya no se genera, así que la URL
+# vieja apunta a la buena con un 301.
+[[redirects]]
+  from = "/autor/musica/german-garcia-rendon"
+  to = "/autor/musica/german-rendon"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/autor/musica/german-garcia-rendon/*"
+  to = "/autor/musica/german-rendon"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/autor/musica/angel-luis-silva-benzo"
+  to = "/autor/musica/angel-luis-silva"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/autor/musica/angel-luis-silva-benzo/*"
+  to = "/autor/musica/angel-luis-silva"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/autor/musica/juan-manuel-romero-bey"
+  to = "/autor/musica/juanma-romero-bey"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/autor/musica/juan-manuel-romero-bey/*"
+  to = "/autor/musica/juanma-romero-bey"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/admin/*"
   [headers.values]

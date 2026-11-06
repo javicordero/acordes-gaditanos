@@ -1,5 +1,5 @@
 ---
-pieza: presentación
+pieza: Presentación
 agrupacion: La mare que me parió
 year: 2009
 modalidad: Comparsa

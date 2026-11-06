@@ -1,6 +1,6 @@
 ---
 pieza: Presentación
-agrupacion: Oh Capitán My Capitán
+agrupacion: Oh Capitán, My Capitán
 year: 2020
 modalidad: Comparsa
 musica: Tino Tovar

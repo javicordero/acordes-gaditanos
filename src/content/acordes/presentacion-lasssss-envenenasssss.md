@@ -3,8 +3,8 @@ pieza: Presentación
 agrupacion: Lasssss Envenenásssss
 year: 2019
 modalidad: Comparsa
-musica: Juanma Romero Bey.
-letra: Juanma Romero Bey.
+musica: Juanma Romero Bey
+letra: Juanma Romero Bey
 img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2019/23480.jpg
 cejilla: 2
 date: "25/11/2025"

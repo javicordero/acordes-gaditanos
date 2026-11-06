@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: La consentida
+agrupacion: La Consentida
 year: 2024
 modalidad: Comparsa
 musica: David Castro

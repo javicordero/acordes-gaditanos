@@ -1,6 +1,6 @@
 ---
 pieza: Cuarteta "Me llevo a la tumba"
-agrupacion: El cementerio
+agrupacion: El Cementerio
 year: 2025
 modalidad: Comparsa
 musica: Jonathan Pérez Ginel

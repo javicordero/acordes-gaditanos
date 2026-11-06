@@ -1,6 +1,6 @@
 ---
 pieza: Pasodoble
-agrupacion: Los mafiosos
+agrupacion: Los Mafiosos
 year: 2018
 modalidad: Comparsa
 musica: Juan Carlos Aragón

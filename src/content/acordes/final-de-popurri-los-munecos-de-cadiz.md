@@ -1,5 +1,5 @@
 ---
-pieza: Final de Popurrí
+pieza: Final de popurrí
 agrupacion: Los muñecos de Cádiz
 year: 2011
 modalidad: Comparsa

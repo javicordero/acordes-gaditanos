@@ -1,6 +1,6 @@
 ---
 pieza: Popurrí
-agrupacion: La eternidad
+agrupacion: La Eternidad
 year: 2017
 modalidad: Comparsa
 musica: Antonio Martínez Ares

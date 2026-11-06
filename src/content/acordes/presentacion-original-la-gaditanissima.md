@@ -1,5 +1,5 @@
 ---
-pieza: Presentación Original
+pieza: Presentación original
 agrupacion: La Gaditaníssima
 year: 2019
 modalidad: Comparsa

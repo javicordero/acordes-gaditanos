@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Cazafantasmas
 year: 2016
 modalidad: Comparsa
-musica: Angel Luis Silva
+musica: Ángel Luis Silva
 letra: El Piru
 img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/cazafantasmas-comparsa-femenina.jpeg
 cejilla: 2
