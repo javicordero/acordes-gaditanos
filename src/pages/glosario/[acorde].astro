@@ -364,6 +364,15 @@ const textoEnarmonico = etiquetaEnarmonica
         }
       </section>
 
+      <aside class='acorde-pagina__reconocer'>
+        <p>
+          ¿Tocas otra postura y no sabes cómo se llama?
+          <a href='/reconocer-acorde' data-ga-event='click_reconocer_acorde_pagina'>
+            Averigua qué acorde es dibujándola en el mástil →
+          </a>
+        </p>
+      </aside>
+
       <nav class='acorde-pagina__volver' aria-label='Seguir navegando'>
         <a href='/glosario'>← Volver al glosario de acordes</a>
         <a href='/lista'>Ver todas las coplas del Carnaval</a>
@@ -663,6 +672,32 @@ const textoEnarmonico = etiquetaEnarmonica
     color: var(--on-bright-color);
   }
 
+  .acorde-pagina__reconocer {
+    margin-top: 26px;
+    padding: 10px 12px;
+    border: 2px dashed var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  .acorde-pagina__reconocer a {
+    color: var(--link-color);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .acorde-pagina__reconocer a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+
+  .acorde-pagina__reconocer a:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
   .acorde-pagina__volver {
     display: flex;
     flex-wrap: wrap;
@@ -709,4 +744,5 @@ const textoEnarmonico = etiquetaEnarmonica
   import { seguirEnlaces } from '../../lib/analitica';
 
   seguirEnlaces('[data-ga-event="click_glosario_ver_acorde"]', 'glosario');
+  seguirEnlaces('a[data-ga-event="click_reconocer_acorde_pagina"]', 'glosario');
 </script>

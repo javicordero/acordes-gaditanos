@@ -100,6 +100,16 @@ const webPageSchema = {
           </p>
         </div>
 
+        <p class='glosario__reconocer'>
+          <span class='glosario__reconocer-texto'>¿No sabes qué acorde estás tocando?</span>
+          <a
+            href='/reconocer-acorde'
+            data-ga-event='click_reconocer_acorde_glosario'
+          >
+            Dibújalo en el mástil y te decimos cómo se llama →
+          </a>
+        </p>
+
         <nav class='glosario__indice' aria-label='Fundamentales'>
           {
             grupos.map((grupo) => (
@@ -232,6 +242,41 @@ const webPageSchema = {
     font-weight: 700;
     color: var(--text-secondary-color);
     white-space: nowrap;
+  }
+
+  .glosario__reconocer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 10px;
+    margin: 0 0 16px;
+    padding: 10px 12px;
+    border: 2px dashed var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  .glosario__reconocer-texto {
+    font-weight: 800;
+    color: var(--primary-color);
+  }
+
+  .glosario__reconocer a {
+    color: var(--link-color);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .glosario__reconocer a:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+
+  .glosario__reconocer a:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
   }
 
   .glosario__indice {
@@ -454,7 +499,7 @@ const webPageSchema = {
 </style>
 
 <script>
-  import { enviarEvento } from '../lib/analitica';
+  import { enviarEvento, seguirEnlaces } from '../lib/analitica';
 
   const entrada = document.getElementById('glosario-buscar') as HTMLInputElement | null;
   const secciones = Array.from(document.querySelectorAll<HTMLDetailsElement>('.glosario-grupo'));
@@ -565,4 +610,6 @@ const webPageSchema = {
       setTimeout(abrirDelHash, 50);
     }
   }
+
+  seguirEnlaces('a[data-ga-event="click_reconocer_acorde_glosario"]', 'glosario');
 </script>

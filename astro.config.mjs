@@ -53,7 +53,6 @@ export default defineConfig({
         !page.includes('/acordes2') &&
         !page.includes('/acordes3') &&
         !page.includes('/lista2') &&
-        !page.includes('/reconocer-acorde') &&
         // Panel privado de edición: noindex y fuera del sitemap (también el viejo /estudio).
         !page.includes('/admin') &&
         !page.includes('/estudio') &&

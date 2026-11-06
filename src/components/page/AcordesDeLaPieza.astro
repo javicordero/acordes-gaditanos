@@ -150,13 +150,22 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
               })}
             </ul>
 
-            <a
-              class='acordes-pieza__enlace'
-              href='/glosario'
-              data-ga-event='click_glosario_acordes_usados'
-            >
-              Ver glosario completo
-            </a>
+            <div class='acordes-pieza__enlaces'>
+              <a
+                class='acordes-pieza__enlace'
+                href='/glosario'
+                data-ga-event='click_glosario_acordes_usados'
+              >
+                Ver glosario completo
+              </a>
+              <a
+                class='acordes-pieza__enlace'
+                href='/reconocer-acorde'
+                data-ga-event='click_reconocer_acorde_ficha'
+              >
+                ¿No sabes qué acorde es? Reconócelo →
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -491,9 +500,16 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
     outline-offset: 1px;
   }
 
+  .acordes-pieza__enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin-top: 12px;
+  }
+
   .acordes-pieza__enlace {
     display: inline-block;
-    margin-top: 12px;
+    margin-top: 0;
     color: var(--link-color);
     font-size: 0.75rem;
     font-weight: 700;

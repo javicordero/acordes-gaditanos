@@ -31,7 +31,6 @@ export const RUTAS_PRIVADAS = [
   '/acordes3',
   '/lista2',
   '/admin',
-  '/reconocer-acorde',
 ];
 
 // Cualquier IPv4 literal (192.168.1.40, 10.0.0.5…) es desarrollo.
