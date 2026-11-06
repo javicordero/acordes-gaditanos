@@ -1,5 +1,5 @@
 ---
-pieza: Pasodoble "De la India misteriosa
+pieza: Pasodoble
 agrupacion: Los Hindúes
 year: 1971
 modalidad: Comparsa
