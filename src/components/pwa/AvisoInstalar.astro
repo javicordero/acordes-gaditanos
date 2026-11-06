@@ -25,10 +25,22 @@ import { Icon } from 'astro-icon/components';
 <script>
   import { eventoPwa } from '../../lib/pwa/analytics';
   import { eventoInstalar, instalar, puedeInstalar } from '../../lib/pwa/instalacion';
+  import { contarPagina, unaVezPorSesion } from '../../lib/pwa/sesion';
 
   // Días que tarda en volver a salir después de descartarlo.
   const DIAS_DESCARTADO = 30;
   const CLAVE = 'ag_aviso_instalar_descartado';
+
+  // El aviso no sale en la primera página: pedir la app antes de haber leído
+  // nada se cierra sin leerlo (lo descartaba el 38 % de todos los usuarios).
+  // Aparece cuando el usuario ya ha abierto una segunda página (dos rutas
+  // distintas en la sesión) o cuando vuelve otro día, y como mucho una vez por
+  // sesión. Descartarlo sigue callándolo 30 días.
+  const PAGINAS_MINIMAS = 2;
+  const VISITAS_MINIMAS = 2;
+  const CLAVE_SESION = 'ag_aviso_instalar_visto';
+
+  let navegacion: { paginas: number; visitas: number } | null = null;
   const SEL_ANCLA =
     'ins[data-anchor-status], ins[data-anchor-shown="true"], div[id^="google_anchor"]';
 
@@ -84,14 +96,32 @@ import { Icon } from 'astro-icon/components';
     setTimeout(fin, 400);
   }
 
+  function hayIntencion(): boolean {
+    // Una sola cuenta por carga: el aviso se reevalúa cuando llega el prompt
+    // nativo o cambia el estado de instalación, y eso no debe sumar páginas.
+    if (!navegacion) navegacion = contarPagina();
+    return (
+      navegacion.paginas >= PAGINAS_MINIMAS || navegacion.visitas >= VISITAS_MINIMAS
+    );
+  }
+
   function aplicar() {
     const wrap = document.querySelector<HTMLElement>('[data-aviso]');
     if (!wrap) return;
 
-    if (!puedeInstalar() || descartado()) {
+    if (!puedeInstalar() || descartado() || !hayIntencion()) {
       ocultar(wrap, false);
       return;
     }
+
+    // Ya está a la vista: solo hay que recolocarlo si aparece el anuncio ancla.
+    if (!wrap.hidden) {
+      ajustarPorAncla(wrap);
+      return;
+    }
+
+    // Una vez por sesión: en la siguiente página no vuelve a salir.
+    if (!unaVezPorSesion(CLAVE_SESION)) return;
 
     mostrar(wrap);
   }

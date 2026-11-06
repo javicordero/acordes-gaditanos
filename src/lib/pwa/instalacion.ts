@@ -11,6 +11,7 @@ import {
   eventoPwa,
   iniciarAnaliticaPwa,
 } from './analytics';
+import { unaVezPorSesion } from './sesion';
 
 interface AgPwa {
   prompt: { prompt: () => void; userChoice: Promise<{ outcome: string }> } | null;
@@ -57,6 +58,15 @@ function reportarPromptNativo() {
   if (!ctx || !ctx.prompt) return;
   promptNativoReportado = true;
   eventoPwa('pwa_native_prompt_available', { ubicacion: ubicacionActual() });
+}
+
+// Apertura de la app instalada: una vez por sesión. Es la única forma de contar
+// las instalaciones que no dejan rastro (en iOS no existe `appinstalled`) y de
+// saber cuánta gente usa la app de verdad, no cuánta pulsó «instalar».
+function reportarAppAbierta() {
+  if (!esStandalone()) return;
+  if (!unaVezPorSesion('ag_app_abierta')) return;
+  eventoPwa('pwa_app_open', { ubicacion: ubicacionActual() });
 }
 
 function abrirPanel() {
@@ -121,6 +131,7 @@ export function instalar(componente = 'desconocido') {
 
 export function initPwa() {
   iniciarAnaliticaPwa();
+  reportarAppAbierta();
 
   // `appinstalled` lo captura el script inline y llega como evento propio.
   window.addEventListener('ag:appinstalled', () => {
