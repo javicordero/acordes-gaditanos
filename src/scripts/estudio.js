@@ -1,5 +1,6 @@
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho, esAcorde, esAnotacion } from '../lib/pre-acordes.js';
 import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura } from '../lib/editar-lineas.js';
+import { escaparHtml } from '../lib/escape.js';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
@@ -40,7 +41,10 @@ let zonaFicha = 'acordes';
 // Texto del aviso sin marcas, para el tuit (el textarea lleva el de WhatsApp).
 let avisoX = '';
 
-const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// Escapa texto y comillas: vale tanto entre etiquetas como dentro de un
+// atributo. `escAttr` se mantiene como alias porque los atributos del panel van
+// con comillas dobles y así no se escapa dos veces la comilla.
+const esc = escaparHtml;
 const hoy = () => { const d = new Date(); const p = (n) => String(n).padStart(2, '0'); return p(d.getDate()) + '/' + p(d.getMonth() + 1) + '/' + d.getFullYear(); };
 
 /**
@@ -685,7 +689,7 @@ function pintarStats(d) {
 /* ---------------- comentarios / peticiones ---------------- */
 let peticiones = [];
 let comentariosTodos = [];
-const escAttr = (t) => esc(String(t || '')).replace(/"/g, '&quot;');
+const escAttr = escaparHtml;
 
 function fechaCorta(iso) {
   const d = new Date(iso);

@@ -363,26 +363,11 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
           const votedBy = comment.votedBy ?? [];
           const hasVoted = votedBy.includes(userId);
 
-          el.innerHTML = `
-            <div class='comment-header'>
-              <span class='comment-author'>
-                ${comment.isAdmin ? '<span class="comment-badge comment-badge--owner">Propietario</span>' : ''}
-                ${displayName}
-              </span>
-              <span class='comment-date'>${dateStr}</span>
-              ${comment.completed ? '<span class="comment-badge comment-badge--completed">Completada</span>' : ''}
-            </div>
-            <div class='comment-content'>
-              <p class='comment-text'>${escapeHtml(comment.content)}</p>
-            </div>
-            <div class='comment-actions'>
-              ${isRoot ? `<button class='comment-vote-btn ${hasVoted ? 'comment-vote-btn--active' : ''}' data-comment-id='${comment.id}' data-votes='${votes}' aria-label='Votar'>
-                <svg class='heart-icon' width='16' height='16' viewBox='0 0 24 24' fill='${hasVoted ? 'currentColor' : 'none'}' stroke='currentColor' stroke-width='2'><path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/></svg>
-                <span class='comment-votes-count'>${votes}</span>
-              </button>` : ''}
-              <button class='reply-trigger-btn' data-comment-id='${comment.id}' data-author='${escapeHtml(displayName)}'>Responder</button>
-            </div>
-          `;
+          // Se crean nodos y el nombre va con `textContent`/`dataset`: el
+          // navegador no lo parsea, así que un autor con HTML se ve tal cual.
+          el.appendChild(crearCabecera(comment, displayName, dateStr));
+          el.appendChild(crearContenido(comment.content));
+          el.appendChild(crearAcciones(comment, displayName, isRoot, votes, hasVoted));
 
           container.appendChild(el);
 
@@ -391,10 +376,81 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
         }
       }
 
-      function escapeHtml(str: string) {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
+      function crear(tag: string, clase = '', texto: string | null = null) {
+        const el = document.createElement(tag);
+        if (clase) el.className = clase;
+        if (texto !== null) el.textContent = texto;
+        return el;
+      }
+
+      function crearCabecera(comment: Comentario, displayName: string, dateStr: string) {
+        const header = crear('div', 'comment-header');
+        const autor = crear('span', 'comment-author');
+        if (comment.isAdmin) {
+          autor.appendChild(crear('span', 'comment-badge comment-badge--owner', 'Propietario'));
+        }
+        autor.appendChild(document.createTextNode(displayName));
+        header.appendChild(autor);
+        header.appendChild(crear('span', 'comment-date', dateStr));
+        if (comment.completed) {
+          header.appendChild(crear('span', 'comment-badge comment-badge--completed', 'Completada'));
+        }
+        return header;
+      }
+
+      function crearContenido(texto: string) {
+        const contenido = crear('div', 'comment-content');
+        contenido.appendChild(crear('p', 'comment-text', texto));
+        return contenido;
+      }
+
+      function crearAcciones(
+        comment: Comentario,
+        displayName: string,
+        isRoot: boolean,
+        votes: number,
+        hasVoted: boolean
+      ) {
+        const acciones = crear('div', 'comment-actions');
+
+        if (isRoot) {
+          const votar = document.createElement('button');
+          votar.type = 'button';
+          votar.className = `comment-vote-btn${hasVoted ? ' comment-vote-btn--active' : ''}`;
+          votar.dataset.commentId = comment.id;
+          votar.dataset.votes = String(votes);
+          votar.setAttribute('aria-label', 'Votar');
+          votar.appendChild(corazon(hasVoted ? 'currentColor' : 'none'));
+          votar.appendChild(crear('span', 'comment-votes-count', String(votes)));
+          acciones.appendChild(votar);
+        }
+
+        const responder = crear('button', 'reply-trigger-btn', 'Responder') as HTMLButtonElement;
+        responder.type = 'button';
+        responder.dataset.commentId = comment.id;
+        responder.dataset.author = displayName;
+        acciones.appendChild(responder);
+
+        return acciones;
+      }
+
+      function corazon(relleno: string) {
+        const NS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(NS, 'svg');
+        svg.setAttribute('class', 'heart-icon');
+        svg.setAttribute('width', '16');
+        svg.setAttribute('height', '16');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', relleno);
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '2');
+        const path = document.createElementNS(NS, 'path');
+        path.setAttribute(
+          'd',
+          'M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'
+        );
+        svg.appendChild(path);
+        return svg;
       }
 
       // Handle vote button clicks
@@ -465,7 +521,7 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
         if (!btn) return;
 
         const commentId = btn.dataset.commentId;
-        const author = btn.dataset.author;
+        const autorNombre = btn.dataset.author || 'Anónimo';
 
         // Remove existing reply forms
         section.querySelectorAll('.reply-form-container').forEach((f) => f.remove());
@@ -473,77 +529,84 @@ const { path = '/pedir-copla', title = 'Comentarios' } = Astro.props;
         const replyContainer = document.createElement('div');
         replyContainer.className = 'reply-form-container';
 
-        replyContainer.innerHTML = `
-          <form class='comment-form' data-parent-id='${commentId}'>
-            <input type='text' class='comment-author-input' placeholder='Nombre (opcional)' maxlength='50' aria-label='Nombre' />
-            <textarea class='comment-content-input' placeholder='Respondiendo a ${author}...' rows='3' maxlength='1000' aria-label='Comentario' required></textarea>
-            <div class='form-actions'>
-              <button type='button' class='cancel-reply-btn'>Cancelar</button>
-              <button type='submit' class='submit-btn'>Enviar</button>
-              <div class='form-status' aria-live='polite'></div>
-            </div>
-          </form>
-        `;
+        // El formulario también se crea con nodos: el nombre del autor no
+        // puede acabar dentro de un atributo interpolado en HTML.
+        const form = crear('form', 'comment-form') as HTMLFormElement;
+        if (commentId) form.dataset.parentId = commentId;
+
+        const authorInput = crear('input', 'comment-author-input') as HTMLInputElement;
+        authorInput.type = 'text';
+        authorInput.placeholder = 'Nombre (opcional)';
+        authorInput.maxLength = 50;
+        authorInput.setAttribute('aria-label', 'Nombre');
+
+        const contentInput = crear('textarea', 'comment-content-input') as HTMLTextAreaElement;
+        contentInput.placeholder = `Respondiendo a ${autorNombre}...`;
+        contentInput.rows = 3;
+        contentInput.maxLength = 1000;
+        contentInput.setAttribute('aria-label', 'Comentario');
+        contentInput.required = true;
+
+        const formActions = crear('div', 'form-actions');
+        const cancelReplyBtn = crear('button', 'cancel-reply-btn', 'Cancelar') as HTMLButtonElement;
+        cancelReplyBtn.type = 'button';
+        const submitBtn = crear('button', 'submit-btn', 'Enviar') as HTMLButtonElement;
+        submitBtn.type = 'submit';
+        const status = crear('div', 'form-status');
+        status.setAttribute('aria-live', 'polite');
+        formActions.append(cancelReplyBtn, submitBtn, status);
+
+        form.append(authorInput, contentInput, formActions);
+        replyContainer.appendChild(form);
 
         btn.closest('.comment-item-wrapper')?.after(replyContainer);
 
-        // Init form
-        const form = replyContainer.querySelector('.comment-form');
-        if (form) {
-          const contentInput = form.querySelector<HTMLTextAreaElement>('.comment-content-input');
-          const cancelReplyBtn = form.querySelector<HTMLButtonElement>('.cancel-reply-btn');
-          const submitBtn = form.querySelector<HTMLButtonElement>('.submit-btn');
-          const status = form.querySelector<HTMLElement>('.form-status');
-          if (!contentInput || !submitBtn || !status) return;
+        cancelReplyBtn.addEventListener('click', () => replyContainer.remove());
 
-          cancelReplyBtn?.addEventListener('click', () => replyContainer.remove());
+        form.addEventListener('submit', async (ev) => {
+          ev.preventDefault();
+          const content = contentInput.value.trim();
+          if (!content) {
+            status.textContent = 'El comentario no puede estar vacío';
+            status.className = 'form-status error';
+            return;
+          }
 
-          form.addEventListener('submit', async (ev) => {
-            ev.preventDefault();
-            const content = contentInput.value.trim();
-            if (!content) {
-              status.textContent = 'El comentario no puede estar vacío';
-              status.className = 'form-status error';
-              return;
+          submitBtn.disabled = true;
+          status.textContent = 'Enviando...';
+          status.className = 'form-status';
+
+          try {
+            const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
+            const adminToken = localStorage.getItem('adminToken');
+            const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+            if (adminToken) headers['Authorization'] = `Bearer ${adminToken}`;
+            const res = await fetch(COMMENTS_CONFIG.workerUrl, {
+              method: 'POST',
+              headers,
+              body: JSON.stringify({
+                path: pagePath,
+                author: authorInput.value.trim() || '',
+                content,
+                parentId: commentId,
+              }),
+            });
+
+            if (!res.ok) {
+              const data = await res.json();
+              throw new Error(data.error || 'Error al enviar');
             }
 
-            submitBtn.disabled = true;
-            status.textContent = 'Enviando...';
-            status.className = 'form-status';
-
-            try {
-              const { COMMENTS_CONFIG } = await import('../../lib/comments.ts');
-              const authorInput = form.querySelector<HTMLInputElement>('.comment-author-input');
-              const adminToken = localStorage.getItem('adminToken');
-              const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-              if (adminToken) headers['Authorization'] = `Bearer ${adminToken}`;
-              const res = await fetch(COMMENTS_CONFIG.workerUrl, {
-                method: 'POST',
-                headers,
-                body: JSON.stringify({
-                  path: pagePath,
-                  author: authorInput?.value.trim() || '',
-                  content,
-                  parentId: commentId,
-                }),
-              });
-
-              if (!res.ok) {
-                const data = await res.json();
-                throw new Error(data.error || 'Error al enviar');
-              }
-
-              replyContainer.remove();
-              (section as HTMLElement).dataset.loaded = 'false';
-              list.innerHTML = '';
-              initCommentsSection();
-            } catch (err) {
-              status.textContent = err instanceof Error ? err.message : 'Error al enviar';
-              status.className = 'form-status error';
-              submitBtn.disabled = false;
-            }
-          });
-        }
+            replyContainer.remove();
+            (section as HTMLElement).dataset.loaded = 'false';
+            list.innerHTML = '';
+            initCommentsSection();
+          } catch (err) {
+            status.textContent = err instanceof Error ? err.message : 'Error al enviar';
+            status.className = 'form-status error';
+            submitBtn.disabled = false;
+          }
+        });
       });
 
       // Store reload function on section for external access

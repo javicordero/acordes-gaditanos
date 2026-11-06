@@ -37,6 +37,7 @@
     "auditar:orden": "node --experimental-strip-types scripts/auditar-orden.ts",
     "auditar:glosario-paginas": "node scripts/auditar-glosario-paginas.mjs",
     "auditar:reconocer": "node --experimental-strip-types scripts/auditar-reconocer.ts",
+    "auditar:comentarios": "node scripts/auditar-comentarios.mjs",
     "trello": "node scripts/trello.mjs",
     "ajustar:borradores": "node scripts/ajustar-borradores.mjs",
     "perf:status": "strobe status",
