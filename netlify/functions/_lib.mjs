@@ -13,7 +13,7 @@ export const SITE = (process.env.URL || 'https://acordesgaditanos.com').replace(
 export const BASE = 'master';
 export const COOKIE = 'admin';
 export const CARPETA = 'src/content/acordes';
-export const CARPETAS = { acordes: 'src/content/acordes', acordes3: 'src/content/acordes3' };
+export const CARPETAS = { acordes: 'src/content/acordes', acordes2: 'src/content/acordes2', acordes3: 'src/content/acordes3' };
 // En `astro dev` el panel trabaja contra los archivos del ordenador, no contra
 // GitHub: guardar escribe el `.md` y publicar mueve el archivo de carpeta.
 export const LOCAL = process.env.ESTUDIO_LOCAL === '1';

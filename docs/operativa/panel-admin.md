@@ -83,6 +83,29 @@ El panel lo refresca con `/admin/api/lista?solo=pendientes` (cola de revisión +
 Vive en `src/scripts/estudio.js` (`esPorRevisar`, `esBorrador`, `esPorPublicar`,
 `esPublicada`) y se pinta en `pintarLista()`.
 
+## La pestaña «Acordes2» (solo en local)
+
+Después de **Publicadas** hay una pestaña más, **Acordes2**, que **solo se enseña en local**
+(en Netlify no existe la colección provisional ni se puede mover un archivo del disco). No
+forma parte del flujo de las cuatro pestañas: enseña las fichas de `src/content/acordes2`
+—las importadas del cancionero, con los acordes **sin envolver en `<a>`**— para pasarlas a
+borradores y revisarlas.
+
+- La lista la devuelve `/admin/api/lista` en el campo `acordes2` (de `importadasLocales()`,
+  `netlify/functions/lista.mjs`), ordenada por año y agrupación y con la marca `ACORDES2`
+  (y `SIN LETRA` si el `<pre>` está vacío; no se puede mirar «sin acordes», porque ahí van
+  sin etiquetas).
+- Cada fila lleva **Ver** (`/acordes2/<slug>/`, la vista previa local) y **A borradores**.
+- **A borradores** llama a `POST /admin/api/importar` (`netlify/functions/importar.mjs`), que
+  lanza `scripts/importar-a-borradores.mjs`: envuelve los acordes con el mismo envoltorio del
+  editor (`src/lib/pre-acordes.js`), mueve el `.md` de `acordes2` a `acordes3` y no toca la
+  fecha. Si ya hay un borrador o una ficha publicada con ese slug, no lo pisa y avisa. Al
+  terminar, el panel recarga la lista: la ficha desaparece de Acordes2 y aparece en
+  **Borradores**.
+
+Por CLI se puede hacer lo mismo: `npm run importar:borrador -- --slug <slug>[,<slug>]
+[--dry]`.
+
 ## Las carpetas y por qué `acordes3` no se quita
 
 - **`acordes`** se compila: todo lo que hay ahí tiene página, entra en el sitemap, en

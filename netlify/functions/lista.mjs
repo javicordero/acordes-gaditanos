@@ -83,6 +83,40 @@ async function borradoresLocales() {
 }
 
 /**
+ * Fichas de la colección provisional `acordes2` (las importadas del cancionero,
+ * aún con los acordes sin envolver). Solo en dev: es la lista de la pestaña
+ * «Acordes2», desde la que se pasan a borradores. Allí no se puede comprobar si
+ * la letra lleva acordes (van sin etiquetas), así que solo se marca la vacía.
+ */
+async function importadasLocales() {
+  if (!LOCAL) return [];
+  const carpeta = join(process.cwd(), CARPETAS.acordes2);
+  let nombres;
+  try {
+    nombres = await readdir(carpeta);
+  } catch {
+    return [];
+  }
+  const out = [];
+  for (const nombre of nombres) {
+    if (!nombre.endsWith('.md')) continue;
+    try {
+      const md = (await readFile(join(carpeta, nombre), 'utf8')).replace(/\r\n/g, '\n');
+      const pre = /<pre>([\s\S]*?)<\/pre>/.exec(md);
+      const sinLetra = !pre || !pre[1].replace(/<!--[\s\S]*?-->/g, '').trim();
+      out.push({
+        ...datos(nombre.slice(0, -3), md),
+        zona: 'acordes2',
+        local: true,
+        incompleta: sinLetra ? 'sinLetra' : '',
+      });
+    } catch { /* ficha ilegible: se omite */ }
+  }
+  out.sort((a, b) => `${b.year}${a.agrupacion}`.localeCompare(`${a.year}${b.agrupacion}`, 'es'));
+  return out;
+}
+
+/**
  * Fichas de `acordes` que están en el ordenador pero no en git: sin rastrear,
  * modificadas, borradas o en commits locales sin push. Solo tiene sentido en
  * dev, donde existe el working tree; en Netlify devuelve [].
@@ -309,6 +343,7 @@ export default async (req) => {
     fichas.sort((a, b) => `${b.year}${b.agrupacion}`.localeCompare(`${a.year}${a.agrupacion}`, 'es'));
     return json({
       borradores: fichas,
+      acordes2: await importadasLocales(),
       revision: await pendientesRevision(s.token),
       pendientes: await pendientesGit(),
     });

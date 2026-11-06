@@ -130,6 +130,7 @@ const LEYENDAS = {
   borradores: 'Aún no están en la web. <b>Revisado ✓</b> las marca y, si es un borrador, lo promueve para poder subirlo.',
   porPublicar: 'En <code>acordes</code>, con cambios que la web aún no tiene: sin commit (se suben) o en una PR abierta (se fusiona).',
   publicadas: 'Ya están en la web y revisadas.',
+  acordes2: 'Importadas del cancionero, con los acordes todavía sin envolver. <b>A borradores</b> las pasa a <code>acordes3</code> para revisarlas en el editor.',
 };
 
 /**
@@ -153,6 +154,9 @@ function aplicarFiltro(tipo) {
 let revision = new Set();
 // Fichas de `acordes` en el ordenador pero aún sin subir a git (solo en local).
 let pendientesPublicar = [];
+// Fichas de la colección provisional `acordes2` (importadas del cancionero, con
+// los acordes sin envolver). Solo en local: se pasan a borradores desde el panel.
+let importados = [];
 let sinSubirClaves = new Set();
 // Tipo de cada ficha pendiente de subir: `nueva` (aún no en git), `modificada`,
 // `borrada` o `sin-push` (commit local sin push). Una publicada y modificada en
@@ -208,6 +212,7 @@ async function cargarIndice() {
     if (b.ok) {
       const j = await b.json();
       borradores = j.borradores.map((x) => ({ ...x, zona: x.zona || 'acordes3' }));
+      importados = (j.acordes2 || []).map((x) => ({ ...x, zona: 'acordes2', local: true }));
       revision = new Set(j.revision || []);
       fijarPendientes(j.pendientes);
     }
@@ -233,6 +238,7 @@ async function cargarIndice() {
 async function recargarIndice() {
   indice = [];
   pendientesPublicar = [];
+  importados = [];
   sinSubirClaves = new Set();
   estadoPendiente = new Map();
   await cargarIndice();
@@ -362,6 +368,33 @@ function filaPorPublicar(x) {
   '</article>';
 }
 
+/**
+ * Fila de la pestaña «Acordes2»: una ficha importada del cancionero que aún no
+ * está en borradores. Los acordes van sin envolver, así que se revisa en su
+ * vista previa y se pasa a `acordes3` con **A borradores**.
+ */
+function filaImportada(x) {
+  const info = 'data-accion="verAcordes2" data-slug="' + esc(x.slug) + '"';
+  return '<article class="fila pendiente">' +
+    '<button type="button" class="fila-info" ' + info + '>' +
+      '<span class="f-agr">' + esc(x.agrupacion) + '</span>' +
+      '<span class="f-meta">' +
+        '<span class="f-year">' + esc(String(x.year || '—')) + '</span>' +
+        '<span>' + esc(x.pieza) + '</span>' +
+        (x.letraTitulo ? '<span class="f-letra">' + esc(x.letraTitulo) + '</span>' : '') +
+        '<span class="marca local">ACORDES2</span>' +
+        (x.incompleta === 'sinLetra' ? '<span class="marca sinletra" title="El bloque de la letra está vacío">SIN LETRA</span>' : '') +
+      '</span>' +
+    '</button>' +
+    '<div class="fila-acciones">' +
+      '<a class="acc boton" href="/acordes2/' + encodeURIComponent(x.slug) + '/"' +
+        ' title="Ver la ficha tal como está (vuelve con «atrás»)">Ver</a>' +
+      '<button type="button" class="acc principal" data-accion="aBorradores" data-slug="' + esc(x.slug) + '"' +
+        ' title="Envuelve los acordes y mueve la ficha a acordes3 para revisarla">A borradores</button>' +
+    '</div>' +
+  '</article>';
+}
+
 /** Orden de una pestaña: año de más nuevo a más viejo y agrupación A-Z. */
 const porAnioYAgra = (a, b) =>
   (Number(b.year) || 0) - (Number(a.year) || 0) ||
@@ -393,6 +426,9 @@ function pintarLista() {
   const borradoresCompletos = borradores.filter((x) => !x.incompleta);
   const borradoresAMedias = borradores.filter((x) => x.incompleta);
   const publicadas = resultado.filter(esPublicada);
+  // «Acordes2»: lo importado del cancionero que aún no se ha pasado a borradores.
+  // Vive aparte del índice (no está en la web ni en la cola de revisión).
+  const importadas = importados.filter(coincide).sort(porAnioYAgra);
   // «Por publicar»: lo que está en `acordes` pero la web aún no tiene. En local, los
   // cambios del ordenador sin commit; en cualquier modo, las PRs abiertas (una
   // corrección guardada desde el móvil). Una ficha que esté en las dos solo sale una
@@ -416,6 +452,7 @@ function pintarLista() {
     borradores: borradores.length,
     porPublicar: porPublicar.length,
     publicadas: publicadas.length,
+    acordes2: importadas.length,
   };
   for (const el of document.querySelectorAll('[data-cuenta]')) {
     el.textContent = cuentas[el.dataset.cuenta] ?? 0;
@@ -472,6 +509,8 @@ function pintarLista() {
     }
     const anios = [...porAnio.keys()].sort((a, b) => (Number(b) || 0) - (Number(a) || 0) || a.localeCompare(b, 'es'));
     for (const anio of anios) grupos.push({ titulo: anio, items: porAnio.get(anio).sort(porAnioYAgra) });
+  } else if (filtroTipo === 'acordes2') {
+    grupos.push({ titulo: 'Acordes2 · pendientes de pasar a borradores', items: importadas, clase: 'pend', render: filaImportada });
   }
 
   let html = '';
@@ -495,6 +534,8 @@ function pintarLista() {
       if (accion === 'fusionarPr') return fusionarDesdeLista(b.dataset.slug, b);
       if (accion === 'revisar') return revisarDesdeLista(b.dataset.slug, b);
       if (accion === 'clonar') return clonar(b.dataset.slug);
+      if (accion === 'verAcordes2') return (location.href = '/acordes2/' + encodeURIComponent(b.dataset.slug) + '/');
+      if (accion === 'aBorradores') return pasarABorradores(b.dataset.slug, b);
     };
   });
 
@@ -515,7 +556,9 @@ function pintarLista() {
                 : '<b>Nada pendiente</b>No hay ninguna PR abierta de una ficha publicada.')
               : filtroTipo === 'publicadas'
                 ? '<b>Nada publicado</b>Todavía no hay fichas en la web.'
-                : '<b>Sin fichas</b>No hay nada todavía: crea la primera.';
+                : filtroTipo === 'acordes2'
+                  ? '<b>Nada en acordes2</b>No queda ninguna ficha importada sin pasar a borradores.'
+                  : '<b>Sin fichas</b>No hay nada todavía: crea la primera.';
   }
   $('lista-tope').hidden = total <= MAX;
 }
@@ -1755,6 +1798,37 @@ async function publicarDesdeLista(slug, boton) {
 }
 
 /**
+ * «A borradores» de la pestaña Acordes2: envuelve los acordes y mueve la ficha
+ * de `acordes2` a `acordes3` (solo en local). Después recarga la lista, así la
+ * ficha desaparece de aquí y aparece en «Borradores».
+ */
+async function pasarABorradores(slug, boton) {
+  const ficha = importados.find((x) => x.slug === slug);
+  const titulo = ficha
+    ? [ficha.pieza, ficha.agrupacion, ficha.year].filter(Boolean).join(' · ')
+    : slug;
+  const antes = boton ? boton.textContent : '';
+  if (boton) { boton.disabled = true; boton.textContent = '…'; }
+  try {
+    const r = await fetch(API + '/importar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug }),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || 'no se pudo pasar a borradores');
+    await recargarIndice();
+    mostrarAviso('«' + (titulo || slug) + '» ya está en borradores' +
+      (d.acordes ? ' con ' + d.acordes + ' acordes envueltos' : '') +
+      '.\nÁbrela desde la pestaña Borradores para revisarla.' +
+      ((d.avisos || []).length ? '\n' + d.avisos.join('\n') : ''), 'var(--ok)');
+  } catch (e) {
+    if (boton) { boton.disabled = false; boton.textContent = antes; }
+    mostrarAviso(String(e.message || e), 'var(--mal)');
+  }
+}
+
+/**
  * «Publicar» de una ficha que está en una PR (una corrección guardada desde el móvil):
  * fusiona la PR en master. Netlify reconstruye y, si era una ficha nueva, Telegram
  * avisa solo; una corrección no manda aviso.
@@ -2780,6 +2854,9 @@ window.addEventListener('beforeunload', (e) => {
   // «Por publicar» vale en los dos modos: en local son los cambios sin commit; en
   // producción (y también en local) las PRs abiertas de fichas publicadas.
   $('f-por-publicar').hidden = false;
+  // «Acordes2» solo tiene sentido en local: en Netlify no existe la colección
+  // provisional ni se pueden mover archivos.
+  $('f-acordes2').hidden = !MODO_LOCAL;
   // Recupera la pestaña que se estaba viendo (p. ej. al volver de una previa).
   try {
     const f = sessionStorage.getItem('admin-filtro');
