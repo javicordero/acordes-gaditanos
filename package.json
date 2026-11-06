@@ -39,6 +39,7 @@
     "auditar:glosario-paginas": "node scripts/auditar-glosario-paginas.mjs",
     "auditar:reconocer": "node --experimental-strip-types scripts/auditar-reconocer.ts",
     "auditar:seo": "node scripts/auditar-seo.mjs",
+    "auditar:fachada": "node scripts/auditar-videos-fachada.mjs",
     "auditar:comentarios": "node scripts/auditar-comentarios.mjs",
     "auditar:hubs": "node --experimental-strip-types scripts/auditar-hubs.ts",
     "auditar:contenido": "node --experimental-strip-types scripts/auditar-contenido.ts",

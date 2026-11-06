@@ -1,5 +1,6 @@
 ---
 import RightColumnCard from '../../layouts/RightColumnCard.astro';
+import { enlaceWatch, idYoutube, miniaturaYoutube, urlIncrustada } from '../../lib/videos';
 
 const {
   link,
@@ -12,6 +13,8 @@ const {
   estado = 'ok' as 'ok' | 'muerto' | 'bloqueado',
   enlace = '',
   busqueda = '',
+  // Solo para la analítica: distingue el vídeo oficial del cover de guitarra.
+  tipo = 'oficial' as 'oficial' | 'cover',
 } = Astro.props;
 
 const hasTitle = Boolean(title);
@@ -25,22 +28,52 @@ const headingIdFinal =
         .replace(/(^-|-$)/g, '')}`
     : undefined);
 const iframeTitleText = iframeTitle ?? 'Video de la agrupación del Carnaval de Cádiz';
+
+// Fachada: miniatura + botón de play que inyecta el iframe al pulsar.
+// Solo se pinta si el vídeo está operativo y de la URL se puede sacar el id;
+// sin id no hay miniatura y la tarjeta cae al bloque de «Vídeo no disponible».
+const idVideo = idYoutube(link);
+const conFachada = estado === 'ok' && Boolean(idVideo);
+const miniatura = miniaturaYoutube(idVideo);
+const etiquetaFachada = `Reproducir: ${iframeTitleText}`;
 ---
 
 <RightColumnCard title={title} headingId={headingIdFinal} class={className} flush={flush}>
   <section aria-labelledby={headingIdFinal}>
     {
-      estado === 'ok' ? (
-        <iframe
-          class:list={[{ 'is-flush': flush }]}
-          src={link}
-          title={iframeTitleText}
-          frameborder='0'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          referrerpolicy='strict-origin-when-cross-origin'
-          allowfullscreen
-          loading='lazy'
-        />
+      conFachada ? (
+        <div class='video-marco'>
+          <a
+            class='video-fachada'
+            href={enlaceWatch(idVideo)}
+            target='_blank'
+            rel='noopener'
+            aria-label={etiquetaFachada}
+            data-fachada-video
+            data-video-id={idVideo}
+            data-iframe-src={urlIncrustada(idVideo)}
+            data-iframe-title={iframeTitleText}
+            data-ga-event='click_video_youtube'
+            data-ga-params={JSON.stringify({ tipo, id: idVideo })}
+          >
+            <img
+              src={miniatura.src}
+              srcset={miniatura.srcset}
+              alt=''
+              width='320'
+              height='180'
+              loading='lazy'
+              decoding='async'
+            />
+            <span class='video-fachada__play' aria-hidden='true'>
+              <span class='video-fachada__boton'>
+                <svg viewBox='0 0 24 24' width='26' height='26' fill='currentColor' focusable='false'>
+                  <path d='M8 5v14l11-7z' />
+                </svg>
+              </span>
+            </span>
+          </a>
+        </div>
       ) : estado === 'bloqueado' && enlace ? (
         <a class='video-estado' href={enlace} target='_blank' rel='noopener'>
           <span class='video-estado__titulo'>Vídeo en YouTube</span>
@@ -66,19 +99,145 @@ const iframeTitleText = iframeTitle ?? 'Video de la agrupación del Carnaval de 
   </section>
 </RightColumnCard>
 
+<script>
+  import { enviarEvento } from '../../lib/analitica';
+
+  /**
+   * La fachada es un enlace normal a YouTube: sin JS abre el vídeo en otra
+   * pestaña. Con JS, el clic se intercepta y en su lugar se monta el iframe
+   * (autoplay, porque el clic ya es gesto del usuario).
+   */
+  document.addEventListener('click', (evento) => {
+    const objetivo = evento.target as Element | null;
+    const fachada = objetivo?.closest?.('[data-fachada-video]') as HTMLAnchorElement | null;
+    if (!fachada || evento.defaultPrevented) return;
+
+    // Ctrl/Cmd/Shift/Alt o botón central: que abra YouTube como cualquier enlace.
+    if (evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey || evento.button !== 0) {
+      return;
+    }
+
+    evento.preventDefault();
+
+    let parametros: Record<string, unknown> = {};
+    try {
+      parametros = JSON.parse(fachada.dataset.gaParams || '{}') as Record<string, unknown>;
+    } catch {
+      parametros = {};
+    }
+    enviarEvento(fachada.dataset.gaEvent || 'click_video_youtube', parametros, 'video');
+
+    const src = fachada.dataset.iframeSrc;
+    if (!src) return;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = src;
+    iframe.title = fachada.dataset.iframeTitle || 'Vídeo de YouTube';
+    iframe.setAttribute('frameborder', '0');
+    iframe.setAttribute(
+      'allow',
+      'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share',
+    );
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    iframe.setAttribute('allowfullscreen', '');
+
+    fachada.replaceWith(iframe);
+    iframe.focus();
+  });
+
+  // Miniatura que no existe (algún cover no auditado): fuera la imagen y el
+  // play se queda sobre el color de fondo, sin el icono roto del navegador.
+  document.addEventListener(
+    'error',
+    (evento) => {
+      const imagen = evento.target;
+      if (!(imagen instanceof HTMLImageElement)) return;
+      const fachada = imagen.closest('[data-fachada-video]');
+      if (fachada) fachada.classList.add('is-sin-miniatura');
+    },
+    true,
+  );
+</script>
+
 <style>
-  iframe {
-    border: 2px solid var(--primary-color);
-    border-radius: 0;
-    width: 100%;
-    height: 180px;
+  .video-marco {
     position: relative;
     top: 2px;
-    display: block;
+    height: 180px;
+    border: 2px solid var(--primary-color);
+    background: #000;
   }
 
-  iframe.is-flush {
-    border: none;
+  /* El iframe lo crea el script (no lleva el atributo de estilo scoped). */
+  .video-marco :global(iframe) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-fachada {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .video-fachada img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 200ms ease;
+  }
+
+  .video-fachada:hover img,
+  .video-fachada:focus-visible img {
+    transform: scale(1.04);
+  }
+
+  .video-fachada:focus-visible {
+    outline: 3px solid var(--primary-contrast-color, #fff);
+    outline-offset: -4px;
+  }
+
+  .video-fachada__play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-fachada__boton {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    transition:
+      transform 160ms ease,
+      background-color 160ms ease;
+  }
+
+  .video-fachada:hover .video-fachada__boton,
+  .video-fachada:focus-visible .video-fachada__boton {
+    transform: scale(1.08);
+    background: var(--primary-color);
+    color: var(--primary-contrast-color, #fff);
+  }
+
+  .video-fachada.is-sin-miniatura {
+    background: var(--primary-color);
+  }
+
+  .video-fachada.is-sin-miniatura img {
+    display: none;
   }
 
   .video-estado {
@@ -127,8 +286,27 @@ const iframeTitleText = iframeTitle ?? 'Video de la agrupación del Carnaval de 
   }
 
   @media (max-width: 640px) {
-    iframe {
+    .video-marco {
       height: 200px;
+    }
+
+    .video-fachada__boton {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .video-fachada img,
+    .video-fachada__boton {
+      transition: none;
+    }
+
+    .video-fachada:hover img,
+    .video-fachada:focus-visible img,
+    .video-fachada:hover .video-fachada__boton,
+    .video-fachada:focus-visible .video-fachada__boton {
+      transform: none;
     }
   }
 </style>

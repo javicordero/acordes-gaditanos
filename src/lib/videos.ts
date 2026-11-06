@@ -54,3 +54,32 @@ export function busquedaYoutube(...partes: Array<string | number | undefined>): 
   const consulta = partes.filter(Boolean).join(' ').trim();
   return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(consulta);
 }
+
+/**
+ * Miniatura de la fachada del vídeo. `mqdefault` siempre existe (320×180, 16:9)
+ * y `hqdefault` (480×360, con bandas) se usa para pantallas de 2x: la fachada
+ * recorta las bandas con `object-fit: cover`.
+ */
+export function miniaturaYoutube(id: string): { src: string; srcset: string } {
+  if (!id) return { src: '', srcset: '' };
+  const base = `https://i.ytimg.com/vi/${id}`;
+  return {
+    src: `${base}/mqdefault.jpg`,
+    srcset: `${base}/mqdefault.jpg 1x, ${base}/hqdefault.jpg 2x`,
+  };
+}
+
+/**
+ * URL del reproductor que inyecta la fachada al pulsar play. Sin cookies de
+ * YouTube hasta ese clic (`youtube-nocookie`), con autoplay (el clic ya es gesto
+ * del usuario) y `playsinline` para que no salte a pantalla completa en iOS.
+ */
+export function urlIncrustada(id: string): string {
+  if (!id) return '';
+  return `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+}
+
+/** Enlace público del vídeo, para el botón sin JS y para «Ver en YouTube». */
+export function enlaceWatch(id: string): string {
+  return id ? `https://www.youtube.com/watch?v=${id}` : '';
+}
