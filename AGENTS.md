@@ -38,7 +38,7 @@ Sitio 100% estático (SSG) con Astro content collections. Middleware solo rediri
 ### Content Collections (`src/content/config.ts`)
 - **`acordes`** — más de 570 entradas. Frontmatter: `pieza`, `agrupacion`, `musica`/`letra` (strings separados por coma), `year` (number → string), `date` (formato español `DD/MM/YYYY`), `cejilla` (number → string), `video`, `img`, `cover`, `autorCover`, `fraseClave`, `destacada`, `recomendada`, `modalidad` y `letraTitulo` (opcionales). La `modalidad` está rellena en casi todas las fichas con `npm run modalidad`; las que falten quedan en `.cache/modalidad-dudas.csv`.
 - **`autores`** — 12 autores. Frontmatter: `nombre`, `img`, `type` (`musica`|`letra`), `order`, `destacado`.
-- **`donaciones`** — un solo `datos.md` con la lista de donantes (`donaciones: [{ fecha, importe, donante? }]`); la pinta `DonationIndicator.astro`.
+- **`donaciones`** — un solo `datos.md` con la lista de donantes (`donaciones: [{ fecha, importe, donante? }]`); la pinta `DonationIndicator.astro`. El rotativo del hero baraja los nombres en cada visita (Fisher–Yates) para que el primero no sea siempre el más reciente; las demás variantes (`pills`, `inline`, `destacado`) siguen por fecha.
 - **`acordes3`** — borradores del panel `/admin`: fichas nuevas o a medias que aún no se publican. Se promueven a `acordes` con `npm run promover`. Una ficha que solo existe en el ordenador (sin subir) vive aquí, no en `acordes`: el panel la lista con la marca LOCAL y `npm run letras -- auditar` la da por buena aunque no esté publicada.
 - **`acordes2`** — colección provisional para los acordes importados del cancionero. Mismo esquema que `acordes`, pero su contenido (`.md`) no se versiona y los acordes van sin envolver en `<a>` hasta que se promueven.
 

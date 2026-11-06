@@ -261,6 +261,15 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
     margin-bottom: 6px;
   }
 
+  /* El script baraja los nombres al arrancar. Hasta entonces no se pinta el
+     bloque, para que no se vea un parpadeo del primer donante de la lista.
+     Sin JS (o en navegadores sin `scripting`) se queda visible como siempre. */
+  @media (scripting: enabled) {
+    .donation-indicator__rotativo:not([data-rotador-iniciado]) {
+      visibility: hidden;
+    }
+  }
+
   .rotativo__etiqueta {
     display: block;
     font-size: 0.65rem;
@@ -414,14 +423,28 @@ const nombres = donaciones.map(d => d.donante || 'Anónimo')
 
   // Rotativo de donantes: pasa uno cada 2 s. Se para al pasar el ratón o al
   // enfocar (para poder leerlo) y con prefers-reduced-motion se queda quieto.
+  // Los nombres se barajan en cada visita para que no empiece siempre el mismo.
+  function barajar<T>(lista: T[]) {
+    for (let i = lista.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[lista[i], lista[j]] = [lista[j], lista[i]]
+    }
+    return lista
+  }
+
   function iniciarRotadores() {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)')
 
     document.querySelectorAll<HTMLElement>('[data-rotador]').forEach((cont) => {
       if (cont.dataset.rotadorIniciado) return
-      const nombres = Array.from(cont.querySelectorAll('[data-rotador-nombre]'))
-      if (nombres.length < 2) return
+      const nombres = barajar(Array.from(cont.querySelectorAll<HTMLElement>('[data-rotador-nombre]')))
+      if (nombres.length === 0) return
       cont.dataset.rotadorIniciado = 'true'
+      if (nombres.length < 2) return
+
+      // El `is-activo` viene en el primero del HTML: se pasa al primero barajado.
+      nombres.forEach((nombre) => nombre.classList.remove('is-activo', 'is-saliendo'))
+      nombres[0].classList.add('is-activo')
 
       let actual = 0
       let timer: number | null = null
