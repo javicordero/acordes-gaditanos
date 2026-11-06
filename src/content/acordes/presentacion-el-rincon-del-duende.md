@@ -4,11 +4,10 @@ agrupacion: El rincón del duende
 year: 2018
 musica: Nene Cheza
 letra: Nene Cheza
-img: https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8ug1QJSJgJ3kHgBJxrXPfJ4UJMyDZ23iKug3U8IWEQcJeTf22M8pRxGqJ01MN8Mvj2YWHXgB1llutmAlS4LclUDZwaHKkVBCmfnQ6wEafUvyqqjUzXf__eyLcTw-ENQIwH-6sVLoX71Gh/s400/rinconduende-coac-2018.jpg
+img: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8ug1QJSJgJ3kHgBJxrXPfJ4UJMyDZ23iKug3U8IWEQcJeTf22M8pRxGqJ01MN8Mvj2YWHXgB1llutmAlS4LclUDZwaHKkVBCmfnQ6wEafUvyqqjUzXf__eyLcTw-ENQIwH-6sVLoX71Gh/s400/rinconduende-coac-2018.jpg'
 cejilla: 1
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/f10kKWSjCaI?feature=player_embedded'
-
 fraseClave: Vivo en una tacita mu vieja con dos castillitos
 ---
 <pre>
@@ -44,8 +43,6 @@ como el nazareno por tus calles
 Sin diez mandamientos ni reproches
 <a>Lam7</a>                <a>Si7</a>
 con el once Mágico Gónzalez
-
-
 <a>Do</a>          <a>Lam7</a>         <a>Si7</a>
 Doce meses de amor verdadero
 <a>Do</a>          <a>Lam7</a>         <a>Si7</a>
@@ -102,9 +99,10 @@ noches oscuras yo soy tu raza
 Soy tu conciencia, soy tu locura
           <a>Si7</a>              <a>Fa#m</a>              <a>Si7</a>
 Yo soy la esencia que no se enseña, que no se aprende
+
 Y cádiz es el rincón
 <a>La</a> <a>Sol#m</a>
-(pito)
+pito
      <a>Do</a>             <a>Lam7</a>       <a>Mi</a>
 Del duende, del duende, del duende.
 </pre>
