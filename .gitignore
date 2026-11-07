@@ -63,6 +63,10 @@ x-enviados.json
 # Cache de importacion del glosario de acordes
 .cache/
 
+# Informes locales de seguimiento de AdSense
+docs/operativa/active-view-previo-movil.md
+docs/operativa/adsense-experimentos.md
+
 # Revision de videos: se generan con 'npm run videos -- --buscar'
 videos-candidatos.md
 src/data/videos-candidatos.json
