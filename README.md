@@ -77,7 +77,7 @@ El resto de comandos son herramientas de contenido y de mantenimiento:
 | `npm run letra:web` / `letra:blog` / `letra:decarnaval` | Extrae una letra de una web, de un blog o de letrasdecarnaval.com |
 | `npm run videos` | Audita los vídeos de YouTube y busca recambios |
 | `npm run videos:detalles` | Completa fecha de subida y duración (VideoObject) |
-| `npm run promover` | Pasa borradores de `acordes3` a `acordes` |
+| `npm run promover` | Pasa borradores de `borradores` a `acordes` |
 | `npm run prs` | Lista y fusiona las PRs del panel |
 | `npm run revisar` | Cola de revisión de fichas |
 | `npm run trello` | Lee y mueve las tarjetas del tablero de trabajo |
@@ -115,7 +115,7 @@ Los detalles de cada flujo están en [`docs/operativa/`](docs/operativa/).
 ├── specs/                # Especificaciones históricas de features
 ├── src/
 │   ├── components/       # Astro: layout, page, comments, ads, ui, pwa
-│   ├── content/          # acordes, acordes2, acordes3, autores, donaciones
+│   ├── content/          # acordes, otraweb, borradores, autores, donaciones
 │   ├── data/             # Glosario, canales, estado de vídeos, cola de revisión
 │   ├── integrations/     # Barra final en enlaces, API del panel en dev
 │   ├── lib/              # Dominio puro: acordes, búsqueda, transporte, orden, letras
@@ -183,7 +183,7 @@ Los **slugs** (autor, agrupación) se generan a partir del nombre: minúsculas, 
 | `/api/fetch-url` | Proxy CORS (`GET ?url=...`) |
 | `/admin` | Panel privado de edición (`noindex`, sin enlaces públicos) |
 | `/admin/api/*` | Netlify Functions del panel |
-| `/acordes3/[id]`, `/acordes2/[id]`, `/lista2` | Previsualizaciones locales de borradores e importados |
+| `/borradores/[id]`, `/otraweb/[id]`, `/lista-otraweb` | Previsualizaciones locales de borradores e importados |
 
 ## Panel `/admin`
 

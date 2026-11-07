@@ -86,7 +86,7 @@ npm run acordes:aplicar -- --base <base> --letra .cache/letra-<slug>.txt --titul
 
 Opciones útiles: `--hermanas` (prueba todas las fichas de la misma pieza,
 agrupación, año y música y se queda con la que mejor encaja), `--frase "..."`,
-`--fecha DD/MM/YYYY`, `--forzar` para sobrescribir, `--destino acordes2|acordes3` para
+`--fecha DD/MM/YYYY`, `--forzar` para sobrescribir, `--destino otraweb|borradores` para
 dejarlo en la colección provisional o en borradores, `--dry` para verlo sin escribir.
 
 ### 5. Lee el informe y corrige
@@ -161,11 +161,11 @@ fecha). Si el usuario pide subirlo, pásale el relevo.
 
 ```bash
 npm run acordes:plan -- --base <slug> [--letra <txt>]
-npm run acordes:aplicar -- --base <slug> --letra <txt> --titulo "..." [--hermanas] [--destino acordes2|acordes3] [--forzar] [--dry]
+npm run acordes:aplicar -- --base <slug> --letra <txt> --titulo "..." [--hermanas] [--destino otraweb|borradores] [--forzar] [--dry]
 npm run acordes:revisar -- --slug <slug> [--base <slug>] [--puerto 4324] [--abrir]
 npm run acordes:evaluar [--pares a>b,c>d] [--max-fuera 12] [-v]
 ```
 
-El `.md` se escribe en `src/content/acordes/` salvo `--destino acordes2` o `--destino acordes3`.
+El `.md` se escribe en `src/content/acordes/` salvo `--destino otraweb` o `--destino borradores`.
 
 Referencia: `docs/operativa/cancionero-y-contenido.md` (§ Poner los acordes de una ficha a una letra nueva).

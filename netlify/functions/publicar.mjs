@@ -1,4 +1,4 @@
-// Publica un borrador: lo mueve de `acordes3` a `acordes` en la rama de su PR
+// Publica un borrador: lo mueve de `borradores` a `acordes` en la rama de su PR
 // (o en una nueva), lo saca de la cola de revisión y deja la PR lista para
 // fusionar. Al fusionar, Netlify reconstruye y el aviso de Telegram sale solo
 // (un `.md` añadido en `acordes`).
@@ -40,12 +40,12 @@ export default async (req) => {
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) return json({ error: 'slug inválido' }, 400);
 
   try {
-    // En local «publicar» es mover el archivo de acordes3 a acordes, con la fecha
+    // En local «publicar» es mover el archivo de borradores a acordes, con la fecha
     // de hoy, sin PR ni ramas.
     if (LOCAL) {
       const { readFile, writeFile, rm, mkdir } = await import('node:fs/promises');
       const { join } = await import('node:path');
-      const origen = join(process.cwd(), CARPETAS.acordes3, `${slug}.md`);
+      const origen = join(process.cwd(), CARPETAS.borradores, `${slug}.md`);
       let md;
       try {
         md = await readFile(origen, 'utf8');
@@ -85,8 +85,8 @@ export default async (req) => {
     const enAcordes = await contenido(s.token, CARPETAS.acordes, slug, rama);
     if (enAcordes) return json({ error: 'esa ficha ya está publicada' }, 409);
 
-    const borrador = await contenido(s.token, CARPETAS.acordes3, slug, rama);
-    if (!borrador) return json({ error: 'no encuentro el borrador en acordes3' }, 404);
+    const borrador = await contenido(s.token, CARPETAS.borradores, slug, rama);
+    if (!borrador) return json({ error: 'no encuentro el borrador en borradores' }, 404);
 
     const md = borrador.md.replace(/^date:[^\n]*/m, `date: "${hoy()}"`);
     const titulo = [campo(md, 'pieza'), campo(md, 'agrupacion'), campo(md, 'year')].filter(Boolean).join(' · ');
@@ -101,7 +101,7 @@ export default async (req) => {
         branch: rama,
       },
     });
-    await gh(`/repos/${REPO}/contents/${CARPETAS.acordes3}/${slug}.md`, {
+    await gh(`/repos/${REPO}/contents/${CARPETAS.borradores}/${slug}.md`, {
       token: s.token,
       method: 'DELETE',
       body: {
@@ -116,7 +116,7 @@ export default async (req) => {
 
     // 5. PR nueva o actualizada.
     const cuerpoPr = [
-      'Publica una ficha que estaba en borrador (`acordes3`).',
+      'Publica una ficha que estaba en borrador (`borradores`).',
       '',
       `- Ficha: \`${slug}\``,
       `- Archivo: \`${CARPETAS.acordes}/${slug}.md\``,

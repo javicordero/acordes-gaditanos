@@ -11,6 +11,6 @@ está en `docs/operativa/` y en las skills.
 - Los `auditar:*` salen con código 1 si algo no cuadra; no los silencies.
 - `npm run auditar:docs` comprueba que los `AGENTS.md`, `docs/` y las skills no tengan
   enlaces rotos ni docs huérfanos: pásalo al mover documentación.
-- `acordes2` (su contenido y `importar-cancionero.mjs`) es local y está en `.gitignore`.
+- `otraweb` (su contenido y `importar-cancionero.mjs`) es local y está en `.gitignore`.
 - Antes de tocar fechas: `publicar-acorde.mjs` pone la de las nuevas **un día después** de la
   última publicada en `HEAD`, no la de hoy.

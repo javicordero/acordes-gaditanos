@@ -9,7 +9,7 @@
 // de acordes), el frontmatter y todo lo demás quedan intactos.
 //
 // Uso:
-//   node scripts/trim-pre-whitespace.mjs                 # aplica en acordes y acordes2
+//   node scripts/trim-pre-whitespace.mjs                 # aplica en acordes y otraweb
 //   node scripts/trim-pre-whitespace.mjs --dry-run       # solo informa
 //   node scripts/trim-pre-whitespace.mjs --dir src/content/acordes
 //   node scripts/trim-pre-whitespace.mjs --check         # no escribe; sale con 1 si hay cola
@@ -22,7 +22,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { analizarPre, limpiarPre } from './lib/pre-espacios.mjs';
 
-const DEFAULT_DIRS = ['src/content/acordes', 'src/content/acordes2'];
+const DEFAULT_DIRS = ['src/content/acordes', 'src/content/otraweb'];
 
 function parseArgs(argv) {
   const opts = { dirs: [], archivos: [], dryRun: false, check: false, publicadas: false, quiet: false, help: false };

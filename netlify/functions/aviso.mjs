@@ -38,7 +38,7 @@ export default async (req) => {
     if (!mdCrudo && LOCAL) {
       const { readFile } = await import('node:fs/promises');
       const { join } = await import('node:path');
-      for (const zona of ['acordes', 'acordes3']) {
+      for (const zona of ['acordes', 'borradores']) {
         try {
           mdCrudo = await readFile(join(process.cwd(), CARPETAS[zona], `${slug}.md`), 'utf8');
           break;

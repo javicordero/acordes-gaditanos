@@ -11,7 +11,7 @@
 //   node scripts/auditar-enlaces.mjs [--dir dist]
 //
 // Además informa de enlaces internos que no existen en el build (sin fallar,
-// porque la colección local acordes2 enlaza a páginas que no se publican).
+// porque la colección local otraweb enlaza a páginas que no se publican).
 
 import fs from 'node:fs';
 import {
@@ -62,7 +62,7 @@ console.log(`Enlaces internos sin barra final: ${sinBarra}`);
 
 if (muertos.size > 0) {
   console.log(`\nAviso: ${muertos.size} enlaces internos apuntan a páginas que no existen en el build.`);
-  console.log('(Normalmente son de acordes2, que no se publica.) Muestra:');
+  console.log('(Normalmente son de otraweb, que no se publica.) Muestra:');
   console.log([...muertos].slice(0, 5).map((u) => '  ' + u).join('\n'));
 }
 

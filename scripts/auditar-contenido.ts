@@ -14,7 +14,7 @@
 // Uso:
 //   npm run auditar:contenido              # todo, con comprobación de imágenes
 //   npm run auditar:contenido -- --sin-red # sin salir a internet
-//   npm run auditar:contenido -- --dir src/content/acordes3
+//   npm run auditar:contenido -- --dir src/content/borradores
 //
 // Requiere Node >= 22.6 (igual que el resto de auditores en TypeScript).
 

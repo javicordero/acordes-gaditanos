@@ -149,7 +149,7 @@ const LEYENDAS = {
   borradores: 'Aún no están en la web. <b>Revisado ✓</b> las marca y, si es un borrador, lo promueve para poder subirlo.',
   porPublicar: 'En <code>acordes</code>, con cambios que la web aún no tiene: sin commit (se suben) o en una PR abierta (se fusiona).',
   publicadas: 'Ya están en la web y revisadas.',
-  acordes2: 'Importadas del cancionero, con los acordes todavía sin envolver. <b>A borradores</b> las pasa a <code>acordes3</code> para revisarlas en el editor.',
+  otraweb: 'Importadas de otra web, con los acordes todavía sin envolver. <b>A borradores</b> las pasa a la pestaña <b>Borradores</b> para revisarlas en el editor.',
 };
 
 /**
@@ -173,7 +173,7 @@ function aplicarFiltro(tipo) {
 let revision = new Set();
 // Fichas de `acordes` en el ordenador pero aún sin subir a git (solo en local).
 let pendientesPublicar = [];
-// Fichas de la colección provisional `acordes2` (importadas del cancionero, con
+// Fichas de la colección provisional `otraweb` (importadas del cancionero, con
 // los acordes sin envolver). Solo en local: se pasan a borradores desde el panel.
 let importados = [];
 let sinSubirClaves = new Set();
@@ -238,7 +238,7 @@ function confirmarPublicacion(mensaje, slugs, cambios = []) {
 const esPorRevisar = (x) => enGit(x) && porRevisar(x) && !enPRPublicar(x);
 const esPorPublicar = (x) => enPRPublicar(x) ||
   (sinSubir(x) && !(porRevisar(x) && esNuevaPendiente(x.slug)));
-const esBorrador = (x) => x.zona === 'acordes3' || (sinSubir(x) && porRevisar(x) && esNuevaPendiente(x.slug));
+const esBorrador = (x) => x.zona === 'borradores' || (sinSubir(x) && porRevisar(x) && esNuevaPendiente(x.slug));
 const esPublicada = (x) => enGit(x) && !porRevisar(x) && !enPRPublicar(x);
 /** Ficha pendiente de algo: se pinta con el fondo destacado. */
 const esPendiente = (x) => esBorrador(x) || esPorRevisar(x) || esPorPublicar(x);
@@ -252,8 +252,8 @@ async function cargarIndice() {
     const b = await fetch(API + '/lista');
     if (b.ok) {
       const j = await b.json();
-      borradores = j.borradores.map((x) => ({ ...x, zona: x.zona || 'acordes3' }));
-      importados = (j.acordes2 || []).map((x) => ({ ...x, zona: 'acordes2', local: true }));
+      borradores = j.borradores.map((x) => ({ ...x, zona: x.zona || 'borradores' }));
+      importados = (j.otraweb || []).map((x) => ({ ...x, zona: 'otraweb', local: true }));
       revision = new Set(j.revision || []);
       fijarPendientes(j.pendientes);
     }
@@ -321,9 +321,9 @@ function quitarPR(slug) {
 }
 
 const marcas = (x) => [
-  x.zona === 'acordes3' ? '<span class="marca">BORRADOR</span>' : '',
+  x.zona === 'borradores' ? '<span class="marca">BORRADOR</span>' : '',
   x.local ? '<span class="marca local">LOCAL</span>' : '',
-  MODO_LOCAL && x.zona === 'acordes3' && !x.local
+  MODO_LOCAL && x.zona === 'borradores' && !x.local
     ? '<span class="marca remoto" title="Solo está en GitHub: ábrelo y guárdalo para traerlo al ordenador">EN GITHUB</span>'
     : '',
   x.enPR ? '<span class="marca pr">EN PR</span>' : '',
@@ -353,7 +353,7 @@ function filaLista(x) {
       '</span>' +
     '</button>' +
     '<div class="fila-acciones">' +
-      (avanza ? boton('revisar', 'Revisado ✓', ' revisado', x.zona === 'acordes3' ? 'Marca la ficha como revisada y la promueve a acordes' : 'Marca la ficha como revisada') : '') +
+      (avanza ? boton('revisar', 'Revisado ✓', ' revisado', x.zona === 'borradores' ? 'Marca la ficha como revisada y la promueve a acordes' : 'Marca la ficha como revisada') : '') +
       (puedePublicar ? boton('publicarLocal', 'Publicar', ' principal') : '') +
       boton('editar', 'Editar') +
       boton('clonar', '＋', ' icono', 'Crear otra ficha (otra letra) a partir de esta misma música') +
@@ -408,7 +408,7 @@ function filaPorPublicar(x, conSel = false) {
         (x.letraTitulo ? '<span class="f-letra">' + esc(x.letraTitulo) + '</span>' : '') +
         '<span class="marca ' + clase + '">' + etiqueta + '</span>' +
         (revision.has(x.slug) ? '<span class="marca revisar">SIN REVISAR</span>' : '') +
-        (x.borrador ? '<span class="marca" title="Estaba en acordes3 y se ha promovido: falta publicarla">PROMOVIDA</span>' : '') +
+        (x.borrador ? '<span class="marca" title="Estaba en borradores y se ha promovido: falta publicarla">PROMOVIDA</span>' : '') +
       '</span>' +
     '</button>' +
     '<div class="fila-acciones">' +
@@ -422,12 +422,12 @@ function filaPorPublicar(x, conSel = false) {
 }
 
 /**
- * Fila de la pestaña «Acordes2»: una ficha importada del cancionero que aún no
+ * Fila de la pestaña «Otra web»: una ficha importada del cancionero que aún no
  * está en borradores. Los acordes van sin envolver, así que se revisa en su
- * vista previa y se pasa a `acordes3` con **A borradores**.
+ * vista previa y se pasa a `borradores` con **A borradores**.
  */
 function filaImportada(x) {
-  const info = 'data-accion="verAcordes2" data-slug="' + esc(x.slug) + '"';
+  const info = 'data-accion="verOtraweb" data-slug="' + esc(x.slug) + '"';
   return '<article class="fila pendiente">' +
     '<button type="button" class="fila-info" ' + info + '>' +
       '<span class="f-agr">' + esc(x.agrupacion) + '</span>' +
@@ -435,15 +435,15 @@ function filaImportada(x) {
         '<span class="f-year">' + esc(String(x.year || '—')) + '</span>' +
         '<span>' + esc(x.pieza) + '</span>' +
         (x.letraTitulo ? '<span class="f-letra">' + esc(x.letraTitulo) + '</span>' : '') +
-        '<span class="marca local">ACORDES2</span>' +
+        '<span class="marca local">OTRAWEB</span>' +
         (x.incompleta === 'sinLetra' ? '<span class="marca sinletra" title="El bloque de la letra está vacío">SIN LETRA</span>' : '') +
       '</span>' +
     '</button>' +
     '<div class="fila-acciones">' +
-      '<a class="acc boton" href="/acordes2/' + encodeURIComponent(x.slug) + '/"' +
+      '<a class="acc boton" href="/otraweb/' + encodeURIComponent(x.slug) + '/"' +
         ' title="Ver la ficha tal como está (vuelve con «atrás»)">Ver</a>' +
       '<button type="button" class="acc principal" data-accion="aBorradores" data-slug="' + esc(x.slug) + '"' +
-        ' title="Envuelve los acordes y mueve la ficha a acordes3 para revisarla">A borradores</button>' +
+        ' title="Envuelve los acordes y mueve la ficha a borradores para revisarla">A borradores</button>' +
     '</div>' +
   '</article>';
 }
@@ -502,7 +502,7 @@ function pintarLista() {
   const borradoresCompletos = borradores.filter((x) => !x.incompleta);
   const borradoresAMedias = borradores.filter((x) => x.incompleta);
   const publicadas = resultado.filter(esPublicada);
-  // «Acordes2»: lo importado del cancionero que aún no se ha pasado a borradores.
+  // «Otra web»: lo importado del cancionero que aún no se ha pasado a borradores.
   // Vive aparte del índice (no está en la web ni en la cola de revisión).
   const importadas = importados.filter(coincide).sort(porAnioYAgra);
   // «Por publicar»: lo que está en `acordes` pero la web aún no tiene. En local, los
@@ -528,7 +528,7 @@ function pintarLista() {
     borradores: borradores.length,
     porPublicar: porPublicar.length,
     publicadas: publicadas.length,
-    acordes2: importadas.length,
+    otraweb: importadas.length,
   };
   for (const el of document.querySelectorAll('[data-cuenta]')) {
     el.textContent = cuentas[el.dataset.cuenta] ?? 0;
@@ -588,8 +588,8 @@ function pintarLista() {
     }
     const anios = [...porAnio.keys()].sort((a, b) => (Number(b) || 0) - (Number(a) || 0) || a.localeCompare(b, 'es'));
     for (const anio of anios) grupos.push({ titulo: anio, items: porAnio.get(anio).sort(porAnioYAgra) });
-  } else if (filtroTipo === 'acordes2') {
-    grupos.push({ titulo: 'Acordes2 · pendientes de pasar a borradores', items: importadas, clase: 'pend', render: filaImportada });
+  } else if (filtroTipo === 'otraweb') {
+    grupos.push({ titulo: 'Otra web · pendientes de pasar a borradores', items: importadas, clase: 'pend', render: filaImportada });
   }
 
   let html = '';
@@ -613,7 +613,7 @@ function pintarLista() {
       if (accion === 'fusionarPr') return fusionarDesdeLista(b.dataset.slug, b);
       if (accion === 'revisar') return revisarDesdeLista(b.dataset.slug, b);
       if (accion === 'clonar') return clonar(b.dataset.slug);
-      if (accion === 'verAcordes2') return (location.href = '/acordes2/' + encodeURIComponent(b.dataset.slug) + '/');
+      if (accion === 'verOtraweb') return (location.href = '/otraweb/' + encodeURIComponent(b.dataset.slug) + '/');
       if (accion === 'aBorradores') return pasarABorradores(b.dataset.slug, b);
     };
   });
@@ -644,8 +644,8 @@ function pintarLista() {
                 : '<b>Nada pendiente</b>No hay ninguna PR abierta de una ficha publicada.')
               : filtroTipo === 'publicadas'
                 ? '<b>Nada publicado</b>Todavía no hay fichas en la web.'
-                : filtroTipo === 'acordes2'
-                  ? '<b>Nada en acordes2</b>No queda ninguna ficha importada sin pasar a borradores.'
+                : filtroTipo === 'otraweb'
+                  ? '<b>Nada en Otra web</b>No queda ninguna ficha importada sin pasar a borradores.'
                   : '<b>Sin fichas</b>No hay nada todavía: crea la primera.';
   }
   $('lista-tope').hidden = total <= MAX;
@@ -1034,7 +1034,7 @@ async function abrirFicha(slug, empujar = true) {
 }
 
 /** Prepara el editor con un `.md` ya cargado (de master o de una rama recién creada). */function montarEditor(slug, md, pr, zona, rama) {
-  zonaFicha = zona === 'acordes3' ? 'acordes3' : 'acordes';
+  zonaFicha = zona === 'borradores' ? 'borradores' : 'acordes';
   cerrarNotaLocal();
   cerrarSug();
   const d = desenvolver(md);
@@ -1057,18 +1057,18 @@ async function abrirFicha(slug, empujar = true) {
   pintar();
   aplicarZoom();
   ['b-lista', 'b-comprobar', 'b-guardar', 'b-avisos'].forEach((id) => { $(id).hidden = false; });
-  // Vista previa: en local también para los borradores (`/acordes3/`). En
+  // Vista previa: en local también para los borradores (`/borradores/`). En
   // producción un borrador no está en el build, así que solo se ofrece si la
   // ficha ya está en `acordes`.
-  $('b-preview').hidden = zonaFicha === 'acordes3' && !MODO_LOCAL;
+  $('b-preview').hidden = zonaFicha === 'borradores' && !MODO_LOCAL;
   $('b-preview').title = 'Ver «' + slug + '» como la pinta la web (en otra pestaña)';
   $('b-revisado').hidden = !porRevisar({ slug });
-  $('b-revisado').title = zonaFicha === 'acordes3'
+  $('b-revisado').title = zonaFicha === 'borradores'
     ? 'Guarda, marca la copla como revisada y la promueve a acordes'
     : 'Guarda, marca la copla como revisada y fusiona la PR';
   $('b-nueva').hidden = true;
   $('b-letra').hidden = true;
-  $('b-publicar').hidden = zonaFicha !== 'acordes3';
+  $('b-publicar').hidden = zonaFicha !== 'borradores';
   $('b-publicar').textContent = MODO_LOCAL ? 'Promover' : 'Publicar';
   $('b-publicar').title = MODO_LOCAL
     ? 'Mueve el borrador a acordes y lo marca revisado: sin PR y sin publicar en la web'
@@ -1678,9 +1678,9 @@ async function enviarGuardar(extra = {}) {
   ficha.pr = d.pr || null;
   // Al guardar en local, el borrador ya existe en el disco: la lista puede
   // ofrecer Promover sin recargar.
-  if (d.local && zonaFicha === 'acordes3') {
+  if (d.local && zonaFicha === 'borradores') {
     const x = indice.find((i) => i.slug === ficha.slug);
-    if (x) { x.local = true; x.zona = 'acordes3'; }
+    if (x) { x.local = true; x.zona = 'borradores'; }
   }
   pintarDatos(fm);
   return d;
@@ -1698,7 +1698,7 @@ async function guardar() {
       $('b-pr').hidden = true;
       $('b-fusionar').hidden = true;
       setEstado('guardado en local', true);
-      const ruta = 'src/content/' + (zonaFicha === 'acordes3' ? 'acordes3' : 'acordes') + '/' + ficha.slug + '.md';
+      const ruta = 'src/content/' + (zonaFicha === 'borradores' ? 'borradores' : 'acordes') + '/' + ficha.slug + '.md';
       if (zonaFicha === 'acordes') {
         // Ya está en la web: lo que falta es el commit, así que pasa a «Por publicar».
         await refrescarPendientes();
@@ -1729,7 +1729,7 @@ async function guardar() {
 async function revisarFicha() {
   if (!ficha) return;
   if (!comprobarObligatorios()) return;
-  const borrador = zonaFicha === 'acordes3';
+  const borrador = zonaFicha === 'borradores';
   const seguro = MODO_LOCAL
     ? (borrador
       ? '¿Marcar esta copla como revisada?\nSe guarda, sale de la cola y se promueve a acordes: aparecerá en «Por publicar».'
@@ -1812,7 +1812,7 @@ async function comprobar() {
 /** Abre la ficha tal como la pinta la web, en otra pestaña para no perder el editor. */
 function abrirVistaPrevia() {
   if (!ficha) return;
-  const ruta = (zonaFicha === 'acordes3' ? '/acordes3/' : '/acordes/') +
+  const ruta = (zonaFicha === 'borradores' ? '/borradores/' : '/acordes/') +
     encodeURIComponent(ficha.slug) + '/';
   // La vista previa lee el archivo guardado: lo que esté sin guardar no sale.
   if (sucio && !confirm('Hay cambios sin guardar: la vista previa muestra la última versión guardada.\n¿Abrirla igual?')) {
@@ -1841,7 +1841,7 @@ async function publicar() {
   if (sucio) { mostrarAviso('Guarda los cambios antes de publicar (Ctrl+S).', 'var(--nuevo)'); return; }
   if (!confirmarPublicacion(MODO_LOCAL
     ? '¿Promover esta ficha a acordes y marcarla como revisada?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
-    : '¿Publicar esta ficha? Se moverá de acordes3 a acordes, saldrá de la cola y, al fusionar, saldrá el aviso.', [ficha.slug])) return;
+    : '¿Publicar esta ficha? Se moverá de borradores a acordes, saldrá de la cola y, al fusionar, saldrá el aviso.', [ficha.slug])) return;
   try {
     const r = await fetch(API + '/publicar', {
       method: 'POST',
@@ -1885,7 +1885,7 @@ async function publicarDesdeLista(slug, boton) {
   }
   if (!confirmarPublicacion(MODO_LOCAL
     ? '¿Promover «' + slug + '» a acordes y marcarla como revisada?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
-    : '¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes, saldrá de la cola y se abrirá la PR. Al fusionar saldrá el aviso.', [slug])) return;
+    : '¿Publicar «' + slug + '»?\nSe moverá de borradores a acordes, saldrá de la cola y se abrirá la PR. Al fusionar saldrá el aviso.', [slug])) return;
   const antes = boton.textContent;
   boton.disabled = true;
   boton.textContent = '…';
@@ -1917,8 +1917,8 @@ async function publicarDesdeLista(slug, boton) {
 }
 
 /**
- * «A borradores» de la pestaña Acordes2: envuelve los acordes y mueve la ficha
- * de `acordes2` a `acordes3` (solo en local). Después recarga la lista, así la
+ * «A borradores» de la pestaña Otra web: envuelve los acordes y mueve la ficha
+ * de `otraweb` a `borradores` (solo en local). Después recarga la lista, así la
  * ficha desaparece de aquí y aparece en «Borradores».
  */
 async function pasarABorradores(slug, boton) {
@@ -1984,7 +1984,7 @@ async function fusionarDesdeLista(slug, boton) {
 async function revisarDesdeLista(slug, boton) {
   const item = indice.find((x) => x.slug === slug);
   if (!item) return;
-  const borrador = item.zona === 'acordes3';
+  const borrador = item.zona === 'borradores';
   const promover = borrador && MODO_LOCAL;
   const partes = ['¿Marcar «' + slug + '» como revisada?'];
   if (borrador) {
@@ -2415,7 +2415,7 @@ function actualizarDatos() {
   if (!ficha) return;
   const d = datosDelEditor();
   const el = $('datos-slug');
-  el.textContent = (zonaFicha === 'acordes3' ? '/acordes3/' : '/acordes/') + ficha.slug + '/';
+  el.textContent = (zonaFicha === 'borradores' ? '/borradores/' : '/acordes/') + ficha.slug + '/';
   el.title = 'URL de la ficha: no cambia al editar los datos';
   el.classList.remove('mal');
   $('datos-resumen').textContent = [d.pieza, d.agrupacion, d.year].filter(Boolean).join(' · ');
@@ -2520,7 +2520,7 @@ async function crear(e) {
     const md = montarMd(fm, bd.pre);
     const g = await fetch(API + '/guardar', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug, md, zona: 'acordes3' }),
+      body: JSON.stringify({ slug, md, zona: 'borradores' }),
     });
     const gd = await g.json();
     if (!g.ok) throw new Error(gd.error || 'no se pudo crear');
@@ -2536,13 +2536,13 @@ async function crear(e) {
       letraTitulo: v('letraTitulo'),
       musica: v('musica'),
       letra: v('letra'),
-      zona: 'acordes3',
+      zona: 'borradores',
       local: gd.local === true,
       enPR: gd.pr ? gd.pr.numero : null,
     });
-    montarEditor(slug, md, gd.pr, 'acordes3', gd.rama);
+    montarEditor(slug, md, gd.pr, 'borradores', gd.rama);
     mostrarAviso(gd.local
-      ? 'Ficha creada en src/content/acordes3/' + slug + '.md.\n' +
+      ? 'Ficha creada en src/content/borradores/' + slug + '.md.\n' +
         (clon ? 'Ahora cambia la letra nueva encima de los acordes y mueve lo que haga falta.' : 'Ahora pega la letra en el editor y coloca los acordes.')
       : 'Ficha creada en la rama ' + gd.rama + '.\nPR #' + gd.pr.numero + ': ' + gd.pr.url + '\n' +
         (clon ? 'Ahora cambia la letra nueva encima de los acordes y mueve lo que haga falta.' : 'Ahora pega la letra en el editor y coloca los acordes.'), 'var(--ok)');
@@ -3126,9 +3126,9 @@ window.addEventListener('beforeunload', (e) => {
   // «Por publicar» vale en los dos modos: en local son los cambios sin commit; en
   // producción (y también en local) las PRs abiertas de fichas publicadas.
   $('f-por-publicar').hidden = false;
-  // «Acordes2» solo tiene sentido en local: en Netlify no existe la colección
+  // «Otra web» solo tiene sentido en local: en Netlify no existe la colección
   // provisional ni se pueden mover archivos.
-  $('f-acordes2').hidden = !MODO_LOCAL;
+  $('f-otraweb').hidden = !MODO_LOCAL;
   // Recupera la pestaña que se estaba viendo (p. ej. al volver de una previa).
   try {
     const f = sessionStorage.getItem('admin-filtro');

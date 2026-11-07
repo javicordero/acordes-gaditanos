@@ -43,7 +43,7 @@ import { avisosPasodoblesSinTitulo } from '../src/lib/alertas-letra-titulo.js';
 
 const RAIZ = process.cwd();
 const CARPETA = 'src/content/acordes';
-const BORRADORES = 'src/content/acordes3';
+const BORRADORES = 'src/content/borradores';
 const ESTADO = join(RAIZ, '.cache/publicar/estado.json');
 
 const opciones = { slugs: [], todos: false, sinAviso: false, avisar: false, sinWa: false, sinX: false, sinEtiquetas: false, plan: false, json: false, id: '' };
@@ -82,7 +82,7 @@ function git(argumentos, { permitirFallo = false } = {}) {
   }
 }
 
-/** Estado del working tree en `acordes` y bajas pendientes en `acordes3`. */
+/** Estado del working tree en `acordes` y bajas pendientes en `borradores`. */
 function estadoWorkingTree() {
   const mapa = new Map();
   const borradores = new Set();

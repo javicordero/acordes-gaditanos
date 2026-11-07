@@ -20,8 +20,8 @@ import matter from 'gray-matter';
 
 const ARCHIVO = 'letras-pendientes.md';
 const CARPETA = 'src/content/acordes';
-// Las fichas creadas pero todavía sin publicar viven en acordes3.
-const CARPETA_BORRADORES = 'src/content/acordes3';
+// Las fichas creadas pero todavía sin publicar viven en borradores.
+const CARPETA_BORRADORES = 'src/content/borradores';
 const rutaFicha = (slug) => [CARPETA, CARPETA_BORRADORES]
   .map((c) => join(c, `${slug}.md`))
   .find((r) => existsSync(r)) || null;
@@ -100,7 +100,7 @@ function comprobar(f) {
 
 const CARPETAS_FICHAS = [
   ['acordes', 'src/content/acordes'],
-  ['acordes3', 'src/content/acordes3'],
+  ['borradores', 'src/content/borradores'],
 ];
 
 const sinTildes = (t) =>
@@ -125,7 +125,7 @@ function distancia(a, b) {
   return fila[b.length];
 }
 
-/** Fichas de `acordes` y `acordes3`. Si un slug está en las dos, manda `acordes`. */
+/** Fichas de `acordes` y `borradores`. Si un slug está en las dos, manda `acordes`. */
 function leerFichas() {
   const porSlug = new Map();
   for (const [carpeta, ruta] of CARPETAS_FICHAS) {

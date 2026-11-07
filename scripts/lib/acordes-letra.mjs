@@ -119,7 +119,7 @@ function grupoDe(an, idx) {
 
 /**
  * Del texto de una ficha al modelo completo.
- * Acepta también `.md` en acordes2 (acordes sin envolver: se leen como letra).
+ * Acepta también `.md` en otraweb (acordes sin envolver: se leen como letra).
  */
 export function planDesdeMd(texto, slug = '') {
   const { frontmatter, items } = parsearPre(texto);

@@ -1,10 +1,10 @@
-// Pasa una ficha de la colección provisional `acordes2` (importada del
-// cancionero, con los acordes sin envolver) a los borradores (`acordes3`), ya
+// Pasa una ficha de la colección provisional `otraweb` (importada del
+// cancionero, con los acordes sin envolver) a los borradores (`src/content/borradores`), ya
 // envuelta en <a>, para revisarla en el editor del panel.
 //
 //   POST /admin/api/importar  { slug: 'pasodoble-…' }
 //
-// Solo funciona en local: en Netlify no existe la colección `acordes2` ni un
+// Solo funciona en local: en Netlify no existe la colección `otraweb` ni un
 // working tree donde mover archivos. El trabajo (envolver y mover) lo hace
 // `scripts/importar-a-borradores.mjs`, con el mismo envoltorio que el editor.
 import { execFile } from 'node:child_process';

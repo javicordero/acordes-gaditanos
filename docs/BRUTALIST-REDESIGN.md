@@ -200,8 +200,8 @@ a ámbar al hover. Textos pequeños en Roboto Mono y enlaces legales sin subraya
 - [x] `pages/politicas/*.astro`
 
 ### Local / interno (noindex)
-- [x] `pages/lista2.astro`
-- [x] `pages/acordes2/[id].astro` — reutiliza `AcordeCard` y la columna derecha
+- [x] `pages/lista-otraweb.astro`
+- [x] `pages/otraweb/[id].astro` — reutiliza `AcordeCard` y la columna derecha
 - [ ] `pages/admin/*` — local y gitignored; no forma parte de la web publicada. Pendiente
   solo si se quiere uniformar el panel interno.
 - `pages/formateadores/*` — ocultos por el middleware (404); no se rediseñan.

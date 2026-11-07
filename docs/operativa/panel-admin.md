@@ -11,7 +11,7 @@ Cada ficha sale **en una sola** pestaña. La clasificación combina dos datos: s
 | Pestaña | Qué entra |
 |---|---|
 | **Por revisar** | en `src/content/acordes` **y en git** (ya en la web), sin revisar |
-| **Borradores** | en `src/content/acordes3` **∪** `acordes` sin commit, sin revisar y **nuevas** |
+| **Borradores** | en `src/content/borradores` **∪** `acordes` sin commit, sin revisar y **nuevas** |
 | **Por publicar** | `acordes` con cambios que la web aún no tiene: sin commit (modificadas, borradas, sin push o nuevas ya revisadas) **o** en una PR abierta |
 | **Publicadas** | `acordes` en git, revisadas y sin PR abierta |
 
@@ -37,9 +37,9 @@ web. Un commit local sin push (estado `sin-push`) cuenta como no publicado.
 |---|---|---|
 | **Por revisar** | **Revisado ✓** | guarda, sale de la cola → **Publicadas** |
 | **Borradores** (`acordes` sin commit y nueva) | **Revisado ✓** | guarda, sale de la cola → **Por publicar** |
-| **Borradores** (`acordes3`, en local) | **Revisado ✓** | guarda, sale de la cola **y lo promueve** → **Por publicar** |
-| **Borradores** (`acordes3`, en producción) | **Revisado ✓** | guarda y marca; **Promover** abre la PR de publicación |
-| **Borradores** (`acordes3`) | **Promover** | mueve a `acordes`, la saca de la cola y la deja en **Por publicar** (en producción abre la PR `publica/*`) |
+| **Borradores** (`borradores`, en local) | **Revisado ✓** | guarda, sale de la cola **y lo promueve** → **Por publicar** |
+| **Borradores** (`borradores`, en producción) | **Revisado ✓** | guarda y marca; **Promover** abre la PR de publicación |
+| **Borradores** (`borradores`) | **Promover** | mueve a `acordes`, la saca de la cola y la deja en **Por publicar** (en producción abre la PR `publica/*`) |
 | **Por publicar** (sin commit) | **Publicar / Subir** | commit + push → **Publicadas** |
 | **Por publicar** (`EN PR`) | **Publicar** | fusiona la PR (squash) → **Publicadas** |
 
@@ -66,9 +66,9 @@ El panel lo refresca con `/admin/api/lista?solo=pendientes` (cola de revisión +
 La cabecera del editor lleva **Vista previa** entre **Comprobar** y **Avisos**. Abre la ficha
 como la pinta la web en **otra pestaña**, para no perder el editor ni el cursor:
 
-- en local, los borradores van a `/acordes3/<slug>/` y las publicadas a `/acordes/<slug>/`
+- en local, los borradores van a `/borradores/<slug>/` y las publicadas a `/acordes/<slug>/`
   (la misma ruta que enseña `datos-slug`);
-- en producción solo se ofrece en las fichas de `acordes`: un borrador de `acordes3` no está
+- en producción solo se ofrece en las fichas de `acordes`: un borrador de `borradores` no está
   en el build desplegado y su vista previa es el deploy preview de la PR;
 - si hay cambios sin guardar, avisa de que la vista muestra la **última versión guardada**.
 
@@ -97,7 +97,7 @@ El mismo `<pre>` en texto que el revisor local, con los acordes coloreados y sug
 
 ## De dónde sale cada dato
 
-- **`/admin/api/lista`** (`netlify/functions/lista.mjs`): los borradores (`acordes3`), las
+- **`/admin/api/lista`** (`netlify/functions/lista.mjs`): los borradores (`src/content/borradores`), las
   fichas con PR abierta, la cola de revisión y, en local, las fichas de `acordes` que no
   están en git (`git status` + `git diff origin/master..HEAD`). Una PR es de publicación si
   la rama empieza por `publica/` o si su cuerpo dice que el archivo está en `acordes/` (así
@@ -113,7 +113,7 @@ El mismo `<pre>` en texto que el revisor local, con los acordes coloreados y sug
   Las incompletas se ordenan arriba. En **Por publicar**, las fichas `MODIFICADA` (una
   corrección de algo ya publicado) van primero; después las `NUEVA`, las `SIN PUSH` y las
   `BORRADA`; las `EN PR` se ordenan con el resto de su mismo tipo. La marca **PROMOVIDA**
-  avisa de que la ficha viene de `acordes3` (se promovió y falta publicarla).
+  avisa de que la ficha viene de `borradores` (se promovió y falta publicarla).
 
 Vive en `src/scripts/estudio.js` (`esPorRevisar`, `esBorrador`, `esPorPublicar`,
 `esPublicada`) y se pinta en `pintarLista()`.
@@ -139,45 +139,45 @@ Qué filas entran y cómo se reparten lo decide `src/lib/panel-lote.js` (puro):
 `puedeSubir`, `accionDe`, `dividirLote` y `enTandas`. `npm run auditar:lote` lo prueba con
 casos fijos (nueva, modificada, borrada, sin push, EN PR, borrador y lote mixto).
 
-## La pestaña «Acordes2» (solo en local)
+## La pestaña «Otra web» (solo en local)
 
-Después de **Publicadas** hay una pestaña más, **Acordes2**, que **solo se enseña en local**
+Después de **Publicadas** hay una pestaña más, **Otra web**, que **solo se enseña en local**
 (en Netlify no existe la colección provisional ni se puede mover un archivo del disco). No
-forma parte del flujo de las cuatro pestañas: enseña las fichas de `src/content/acordes2`
+forma parte del flujo de las cuatro pestañas: enseña las fichas de `src/content/otraweb`
 —las importadas del cancionero, con los acordes **sin envolver en `<a>`**— para pasarlas a
 borradores y revisarlas.
 
-- La lista la devuelve `/admin/api/lista` en el campo `acordes2` (de `importadasLocales()`,
-  `netlify/functions/lista.mjs`), ordenada por año y agrupación y con la marca `ACORDES2`
+- La lista la devuelve `/admin/api/lista` en el campo `otraweb` (de `importadasLocales()`,
+  `netlify/functions/lista.mjs`), ordenada por año y agrupación y con la marca `OTRAWEB`
   (y `SIN LETRA` si el `<pre>` está vacío; no se puede mirar «sin acordes», porque ahí van
   sin etiquetas).
-- Cada fila lleva **Ver** (`/acordes2/<slug>/`, la vista previa local) y **A borradores**.
+- Cada fila lleva **Ver** (`/otraweb/<slug>/`, la vista previa local) y **A borradores**.
 - **A borradores** llama a `POST /admin/api/importar` (`netlify/functions/importar.mjs`), que
   lanza `scripts/importar-a-borradores.mjs`: envuelve los acordes con el mismo envoltorio del
-  editor (`src/lib/pre-acordes.js`), mueve el `.md` de `acordes2` a `acordes3` y no toca la
+  editor (`src/lib/pre-acordes.js`), mueve el `.md` de `otraweb` a `borradores` y no toca la
   fecha. Si ya hay un borrador o una ficha publicada con ese slug, no lo pisa y avisa. Al
-  terminar, el panel recarga la lista: la ficha desaparece de Acordes2 y aparece en
+  terminar, el panel recarga la lista: la ficha desaparece de Otra web y aparece en
   **Borradores**.
 
 Por CLI se puede hacer lo mismo: `npm run importar:borrador -- --slug <slug>[,<slug>]
 [--dry]`.
 
-## Las carpetas y por qué `acordes3` no se quita
+## Las carpetas y por qué `borradores` no se quita
 
 - **`acordes`** se compila: todo lo que hay ahí tiene página, entra en el sitemap, en
   `/lista`, en la home y en el buscador.
-- **`acordes3`** no se compila. Es lo único que impide que un borrador a medias salga en la
+- **`borradores`** no se compila. Es lo único que impide que un borrador a medias salga en la
   web: no basta con git, porque los borradores también están commiteados.
 
-Por eso una ficha **sin revisar** vive en `acordes3`, y solo pasa a `acordes` cuando se
+Por eso una ficha **sin revisar** vive en `borradores`, y solo pasa a `acordes` cuando se
 revisa (o se promueve a mano). `npm run ajustar:borradores` deja cada una en su sitio:
-mueve a `acordes3` las fichas de `acordes` que no están en git y siguen en la cola. Solo
+mueve a `borradores` las fichas de `acordes` que no están en git y siguen en la cola. Solo
 mueve archivos sin rastrear; no toca contenido, no publica y no hace commit.
 
 ## Crear una ficha
 
-**Nueva ficha** y **＋** (otra letra de la misma música) crean siempre en `acordes3` con
-`zona: 'acordes3'`, así que aparecen en **Borradores**. En local el archivo se escribe en el
+**Nueva ficha** y **＋** (otra letra de la misma música) crean siempre en `borradores` con
+`zona: 'borradores'`, así que aparecen en **Borradores**. En local el archivo se escribe en el
 proyecto; en producción, en una rama `estudio/<slug>` con PR de borrador. Para avanzarla:
 **Revisado ✓** (y en local ya queda en `acordes`, lista para **Publicar**).
 
@@ -209,7 +209,7 @@ proyecto; en producción, en una rama `estudio/<slug>` con PR de borrador. Para 
   abierta (una edición hecha desde el móvil), también, para poder fusionarla. Después de
   fusionar hay que hacer `git pull`.
 - En **producción** (Netlify) no hay working tree: «Por publicar» enseña solo las PRs abiertas
-  de fichas ya publicadas y «Borradores» se queda en los `acordes3`. Guardar abre/actualiza
+  de fichas ya publicadas y «Borradores» se queda en los `borradores`. Guardar abre/actualiza
   una PR `estudio/*`; **Promover** abre una `publica/*`.
 
 ## Avisos al publicar
@@ -240,7 +240,7 @@ sesión): allí solo se publica (PR) y el texto queda para copiar.
   `--todas` incluye las de publicar (eso publica y avisa). Necesita `GITHUB_TOKEN` en `.env`
   (permiso `public_repo` o `repo`) o `gh` autenticado. Después, `git pull`.
 - `npm run promover -- --slug <slug>[,<slug>] | --todos [--dry]` pasa un borrador de
-  `acordes3` a `acordes`, le pone la fecha del día y borra el borrador. Después,
+  `borradores` a `acordes`, le pone la fecha del día y borra el borrador. Después,
   `auditar:pre`, `auditar:acordes` y el commit con `subir-acorde`.
 
 ## Comprobarlo
@@ -251,4 +251,4 @@ npm run revisar -- --auditar          # la cola apunta a fichas que existen
 npm run astro check
 ```
 
-Los cuatro recuentos tienen que sumar el total de fichas (`acordes` + `acordes3`).
+Los cuatro recuentos tienen que sumar el total de fichas (`acordes` + `borradores`).

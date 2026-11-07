@@ -1,20 +1,20 @@
-// Pasa una ficha de la colección provisional `acordes2` (importada del
-// cancionero, con los acordes sin envolver) a los borradores (`acordes3`),
+// Pasa una ficha de la colección provisional `otraweb` (importada del
+// cancionero, con los acordes sin envolver) a los borradores (`src/content/borradores`),
 // envolviendo los acordes en <a> para poder revisarla en el panel.
 //
 // Uso:
 //   npm run importar:borrador -- --slug <slug>[,<slug>] [--dry] [--json]
 //
-// La usa el panel /admin (pestaña Acordes2), que solo la ofrece en local.
+// La usa el panel /admin (pestaña Otra web), que solo la ofrece en local.
 // El envoltorio es el mismo del editor (`src/lib/pre-acordes.js`), así que la
-// ficha llega a `acordes3` tal y como la dejaría «Guardar».
+// ficha llega a `borradores` tal y como la dejaría «Guardar».
 
 import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { join } from 'node:path';
 import { desenvolver, envolver, montarMd } from '../src/lib/pre-acordes.js';
 
-const ORIGEN = 'src/content/acordes2';
-const DESTINO = 'src/content/acordes3';
+const ORIGEN = 'src/content/otraweb';
+const DESTINO = 'src/content/borradores';
 const PUBLICADAS = 'src/content/acordes';
 
 const args = process.argv.slice(2);
@@ -51,7 +51,7 @@ for (const slug of slugs) {
   try {
     const md = readFileSync(origen, 'utf8');
     const desenvuelto = desenvolver(md);
-    // Sin `originales`: la ficha de `acordes2` no trae etiquetas, así que hay que
+    // Sin `originales`: la ficha de `otraweb` no trae etiquetas, así que hay que
     // clasificar cada línea y envolverla (con los originales, `envolver` copiaría
     // las líneas «sin tocar» y no envolvería nada).
     const envuelto = envolver(desenvuelto.texto, desenvuelto.registros);

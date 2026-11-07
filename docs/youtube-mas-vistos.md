@@ -2,7 +2,7 @@
 
 _Consulta hecha el 3 de noviembre de 2026._
 
-> **Actualización (3/11/2026):** las 33 fichas que estaban en `acordes2` ya se han pasado a `acordes`, con los acordes envueltos, la fecha del día y la actuación completa en el campo `video`; están en la cola **«Por revisar»** del editor.
+> **Actualización (3/11/2026):** las 33 fichas que estaban en `otraweb` ya se han pasado a `acordes`, con los acordes envueltos, la fecha del día y la actuación completa en el campo `video`; están en la cola **«Por revisar»** del editor.
 
 ## Cómo se ha hecho
 
@@ -67,7 +67,7 @@ Búsquedas en YouTube **ordenadas por número de visitas** (filtro «ordenar por
 | 14 | 97.121 | **Las Estaciones** (2004) | Comparsa | Presentación | en revisión | [vídeo](https://youtu.be/Xs-WuCwKw-A) |
 | 15 | 92.970 | **Los Parapapá** (2010) | Chirigota | Presentación | — | [vídeo](https://youtu.be/GtyTcbqAckg) |
 
-## Solo nos faltan de verdad (ni en acordes ni en acordes2)
+## Solo nos faltan de verdad (ni en acordes ni en otraweb)
 
 - **485.244** visitas — El corazón de Cádiz (2025), pasodoble «Pasodoble al presidente» · Comparsa · [vídeo](https://youtu.be/S2H92CcXOkM)
 - **284.742** visitas — El Embrujo de Cádiz (2023), presentación · Comparsa · [vídeo](https://youtu.be/h10ibHxz9ZI)
@@ -95,7 +95,7 @@ Búsquedas en YouTube **ordenadas por número de visitas** (filtro «ordenar por
 ## Notas
 
 - De los **30 pasodobles**, 25 se han pasado a `acordes` (en revisión) y 5 no los tenemos. De las **15 presentaciones**, 8 se han pasado a `acordes` (en revisión) y 7 no las tenemos.
-- **Imágenes**: las 33 fichas promovidas traen de `acordes2` la imagen de relleno (la de Las Ratas 2025). Solo se ha podido poner la correcta a las que ya tenían otra ficha de la misma agrupación y año (El Creador, Volver a Empezar, Los Acuarelas y Los Muñecos de Cádiz); el resto hay que cambiarlas en el editor.
+- **Imágenes**: las 33 fichas promovidas traen de `otraweb` la imagen de relleno (la de Las Ratas 2025). Solo se ha podido poner la correcta a las que ya tenían otra ficha de la misma agrupación y año (El Creador, Volver a Empezar, Los Acuarelas y Los Muñecos de Cádiz); el resto hay que cambiarlas en el editor.
 - Varias piezas superan las visitas del vídeo listado si se suman todas sus subidas (por ejemplo, *El Vapor* tiene otra con 314.000 y *El Creador* otra con 897.000). Aquí se cuenta solo el vídeo con más visitas.
 - Los vídeos con más visitas de pasodobles que **sí** tenemos publicados (Los Duendes Coloraos, Los Mafiosos, La Canción de Cádiz, La Sereníssima, Los Millonarios, Los Carnívales, etc.) no entran en la lista.
 - «Las Chapas que vibran» (Comparsa Aragüimé, 2018) se ha descartado: es de Gran Canaria, no del Carnaval de Cádiz.

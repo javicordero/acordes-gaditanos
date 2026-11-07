@@ -13,7 +13,7 @@
 // Uso:
 //   npm run normalizar:contenido                   # escribe
 //   npm run normalizar:contenido -- --dry          # solo enseña lo que cambiaría
-//   npm run normalizar:contenido -- --dir src/content/acordes3
+//   npm run normalizar:contenido -- --dir src/content/borradores
 
 import fs from 'node:fs';
 import path from 'node:path';

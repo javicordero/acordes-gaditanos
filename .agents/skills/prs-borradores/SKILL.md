@@ -1,13 +1,13 @@
 ---
-name: prs-acordes3
-description: Revisa y fusiona las PRs pendientes de los borradores de acordes3 (las que se crean desde el panel /admin en el móvil). Usar cuando el usuario diga "mira las PRs pendientes", "fusiona las PRs", "trae lo que subí desde el móvil", "¿qué tengo pendiente en acordes3?" o vuelva al ordenador después de editar desde el teléfono.
+name: prs-borradores
+description: Revisa y fusiona las PRs abiertas del panel (borradores y letras), las que se crean desde `/admin` en el móvil. Usar cuando el usuario diga "mira las PRs pendientes", "fusiona las PRs", "trae lo que subí desde el móvil", "¿qué tengo pendiente en borradores?" o vuelva al ordenador después de editar desde el teléfono.
 license: MIT
 metadata:
   author: local
   version: "1.0"
 ---
 
-# PRs pendientes de acordes3
+# PRs pendientes de borradores
 
 Las fichas que se editan desde el móvil en `/admin` se guardan en una rama y
 abren una PR. Esta skill las lista y las fusiona cuando vuelves al ordenador.
@@ -15,14 +15,14 @@ abren una PR. Esta skill las lista y las fusiona cuando vuelves al ordenador.
 ## Cuándo usarla
 
 - El usuario dice que ha estado editando desde el móvil y quiere traerlo.
-- Pide «mira qué PRs hay», «fusiona las pendientes», «¿qué tengo en acordes3?».
+- Pide «mira qué PRs hay», «fusiona las pendientes», «¿qué tengo en borradores?».
 - Antes de empezar a trabajar en local, para no pisar cambios que están en una PR.
 
 ## Qué hace cada tipo de PR
 
 | Rama | Qué es | Al fusionar |
 |---|---|---|
-| `estudio/<slug>-…` | Borrador guardado desde el panel | La ficha entra en `acordes3` en `master`. No se publica ni avisa. |
+| `estudio/<slug>-…` | Borrador guardado desde el panel | La ficha entra en `borradores` en `master`. No se publica ni avisa. |
 | `publica/<slug>-…` | «Publicar» desde el panel | La ficha pasa a `acordes` y, al reconstruir, **sale el aviso de Telegram**. |
 | `letras/<n>-…` | **＋ Letra** desde el panel | Añade una fila a `letras-pendientes.md`; no toca fichas. |
 
@@ -64,12 +64,12 @@ Ojo: eso publica y dispara el aviso de Telegram. Confírmalo con el usuario.
 git pull
 ```
 
-Sin esto, en local sigues viendo `acordes3` como estaba. Después ya se puede
+Sin esto, en local sigues viendo `borradores` como estaba. Después ya se puede
 editar, promover o auditar.
 
 ### 4. Publicar los que toquen
 
-Los borradores fusionados están en `acordes3`, sin publicar. Para pasarlos:
+Los borradores fusionados están en `borradores`, sin publicar. Para pasarlos:
 
 ```bash
 npm run promover -- --slug <slug>     # mueve, pone fecha y borra el borrador

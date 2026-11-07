@@ -27,9 +27,9 @@ export const SUFIJOS_SIN_ANUNCIOS = [
 // Rutas privadas del propietario: panel, borradores y listas internas.
 export const RUTAS_PRIVADAS = [
   '/estudio',
-  '/acordes2',
-  '/acordes3',
-  '/lista2',
+  '/otraweb',
+  '/borradores',
+  '/lista-otraweb',
   '/admin',
 ];
 

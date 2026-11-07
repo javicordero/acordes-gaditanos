@@ -64,11 +64,11 @@ git ls-files --error-unmatch "src/content/acordes/<slug>.md" 2>$null
 - **Sin rastrear (nuevo)** → candidato normal.
 - **Ya rastreado (modificado)** → ya estaba publicado; **avisar antes de cambiarle la
   fecha** y esperar confirmación explícita del usuario.
-- Si la ficha está en `src/content/acordes3/`, primero hay que promoverla
+- Si la ficha está en `src/content/borradores/`, primero hay que promoverla
   (`npm run promover -- --slug <slug>` o el botón **Promover** del panel): esta skill
   publica desde `acordes`.
 - Si un acorde pedido no existe en `acordes/`, avisar y continuar con el resto.
-- **`src/content/acordes2/` y `acordes3/` no entran**: no son la colección publicada.
+- **`src/content/otraweb/` y `borradores/` no entran**: no son la colección publicada.
 
 ### 2. Calcular el último publicado
 
@@ -279,7 +279,7 @@ Y un solo `git push origin master` al final (siempre y cuando la intención del 
 
 ## Notas
 
-- La referencia es **siempre HEAD** (último commit local), no el working tree ni `acordes2/`.
+- La referencia es **siempre HEAD** (último commit local), no el working tree ni `otraweb/`.
 - La fecha de un acorde ya publicado no se toca salvo que el usuario lo pida explícitamente.
 - El mensaje de commit respeta el frontmatter: `acordes <Pieza> <Agrupación>`.
 - Un commit por acorde; un solo push al final.

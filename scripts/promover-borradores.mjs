@@ -1,4 +1,4 @@
-// Pasa una ficha de la colección de borradores (`acordes3`) a la buena
+// Pasa una ficha de la colección de borradores (`src/content/borradores`) a la buena
 // (`acordes`), le pone la fecha del día y borra el borrador.
 //
 // Uso:
@@ -15,7 +15,7 @@
 import { existsSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const ORIGEN = 'src/content/acordes3';
+const ORIGEN = 'src/content/borradores';
 const DESTINO = 'src/content/acordes';
 
 const args = process.argv.slice(2);

@@ -20,7 +20,7 @@
 //   --fecha DD/MM/YYYY     Campo `date` (por defecto, hoy).
 //   --salida <ruta>        Fichero de salida.
 //   --reparto 2,1,3,..     Fuerza cuántas líneas van en cada verso de la base (`-` = saltar).
-//   --destino acordes2|acordes3  Escribe en la colección provisional o en los
+//   --destino otraweb|borradores  Escribe en la colección provisional o en los
 //                               borradores del panel (por defecto, acordes).
 //   --plan                 Enseña la estructura de la base y de la letra; no escribe nada.
 //   --propios a,b,c        Palabras que mantienen la mayúscula en mitad de verso.
@@ -276,7 +276,7 @@ function main() {
 
   const pieza = /^pieza:\s*(.+)$/m.exec(base.frontmatter)?.[1] || 'pasodoble';
   const agrup = /^agrupacion:\s*(.+)$/m.exec(base.frontmatter)?.[1] || '';
-  const carpetas = { acordes2: 'src/content/acordes2', acordes3: 'src/content/acordes3' };
+  const carpetas = { otraweb: 'src/content/otraweb', borradores: 'src/content/borradores' };
   const carpeta = carpetas[args.destino] || CARPETA;
   const slug = `${slugify(pieza)}-${slugify(agrup)}-${slugify(titulo)}`;
   const destino = texto(args.salida) || join(carpeta, `${slug}.md`);

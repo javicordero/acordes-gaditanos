@@ -1,5 +1,5 @@
 ---
-// Previsualización de una ficha en borrador (colección `acordes3`).
+// Previsualización de una ficha en borrador (colección `borradores`).
 //
 // No se enlaza desde ningún listado: sirve para ver la copla montada en el
 // deploy preview de la PR mientras se revisa desde el móvil.
@@ -11,9 +11,9 @@ import Layout from '../../layouts/Layout.astro';
 export async function getStaticPaths() {
   // Si no hay borradores, no se llama a getCollection (Astro avisa/falla con
   // una colección vacía).
-  const hay = readdirSync('src/content/acordes3').some((f) => f.endsWith('.md'));
+  const hay = readdirSync('src/content/borradores').some((f) => f.endsWith('.md'));
   if (!hay) return [];
-  const acordes = await getCollection('acordes3');
+  const acordes = await getCollection('borradores');
   return acordes.map((acorde) => ({ params: { id: acorde.slug }, props: { acorde } }));
 }
 

@@ -1,6 +1,6 @@
-// Lista los borradores de `acordes3` (de master y de PRs abiertas) con su
+// Lista las fichas de `src/content/borradores` (de master y de PRs abiertas) con su
 // frontmatter, para el panel. En local añade los borradores que solo viven en el
-// disco (creados con `acordes:aplicar --destino acordes3` y aún sin subir).
+// disco (creados con `acordes:aplicar --destino borradores` y aún sin subir).
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { execFile } from 'node:child_process';
@@ -61,10 +61,10 @@ async function slugsLocales(carpeta) {
   }
 }
 
-/** Borradores de `src/content/acordes3` que aún no están en GitHub (solo en dev). */
+/** Borradores de `src/content/borradores` que aún no están en GitHub (solo en dev). */
 async function borradoresLocales() {
   if (!LOCAL) return [];
-  const carpeta = join(process.cwd(), CARPETAS.acordes3);
+  const carpeta = join(process.cwd(), CARPETAS.borradores);
   let nombres;
   try {
     nombres = await readdir(carpeta);
@@ -76,21 +76,21 @@ async function borradoresLocales() {
     if (!nombre.endsWith('.md')) continue;
     try {
       const md = (await readFile(join(carpeta, nombre), 'utf8')).replace(/\r\n/g, '\n');
-      out.push({ ...datos(nombre.slice(0, -3), md), zona: 'acordes3', local: true });
+      out.push({ ...datos(nombre.slice(0, -3), md), zona: 'borradores', local: true });
     } catch { /* ficha ilegible: se omite */ }
   }
   return out;
 }
 
 /**
- * Fichas de la colección provisional `acordes2` (las importadas del cancionero,
+ * Fichas de la colección provisional `otraweb` (las importadas del cancionero,
  * aún con los acordes sin envolver). Solo en dev: es la lista de la pestaña
- * «Acordes2», desde la que se pasan a borradores. Allí no se puede comprobar si
+ * «Otra web», desde la que se pasan a borradores. Allí no se puede comprobar si
  * la letra lleva acordes (van sin etiquetas), así que solo se marca la vacía.
  */
 async function importadasLocales() {
   if (!LOCAL) return [];
-  const carpeta = join(process.cwd(), CARPETAS.acordes2);
+  const carpeta = join(process.cwd(), CARPETAS.otraweb);
   let nombres;
   try {
     nombres = await readdir(carpeta);
@@ -106,7 +106,7 @@ async function importadasLocales() {
       const sinLetra = !pre || !pre[1].replace(/<!--[\s\S]*?-->/g, '').trim();
       out.push({
         ...datos(nombre.slice(0, -3), md),
-        zona: 'acordes2',
+        zona: 'otraweb',
         local: true,
         incompleta: sinLetra ? 'sinLetra' : '',
       });
@@ -130,7 +130,7 @@ async function pendientesGit() {
   try {
     const { stdout } = await git([
       'status', '--porcelain=v1', '-z', '--no-renames', '--',
-      CARPETAS.acordes, CARPETAS.acordes3,
+      CARPETAS.acordes, CARPETAS.borradores,
     ]);
     for (const entrada of stdout.split('\0').filter(Boolean)) {
       const xy = entrada.slice(0, 2);
@@ -138,7 +138,7 @@ async function pendientesGit() {
       if (!ruta.endsWith('.md')) continue;
       const slug = ruta.split('/').pop().slice(0, -3);
 
-      if (ruta.startsWith(`${CARPETAS.acordes3}/`)) {
+      if (ruta.startsWith(`${CARPETAS.borradores}/`)) {
         // La baja del borrador viaja en el mismo commit que su ficha nueva.
         if (xy.includes('D')) borradores.add(slug);
         continue;
@@ -277,14 +277,14 @@ export default async (req) => {
   try {
     // En local manda el disco: un borrador que ya está en `acordes` (promovido
     // en el ordenador) no se vuelve a ofrecer como borrador, y los que están en
-    // `acordes3` se marcan como locales para poder promoverlos.
-    const locales3 = await slugsLocales(CARPETAS.acordes3);
+    // `borradores` se marcan como locales para poder promoverlos.
+    const locales3 = await slugsLocales(CARPETAS.borradores);
     const localesPublicadas = await slugsLocales(CARPETAS.acordes);
 
     let fichas = [];
     try {
       const arbol = await gh(`/repos/${REPO}/git/trees/${BASE}?recursive=1`, { token: s.token });
-      const prefijo = `${CARPETAS.acordes3}/`;
+      const prefijo = `${CARPETAS.borradores}/`;
       const rutas = (arbol.tree || [])
         .filter((x) => x.type === 'blob' && x.path.startsWith(prefijo) && x.path.endsWith('.md'))
         .map((x) => x.path)
@@ -298,17 +298,17 @@ export default async (req) => {
           // dice si la ficha está completa). El de GitHub puede ir por detrás.
           let md = Buffer.from(d.content, 'base64').toString('utf8');
           if (LOCAL && locales3.has(slug)) {
-            try { md = await readFile(join(process.cwd(), CARPETAS.acordes3, `${slug}.md`), 'utf8'); } catch { /* se queda el de GitHub */ }
+            try { md = await readFile(join(process.cwd(), CARPETAS.borradores, `${slug}.md`), 'utf8'); } catch { /* se queda el de GitHub */ }
           }
-          return { ...datos(slug, md), zona: 'acordes3' };
+          return { ...datos(slug, md), zona: 'borradores' };
         } catch {
-          return { slug, pieza: '', agrupacion: '', year: '', letraTitulo: '', incompleta: '', zona: 'acordes3' };
+          return { slug, pieza: '', agrupacion: '', year: '', letraTitulo: '', incompleta: '', zona: 'borradores' };
         }
       }))).filter((f) => !(LOCAL && localesPublicadas.has(f.slug)));
       if (LOCAL) for (const f of fichas) f.local = locales3.has(f.slug);
 
       // Fichas que aún viven en una PR abierta: los borradores (`estudio/*` sobre
-      // `acordes3`) y las ya publicadas en una PR de publicación o corrección
+      // `borradores`) y las ya publicadas en una PR de publicación o corrección
       // (`publica/*`, o una `estudio/*` que trae `acordes/`), para que sigan
       // apareciendo en la lista marcadas como EN PR hasta fusionarlas.
       const abiertas = await gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token: s.token });
@@ -320,7 +320,7 @@ export default async (req) => {
         if (!slug || fichas.some((f) => f.slug === slug)) continue;
         // Un borrador que ya está publicado en el disco no se repite.
         if (LOCAL && !publicacion && localesPublicadas.has(slug)) continue;
-        const zona = publicacion ? 'acordes' : 'acordes3';
+        const zona = publicacion ? 'acordes' : 'borradores';
         try {
           const d = await gh(`/repos/${REPO}/contents/${CARPETAS[zona]}/${slug}.md?ref=${encodeURIComponent(ref)}`, { token: s.token });
           const item = { ...datos(slug, Buffer.from(d.content, 'base64').toString('utf8')), zona, enPR: pr.number, rama: ref };
@@ -343,7 +343,7 @@ export default async (req) => {
     fichas.sort((a, b) => `${b.year}${b.agrupacion}`.localeCompare(`${a.year}${a.agrupacion}`, 'es'));
     return json({
       borradores: fichas,
-      acordes2: await importadasLocales(),
+      otraweb: await importadasLocales(),
       revision: await pendientesRevision(s.token),
       pendientes: await pendientesGit(),
     });

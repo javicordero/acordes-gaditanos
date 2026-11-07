@@ -60,9 +60,9 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/coming-soon') &&
         !page.includes('/en-construccion') &&
-        !page.includes('/acordes2') &&
-        !page.includes('/acordes3') &&
-        !page.includes('/lista2') &&
+        !page.includes('/otraweb') &&
+        !page.includes('/borradores') &&
+        !page.includes('/lista-otraweb') &&
         // Panel privado de edición: noindex y fuera del sitemap (también el viejo /estudio).
         !page.includes('/admin') &&
         !page.includes('/estudio') &&
@@ -159,11 +159,11 @@ export default defineConfig({
     },
     server: {
       // En `astro dev`, guardar un borrador desde el panel escribe en
-      // `src/content/acordes3`; si el watcher lo ve, Astro recarga la página y
+      // `src/content/borradores`; si el watcher lo ve, Astro recarga la página y
       // se pierde el editor. Esa colección solo la usa el panel (lee el archivo
       // directamente), así que se ignora. `acordes` sí se vigila: el preview
       // del sitio tiene que actualizarse al editar una ficha publicada.
-      watch: { ignored: ['**/src/content/acordes3/**'] },
+      watch: { ignored: ['**/src/content/borradores/**'] },
       allowedHosts: [],
     },
   },

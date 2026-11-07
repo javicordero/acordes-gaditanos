@@ -1,7 +1,7 @@
 // Guarda una ficha: crea una rama, hace el commit y abre (o actualiza) la PR.
 //
 // `zona` decide la carpeta:
-//   - "acordes3" (por defecto) → borrador; se publica con `publicar`.
+//   - "borradores" (por defecto) → borrador; se publica con `publicar`.
 //   - "acordes" → ficha publicada que se corrige.
 import {
   REPO, BASE, OWNER, CARPETAS, LOCAL, sesion, sinSesion, json, gh,
@@ -35,7 +35,7 @@ export default async (req) => {
   const slug = String(cuerpo.slug || '').trim();
   const md = String(cuerpo.md || '');
   const mensaje = String(cuerpo.mensaje || '').slice(0, 200);
-  const zona = cuerpo.zona === 'acordes' ? 'acordes' : 'acordes3';
+  const zona = cuerpo.zona === 'acordes' ? 'acordes' : 'borradores';
   const carpeta = CARPETAS[zona];
   // Si se editan pieza/agrupación/título, la ficha puede cambiar de archivo.
   const pedido = String(cuerpo.slugNuevo || '').trim();
@@ -119,7 +119,7 @@ export default async (req) => {
       '',
       `- Ficha: \`${destino}\``,
       `- Archivo: \`${carpeta}/${destino}.md\``,
-      `- Zona: **${zona}**${zona === 'acordes3' ? ' (borrador; se publica desde el panel o con `npm run promover`)' : ' (publicada)'}`,
+      `- Zona: **${zona}**${zona === 'borradores' ? ' (borrador; se publica desde el panel o con `npm run promover`)' : ' (publicada)'}`,
       ...(destino !== slug ? [`- Renombrada desde: \`${slug}\``] : []),
       ...(marcarRevisada ? ['- Marcada como revisada (sale de «Por revisar»)'] : []),
       '',
@@ -132,7 +132,7 @@ export default async (req) => {
         token: s.token,
         method: 'POST',
         body: {
-          title: titulo ? `${zona === 'acordes3' ? 'Borrador' : 'Ficha'}: ${titulo}` : `${zona}: ${destino}`,
+          title: titulo ? `${zona === 'borradores' ? 'Borrador' : 'Ficha'}: ${titulo}` : `${zona}: ${destino}`,
           head: rama,
           base: BASE,
           body: cuerpoPr,
@@ -144,7 +144,7 @@ export default async (req) => {
         token: s.token,
         method: 'PATCH',
         body: {
-          ...(titulo ? { title: `${zona === 'acordes3' ? 'Borrador' : 'Ficha'}: ${titulo}` } : {}),
+          ...(titulo ? { title: `${zona === 'borradores' ? 'Borrador' : 'Ficha'}: ${titulo}` } : {}),
           body: cuerpoPr,
         },
       });

@@ -26,8 +26,8 @@ const borrada = { slug: 'pasodoble-borrada', estado: 'borrada' };
 const sinPush = { slug: 'pasodoble-sin-push', estado: 'sin-push', cambio: 'nueva' };
 const conPR = { slug: 'pasodoble-en-pr', estado: 'sin-push', cambio: 'modificada', enPR: 12, rama: 'estudio/x' };
 const publicada = { slug: 'pasodoble-publicada' };
-const borrador = { slug: 'pasodoble-borrador', zona: 'acordes3', local: true };
-const importada = { slug: 'pasodoble-acordes2', zona: 'acordes2' };
+const borrador = { slug: 'pasodoble-borrador', zona: 'borradores', local: true };
+const importada = { slug: 'pasodoble-otraweb', zona: 'otraweb' };
 
 /* 1. Qué entra en el lote. */
 comprobar('nueva se puede subir', puedeSubir(nueva, true), true);
@@ -37,8 +37,8 @@ comprobar('sin push se puede subir', puedeSubir(sinPush, true), true);
 comprobar('en PR se puede publicar', puedeSubir(conPR, true), true);
 comprobar('en PR también en producción', puedeSubir(conPR, false), true);
 comprobar('publicada sin cambios no entra', puedeSubir(publicada, true), false);
-comprobar('borrador de acordes3 no entra', puedeSubir(borrador, true), false);
-comprobar('acordes2 no entra', puedeSubir(importada, true), false);
+comprobar('borrador de borradores no entra', puedeSubir(borrador, true), false);
+comprobar('otraweb no entra', puedeSubir(importada, true), false);
 comprobar('sin item no entra', puedeSubir(null, true), false);
 comprobar('sin PR en producción no entra', puedeSubir(modificada, false), false);
 

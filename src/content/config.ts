@@ -73,11 +73,11 @@ const acordes = defineCollection({ schema: acordeSchema });
 
 // Colección provisional: acordes importados desde el cancionero, pendientes de revisar.
 // Los acordes viven sin envolver en <a>; la envoltura se aplica al promover a `acordes`.
-const acordes2 = defineCollection({ schema: acordeSchema });
+const otraweb = defineCollection({ schema: acordeSchema });
 
-// Colección de borradores del panel /estudio: la PR lleva aquí la ficha
+// Colección de borradores del panel `/admin`: la PR lleva aquí la ficha
 // hasta que se promueve a `acordes` desde el ordenador.
-const acordes3 = defineCollection({ schema: acordeSchema });
+const borradores = defineCollection({ schema: acordeSchema });
 
 const autores = defineCollection({
   schema: z
@@ -106,8 +106,8 @@ const donaciones = defineCollection({
 
 export const collections = {
   acordes: acordes,
-  acordes2: acordes2,
-  acordes3: acordes3,
+  otraweb: otraweb,
+  borradores: borradores,
   autores: autores,
   donaciones: donaciones,
 };

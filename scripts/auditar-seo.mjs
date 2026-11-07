@@ -142,9 +142,9 @@ function auditarSitemap() {
 const RUTAS_SIN_H1 = [
   'admin',
   'estudio',
-  'acordes2',
-  'acordes3',
-  'lista2',
+  'otraweb',
+  'borradores',
+  'lista-otraweb',
   'formateadores',
   'buscar',
 ];

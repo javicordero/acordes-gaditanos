@@ -442,10 +442,10 @@ export const prerender = true;
       <div class="filtros" id="filtros">
         <button type="button" data-filtro="todas" class="sel">Todas <span class="cuenta" data-cuenta="todas"></span></button>
         <button type="button" data-filtro="revisar" title="Ya están en la web y les falta el repaso a mano">Por revisar <span class="cuenta" data-cuenta="revisar"></span></button>
-        <button type="button" data-filtro="borradores" title="Aún no están en la web: fichas de acordes3 y las de acordes sin commit ni revisar">Borradores <span class="cuenta" data-cuenta="borradores"></span></button>
+        <button type="button" data-filtro="borradores" title="Aún no están en la web: fichas en borradores y las de acordes sin commit ni revisar">Borradores <span class="cuenta" data-cuenta="borradores"></span></button>
         <button type="button" data-filtro="porPublicar" id="f-por-publicar" hidden title="Fichas de acordes con cambios que la web aún no tiene: en local, sin commit; en una PR abierta, sin fusionar">Por publicar <span class="cuenta" data-cuenta="porPublicar"></span></button>
         <button type="button" data-filtro="publicadas" title="Fichas de acordes ya en git (en la web) y revisadas">Publicadas <span class="cuenta" data-cuenta="publicadas"></span></button>
-        <button type="button" data-filtro="acordes2" id="f-acordes2" hidden title="Fichas importadas del cancionero (acordes2), con los acordes todavía sin envolver: «A borradores» las pasa a acordes3 para revisarlas. Solo en local">Acordes2 <span class="cuenta" data-cuenta="acordes2"></span></button>
+        <button type="button" data-filtro="otraweb" id="f-otraweb" hidden title="Fichas importadas de otra web, con los acordes todavía sin envolver: «A borradores» las pasa a la pestaña Borradores para revisarlas. Solo en local">Otra web <span class="cuenta" data-cuenta="otraweb"></span></button>
       </div>
       <div class="lote" id="lote" hidden>
         <span class="lote-n" id="lote-n" aria-live="polite">Ninguna seleccionada</span>

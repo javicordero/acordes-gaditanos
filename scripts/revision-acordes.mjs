@@ -11,14 +11,14 @@
 //   node scripts/revision-acordes.mjs --sincronizar [md]  rehace la cola desde
 //                                                         un markdown de `- [ ]`
 //
-// Vale tanto una ficha publicada (`acordes`) como un borrador (`acordes3`): el
+// Vale tanto una ficha publicada (`acordes`) como un borrador (`borradores`): el
 // panel enseña los dos en «Por revisar».
 import { readFile, writeFile, access } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const RAIZ = process.cwd();
 const JSON_REVISION = join(RAIZ, 'src/data/revision-acordes.json');
-const CARPETAS = [join(RAIZ, 'src/content/acordes'), join(RAIZ, 'src/content/acordes3')];
+const CARPETAS = [join(RAIZ, 'src/content/acordes'), join(RAIZ, 'src/content/borradores')];
 const COLA_POR_DEFECTO = join(RAIZ, 'pendientes-revision.md');
 
 const hoy = () => new Date().toISOString().slice(0, 10);
@@ -66,7 +66,7 @@ if (valor('--marcar')) {
   const slugs = String(valor('--anadir')).split(',').map((s) => s.trim()).filter(Boolean);
   for (const s of slugs) {
     if (!(await existe(s))) {
-      console.error(`No existe ${s}.md en acordes ni en acordes3`);
+      console.error(`No existe ${s}.md en acordes ni en borradores`);
       process.exitCode = 1;
       continue;
     }

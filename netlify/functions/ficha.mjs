@@ -1,4 +1,4 @@
-// Devuelve el `.md` de una ficha. Busca primero en los borradores (`acordes3`),
+// Devuelve el `.md` de una ficha. Busca primero en los borradores (`src/content/borradores`),
 // luego en las publicadas (`acordes`) y, si no está en master, en la rama de una
 // PR abierta de esa ficha (para poder seguir editando lo que se guardó desde el
 // móvil antes de fusionar).
@@ -37,7 +37,7 @@ export default async (req) => {
   const zona = String(url.searchParams.get('zona') || '');
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) return json({ error: 'slug inválido' }, 400);
 
-  const zonas = zona ? [zona] : ['acordes3', 'acordes'];
+  const zonas = zona ? [zona] : ['borradores', 'acordes'];
 
   try {
     // En local manda el archivo del proyecto: es lo que se edita y lo que se
