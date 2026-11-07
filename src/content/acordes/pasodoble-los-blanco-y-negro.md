@@ -1,15 +1,16 @@
 ---
-pieza: Pasodoble "La caracola"
+pieza: Pasodoble
 agrupacion: Los Blanco y Negro
 year: 1970
 musica: Paco Campos
 letra: Pedro Romero
 modalidad: Comparsa
 cejilla: 3
-img: https://unplatillodesal.wordpress.com/wp-content/uploads/2017/11/1970-los-blanco-y-negro-6.jpg
+img: 'https://unplatillodesal.wordpress.com/wp-content/uploads/2017/11/1970-los-blanco-y-negro-6.jpg'
 date: "09/10/2026"
-video: https://www.youtube.com/embed/2XIZOXopiog
-fraseClave: "Hacía una noche maravillosa"
+video: 'https://www.youtube.com/embed/2XIZOXopiog'
+fraseClave: Hacía una noche maravillosa
+letraTitulo: La caracola
 ---
 <pre>
 <a>La</a>
