@@ -5,6 +5,7 @@ year: 1998
 modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
+letraTitulo: Carnecita de gallina
 img: https://cdn2.rtva.interactvty.com/content_cards/d9f39e5fd6954d3b9cf674a16e277a67.png
 cejilla: 2
 date: "27/11/2025"
