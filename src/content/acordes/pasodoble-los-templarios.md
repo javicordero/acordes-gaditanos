@@ -4,6 +4,7 @@ agrupacion: Los templarios
 year: 1999
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
+letraTitulo: Mando hacia ti una barquilla
 modalidad: Comparsa
 img: https://letrasdecarnaval.wordpress.com/wp-content/uploads/2013/12/templarios1.jpg
 cejilla: 0

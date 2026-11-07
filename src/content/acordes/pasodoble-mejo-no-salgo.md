@@ -4,6 +4,7 @@ agrupacion: Mejó no salgo
 year: 2012
 musica: Tino Tovar
 letra: El Canijo
+letraTitulo: Sé de ti
 modalidad: Chirigota
 cejilla: 3
 img: https://static.grupojoly.com/clip/12841e36-d703-49b3-962c-720d9c9a3d8c_source-aspect-ratio_1600w_0.jpg
