@@ -5,6 +5,7 @@
 //   - "acordes" → ficha publicada que se corrige.
 import {
   REPO, BASE, OWNER, CARPETAS, LOCAL, sesion, sinSesion, json, gh,
+  quitarRevision, quitarRevisionLocal,
 } from './_lib.mjs';
 
 const campo = (md, k) => {
@@ -14,60 +15,6 @@ const campo = (md, k) => {
 };
 
 const abiertas = (token) => gh(`/repos/${REPO}/pulls?state=open&per_page=100`, { token });
-
-// Cola de coplas pendientes de revisión: al marcar una como revisada se quita su
-// slug y sale del listado «Por revisar» del panel.
-const RUTA_REVISION = 'src/data/revision-acordes.json';
-const hoy = () => new Date().toISOString().slice(0, 10);
-
-async function revisionEnRama(token, rama) {
-  try {
-    const d = await gh(`/repos/${REPO}/contents/${RUTA_REVISION}?ref=${encodeURIComponent(rama)}`, { token });
-    return { json: JSON.parse(Buffer.from(d.content, 'base64').toString('utf8')), sha: d.sha };
-  } catch (e) {
-    if (e.status === 404) return null;
-    throw e;
-  }
-}
-
-/** Quita el slug en disco (modo local). Devuelve cuántos quedan, o null si no hay archivo. */
-async function quitarRevisionLocal(slug) {
-  const { readFile, writeFile } = await import('node:fs/promises');
-  const { join } = await import('node:path');
-  const ruta = join(process.cwd(), RUTA_REVISION);
-  try {
-    const json = JSON.parse(await readFile(ruta, 'utf8'));
-    const antes = (json.pendientes || []).length;
-    json.pendientes = (json.pendientes || []).filter((x) => x !== slug);
-    if (json.pendientes.length === antes) return antes;
-    json.actualizado = hoy();
-    await writeFile(ruta, `${JSON.stringify(json, null, 2)}\n`, 'utf8');
-    return json.pendientes.length;
-  } catch {
-    return null;
-  }
-}
-
-/** Quita el slug en la rama de la PR. Devuelve cuántos quedan, o null si no hay archivo. */
-async function quitarRevision(token, slug, rama) {
-  const rev = await revisionEnRama(token, rama);
-  if (!rev) return null;
-  const antes = (rev.json.pendientes || []).length;
-  const pendientes = (rev.json.pendientes || []).filter((x) => x !== slug);
-  if (pendientes.length === antes) return antes;
-  const nuevo = { ...rev.json, actualizado: hoy(), pendientes };
-  await gh(`/repos/${REPO}/contents/${RUTA_REVISION}`, {
-    token,
-    method: 'PUT',
-    body: {
-      message: `Marca ${slug} como revisada`,
-      content: Buffer.from(`${JSON.stringify(nuevo, null, 2)}\n`, 'utf8').toString('base64'),
-      branch: rama,
-      sha: rev.sha,
-    },
-  });
-  return pendientes.length;
-}
 
 async function contenido(token, carpeta, slug, ref) {
   try {

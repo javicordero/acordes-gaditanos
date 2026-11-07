@@ -39,12 +39,13 @@ web. Un commit local sin push (estado `sin-push`) cuenta como no publicado.
 | **Borradores** (`acordes` sin commit y nueva) | **Revisado ✓** | guarda, sale de la cola → **Por publicar** |
 | **Borradores** (`acordes3`, en local) | **Revisado ✓** | guarda, sale de la cola **y lo promueve** → **Por publicar** |
 | **Borradores** (`acordes3`, en producción) | **Revisado ✓** | guarda y marca; **Promover** abre la PR de publicación |
+| **Borradores** (`acordes3`) | **Promover** | mueve a `acordes`, la saca de la cola y la deja en **Por publicar** (en producción abre la PR `publica/*`) |
 | **Por publicar** (sin commit) | **Publicar / Subir** | commit + push → **Publicadas** |
 | **Por publicar** (`EN PR`) | **Publicar** | fusiona la PR (squash) → **Publicadas** |
 
 El botón va **en la fila**, sin abrir el editor. En el editor sigue estando **Revisado ✓**
-en la cabecera, con el mismo efecto. **Promover** (editor) mueve a `acordes` sin marcar
-revisado.
+en la cabecera, con el mismo efecto. **Promover** (editor) mueve a `acordes` y la marca
+revisada; en producción abre la PR `publica/*` y la deja en `EN PR`.
 
 ## Guardar una ficha publicada
 

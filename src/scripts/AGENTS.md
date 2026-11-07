@@ -9,8 +9,8 @@
   red el panel sigue en local.
 - La pestaña activa se guarda en `sessionStorage`; al volver de **Ver** tiene que recuperarse.
 - La clasificación de pestañas está en `esPorRevisar` / `esBorrador` / `esPorPublicar` /
-  `esPublicada`. **Revisado ✓** (marca y, en local, promueve) y **Promover** (mueve a
-  `acordes`) no son lo mismo.
+  `esPublicada`. **Revisado ✓** marca (y en local promueve); **Promover** promueve y marca.
+  En producción solo **Promover** mueve a `acordes`.
 - La estructura del `<pre>` se toca con `src/lib/editar-lineas.js` (puro); lo prueba
   `npm run auditar:editor`.
 - Los estilos de `admin.astro` son `is:global` a propósito: el HTML que pinta el JS no lleva

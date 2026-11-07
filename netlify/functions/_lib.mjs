@@ -161,6 +161,60 @@ export function urlAutorizacion(estado) {
   return `https://github.com/login/oauth/authorize?${p.toString()}`;
 }
 
+// Cola de coplas pendientes de revisión (`src/data/revision-acordes.json`): al
+// marcar una ficha como revisada se quita su slug y sale de «Por revisar».
+export const RUTA_REVISION = 'src/data/revision-acordes.json';
+const hoyCola = () => new Date().toISOString().slice(0, 10);
+
+export async function revisionEnRama(token, rama) {
+  try {
+    const d = await gh(`/repos/${REPO}/contents/${RUTA_REVISION}?ref=${encodeURIComponent(rama)}`, { token });
+    return { json: JSON.parse(Buffer.from(d.content, 'base64').toString('utf8')), sha: d.sha };
+  } catch (e) {
+    if (e.status === 404) return null;
+    throw e;
+  }
+}
+
+/** Quita el slug en disco (modo local). Devuelve cuántos quedan, o null si no hay archivo. */
+export async function quitarRevisionLocal(slug) {
+  const { readFile, writeFile } = await import('node:fs/promises');
+  const { join } = await import('node:path');
+  const ruta = join(process.cwd(), RUTA_REVISION);
+  try {
+    const json = JSON.parse(await readFile(ruta, 'utf8'));
+    const antes = (json.pendientes || []).length;
+    json.pendientes = (json.pendientes || []).filter((x) => x !== slug);
+    if (json.pendientes.length === antes) return antes;
+    json.actualizado = hoyCola();
+    await writeFile(ruta, `${JSON.stringify(json, null, 2)}\n`, 'utf8');
+    return json.pendientes.length;
+  } catch {
+    return null;
+  }
+}
+
+/** Quita el slug en la rama de la PR. Devuelve cuántos quedan, o null si no hay archivo. */
+export async function quitarRevision(token, slug, rama) {
+  const rev = await revisionEnRama(token, rama);
+  if (!rev) return null;
+  const antes = (rev.json.pendientes || []).length;
+  const pendientes = (rev.json.pendientes || []).filter((x) => x !== slug);
+  if (pendientes.length === antes) return antes;
+  const nuevo = { ...rev.json, actualizado: hoyCola(), pendientes };
+  await gh(`/repos/${REPO}/contents/${RUTA_REVISION}`, {
+    token,
+    method: 'PUT',
+    body: {
+      message: `Marca ${slug} como revisada`,
+      content: Buffer.from(`${JSON.stringify(nuevo, null, 2)}\n`, 'utf8').toString('base64'),
+      branch: rama,
+      sha: rev.sha,
+    },
+  });
+  return pendientes.length;
+}
+
 /** Contenido de una ficha en una rama (o null si no existe). */
 export async function fichaEnRepo(token, slug, ref = BASE, zona = 'acordes') {
   const carpeta = CARPETAS[zona] || CARPETAS.acordes;

@@ -9,7 +9,7 @@
 //   - `MODO_LOCAL` lo confirma `/me` (`local: true`); el hostname es solo la pista.
 //   - La pestaña activa se guarda en `sessionStorage` y se recupera al volver de «Ver».
 //   - Las pestañas se deciden con `esPorRevisar`/`esBorrador`/`esPorPublicar`/`esPublicada`.
-//   - Revisado ✓ (marca) y Promover (mueve a `acordes`) son acciones distintas.
+//   - Revisado ✓ (marca; en local también promueve) y Promover (promueve y marca) hacen cosas distintas en producción.
 
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho, esAcorde, esAnotacion } from '../lib/pre-acordes.js';
 import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura } from '../lib/editar-lineas.js';
@@ -1071,8 +1071,8 @@ async function abrirFicha(slug, empujar = true) {
   $('b-publicar').hidden = zonaFicha !== 'acordes3';
   $('b-publicar').textContent = MODO_LOCAL ? 'Promover' : 'Publicar';
   $('b-publicar').title = MODO_LOCAL
-    ? 'Mueve el borrador a acordes en el proyecto: sin PR y sin publicar en la web'
-    : 'Pasa el borrador a acordes y abre la PR';
+    ? 'Mueve el borrador a acordes y lo marca revisado: sin PR y sin publicar en la web'
+    : 'Pasa el borrador a acordes, lo marca revisado y abre la PR';
   if (pr) {
     $('b-pr').hidden = false;
     $('b-fusionar').hidden = false;
@@ -1840,8 +1840,8 @@ async function publicar() {
   if (!ficha) return;
   if (sucio) { mostrarAviso('Guarda los cambios antes de publicar (Ctrl+S).', 'var(--nuevo)'); return; }
   if (!confirmarPublicacion(MODO_LOCAL
-    ? '¿Promover esta ficha a acordes?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
-    : '¿Publicar esta ficha? Se moverá de acordes3 a acordes y, al fusionar, saldrá el aviso.', [ficha.slug])) return;
+    ? '¿Promover esta ficha a acordes y marcarla como revisada?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
+    : '¿Publicar esta ficha? Se moverá de acordes3 a acordes, saldrá de la cola y, al fusionar, saldrá el aviso.', [ficha.slug])) return;
   try {
     const r = await fetch(API + '/publicar', {
       method: 'POST',
@@ -1854,16 +1854,23 @@ async function publicar() {
     montarEditor(ficha.slug, md, d.pr, 'acordes', d.rama);
     const x = indice.find((i) => i.slug === ficha.slug);
     if (x) { x.zona = 'acordes'; x.local = false; x.enPR = d.pr ? d.pr.numero : null; }
+    revision.delete(ficha.slug);
+    $('b-revisado').hidden = true;
+    const cola = d.revision && typeof d.revision.restantes === 'number'
+      ? '\nQuedan ' + d.revision.restantes + ' por revisar.'
+      : '';
     if (d.local) {
-      setEstado('promovida a acordes', true);
+      setEstado('promovida y revisada', true);
       $('b-publicar').hidden = true;
       await refrescarPendientes();
-      mostrarAviso('Promovida a acordes: ' + 'src/content/acordes/' + ficha.slug + '.md.\nEn el proyecto ya cuenta como publicada, pero la web no cambia hasta que hagas commit y push (`subir-acorde`).', 'var(--ok)');
+      mostrarAviso('Promovida a acordes y marcada como revisada: ' + 'src/content/acordes/' + ficha.slug + '.md.' + cola +
+        '\nEn el proyecto ya cuenta como publicada, pero la web no cambia hasta que hagas commit y push (`subir-acorde`).', 'var(--ok)');
       return;
     }
     setEstado('publicando · PR #' + d.pr.numero, true);
     $('b-publicar').hidden = true;
-    mostrarAviso('Publicación en la PR #' + d.pr.numero + ': ' + d.pr.url + '\nAl fusionar, Telegram avisa solo. WhatsApp y X, desde el PC.', 'var(--ok)');
+    mostrarAviso('Publicación en la PR #' + d.pr.numero + ': ' + d.pr.url + cola +
+      '\nAl fusionar, Telegram avisa solo. WhatsApp y X, desde el PC.', 'var(--ok)');
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
   }
@@ -1877,8 +1884,8 @@ async function publicarDesdeLista(slug, boton) {
     return;
   }
   if (!confirmarPublicacion(MODO_LOCAL
-    ? '¿Promover «' + slug + '» a acordes?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
-    : '¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes y se abrirá la PR. Al fusionar saldrá el aviso.', [slug])) return;
+    ? '¿Promover «' + slug + '» a acordes y marcarla como revisada?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
+    : '¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes, saldrá de la cola y se abrirá la PR. Al fusionar saldrá el aviso.', [slug])) return;
   const antes = boton.textContent;
   boton.disabled = true;
   boton.textContent = '…';
@@ -1891,11 +1898,17 @@ async function publicarDesdeLista(slug, boton) {
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
     if (item) { item.zona = 'acordes'; item.local = false; item.enPR = d.pr ? d.pr.numero : null; }
+    revision.delete(slug);
     if (d.local) await refrescarPendientes();
     else pintarLista();
+    const cola = d.revision && typeof d.revision.restantes === 'number'
+      ? ' Quedan ' + d.revision.restantes + ' por revisar.'
+      : '';
     mostrarAviso(d.local
-      ? 'Promovida a acordes: «' + slug + '» ya está en src/content/acordes/.\nLa web no cambia hasta que hagas commit y push (`subir-acorde`).'
-      : 'Publicada «' + slug + '» en la PR #' + d.pr.numero + '.\nAl fusionar, Telegram avisa solo; WhatsApp y X, desde el PC.\n' + d.pr.url, 'var(--ok)');
+      ? 'Promovida a acordes y marcada como revisada: «' + slug + '» ya está en src/content/acordes/.' + cola +
+        '\nLa web no cambia hasta que hagas commit y push (`subir-acorde`).'
+      : 'Publicada «' + slug + '» en la PR #' + d.pr.numero + ' y fuera de la cola.' + cola +
+        '\nAl fusionar, Telegram avisa solo; WhatsApp y X, desde el PC.\n' + d.pr.url, 'var(--ok)');
   } catch (e) {
     boton.disabled = false;
     boton.textContent = antes;

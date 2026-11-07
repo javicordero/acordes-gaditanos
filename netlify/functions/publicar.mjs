@@ -1,8 +1,10 @@
 // Publica un borrador: lo mueve de `acordes3` a `acordes` en la rama de su PR
-// (o en una nueva) y deja la PR lista para fusionar. Al fusionar, Netlify
-// reconstruye y el aviso de Telegram sale solo (un `.md` añadido en `acordes`).
+// (o en una nueva), lo saca de la cola de revisión y deja la PR lista para
+// fusionar. Al fusionar, Netlify reconstruye y el aviso de Telegram sale solo
+// (un `.md` añadido en `acordes`).
 import {
   REPO, BASE, CARPETAS, LOCAL, sesion, sinSesion, json, gh,
+  quitarRevision, quitarRevisionLocal,
 } from './_lib.mjs';
 
 const campo = (md, k) => {
@@ -55,8 +57,9 @@ export default async (req) => {
       await mkdir(destinoDir, { recursive: true });
       await writeFile(join(destinoDir, `${slug}.md`), md, 'utf8');
       await rm(origen, { force: true });
+      const restantes = await quitarRevisionLocal(slug);
       const titulo = [campo(md, 'pieza'), campo(md, 'agrupacion'), campo(md, 'year')].filter(Boolean).join(' · ');
-      return json({ ok: true, local: true, rama: null, pr: null, titulo, slug });
+      return json({ ok: true, local: true, rama: null, pr: null, titulo, slug, revision: { restantes } });
     }
 
     // 1. ¿Hay ya una PR abierta de esta ficha? Entonces se publica en su rama.
@@ -108,12 +111,16 @@ export default async (req) => {
       },
     });
 
-    // 4. PR nueva o actualizada.
+    // 4. Sale de la cola de revisión en la misma rama.
+    const restantes = await quitarRevision(s.token, slug, rama);
+
+    // 5. PR nueva o actualizada.
     const cuerpoPr = [
       'Publica una ficha que estaba en borrador (`acordes3`).',
       '',
       `- Ficha: \`${slug}\``,
       `- Archivo: \`${CARPETAS.acordes}/${slug}.md\``,
+      '- Sale de la cola de revisión.',
       '',
       'Al fusionar se reconstruye la web y el aviso de Telegram sale solo.',
     ].join('\n');
@@ -136,7 +143,7 @@ export default async (req) => {
       });
     }
 
-    return json({ ok: true, rama, pr: { numero: pr.number, url: pr.html_url }, titulo });
+    return json({ ok: true, rama, pr: { numero: pr.number, url: pr.html_url }, titulo, revision: { restantes } });
   } catch (e) {
     return json({ error: String(e.message || e) }, 502);
   }
