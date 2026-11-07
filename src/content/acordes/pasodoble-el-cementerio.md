@@ -5,12 +5,12 @@ year: 2025
 modalidad: Comparsa
 musica: Jonathan Pérez Ginel
 letra: Jonathan Pérez Ginel
-img: https://www.canalsur.es/resources/archivos_offline/2025/3/1/1740788050784ComparsaElCementerio_1024x576.jpg
+img: 'https://www.canalsur.es/resources/archivos_offline/2025/3/1/1740788050784ComparsaElCementerio_1024x576.jpg'
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/LIuuMgG-gbM?si=84BDvb3S5ZY2rE5T'
-fraseClave: "Por más que te encuentres sumidita"
-
+fraseClave: Por más que te encuentres sumidita
+letraTitulo: Por más que te encuentres
 ---
 <pre>
 <a>LaM7</a>                          <a>Fa#7</a>          <a>Sim7</a>
