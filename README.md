@@ -107,7 +107,7 @@ Los detalles de cada flujo están en [`docs/operativa/`](docs/operativa/).
 /
 ├── .agents/skills/       # Skills del agente (flujo de trabajo del proyecto)
 ├── .github/workflows/    # Aviso de Telegram y push al publicar
-├── docs/                 # Operativa interna: panel, avisos, rendimiento
+├── docs/                 # Operativa interna: panel, cancionero, avisos, SEO
 ├── netlify/functions/    # API del panel /admin (auth, guardar, publicar, lista…)
 ├── perf/                 # Benchmarks de strobe
 ├── public/               # Estáticos: iconos, redirects, ads.txt, offline
@@ -223,14 +223,21 @@ No hay suite de tests ni linter: el type-check es `npm run astro check`. Lo que 
 
 Netlify construye con `npm run build` y publica `./dist/` (ver [`netlify.toml`](netlify.toml)). Ese mismo archivo enruta `/admin/api/*` a las funciones, mantiene los 301 de `/estudio` y `/admin/stats|comentarios`, y aplica CSP y `noindex` a `/admin/*`.
 
-Los workers de Cloudflare se despliegan a mano desde su panel, pegando el `src/index.js`: no hay `wrangler.toml` a propósito (un `wrangler deploy` desde el repo borraría los bindings de KV). Las instrucciones están en [`workers/push-worker/README.md`](workers/push-worker/README.md).
+Los workers de Cloudflare se despliegan a mano desde su panel. En `workers/push-worker` no hay `wrangler.toml` a propósito: uno generado desde el repo borraría los bindings de KV. `workers/comments-worker` sí lleva uno mínimo, **sin el binding `COMMENTS`**: antes de desplegarlo, mira su [`README.md`](workers/comments-worker/README.md). Las instrucciones del worker de push están en [`workers/push-worker/README.md`](workers/push-worker/README.md).
 
 ## Documentación
 
-- [`AGENTS.md`](AGENTS.md) — contexto y convenciones del repositorio
+- [`AGENTS.md`](AGENTS.md) — reglas, comandos y mapa de documentación por tarea
+- [`docs/operativa/cancionero-y-contenido.md`](docs/operativa/cancionero-y-contenido.md) — fichas, colecciones y herramientas del cancionero
 - [`docs/operativa/panel-admin.md`](docs/operativa/panel-admin.md) — el panel `/admin`
-- [`docs/operativa/avisos.md`](docs/operativa/avisos.md) — canales de avisos
-- [`docs/operativa/rendimiento.md`](docs/operativa/rendimiento.md) — medición con strobe
+- [`docs/operativa/listados-y-busqueda.md`](docs/operativa/listados-y-busqueda.md) — orden, hubs y buscador
+- [`docs/operativa/glosario-y-experiencia.md`](docs/operativa/glosario-y-experiencia.md) — glosario, postura, transporte y URLs
+- [`docs/operativa/avisos.md`](docs/operativa/avisos.md) — canales de avisos y push
+- [`docs/operativa/seo-y-medios.md`](docs/operativa/seo-y-medios.md) — SEO, analítica, anuncios y vídeos
+- [`docs/operativa/rendimiento.md`](docs/operativa/rendimiento.md) — medición con Strobe
+- [`docs/operativa/adsense-experimentos.md`](docs/operativa/adsense-experimentos.md) — experimentos de AdSense
+- [`docs/operativa/active-view-previo-movil.md`](docs/operativa/active-view-previo-movil.md) — experimento del anuncio móvil
+- [`docs/operativa/opencode-remoto.md`](docs/operativa/opencode-remoto.md) — OpenCode desde el móvil
 
 ## Enlaces
 

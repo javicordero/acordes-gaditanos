@@ -64,8 +64,11 @@ git ls-files --error-unmatch "src/content/acordes/<slug>.md" 2>$null
 - **Sin rastrear (nuevo)** → candidato normal.
 - **Ya rastreado (modificado)** → ya estaba publicado; **avisar antes de cambiarle la
   fecha** y esperar confirmación explícita del usuario.
+- Si la ficha está en `src/content/acordes3/`, primero hay que promoverla
+  (`npm run promover -- --slug <slug>` o el botón **Promover** del panel): esta skill
+  publica desde `acordes`.
 - Si un acorde pedido no existe en `acordes/`, avisar y continuar con el resto.
-- **`src/content/acordes2/` no entra**: es provisional y no cuenta como publicado.
+- **`src/content/acordes2/` y `acordes3/` no entran**: no son la colección publicada.
 
 ### 2. Calcular el último publicado
 
@@ -148,6 +151,10 @@ Comprobar, antes de commitear:
 - Cada fecha nueva es mayor que todas las fechas de HEAD.
 - Los archivos siguen teniendo el mismo contenido salvo la línea `date` y los espacios
   finales de línea dentro del `<pre>` (paso 4-bis).
+- Si se publica un pasodoble que lleva `letraTitulo`, revisar el resto de los
+  pasodobles de la misma agrupación: los que no tengan `letraTitulo` deben avisarse
+  al usuario, pero **no bloquean** la publicación. `scripts/publicar-acorde.mjs`
+  incluye este aviso en `--plan` y lo muestra también al publicar.
 
 Si la verificación falla, **abortar sin commitear** e informar.
 
@@ -282,3 +289,5 @@ Y un solo `git push origin master` al final (siempre y cuando la intención del 
 - Herramientas: `git add`, `git commit`, `git push` y la edición del `date` del frontmatter.
 - Flujo típico: `promover-acorde` → `chord-formatting` → **`subir-acorde`**.
 - El panel `/admin` tiene una pestaña **Por publicar** que lanza `scripts/publicar-acorde.mjs` para las fichas locales sin subir. Hace lo mismo que esta skill (fechas, limpieza de espacios finales del `<pre>`, auditorías, commit por ficha y push) pero **no** lanza WhatsApp ni X: deja el aviso listo para copiar. Para que los lance desde el PC, `--avisar`.
+
+Referencia: `docs/operativa/cancionero-y-contenido.md` (fichas y formato) y `docs/operativa/panel-admin.md` (publicar desde el panel).

@@ -5,6 +5,9 @@
 //   GET  /admin/api/publicar-local?id=<id>   → estado y últimas líneas del log
 //   GET  /admin/api/publicar-local?ultimo=1  → el último trabajo (o el que corre)
 //
+// Acepta 20 slugs como máximo por trabajo: el panel reparte el lote en tandas
+// con `src/lib/panel-lote.js` (`enTandas`).
+//
 // El trabajo corre en segundo plano (push y avisos tardan minutos) y
 // escribe su estado en `.cache/publicar/estado.json`.
 import { execFile, spawn } from 'node:child_process';

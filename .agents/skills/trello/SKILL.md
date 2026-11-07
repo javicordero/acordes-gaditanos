@@ -113,7 +113,10 @@ rompe nada, pero el comentario no enciende la campanita (el CLI lo advierte).
    npm run trello -- empezar <tarjeta> --texto "🤖 En curso: preparando el plan"
    ```
 
-    Si el usuario pide el plan de **varias** tarjetas a la vez para comparar, no se mueve
+   En cuanto el encargo esté claro, renombrar la sesión con `Trello: <título corto>` (3–6
+   palabras, sin id). Esta regla se aplica solo al trabajo de Trello.
+
+   Si el usuario pide el plan de **varias** tarjetas a la vez para comparar, no se mueve
    ninguna.
 
 4. **Escribir el plan, en modo plan.** Sin editar archivos, sin builds, sin comandos que

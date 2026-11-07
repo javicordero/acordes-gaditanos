@@ -1,6 +1,6 @@
 # Cancionero y contenido
 
-Referencia técnica del modelo de contenido, el formato de las fichas y las herramientas del cancionero. Consulta solo las secciones relevantes para la tarea; los flujos de trabajo están en las skills indicadas en `AGENTS.md`.
+Referencia técnica del modelo de contenido, el formato de las fichas y las herramientas del cancionero. Consulta solo las secciones relevantes para la tarea; los flujos de trabajo están en las skills del proyecto (`create-acorde`, `chord-formatting`, `letra-alternativa`…).
 
 ## Arquitectura SSG
 Sitio 100% estático (SSG) con Astro content collections. Middleware solo redirige `/formateadores` y `/coming-soon` → 404.
@@ -61,7 +61,7 @@ Cuando una música tiene otra letra, los acordes caen sobre las mismas sílabas.
 - `npm run letras -- anadir "frase" --agrupacion "Los X" --base <slug> [--fuente <url>] [--notas "..."]` — añade una fila nueva.
 - `npm run letras -- reconocer "<título o frase>" [--json]` — interpreta una petición escrita a mano (tarjeta de Trello, chat): saca agrupación, año, pieza, fichas, **base propuesta** y avisa si la letra o el título ya existen. Solo lee.
 
-También se puede entrar por una **tarjeta de Trello** («nueva letra comparsa el cementerio», «pasodoble el cementerio»): se reconoce la copla, se apunta en la cola, se busca y formatea la letra y se deja en «Por revisar». Ver «Tarjetas de letras» en *Tareas en Trello*.
+También se puede entrar por una **tarjeta de Trello** («nueva letra comparsa el cementerio», «pasodoble el cementerio»): se reconoce la copla, se apunta en la cola, se busca y formatea la letra y se deja en «Por revisar». Ver «Tarjetas de letras» en la skill `trello`.
 
 La búsqueda se hace con `Pasodoble "<frase>"` y, si no aparece, con la agrupación o sin la palabra «pasodoble». Se acepta la letra solo si la frase aparece literal y la agrupación y el año cuadran; se descartan traducciones y montajes.
 

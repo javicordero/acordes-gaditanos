@@ -9,7 +9,18 @@ metadata:
 
 # Crear Archivo de Acordes
 
-Skill para generar archivos markdown de acordes del Carnaval de Cádiz en `src/content/acordes/`.
+Skill para generar archivos markdown de acordes del Carnaval de Cádiz en `src/content/acordes3/`.
+
+**Las fichas nuevas nacen en borradores (`acordes3`)**, para que aparezcan en la pestaña **Borradores** del panel `/admin`. No llevan PR ni commit: se revisan y después se promueven a `acordes` con el botón **Promover** del panel o con `npm run promover`.
+
+## Rapidez
+
+Crear una ficha es escribir **un** `.md`: no hace falta auditar, ni comprobar si la imagen o el vídeo responden, ni leer otras fichas para copiar el estilo.
+
+- No ejecutar `auditar:contenido`, `auditar:pre`, `normalizar:contenido`, `videos`, `astro check`, builds ni ninguna otra herramienta.
+- No salir a internet a validar la imagen o el vídeo.
+- Solo se pregunta al usuario si falta un dato imprescindible (tipo de pieza o agrupación) o si pide acordes que no ha pasado.
+- Si ya hay una ficha con el mismo slug, avisar antes de sobrescribir.
 
 ## Input del Usuario
 
@@ -115,7 +126,7 @@ video: 'https://www.youtube.com/embed/XXXX'
 
 ### 5. Crear el archivo
 
-Guardar en `src/content/acordes/[nombre-archivo].md`
+Guardar en `src/content/acordes3/[nombre-archivo].md` (borradores). El slug/URL se genera igual que en `acordes`; al promoverlo se mueve tal cual y aparece en «Por publicar».
 
 ## Ejemplo Completo
 
@@ -131,7 +142,7 @@ Video https://www.youtube.com/watch?v=XDXMjadGQA0
 Imagen https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3L8qAlUQ6ZfQP1AL5SanmxgqE1stmma4ovisc1EfHRC8twS-vejQBBuOB1onY6d5-dkWnvG68v18iuZHpNMcYrxHr6lk-vww5tP7DesZNuomtAdolyYikHPEUz6-S7flXcdDi2dLXWXou/s1600/1986loslocosdelacolina.jpg
 ```
 
-**Archivo generado:** `src/content/acordes/pasodoble-los-locos-de-la-colina.md`
+**Archivo generado:** `src/content/acordes3/pasodoble-los-locos-de-la-colina.md`
 
 ```markdown
 ---
@@ -156,5 +167,7 @@ video: 'https://www.youtube.com/embed/XDXMjadGQA0'
 - **Siempre** usar la fecha actual (la de hoy) en `date`, en formato DD/MM/AAAA. Nunca copiar una fecha de ejemplo o de otro acorde.
 - Si no se especifica cejilla, usar "0"
 - Si no se especifica modalidad, no incluir el campo
-- El directorio de destino es siempre `src/content/acordes/`
+- El directorio de destino es siempre `src/content/acordes3/` (borradores)
 - Mostrar al usuario la ruta del archivo creado
+
+Referencia: `docs/operativa/cancionero-y-contenido.md` (colecciones, formato y esquema).

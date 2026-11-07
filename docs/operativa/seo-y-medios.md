@@ -1,4 +1,4 @@
-# SEO, medios y rendimiento de publicación
+# SEO, medios y estáticos
 
 Referencia técnica de SEO, analítica, vídeos, anuncios y recursos estáticos. Los avisos de WhatsApp, Telegram, X y push se documentan en `avisos.md`.
 

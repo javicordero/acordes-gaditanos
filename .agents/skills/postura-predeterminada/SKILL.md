@@ -70,3 +70,5 @@ El acorde `LaM7` tiene cuatro posiciones en el glosario; `x 0 2 2 2 4` es la cua
 - No pongas el asterisco en el texto del acorde: rompe el parser (`*` no es un carácter válido) y el acorde deja de ser interactivo. El asterisco se pinta con CSS.
 - El atributo no se propaga al transportador: si se transpone la pieza, el nombre cambia y la postura guardada puede no existir en el acorde transpuesto; el popover cae entonces en la primera posición.
 - El `data-postura` debe ir en el `<a>` del `<pre>`, no en el bloque «Acordes usados»: ese bloque lo lee automáticamente del cuerpo de la pieza.
+
+Referencia: `docs/operativa/glosario-y-experiencia.md` (§ Postura predeterminada por acorde).

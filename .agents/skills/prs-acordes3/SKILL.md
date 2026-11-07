@@ -24,9 +24,10 @@ abren una PR. Esta skill las lista y las fusiona cuando vuelves al ordenador.
 |---|---|---|
 | `estudio/<slug>-…` | Borrador guardado desde el panel | La ficha entra en `acordes3` en `master`. No se publica ni avisa. |
 | `publica/<slug>-…` | «Publicar» desde el panel | La ficha pasa a `acordes` y, al reconstruir, **sale el aviso de Telegram**. |
+| `letras/<n>-…` | **＋ Letra** desde el panel | Añade una fila a `letras-pendientes.md`; no toca fichas. |
 
-Por defecto el script **solo toca las de borrador**. Las de publicar se ven con
-`--todas` y conviene mirarlas antes: publican de verdad.
+Por defecto el script toca las de **borrador** y las de **letra**; las de **publicar** se ven
+con `--todas` y conviene mirarlas antes: publican de verdad.
 
 ## Proceso
 
@@ -102,3 +103,5 @@ Si tienes `gh` instalado y autenticado, el script lo usa de reserva.
 - **`checks`**: Netlify aún está construyendo el deploy preview. Espera un
   par de minutos y vuelve a listar.
 - **Se fusionó pero en local no está**: falta `git pull`.
+
+Referencia: `docs/operativa/panel-admin.md` (§ Las mismas acciones por CLI).

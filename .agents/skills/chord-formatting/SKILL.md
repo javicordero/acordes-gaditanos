@@ -168,3 +168,5 @@ las famosas brujas Piti
 - Mantener la posición original del acorde.
 - No formatear palabras que contengan notas como parte de otras palabras (ej: "luna" no es "La" + "na").
 - Verificar contra otros archivos del proyecto para consistencia.
+
+Referencia: `docs/operativa/cancionero-y-contenido.md` (§ Formato de acordes).

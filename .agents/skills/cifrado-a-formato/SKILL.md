@@ -120,3 +120,5 @@ Ahora quiero que te pongas bien cerquita
 - Si un acorde coincide con otro muy cerca, mantener la alineación exacta de columnas.
 - Los acordes se escriben sin espacios delante cuando van en la columna 0. El build les añade una clase según su columna visible (`acorde-col-0` … `acorde-col-5`) y les aplica el desplazamiento correspondiente: 0px en la columna 0, 1px de 1 a 10, 3px de 11 a 20, 5px de 21 a 30, 7px de 31 a 45 y 8px de 46 en adelante. Plugin: `src/lib/remark-acordes-columna.mjs`. Nunca añadas clases ni atributos a los `<a>`; lo que debe ser exacto es la columna (el `pos` calculado sobre la letra).
 - Al terminar, escribir el resultado al archivo correspondiente y verificar visualmente en el navegador (`npm run dev`).
+
+Referencia: `docs/operativa/cancionero-y-contenido.md` (§ Formato de acordes).

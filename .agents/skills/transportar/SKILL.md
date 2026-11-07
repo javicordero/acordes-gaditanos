@@ -265,3 +265,5 @@ Siempre mostrar la tabla de equivalencias al usuario y esperar confirmación ant
 - Si hay barra (ej: Do/Fa), transponer ambas notas
 - Preferir notación española (Sib en lugar de Bb, Mib en lugar de Eb, etc.)
 - Si el usuario da equivalencias explícitas (ej: "La→Sol, Re→Do"), usar SOLO esas y dejar los demás sin cambiar
+
+Referencia: `docs/operativa/glosario-y-experiencia.md` (§ Transportador).
