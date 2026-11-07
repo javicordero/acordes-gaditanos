@@ -16,6 +16,8 @@ export const prerender = true;
 <title>Admin · Acordes Gaditanos</title>
 <link rel="preload" href="/fonts/bodoni-72-oldstyle-book.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/roboto-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- is:global a propósito: la lista y el editor los pinta el JS (sin
+     `data-astro-cid`), así que los estilos *scoped* no los alcanzarían. -->
 <style is:global>
   /* Tipografías de la web (el panel es una página suelta: las carga aquí). */
   @font-face { font-family:'Bodoni'; src:url('/fonts/bodoni-72-oldstyle-book.woff2') format('woff2'); font-weight:normal; font-style:normal; font-display:swap; }
@@ -257,6 +259,7 @@ export const prerender = true;
   .opciones-aviso label { display:flex; gap:8px; align-items:center; cursor:pointer; }
   .opciones-aviso input { width:16px; height:16px; margin:0; accent-color:#000; }
   .opciones-aviso .nota { margin:4px 0 0; }
+  .nota-letra-titulo { padding:9px 10px; border-left:3px solid #b46900; background:#fff1d6; color:#563400; }
   .log { max-height:44vh; overflow:auto; margin:0; padding:10px 12px; background:#fff; border:2px solid #000; font:11px/1.5 var(--mono); white-space:pre-wrap; word-break:break-word; }
 
   /* Navegación superior: Editor / Estadísticas / Comentarios */
@@ -624,6 +627,7 @@ export const prerender = true;
   <form id="f-subir">
     <h2 id="subir-titulo">Publicar</h2>
     <p class="nota" id="subir-plan"></p>
+    <p class="nota nota-letra-titulo" id="subir-aviso-letra" hidden></p>
     <div class="opciones-aviso" id="subir-opciones">
       <label><input type="checkbox" name="sinX"> Sin tuit (solo WhatsApp)</label>
       <label><input type="checkbox" name="sinEtiquetas"> Sin etiquetar a nadie en el tuit</label>

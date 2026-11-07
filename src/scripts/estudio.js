@@ -1,7 +1,21 @@
+// Front del panel /admin: lista, editor, vista previa, avisos y publicación.
+//
+// Lo monta `src/pages/admin.astro`. Las funciones de `/admin/api/*` son las que
+// hablan con GitHub o con el disco; aquí solo se pinta y se pide. El flujo está
+// en `docs/operativa/panel-admin.md`.
+//
+// Invariantes que se rompen al editar:
+//   - El HTML se monta por strings: escapa siempre con `escaparHtml()`.
+//   - `MODO_LOCAL` lo confirma `/me` (`local: true`); el hostname es solo la pista.
+//   - La pestaña activa se guarda en `sessionStorage` y se recupera al volver de «Ver».
+//   - Las pestañas se deciden con `esPorRevisar`/`esBorrador`/`esPorPublicar`/`esPublicada`.
+//   - Revisado ✓ (marca) y Promover (mueve a `acordes`) son acciones distintas.
+
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho, esAcorde, esAnotacion } from '../lib/pre-acordes.js';
 import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura } from '../lib/editar-lineas.js';
 import { puedeSubir, dividirLote, enTandas, avisa as avisaFicha } from '../lib/panel-lote.js';
 import { escaparHtml } from '../lib/escape.js';
+import { avisosPasodoblesSinTitulo } from '../lib/alertas-letra-titulo.js';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
@@ -193,6 +207,23 @@ function fijarPendientes(lista) {
   pendientesPublicar = Array.isArray(lista) ? lista : [];
   sinSubirClaves = new Set(pendientesPublicar.map((x) => x.slug));
   estadoPendiente = new Map(pendientesPublicar.map((x) => [x.slug, tipoPendiente(x)]));
+}
+
+/** Aviso no bloqueante al publicar pasodobles con título de letra. */
+function textoAvisosLetraTitulo(slugs, cambios = []) {
+  const catalogo = new Map(indice.map((x) => [x.slug, x]));
+  for (const x of pendientesPublicar) catalogo.set(x.slug, { ...catalogo.get(x.slug), ...x });
+  for (const x of cambios) catalogo.set(x.slug, { ...catalogo.get(x.slug), ...x });
+  const avisos = avisosPasodoblesSinTitulo([...catalogo.values()], slugs);
+  return avisos.map((aviso) =>
+    '⚠️ ' + aviso.agrupacion + ': «' + aviso.titulo + '» tiene letraTitulo, pero también falta en ' +
+    aviso.faltan.map((x) => x.slug).join(', ') + '.',
+  ).join('\n');
+}
+
+function confirmarPublicacion(mensaje, slugs, cambios = []) {
+  const aviso = textoAvisosLetraTitulo(slugs, cambios);
+  return confirm(mensaje + (aviso ? '\n\n' + aviso + '\n\nPuedes continuar igualmente.' : ''));
 }
 
 // Las cuatro categorías, excluyentes: cada ficha cae en una sola pestaña.
@@ -1706,7 +1737,8 @@ async function revisarFicha() {
     : (borrador
       ? '¿Marcar esta copla como revisada?\nSe guarda en la PR del borrador. Para publicarla, usa Promover.'
       : '¿Marcar esta copla como revisada?\nSe guarda, se marca y se fusiona la PR: el cambio queda publicado.');
-  if (!confirm(seguro)) return;
+  const datosActuales = { ...datosDelEditor(), slug: ficha.slug };
+  if (!confirmarPublicacion(seguro, [ficha.slug], [datosActuales])) return;
 
   try {
     const d = await enviarGuardar({ revisado: true });
@@ -1791,7 +1823,7 @@ function abrirVistaPrevia() {
 
 async function fusionar() {
   if (!ficha || !ficha.pr) return;
-  if (!confirm('¿Fusionar la PR #' + ficha.pr.numero + '? Se publicará en la web.')) return;
+  if (!confirmarPublicacion('¿Fusionar la PR #' + ficha.pr.numero + '? Se publicará en la web.', [ficha.slug])) return;
   try {
     const r = await fetch(API + '/fusionar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ slug: ficha.slug, ...(ficha.rama ? { rama: ficha.rama } : {}) }) });
     const d = await r.json();
@@ -1807,9 +1839,9 @@ async function fusionar() {
 async function publicar() {
   if (!ficha) return;
   if (sucio) { mostrarAviso('Guarda los cambios antes de publicar (Ctrl+S).', 'var(--nuevo)'); return; }
-  if (!confirm(MODO_LOCAL
+  if (!confirmarPublicacion(MODO_LOCAL
     ? '¿Promover esta ficha a acordes?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
-    : '¿Publicar esta ficha? Se moverá de acordes3 a acordes y, al fusionar, saldrá el aviso.')) return;
+    : '¿Publicar esta ficha? Se moverá de acordes3 a acordes y, al fusionar, saldrá el aviso.', [ficha.slug])) return;
   try {
     const r = await fetch(API + '/publicar', {
       method: 'POST',
@@ -1844,9 +1876,9 @@ async function publicarDesdeLista(slug, boton) {
     mostrarAviso('Ese borrador está solo en GitHub: ábrelo, guárdalo para traerlo al ordenador y después podrás promoverlo.', 'var(--nuevo)');
     return;
   }
-  if (!confirm(MODO_LOCAL
+  if (!confirmarPublicacion(MODO_LOCAL
     ? '¿Promover «' + slug + '» a acordes?\nSolo mueve el archivo en el proyecto: no crea PR ni la publica en la web.'
-    : '¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes y se abrirá la PR. Al fusionar saldrá el aviso.')) return;
+    : '¿Publicar «' + slug + '»?\nSe moverá de acordes3 a acordes y se abrirá la PR. Al fusionar saldrá el aviso.', [slug])) return;
   const antes = boton.textContent;
   boton.disabled = true;
   boton.textContent = '…';
@@ -1909,8 +1941,8 @@ async function pasarABorradores(slug, boton) {
  */
 async function fusionarDesdeLista(slug, boton) {
   const item = indice.find((x) => x.slug === slug);
-  if (!confirm('¿Publicar «' + slug + '»?\nSe fusiona su PR en master y Netlify reconstruye la web.' +
-    (MODO_LOCAL ? '\nDespués tendrás que hacer `git pull` en el ordenador.' : ''))) return;
+  if (!confirmarPublicacion('¿Publicar «' + slug + '»?\nSe fusiona su PR en master y Netlify reconstruye la web.' +
+    (MODO_LOCAL ? '\nDespués tendrás que hacer `git pull` en el ordenador.' : ''), [slug])) return;
   const antes = boton ? boton.textContent : '';
   if (boton) { boton.disabled = true; boton.textContent = '…'; }
   try {
@@ -1951,7 +1983,9 @@ async function revisarDesdeLista(slug, boton) {
   }
   if (item.incompleta === 'sinLetra') partes.push('\nOjo: el bloque de la letra está vacío.');
   if (item.incompleta === 'sinAcordes') partes.push('\nOjo: la letra no tiene ningún acorde.');
-  if (!confirm(partes.join('\n'))) return;
+  if (promover
+    ? !confirmarPublicacion(partes.join('\n'), [slug])
+    : !confirm(partes.join('\n'))) return;
 
   const antes = boton ? boton.textContent : '';
   if (boton) { boton.disabled = true; boton.textContent = '…'; }
@@ -2034,7 +2068,7 @@ function pedirPublicar(slug) {
   const nombre = item.pieza ? item.pieza + ' · ' + item.agrupacion : slug;
   $('subir-titulo').textContent = 'Publicar';
   $('subir-plan').innerHTML = '<b>' + esc(nombre) + '</b><br>' + textoPublicacion(item);
-  abrirDialogoSubir(avisaFicha(item));
+  abrirDialogoSubir(avisaFicha(item), [slug]);
 }
 
 /** Diálogo de subida de la selección de «Por publicar». */
@@ -2069,14 +2103,18 @@ function pedirPublicarLote() {
   const total = subir.length + fusionar.length;
   $('subir-titulo').textContent = 'Publicar ' + total + (total === 1 ? ' ficha' : ' fichas');
   $('subir-plan').innerHTML = lineas.join('<br>');
-  abrirDialogoSubir(conAviso > 0);
+  abrirDialogoSubir(conAviso > 0, [...subir.map((x) => x.slug), ...fusionar.map((x) => x.slug)]);
 }
 
 /** Casillas de aviso del diálogo de subida (se recuerdan entre veces). */
-function abrirDialogoSubir(llevaAviso) {
+function abrirDialogoSubir(llevaAviso, slugs = []) {
   const o = leerOpcionesAviso();
   $('f-subir').sinX.checked = o.sinX;
   $('f-subir').sinEtiquetas.checked = o.sinEtiquetas;
+  const avisos = textoAvisosLetraTitulo(slugs);
+  const avisoEl = $('subir-aviso-letra');
+  avisoEl.textContent = avisos;
+  avisoEl.hidden = !avisos;
   // En producción no hay avisos que lanzar: el botón solo publica.
   $('subir-opciones').hidden = !MODO_LOCAL || !llevaAviso;
   if (!$('dlg-subir').open) $('dlg-subir').showModal();
@@ -3096,4 +3134,3 @@ window.addEventListener('beforeunload', (e) => {
     ? '<span title="Sin sesión de GitHub: se usa el token del .env">Modo local · sin sesión</span>'
     : '<a href="/admin/api/salir">Salir</a>';
 })();
-

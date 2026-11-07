@@ -35,10 +35,11 @@
 // auth o un non-fast-forward fallan a la primera.
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { frontmatterDeTexto } from './lib/aviso.mjs';
 import { analizarPre, limpiarPre } from './lib/pre-espacios.mjs';
+import { avisosPasodoblesSinTitulo } from '../src/lib/alertas-letra-titulo.js';
 
 const RAIZ = process.cwd();
 const CARPETA = 'src/content/acordes';
@@ -134,6 +135,18 @@ function textoDe(item) {
   try { return readFileSync(join(RAIZ, item.ruta), 'utf8'); } catch { return ''; }
 }
 
+/** Fichas locales publicadas y borradores, para comprobar pasodobles hermanos. */
+function fichasEnDisco(carpeta) {
+  let nombres = [];
+  try { nombres = readdirSync(join(RAIZ, carpeta)); } catch { /* carpeta ausente */ }
+  return nombres.filter((nombre) => nombre.endsWith('.md')).map((nombre) => {
+    const slug = nombre.slice(0, -3);
+    let md = '';
+    try { md = readFileSync(join(RAIZ, carpeta, nombre), 'utf8'); } catch { /* archivo ilegible */ }
+    return { slug, ...frontmatterDeTexto(md) };
+  });
+}
+
 /** Última fecha publicada en HEAD (tolera días inválidos como 31/09). */
 function ultimaFecha() {
   const salida = git(['grep', '-h', '^date:', 'HEAD', '--', CARPETA], { permitirFallo: true });
@@ -187,7 +200,25 @@ function construirPlan() {
     x.avisar = !opciones.sinAviso && (x.estado === 'nueva' || (x.estado === 'sin-push' && x.cambio === 'nueva'));
   }
 
-  return { items, errores, avisos: items.filter((x) => x.avisar).length };
+  const catalogo = new Map([
+    ...fichasEnDisco(BORRADORES),
+    ...fichasEnDisco(CARPETA),
+  ].map((x) => [x.slug, x]));
+  for (const item of items) {
+    if (item.estado === 'borrada' || item.cambio === 'borrada') catalogo.delete(item.slug);
+    else catalogo.set(item.slug, { ...catalogo.get(item.slug), ...item });
+  }
+  const avisosLetraTitulo = avisosPasodoblesSinTitulo(
+    [...catalogo.values()],
+    items.filter((x) => x.estado !== 'borrada').map((x) => x.slug),
+  );
+
+  return {
+    items,
+    errores,
+    avisos: items.filter((x) => x.avisar).length,
+    avisosLetraTitulo,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -311,6 +342,11 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       throw new Error(plan.errores.map((e) => `${e.slug}: ${e.error}`).join('; '));
     }
     if (!plan.items.length) throw new Error('no hay fichas pendientes que publicar');
+
+    for (const aviso of plan.avisosLetraTitulo) {
+      const faltan = aviso.faltan.map((x) => x.slug).join(', ');
+      log(`⚠️ Pasodoble con letraTitulo en ${aviso.agrupacion}: comprueba también ${faltan}; no tienen letraTitulo.`, 'aviso');
+    }
 
     escribirEstado({ estado: 'ejecutando', inicio: Date.now(), pid: process.pid, plan });
 
