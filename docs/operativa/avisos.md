@@ -1,7 +1,7 @@
 # Avisos: WhatsApp, Telegram, X y push de la PWA
 
-Detalle de los canales de difusión y de las notificaciones push. En `AGENTS.md` queda
-solo el resumen y el puntero a este archivo: **lee esto antes de tocar avisos**.
+Detalle de los canales de difusión y de las notificaciones push. `AGENTS.md` apunta a este
+archivo: **léelo antes de tocar avisos**.
 
 ## Canales de avisos (WhatsApp y Telegram)
 

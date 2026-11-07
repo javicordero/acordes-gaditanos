@@ -97,7 +97,7 @@ rompe nada, pero el comentario no enciende la campanita (el CLI lo advierte).
    Si después de las tres partes falta contexto, se pregunta **en el plan**, no se rellena a
    base de suposiciones.
 
-3. **Pasarla a «En curso» y renombrar la sesión** (solo la que se va a trabajar)
+3. **Pasarla a «En curso»** (solo la que se va a trabajar)
 
    Antes de moverla, si el título es largo (el usuario suele escribirlo todo en el título),
    límpialo con `titular`, que pasa el título largo a la descripción y le antepone un número:
@@ -113,11 +113,7 @@ rompe nada, pero el comentario no enciende la campanita (el CLI lo advierte).
    npm run trello -- empezar <tarjeta> --texto "🤖 En curso: preparando el plan"
    ```
 
-   Y en cuanto se sepa el encargo, se renombra la pestaña de la sesión con el título de la
-   tarjeta, en corto: `Trello: <título de la tarjeta>` (3-6 palabras, sin id). Así la
-   pestaña dice qué se está haciendo en vez de «siguiente tarea trello».
-
-   Si el usuario pide el plan de **varias** tarjetas a la vez para comparar, no se mueve
+    Si el usuario pide el plan de **varias** tarjetas a la vez para comparar, no se mueve
    ninguna.
 
 4. **Escribir el plan, en modo plan.** Sin editar archivos, sin builds, sin comandos que

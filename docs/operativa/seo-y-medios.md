@@ -1,0 +1,56 @@
+# SEO, medios y rendimiento de publicación
+
+Referencia técnica de SEO, analítica, vídeos, anuncios y recursos estáticos. Los avisos de WhatsApp, Telegram, X y push se documentan en `avisos.md`.
+
+## Redirecciones
+- `public/ads.txt` — archivo estático de AdSense (`google.com, pub-3280015847198273, DIRECT, f08c47fec0942fa0`)
+- `public/redirects.json` — mapa de 300+ URLs legacy → nuevas rutas (usado client-side)
+- `public/redirects-from.json` — lista de URLs legacy
+
+## Vídeos de YouTube
+- Cada ficha tiene un `video:` (embed) y, si hay, un `cover:` (guitarra). El estado del vídeo principal se guarda en `src/data/videos-estado.json`: `ok`, `muerto` (404/401) o `bloqueado` (403, el autor no permite incrustarlo).
+- `npm run videos` audita con el oEmbed de YouTube y reescribe ese JSON. No se ejecuta en build (son ~440 peticiones): se pasa antes de publicar o cuando se toque el cancionero. Si una consulta falla por red o 429 se conserva el estado anterior; con `--solo` se conserva el resto del cancionero.
+- `npm run videos -- --detalles` (o `npm run videos:detalles`) completa `fecha` (fecha de subida) y `duracion` (segundos) leyendo la página del vídeo, **solo en los que les faltan**: son los datos que necesita el `VideoObject` de la ficha. YouTube limita las peticiones (429), así que si quedan vídeos sin datos se vuelve a pasar más tarde (solo pide los pendientes).
+- `src/lib/videos.ts` lo lee en la ficha (`estadoDeVideo`, `datosDeVideo`, `enlaceYoutube`, `busquedaYoutube`) y monta la fachada (`miniaturaYoutube`, `urlIncrustada`). `YoutubeCard` pinta la fachada solo si está `ok`: si está `muerto` muestra un bloque con enlace a la búsqueda en YouTube, y si está `bloqueado` un enlace directo a `watch?v=`. Sin datos se asume `ok`, para no ocultar un vídeo nuevo.
+- **Recambio**: `npm run videos -- --buscar` busca la **actuación completa** de la agrupación en `@ONDACADIZCARNAVAL`, `@carnavalsur` y `@cadizbooktv8695`, en ese orden. Escribe `videos-candidatos.md` y `src/data/videos-candidatos.json`. Filtros: el título debe llevar todas las palabras de la agrupación, no puede ser de otro año (título, `COACnn` o fecha de subida si es ≥2015), ni una pieza suelta, ni antología/homenaje/entrevista/resumen/carnaval chiquito, y tiene que durar ≥10 min. El canal se verifica con el `author_name` de oEmbed, porque el buscador de CADIZBOOKTV cae a resultados generales.
+- `npm run videos -- --aplicar` escribe el vídeo elegido **solo en las fichas caídas** de esa agrupación y año (nunca cambia uno que funciona). Para descartar un grupo, `"aplicar": false` en el JSON. `--solo <texto>` limita a una agrupación y fusiona con lo ya revisado.
+- **Fachada**: el reproductor no se carga al abrir la ficha. `YoutubeCard.astro` pinta un enlace a YouTube con la miniatura (`i.ytimg.com/vi/<id>/mqdefault.jpg`, 2x `hqdefault.jpg`) y un play; al pulsarlo, un script delegado del propio componente inyecta el `<iframe>` con `youtube-nocookie.com/embed/<id>?autoplay=1` y manda `click_video_youtube` (parámetro `tipo`: `oficial` | `cover`). Sin JS el enlace abre YouTube, y con Ctrl/Cmd/Shift/Alt o botón central también. Si el vídeo no está `ok` o de la URL no se saca el id no hay fachada: se queda el bloque de estado. La miniatura que da 404 oculta la imagen y deja el play sobre el fondo. `npm run auditar:fachada` (después del build) falla si queda un iframe de YouTube en el HTML o si falta una fachada.
+- Los covers no se auditan (se asume `ok`).
+
+## SEO y analítica
+- Site: `https://acordesgaditanos.com`
+- **Analítica**: solo **gtag** (`G-CTX6DK49K4`, `ANALYTICS.gaId` en `src/lib/constants.ts`). **No hay Google Tag Manager**: se retiró porque descargaba `gtm.js` para nada y, si el contenedor llevaba GA4, contaba cada visita dos veces. El Consent Mode v2 y el callback de `googlefc` están enganchados a `gtag` en `Layout.astro`. No volver a añadir GTM sin quitar antes gtag (son dos cargas del mismo host y duplican la medición).
+- Google Adsense: `ca-pub-3280015847198273`
+- Claves en `src/lib/constants.ts`
+- **Imagen social**: la ficha manda como `og:image`/`twitter:image` la **foto de la agrupación** (`img` del frontmatter). El resto de páginas usa `/og-image.jpg`. No hay tarjetas generadas en el build.
+- **Datos estructurados**: `src/lib/schema.ts` monta el `VideoObject` del vídeo de YouTube (solo si está `ok` y se conoce la fecha de subida; incluye miniatura, duración y `embedUrl`). El resto de esquemas se quedaron como estaban (Article, WebPage, MusicComposition y BreadcrumbList sin cambios).
+- **Sitemap con `lastmod`**: `scripts/lib/fechas-sitemap.mjs` lee las fechas del frontmatter (fichas, `/`, `/novedades/` y `/carnaval/<año>/`) y `astro.config.mjs` las pone en `serialize`. No es la fecha del build.
+- **Auditor SEO**: `npm run auditar:seo` (después de `npm run build`) comprueba que cada ficha con vídeo operativo tiene su `VideoObject` completo y que el sitemap lleva el `lastmod` de cada ficha. Sale con 1 si algo falla.
+- **`<title>` de la ficha** (`tituloSeo` en `src/lib/letras.ts`): pieza, agrupación, nombre de la copla, guion y año, sin la marca. `Acordes Pasodoble Los Colgaos "Y en el Gran Astillero" - Carnaval 2024`. El nombre sale de `letraTitulo` o, si no lo hay, de la `fraseClave` recortada a 35 caracteres por palabra completa (`recortarFrase`), y se descarta si es puro tarareo (`esRelleno`); si la `pieza` ya lo trae entrecomillado (`Cuarteta "Castigo divino"`), no se repite. La agrupación se acorta con puntos suspensivos (`acortarNombre`) solo cuando el título pasa de 100 caracteres. Sin nombre queda `Acordes Popurrí Los Ángeles Caídos - Carnaval 2002`. De ahí salen también `og:title` y `twitter:title`; el H1, el breadcrumb y los schemas no cambian.
+- Eventos del glosario: `click_novedad_glosario`, `click_acordes_usados_ver_mas` / `click_acordes_usados_ver_menos`, `click_acorde_pre`, `click_acorde_usado`, `click_acorde_glosario`, `click_glosario_acordes_usados`, `click_glosario_ver_acorde` (parámetros `acorde` y `ubicacion`: `indice` | `ficha` | `relacionado`) y `click_glosario_popover_ver_acorde` (el enlace «Ver acorde» del popover; parámetros `acorde` y `origen`: `indice` | `ficha` | `cifrado`, con `transport_type: beacon`).
+- Eventos del reconocedor: `reconocer_acorde` (parámetros `acorde`, `exacto` y `postura`), `click_glosario_desde_reconocer` (`acorde` y `slug`), `limpiar_mastil`, `click_ejemplo_reconocer` (`acorde`) y los enlaces de entrada `click_reconocer_acorde_glosario`, `click_reconocer_acorde_pagina`, `click_reconocer_acorde_ficha` y `click_reconocer_acorde_footer` (un evento por sitio, sin `ubicacion`).
+- Eventos del transportador: `transpose_acorde` (parámetros `direccion` y `semitonos`).
+- Eventos de "ver más" de la home: `ver_mas_novedades_click` y `ver_mas_autores_click` (parámetros `link_type` y `location`).
+- Eventos de los hubs de la home: uno por card, `click_hub_<eje>_<slug>` (`click_hub_decada_anos_2020`, `click_hub_pieza_pasodobles`…), con los guiones del slug cambiados por `_` porque GA4 no los admite; parámetros `hub` (slug exacto, con guiones) y `ubicacion`.
+- Eventos de las cards de autor: `click_autor_card`, `click_autor_card_musicas` y `click_autor_card_letras` (parámetros `autor` y `ubicacion`).
+- Eventos de los canales de avisos: `click_canal_home`, `click_canal_pedir_copla` y `click_canal_suscribirse` (parámetros `canal` y `ubicacion`), más `click_canal_info_pedir_copla` para el enlace a `/suscribirse`. Un evento por página para verlo directo en GA4.
+- Eventos de los filtros de `/lista`: `filtrar_lista` (parámetros `faceta`, `valor`, `marcado` y `total`, las coplas que quedan), `limpiar_filtros_lista` (parámetros `alcance` —`uno` o `todos`— y `faceta`), `abrir_filtros` (parámetro `filtros`, cuántos había puestos al desplegar) y `buscar_en_filtro` (parámetros `faceta`, `consulta` truncada a 40 caracteres y `resultados`, con 600 ms de espera desde la última tecla).
+
+## Anuncios: solo fuera de desarrollo
+Los anuncios de AdSense (y la medición de GA) **no se cargan** en los hosts de desarrollo ni en las rutas privadas. El criterio es una **lista negra**, no una lista blanca: la web sigue anunciando en cualquier dominio que no esté en la lista (incluidos dominios nuevos o previews de otros servicios).
+
+- La lista vive en `src/lib/anuncios.ts`: `HOSTS_SIN_ANUNCIOS` (local), `SUFIJOS_SIN_ANUNCIOS` (`.local`, `.devtunnels.ms`, `.ngrok*`, `.trycloudflare.com`, `.loca.lt`, `.netlify.app`), cualquier IPv4 literal y `RUTAS_PRIVADAS` (`/estudio`, `/acordes2`, `/acordes3`, `/lista2`, `/admin`). `anunciosPermitidos(hostname, pathname)` es la función pura que lo decide.
+- **Si aparece un proveedor de túnel nuevo** (o un preview de otro servicio), hay que añadir su sufijo en `SUFIJOS_SIN_ANUNCIOS`. Es el único sitio que hay que tocar.
+- `Layout.astro` lleva un `<script is:inline>` en el `<head>` (recibe las listas con `define:vars`) que calcula `window.__agAnuncios` y, si no se permite, marca `<html data-anuncios="off">` y apaga GA (`ga-disable-…`). Justo después, otro `<script is:inline>` **inyecta** el loader de `adsbygoogle.js` solo si `__agAnuncios`; **no** volver a ponerlo como `<script src>` fijo en el head (se cargaría en túneles, previews y local).
+- `global.css` oculta los `.adsbygoogle` y sus contenedores (`[data-anuncios="off"]`), para que no queden huecos ni márgenes.
+- Los componentes `<ins>` no se tocan: sin la librería cargada son un `<ins>` vacío y el `push({})` no hace nada.
+- `SCRIPT_ADSENSE` (en `src/lib/anuncios.ts`) monta la URL desde `SEO.adsenseAccount`; `loadAdsense()` de `cookiesConsent.ts` mantiene el mismo guardia como red de seguridad.
+- El `<meta google-adsense-account>` y el `ca-pub` de los `.ins` siguen en el HTML: son estáticos y sirven para verificar el dominio.
+
+## Fuentes
+- **Bodoni**: la web pública solo la usa para el nombre de la cabecera («Acordes Gaditanos»), así que `global.css` y el `preload` de `Layout.astro` apuntan a **`public/fonts/bodoni-logo.woff2`**, un subset de ~1,9 KB con esos glifos. La fuente completa (`bodoni-72-oldstyle-book.woff2`, ~30 KB) se queda solo para `/admin`, que declara su propio `@font-face`.
+- `npm run subset:bodoni` regenera el subset (necesita Python 3 y `fonttools` + `brotli`). El texto vive en `scripts/subset-bodoni.mjs`; si cambia el rótulo, hay que actualizarlo y **renombrar** el archivo, porque `/fonts/*` se cachea un año.
+- **Roboto Mono**: un solo woff2 variable sirve los pesos 400 y 700; el resto se sintetiza.
+
+## PostCSS
+`postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.
