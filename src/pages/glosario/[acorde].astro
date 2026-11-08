@@ -10,6 +10,8 @@
 
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/page/Breadcrumb.astro';
+import AnuncioSobrePagina from '../../components/ads/AnuncioSobrePagina.astro';
+import Anuncio2 from '../../components/right-column/anuncios/Anuncio2.astro';
 import DiagramaAcorde from '../../components/page/DiagramaAcorde.astro';
 import glosarioJson from '../../data/glosario-acordes.json';
 import type { EntradaGlosario, Glosario } from '../../lib/acordes';
@@ -143,6 +145,10 @@ const textoEnarmonico = etiquetaEnarmonica
   />
 
   <div class='main-container container-layout'>
+    <div class='acorde-pagina__anuncio-superior'>
+      <AnuncioSobrePagina />
+    </div>
+
     <article class='acorde-pagina'>
       <header class='acorde-pagina__header'>
         <h1>Acorde {etiqueta} ({ingles}) en guitarra</h1>
@@ -205,6 +211,8 @@ const textoEnarmonico = etiquetaEnarmonica
           diagrama indica su posición en el mástil.
         </p>
       </section>
+
+      <Anuncio2 class='acorde-pagina__anuncio-medio' />
 
       <section class='acorde-pagina__seccion' aria-labelledby='posiciones-titulo'>
         <h2 id='posiciones-titulo'>
@@ -389,6 +397,15 @@ const textoEnarmonico = etiquetaEnarmonica
     box-shadow: 6px 6px 0 0 var(--primary-color);
     font-family: 'Roboto Mono', monospace;
     color: var(--text-color);
+  }
+
+  .acorde-pagina__anuncio-superior :global(.anuncio-sobre-pagina) {
+    margin-top: 10px;
+    margin-bottom: var(--main-container-gap);
+  }
+
+  :global(.acorde-pagina__anuncio-medio) {
+    margin-top: 30px;
   }
 
   .acorde-pagina__header h1 {
@@ -723,6 +740,11 @@ const textoEnarmonico = etiquetaEnarmonica
     .acorde-pagina {
       padding: 12px 10px 18px;
       box-shadow: 4px 4px 0 0 var(--primary-color);
+    }
+
+    .acorde-pagina__anuncio-superior :global(.anuncio-sobre-pagina) {
+      margin-top: 4px;
+      margin-bottom: var(--main-container-gap-sm);
     }
 
     .acorde-pagina__header h1 {
