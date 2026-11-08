@@ -12296,6 +12296,22 @@
           ],
           "baseTraste": 1,
           "cejilla": null
+        },
+        {
+          "trastes": [
+            2,
+            5,
+            4,
+            2,
+            3,
+            2
+          ],
+          "baseTraste": 1,
+          "cejilla": {
+            "traste": 2,
+            "desde": 0,
+            "hasta": 5
+          }
         }
       ]
     },
