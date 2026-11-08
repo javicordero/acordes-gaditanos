@@ -687,6 +687,7 @@ function mostrarStats(empujar = true) {
   setEstado('', true);
   if (empujar) history.pushState({ vista: 'stats' }, '', '/admin/?vista=stats');
   if (!statsCargadas) cargarStats();
+  if (statsFuente === 'cf') cargarCloudflare();
 }
 function mostrarComentarios(empujar = true) {
   ocultarVistas();
@@ -702,13 +703,37 @@ function mostrarComentarios(empujar = true) {
 
 /* ---------------- estadísticas ---------------- */
 let statsCargadas = false;
+// Fechas de alta por ruta (`public/rutas-fechas.json`, lo genera
+// `scripts/rutas-fechas.ts`). La media empieza en `INICIO_CONTADOR`: el worker
+// no tiene datos anteriores.
+const INICIO_CONTADOR = '2026-01-19';
+let statsData = null;
+let statsPaginas = [];
+let statsFechas = null;
+let rutasFiltro = '';
 const fmtNum = (n) => Number(n || 0).toLocaleString('es-ES');
+
+async function cargarFechasRutas() {
+  if (statsFechas) return statsFechas;
+  try {
+    const r = await fetch('/rutas-fechas.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('no se pudo leer el registro de fechas');
+    statsFechas = await r.json();
+  } catch {
+    statsFechas = { desde: INICIO_CONTADOR, rutas: {}, patrones: {} };
+  }
+  return statsFechas;
+}
 
 async function cargarStats() {
   const cont = $('stats-contenido');
   cont.innerHTML = '<p class="cargando">Cargando…</p>';
   try {
-    const r = await fetch(API + '/stats', { cache: 'no-store' });
+    statsFechas = null;
+    const [r] = await Promise.all([
+      fetch(API + '/stats', { cache: 'no-store' }),
+      cargarFechasRutas(),
+    ]);
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudieron cargar las estadísticas');
     statsCargadas = true;
@@ -716,6 +741,117 @@ async function cargarStats() {
   } catch (e) {
     cont.innerHTML = '<p class="error">' + esc(String(e.message || e)) + '</p>';
   }
+}
+
+/** Ruta normalizada igual que las claves del registro (con barra final). */
+function normalizarRuta(ruta) {
+  let r = String(ruta || '');
+  if (!r.startsWith('/')) r = '/' + r;
+  if (!r.endsWith('/')) r += '/';
+  return r;
+}
+
+const sinTildes = (texto) =>
+  String(texto).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+/** Fecha de alta de una ruta: exacta y, si no, la del patrón más largo. */
+function fechaDeRuta(ruta) {
+  const registro = statsFechas || {};
+  const clave = normalizarRuta(ruta);
+  if (registro.rutas && registro.rutas[clave]) return registro.rutas[clave];
+  if (registro.rutas && registro.rutas[ruta]) return registro.rutas[ruta];
+  const patrones = registro.patrones || {};
+  let mejor = '';
+  for (const prefijo of Object.keys(patrones)) {
+    if (clave.startsWith(prefijo) && prefijo.length > mejor.length) mejor = prefijo;
+  }
+  return mejor ? patrones[mejor] : '';
+}
+
+/** Inicio del contador: lo dice el registro y, si no, la constante. */
+const desdeContador = () => (statsFechas && statsFechas.desde) || INICIO_CONTADOR;
+
+/** Días transcurridos desde el alta (o desde el inicio del contador). */
+function diasDeRuta(fecha) {
+  const desde = desdeContador();
+  const inicio = fecha && fecha > desde ? fecha : desde;
+  const hoyIso = new Date().toISOString().slice(0, 10);
+  const ms = Date.parse(hoyIso + 'T00:00:00Z') - Date.parse(inicio + 'T00:00:00Z');
+  return Math.max(1, Math.floor(ms / 86400000) + 1);
+}
+
+/** Visitas por día desde el alta; vacío si la ruta no tiene fecha. */
+function mediaPorDia(count, fecha) {
+  if (!fecha) return '';
+  return (Number(count || 0) / diasDeRuta(fecha)).toLocaleString('es-ES', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
+}
+
+const fechaCortaIso = (iso) => (iso || '').split('-').reverse().join('/');
+
+/** Repinta solo la tabla de rutas, para no perder el foco al filtrar. */
+function pintarRutas() {
+  const cuerpo = $('stats-rutas-cuerpo');
+  if (!cuerpo || !statsData) return;
+
+  const consulta = sinTildes(rutasFiltro.trim());
+  const filtradas = consulta
+    ? statsPaginas.filter((x) => sinTildes(x.path).includes(consulta))
+    : statsPaginas;
+  const tope = consulta ? 300 : 50;
+  const visibles = filtradas.slice(0, tope);
+  const total = statsData.total || 0;
+
+  cuerpo.innerHTML = visibles.length
+    ? visibles.map((x) => {
+      const fecha = fechaDeRuta(x.path);
+      const media = mediaPorDia(x.count, fecha);
+      const alto = total ? Math.round((x.count / total) * 100) : 0;
+      const desde = desdeContador();
+      const titulo = fecha
+        ? ' title="Alta: ' + fechaCortaIso(fecha) +
+          (fecha < desde ? ' · media desde ' + fechaCortaIso(desde) : '') +
+          ' · ' + diasDeRuta(fecha) + ' días"'
+        : ' title="Sin fecha de alta registrada"';
+      return '<tr>' +
+        '<td class="ruta">' + esc(x.path) + '</td>' +
+        '<td class="num">' + fmtNum(x.count) + '</td>' +
+        '<td class="num media"' + titulo + '>' + (media ? media + '/día' : '—') + '</td>' +
+        '<td class="progreso"><div class="progress"><span style="width:' + alto + '%"></span></div></td>' +
+      '</tr>';
+    }).join('')
+    : '<tr><td colspan="4" class="stats-vacio">' +
+      (consulta ? 'Ninguna ruta coincide con «' + esc(rutasFiltro.trim()) + '».' : 'Sin rutas.') +
+    '</td></tr>';
+
+  const visitas = filtradas.reduce((s, x) => s + Number(x.count || 0), 0);
+  const resumen = consulta
+    ? fmtNum(filtradas.length) + ' ruta' + (filtradas.length === 1 ? '' : 's') +
+      ' · ' + fmtNum(visitas) + ' visitas' +
+      (filtradas.length > tope ? ' · mostrando ' + tope : '')
+    : 'Top ' + visibles.length + ' de ' + fmtNum(statsPaginas.length) + ' rutas';
+  $('stats-rutas-resumen').textContent = resumen;
+  $('stats-rutas-limpiar').hidden = !rutasFiltro;
+}
+
+function bloqueRutas() {
+  return '<section class="stats-bloque">' +
+    '<h3>Rutas más visitadas <span class="tabla-nota">Media por día desde el alta</span></h3>' +
+    '<div class="buscador stats-buscar">' +
+      '<svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>' +
+      '<input id="stats-rutas-q" type="search" placeholder="Filtrar rutas (glosa, autor, carnaval…)…" autocomplete="off" aria-label="Filtrar rutas">' +
+      '<button id="stats-rutas-limpiar" class="limpiar" type="button" aria-label="Limpiar el filtro" hidden>✕</button>' +
+    '</div>' +
+    '<p class="stats-resumen" id="stats-rutas-resumen" aria-live="polite"></p>' +
+    '<div class="tabla-scroll"><table class="stats-tabla"><thead><tr>' +
+      '<th>Ruta</th>' +
+      '<th class="num">Visitas</th>' +
+      '<th class="num" title="Visitas por día desde el alta (o desde el 19/01/2026)">Media/día</th>' +
+      '<th class="progreso">Popularidad</th>' +
+    '</tr></thead><tbody id="stats-rutas-cuerpo"></tbody></table></div>' +
+  '</section>';
 }
 
 function tablaStats(titulo, cabeceras, filas, nota) {
@@ -754,20 +890,479 @@ function pintarStats(d) {
   });
   const filasDia = history.map((x) => [{ t: x.date }, { t: fmtNum(x.count), num: true }]);
   const filasFuente = (d.sources || []).map((x) => [{ t: x.source || '(directo)' }, { t: fmtNum(x.count), num: true }]);
-  const paginas = [...(d.pages || [])].sort((a, b) => b.count - a.count);
-  const topRutas = paginas.slice(0, 50);
-  const filasRuta = topRutas.map((x) => [
-    { t: x.path, cls: 'ruta' },
-    { t: fmtNum(x.count), num: true },
-    { html: '<div class="progress"><span style="width:' + (total ? Math.round((x.count / total) * 100) : 0) + '%"></span></div>', cls: 'progreso' },
-  ]);
+
+  // Una fila por ruta; si el worker repitiera alguna, se suman las visitas.
+  const porRuta = new Map();
+  for (const x of (d.pages || [])) {
+    const ruta = normalizarRuta(x.path);
+    porRuta.set(ruta, (porRuta.get(ruta) || 0) + Number(x.count || 0));
+  }
+  statsPaginas = [...porRuta.entries()]
+    .map(([path, count]) => ({ path, count }))
+    .sort((a, b) => b.count - a.count);
+
+  statsData = d;
   $('stats-contenido').innerHTML =
     '<div class="stats-grid">' + htmlCards + '</div>' +
     tablaStats('Visitas por mes', [{ t: 'Mes' }, { t: 'Visitas', num: true }], filasMes) +
     tablaStats('Evolución últimos 30 días', [{ t: 'Fecha' }, { t: 'Visitas', num: true }], filasDia) +
     tablaStats('Fuentes de tráfico', [{ t: 'Origen' }, { t: 'Visitas', num: true }], filasFuente) +
-    tablaStats('Rutas más visitadas', [{ t: 'Ruta' }, { t: 'Visitas', num: true }, { t: 'Popularidad', cls: 'progreso' }], filasRuta,
-      paginas.length > topRutas.length ? 'top ' + topRutas.length + ' de ' + paginas.length : '');
+    bloqueRutas();
+
+  const q = $('stats-rutas-q');
+  q.value = rutasFiltro;
+  q.oninput = () => { rutasFiltro = q.value; pintarRutas(); };
+  $('stats-rutas-limpiar').onclick = () => {
+    rutasFiltro = '';
+    q.value = '';
+    pintarRutas();
+    q.focus();
+  };
+  pintarRutas();
+}
+
+/* ---------------- Cloudflare Web Analytics ---------------- */
+// Segunda fuente de estadísticas: RUM de Cloudflare, sin bots y muestreado.
+// Sirve para lo que D1 no guarda: fuente por ruta, país, dispositivo y
+// tendencia diaria. No cuadra con el contador propio y no se deben sumar.
+let statsFuente = 'd1';
+// 'hoy' (00:00 → ahora) o un número de días.
+let cfDias = 'hoy';
+let cfData = null;
+let cfCargando = false;
+let cfFiltro = '';
+let cfRutas = [];
+
+function mostrarFuenteStats(fuente) {
+  statsFuente = fuente === 'cf' ? 'cf' : 'd1';
+  document.querySelectorAll('#stats-fuentes button').forEach((b) => {
+    const sel = b.dataset.stats === statsFuente;
+    b.classList.toggle('sel', sel);
+    b.setAttribute('aria-selected', sel ? 'true' : 'false');
+  });
+  $('stats-contenido').hidden = statsFuente !== 'd1';
+  $('cf-contenido').hidden = statsFuente !== 'cf';
+  if (statsFuente === 'cf') cargarCloudflare();
+}
+
+function etiquetaFuente(fuente) {
+  if (!fuente) return '(directo)';
+  if (/^(www\.)?acordesgaditanos\.com$/i.test(fuente)) return '(interno)';
+  // Se quita `www.` solo para mostrarlo: el dato original no se toca.
+  return fuente.replace(/^www\./i, '');
+}
+
+/** Etiqueta corta para la columna de la tabla de rutas. */
+function etiquetaFuenteCorta(fuente) {
+  const f = etiquetaFuente(fuente);
+  if (f === '(directo)' || f === '(interno)') return f;
+  if (/google\./i.test(f)) return 'Google';
+  if (/blogspot\./i.test(f)) return 'blog';
+  if (/bing\./i.test(f)) return 'Bing';
+  if (/yahoo\./i.test(f)) return 'Yahoo';
+  if (/duckduckgo\./i.test(f)) return 'DuckDuckGo';
+  if (/brave\./i.test(f)) return 'Brave';
+  if (/facebook\./i.test(f)) return 'Facebook';
+  if (/instagram\./i.test(f)) return 'Instagram';
+  if (/youtube\./i.test(f)) return 'YouTube';
+  if (/chatgpt\.|openai\./i.test(f)) return 'ChatGPT';
+  if (/perplexity\./i.test(f)) return 'Perplexity';
+  if (/linkedin\./i.test(f)) return 'LinkedIn';
+  if (/ecosia\./i.test(f)) return 'Ecosia';
+  if (/qwant\./i.test(f)) return 'Qwant';
+  if (f === 't.co') return 'X';
+  return f;
+}
+
+/**
+ * Fuentes externas primero, luego directo y al final la navegación interna.
+ * Se ocultan previews de Netlify y localhost (no son tráfico real).
+ */
+function ordenarFuentes(fuentes) {
+  const peso = (f) => {
+    if (!f.fuente) return 1;
+    if (/^(www\.)?acordesgaditanos\.com$/i.test(f.fuente)) return 2;
+    return 0;
+  };
+  return [...(fuentes || [])]
+    .filter((f) => !/\.netlify\.app$/i.test(f.fuente) && !/^localhost/i.test(f.fuente))
+    .sort((a, b) => peso(a) - peso(b) || b.paginas - a.paginas);
+}
+
+const notaFuentes = '<p class="cf-nota" style="padding:6px 12px">(directo) e (interno) se miden en páginas vistas: una navegación interna no abre una visita nueva.</p>';
+
+const barraHtml = (valor, total) =>
+  '<div class="progress"><span style="width:' +
+  (total && valor ? Math.max(1, Math.round((valor / total) * 100)) : 0) +
+  '%"></span></div>';
+
+const tarjetasCf = (cards) => cards.map((c) =>
+  '<div class="stat-card' + (c.total ? ' stat-card--total' : '') + '">' +
+    '<span class="stat-label">' + esc(c.label) + '</span>' +
+    '<span class="stat-valor">' + (typeof c.valor === 'number' ? fmtNum(c.valor) : esc(String(c.valor))) + '</span>' +
+  '</div>').join('');
+
+const muestreoTexto = (valor) =>
+  Number(valor) > 1.05
+    ? '×' + Number(valor).toLocaleString('es-ES', { maximumFractionDigits: 1 })
+    : '—';
+
+function comparativaCf(d, esHoy = false) {
+  if (!statsData || !Array.isArray(statsData.history) || !statsData.history.length) {
+    return '<p class="cf-comparativa">No se pudo cargar nuestro contador para comparar.</p>';
+  }
+
+  let d1;
+  let etiqueta;
+  if (esHoy) {
+    // daily_stats guarda hoy en la primera posición (orden por fecha DESC).
+    d1 = Number(statsData.history[0].count || 0);
+    etiqueta = 'Hoy';
+  } else {
+    if (cfDias !== 30) {
+      return '<p class="cf-comparativa">La comparación con nuestro contador solo está a 30 días: D1 no guarda histórico por ruta. Cambia el periodo a 30 días.</p>';
+    }
+    d1 = statsData.history.reduce((s, x) => s + Number(x.count || 0), 0);
+    etiqueta = 'Últimos 30 días';
+  }
+
+  const cf = Number((d.total && d.total.paginas) || 0);
+  const dif = d1 ? Math.round(((cf - d1) / d1) * 100) : null;
+  const difTexto = dif == null ? '—' : (dif > 0 ? '+' : '') + fmtNum(dif) + '%';
+  return '<p class="cf-comparativa"><strong>' + etiqueta + ':</strong> nuestro contador <b>' + fmtNum(d1) +
+    '</b> páginas vistas · Cloudflare <b>' + fmtNum(cf) + '</b> páginas vistas · diferencia <b>' +
+    difTexto + '</b>.<br>' +
+    '<span class="cf-nota">No comparable al 100 %: D1 cuenta cada petición del tracker; Cloudflare excluye bots, muestrea y solo cuenta navegadores reales.</span></p>';
+}
+
+async function cargarCloudflare(forzar = false) {
+  if (cfCargando) return;
+  const periodo = String(cfDias);
+  if (!forzar && cfData && String(cfData.periodo) === periodo) {
+    pintarCloudflare(cfData);
+    return;
+  }
+
+  const cont = $('cf-contenido');
+  const esHoy = cfDias === 'hoy';
+  cont.innerHTML = '<p class="cargando">Cargando ' + (esHoy ? 'las visitas de hoy' : 'Cloudflare') + '…</p>';
+  cfCargando = true;
+
+  try {
+    const consulta = esHoy
+      ? 'vista=hoy&limite=3000'
+      : 'vista=resumen&dias=' + cfDias + '&limite=3000';
+    const tareas = [fetch(API + '/cf-analytics?' + consulta, { cache: 'no-cache' })];
+
+    // El contador propio hace falta para la comparación; se pide una sola vez.
+    if (!statsData) tareas.push(fetch(API + '/stats', { cache: 'no-store' }));
+
+    const [r, rd1] = await Promise.all(tareas);
+    if (rd1 && rd1.ok) {
+      try { statsData = await rd1.json(); } catch { /* sin comparación */ }
+    }
+
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudo cargar Cloudflare');
+    if (d.configurado === false) {
+      pintarCloudflareSinConfig(d);
+      return;
+    }
+
+    d.periodo = cfDias;
+    cfData = d;
+    pintarCloudflare(d);
+  } catch (e) {
+    cont.innerHTML = '<p class="error">' + esc(String(e.message || e)) + '</p>';
+  } finally {
+    cfCargando = false;
+  }
+}
+
+function pintarCloudflareSinConfig(d) {
+  const faltan = Array.isArray(d.faltan) ? d.faltan : [];
+  $('cf-contenido').innerHTML =
+    '<section class="stats-bloque">' +
+      '<h3>Cloudflare sin configurar</h3>' +
+      '<div class="cf-comparativa">' +
+        '<p>Faltan variables en el servidor: ' + faltan.map((x) => '<code>' + esc(x) + '</code>').join(', ') + '.</p>' +
+        '<p>Crea un token con <strong>Account Analytics: Read</strong> y guárdalo en Netlify como ' +
+        '<code>CLOUDFLARE_API_TOKEN</code>. La cuenta y el siteTag van en ' +
+        '<code>CLOUDFLARE_ACCOUNT_ID</code> y <code>CLOUDFLARE_WA_SITE_TAG</code>.</p>' +
+      '</div>' +
+    '</section>';
+}
+
+function mapaD1() {
+  const mapa = new Map();
+  if (!statsData || !Array.isArray(statsData.pages)) return mapa;
+  for (const x of statsData.pages) {
+    const ruta = normalizarRuta(x.path);
+    mapa.set(ruta, (mapa.get(ruta) || 0) + Number(x.count || 0));
+  }
+  return mapa;
+}
+
+function pintarCfRutas() {
+  const cuerpo = $('cf-rutas-cuerpo');
+  if (!cuerpo || !cfData) return;
+
+  const consulta = sinTildes(cfFiltro.trim());
+  const filtradas = consulta
+    ? cfRutas.filter((x) => sinTildes(x.ruta).includes(consulta))
+    : cfRutas;
+  const visibles = filtradas.slice(0, 300);
+  const d1 = mapaD1();
+
+  // ruta → fuentes; se pinta la principal sin abrir el detalle.
+  const fuentesPorRuta = new Map();
+  for (const f of (cfData.fuentesRutas || [])) {
+    const ruta = normalizarRuta(f.ruta);
+    const lista = fuentesPorRuta.get(ruta) || [];
+    lista.push(f);
+    fuentesPorRuta.set(ruta, lista);
+  }
+
+  cuerpo.innerHTML = visibles.length
+    ? visibles.map((x) => {
+      const totalD1 = d1.get(normalizarRuta(x.ruta));
+      const listaFuentes = ordenarFuentes(fuentesPorRuta.get(normalizarRuta(x.ruta)) || []);
+      // Se agrupan las variantes con la misma etiqueta corta (google.com y
+      // google.es son «Google»), y se dejan las externas antes que directo/interno.
+      const porEtiqueta = new Map();
+      for (const f of listaFuentes) {
+        const etiqueta = etiquetaFuenteCorta(f.fuente);
+        porEtiqueta.set(etiqueta, (porEtiqueta.get(etiqueta) || 0) + f.paginas);
+      }
+      const top3 = [...porEtiqueta.entries()]
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3);
+      const fuentesHtml = top3.map(([etiqueta, paginas]) =>
+        '<span class="cf-fuente">' + esc(etiqueta) + ' <b>(' + fmtNum(paginas) + ')</b></span>'
+      ).join(' ');
+      return '<tr>' +
+        '<td class="ruta">' + esc(x.ruta) + '</td>' +
+        '<td class="num">' + fmtNum(x.visitas) + '</td>' +
+        '<td class="num">' + fmtNum(x.paginas) + '</td>' +
+        '<td class="num cf-d1"' + (totalD1 == null ? ' title="No está en nuestro contador"' : ' title="Total desde 19/01/2026; ventana distinta a Cloudflare"') + '>' +
+          (totalD1 == null ? '—' : fmtNum(totalD1)) +
+        '</td>' +
+        '<td class="fuente">' +
+          (top3.length
+            ? '<button type="button" class="cf-fuentes" data-ruta="' + esc(x.ruta) + '" title="Ver el desglose de fuentes">' + fuentesHtml + '</button>'
+            : '—') +
+        '</td>' +
+        '<td><button type="button" class="cf-ver" data-ruta="' + esc(x.ruta) + '">Fuentes</button></td>' +
+      '</tr>';
+    }).join('')
+    : '<tr><td colspan="6" class="stats-vacio">' +
+      (consulta ? 'Ninguna ruta coincide con «' + esc(cfFiltro.trim()) + '».' : 'Sin rutas.') +
+    '</td></tr>';
+
+  const visitas = filtradas.reduce((s, x) => s + x.visitas, 0);
+  const paginas = filtradas.reduce((s, x) => s + x.paginas, 0);
+  const resumen = (consulta
+    ? fmtNum(filtradas.length) + ' ruta' + (filtradas.length === 1 ? '' : 's')
+    : 'Top ' + visibles.length + ' de ' + fmtNum(cfRutas.length)) +
+    ' · ' + fmtNum(visitas) + ' visitas · ' + fmtNum(paginas) + ' páginas';
+  $('cf-rutas-resumen').textContent = resumen;
+  $('cf-rutas-limpiar').hidden = !cfFiltro;
+}
+
+function pintarCloudflare(d) {
+  const total = d.total || { paginas: 0, visitas: 0, muestreo: 1 };
+  const esHoy = d.hoy === true || cfDias === 'hoy';
+  const dias = esHoy ? 1 : (Number(d.dias) || cfDias);
+  cfRutas = [...(d.rutas || [])].sort((a, b) => b.visitas - a.visitas || b.paginas - a.paginas);
+
+  const cards = tarjetasCf([
+    { label: esHoy ? 'Visitas hoy' : 'Visitas', valor: total.visitas, total: true },
+    { label: esHoy ? 'Páginas hoy' : 'Páginas vistas', valor: total.paginas },
+    { label: esHoy ? 'Rutas hoy' : 'Rutas listadas', valor: cfRutas.length },
+    { label: 'Muestreo', valor: muestreoTexto(total.muestreo) },
+  ]);
+
+  const botonesPeriodo = [['hoy', 'Hoy'], [7, '7 días'], [30, '30 días'], [90, '90 días']]
+    .map(([valor, texto]) => {
+      const sel = String(cfDias) === String(valor);
+      return '<button type="button" data-cf-dias="' + valor + '"' + (sel ? ' class="sel"' : '') + '>' + texto + '</button>';
+    }).join('');
+
+  const periodo =
+    '<section class="stats-bloque">' +
+      '<h3>Cloudflare Web Analytics <span class="tabla-nota">' +
+        (esHoy ? 'Hoy · 00:00 → ahora' : esc(d.desde + ' → ' + d.hasta)) +
+      '</span></h3>' +
+      '<div class="cf-periodo">' +
+        botonesPeriodo +
+        '<span class="cf-nota">Excluye bots y muestrea.</span>' +
+        '<a class="cf-enlace" href="https://dash.cloudflare.com/c350ca865e93a9071b87a15239bda479/web-analytics/overview?siteTag~in=86a0b04f8b5c4819b665abea1cca1161&excludeBots=Yes" target="_blank" rel="noopener">Abrir en Cloudflare ↗</a>' +
+      '</div>' +
+      comparativaCf(d, esHoy) +
+    '</section>';
+
+  const fuentes = ordenarFuentes(d.fuentes);
+  const totalFuentes = fuentes.reduce((s, x) => s + x.paginas, 0);
+  const filasFuentes = fuentes.map((x) => [
+    { t: etiquetaFuente(x.fuente), cls: 'fuente' },
+    { t: fmtNum(x.paginas), num: true },
+    { t: fmtNum(x.visitas), num: true },
+    { html: barraHtml(x.paginas, totalFuentes), cls: 'progreso' },
+  ]);
+  const tablaFuentes = tablaStats(
+    'Fuentes de tráfico (Cloudflare)',
+    [{ t: 'Fuente' }, { t: 'Páginas', num: true }, { t: 'Visitas', num: true }, { t: 'Popularidad', cls: 'progreso' }],
+    filasFuentes,
+  ) + (filasFuentes.length ? notaFuentes : '');
+
+  const tablaRutas =
+    '<section class="stats-bloque">' +
+      '<h3>Rutas ' + (esHoy ? 'de hoy' : '(Cloudflare)') + ' <span class="tabla-nota">' +
+        (esHoy ? '00:00 → ahora' : esc(dias + ' días')) +
+      '</span></h3>' +
+      '<div class="buscador stats-buscar">' +
+        '<svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>' +
+        '<input id="cf-rutas-q" type="search" placeholder="Filtrar rutas (glosa, autor, carnaval…)…" autocomplete="off" aria-label="Filtrar rutas de Cloudflare">' +
+        '<button id="cf-rutas-limpiar" class="limpiar" type="button" aria-label="Limpiar el filtro" hidden>✕</button>' +
+      '</div>' +
+      '<p class="stats-resumen" id="cf-rutas-resumen" aria-live="polite"></p>' +
+      '<div class="tabla-scroll"><table class="stats-tabla stats-tabla--rutas-cf"><thead><tr>' +
+        '<th>Ruta</th>' +
+        '<th class="num">Visitas</th>' +
+        '<th class="num">Páginas</th>' +
+        '<th class="num cf-d1" title="Total desde 19/01/2026; ventana distinta a Cloudflare">D1 total</th>' +
+        '<th class="fuente" title="Páginas vistas por fuente, de mayor a menor">Fuente</th>' +
+        '<th>Fuentes</th>' +
+      '</tr></thead><tbody id="cf-rutas-cuerpo"></tbody></table></div>' +
+    '</section>';
+
+  const filasDiario = (d.diario || []).map((x) => [
+    { t: fechaCortaIso(x.dia) },
+    { t: fmtNum(x.paginas), num: true },
+    { t: fmtNum(x.visitas), num: true },
+  ]);
+  const filasPaises = (d.paises || []).map((x) => [
+    { t: x.pais || '—' },
+    { t: fmtNum(x.paginas), num: true },
+  ]);
+  const filasDispositivos = (d.dispositivos || []).map((x) => [
+    { t: x.tipo || '—' },
+    { t: fmtNum(x.paginas), num: true },
+  ]);
+
+  $('cf-contenido').innerHTML =
+    '<div class="stats-grid">' + cards + '</div>' +
+    periodo +
+    tablaRutas +
+    tablaFuentes +
+    tablaStats('Evolución diaria (Cloudflare)', [{ t: 'Día' }, { t: 'Páginas', num: true }, { t: 'Visitas', num: true }], filasDiario) +
+    '<div class="cf-grid">' +
+      tablaStats('Países', [{ t: 'País' }, { t: 'Páginas', num: true }], filasPaises) +
+      tablaStats('Dispositivos', [{ t: 'Tipo' }, { t: 'Páginas', num: true }], filasDispositivos) +
+    '</div>';
+
+  document.querySelectorAll('#cf-contenido [data-cf-dias]').forEach((b) => {
+    b.onclick = () => {
+      const valor = b.dataset.cfDias;
+      const nuevo = valor === 'hoy' ? 'hoy' : Number(valor);
+      if (!nuevo || String(nuevo) === String(cfDias)) return;
+      cfDias = nuevo;
+      cargarCloudflare(true);
+    };
+  });
+
+  const q = $('cf-rutas-q');
+  q.value = cfFiltro;
+  q.oninput = () => { cfFiltro = q.value; pintarCfRutas(); };
+  $('cf-rutas-limpiar').onclick = () => {
+    cfFiltro = '';
+    q.value = '';
+    pintarCfRutas();
+    q.focus();
+  };
+  $('cf-rutas-cuerpo').onclick = (e) => {
+    const b = e.target.closest('button[data-ruta]');
+    if (b) abrirCfRuta(b.dataset.ruta);
+  };
+  pintarCfRutas();
+}
+
+async function abrirCfRuta(ruta) {
+  const dlg = $('dlg-cf-ruta');
+  $('cf-ruta-titulo').textContent = ruta;
+  $('cf-ruta-cuerpo').innerHTML = '<p class="cargando">Cargando…</p>';
+  if (!dlg.open) dlg.showModal();
+
+  try {
+    const periodo = cfDias === 'hoy' ? '&hoy=1' : '&dias=' + cfDias;
+    const r = await fetch(API + '/cf-analytics?vista=ruta&ruta=' + encodeURIComponent(ruta) + periodo, { cache: 'no-cache' });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudo cargar la ruta');
+    pintarCfRuta(d);
+  } catch (e) {
+    $('cf-ruta-cuerpo').innerHTML = '<p class="error">' + esc(String(e.message || e)) + '</p>';
+  }
+}
+
+function pintarCfRuta(d) {
+  const total = d.total || { paginas: 0, visitas: 0, muestreo: 1 };
+  const esHoy = d.hoy === true || cfDias === 'hoy';
+  const dias = esHoy ? 1 : (Number(d.dias) || cfDias);
+  const periodoTexto = esHoy
+    ? 'Hoy · 00:00 → ahora'
+    : esc(d.desde) + ' → ' + esc(d.hasta) + ' · ' + esc(String(dias)) + ' días';
+  const media = (Number(total.visitas || 0) / Math.max(1, dias)).toLocaleString('es-ES', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  });
+  const d1 = mapaD1().get(normalizarRuta(d.ruta));
+
+  const cards = tarjetasCf([
+    { label: 'Visitas', valor: total.visitas, total: true },
+    { label: 'Páginas vistas', valor: total.paginas },
+    { label: 'Media/día', valor: media + '/día' },
+    { label: 'Muestreo', valor: muestreoTexto(total.muestreo) },
+  ]);
+
+  const fuentes = ordenarFuentes(d.fuentes);
+  const totalFuentes = fuentes.reduce((s, x) => s + x.paginas, 0);
+  const filasFuentes = fuentes.map((x) => [
+    { t: etiquetaFuente(x.fuente), cls: 'fuente' },
+    { t: fmtNum(x.paginas), num: true },
+    { t: fmtNum(x.visitas), num: true },
+    { html: barraHtml(x.paginas, totalFuentes), cls: 'progreso' },
+  ]);
+  const filasDiario = (d.diario || []).map((x) => [
+    { t: fechaCortaIso(x.dia) },
+    { t: fmtNum(x.paginas), num: true },
+    { t: fmtNum(x.visitas), num: true },
+  ]);
+  const filasPaises = (d.paises || []).map((x) => [
+    { t: x.pais || '—' },
+    { t: fmtNum(x.paginas), num: true },
+  ]);
+  const filasDispositivos = (d.dispositivos || []).map((x) => [
+    { t: x.tipo || '—' },
+    { t: fmtNum(x.paginas), num: true },
+  ]);
+  const filasNavegadores = (d.navegadores || []).map((x) => [
+    { t: x.navegador || '—' },
+    { t: fmtNum(x.paginas), num: true },
+  ]);
+
+  $('cf-ruta-cuerpo').innerHTML =
+    '<p class="cf-ruta-meta">' + periodoTexto + ' · ' +
+      'D1 total: ' + (d1 == null ? '—' : fmtNum(d1)) + ' · ' +
+      '<a href="' + esc(d.ruta) + '" target="_blank" rel="noopener">Abrir la página ↗</a></p>' +
+    '<div class="stats-grid">' + cards + '</div>' +
+    tablaStats('Fuentes de tráfico', [{ t: 'Fuente' }, { t: 'Páginas', num: true }, { t: 'Visitas', num: true }, { t: 'Popularidad', cls: 'progreso' }], filasFuentes) +
+    (filasFuentes.length ? notaFuentes : '') +
+    tablaStats('Evolución diaria', [{ t: 'Día' }, { t: 'Páginas', num: true }, { t: 'Visitas', num: true }], filasDiario) +
+    '<div class="cf-grid">' +
+      tablaStats('Países', [{ t: 'País' }, { t: 'Páginas', num: true }], filasPaises) +
+      tablaStats('Dispositivos', [{ t: 'Tipo' }, { t: 'Páginas', num: true }], filasDispositivos) +
+    '</div>' +
+    tablaStats('Navegadores', [{ t: 'Navegador' }, { t: 'Páginas', num: true }], filasNavegadores);
 }
 
 /* ---------------- comentarios / peticiones ---------------- */
@@ -2698,7 +3293,11 @@ document.querySelectorAll('#nav-vistas button').forEach((b) => {
     }
   };
 });
-$('b-stats-refrescar').onclick = () => cargarStats();
+$('b-stats-refrescar').onclick = () => (statsFuente === 'cf' ? cargarCloudflare(true) : cargarStats());
+document.querySelectorAll('#stats-fuentes button').forEach((b) => {
+  b.onclick = () => mostrarFuenteStats(b.dataset.stats);
+});
+$('cf-ruta-cerrar').onclick = () => $('dlg-cf-ruta').close();
 $('b-comentarios-refrescar').onclick = () => cargarPeticiones();
 $('orden-peticiones').onchange = () => pintarPeticiones();
 $('peticiones').addEventListener('click', async (e) => {

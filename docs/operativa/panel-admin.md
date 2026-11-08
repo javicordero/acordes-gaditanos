@@ -181,6 +181,59 @@ mueve archivos sin rastrear; no toca contenido, no publica y no hace commit.
 proyecto; en producción, en una rama `estudio/<slug>` con PR de borrador. Para avanzarla:
 **Revisado ✓** (y en local ya queda en `acordes`, lista para **Publicar**).
 
+## Estadísticas
+
+`/admin/?vista=stats` pide `/admin/api/stats` (proxy del worker de Cloudflare,
+D1). El contador empieza el **19/01/2026**: no hay datos anteriores.
+
+- **Rutas más visitadas** tiene un buscador que filtra todas las rutas por
+  substring, sin mayúsculas ni tildes (`glosa` encuentra `/glosario/…`). Sin
+  texto enseña el top 50; con texto, todas las coincidencias (hasta 300) y el
+  total de visitas de esas coincidencias.
+- **Media/día** = visitas / días desde el alta. El alta es la fecha del commit
+  que añadió el archivo (`git log --diff-filter=A`), nunca el campo `date` del
+  frontmatter. Si el alta es anterior al contador, la media empieza el
+  19/01/2026.
+- Las fechas viven en `public/rutas-fechas.json`, generado por
+  `scripts/rutas-fechas.ts` (`npm run fechas:rutas`). Guarda una fecha por ruta
+  y `patrones` para secciones dinámicas nuevas; las fechas ya registradas no se
+  mueven. Las rutas privadas (`/admin`, `/borradores`, `/otraweb`) no entran.
+- Se actualiza sola: `predev` y `prebuild` lo regeneran; `publicar-acorde.mjs`
+  hace un commit `fechas de rutas` al publicar; y la Action `fechas.yml` lo
+  commitea tras cualquier push a master (páginas y secciones nuevas, PRs
+  fusionadas desde el móvil).
+- `npm run auditar:fechas` compara el registro con el sitemap del build y falla
+  si falta alguna ruta; hay que ejecutar antes `npm run build`.
+
+### Cloudflare Web Analytics
+
+La pestaña **Cloudflare** (dentro de Estadísticas) es una segunda fuente, para
+lo que D1 no guarda: **fuente por ruta**, país, dispositivo, navegador y
+evolución diaria. La consulta la hace `netlify/functions/cf-analytics.mjs`
+contra la GraphQL API de Cloudflare con un token de solo lectura; el token no
+llega nunca al navegador.
+
+- Variables: `CLOUDFLARE_API_TOKEN` (secreta, permiso **Account Analytics:
+  Read**), `CLOUDFLARE_ACCOUNT_ID` y `CLOUDFLARE_WA_SITE_TAG`.
+- Vistas: **Hoy** (00:00 Europe/Madrid → ahora, la que abre por defecto), 7, 30 y 90 días;
+  rutas con el mismo buscador, fuentes, diario, países y dispositivos. La tabla
+  de rutas lleva una columna **Fuente** con las **3 principales en línea**,
+  ordenadas de mayor a menor número de páginas
+  (`(interno) (358) (directo) (88) Google (56)`), sin abrir nada. Al pinchar la
+  celda (en móvil) o **Fuentes** se abre el detalle completo.
+- Se pide con `?vista=hoy&limite=3000`, `?vista=resumen&dias=30&limite=3000` o
+  `?vista=ruta&ruta=/acordes/x/&dias=30` (`&hoy=1` para el detalle de hoy). La
+  respuesta se cachea 10 minutos.
+- Cloudflare es **RUM**: excluye bots (`bot: 0`, como `excludeBots=Yes` del
+  dashboard), muestrea y redondea. **No cuadra con D1** y no se deben sumar.
+- La comparación con el contador propio solo se enseña a 30 días y a nivel
+  global: D1 no guarda histórico por ruta. En la tabla de rutas, **D1 total** es
+  el acumulado desde el 19/01/2026, con una ventana distinta a Cloudflare.
+- En fuentes, `(directo)` e `(interno)` se miden en páginas vistas: una
+  navegación interna no abre una visita nueva. Se ocultan previews de Netlify y
+  localhost.
+- Enlace **Abrir en Cloudflare** al dashboard de Web Analytics.
+
 ## Acceso y seguridad
 
 - **Login**: `/admin/api/auth` → GitHub OAuth (`public_repo`) → `/admin/api/auth-callback`,
@@ -200,7 +253,9 @@ proyecto; en producción, en una rama `estudio/<slug>` con PR de borrador. Para 
   `textContent`/`dataset`, nunca con `innerHTML`. Lo comprueba `npm run auditar:comentarios`.
 - Variables en Netlify: `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` (secreta),
   `SESSION_SECRET` (secreta) y `OWNER_LOGIN`. El callback de la OAuth App tiene que ser
-  `https://acordesgaditanos.com/admin/api/auth-callback`.
+  `https://acordesgaditanos.com/admin/api/auth-callback`. Para la pestaña Cloudflare:
+  `CLOUDFLARE_API_TOKEN` (secreta), `CLOUDFLARE_ACCOUNT_ID` y
+  `CLOUDFLARE_WA_SITE_TAG`.
 
 ## Local y producción
 

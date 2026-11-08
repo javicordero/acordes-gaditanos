@@ -275,11 +275,14 @@ export const prerender = true;
   .stats-cab, .comentarios-cab { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
   .stats-cab h2, .comentarios-cab h2 { margin:0 0 4px; font:normal 1.7rem/1.1 var(--serif); }
   .stats-cab .meta, .comentarios-cab .meta { margin:0; color:var(--suave); font-size:10.5px; }
+  .stats-cab .meta { white-space:normal; overflow:visible; text-overflow:clip; }
   .stats-cab .meta code, .comentarios-cab .meta code { background:#fff; border:1px solid #000; padding:0 3px; font-size:10px; }
   .comentarios-acciones { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
   #orden-peticiones { font:400 12px var(--mono); padding:8px 10px; border:2px solid #000; background:var(--papel); color:var(--tinta); }
-  .stats-contenido { display:grid; gap:16px; }
-  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:10px; }
+  .stats-contenido { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; min-width:0; }
+  .stats-contenido > * { min-width:0; }
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:10px; min-width:0; }
+  .stats-grid > * { min-width:0; }
   .stat-card { background:var(--papel); border:2px solid #000; box-shadow:var(--sombra-sm); padding:14px; }
   .stat-card--total { background:var(--navy); color:#fff; }
   .stat-label { display:block; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--suave); }
@@ -295,8 +298,47 @@ export const prerender = true;
   .stats-tabla tr:last-child td { border-bottom:0; }
   .stats-tabla .num { text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
   .stats-tabla .ruta { word-break:break-word; }
+  .stats-tabla .fuente { overflow-wrap:normal; }
+  .cf-fuente { overflow-wrap:anywhere; }
+  .cf-fuentes { display:inline; padding:0; border:0; background:transparent; box-shadow:none; color:inherit; font:inherit; text-transform:none; letter-spacing:0; text-align:left; cursor:pointer; }
+  .cf-fuentes:hover { background:transparent; color:var(--tinta); transform:none; box-shadow:none; }
   .stats-tabla .progress { height:8px; min-width:70px; background:#ddd; border:1px solid #000; }
   .stats-tabla .progress span { display:block; height:100%; background:var(--acento); }
+  .stats-tabla .media { white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .stats-tabla--rutas-cf { table-layout:fixed; }
+  .stats-tabla--rutas-cf th:nth-child(2) { width:60px; }
+  .stats-tabla--rutas-cf th:nth-child(3) { width:60px; }
+  .stats-tabla--rutas-cf th:nth-child(4) { width:70px; }
+  .stats-tabla--rutas-cf th:nth-child(5) { width:220px; }
+  .stats-tabla--rutas-cf th:nth-child(6) { width:76px; }
+  .stats-buscar { padding:8px 10px; background:#fafafa; border-bottom:1px solid #ccc; }
+  .stats-buscar input { font-size:12px; padding:8px 34px 8px 32px; }
+  .stats-buscar .lupa { left:10px; width:13px; height:13px; }
+  .stats-buscar .limpiar { width:24px; height:24px; font-size:11px; }
+  .stats-resumen { margin:0; padding:6px 12px; border-bottom:1px solid #ddd; font-size:10px; color:var(--suave); }
+  .stats-vacio { padding:16px 12px; text-align:center; color:var(--suave); }
+  .stats-cab-acciones { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+  .stats-fuentes { display:flex; }
+  .stats-fuentes button { padding:7px 10px; font-size:10px; box-shadow:none; background:var(--papel); }
+  .stats-fuentes button.sel { background:#000; border-color:#000; color:var(--acento); }
+  .cf-periodo { display:flex; gap:6px; align-items:center; flex-wrap:wrap; padding:8px 12px; border-bottom:1px solid #ddd; background:#fafafa; min-width:0; }
+  .cf-periodo button { padding:6px 9px; font-size:10px; box-shadow:none; }
+  .cf-periodo button.sel { background:#000; border-color:#000; color:var(--acento); }
+  .cf-nota { font-size:10px; color:var(--suave); }
+  .cf-comparativa { margin:0; padding:10px 12px; border:2px solid #000; background:var(--papel); font-size:11px; line-height:1.55; overflow-wrap:break-word; }
+  .cf-comparativa b { font-variant-numeric:tabular-nums; }
+  .cf-enlace { margin-left:auto; font-size:10px; }
+  .cf-ver { padding:4px 7px; font-size:9px; box-shadow:none; white-space:nowrap; }
+  .cf-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; min-width:0; }
+  .cf-grid > * { min-width:0; }
+  .cf-dlg { display:flex; flex-direction:column; max-height:90dvh; min-width:0; }
+  .cf-dlg-cab { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; padding:14px 16px; border-bottom:2px solid #000; background:var(--papel); position:sticky; top:0; z-index:1; }
+  .cf-dlg-cab h2 { margin:0; font:normal 1.2rem/1.2 var(--serif); word-break:break-word; }
+  .cf-cerrar { padding:4px 8px; border:0; box-shadow:none; background:transparent; font-size:14px; }
+  .cf-ruta-cuerpo { overflow:auto; padding:14px; display:grid; grid-template-columns:minmax(0,1fr); gap:14px; min-width:0; }
+  .cf-ruta-cuerpo > * { min-width:0; }
+  .cf-ruta-meta { margin:0; font-size:10.5px; color:var(--suave); }
+  #dlg-cf-ruta { width:min(900px, 96vw); max-height:90dvh; padding:0; }
   .cargando, .error { margin:0; padding:24px 12px; text-align:center; font-size:12px; color:var(--suave); }
   .error { color:var(--mal); }
   .peticiones { display:grid; gap:10px; }
@@ -387,11 +429,23 @@ export const prerender = true;
     .vistas { padding:0 8px; }
     .vistas button { padding:10px 11px; font-size:9.5px; }
     .stats-panel, .comentarios-panel { padding:12px 10px 32px; }
-    .stats-grid { grid-template-columns:1fr 1fr; }
+    .stats-grid { grid-template-columns:repeat(2, minmax(0,1fr)); }
     .stat-valor { font-size:1.45rem; }
     .stats-cab h2, .comentarios-cab h2 { font-size:1.4rem; }
     .stats-tabla .progreso { display:none; }
+    /* D1 total y páginas siguen en el detalle de la ruta. */
+    .stats-tabla .cf-d1 { display:none; }
+    .stats-tabla--rutas-cf th:nth-child(3), .stats-tabla--rutas-cf td:nth-child(3) { display:none; }
+    .stats-tabla--rutas-cf th:nth-child(5) { width:170px; }
+    /* El botón Fuentes sobra: la celda de fuentes abre el detalle. */
+    .stats-tabla--rutas-cf th:nth-child(6), .stats-tabla--rutas-cf td:nth-child(6) { display:none; }
     .stats-tabla th, .stats-tabla td { padding:7px 8px; font-size:10.5px; }
+    /* En iOS, menos de 16px hace zoom al enfocar. */
+    .stats-buscar input { font-size:16px; }
+    .stats-cab-acciones { width:100%; justify-content:space-between; }
+    .cf-grid { grid-template-columns:minmax(0,1fr); }
+    .cf-periodo .cf-nota { flex:1 1 100%; }
+    .cf-periodo .cf-enlace { margin-left:0; }
     .peticion-acciones button { padding:8px 9px; }
   }
 </style>
@@ -524,11 +578,18 @@ export const prerender = true;
       <header class="stats-cab">
         <div>
           <h2>Estadísticas</h2>
-          <p class="meta">Contando desde 19/01/2025 · Datos en tiempo real desde Cloudflare D1</p>
+          <p class="meta">Contador propio desde 19/01/2026 · Cloudflare como segunda fuente</p>
         </div>
-        <button type="button" id="b-stats-refrescar">Actualizar</button>
+        <div class="stats-cab-acciones">
+          <div class="stats-fuentes" id="stats-fuentes" role="tablist" aria-label="Fuente de las estadísticas">
+            <button type="button" data-stats="d1" class="sel" role="tab" aria-selected="true">Nuestro contador</button>
+            <button type="button" data-stats="cf" role="tab" aria-selected="false">Cloudflare</button>
+          </div>
+          <button type="button" id="b-stats-refrescar">Actualizar</button>
+        </div>
       </header>
       <div id="stats-contenido" class="stats-contenido"><p class="cargando">Cargando…</p></div>
+      <div id="cf-contenido" class="stats-contenido" hidden></div>
     </div>
   </div>
 
@@ -649,6 +710,16 @@ export const prerender = true;
       <button type="button" id="publicar-avisos" hidden>Copiar aviso</button>
       <button type="button" id="publicar-cerrar" class="principal">Cerrar</button>
     </div>
+  </div>
+</dialog>
+
+<dialog id="dlg-cf-ruta">
+  <div class="cf-dlg">
+    <header class="cf-dlg-cab">
+      <h2 id="cf-ruta-titulo">Ruta</h2>
+      <button type="button" id="cf-ruta-cerrar" class="cf-cerrar" aria-label="Cerrar">✕</button>
+    </header>
+    <div id="cf-ruta-cuerpo" class="cf-ruta-cuerpo"><p class="cargando">Cargando…</p></div>
   </div>
 </dialog>
 

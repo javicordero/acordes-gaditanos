@@ -14,5 +14,8 @@ Netlify Functions en ESM (`.mjs`). Flujo y pestañas: `docs/operativa/panel-admi
   `estudio/*`).
 - `publicar-local.mjs` acepta **20 fichas como máximo** por trabajo; el panel reparte en
   tandas con `src/lib/panel-lote.js`.
+- `cf-analytics.mjs` consulta la GraphQL API de Cloudflare con `CLOUDFLARE_API_TOKEN`
+  (Account Analytics: Read). El token **no sale** del servidor; no lo pases por query ni lo
+  devuelvas en la respuesta.
 - No añadas endpoints que reciban el token desde el navegador ni que lean `src/content` fuera
   de `CARPETAS`.

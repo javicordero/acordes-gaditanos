@@ -18,6 +18,7 @@ const FUNCIONES: Record<string, () => Promise<{ default: (req: Request) => Promi
   aviso: () => import('../../netlify/functions/aviso.mjs'),
   letra: () => import('../../netlify/functions/letra.mjs'),
   stats: () => import('../../netlify/functions/stats.mjs'),
+  'cf-analytics': () => import('../../netlify/functions/cf-analytics.mjs'),
   comentarios: () => import('../../netlify/functions/comentarios.mjs'),
   'publicar-local': () => import('../../netlify/functions/publicar-local.mjs'),
   importar: () => import('../../netlify/functions/importar.mjs'),

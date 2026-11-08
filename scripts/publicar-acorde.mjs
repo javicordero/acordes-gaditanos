@@ -431,6 +431,22 @@ function correrScript(nombre, extra = [], { heredar = false } = {}) {
       }
     }
 
+    // 4-bis. Registro de fechas de alta por ruta (la media de visitas del panel).
+    //    Va en su propio commit para no mezclarlo con la ficha. Es auxiliar: si
+    //    falla, la ficha se publica igual.
+    try {
+      const rf = correrScript('fechas:rutas');
+      if (rf.codigo !== 0) throw new Error(rf.salida.trim() || `salió con ${rf.codigo}`);
+      const pendiente = git(['status', '--porcelain', '--', 'public/rutas-fechas.json'], { permitirFallo: true }).trim();
+      if (pendiente) {
+        git(['add', '--', 'public/rutas-fechas.json']);
+        git(['commit', '-m', 'fechas de rutas', '--', 'public/rutas-fechas.json']);
+        log('Commit: fechas de rutas');
+      }
+    } catch (e) {
+      log(`No se pudo actualizar public/rutas-fechas.json: ${String(e.message || e)}`, 'aviso');
+    }
+
     // 5. Qué fichas nuevas entran en el push (lo mismo que verá la Action).
     let avisos = [];
     if (!opciones.sinAviso) {

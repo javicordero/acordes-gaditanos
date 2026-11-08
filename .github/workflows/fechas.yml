@@ -1,0 +1,55 @@
+name: Fechas de rutas
+
+# Mantiene `public/rutas-fechas.json` al día después de cualquier push a master:
+# fichas, páginas nuevas, secciones nuevas o PRs fusionadas desde el móvil.
+# El panel lo usa para la media de visitas por día. Si no hay rutas nuevas, no
+# commitea nada. El commit lleva [skip fechas] para no repetirse.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fechas-rutas
+  cancel-in-progress: false
+
+jobs:
+  fechas:
+    if: ${{ !contains(github.event.head_commit.message, '[skip fechas]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+        with:
+          # Hace falta el historial completo: la fecha de alta sale del commit
+          # que añadió cada archivo.
+          fetch-depth: 0
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Actualizar el registro
+        run: node --experimental-strip-types scripts/rutas-fechas.ts
+
+      - name: Commit y push si cambió
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- public/rutas-fechas.json)" ]; then
+            echo "Sin rutas nuevas: no hay nada que commitear."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/rutas-fechas.json
+          git commit -m "fechas de rutas [skip fechas]"
+          git fetch origin master
+          git rebase origin/master
+          git push origin HEAD:master

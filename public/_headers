@@ -9,6 +9,11 @@
 /indice-tarjetas.json
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
+# Fechas de alta de las rutas (solo lo pide el panel al abrir Estadísticas).
+# Se revalida para que una publicación reciente no tarde en verse.
+/rutas-fechas.json
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
 # Fuentes autoalojadas (woff2). Nombres sin versión: si se regenera un archivo,
 # renombrarlo para no servir la versión vieja durante el max-age.
 /fonts/*

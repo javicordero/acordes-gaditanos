@@ -2,11 +2,18 @@
   "name": "acordes-gaditanos",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=22.6"
+  },
   "scripts": {
+    "predev": "node --experimental-strip-types scripts/rutas-fechas.ts --silencioso",
     "dev": "astro dev",
+    "prebuild": "node --experimental-strip-types scripts/rutas-fechas.ts --silencioso",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "fechas:rutas": "node --experimental-strip-types scripts/rutas-fechas.ts",
+    "auditar:fechas": "node --experimental-strip-types scripts/rutas-fechas.ts --auditar",
     "difundir": "node scripts/difundir.mjs",
     "push": "node scripts/push.mjs",
     "wa": "node scripts/whatsapp.mjs post",

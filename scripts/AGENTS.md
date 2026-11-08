@@ -1,7 +1,9 @@
 # Scripts del cancionero
 
-Node ESM que se ejecutan a mano o desde el panel; **ninguno corre en el build**. El detalle
-está en `docs/operativa/` y en las skills.
+Node ESM que se ejecutan a mano o desde el panel. La única excepción es
+`rutas-fechas.ts`, que `predev`/`prebuild` lanzan para mantener
+`public/rutas-fechas.json` (fechas de alta por ruta); no toca fichas ni habla con la red. El
+detalle está en `docs/operativa/` y en las skills.
 
 - `publicar-acorde.mjs` es la mecánica de publicación: ajusta la fecha, limpia el `<pre>`,
   pasa `auditar:pre` y `auditar:acordes`, hace un commit por ficha, push y avisos. El panel y
