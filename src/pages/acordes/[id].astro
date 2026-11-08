@@ -227,9 +227,12 @@ const webPageSchema = {
       }
       {!cover && <ApareceAqui class='aparece-aqui' />}
 
-      <Anuncio1 class='anuncio-1' />
-
       <Apoyar class='apoyar' />
+
+      {/* En escritorio va después de «Apoyar» para que no quede al lado del
+          anuncio de la ficha (el que va antes del <pre> en móvil). En móvil el
+          orden visual lo fija el `order` del CSS (Anuncio1 primero). */}
+      <Anuncio1 class='anuncio-1' />
 
       <InstalarAppCard class='instalar-app' />
 

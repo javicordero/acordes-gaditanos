@@ -310,15 +310,10 @@ const headingId = `acorde-${slug}`;
     margin: 0 auto;
   }
 
+  /* Antes solo se mostraba en móvil (display: none en escritorio). Desde el
+     8 nov 2026 se sirve en todas las plataformas, encima del <pre>. */
   .anuncio-movil {
-    display: none;
     margin-top: 24px;
-  }
-
-  @media (max-width: 640px) {
-    .anuncio-movil {
-      display: block;
-    }
   }
 
   img {
