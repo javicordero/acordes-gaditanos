@@ -421,9 +421,16 @@ body > footer :focus-visible,
    El loader de AdSense no se carga fuera de producción (ver src/lib/anuncios.ts),
    así que los <ins> se quedan vacíos: se ocultan para no dejar huecos ni márgenes. */
 html[data-anuncios='off'] .adsbygoogle,
-html[data-anuncios='off'] .anuncio-wrapper,
+html[data-anuncios='off'] .anuncio-movil,
 html[data-anuncios='off'] .anuncio-sobre-pagina,
 html[data-anuncios='off'] .anuncio-sobre-footer {
+  display: none !important;
+}
+
+/* Unidad vacía: se oculta el <ins> para que no deje hueco. Es el patrón que
+   documenta Google para las unidades que AdSense no colapsa por estar en
+   pantalla. Va después de la regla `off` para no interferir con ella. */
+ins.adsbygoogle[data-ad-status='unfilled'] {
   display: none !important;
 }
 

@@ -245,6 +245,11 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
         s.async = true;
         s.src = src;
         s.crossOrigin = 'anonymous';
+        // Si el loader está bloqueado (adblock, red, CSP), no habrá anuncios:
+        // se apagan los slots para no dejar huecos ni márgenes.
+        s.onerror = function () {
+          document.documentElement.setAttribute('data-anuncios', 'off');
+        };
         document.head.appendChild(s);
       })();
     </script>
