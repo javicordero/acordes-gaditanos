@@ -5,15 +5,15 @@ year: 2013
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://static.grupojoly.com/clip/1c77ccbd-b218-4d30-8894-9fd52d2cdf24_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/1c77ccbd-b218-4d30-8894-9fd52d2cdf24_source-aspect-ratio_1600w_0.jpg'
 cejilla: 5
-video: https://www.youtube.com/embed/Jgup12Il-_E?si=4aEXVJFk4fXNZ0ao
+video: 'https://www.youtube.com/embed/Jgup12Il-_E?si=4aEXVJFk4fXNZ0ao'
 cover: null
 autorCover: null
 date: 02/12/2025
 fraseClave: Al final va a resultar
+letraTitulo: Al final va a resultar
 ---
-
 <pre>
 <a>Mim</a>                               <a>Si7</a>           <a>Mim</a>
 Al final va a resultar que lo que dicen que es España
