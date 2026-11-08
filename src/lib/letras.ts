@@ -153,7 +153,7 @@ const MAX_TITULO_SEO = 100;
 const MIN_AGRUPACION_SEO = 25;
 
 /** Frase cortada por palabra completa (y sin la puntuación que quede al final). */
-function recortarFrase(frase: string, max = MAX_FRASE_SEO): string {
+export function recortarFrase(frase: string, max = MAX_FRASE_SEO): string {
   const limpia = (frase || '').trim();
   if (limpia.length <= max) return limpia;
 

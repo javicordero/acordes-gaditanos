@@ -15,7 +15,7 @@ import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
 import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
 import { busquedaYoutube, datosDeVideo, enlaceYoutube, estadoDeVideo, idYoutube } from '../../lib/videos';
-import { hermanasDe, nombrePieza, tituloSeo } from '../../lib/letras';
+import { hermanasDe, nombrePieza, recortarFrase, tituloSeo } from '../../lib/letras';
 import { fechaISO, videoYouTube } from '../../lib/schema';
 
 export async function getStaticPaths() {
@@ -98,8 +98,25 @@ const autores = listasIguales(musicaList, letraList)
         ? `de ${textoLetra}`
         : '';
 
-// Generar descripción completa
-const description = `Acordes ${nombreCompleto} ${autores}, Carnaval ${year}, ${fraseClave ? fraseClave + ', ' : ''}La mayor colección de acordes de guitarra del Carnaval de Cádiz. Aprende a tocar con tu guitarra todas las presentaciones, pasodobles, tangos, cuplés y popurrís de tus comparsas, chirigotas, coros y cuartetos favoritos.`;
+// Nombre de la copla para la descripción: el título de la letra si lo hay y,
+// si no, el primer verso (`fraseClave`), recortado por palabra completa. Si la
+// pieza ya lo trae entrecomillado, no se repite.
+const copla = (data.letraTitulo || '').trim() || (fraseClave || '').trim();
+const yaEnPieza = /"[^"]+"/.test(pieza) || (!!copla && pieza.includes(copla));
+const nombreCopla = copla && !yaEnPieza ? ` "${recortarFrase(copla, 35)}"` : '';
+
+// Descripción para Google: pieza, agrupación, nombre de la copla entrecomillado,
+// modalidad, autoría y año del COAC, más una cola de guitarra si cabe.
+//   Acordes Pasodoble El Manicomio "Hoy quiero darte las gracias", comparsa de
+//   Jonathan Pérez Ginel (COAC 2026). Aprende cómo tocar con la guitarra.
+const rol = modalidad ? `${modalidad.toLowerCase()} ` : '';
+const base = `Acordes ${pieza} ${agrupacion}${nombreCopla}, ${rol}${autores} (COAC ${year})`;
+
+// Cola con la propuesta de valor, solo si la descripción no pasa de 160
+// caracteres; en las fichas con nombres muy largos se queda sin ella para que
+// Google no corte justo esa parte. El punto final va en los dos casos.
+const cola = '. Aprende cómo tocar con la guitarra.';
+const description = base.length + cola.length <= 160 ? `${base}${cola}` : `${base}.`;
 
 // Generar keywords específicas
 const keywords = `carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval, tanguillo ${agrupacion}${data.letraTitulo ? `, "${data.letraTitulo}"` : ''}, ${textoLetra}, ${textoMusica}, ${pieza}, ${year}${fraseClave ? ', ' + fraseClave : ''}`;
