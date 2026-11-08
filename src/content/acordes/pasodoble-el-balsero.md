@@ -4,15 +4,12 @@ agrupacion: El Balsero
 year: 2020
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
-img: https://s1.ppllstatics.com/ideal/ubeda/multimedia/202104/18/media/cortadas/ARV_bienvenido-kyIF-U14091974550VgB-1248x770@Ideal.jpg
+img: 'https://s1.ppllstatics.com/ideal/ubeda/multimedia/202104/18/media/cortadas/ARV_bienvenido-kyIF-U14091974550VgB-1248x770@Ideal.jpg'
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/kayAOTJMW_Y?feature=player_embedded'
-fraseClave: "Que sabrá la gente lo"
-
+fraseClave: Que sabrá la gente lo que yo te quiero
 ---
-
-
 <pre>
 <a>LaM7</a>                  <a>Mi7</a>       <a>LaM7</a>
 Que sabrá la gente lo que yo te quiero
