@@ -275,7 +275,9 @@ const esPendiente = (x) => esBorrador(x) || esPorRevisar(x) || esPorPublicar(x);
 
 async function cargarIndice() {
   if (indice.length) return indice;
-  const r = await fetch('/indice-busqueda.json');
+  // Sin caché: el panel necesita el `date` recién construido para calcular
+  // la fecha siguiente al publicar.
+  const r = await fetch('/indice-busqueda.json', { cache: 'no-cache' });
   const publicadas = (await r.json()).map((x) => ({ ...x, zona: 'acordes' }));
   let borradores = [];
   try {
