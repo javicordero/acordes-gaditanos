@@ -10,6 +10,7 @@ cejilla: 0
 date: "26/11/2025"
 video: 'https://www.youtube.com/embed/bOp9Q3nEaRM?si=GhC9PlFiqnYzzLlA'
 fraseClave: Hoy les voy a hablar de este hombre
+letraTitulo: Hoy les voy a hablar
 ---
 <pre>
 <a>Mim</a>    <a>Si7</a>                   <a>Mim</a>
