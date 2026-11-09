@@ -14,34 +14,81 @@ const slugs = [...new Set(Object.values(glosario).map((entrada) => slugAcorde(en
 // notas de cualquier postura, esté o no en el glosario).
 const posturas = Object.fromEntries(mapaPosturas(glosario));
 
-const EJEMPLOS = ['Do', 'Lam', 'Sol', 'Mi', 'Rem', 'Fa', 'Si7', 'Do7'];
+const EJEMPLOS = [
+  'Do',
+  'Lam',
+  'Sol',
+  'Mi',
+  'Rem',
+  'Fa',
+  'Si7',
+  'Do7',
+  'Re',
+  'La',
+  'Mim',
+  'Sol7',
+];
 const ejemplos = EJEMPLOS.map((etiqueta) => ({
   etiqueta,
   entrada: glosario[etiqueta] as EntradaGlosario,
 })).filter((ejemplo) => ejemplo.entrada);
 
+// Enlaces de refuerzo: no todos los acordes del glosario caben como tarjeta,
+// pero sí como enlaces de texto agrupados por familia.
+const GRUPOS_ACORDES: Array<{ titulo: string; etiquetas: string[] }> = [
+  { titulo: 'Mayores', etiquetas: ['Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si'] },
+  { titulo: 'Menores', etiquetas: ['Lam', 'Rem', 'Mim', 'Solm', 'Dom', 'Fam', 'Sim'] },
+  { titulo: 'Séptimas', etiquetas: ['Do7', 'Re7', 'Mi7', 'Fa7', 'Sol7', 'La7', 'Si7'] },
+  {
+    titulo: 'Otras lecturas',
+    etiquetas: ['Do6', 'Lam7', 'Do/Mi', 'Sim7b5', 'Do#dim7', 'Sibdim7', 'Do9', 'Lam9'],
+  },
+];
+
+const gruposAcordes = GRUPOS_ACORDES.map(({ titulo, etiquetas }) => ({
+  titulo,
+  acordes: etiquetas
+    .map((etiqueta) => {
+      const entrada = glosario[etiqueta] as EntradaGlosario | undefined;
+      return entrada ? { etiqueta, entrada } : null;
+    })
+    .filter(
+      (acorde): acorde is { etiqueta: string; entrada: EntradaGlosario } => Boolean(acorde),
+    ),
+})).filter((grupo) => grupo.acordes.length > 0);
+
+const ejemploDo = glosario['Do'] as EntradaGlosario;
+
 const CUERDAS = [6, 5, 4, 3, 2, 1];
 const NOTAS_CUERDA = ['Mi', 'La', 'Re', 'Sol', 'Si', 'Mi'];
 const TRASTES = Array.from({ length: 12 }, (_, i) => i + 1);
 
-const title = 'Reconocer acordes de guitarra - Acordes Gaditanos';
+const title = '¿Qué acorde estoy tocando? Reconocer acordes de guitarra';
 const description =
-  'Dibuja una postura en el mástil y descubre qué acorde es. Identifica acordes de guitarra por sus notas, con inversiones, alternativas y enlace a todas sus posiciones.';
+  '¿Qué acorde estás tocando? Dibuja la postura en el mástil y descubre su nombre, notas y alternativas. Reconoce acordes de guitarra gratis y sin instalar.';
 const keywords =
-  'reconocer acordes de guitarra, identificar acordes, qué acorde es, qué acorde estoy tocando, nombre del acorde por postura, buscador de acordes por posición, mástil interactivo, acordes de Carnaval';
+  'reconocer acordes de guitarra, identificar acordes de guitarra, qué acorde estoy tocando, qué acorde es, nombre del acorde por postura, acordes invertidos, Do/Mi, acordes con cejilla, tipos de acordes, mástil interactivo, acordes de Carnaval';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'Reconocedor de acordes de guitarra',
+  name: 'Reconocer acordes de guitarra',
   description,
   url: canonicalURL,
   applicationCategory: 'MusicApplication',
   operatingSystem: 'Web',
   browserRequirements: 'Requires JavaScript',
   inLanguage: 'es-ES',
+  isAccessibleForFree: true,
+  dateModified: '2026-11-09',
+  featureList: [
+    'Reconocer un acorde por la postura en el mástil',
+    'Calcular las notas de cada cuerda en afinación estándar',
+    'Mostrar la fundamental, la inversión y las lecturas alternativas',
+    'Enlazar con todas las posiciones del glosario de acordes',
+  ],
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -85,6 +132,31 @@ const faqs = [
     respuesta:
       'No. El mástil funciona en el navegador, también en el móvil. Solo necesita JavaScript; sin él puedes seguir consultando el glosario de acordes.',
   },
+  {
+    pregunta: '¿Cómo se llama el acorde que estoy haciendo con estos dedos?',
+    respuesta:
+      'Dibuja en el mástil las cuerdas que pisas, marca con ○ las que suenan al aire y con × las que no se tocan. El reconocedor calcula las notas y te da el nombre más probable. Si no lo reconoce, revisa las cuerdas mudas: una cuerda de más o de menos cambia el acorde.',
+  },
+  {
+    pregunta: '¿Qué significa Do/Mi?',
+    respuesta:
+      'Que el acorde es Do mayor pero la nota más grave que suena es Mi. La barra indica la inversión: las notas siguen siendo Do, Mi y Sol, pero cambia el bajo y, con él, el color del acorde.',
+  },
+  {
+    pregunta: '¿Sirve para guitarra española, clásica o eléctrica?',
+    respuesta:
+      'Sí. Todas usan la misma afinación estándar (Mi-La-Re-Sol-Si-Mi) y las mismas notas. Si tu guitarra tiene otra afinación o más cuerdas, el resultado no será exacto: el mástil está pensado para seis cuerdas en afinación estándar.',
+  },
+  {
+    pregunta: '¿Puedo reconocer un acorde con cuerdas al aire?',
+    respuesta:
+      'Sí. Pulsa el botón de la izquierda de cada cuerda para marcarla como ○ (al aire) o × (muda). Las cuerdas sin punto y sin ○ no suenan. Así puedes dibujar posturas abiertas como Do, Lam o Mi.',
+  },
+  {
+    pregunta: '¿Cómo se escriben los sostenidos y bemoles?',
+    respuesta:
+      'Usamos notación española: Do#, Re#, Fa#, Sol#, La# y Sib, Mib, Reb, Solb. En el buscador del glosario también puedes escribir la notación inglesa (C#, Bb…), pero el reconocedor muestra siempre los nombres en español.',
+  },
 ];
 
 const faqSchema = {
@@ -106,7 +178,7 @@ const faqSchema = {
   <script type='application/ld+json' set:html={JSON.stringify(faqSchema)} />
 
   <Breadcrumb
-    parent={{ name: 'Glosario de acordes', href: '/glosario' }}
+    parent={{ name: 'Glosario de acordes', href: '/glosario/' }}
     current='Reconocer acordes de guitarra'
   />
 
@@ -121,6 +193,12 @@ const faqSchema = {
             esté en el glosario: se analizan las notas que suenan.
           </p>
         </header>
+
+        <p class='reconocer__aviso'>
+          <strong>Esta herramienta reconoce por la postura, no por audio.</strong>
+          Si buscas los acordes de una canción, están en
+          <a href='/lista/'>el cancionero del Carnaval</a>.
+        </p>
 
         <noscript>
           <p class='reconocer__noscript'>
@@ -210,30 +288,255 @@ const faqSchema = {
           </aside>
         </div>
 
-        <section class='reconocer__como'>
-          <h2>Cómo saber qué acorde estás tocando</h2>
+        <nav class='reconocer__indice' aria-label='En esta página'>
+          <p class='reconocer__indice-titulo'>En esta página</p>
+          <ul class='reconocer__indice-lista'>
+            <li><a href='#como-usarlo'>Cómo usarlo en 4 pasos</a></li>
+            <li><a href='#que-acorde-estoy-tocando'>¿Qué acorde estoy tocando?</a></li>
+            <li><a href='#ejemplo-do-mayor'>Ejemplo resuelto</a></li>
+            <li><a href='#como-se-nombra-un-acorde'>Cómo se nombra un acorde</a></li>
+            <li><a href='#cejilla-y-transporte'>Cejilla y transporte</a></li>
+            <li><a href='#si-no-reconoce'>Si no lo reconoce</a></li>
+            <li><a href='#tipos-de-acorde'>Tipos de acorde</a></li>
+            <li><a href='#ejemplos-titulo'>Ejemplos por postura</a></li>
+            <li><a href='#del-mastil-a-la-copla'>Del mástil a la copla</a></li>
+            <li><a href='#preguntas-frecuentes'>Preguntas frecuentes</a></li>
+          </ul>
+        </nav>
+
+        <section class='reconocer__seccion'>
+          <h2 id='como-usarlo'>Cómo usarlo en 4 pasos</h2>
+          <ol class='reconocer__pasos'>
+            <li>
+              Afina la guitarra en afinación estándar: <strong>Mi-La-Re-Sol-Si-Mi</strong>, de la 6ª
+              cuerda a la 1ª.
+            </li>
+            <li>
+              Marca con un punto el traste que pisa cada dedo. La cuerda que no suena va con
+              <strong>×</strong>.
+            </li>
+            <li>
+              Marca con <strong>○</strong> las cuerdas que suenan al aire. Las cuerdas sin punto y
+              sin ○ tampoco suenan.
+            </li>
+            <li>
+              Lee el nombre del acorde, sus notas y las alternativas. Si la postura está en el
+              glosario, tendrás el enlace a todas sus posiciones.
+            </li>
+          </ol>
+          <p>
+            También puedes moverte por el mástil con las flechas del teclado. Para empezar, prueba
+            con el ejemplo resuelto de <a href='#ejemplo-do-mayor'>Do mayor</a>.
+          </p>
+        </section>
+
+        <section class='reconocer__seccion'>
+          <h2 id='que-acorde-estoy-tocando'>¿Qué acorde estoy tocando?</h2>
+          <p>
+            Para saber qué acorde estás tocando, identifica las notas que suenan en las seis cuerdas.
+            Si son <strong>Do, Mi y Sol</strong>, el acorde es <strong>Do mayor</strong>; si son
+            <strong>La, Do y Mi</strong>, es <strong>La menor</strong>. La nota más grave que suena
+            decide la inversión: <em>Do/Mi</em> es un Do con Mi en el bajo.
+          </p>
           <p>
             Cada traste de cada cuerda produce una nota. En afinación estándar
             (Mi-La-Re-Sol-Si-Mi), un punto en el traste 3 de la 5ª cuerda es un Do, y en el traste 2
             de la 4ª es un Mi. El reconocedor calcula esas notas, busca qué fundamental y qué tipo de
             acorde las contienen y descarta las que no encajan.
           </p>
+        </section>
+
+        <section class='reconocer__seccion'>
+          <h2 id='ejemplo-do-mayor'>Ejemplo resuelto: Do mayor</h2>
+          <div class='reconocer__resuelto'>
+            <div class='reconocer__resuelto-diagrama'>
+              <DiagramaAcorde
+                nombre='Do'
+                posicion={ejemploDo.posiciones[0]!}
+                ancho={132}
+                alto={168}
+              />
+            </div>
+            <div class='reconocer__resuelto-texto'>
+              <p>Esta es la postura abierta de <strong>Do mayor</strong>:</p>
+              <ul>
+                <li>6ª cuerda: no se toca (×).</li>
+                <li>5ª cuerda: traste 3, suena <strong>Do</strong>.</li>
+                <li>4ª cuerda: traste 2, suena <strong>Mi</strong>.</li>
+                <li>3ª cuerda: al aire, suena <strong>Sol</strong>.</li>
+                <li>2ª cuerda: traste 1, suena <strong>Do</strong>.</li>
+                <li>1ª cuerda: al aire, suena <strong>Mi</strong>.</li>
+              </ul>
+              <p>
+                Las notas son Do, Mi y Sol: fundamental, tercera mayor y quinta. Por eso el
+                reconocedor la llama <strong>Do</strong>. Si dibujas esa misma postura en el mástil,
+                verás el resultado y el enlace a
+                <a href='/glosario/do/'>todas las posiciones de Do</a>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class='reconocer__seccion'>
+          <h2 id='como-se-nombra-un-acorde'>Cómo se nombra un acorde</h2>
           <p>
-            Para nombrar un acorde importan la fundamental (la nota que le da nombre), la tercera
-            —mayor o menor— y, cuando toca, la séptima, la sexta o las extensiones. La quinta a veces
-            se omite: muchas posturas de guitarra no la tocan y el acorde sigue siendo el mismo. La
-            nota más grave que suena decide la inversión: <em>Do/Mi</em> es un Do con Mi en el bajo.
+            Un acorde es un conjunto de notas que suenan a la vez. En la guitarra, la postura o
+            digitación indica qué traste pisa cada dedo y qué cuerdas quedan al aire o mudas. Para
+            nombrarlo importan la <strong>fundamental</strong> (la nota que le da nombre), la
+            <strong>tercera</strong> —mayor o menor— y, cuando toca, la séptima, la sexta o las
+            extensiones. La quinta a veces se omite: muchas posturas de guitarra no la tocan y el
+            acorde sigue siendo el mismo.
           </p>
+          <div class='reconocer__tabla-scroll'>
+            <table class='reconocer__tabla'>
+              <thead>
+                <tr>
+                  <th>Intervalo</th>
+                  <th>Nota desde Do</th>
+                  <th>Qué aporta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Do</td><td>Fundamental: da nombre al acorde</td></tr>
+                <tr><td>b3</td><td>Re# / Mib</td><td>Tercera menor: acorde menor</td></tr>
+                <tr><td>3</td><td>Mi</td><td>Tercera mayor: acorde mayor</td></tr>
+                <tr><td>4</td><td>Fa</td><td>Cuarta: acordes sus4</td></tr>
+                <tr><td>b5</td><td>Fa# / Solb</td><td>Quinta disminuida: dim y m7b5</td></tr>
+                <tr><td>5</td><td>Sol</td><td>Quinta justa: la que más se omite</td></tr>
+                <tr><td>#5</td><td>Sol# / Lab</td><td>Quinta aumentada: aug</td></tr>
+                <tr><td>6</td><td>La</td><td>Sexta: acordes 6 y m6</td></tr>
+                <tr><td>b7</td><td>Sib / La#</td><td>Séptima menor: 7, m7, 9, 11 y 13</td></tr>
+                <tr><td>7</td><td>Si</td><td>Séptima mayor: maj7 y maj9</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p>
-            Una misma postura puede tener varias lecturas. <em>Do6</em> y <em>Lam7</em> comparten
-            las mismas notas; <em>Do#dim7</em> y <em>Sibdim7</em>, también. Mostramos la más probable
-            según el bajo y la posición, y debajo las alternativas. Si la postura está en el
-            <a href='/glosario'>glosario</a>, verás además el nombre con el que la tiene la web y el
+            Con esa base, <a href='/glosario/do/'>Do</a> es 1-3-5,
+            <a href='/glosario/lam/'>Lam</a> es 1-b3-5, <a href='/glosario/si7/'>Si7</a> es 1-3-5-b7
+            y <a href='/glosario/sim7b5/'>Sim7b5</a> es 1-b3-b5-b7.
+          </p>
+
+          <h3>Acordes que comparten notas</h3>
+          <p>
+            Una misma postura puede tener varias lecturas. <a href='/glosario/do6/'>Do6</a> y
+            <a href='/glosario/lam7/'>Lam7</a> comparten las mismas notas;
+            <a href='/glosario/do-sostenido-dim7/'>Do#dim7</a> y
+            <a href='/glosario/si-bemol-dim7/'>Sibdim7</a>, también. Mostramos la más probable según
+            el bajo y la posición, y debajo las alternativas. Si la postura está en el
+            <a href='/glosario/'>glosario</a>, verás además el nombre con el que la tiene la web y el
             enlace a su página.
+          </p>
+
+          <h3>Inversiones: qué significa Do/Mi</h3>
+          <p>
+            La nota más grave que suena decide la inversión. <a href='/glosario/do-mi/'>Do/Mi</a> es
+            un Do mayor con Mi en el bajo: las notas siguen siendo Do, Mi y Sol, pero cambia el orden
+            y el color del acorde. El reconocedor escribe la inversión con una barra y, si la postura
+            está en el glosario, enlaza con su página.
           </p>
         </section>
 
-        <section class='reconocer__ejemplos' aria-labelledby='ejemplos-titulo'>
+        <section class='reconocer__seccion'>
+          <h2 id='cejilla-y-transporte'>Cejilla y transporte</h2>
+          <p>
+            El mástil está en afinación estándar y <strong>no corrige la cejilla</strong>. Si pones
+            una cejilla y haces la postura de Do, el acorde sonará más agudo: el nombre que te damos
+            es el de la postura sin cejilla. Para saber qué suena de verdad, suma los semitonos de la
+            cejilla.
+          </p>
+          <div class='reconocer__tabla-scroll'>
+            <table class='reconocer__tabla'>
+              <thead>
+                <tr>
+                  <th>Cejilla</th>
+                  <th>Semitonos</th>
+                  <th>Do suena como</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>+1</td><td>Do#</td></tr>
+                <tr><td>2</td><td>+2</td><td>Re</td></tr>
+                <tr><td>3</td><td>+3</td><td>Re#</td></tr>
+                <tr><td>4</td><td>+4</td><td>Mi</td></tr>
+                <tr><td>5</td><td>+5</td><td>Fa</td></tr>
+                <tr><td>7</td><td>+7</td><td>Sol</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Por ejemplo, con cejilla en el traste 2, la postura de Do suena como Re. Si la copla
+            necesita cejilla, la página de cada acorde lo indica.
+          </p>
+        </section>
+
+        <section class='reconocer__seccion'>
+          <h2 id='si-no-reconoce'>Si no reconoce tu acorde</h2>
+          <p>
+            Cuando la postura no encaja en ningún acorde conocido, el reconocedor te muestra las
+            notas que suenan. Revisa estos puntos antes de darla por perdida:
+          </p>
+          <ul class='reconocer__errores'>
+            <li>
+              <strong>Cuerdas mudas:</strong> comprueba que las que no se tocan están marcadas con ×.
+            </li>
+            <li>
+              <strong>Cuerdas al aire:</strong> las que suenan sin pisar deben llevar ○.
+            </li>
+            <li>
+              <strong>La tercera:</strong> sin tercera no se puede saber si el acorde es mayor o
+              menor. Es la nota que más cambia el nombre.
+            </li>
+            <li>
+              <strong>Notas de más:</strong> una sola nota fuera del acorde impide reconocerlo.
+              Prueba a quitar cuerdas hasta encontrar el núcleo.
+            </li>
+            <li>
+              <strong>Cejilla o afinación distinta:</strong> el mástil asume afinación estándar y no
+              corrige la cejilla. Si usas otra afinación, el resultado no será exacto.
+            </li>
+          </ul>
+        </section>
+
+        <section class='reconocer__seccion'>
+          <h2 id='tipos-de-acorde'>Qué tipos de acorde reconoce</h2>
+          <p>
+            No consulta una lista cerrada de posturas: analiza las notas de cualquier combinación de
+            trastes. Reconoce estas familias:
+          </p>
+          <ul class='reconocer__tipos-lista'>
+            <li>
+              <strong>Tríadas</strong>: mayor (<a href='/glosario/do/'>Do</a>), menor
+              (<a href='/glosario/lam/'>Lam</a>), quinta o power chord
+              (<a href='/glosario/sol5/'>Sol5</a>), disminuido
+              (<a href='/glosario/do-sostenido-dim/'>Do#dim</a>) y aumentado
+              (<a href='/glosario/doaug/'>Doaug</a>).
+            </li>
+            <li>
+              <strong>Con séptima</strong>: 7 (<a href='/glosario/si7/'>Si7</a>), m7, maj7, dim7
+              (<a href='/glosario/do-sostenido-dim7/'>Do#dim7</a>), m7b5
+              (<a href='/glosario/sim7b5/'>Sim7b5</a>), mmaj7, 7sus4, 7b5, 7maj5, 7b9 y 7#9.
+            </li>
+            <li>
+              <strong>Con sexta</strong>: 6 (<a href='/glosario/do6/'>Do6</a>), m6 y 6add9.
+            </li>
+            <li><strong>Suspendidos</strong>: sus2, sus4 y sus9.</li>
+            <li>
+              <strong>Extensiones</strong>: add9, m(add9), add11, 9
+              (<a href='/glosario/do9/'>Do9</a>), m9 (<a href='/glosario/lam9/'>Lam9</a>), maj9, 11
+              y 13.
+            </li>
+            <li>
+              <strong>Inversiones</strong>: cualquier acorde con otra nota en el bajo, como
+              <a href='/glosario/do-mi/'>Do/Mi</a>.
+            </li>
+          </ul>
+          <p>
+            Si la combinación no encaja en ningún acorde conocido, te muestra las notas que suenan y
+            te avisa de que no se reconoce.
+          </p>
+        </section>
+
+        <section class='reconocer__seccion reconocer__ejemplos' aria-labelledby='ejemplos-titulo'>
           <h2 id='ejemplos-titulo'>Ejemplos de acordes por postura</h2>
           <p>
             Estas son algunas de las posturas que puedes dibujar en el mástil. Pincha en cualquiera
@@ -258,10 +561,42 @@ const faqSchema = {
               </li>
             ))}
           </ul>
+
+          <p class='reconocer__mas-intro'>
+            También puedes consultar estos acordes directamente en el glosario:
+          </p>
+          <div class='reconocer__mas'>
+            {gruposAcordes.map(({ titulo, acordes }) => (
+              <div class='reconocer__mas-grupo'>
+                <h3>{titulo}</h3>
+                <ul class='reconocer__mas-lista'>
+                  {acordes.map(({ etiqueta, entrada }) => (
+                    <li>
+                      <a href={`/glosario/${entrada.slug}/`}>{etiqueta}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </section>
 
-        <section class='reconocer__faq'>
-          <h2>Preguntas frecuentes</h2>
+        <section class='reconocer__seccion'>
+          <h2 id='del-mastil-a-la-copla'>Del mástil a la copla</h2>
+          <p>
+            Si lo que quieres es tocar una copla del Carnaval de Cádiz, el reconocedor también te
+            sirve para comprobar una postura antes de llevarla al cifrado. En cada ficha del
+            cancionero tienes el panel <strong>«Acordes usados»</strong> con los acordes de esa copla
+            y su enlace al glosario.
+          </p>
+          <p>
+            <a href='/lista/'>Ver todas las coplas del Carnaval</a> ·
+            <a href='/glosario/'>Volver al glosario de acordes</a>
+          </p>
+        </section>
+
+        <section class='reconocer__seccion reconocer__faq'>
+          <h2 id='preguntas-frecuentes'>Preguntas frecuentes</h2>
           {faqs.map(({ pregunta, respuesta }) => (
             <div class='reconocer__faq-item'>
               <h3>{pregunta}</h3>
@@ -308,6 +643,87 @@ const faqSchema = {
     & a {
       color: var(--link-color);
       font-weight: 700;
+    }
+  }
+
+  .reconocer__aviso {
+    margin: 0 0 18px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--primary-color);
+    background: var(--card-background-color);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text-color);
+
+    & strong {
+      color: var(--primary-color);
+    }
+
+    & a {
+      color: var(--link-color);
+      font-weight: 700;
+    }
+  }
+
+  .reconocer__indice {
+    margin: 0 0 8px;
+    padding: 12px 14px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .reconocer__indice-titulo {
+    margin: 0 0 8px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-secondary-color);
+  }
+
+  .reconocer__indice-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & li {
+      margin: 0;
+    }
+
+    & a {
+      display: inline-block;
+      padding: 3px 8px;
+      border: 1px solid var(--text-secondary-color);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    & a:hover {
+      background: var(--primary-contrast-color);
+      color: var(--on-bright-color);
+    }
+  }
+
+  .reconocer__pasos,
+  .reconocer__errores {
+    margin: 14px 0 0;
+    padding-left: 22px;
+    line-height: 1.6;
+
+    & li {
+      margin-bottom: 6px;
+    }
+
+    & strong {
+      color: var(--primary-color);
     }
   }
 
@@ -599,8 +1015,9 @@ const faqSchema = {
     color: var(--on-bright-color);
   }
 
-  .reconocer__como {
-    max-width: 70ch;
+  .reconocer__seccion {
+    margin-top: 32px;
+    max-width: 80ch;
 
     & h2 {
       margin: 0 0 10px;
@@ -609,6 +1026,17 @@ const faqSchema = {
       font-size: 1rem;
       letter-spacing: 1px;
       text-transform: uppercase;
+      color: var(--primary-color);
+    }
+
+    & h2[id] {
+      scroll-margin-top: calc(var(--nav-height) + 14px);
+    }
+
+    & h3 {
+      margin: 18px 0 6px;
+      font-size: 0.9rem;
+      letter-spacing: 0.4px;
       color: var(--primary-color);
     }
 
@@ -624,25 +1052,144 @@ const faqSchema = {
     }
   }
 
-  .reconocer__ejemplos,
-  .reconocer__faq {
-    margin-top: 32px;
-    max-width: 80ch;
+  .reconocer__tabla-scroll {
+    margin: 12px 0 16px;
+    overflow-x: auto;
+  }
 
-    & h2 {
-      margin: 0 0 10px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--primary-color);
-      font-size: 1rem;
-      letter-spacing: 1px;
+  .reconocer__tabla {
+    width: 100%;
+    min-width: 420px;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    line-height: 1.45;
+
+    & th,
+    & td {
+      padding: 6px 8px;
+      border: 1px solid var(--text-secondary-color);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    & th {
+      background: var(--primary-color);
+      color: var(--on-bright-color);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    & td:first-child {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      white-space: nowrap;
+      color: var(--primary-color);
+    }
+  }
+
+  .reconocer__tipos-lista {
+    display: grid;
+    gap: 10px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+
+    & li {
+      padding: 10px 12px;
+      border: 2px solid var(--primary-color);
+      background: var(--card-background-color);
+      line-height: 1.55;
+    }
+
+    & strong {
+      color: var(--primary-color);
+    }
+  }
+
+  .reconocer__resuelto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 14px;
+  }
+
+  .reconocer__resuelto-diagrama {
+    flex: none;
+    padding: 10px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+  }
+
+  .reconocer__resuelto-texto {
+    flex: 1 1 300px;
+    min-width: 0;
+
+    & ul {
+      margin: 8px 0 12px;
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+
+    & li {
+      margin-bottom: 2px;
+    }
+  }
+
+  .reconocer__mas-intro {
+    margin-top: 18px;
+  }
+
+  .reconocer__mas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 10px;
+  }
+
+  .reconocer__mas-grupo {
+    padding: 10px 12px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+
+    & h3 {
+      margin: 0 0 6px;
+      font-size: 0.78rem;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
       color: var(--primary-color);
     }
+  }
 
-    & p {
-      margin: 0 0 10px;
-      line-height: 1.6;
-      color: var(--text-color);
+  .reconocer__mas-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & li {
+      margin: 0;
+    }
+
+    & a {
+      display: inline-block;
+      padding: 2px 7px;
+      border: 1px solid var(--text-secondary-color);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    & a:hover {
+      background: var(--primary-contrast-color);
+      color: var(--on-bright-color);
     }
   }
 
@@ -712,6 +1259,18 @@ const faqSchema = {
     .reconocer__panel {
       flex: 1 1 100%;
       min-width: 0;
+    }
+
+    .reconocer__resuelto {
+      flex-direction: column;
+    }
+
+    .reconocer__resuelto-diagrama {
+      align-self: center;
+    }
+
+    .reconocer__tabla {
+      min-width: 360px;
     }
   }
 </style>
