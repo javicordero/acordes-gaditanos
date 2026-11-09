@@ -16,6 +16,7 @@ import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcorde
 import { puedeSubir, dividirLote, enTandas, avisa as avisaFicha } from '../lib/panel-lote.js';
 import { escaparHtml } from '../lib/escape.js';
 import { avisosPasodoblesSinTitulo } from '../lib/alertas-letra-titulo.js';
+import { normalizarAgrupacion } from '../lib/contenido.ts';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
@@ -53,6 +54,9 @@ let sugerencias = [];
 let sugSel = 0;
 let paneActivo = 'cen';
 let zonaFicha = 'acordes';
+// Autores y agrupaciones que ya existen en el cancionero, para sugerirlos.
+let autoresConocidos = [];
+let agrupacionesConocidas = [];
 // Texto del aviso sin marcas, para el tuit (el textarea lleva el de WhatsApp).
 let avisoX = '';
 
@@ -270,9 +274,28 @@ async function cargarIndice() {
       : x);
   }
   indice = [...porSlug.values()];
+  cargarSugerencias();
   const dl = $('slugs');
   dl.innerHTML = indice.slice(0, 400).map((x) => '<option value="' + esc(x.slug) + '">' + esc(x.pieza + ' · ' + x.agrupacion + ' · ' + x.year) + '</option>').join('');
   return indice;
+}
+
+/** Junta los autores de música/letra y las agrupaciones que ya aparecen en las fichas. */
+function cargarSugerencias() {
+  const autores = new Set();
+  const agrupaciones = new Set();
+  for (const x of indice) {
+    const agrupacion = normalizarAgrupacion(String(x.agrupacion || '').trim());
+    if (agrupacion) agrupaciones.add(agrupacion);
+    for (const campo of [x.musica, x.letra]) {
+      for (const nombre of String(campo || '').split(',')) {
+        const limpio = nombre.trim();
+        if (limpio) autores.add(limpio);
+      }
+    }
+  }
+  autoresConocidos = [...autores].sort((a, b) => a.localeCompare(b, 'es'));
+  agrupacionesConocidas = [...agrupaciones].sort((a, b) => a.localeCompare(b, 'es'));
 }
 
 /** Vuelve a pedir la lista (tras publicar cambia lo pendiente de subir). */
@@ -711,6 +734,9 @@ let statsData = null;
 let statsPaginas = [];
 let statsFechas = null;
 let rutasFiltro = '';
+let rutasExcluir = '';
+let rutasOrden = 'visitas';
+let rutasOrdenDir = 'desc';
 const fmtNum = (n) => Number(n || 0).toLocaleString('es-ES');
 
 async function cargarFechasRutas() {
@@ -780,40 +806,82 @@ function diasDeRuta(fecha) {
   return Math.max(1, Math.floor(ms / 86400000) + 1);
 }
 
-/** Visitas por día desde el alta; vacío si la ruta no tiene fecha. */
-function mediaPorDia(count, fecha) {
-  if (!fecha) return '';
-  return (Number(count || 0) / diasDeRuta(fecha)).toLocaleString('es-ES', {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
-  });
-}
-
 const fechaCortaIso = (iso) => (iso || '').split('-').reverse().join('/');
+
+/** Cabecera ordenable de la tabla de rutas. */
+function cabeceraRutas() {
+  const cols = [
+    { id: 'ruta', t: 'Ruta', num: false },
+    { id: 'visitas', t: 'Visitas', num: true },
+    { id: 'media', t: 'Media/día', num: true, nota: 'Visitas por día desde el alta (o desde el 19/01/2026)' },
+  ];
+  const th = cols.map((c) => {
+    const activa = rutasOrden === c.id;
+    const aria = activa ? (rutasOrdenDir === 'asc' ? 'ascending' : 'descending') : 'none';
+    const flecha = activa
+      ? ' <span class="stats-flecha">' + (rutasOrdenDir === 'asc' ? '▲' : '▼') + '</span>'
+      : '';
+    return '<th' + (c.num ? ' class="num"' : '') + ' aria-sort="' + aria + '"' +
+      (c.nota ? ' title="' + esc(c.nota) + '"' : '') + '>' +
+      '<button type="button" class="stats-th-orden" data-orden="' + c.id + '">' + c.t + flecha + '</button>' +
+    '</th>';
+  }).join('');
+  return '<tr>' + th + '<th class="progreso">Popularidad</th></tr>';
+}
 
 /** Repinta solo la tabla de rutas, para no perder el foco al filtrar. */
 function pintarRutas() {
   const cuerpo = $('stats-rutas-cuerpo');
   if (!cuerpo || !statsData) return;
 
-  const consulta = sinTildes(rutasFiltro.trim());
-  const filtradas = consulta
-    ? statsPaginas.filter((x) => sinTildes(x.path).includes(consulta))
-    : statsPaginas;
-  const tope = consulta ? 300 : 50;
-  const visibles = filtradas.slice(0, tope);
+  $('stats-rutas-cabeceras').innerHTML = cabeceraRutas();
+
+  const incluye = sinTildes(rutasFiltro.trim());
+  const excluye = sinTildes(rutasExcluir.trim());
+  const hayFiltro = Boolean(incluye || excluye);
+  const filtradas = statsPaginas.filter((x) => {
+    const ruta = sinTildes(x.path);
+    return (!incluye || ruta.includes(incluye)) && (!excluye || !ruta.includes(excluye));
+  });
+
+  const conMedia = filtradas.map((x) => {
+    const fecha = fechaDeRuta(x.path);
+    return {
+      ...x,
+      fecha,
+      media: fecha ? Number(x.count || 0) / diasDeRuta(fecha) : null,
+    };
+  });
+
+  const ordenadas = conMedia.slice().sort((a, b) => {
+    if (rutasOrden === 'ruta') {
+      return a.path.localeCompare(b.path, 'es') * (rutasOrdenDir === 'asc' ? 1 : -1);
+    }
+    if (rutasOrden === 'media') {
+      // Las rutas sin fecha no tienen media: siempre al final.
+      if (a.media == null && b.media == null) return 0;
+      if (a.media == null) return 1;
+      if (b.media == null) return -1;
+      return (a.media - b.media) * (rutasOrdenDir === 'asc' ? 1 : -1);
+    }
+    return (Number(a.count) - Number(b.count)) * (rutasOrdenDir === 'asc' ? 1 : -1);
+  });
+
+  const tope = hayFiltro ? 300 : 100;
+  const visibles = ordenadas.slice(0, tope);
   const total = statsData.total || 0;
 
   cuerpo.innerHTML = visibles.length
     ? visibles.map((x) => {
-      const fecha = fechaDeRuta(x.path);
-      const media = mediaPorDia(x.count, fecha);
+      const media = x.media == null
+        ? ''
+        : x.media.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
       const alto = total ? Math.round((x.count / total) * 100) : 0;
       const desde = desdeContador();
-      const titulo = fecha
-        ? ' title="Alta: ' + fechaCortaIso(fecha) +
-          (fecha < desde ? ' · media desde ' + fechaCortaIso(desde) : '') +
-          ' · ' + diasDeRuta(fecha) + ' días"'
+      const titulo = x.fecha
+        ? ' title="Alta: ' + fechaCortaIso(x.fecha) +
+          (x.fecha < desde ? ' · media desde ' + fechaCortaIso(desde) : '') +
+          ' · ' + diasDeRuta(x.fecha) + ' días"'
         : ' title="Sin fecha de alta registrada"';
       return '<tr>' +
         '<td class="ruta">' + esc(x.path) + '</td>' +
@@ -823,17 +891,19 @@ function pintarRutas() {
       '</tr>';
     }).join('')
     : '<tr><td colspan="4" class="stats-vacio">' +
-      (consulta ? 'Ninguna ruta coincide con «' + esc(rutasFiltro.trim()) + '».' : 'Sin rutas.') +
+      (hayFiltro ? 'Ninguna ruta coincide con los filtros.' : 'Sin rutas.') +
     '</td></tr>';
 
   const visitas = filtradas.reduce((s, x) => s + Number(x.count || 0), 0);
-  const resumen = consulta
+  const resumen = hayFiltro
     ? fmtNum(filtradas.length) + ' ruta' + (filtradas.length === 1 ? '' : 's') +
       ' · ' + fmtNum(visitas) + ' visitas' +
+      (excluye ? ' · sin «' + rutasExcluir.trim() + '»' : '') +
       (filtradas.length > tope ? ' · mostrando ' + tope : '')
     : 'Top ' + visibles.length + ' de ' + fmtNum(statsPaginas.length) + ' rutas';
   $('stats-rutas-resumen').textContent = resumen;
   $('stats-rutas-limpiar').hidden = !rutasFiltro;
+  $('stats-rutas-excluir-limpiar').hidden = !rutasExcluir;
 }
 
 function bloqueRutas() {
@@ -844,13 +914,13 @@ function bloqueRutas() {
       '<input id="stats-rutas-q" type="search" placeholder="Filtrar rutas (glosa, autor, carnaval…)…" autocomplete="off" aria-label="Filtrar rutas">' +
       '<button id="stats-rutas-limpiar" class="limpiar" type="button" aria-label="Limpiar el filtro" hidden>✕</button>' +
     '</div>' +
+    '<div class="buscador stats-buscar stats-buscar--excluir">' +
+      '<svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>' +
+      '<input id="stats-rutas-excluir" type="search" placeholder="Excluir rutas (ej. acordes)…" autocomplete="off" aria-label="Excluir rutas" title="Quita las rutas que contengan este texto">' +
+      '<button id="stats-rutas-excluir-limpiar" class="limpiar" type="button" aria-label="Limpiar la exclusión" hidden>✕</button>' +
+    '</div>' +
     '<p class="stats-resumen" id="stats-rutas-resumen" aria-live="polite"></p>' +
-    '<div class="tabla-scroll"><table class="stats-tabla"><thead><tr>' +
-      '<th>Ruta</th>' +
-      '<th class="num">Visitas</th>' +
-      '<th class="num" title="Visitas por día desde el alta (o desde el 19/01/2026)">Media/día</th>' +
-      '<th class="progreso">Popularidad</th>' +
-    '</tr></thead><tbody id="stats-rutas-cuerpo"></tbody></table></div>' +
+    '<div class="tabla-scroll"><table class="stats-tabla"><thead id="stats-rutas-cabeceras"></thead><tbody id="stats-rutas-cuerpo"></tbody></table></div>' +
   '</section>';
 }
 
@@ -918,6 +988,27 @@ function pintarStats(d) {
     pintarRutas();
     q.focus();
   };
+  const qx = $('stats-rutas-excluir');
+  qx.value = rutasExcluir;
+  qx.oninput = () => { rutasExcluir = qx.value; pintarRutas(); };
+  $('stats-rutas-excluir-limpiar').onclick = () => {
+    rutasExcluir = '';
+    qx.value = '';
+    pintarRutas();
+    qx.focus();
+  };
+  $('stats-rutas-cabeceras').onclick = (e) => {
+    const b = e.target.closest('button[data-orden]');
+    if (!b) return;
+    const col = b.dataset.orden;
+    if (rutasOrden === col) {
+      rutasOrdenDir = rutasOrdenDir === 'asc' ? 'desc' : 'asc';
+    } else {
+      rutasOrden = col;
+      rutasOrdenDir = col === 'ruta' ? 'asc' : 'desc';
+    }
+    pintarRutas();
+  };
   pintarRutas();
 }
 
@@ -955,7 +1046,9 @@ function etiquetaFuente(fuente) {
 /** Etiqueta corta para la columna de la tabla de rutas. */
 function etiquetaFuenteCorta(fuente) {
   const f = etiquetaFuente(fuente);
-  if (f === '(directo)' || f === '(interno)') return f;
+  // En la tabla se envuelve en paréntesis con el número: (directo - 4).
+  if (f === '(directo)') return 'directo';
+  if (f === '(interno)') return 'interno';
   if (/google\./i.test(f)) return 'Google';
   if (/blogspot\./i.test(f)) return 'blog';
   if (/bing\./i.test(f)) return 'Bing';
@@ -1138,21 +1231,17 @@ function pintarCfRutas() {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 3);
       const fuentesHtml = top3.map(([etiqueta, paginas]) =>
-        '<span class="cf-fuente">' + esc(etiqueta) + ' <b>(' + fmtNum(paginas) + ')</b></span>'
+        '<span class="cf-fuente">(' + esc(etiqueta) + ' - ' + fmtNum(paginas) + ')</span>'
       ).join(' ');
       return '<tr>' +
         '<td class="ruta">' + esc(x.ruta) + '</td>' +
-        '<td class="num">' + fmtNum(x.visitas) + '</td>' +
         '<td class="num">' + fmtNum(x.paginas) + '</td>' +
+        '<td class="num">' + fmtNum(x.visitas) + '</td>' +
         '<td class="num cf-d1"' + (totalD1 == null ? ' title="No está en nuestro contador"' : ' title="Total desde 19/01/2026; ventana distinta a Cloudflare"') + '>' +
           (totalD1 == null ? '—' : fmtNum(totalD1)) +
         '</td>' +
-        '<td class="fuente">' +
-          (top3.length
-            ? '<button type="button" class="cf-fuentes" data-ruta="' + esc(x.ruta) + '" title="Ver el desglose de fuentes">' + fuentesHtml + '</button>'
-            : '—') +
-        '</td>' +
-        '<td><button type="button" class="cf-ver" data-ruta="' + esc(x.ruta) + '">Fuentes</button></td>' +
+        '<td class="fuente">' + (top3.length ? fuentesHtml : '—') + '</td>' +
+        '<td class="cf-accion"><button type="button" class="cf-ver" data-ruta="' + esc(x.ruta) + '">Fuentes</button></td>' +
       '</tr>';
     }).join('')
     : '<tr><td colspan="6" class="stats-vacio">' +
@@ -1228,11 +1317,11 @@ function pintarCloudflare(d) {
       '<p class="stats-resumen" id="cf-rutas-resumen" aria-live="polite"></p>' +
       '<div class="tabla-scroll"><table class="stats-tabla stats-tabla--rutas-cf"><thead><tr>' +
         '<th>Ruta</th>' +
-        '<th class="num">Visitas</th>' +
         '<th class="num">Páginas</th>' +
+        '<th class="num">Visitas</th>' +
         '<th class="num cf-d1" title="Total desde 19/01/2026; ventana distinta a Cloudflare">D1 total</th>' +
         '<th class="fuente" title="Páginas vistas por fuente, de mayor a menor">Fuente</th>' +
-        '<th>Fuentes</th>' +
+        '<th class="cf-accion">Fuentes</th>' +
       '</tr></thead><tbody id="cf-rutas-cuerpo"></tbody></table></div>' +
     '</section>';
 
@@ -1449,8 +1538,13 @@ function abrirNueva(empujar = true) {
   f.clon.value = '';
   f.pieza.value = 'Pasodoble';
   f.year.value = new Date().getFullYear();
+  f.base.value = '';
+  f.base.dataset.auto = '1';
+  f.base.dataset.autoSlug = '';
+  cancelarRellenoBase();
   $('dlg-nueva-titulo').textContent = 'Nueva ficha';
-  $('dlg-nueva-nota').innerHTML = 'Se crea como borrador con el bloque de la ficha base. Después cambias la letra y mueves los acordes.';
+  $('dlg-nueva-nota').innerHTML = 'Se crea como borrador. Si la agrupación ya existe, toma de su ficha el año, la modalidad, la imagen, los autores y el vídeo. El bloque de la letra y la cejilla no se copian.';
+  pintarBaseNueva();
   const estado = { vista: 'nueva' };
   if (empujar) history.pushState(estado, '', '/admin/?nueva=1');
   else history.replaceState(estado, '', '/admin/?nueva=1');
@@ -2224,13 +2318,14 @@ function frontmatterActual() {
   const datos = datosDelEditor();
   return cambiarFrontmatter(ficha.d.frontmatter, {
     pieza: datos.pieza,
+    modalidad: datos.modalidad || null,
     agrupacion: datos.agrupacion,
     year: datos.year,
     musica: datos.musica || null,
     letra: datos.letra || null,
     letraTitulo: datos.letraTitulo || null,
     cejilla: datos.cejilla || null,
-    video: datos.video || null,
+    video: videoEmbed(datos.video) || null,
     img: datos.img,
     fraseClave: datos.fraseClave || null,
     destacada: datos.destacada || null,
@@ -2990,7 +3085,24 @@ function leerFrontmatter(fm) {
 /** Vuelca el frontmatter en el formulario de datos del editor. */
 function pintarDatos(fmTexto) {
   const fm = leerFrontmatter(fmTexto);
-  for (const el of $('f-datos').querySelectorAll('[name]')) el.value = fm[el.name] ?? '';
+  const caja = $('f-datos');
+  for (const el of caja.querySelectorAll('[name]')) {
+    if (el.name === 'modalidad') continue;
+    el.value = fm[el.name] ?? '';
+  }
+  const sel = caja.querySelector('[name="modalidad"]');
+  if (sel) {
+    sel.querySelectorAll('option[data-temporal]').forEach((o) => o.remove());
+    const valor = valorModalidad(fm.modalidad);
+    if (valor && ![...sel.options].some((o) => o.value === valor)) {
+      const opt = document.createElement('option');
+      opt.value = valor;
+      opt.textContent = valor;
+      opt.dataset.temporal = '1';
+      sel.append(opt);
+    }
+    sel.value = valor;
+  }
   actualizarDatos();
 }
 
@@ -3004,6 +3116,290 @@ function datosDelEditor() {
 /** Slug que saldría de los datos del formulario (misma regla que al crear). */
 const slugDeDatos = (d) => (d.pieza + '-' + d.agrupacion + (d.letraTitulo ? '-' + d.letraTitulo : ''))
   .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/**
+ * Enlace normal de YouTube → URL de embed, que es como se guarda en el frontmatter.
+ * Acepta watch, youtu.be, shorts, live y el id suelto; lo que ya es embed se deja igual.
+ */
+function videoEmbed(url) {
+  const s = String(url || '').trim();
+  if (!s) return '';
+  if (/youtube(?:-nocookie)?\.com\/embed\//i.test(s)) return s;
+  const id = /^[A-Za-z0-9_-]{11}$/.test(s)
+    ? s
+    : (s.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/live\/|\/v\/)([A-Za-z0-9_-]{11})/) || [])[1];
+  return id ? 'https://www.youtube.com/embed/' + id : s;
+}
+
+/** Valor de modalidad que encaja con el desplegable (tolera variantes antiguas). */
+function valorModalidad(valor) {
+  const limpio = String(valor || '').trim();
+  if (!limpio) return '';
+  const clave = normalizar(limpio).replace(/\s+/g, '-');
+  const mapa = {
+    comparsa: 'Comparsa',
+    chirigota: 'Chirigota',
+    coro: 'Coro',
+    coros: 'Coro',
+    cuarteto: 'Cuarteto',
+    cuartetos: 'Cuarteto',
+    'chirigota-callejera': 'Chirigota callejera',
+    'chirigotas-callejeras': 'Chirigota callejera',
+  };
+  return mapa[clave] || limpio;
+}
+
+let sugListaId = 0;
+
+/** `true` si las palabras de `consulta` empiezan palabras consecutivas del nombre. */
+function coincideNombre(nombre, consulta) {
+  const palabras = normalizar(nombre).split(/[^a-z0-9ñ]+/).filter(Boolean);
+  const busca = String(consulta || '').split(/\s+/).filter(Boolean);
+  if (!busca.length) return false;
+  for (let i = 0; i <= palabras.length - busca.length; i++) {
+    if (busca.every((b, j) => palabras[i + j].startsWith(b))) return true;
+  }
+  return false;
+}
+
+/**
+ * Sugiere valores ya existentes mientras se escriben.
+ * `varios` permite listas separadas por coma (música, letra): solo mira el
+ * trozo que se está escribiendo y no repite los ya puestos.
+ */
+function autocompletarValores(input, { valores, varios = false, alElegir } = {}) {
+  if (!input || input.dataset.sugLista === '1') return;
+  input.dataset.sugLista = '1';
+  input.setAttribute('autocomplete', 'off');
+  input.setAttribute('role', 'combobox');
+  input.setAttribute('aria-autocomplete', 'list');
+  input.setAttribute('aria-expanded', 'false');
+
+  const caja = document.createElement('div');
+  caja.className = 'sug-campo';
+  input.parentNode.insertBefore(caja, input);
+  caja.appendChild(input);
+
+  const lista = document.createElement('div');
+  lista.className = 'sug-campo-lista';
+  lista.id = 'sug-lista-' + (++sugListaId);
+  lista.hidden = true;
+  lista.setAttribute('role', 'listbox');
+  caja.appendChild(lista);
+  input.setAttribute('aria-controls', lista.id);
+
+  let opciones = [];
+  let activo = -1;
+
+  const cerrar = () => {
+    lista.hidden = true;
+    input.setAttribute('aria-expanded', 'false');
+    input.removeAttribute('aria-activedescendant');
+    activo = -1;
+  };
+
+  const marcar = () => {
+    [...lista.children].forEach((b, i) => {
+      b.classList.toggle('sel', i === activo);
+      b.setAttribute('aria-selected', i === activo ? 'true' : 'false');
+    });
+    if (activo >= 0) input.setAttribute('aria-activedescendant', lista.id + '-i' + activo);
+    else input.removeAttribute('aria-activedescendant');
+  };
+
+  /** Texto que se está escribiendo: todo el campo o lo que va tras la última coma. */
+  const tramo = () => {
+    const texto = input.value;
+    if (!varios) return texto.trim();
+    const corte = texto.lastIndexOf(',');
+    return (corte === -1 ? texto : texto.slice(corte + 1)).trim();
+  };
+
+  const pintar = () => {
+    const consulta = normalizar(tramo());
+    if (!consulta) { cerrar(); return; }
+    const usados = varios
+      ? new Set(input.value.split(',').slice(0, -1).map((n) => normalizar(n.trim())).filter(Boolean))
+      : new Set();
+    const coincide = (n) => coincideNombre(n, consulta);
+    opciones = valores()
+      .filter((n) => n && coincide(n) && normalizar(n) !== consulta && !usados.has(normalizar(n)))
+      .sort((a, b) => {
+        const pa = normalizar(a).startsWith(consulta) ? 0 : 1;
+        const pb = normalizar(b).startsWith(consulta) ? 0 : 1;
+        return pa - pb || a.localeCompare(b, 'es');
+      })
+      .slice(0, 8);
+    if (!opciones.length) { cerrar(); return; }
+    lista.innerHTML = opciones.map((n, i) =>
+      '<button type="button" class="sug-campo-item" role="option" aria-selected="false"' +
+        ' data-i="' + i + '" id="' + lista.id + '-i' + i + '">' + esc(n) + '</button>',
+    ).join('');
+    lista.hidden = false;
+    input.setAttribute('aria-expanded', 'true');
+    activo = -1;
+    marcar();
+  };
+
+  const elegir = (i) => {
+    const nombre = opciones[i];
+    if (!nombre) return;
+    if (varios) {
+      const corte = input.value.lastIndexOf(',');
+      const prefijo = corte >= 0 ? input.value.slice(0, corte + 1).replace(/\s*$/, '') + ' ' : '';
+      input.value = prefijo + nombre + ', ';
+    } else {
+      input.value = nombre;
+    }
+    cerrar();
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
+    if (alElegir) alElegir();
+  };
+
+  input.addEventListener('input', pintar);
+  input.addEventListener('focus', pintar);
+  input.addEventListener('blur', () => setTimeout(cerrar, 120));
+  input.addEventListener('keydown', (e) => {
+    if (lista.hidden) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); activo = (activo + 1) % opciones.length; marcar(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); activo = (activo - 1 + opciones.length) % opciones.length; marcar(); }
+    else if (e.key === 'Enter') { e.preventDefault(); elegir(activo >= 0 ? activo : 0); }
+    else if (e.key === 'Tab' && activo >= 0) { e.preventDefault(); elegir(activo); }
+    else if (e.key === 'Escape') cerrar();
+  });
+  lista.addEventListener('mousedown', (e) => e.preventDefault());
+  lista.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-i]');
+    if (b) elegir(Number(b.dataset.i));
+  });
+}
+
+/** Ficha de la que copiar acordes: misma agrupación y, si hay, mismo año y pieza. */
+function fichaBaseAutomatica() {
+  const f = $('f-nueva');
+  const agrupacion = normalizar(f.agrupacion.value.trim());
+  if (!agrupacion) return null;
+  const candidatas = indice.filter((x) => normalizar(x.agrupacion) === agrupacion);
+  if (!candidatas.length) return null;
+  const pieza = normalizar(f.pieza.value.trim());
+  const year = String(f.year.value || '').trim();
+  const grupos = [
+    candidatas.filter((x) => normalizar(x.pieza) === pieza && String(x.year) === year),
+    candidatas.filter((x) => String(x.year) === year),
+    candidatas.filter((x) => normalizar(x.pieza) === pieza),
+    candidatas,
+  ];
+  for (const grupo of grupos) {
+    if (!grupo.length) continue;
+    return grupo.find((x) => !x.letraTitulo) || grupo[0];
+  }
+  return null;
+}
+
+const etiquetaFicha = (x) => [x.pieza, x.agrupacion, x.year].filter(Boolean).join(' · ');
+
+/** Rellena y explica los datos que se toman de la ficha de referencia. */
+function pintarBaseNueva() {
+  const f = $('f-nueva');
+  const el = $('nueva-base');
+  if (!el || !f) return;
+  // En «Otra letra» la base ya viene fijada de la ficha original.
+  if (f.clon.value === '1') {
+    const x = indice.find((i) => i.slug === f.base.value.trim());
+    el.textContent = x ? 'Copiará los acordes de: ' + etiquetaFicha(x) : '';
+    el.classList.remove('mal');
+    return;
+  }
+  if (f.base.dataset.auto === '1') {
+    const x = fichaBaseAutomatica();
+    f.base.value = x ? x.slug : '';
+    el.textContent = x
+      ? 'Tomará año, modalidad, imagen, autores y vídeo de: ' + etiquetaFicha(x) + '. El bloque de la letra y la cejilla no se copian.'
+      : 'Sin ficha base: la ficha nace vacía. Pega la letra y los acordes en el editor.';
+  } else {
+    const elegida = f.base.value.trim();
+    const x = indice.find((i) => i.slug === elegida);
+    el.textContent = elegida
+      ? (x ? 'Copiará los acordes de: ' + etiquetaFicha(x) : 'No encuentro «' + elegida + '»: elige una ficha de la lista.')
+      : 'Sin ficha base: la ficha nace vacía. Pega la letra y los acordes en el editor.';
+  }
+  el.classList.toggle('mal', Boolean(f.base.value.trim()) && !indice.some((i) => i.slug === f.base.value.trim()));
+}
+
+const cacheFrontmatter = new Map();
+
+/** Frontmatter completo de una ficha, cacheado para no pedirlo en cada tecla. */
+async function frontmatterDeFicha(slug) {
+  if (!slug) return null;
+  if (cacheFrontmatter.has(slug)) return cacheFrontmatter.get(slug);
+  try {
+    const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(slug));
+    if (!r.ok) return null;
+    const d = await r.json();
+    const fm = leerFrontmatter(desenvolver(d.md).frontmatter);
+    cacheFrontmatter.set(slug, fm);
+    return fm;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Si la agrupación ya existe, copia a la ficha nueva sus datos por defecto:
+ * año, imagen, autores y vídeo. No copia la letra (el bloque), la cejilla, la
+ * frase clave ni el título de otra letra.
+ */
+async function rellenarDesdeAgrupacion() {
+  const f = $('f-nueva');
+  if (!f || f.clon.value === '1' || f.base.dataset.auto !== '1') return;
+  const candidata = fichaBaseAutomatica();
+  f.base.value = candidata ? candidata.slug : '';
+  if (!candidata) { pintarBaseNueva(); return; }
+  if (f.base.dataset.autoSlug === candidata.slug) { pintarBaseNueva(); return; }
+  f.base.dataset.autoSlug = candidata.slug;
+  pintarBaseNueva();
+  const fm = await frontmatterDeFicha(candidata.slug);
+  // La agrupación pudo cambiar mientras llegaba la respuesta.
+  if (!fm) { f.base.dataset.autoSlug = ''; return; }
+  if (f.base.dataset.autoSlug !== candidata.slug) return;
+  f.year.value = fm.year || f.year.value;
+  f.img.value = fm.img || '';
+  f.musica.value = fm.musica || '';
+  f.letra.value = fm.letra || '';
+  f.video.value = fm.video || '';
+  f.modalidad.value = valorModalidad(fm.modalidad);
+  pintarBaseNueva();
+}
+
+let rellenoBaseTimer = null;
+let rellenoBasePendiente = null;
+let resolverRellenoBase = null;
+
+/** Cancela el relleno pendiente (al cambiar de ficha o elegir la base a mano). */
+function cancelarRellenoBase() {
+  clearTimeout(rellenoBaseTimer);
+  if (resolverRellenoBase) { resolverRellenoBase(); resolverRellenoBase = null; }
+  rellenoBasePendiente = null;
+}
+
+/** Programa el relleno de los datos de la agrupación (con un respiro al escribir). */
+function programarRellenoBase(espera = 250) {
+  clearTimeout(rellenoBaseTimer);
+  if (resolverRellenoBase) { resolverRellenoBase(); resolverRellenoBase = null; }
+  rellenoBasePendiente = new Promise((resolve) => {
+    resolverRellenoBase = resolve;
+    rellenoBaseTimer = setTimeout(async () => {
+      try {
+        await rellenarDesdeAgrupacion();
+      } finally {
+        resolverRellenoBase = null;
+        rellenoBasePendiente = null;
+        resolve();
+      }
+    }, espera);
+  });
+}
 
 /** Resumen del panel de datos. La URL no cambia al editar los campos. */
 function actualizarDatos() {
@@ -3027,7 +3423,11 @@ async function clonar(slug) {
     f.reset();
     f.clon.value = '1';
     f.base.value = slug;
+    f.base.dataset.auto = '';
+    f.base.dataset.autoSlug = '';
+    cancelarRellenoBase();
     f.pieza.value = fm.pieza || 'Pasodoble';
+    f.modalidad.value = valorModalidad(fm.modalidad);
     f.agrupacion.value = fm.agrupacion || '';
     f.year.value = fm.year || '';
     f.musica.value = fm.musica || '';
@@ -3037,6 +3437,7 @@ async function clonar(slug) {
     f.img.value = fm.img || '';
     f.letraTitulo.value = '';
     f.fraseClave.value = '';
+    pintarBaseNueva();
     $('dlg-nueva-titulo').textContent = 'Otra letra de esta música';
     $('dlg-nueva-nota').innerHTML = 'Todo viene relleno de la ficha original, <b>incluidos los acordes</b>. Escribe el título de la letra nueva y, ya en el editor, cambia la letra encima de los acordes.';
     $('dlg-nueva').showModal();
@@ -3071,9 +3472,13 @@ function cambiarFrontmatter(fm, cambios) {
 
 async function crear(e) {
   e.preventDefault();
-  const f = new FormData($('f-nueva'));
+  const form = $('f-nueva');
+  // Si se está rellenando desde la agrupación, espera a que termine.
+  if (rellenoBasePendiente) await rellenoBasePendiente;
+  const f = new FormData(form);
   const v = (k) => String(f.get(k) || '').trim();
   const base = v('base');
+  const auto = form.base.dataset.auto === '1';
   const clon = v('clon') === '1';
   const pieza = v('pieza') || 'Pasodoble';
   if (!v('agrupacion')) { mostrarAviso('La agrupación es obligatoria.', 'var(--mal)'); return; }
@@ -3087,9 +3492,10 @@ async function crear(e) {
     return;
   }
   try {
-    // Sin ficha base, la ficha nace vacía: el bloque se pega luego en el editor.
+    // Sin ficha base (o con la que se elige sola por la agrupación), la ficha
+    // nace vacía de bloque. Si la base es manual, se copian sus acordes.
     let bd = { frontmatter: '---\n---\n', pre: '' };
-    if (base) {
+    if (base && !auto) {
       const r = await fetch(API + '/ficha?slug=' + encodeURIComponent(base));
       const d = await r.json();
       if (!r.ok) throw new Error('no encuentro la base ' + base);
@@ -3104,9 +3510,10 @@ async function crear(e) {
       musica: v('musica'),
       letra: v('letra'),
       letraTitulo: v('letraTitulo') || (clon ? null : undefined),
+      modalidad: v('modalidad') || undefined,
       cejilla: v('cejilla') || undefined,
-      video: v('video') || undefined,
-      img: v('img') || (base ? undefined : '/og-image.jpg'),
+      video: videoEmbed(v('video')) || undefined,
+      img: v('img') || (base && !auto ? undefined : '/og-image.jpg'),
       fraseClave: clon ? (v('fraseClave') || null) : (v('fraseClave') || undefined),
       date: hoy(),
       // La copia no hereda el sitio en portada ni el destacado de la original.
@@ -3126,6 +3533,7 @@ async function crear(e) {
     indice.unshift({
       slug,
       pieza,
+      modalidad: v('modalidad'),
       agrupacion: v('agrupacion'),
       year: v('year'),
       letraTitulo: v('letraTitulo'),
@@ -3135,6 +3543,7 @@ async function crear(e) {
       local: gd.local === true,
       enPR: gd.pr ? gd.pr.numero : null,
     });
+    cargarSugerencias();
     montarEditor(slug, md, gd.pr, 'borradores', gd.rama);
     mostrarAviso(gd.local
       ? 'Ficha creada en src/content/borradores/' + slug + '.md.\n' +
@@ -3364,6 +3773,35 @@ window.addEventListener('popstate', (e) => {
 });
 $('n-cancelar').onclick = () => $('dlg-nueva').close();
 $('f-nueva').onsubmit = crear;
+// Al escribir la agrupación, el año o la pieza se elige sola la ficha base;
+// si el usuario escribe una a mano, deja de proponerse.
+$('f-nueva').addEventListener('input', (e) => {
+  if (e.target.name === 'base') {
+    e.target.dataset.auto = '';
+    e.target.dataset.autoSlug = '';
+    cancelarRellenoBase();
+  }
+  pintarBaseNueva();
+  if (e.target.name === 'agrupacion') programarRellenoBase();
+});
+// El enlace normal de YouTube se convierte a embed al salir del campo.
+for (const zona of [$('f-nueva'), $('f-datos')]) {
+  zona.addEventListener('focusout', (e) => {
+    if (e.target.name === 'video') e.target.value = videoEmbed(e.target.value);
+  });
+}
+// Autores: música y letra sugieren los nombres que ya existen en el cancionero.
+for (const input of document.querySelectorAll('#f-nueva [name="musica"], #f-nueva [name="letra"], #f-datos [name="musica"], #f-datos [name="letra"]')) {
+  autocompletarValores(input, { valores: () => autoresConocidos, varios: true });
+}
+// Agrupaciones: sugiere las que ya existen al escribir.
+const agrNueva = document.querySelector('#f-nueva [name="agrupacion"]');
+if (agrNueva) autocompletarValores(agrNueva, {
+  valores: () => agrupacionesConocidas,
+  alElegir: () => { pintarBaseNueva(); programarRellenoBase(0); },
+});
+const agrDatos = document.querySelector('#f-datos [name="agrupacion"]');
+if (agrDatos) autocompletarValores(agrDatos, { valores: () => agrupacionesConocidas, alElegir: actualizarDatos });
 $('b-letra').onclick = () => { $('f-letra').reset(); pintarBaseLetra(); $('dlg-letra').showModal(); $('f-letra').frase.focus(); };
 $('f-letra').addEventListener('input', pintarBaseLetra);
 $('l-cancelar').onclick = () => $('dlg-letra').close();

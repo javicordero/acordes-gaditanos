@@ -155,6 +155,7 @@ export const prerender = true;
   .marca.sinacordes { background:#ffd28a; }
   .acc.revisado { border-color:#000; font-weight:700; }
   .nota { margin:0 0 12px; font-size:11.5px; color:var(--suave); line-height:1.5; }
+  .nota.mal { color:var(--mal); }
 
   /* Datos de la ficha */
   .datos { flex:0 0 auto; background:var(--papel); border-bottom:2px solid #000; }
@@ -253,6 +254,12 @@ export const prerender = true;
   .campo textarea { width:100%; height:auto; min-height:100px; font-size:12.5px; white-space:pre-wrap; resize:vertical; }
   .campo input:focus, .campo select:focus, .campo textarea:focus { outline:3px solid var(--acento); outline-offset:1px; }
   .dos { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  /* Sugerencias de autores y agrupaciones al escribir. */
+  .sug-campo { position:relative; }
+  .sug-campo-lista { position:absolute; z-index:50; top:calc(100% + 2px); left:0; right:0; max-height:210px; overflow:auto; border:2px solid #000; background:var(--papel); box-shadow:4px 4px 0 #000; }
+  .sug-campo-item { display:block; width:100%; padding:8px 9px; border:0; border-bottom:1px solid #ddd; background:transparent; color:var(--tinta); font:400 12.5px var(--mono); letter-spacing:0; text-transform:none; text-align:left; cursor:pointer; box-shadow:none; }
+  .sug-campo-item:last-child { border-bottom:0; }
+  .sug-campo-item:hover, .sug-campo-item.sel { background:var(--acento); color:#000; transform:none; box-shadow:none; }
   .acciones { display:flex; gap:8px; justify-content:flex-end; margin-top:14px; flex-wrap:wrap; }
   /* Opciones de aviso al publicar (solo en local). */
   .opciones-aviso { display:grid; gap:8px; margin:14px 0 4px; font-size:12.5px; }
@@ -299,19 +306,22 @@ export const prerender = true;
   .stats-tabla .num { text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
   .stats-tabla .ruta { word-break:break-word; }
   .stats-tabla .fuente { overflow-wrap:normal; }
-  .cf-fuente { overflow-wrap:anywhere; }
-  .cf-fuentes { display:inline; padding:0; border:0; background:transparent; box-shadow:none; color:inherit; font:inherit; text-transform:none; letter-spacing:0; text-align:left; cursor:pointer; }
-  .cf-fuentes:hover { background:transparent; color:var(--tinta); transform:none; box-shadow:none; }
+  .cf-fuente { display:inline-block; margin-right:2px; overflow-wrap:anywhere; }
   .stats-tabla .progress { height:8px; min-width:70px; background:#ddd; border:1px solid #000; }
   .stats-tabla .progress span { display:block; height:100%; background:var(--acento); }
   .stats-tabla .media { white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .stats-th-orden { display:block; width:100%; padding:0; border:0; background:transparent; box-shadow:none; color:inherit; font:inherit; text-transform:inherit; letter-spacing:inherit; text-align:left; cursor:pointer; white-space:nowrap; }
+  .stats-th-orden:hover { background:transparent; color:inherit; transform:none; box-shadow:none; }
+  .stats-tabla th.num .stats-th-orden { text-align:right; }
+  .stats-flecha { font-size:8px; }
   .stats-tabla--rutas-cf { table-layout:fixed; }
   .stats-tabla--rutas-cf th:nth-child(2) { width:60px; }
   .stats-tabla--rutas-cf th:nth-child(3) { width:60px; }
   .stats-tabla--rutas-cf th:nth-child(4) { width:70px; }
-  .stats-tabla--rutas-cf th:nth-child(5) { width:220px; }
+  .stats-tabla--rutas-cf th:nth-child(5) { width:260px; }
   .stats-tabla--rutas-cf th:nth-child(6) { width:76px; }
   .stats-buscar { padding:8px 10px; background:#fafafa; border-bottom:1px solid #ccc; }
+  .stats-buscar--excluir input { border-style:dashed; }
   .stats-buscar input { font-size:12px; padding:8px 34px 8px 32px; }
   .stats-buscar .lupa { left:10px; width:13px; height:13px; }
   .stats-buscar .limpiar { width:24px; height:24px; font-size:11px; }
@@ -433,12 +443,11 @@ export const prerender = true;
     .stat-valor { font-size:1.45rem; }
     .stats-cab h2, .comentarios-cab h2 { font-size:1.4rem; }
     .stats-tabla .progreso { display:none; }
-    /* D1 total y páginas siguen en el detalle de la ruta. */
+    /* D1 total y visitas siguen en el detalle de la ruta. */
     .stats-tabla .cf-d1 { display:none; }
     .stats-tabla--rutas-cf th:nth-child(3), .stats-tabla--rutas-cf td:nth-child(3) { display:none; }
-    .stats-tabla--rutas-cf th:nth-child(5) { width:170px; }
-    /* El botón Fuentes sobra: la celda de fuentes abre el detalle. */
-    .stats-tabla--rutas-cf th:nth-child(6), .stats-tabla--rutas-cf td:nth-child(6) { display:none; }
+    .stats-tabla--rutas-cf th:nth-child(5) { width:140px; }
+    .stats-tabla--rutas-cf th:nth-child(6) { width:58px; }
     .stats-tabla th, .stats-tabla td { padding:7px 8px; font-size:10.5px; }
     /* En iOS, menos de 16px hace zoom al enfocar. */
     .stats-buscar input { font-size:16px; }
@@ -528,6 +537,7 @@ export const prerender = true;
       </summary>
       <div class="datos-grid" id="f-datos">
         <div class="campo"><label>Pieza</label><input name="pieza" required></div>
+        <div class="campo"><label>Modalidad</label><select name="modalidad"><option value="">—</option><option>Comparsa</option><option>Chirigota</option><option>Coro</option><option>Cuarteto</option><option>Chirigota callejera</option></select></div>
         <div class="campo"><label>Agrupación</label><input name="agrupacion" required></div>
         <div class="campo"><label>Año</label><input name="year" inputmode="numeric" required></div>
         <div class="campo"><label>Cejilla</label><input name="cejilla" inputmode="numeric" placeholder="—"></div>
@@ -536,7 +546,7 @@ export const prerender = true;
         <div class="campo"><label>Título de la letra</label><input name="letraTitulo" placeholder="solo letras alternativas"></div>
         <div class="campo"><label>Frase clave</label><input name="fraseClave"></div>
         <div class="campo ancho"><label>Imagen</label><input name="img" required placeholder="https://…"></div>
-        <div class="campo ancho"><label>Vídeo (embed)</label><input name="video" placeholder="https://www.youtube.com/embed/…"></div>
+        <div class="campo ancho"><label>Vídeo de YouTube</label><input name="video" placeholder="https://www.youtube.com/watch?v=…"></div>
         <div class="campo"><label>Destacada</label><input name="destacada" inputmode="numeric" placeholder="orden en portada"></div>
         <div class="campo"><label>Recomendada</label><select name="recomendada"><option value="">—</option><option value="true">Sí</option><option value="false">No</option></select></div>
         <div class="campo"><label>Cover</label><input name="cover" placeholder="opcional"></div>
@@ -630,20 +640,22 @@ export const prerender = true;
 <dialog id="dlg-nueva">
   <form id="f-nueva">
     <h2 id="dlg-nueva-titulo">Nueva ficha</h2>
-    <p class="nota" id="dlg-nueva-nota">Se crea como borrador con el bloque de la ficha base. Después cambias la letra y mueves los acordes.</p>
+    <p class="nota" id="dlg-nueva-nota">Se crea como borrador. Si hay otra ficha de la misma agrupación, copia sus acordes como base. Después cambias la letra y mueves lo que haga falta.</p>
     <input type="hidden" name="clon" value="">
     <div class="dos">
       <div class="campo"><label>Pieza</label><input name="pieza" value="Pasodoble" required></div>
+      <div class="campo"><label>Modalidad</label><select name="modalidad"><option value="">—</option><option>Comparsa</option><option>Chirigota</option><option>Coro</option><option>Cuarteto</option><option>Chirigota callejera</option></select></div>
       <div class="campo"><label>Agrupación</label><input name="agrupacion" required></div>
       <div class="campo"><label>Año</label><input name="year" inputmode="numeric" required></div>
       <div class="campo"><label>Cejilla</label><input name="cejilla" inputmode="numeric" placeholder="opcional"></div>
       <div class="campo"><label>Música</label><input name="musica"></div>
       <div class="campo"><label>Letra</label><input name="letra"></div>
       <div class="campo"><label>Título de la letra</label><input name="letraTitulo"></div>
-      <div class="campo"><label>Vídeo (embed)</label><input name="video"></div>
+      <div class="campo"><label>Vídeo de YouTube</label><input name="video" placeholder="https://www.youtube.com/watch?v=…"></div>
       <div class="campo"><label>Imagen</label><input name="img"></div>
-      <div class="campo"><label>Ficha base (de la que copiar acordes)</label><input name="base" list="slugs" placeholder="slug"></div>
+      <div class="campo"><label>Ficha de referencia (opcional)</label><input name="base" list="slugs" placeholder="se elige sola si hay una"></div>
     </div>
+    <p class="nota" id="nueva-base"></p>
     <div class="campo"><label>Frase clave</label><input name="fraseClave"></div>
     <datalist id="slugs"></datalist>
     <div class="acciones">
