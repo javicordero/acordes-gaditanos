@@ -11,8 +11,11 @@ export interface Props {
 
 const { variant = 'compact', class: className, messageC, listStyle = 'inline' } = Astro.props
 
+// La colección vive en `src/content/donaciones/datos.md`. Si el archivo no está
+// (o Astro aún no la ha cargado), `getCollection` devuelve []: se cae al estado
+// vacío en vez de romper la página entera con un `datos.data` sobre undefined.
 const [datos] = await getCollection('donaciones')
-const donaciones = [...datos.data.donaciones]
+const donaciones = [...(datos?.data.donaciones ?? [])]
   .sort((a, b) => b.fecha.split('/').reverse().join('').localeCompare(a.fecha.split('/').reverse().join('')))
 
 const totalDonantes = donaciones.length
