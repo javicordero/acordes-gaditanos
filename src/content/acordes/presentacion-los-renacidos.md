@@ -8,7 +8,8 @@ modalidad: Comparsa
 video: 'https://www.youtube.com/embed/W9u3qLBbgmc'
 img: 'https://static.grupojoly.com/clip/12aee06b-028a-4ff3-9173-bdf4f9a954b8_facebook-aspect-ratio_default_0.jpg'
 fraseClave: Que larga ha sido la noche
-date: "04/01/2027"
+date: "09/11/2026"
+cejilla: 7
 ---
 <pre>
 <a>Lam</a>                   <a>Sol</a>
@@ -59,7 +60,7 @@ Ave fénix abre las alas
 Que está mi pueblo encendido
  <a>Mi7</a>
 Agárrame de tu mano
-<a>Lam7</a>        <a>Lammaj7</a> <a>Lam7</a>         <a>Lam6</a>    <a>Fa6add9</a>  <a>Fa</a>
+<a>Lam7</a>        <a>Lammaj7</a> <a>Lam7</a>         <a data-postura="x 0 4 2 1 0">Lam6</a>    <a>Fa6add9</a>  <a>Fa</a>
 Deja que le meta    fuego a tus cinco sentidos
                        <a>Mi7</a>
 Que aquí están los renacidos
