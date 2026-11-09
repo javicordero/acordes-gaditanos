@@ -40,3 +40,24 @@
 /manifest.webmanifest
   Content-Type: application/manifest+json
   Cache-Control: public, max-age=3600
+
+# Assets de Astro/Vite: el nombre lleva el hash del contenido
+# (`index.CJLedVT3.css`), así que un año `immutable` es seguro: si cambia el
+# archivo, cambia la URL. Antes iban con `max-age=0` y cada navegación
+# revalidaba los CSS del <head> (render-blocking) y los JS.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Imágenes propias (carteles, logo). El nombre no lleva hash: si se reemplaza
+# una, renombrarla o esperar la caducidad.
+/img/*
+  Cache-Control: public, max-age=604800
+
+# Estáticos de la raíz (og-image, favicons, QR). Los iconos de la PWA y el
+# badge tienen su regla propia más arriba (un año, immutable) y ganan por ser
+# más específicos.
+/*.png
+/*.jpg
+/*.ico
+/*.svg
+  Cache-Control: public, max-age=604800

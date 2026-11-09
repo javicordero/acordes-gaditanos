@@ -51,6 +51,7 @@
     "auditar:fachada": "node scripts/auditar-videos-fachada.mjs",
     "auditar:comentarios": "node scripts/auditar-comentarios.mjs",
     "auditar:docs": "node scripts/auditar-docs.mjs",
+    "auditar:cabeceras": "node scripts/auditar-cabeceras.mjs",
     "auditar:alertas-letra-titulo": "node scripts/auditar-alertas-letra-titulo.mjs",
     "auditar:hubs": "node --experimental-strip-types scripts/auditar-hubs.ts",
     "auditar:contenido": "node --experimental-strip-types scripts/auditar-contenido.ts",

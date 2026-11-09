@@ -53,5 +53,12 @@ Los anuncios de AdSense (y la medición de GA) **no se cargan** en los hosts de 
 - `npm run subset:bodoni` regenera el subset (necesita Python 3 y `fonttools` + `brotli`). El texto vive en `scripts/subset-bodoni.mjs`; si cambia el rótulo, hay que actualizarlo y **renombrar** el archivo, porque `/fonts/*` se cachea un año.
 - **Roboto Mono**: un solo woff2 variable sirve los pesos 400 y 700; el resto se sintetiza.
 
+## Cabeceras y caché
+- **Seguridad (todo el sitio)**: `netlify.toml` (`[[headers]] for = "/*"`) manda `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY` (corta el clickjacking sobre anuncios y botones de donación), `Referrer-Policy: strict-origin-when-cross-origin` y `Permissions-Policy` (cámara, micro, geolocalización, pago…). No se restringen `autoplay` ni `fullscreen` porque los usa el iframe de YouTube.
+- **`/admin/`**: conserva `X-Robots-Tag: noindex, nofollow` y su CSP estricta (`script-src 'self'`…). Las cabeceras comunes **no se repiten** en su bloque: las hereda de `/*` y repetirlas las duplicaría. No hay CSP global; solo el panel la tiene aplicada.
+- **Caché** (`public/_headers`): un año `immutable` para `/_astro/*` (el nombre lleva el hash del contenido, así que un archivo nuevo tiene URL nueva), 7 días para `/img/*` y los estáticos de la raíz (`.png`, `.jpg`, `.ico`, `.svg`), un año para `/fonts/*` y los iconos de la PWA, y 1 h/día para los índices JSON. `sw.js` va siempre con `max-age=0, must-revalidate`.
+- **HTML**: se queda con el `public, max-age=0, must-revalidate` de Netlify. El CDN ya lo sirve con ETag (el 304 es un viaje rápido al edge) y el service worker hace `NetworkFirst`; no se pone `stale-while-revalidate` porque choca con `must-revalidate` y obligaría a excluir a mano todos los estáticos.
+- **Auditor**: `npm run auditar:cabeceras [-- --url https://…]` comprueba contra el sitio desplegado las cabeceras, el `immutable` de `_astro`, `sw.js` y el panel. En local no se pueden probar: `astro preview` no lee `_headers` ni `netlify.toml`.
+
 ## PostCSS
 `postcss.config.cjs` usa `postcss-nesting` (anidamiento CSS nativo) y `postcss-preset-env` (stage 1). Sin Tailwind.

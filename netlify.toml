@@ -103,13 +103,26 @@
   status = 301
   force = true
 
+# Cabeceras de seguridad comunes a todo el sitio. Las de caché viven en
+# `public/_headers` porque dependen del tipo de archivo.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    # Impide meter la web en un iframe ajeno: con AdSense y los botones de
+    # donación, el clickjacking es el escenario real (clics falsos).
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    # APIs que ningún iframe (anuncios incluidos) necesita. No se tocan
+    # autoplay ni fullscreen: los usa el iframe de YouTube.
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), display-capture=(), midi=(), serial=(), bluetooth=()"
+
+# El panel conserva su CSP estricta y el noindex. Las cabeceras comunes ya
+# llegan desde la regla `/*`: no repetirlas aquí (Netlify las duplicaría).
 [[headers]]
   for = "/admin/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "DENY"
-    Referrer-Policy = "no-referrer"
     Content-Security-Policy = "default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
 
 [[headers]]
