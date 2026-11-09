@@ -8,59 +8,50 @@ en el PC del propietario.
 ## Arquitectura
 
 ```text
-Móvil (PWA en el navegador)  ─┐
-                              ├─► Tailscale (red privada, WireGuard)
-Móvil (app OpenCode Mobile)  ─┘        │
-                                       ▼
-                        tailscaled (serve, HTTPS con certificado)
-                                       │
-                                       ▼
-                        opencode serve en 127.0.0.1:4096
-                                     (solo loopback)
+Móvil (app oficial de Android)  ──►  OpenTunnel (HTTPS público)  ──►  servicio compartido
+                                                                       127.0.0.1:4096
 ```
 
-- **Tailscale** crea la red privada. No hay puertos abiertos en el router ni nada
-  expuesto a internet: se llega solo desde equipos de la misma tailnet.
-- **`tailscale serve`** publica `https://desktop-tra3lr8.tail21060a.ts.net/` dentro de
-  la tailnet y hace de proxy al servidor local. Pone el certificado válido, así que el
-  navegador lo trata como **origen seguro** (PWA instalable, portapapeles, cámara y QR).
-- **`opencode serve`** es el servidor de verdad: guarda las sesiones, habla con los
-  modelos y ejecuta las herramientas. Es el que hay que tener corriendo.
+- **App oficial**: *OpenCode* para Android (`ai.opencode.mobilecode`, Anomaly
+  Innovations). Es un mando remoto: las sesiones y el trabajo siguen en el PC.
+- **OpenTunnel**: túnel que OpenCode levanta con `opencode pair --remote`. Da una URL
+  HTTPS pública sin abrir puertos en el router. El tráfico va cifrado de extremo a
+  extremo y el acceso sigue pidiendo la contraseña del servidor.
+- **Servicio compartido**: `opencode service` es el servidor de verdad. Guarda las
+  sesiones, habla con los modelos y ejecuta las herramientas. Escucha **solo** en
+  `127.0.0.1:4096`.
+- **Tailscale** (solo para desarrollo): sigue instalado y conectado, pero ya no publica
+  nada con `serve`. Se usa únicamente para abrir `http://100.108.147.80:4321` desde el
+  móvil fuera de casa.
 
-## Por qué el servidor escucha en `127.0.0.1` y no en la IP de Tailscale
+## Por qué el servidor escucha en `127.0.0.1`
 
-Primero se probó con `--hostname 100.108.147.80` (solo la IP de la tailnet). Funciona
-para conectar directo, pero **`tailscale serve` no puede hacer de proxy a la IP de
-Tailscale del propio equipo**: el tráfico se muerde la cola y devuelve **502**.
-
-Se comprobó con dos servidores de prueba: contra `100.108.147.80` daba timeout, contra
-`127.0.0.1` respondía al instante. Por eso el backend es loopback y **Tailscale es la
-única puerta**. Efecto secundario bueno: el puerto 4096 ya no está abierto ni en la red
-local.
+No hace falta exponerlo en la red local: el móvil entra por el túnel y el escritorio
+por loopback. Así el puerto 4096 no está abierto ni en la red local ni en internet.
+El emparejamiento (`pair`) **exige el servicio compartido**; un `opencode serve`
+suelto no sirve para el QR.
 
 ## Lo que vive fuera del repositorio
 
 | Qué | Dónde |
 | --- | --- |
-| Script que arranca el servidor | `C:\Users\Usuario\.opencode\iniciar-servidor.ps1` |
+| Script que arranca el servicio | `C:\Users\Usuario\.opencode\iniciar-servidor.ps1` |
 | Contraseña del servidor | `C:\Users\Usuario\.opencode\servidor-password.txt` (ACL solo para el usuario) |
 | Arranque automático | `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\OpenCode Server.vbs` |
-| Registro del servidor | `%TEMP%\opencode-serve.log` |
-| Tailscale | Servicio de Windows `Tailscale` (Automático) |
+| Registro del servicio | `%TEMP%\opencode-serve.log` |
+| Script de reinicio + QR | `C:\Users\Usuario\.opencode\reiniciar-y-emparejar.ps1` |
+| Log del reinicio | `%TEMP%\opencode-reinicio.log` |
+| Binario | `C:\Users\Usuario\AppData\Local\opencode\bin\opencode.exe` (copia vieja: `opencode-2.0.22.exe`) |
 
 **La contraseña no se escribe aquí ni en ningún archivo versionado.** El script la lee
-del `.txt` y la pasa por la variable `OPENCODE_PASSWORD` (en V2 ese es el nombre; el
-`OPENCODE_SERVER_PASSWORD` de V1 también vale). El usuario de Basic auth es **siempre
-`opencode`**; solo se puede cambiar la contraseña.
+del `.txt` y la aplica con `opencode service set password`. El usuario de Basic auth es
+**siempre `opencode`**.
 
 ## Arranque automático
 
-- **Tailscale**: servicio de Windows en `Automatic`. Arranca con el sistema.
-- **Servidor de OpenCode**: el `.vbs` de la carpeta Inicio lanza
-  `iniciar-servidor.ps1` **al iniciar sesión** (oculto, sin ventana, sin UAC). Si ya hay
-  algo escuchando en el puerto 4096, no arranca un segundo.
-- **`serve`**: la configuración de `tailscale serve --bg` la guarda Tailscale y se
-  reaplica al arrancar el servicio.
+- El `.vbs` de la carpeta Inicio lanza `iniciar-servidor.ps1` **al iniciar sesión**
+  (oculto, sin ventana, sin UAC). El script reaplica hostname, puerto y contraseña y
+  ejecuta `opencode service start`.
 - **Suspensión**: desactivada con el PC enchufado (`powercfg /change standby-timeout-ac 0`);
   con batería sigue a los 10 minutos.
 
@@ -71,69 +62,73 @@ de tareas con permisos de administrador.
 ## Comprobar que está todo vivo
 
 ```powershell
-Get-Service Tailscale                                  # debe estar Running
+opencode service status                                # debe dar http://127.0.0.1:4096
+opencode service get                                   # hostname, port, remote
 Get-NetTCPConnection -State Listen -LocalPort 4096     # debe escuchar en 127.0.0.1
-& "C:\Program Files\Tailscale\tailscale.exe" serve status
 ```
-
-Y la prueba real, desde cualquier equipo de la tailnet:
-
-```powershell
-curl -s -o NUL -w "%{http_code}`n" https://desktop-tra3lr8.tail21060a.ts.net/api/info
-```
-
-- **401** → el servidor responde y exige contraseña (correcto).
-- **200** → has mandado la contraseña.
-- **502** → `serve` no llega al backend: mira que el servidor escuche en `127.0.0.1:4096`.
 
 ## Cómo se usa
 
-- **PWA (recomendado)**: abrir `https://desktop-tra3lr8.tail21060a.ts.net/` en el
-  navegador del móvil, meter dirección y contraseña y usar **Instalar aplicación**.
-  La sesión del navegador dura 30 días.
-- **App OpenCode Mobile** (`cc.agentlabs.opencode`, no oficial): crear la conexión de
-  tipo **Tunnel** con esa misma URL https. La conexión por IP (`http://100.x.x.x:4096`)
-  ya no vale, porque el servidor es loopback.
-- **OpenCode Desktop**: *Settings → Servers → Add server* con la misma URL y contraseña.
-- **Emparejamiento sin teclear la contraseña**: `opencode pair --url https://...` genera
-  un enlace de un solo uso (5 min) y un QR. Hace falta `OPENCODE_PASSWORD` en el entorno.
+- **Móvil**: app oficial. Se conecta escaneando el QR de `opencode pair --remote`.
+  La sesión dura 30 días; cambiar la contraseña echa a todos los dispositivos.
+- **Escritorio**: abrir `http://127.0.0.1:4096` en el navegador, o usar *OpenCode
+  Desktop* → *Settings → Servers* con esa URL y la contraseña.
+- **PWA**: se puede instalar desde la URL del túnel, pero al ser una URL larga es más
+  cómodo usar la app.
 
-## Notificaciones en la PWA
+## Emparejar
 
-La interfaz tiene **Ajustes → pestaña «Notificaciones»**, pero conviene saber qué hace
-por dentro: usa la API local (`new Notification(...)`) y solo dispara cuando
-`document.visibilityState !== "visible"` o la página no tiene el foco. En los 51
-archivos JS del servidor **no hay `pushManager` ni `showNotification()`**, así que:
+```powershell
+opencode pair --remote          # en una terminal interactiva
+opencode pair --remote --yes    # sin preguntar (scripts)
+```
 
-- **No hay Web Push**: con la PWA cerrada no llega nada.
-- **En Android probablemente no salta ninguna**, porque Chrome para Android no permite
-  `new Notification()`; en móvil solo funciona `showNotification()` desde un service
-  worker, que aquí no se usa. En el navegador de escritorio sí funciona.
-- Mientras no se implemente Web Push, la vía fiable es abrir la PWA: la lista marca las
-  sesiones con cambios sin ver (`unseenCount`).
+Imprime un enlace de un solo uso y un QR que **caducan a los 5 minutos**. Para
+desactivar el acceso remoto: `opencode service set remote false`.
+
+## Seguridad
+
+El túnel deja el servidor accesible desde internet: **la contraseña es la única
+barrera**. Tratarlo como una terminal abierta en el PC. Cambiar la contraseña:
+
+```powershell
+opencode service set password '<nueva>'
+opencode service restart
+```
+
+Y actualizar `servidor-password.txt` para que el arranque automático no la pise.
+
+## Tailscale: solo para el servidor de desarrollo
+
+El acceso de OpenCode ya no pasa por aquí (va por OpenTunnel), pero Tailscale se queda
+para una cosa: abrir el servidor de desarrollo del sitio desde el móvil fuera de casa.
+
+- `tailscale serve` está **vacío** (se borró): no se publica ni el 4096 ni el 4321.
+- El acceso es directo a la IP de la tailnet: `http://100.108.147.80:4321`, con
+  `npm run dev` en marcha (Astro escucha en todas las interfaces).
+- En casa y en la misma Wi-Fi no hace falta: `http://192.168.0.165:4321`.
+- Si algún día se quiere la vía antigua para el 4096:
+  `tailscale serve --bg http://127.0.0.1:4096`.
+
+Los lanzadores `Desactivar Tailscale.cmd` y `Desinstalar Tailscale.cmd` de
+`C:\Users\Usuario\.opencode\` siguen ahí por si se decide retirarlo, pero **no hay que
+ejecutarlos** mientras se use el 4321 desde fuera.
 
 ## Problemas conocidos
 
-- **La app móvil da errores raros**: es un cliente de la **API V1**. OpenCode V2 cambió
-  el contrato del servidor, así que algunas rutas devuelven 404 (se vio con
-  `GET /api/fs/list → 404`). Si falla, usar la PWA del navegador, que es la interfaz
-  oficial de V2.
-- **401**: falta la contraseña o es incorrecta. La app y la PWA muestran 401 como
-  «connection failed».
-- **502 en HTTPS**: el backend no está escuchando en `127.0.0.1:4096`.
-- **No conecta fuera de casa**: Tailscale apagado en el móvil, o clave del PC caducada.
-  Desactivar la caducidad en <https://login.tailscale.com/admin/machines> → `...` →
-  *Disable key expiry*.
-- **`tailscale serve` da «Serve is not enabled on your tailnet»**: hay que habilitarlo
-  una vez en `https://login.tailscale.com/f/serve`. El HTTPS del dominio `.ts.net` se
-  activa en el panel → **DNS** → *HTTPS Certificates*.
-
-## Si cambia el nombre o la IP
-
-El nombre `desktop-tra3lr8.tail21060a.ts.net` es el del equipo en Tailscale. Si se
-renombra la máquina o se reinstala Tailscale, cambia: hay que repetir
-`tailscale serve --bg http://127.0.0.1:4096` y actualizar la URL en la PWA, la app y
-Desktop. La contraseña no cambia.
+- **El QR no aparece**: el servidor está parado o escuchando fuera de loopback. Comprobar
+  `opencode service status` y reiniciar.
+- **401 / connection failed**: falta la contraseña o no coincide. Cambiarla y reiniciar
+  el servicio.
+- **El túnel deja de funcionar**: acceso remoto apagado
+  (`opencode service set remote false`). Volver a emparejar.
+- **El QR caduca**: dura 5 minutos y sirve una sola vez; generar otro.
+- **Sesión móvil caducada**: dura 30 días. Volver a emparejar.
+- **Tras actualizar OpenCode**: reiniciar el servicio para que use el binario nuevo
+  (`opencode service restart` o el `.vbs`).
+- **El 4321 no responde fuera de casa**: Tailscale caído en el PC (`tailscale up`) o en
+  el móvil, o clave del equipo caducada. Desactivar la caducidad en
+  <https://login.tailscale.com/admin/machines> → `...` → *Disable key expiry*.
 
 > El acceso remoto equivale a una terminal en el PC: quien entre puede ejecutar
 > comandos y editar archivos. Tratarlo como tal.

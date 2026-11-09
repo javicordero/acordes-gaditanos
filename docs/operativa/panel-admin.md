@@ -91,7 +91,11 @@ El mismo `<pre>` en texto que el revisor local, con los acordes coloreados y sug
   Editor no cambie de ancho.
 - El panel **Datos** (frontmatter editable) se pliega al tocar el textarea y la cabecera de
   vistas se oculta al editar. Editar los datos **no cambia el slug**: el archivo conserva su
-  nombre y su URL.
+  nombre y su URL. Incluye **Modalidad** como desplegable (Comparsa, Chirigota, Coro,
+  Cuarteto, Chirigota callejera); una variante antigua se conserva como opción temporal.
+  En **Música** y **Letra** van apareciendo los autores que ya existen en el cancionero
+  mientras se escribe, también después de una coma (↑/↓ y Enter para elegir). **Agrupación**
+  sugiere igualmente las agrupaciones ya existentes.
 - La columna 55 se marca; lo que la pasa sale en rojo. El botón **Ajustar/Ampliar** reduce la
   letra sin partir líneas. En móvil, las dos columnas son pestañas.
 
@@ -181,15 +185,35 @@ mueve archivos sin rastrear; no toca contenido, no publica y no hace commit.
 proyecto; en producción, en una rama `estudio/<slug>` con PR de borrador. Para avanzarla:
 **Revisado ✓** (y en local ya queda en `acordes`, lista para **Publicar**).
 
+- El **slug** se genera solo a partir de pieza, agrupación y título de letra; no hay que
+  escribirlo. Después no cambia aunque se editen esos datos (conserva la URL).
+- **Modalidad** es un desplegable con las cinco modalidades canónicas, también en la pestaña
+  **Datos** de una ficha ya abierta.
+- **Música** y **Letra** sugieren los autores que ya existen en el cancionero al escribir,
+  aunque el campo lleve varios separados por comas. **Agrupación** sugiere también las
+  agrupaciones existentes, en Nueva ficha y en Datos.
+- El campo **Vídeo de YouTube** acepta el enlace normal (`watch?v=`, `youtu.be`, `shorts`…) y
+  al guardar lo convierte a la URL de embed que se guarda en el frontmatter.
+- La **ficha de referencia** se elige sola con una ficha de la misma agrupación (prefiere el
+  mismo año y la misma pieza, sin título de letra). Si la agrupación ya existe, de esa ficha
+  toma el **año, la modalidad, la imagen, los autores y el vídeo**; **no** copia el bloque de la letra, la
+  cejilla, la frase clave ni el título de otra letra. Si se elige una ficha a mano, sí se
+  copia su bloque de acordes. Sin referencia, la ficha nace vacía y se pega la letra en el
+  editor.
+
 ## Estadísticas
 
 `/admin/?vista=stats` pide `/admin/api/stats` (proxy del worker de Cloudflare,
 D1). El contador empieza el **19/01/2026**: no hay datos anteriores.
 
 - **Rutas más visitadas** tiene un buscador que filtra todas las rutas por
-  substring, sin mayúsculas ni tildes (`glosa` encuentra `/glosario/…`). Sin
-  texto enseña el top 50; con texto, todas las coincidencias (hasta 300) y el
-  total de visitas de esas coincidencias.
+  substring, sin mayúsculas ni tildes (`glosa` encuentra `/glosario/…`), y un
+  segundo campo para **excluir** (`acordes` quita las rutas de fichas y deja
+  hubs, autores, glosario…). Sin texto enseña las **100 primeras** (por
+  visitas); con filtros, todas las coincidencias (hasta 300) y el total de
+  visitas. Las cabeceras **Ruta**, **Visitas** y **Media/día** ordenan al
+  pincharlas: Media permite ver qué rutas rinden más y menos por día desde el
+  alta.
 - **Media/día** = visitas / días desde el alta. El alta es la fecha del commit
   que añadió el archivo (`git log --diff-filter=A`), nunca el campo `date` del
   frontmatter. Si el alta es anterior al contador, la media empieza el
@@ -217,10 +241,11 @@ llega nunca al navegador.
   Read**), `CLOUDFLARE_ACCOUNT_ID` y `CLOUDFLARE_WA_SITE_TAG`.
 - Vistas: **Hoy** (00:00 Europe/Madrid → ahora, la que abre por defecto), 7, 30 y 90 días;
   rutas con el mismo buscador, fuentes, diario, países y dispositivos. La tabla
-  de rutas lleva una columna **Fuente** con las **3 principales en línea**,
-  ordenadas de mayor a menor número de páginas
-  (`(interno) (358) (directo) (88) Google (56)`), sin abrir nada. Al pinchar la
-  celda (en móvil) o **Fuentes** se abre el detalle completo.
+  de rutas muestra **Páginas** en la segunda columna y una columna **Fuente**
+  con las **3 principales en línea**, ordenadas de mayor a menor número de
+  páginas y con formato `(Google - 55) (blog - 3) (directo - 1)`, sin abrir
+  nada. La última columna **Fuentes** abre el detalle completo en escritorio y
+  móvil.
 - Se pide con `?vista=hoy&limite=3000`, `?vista=resumen&dias=30&limite=3000` o
   `?vista=ruta&ruta=/acordes/x/&dias=30` (`&hoy=1` para el detalle de hoy). La
   respuesta se cachea 10 minutos.
