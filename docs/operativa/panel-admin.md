@@ -136,6 +136,12 @@ Al pulsar **Publicar** se separan las dos fuentes de la pestaña:
   endpoint). Un trabajo por tanda: fechas consecutivas para las nuevas, un commit por ficha,
   un push y los avisos al final.
 
+La fecha de alta de una ficha publicada desde el panel **no es la de hoy**: `estudio.js`
+calcula la siguiente a la última publicada con el `date` de `/indice-busqueda.json` y la
+manda en el cuerpo de `/publicar`; `publicar.mjs` la usa y solo cae en la fecha de hoy si no
+llega (cliente antiguo). Así la ficha no se queda por detrás de las últimas y sale en
+novedades. No volver a poner `hoy()` directamente en el endpoint.
+
 Las casillas **Sin tuit** y **Sin etiquetar** valen para todo el lote. **Copiar avisos** pide
 el texto de cada ficha publicada y los junta en uno solo, separados por una línea.
 
@@ -246,6 +252,13 @@ llega nunca al navegador.
   páginas y con formato `(Google - 55) (blog - 3) (directo - 1)`, sin abrir
   nada. La última columna **Fuentes** abre el detalle completo en escritorio y
   móvil.
+- La tabla de **Países** sigue el mismo patrón: **Páginas**, **Visitas** y una
+  columna con las **3 páginas más vistas desde ese país** en formato
+  `(/acordes/glosa/ - 12) (… - 3)` (etiqueta corta, solo el último tramo). El
+  botón **Páginas** abre el detalle del país con sus **100 páginas** más vistas,
+  con páginas y visitas del periodo. Las páginas por país se piden con una
+  consulta por país (aliases de GraphQL): con una sola agrupación se las comía
+  el país con más tráfico y los demás se quedaban sin datos.
 - Se pide con `?vista=hoy&limite=3000`, `?vista=resumen&dias=30&limite=3000` o
   `?vista=ruta&ruta=/acordes/x/&dias=30` (`&hoy=1` para el detalle de hoy). La
   respuesta se cachea 10 minutos.
@@ -320,8 +333,8 @@ sesión): allí solo se publica (PR) y el texto queda para copiar.
   `--todas` incluye las de publicar (eso publica y avisa). Necesita `GITHUB_TOKEN` en `.env`
   (permiso `public_repo` o `repo`) o `gh` autenticado. Después, `git pull`.
 - `npm run promover -- --slug <slug>[,<slug>] | --todos [--dry]` pasa un borrador de
-  `borradores` a `acordes`, le pone la fecha del día y borra el borrador. Después,
-  `auditar:pre`, `auditar:acordes` y el commit con `subir-acorde`.
+  `borradores` a `acordes`, le pone la fecha siguiente a la última publicada y borra el
+  borrador. Después, `auditar:pre`, `auditar:acordes` y el commit con `subir-acorde`.
 
 ## Comprobarlo
 

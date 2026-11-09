@@ -1,5 +1,5 @@
 // Pasa una ficha de la colección de borradores (`src/content/borradores`) a la buena
-// (`acordes`), le pone la fecha del día y borra el borrador.
+// (`acordes`), le pone la fecha siguiente a la última publicada y borra el borrador.
 //
 // Uso:
 //   npm run promover -- --slug <slug>[,<slug>]
@@ -8,15 +8,14 @@
 //
 // Después, lo normal es `npm run auditar:pre`, `npm run auditar:acordes` y el
 // commit con la skill `subir-acorde`.
-//
-// Ojo: la fecha que pone es la de hoy. Si vas a publicar varias, `subir-acorde`
-// la ajusta al día siguiente del último publicado.
 
 import { existsSync, readFileSync, writeFileSync, unlinkSync, readdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 
 const ORIGEN = 'src/content/borradores';
 const DESTINO = 'src/content/acordes';
+const CARPETA = DESTINO;
 
 const args = process.argv.slice(2);
 const iSlug = args.indexOf('--slug');
@@ -32,11 +31,36 @@ if (!slugs.length) {
   process.exit(1);
 }
 
-const hoy = () => {
-  const d = new Date();
-  const p = (n) => String(n).padStart(2, '0');
-  return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()}`;
-};
+/** Última fecha publicada en HEAD (tolera días inválidos como 31/09). */
+function ultimaFecha() {
+  let salida = '';
+  try {
+    salida = execFileSync('git', ['grep', '-h', '^date:', 'HEAD', '--', CARPETA], {
+      cwd: process.cwd(),
+      encoding: 'utf8',
+      maxBuffer: 8 * 1024 * 1024,
+    });
+  } catch {
+    return new Date();
+  }
+  let max = 0;
+  for (const linea of salida.split('\n')) {
+    const m = /date:\s*["']?(\d{1,2})[/-](\d{1,2})[/-](\d{4})/.exec(linea);
+    if (!m) continue;
+    const clave = Number(m[3]) * 10000 + Number(m[2]) * 100 + Number(m[1]);
+    if (clave > max) max = clave;
+  }
+  if (!max) return new Date();
+  return new Date(Math.floor(max / 10000), Math.floor((max % 10000) / 100) - 1, max % 100);
+}
+
+const dos = (n) => String(n).padStart(2, '0');
+const formatear = (d) => `${dos(d.getDate())}/${dos(d.getMonth() + 1)}/${d.getFullYear()}`;
+const base = ultimaFecha();
+let contador = 0;
+
+// Fechas consecutivas en orden alfabético, como `subir-acorde`.
+slugs.sort((a, b) => a.localeCompare(b));
 
 let hechas = 0;
 for (const slug of slugs) {
@@ -51,16 +75,19 @@ for (const slug of slugs) {
     continue;
   }
   const crlf = md.includes('\r\n');
-const plano = crlf ? md.replace(/\r\n/g, '\n') : md;
-const conFecha = plano.replace(/^date:[^\n]*/m, `date: "${hoy()}"`);
+  const plano = crlf ? md.replace(/\r\n/g, '\n') : md;
+  const fecha = formatear(new Date(base.getFullYear(), base.getMonth(), base.getDate() + contador + 1));
+  const conFecha = plano.replace(/^date:[^\n]*/m, `date: "${fecha}"`);
   if (conFecha === plano) console.error(`! ${slug}: no tenía campo date; se queda como está`);
 
   if (dry) {
-    console.log(`· ${slug}: se movería a ${destino} con fecha ${hoy()}`);
+    console.log(`· ${slug}: se movería a ${destino} con fecha ${fecha}`);
+    contador++;
     continue;
   }
   writeFileSync(destino, crlf ? conFecha.replace(/\n/g, '\r\n') : conFecha);
   unlinkSync(origen);
+  contador++;
   hechas++;
   console.log(`✓ ${slug} → ${destino}`);
 }

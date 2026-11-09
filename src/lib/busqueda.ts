@@ -18,6 +18,8 @@ export interface EntradaIndice {
   letra: string;
   /** Título de una letra alternativa de la misma música. */
   letraTitulo?: string;
+  /** Fecha de alta (dd/MM/yyyy). La usa el panel para calcular la siguiente. */
+  date?: string;
 }
 
 export interface EntradaPreparada extends EntradaIndice {

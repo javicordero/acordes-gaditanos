@@ -20,6 +20,7 @@ export const GET: APIRoute = async () => {
       musica: acorde.data.musica || '',
       letra: acorde.data.letra || '',
       letraTitulo: acorde.data.letraTitulo || '',
+      date: acorde.data.date,
     }))
     .sort(
       (a, b) =>

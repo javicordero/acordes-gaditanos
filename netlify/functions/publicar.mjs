@@ -19,6 +19,10 @@ const hoy = () => {
   return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${d.getFullYear()}`;
 };
 
+// El panel manda la fecha siguiente (máx + 1) calculada con el índice de
+// publicadas. Si no llega (cliente antiguo), se mantiene la fecha de hoy.
+const fechaValida = (v) => /^\d{2}\/\d{2}\/\d{4}$/.test(String(v || ''));
+
 const contenido = async (token, carpeta, slug, ref) => {
   try {
     const d = await gh(`/repos/${REPO}/contents/${carpeta}/${slug}.md?ref=${encodeURIComponent(ref)}`, { token });
@@ -37,11 +41,12 @@ export default async (req) => {
   try { cuerpo = await req.json(); } catch { return json({ error: 'cuerpo inválido' }, 400); }
   const slug = String(cuerpo.slug || '').trim();
   const ramaPedida = String(cuerpo.rama || '').trim();
+  const fecha = fechaValida(cuerpo.fecha) ? String(cuerpo.fecha) : hoy();
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) return json({ error: 'slug inválido' }, 400);
 
   try {
-    // En local «publicar» es mover el archivo de borradores a acordes, con la fecha
-    // de hoy, sin PR ni ramas.
+    // En local «publicar» es mover el archivo de borradores a acordes, con la
+    // fecha siguiente que manda el panel, sin PR ni ramas.
     if (LOCAL) {
       const { readFile, writeFile, rm, mkdir } = await import('node:fs/promises');
       const { join } = await import('node:path');
@@ -52,14 +57,14 @@ export default async (req) => {
       } catch {
         return json({ error: 'ese borrador no está en el ordenador (solo en GitHub): ábrelo y guárdalo para traerlo, o haz git pull' }, 404);
       }
-      md = md.replace(/^date:[^\n]*/m, `date: "${hoy()}"`);
+      md = md.replace(/^date:[^\n]*/m, `date: "${fecha}"`);
       const destinoDir = join(process.cwd(), CARPETAS.acordes);
       await mkdir(destinoDir, { recursive: true });
       await writeFile(join(destinoDir, `${slug}.md`), md, 'utf8');
       await rm(origen, { force: true });
       const restantes = await quitarRevisionLocal(slug);
       const titulo = [campo(md, 'pieza'), campo(md, 'agrupacion'), campo(md, 'year')].filter(Boolean).join(' · ');
-      return json({ ok: true, local: true, rama: null, pr: null, titulo, slug, revision: { restantes } });
+      return json({ ok: true, local: true, rama: null, pr: null, titulo, slug, fecha, revision: { restantes } });
     }
 
     // 1. ¿Hay ya una PR abierta de esta ficha? Entonces se publica en su rama.
@@ -88,7 +93,7 @@ export default async (req) => {
     const borrador = await contenido(s.token, CARPETAS.borradores, slug, rama);
     if (!borrador) return json({ error: 'no encuentro el borrador en borradores' }, 404);
 
-    const md = borrador.md.replace(/^date:[^\n]*/m, `date: "${hoy()}"`);
+    const md = borrador.md.replace(/^date:[^\n]*/m, `date: "${fecha}"`);
     const titulo = [campo(md, 'pieza'), campo(md, 'agrupacion'), campo(md, 'year')].filter(Boolean).join(' · ');
 
     // 3. Alta en acordes y baja del borrador, en la misma rama.
@@ -143,7 +148,7 @@ export default async (req) => {
       });
     }
 
-    return json({ ok: true, rama, pr: { numero: pr.number, url: pr.html_url }, titulo, revision: { restantes } });
+    return json({ ok: true, rama, pr: { numero: pr.number, url: pr.html_url }, titulo, fecha, revision: { restantes } });
   } catch (e) {
     return json({ error: String(e.message || e) }, 502);
   }

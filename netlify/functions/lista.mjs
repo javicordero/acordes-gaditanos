@@ -32,6 +32,8 @@ const datos = (slug, md) => {
     agrupacion: campo(t, 'agrupacion'),
     year: campo(t, 'year'),
     letraTitulo: campo(t, 'letraTitulo'),
+    // La usa el panel para calcular la fecha siguiente al publicar.
+    date: campo(t, 'date'),
     incompleta: incompleta(t),
   };
 };

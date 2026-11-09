@@ -201,6 +201,32 @@ const enGit = (x) => x.zona === 'acordes' && !sinSubir(x);
 /** Ficha de `acordes` con una PR abierta: la web todavía no lleva el cambio. */
 const enPRPublicar = (x) => x.zona === 'acordes' && Boolean(x.enPR);
 
+/**
+ * Fecha de alta siguiente: un día después de la última publicada en git.
+ * Se calcula con el índice de acordes (que ya trae `date`) y se manda a
+ * `/publicar`; así el botón no usa la fecha de hoy, que puede quedar por
+ * detrás de las últimas fichas y sacarlas de novedades.
+ */
+function fechaSiguiente() {
+  const fechas = indice
+    .filter((x) => x.zona === 'acordes' && x.date)
+    .map((x) => {
+      const m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(String(x.date));
+      return m ? Date.UTC(Number(m[3]), Number(m[2]) - 1, Number(m[1])) : NaN;
+    })
+    .filter((n) => Number.isFinite(n));
+  if (!fechas.length) return hoy();
+  const d = new Date(Math.max(...fechas));
+  d.setUTCDate(d.getUTCDate() + 1);
+  const p = (n) => String(n).padStart(2, '0');
+  return p(d.getUTCDate()) + '/' + p(d.getUTCMonth() + 1) + '/' + d.getUTCFullYear();
+}
+
+/** Cuerpo de `/publicar` con la fecha siguiente ya calculada. */
+function cuerpoPublicar(slug, extra = {}) {
+  return JSON.stringify({ slug, fecha: fechaSiguiente(), ...extra });
+}
+
 /** Lo que hay que hacer con una ficha pendiente, en corto: `nueva` | `modificada` | `borrada`. */
 const tipoPendiente = (x) => (x.estado === 'sin-push' ? x.cambio || 'modificada' : x.estado);
 /** La ficha pendiente aún no está en git (no está en la web). */
@@ -2443,14 +2469,18 @@ async function revisarFicha() {
         const p = await fetch(API + '/publicar', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slug: ficha.slug }),
+          body: cuerpoPublicar(ficha.slug),
         });
         const pd = await p.json();
         if (!p.ok) throw new Error('se marcó como revisada, pero no se pudo promover: ' + (pd.error || 'error'));
         zonaFicha = 'acordes';
         $('b-publicar').hidden = true;
         const x = indice.find((i) => i.slug === ficha.slug);
-        if (x) { x.zona = 'acordes'; x.local = false; }
+        if (x) {
+          x.zona = 'acordes';
+          x.local = false;
+          if (pd.fecha) x.date = pd.fecha;
+        }
         setEstado('revisada y promovida', true);
         await refrescarPendientes();
         mostrarAviso('Guardada, marcada como revisada y promovida a acordes.' + cola +
@@ -2536,14 +2566,19 @@ async function publicar() {
     const r = await fetch(API + '/publicar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug: ficha.slug, ...(ficha.rama ? { rama: ficha.rama } : {}) }),
+      body: cuerpoPublicar(ficha.slug, ficha.rama ? { rama: ficha.rama } : {}),
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
     const md = montarMd(ficha.d.frontmatter, envolver(ta.value, ficha.d.registros, ficha.d.originales).pre);
     montarEditor(ficha.slug, md, d.pr, 'acordes', d.rama);
     const x = indice.find((i) => i.slug === ficha.slug);
-    if (x) { x.zona = 'acordes'; x.local = false; x.enPR = d.pr ? d.pr.numero : null; }
+    if (x) {
+      x.zona = 'acordes';
+      x.local = false;
+      x.enPR = d.pr ? d.pr.numero : null;
+      if (d.fecha) x.date = d.fecha;
+    }
     revision.delete(ficha.slug);
     $('b-revisado').hidden = true;
     const cola = d.revision && typeof d.revision.restantes === 'number'
@@ -2583,11 +2618,16 @@ async function publicarDesdeLista(slug, boton) {
     const r = await fetch(API + '/publicar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slug }),
+      body: cuerpoPublicar(slug),
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.error || 'no se pudo publicar');
-    if (item) { item.zona = 'acordes'; item.local = false; item.enPR = d.pr ? d.pr.numero : null; }
+    if (item) {
+      item.zona = 'acordes';
+      item.local = false;
+      item.enPR = d.pr ? d.pr.numero : null;
+      if (d.fecha) item.date = d.fecha;
+    }
     revision.delete(slug);
     if (d.local) await refrescarPendientes();
     else pintarLista();
@@ -2716,12 +2756,13 @@ async function revisarDesdeLista(slug, boton) {
       const p = await fetch(API + '/publicar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug }),
+        body: cuerpoPublicar(slug),
       });
       const pd = await p.json();
       if (!p.ok) throw new Error(pd.error || 'se marcó como revisada, pero no se pudo promover');
       item.zona = 'acordes';
       item.local = false;
+      if (pd.fecha) item.date = pd.fecha;
     }
 
     await recargarIndice();
