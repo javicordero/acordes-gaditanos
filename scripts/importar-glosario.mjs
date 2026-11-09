@@ -213,6 +213,12 @@ function posicionesManuales(etiqueta) {
   if (etiqueta === 'Dodim7/Fa') {
     return [{ trastes: [-1, -1, 4, 5, 4, 5], baseTraste: 1, cejilla: null }];
   }
+  if (etiqueta === 'Mi7/Sol#') {
+    return [{ trastes: [4, 2, 0, 1, 0, 0], baseTraste: 1, cejilla: null }];
+  }
+  if (etiqueta === 'Rem/Fa') {
+    return [{ trastes: [1, -1, -1, 2, 3, -1], baseTraste: 1, cejilla: null }];
+  }
 
   const raiz = etiqueta.replace(/(m7b5|7b5|7b9|sus9)$/, '');
   const sufijo = etiqueta.slice(raiz.length);
@@ -367,6 +373,8 @@ async function main() {
     'Fa#m7b5/Do',
     'Dom7/Mib',
     'Dodim7/Fa',
+    'Mi7/Sol#',
+    'Rem/Fa',
   );
 
   const lista = ONLY ? catalogo.filter((n) => n.includes(ONLY)) : catalogo;
@@ -482,16 +490,24 @@ async function main() {
 
   // Posiciones que abren el diagrama por defecto (el popover muestra la primera).
   const POSICIONES_PREFERIDAS = {
+    Lam6: [{ trastes: [-1, 0, 4, 2, 1, 0], baseTraste: 1, cejilla: null }],
     Sisus2: [{ trastes: [-1, 2, 4, 4, 2, 2], baseTraste: 1, cejilla: null }],
     'Re#dim7': [{ trastes: [-1, -1, 1, 2, 1, 2], baseTraste: 1, cejilla: null }],
+    'Rem/Fa': [{ trastes: [1, -1, -1, 2, 3, -1], baseTraste: 1, cejilla: null }],
+    Fa6add9: [{ trastes: [1, -1, -1, 2, 3, 3], baseTraste: 1, cejilla: null }],
   };
 
   for (const [etiqueta, preferidas] of Object.entries(POSICIONES_PREFERIDAS)) {
     const entrada = acordes[etiqueta];
     if (!entrada) continue;
-    const existentes = new Set(entrada.posiciones.map((p) => p.trastes.join(',')));
-    const nuevas = preferidas.filter((p) => !existentes.has(p.trastes.join(',')));
-    entrada.posiciones = [...nuevas, ...entrada.posiciones];
+    // Las preferidas van delante y sin duplicar, aunque LaCuerda ya las traiga.
+    const vistas = new Set();
+    entrada.posiciones = [...preferidas, ...entrada.posiciones].filter((p) => {
+      const clave = p.trastes.join(',');
+      if (vistas.has(clave)) return false;
+      vistas.add(clave);
+      return true;
+    });
   }
 
   const ordenado = Object.fromEntries(

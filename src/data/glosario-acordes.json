@@ -4263,6 +4263,18 @@
       "posiciones": [
         {
           "trastes": [
+            1,
+            -1,
+            -1,
+            2,
+            3,
+            3
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
             -1,
             8,
             7,
@@ -8857,6 +8869,18 @@
           "trastes": [
             -1,
             0,
+            4,
+            2,
+            1,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
+            0,
             2,
             2,
             1,
@@ -9968,6 +9992,26 @@
             "desde": 1,
             "hasta": 5
           }
+        }
+      ]
+    },
+    "Mi7/Sol#": {
+      "raiz": "Mi",
+      "sufijo": "7",
+      "bajo": "Sol#",
+      "slug": "mi7-sol-sostenido",
+      "posiciones": [
+        {
+          "trastes": [
+            4,
+            2,
+            0,
+            1,
+            0,
+            0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         }
       ]
     },
@@ -15421,6 +15465,26 @@
             2,
             3,
             0
+          ],
+          "baseTraste": 1,
+          "cejilla": null
+        }
+      ]
+    },
+    "Rem/Fa": {
+      "raiz": "Re",
+      "sufijo": "m",
+      "bajo": "Fa",
+      "slug": "rem-fa",
+      "posiciones": [
+        {
+          "trastes": [
+            1,
+            -1,
+            -1,
+            2,
+            3,
+            -1
           ],
           "baseTraste": 1,
           "cejilla": null
