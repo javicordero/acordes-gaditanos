@@ -267,6 +267,11 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
               window.dataLayer.push(arguments);
             }
 
+            // `define:vars` hace que Astro envuelva este script en una IIFE, así
+            // que sin esta línea `gtag` quedaría encerrado y los componentes no
+            // podrían enviar eventos (solo funcionaría el `config` de aquí).
+            window.gtag = gtag;
+
             // Consent Mode v2: todo denegado hasta que el CMP de Google lo conceda
             gtag('consent', 'default', {
               ad_storage: 'denied',
@@ -290,7 +295,9 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
                     s !==
                     window.googlefc.ConsentModePurposeStatusEnum
                       .CONSENT_MODE_PURPOSE_STATUS_DENIED;
-                  gtag('consent', 'update', {
+                  // Por window.gtag para que el envoltorio de la PWA (que
+                  // encola eventos hasta el consentimiento) también se entere.
+                  window.gtag('consent', 'update', {
                     ad_storage: notDenied(vals.adStoragePurposeConsentStatus)
                       ? 'granted'
                       : 'denied',
