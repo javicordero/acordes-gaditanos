@@ -10,6 +10,8 @@
 // - simple: boolean (solo año)
 // - parent: { name, href } (sección intermedia, p. ej. el glosario)
 // - current: string (página actual, sin enlace)
+// - currentSinMayusculas: boolean (conserva la grafía del texto actual, p. ej.
+//   un acorde: «Lammaj7» no debe mostrarse como «LAMMAJ7»)
 const {
   year,
   agrupacion,
@@ -22,6 +24,7 @@ const {
   parent,
   current,
   currentSufijoMinuscula = false,
+  currentSinMayusculas = false,
 } = Astro.props;
 
 const currentBase =
@@ -147,7 +150,8 @@ const breadcrumbSchema = {
       current && (
         <>
           <span class='separator'>›</span>
-          <span class='breadcrumb-piece'
+          <span
+            class:list={['breadcrumb-piece', { 'sin-mayusculas': currentSinMayusculas }]}
             >{currentBase}{currentSufijo && <span class='minuscula'>{currentSufijo}</span>}</span
           >
         </>

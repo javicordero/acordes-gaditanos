@@ -542,6 +542,13 @@ ins.adsbygoogle[data-ad-status='unfilled'] {
 }
 
 
+/* Dentro de un contenedor con `text-transform: uppercase` (títulos, migas de
+   pan...), conserva la grafía original. Los acordes distinguen mayúsculas de
+   minúsculas: «Lammaj7» no es lo mismo que «LAMMAJ7». */
+.sin-mayusculas {
+  text-transform: none;
+}
+
 /* Etiqueta de una letra alternativa de la misma musica (`letraTitulo`).
    Se usa en las cards y en el desplegable de sugerencias del buscador. */
 .badge-letra {

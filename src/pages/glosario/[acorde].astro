@@ -142,6 +142,7 @@ const textoEnarmonico = etiquetaEnarmonica
   <Breadcrumb
     parent={{ name: 'Glosario de acordes', href: '/glosario' }}
     current={`Acorde ${etiqueta}`}
+    currentSinMayusculas
   />
 
   <div class='main-container container-layout'>
@@ -151,7 +152,11 @@ const textoEnarmonico = etiquetaEnarmonica
 
     <article class='acorde-pagina'>
       <header class='acorde-pagina__header'>
-        <h1>Acorde {etiqueta} ({ingles}) en guitarra</h1>
+        <h1>
+          Acorde <span class='sin-mayusculas'>{etiqueta}</span> (<span class='sin-mayusculas'
+            >{ingles}</span
+          >) en guitarra
+        </h1>
         <p class='acorde-pagina__intro'>
           Aprende cómo tocar el acorde {etiqueta} ({ingles}) en guitarra: es {nombreCompletoTipo} y
           aquí tienes {totalPosiciones} {totalPosiciones === 1 ? 'posición' : 'posiciones'} con
@@ -192,7 +197,7 @@ const textoEnarmonico = etiquetaEnarmonica
       </header>
 
       <section class='acorde-pagina__seccion'>
-        <h2>Cómo tocar {etiqueta} en guitarra</h2>
+        <h2>Cómo tocar <span class='sin-mayusculas'>{etiqueta}</span> en guitarra</h2>
         <p>
           Para tocar {etiqueta} en guitarra, la forma más habitual es la primera posición:
           {primera ? ` ${primera.resumen.replace(/\.$/, '')}.` : ''}
@@ -216,7 +221,8 @@ const textoEnarmonico = etiquetaEnarmonica
 
       <section class='acorde-pagina__seccion' aria-labelledby='posiciones-titulo'>
         <h2 id='posiciones-titulo'>
-          {totalPosiciones === 1 ? 'Posición' : 'Posiciones'} del acorde {etiqueta}
+          {totalPosiciones === 1 ? 'Posición' : 'Posiciones'} del acorde{' '}
+          <span class='sin-mayusculas'>{etiqueta}</span>
         </h2>
         <ol class='posiciones'>
           {
@@ -272,7 +278,9 @@ const textoEnarmonico = etiquetaEnarmonica
       </section>
 
       <section class='acorde-pagina__seccion' aria-labelledby='coplas-titulo'>
-        <h2 id='coplas-titulo'>Coplas que usan {etiqueta}</h2>
+        <h2 id='coplas-titulo'>
+          Coplas que usan <span class='sin-mayusculas'>{etiqueta}</span>
+        </h2>
         {
           coplas.length > 0 ? (
             <details class='coplas' open={coplas.length <= 12}>
@@ -318,7 +326,9 @@ const textoEnarmonico = etiquetaEnarmonica
       </section>
 
       <section class='acorde-pagina__seccion' aria-labelledby='relacionados-titulo'>
-        <h2 id='relacionados-titulo'>Acordes relacionados con {etiqueta}</h2>
+        <h2 id='relacionados-titulo'>
+          Acordes relacionados con <span class='sin-mayusculas'>{etiqueta}</span>
+        </h2>
 
         {
           etiquetaEnarmonica && (
@@ -332,7 +342,7 @@ const textoEnarmonico = etiquetaEnarmonica
         {
           relacionados.mismaRaiz.length > 0 && (
             <div class='relacionados__grupo'>
-              <h3>Otros acordes de {entrada.raiz}</h3>
+              <h3>Otros acordes de <span class='sin-mayusculas'>{entrada.raiz}</span></h3>
               <ul class='relacionados__lista'>
                 {relacionados.mismaRaiz.map((acorde) => (
                   <li>
