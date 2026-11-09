@@ -96,5 +96,5 @@ Extrae las fichas de `guitarradegades.com/p/cancionero.html` y genera `.md` en `
 - `--index-file <ruta>` / `--ficha-file <ruta>` permiten trabajar con HTML local sin red.
 - Busca el vídeo en YouTube (query `Modalidad Agrupación`, primer resultado, sin API key); `--no-youtube` lo desactiva y `--fill-videos` rellena los vídeos por defecto de los `.md` ya generados.
 - Omite los acordes que ya existen en `acordes` (slug `pieza-agrupacion`) y avisa de posibles duplicados.
-- La promoción `otraweb` → `borradores` la hace `npm run importar:borrador` (envuelve los acordes); de `borradores` a `acordes`, `npm run promover` pone la fecha del día. La skill `promover-acorde` explica los dos pasos.
+- La promoción `otraweb` → `borradores` la hace `npm run importar:borrador` (envuelve los acordes); de `borradores` a `acordes`, `npm run promover` pone la fecha siguiente a la última publicada. La skill `promover-acorde` explica los dos pasos.
 - `npm run importar:borrador -- --slug <slug>[,<slug>] [--dry]` pasa una ficha de `otraweb` a los borradores (`src/content/borradores`) envolviendo ya los acordes con el mismo envoltorio del editor; es lo que hace el botón **A borradores** de la pestaña **Otra web** del panel (solo en local). Después se revisa y se promueve como cualquier borrador.
