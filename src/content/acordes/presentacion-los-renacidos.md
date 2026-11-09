@@ -7,7 +7,7 @@ letra: El Chapa
 modalidad: Comparsa
 video: 'https://www.youtube.com/embed/W9u3qLBbgmc'
 img: 'https://static.grupojoly.com/clip/12aee06b-028a-4ff3-9173-bdf4f9a954b8_facebook-aspect-ratio_default_0.jpg'
-fraseClave: Que larga ha sido la noche
+fraseClave: Que larga ha sido la noche que frío
 date: "09/11/2026"
 cejilla: 7
 ---
