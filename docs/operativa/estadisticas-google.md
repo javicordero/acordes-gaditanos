@@ -21,7 +21,10 @@ en [`panel-admin.md`](panel-admin.md).
   30 y 90 días**. Informes por **método de emplazamiento**, **unidades de
   anuncio**, **top páginas** y **países**, con las columnas **Impresiones**,
   **Ingresos**, **RPM impr.**, **Active View**, **Clics** y **Page RPM**.
-  Page RPM es la métrica principal de las tarjetas. Variables:
+  Page RPM es la métrica principal de las tarjetas. En **método de
+  emplazamiento** y **unidades de anuncio** no se muestra Page RPM; en **top
+  páginas** y **países** no se muestra Active View, porque no aportan en esos
+  desgloses. Variables:
   `ADSENSE_ACCOUNT_ID` (`pub-...`, sin `ca-`) y `ADSENSE_CURRENCY` (por defecto
   `EUR`). AdSense suele necesitar OAuth de usuario; la cuenta de servicio no
   siempre vale.

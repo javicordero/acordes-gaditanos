@@ -2463,18 +2463,19 @@ function pintarAds(cont, d) {
     { t: 'Clics', num: true },
     { t: 'Page RPM', num: true, title: 'Ingresos por mil páginas vistas' },
   ];
-  const columnasUnidades = columnas.slice(0, -1);
+  const columnasSinPageRpm = columnas.filter((c) => c.t !== 'Page RPM');
+  const columnasSinActiveView = columnas.filter((c) => c.t !== 'Active View');
 
-  const fila = (x, primera, clase = 'fuente', conPageRpm = true) => {
+  const fila = (x, primera, clase = 'fuente', { pageRpm = true, activeView = true } = {}) => {
     const celdas = [
       { t: primera, cls: clase },
       { t: fmtNum(x.impressions), num: true },
       { t: eur(x.estimatedEarnings), num: true },
       { t: eur(x.impressionsRpm), num: true },
-      { t: formatoPct(x.activeView), num: true },
-      { t: fmtNum(x.clicks), num: true },
     ];
-    if (conPageRpm) celdas.push({ t: eur(x.pageRpm), num: true });
+    if (activeView) celdas.push({ t: formatoPct(x.activeView), num: true });
+    celdas.push({ t: fmtNum(x.clicks), num: true });
+    if (pageRpm) celdas.push({ t: eur(x.pageRpm), num: true });
     return celdas;
   };
 
@@ -2488,16 +2489,16 @@ function pintarAds(cont, d) {
 
   const porIngresos = (lista) => [...(lista || [])].sort((x, y) => y.estimatedEarnings - x.estimatedEarnings);
   const emplazamientos = porIngresos(d.emplazamientos).map((x) =>
-    fila(x, etiquetaEmplazamiento(x.emplazamiento))
+    fila(x, etiquetaEmplazamiento(x.emplazamiento), 'fuente', { pageRpm: false })
   );
   const unidades = porIngresos(d.unidades).map((x) =>
-    fila(x, x.unidad || '(sin dato)', 'fuente', false)
+    fila(x, x.unidad || '(sin dato)', 'fuente', { pageRpm: false })
   );
   const paginas = porIngresos(d.paginas).map((x) =>
-    fila(x, String(x.pagina || '').replace(/^https?:\/\/[^/]+/i, '') || '/', 'ruta')
+    fila(x, String(x.pagina || '').replace(/^https?:\/\/[^/]+/i, '') || '/', 'ruta', { activeView: false })
   );
   const paises = porIngresos(d.paises).map((x) =>
-    fila(x, etiquetaPaisTexto(x.pais))
+    fila(x, etiquetaPaisTexto(x.pais), 'fuente', { activeView: false })
   );
 
   const nota = adsPeriodo === 'hoy'
@@ -2510,10 +2511,10 @@ function pintarAds(cont, d) {
     cabeceraGoogle('AdSense', d, nota, 'ads') +
     '<div class="stats-grid">' + cards + '</div>' +
     tablaStats('Evolución diaria', [{ t: 'Día' }, ...columnas], filasDiario, '', chart) +
-    tablaStats('Método de emplazamiento', [{ t: 'Método' }, ...columnas], emplazamientos) +
-    tablaStats('Unidades de anuncio', [{ t: 'Unidad' }, ...columnasUnidades], unidades) +
-    tablaStats('Top páginas', [{ t: 'Página' }, ...columnas], paginas) +
-    tablaStats('Países', [{ t: 'País' }, ...columnas], paises);
+    tablaStats('Método de emplazamiento', [{ t: 'Método' }, ...columnasSinPageRpm], emplazamientos) +
+    tablaStats('Unidades de anuncio', [{ t: 'Unidad' }, ...columnasSinPageRpm], unidades) +
+    tablaStats('Top páginas', [{ t: 'Página' }, ...columnasSinActiveView], paginas) +
+    tablaStats('Países', [{ t: 'País' }, ...columnasSinActiveView], paises);
 }
 
 /* ---------------- comentarios / peticiones ---------------- */
