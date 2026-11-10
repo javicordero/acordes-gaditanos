@@ -212,14 +212,21 @@ proyecto; en producción, en una rama `estudio/<slug>` con PR de borrador. Para 
 `/admin/?vista=stats` pide `/admin/api/stats` (proxy del worker de Cloudflare,
 D1). El contador empieza el **19/01/2026**: no hay datos anteriores.
 
-- **Rutas más visitadas** tiene un buscador que filtra todas las rutas por
-  substring, sin mayúsculas ni tildes (`glosa` encuentra `/glosario/…`), y un
-  segundo campo para **excluir** (`acordes` quita las rutas de fichas y deja
-  hubs, autores, glosario…). Sin texto enseña las **100 primeras** (por
-  visitas); con filtros, todas las coincidencias (hasta 300) y el total de
-  visitas. Las cabeceras **Ruta**, **Visitas** y **Media/día** ordenan al
-  pincharlas: Media permite ver qué rutas rinden más y menos por día desde el
-  alta.
+- Las tarjetas muestran **hoy** (con variación respecto a ayer), el **total**
+  desde el 19/01/2026, la **media diaria** (incluye hoy) y la **media mensual**
+  (meses completos).
+- **Visitas por mes** y **Evolución últimos 30 días** llevan un mini gráfico de
+  barras encima de la tabla, que se mantiene. Añaden una comparación: el último
+  mes completo frente al anterior y los últimos 7 días frente a los 7 anteriores.
+- **Rutas más visitadas** tiene chips de tipo (**Todo / Fichas / Autores /
+  Carnaval / Glosario / Otros**), buscador por substring sin mayúsculas ni
+  tildes y cabeceras ordenables. Sin filtros enseña el **top 10** y un botón
+  **Ver más rutas** (hasta 300); con filtros enseña las coincidencias (hasta 300)
+  y el resumen dice cuántas hay. Cada fila lleva **%** y barra de popularidad.
+- **Fuentes de tráfico** enseña las **10 primeras agrupadas por familia**
+  (Google, Blogspot, Bing, X…), con una fila **Directo / interno / sin fuente**
+  calculada por diferencia con el total para que la tabla sume el 100 %. Lleva
+  **%**, barra y un botón para desplegar el resto y volver a contraerlas.
 - **Media/día** = visitas / días desde el alta. El alta es la fecha del commit
   que añadió el archivo (`git log --diff-filter=A`), nunca el campo `date` del
   frontmatter. Si el alta es anterior al contador, la media empieza el
@@ -245,32 +252,49 @@ llega nunca al navegador.
 
 - Variables: `CLOUDFLARE_API_TOKEN` (secreta, permiso **Account Analytics:
   Read**), `CLOUDFLARE_ACCOUNT_ID` y `CLOUDFLARE_WA_SITE_TAG`.
-- Vistas: **Hoy** (00:00 Europe/Madrid → ahora, la que abre por defecto), 7, 30 y 90 días;
-  rutas con el mismo buscador, fuentes, diario, países y dispositivos. La tabla
-  de rutas muestra **Páginas** en la segunda columna y una columna **Fuente**
-  con las **3 principales en línea**, ordenadas de mayor a menor número de
-  páginas y con formato `(Google - 55) (blog - 3) (directo - 1)`, sin abrir
-  nada. La última columna **Fuentes** abre el detalle completo en escritorio y
-  móvil.
+- El **selector de periodo** (Hoy, 7, 30 y 90 días) está arriba, junto al
+  título. Las tarjetas muestran la variación frente al periodo anterior (ayer,
+  o los mismos días anteriores); esa comparación se pide en la misma consulta
+  (`totalAnterior`).
+- **Rutas**: top **20** y botón **Ver más rutas** (hasta 300), con buscador. La
+  columna **Fuente** enseña las 3 principales en línea con formato
+  `(Google - 55) (blog - 3) (directo - 1)`, con las externas primero y
+  directo/interno al final; el botón **Fuentes** abre el detalle. El **D1 total**
+  ya no está en la tabla principal: sigue en el detalle de la ruta.
+- **Fuentes de tráfico**: top 10 agrupadas por familia, con **%**, barra y botón
+  para desplegar el resto. La nota recuerda que directo e interno se miden en
+  páginas vistas.
+- **Evolución diaria** mantiene la tabla y añade un mini gráfico de barras.
 - La tabla de **Países** sigue el mismo patrón: **Páginas**, **Visitas** y una
-  columna con las **3 páginas más vistas desde ese país** en formato
-  `(/acordes/glosa/ - 12) (… - 3)` (etiqueta corta, solo el último tramo). El
-  botón **Páginas** abre el detalle del país con sus **100 páginas** más vistas,
-  con páginas y visitas del periodo. Las páginas por país se piden con una
-  consulta por país (aliases de GraphQL): con una sola agrupación se las comía
-  el país con más tráfico y los demás se quedaban sin datos.
+  columna **Páginas más vistas** con las **3 rutas principales desde ese país**
+  en formato `(/acordes/glosa/ - 12) (… - 3)` (etiqueta corta; el nombre
+  completo sale al pasar el cursor). El botón **Ver** abre el detalle del país
+  con sus **100 páginas** más visitadas, páginas y visitas del periodo, y un
+  aviso si el país tiene más. Las páginas por país se piden con una consulta por
+  país (aliases de GraphQL): con una sola agrupación se las comía el país con
+  más tráfico y los demás se quedaban sin datos. Si el país tiene menos de 100
+  rutas, su total de páginas se suma de las rutas (más fino que el redondeo del
+  grupo país); si tiene más, se usa el total del país. Los códigos ISO se muestran
+  con su nombre (`ES` → España), y la nota de la tabla avisa del muestreo y de
+  los ceros en visitas con muy poco tráfico.
+- **Dispositivos** lleva **%** y barra de popularidad.
 - Se pide con `?vista=hoy&limite=3000`, `?vista=resumen&dias=30&limite=3000` o
   `?vista=ruta&ruta=/acordes/x/&dias=30` (`&hoy=1` para el detalle de hoy). La
   respuesta se cachea 10 minutos.
 - Cloudflare es **RUM**: excluye bots (`bot: 0`, como `excludeBots=Yes` del
   dashboard), muestrea y redondea. **No cuadra con D1** y no se deben sumar.
 - La comparación con el contador propio solo se enseña a 30 días y a nivel
-  global: D1 no guarda histórico por ruta. En la tabla de rutas, **D1 total** es
-  el acumulado desde el 19/01/2026, con una ventana distinta a Cloudflare.
+  global, en una línea compacta: D1 no guarda histórico por ruta.
 - En fuentes, `(directo)` e `(interno)` se miden en páginas vistas: una
   navegación interna no abre una visita nueva. Se ocultan previews de Netlify y
   localhost.
 - Enlace **Abrir en Cloudflare** al dashboard de Web Analytics.
+
+### Google: Search Console, Analytics y AdSense
+
+Las tres pestañas de Google (Search Console, Analytics y AdSense), sus variables,
+límites y notas de comparación están en
+[`estadisticas-google.md`](estadisticas-google.md).
 
 ## Acceso y seguridad
 
@@ -293,7 +317,10 @@ llega nunca al navegador.
   `SESSION_SECRET` (secreta) y `OWNER_LOGIN`. El callback de la OAuth App tiene que ser
   `https://acordesgaditanos.com/admin/api/auth-callback`. Para la pestaña Cloudflare:
   `CLOUDFLARE_API_TOKEN` (secreta), `CLOUDFLARE_ACCOUNT_ID` y
-  `CLOUDFLARE_WA_SITE_TAG`.
+  `CLOUDFLARE_WA_SITE_TAG`. Para las pestañas de Google: `GOOGLE_SERVICE_ACCOUNT_EMAIL` y
+  `GOOGLE_PRIVATE_KEY` (o `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` y
+  `GOOGLE_REFRESH_TOKEN`), `GSC_SITE_URL`, `GA4_PROPERTY_ID`, `ADSENSE_ACCOUNT_ID` y
+  `ADSENSE_CURRENCY`; todas las credenciales son secretas y no salen del servidor.
 
 ## Local y producción
 

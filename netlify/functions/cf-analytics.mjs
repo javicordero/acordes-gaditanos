@@ -93,13 +93,17 @@ async function graphql({ token, cuenta }, query, variables) {
 
 const FILTRO = 'siteTag: $site, bot: 0, datetime_geq: $desde, datetime_lt: $hasta';
 
-const QUERY_RESUMEN = `query($cuenta:String!,$site:String!,$desde:Time!,$hasta:Time!,$limite:Int!){
+const QUERY_RESUMEN = `query($cuenta:String!,$site:String!,$desde:Time!,$hasta:Time!,$desdeAnterior:Time!,$hastaAnterior:Time!,$limite:Int!){
   viewer {
     accounts(filter: { accountTag: $cuenta }) {
       total: rumPageloadEventsAdaptiveGroups(limit: 1, filter: { ${FILTRO} }) {
         count
         sum { visits }
         avg { sampleInterval }
+      }
+      totalAnterior: rumPageloadEventsAdaptiveGroups(limit: 1, filter: { siteTag: $site, bot: 0, datetime_geq: $desdeAnterior, datetime_lt: $hastaAnterior }) {
+        count
+        sum { visits }
       }
       rutas: rumPageloadEventsAdaptiveGroups(
         limit: $limite
@@ -143,6 +147,7 @@ const QUERY_RESUMEN = `query($cuenta:String!,$site:String!,$desde:Time!,$hasta:T
         orderBy: [count_DESC]
       ) {
         count
+        sum { visits }
         dimensions { countryName }
       }
       dispositivos: rumPageloadEventsAdaptiveGroups(
@@ -156,6 +161,31 @@ const QUERY_RESUMEN = `query($cuenta:String!,$site:String!,$desde:Time!,$hasta:T
     }
   }
 }`;
+
+/**
+ * Páginas más vistas de cada país. Se piden por separado (un alias por país)
+ * porque una única agrupación país+ruta con límite se la comen las rutas del
+ * país con más tráfico y deja sin datos a los demás.
+ */
+function consultaPaisesRutas(paises) {
+  const variables = paises.map((_, i) => `$p${i}:String!`).join(',');
+  const grupos = paises.map((_, i) => `p${i}: rumPageloadEventsAdaptiveGroups(
+          limit: 100
+          filter: { ${FILTRO}, countryName: $p${i} }
+          orderBy: [count_DESC]
+        ) {
+          count
+          sum { visits }
+          dimensions { requestPath }
+        }`).join('\n      ');
+  return `query($cuenta:String!,$site:String!,$desde:Time!,$hasta:Time!,${variables}){
+  viewer {
+    accounts(filter: { accountTag: $cuenta }) {
+      ${grupos}
+    }
+  }
+}`;
+}
 
 const QUERY_RUTA = `query($cuenta:String!,$site:String!,$desde:Time!,$hasta:Time!,$ruta:String!){
   viewer {
@@ -189,6 +219,7 @@ const QUERY_RUTA = `query($cuenta:String!,$site:String!,$desde:Time!,$hasta:Time
         orderBy: [count_DESC]
       ) {
         count
+        sum { visits }
         dimensions { countryName }
       }
       dispositivos: rumPageloadEventsAdaptiveGroups(
@@ -239,6 +270,12 @@ export default async (req) => {
     desde: desde.toISOString(),
     hasta: hasta.toISOString(),
   };
+  const desdeAnterior = esHoy
+    ? new Date(desde.getTime() - 86400000)
+    : new Date(desde.getTime() - (hasta.getTime() - desde.getTime()));
+  const hastaAnterior = esHoy ? new Date(hasta.getTime() - 86400000) : desde;
+  variables.desdeAnterior = desdeAnterior.toISOString();
+  variables.hastaAnterior = hastaAnterior.toISOString();
 
   try {
     if (vista === 'ruta') {
@@ -267,6 +304,7 @@ export default async (req) => {
         paises: (d.paises || []).map((x) => ({
           pais: (x.dimensions && x.dimensions.countryName) || '',
           paginas: numero(x.count),
+          visitas: numero(x.sum && x.sum.visits),
         })),
         dispositivos: (d.dispositivos || []).map((x) => ({
           tipo: (x.dimensions && x.dimensions.deviceType) || '',
@@ -280,6 +318,29 @@ export default async (req) => {
     }
 
     const d = await graphql(cfg, QUERY_RESUMEN, { ...variables, limite });
+    const paises = (d.paises || []).map((x) => ({
+      pais: (x.dimensions && x.dimensions.countryName) || '',
+      paginas: numero(x.count),
+      visitas: numero(x.sum && x.sum.visits),
+    }));
+
+    let paisesRutas = [];
+    const codigos = paises.map((x) => x.pais).filter(Boolean);
+    if (codigos.length) {
+      try {
+        const variablesPaises = Object.fromEntries(codigos.map((codigo, i) => [`p${i}`, codigo]));
+        const dp = await graphql(cfg, consultaPaisesRutas(codigos), { ...variables, ...variablesPaises });
+        paisesRutas = codigos.flatMap((pais, i) =>
+          (dp[`p${i}`] || []).map((x) => ({
+            pais,
+            ruta: (x.dimensions && x.dimensions.requestPath) || '',
+            paginas: numero(x.count),
+            visitas: numero(x.sum && x.sum.visits),
+          })),
+        );
+      } catch { /* sin páginas por país; la tabla de países sigue funcionando */ }
+    }
+
     return json({
       configurado: true,
       hoy: esHoy,
@@ -287,6 +348,7 @@ export default async (req) => {
       hasta: hasta.toISOString().slice(0, 10),
       dias: esHoy ? 1 : dias,
       total: fila(d.total && d.total[0]),
+      anterior: fila(d.totalAnterior && d.totalAnterior[0]),
       rutas: (d.rutas || []).map((x) => ({
         ruta: (x.dimensions && x.dimensions.requestPath) || '',
         ...fila(x),
@@ -304,10 +366,8 @@ export default async (req) => {
         dia: x.dimensions && x.dimensions.date,
         ...fila(x),
       })),
-      paises: (d.paises || []).map((x) => ({
-        pais: (x.dimensions && x.dimensions.countryName) || '',
-        paginas: numero(x.count),
-      })),
+      paises,
+      paisesRutas,
       dispositivos: (d.dispositivos || []).map((x) => ({
         tipo: (x.dimensions && x.dimensions.deviceType) || '',
         paginas: numero(x.count),
