@@ -5,12 +5,12 @@ year: 2023
 modalidad: Comparsa
 musica: Raúl Cabrera
 letra: El Chapa
-img: https://elrincondelcarnaval.com/wp-content/uploads/2023/02/17022023-los-esclavos-041-scaled.jpg
+img: 'https://elrincondelcarnaval.com/wp-content/uploads/2023/02/17022023-los-esclavos-041-scaled.jpg'
 cejilla: 4
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/k_kKNVmFaIA'
-
-fraseClave: Yo sé de ciudades sin memoria sin más belleza ni
+fraseClave: Yo sé de ciudades sin memoria
+letraTitulo: Yo sé de ciudades
 ---
 <pre>
 <a>Mim</a>         <a>Si7</a>         <a>Mim</a>
