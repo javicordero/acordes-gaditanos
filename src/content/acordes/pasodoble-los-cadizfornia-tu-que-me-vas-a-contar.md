@@ -51,7 +51,6 @@ Que tú te aprendiste por televisión
 Cántame por Paco Alba, Fletilla, Villegas
 
 Por Pedro Romero
-
 <a>Do#7</a>                                    <a>Fa#m</a>
 Y entonces te doy la mano y te llamo compañero
 <a>Rem</a>                                          <a>Fa</a>
