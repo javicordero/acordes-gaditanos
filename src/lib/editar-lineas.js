@@ -417,6 +417,70 @@ export function moverAcordeLinea({ lineas, registros, originales, conocidos, i, 
 }
 
 /**
+ * Pone o quita la postura de una ocurrencia concreta de un acorde.
+ *
+ * `indice` es la k-ésima aparición de `etiqueta` **dentro de la línea**, no el
+ * índice global de `registros`: es el mismo criterio que usan `conEtiquetas()`
+ * y `envolver()` al reasociar las etiquetas. Actualiza `registros[i]` y también
+ * la etiqueta de `originales[i]`, porque `envolver()` copia la línea original
+ * tal cual cuando el texto no ha cambiado.
+ *
+ * Si el acorde todavía no tiene `<a>` (se acaba de escribir), se crea el
+ * registro; al guardar, `envolver()` lo detecta como suelto y lo envuelve.
+ */
+export function fijarPostura({ registros = [], originales = [], i, etiqueta, indice = 0, postura = null }) {
+  if (!Number.isInteger(i) || i < 0) return { error: 'La línea no existe.' };
+
+  const regs = registros.map((linea) => (linea || []).map((r) => ({ ...r })));
+  const origs = [...originales];
+  const lineaRegs = regs[i] || (regs[i] = []);
+  const candidatos = lineaRegs.filter((r) => r.etiqueta === etiqueta);
+  const k = Math.max(0, Math.trunc(Number(indice) || 0));
+  const texto = postura || null;
+
+  // Acorde nuevo (total o parcialmente sin envolver): se crean los registros
+  // que falten hasta la ocurrencia pedida. Al guardar, `envolver()` los
+  // reasocia en orden y envuelve los que aún estaban sueltos.
+  if (k >= candidatos.length) {
+    if (!texto) return { registros: regs, originales: origs, noop: true };
+    for (let n = candidatos.length; n < k; n++) lineaRegs.push({ etiqueta, abre: '<a>' });
+    lineaRegs.push({ etiqueta, abre: abreConPostura('<a>', texto) });
+    return { registros: regs, originales: origs };
+  }
+
+  const reg = candidatos[k];
+  reg.abre = abreConPostura(reg.abre, texto);
+  origs[i] = reemplazarEtiqueta(origs[i], etiqueta, k, reg.abre);
+  return { registros: regs, originales: origs };
+}
+
+/** Quita `data-postura` de una etiqueta de apertura sin tocar otros atributos. */
+function abreSinPostura(abre) {
+  return String(abre || '<a>')
+    .replace(/\s+data-postura\s*=\s*(?:"[^"]*"|'[^']*')/gi, '')
+    .replace(/\s+>/, '>');
+}
+
+/** Pone (o quita, con `postura = null`) `data-postura` en una etiqueta de apertura. */
+function abreConPostura(abre, postura) {
+  const limpio = abreSinPostura(abre);
+  if (!postura) return limpio;
+  const valor = String(postura).replace(/"/g, '&quot;');
+  return limpio.replace(/>$/, ` data-postura="${valor}">`);
+}
+
+/** Sustituye la k-ésima etiqueta `<a>` de la línea cuya etiqueta coincide. */
+function reemplazarEtiqueta(original, etiqueta, indice, abre) {
+  if (typeof original !== 'string') return original;
+  let n = 0;
+  return original.replace(/<a([^>]*)>([\s\S]*?)<\/a>/g, (todo, _attrs, texto) => {
+    if (texto.trim() !== etiqueta) return todo;
+    const i = n++;
+    return i === indice ? abre + texto + '</a>' : todo;
+  });
+}
+
+/**
  * Mueve el acorde que empieza en la columna `col` de la línea `i` a la
  * columna `destino.col` de la línea `destino.linea`. Es la operación del
  * arrastre: el destino puede ser cualquier punto de una línea de acordes.

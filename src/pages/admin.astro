@@ -229,15 +229,31 @@ export const prerender = true;
   footer a { color:var(--acento); }
   kbd { font:10px var(--mono); border:1.5px solid #777; border-bottom-width:2px; padding:0 4px; background:#222; color:#fff; }
 
-  /* Sugerencias */
-  #sug { position:fixed; z-index:30; display:flex; flex-direction:column; background:var(--papel); border:2px solid #000; box-shadow:6px 6px 0 #000; max-height:260px; max-width:calc(100vw - 16px); }
-  #sug[hidden] { display:none !important; }
+  /* Sugerencias y selector de postura */
+  #sug, #posturas { position:fixed; z-index:30; display:flex; flex-direction:column; background:var(--papel); border:2px solid #000; box-shadow:6px 6px 0 #000; max-height:260px; max-width:calc(100vw - 16px); }
+  #sug[hidden], #posturas[hidden] { display:none !important; }
+  #posturas { width:min(360px, calc(100vw - 16px)); max-height:min(420px, calc(100vh - 16px)); }
   .sug-cab { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:4px 6px; background:var(--papel); border-bottom:1.5px solid #000; font:700 9px/1 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--suave); }
-  #sug .sug-cerrar { flex:0 0 auto; width:20px; height:20px; padding:0; display:flex; align-items:center; justify-content:center; border:0; box-shadow:none; background:transparent; color:var(--tinta); font:700 12px/1 var(--mono); text-transform:none; letter-spacing:0; }
-  #sug .sug-cerrar:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
+  #sug .sug-cerrar, #posturas .sug-cerrar { flex:0 0 auto; width:20px; height:20px; padding:0; display:flex; align-items:center; justify-content:center; border:0; box-shadow:none; background:transparent; color:var(--tinta); font:700 12px/1 var(--mono); text-transform:none; letter-spacing:0; }
+  #sug .sug-cerrar:hover, #posturas .sug-cerrar:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
   .sug-lista { padding:4px; overflow:auto; max-height:220px; }
   #sug .sug-lista button { display:block; width:100%; text-align:left; border:0; box-shadow:none; padding:6px 8px; font:400 12.5px var(--mono); background:transparent; text-transform:none; letter-spacing:0; }
   #sug .sug-lista button.sel, #sug .sug-lista button:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
+  /* Posturas: rejilla de mini-diagramas con la postura actual marcada. */
+  .posturas-lista { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:6px; padding:6px; overflow:auto; max-height:360px; }
+  #posturas .postura-item { display:flex; flex-direction:column; align-items:center; gap:2px; padding:5px 4px 6px; border:1.5px solid #000; box-shadow:none; background:var(--papel); color:var(--tinta); font:400 11px/1.15 var(--mono); text-transform:none; letter-spacing:0; }
+  #posturas .postura-item:hover { background:#fff3d6; color:#000; transform:none; box-shadow:none; }
+  #posturas .postura-item.actual { background:var(--acento); }
+  #posturas .postura-item svg { color:var(--azul); }
+  #posturas .postura-item.actual svg { color:#000; }
+  #posturas .postura-texto { font-weight:700; }
+  #posturas .postura-nota { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--suave); }
+  #posturas .postura-item.actual .postura-nota { color:#000; }
+  #posturas .postura-sin { grid-column:1 / -1; display:block; width:100%; padding:7px 8px; border:1.5px solid #000; box-shadow:none; background:var(--papel); font:700 10px/1 var(--mono); text-transform:uppercase; letter-spacing:.06em; }
+  #posturas .postura-sin:hover { background:var(--acento); color:#000; transform:none; box-shadow:none; }
+  #posturas .postura-sin.actual { background:var(--acento); }
+  /* Marca los acordes que ya llevan data-postura (sin mover el texto). */
+  #capa .con-postura { border-bottom:2px dotted var(--acento); }
 
   /* Aviso flotante (solo mensajes pasajeros) */
   #aviso { position:fixed; left:14px; right:14px; bottom:14px; z-index:25; background:var(--papel); border:2px solid #000; border-left:8px solid var(--acento); padding:12px 14px; font-size:12px; display:none; white-space:pre-wrap; box-shadow:6px 6px 0 #000; max-height:50vh; overflow:auto; }
@@ -617,6 +633,10 @@ export const prerender = true;
           <div id="sug" hidden>
             <div class="sug-cab"><span>Sugerencias</span><button type="button" class="sug-cerrar" id="sug-cerrar" aria-label="Cerrar sugerencias">✕</button></div>
             <div class="sug-lista" id="sug-lista"></div>
+          </div>
+          <div id="posturas" hidden>
+            <div class="sug-cab"><span id="posturas-titulo">Postura</span><button type="button" class="sug-cerrar" id="posturas-cerrar" aria-label="Cerrar posturas">✕</button></div>
+            <div class="posturas-lista" id="posturas-lista"></div>
           </div>
         </div>
       </section>

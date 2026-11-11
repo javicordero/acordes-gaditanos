@@ -80,6 +80,14 @@ El mismo `<pre>` en texto que el revisor local, con los acordes coloreados y sug
   mantiene pulsado el acorde ~350 ms y se suelta en otra columna o en otra línea de acordes
   (solo líneas de acordes). El gesto conserva `data-postura`, se puede deshacer y usa
   `moverAcordeA()` (`src/lib/editar-lineas.js`, probado en `npm run auditar:editor`).
+- **Clic o toque corto en un acorde** abre el selector de postura: una rejilla con los
+  mini-diagramas de las posiciones del glosario, la actual marcada y **Sin postura** para
+  quitarla. Aplica `data-postura` a la ocurrencia concreta de ese acorde (por orden dentro de
+  la línea), actualiza también la etiqueta original para que `envolver()` no la pierda al
+  guardar, entra en **Deshacer** y deja la ficha **sin guardar**. La pulsación larga sigue
+  siendo para arrastrar; si no hay glosario para ese acorde se avisa y no se abre el selector.
+  La lógica está en `fijarPostura()` (`src/lib/editar-lineas.js`), probada en
+  `npm run auditar:editor`.
 - En la cabecera: **↶ deshacer** (`Ctrl+Z`), **✂ separar por palabras** (`Alt+Enter`) y
   **⤴ juntar por palabras** (`Alt+Retroceso`). Sobre una línea de acordes, ✂ baja el acorde
   a la siguiente línea de acordes y ⤴ lo sube a la anterior; en un verso de letra con el

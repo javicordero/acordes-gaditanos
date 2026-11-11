@@ -3,8 +3,9 @@
 //
 //   node --experimental-strip-types scripts/auditar-editor.mjs
 
-import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, realinearEstructura } from '../src/lib/editar-lineas.js';
+import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, realinearEstructura, fijarPostura } from '../src/lib/editar-lineas.js';
 import { envolver, clasificar } from '../src/lib/pre-acordes.js';
+import { parsearPostura, textoPostura } from '../src/lib/acordes.ts';
 
 const conocidos = new Set(['Do', 'Sol', 'Re', 'Mi', 'Si7', 'Lam7', '(Sorda)']);
 let fallos = 0;
@@ -434,6 +435,87 @@ comprobar(
   envolver('La7 Re', [], ['<a>La7 Re</a>']).pre,
   '<a>La7 Re</a>',
 );
+
+/* 23. Postura concreta desde el editor: se pone y se quita por ocurrencia. */
+const posturas = {
+  lineas: ['Mi       Lam7       Mi'],
+  registros: [[
+    { etiqueta: 'Mi', abre: '<a>' },
+    { etiqueta: 'Lam7', abre: '<a data-postura="x 0 2 2 0 0">' },
+    { etiqueta: 'Mi', abre: '<a>' },
+  ]],
+  originales: ['<a>Mi</a>       <a data-postura="x 0 2 2 0 0">Lam7</a>       <a>Mi</a>'],
+};
+const conPostura = fijarPostura({
+  ...posturas,
+  i: 0,
+  etiqueta: 'Mi',
+  indice: 1,
+  postura: '0 2 2 0 0 0',
+});
+comprobar('postura: se pone en la segunda aparición', pre({
+  lineas: posturas.lineas,
+  registros: conPostura.registros,
+  originales: conPostura.originales,
+}), '<a>Mi</a>       <a data-postura="x 0 2 2 0 0">Lam7</a>       <a data-postura="0 2 2 0 0 0">Mi</a>');
+comprobar('postura: no toca la primera aparición', conPostura.registros[0][0].abre, '<a>');
+
+const sinPostura = fijarPostura({
+  ...posturas,
+  i: 0,
+  etiqueta: 'Lam7',
+  indice: 0,
+  postura: null,
+});
+comprobar('postura: se quita de la etiqueta', pre({
+  lineas: posturas.lineas,
+  registros: sinPostura.registros,
+  originales: sinPostura.originales,
+}), '<a>Mi</a>       <a>Lam7</a>       <a>Mi</a>');
+
+const acordeNuevo = fijarPostura({
+  lineas: ['Mi   Re'],
+  registros: [[{ etiqueta: 'Mi', abre: '<a>' }], []],
+  originales: ['<a>Mi</a>   Re'],
+  i: 0,
+  etiqueta: 'Re',
+  indice: 0,
+  postura: 'x 0 0 2 3 2',
+});
+comprobar('postura: acorde sin envolver se envuelve al guardar', pre({
+  lineas: ['Mi   Re'],
+  registros: acordeNuevo.registros,
+  originales: acordeNuevo.originales,
+}), '<a>Mi</a>   <a data-postura="x 0 0 2 3 2">Re</a>');
+
+const repetidoSuelto = fijarPostura({
+  lineas: ['Mi   Mi'],
+  registros: [[{ etiqueta: 'Mi', abre: '<a>' }]],
+  originales: ['<a>Mi</a>   Mi'],
+  i: 0,
+  etiqueta: 'Mi',
+  indice: 1,
+  postura: '0 2 2 0 0 0',
+});
+comprobar('postura: la segunda aparición suelta recibe la postura', pre({
+  lineas: ['Mi   Mi'],
+  registros: repetidoSuelto.registros,
+  originales: repetidoSuelto.originales,
+}), '<a>Mi</a>   <a data-postura="0 2 2 0 0 0">Mi</a>');
+
+const reemplazo = fijarPostura({
+  lineas: ['Lam7'],
+  registros: [[{ etiqueta: 'Lam7', abre: '<a class="x" data-postura="x 0 2 2 0 0">' }]],
+  originales: ['<a class="x" data-postura="x 0 2 2 0 0">Lam7</a>'],
+  i: 0,
+  etiqueta: 'Lam7',
+  indice: 0,
+  postura: '5 7 7 6 5 5',
+});
+comprobar('postura: cambia la que había sin duplicar el atributo', reemplazo.registros[0][0].abre, '<a class="x" data-postura="5 7 7 6 5 5">');
+
+comprobar('textoPostura: trastes a texto', textoPostura({ trastes: [-1, 0, 2, 2, 2, 4] }), 'x 0 2 2 2 4');
+comprobar('textoPostura: ida y vuelta', parsearPostura(textoPostura({ trastes: [-1, 0, 2, 2, 2, 4] })), [-1, 0, 2, 2, 2, 4]);
 
 if (fallos) {
   console.log(`\n${fallos} caso(s) fallido(s).`);

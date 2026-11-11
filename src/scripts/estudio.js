@@ -12,14 +12,17 @@
 //   - Revisado ✓ (marca; en local también promueve) y Promover (promueve y marca) hacen cosas distintas en producción.
 
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho, esAcorde, esAnotacion } from '../lib/pre-acordes.js';
-import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura } from '../lib/editar-lineas.js';
+import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura, fijarPostura } from '../lib/editar-lineas.js';
 import { puedeSubir, dividirLote, enTandas, avisa as avisaFicha } from '../lib/panel-lote.js';
 import { escaparHtml } from '../lib/escape.js';
 import { avisosPasodoblesSinTitulo } from '../lib/alertas-letra-titulo.js';
 import { normalizarAgrupacion } from '../lib/contenido.ts';
+import { crearIndice, buscarEnIndice, indicePostura, textoPostura } from '../lib/acordes.ts';
+import { svgDiagrama } from '../lib/diagrama.ts';
 import glosario from '../data/glosario-acordes.json';
 
 initPreAcordes(glosario);
+const INDICE_GLOSARIO = crearIndice(glosario?.acordes ?? glosario);
 
 const API = '/admin/api';
 // En `astro dev` el panel trabaja contra los archivos del ordenador (sin PR).
@@ -43,6 +46,9 @@ regla.style.left = 'calc(14px + ' + ANCHO_MAX + 'ch)';
 const aviso = $('aviso');
 const sug = $('sug');
 const sugLista = $('sug-lista');
+const posturas = $('posturas');
+const posturasLista = $('posturas-lista');
+const posturasTitulo = $('posturas-titulo');
 
 let indice = [];
 let ficha = null;      // { slug, md, d, pr }
@@ -52,6 +58,7 @@ let anterior = null;
 let sucio = false;
 let sugerencias = [];
 let sugSel = 0;
+let posturaAbierta = null;
 let paneActivo = 'cen';
 let zonaFicha = 'acordes';
 // Autores y agrupaciones que ya existen en el cancionero, para sugerirlos.
@@ -95,6 +102,7 @@ function actualizarDeshacer() {
 
 function deshacer() {
   if (!hist.length) return;
+  cerrarPosturas();
   futuro.push(snapshot());
   restaurar(hist.pop());
   sucio = true;
@@ -105,6 +113,7 @@ function deshacer() {
 
 function rehacer() {
   if (!futuro.length) return;
+  cerrarPosturas();
   hist.push(snapshot());
   restaurar(futuro.pop());
   sucio = true;
@@ -3104,16 +3113,21 @@ const claseCss = (...cs) => cs.filter(Boolean).join(' ');
 const trozo = (txt, cls) => (cls ? '<span class="' + cls + '">' + esc(txt) + '</span>' : esc(txt));
 
 /** Trozos [texto, clase] de una línea; en las de acordes, cada acorde lleva su color. */
-function piezasLinea(linea, t) {
+function piezasLinea(linea, t, i = null) {
   if (t !== 'acordes') return [[linea, '']];
   const piezas = [];
   let ultimo = 0;
   const re = /\S+/g;
   let m;
+  const vistas = new Map();
   while ((m = re.exec(linea))) {
     if (m.index > ultimo) piezas.push([linea.slice(ultimo, m.index), '']);
     const tok = m[0];
-    piezas.push([tok, conocidos.has(tok) ? 'ac' : esAnot(tok) ? 'anot' : 'nuevo']);
+    const n = vistas.get(tok) || 0;
+    vistas.set(tok, n + 1);
+    const registro = i === null ? null : (ficha?.d?.registros?.[i] || []).filter((r) => r.etiqueta === tok)[n];
+    const conPostura = !!(registro && posturaDeAbre(registro.abre));
+    piezas.push([tok, claseCss(conocidos.has(tok) ? 'ac' : esAnot(tok) ? 'anot' : 'nuevo', conPostura ? 'con-postura' : '')]);
     ultimo = m.index + tok.length;
   }
   if (ultimo < linea.length) piezas.push([linea.slice(ultimo), '']);
@@ -3121,11 +3135,11 @@ function piezasLinea(linea, t) {
 }
 
 /** HTML de una línea: lo que pasa de ANCHO_MAX va en rojo subrayado. */
-function htmlLinea(linea, t) {
+function htmlLinea(linea, t, i = null) {
   const corte = cortePorAncho(linea);
   let pos = 0;
   let out = '';
-  for (const [txt, cls] of piezasLinea(linea, t)) {
+  for (const [txt, cls] of piezasLinea(linea, t, i)) {
     const fin = pos + txt.length;
     if (corte < 0 || fin <= corte) {
       out += trozo(txt, cls);
@@ -3143,7 +3157,7 @@ function htmlLinea(linea, t) {
 
 function pintar() {
   const lineas = ta.value.split('\n');
-  capa.innerHTML = lineas.map((l, i) => htmlLinea(l, tipo(l, lineas[i + 1] || ''))).join('\n');
+  capa.innerHTML = lineas.map((l, i) => htmlLinea(l, tipo(l, lineas[i + 1] || ''), i)).join('\n');
   let max = 0;
   for (const l of lineas) max = Math.max(max, columnasLinea(l));
   const meta = $('editor-meta');
@@ -3262,6 +3276,7 @@ async function abrirFicha(slug, empujar = true) {
   zonaFicha = zona === 'borradores' ? 'borradores' : 'acordes';
   cerrarNotaLocal();
   cerrarSug();
+  cerrarPosturas();
   const d = desenvolver(md);
   conocidos.clear();
   d.registros.flat().forEach((x) => conocidos.add(x.etiqueta));
@@ -3382,6 +3397,7 @@ function tokenCursor() {
 
 function mover(dir) {
   cerrarSug();
+  cerrarPosturas();
   const texto = ta.value;
   const { ini, fin } = tokenCursor();
   if (ini === fin) return;
@@ -3484,6 +3500,7 @@ function aplicarEdicion(r, enfocar = true) {
   if (r.error) { mostrarAviso(r.error, 'var(--nuevo)'); return; }
   cerrarAviso();
   cerrarSug();
+  cerrarPosturas();
   hist.push(snapshot());
   if (hist.length > 300) hist.shift();
   actualizarDeshacer();
@@ -3644,7 +3661,10 @@ function acordeEnPunto(clientX, clientY) {
   const tokens = [...p.texto.matchAll(/\S+/g)].map((x) => ({ token: x[0], col: x.index }));
   const tok = tokens.find((x) => p.col >= x.col && p.col < x.col + x.token.length);
   if (!tok || (!esAcorde(tok.token) && !esAnotacion(tok.token))) return null;
-  return { linea: p.linea, col: tok.col, fin: tok.col + tok.token.length, token: tok.token };
+  // K-ésima aparición del mismo acorde en la línea: es el criterio con el que
+  // `envolver()` reasocia cada etiqueta al guardar.
+  const indice = tokens.filter((x) => x.token === tok.token && x.col < tok.col).length;
+  return { linea: p.linea, col: tok.col, fin: tok.col + tok.token.length, token: tok.token, indice };
 }
 
 /** Línea de acordes bajo el dedo/ratón, o null si no se puede soltar ahí. */
@@ -3736,6 +3756,7 @@ function actualizarDestinoArrastre() {
 function iniciarArrastre(origen, clientX, clientY) {
   if (!ficha || arrastre) return;
   cerrarSug();
+  cerrarPosturas();
   prepararPiezasArrastre();
   arrastre = { ...origen, x: clientX, y: clientY, destino: null };
   fantasma.textContent = origen.token;
@@ -5189,6 +5210,7 @@ function posicionarSug() {
   sug.style.top = Math.max(8, Math.round(top)) + 'px';
 }
 function abrirSug() {
+  cerrarPosturas();
   const t = tokenAntesCaret();
   if (t.length < 2) return cerrarSug();
   const q = t.toLowerCase();
@@ -5226,6 +5248,124 @@ function insertarSug(t) {
   setEstado('sin guardar', false);
   pintar();
   verCaret();
+}
+
+/* ---------------- postura del acorde ---------------- */
+/** Valor de `data-postura` de una etiqueta de apertura, o null. */
+function posturaDeAbre(abre) {
+  const m = String(abre || '').match(/\bdata-postura\s*=\s*(?:"([^"]*)"|'([^']*)')/i);
+  const valor = (m?.[1] ?? m?.[2] ?? '').trim();
+  return valor || null;
+}
+
+/** Acorde bajo el punto con su entrada del glosario y su registro de la línea. */
+function posturaEnPunto(clientX, clientY) {
+  if (!ficha) return null;
+  const sel = acordeEnPunto(clientX, clientY);
+  if (!sel || !esAcorde(sel.token)) return null;
+  const regsLinea = ficha.d.registros[sel.linea];
+  if (!Array.isArray(regsLinea)) return null;
+  const entrada = buscarEnIndice(INDICE_GLOSARIO, sel.token);
+  const registro = regsLinea.filter((r) => r.etiqueta === sel.token)[sel.indice] || null;
+  const actual = registro ? posturaDeAbre(registro.abre) : null;
+  if (!entrada?.posiciones?.length && !actual) return { ...sel, sinGlosario: true };
+  return { ...sel, entrada, registro, actual };
+}
+
+function posicionarPosturas(sel) {
+  const m = metricasEditor();
+  const linea = ta.value.split('\n')[sel.linea] || '';
+  const x = m.rect.left + m.padL + columnaVisual(linea, sel.col) * m.ch;
+  const y = m.rect.top + m.padT + sel.linea * m.lh;
+  const ancho = posturas.offsetWidth || 320;
+  const alto = posturas.offsetHeight || 300;
+  let left = x;
+  let top = y + m.lh + 4;
+  if (left + ancho > window.innerWidth - 8) left = window.innerWidth - ancho - 8;
+  if (top + alto > window.innerHeight - 8) top = y - alto - 4;
+  posturas.style.left = Math.max(8, Math.round(left)) + 'px';
+  posturas.style.top = Math.max(8, Math.round(top)) + 'px';
+}
+
+function cerrarPosturas() {
+  posturas.hidden = true;
+  posturasLista.innerHTML = '';
+  posturaAbierta = null;
+}
+
+function abrirPosturas(clientX, clientY) {
+  if (!ficha) return;
+  if (!estructuraOk()) return avisoEstructura();
+  const sel = posturaEnPunto(clientX, clientY);
+  if (!sel) return cerrarPosturas();
+  if (sel.sinGlosario) {
+    mostrarAviso('«' + sel.token + '» no tiene diagrama en el glosario: no hay posturas que elegir.', 'var(--nuevo)');
+    return cerrarPosturas();
+  }
+
+  cerrarSug();
+  posturaAbierta = sel;
+  posturasTitulo.textContent = 'Postura · ' + sel.token;
+
+  const actual = sel.actual;
+  const idxActual = actual && sel.entrada ? indicePostura(sel.entrada, actual) : null;
+  const items = [
+    '<button type="button" class="postura-sin' + (actual ? '' : ' actual') + '" data-postura=""' +
+      (actual ? '' : ' aria-pressed="true"') + '>Sin postura</button>',
+  ];
+  if (sel.entrada) {
+    sel.entrada.posiciones.forEach((pos, i) => {
+      const txt = textoPostura(pos);
+      const esActual = i === idxActual;
+      items.push(
+        '<button type="button" class="postura-item' + (esActual ? ' actual' : '') + '" data-postura="' + esc(txt) + '"' +
+          (esActual ? ' aria-pressed="true"' : '') + '>' +
+          svgDiagrama({
+            nombre: sel.token,
+            posicion: pos,
+            indice: i,
+            total: sel.entrada.posiciones.length,
+            ancho: 88,
+            alto: 112,
+          }) +
+          '<span class="postura-texto">' + esc(txt) + '</span>' +
+          '<span class="postura-nota">' + (esActual ? 'Actual' : 'Postura ' + (i + 1)) + '</span>' +
+        '</button>',
+      );
+    });
+  }
+  posturasLista.innerHTML = items.join('');
+  posturas.hidden = false;
+  posicionarPosturas(sel);
+}
+
+function aplicarPostura(texto) {
+  const sel = posturaAbierta;
+  if (!sel || !ficha) return;
+  const postura = texto || null;
+  if ((sel.actual || null) === postura) return cerrarPosturas();
+
+  const r = fijarPostura({
+    registros: ficha.d.registros,
+    originales: ficha.d.originales,
+    i: sel.linea,
+    etiqueta: sel.token,
+    indice: sel.indice,
+    postura,
+  });
+  if (r.error) { mostrarAviso(r.error, 'var(--nuevo)'); return; }
+  if (r.noop) return cerrarPosturas();
+
+  hist.push(snapshot());
+  if (hist.length > 300) hist.shift();
+  actualizarDeshacer();
+  futuro = [];
+  ficha.d.registros = r.registros;
+  ficha.d.originales = r.originales;
+  anterior = snapshot();
+  cerrarPosturas();
+  setEstado('sin guardar', false);
+  pintar();
 }
 
 /* ---------------- eventos ---------------- */
@@ -5436,7 +5576,7 @@ $('b-deshacer').onclick = deshacer;
 let rafAjuste = 0;
 window.addEventListener('resize', () => {
   cancelAnimationFrame(rafAjuste);
-  rafAjuste = requestAnimationFrame(() => { aplicarZoom(); verCaret(); cerrarSug(); });
+  rafAjuste = requestAnimationFrame(() => { aplicarZoom(); verCaret(); cerrarSug(); cerrarPosturas(); });
 });
 
 /** En iOS el teclado no encoge el layout: se ajusta el alto con visualViewport. */
@@ -5455,6 +5595,7 @@ if (window.visualViewport) {
 }
 
 ta.addEventListener('input', () => {
+  cerrarPosturas();
   reajustarEstructura();
   hist.push(anterior);
   if (hist.length > 300) hist.shift();
@@ -5476,6 +5617,10 @@ ta.addEventListener('pointerdown', () => {
   if (datos && datos.open) datos.open = false;
 });
 ta.addEventListener('click', actualizarAcciones);
+ta.addEventListener('click', (e) => {
+  if (e.detail > 1 || e.shiftKey || arrastre || ignorarClick) return;
+  abrirPosturas(e.clientX, e.clientY);
+});
 ta.addEventListener('keyup', actualizarAcciones);
 document.addEventListener('selectionchange', actualizarAcciones);
 ta.addEventListener('keydown', (e) => {
@@ -5492,7 +5637,7 @@ ta.addEventListener('keydown', (e) => {
     e.preventDefault();
     return rehacer();
   }
-  if (e.key === 'Escape') return cerrarSug();
+  if (e.key === 'Escape') { cerrarPosturas(); return cerrarSug(); }
   if (!sug.hidden && ['ArrowLeft', 'ArrowRight', 'Home', 'End', 'PageUp', 'PageDown'].includes(e.key)) {
     cerrarSug();
   }
@@ -5507,15 +5652,26 @@ function marcarSug() {
 }
 
 $('sug-cerrar').addEventListener('pointerdown', (e) => { e.preventDefault(); cerrarSug(); });
+$('posturas-cerrar').addEventListener('pointerdown', (e) => { e.preventDefault(); cerrarPosturas(); });
+posturasLista.addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-postura]');
+  if (!b) return;
+  aplicarPostura(b.dataset.postura || null);
+});
 document.addEventListener('pointerdown', (e) => {
   if (sug.hidden) return;
   if (sug.contains(e.target)) return;
   cerrarSug();
 }, true);
+document.addEventListener('pointerdown', (e) => {
+  if (posturas.hidden) return;
+  if (posturas.contains(e.target)) return;
+  cerrarPosturas();
+}, true);
 ta.addEventListener('blur', () => {
   setTimeout(() => { if (document.activeElement !== ta) cerrarSug(); }, 0);
 });
-lienzo.addEventListener('scroll', cerrarSug, { passive: true });
+lienzo.addEventListener('scroll', () => { cerrarSug(); cerrarPosturas(); }, { passive: true });
 
 /* Arrastre horizontal/vertical a mano y arrastre de acordes. En móvil el
    textarea se queda el gesto y, al mantener pulsado, el navegador empieza a
@@ -5607,13 +5763,21 @@ ta.addEventListener('touchend', (e) => {
     soltarArrastre();
   } else if (toque?.acorde && !toque.movido) {
     // Toque corto en un acorde: como hemos bloqueado el gesto nativo, el
-    // cursor lo colocamos nosotros en el punto donde estaba el dedo.
+    // cursor lo colocamos nosotros en el punto donde estaba el dedo y abrimos
+    // el selector de postura. La pulsación larga sigue siendo para arrastrar.
     const t = e.changedTouches?.[0];
-    const p = puntoEditor(t ? t.clientX : toque.x, t ? t.clientY : toque.y);
-    const pos = posicionDe(p.linea, p.col);
+    const x = t ? t.clientX : toque.x;
+    const y = t ? t.clientY : toque.y;
     if (e.cancelable) e.preventDefault();
-    ta.focus();
-    ta.setSelectionRange(pos, pos);
+    // Solo se mueve el cursor si el editor ya tenía el foco: enfocarlo aquí
+    // abriría el teclado, encogería el viewport y el `resize` cerraría el
+    // selector recién abierto.
+    if (document.activeElement === ta) {
+      const p = puntoEditor(x, y);
+      const pos = posicionDe(p.linea, p.col);
+      ta.setSelectionRange(pos, pos);
+    }
+    abrirPosturas(x, y);
   }
   if (toqueLargo) { clearTimeout(toqueLargo.timer); toqueLargo = null; }
   toque = null;
