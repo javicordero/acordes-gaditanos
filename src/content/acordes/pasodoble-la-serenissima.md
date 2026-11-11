@@ -12,7 +12,7 @@ cover: null
 autorCover: null
 date: 03/12/2025
 fraseClave: Quando arrivé a la citá vostra
-letraTitulo: Quando arrivé a la citá vostra
+letraTitulo: Quando arrivé a la citá
 ---
 <pre>
 <a>Mim</a>                      <a>Sim</a>
