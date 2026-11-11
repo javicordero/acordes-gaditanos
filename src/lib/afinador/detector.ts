@@ -34,8 +34,10 @@ const INTERVALO_MS = 60;
 const CLARIDAD_MINIMA = 0.8;
 /** −60 dB: deja pasar una guitarra suave a medio metro de un micro de móvil. */
 const VOLUMEN_MINIMO_DB = -60;
-/** Lecturas seguidas sin señal antes de borrar la nota. */
-const SILENCIOS = 4;
+/** Tiempo que se mantiene la última nota cuando deja de haber lecturas válidas. */
+const MANTENER_MS = 2500;
+/** Salto de frecuencia que se interpreta como cambio de cuerda, no como desafinación. */
+const SALTO_CUERDA_CENTS = 200;
 /** Diferencia de cents que no merece repintar la aguja. */
 const HISTERESIS = 3;
 
@@ -64,7 +66,7 @@ export function crearAfinador({
 
   let historial: number[] = [];
   let ultima: { midi: number; cents: number } | null = null;
-  let silencios = 0;
+  let ultimaLecturaValida = 0;
   let activo = false;
 
   function soltar() {
@@ -91,7 +93,7 @@ export function crearAfinador({
     buffer = null;
     historial = [];
     ultima = null;
-    silencios = 0;
+    ultimaLecturaValida = 0;
     activo = false;
     onNivel?.(0);
   }
@@ -114,8 +116,9 @@ export function crearAfinador({
     const [frecuencia, claridad] = detector.findPitch(buffer, contexto.sampleRate);
 
     if (!frecuencia || claridad < CLARIDAD_MINIMA) {
-      silencios += 1;
-      if (silencios >= SILENCIOS) {
+      // La nota se mantiene un tiempo aunque la cuerda se apague: así se puede
+      // leer y corregir sin que desaparezca a la primera lectura mala.
+      if (ultima && Date.now() - ultimaLecturaValida >= MANTENER_MS) {
         historial = [];
         ultima = null;
         onNota(null);
@@ -123,7 +126,14 @@ export function crearAfinador({
       return;
     }
 
-    silencios = 0;
+    ultimaLecturaValida = Date.now();
+
+    // Un salto grande es un cambio de cuerda: no se promedia con la anterior.
+    const anterior = historial[historial.length - 1];
+    if (anterior && Math.abs(1200 * Math.log2(frecuencia / anterior)) > SALTO_CUERDA_CENTS) {
+      historial = [];
+    }
+
     historial.push(frecuencia);
     if (historial.length > VENTANA) historial.shift();
 
