@@ -5,15 +5,15 @@ year: 2012
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Comparsa
-img: https://static.grupojoly.com/clip/5478c8bf-b586-4016-91ef-d33a7e5df95e_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/5478c8bf-b586-4016-91ef-d33a7e5df95e_source-aspect-ratio_1600w_0.jpg'
 cejilla: 4
-video: https://www.youtube.com/embed/CpxE47MMPf4?si=ha-x4ugONElQm-fv
+video: 'https://www.youtube.com/embed/CpxE47MMPf4?si=ha-x4ugONElQm-fv'
 cover: null
 autorCover: null
 date: 03/12/2025
 fraseClave: Quando arrivé a la citá vostra
+letraTitulo: Quando arrivé a la citá vostra
 ---
-
 <pre>
 <a>Mim</a>                      <a>Sim</a>
 Quando arrivé a la citá vostra
