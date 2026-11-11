@@ -58,6 +58,7 @@
   "auditar:buscar": "node scripts/auditar-buscar.mjs",
     "normalizar:contenido": "node --experimental-strip-types scripts/normalizar-contenido.ts",
     "modalidad": "node scripts/completar-modalidad.mjs",
+    "ga4:dimension": "node scripts/crear-dimension-consulta.mjs",
     "trello": "node scripts/trello.mjs",
     "ajustar:borradores": "node scripts/ajustar-borradores.mjs",
     "perf:status": "strobe status",

@@ -102,7 +102,7 @@ export default async (req) => {
     const metrics = (nombres) => nombres.map((name) => ({ name }));
     const dims = (nombres) => nombres.map((name) => ({ name }));
 
-    const [totalD, diarioD, eventosD, paginasD, canalesD, paisesD, dispositivosD, anteriorD] = await Promise.all([
+    const [totalD, diarioD, eventosD, paginasD, canalesD, paisesD, dispositivosD, anteriorD, busquedasD] = await Promise.all([
       consulta({
         dateRanges: [rango({ desde, hasta })],
         metrics: metrics(METRICAS_TOTAL),
@@ -153,7 +153,38 @@ export default async (req) => {
         dateRanges: [rango(anteriorRango)],
         metrics: metrics(METRICAS_TOTAL),
       }),
+      // Lo que se busca y no encuentra nada. Lleva `catch` propio: el parámetro
+      // `consulta` es una dimensión personalizada que hay que crear en GA4 y,
+      // mientras no exista o no se haya propagado, la Data API responde 400.
+      // Ese fallo no puede tumbar el resto de la pestaña.
+      consulta({
+        dateRanges: [rango({ desde, hasta })],
+        dimensions: dims(['customEvent:consulta']),
+        metrics: metrics(['eventCount', 'totalUsers']),
+        dimensionFilter: {
+          filter: {
+            fieldName: 'eventName',
+            stringFilter: { matchType: 'EXACT', value: 'buscar_sin_resultados' },
+          },
+        },
+        orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }],
+        limit: 200,
+      }).catch((e) => ({ __error: String(e && e.message ? e.message : e) })),
     ]);
+
+    // Las búsquedas anteriores a crear la dimensión llegan como «(not set)».
+    // Se cuentan aparte para poder explicarlo, sin ensuciar la tabla.
+    const todasBusquedas = busquedasD && busquedasD.__error
+      ? []
+      : filas(busquedasD).map((x) => ({
+        consulta: x.dims[0] || '',
+        eventCount: x.valores.eventCount || 0,
+        totalUsers: x.valores.totalUsers || 0,
+      }));
+    const busquedas = todasBusquedas.filter((x) => x.consulta && x.consulta !== '(not set)');
+    const busquedasSinParametro = todasBusquedas
+      .filter((x) => !x.consulta || x.consulta === '(not set)')
+      .reduce((n, x) => n + Number(x.eventCount || 0), 0);
 
     return json({
       configurado: true,
@@ -175,6 +206,9 @@ export default async (req) => {
         eventCount: x.valores.eventCount || 0,
         totalUsers: x.valores.totalUsers || 0,
       })),
+      busquedas,
+      busquedasSinParametro,
+      busquedasError: busquedasD && busquedasD.__error ? busquedasD.__error : null,
       paginas: filas(paginasD).map((x) => ({
         pagina: x.dims[0] || '',
         screenPageViews: x.valores.screenPageViews || 0,

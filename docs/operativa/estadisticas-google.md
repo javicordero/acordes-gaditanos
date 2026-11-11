@@ -19,13 +19,26 @@ en [`panel-admin.md`](panel-admin.md).
   búsquedas raras.
   Variables: `GSC_SITE_URL` (por ejemplo `sc-domain:acordesgaditanos.com` o
   `https://acordesgaditanos.com/`) y la autenticación de Google.
-- **Analytics** (`ga4.mjs`): GA4 Data API. Tiene dos subpestañas:
-  **Eventos** (la que abre por defecto) y **Resumen**. Los periodos son
-  **Ayer, 7, 30 y 90 días**. Eventos muestra el nombre claro de cada evento,
-  su nombre técnico debajo, eventos, usuarios, porcentaje y barra. Resumen
-  mantiene sesiones, usuarios, páginas vistas, engagement, sesiones por día,
-  páginas, canales, países y dispositivos. Variable: `GA4_PROPERTY_ID` (el ID
-  numérico de la propiedad, no el `G-...`).
+- **Analytics** (`ga4.mjs`): GA4 Data API. Tiene tres subpestañas:
+  **Eventos** (la que abre por defecto), **Búsquedas** y **Resumen**. Los periodos
+  son **Ayer, 7, 30 y 90 días**. Eventos muestra el nombre claro de cada evento,
+  su nombre técnico debajo, eventos, usuarios, porcentaje y barra. **Búsquedas**
+  lista lo que se busca y no encuentra nada: pide la dimensión personalizada
+  `customEvent:consulta` filtrando el evento `buscar_sin_resultados`, con
+  consulta, búsquedas, usuarios, porcentaje y barra. Esa dimensión **hay que
+  crearla en GA4** (Administrar → Definiciones personalizadas → ámbito **Evento**,
+  nombre visible `consulta`, parámetro `consulta`); la Data API solo expone los
+  parámetros registrados y **no rellena el histórico**. Si aún no existe, la
+  subpestaña lo explica y el resto de Analytics sigue funcionando
+  (`busquedasError`). Recuerda que el evento sale con cada búsqueda a cero, también
+  a medio escribir, y solo de quien acepta las cookies; el texto va recortado a
+  40 caracteres. Para crear la dimensión desde aquí, `npm run ga4:dimension`
+  (`scripts/crear-dimension-consulta.mjs`) pide un consentimiento OAuth de un solo
+  uso con `analytics.edit`; no guarda ningún token y necesita el redirect
+  `http://127.0.0.1:4325/oauth2callback` dado de alta en el cliente OAuth.
+  Resumen mantiene sesiones, usuarios, páginas vistas, engagement,
+  sesiones por día, páginas, canales, países y dispositivos. Variable:
+  `GA4_PROPERTY_ID` (el ID numérico de la propiedad, no el `G-...`).
 - **AdSense** (`ads.mjs`): AdSense Management API v2. Periodos **Hoy, Ayer, 7,
   30 y 90 días**. Informes por **método de emplazamiento**, **unidades de
   anuncio**, **top páginas** y **países**, con las columnas **Impresiones**,

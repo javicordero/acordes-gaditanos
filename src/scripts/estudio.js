@@ -2255,6 +2255,8 @@ const EVENTOS_GA4 = {
   shein_inline: 'Clic en anuncio Shein inline',
   shein_columna: 'Clic en anuncio Shein de columna',
   recomendacion_inline_click: 'Clic en recomendación inline',
+  buscar_sin_resultados: 'Busca sin resultados',
+  buscar_sugerencia_click: 'Clic en una sugerencia del buscador',
   buscar_ver_resultados: 'Ve los resultados completos de búsqueda',
 };
 
@@ -2745,7 +2747,7 @@ function pintarGa4(cont, d) {
   const nota = ga4Periodo === 'ayer' ? 'Ayer' : 'Datos hasta ayer';
   const vistas =
     '<div class="stats-chips" id="ga4-vistas" role="group" aria-label="Vista de Analytics">' +
-      [['eventos', 'Eventos'], ['resumen', 'Resumen']].map(([vista, texto]) =>
+      [['eventos', 'Eventos'], ['busquedas', 'Búsquedas'], ['resumen', 'Resumen']].map(([vista, texto]) =>
         '<button type="button" data-ga4-vista="' + vista + '"' +
         (ga4Vista === vista ? ' class="sel"' : '') + '>' + texto + '</button>'
       ).join('') +
@@ -2788,6 +2790,66 @@ function pintarGa4(cont, d) {
         eventos,
         'Top 50',
       );
+    return;
+  }
+
+  if (ga4Vista === 'busquedas') {
+    const lista = [...(d.busquedas || [])].sort((x, y) => y.eventCount - x.eventCount);
+    const totalSin = lista.reduce((n, x) => n + Number(x.eventCount || 0), 0);
+    const sinParametro = Number(d.busquedasSinParametro || 0);
+
+    const cards = tarjetasCf([
+      { label: 'Búsquedas sin resultado', valor: totalSin, total: true },
+      { label: 'Consultas distintas', valor: lista.length },
+    ]);
+
+    if (d.busquedasError) {
+      cont.innerHTML =
+        cabeceraGoogle('Google Analytics 4', d, nota, 'ga4') +
+        vistas +
+        '<section class="stats-bloque">' +
+          '<h3>Búsquedas sin resultado <span class="tabla-nota">Dimensión pendiente</span></h3>' +
+          '<div class="cf-comparativa">' +
+            '<p>GA4 todavía no devuelve el parámetro <code>consulta</code> de estos eventos.</p>' +
+            '<p>Hay que crear la dimensión personalizada <code>consulta</code> (ámbito <strong>Evento</strong>) en Administrar → Definiciones personalizadas y esperar unos minutos. Los datos anteriores a su creación no se rellenan.</p>' +
+            '<p><code>' + esc(d.busquedasError) + '</code></p>' +
+          '</div>' +
+        '</section>';
+      return;
+    }
+
+    const cuerpoFilas = lista.map((x) => {
+      const pct = totalSin ? (Number(x.eventCount || 0) / totalSin) * 100 : 0;
+      return [
+        { t: x.consulta || '(vacía)' },
+        { t: fmtNum(x.eventCount), num: true },
+        { t: fmtNum(x.totalUsers), num: true },
+        { t: pct.toLocaleString('es-ES', { maximumFractionDigits: 1 }) + ' %', num: true },
+        { html: barraHtml(x.eventCount, totalSin), cls: 'progreso' },
+      ];
+    });
+
+    const avisoParametro = sinParametro
+      ? ' Además, ' + fmtNum(sinParametro) + ' búsquedas del periodo son anteriores a la dimensión: GA4 no las guarda con el texto.'
+      : '';
+
+    cont.innerHTML =
+      cabeceraGoogle('Google Analytics 4', d, nota, 'ga4') +
+      vistas +
+      '<div class="stats-grid">' + cards + '</div>' +
+      (lista.length
+        ? tablaStats(
+          'Búsquedas sin resultado',
+          [{ t: 'Consulta' }, { t: 'Búsquedas', num: true }, { t: 'Usuarios', num: true }, { t: '%', num: true }, { t: 'Popularidad', cls: 'progreso' }],
+          cuerpoFilas,
+          'Top 200 · 40 caracteres máximo',
+          '<p class="stats-resumen">Cuenta cada vez que el buscador se queda a cero, también mientras se escribe la palabra. Solo llega de quien acepta las cookies de analítica.' + esc(avisoParametro) + '</p>',
+        )
+        : '<section class="stats-bloque"><h3>Búsquedas sin resultado</h3><p class="stats-resumen">' +
+          (sinParametro
+            ? 'Todavía no hay ninguna búsqueda con el parámetro. Las ' + fmtNum(sinParametro) + ' del periodo son anteriores a crear la dimensión en GA4, así que no se pueden leer.'
+            : 'Ninguna búsqueda se quedó sin resultados en el periodo.') +
+          '</p></section>');
     return;
   }
 
