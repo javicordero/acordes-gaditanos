@@ -5,12 +5,12 @@ year: 2019
 modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://static.grupojoly.com/clip/6bd76fc7-e277-4ac1-921f-3fda1defb858_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/6bd76fc7-e277-4ac1-921f-3fda1defb858_source-aspect-ratio_1600w_0.jpg'
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/kF_F3DC8f9A'
-
 fraseClave: Muy buenas noches señores, como en años anteriores,
+letraTitulo: Muy buenas noches señores
 ---
 <pre>
                      <a>Mi</a>                      <a>Do#7</a>
@@ -51,7 +51,7 @@ Ay! preparao pa la matanza, aquí estamos vida mía
 Con las piernas temblorosas, con ese miedo en la
                 <a>Do#7</a>    <a>Fa#m</a>
 copla del bendito primer día
-            <a>Fa#m7M</a>                    <a>Si7</a>
+            <a>Fa#m7M</a>   <a>Fa#m</a>              <a>Si7</a>
 Aviso pa navegantes, dio comienzo la masacre
                    <a>La</a>              <a>Lam</a>           <a>Mi</a>
 Y si a la final llegamos que otro cierre por tu madre
