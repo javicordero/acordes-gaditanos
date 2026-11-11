@@ -1,0 +1,750 @@
+---
+/**
+ * Transportador de acordes (/transportar-acordes/).
+ *
+ * Página nueva: reutiliza el motor de la ficha (`src/lib/transporte.ts`) pero
+ * trabaja con un cifrado pegado en texto plano. Todo ocurre en el navegador.
+ */
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/page/Breadcrumb.astro';
+import Anuncio2 from '../components/right-column/anuncios/Anuncio2.astro';
+
+const title = 'Transportador de acordes: cambia el tono - Acordes Gaditanos';
+const description =
+  'Sube o baja el tono de un cifrado completo sin cambiar la letra. Pega los acordes, elige los semitonos y copia el resultado. Gratis, sin registro y en tu navegador.';
+const keywords =
+  'transportador de acordes, transportar acordes, transponer acordes, cambiar tono canción, subir tono guitarra, bajar tono cifrado';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Transportador de acordes',
+  applicationCategory: 'MusicApplication',
+  operatingSystem: 'Web',
+  url: canonicalURL,
+  description,
+  inLanguage: 'es-ES',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+  },
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Acordes Gaditanos',
+    url: Astro.site,
+  },
+};
+
+const faqs = [
+  {
+    pregunta: '¿Transportar es lo mismo que poner cejilla?',
+    respuesta:
+      'No. La cejilla sube el tono sin cambiar los nombres: sigues leyendo Do, pero suena Re. Transportar cambia los nombres: lees Re y suena Re. Se pueden combinar: transportas el cifrado y después usas la cejilla para tocar con formas abiertas.',
+  },
+  {
+    pregunta: '¿Se guarda el cifrado que pego?',
+    respuesta:
+      'No. Todo se calcula en tu navegador y no se envía nada al servidor. Al cerrar o recargar la página desaparece.',
+  },
+  {
+    pregunta: '¿Por qué no se transporta una palabra que parece un acorde?',
+    respuesta:
+      'Porque solo se tocan las líneas que son de acordes. Los acordes tienen que ir en su propia línea, encima de la letra, como en el cancionero. Si una línea mezcla acordes y letra, no se detecta y se deja igual.',
+  },
+  {
+    pregunta: '¿Cuántos semitonos puedo mover?',
+    respuesta:
+      'De −11 a +11. Doce semitonos son una octava y el acorde vuelve a llamarse igual, así que no aporta nada seguir subiendo.',
+  },
+  {
+    pregunta: '¿Funciona con acordes con barra y con bemoles?',
+    respuesta:
+      'Sí. En un acorde con barra se transportan los dos lados: Do/Mi pasa a Re/Fa#. Y las grafías con bemol se escriben con sostenidos al transportar, que es la grafía que usa el cancionero.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ pregunta, respuesta }) => ({
+    '@type': 'Question',
+    name: pregunta,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: respuesta,
+    },
+  })),
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  keywords={keywords}
+  sinAnuncioSobreFooter
+>
+  <script type='application/ld+json' set:html={JSON.stringify(webAppSchema)} />
+  <script type='application/ld+json' set:html={JSON.stringify(faqSchema)} />
+
+  <Breadcrumb
+    parent={{ name: 'Glosario de acordes', href: '/glosario/' }}
+    current='Transportador de acordes'
+  />
+
+  <div class='main-container container-layout'>
+    <article class='transporte-pagina'>
+      <header class='transporte-pagina__header'>
+        <h1>Transportador de acordes</h1>
+        <p class='transporte-pagina__intro'>
+          Pega un cifrado, elige cuántos semitonos subir o bajar y copia el resultado. La letra se
+          queda igual y los acordes se colocan en su sitio. Todo ocurre en tu navegador: no se
+          guarda nada y no hay que registrarse.
+        </p>
+      </header>
+
+      <section class='transporte-pagina__seccion' aria-labelledby='herramienta-titulo'>
+        <h2 id='herramienta-titulo'>Transporta tu cifrado</h2>
+
+        <div class='herramienta'>
+          <div class='herramienta__campo'>
+            <label for='cifrado'>Cifrado original</label>
+            <textarea
+              id='cifrado'
+              rows='10'
+              spellcheck='false'
+              autocomplete='off'
+              placeholder={'        Do                Sol\nAquí van los acordes\n       Lam               Fa\ny debajo, la letra'}
+            ></textarea>
+          </div>
+
+          <div class='herramienta__barra'>
+            <div class='transporte' role='group' aria-labelledby='transporte-titulo'>
+              <span class='transporte__titulo' id='transporte-titulo'>Semitonos</span>
+              <button
+                class='transpose-btn'
+                type='button'
+                data-bajar
+                aria-label='Bajar un semitono'
+                title='Bajar un semitono'>−</button
+              >
+              <span
+                class='transporte__display'
+                data-display
+                role='status'
+                aria-live='polite'>0</span
+              >
+              <button
+                class='transpose-btn'
+                type='button'
+                data-subir
+                aria-label='Subir un semitono'
+                title='Subir un semitono'>+</button
+              >
+            </div>
+
+            <div class='herramienta__acciones'>
+              <button type='button' class='herramienta__btn' data-ejemplo>Ver ejemplo</button>
+              <button type='button' class='herramienta__btn' data-reset>Restablecer</button>
+            </div>
+          </div>
+
+          <p class='herramienta__aviso' data-aviso hidden>
+            No hemos encontrado ninguna línea de acordes. Los acordes tienen que ir en su propia
+            línea, encima de la letra, como en el cancionero.
+          </p>
+
+          <div class='herramienta__salida'>
+            <div class='herramienta__salida-cabecera'>
+              <h3>Resultado</h3>
+              <button type='button' class='herramienta__btn' data-copiar disabled>Copiar</button>
+            </div>
+            <pre data-resultado aria-label='Cifrado transportado'></pre>
+          </div>
+
+          <noscript>
+            <p class='herramienta__aviso'>
+              El transportador necesita JavaScript para calcular el resultado. Abajo tienes la
+              explicación y el ejemplo resuelto, que se leen sin activarlo.
+            </p>
+          </noscript>
+        </div>
+      </section>
+
+      <Anuncio2 class='transporte-pagina__anuncio' />
+
+      <section class='transporte-pagina__seccion' aria-labelledby='que-es'>
+        <h2 id='que-es'>Qué significa transportar acordes</h2>
+        <p>
+          Transportar —o transponer— es mover todos los acordes de una canción los mismos semitonos
+          para que suene en otro tono. Las relaciones entre ellos no cambian: si una copla va de Do a
+          Sol, transportada dos semitonos irá de Re a La. Cambia la altura; se mantiene la
+          estructura.
+        </p>
+        <p>
+          Se hace por dos motivos: porque la copla queda alta o baja para la voz, o porque quieres
+          tocar con formas cómodas sin cambiar la cejilla. En los dos casos el cifrado tiene que
+          moverse entero: transportar solo un acorde rompe la canción.
+        </p>
+      </section>
+
+      <section class='transporte-pagina__seccion' aria-labelledby='ejemplo'>
+        <h2 id='ejemplo'>Ejemplo resuelto</h2>
+        <p>
+          Esta progresión sube dos semitonos. Cada acorde conserva su tipo: los mayores siguen
+          mayores y los menores siguen menores.
+        </p>
+        <div class='transporte-pagina__tabla'>
+          <table>
+            <caption>Do–Sol–Lam–Fa transportado +2 semitonos</caption>
+            <thead>
+              <tr>
+                <th scope='col'>Original</th>
+                <th scope='col'>+2 semitonos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Do</td><td>Re</td></tr>
+              <tr><td>Sol</td><td>La</td></tr>
+              <tr><td>Lam</td><td>Sim</td></tr>
+              <tr><td>Fa</td><td>Sol</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='transporte-pagina__seccion' aria-labelledby='como-se-cuenta'>
+        <h2 id='como-se-cuenta'>Cómo se cuentan los semitonos</h2>
+        <p>
+          Un semitono es un traste. Subir dos semitonos es lo mismo que llevar el cifrado dos
+          trastes hacia el mástil. Doce semitonos son una octava: el acorde vuelve a llamarse igual,
+          y por eso el transportador se mueve entre −11 y +11.
+        </p>
+        <p>
+          Al transportar, las grafías con bemol se escriben con sostenido (Sib pasa a Si, Mib a Mi)
+          porque el cancionero usa sostenidos. Es la misma nota con otro nombre, no un error.
+        </p>
+      </section>
+
+      <section class='transporte-pagina__seccion' aria-labelledby='cuando'>
+        <h2 id='cuando'>Cuándo subir o bajar el tono</h2>
+        <ul class='transporte-pagina__lista'>
+          <li>
+            <strong>La voz manda.</strong> Si llegas ahogado al final de la copla, baja uno o dos
+            semitonos. Si te quedas corto en los graves, sube.
+          </li>
+          <li>
+            <strong>Con cejilla.</strong> Transporta el cifrado y después usa la cejilla para volver
+            a las formas abiertas: suena en el tono nuevo y se toca con las de siempre.
+          </li>
+          <li>
+            <strong>Para grabar o tocar con otros.</strong> Ajusta hasta que coincida con el
+            instrumento o la grabación de referencia.
+          </li>
+        </ul>
+      </section>
+
+      <section class='transporte-pagina__seccion' aria-labelledby='formato'>
+        <h2 id='formato'>El formato del texto</h2>
+        <p>
+          Los acordes van en su propia línea, encima de la letra. Así el transportador distingue qué
+          es acorde y qué es letra: una línea que empieza por «La» o «Mi» no se toca si es letra.
+        </p>
+        <p>
+          Los acordes con barra se transportan por los dos lados (Do/Mi pasa a Re/Fa#) y los acordes
+          pegados sin espacio (SolLam) se separan solos. Lo que no reconoce lo deja igual: una
+          etiqueta mal escrita no se rompe, simplemente no se mueve.
+        </p>
+      </section>
+
+      <section class='transporte-pagina__seccion transporte-pagina__faq' aria-labelledby='faq'>
+        <h2 id='faq'>Preguntas frecuentes</h2>
+        {
+          faqs.map(({ pregunta, respuesta }) => (
+            <details class='transporte-pagina__faq-item'>
+              <summary>{pregunta}</summary>
+              <p>{respuesta}</p>
+            </details>
+          ))
+        }
+      </section>
+
+      <p class='transporte-pagina__cierre'>
+        Si después de transportar no te suena como esperabas, dibuja la postura en el
+        <a href='/reconocer-acorde'>reconocedor de acordes</a> o busca el acorde en el
+        <a href='/glosario'>glosario completo</a>, con todas sus posiciones y la digitación cuerda
+        por cuerda. Y si la guitarra no está afinada, empieza por el
+        <a href='/afinador-guitarra' data-ga-event='click_afinador_transportador'>afinador</a>; tienes
+        el resto en <a href='/herramientas'>herramientas</a>.
+      </p>
+    </article>
+  </div>
+</Layout>
+
+<script>
+  import { enviarEvento, seguirEnlaces } from '../lib/analitica';
+  import { transportarCifrado } from '../lib/transporte';
+
+  const entrada = document.getElementById('cifrado') as HTMLTextAreaElement | null;
+  const resultado = document.querySelector<HTMLElement>('[data-resultado]');
+  const display = document.querySelector<HTMLElement>('[data-display]');
+  const subir = document.querySelector<HTMLButtonElement>('[data-subir]');
+  const bajar = document.querySelector<HTMLButtonElement>('[data-bajar]');
+  const ejemplo = document.querySelector<HTMLButtonElement>('[data-ejemplo]');
+  const reset = document.querySelector<HTMLButtonElement>('[data-reset]');
+  const copiar = document.querySelector<HTMLButtonElement>('[data-copiar]');
+  const aviso = document.querySelector<HTMLElement>('[data-aviso]');
+
+  const MAXIMO = 11;
+  const TEXTO_EJEMPLO =
+    '        Do                Sol\n' +
+    'Aquí van los acordes\n' +
+    '       Lam               Fa\n' +
+    'y debajo, la letra';
+
+  let semitonos = 0;
+  let iniciado = false;
+  let ultimoEnvio = 0;
+  let ultimaDireccion = 'subir';
+  let temporizadorCopiar: number | undefined;
+
+  function registrarInicio(origen: string) {
+    if (iniciado) return;
+    iniciado = true;
+    enviarEvento('transportador_start', { origen });
+  }
+
+  function tieneAcordes(texto: string): boolean {
+    return texto.trim() !== '' && transportarCifrado(texto, 1) !== texto;
+  }
+
+  function pintar() {
+    if (!entrada || !resultado) return;
+
+    const texto = entrada.value;
+    const salida = semitonos === 0 ? texto : transportarCifrado(texto, semitonos);
+
+    resultado.textContent = salida;
+
+    if (display) {
+      display.textContent = semitonos > 0 ? `+${semitonos}` : semitonos < 0 ? `−${Math.abs(semitonos)}` : '0';
+    }
+    if (subir) subir.disabled = semitonos >= MAXIMO;
+    if (bajar) bajar.disabled = semitonos <= -MAXIMO;
+    if (copiar) copiar.disabled = texto.trim() === '';
+    if (aviso) aviso.hidden = texto.trim() === '' || tieneAcordes(texto);
+  }
+
+  function enviarSemitonos() {
+    const ahora = Date.now();
+    if (ahora - ultimoEnvio < 400) return;
+    ultimoEnvio = ahora;
+    enviarEvento('transportador_semitonos', {
+      semitonos,
+      direccion: ultimaDireccion,
+    });
+  }
+
+  function cambiar(delta: number) {
+    registrarInicio('boton');
+    const siguiente = Math.max(-MAXIMO, Math.min(MAXIMO, semitonos + delta));
+    if (siguiente === semitonos) return;
+    semitonos = siguiente;
+    ultimaDireccion = delta > 0 ? 'subir' : 'bajar';
+    pintar();
+    enviarSemitonos();
+  }
+
+  subir?.addEventListener('click', () => cambiar(1));
+  bajar?.addEventListener('click', () => cambiar(-1));
+
+  entrada?.addEventListener('input', () => {
+    registrarInicio('texto');
+    pintar();
+  });
+
+  ejemplo?.addEventListener('click', () => {
+    if (!entrada) return;
+    registrarInicio('ejemplo');
+    entrada.value = TEXTO_EJEMPLO;
+    semitonos = 0;
+    pintar();
+    entrada.focus();
+    enviarEvento('click_transportador_ejemplo');
+  });
+
+  reset?.addEventListener('click', () => {
+    semitonos = 0;
+    pintar();
+    enviarEvento('click_transportador_reset');
+  });
+
+  copiar?.addEventListener('click', async () => {
+    if (!resultado) return;
+    const texto = resultado.textContent ?? '';
+
+    try {
+      await navigator.clipboard.writeText(texto);
+    } catch {
+      const seleccion = window.getSelection();
+      const rango = document.createRange();
+      rango.selectNodeContents(resultado);
+      seleccion?.removeAllRanges();
+      seleccion?.addRange(rango);
+      document.execCommand('copy');
+      seleccion?.removeAllRanges();
+    }
+
+    enviarEvento('transportador_copiar', { semitonos });
+
+    if (copiar) {
+      const original = copiar.textContent;
+      copiar.textContent = 'Copiado';
+      if (temporizadorCopiar) window.clearTimeout(temporizadorCopiar);
+      temporizadorCopiar = window.setTimeout(() => {
+        copiar.textContent = original;
+      }, 1600);
+    }
+  });
+
+  pintar();
+  seguirEnlaces('[data-ga-event^="click_"]', 'transportador');
+</script>
+
+<style>
+  .transporte-pagina {
+    padding: 18px 18px 22px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 6px 6px 0 0 var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-color);
+  }
+
+  :global(.transporte-pagina__anuncio) {
+    margin-top: 30px;
+  }
+
+  .transporte-pagina__header h1 {
+    margin: 0 0 14px;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    max-width: fit-content;
+    position: relative;
+  }
+
+  .transporte-pagina__header h1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 95%;
+    height: 5px;
+    background: var(--primary-contrast-color);
+  }
+
+  .transporte-pagina__intro {
+    margin: 16px 0 0;
+    max-width: 75ch;
+    line-height: 1.6;
+  }
+
+  .transporte-pagina__seccion {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 2px solid var(--primary-color);
+  }
+
+  .transporte-pagina__seccion h2 {
+    margin: 8px 0 12px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .transporte-pagina__seccion p,
+  .transporte-pagina__lista {
+    line-height: 1.6;
+    max-width: 80ch;
+  }
+
+  .transporte-pagina__seccion p + p {
+    margin-top: 10px;
+  }
+
+  .transporte-pagina__lista {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .transporte-pagina__lista strong {
+    color: var(--primary-color);
+  }
+
+  .herramienta {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .herramienta__campo label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .herramienta__campo textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    resize: vertical;
+  }
+
+  .herramienta__campo textarea:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
+  .herramienta__barra {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .transporte {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .transporte__titulo {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .transpose-btn {
+    width: 34px;
+    height: 34px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .transpose-btn:hover:not(:disabled) {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .transpose-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .transporte__display {
+    min-width: 34px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .herramienta__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .herramienta__btn {
+    padding: 7px 14px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--card-background-color);
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .herramienta__btn:hover:not(:disabled) {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .herramienta__btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .herramienta__aviso {
+    margin: 0;
+    padding: 10px 12px;
+    border-left: 4px solid var(--primary-contrast-color);
+    background: color-mix(in srgb, var(--primary-color) 6%, transparent);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--text-color);
+  }
+
+  .herramienta__salida {
+    border: 2px solid var(--primary-color);
+  }
+
+  .herramienta__salida-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .herramienta__salida-cabecera h3 {
+    margin: 0;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  [data-resultado] {
+    margin: 0;
+    padding: 12px;
+    min-height: 90px;
+    overflow-x: auto;
+    background: var(--card-background-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    white-space: pre;
+  }
+
+  [data-resultado]:empty::before {
+    content: 'El resultado aparecerá aquí.';
+    color: var(--text-secondary-color);
+  }
+
+  .transporte-pagina__tabla {
+    margin-top: 14px;
+    overflow-x: auto;
+  }
+
+  .transporte-pagina__tabla table {
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .transporte-pagina__tabla caption {
+    caption-side: top;
+    margin-bottom: 8px;
+    text-align: left;
+    font-size: 0.78rem;
+    color: var(--text-secondary-color);
+  }
+
+  .transporte-pagina__tabla th,
+  .transporte-pagina__tabla td {
+    padding: 8px 18px;
+    border: 2px solid var(--primary-color);
+    text-align: left;
+  }
+
+  .transporte-pagina__tabla th {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .transporte-pagina__faq-item {
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .transporte-pagina__faq-item + .transporte-pagina__faq-item {
+    margin-top: 8px;
+  }
+
+  .transporte-pagina__faq-item summary {
+    padding: 10px 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .transporte-pagina__faq-item[open] summary {
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .transporte-pagina__faq-item p {
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .transporte-pagina__cierre {
+    margin-top: 30px;
+    padding-top: 12px;
+    border-top: 2px solid var(--primary-color);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .transporte-pagina__cierre a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .transporte-pagina__cierre a:hover {
+    color: var(--link-hover-color);
+  }
+
+  @media (max-width: 640px) {
+    .transporte-pagina {
+      padding: 14px 12px 18px;
+    }
+
+    .transporte-pagina__header h1 {
+      font-size: 1.2rem;
+    }
+
+    .herramienta__barra {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

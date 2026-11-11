@@ -73,27 +73,6 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
       </p>
 
       <div class='acordes-pieza__acciones'>
-        <div class='transporte'>
-          <span class='transporte__titulo' id='transporte-titulo'>Transportar acordes</span>
-          <div class='transpose-controls' role='group' aria-labelledby='transporte-titulo'>
-            <button
-              class='transpose-btn transpose-down'
-              aria-label='Bajar tono'
-              title='Bajar tono'
-              type='button'>−</button>
-            <span
-              class='transpose-display'
-              data-transpose-display
-              role='status'
-              aria-live='polite'>0</span>
-            <button
-              class='transpose-btn transpose-up'
-              aria-label='Subir tono'
-              title='Subir tono'
-              type='button'>+</button>
-          </div>
-        </div>
-
         {acordes.length > 0 && (
           <button
             type='button'
@@ -199,77 +178,10 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
   .acordes-pieza__acciones {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 8px;
     flex-wrap: wrap;
     margin-top: 6px;
-  }
-
-  .transporte {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .transporte__titulo {
-    margin: 0;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--primary-color);
-  }
-
-  .transpose-controls {
-    display: inline-flex;
-    align-items: stretch;
-    border: 2px solid var(--primary-color);
-    background: var(--card-background-color);
-    box-shadow: 2px 2px 0 0 var(--primary-color);
-  }
-
-  .transpose-btn {
-    width: 28px;
-    min-height: 26px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    color: var(--primary-color);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1;
-    cursor: pointer;
-    transition: background 0.15s ease;
-  }
-
-  .transpose-btn:hover {
-    background: var(--primary-contrast-color);
-    color: var(--on-bright-color);
-  }
-
-  .transpose-btn:focus-visible {
-    outline: 3px solid var(--primary-contrast-color);
-    outline-offset: 2px;
-  }
-
-  .transpose-display {
-    min-width: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-left: 2px solid var(--primary-color);
-    border-right: 2px solid var(--primary-color);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.72rem;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--acorde-color);
   }
 
   .acordes-pieza__titulo {
@@ -521,22 +433,8 @@ const hayPosturas = nombres.some((nombre) => Boolean(posturas[nombre]));
       gap: 6px;
     }
 
-    .acordes-pieza__acciones,
-    .transporte {
+    .acordes-pieza__acciones {
       gap: 6px;
-    }
-
-    .transporte__titulo {
-      font-size: 0.66rem;
-      letter-spacing: 0.5px;
-    }
-
-    .transpose-btn {
-      width: 26px;
-    }
-
-    .transpose-display {
-      min-width: 26px;
     }
 
     .acordes-pieza__accion {

@@ -19,7 +19,7 @@ export const ORDEN_RAICES = [
 export const ORDEN_SUFIJOS = [
   '', 'm', '5', '6', 'm6', '7', 'm7', 'maj7', 'maj9', '9', 'm9', 'add9', 'madd9',
   '11', '13', 'sus2', 'sus4', 'sus9', 'susb6add9', '7sus4', 'dim', 'dim7', 'aug', 'mmaj7',
-  '6add9', '7b5', '7maj5', 'm7b5',
+  '6add9', '7b5', '7maj5', 'm7b5', '7#9', '9b5', 'm11', 'maj11', 'maj13',
 ];
 
 /** Nombre del tipo de acorde a partir de su sufijo. */
@@ -52,6 +52,11 @@ export const TIPO_NOMBRE: Record<string, string> = {
   '7b5': 'séptima con quinta bemol',
   '7maj5': 'séptima con quinta aumentada',
   m7b5: 'semidisminuido',
+  '7#9': 'séptima con novena aumentada',
+  '9b5': 'novena con quinta bemol',
+  m11: 'menor oncena',
+  maj11: 'oncena mayor',
+  maj13: 'trecena mayor',
 };
 
 export function nombreTipo(sufijo: string): string {
@@ -94,6 +99,17 @@ export function notacionInglesa(entrada: EntradaGlosario): string {
   const bajo = entrada.bajo ? `/${RAIZ_INGLES[entrada.bajo] ?? entrada.bajo}` : '';
   return `${raiz}${entrada.sufijo}${bajo}`;
 }
+
+/**
+ * Otras grafías del mismo sufijo que la gente busca. Se muestran como alias
+ * visibles en la ficha: renombrar el acorde rompería su URL.
+ */
+export const ALIAS_SUFIJO: Record<string, string[]> = {
+  // C7#5 / C7+5 es como se busca la séptima con quinta aumentada.
+  '7maj5': ['7#5', '7+5'],
+  // C6/9 es el nombre habitual de la sexta con novena añadida.
+  '6add9': ['6/9', '69'],
+};
 
 /* ------------------------------------------------------------------ */
 /* Notas que suenan                                                    */
@@ -178,6 +194,11 @@ const INTERVALOS: Record<string, Intervalo[]> = {
   '7b5': [intervalo(1, 0), intervalo(3, 4), intervalo(5, 6), intervalo(7, 10)],
   '7maj5': [intervalo(1, 0), intervalo(3, 4), intervalo(5, 8), intervalo(7, 10)],
   m7b5: [intervalo(1, 0), intervalo(3, 3), intervalo(5, 6), intervalo(7, 10)],
+  '7#9': [...SEPTIMA_DOMINANTE, intervalo(9, 15)],
+  '9b5': [intervalo(1, 0), intervalo(3, 4), intervalo(5, 6), intervalo(7, 10), intervalo(9, 14)],
+  m11: [...MENOR, intervalo(7, 10), intervalo(9, 14), intervalo(11, 17)],
+  maj11: [...MAYOR, intervalo(7, 11), intervalo(9, 14), intervalo(11, 17)],
+  maj13: [...MAYOR, intervalo(7, 11), intervalo(9, 14), intervalo(13, 21)],
 };
 
 const LETRAS = ['Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si'];

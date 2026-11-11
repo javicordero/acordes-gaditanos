@@ -1,0 +1,476 @@
+---
+/**
+ * Widget del afinador: nota, aguja de cents y las seis cuerdas.
+ *
+ * No inicializa el micrófono al cargar: solo al pulsar «Activar micrófono».
+ * Toda la lógica de audio vive en `src/lib/afinador/`.
+ */
+import { CUERDAS } from '../../lib/afinador/cuerdas';
+---
+
+<div class='afinador' data-afinador>
+  <div class='afinador__panel' data-panel data-estado='inactivo' data-afinado='false'>
+    <div class='afinador__lectura'>
+      <span class='afinador__etiqueta'>Nota</span>
+      <p class='afinador__nota' data-nota aria-live='polite'>—</p>
+      <p class='afinador__cuerda' data-cuerda>&nbsp;</p>
+    </div>
+
+    <div class='afinador__desviacion'>
+      <div class='afinador__escala' aria-hidden='true'>
+        <span class='afinador__zona'></span>
+        <span class='afinador__aguja' data-aguja></span>
+      </div>
+      <p class='afinador__cents' data-cents>0 cents</p>
+      <div class='afinador__senal' aria-hidden='true'>
+        <span class='afinador__senal-etiqueta'>Señal</span>
+        <span class='afinador__senal-barra'>
+          <span class='afinador__senal-nivel' data-nivel></span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <ul class='afinador__cuerdas' aria-label='Cuerdas de la guitarra en afinación estándar'>
+    {
+      CUERDAS.map((cuerda) => (
+        <li data-cuerda={cuerda.numero}>
+          <span class='afinador__cuerda-num'>{cuerda.numero}ª</span>
+          <strong>{cuerda.nota}</strong>
+          <span class='afinador__cuerda-freq'>{cuerda.frecuencia} Hz</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class='afinador__acciones'>
+    <button type='button' class='afinador__btn' data-activar>Activar micrófono</button>
+    <button type='button' class='afinador__btn afinador__btn--parar' data-parar hidden>
+      Parar
+    </button>
+  </div>
+
+  <p class='afinador__estado' data-estado role='status' aria-live='polite'>
+    Pulsa «Activar micrófono» y permite el acceso. No se graba nada: la señal se analiza en tu
+    navegador y no se envía.
+  </p>
+
+  <p class='afinador__aviso-senal' data-aviso-senal hidden>
+    No llega señal del micrófono. Acerca el móvil a la guitarra, comprueba que no está tapado y
+    revisa los permisos del navegador si sigue igual.
+  </p>
+</div>
+
+<script>
+  import { enviarEvento } from '../../lib/analitica';
+  import {
+    crearAfinador,
+    type EstadoAfinador,
+    type MotivoError,
+  } from '../../lib/afinador/detector';
+  import { cuerdaMasCercana, textoCents } from '../../lib/afinador/notas';
+
+  const raiz = document.querySelector<HTMLElement>('[data-afinador]');
+
+  if (raiz) {
+    const panel = raiz.querySelector<HTMLElement>('[data-panel]');
+    const notaEl = raiz.querySelector<HTMLElement>('[data-nota]');
+    const cuerdaEl = raiz.querySelector<HTMLElement>('[data-cuerda]');
+    const centsEl = raiz.querySelector<HTMLElement>('[data-cents]');
+    const aguja = raiz.querySelector<HTMLElement>('[data-aguja]');
+    const nivelEl = raiz.querySelector<HTMLElement>('[data-nivel]');
+    const avisoSenal = raiz.querySelector<HTMLElement>('[data-aviso-senal]');
+    const estadoEl = raiz.querySelector<HTMLElement>('.afinador__estado');
+    const activarBtn = raiz.querySelector<HTMLButtonElement>('[data-activar]');
+    const pararBtn = raiz.querySelector<HTMLButtonElement>('[data-parar]');
+    const cuerdas = [...raiz.querySelectorAll<HTMLElement>('[data-cuerda]')];
+
+    let ultimaSenal = 0;
+    let inicioActivacion = 0;
+    const cuerdasAfinadas = new Set<number>();
+
+    const MENSAJES: Record<string, string> = {
+      inactivo:
+        'Pulsa «Activar micrófono» y permite el acceso. No se graba nada: la señal se analiza en tu navegador y no se envía.',
+      pidiendo: 'Pidiendo permiso al navegador…',
+      activo: 'Escuchando. Pulsa una cuerda y deja que suene.',
+      permiso:
+        'No has dado permiso al micrófono. Puedes activarlo en los ajustes del sitio, en el candado de la barra de direcciones.',
+      'sin-microfono': 'No encontramos ningún micrófono conectado.',
+      ocupado: 'El micrófono está en uso por otra aplicación. Ciérrala y vuelve a intentarlo.',
+      'sin-soporte': 'Este navegador no permite usar el micrófono desde la página.',
+      desconocido: 'No se pudo abrir el micrófono. Prueba con otro navegador o revisa los permisos.',
+    };
+
+    function marcarCuerda(numero: number | null) {
+      for (const cuerda of cuerdas) {
+        cuerda.classList.toggle(
+          'is-activa',
+          numero !== null && Number(cuerda.dataset.cuerda) === numero,
+        );
+      }
+    }
+
+    function limpiarNota() {
+      if (notaEl) notaEl.textContent = '—';
+      if (cuerdaEl) cuerdaEl.innerHTML = '&nbsp;';
+      if (centsEl) centsEl.textContent = '0 cents';
+      if (aguja) aguja.style.setProperty('--desviacion', '0');
+      if (panel) {
+        panel.dataset.estado = 'activo';
+        panel.dataset.afinado = 'false';
+      }
+      marcarCuerda(null);
+    }
+
+    function pintarEstado(estado: EstadoAfinador, motivo?: MotivoError) {
+      if (panel) panel.dataset.estado = estado;
+
+      if (estado === 'error' || estado === 'inactivo') {
+        ultimaSenal = 0;
+        if (nivelEl) nivelEl.style.setProperty('--nivel', '0');
+        if (avisoSenal) avisoSenal.hidden = true;
+      }
+
+      if (estado === 'activo') {
+        ultimaSenal = Date.now();
+        inicioActivacion = Date.now();
+        if (avisoSenal) avisoSenal.hidden = true;
+        enviarEvento('afinador_start');
+      }
+
+      if (estado === 'inactivo' && inicioActivacion) {
+        enviarEvento('afinador_stop', {
+          segundos: Math.round((Date.now() - inicioActivacion) / 1000),
+        });
+        inicioActivacion = 0;
+      }
+
+      if (estado === 'error') {
+        ultimaSenal = 0;
+        inicioActivacion = 0;
+        if (avisoSenal) avisoSenal.hidden = true;
+      }
+
+      if (estado === 'error') {
+        if (notaEl) notaEl.textContent = '—';
+        if (cuerdaEl) cuerdaEl.innerHTML = '&nbsp;';
+        if (centsEl) centsEl.textContent = '0 cents';
+        if (aguja) aguja.style.setProperty('--desviacion', '0');
+        marcarCuerda(null);
+      }
+
+      if (estadoEl) {
+        estadoEl.textContent = estado === 'error' ? MENSAJES[motivo ?? 'desconocido']! : MENSAJES[estado]!;
+      }
+
+      if (activarBtn) {
+        activarBtn.hidden = estado === 'activo' || estado === 'pidiendo';
+        activarBtn.disabled = estado === 'pidiendo';
+        activarBtn.textContent = estado === 'pidiendo' ? 'Pidiendo permiso…' : 'Activar micrófono';
+      }
+      if (pararBtn) pararBtn.hidden = estado !== 'activo';
+    }
+
+    const afinador = crearAfinador({
+      onNota(nota) {
+        if (!nota) {
+          limpiarNota();
+          return;
+        }
+
+        const cercana = cuerdaMasCercana(nota);
+        const textoNota = `${nota.nombre}${nota.octava}`;
+        const textoCuerda = cercana
+          ? `${cercana.cuerda.numero}ª cuerda · ${cercana.cuerda.nota}`
+          : 'Nota suelta';
+
+        // Solo se toca el DOM de la nota cuando cambia: así el aria-live no
+        // repite la misma nota en cada lectura.
+        if (notaEl && notaEl.textContent !== textoNota) notaEl.textContent = textoNota;
+        if (cuerdaEl && cuerdaEl.textContent !== textoCuerda) cuerdaEl.textContent = textoCuerda;
+        if (centsEl) centsEl.textContent = `${textoCents(nota.cents)} cents`;
+        if (aguja) {
+          aguja.style.setProperty('--desviacion', String(Math.max(-50, Math.min(50, nota.cents))));
+        }
+        if (panel) {
+          panel.dataset.estado = 'senal';
+          panel.dataset.afinado = String(Math.abs(nota.cents) <= 5);
+        }
+        marcarCuerda(cercana?.cuerda.numero ?? null);
+
+        // Una cuerda afinada por sesión: primera vez que entra en ±5 cents.
+        if (cercana && Math.abs(cercana.cents) <= 5 && !cuerdasAfinadas.has(cercana.cuerda.numero)) {
+          cuerdasAfinadas.add(cercana.cuerda.numero);
+          enviarEvento('afinador_cuerda_afinada', { cuerda: cercana.cuerda.numero });
+        }
+      },
+      onEstado(estado, motivo) {
+        pintarEstado(estado, motivo);
+      },
+      onNivel(nivel) {
+        if (nivelEl) nivelEl.style.setProperty('--nivel', String(nivel));
+
+        if (nivel > 0.06) {
+          ultimaSenal = Date.now();
+          if (avisoSenal) avisoSenal.hidden = true;
+        } else if (avisoSenal && ultimaSenal && Date.now() - ultimaSenal > 2500) {
+          avisoSenal.hidden = false;
+        }
+      },
+    });
+
+    activarBtn?.addEventListener('click', () => {
+      void afinador.activar();
+    });
+
+    pararBtn?.addEventListener('click', () => {
+      afinador.parar();
+    });
+
+    window.addEventListener('pagehide', () => afinador.parar());
+    document.addEventListener('astro:before-swap', () => afinador.parar());
+  }
+</script>
+
+<style>
+  .afinador {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 4px 4px 0 0 var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .afinador__panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    align-items: center;
+    gap: 14px;
+    padding: 8px 4px 4px;
+  }
+
+  .afinador__lectura {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .afinador__etiqueta {
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .afinador__nota {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--primary-color);
+  }
+
+  .afinador__panel[data-afinado='true'] .afinador__nota {
+    color: var(--primary-contrast-color);
+  }
+
+  .afinador__cuerda {
+    margin: 0;
+    min-height: 1.2em;
+    font-size: 0.78rem;
+    color: var(--text-secondary-color);
+  }
+
+  .afinador__desviacion {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .afinador__escala {
+    position: relative;
+    height: 16px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .afinador__zona {
+    position: absolute;
+    left: 45%;
+    width: 10%;
+    top: 0;
+    bottom: 0;
+    border-left: 2px dashed var(--primary-color);
+    border-right: 2px dashed var(--primary-color);
+    opacity: 0.45;
+  }
+
+  .afinador__aguja {
+    position: absolute;
+    left: 50%;
+    top: -6px;
+    bottom: -6px;
+    width: 4px;
+    background: var(--primary-contrast-color);
+    transform: translateX(-50%) translateX(calc(var(--desviacion, 0) * 1%));
+    transition: transform 80ms linear;
+  }
+
+  .afinador__panel[data-estado='inactivo'] .afinador__aguja,
+  .afinador__panel[data-estado='error'] .afinador__aguja {
+    opacity: 0;
+  }
+
+  .afinador__cents {
+    margin: 0;
+    text-align: right;
+    font-size: 0.78rem;
+    color: var(--text-secondary-color);
+  }
+
+  .afinador__senal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .afinador__senal-etiqueta {
+    font-size: 0.56rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .afinador__senal-barra {
+    flex: 1;
+    height: 8px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .afinador__senal-nivel {
+    display: block;
+    height: 100%;
+    width: calc(var(--nivel, 0) * 100%);
+    background: var(--primary-contrast-color);
+    transition: width 80ms linear;
+  }
+
+  .afinador__aviso-senal {
+    margin: 0;
+    padding: 8px 10px;
+    border-left: 4px solid var(--primary-contrast-color);
+    background: color-mix(in srgb, var(--primary-color) 6%, transparent);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-color);
+  }
+
+  .afinador__cuerdas {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .afinador__cuerdas li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    padding: 6px 2px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    text-align: center;
+    transition: background 120ms ease;
+  }
+
+  .afinador__cuerdas li.is-activa {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .afinador__cuerda-num {
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .afinador__cuerdas strong {
+    font-size: 0.9rem;
+  }
+
+  .afinador__cuerda-freq {
+    font-size: 0.56rem;
+    opacity: 0.7;
+  }
+
+  .afinador__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .afinador__btn {
+    padding: 9px 18px;
+    border: 2px solid var(--primary-color);
+    border-radius: 0;
+    background: var(--primary-color);
+    color: var(--card-background-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .afinador__btn:hover:not(:disabled) {
+    background: var(--primary-contrast-color);
+    border-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .afinador__btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .afinador__btn--parar {
+    background: var(--card-background-color);
+    color: var(--primary-color);
+  }
+
+  .afinador__estado {
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+  }
+
+  @media (max-width: 560px) {
+    .afinador__panel {
+      grid-template-columns: 1fr;
+    }
+
+    .afinador__nota {
+      font-size: 2.4rem;
+    }
+
+    .afinador__cuerdas {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .afinador__cuerda-freq {
+      display: none;
+    }
+  }
+</style>

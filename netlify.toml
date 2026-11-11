@@ -115,7 +115,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     # APIs que ningún iframe (anuncios incluidos) necesita. No se tocan
     # autoplay ni fullscreen: los usa el iframe de YouTube.
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), display-capture=(), midi=(), serial=(), bluetooth=()"
+    Permissions-Policy = "camera=(), microphone=(self), geolocation=(), payment=(), usb=(), display-capture=(), midi=(), serial=(), bluetooth=()"
 
 # El panel conserva su CSP estricta y el noindex. Las cabeceras comunes ya
 # llegan desde la regla `/*`: no repetirlas aquí (Netlify las duplicaría).

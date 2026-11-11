@@ -93,6 +93,9 @@ const SOCIAL = {
   <div class='wrap container-layout politics'>
     <a href='/glosario'>Glosario de acordes</a>
     <a href='/reconocer-acorde' data-ga-event='click_reconocer_acorde_footer'>Reconocer acorde</a>
+    <a href='/transportar-acordes' data-ga-event='click_transportador_footer'>Transportar acordes</a>
+    <a href='/afinador-guitarra' data-ga-event='click_afinador_footer'>Afinar guitarra</a>
+    <a href='/herramientas' data-ga-event='click_herramientas_footer'>Herramientas</a>
     <a href='/suscribirse'>Recibir avisos</a>
     <a href='/politicas/politica-de-privacidad'>Política de privacidad</a>
     <a href='/politicas/politica-de-cookies'>Política de cookies</a>
@@ -106,7 +109,7 @@ const SOCIAL = {
 <script>
   import { seguirEnlaces } from '../../lib/analitica';
 
-  seguirEnlaces('a[data-ga-event="click_reconocer_acorde_footer"]', 'glosario');
+  seguirEnlaces('footer a[data-ga-event]', 'glosario');
 </script>
 
 <style>
@@ -211,6 +214,7 @@ const SOCIAL = {
 
   .politics {
     display: flex;
+    flex-wrap: wrap;
     gap: 12px;
     font-size: 0.8rem;
     font-family: 'Roboto Mono', monospace;

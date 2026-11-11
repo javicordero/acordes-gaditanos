@@ -17,6 +17,7 @@ import glosarioJson from '../../data/glosario-acordes.json';
 import type { EntradaGlosario, Glosario } from '../../lib/acordes';
 import {
   acordesRelacionados,
+  ALIAS_SUFIJO,
   describirPosicion,
   nombreTipo,
   notacionInglesa,
@@ -74,6 +75,13 @@ const relacionados = acordesRelacionados(glosario, entrada);
 const totalPosiciones = entrada.posiciones.length;
 const primera = posiciones[0];
 
+// Grafías alternativas del mismo acorde (C7#5 para Do7maj5, C6/9 para Do6add9).
+const alias = (ALIAS_SUFIJO[entrada.sufijo] ?? []).map((sufijo) => ({
+  es: `${entrada.raiz}${sufijo}`,
+  en: notacionInglesa({ ...entrada, sufijo }),
+}));
+const textoAlias = alias.map((a) => `${a.es} (${a.en})`).join(' o ');
+
 const titulo = tituloSeoAcorde(etiqueta, ingles);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const description = `Cómo tocar ${etiqueta} (${ingles}) en guitarra: ${totalPosiciones} ${
@@ -88,6 +96,8 @@ const keywords = [
   `cómo se toca ${etiqueta}`,
   nombreCompletoTipo,
   notas.join(', '),
+  ...alias.map((a) => a.es),
+  ...alias.map((a) => a.en),
   'glosario de acordes',
   'acordes de guitarra',
   'Carnaval de Cádiz',
@@ -190,6 +200,14 @@ const textoEnarmonico = etiquetaEnarmonica
               <>
                 {' '}
                 Su grafía enarmónica es <strong>{textoEnarmonico}</strong>.
+              </>
+            )
+          }
+          {
+            alias.length > 0 && (
+              <>
+                {' '}
+                También aparece como <strong>{textoAlias}</strong>.
               </>
             )
           }

@@ -46,6 +46,10 @@
     "auditar:filtros": "node --experimental-strip-types scripts/auditar-filtros-lista.ts",
     "auditar:orden": "node --experimental-strip-types scripts/auditar-orden.ts",
     "auditar:glosario-paginas": "node scripts/auditar-glosario-paginas.mjs",
+    "auditar:glosario": "node --experimental-strip-types scripts/auditar-glosario.ts",
+    "auditar:posturas": "node --experimental-strip-types scripts/auditar-posturas.ts",
+    "auditar:agrupaciones": "node --experimental-strip-types scripts/auditar-agrupaciones.ts",
+    "auditar:anuncios": "node scripts/auditar-anuncios.mjs",
     "auditar:reconocer": "node --experimental-strip-types scripts/auditar-reconocer.ts",
     "auditar:seo": "node scripts/auditar-seo.mjs",
     "auditar:fachada": "node scripts/auditar-videos-fachada.mjs",
@@ -55,7 +59,7 @@
     "auditar:alertas-letra-titulo": "node scripts/auditar-alertas-letra-titulo.mjs",
     "auditar:hubs": "node --experimental-strip-types scripts/auditar-hubs.ts",
     "auditar:contenido": "node --experimental-strip-types scripts/auditar-contenido.ts",
-  "auditar:buscar": "node scripts/auditar-buscar.mjs",
+    "auditar:buscar": "node scripts/auditar-buscar.mjs",
     "normalizar:contenido": "node --experimental-strip-types scripts/normalizar-contenido.ts",
     "modalidad": "node scripts/completar-modalidad.mjs",
     "ga4:dimension": "node scripts/crear-dimension-consulta.mjs",
@@ -75,7 +79,8 @@
     "astro-icon": "^1.1.5",
     "fontkit": "^2.0.4",
     "gray-matter": "^4.0.3",
-    "pdf-lib": "^1.17.1"
+    "pdf-lib": "^1.17.1",
+    "pitchy": "^4.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",

@@ -1,0 +1,335 @@
+---
+/**
+ * Barra de herramientas de la ficha: transporte, autoplay y afinador.
+ *
+ * Va debajo de «Cejilla:» (que se queda centrada y fuera del panel) y encima
+ * del cifrado. El transporte salió de la caja de acordes y el play dejó de
+ * flotar sobre el `<pre>`: el script de `AcordeCard.astro` los encuentra igual
+ * porque busca dentro de `.acorde-card`.
+ */
+---
+
+<section class='barra-herramientas' aria-label='Herramientas de la ficha'>
+  <div class='barra-herramientas__fila'>
+    <span class='barra-herramientas__etiqueta' id='herramienta-afinar'>Afinar</span>
+    <div class='barra-herramientas__controles'>
+      <a
+        class='barra-herramientas__afinador'
+        href='/afinador-guitarra'
+        data-ga-event='click_afinador_ficha'
+      >
+        Afinar guitarra →
+      </a>
+    </div>
+  </div>
+
+  <div class='barra-herramientas__fila'>
+    <span class='barra-herramientas__etiqueta' id='herramienta-transportar'>Transportar</span>
+    <div class='barra-herramientas__controles'>
+      <div class='transporte'>
+        <div class='transpose-controls' role='group' aria-labelledby='herramienta-transportar'>
+          <button
+            class='transpose-btn transpose-down'
+            aria-label='Bajar tono'
+            title='Bajar tono'
+            type='button'>−</button
+          >
+          <span
+            class='transpose-display'
+            data-transpose-display
+            role='status'
+            aria-live='polite'>0</span
+          >
+          <button
+            class='transpose-btn transpose-up'
+            aria-label='Subir tono'
+            title='Subir tono'
+            type='button'>+</button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='barra-herramientas__fila'>
+    <span class='barra-herramientas__etiqueta' id='herramienta-autoplay'>Autoplay</span>
+    <div class='barra-herramientas__controles'>
+      <div class='autoscroll-wrapper'>
+        <button class='autoscroll-btn play-btn' aria-label='Iniciar autoscroll'>
+          <svg
+            style='position: relative; left: 1px;'
+            xmlns='http://www.w3.org/2000/svg'
+            width='20'
+            height='20'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+          >
+            <polygon points='5 3 19 12 5 21 5 3'></polygon>
+          </svg>
+        </button>
+        <button class='autoscroll-btn pause-btn' aria-label='Pausar autoscroll'>
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='20'
+            height='20'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+          >
+            <rect x='6' y='4' width='4' height='16'></rect>
+            <rect x='14' y='4' width='4' height='16'></rect>
+          </svg>
+        </button>
+        <div class='speed-options' role='group' aria-label='Velocidad del autoscroll'>
+          <button class='speed-btn' data-speed='1'>1x</button>
+          <button class='speed-btn active' data-speed='2'>2x</button>
+          <button class='speed-btn' data-speed='3'>3x</button>
+          <button class='speed-btn' data-speed='4'>4x</button>
+          <button class='speed-btn' data-speed='5'>5x</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { seguirEnlaces } from '../../lib/analitica';
+
+  seguirEnlaces('[data-ga-event^="click_"]', 'acordes');
+</script>
+
+<style>
+  .barra-herramientas {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  .barra-herramientas__fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 12px;
+  }
+
+  .barra-herramientas__fila + .barra-herramientas__fila {
+    border-top: 2px solid var(--primary-color);
+  }
+
+  .barra-herramientas__etiqueta {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    white-space: nowrap;
+  }
+
+  .barra-herramientas__controles {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .transporte {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .transpose-controls {
+    display: inline-flex;
+    align-items: stretch;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
+  }
+
+  .transpose-btn {
+    width: 30px;
+    min-height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .transpose-btn:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .transpose-btn:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
+  .transpose-display {
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid var(--primary-color);
+    border-right: 2px solid var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--acorde-color);
+  }
+
+  .autoscroll-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .autoscroll-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+    box-shadow: 2px 2px 0 0 var(--primary-color);
+    flex-shrink: 0;
+  }
+
+  .autoscroll-btn:hover {
+    background: var(--primary-contrast-color);
+    border-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .autoscroll-btn:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
+  .autoscroll-btn svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+  }
+
+  .pause-btn {
+    display: none;
+  }
+
+  .autoscroll-wrapper.playing .play-btn {
+    display: none;
+  }
+
+  .autoscroll-wrapper.playing .pause-btn {
+    display: flex;
+  }
+
+  .speed-options {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .speed-btn {
+    min-width: 30px;
+    min-height: 30px;
+    padding: 0 5px;
+    border-radius: 0;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    color: var(--primary-color);
+    font-size: 0.62rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  /* Hover y selección solo cambian color: nada de sombras ni desplazamientos. */
+  .speed-btn:hover {
+    border-color: var(--primary-contrast-color);
+    color: var(--primary-contrast-color);
+  }
+
+  .speed-btn.active {
+    background: var(--primary-contrast-color);
+    border-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .barra-herramientas__afinador {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    box-shadow: 2px 2px 0 0 var(--primary-color);
+    color: var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .barra-herramientas__afinador:hover {
+    background: var(--primary-contrast-color);
+    border-color: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .barra-herramientas__afinador:focus-visible {
+    outline: 3px solid var(--primary-contrast-color);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .barra-herramientas__fila {
+      gap: 8px;
+      padding: 7px 10px;
+    }
+
+    .speed-btn {
+      min-width: 26px;
+      padding: 0 4px;
+      font-size: 0.58rem;
+    }
+  }
+</style>

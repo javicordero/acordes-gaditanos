@@ -18,7 +18,9 @@ Acordes Gaditanos es un sitio **100 % estático** con más de **580 fichas** del
 
 - **Catálogo** de presentaciones, pasodobles, tangos, estribillos, cuartetas y popurrís, con listados por agrupación, autor de música, autor de letra y año del COAC.
 - **Buscador en cliente** sobre un índice JSON que solo se descarga al abrir el buscador, tolerante a erratas y con sugerencias al teclear.
-- **Glosario interactivo** de 529 acordes y ~1.342 posiciones, con diagramas SVG generados en build (sin imágenes externas) y transportador de semitonos.
+- **Glosario interactivo** de 605 acordes y 2.688 posiciones, con diagramas SVG generados en build (sin imágenes externas) y transportador de semitonos.
+- **Herramientas de guitarra**: afinador con micrófono, transportador de cifrados completos y reconocedor de acordes por postura, reunidas en `/herramientas/`.
+- **Selecciones de acordes** curadas: fáciles, con cejilla, para guitarra española y los más usados en el Carnaval.
 - **Letras alternativas**: una misma música puede tener varias letras, cada una con su ficha y su URL, y con los acordes colocados sobre la métrica de la original.
 - **PWA** instalable, con página offline y notificaciones push.
 - **Panel privado `/admin`** para editar desde el móvil: guarda borradores, abre PRs en GitHub, publica, y trae estadísticas y comentarios.

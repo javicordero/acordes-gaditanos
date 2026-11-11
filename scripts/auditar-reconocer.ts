@@ -47,7 +47,7 @@ const comunes: Array<[string, string]> = [
 ];
 
 const inventadas: Array<[string, string]> = [
-  ['Lam7', '5 x 5 5 5 x'],
+  ['Domaj7', '8 x 9 9 8 x'],
   ['Doadd9', '8 10 12 12 13 12'],
   ['Mi', '12 14 14 13 12 12'],
 ];
@@ -95,17 +95,29 @@ for (const [etiqueta, entrada] of Object.entries(glosario)) {
   }
 }
 
-const MINIMO_RESULTADOS = 1326; // 16 posiciones raras no se reconocen hoy.
-const MINIMO_MAPA = 960; // Hoy coinciden 970 (72 %).
+/**
+ * Umbrales de la pasada sobre el glosario. No son fijos a propósito: el
+ * glosario crece (hoy 2.688 posiciones) y lo que se vigila es que no empeore.
+ *
+ * - Sin resultado quedan las inversiones cuyo bajo no es una nota del acorde
+ *   (La/Fa, Mi/Sol) y unas pocas entradas mal etiquetadas del dataset MIT
+ *   (Reb6, Re#dim7…). Hoy son 42.
+ * - El nombre del glosario no coincide en las posiciones escritas con bemoles,
+ *   porque el reconocedor solo maneja sostenidos (Lab → Sol#), y en las
+ *   inversiones. Hoy coincide el 84 %.
+ */
+const MAXIMO_SIN_RESULTADO = 60;
+const MINIMO_MAPA_PCT = 80;
 
-if (total - sinResultado < MINIMO_RESULTADOS) {
+if (sinResultado > MAXIMO_SIN_RESULTADO) {
   problemas.push(
-    `Solo ${total - sinResultado}/${total} posiciones dan resultado (mínimo ${MINIMO_RESULTADOS})`,
+    `Sin resultado ${sinResultado}/${total} posiciones (máximo ${MAXIMO_SIN_RESULTADO})`,
   );
 }
-if (coincidenMapa < MINIMO_MAPA) {
+const pctMapa = (coincidenMapa / total) * 100;
+if (pctMapa < MINIMO_MAPA_PCT) {
   problemas.push(
-    `Solo ${coincidenMapa}/${total} coinciden con el nombre del glosario (mínimo ${MINIMO_MAPA})`,
+    `Solo ${coincidenMapa}/${total} coinciden con el nombre del glosario (${pctMapa.toFixed(1)} %, mínimo ${MINIMO_MAPA_PCT} %)`,
   );
 }
 

@@ -9,6 +9,7 @@ import {
   TIPO_NOMBRE,
   notacionInglesa,
 } from '../lib/glosario-acordes';
+import { LISTA_AGRUPACIONES } from '../lib/agrupaciones-acordes';
 
 const glosario = (glosarioJson as unknown as { acordes: Glosario }).acordes;
 
@@ -110,6 +111,17 @@ const webPageSchema = {
           </a>
         </p>
 
+        <p class='glosario__herramientas'>
+          También te pueden servir el
+          <a href='/afinador-guitarra' data-ga-event='click_afinador_glosario'>
+            afinador de guitarra</a
+          >, el
+          <a href='/transportar-acordes' data-ga-event='click_transportador_glosario'>
+            transportador de acordes</a
+          >
+          y el resto de <a href='/herramientas'>herramientas</a>.
+        </p>
+
         <nav class='glosario__indice' aria-label='Fundamentales'>
           {
             grupos.map((grupo) => (
@@ -157,6 +169,30 @@ const webPageSchema = {
           No hay acordes que coincidan con esa búsqueda. Prueba con otra grafía (por ejemplo,
           <em>Sib</em>, <em>Bb</em>, <em>La#</em> o <em>m7</em>).
         </p>
+
+        <nav class='glosario__selecciones' aria-labelledby='selecciones-titulo'>
+          <h2 id='selecciones-titulo'>Selecciones</h2>
+          <p class='glosario__selecciones-intro'>
+            Si no buscas un acorde concreto sino aprender o resolver una duda, empieza por una de
+            estas selecciones: son pocas, están explicadas y enlazan a cada ficha.
+          </p>
+          <ul>
+            {
+              LISTA_AGRUPACIONES.map((grupo) => (
+                <li>
+                  <a
+                    href={`/${grupo.slug}`}
+                    data-ga-event='click_seleccion_glosario'
+                    data-ga-params={JSON.stringify({ destino: grupo.clave })}
+                  >
+                    {grupo.h1}
+                  </a>
+                  <span>{grupo.resumen}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
       </article>
     </section>
   </div>
@@ -276,6 +312,23 @@ const webPageSchema = {
   .glosario__reconocer a:focus-visible {
     outline: 3px solid var(--primary-contrast-color);
     outline-offset: 2px;
+  }
+
+  .glosario__herramientas {
+    margin: -6px 0 16px;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--text-secondary-color);
+  }
+
+  .glosario__herramientas a {
+    color: var(--link-color);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .glosario__herramientas a:hover {
+    color: var(--link-hover-color);
   }
 
   .glosario__indice {
@@ -468,6 +521,55 @@ const webPageSchema = {
     display: none;
   }
 
+  .glosario__selecciones {
+    margin-top: 34px;
+    padding-top: 12px;
+    border-top: 2px solid var(--primary-color);
+
+    & h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--primary-color);
+    }
+
+    & ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    & li {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 10px 12px;
+      border: 2px solid var(--primary-color);
+      background: var(--card-background-color);
+    }
+
+    & a {
+      font-weight: 700;
+      color: var(--link-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    & a:hover {
+      color: var(--link-hover-color);
+    }
+
+    & span {
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--text-secondary-color);
+    }
+  }
+
   .glosario__nota {
     margin: 12px 0 0;
     max-width: 70ch;
@@ -609,5 +711,5 @@ const webPageSchema = {
     }
   }
 
-  seguirEnlaces('a[data-ga-event="click_reconocer_acorde_glosario"]', 'glosario');
+  seguirEnlaces('a[data-ga-event]:not(.glosario-acorde)', 'glosario');
 </script>

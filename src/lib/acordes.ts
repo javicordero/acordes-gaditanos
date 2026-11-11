@@ -110,6 +110,13 @@ const SUFIJOS: Record<string, string> = {
   '7/5': '7b5',
   '7b9': '7b9',
   '7-9': '7b9',
+  '7#9': '7#9',
+  '9b5': '9b5',
+  m11: 'm11',
+  maj11: 'maj11',
+  maj13: 'maj13',
+  '7#5': '7maj5',
+  '7+5': '7maj5',
 };
 
 /** Equivalencias enarmónicas para buscar una misma forma con otra grafía. */
@@ -197,11 +204,24 @@ function slugRaiz(raiz: string): string {
   return RAIZ_CANONICA[m[1]!.toLowerCase()]!.toLowerCase() + accidental;
 }
 
+/**
+ * Un `#` dentro de un sufijo (7#9) rompería la URL: `#` abre un fragmento.
+ * Se escribe igual que en las raíces: Do# → do-sostenido.
+ */
+function slugSufijo(sufijo: string): string {
+  return sufijo
+    .toLowerCase()
+    .replace(/#/g, '-sostenido-')
+    .replace(/-+/g, '-')
+    .replace(/-$/, '');
+}
+
 /** Identificador estable para anclas: Mi7 → mi7, Sol#m → sol-sostenido-m. */
 export function slugAcorde(acorde: Pick<AcordeParseado, 'raiz' | 'sufijo' | 'bajo'>): string {
   const base = slugRaiz(acorde.raiz);
   const conAccidente = /[#b]$/.test(acorde.raiz);
-  const cuerpo = conAccidente && acorde.sufijo ? `${base}-${acorde.sufijo.toLowerCase()}` : base + acorde.sufijo.toLowerCase();
+  const sufijo = slugSufijo(acorde.sufijo);
+  const cuerpo = conAccidente && acorde.sufijo ? `${base}-${sufijo}` : base + sufijo;
   return acorde.bajo ? `${cuerpo}-${slugRaiz(acorde.bajo)}` : cuerpo;
 }
 
@@ -257,6 +277,11 @@ export function parsearPostura(texto: string): number[] | null {
     return null;
   }
   return trastes;
+}
+
+/** Texto de una postura en trastes: `-1` → `x`, separado por espacios. */
+export function textoPostura(posicion: Pick<PosicionGlosario, 'trastes'>): string {
+  return posicion.trastes.map((traste) => (traste < 0 ? 'x' : traste)).join(' ');
 }
 
 /** Índice de la posición del glosario que coincide con una postura escrita. */

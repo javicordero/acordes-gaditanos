@@ -67,6 +67,22 @@ import Layout from '../layouts/Layout.astro';
           </p>
         </section>
 
+        <!-- Créditos -->
+        <section>
+          <h2>Créditos y Licencias</h2>
+          <p>
+            Los diagramas del <a href='/glosario'>glosario de acordes</a> salen de tres sitios: las
+            posturas importadas del glosario público de LaCuerda.net, las que hacemos a mano para
+            este cancionero y las añadidas desde
+            <a href='https://github.com/tombatossals/chords-db'>tombatossals/chords-db</a>, publicado
+            con licencia MIT (© 2016 David Rubert).
+          </p>
+          <p>
+            La licencia completa de ese dataset y las condiciones de cada fuente están en
+            <code>src/data/glosario-acordes.LICENSE.md</code>.
+          </p>
+        </section>
+
         <!-- Contacto -->
         <section>
           <h2>Conecta Con Nosotros</h2>
@@ -189,16 +205,12 @@ import Layout from '../layouts/Layout.astro';
 
     & a {
       color: var(--link-color);
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 3px;
+      text-decoration: none;
       font-weight: 700;
-      transition: opacity 0.2s ease;
+      transition: color 0.2s ease;
 
       &:hover {
-        color: var(--on-bright-color);
-        background: var(--primary-contrast-color);
-        text-decoration: none;
+        color: var(--link-hover-color);
       }
     }
   }

@@ -15,7 +15,7 @@ import {
   type EntradaGlosario,
   type Glosario,
   type IndiceGlosario,
-} from './acordes';
+} from './acordes.ts';
 
 /** Escala cromática en sostenidos, el orden que usa el cancionero. */
 export const ESCALA_CROMATICA = [
@@ -149,6 +149,48 @@ export function transportarEtiqueta(texto: string, semitonos: number): string {
 /** ¿La etiqueta es un acorde (sin tener en cuenta la transportación)? */
 export function esEtiquetaDeAcorde(texto: string): boolean {
   return parsearAcorde(texto) !== null;
+}
+
+/** Anotación entre paréntesis en una línea de acordes: `(Sorda)`, `(x2)`. */
+const ANOTACION = /^\(.*\)$/;
+
+/**
+ * ¿La línea es de acordes? Se exige que todos sus tokens sean acordes o
+ * anotaciones entre paréntesis, y que haya al menos un acorde.
+ *
+ * Es la regla del cancionero: los acordes van en su propia línea, encima de la
+ * letra. Así una línea de letra que empieza por «La» o «Mi» no se toca, aunque
+ * esas palabras también sean acordes.
+ */
+function esLineaDeAcordes(linea: string): boolean {
+  const tokens = linea.trim().split(/\s+/).filter(Boolean);
+  if (!tokens.length) return false;
+
+  let acordes = 0;
+  for (const token of tokens) {
+    if (ANOTACION.test(token)) continue;
+    // Un token puede ser un acorde o varios pegados sin espacio (`SolLam`).
+    if (!esTransportable(token)) return false;
+    acordes += 1;
+  }
+
+  return acordes > 0;
+}
+
+/**
+ * Transporta un cifrado pegado en texto plano.
+ *
+ * Solo cambia las líneas que son de acordes; las de letra se quedan igual. Los
+ * tokens que no se reconocen como acorde (una etiqueta mal escrita, un texto
+ * suelto) tampoco se tocan.
+ */
+export function transportarCifrado(texto: string, semitonos: number): string {
+  if (!texto || semitonos === 0) return texto;
+
+  return texto
+    .split(/\r?\n/)
+    .map((linea) => (esLineaDeAcordes(linea) ? transportarEtiqueta(linea, semitonos) : linea))
+    .join('\n');
 }
 
 function tieneClave(mapa: Glosario, clave: string): boolean {

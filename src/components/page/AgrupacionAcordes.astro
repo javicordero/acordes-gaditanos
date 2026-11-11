@@ -1,0 +1,512 @@
+---
+/**
+ * Plantilla de las páginas de agrupación del glosario.
+ *
+ * Todo el contenido (selección, motivos, progresión y FAQ) viene de
+ * `src/lib/agrupaciones-acordes.ts`; aquí solo se pinta. La selección es
+ * curada a mano, no un listado automático, así que no hay filtros ni JS.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from './Breadcrumb.astro';
+import DiagramaAcorde from './DiagramaAcorde.astro';
+import Anuncio2 from '../right-column/anuncios/Anuncio2.astro';
+import glosarioJson from '../../data/glosario-acordes.json';
+import { indicePostura, type Glosario } from '../../lib/acordes';
+import { coplasPorAcorde } from '../../lib/coplas-por-acorde';
+import { notacionInglesa, nombreTipo } from '../../lib/glosario-acordes';
+import { AGRUPACIONES, type Agrupacion } from '../../lib/agrupaciones-acordes';
+
+interface Props {
+  grupo: Agrupacion;
+}
+
+const { grupo } = Astro.props;
+const glosario = (glosarioJson as unknown as { acordes: Glosario }).acordes;
+
+// Solo la página de Carnaval muestra cuántas coplas usan cada acorde.
+const coplas = grupo.criterio === 'coplas' ? await coplasPorAcorde() : null;
+
+const seleccion = grupo.acordes.map(({ etiqueta, postura, motivo }) => {
+  const entrada = glosario[etiqueta]!;
+  const indice = indicePostura(entrada, postura) ?? 0;
+  return {
+    etiqueta,
+    motivo,
+    entrada,
+    indice,
+    ingles: notacionInglesa(entrada),
+    tipo: nombreTipo(entrada.sufijo),
+    coplas: coplas?.get(entrada.slug)?.length ?? null,
+  };
+});
+
+const otras = grupo.otras.map((clave) => AGRUPACIONES[clave]!);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: grupo.h1,
+  description: grupo.description,
+  url: canonicalURL,
+  inLanguage: 'es-ES',
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Acordes Gaditanos',
+    url: Astro.site,
+  },
+};
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: grupo.h1,
+  numberOfItems: seleccion.length,
+  itemListElement: seleccion.map((acorde, indice) => ({
+    '@type': 'ListItem',
+    position: indice + 1,
+    name: `${acorde.etiqueta} (${acorde.ingles})`,
+    url: new URL(`/glosario/${acorde.entrada.slug}/`, Astro.site).toString(),
+  })),
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: grupo.faq.map(({ pregunta, respuesta }) => ({
+    '@type': 'Question',
+    name: pregunta,
+    acceptedAnswer: { '@type': 'Answer', text: respuesta },
+  })),
+};
+---
+
+<Layout
+  title={grupo.title}
+  description={grupo.description}
+  keywords={grupo.keywords}
+  sinAnuncioSobreFooter
+>
+  <script type='application/ld+json' set:html={JSON.stringify(webPageSchema)} />
+  <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
+  <script type='application/ld+json' set:html={JSON.stringify(faqSchema)} />
+
+  <Breadcrumb
+    parent={{ name: 'Glosario de acordes', href: '/glosario/' }}
+    current={grupo.h1}
+  />
+
+  <div class='main-container container-layout'>
+    <article class='agrupacion'>
+      <header class='agrupacion__header'>
+        <h1>{grupo.h1}</h1>
+        <p class='agrupacion__entradilla'>{grupo.resumen}</p>
+      </header>
+
+      <section class='agrupacion__seccion' aria-labelledby='por-que'>
+        <h2 id='por-que'>Por qué estos acordes</h2>
+        {grupo.intro.map((parrafo) => <p>{parrafo}</p>)}
+      </section>
+
+      <Anuncio2 class='agrupacion__anuncio' />
+
+      <section class='agrupacion__seccion' aria-labelledby='seleccion'>
+        <h2 id='seleccion'>
+          Los {seleccion.length} acordes de esta selección
+        </h2>
+        <p class='agrupacion__criterio'>{grupo.criterioTexto}</p>
+
+        <ul class='agrupacion__acordes'>
+          {
+            seleccion.map((acorde) => (
+              <li class='agrupacion-acorde'>
+                <div class='agrupacion-acorde__diagrama'>
+                  <DiagramaAcorde
+                    nombre={acorde.etiqueta}
+                    posicion={acorde.entrada.posiciones[acorde.indice]!}
+                    indice={acorde.indice}
+                    total={acorde.entrada.posiciones.length}
+                    ancho={128}
+                    alto={163}
+                  />
+                </div>
+                <div class='agrupacion-acorde__datos'>
+                  <p class='agrupacion-acorde__nombre'>
+                    <a
+                      href={`/glosario/${acorde.entrada.slug}`}
+                      data-ga-event='click_agrupacion_acorde'
+                      data-ga-params={JSON.stringify({
+                        acorde: acorde.etiqueta,
+                        grupo: grupo.clave,
+                      })}
+                    >
+                      {acorde.etiqueta}
+                    </a>
+                    <span class='agrupacion-acorde__ingles'>{acorde.ingles}</span>
+                  </p>
+                  <p class='agrupacion-acorde__tipo'>{acorde.tipo}</p>
+                  {acorde.coplas !== null && (
+                    <p class='agrupacion-acorde__coplas'>
+                      En {acorde.coplas} {acorde.coplas === 1 ? 'copla' : 'coplas'}
+                    </p>
+                  )}
+                  <p class='agrupacion-acorde__motivo'>{acorde.motivo}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class='agrupacion__seccion' aria-labelledby='progresion'>
+        <h2 id='progresion'>{grupo.progresion.titulo}</h2>
+        <p>{grupo.progresion.nota}</p>
+        <ol class='agrupacion__progresion'>
+          {
+            grupo.progresion.acordes.map((etiqueta) => {
+              const acorde = seleccion.find((a) => a.etiqueta === etiqueta)!;
+              return (
+                <li>
+                  <a
+                    href={`/glosario/${acorde.entrada.slug}`}
+                    data-ga-event='click_agrupacion_progresion'
+                    data-ga-params={JSON.stringify({ acorde: etiqueta, grupo: grupo.clave })}
+                  >
+                    {etiqueta}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ol>
+      </section>
+
+      <section class='agrupacion__seccion' aria-labelledby='faq'>
+        <h2 id='faq'>Preguntas frecuentes</h2>
+        <div class='agrupacion__faq'>
+          {
+            grupo.faq.map(({ pregunta, respuesta }) => (
+              <details>
+                <summary>{pregunta}</summary>
+                <p>{respuesta}</p>
+              </details>
+            ))
+          }
+        </div>
+      </section>
+
+      <nav class='agrupacion__seccion agrupacion__otras' aria-labelledby='otras'>
+        <h2 id='otras'>Otras selecciones</h2>
+        <ul>
+          {
+            otras.map((otra) => (
+              <li>
+                <a
+                  href={`/${otra.slug}`}
+                  data-ga-event='click_agrupacion_otra'
+                  data-ga-params={JSON.stringify({ destino: otra.clave, grupo: grupo.clave })}
+                >
+                  {otra.h1}
+                </a>
+                <span>{otra.resumen}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <p class='agrupacion__cierre'>
+        ¿Buscas otro acorde? Está en el <a href='/glosario'>glosario completo</a>, con todas sus
+        posiciones. Y si no sabes cómo se llama el que estás tocando, dibújalo en el{' '}
+        <a
+          href='/reconocer-acorde'
+          data-ga-event='click_agrupacion_reconocer'
+          data-ga-params={JSON.stringify({ grupo: grupo.clave })}
+        >
+          reconocedor de acordes
+        </a>.
+      </p>
+    </article>
+  </div>
+</Layout>
+
+<script>
+  import { seguirEnlaces } from '../../lib/analitica';
+
+  seguirEnlaces('[data-ga-event^="click_agrupacion"]', 'glosario');
+</script>
+
+<style>
+  .agrupacion {
+    padding: 18px 18px 22px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 6px 6px 0 0 var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-color);
+  }
+
+  .agrupacion__header h1 {
+    margin: 0 0 14px;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    max-width: fit-content;
+    position: relative;
+  }
+
+  .agrupacion__header h1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 95%;
+    height: 5px;
+    background: var(--primary-contrast-color);
+  }
+
+  .agrupacion__entradilla {
+    margin: 16px 0 0;
+    max-width: 75ch;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  .agrupacion__seccion {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 2px solid var(--primary-color);
+  }
+
+  :global(.agrupacion__anuncio) {
+    margin-top: 30px;
+  }
+
+  .agrupacion__seccion h2 {
+    margin: 8px 0 12px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .agrupacion__seccion p {
+    line-height: 1.6;
+    max-width: 80ch;
+  }
+
+  .agrupacion__seccion p + p {
+    margin-top: 10px;
+  }
+
+  .agrupacion__criterio {
+    margin-bottom: 18px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--primary-contrast-color);
+    background: color-mix(in srgb, var(--primary-color) 6%, transparent);
+    font-size: 0.85rem;
+    color: var(--text-secondary-color);
+  }
+
+  .agrupacion__acordes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .agrupacion-acorde {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .agrupacion-acorde__diagrama {
+    display: flex;
+    justify-content: center;
+    color: var(--primary-color);
+  }
+
+  .agrupacion-acorde__nombre {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .agrupacion-acorde__nombre a {
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  .agrupacion-acorde__nombre a:hover {
+    color: var(--link-hover-color);
+  }
+
+  .agrupacion-acorde__ingles {
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: var(--text-secondary-color);
+  }
+
+  .agrupacion-acorde__tipo {
+    margin: 0;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .agrupacion-acorde__coplas {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+
+  .agrupacion-acorde__motivo {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--text-color);
+  }
+
+  .agrupacion__progresion {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .agrupacion__progresion li {
+    display: flex;
+    align-items: center;
+  }
+
+  .agrupacion__progresion li + li::before {
+    content: '→';
+    margin-right: 8px;
+    color: var(--primary-contrast-color);
+    font-weight: 700;
+  }
+
+  .agrupacion__progresion a {
+    padding: 6px 14px;
+    border: 2px solid var(--primary-color);
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .agrupacion__progresion a:hover {
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+  }
+
+  .agrupacion__faq {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .agrupacion__faq details {
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .agrupacion__faq summary {
+    padding: 10px 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .agrupacion__faq details[open] summary {
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .agrupacion__faq p {
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .agrupacion__otras ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .agrupacion__otras li {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border: 2px solid var(--primary-color);
+  }
+
+  .agrupacion__otras a {
+    font-weight: 700;
+    color: var(--link-color);
+    text-decoration: none;
+  }
+
+  .agrupacion__otras a:hover {
+    color: var(--link-hover-color);
+  }
+
+  .agrupacion__otras span {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+  }
+
+  .agrupacion__cierre {
+    margin-top: 30px;
+    padding-top: 12px;
+    border-top: 2px solid var(--primary-color);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .agrupacion__cierre a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .agrupacion__cierre a:hover {
+    color: var(--link-hover-color);
+  }
+
+  @media (max-width: 640px) {
+    .agrupacion {
+      padding: 14px 12px 18px;
+    }
+
+    .agrupacion__header h1 {
+      font-size: 1.2rem;
+    }
+
+    .agrupacion__acordes {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

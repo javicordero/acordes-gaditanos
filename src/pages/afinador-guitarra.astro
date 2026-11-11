@@ -1,0 +1,401 @@
+---
+/**
+ * Afinador de guitarra (/afinador-guitarra/).
+ *
+ * El widget no arranca solo: el micrófono se pide al pulsar el botón. La
+ * lógica de audio vive en `src/lib/afinador/`.
+ */
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/page/Breadcrumb.astro';
+import Afinador from '../components/afinador/Afinador.astro';
+import Anuncio2 from '../components/right-column/anuncios/Anuncio2.astro';
+import { CUERDAS } from '../lib/afinador/cuerdas';
+
+const title = 'Afinador de guitarra online gratis - Acordes Gaditanos';
+const description =
+  'Afina tu guitarra española, clásica o flamenca gratis con el micrófono de tu móvil u ordenador. Afinador cromático online, sin instalar nada.';
+const keywords =
+  'afinador de guitarra, afinar guitarra, afinador online, afinador guitarra española, afinador cromático, afinar guitarra con el móvil';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Afinador de guitarra',
+  applicationCategory: 'MusicApplication',
+  operatingSystem: 'Web',
+  url: canonicalURL,
+  description,
+  inLanguage: 'es-ES',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+  },
+  isPartOf: {
+    '@type': 'WebSite',
+    name: 'Acordes Gaditanos',
+    url: Astro.site,
+  },
+};
+
+const faqs = [
+  {
+    pregunta: '¿Hace falta instalar algo para usar el afinador?',
+    respuesta:
+      'No. Funciona en el navegador con el micrófono del móvil u ordenador. No hay aplicación que descargar ni registro.',
+  },
+  {
+    pregunta: '¿Funciona en el móvil?',
+    respuesta:
+      'Sí. Al pulsar «Activar micrófono» el navegador pedirá permiso. En iPhone conviene tener el móvil a unos 30-50 cm de la guitarra y no tapar el micrófono con la mano.',
+  },
+  {
+    pregunta: '¿Sirve para guitarra española, clásica o flamenca?',
+    respuesta:
+      'Sí. Todas usan la afinación estándar (Mi-La-Re-Sol-Si-Mi) y las mismas frecuencias. En una electroacústica, mejor sin amplificar o con el móvil cerca de la caja.',
+  },
+  {
+    pregunta: '¿Por qué no detecta el Mi grave?',
+    respuesta:
+      'Los micrófonos pequeños atenúan los graves. Acerca el móvil a la caja, pulsa la cuerda con el pulgar y deja que suene limpia. Si hay ruido de fondo o televisión, el detector lo descarta y no marca nota.',
+  },
+  {
+    pregunta: '¿Se graba o se envía el audio?',
+    respuesta:
+      'No. La señal se analiza en tu navegador y no se envía a ningún servidor. Al pulsar «Parar» o cerrar la página, el micrófono se apaga.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ pregunta, respuesta }) => ({
+    '@type': 'Question',
+    name: pregunta,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: respuesta,
+    },
+  })),
+};
+---
+
+<Layout title={title} description={description} keywords={keywords} sinAnuncioSobreFooter>
+  <script type='application/ld+json' set:html={JSON.stringify(webAppSchema)} />
+  <script type='application/ld+json' set:html={JSON.stringify(faqSchema)} />
+
+  <Breadcrumb current='Afinador de guitarra' />
+
+  <div class='main-container container-layout'>
+    <article class='afinador-pagina'>
+      <header class='afinador-pagina__header'>
+        <h1>Afinador de guitarra online gratis</h1>
+        <p class='afinador-pagina__intro'>
+          Afina las seis cuerdas con el micrófono del móvil o del ordenador. Pulsa «Activar
+          micrófono», toca una cuerda y mira la aguja: si se queda en el centro, está afinada. Sin
+          instalar nada, sin registro y sin enviar el audio a ningún sitio.
+        </p>
+      </header>
+
+      <section class='afinador-pagina__seccion' aria-labelledby='afinador-titulo'>
+        <h2 id='afinador-titulo'>Afinador</h2>
+        <Afinador />
+      </section>
+
+      <Anuncio2 class='afinador-pagina__anuncio' />
+
+      <section class='afinador-pagina__seccion' aria-labelledby='paso-a-paso'>
+        <h2 id='paso-a-paso'>Cómo afinar una guitarra española paso a paso</h2>
+        <ol class='afinador-pagina__lista'>
+          <li>Activa el micrófono y permite el acceso cuando el navegador lo pregunte.</li>
+          <li>
+            Empieza por la 6ª cuerda (Mi grave). Púlsala con el pulgar, sin apretar de más, y deja
+            que suene dos o tres segundos.
+          </li>
+          <li>
+            Mira la nota y los cents: si la aguja está a la izquierda, la cuerda está baja; si está a
+            la derecha, está alta. Gira el clavijero poco a poco.
+          </li>
+          <li>
+            Repite hasta que la nota sea la de la cuerda y la aguja quede dentro de la zona central
+            (±5 cents).
+          </li>
+          <li>Sigue por la 5ª, 4ª, 3ª, 2ª y 1ª. Al final, comprueba de nuevo la 6ª.</li>
+        </ol>
+        <p>
+          Las cuerdas nuevas se desafinan durante los primeros días. Afina, estira un poco cada
+          cuerda con la mano y vuelve a afinar: aguantará más tiempo.
+        </p>
+      </section>
+
+      <section class='afinador-pagina__seccion' aria-labelledby='frecuencias'>
+        <h2 id='frecuencias'>Notas y frecuencias de las seis cuerdas</h2>
+        <div class='afinador-pagina__tabla'>
+          <table>
+            <caption>Afinación estándar con La4 = 440 Hz</caption>
+            <thead>
+              <tr>
+                <th scope='col'>Cuerda</th>
+                <th scope='col'>Nota</th>
+                <th scope='col'>Frecuencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                CUERDAS.map((cuerda) => (
+                  <tr>
+                    <td>{cuerda.numero}ª</td>
+                    <td>{cuerda.nota}</td>
+                    <td>{cuerda.frecuencia} Hz</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class='afinador-pagina__seccion' aria-labelledby='como-usar'>
+        <h2 id='como-usar'>Cómo leer el afinador</h2>
+        <ul class='afinador-pagina__lista'>
+          <li>
+            <strong>Nota.</strong> Es la nota que está sonando y la octava. Si tocas la 5ª cuerda,
+            debe poner La2.
+          </li>
+          <li>
+            <strong>Cents.</strong> La desviación respecto a esa nota. 100 cents son un semitono; lo
+            normal es dejar la cuerda a menos de 5.
+          </li>
+          <li>
+            <strong>Aguja.</strong> A la izquierda, la cuerda está baja; a la derecha, alta. La zona
+            central es la afinación correcta.
+          </li>
+          <li>
+            <strong>Cuerda.</strong> Cuando la nota coincide con una de las seis, se marca en la fila
+            de abajo y se indica el número de cuerda.
+          </li>
+        </ul>
+      </section>
+
+      <section class='afinador-pagina__seccion' aria-labelledby='alternativas'>
+        <h2 id='alternativas'>Afinación estándar y afinaciones alternativas</h2>
+        <p>
+          El afinador reconoce cualquier nota, no solo las seis al aire, así que también sirve para
+          comprobar un traste o una nota suelta. La referencia es la afinación estándar
+          (Mi-La-Re-Sol-Si-Mi). Si tocas en una afinación abierta o con la 6ª en Re, la nota que
+          verás será la real de cada cuerda, no la de la tabla.
+        </p>
+        <p>
+          Para una afinación alternativa no hay una herramienta propia: afina la cuerda que cambia
+          con la nota que corresponda (por ejemplo, Re2 para la 6ª en Re) y deja las demás igual.
+        </p>
+      </section>
+
+      <section class='afinador-pagina__seccion' aria-labelledby='permisos'>
+        <h2 id='permisos'>Si el micrófono no funciona</h2>
+        <p>
+          El navegador solo deja usar el micrófono si le das permiso. Si lo denegaste sin querer,
+          ábrelo en el candado de la barra de direcciones y vuelve a cargar la página. En iPhone,
+          revisa Ajustes → Safari → Micrófono. Si el aviso dice que está ocupado, cierra la
+          aplicación que lo esté usando.
+        </p>
+      </section>
+
+      <section class='afinador-pagina__seccion afinador-pagina__faq' aria-labelledby='faq'>
+        <h2 id='faq'>Preguntas frecuentes</h2>
+        {
+          faqs.map(({ pregunta, respuesta }) => (
+            <details class='afinador-pagina__faq-item'>
+              <summary>{pregunta}</summary>
+              <p>{respuesta}</p>
+            </details>
+          ))
+        }
+      </section>
+
+      <p class='afinador-pagina__cierre'>
+        Con la guitarra afinada, busca el acorde en el
+        <a href='/glosario' data-ga-event='click_glosario_afinador'>glosario completo</a>, cambia
+        el tono de una copla en el
+        <a href='/transportar-acordes' data-ga-event='click_transportador_afinador'
+          >transportador de acordes</a
+        >{' '}o comprueba una postura en el <a href='/reconocer-acorde'>reconocedor de acordes</a>.
+        Tienes todas las herramientas en <a href='/herramientas'>herramientas</a>.
+      </p>
+    </article>
+  </div>
+
+  <script>
+    import { seguirEnlaces } from '../lib/analitica';
+
+    seguirEnlaces('[data-ga-event^="click_"]', 'afinador');
+  </script>
+</Layout>
+
+<style>
+  .afinador-pagina {
+    padding: 18px 18px 22px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 6px 6px 0 0 var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-color);
+  }
+
+  :global(.afinador-pagina__anuncio) {
+    margin-top: 30px;
+  }
+
+  .afinador-pagina__header h1 {
+    margin: 0 0 14px;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    max-width: fit-content;
+    position: relative;
+  }
+
+  .afinador-pagina__header h1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 95%;
+    height: 5px;
+    background: var(--primary-contrast-color);
+  }
+
+  .afinador-pagina__intro {
+    margin: 16px 0 0;
+    max-width: 75ch;
+    line-height: 1.6;
+  }
+
+  .afinador-pagina__seccion {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 2px solid var(--primary-color);
+  }
+
+  .afinador-pagina__seccion h2 {
+    margin: 8px 0 12px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .afinador-pagina__seccion p,
+  .afinador-pagina__lista {
+    line-height: 1.6;
+    max-width: 80ch;
+  }
+
+  .afinador-pagina__seccion p + p {
+    margin-top: 10px;
+  }
+
+  .afinador-pagina__lista {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .afinador-pagina__lista strong {
+    color: var(--primary-color);
+  }
+
+  .afinador-pagina__tabla {
+    margin-top: 14px;
+    overflow-x: auto;
+  }
+
+  .afinador-pagina__tabla table {
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .afinador-pagina__tabla caption {
+    caption-side: top;
+    margin-bottom: 8px;
+    text-align: left;
+    font-size: 0.78rem;
+    color: var(--text-secondary-color);
+  }
+
+  .afinador-pagina__tabla th,
+  .afinador-pagina__tabla td {
+    padding: 8px 18px;
+    border: 2px solid var(--primary-color);
+    text-align: left;
+  }
+
+  .afinador-pagina__tabla th {
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .afinador-pagina__faq-item {
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .afinador-pagina__faq-item + .afinador-pagina__faq-item {
+    margin-top: 8px;
+  }
+
+  .afinador-pagina__faq-item summary {
+    padding: 10px 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .afinador-pagina__faq-item[open] summary {
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .afinador-pagina__faq-item p {
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .afinador-pagina__cierre {
+    margin-top: 30px;
+    padding-top: 12px;
+    border-top: 2px solid var(--primary-color);
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .afinador-pagina__cierre a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .afinador-pagina__cierre a:hover {
+    color: var(--link-hover-color);
+  }
+
+  @media (max-width: 640px) {
+    .afinador-pagina {
+      padding: 14px 12px 18px;
+    }
+
+    .afinador-pagina__header h1 {
+      font-size: 1.2rem;
+    }
+  }
+</style>

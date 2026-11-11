@@ -6,6 +6,7 @@ import AcordeAvisoMigracion from './AcordeAvisoMigracion.astro';
 import { Image } from 'astro:assets';
 import RecomendacionInline from './RecomendacionInline.astro';
 import Anuncio from '../right-column/anuncios/Anuncio.astro';
+import BarraHerramientas from './BarraHerramientas.astro';
 import AcordesDeLaPieza from './AcordesDeLaPieza.astro';
 import GlosarioPopover from './GlosarioPopover.astro';
 import glosarioJson from '../../data/glosario-acordes.json';
@@ -171,27 +172,14 @@ const headingId = `acorde-${slug}`;
       <Anuncio adSlot='8116046706' />
     </div>
 
+    <BarraHerramientas />
+
     <div class='acorde-meta'>
       <Icon name='cejilla' width={18} height={18} />
       <span>Cejilla: {cejilla == 0 || !cejilla ? 'No' : cejilla}</span>
     </div>
 
     <div class='acorde-content'>
-      <div class='autoscroll-wrapper'>
-        <button class='autoscroll-btn play-btn' aria-label='Iniciar autoscroll'>
-          <svg style='position: relative; left: 1px;' xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='var(--primary-contrast-color)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='5 3 19 12 5 21 5 3'></polygon></svg>
-        </button>
-        <button class='autoscroll-btn pause-btn' aria-label='Pausar autoscroll'>
-          <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='var(--primary-contrast-color)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='6' y='4' width='4' height='16'></rect><rect x='14' y='4' width='4' height='16'></rect></svg>
-        </button>
-        <div class='speed-options'>
-          <button class='speed-btn' data-speed='1'>1x</button>
-          <button class='speed-btn active' data-speed='2'>2x</button>
-          <button class='speed-btn' data-speed='3'>3x</button>
-          <button class='speed-btn' data-speed='4'>4x</button>
-          <button class='speed-btn' data-speed='5'>5x</button>
-        </div>
-      </div>
       <Content />
     </div>
   </section>
@@ -315,7 +303,7 @@ const headingId = `acorde-${slug}`;
      El margen vive en este mismo bloque: si el anuncio no se muestra, se
      oculta el bloque entero y no quedan restos. */
   .anuncio-movil {
-    margin-top: 24px;
+    margin: 0;
   }
 
   /* Sin reserva de altura: si AdSense confirma que la unidad está vacía, se
@@ -380,10 +368,9 @@ const headingId = `acorde-${slug}`;
     width: 100%;
   }
 
-  /* Hueco para el control de autoscroll, que flota sobre la esquina
-     superior derecha del cifrado sin tapar la primera línea. */
+  /* El cifrado ya queda separado por el gap del contenedor. */
   .acorde-content > .acorde-content {
-    padding-top: 26px;
+    padding: 0;
   }
 
   .acorde-meta {
@@ -589,138 +576,6 @@ const headingId = `acorde-${slug}`;
     .acorde-content :global(pre) {
       margin-inline: -4px;
       width: calc(100% + 8px);
-    }
-  }
-
-  .autoscroll-wrapper {
-    position: absolute;
-    top: -22px;
-    right: -6px;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-items: center;
-    min-width: 40px;
-    background: transparent;
-    padding: 4px;
-    border-radius: 0;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .autoscroll-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 0;
-    border: 2px solid var(--primary-color);
-    background: var(--surface-color);
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition:
-      transform 0.15s ease,
-      box-shadow 0.15s ease;
-    box-shadow: 2px 2px 0 0 var(--primary-color);
-    flex-shrink: 0;
-    order: -1;
-    position: relative;
-    left: 1px;
-  }
-
-  .autoscroll-btn:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 4px 4px 0 0 var(--primary-color);
-  }
-
-  .autoscroll-btn:active {
-    transform: translate(0, 0);
-    box-shadow: 1px 1px 0 0 var(--primary-color);
-  }
-
-  .autoscroll-btn svg {
-    width: 16px;
-    height: 16px;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
-  }
-
-  .pause-btn {
-    display: none;
-  }
-
-  .autoscroll-wrapper .speed-options {
-    gap: 2px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.8s ease-in-out;
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .autoscroll-wrapper.playing {
-    background: var(--card-background-color);
-    border: 2px solid var(--primary-color);
-    box-shadow: 2px 2px 0 0 var(--primary-color);
-  }
-
-  .autoscroll-wrapper.playing .speed-options {
-    max-height: 200px;
-    background: transparent;
-  }
-
-  .autoscroll-wrapper.playing .play-btn {
-    display: none;
-  }
-
-  .autoscroll-wrapper.playing .pause-btn {
-    display: flex;
-  }
-
-  .autoscroll-wrapper .play-btn {
-    display: flex;
-  }
-
-  .speed-btn {
-    padding: 2px 6px;
-    border-radius: 0;
-    border: 2px solid var(--primary-color);
-    background: var(--card-background-color);
-    color: var(--primary-color);
-    font-size: 0.65rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: 'Roboto Mono', monospace;
-  }
-
-  .speed-btn:hover {
-    background: var(--primary-contrast-color);
-    color: var(--on-bright-color);
-  }
-
-  .speed-btn.active {
-    background: var(--primary-contrast-color);
-    color: var(--on-bright-color);
-    box-shadow: 2px 2px 0 0 var(--primary-color);
-  }
-
-  @media (max-width: 640px) {
-    .autoscroll-btn {
-      width: 28px;
-      height: 28px;
-    }
-
-    .autoscroll-btn svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    .speed-btn {
-      padding: 2px 6px;
-      font-size: 0.6rem;
     }
   }
 

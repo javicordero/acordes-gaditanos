@@ -2,7 +2,7 @@
 
 ## Reglas del proyecto
 - Commits y mensajes siempre en español.
-- **UI:** nunca subrayar al pasar el cursor. Si el enlace ya está subrayado en reposo, conserva ese subrayado.
+- **UI:** los enlaces de contenido van en azul (`--link-color`) y **sin subrayado**, con el hover en `--link-hover-color` y sin fondo. Nunca subrayar al pasar el cursor; si un enlace ya está subrayado en reposo, conserva ese subrayado. Los enlaces con aspecto de botón (borde y sombra) mantienen su estilo.
 - No añadir skills genéricas al repositorio salvo que se vayan a usar de verdad. OpenCode descubre las skills de `.agents/skills`; no hace falta mantener aquí una lista duplicada.
 
 ## Comandos y verificación

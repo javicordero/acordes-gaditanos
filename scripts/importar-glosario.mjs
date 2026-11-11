@@ -4,8 +4,10 @@
  * y genera src/data/glosario-acordes.json.
  *
  * Uso:
- *   node scripts/importar-glosario.mjs [--dry-run] [--force] [--only DO]
+ *   node scripts/importar-glosario.mjs --regenerar [--dry-run] [--force] [--only DO]
  *
+ * - El JSON versionado contiene posturas creadas a mano. Por eso, sin
+ *   `--regenerar` el script no escribe: este proceso reescribe el archivo entero.
  * - Guarda una caché local de las respuestas crudas en .cache/glosario (ignorada por git).
  * - Espera entre peticiones para no castigar al servidor de origen.
  * - No se ejecuta en build ni en CI: el JSON generado es el que se versiona.
@@ -26,6 +28,7 @@ const BASE_URL = 'https://acordes.lacuerda.net/TRAN/procDiag.php';
 const args = process.argv.slice(2);
 const DRY_RUN = args.includes('--dry-run');
 const FORCE = args.includes('--force');
+const REGENERAR = args.includes('--regenerar');
 const ONLY = (() => {
   const i = args.indexOf('--only');
   return i === -1 ? null : (args[i + 1] || '');
@@ -538,6 +541,16 @@ async function main() {
   if (DRY_RUN) {
     console.log('\n--dry-run: no se escribe el JSON');
     return;
+  }
+
+  if (!REGENERAR) {
+    console.error(
+      '\nAbortado: este script reescribe el JSON entero y borraría las posturas\n' +
+        'creadas a mano. Si de verdad quieres regenerarlo desde LaCuerda, usa\n' +
+        '  node scripts/importar-glosario.mjs --regenerar\n' +
+        'Para ampliar el glosario sin perder nada usa scripts/importar-glosario-mit.mjs.',
+    );
+    process.exit(1);
   }
 
   await writeFile(OUT_FILE, JSON.stringify(salida, null, 2) + '\n', 'utf8');

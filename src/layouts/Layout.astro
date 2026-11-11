@@ -6,7 +6,6 @@ import FitTextInit from '../components/utils/FitTextInit.astro';
 import PrefetchTap from '../components/utils/PrefetchTap.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
-import Anuncios from '../components/page/Anuncios.astro';
 import AnuncioSobreFooter from '../components/right-column/anuncios/AnuncioSobreFooter.astro';
 import InstalarAppPanel from '../components/pwa/InstalarAppPanel.astro';
 import AvisoInstalar from '../components/pwa/AvisoInstalar.astro';
@@ -28,6 +27,8 @@ interface Props {
   noindex?: boolean;
   keywords?: string;
   noInPagePush?: boolean;
+  /** Herramientas con su propio anuncio manual: no sumar el global sobre el footer. */
+  sinAnuncioSobreFooter?: boolean;
   articlePublishedTime?: string;
   articleAuthors?: string[];
 }
@@ -39,6 +40,7 @@ const {
   noindex = false,
   keywords = 'carnaval, carnaval de cadiz, COAC, guitarra, acordes de guitarra, comparsa, chirigota, coro, cuartetos, letras carnaval, acordes carnaval',
   noInPagePush = false,
+  sinAnuncioSobreFooter = false,
   articlePublishedTime,
   articleAuthors,
 } = Astro.props;
@@ -373,7 +375,7 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
     <Header />
     <slot />
     <!-- Sobre footer -->
-    {!sinAnalitica && <AnuncioSobreFooter />}
+    {!sinAnalitica && !sinAnuncioSobreFooter && <AnuncioSobreFooter />}
     <Footer />
     <InstalarAppPanel />
     {!sinAnalitica && <AvisoInstalar />}

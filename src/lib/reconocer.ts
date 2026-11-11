@@ -59,8 +59,14 @@ const TIPOS: TipoAcorde[] = [
   { sufijo: '6add9', intervalos: [0, 4, 7, 9, 14], requeridos: [0, 4, 9, 2] },
   { sufijo: '7b9', intervalos: [0, 4, 7, 10, 13], requeridos: [0, 4, 10, 1] },
   { sufijo: '7#9', intervalos: [0, 4, 7, 10, 15], requeridos: [0, 4, 10, 3] },
+  { sufijo: '9b5', intervalos: [0, 4, 6, 10, 14], requeridos: [0, 4, 6, 10, 2] },
   { sufijo: '11', intervalos: [0, 4, 7, 10, 14, 17], requeridos: [0, 4, 10, 5] },
+  { sufijo: 'm11', intervalos: [0, 3, 7, 10, 14, 17], requeridos: [0, 3, 10, 5] },
+  { sufijo: 'maj11', intervalos: [0, 4, 7, 11, 14, 17], requeridos: [0, 4, 11, 5] },
   { sufijo: '13', intervalos: [0, 4, 7, 10, 14, 17, 21], requeridos: [0, 4, 10, 9] },
+  // La 11ª no es propia de un maj13, pero hay posiciones del dataset que la
+  // incluyen (Do# F# C F A#), así que se tolera.
+  { sufijo: 'maj13', intervalos: [0, 4, 5, 7, 11, 14, 21], requeridos: [0, 4, 11, 9] },
 ];
 
 export interface AcordeReconocido {

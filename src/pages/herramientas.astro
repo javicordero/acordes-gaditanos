@@ -1,0 +1,480 @@
+---
+/**
+ * Página de herramientas (/herramientas/).
+ *
+ * Reúne las cuatro herramientas del sitio con texto propio. Es la entrada del
+ * menú y del footer; cada herramienta enlaza de vuelta desde su cierre.
+ */
+import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/page/Breadcrumb.astro';
+import Anuncio2 from '../components/right-column/anuncios/Anuncio2.astro';
+import { LISTA_AGRUPACIONES } from '../lib/agrupaciones-acordes';
+
+const title = 'Herramientas de guitarra: afinador, transportador y glosario';
+const description =
+  'Afinador, transportador, reconocedor y glosario: las cuatro herramientas de guitarra del sitio, explicadas y gratis. Sin instalar nada y sin registro.';
+const keywords =
+  'herramientas de guitarra, afinador de guitarra, transportador de acordes, reconocer acordes, glosario de acordes';
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const herramientas = [
+  {
+    clave: 'afinador',
+    etiqueta: 'Afinar',
+    titulo: 'Afinador de guitarra',
+    texto:
+      'Afina las seis cuerdas con el micrófono del móvil. Te dice la nota que suena, la cuerda que es y cuántos cents te desvías, con una aguja que se queda en el centro cuando está afinada.',
+    cuando:
+      'antes de grabar, de ensayar o de tocar en una actuación, y cada vez que cambies las cuerdas.',
+    necesitas: 'el micrófono del dispositivo y dar permiso al navegador.',
+    href: '/afinador-guitarra',
+    cta: 'Abrir el afinador',
+    evento: 'click_herramienta_afinador',
+  },
+  {
+    clave: 'transportador',
+    etiqueta: 'Cambiar de tono',
+    titulo: 'Transportador de acordes',
+    texto:
+      'Sube o baja el tono de un cifrado completo sin tocar la letra. Pega los acordes, elige los semitonos y copia el resultado con la alineación intacta.',
+    cuando:
+      'la copla te queda alta o baja para la voz, o quieres tocar con formas cómodas usando cejilla.',
+    necesitas: 'pegar el cifrado en texto plano, con los acordes en su línea.',
+    href: '/transportar-acordes',
+    cta: 'Abrir el transportador',
+    evento: 'click_herramienta_transportador',
+  },
+  {
+    clave: 'reconocer',
+    etiqueta: 'Identificar',
+    titulo: 'Reconocer acordes',
+    texto:
+      'Dibuja en el mástil qué cuerdas pisas y cuáles suenan al aire. Te dice el acorde más probable, las notas que lo forman, las que faltan y otras lecturas posibles.',
+    cuando:
+      'sacas una postura de oído, ves un diagrama que no entiendes o dudas del nombre de un acorde.',
+    necesitas: 'nada: solo pulsar los trastes en la pantalla.',
+    href: '/reconocer-acorde',
+    cta: 'Abrir el reconocedor',
+    evento: 'click_herramienta_reconocer',
+  },
+  {
+    clave: 'glosario',
+    etiqueta: 'Buscar',
+    titulo: 'Glosario de acordes',
+    texto:
+      '605 acordes con todas sus posiciones, la digitación cuerda por cuerda, las notas que los forman y las coplas del Carnaval que los usan. Se busca por notación española o inglesa.',
+    cuando: 'necesitas aprender un acorde nuevo o comprobar una posición concreta.',
+    necesitas: 'el nombre del acorde o una fundamental por la que empezar.',
+    href: '/glosario',
+    cta: 'Abrir el glosario',
+    evento: 'click_herramienta_glosario',
+  },
+];
+
+const itemListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Herramientas de guitarra',
+  numberOfItems: herramientas.length,
+  itemListElement: herramientas.map((herramienta, indice) => ({
+    '@type': 'ListItem',
+    position: indice + 1,
+    name: herramienta.titulo,
+    url: new URL(`${herramienta.href}/`, Astro.site).toString(),
+  })),
+};
+
+const faqs = [
+  {
+    pregunta: '¿Hace falta registrarse o instalar algo?',
+    respuesta:
+      'No. Las cuatro herramientas funcionan en el navegador. El afinador pide permiso para usar el micrófono; el resto no necesita nada.',
+  },
+  {
+    pregunta: '¿Funcionan en el móvil?',
+    respuesta:
+      'Sí. Están pensadas para usarse con una mano en el móvil: el glosario, el reconocedor y el transportador con el teclado o el dedo, y el afinador con el micrófono.',
+  },
+  {
+    pregunta: '¿Guardáis lo que pego o el audio del micrófono?',
+    respuesta:
+      'No. El cifrado se transporta en tu navegador y el audio se analiza en el momento. Nada de eso se envía a un servidor.',
+  },
+  {
+    pregunta: '¿De dónde salen los acordes del glosario?',
+    respuesta:
+      'De las posturas históricas del cancionero, de las que hacemos a mano y de un dataset con licencia MIT. Todas están revisadas y cada acorde indica sus posiciones y sus notas.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ pregunta, respuesta }) => ({
+    '@type': 'Question',
+    name: pregunta,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: respuesta,
+    },
+  })),
+};
+---
+
+<Layout
+  title={title}
+  description={description}
+  keywords={keywords}
+  sinAnuncioSobreFooter
+>
+  <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
+  <script type='application/ld+json' set:html={JSON.stringify(faqSchema)} />
+
+  <Breadcrumb current='Herramientas' />
+
+  <div class='main-container container-layout'>
+    <article class='herramientas'>
+      <header class='herramientas__header'>
+        <h1>Herramientas de guitarra</h1>
+        <p class='herramientas__intro'>
+          Cuatro herramientas para tocar mejor: afinar, cambiar de tono, identificar un acorde y
+          buscarlo con todas sus posiciones. Todas funcionan en el navegador, sin instalar nada y sin
+          registro.
+        </p>
+      </header>
+
+      <div class='herramientas__grid'>
+        {
+          herramientas.map((herramienta, indice) => (
+            <section class='herramienta-card' aria-labelledby={`herramienta-${herramienta.clave}`}>
+              <a
+                class='herramienta-card__enlace'
+                href={herramienta.href}
+                data-ga-event={herramienta.evento}
+              >
+                <p class='herramienta-card__numero' aria-hidden='true'>
+                  {String(indice + 1).padStart(2, '0')}
+                </p>
+                <p class='herramienta-card__etiqueta'>{herramienta.etiqueta}</p>
+                <h2 id={`herramienta-${herramienta.clave}`}>{herramienta.titulo}</h2>
+                <p>{herramienta.texto}</p>
+                <p class='herramienta-card__detalle'>
+                  <strong>Cuándo te sirve:</strong> {herramienta.cuando}
+                </p>
+                <p class='herramienta-card__detalle'>
+                  <strong>Qué necesitas:</strong> {herramienta.necesitas}
+                </p>
+                <span class='herramienta-card__cta'>{herramienta.cta} →</span>
+              </a>
+            </section>
+          ))
+        }
+      </div>
+
+      <Anuncio2 class='herramientas__anuncio' />
+
+      <section class='herramientas__seccion' aria-labelledby='empezando'>
+        <h2 id='empezando'>Si estás empezando</h2>
+        <p>
+          No hace falta aprenderse todos los acordes. Estas cuatro selecciones están pensadas para
+          avanzar sin perderse: primero los fáciles, después la cejilla, luego el sonido y, cuando ya
+          te suenen, el repertorio del Carnaval.
+        </p>
+        <ul class='herramientas__selecciones'>
+          {
+            LISTA_AGRUPACIONES.map((grupo) => (
+              <li>
+                <a href={`/${grupo.slug}`}>
+                  <strong>{grupo.h1}</strong>
+                  <span>{grupo.resumen}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class='herramientas__seccion herramientas__faq' aria-labelledby='faq'>
+        <h2 id='faq'>Preguntas frecuentes</h2>
+        {
+          faqs.map(({ pregunta, respuesta }) => (
+            <details class='herramientas__faq-item'>
+              <summary>{pregunta}</summary>
+              <p>{respuesta}</p>
+            </details>
+          ))
+        }
+      </section>
+    </article>
+  </div>
+
+  <script>
+    import { seguirEnlaces } from '../lib/analitica';
+
+    seguirEnlaces('[data-ga-event^="click_herramienta"]', 'herramientas');
+  </script>
+</Layout>
+
+<style>
+  .herramientas {
+    padding: 18px 18px 22px;
+    background: var(--card-background-color);
+    border: 2px solid var(--primary-color);
+    box-shadow: 6px 6px 0 0 var(--primary-color);
+    font-family: 'Roboto Mono', monospace;
+    color: var(--text-color);
+  }
+
+  .herramientas__header h1 {
+    margin: 0 0 14px;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    max-width: fit-content;
+    position: relative;
+  }
+
+  .herramientas__header h1::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 95%;
+    height: 5px;
+    background: var(--primary-contrast-color);
+  }
+
+  .herramientas__intro {
+    margin: 16px 0 0;
+    max-width: 75ch;
+    line-height: 1.6;
+  }
+
+  .herramientas__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .herramienta-card {
+    position: relative;
+    display: flex;
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+    transition: border-color 0.15s ease;
+  }
+
+  .herramienta-card:hover {
+    border-color: var(--primary-contrast-color);
+  }
+
+  .herramienta-card:hover .herramienta-card__cta {
+    color: var(--primary-contrast-color);
+  }
+
+  .herramienta-card__enlace {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .herramienta-card__numero {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--primary-color);
+    opacity: 0.12;
+  }
+
+  .herramienta-card__etiqueta {
+    margin: 0;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-contrast-color);
+    background: var(--primary-color);
+    padding: 2px 6px;
+    align-self: flex-start;
+  }
+
+  .herramienta-card h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+  }
+
+  .herramienta-card p {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+
+  .herramienta-card__detalle {
+    color: var(--text-secondary-color);
+  }
+
+  .herramienta-card__detalle strong {
+    color: var(--primary-color);
+  }
+
+  .herramienta-card__cta {
+    margin-top: auto;
+    padding-top: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--link-color);
+    text-decoration: none;
+    align-self: flex-start;
+  }
+
+  .herramienta-card__cta:hover {
+    color: var(--primary-contrast-color);
+  }
+
+  :global(.herramientas__anuncio) {
+    margin-top: 30px;
+  }
+
+  .herramientas__seccion {
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 2px solid var(--primary-color);
+  }
+
+  .herramientas__seccion h2 {
+    margin: 8px 0 12px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+
+  .herramientas__seccion p {
+    line-height: 1.6;
+    max-width: 80ch;
+  }
+
+  .herramientas__selecciones {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .herramientas__selecciones li {
+    border: 2px solid var(--primary-color);
+  }
+
+  .herramientas__selecciones a {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-weight: 700;
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .herramientas__selecciones a:hover {
+    color: var(--link-hover-color);
+  }
+
+  .herramientas__selecciones li:hover {
+    border-color: var(--link-color);
+  }
+
+  .herramientas__selecciones strong {
+    font-weight: 700;
+  }
+
+  .herramientas__selecciones span {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+  }
+
+  .herramientas__faq-item {
+    border: 2px solid var(--primary-color);
+    background: var(--card-background-color);
+  }
+
+  .herramientas__faq-item + .herramientas__faq-item {
+    margin-top: 8px;
+  }
+
+  .herramientas__faq-item summary {
+    padding: 10px 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .herramientas__faq-item[open] summary {
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .herramientas__faq-item p {
+    margin: 0;
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    animation: herramientas-faq-abrir 220ms ease-out;
+  }
+
+  @keyframes herramientas-faq-abrir {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .herramientas__faq-item p {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .herramientas {
+      padding: 14px 12px 18px;
+    }
+
+    .herramientas__header h1 {
+      font-size: 1.2rem;
+    }
+
+    .herramientas__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .herramientas__selecciones {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
