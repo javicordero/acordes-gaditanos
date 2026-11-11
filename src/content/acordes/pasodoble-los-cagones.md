@@ -5,12 +5,12 @@ year: 2025
 modalidad: Chirigota
 musica: Manolín Santander
 letra: Manolín Santander
-img: https://static.grupojoly.com/clip/1db5cf3f-81ea-408d-8885-b357af9d8ae6_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/1db5cf3f-81ea-408d-8885-b357af9d8ae6_source-aspect-ratio_1600w_0.jpg'
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/_SvHuxnRTto?si=3hD1__8t2nAVjXg6'
-
 fraseClave: Otra vez te vuelven a cantar contra vientos y
+letraTitulo: Otra vez te vuelven
 ---
 <pre>
 <a>LaM7</a>                <a>Mi7</a>      <a>Sim7</a>   <a>Mi7</a>         <a>LaM7</a>
