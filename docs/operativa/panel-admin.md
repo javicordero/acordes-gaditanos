@@ -263,9 +263,14 @@ llega nunca al navegador.
 - El **selector de periodo** (Hoy, 7, 30 y 90 días) está arriba, junto al
   título. Las tarjetas muestran la variación frente al periodo anterior (ayer,
   o los mismos días anteriores); esa comparación se pide en la misma consulta
-  (`totalAnterior`). La tarjeta destacada, y primera, es **Páginas** (lo
-  comparable con el contador propio y Search Console); las visitas van detrás,
-  porque Cloudflare solo cuenta una visita en la página de entrada.
+  (`totalAnterior`). Van en este orden: **Páginas vistas** (destacada y primera,
+  lo comparable con el contador propio y Search Console), **Visitas** (detrás,
+  porque Cloudflare solo cuenta una visita en la página de entrada), **Páginas
+  por visita** (páginas / visitas, con su propia variación; `—` sin visitas) y
+  **Rutas listadas**. El factor de muestreo ya no es tarjeta: sale entre
+  paréntesis en la nota «Excluye bots y muestrea (×3,2)» de la cabecera (si no
+  muestrea, solo «Excluye bots y muestrea»), con la explicación al pasar el
+  cursor. Los diálogos de ruta y país conservan su tarjeta **Muestreo**.
 - **Rutas**: top **20** y botón **Ver más rutas** (hasta 300), con buscador,
   chips de tipo (**Todo / Fichas / Autores / Carnaval / Glosario / Otros**, los
   mismos del contador propio) y cabeceras ordenables. Ordena por **páginas

@@ -1439,6 +1439,17 @@ const muestreoTexto = (valor) =>
     ? '×' + Number(valor).toLocaleString('es-ES', { maximumFractionDigits: 1 })
     : '—';
 
+const unDecimal = (n) =>
+  Number(n).toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+/**
+ * Páginas que ve cada visitante de media. Cloudflare solo abre visita en la
+ * página de entrada de la sesión, así que el ratio mide cuántas páginas se ven
+ * por visita, no visitas por página.
+ */
+const porVisita = (paginas, visitas) =>
+  Number(visitas) > 0 ? Number(paginas) / Number(visitas) : null;
+
 function comparativaCf(d, esHoy = false) {
   if (!statsData || !Array.isArray(statsData.history) || !statsData.history.length) {
     return '<p class="cf-comparativa">No se pudo cargar nuestro contador para comparar.</p>';
@@ -1790,14 +1801,23 @@ function pintarCloudflare(d) {
   const etiquetaAnterior = esHoy ? 'vs ayer' : 'vs ' + dias + ' días anteriores';
   const notaPaginas = d.anterior ? textoDelta(total.paginas, d.anterior.paginas, etiquetaAnterior) : '';
   const notaVisitas = d.anterior ? textoDelta(total.visitas, d.anterior.visitas, etiquetaAnterior) : '';
+  const ratio = porVisita(total.paginas, total.visitas);
+  const ratioAnterior = d.anterior ? porVisita(d.anterior.paginas, d.anterior.visitas) : null;
+  const notaRatio = ratio != null && ratioAnterior
+    ? textoDelta(ratio, ratioAnterior, etiquetaAnterior, unDecimal)
+    : '';
 
   const cards = tarjetasCf([
     // Páginas primero: es lo que se puede comparar con el contador propio y con
     // Search Console; las visitas de Cloudflare solo cuentan la página de entrada.
     { label: esHoy ? 'Páginas hoy' : 'Páginas vistas', valor: total.paginas, total: true, nota: notaPaginas },
     { label: esHoy ? 'Visitas hoy' : 'Visitas', valor: total.visitas, nota: notaVisitas },
+    {
+      label: 'Páginas por visita',
+      valor: ratio == null ? '—' : unDecimal(ratio),
+      nota: notaRatio,
+    },
     { label: esHoy ? 'Rutas hoy' : 'Rutas listadas', valor: cfRutas.length },
-    { label: 'Muestreo', valor: muestreoTexto(total.muestreo) },
   ]);
 
   const botonesPeriodo = [['hoy', 'Hoy'], [7, '7 días'], [30, '30 días'], [90, '90 días']]
@@ -1806,12 +1826,15 @@ function pintarCloudflare(d) {
       return '<button type="button" data-cf-dias="' + valor + '"' + (sel ? ' class="sel"' : '') + '>' + texto + '</button>';
     }).join('');
 
+  const muestreo = muestreoTexto(total.muestreo);
+  const notaMuestreo = 'Excluye bots y muestrea' + (muestreo === '—' ? '' : ' (' + muestreo + ')') + '.';
+
   const cabecera =
     '<section class="stats-bloque">' +
       '<h3>Cloudflare Web Analytics <span class="tabla-nota">' + esc(notaPeriodo) + '</span></h3>' +
       '<div class="cf-periodo">' +
         botonesPeriodo +
-        '<span class="cf-nota">Excluye bots y muestrea.</span>' +
+        '<span class="cf-nota" title="Factor de muestreo de Cloudflare: extrapola los datos de una parte del tráfico.">' + esc(notaMuestreo) + '</span>' +
         '<a class="cf-enlace" href="https://dash.cloudflare.com/c350ca865e93a9071b87a15239bda479/web-analytics/overview?siteTag~in=86a0b04f8b5c4819b665abea1cca1161&excludeBots=Yes" target="_blank" rel="noopener">Abrir en Cloudflare ↗</a>' +
       '</div>' +
     '</section>';
