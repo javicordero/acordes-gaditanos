@@ -595,11 +595,30 @@ const faqSchema = {
           </p>
           <p>
             Si ya sabes qué acorde quieres aprender, no hace falta dibujarlo: tenemos selecciones
-            con los <a href='/acordes-faciles-guitarra/'>acordes fáciles</a>, los
-            <a href='/acordes-con-cejilla/'>acordes con cejilla</a>, los que mejor suenan en
-            <a href='/acordes-guitarra-espanola/'>guitarra española</a> y los
-            <a href='/acordes-de-carnaval/'>más usados en el Carnaval</a>. Y si buscas otra cosa,
-            en <a href='/herramientas/'>herramientas</a> tienes el afinador y el transportador.
+            con los
+            <a
+              href='/acordes-faciles-guitarra/'
+              data-ga-event='click_seleccion_reconocer'
+              data-ga-params='{"destino":"faciles"}'>acordes fáciles</a
+            >, los
+            <a
+              href='/acordes-con-cejilla/'
+              data-ga-event='click_seleccion_reconocer'
+              data-ga-params='{"destino":"cejilla"}'>acordes con cejilla</a
+            >, los que mejor suenan en
+            <a
+              href='/acordes-guitarra-espanola/'
+              data-ga-event='click_seleccion_reconocer'
+              data-ga-params='{"destino":"espanola"}'>guitarra española</a
+            >
+            y los
+            <a
+              href='/acordes-de-carnaval/'
+              data-ga-event='click_seleccion_reconocer'
+              data-ga-params='{"destino":"carnaval"}'>más usados en el Carnaval</a
+            >. Y si buscas otra cosa, en
+            <a href='/herramientas/' data-ga-event='click_herramientas_reconocer'>herramientas</a
+            > tienes el afinador y el transportador.
           </p>
         </section>
 
@@ -1561,7 +1580,7 @@ const faqSchema = {
     );
   });
 
-  seguirEnlaces('a[data-ga-event="click_ejemplo_reconocer"]', 'glosario');
+  seguirEnlaces('a[data-ga-event^="click_"]', 'glosario');
 
   // Navegación con flechas por el mástil (una sola parada de tabulación).
   document.addEventListener('focusin', (e) => {

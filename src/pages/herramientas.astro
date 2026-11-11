@@ -185,7 +185,11 @@ const faqSchema = {
           {
             LISTA_AGRUPACIONES.map((grupo) => (
               <li>
-                <a href={`/${grupo.slug}`}>
+                <a
+                  href={`/${grupo.slug}`}
+                  data-ga-event='click_seleccion_hub'
+                  data-ga-params={JSON.stringify({ destino: grupo.clave })}
+                >
                   <strong>{grupo.h1}</strong>
                   <span>{grupo.resumen}</span>
                 </a>
@@ -212,7 +216,7 @@ const faqSchema = {
   <script>
     import { seguirEnlaces } from '../lib/analitica';
 
-    seguirEnlaces('[data-ga-event^="click_herramienta"]', 'herramientas');
+    seguirEnlaces('[data-ga-event^="click_"]', 'herramientas');
   </script>
 </Layout>
 

@@ -22,6 +22,7 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
         <span class='afinador__aguja' data-aguja></span>
       </div>
       <p class='afinador__cents' data-cents>0 cents</p>
+      <p class='afinador__valoracion' data-valoracion>&nbsp;</p>
       <div class='afinador__senal' aria-hidden='true'>
         <span class='afinador__senal-etiqueta'>Señal</span>
         <span class='afinador__senal-barra'>
@@ -77,6 +78,7 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
     const notaEl = raiz.querySelector<HTMLElement>('[data-nota]');
     const cuerdaEl = raiz.querySelector<HTMLElement>('[data-cuerda]');
     const centsEl = raiz.querySelector<HTMLElement>('[data-cents]');
+    const valoracionEl = raiz.querySelector<HTMLElement>('[data-valoracion]');
     const aguja = raiz.querySelector<HTMLElement>('[data-aguja]');
     const nivelEl = raiz.querySelector<HTMLElement>('[data-nivel]');
     const avisoSenal = raiz.querySelector<HTMLElement>('[data-aviso-senal]');
@@ -87,6 +89,7 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
 
     let ultimaSenal = 0;
     let inicioActivacion = 0;
+    let avisadoSinSenal = false;
     const cuerdasAfinadas = new Set<number>();
 
     const MENSAJES: Record<string, string> = {
@@ -115,7 +118,11 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
       if (notaEl) notaEl.textContent = '—';
       if (cuerdaEl) cuerdaEl.innerHTML = '&nbsp;';
       if (centsEl) centsEl.textContent = '0 cents';
-      if (aguja) aguja.style.setProperty('--desviacion', '0');
+      if (valoracionEl) {
+        valoracionEl.innerHTML = '&nbsp;';
+        valoracionEl.dataset.estado = '';
+      }
+      if (aguja) aguja.style.setProperty('--desplazamiento', '0%');
       if (panel) {
         panel.dataset.estado = 'activo';
         panel.dataset.afinado = 'false';
@@ -135,6 +142,7 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
       if (estado === 'activo') {
         ultimaSenal = Date.now();
         inicioActivacion = Date.now();
+        avisadoSinSenal = false;
         if (avisoSenal) avisoSenal.hidden = true;
         enviarEvento('afinador_start');
       }
@@ -150,13 +158,18 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
         ultimaSenal = 0;
         inicioActivacion = 0;
         if (avisoSenal) avisoSenal.hidden = true;
+        enviarEvento('afinador_error', { motivo: motivo ?? 'desconocido' });
       }
 
       if (estado === 'error') {
         if (notaEl) notaEl.textContent = '—';
         if (cuerdaEl) cuerdaEl.innerHTML = '&nbsp;';
         if (centsEl) centsEl.textContent = '0 cents';
-        if (aguja) aguja.style.setProperty('--desviacion', '0');
+        if (valoracionEl) {
+          valoracionEl.innerHTML = '&nbsp;';
+          valoracionEl.dataset.estado = '';
+        }
+        if (aguja) aguja.style.setProperty('--desplazamiento', '0%');
         marcarCuerda(null);
       }
 
@@ -190,8 +203,14 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
         if (notaEl && notaEl.textContent !== textoNota) notaEl.textContent = textoNota;
         if (cuerdaEl && cuerdaEl.textContent !== textoCuerda) cuerdaEl.textContent = textoCuerda;
         if (centsEl) centsEl.textContent = `${textoCents(nota.cents)} cents`;
+        if (valoracionEl) {
+          const afinado = Math.abs(nota.cents) <= 5;
+          valoracionEl.textContent = afinado ? 'Afinado' : nota.cents > 0 ? 'Alta' : 'Baja';
+          valoracionEl.dataset.estado = afinado ? 'afinado' : 'desviado';
+        }
         if (aguja) {
-          aguja.style.setProperty('--desviacion', String(Math.max(-50, Math.min(50, nota.cents))));
+          const cents = Math.max(-50, Math.min(50, nota.cents));
+          aguja.style.setProperty('--desplazamiento', `${cents}%`);
         }
         if (panel) {
           panel.dataset.estado = 'senal';
@@ -216,6 +235,10 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
           if (avisoSenal) avisoSenal.hidden = true;
         } else if (avisoSenal && ultimaSenal && Date.now() - ultimaSenal > 2500) {
           avisoSenal.hidden = false;
+          if (!avisadoSinSenal) {
+            avisadoSinSenal = true;
+            enviarEvento('afinador_sin_senal');
+          }
         }
       },
     });
@@ -312,13 +335,13 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
 
   .afinador__aguja {
     position: absolute;
-    left: 50%;
+    left: calc(50% + var(--desplazamiento, 0%));
     top: -6px;
     bottom: -6px;
     width: 4px;
     background: var(--primary-contrast-color);
-    transform: translateX(-50%) translateX(calc(var(--desviacion, 0) * 1%));
-    transition: transform 80ms linear;
+    transform: translateX(-50%);
+    transition: left 80ms linear;
   }
 
   .afinador__panel[data-estado='inactivo'] .afinador__aguja,
@@ -331,6 +354,21 @@ import { CUERDAS } from '../../lib/afinador/cuerdas';
     text-align: right;
     font-size: 0.78rem;
     color: var(--text-secondary-color);
+  }
+
+  .afinador__valoracion {
+    margin: 0;
+    min-height: 1.1em;
+    text-align: right;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary-color);
+  }
+
+  .afinador__valoracion[data-estado='afinado'] {
+    color: var(--primary-contrast-color);
   }
 
   .afinador__senal {

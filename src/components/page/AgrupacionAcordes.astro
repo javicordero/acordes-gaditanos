@@ -216,8 +216,14 @@ const faqSchema = {
       </nav>
 
       <p class='agrupacion__cierre'>
-        ¿Buscas otro acorde? Está en el <a href='/glosario'>glosario completo</a>, con todas sus
-        posiciones. Y si no sabes cómo se llama el que estás tocando, dibújalo en el{' '}
+        ¿Buscas otro acorde? Está en el
+        <a
+          href='/glosario'
+          data-ga-event='click_glosario_agrupacion'
+          data-ga-params={JSON.stringify({ grupo: grupo.clave })}
+        >
+          glosario completo</a
+        >, con todas sus posiciones. Y si no sabes cómo se llama el que estás tocando, dibújalo en el{' '}
         <a
           href='/reconocer-acorde'
           data-ga-event='click_agrupacion_reconocer'
@@ -233,7 +239,7 @@ const faqSchema = {
 <script>
   import { seguirEnlaces } from '../../lib/analitica';
 
-  seguirEnlaces('[data-ga-event^="click_agrupacion"]', 'glosario');
+  seguirEnlaces('[data-ga-event^="click_"]', 'glosario');
 </script>
 
 <style>

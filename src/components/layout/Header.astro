@@ -86,7 +86,7 @@ const esInicio = Astro.url.pathname.replace(/\/+$/, '') === '';
       <li><a href='/lista'>Todas las coplas</a></li>
       <li><a href='/autores'>Autores Destacados</a></li>
       <li><a href='/glosario'>Glosario de acordes</a></li>
-      <li><a href='/herramientas'>Herramientas</a></li>
+      <li><a href='/herramientas' data-ga-event='click_herramientas_menu'>Herramientas</a></li>
       <li><a href='/colaborar'>Colaborar</a></li>
       <li><a href='/contacto'>Contacto</a></li>
       <!-- <li><a href='/about'>Sobre nosotros</a></li> -->
@@ -532,6 +532,8 @@ const esInicio = Astro.url.pathname.replace(/\/+$/, '') === '';
 </style>
 
 <script>
+  import { seguirEnlaces } from '../../lib/analitica';
+
   function initHeader() {
     const header = document.querySelector('header');
     const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
@@ -734,4 +736,6 @@ const esInicio = Astro.url.pathname.replace(/\/+$/, '') === '';
   } else {
     initHeader();
   }
+
+  seguirEnlaces('[data-ga-event="click_herramientas_menu"]', 'herramientas');
 </script>
