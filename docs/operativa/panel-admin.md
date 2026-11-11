@@ -255,14 +255,24 @@ llega nunca al navegador.
 - El **selector de periodo** (Hoy, 7, 30 y 90 días) está arriba, junto al
   título. Las tarjetas muestran la variación frente al periodo anterior (ayer,
   o los mismos días anteriores); esa comparación se pide en la misma consulta
-  (`totalAnterior`).
-- **Rutas**: top **20** y botón **Ver más rutas** (hasta 300), con buscador. La
+  (`totalAnterior`). La tarjeta destacada, y primera, es **Páginas** (lo
+  comparable con el contador propio y Search Console); las visitas van detrás,
+  porque Cloudflare solo cuenta una visita en la página de entrada.
+- **Rutas**: top **20** y botón **Ver más rutas** (hasta 300), con buscador,
+  chips de tipo (**Todo / Fichas / Autores / Carnaval / Glosario / Otros**, los
+  mismos del contador propio) y cabeceras ordenables. Ordena por **páginas
+  vistas** (no por visitas: Cloudflare solo cuenta una visita en la página de
+  entrada de la sesión, así que casi todas las rutas quedarían en 0). La
   columna **Fuente** enseña las 3 principales en línea con formato
   `(Google - 55) (blog - 3) (directo - 1)`, con las externas primero y
   directo/interno al final; el botón **Fuentes** abre el detalle. El **D1 total**
   ya no está en la tabla principal: sigue en el detalle de la ruta.
 - **Fuentes de tráfico**: top 10 agrupadas por familia, con **%**, barra y botón
-  para desplegar el resto. La nota recuerda que directo e interno se miden en
+  para desplegar el resto. **Se recalculan con el filtro de rutas**: al buscar o
+  elegir un tipo solo suman las fuentes de esas rutas, usando los pares
+  ruta × fuente que ya trae la API (límite de 10 000 pares y solo **páginas**:
+  con filtro se oculta la columna **Visitas**, porque Cloudflare no las desglosa
+  por ruta y fuente). La nota recuerda que directo e interno se miden en
   páginas vistas.
 - **Evolución diaria** mantiene la tabla y añade un mini gráfico de barras.
 - La tabla de **Países** sigue el mismo patrón: **Páginas**, **Visitas** y una

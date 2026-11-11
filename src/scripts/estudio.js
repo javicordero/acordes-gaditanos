@@ -1078,10 +1078,18 @@ function tablaStats(titulo, cabeceras, filas, nota, extra) {
     return '<th' + (cls ? ' class="' + cls + '"' : '') +
       (c.title ? ' title="' + esc(c.title) + '"' : '') + '>' + esc(c.t) + '</th>';
   }).join('');
-  const cuerpo = filas.map((fila) => '<tr>' + fila.map((c) => {
-    const cls = [c.num ? 'num' : '', c.cls || ''].filter(Boolean).join(' ');
-    return '<td' + (cls ? ' class="' + cls + '"' : '') + '>' + (c.html || esc(String(c.t))) + '</td>';
-  }).join('') + '</tr>').join('');
+  const cuerpo = filas.map((fila) => {
+    // Una fila puede ser un array de celdas o `{ celdas, cls }` para las filas
+    // especiales (por ejemplo el botón de «ver más»).
+    const celdas = Array.isArray(fila) ? fila : (fila.celdas || []);
+    const clase = !Array.isArray(fila) && fila.cls ? ' class="' + fila.cls + '"' : '';
+    return '<tr' + clase + '>' + celdas.map((c) => {
+      const cls = [c.num ? 'num' : '', c.cls || ''].filter(Boolean).join(' ');
+      return '<td' + (cls ? ' class="' + cls + '"' : '') +
+        (c.colspan ? ' colspan="' + c.colspan + '"' : '') + '>' +
+        (c.html || esc(String(c.t))) + '</td>';
+    }).join('') + '</tr>';
+  }).join('');
   return '<section class="stats-bloque"><h3>' + esc(titulo) + (nota ? ' <span class="tabla-nota">' + esc(nota) + '</span>' : '') + '</h3>' + (extra || '') + '<div class="tabla-scroll"><table class="stats-tabla"><thead><tr>' + th + '</tr></thead><tbody>' + cuerpo + '</tbody></table></div></section>';
 }
 
@@ -1267,6 +1275,9 @@ let cfDias = 'hoy';
 let cfData = null;
 let cfCargando = false;
 let cfFiltro = '';
+let cfTipo = 'todas';
+let cfOrden = 'paginas';
+let cfOrdenDir = 'desc';
 let cfRutas = [];
 let cfRutasAbiertas = false;
 let cfFuentesAbiertas = false;
@@ -1485,6 +1496,7 @@ async function cargarCloudflare(forzar = false) {
 
     d.periodo = cfDias;
     cfData = d;
+    cfTipo = 'todas';
     cfRutasAbiertas = false;
     cfFuentesAbiertas = false;
     pintarCloudflare(d);
@@ -1521,16 +1533,89 @@ function mapaD1() {
 
 const CF_RUTAS_VISIBLES = 20;
 
+/** ¿Hay filtro de rutas activo (texto o chip)? */
+const cfHayFiltro = () => Boolean(cfFiltro.trim()) || cfTipo !== 'todas';
+
+/** Rutas de Cloudflare que pasan el buscador y el chip de tipo. */
+function rutasCfFiltradas() {
+  const incluye = sinTildes(cfFiltro.trim());
+  const porTipo = cfTipo !== 'todas';
+  return cfRutas.filter((x) => {
+    const ruta = sinTildes(x.ruta);
+    return (!incluye || ruta.includes(incluye)) && (!porTipo || tipoDeRuta(x.ruta) === cfTipo);
+  });
+}
+
+/**
+ * Ordena la tabla de rutas. Por defecto, páginas vistas: las visitas de
+ * Cloudflare solo cuentan la página de entrada de la sesión y casi todas las
+ * filas quedan en 0, así que no sirven como criterio principal.
+ */
+function rutasCfOrdenadas(lista) {
+  const dir = cfOrdenDir === 'asc' ? 1 : -1;
+  return lista.slice().sort((a, b) => {
+    if (cfOrden === 'ruta') return a.ruta.localeCompare(b.ruta, 'es') * dir;
+    if (cfOrden === 'visitas') {
+      return (Number(a.visitas) - Number(b.visitas)) * dir ||
+        b.paginas - a.paginas ||
+        a.ruta.localeCompare(b.ruta, 'es');
+    }
+    return (Number(a.paginas) - Number(b.paginas)) * dir ||
+      b.visitas - a.visitas ||
+      a.ruta.localeCompare(b.ruta, 'es');
+  });
+}
+
+/** Cabecera ordenable de la tabla de rutas de Cloudflare. */
+function cabeceraRutasCf() {
+  const cols = [
+    { id: 'ruta', t: 'Ruta', num: false },
+    { id: 'paginas', t: 'Páginas', num: true, nota: 'Páginas vistas del periodo' },
+    {
+      id: 'visitas',
+      t: 'Visitas',
+      num: true,
+      nota: 'Cloudflare cuenta una visita solo en la página de entrada de la sesión; por eso muchas rutas aparecen con 0',
+    },
+  ];
+  const th = cols.map((c) => {
+    const activa = cfOrden === c.id;
+    const aria = activa ? (cfOrdenDir === 'asc' ? 'ascending' : 'descending') : 'none';
+    const flecha = activa
+      ? ' <span class="stats-flecha">' + (cfOrdenDir === 'asc' ? '▲' : '▼') + '</span>'
+      : '';
+    return '<th' + (c.num ? ' class="num"' : '') + ' aria-sort="' + aria + '"' +
+      (c.nota ? ' title="' + esc(c.nota) + '"' : '') + '>' +
+      '<button type="button" class="stats-th-orden" data-cf-orden="' + c.id + '">' + c.t + flecha + '</button>' +
+    '</th>';
+  }).join('');
+  return '<tr>' + th +
+    '<th class="fuente" title="Páginas vistas por fuente, de mayor a menor">Fuente</th>' +
+    '<th class="cf-accion">Fuentes</th></tr>';
+}
+
+/** Nota del periodo de la pestaña Cloudflare, para las tablas que se repintan. */
+function notaPeriodoCf() {
+  const esHoy = Boolean(cfData && (cfData.hoy === true || cfDias === 'hoy'));
+  const dias = esHoy ? 1 : (Number(cfData && cfData.dias) || Number(cfDias) || 0);
+  return esHoy ? 'Hoy · 00:00 → ahora' : 'Últimos ' + dias + ' días';
+}
+
 function pintarCfRutas() {
   const cuerpo = $('cf-rutas-cuerpo');
   if (!cuerpo || !cfData) return;
 
-  const consulta = sinTildes(cfFiltro.trim());
-  const filtradas = consulta
-    ? cfRutas.filter((x) => sinTildes(x.ruta).includes(consulta))
-    : cfRutas;
-  const expandida = cfRutasAbiertas || Boolean(consulta);
-  const visibles = filtradas.slice(0, expandida ? 300 : CF_RUTAS_VISIBLES);
+  const consulta = cfFiltro.trim();
+  const filtradas = rutasCfFiltradas();
+  const hayFiltro = cfHayFiltro();
+  const expandida = cfRutasAbiertas || hayFiltro;
+  const visibles = rutasCfOrdenadas(filtradas).slice(0, expandida ? 300 : CF_RUTAS_VISIBLES);
+
+  const cabeceras = $('cf-rutas-cabeceras');
+  if (cabeceras) cabeceras.innerHTML = cabeceraRutasCf();
+  document.querySelectorAll('#cf-rutas-tipos button').forEach((b) => {
+    b.classList.toggle('sel', b.dataset.cfTipo === cfTipo);
+  });
 
   // ruta → fuentes; se pinta la principal sin abrir el detalle.
   const fuentesPorRuta = new Map();
@@ -1557,12 +1642,14 @@ function pintarCfRutas() {
       '</tr>';
     }).join('')
     : '<tr><td colspan="5" class="stats-vacio">' +
-      (consulta ? 'Ninguna ruta coincide con «' + esc(cfFiltro.trim()) + '».' : 'Sin rutas.') +
+      (consulta
+        ? 'Ninguna ruta coincide con «' + esc(consulta) + '».'
+        : cfTipo !== 'todas' ? 'Ninguna ruta de este tipo.' : 'Sin rutas.') +
     '</td></tr>';
 
-  if (!consulta && filtradas.length > CF_RUTAS_VISIBLES) {
+  if (!hayFiltro && filtradas.length > CF_RUTAS_VISIBLES) {
     html += '<tr class="stats-mas"><td colspan="5">' +
-      '<button type="button" id="cf-rutas-mas" title="Se muestran hasta 300; usa el buscador para afinar">' +
+      '<button type="button" id="cf-rutas-mas" title="Se muestran hasta 300; usa el buscador o los tipos para afinar">' +
         (cfRutasAbiertas
           ? 'Ver solo las ' + CF_RUTAS_VISIBLES + ' primeras'
           : 'Ver más rutas') +
@@ -1581,7 +1668,7 @@ function pintarCfRutas() {
 
   const visitas = filtradas.reduce((s, x) => s + x.visitas, 0);
   const paginas = filtradas.reduce((s, x) => s + x.paginas, 0);
-  const resumen = (consulta
+  const resumen = (hayFiltro
     ? fmtNum(filtradas.length) + ' ruta' + (filtradas.length === 1 ? '' : 's') +
       (filtradas.length > 300 ? ' · mostrando 300' : '')
     : (cfRutasAbiertas
@@ -1594,42 +1681,78 @@ function pintarCfRutas() {
 
 const CF_FUENTES_VISIBLES = 10;
 
-function bloqueFuentesCf(nota) {
-  return '<section class="stats-bloque"><h3>Fuentes de tráfico (Cloudflare)' +
-    (nota ? ' <span class="tabla-nota">' + esc(nota) + '</span>' : '') +
-    '</h3><div class="tabla-scroll"><table class="stats-tabla stats-tabla--fuentes-cf"><thead><tr>' +
-      '<th>Fuente</th><th class="num">Páginas</th><th class="num">Visitas</th><th class="num">%</th><th class="progreso">Popularidad</th>' +
-    '</tr></thead><tbody id="cf-fuentes-cuerpo"></tbody></table></div>' +
-    notaFuentes + '</section>';
+/** Fuentes del periodo o, con filtro, solo las de las rutas que coinciden. */
+function fuentesCfDeRutas() {
+  if (!cfHayFiltro()) return cfData.fuentes || [];
+  const rutas = new Set(rutasCfFiltradas().map((x) => normalizarRuta(x.ruta)));
+  return (cfData.fuentesRutas || [])
+    .filter((f) => rutas.has(normalizarRuta(f.ruta)))
+    .map((f) => ({ fuente: f.fuente, paginas: Number(f.paginas || 0), visitas: 0 }));
 }
 
-/** Repinta solo la tabla de fuentes de Cloudflare al desplegarla. */
+function bloqueFuentesCf() {
+  return '<section class="stats-bloque"><h3 id="cf-fuentes-titulo">Fuentes de tráfico (Cloudflare)' +
+    '</h3><div class="tabla-scroll"><table class="stats-tabla stats-tabla--fuentes-cf">' +
+      '<thead id="cf-fuentes-cabeceras"></thead><tbody id="cf-fuentes-cuerpo"></tbody>' +
+    '</table></div>' +
+    '<p class="cf-nota" style="padding:6px 12px" id="cf-fuentes-nota"></p></section>';
+}
+
+/** Repinta la tabla de fuentes de Cloudflare (se despliega y se filtra por ruta). */
 function pintarFuentesCf() {
   const cuerpo = $('cf-fuentes-cuerpo');
   if (!cuerpo || !cfData) return;
 
-  const grupos = agruparFuentesCf(cfData.fuentes);
+  const filtrado = cfHayFiltro();
+  const filtradas = filtrado ? rutasCfFiltradas() : [];
+  const grupos = agruparFuentesCf(fuentesCfDeRutas());
   const visibles = cfFuentesAbiertas ? grupos : grupos.slice(0, CF_FUENTES_VISIBLES);
   const restantes = grupos.length - CF_FUENTES_VISIBLES;
   const totalPaginas = grupos.reduce((s, x) => s + x.paginas, 0);
+  const columnas = filtrado ? 4 : 5;
+
+  const titulo = $('cf-fuentes-titulo');
+  if (titulo) {
+    titulo.innerHTML = 'Fuentes de tráfico (Cloudflare) <span class="tabla-nota">' + esc(notaPeriodoCf()) +
+      (filtrado
+        ? ' · solo ' + fmtNum(filtradas.length) + ' ruta' + (filtradas.length === 1 ? '' : 's') + ' del filtro'
+        : '') +
+    '</span>';
+  }
+
+  const cabeceras = $('cf-fuentes-cabeceras');
+  if (cabeceras) {
+    cabeceras.innerHTML = '<tr><th>Fuente</th><th class="num">Páginas</th>' +
+      (filtrado ? '' : '<th class="num">Visitas</th>') +
+      '<th class="num">%</th><th class="progreso">Popularidad</th></tr>';
+  }
+
+  const nota = $('cf-fuentes-nota');
+  if (nota) {
+    nota.textContent = filtrado
+      ? 'Con filtro de rutas se muestran solo páginas vistas: Cloudflare no desglosa las visitas por ruta y fuente.'
+      : '(directo) e (interno) se miden en páginas vistas: una navegación interna no abre una visita nueva.';
+  }
 
   let html = visibles.map((x) => {
     const pct = totalPaginas ? (x.paginas / totalPaginas) * 100 : 0;
     return '<tr>' +
       '<td class="fuente">' + esc(x.etiqueta) + '</td>' +
       '<td class="num">' + fmtNum(x.paginas) + '</td>' +
-      '<td class="num">' + fmtNum(x.visitas) + '</td>' +
+      (filtrado ? '' : '<td class="num">' + fmtNum(x.visitas) + '</td>') +
       '<td class="num">' + pct.toLocaleString('es-ES', { maximumFractionDigits: 1 }) + ' %</td>' +
       '<td class="progreso">' + barraHtml(x.paginas, totalPaginas) + '</td>' +
     '</tr>';
   }).join('');
 
   if (!visibles.length) {
-    html = '<tr><td colspan="5" class="stats-vacio">Sin fuentes.</td></tr>';
+    html = '<tr><td colspan="' + columnas + '" class="stats-vacio">' +
+      (filtrado ? 'Ninguna fuente para las rutas del filtro.' : 'Sin fuentes.') +
+    '</td></tr>';
   }
 
   if (grupos.length > CF_FUENTES_VISIBLES) {
-    html += '<tr class="stats-mas"><td colspan="5">' +
+    html += '<tr class="stats-mas"><td colspan="' + columnas + '">' +
       '<button type="button" id="cf-fuentes-mas">' +
         (cfFuentesAbiertas
           ? 'Ver solo las ' + CF_FUENTES_VISIBLES + ' primeras'
@@ -1653,15 +1776,17 @@ function pintarCloudflare(d) {
   const esHoy = d.hoy === true || cfDias === 'hoy';
   const dias = esHoy ? 1 : (Number(d.dias) || cfDias);
   const notaPeriodo = esHoy ? 'Hoy · 00:00 → ahora' : 'Últimos ' + dias + ' días';
-  cfRutas = [...(d.rutas || [])].sort((a, b) => b.visitas - a.visitas || b.paginas - a.paginas);
+  cfRutas = [...(d.rutas || [])].sort((a, b) => b.paginas - a.paginas || b.visitas - a.visitas);
 
   const etiquetaAnterior = esHoy ? 'vs ayer' : 'vs ' + dias + ' días anteriores';
   const notaPaginas = d.anterior ? textoDelta(total.paginas, d.anterior.paginas, etiquetaAnterior) : '';
   const notaVisitas = d.anterior ? textoDelta(total.visitas, d.anterior.visitas, etiquetaAnterior) : '';
 
   const cards = tarjetasCf([
-    { label: esHoy ? 'Visitas hoy' : 'Visitas', valor: total.visitas, total: true, nota: notaVisitas },
-    { label: esHoy ? 'Páginas hoy' : 'Páginas vistas', valor: total.paginas, nota: notaPaginas },
+    // Páginas primero: es lo que se puede comparar con el contador propio y con
+    // Search Console; las visitas de Cloudflare solo cuentan la página de entrada.
+    { label: esHoy ? 'Páginas hoy' : 'Páginas vistas', valor: total.paginas, total: true, nota: notaPaginas },
+    { label: esHoy ? 'Visitas hoy' : 'Visitas', valor: total.visitas, nota: notaVisitas },
     { label: esHoy ? 'Rutas hoy' : 'Rutas listadas', valor: cfRutas.length },
     { label: 'Muestreo', valor: muestreoTexto(total.muestreo) },
   ]);
@@ -1682,27 +1807,28 @@ function pintarCloudflare(d) {
       '</div>' +
     '</section>';
 
-  const tablaRutas =
+  const tabRutas =
     '<section class="stats-bloque">' +
       '<h3>Rutas ' + (esHoy ? 'de hoy' : '(Cloudflare)') + ' <span class="tabla-nota">' +
         (esHoy ? '00:00 → ahora' : esc(dias + ' días')) +
       '</span></h3>' +
+      '<div class="stats-chips" id="cf-rutas-tipos" role="group" aria-label="Tipo de ruta">' +
+        TIPOS_RUTA.map(([tipo, texto]) =>
+          '<button type="button" data-cf-tipo="' + tipo + '"' + (cfTipo === tipo ? ' class="sel"' : '') + '>' + texto + '</button>'
+        ).join('') +
+      '</div>' +
       '<div class="buscador stats-buscar">' +
         '<svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>' +
         '<input id="cf-rutas-q" type="search" placeholder="Filtrar rutas (glosa, autor, carnaval…)…" autocomplete="off" aria-label="Filtrar rutas de Cloudflare">' +
         '<button id="cf-rutas-limpiar" class="limpiar" type="button" aria-label="Limpiar el filtro" hidden>✕</button>' +
       '</div>' +
       '<p class="stats-resumen" id="cf-rutas-resumen" aria-live="polite"></p>' +
-      '<div class="tabla-scroll"><table class="stats-tabla stats-tabla--rutas-cf"><thead><tr>' +
-        '<th>Ruta</th>' +
-        '<th class="num">Páginas</th>' +
-        '<th class="num">Visitas</th>' +
-        '<th class="fuente" title="Páginas vistas por fuente, de mayor a menor">Fuente</th>' +
-        '<th class="cf-accion">Fuentes</th>' +
-      '</tr></thead><tbody id="cf-rutas-cuerpo"></tbody></table></div>' +
+      '<div class="tabla-scroll"><table class="stats-tabla stats-tabla--rutas-cf">' +
+        '<thead id="cf-rutas-cabeceras"></thead><tbody id="cf-rutas-cuerpo"></tbody>' +
+      '</table></div>' +
     '</section>';
 
-  const tablaFuentes = bloqueFuentesCf(notaPeriodo);
+  const tablaFuentes = bloqueFuentesCf();
 
   const filasDiario = (d.diario || []).map((x) => [
     { t: fechaCortaIso(x.dia) },
@@ -1765,7 +1891,7 @@ function pintarCloudflare(d) {
     cabecera +
     '<div class="stats-grid">' + cards + '</div>' +
     comparativaCf(d, esHoy) +
-    tablaRutas +
+    tabRutas +
     tablaFuentes +
     tablaStats(
       'Evolución diaria (Cloudflare)',
@@ -1794,12 +1920,39 @@ function pintarCloudflare(d) {
 
   const q = $('cf-rutas-q');
   q.value = cfFiltro;
-  q.oninput = () => { cfFiltro = q.value; pintarCfRutas(); };
+  q.oninput = () => {
+    cfFiltro = q.value;
+    pintarCfRutas();
+    pintarFuentesCf();
+  };
   $('cf-rutas-limpiar').onclick = () => {
     cfFiltro = '';
     q.value = '';
     pintarCfRutas();
+    pintarFuentesCf();
     q.focus();
+  };
+  const tiposCf = $('cf-rutas-tipos');
+  if (tiposCf) {
+    tiposCf.onclick = (e) => {
+      const b = e.target.closest('button[data-cf-tipo]');
+      if (!b) return;
+      cfTipo = b.dataset.cfTipo;
+      pintarCfRutas();
+      pintarFuentesCf();
+    };
+  }
+  $('cf-rutas-cabeceras').onclick = (e) => {
+    const b = e.target.closest('button[data-cf-orden]');
+    if (!b) return;
+    const col = b.dataset.cfOrden;
+    if (cfOrden === col) {
+      cfOrdenDir = cfOrdenDir === 'asc' ? 'desc' : 'asc';
+    } else {
+      cfOrden = col;
+      cfOrdenDir = col === 'ruta' ? 'asc' : 'desc';
+    }
+    pintarCfRutas();
   };
   $('cf-rutas-cuerpo').onclick = (e) => {
     const b = e.target.closest('button[data-ruta]');
@@ -1848,8 +2001,8 @@ function pintarCfRuta(d) {
   const d1 = mapaD1().get(normalizarRuta(d.ruta));
 
   const cards = tarjetasCf([
-    { label: 'Visitas', valor: total.visitas, total: true },
-    { label: 'Páginas vistas', valor: total.paginas },
+    { label: 'Páginas vistas', valor: total.paginas, total: true },
+    { label: 'Visitas', valor: total.visitas },
     { label: 'Media/día', valor: media + '/día' },
     { label: 'Muestreo', valor: muestreoTexto(total.muestreo) },
   ]);
@@ -1990,6 +2143,18 @@ let ga4Periodo = 'ayer';
 let ga4Vista = 'eventos';
 const googleData = { gsc: null, ga4: null, ads: null };
 const googleCargando = { gsc: false, ga4: false, ads: false };
+
+// Filtro de ruta de Search Console: texto y tipo, con los datos ya pedidos.
+let gscRuta = '';
+let gscTipo = 'todas';
+let gscRutaData = null;
+let gscRutaCargando = false;
+let gscRutaCargandoClave = '';
+let gscRutaTimer = null;
+let gscRutaAbort = null;
+// Tabla «Consultas»: 20 primeras y el resto con un botón.
+const GSC_CONSULTAS_VISIBLES = 20;
+let gscConsultasAbiertas = false;
 
 const GOOGLE_FUENTES = {
   gsc: { contenedor: 'gsc-contenido', nombre: 'Search Console', nota: 'Datos hasta hace 2-3 días' },
@@ -2252,6 +2417,7 @@ async function cargarGoogle(tipo, forzar = false) {
       return;
     }
     googleData[tipo] = d;
+    if (tipo === 'gsc') gscConsultasAbiertas = false;
     pintarGoogle(tipo, d);
   } catch (e) {
     cont.innerHTML = '<p class="error">' + esc(String(e.message || e)) + '</p>' +
@@ -2260,6 +2426,175 @@ async function cargarGoogle(tipo, forzar = false) {
   } finally {
     googleCargando[tipo] = false;
   }
+}
+
+/* ------- Search Console: búsquedas que llevan a unas rutas ------- */
+const gscHayFiltro = () => Boolean(gscRuta.trim()) || gscTipo !== 'todas';
+const claveGscRuta = () => googleDias + '|' + gscTipo + '|' + gscRuta.trim();
+
+/** Resumen del bloque de búsquedas por ruta. */
+function resumenGscRuta(d) {
+  if (!gscHayFiltro()) return 'Sin filtro: busca una ruta o elige un tipo.';
+  if (!d || d.error) return '';
+  const consultas = (d.consultasRuta || []).length;
+  const paginas = (d.paginasRuta || []).length;
+  return fmtNum(consultas) + ' consulta' + (consultas === 1 ? '' : 's') +
+    ' · ' + fmtNum(paginas) + ' página' + (paginas === 1 ? '' : 's') +
+    ' · últimos ' + googleDias + ' días (con 2-3 de retraso)';
+}
+
+function bloqueGscRuta() {
+  const chips = TIPOS_RUTA.map(([tipo, texto]) =>
+    '<button type="button" data-gsc-tipo="' + tipo + '"' + (gscTipo === tipo ? ' class="sel"' : '') + '>' + texto + '</button>'
+  ).join('');
+  return '<section class="stats-bloque" id="gsc-ruta-bloque">' +
+    '<h3>Búsquedas por ruta <span class="tabla-nota">Qué búsquedas llevan a estas páginas</span></h3>' +
+    '<div class="stats-chips" id="gsc-ruta-tipos" role="group" aria-label="Tipo de ruta">' + chips + '</div>' +
+    '<div class="buscador stats-buscar">' +
+      '<svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>' +
+      '<input id="gsc-ruta-q" type="search" placeholder="Buscar una ruta (pasodoble, autor, glosario…)…" autocomplete="off" aria-label="Buscar una ruta en Search Console" value="' + esc(gscRuta) + '">' +
+      '<button id="gsc-ruta-limpiar" class="limpiar" type="button" aria-label="Limpiar la ruta"' + (gscRuta ? '' : ' hidden') + '>✕</button>' +
+    '</div>' +
+    '<p class="stats-resumen" id="gsc-ruta-resumen" aria-live="polite"></p>' +
+  '</section>';
+}
+
+/** Repinta solo el resultado del filtro, sin tocar el buscador ni el foco. */
+function pintarGscRutaResultados() {
+  const cont = $('gsc-ruta-resultados');
+  if (!cont) return;
+  const resumen = $('gsc-ruta-resumen');
+
+  if (!gscHayFiltro()) {
+    cont.innerHTML = '<p class="cf-nota" style="padding:6px 12px">Busca una ruta o elige un tipo para ver las búsquedas que le traen impresiones y clics.</p>';
+    if (resumen) resumen.textContent = resumenGscRuta(null);
+    return;
+  }
+
+  const d = gscRutaData && gscRutaData.clave === claveGscRuta() ? gscRutaData : null;
+  if (resumen) resumen.textContent = d ? resumenGscRuta(d) : '';
+
+  if (!d || gscRutaCargando) {
+    cont.innerHTML = '<p class="cargando">Buscando en Search Console…</p>';
+    return;
+  }
+  if (d.error) {
+    cont.innerHTML = '<p class="error">' + esc(d.error) + '</p>';
+    return;
+  }
+
+  const consultas = [...(d.consultasRuta || [])]
+    .sort((x, y) => y.clicks - x.clicks || y.impressions - x.impressions);
+  const paginasTodas = [...(d.paginasRuta || [])]
+    .sort((x, y) => y.clicks - x.clicks || y.impressions - x.impressions);
+  const paginas = paginasTodas.slice(0, 100);
+
+  const filasConsultas = consultas.map((x) => [
+    { t: x.consulta || '—', cls: 'fuente' },
+    { t: fmtNum(x.clicks), num: true },
+    { t: fmtNum(x.impressions), num: true },
+    { t: formatoPct(x.ctr), num: true },
+    { t: formatoDecimal(x.position, 1), num: true },
+  ]);
+  const filasPaginas = paginas.map((x) => [
+    { t: String(x.pagina || '').replace(/^https?:\/\/[^/]+/i, '') || '/', cls: 'ruta' },
+    { t: fmtNum(x.clicks), num: true },
+    { t: fmtNum(x.impressions), num: true },
+    { t: formatoPct(x.ctr), num: true },
+    { t: formatoDecimal(x.position, 1), num: true },
+  ]);
+
+  cont.innerHTML =
+    tablaStats(
+      'Consultas de estas rutas',
+      [{ t: 'Consulta' }, { t: 'Clics', num: true }, { t: 'Impresiones', num: true }, { t: 'CTR', num: true }, { t: 'Posición', num: true }],
+      filasConsultas,
+    ) +
+    tablaStats(
+      'Páginas que coinciden',
+      [{ t: 'Página' }, { t: 'Clics', num: true }, { t: 'Impresiones', num: true }, { t: 'CTR', num: true }, { t: 'Posición', num: true }],
+      filasPaginas,
+      paginasTodas.length > 100 ? 'Top 100' : '',
+    );
+}
+
+async function cargarGscRuta() {
+  if (!gscHayFiltro()) {
+    if (gscRutaAbort) {
+      gscRutaAbort.abort();
+      gscRutaAbort = null;
+    }
+    gscRutaCargando = false;
+    gscRutaCargandoClave = '';
+    gscRutaData = null;
+    pintarGscRutaResultados();
+    return;
+  }
+
+  if (gscRutaAbort) gscRutaAbort.abort();
+  const control = new AbortController();
+  gscRutaAbort = control;
+  const clave = claveGscRuta();
+  gscRutaCargando = true;
+  gscRutaCargandoClave = clave;
+  pintarGscRutaResultados();
+
+  try {
+    const consulta = 'dias=' + googleDias +
+      '&ruta=' + encodeURIComponent(gscRuta.trim()) +
+      '&tipo=' + encodeURIComponent(gscTipo);
+    const r = await fetch(API + '/gsc?' + consulta, { cache: 'no-cache', signal: control.signal });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'no se pudieron cargar las búsquedas de la ruta');
+    gscRutaData = { ...d, clave };
+  } catch (e) {
+    if (e && e.name === 'AbortError') return;
+    gscRutaData = { error: String(e.message || e), clave };
+  } finally {
+    if (gscRutaAbort !== control) return;
+    gscRutaAbort = null;
+    gscRutaCargando = false;
+    gscRutaCargandoClave = '';
+    pintarGscRutaResultados();
+  }
+}
+
+/** Conecta chips y buscador del bloque de búsquedas por ruta. */
+function conectarGscRuta(cont) {
+  const input = cont.querySelector('#gsc-ruta-q');
+  if (!input) return;
+  const limpiar = cont.querySelector('#gsc-ruta-limpiar');
+  const chips = cont.querySelector('#gsc-ruta-tipos');
+
+  input.oninput = () => {
+    gscRuta = input.value;
+    if (limpiar) limpiar.hidden = !gscRuta;
+    clearTimeout(gscRutaTimer);
+    gscRutaTimer = setTimeout(() => cargarGscRuta(), 400);
+  };
+  if (limpiar) {
+    limpiar.onclick = () => {
+      gscRuta = '';
+      input.value = '';
+      limpiar.hidden = true;
+      input.focus();
+      cargarGscRuta();
+    };
+  }
+  if (chips) {
+    chips.onclick = (e) => {
+      const b = e.target.closest('button[data-gsc-tipo]');
+      if (!b) return;
+      gscTipo = b.dataset.gscTipo;
+      chips.querySelectorAll('button').forEach((x) => x.classList.toggle('sel', x.dataset.gscTipo === gscTipo));
+      cargarGscRuta();
+    };
+  }
+
+  pintarGscRutaResultados();
+  const clave = claveGscRuta();
+  const enCurso = gscRutaCargando && gscRutaCargandoClave === clave;
+  if (!enCurso && gscHayFiltro() && (!gscRutaData || gscRutaData.clave !== clave)) cargarGscRuta();
 }
 
 function pintarGsc(cont, d) {
@@ -2283,13 +2618,45 @@ function pintarGsc(cont, d) {
     'Clics por día',
   );
 
-  const consultas = [...(d.consultas || [])].sort((x, y) => y.clicks - x.clicks).map((x) => [
+  const filtroConsultas = (cont.querySelector('#gsc-filtro-consultas') || {}).value || '';
+  const textoFiltro = filtroConsultas.toLowerCase();
+  const listaConsultas = [...(d.consultas || [])]
+    .filter((x) => (x.consulta || '').toLowerCase().includes(textoFiltro))
+    .sort((x, y) => y.clicks - x.clicks);
+  // Sin filtro se ven las 20 primeras; el resto, con el botón. Con filtro se
+  // muestran todas las coincidencias.
+  const consultasAbiertas = gscConsultasAbiertas || Boolean(filtroConsultas);
+  const mostradas = consultasAbiertas ? listaConsultas : listaConsultas.slice(0, GSC_CONSULTAS_VISIBLES);
+  const totalConsultas = (d.consultas || []).length;
+  const sobranConsultas = listaConsultas.length > GSC_CONSULTAS_VISIBLES;
+  const resumenConsultas = filtroConsultas
+    ? listaConsultas.length + ' de ' + totalConsultas + ' consultas'
+    : sobranConsultas
+      ? (consultasAbiertas
+        ? 'Todas las ' + fmtNum(listaConsultas.length) + ' consultas'
+        : 'Top ' + GSC_CONSULTAS_VISIBLES + ' de ' + fmtNum(listaConsultas.length) + ' consultas')
+      : '';
+  const consultas = mostradas.map((x) => [
     { t: x.consulta || '—', cls: 'fuente' },
     { t: fmtNum(x.clicks), num: true },
     { t: fmtNum(x.impressions), num: true },
     { t: formatoPct(x.ctr), num: true },
     { t: formatoDecimal(x.position, 1), num: true },
   ]);
+  const restoConsultas = listaConsultas.length - GSC_CONSULTAS_VISIBLES;
+  if (sobranConsultas && !filtroConsultas) {
+    consultas.push({
+      cls: 'stats-mas',
+      celdas: [{
+        colspan: 5,
+        html: '<button type="button" id="gsc-consultas-mas">' +
+          (consultasAbiertas
+            ? 'Ver solo las ' + GSC_CONSULTAS_VISIBLES + ' primeras'
+            : 'Ver las ' + fmtNum(restoConsultas) + ' consultas restantes') +
+        '</button>',
+      }],
+    });
+  }
   const paginas = [...(d.paginas || [])].sort((x, y) => y.clicks - x.clicks).map((x) => [
     { t: String(x.pagina || '').replace(/^https?:\/\/[^/]+/i, '') || '/', cls: 'ruta' },
     { t: fmtNum(x.clicks), num: true },
@@ -2308,6 +2675,8 @@ function pintarGsc(cont, d) {
     { t: fmtNum(x.impressions), num: true },
   ]);
 
+  const prevScroll = window.scrollY;
+
   cont.innerHTML =
     cabeceraGoogle('Search Console', d, GOOGLE_FUENTES.gsc.nota, 'gsc') +
     '<div class="stats-grid">' + cards + '</div>' +
@@ -2316,7 +2685,16 @@ function pintarGsc(cont, d) {
       'Consultas',
       [{ t: 'Consulta' }, { t: 'Clics', num: true }, { t: 'Impresiones', num: true }, { t: 'CTR', num: true }, { t: 'Posición', num: true }],
       consultas,
+      '',
+      '<div class="buscador stats-buscar">' +
+        '<svg class="lupa" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>' +
+        '<input id="gsc-filtro-consultas" type="search" placeholder="Filtrar consultas…" autocomplete="off" aria-label="Filtrar consultas" value="' + esc(filtroConsultas) + '">' +
+        '<button id="gsc-filtro-consultas-limpiar" class="limpiar" type="button" aria-label="Limpiar el filtro"' + (filtroConsultas ? '' : ' hidden') + '>✕</button>' +
+      '</div>' +
+      '<p class="stats-resumen" id="gsc-filtro-resumen" aria-live="polite">' + esc(resumenConsultas) + '</p>'
     ) +
+    bloqueGscRuta() +
+    '<div id="gsc-ruta-resultados"></div>' +
     tablaStats(
       'Páginas',
       [{ t: 'Página' }, { t: 'Clics', num: true }, { t: 'Impresiones', num: true }, { t: 'CTR', num: true }, { t: 'Posición', num: true }],
@@ -2326,6 +2704,39 @@ function pintarGsc(cont, d) {
       tablaStats('Países', [{ t: 'País' }, { t: 'Clics', num: true }, { t: 'Impresiones', num: true }], paises) +
       tablaStats('Dispositivos', [{ t: 'Dispositivo' }, { t: 'Clics', num: true }, { t: 'Impresiones', num: true }], dispositivos) +
     '</div>';
+
+  const masConsultas = cont.querySelector('#gsc-consultas-mas');
+  if (masConsultas) {
+    masConsultas.onclick = () => {
+      gscConsultasAbiertas = !gscConsultasAbiertas;
+      pintarGsc(cont, d);
+    };
+  }
+
+  const input = cont.querySelector('#gsc-filtro-consultas');
+  if (input) {
+    input.value = filtroConsultas;
+    // Solo se recupera el foco al repintar por el filtro; si no, se lo quitaría
+    // al buscador de rutas de arriba.
+    if (filtroConsultas) {
+      input.focus({ preventScroll: true });
+      input.setSelectionRange(input.value.length, input.value.length);
+    }
+    input.oninput = () => pintarGsc(cont, d);
+    const limpiar = cont.querySelector('#gsc-filtro-consultas-limpiar');
+    if (limpiar) {
+      limpiar.hidden = !filtroConsultas;
+      limpiar.onclick = () => {
+        input.value = '';
+        input.focus({ preventScroll: true });
+        pintarGsc(cont, d);
+      };
+    }
+    const resumen = cont.querySelector('#gsc-filtro-resumen');
+    if (resumen) resumen.textContent = resumenConsultas;
+  }
+  conectarGscRuta(cont);
+  window.scrollTo(0, prevScroll);
 }
 
 function pintarGa4(cont, d) {

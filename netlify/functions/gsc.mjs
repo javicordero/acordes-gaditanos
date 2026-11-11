@@ -4,6 +4,10 @@
 // dispositivo. Google tarda 2-3 días en cerrar los datos, así que la ventana
 // termina dos días antes de hoy.
 //
+// Con `?ruta=<texto>&tipo=<fichas|autores|carnaval|glosario|otros>` devuelve
+// además las consultas y las páginas que coinciden con ese filtro, usando
+// `dimensionFilterGroups` sobre la dimensión `page`.
+//
 // Variables: GSC_SITE_URL y la autenticación de `_google.mjs`.
 import { sesion, sinSesion, json } from './_lib.mjs';
 import {
@@ -33,6 +37,36 @@ const metrica = (x) => ({
   position: numero(x && x.position),
 });
 
+// Prefijo de página de cada chip. `otros` se resuelve excluyendo los conocidos.
+const PREFIJOS_RUTA = {
+  fichas: '/acordes/',
+  autores: '/autor/',
+  carnaval: '/(carnaval|agrupacion|modalidad)/',
+  glosario: '/glosario/',
+};
+const RUTAS_CONOCIDAS = '/(acordes|autor|carnaval|agrupacion|modalidad|glosario)/';
+
+/** Escapa un texto para usarlo como patrón literal dentro de un regex RE2. */
+const escaparRegex = (texto) => String(texto).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/** Grupo de filtros sobre `page` para una búsqueda de ruta y/o un tipo. */
+function filtroPagina(ruta, tipo) {
+  const filtros = [];
+  if (tipo && tipo !== 'todas') {
+    if (tipo === 'otros') {
+      filtros.push({ dimension: 'page', operator: 'excludingRegex', expression: RUTAS_CONOCIDAS });
+    } else if (PREFIJOS_RUTA[tipo]) {
+      filtros.push({ dimension: 'page', operator: 'includingRegex', expression: PREFIJOS_RUTA[tipo] });
+    }
+  }
+  if (ruta) {
+    // Las rutas del sitio van en minúsculas: así la búsqueda no depende del caso.
+    filtros.push({ dimension: 'page', operator: 'includingRegex', expression: escaparRegex(ruta.toLowerCase()) });
+  }
+  if (!filtros.length) return null;
+  return { dimensionFilterGroups: [{ groupType: 'and', filters: filtros }] };
+}
+
 export default async (req) => {
   const s = sesion(req);
   if (!s) return sinSesion();
@@ -54,6 +88,9 @@ export default async (req) => {
 
   const { desde, hasta } = rangoDias(dias, 2);
   const anteriorRango = rangoAnterior(desde, hasta);
+  const ruta = String((url && url.searchParams.get('ruta')) || '').trim().slice(0, 120);
+  const tipo = String((url && url.searchParams.get('tipo')) || 'todas');
+  const filtro = filtroPagina(ruta, tipo);
 
   try {
     const token = await tokenGoogle(SCOPES);
@@ -77,8 +114,8 @@ export default async (req) => {
     const [totalD, diarioD, consultasD, paginasD, paisesD, dispositivosD, anteriorD] = await Promise.all([
       consulta(rango()),
       conDimension('date', 200),
-      conDimension('query', 25),
-      conDimension('page', 25),
+      conDimension('query', 200),
+      conDimension('page', 200),
       conDimension('country', 10),
       conDimension('device', 5),
       consulta(rango(anteriorRango)),
@@ -89,6 +126,19 @@ export default async (req) => {
       [clave]: (x.keys && x.keys[0]) || '',
       ...metrica(x),
     }));
+
+    // Con filtro de ruta: qué búsquedas y qué páginas entran en ese filtro.
+    let porRuta = null;
+    if (filtro) {
+      const [consultasRutaD, paginasRutaD] = await Promise.all([
+        consulta({ ...rango(), ...filtro, dimensions: ['query'], rowLimit: 500, startRow: 0 }),
+        consulta({ ...rango(), ...filtro, dimensions: ['page'], rowLimit: 500, startRow: 0 }),
+      ]);
+      porRuta = {
+        consultas: conClave(consultasRutaD, 'consulta'),
+        paginas: conClave(paginasRutaD, 'pagina'),
+      };
+    }
 
     return json({
       configurado: true,
@@ -103,6 +153,10 @@ export default async (req) => {
       paginas: conClave(paginasD, 'pagina'),
       paises: conClave(paisesD, 'pais'),
       dispositivos: conClave(dispositivosD, 'dispositivo'),
+      filtrado: Boolean(filtro),
+      filtro: { ruta, tipo },
+      consultasRuta: porRuta ? porRuta.consultas : [],
+      paginasRuta: porRuta ? porRuta.paginas : [],
     }, 200, CACHE);
   } catch (e) {
     return json({

@@ -8,6 +8,15 @@ en [`panel-admin.md`](panel-admin.md).
 - **Search Console** (`gsc.mjs`): Search Analytics API. Clics, impresiones, CTR
   y posición por consulta, página, país y dispositivo. Google cierra los datos
   con 2-3 días de retraso, así que la ventana termina dos días antes de hoy.
+  La tabla **Consultas** enseña las **20 primeras** (por clics) y un botón para
+  desplegar el resto de las 200 que devuelve la API; con el buscador se ven
+  todas las coincidencias.
+  Lleva un bloque **Búsquedas por ruta**: buscador y chips (**Todo / Fichas /
+  Autores / Carnaval / Glosario / Otros**) que piden a la API las **consultas**
+  y las **páginas** que coinciden, con `dimensionFilterGroups` sobre `page`
+  (`includingRegex` para el texto y el tipo, `excludingRegex` para `otros`).
+  Solo devuelve las primeras 500 filas de cada consulta y Google anonimiza las
+  búsquedas raras.
   Variables: `GSC_SITE_URL` (por ejemplo `sc-domain:acordesgaditanos.com` o
   `https://acordesgaditanos.com/`) y la autenticación de Google.
 - **Analytics** (`ga4.mjs`): GA4 Data API. Tiene dos subpestañas:
