@@ -5,13 +5,13 @@ year: 2000
 modalidad: Chirigota
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://letrasdecarnaval.com/assets/images/agrupaciones/1e7c44b27be415581a10493e6.jpg
+img: 'https://letrasdecarnaval.com/assets/images/agrupaciones/1e7c44b27be415581a10493e6.jpg'
 cejilla: 4
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/3eNmBAR_52Q?si=vjlZdGisOiITDU79'
 fraseClave: Me ha dicho Arantxa con rencor
+letraTitulo: Me ha dicho Arancha
 ---
-
 <pre>
 <a>Mim</a>
 Me ha dicho Arancha con rencor
