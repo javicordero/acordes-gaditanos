@@ -5,12 +5,12 @@ year: 2019
 modalidad: Comparsa
 musica: El Tomate
 letra: El Piru
-img: https://static.grupojoly.com/clip/379453f2-2837-4ebc-bc6a-babe8121bd04_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/379453f2-2837-4ebc-bc6a-babe8121bd04_source-aspect-ratio_1600w_0.jpg'
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/bg9I1bfy9ws?feature=player_embedded'
-
 fraseClave: Cierra ya la puerta y echa la persiana que ya es
+letraTitulo: Cierra ya la puerta
 ---
 <pre>
              <a>Lam</a>
