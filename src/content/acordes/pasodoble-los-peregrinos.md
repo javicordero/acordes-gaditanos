@@ -5,11 +5,12 @@ year: 2017
 modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/comparsa-los-peregrinos-1.JPG
+img: 'https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenidos/2017/comparsa-los-peregrinos-1.JPG'
 cejilla: 3
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/eNPZ8-VCRUI'
 fraseClave: Tú vente conmigo que sobra futuro
+letraTitulo: Tú vente conmigo
 ---
 <pre>
  <a>Mim</a>        <a>Do</a>       <a>Si7</a>    <a>Mim</a>
