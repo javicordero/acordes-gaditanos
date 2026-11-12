@@ -1,5 +1,5 @@
 ---
-pieza: Cuarteta "Mi disfraz
+pieza: 'Cuarteta "Mi disfraz"'
 agrupacion: Oh Capitán, My Capitán
 year: 2020
 musica: Tino Tovar
