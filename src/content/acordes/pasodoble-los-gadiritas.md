@@ -5,13 +5,13 @@ year: 2015
 modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/gadiritas-1024x682.jpeg
+img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/gadiritas-1024x682.jpeg'
 cejilla: 1
 date: "25/11/2025"
-video: ttps://www.youtube.com/embed/L2tc-j41xYg?si=zNEHWaaI-Y0rhrSY
+video: 'ttps://www.youtube.com/embed/L2tc-j41xYg?si=zNEHWaaI-Y0rhrSY'
 fraseClave: La Lola se crió con cinco hermanos
+letraTitulo: La Lola
 ---
-
 <pre>
    <a>Mi</a>              <a>Si</a>
 La Lola se crió con cinco hermanos
