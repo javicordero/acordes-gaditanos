@@ -52,7 +52,7 @@ yo cantaré cuando te pierda
 cuando sea tuyo otro poeta y otra vez por La Caleta
       <a>Si7</a>            <a>Mi</a> <a>Sol#m</a> <a>Solm</a>
 como otros ya lo hicieron
-<a>Fam</a>  <a>Si7</a>             <a>Mi</a>   <a>Re</a>                      <a>Mi7</a>
+<a>Fa#m</a> <a>Si7</a>             <a>Mi</a>   <a>Re</a>                      <a>Mi7</a>
 yo cantaré pa que regresen tus criaturitas, esos peces
                      <a>La</a> <a>Si7</a>
 que se fueron a otro mar
