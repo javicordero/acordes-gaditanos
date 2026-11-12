@@ -5,14 +5,15 @@ year: 2018
 modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://static.eldiario.es/clip/1cfe85cf-4b56-4c92-863e-beac3458a77a_16-9-aspect-ratio_default_0.jpg
+img: 'https://static.eldiario.es/clip/1cfe85cf-4b56-4c92-863e-beac3458a77a_16-9-aspect-ratio_default_0.jpg'
 cejilla: 5
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/H0Pp0N9ny7E?feature=player_embedded'
 fraseClave: De ver tanta y tanta bandera
+letraTitulo: De ver tanta y tanta bandera
 ---
 <pre>
-      <a>Lam</a>             <a>Mi7</a>                         <a>Lam</a>
+    <a>Lam</a>               <a>Mi7</a>                         <a>Lam</a>
 De ver tanta y tanta bandera de ver y no verde ni blanca
                      <a>Mi7</a>
 De ver tanta gente unida por su tierra
