@@ -5,13 +5,13 @@ year: 2004
 modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-img: https://i.ytimg.com/vi/TVF1WRIwllE/sddefault.jpg
+img: 'https://i.ytimg.com/vi/TVF1WRIwllE/sddefault.jpg'
 cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/MQE7wRVr3Eg?si=Prn0X80kz7cvgAYM'
 fraseClave: Yo me enamoré de ti
 recomendada: true
-
+letraTitulo: Yo me enamore de ti
 ---
 <pre>
 <a>Mim</a>                           <a>Mi7</a>        <a>Lam</a>
