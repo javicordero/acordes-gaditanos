@@ -5,15 +5,15 @@ year: 2001
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 modalidad: Chirigota
-img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7zZkJ8nS1ANqrJJuVwkA5NNzG_ePgRwP5-Q&s
+img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7zZkJ8nS1ANqrJJuVwkA5NNzG_ePgRwP5-Q&s'
 cejilla: 0
-video: https://www.youtube.com/embed/NguUxVqZ-rg?si=k9s-e6oN2S0G5e_s
+video: 'https://www.youtube.com/embed/NguUxVqZ-rg?si=k9s-e6oN2S0G5e_s'
 cover: null
 autorCover: null
 date: 11/12/2025
 fraseClave: Yo no sé si soy ateo
+letraTitulo: Yo no soy carnavalero
 ---
-
 <pre>
 <a>Mim</a>                                       <a>Si7</a>
 Yo no soy carnavalero carnavalero, carnavalero,
