@@ -10,6 +10,7 @@ cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/rZ5z2aR7jpk?feature=player_embedded'
 fraseClave: Si caminito del Falla eres
+letraTitulo: Si caminito del Falla
 ---
 <pre>
 <a>Mim</a>             <a>Sim</a>         <a>Do</a>     <a>Si7</a>
