@@ -55,7 +55,7 @@ Llevo en el alma al bisabuelo.
 Como el que echa al mar su anzuelo.
                 <a>Do</a>              <a>Si7</a>           <a>Mi</a> <a>Sol#</a> <a>Solm</a>
 Somos esos carboneros, ay, dime dónde estás rosita.
-<a>Fam</a> <a>Si7</a>       <a>Mi</a>     <a>Re</a>                   <a>Mi7</a>
+<a>Fa#m</a> <a>Si7</a>       <a>Mi</a>     <a>Re</a>                   <a>Mi7</a>
 Ole a esos cargaores, amarillos son sus corazones.
                     <a>La</a> <a>Si7</a>
 Quiero volver a empezar.
