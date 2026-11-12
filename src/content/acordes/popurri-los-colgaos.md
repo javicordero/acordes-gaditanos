@@ -35,7 +35,7 @@ Cuando iba cogiendo altura
 y nos embargaba un escalofrío
                                    <a>Mim</a>
 Y nos íbamos alejando por fin del mundo
-        <a>Sim7</a>            <a>DoM7</a>
+        <a>Sim7</a>            <a data-postura="x 3 5 4 5 3">DoM7</a>
 de sus jaleos de su conflicto
           <a>Sim7</a>        <a>Lam7</a>
 de sus cadenas de su ruido
@@ -49,7 +49,7 @@ Navega Cádiz navega balcón de los siete vientos
 muralla blanca de los planetas
                                    <a>Mim</a>
 Vuela libre vieja ciudad sobre las veletas
-              <a>Sim7</a>              <a>DoM7</a>
+              <a>Sim7</a>              <a data-postura="x 3 5 4 5 3">DoM7</a>
 que si en la tierra tú ya eras bella
          <a>Sim7</a>              <a>Lam7</a>
 Ya ni te digo entre las estrellas
@@ -61,7 +61,7 @@ Navega ciudad sin dueño lucero del infinito
 la hermana chica del firmamento
                                        <a>Mim</a>
 La cabeza por ti en las nubes yo me he dejao
-         <a>Sim7</a>             <a>DoM7</a>
+         <a>Sim7</a>             <a data-postura="x 3 5 4 5 3">DoM7</a>
 como un loquito Como un chalao
              <a>Sim7</a>            <a>Lam7</a> <a>Do</a>              <a data-postura="5 5 4 0 3 0">Re</a>
 que de tus huesos se ha enamorao patria de los colgaos
