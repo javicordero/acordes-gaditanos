@@ -6,15 +6,13 @@ modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
 letraTitulo: Carnecita de gallina
-img: https://cdn2.rtva.interactvty.com/content_cards/d9f39e5fd6954d3b9cf674a16e277a67.png
+img: 'https://cdn2.rtva.interactvty.com/content_cards/d9f39e5fd6954d3b9cf674a16e277a67.png'
 cejilla: 2
 date: "27/11/2025"
 video: 'https://www.youtube.com/embed/yVnLGn_CCTY?si=BzN0vno692lwAE6t'
 fraseClave: Carnecita de gallina
 recomendada: true
 ---
-
-
 <pre>
 <a>La</a>              <a>Sim7</a>       <a>Mi7</a>     <a>La</a>
 Carnecita de gallina se me puso esa mañana
@@ -45,9 +43,9 @@ a los que no recé esa noche.
 Y sus dolores, con su mano se me fueron cuando
                                     <a>Mi7</a> <a>LaM7</a>
 me dijo: te quiero, ahora hay que ponerle un nombre.
-                <a>Sim7</a> <a>Mi7</a> <a>LaM7</a>
+                <a>Sim7</a>   <a>Mi7</a>           <a>LaM7</a>
 No sé qué me traerás debajito de tu brazo
-<a>Fa#7</a> <a>Sim7</a> <a>Mi7</a> <a>LaM7</a>
+<a>Fa#7</a>                <a>Sim7</a>  <a>Mi7</a>             <a>LaM7</a>
 si un premio de Carnaval, si alegrías o calvarios.
 <a>La7</a>                <a>Re</a>                    <a>Rem</a>
 Lo que traigas llevaré, lo que lleves tomaré,

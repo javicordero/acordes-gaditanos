@@ -10,6 +10,7 @@ cejilla: 3
 date: 28/12/2025
 video: 'https://www.youtube.com/embed/GbdSdTQi9-Y?si=tfuGUs3qjUegne8t'
 fraseClave: Fuego, le alumbra el fuego
+letraTitulo: Fuego
 ---
 <pre>
 <a>Mim</a>    <a>Si7</a>           <a>Mim</a>  <a>Lam7</a>                   <a>Si7</a>

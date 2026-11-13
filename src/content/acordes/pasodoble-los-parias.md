@@ -10,6 +10,7 @@ cejilla: 2
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/Kmz6jADMW-U?si=2D-xxxUu8q1Ou3UV'
 fraseClave: De toas las que yo vengo a verte prefiero
+letraTitulo: De toas las que yo vengo a verte
 ---
 <pre>
 <a>Mim</a>                        <a>Re</a>

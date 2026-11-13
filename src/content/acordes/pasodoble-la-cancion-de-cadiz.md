@@ -5,12 +5,13 @@ year: 2014
 modalidad: Comparsa
 musica: Tino Tovar
 letra: Tino Tovar
-img: https://www.portaldecadiz.com/images/igallery/resized/5001-5100/KTA_0046-5045-1200-1200-80-wm-center_bottom-100-portaldecadizpng.jpg
+img: 'https://www.portaldecadiz.com/images/igallery/resized/5001-5100/KTA_0046-5045-1200-1200-80-wm-center_bottom-100-portaldecadizpng.jpg'
 cejilla: 1
 date: "05/12/2025"
 video: 'https://www.youtube.com/embed/pCW000SWnOw'
-fraseClave: "Y eras tan guapa y tan niña"
+fraseClave: Y eras tan guapa y tan niña
 recomendada: true
+letraTitulo: Y eras tan guapa
 ---
 <pre>
 <a>LaM7</a>                                            <a>Do#m</a>
