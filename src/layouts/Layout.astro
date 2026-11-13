@@ -289,6 +289,13 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
             // El CMP de Google (Privacy & messaging) es el gestor único de consentimiento
             window.googlefc = window.googlefc || {};
             window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+            // Estado que consume el experimento de precios de Amazon. Si no hay
+            // consentimiento de analítica, el experimento se queda en la
+            // variante A (sin precio) y no se asigna ningún bucket.
+            window.__agConsentimiento = window.__agConsentimiento || {
+              listo: false,
+              analitica: false,
+            };
             window.googlefc.callbackQueue.push({
               CONSENT_MODE_DATA_READY: () => {
                 try {
@@ -297,15 +304,22 @@ const sinAnalitica = esRutaPrivada(Astro.url.pathname);
                     s !==
                     window.googlefc.ConsentModePurposeStatusEnum
                       .CONSENT_MODE_PURPOSE_STATUS_DENIED;
+                  const analitica = notDenied(
+                    vals.analyticsStoragePurposeConsentStatus,
+                  );
+                  window.__agConsentimiento = { listo: true, analitica };
+                  window.dispatchEvent(
+                    new CustomEvent('ag:consentimiento', {
+                      detail: window.__agConsentimiento,
+                    }),
+                  );
                   // Por window.gtag para que el envoltorio de la PWA (que
                   // encola eventos hasta el consentimiento) también se entere.
                   window.gtag('consent', 'update', {
                     ad_storage: notDenied(vals.adStoragePurposeConsentStatus)
                       ? 'granted'
                       : 'denied',
-                    analytics_storage: notDenied(vals.analyticsStoragePurposeConsentStatus)
-                      ? 'granted'
-                      : 'denied',
+                    analytics_storage: analitica ? 'granted' : 'denied',
                     ad_user_data: notDenied(vals.adUserDataPurposeConsentStatus)
                       ? 'granted'
                       : 'denied',

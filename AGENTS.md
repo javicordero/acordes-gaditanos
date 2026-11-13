@@ -26,6 +26,7 @@ Lee el documento indicado **solo cuando trabajes en esa parte**. Comprueba el c�
 - **Listados, orden, hubs y búsqueda:** [`docs/operativa/listados-y-busqueda.md`](docs/operativa/listados-y-busqueda.md).
 - **Glosario, postura, autoscroll, URLs, prefetch y transiciones:** [`docs/operativa/glosario-y-experiencia.md`](docs/operativa/glosario-y-experiencia.md).
 - **SEO, analítica, anuncios, vídeos y estáticos:** [`docs/operativa/seo-y-medios.md`](docs/operativa/seo-y-medios.md); experimentos en [`docs/operativa/adsense-experimentos.md`](docs/operativa/adsense-experimentos.md) y [`docs/operativa/active-view-previo-movil.md`](docs/operativa/active-view-previo-movil.md).
+- **Precios de Amazon (afiliados):** [`docs/operativa/afiliados-amazon-precios.md`](docs/operativa/afiliados-amazon-precios.md); experimento A/B con precio/sin precio y auditoría de Creators API. No activo.
 - **Estadísticas de Google (Search Console, Analytics y AdSense):** [`docs/operativa/estadisticas-google.md`](docs/operativa/estadisticas-google.md).
 - **Rendimiento (Strobe):** [`docs/operativa/rendimiento.md`](docs/operativa/rendimiento.md).
 - **OpenCode remoto (servidor en el PC y móvil):** [`docs/operativa/opencode-remoto.md`](docs/operativa/opencode-remoto.md).

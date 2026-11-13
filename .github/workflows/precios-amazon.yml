@@ -1,0 +1,65 @@
+name: Precios de Amazon
+
+# Actualiza `src/data/precios-amazon.json` con los precios de Creators API y
+# deja que Netlify reconstruya la web al hacer push.
+#
+# NO está programado: hoy la cuenta devuelve `AssociateNotEligible` y falta la
+# autorización escrita de Amazon para el sitio responsive/móvil. Cuando ambas
+# cosas estén resueltas, descomenta el bloque `schedule` para que se ejecute
+# cada hora. La licencia permite cachear el contenido que no sea imagen 24 h;
+# con una ejecución horaria y la comprobación de frescura del cliente, cumple.
+#
+# Secretos necesarios en GitHub:
+#   AMAZON_CREATORS_CLIENT_ID
+#   AMAZON_CREATORS_CLIENT_SECRET
+#   AMAZON_CREATORS_VERSION (3.2)
+#   AMAZON_PARTNER_TAG (acordesgadi02-21)
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: precios-amazon
+  cancel-in-progress: false
+
+jobs:
+  precios:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Actualizar precios
+        env:
+          AMAZON_CREATORS_CLIENT_ID: ${{ secrets.AMAZON_CREATORS_CLIENT_ID }}
+          AMAZON_CREATORS_CLIENT_SECRET: ${{ secrets.AMAZON_CREATORS_CLIENT_SECRET }}
+          AMAZON_CREATORS_VERSION: ${{ secrets.AMAZON_CREATORS_VERSION || '3.2' }}
+          AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG || 'acordesgadi02-21' }}
+        run: node --experimental-strip-types scripts/actualizar-precios-amazon.mjs
+
+      - name: Commit y push si cambió
+        run: |
+          set -euo pipefail
+          if [ -z "$(git status --porcelain -- src/data/precios-amazon.json)" ]; then
+            echo "Sin cambios en precios: no hay nada que commitear."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/precios-amazon.json
+          git commit -m "precios de amazon [skip fechas]"
+          git fetch origin master
+          git rebase origin/master
+          git push origin HEAD:master

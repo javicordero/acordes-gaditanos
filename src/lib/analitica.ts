@@ -27,9 +27,17 @@ export function enviarEvento(
   }
 }
 
-/** Engancha los clics de todos los enlaces que casen con `selector`. */
+/**
+ * Engancha los clics de todos los enlaces que casen con `selector`.
+ *
+ * Puede llamarse desde varios componentes de la misma página (por ejemplo, el
+ * bloque de Amazon y su franja inline): `data-ga-init` evita duplicar el
+ * listener y, por tanto, el evento en GA4.
+ */
 export function seguirEnlaces(selector: string, categoria?: string): void {
   document.querySelectorAll<HTMLElement>(selector).forEach((enlace) => {
+    if (enlace.dataset.gaInit === '1') return;
+    enlace.dataset.gaInit = '1';
     enlace.addEventListener('click', () => {
       const evento = enlace.getAttribute('data-ga-event');
       if (!evento) return;
@@ -41,7 +49,18 @@ export function seguirEnlaces(selector: string, categoria?: string): void {
         parametros = {};
       }
 
-      enviarEvento(evento, parametros, categoria);
+      // Un enlace puede forzar su categoría (p. ej. los afiliados de Amazon)
+      // aunque lo recoja un listener genérico de la página.
+      const categoriaFinal = enlace.dataset.gaCategoria || categoria;
+
+      // Variante del experimento de precios, solo para los clics de Amazon y
+      // solo cuando el experimento está realmente activo.
+      const w = window as any;
+      if (evento.startsWith('click_amazon') && w.__agAmazonExperimento) {
+        parametros.variante = w.__agAmazonVariante || 'a';
+      }
+
+      enviarEvento(evento, parametros, categoriaFinal);
     });
   });
 }

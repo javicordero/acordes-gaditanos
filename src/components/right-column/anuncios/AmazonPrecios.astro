@@ -1,0 +1,142 @@
+---
+import type { DatosPreciosAmazon } from '../../../data/amazon-precios-config';
+
+interface Props {
+  activo: boolean;
+  datos: DatosPreciosAmazon;
+}
+
+const { activo, datos } = Astro.props;
+const fecha = new Date(datos.actualizado).toLocaleString('es-ES', {
+  dateStyle: 'short',
+  timeStyle: 'short',
+});
+---
+
+{
+  activo && (
+    <>
+      <script
+        type='application/json'
+        id='amazon-precios-datos'
+        set:html={JSON.stringify(datos)}
+      />
+      <p class='amazon-precio-aviso' data-amazon-precio-aviso hidden>
+        Precios de Amazon actualizados el {fecha}. Pueden cambiar. El precio
+        aplicable es el de Amazon en el momento de la compra.
+        <br />
+        Cierto contenido que aparece en este sitio procede de Amazon. Se
+        proporciona «tal cual» y está sujeto a cambios o retirada en cualquier
+        momento.
+        <br />
+        <span class='amazon-precio-aviso__en'>
+          CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS
+          CONTENT IS PROVIDED 'AS IS' AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY
+          TIME.
+        </span>
+      </p>
+      <script>
+        import { preciosAmazonActivos } from '../../../data/amazon-precios-config';
+        import {
+          aplicarVariante,
+          asignarVariante,
+          leerVariante,
+        } from '../../../lib/experimento-precios';
+
+        (window as any).__agAmazonExperimento = true;
+
+        const arrancar = () => {
+          const el = document.getElementById('amazon-precios-datos');
+          if (!el) return;
+
+          let datos: any;
+          try {
+            datos = JSON.parse(el.textContent || '{}');
+          } catch {
+            return;
+          }
+
+          if (!preciosAmazonActivos(datos)) return;
+
+          const precios = Array.from(
+            document.querySelectorAll<HTMLElement>('[data-amazon-precio]'),
+          );
+          const sinPrecio = precios.filter((precio) => {
+            const id = precio.dataset.productoId;
+            return (
+              !id ||
+              !datos.productos[id] ||
+              !datos.productos[id].precioTexto
+            );
+          });
+
+          // Si falta un solo precio, no se activa B: la variante no puede
+          // mezclar tarjetas con precio y sin precio.
+          if (sinPrecio.length > 0) {
+            console.warn(
+              '[Amazon] Faltan precios; se mantiene la variante A:',
+              sinPrecio.map((precio) => precio.dataset.productoId),
+            );
+            return;
+          }
+
+          const variante = leerVariante() ?? asignarVariante();
+          aplicarVariante(variante);
+
+          if (variante !== 'b') return;
+
+          precios.forEach((precio) => {
+            const id = precio.dataset.productoId;
+            if (!id) return;
+            const producto = datos.productos[id];
+            if (!producto || !producto.precioTexto) {
+              precio.hidden = true;
+              return;
+            }
+            precio.textContent = producto.precioTexto;
+            precio.hidden = false;
+          });
+
+          document
+            .querySelectorAll<HTMLElement>('[data-amazon-precio-aviso]')
+            .forEach((aviso) => {
+              aviso.hidden = false;
+            });
+        };
+
+        const conConsentimiento = (detalle: any) => {
+          if (detalle && detalle.analitica) arrancar();
+        };
+
+        const estado = (window as any).__agConsentimiento;
+        if (estado && estado.listo) {
+          conConsentimiento(estado);
+        } else {
+          document.addEventListener(
+            'ag:consentimiento',
+            (evento) => conConsentimiento((evento as CustomEvent).detail),
+            { once: true },
+          );
+        }
+      </script>
+    </>
+  )
+}
+
+<style>
+  .amazon-precio-aviso {
+    margin: 12px 0 0;
+    max-width: 760px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.66rem;
+    line-height: 1.5;
+    color: var(--text-secondary-color);
+  }
+
+  .amazon-precio-aviso__en {
+    display: inline-block;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+</style>

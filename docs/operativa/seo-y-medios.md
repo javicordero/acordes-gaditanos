@@ -51,6 +51,22 @@ Los anuncios de AdSense (y la medición de GA) **no se cargan** en los hosts de 
 - `SCRIPT_ADSENSE` (en `src/lib/anuncios.ts`) monta la URL desde `SEO.adsenseAccount`; `loadAdsense()` de `cookiesConsent.ts` mantiene el mismo guardia como red de seguridad.
 - El `<meta google-adsense-account>` y el `ca-pub` de los `.ins` siguen en el HTML: son estáticos y sirven para verificar el dominio.
 
+## Afiliados de Amazon (solo fichas)
+Los afiliados viven **solo en las fichas** (`/acordes/[id]/`). No se pinta Amazon en listados, hubs, herramientas ni home.
+
+- **Bloque «Carnaval y guitarra»**: 4 productos en la columna derecha, después de «Apoyar». En móvil es el primer bloque de la columna, así que cae justo debajo del `<pre>`.
+- **Right Column 1** (`Anuncio1`): se mantiene en escritorio, entre «Sigue tocando» y «Coplas para el recuerdo». En móvil se oculta para no sumar otro anuncio justo debajo del pre.
+- **Franja inline**: 1 producto debajo del chip de cejilla y antes del `<pre>`, en todas las fichas.
+- Catálogo único en `src/data/afiliados-amazon.ts`. Para retirar un producto del reparto, `activo: false`; para añadir uno nuevo, un objeto más. Los IDs deben ser cortos y seguros para GA4: el evento final es `click_amazon_<id>_<bloque>` y no puede pasar de 40 caracteres.
+- `seleccionParaFicha(slug)` elige 1 producto para el inline y 4 para el bloque. La selección es determinista por slug, el bloque mezcla 2 libros + 2 de guitarra/Carnaval y **el producto del inline se excluye del bloque de esa misma ficha**.
+- Enlaces con `rel="sponsored noopener noreferrer"` y aviso de afiliado visible. No se muestran precios escritos a mano.
+- Eventos con el producto y el emplazamiento en el propio nombre, sin dimensiones personalizadas:
+  - `click_amazon_<id>_bloque` y `click_amazon_<id>_inline` en cada clic.
+  - `view_amazon_<id>_bloque` y `view_amazon_<id>_inline` cuando cada producto se ve al menos al 50 %, una vez por página.
+- El `<id>` es el del catálogo. El CTR real se calcula comparando el `click_amazon_<id>_<bloque>` con su `view_amazon_<id>_<bloque>`. Para ver de qué ficha viene, usar `page_location`/`page_path`, que GA4 recoge solo.
+- Para atribuir ventas por emplazamiento, usar dos tracking IDs de Amazon (uno para el bloque y otro para el inline) en las URLs `https://www.amazon.es/dp/<ASIN>?tag=<id>`.
+- **Precios de Amazon**: el experimento A/B (con precio / sin precio) y su auditoría están en [`afiliados-amazon-precios.md`](afiliados-amazon-precios.md). **No está activo** a 13 nov 2026: falta elegibilidad de Creators API, autorización escrita para el sitio móvil y una fuente conforme de gastos de envío.
+
 ## Fuentes
 - **Bodoni**: la web pública solo la usa para el nombre de la cabecera («Acordes Gaditanos»), así que `global.css` y el `preload` de `Layout.astro` apuntan a **`public/fonts/bodoni-logo.woff2`**, un subset de ~1,9 KB con esos glifos. La fuente completa (`bodoni-72-oldstyle-book.woff2`, ~30 KB) se queda solo para `/admin`, que declara su propio `@font-face`.
 - `npm run subset:bodoni` regenera el subset (necesita Python 3 y `fonttools` + `brotli`). El texto vive en `scripts/subset-bodoni.mjs`; si cambia el rótulo, hay que actualizarlo y **renombrar** el archivo, porque `/fonts/*` se cachea un año.

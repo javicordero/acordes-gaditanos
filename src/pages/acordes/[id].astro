@@ -13,7 +13,12 @@ import PedirCoplaCard from '../../components/right-column/PedirCoplaCard.astro';
 import InstalarAppCard from '../../components/right-column/InstalarAppCard.astro';
 import SigueTocando from '../../components/right-column/SigueTocando.astro';
 import AcordesRecomendados from '../../components/right-column/AcordesRecomendados.astro';
+import AmazonRecomendados from '../../components/right-column/anuncios/AmazonRecomendados.astro';
+import AmazonPrecios from '../../components/right-column/anuncios/AmazonPrecios.astro';
 import Anuncio1 from '../../components/right-column/anuncios/Anuncio1.astro';
+import { seleccionParaFicha } from '../../data/afiliados-amazon';
+import { preciosAmazonActivos, type DatosPreciosAmazon } from '../../data/amazon-precios-config';
+import preciosAmazon from '../../data/precios-amazon.json';
 import { busquedaYoutube, datosDeVideo, enlaceYoutube, estadoDeVideo, idYoutube } from '../../lib/videos';
 import { hermanasDe, nombrePieza, recortarFrase, tituloSeo } from '../../lib/letras';
 import { fechaISO, videoYouTube } from '../../lib/schema';
@@ -39,7 +44,6 @@ const {
   video,
   cover,
   autorCover,
-  cejilla,
   modalidad,
   fraseClave,
 } = data;
@@ -67,6 +71,14 @@ const acordesRecomendados = todosLosAcordes
   .filter((a) => a.data.recomendada === true && a.slug !== slug)
   .sort(() => Math.random() - 0.5) // Ordenar aleatoriamente
   .slice(0, 5); // Limitar a 5 recomendaciones
+
+// Amazon: 1 producto para la franja inline y 4 para el bloque de la derecha.
+// La selección es determinista por slug y el inline nunca se repite en el bloque.
+const { inline: productoInline, bloque: productosAmazon } = seleccionParaFicha(slug);
+
+// Precios de Amazon: desactivados mientras falten la elegibilidad de Creators
+// API, la autorización escrita para el sitio móvil y los gastos de envío.
+const mostrarPrecios = preciosAmazonActivos(preciosAmazon as DatosPreciosAmazon);
 
 // Funciones de formateo de autores múltiples
 function formatearAutores(lista: string[]): string {
@@ -217,7 +229,12 @@ const webPageSchema = {
   />
 
   <div class='main-container container-layout'>
-    <AcordeCard acorde={acorde} hermanas={hermanas} />
+    <AcordeCard
+      acorde={acorde}
+      hermanas={hermanas}
+      productoInline={productoInline}
+      mostrarPrecios={mostrarPrecios}
+    />
 
     <div class='right-column'>
       <YoutubeCard
@@ -246,10 +263,13 @@ const webPageSchema = {
 
       <Apoyar class='apoyar' />
 
-      {/* En escritorio va después de «Apoyar» para que no quede al lado del
-          anuncio de la ficha (el que va antes del <pre> en móvil). En móvil el
-          orden visual lo fija el `order` del CSS (Anuncio1 primero). */}
-      <Anuncio1 class='anuncio-1' />
+      {/* En escritorio va después de «Apoyar». En móvil el orden visual lo
+          fija el `order` del CSS: Amazon primero, justo debajo del pre. */}
+      <AmazonRecomendados
+        class='amazon-ficha'
+        productos={productosAmazon}
+        mostrarPrecios={mostrarPrecios}
+      />
 
       <InstalarAppCard class='instalar-app' />
 
@@ -265,6 +285,11 @@ const webPageSchema = {
         musicaSlugs={data.musicaSlugs}
         agrupacionSlug={data.agrupacionSlug}
       />
+
+      {/* Right Column 1: solo escritorio, entre «Sigue tocando» y «Coplas
+          para el recuerdo». En móvil se oculta para no sumar otro anuncio
+          justo debajo del pre. */}
+      <Anuncio1 class='anuncio-1' />
 
       <AcordesRecomendados class='recomendados' recomendadas={acordesRecomendados} />
     </div>
@@ -312,9 +337,16 @@ const webPageSchema = {
           flex-direction: column;
         }
 
-        /* Orden en móvil: Anuncio1 → Apoyar → Instalar → Pedir una copla → SigueTocando → Recomendados → ApareceAqui/VideoCover → Video */
-        .right-column > :global(.anuncio-1) {
+        /* Orden en móvil: Amazon → Apoyar → Instalar → Pedir una copla → SigueTocando → Recomendados → ApareceAqui/VideoCover → Video */
+        .right-column > :global(.amazon-ficha) {
           order: 1;
+        }
+
+        /* Right Column 1 se queda solo en escritorio: en móvil ya está el
+           bloque de Amazon como primer anuncio debajo del pre. `!important`
+           vence el `style="display:block"` del propio <ins>. */
+        .right-column > :global(.anuncio-1) {
+          display: none !important;
         }
 
         .right-column > :global(.apoyar) {
@@ -357,5 +389,7 @@ const webPageSchema = {
         }
       }
     </style>
-  </div></Layout
+  </div>
+
+  <AmazonPrecios activo={mostrarPrecios} datos={preciosAmazon as DatosPreciosAmazon} /></Layout
 >
