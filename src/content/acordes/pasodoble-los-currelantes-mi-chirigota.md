@@ -5,13 +5,12 @@ year: 2011
 musica: Jesús Bienvenido
 letra: Jesús Bienvenido
 letraTitulo: Mi chirigota
-img: https://static.grupojoly.com/clip/1f89f490-9f4f-438a-8145-c577a042d573_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/1f89f490-9f4f-438a-8145-c577a042d573_source-aspect-ratio_1600w_0.jpg'
 cejilla: 3
-date: "31/10/2026"
-video: "https://www.youtube.com/embed/PIesjujD7vM?si=-2aGiz7O5Ankj7sw"
-cover: https://www.youtube.com/embed/vTWUxxnBXGQ?si=9jjsYY6jyrC75rvW
+date: "01/02/2027"
+video: 'https://www.youtube.com/embed/PIesjujD7vM?si=-2aGiz7O5Ankj7sw'
+cover: 'https://www.youtube.com/embed/vTWUxxnBXGQ?si=9jjsYY6jyrC75rvW'
 autorCover: Acordes Gaditanos
-
 fraseClave: Mi chirigota los currelantes
 ---
 <pre>
@@ -23,17 +22,17 @@ viene otro año con la intención
 de conquistarte, de enamorarte,
      <a>Lam7</a>          <a>Do</a>   <a>Si7</a>
 y de que le des tu bendición.
-      <a>Mi</a>  <a>Si7</a>      <a>Mi</a>
+        <a>Mi</a>    <a>Si7</a>     <a>Mi</a>
 Mi chirigota cuida su obra
-                   <a>Si7</a>      <a>Mi</a>
+                    <a>Si7</a>      <a>Mi</a>
 con tanto esmero y tanta ilusión
           <a>Lam7</a>             <a>Mim</a>
 que no le duele cuando un idiota
-                   <a>Fa#</a>      <a>Lam7</a>     <a>Si7</a> <a>Mim</a>
-pretende que esa palabra suene a humillación.
+                   <a>Fa#</a>            <a>Lam7</a> <a>Si7</a>  <a>Mim</a>
+pretende que esa palabra suene a humi  lla  ción.
               <a>Si7</a>                        <a>Mim</a>
 Idiota que me quiere herir con esa estúpida maldad
-                <a>Re7</a>                    <a>Sol</a>
+              <a>Re7</a>                    <a>Sol</a>
 y lleva media vida ya con el mismo argumento.
                 <a>Lam7</a>             <a>Si7</a>
 Escucha mi chirigota y cierra la boca
@@ -45,28 +44,28 @@ como suena una comparsa de verdad,
 que canta de verdad.
 
 La chirigota es la elegancia,
-         <a>Fa#m7</a>        <a>Sol#m7</a> <a>Fa#m7</a>   <a>Sol#m7</a>    <a>Fa#m7</a>
-la inteligencia, el estilo, la gra. .lere lere lere
-          <a>Do#7</a>              <a>Fa#m7</a>
-lere el estilo, la gracia y no le hace
+         <a>Fa#m7</a>        <a>Sol#m7</a> <a>Fa#m7</a>  <a>Sol#m7</a>    <a>Fa#m7</a>
+la inteligencia, el estilo, la gra. lere lere lere lere
+                <a>Do#7</a>              <a>Fa#m7</a>
+el estilo, la gracia y no le hace falta
                     <a>Si7</a>
-falta la prepotente compasión
+la prepotente compasión
          <a>Fa#m7</a>  <a>Si7</a>      <a>Mi</a>
 de la comparsa, de la comparsa.
-      <a>Mi7</a>                           <a>La</a>
+      <a>Mi7</a>                         <a>La</a>
 La chirigota por un premio no se vende
-      <a>Fa#7</a>                      <a>Si7</a>
+        <a>Fa#7</a>                    <a>Si7</a>
 ni va cambiando cada año de plantilla
-       <a>Sol#7</a>                         <a>La</a>
-y como ves nosotros somos los de siempre una
-                  <a>Fa#m7</a>  <a>Fa#7</a>           <a>Si7</a>
-voz, un corazón, una familia. Como te explico
-<a>Lam</a>                    <a>Mi</a>         <a>Do#7</a>      <a>Fa#m7</a>
-yo a ti que tú no me haces sufrir mi queridísimo idiota
-    <a>Si7</a>             <a>Mi</a>
-que para mi es un honor
+       <a>Sol#7</a>                      <a>La</a>
+y como ves nosotros somos los de siempre
+              <a>Fa#m7</a>  <a>Fa#7</a>    <a>Si7</a>
+una voz, un corazón, una familia.
+<a>Lam</a>                  <a>Mi</a>  <a>Do#7</a>                <a>Fa#m7</a>
+Como te explico yo a ti que tú no me haces sufrir
+<a>Si7</a>              <a>Mi</a>
+mi queridísimo idiota
 <a>Lam</a>              <a>Mi</a>                      <a>Si7</a>
-y me llena de emoción que me llamen chirigota.
-                    <a>Mi</a>
-Jesús Bienvenido Saucedo
+que para mi es un honor y me llena de emoción
+                       <a>Mi</a>
+que me llamen chirigota.
 </pre>
