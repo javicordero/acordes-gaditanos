@@ -6509,10 +6509,10 @@
           "trastes": [
             -1,
             -1,
-            1,
-            2,
-            1,
-            2
+            4,
+            5,
+            4,
+            5
           ],
           "baseTraste": 1,
           "cejilla": null
@@ -6521,10 +6521,10 @@
           "trastes": [
             -1,
             -1,
-            4,
-            5,
-            4,
-            5
+            1,
+            2,
+            1,
+            2
           ],
           "baseTraste": 1,
           "cejilla": null
@@ -15759,6 +15759,18 @@
             8
           ],
           "baseTraste": 7,
+          "cejilla": null
+        },
+        {
+          "trastes": [
+            -1,
+            0,
+            2,
+            -1,
+            1,
+            2
+          ],
+          "baseTraste": 1,
           "cejilla": null
         }
       ]
@@ -26080,18 +26092,6 @@
         {
           "trastes": [
             -1,
-            -1,
-            0,
-            2,
-            1,
-            1
-          ],
-          "baseTraste": 1,
-          "cejilla": null
-        },
-        {
-          "trastes": [
-            -1,
             5,
             7,
             5,
@@ -26104,6 +26104,18 @@
             "desde": 1,
             "hasta": 5
           }
+        },
+        {
+          "trastes": [
+            -1,
+            -1,
+            0,
+            2,
+            1,
+            1
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         },
         {
           "trastes": [
@@ -41084,6 +41096,26 @@
             "desde": 1,
             "hasta": 2
           }
+        }
+      ]
+    },
+    "Lamdim7": {
+      "raiz": "La",
+      "sufijo": "dim7",
+      "bajo": null,
+      "slug": "la-dim7",
+      "posiciones": [
+        {
+          "trastes": [
+            -1,
+            0,
+            1,
+            2,
+            1,
+            2
+          ],
+          "baseTraste": 1,
+          "cejilla": null
         }
       ]
     }

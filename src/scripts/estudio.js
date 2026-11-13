@@ -1742,9 +1742,11 @@ function pintarFuentesCf() {
 
   const cabeceras = $('cf-fuentes-cabeceras');
   if (cabeceras) {
-    cabeceras.innerHTML = '<tr><th>Fuente</th><th class="num">Páginas</th>' +
-      (filtrado ? '' : '<th class="num">Visitas</th>') +
-      '<th class="num">%</th><th class="progreso">Popularidad</th></tr>';
+    // Los anchos van por clase, no por posición: con filtro desaparece Visitas
+    // y los nth-child dejarían el ancho de Visitas en la columna de %.
+    cabeceras.innerHTML = '<tr><th>Fuente</th><th class="num paginas">Páginas</th>' +
+      (filtrado ? '' : '<th class="num visitas">Visitas</th>') +
+      '<th class="num pct">%</th><th class="progreso">Popularidad</th></tr>';
   }
 
   const nota = $('cf-fuentes-nota');
@@ -1758,9 +1760,9 @@ function pintarFuentesCf() {
     const pct = totalPaginas ? (x.paginas / totalPaginas) * 100 : 0;
     return '<tr>' +
       '<td class="fuente">' + esc(x.etiqueta) + '</td>' +
-      '<td class="num">' + fmtNum(x.paginas) + '</td>' +
-      (filtrado ? '' : '<td class="num">' + fmtNum(x.visitas) + '</td>') +
-      '<td class="num">' + pct.toLocaleString('es-ES', { maximumFractionDigits: 1 }) + ' %</td>' +
+      '<td class="num paginas">' + fmtNum(x.paginas) + '</td>' +
+      (filtrado ? '' : '<td class="num visitas">' + fmtNum(x.visitas) + '</td>') +
+      '<td class="num pct">' + pct.toLocaleString('es-ES', { maximumFractionDigits: 1 }) + ' %</td>' +
       '<td class="progreso">' + barraHtml(x.paginas, totalPaginas) + '</td>' +
     '</tr>';
   }).join('');
