@@ -19,6 +19,12 @@ const SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
 const CACHE = { 'Cache-Control': 'private, max-age=900' };
 const PERIODOS = ['ayer', '7', '30', '90'];
 const METRICAS_TOTAL = ['sessions', 'totalUsers', 'screenPageViews', 'engagementRate', 'averageSessionDuration', 'eventCount'];
+const FILTRO_AMAZON = {
+  filter: {
+    fieldName: 'eventName',
+    stringFilter: { matchType: 'FULL_REGEXP', value: '^(click|view)_amazon_.*', caseSensitive: true },
+  },
+};
 
 const INSTRUCCIONES = [
   'Crea un proyecto en Google Cloud y habilita la Google Analytics Data API.',
@@ -102,7 +108,30 @@ export default async (req) => {
     const metrics = (nombres) => nombres.map((name) => ({ name }));
     const dims = (nombres) => nombres.map((name) => ({ name }));
 
-    const [totalD, diarioD, eventosD, paginasD, canalesD, paisesD, dispositivosD, anteriorD, busquedasD] = await Promise.all([
+    // Paginación para que los desgloses no dependan del top 50 general.
+    const informeAmazon = async (dimensiones) => {
+      const resultado = [];
+      const limite = 10000;
+      let total = 0;
+      do {
+        const datos = await consulta({
+          dateRanges: [rango({ desde, hasta })],
+          dimensions: dims(dimensiones),
+          metrics: metrics(['eventCount']),
+          dimensionFilter: FILTRO_AMAZON,
+          orderBys: dimensiones.map((dimensionName) => ({ dimension: { dimensionName } })),
+          limit: limite,
+          offset: resultado.length,
+        });
+        const lote = filas(datos);
+        resultado.push(...lote);
+        total = Number(datos.rowCount || 0);
+        if (!lote.length) break;
+      } while (resultado.length < total && resultado.length < 100000);
+      return { filas: resultado, incompleto: resultado.length < total };
+    };
+
+    const [totalD, diarioD, eventosD, paginasD, canalesD, paisesD, dispositivosD, anteriorD, busquedasD, amazonD] = await Promise.all([
       consulta({
         dateRanges: [rango({ desde, hasta })],
         metrics: metrics(METRICAS_TOTAL),
@@ -118,6 +147,7 @@ export default async (req) => {
         dateRanges: [rango({ desde, hasta })],
         dimensions: dims(['eventName']),
         metrics: metrics(['eventCount', 'totalUsers']),
+        dimensionFilter: { notExpression: FILTRO_AMAZON },
         orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }],
         limit: 50,
       }),
@@ -170,6 +200,10 @@ export default async (req) => {
         orderBys: [{ metric: { metricName: 'eventCount' }, desc: true }],
         limit: 200,
       }).catch((e) => ({ __error: String(e && e.message ? e.message : e) })),
+      Promise.all([
+        informeAmazon(['eventName']),
+        informeAmazon(['date', 'eventName']),
+      ]).catch((e) => ({ __error: String(e && e.message ? e.message : e) })),
     ]);
 
     // Las búsquedas anteriores a crear la dimensión llegan como «(not set)».
@@ -209,6 +243,12 @@ export default async (req) => {
       busquedas,
       busquedasSinParametro,
       busquedasError: busquedasD && busquedasD.__error ? busquedasD.__error : null,
+      amazon: Array.isArray(amazonD) ? {
+        eventos: amazonD[0].filas.map((x) => ({ evento: x.dims[0], cantidad: x.valores.eventCount || 0 })),
+        diario: amazonD[1].filas.map((x) => ({ dia: fechaGa(x.dims[0]), evento: x.dims[1], cantidad: x.valores.eventCount || 0 })),
+        incompleto: amazonD.some((x) => x.incompleto),
+      } : null,
+      amazonError: amazonD && amazonD.__error ? amazonD.__error : null,
       paginas: filas(paginasD).map((x) => ({
         pagina: x.dims[0] || '',
         screenPageViews: x.valores.screenPageViews || 0,

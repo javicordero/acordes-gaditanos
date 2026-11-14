@@ -19,10 +19,21 @@ en [`panel-admin.md`](panel-admin.md).
   búsquedas raras.
   Variables: `GSC_SITE_URL` (por ejemplo `sc-domain:acordesgaditanos.com` o
   `https://acordesgaditanos.com/`) y la autenticación de Google.
-- **Analytics** (`ga4.mjs`): GA4 Data API. Tiene tres subpestañas:
-  **Eventos** (la que abre por defecto), **Búsquedas** y **Resumen**. Los periodos
+- **Analytics** (`ga4.mjs`): GA4 Data API. Tiene cuatro subpestañas:
+  **Eventos** (la que abre por defecto), **Amazon**, **Búsquedas** y **Resumen**. Los periodos
   son **Ayer, 7, 30 y 90 días**. Eventos muestra el nombre claro de cada evento,
-  su nombre técnico debajo, eventos, usuarios, porcentaje y barra. **Búsquedas**
+  su nombre técnico debajo, eventos, usuarios, porcentaje y barra. El top 50
+  excluye los eventos de Amazon antes de aplicar el límite, pero las tarjetas y
+  el denominador del porcentaje siguen incluyendo todos los eventos. **Amazon**
+  consulta los eventos de clic y visualización por separado del top general:
+  muestra CTR (clics / visualizaciones), emplazamientos, productos, productos
+  en listas separadas por emplazamiento y evolución diaria. Sin visualizaciones el CTR es
+  «—» y varios clics pueden llevarlo por encima del 100 %. Los productos que
+  ya no están en el catálogo se identifican por su ID; eventos con formato
+  desconocido se muestran aparte. Los informes se paginan hasta 100 000 filas
+  y avisan si quedan incompletos. Un fallo de Amazon no afecta al resto de GA4.
+  No son ventas ni comisiones y solo incluyen la analítica consentida.
+  **Búsquedas**
   lista lo que se busca y no encuentra nada: pide la dimensión personalizada
   `customEvent:consulta` filtrando el evento `buscar_sin_resultados`, con
   consulta, búsquedas, usuarios, porcentaje y barra. Esa dimensión **hay que

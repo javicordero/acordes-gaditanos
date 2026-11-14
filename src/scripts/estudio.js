@@ -20,6 +20,7 @@ import { normalizarAgrupacion } from '../lib/contenido.ts';
 import { crearIndice, buscarEnIndice, indicePostura, textoPostura } from '../lib/acordes.ts';
 import { svgDiagrama } from '../lib/diagrama.ts';
 import glosario from '../data/glosario-acordes.json';
+import { CATALOGO_AMAZON } from '../data/afiliados-amazon.ts';
 
 initPreAcordes(glosario);
 const INDICE_GLOSARIO = crearIndice(glosario?.acordes ?? glosario);
@@ -2175,6 +2176,7 @@ let googleDias = 30;
 let adsPeriodo = 'hoy';
 let ga4Periodo = 'ayer';
 let ga4Vista = 'eventos';
+let amazonOrden = 'clics';
 const googleData = { gsc: null, ga4: null, ads: null };
 const googleCargando = { gsc: false, ga4: false, ads: false };
 
@@ -2364,6 +2366,11 @@ function conectarGoogle(contenedor, tipo) {
       if (d) pintarGoogle('ga4', d);
     };
   });
+  const ordenAmazon = contenedor.querySelector('[data-amazon-orden]');
+  if (ordenAmazon) ordenAmazon.onchange = () => {
+    amazonOrden = ordenAmazon.value;
+    if (googleData.ga4) pintarGoogle('ga4', googleData.ga4);
+  };
   const reintentar = contenedor.querySelector('[data-g-reintentar]');
   if (reintentar) reintentar.onclick = () => cargarGoogle(tipo, true);
 }
@@ -2756,13 +2763,82 @@ function pintarGsc(cont, d) {
   window.scrollTo(0, prevScroll);
 }
 
+function pintarAmazon(cont, d, nota, vistas) {
+  const cabecera = cabeceraGoogle('Google Analytics 4', d, nota, 'ga4') + vistas;
+  if (d.amazonError || !d.amazon) {
+    cont.innerHTML = cabecera + '<section class="stats-bloque"><h3>Amazon</h3>' +
+      '<p class="stats-resumen">No se pudieron cargar los datos de Amazon. <button type="button" data-g-reintentar>Reintentar</button></p>' +
+      (d.amazonError ? '<p><code>' + esc(d.amazonError) + '</code></p>' : '') + '</section>';
+    return;
+  }
+
+  const nombres = new Map(CATALOGO_AMAZON.map((p) => [p.id, p.nombre]));
+  const separar = (evento) => {
+    const m = /^(click|view)_amazon_(.+)_(bloque|inline)$/.exec(evento || '');
+    return m ? { accion: m[1], id: m[2], ubicacion: m[3] } : null;
+  };
+  const agrupar = (filas, clave) => {
+    const mapa = new Map();
+    for (const fila of filas) {
+      const evento = separar(fila.evento);
+      if (!evento) continue;
+      const id = clave(fila, evento);
+      if (!mapa.has(id)) mapa.set(id, { clave: id, vistas: 0, clics: 0 });
+      mapa.get(id)[evento.accion === 'view' ? 'vistas' : 'clics'] += Number(fila.cantidad || 0);
+    }
+    return [...mapa.values()];
+  };
+  const ctr = (x) => x.vistas ? (100 * x.clics / x.vistas).toLocaleString('es-ES', { maximumFractionDigits: 2 }) + ' %' : '—';
+  const eventos = d.amazon.eventos || [];
+  const desconocidos = eventos.filter((x) => !separar(x.evento));
+  const productos = agrupar(eventos, (_, e) => e.id);
+  const productoUbicacion = agrupar(eventos, (_, e) => e.id + '|' + e.ubicacion).sort((a, b) => b.clics - a.clics || b.vistas - a.vistas);
+  const ubicaciones = agrupar(eventos, (_, e) => e.ubicacion);
+  const diario = agrupar(d.amazon.diario || [], (x) => x.dia).sort((a, b) => a.clave.localeCompare(b.clave));
+  const total = productos.reduce((s, x) => ({ vistas: s.vistas + x.vistas, clics: s.clics + x.clics }), { vistas: 0, clics: 0 });
+  const columnas = [{ t: 'Nombre' }, { t: 'Visualizaciones', num: true }, { t: 'Clics', num: true }, { t: 'CTR', num: true }];
+  const fila = (nombre, x) => [{ t: nombre }, { t: fmtNum(x.vistas), num: true }, { t: fmtNum(x.clics), num: true }, { t: ctr(x), num: true }];
+  const ordenados = [...productos].sort((a, b) => {
+    if (amazonOrden === 'nombre') return (nombres.get(a.clave) || a.clave).localeCompare(nombres.get(b.clave) || b.clave, 'es');
+    if (amazonOrden === 'ctr') return (b.vistas ? b.clics / b.vistas : -1) - (a.vistas ? a.clics / a.vistas : -1);
+    return b[amazonOrden] - a[amazonOrden] || b.vistas - a.vistas;
+  });
+  const selector = '<p class="stats-resumen"><label>Ordenar productos por <select data-amazon-orden>' +
+    [['clics', 'Clics'], ['vistas', 'Visualizaciones'], ['ctr', 'CTR'], ['nombre', 'Nombre']].map(([valor, texto]) =>
+      '<option value="' + valor + '"' + (amazonOrden === valor ? ' selected' : '') + '>' + texto + '</option>').join('') +
+    '</select></label></p>';
+  const detalle = '<p class="stats-resumen">CTR = clics ÷ visualizaciones. Una visualización se registra cuando el producto se ve al menos al 50 %, una vez por página. Puede haber varios clics por visualización. Solo se contabilizan usuarios que aceptan analítica; no son ventas ni comisiones.</p>';
+  const aviso = d.amazon.incompleto ? '<p class="stats-resumen">El informe de GA4 supera el límite de filas: algunos desgloses están incompletos.</p>' : '';
+  const sinFormato = desconocidos.length ? tablaStats('Otros eventos de Amazon', [{ t: 'Evento' }, { t: 'Eventos', num: true }], desconocidos.map((x) => [{ t: x.evento }, { t: fmtNum(x.cantidad), num: true }]), 'No incluidos en el CTR') : '';
+  const chart = miniGrafico(diario.map((x) => ({ label: fechaCortaIso(x.clave), valor: x.clics })), 'Clics en Amazon por día');
+  cont.innerHTML = cabecera +
+    '<div class="stats-grid">' + tarjetasCf([
+      { label: 'Visualizaciones', valor: total.vistas, total: true },
+      { label: 'Clics', valor: total.clics },
+      { label: 'CTR', valor: ctr(total) },
+    ]) + '</div>' + detalle + aviso +
+    (!eventos.length ? '<p class="stats-resumen">No hay eventos de Amazon en este periodo.</p>' : '') +
+    tablaStats('Emplazamientos', columnas, ubicaciones.map((x) => fila(x.clave === 'inline' ? 'Franja en la ficha' : 'Bloque de recomendaciones', x))) +
+    tablaStats('Productos', columnas, ordenados.map((x) => fila(nombres.get(x.clave) || x.clave, x)), '', selector) +
+    ['inline', 'bloque'].map((ubicacion) => tablaStats(
+      ubicacion === 'inline' ? 'Productos en la franja' : 'Productos en el bloque',
+      columnas,
+      productoUbicacion.filter((x) => x.clave.endsWith('|' + ubicacion)).map((x) => {
+        const id = x.clave.split('|')[0];
+        return fila(nombres.get(id) || id, x);
+      }),
+    )).join('') +
+    tablaStats('Evolución diaria', columnas, diario.map((x) => fila(fechaCortaIso(x.clave), x)), '', chart) +
+    sinFormato;
+}
+
 function pintarGa4(cont, d) {
   const t = d.total || {};
   const a = d.anterior || {};
   const nota = ga4Periodo === 'ayer' ? 'Ayer' : 'Datos hasta ayer';
   const vistas =
     '<div class="stats-chips" id="ga4-vistas" role="group" aria-label="Vista de Analytics">' +
-      [['eventos', 'Eventos'], ['busquedas', 'Búsquedas'], ['resumen', 'Resumen']].map(([vista, texto]) =>
+      [['eventos', 'Eventos'], ['amazon', 'Amazon'], ['busquedas', 'Búsquedas'], ['resumen', 'Resumen']].map(([vista, texto]) =>
         '<button type="button" data-ga4-vista="' + vista + '"' +
         (ga4Vista === vista ? ' class="sel"' : '') + '>' + texto + '</button>'
       ).join('') +
@@ -2803,8 +2879,14 @@ function pintarGa4(cont, d) {
         'Eventos',
         [{ t: 'Evento' }, { t: 'Eventos', num: true }, { t: 'Usuarios', num: true }, { t: '%', num: true }, { t: 'Popularidad', cls: 'progreso' }],
         eventos,
-        'Top 50',
+        'Top 50 · sin Amazon',
+        '<p class="stats-resumen">Las tarjetas y los porcentajes incluyen todos los eventos, también los de Amazon.</p>',
       );
+    return;
+  }
+
+  if (ga4Vista === 'amazon') {
+    pintarAmazon(cont, d, nota, vistas);
     return;
   }
 
