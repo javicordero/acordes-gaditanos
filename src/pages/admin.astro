@@ -312,7 +312,7 @@ export const prerender = true;
   .stat-card--total .stat-label { color:#c9d4e8; }
   .stat-valor { margin-top:8px; font:700 1.8rem/1 var(--mono); }
   .stats-bloque { background:var(--papel); border:2px solid #000; box-shadow:var(--sombra-sm); }
-  .stats-bloque h3 { margin:0; padding:10px 12px; font-size:9.5px; text-transform:uppercase; letter-spacing:.1em; border-bottom:2px solid #000; background:var(--papel); }
+  .stats-bloque h3 { display:flow-root; margin:0; padding:10px 12px; font-size:9.5px; text-transform:uppercase; letter-spacing:.1em; border-bottom:2px solid #000; background:var(--papel); }
   .stats-bloque h3 .tabla-nota { float:right; font-size:9px; font-weight:400; letter-spacing:0; text-transform:none; color:var(--suave); }
   .tabla-scroll { overflow-x:auto; }
   .stats-tabla { width:100%; border-collapse:collapse; font-size:11.5px; }
@@ -441,6 +441,7 @@ export const prerender = true;
 
   @media (max-width:640px) {
     body { font-size:13px; }
+    .stats-bloque h3 .tabla-nota { float:none; display:block; margin-top:4px; }
     body > header { padding:8px 10px; gap:6px 8px; min-height:0; }
     h1 { font-size:1.25rem; }
     .meta { display:none; }
