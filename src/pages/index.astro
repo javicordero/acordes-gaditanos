@@ -45,7 +45,7 @@ const { modalidad, pieza, decada } = await cargarHubs();
   description='La mayor colección de acordes de guitarra del Carnaval de Cádiz. Encuentra acordes de chirigotas, comparsas, cuartetos y coros para tocar con tu guitarra.'>
   <!-- <BannerCoac2026 /> -->
 
-  <Hero gaEvent='click_pedir_copla_hero' />
+  <Hero />
   <div class='main-container'>
     <!-- <AnunciateIndex /> -->
 
@@ -56,9 +56,7 @@ const { modalidad, pieza, decada } = await cargarHubs();
       <div class='container-layout ver-mas-wrapper'>
         <a
           href='/novedades'
-          class='ver-mas'
-          data-ga-event='ver_mas_novedades_click'
-          data-ga-params='{"link_type":"novedades","location":"index_novedades"}'>
+          class='ver-mas'>
           Ver más novedades
           <svg
             width='16'
@@ -85,9 +83,7 @@ const { modalidad, pieza, decada } = await cargarHubs();
       <div class='container-layout ver-mas-wrapper'>
         <a
           href='/autores'
-          class='ver-mas ver-mas--autores'
-          data-ga-event='ver_mas_autores_click'
-          data-ga-params='{"link_type":"autores","location":"index_autores"}'>
+          class='ver-mas ver-mas--autores'>
           Ver más autores destacados
           <svg
             width='16'
@@ -122,7 +118,7 @@ const { modalidad, pieza, decada } = await cargarHubs();
 
   function setupVerMasTracking() {
     const links = document.querySelectorAll(
-      '[data-ga-event^="ver_mas_"], [data-ga-event="click_listado_carnavales"], [data-ga-event^="click_hub_"]',
+      '[data-ga-event="click_listado_carnavales"], [data-ga-event^="click_hub_"]',
     );
     links.forEach((link) => {
       if (link.getAttribute('data-tracking-init')) return;

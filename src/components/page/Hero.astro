@@ -23,7 +23,7 @@ const {
   ctaTexto = 'Pedir una copla',
   ctaUrl = '/pedir-copla',
   imagen = 'https://static.grupojoly.com/clip/e68a84a7-37c4-4bbe-a35c-f859862ca005_source-aspect-ratio_1600w_0.jpg',
-  gaEvent = 'click_hero_cta',
+  gaEvent,
   mostrarDonacion = true,
 } = Astro.props;
 ---
@@ -234,7 +234,8 @@ const {
         const w = window as unknown as { gtag?: (...args: unknown[]) => void };
         if (typeof w.gtag !== 'function') return;
 
-        w.gtag('event', el.dataset.gaEvent || 'click_hero_cta', {
+        if (!el.dataset.gaEvent) return;
+        w.gtag('event', el.dataset.gaEvent, {
           ubicacion: 'hero',
           destino: el.getAttribute('href'),
           transport_type: 'beacon',

@@ -311,8 +311,6 @@ const faqSchema = {
 
   let semitonos = 0;
   let iniciado = false;
-  let ultimoEnvio = 0;
-  let ultimaDireccion = 'subir';
   let temporizadorCopiar: number | undefined;
 
   function registrarInicio(origen: string) {
@@ -342,24 +340,12 @@ const faqSchema = {
     if (aviso) aviso.hidden = texto.trim() === '' || tieneAcordes(texto);
   }
 
-  function enviarSemitonos() {
-    const ahora = Date.now();
-    if (ahora - ultimoEnvio < 400) return;
-    ultimoEnvio = ahora;
-    enviarEvento('transportador_semitonos', {
-      semitonos,
-      direccion: ultimaDireccion,
-    });
-  }
-
   function cambiar(delta: number) {
     registrarInicio('boton');
     const siguiente = Math.max(-MAXIMO, Math.min(MAXIMO, semitonos + delta));
     if (siguiente === semitonos) return;
     semitonos = siguiente;
-    ultimaDireccion = delta > 0 ? 'subir' : 'bajar';
     pintar();
-    enviarSemitonos();
   }
 
   subir?.addEventListener('click', () => cambiar(1));

@@ -342,19 +342,9 @@
       ancla.setAttribute('aria-expanded', 'true');
       btnCerrar?.focus({ preventScroll: true });
 
-      const enPre = !!disparador.closest('pre');
-      const enUsados = !!disparador.closest('.acordes-pieza');
       const enGlosario = !!disparador.closest('.glosario-card');
 
-      if (enPre) {
-        analitica('click_acorde_pre', { acorde: texto, pagina: window.location.pathname }, 'acordes');
-      } else if (enUsados) {
-        analitica(
-          'click_acorde_usado',
-          { acorde: texto, pagina: window.location.pathname },
-          'acordes',
-        );
-      } else if (enGlosario) {
+      if (enGlosario) {
         analitica(
           'click_acorde_glosario',
           { acorde: texto, pagina: window.location.pathname },
@@ -393,7 +383,6 @@
 
       posicion = nuevo;
       pintar();
-      analitica('glosario_posicion', { acorde: textoActual, posicion: posicion + 1 });
     }
 
     function prepararAnclas() {

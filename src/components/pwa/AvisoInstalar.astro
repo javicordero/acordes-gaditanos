@@ -23,7 +23,6 @@ import { Icon } from 'astro-icon/components';
 </div>
 
 <script>
-  import { eventoPwa } from '../../lib/pwa/analytics';
   import { eventoInstalar, instalar, puedeInstalar } from '../../lib/pwa/instalacion';
   import { contarPagina, unaVezPorSesion } from '../../lib/pwa/sesion';
 
@@ -139,7 +138,6 @@ import { Icon } from 'astro-icon/components';
       });
 
       wrap.querySelector('[data-aviso-descartar]')?.addEventListener('click', () => {
-        eventoPwa('pwa_install_descartado_aviso');
         marcarDescartado();
         ocultar(wrap);
       });

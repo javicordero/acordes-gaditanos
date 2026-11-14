@@ -13,8 +13,6 @@ const {
   estado = 'ok' as 'ok' | 'muerto' | 'bloqueado',
   enlace = '',
   busqueda = '',
-  // Solo para la analítica: distingue el vídeo oficial del cover de guitarra.
-  tipo = 'oficial' as 'oficial' | 'cover',
 } = Astro.props;
 
 const hasTitle = Boolean(title);
@@ -53,8 +51,6 @@ const etiquetaFachada = `Reproducir: ${iframeTitleText}`;
             data-video-id={idVideo}
             data-iframe-src={urlIncrustada(idVideo)}
             data-iframe-title={iframeTitleText}
-            data-ga-event='click_video_youtube'
-            data-ga-params={JSON.stringify({ tipo, id: idVideo })}
           >
             <img
               src={miniatura.src}
@@ -100,8 +96,6 @@ const etiquetaFachada = `Reproducir: ${iframeTitleText}`;
 </RightColumnCard>
 
 <script>
-  import { enviarEvento } from '../../lib/analitica';
-
   /**
    * La fachada es un enlace normal a YouTube: sin JS abre el vídeo en otra
    * pestaña. Con JS, el clic se intercepta y en su lugar se monta el iframe
@@ -118,14 +112,6 @@ const etiquetaFachada = `Reproducir: ${iframeTitleText}`;
     }
 
     evento.preventDefault();
-
-    let parametros: Record<string, unknown> = {};
-    try {
-      parametros = JSON.parse(fachada.dataset.gaParams || '{}') as Record<string, unknown>;
-    } catch {
-      parametros = {};
-    }
-    enviarEvento(fachada.dataset.gaEvent || 'click_video_youtube', parametros, 'video');
 
     const src = fachada.dataset.iframeSrc;
     if (!src) return;

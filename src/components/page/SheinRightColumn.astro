@@ -7,40 +7,12 @@ const { inlineSheinData } = Astro.props;
     href={inlineSheinData.url}
     target='_blank'
     rel='noopener noreferrer sponsored'
-    class='rec-card'
-    data-rec-name={inlineSheinData.name}>
+    class='rec-card'>
     <div class='rec-img'>
       <img src={inlineSheinData.image} alt={inlineSheinData.name} loading='lazy' decoding='async' />
     </div>
   </a>
 </div>
-
-<script>
-  declare const gtag: (...args: unknown[]) => void;
-
-  function setupRecTracking() {
-    document.querySelectorAll('.rec-card').forEach((link) => {
-      if (link.getAttribute('data-tracking-init')) return;
-      link.setAttribute('data-tracking-init', 'true');
-
-      link.addEventListener('click', () => {
-        if (typeof gtag === 'function') {
-          const name = link.getAttribute('data-rec-name');
-          gtag('event', 'shein_columna', {
-            event_category: `shein_columna`,
-            event_label: name,
-          });
-        }
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupRecTracking);
-  } else {
-    setupRecTracking();
-  }
-</script>
 
 <style>
   .rec-wrap {

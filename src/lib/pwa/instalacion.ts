@@ -49,17 +49,6 @@ function ubicacionActual(): string {
   return 'otra';
 }
 
-// El navegador ofrece instalar la app (beforeinstallprompt). Se mide una sola vez
-// por carga.
-let promptNativoReportado = false;
-function reportarPromptNativo() {
-  if (promptNativoReportado) return;
-  const ctx = agPwa();
-  if (!ctx || !ctx.prompt) return;
-  promptNativoReportado = true;
-  eventoPwa('pwa_native_prompt_available', { ubicacion: ubicacionActual() });
-}
-
 // Apertura de la app instalada: una vez por sesión. Es la única forma de contar
 // las instalaciones que no dejan rastro (en iOS no existe `appinstalled`) y de
 // saber cuánta gente usa la app de verdad, no cuánta pulsó «instalar».
@@ -137,11 +126,6 @@ export function initPwa() {
   window.addEventListener('ag:appinstalled', () => {
     reportarInstalado();
   });
-
-  // El prompt nativo del navegador: se mide cuándo está disponible. También se
-  // comprueba al arrancar por si llegó antes que este módulo.
-  window.addEventListener('ag:beforeinstallprompt', reportarPromptNativo);
-  reportarPromptNativo();
 
   // Cerrar el panel al pulsar la X o el fondo. El aviso NO se oculta: solo se
   // cierra el panel.

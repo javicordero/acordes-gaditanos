@@ -58,7 +58,7 @@ Audita la cobertura: recorre `src/content/acordes` y falla si algún acorde vál
 Comprueba si un acorde existe en el glosario y, si no, sugiere acordes parecidos disponibles (misma fundamental, enarmonía y sufijos similares).
 
 ## Autoscroll
-Implementado en `src/components/page/AcordeCard.astro`. Activado por el botón de play y regulado con 1x-5x. Desde el 11/11/2026 el control vive en la barra de herramientas de la ficha (`BarraHerramientas.astro`), en la fila «Autoplay»: play/pausa y las cinco velocidades en horizontal, siempre visibles. Ya no flota sobre el cifrado, así que el `<pre>` no necesita hueco extra. La clase `.playing` del contenedor sigue cambiando play por pausa; los eventos `autoscroll_start` / `autoscroll_stop` no cambian.
+Implementado en `src/components/page/AcordeCard.astro`. Activado por el botón de play y regulado con 1x-5x. Desde el 11/11/2026 el control vive en la barra de herramientas de la ficha (`BarraHerramientas.astro`), en la fila «Autoplay»: play/pausa y las cinco velocidades en horizontal, siempre visibles. Ya no flota sobre el cifrado, así que el `<pre>` no necesita hueco extra. La clase `.playing` del contenedor sigue cambiando play por pausa.
 
 ## Transportador
 - **En la ficha**: el control vive en `src/components/page/BarraHerramientas.astro`, debajo del anuncio y encima de «Cejilla:» (dos filas: transporte y afinador). Antes estaba dentro de la caja de acordes (`AcordesDeLaPieza.astro`). La lógica no cambió: `AcordeCard.astro` busca los botones dentro de `.acorde-card`, no dentro de la caja, y la sincronización con los mini-diagramas va por el evento `ag:transpose`.

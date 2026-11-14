@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
-const { autor, musicaCount = 0, letraCount = 0, ubicacion = 'index_autores' } = Astro.props;
+const { autor, musicaCount = 0, letraCount = 0 } = Astro.props;
 const headingId = `autor-${autor.autorSlug}`;
 const esImagenLocal = autor.img.startsWith('/');
 const base = `/autor`;
@@ -31,8 +31,6 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
     href={hrefPrincipal}
     class='card-stretch'
     aria-label={`${autor.nombre} - ${tipoLabel}`}
-    data-ga-event='click_autor_card'
-    data-ga-params={JSON.stringify({ autor: autor.autorSlug, ubicacion })}
   >
   </a>
 
@@ -72,9 +70,7 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
             <a
               href={`${base}/musica/${autor.autorSlug}`}
               class='card-link'
-              aria-label={`Músicas de ${autor.nombre}`}
-              data-ga-event='click_autor_card_musicas'
-              data-ga-params={JSON.stringify({ autor: autor.autorSlug, ubicacion })}>
+              aria-label={`Músicas de ${autor.nombre}`}>
               Músicas
             </a>
           )}
@@ -82,9 +78,7 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
             <a
               href={`${base}/letra/${autor.autorSlug}`}
               class='card-link'
-              aria-label={`Letras de ${autor.nombre}`}
-              data-ga-event='click_autor_card_letras'
-              data-ga-params={JSON.stringify({ autor: autor.autorSlug, ubicacion })}>
+              aria-label={`Letras de ${autor.nombre}`}>
               Letras
             </a>
           )}
@@ -227,32 +221,3 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
     }
   }
 </style>
-
-<script>
-  declare const gtag: (...args: unknown[]) => void;
-
-  function setupAutorCardTracking() {
-    const links = document.querySelectorAll<HTMLElement>('[data-ga-event^="click_autor_card"]');
-    links.forEach((link) => {
-      if (link.getAttribute('data-tracking-init')) return;
-      link.setAttribute('data-tracking-init', 'true');
-
-      link.addEventListener('click', () => {
-        if (typeof gtag !== 'function') return;
-        const eventName = link.getAttribute('data-ga-event');
-        if (!eventName) return;
-        const eventParams = JSON.parse(link.getAttribute('data-ga-params') || '{}');
-        gtag('event', eventName, {
-          ...eventParams,
-          page_location: window.location.href,
-        });
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupAutorCardTracking);
-  } else {
-    setupAutorCardTracking();
-  }
-</script>

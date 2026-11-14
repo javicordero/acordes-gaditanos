@@ -768,30 +768,9 @@ const headingId = `acorde-${slug}`;
       } catch (e) {}
     }
 
-    function analitica(evento, params) {
-      try {
-        const w = window as any;
-        if (typeof w.gtag === 'function') {
-          w.gtag('event', evento, {
-            ...(params || {}),
-            event_category: 'acordes',
-            event_label: window.location.pathname,
-          });
-        } else {
-          w.dataLayer = w.dataLayer || [];
-          w.dataLayer.push({ event: evento, ...(params || {}) });
-        }
-      } catch (e) {}
-    }
-
     function cambiarTono(delta) {
       currentTranspose += delta;
       aplicarTransporte();
-
-      analitica('transpose_acorde', {
-        direccion: delta > 0 ? 'subir' : 'bajar',
-        semitonos: currentTranspose,
-      });
     }
 
     function initAutoscroll() {
@@ -853,15 +832,6 @@ const headingId = `acorde-${slug}`;
           speedBtns.forEach(function(b) { b.classList.remove('active'); });
           btn.classList.add('active');
           currentSpeed = parseInt(btn.getAttribute('data-speed'), 10);
-          try {
-            const w = window as any;
-            if (typeof w.gtag === 'function') {
-              w.gtag('event', 'autoscroll_speed', {
-                speed: currentSpeed,
-                page_location: window.location.href,
-              });
-            }
-          } catch (e) {}
           if (isPlaying) {
             restartAutoscroll(speedOptions, playBtn, pauseBtn);
           }
@@ -925,14 +895,6 @@ const headingId = `acorde-${slug}`;
         controlsContainer.classList.add('playing');
       }
       isPlaying = true;
-      try {
-        const w = window as any;
-        if (typeof w.gtag === 'function') {
-          w.gtag('event', 'autoscroll_start', {
-            page_location: window.location.href,
-          });
-        }
-      } catch (e) {}
       lastScrollTime = 0;
       scrollAccumulator = 0;
 
@@ -943,16 +905,6 @@ const headingId = `acorde-${slug}`;
     }
 
     function stopAutoscroll(speedOptions, playBtn, pauseBtn) {
-      if (isPlaying) {
-        try {
-          const w = window as any;
-          if (typeof w.gtag === 'function') {
-            w.gtag('event', 'autoscroll_stop', {
-              page_location: window.location.href,
-            });
-          }
-        } catch (e) {}
-      }
       isPlaying = false;
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
