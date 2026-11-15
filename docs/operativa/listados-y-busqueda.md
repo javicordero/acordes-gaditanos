@@ -8,11 +8,16 @@ Referencia de la organización de las fichas y las páginas de descubrimiento. A
 ## Orden de las cards en los listados
 Todo en `src/lib/orden.ts`, con dos comparadores que comparten las piezas (`compararTipo`, `compararPrioridad`, `compararCoplas`, `compararAgrupacion`, `compararResto`).
 
+**Carga progresiva**: `/novedades`, `/carnaval/[year]` y las páginas de autor de música y letra renderizan las primeras 24 cards y cargan el resto de 24 en 24 al acercarse al final, o con «Cargar más». `CargaProgresiva.astro` descarga una sola vez `/datos-listado/<listado>.json`, generado en el build con el mismo orden que la página; si se cambia un orden hay que actualizar ambos. Ajusta las cards añadidas mediante `cards:actualizadas`. Sin JavaScript se enlaza a `/lista`; los buscadores no deben depender del scroll para descubrir el resto de las fichas. Novedades ya no tiene límite de 48.
+
+En esas rejillas `CardsGroup` desactiva `content-visibility` de las cards: al medir los títulos, las alturas estimadas cambiaban y provocaban saltos de scroll. Solo se crean las cards ya cargadas, aunque al seguir bajando aumenta el trabajo de maquetación.
+
 **Prioridad por autor destacado**: la agrupación (por `agrupacionSlug`) de un autor del listado de `/autores` va delante, en el orden de su campo `order`, usando la mejor posición entre sus autores de música y letra. Las agrupaciones sin autor del listado quedan detrás.
 
 **Prioridad por coplas** (`prioridadPorCoplas` + `contarCoplasAutores`): dentro de lo que queda, primero las agrupaciones de los autores más prolíficos, según las coplas distintas que tienen en **todo el cancionero** (una ficha cuenta una vez aunque el autor firme música y letra). De cada agrupación se usa su autor con más coplas. Es el escalón que va justo después de los destacados, antes de la agrupación A-Z.
 
 - `/autor/musica` y `/autor/letra` (`ordenarAcordesAutor`, `compararFichas`): **año ↓** → agrupación A-Z → tipo de pieza → `date` ↓ → pieza A-Z → slug A-Z. No reciben prioridad: todas las cards son del mismo autor.
+- `/agrupacion/[agrupacionSlug]`: usa el mismo orden que autor, con año más reciente primero y las piezas ordenadas por tipo dentro de cada año.
 - `/carnaval/[year]` y `/lista` (`ordenarAcordesYear`, `compararFichasYear`): **autor destacado** → **coplas del autor más prolífico ↓** → agrupación A-Z → tipo de pieza → `date` ↓ → pieza A-Z → slug A-Z. `/lista` lo aplica dentro de cada año (los años siguen de más reciente a más antiguo).
 
 **Tipo de pieza** (`ORDEN_PIEZAS`): popurrí, final de popurrí, cuarteta, estribillo, pasodoble, tango, presentación. Se compara por prefijo, así encajan «Final de popurrí/popurri/popurí», «Presentación Original» o «Pasodoble Inédito»; lo que no case va al final por orden alfabético. Las equivalencias puntuales van en `EQUIVALENCIAS_PIEZAS`: el `Credo` y el `Testamento` cuentan como cuarteta.

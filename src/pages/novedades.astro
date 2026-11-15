@@ -4,8 +4,9 @@ import Layout from '../layouts/Layout.astro';
 import CardsGroup from '../components/page/CardsGroup.astro';
 import AnuncioSobrePagina from '../components/ads/AnuncioSobrePagina.astro';
 import { parseSpanishDate } from '../lib/index';
+import CargaProgresiva from '../components/page/CargaProgresiva.astro';
 
-const MAX_NOVEDADES = 48;
+const TAMANO_LOTE = 24;
 
 let acordes = await getCollection('acordes');
 
@@ -15,7 +16,7 @@ acordes = acordes.sort(
 );
 
 // Los últimos acordes subidos
-const ultimos = acordes.slice(0, MAX_NOVEDADES);
+const ultimos = acordes.slice(0, TAMANO_LOTE);
 
 const title = 'Novedades - Acordes del Carnaval de Cádiz';
 const description =
@@ -37,9 +38,10 @@ const itemListSchema = {
   <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
   <div class='main-container'>
     <section>
-      <CardsGroup year='Novedades' acordes={ultimos} headingAs='h1'>
+      <CardsGroup year='Novedades' acordes={ultimos} headingAs='h1' progresivo={acordes.length > TAMANO_LOTE}>
         <AnuncioSobrePagina />
       </CardsGroup>
+      {acordes.length > TAMANO_LOTE && <CargaProgresiva listado='novedades' total={acordes.length} />}
     </section>
   </div>
 </Layout>

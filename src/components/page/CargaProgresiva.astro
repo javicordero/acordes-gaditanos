@@ -1,0 +1,186 @@
+---
+interface Props {
+  listado: string;
+  total: number;
+}
+const { listado, total } = Astro.props;
+---
+
+<div class='carga-progresiva container-layout' data-listado={listado} data-total={total}>
+  <p class='carga-estado' role='status' aria-live='polite'></p>
+  <button type='button' hidden>Cargar más</button>
+  <noscript><p>Para ver el resto de las coplas, visita la <a href='/lista/'>lista completa</a>.</p></noscript>
+</div>
+
+<style>
+  .carga-progresiva {
+    text-align: center;
+    margin-top: 24px;
+  }
+  .carga-estado:empty { display: none; }
+  button {
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 2px solid var(--primary-color);
+    background: var(--primary-contrast-color);
+    color: var(--on-bright-color);
+    font: inherit;
+    font-weight: 700;
+    box-shadow: 4px 4px 0 var(--primary-color);
+  }
+  button:disabled { opacity: .65; cursor: wait; }
+</style>
+
+<script>
+  import type { DatosTarjeta } from '../../lib/tarjeta';
+
+  const LOTE = 24;
+
+  function iniciar() {
+    const control = document.querySelector<HTMLElement>('.carga-progresiva');
+    const grid = control?.parentElement?.querySelector<HTMLElement>('.acordes-grid');
+    const prototipo = grid?.querySelector<HTMLElement>('.card');
+    const boton = control?.querySelector<HTMLButtonElement>('button');
+    const estado = control?.querySelector<HTMLElement>('.carga-estado');
+    if (!control || !grid || !prototipo || !boton || !estado || control.dataset.iniciado) return;
+    control.dataset.iniciado = 'true';
+
+    const lista = control.dataset.listado!;
+    const clave = `listado-progresivo:${location.pathname}`;
+    let tarjetas: DatosTarjeta[] | null = null;
+    let cargadas = 0;
+    let ocupado = false;
+    let observador: IntersectionObserver | null = null;
+    boton.hidden = false;
+
+    function crearCard(datos: DatosTarjeta): HTMLElement {
+      const card = prototipo!.cloneNode(true) as HTMLElement;
+      const campo = (nombre: string) => card.querySelector<HTMLElement>(`[data-campo="${nombre}"]`);
+      const enlace = campo('ancla') as HTMLAnchorElement;
+      enlace.href = `/acordes/${datos.slug}/`;
+      enlace.setAttribute('aria-label', datos.nombreCompleto);
+      const imagen = card.querySelector<HTMLImageElement>('.card-image')!;
+      imagen.src = datos.img;
+      imagen.alt = `${datos.nombreCompleto} - Carnaval de Cádiz ${datos.year}`;
+      imagen.removeAttribute('srcset');
+      imagen.removeAttribute('data-astro-transition-scope');
+      imagen.style.setProperty('view-transition-name', `img-${datos.slug}`);
+      const pieza = campo('pieza')!;
+      pieza.textContent = datos.piezaDisplay;
+      pieza.dataset.piezaType = datos.piezaTipo;
+      let letra = campo('letra');
+      if (datos.letraTitulo) {
+        if (!letra) {
+          letra = pieza.cloneNode(false) as HTMLElement;
+          letra.className = 'badge-letra';
+          letra.dataset.campo = 'letra';
+          letra.removeAttribute('data-pieza-type');
+          pieza.after(letra);
+        }
+        letra.textContent = datos.letraTitulo;
+        letra.title = `Letra: ${datos.letraTitulo}`;
+      } else {
+        letra?.remove();
+      }
+      campo('year')!.textContent = datos.year;
+      const titulo = campo('titulo')!;
+      titulo.textContent = datos.agrupacion;
+      titulo.id = `acordes-${datos.slug}`;
+      titulo.style.minHeight = '';
+      titulo.removeAttribute('data-astro-transition-scope');
+      titulo.style.setProperty('view-transition-name', `titulo-${datos.slug}`);
+      const autores = campo('autores')!;
+      const marcas = Array.from(autores.attributes).filter((a) => a.name.startsWith('data-astro-cid-'));
+      autores.replaceChildren(...datos.autores.map((autor) => {
+        const nodo = document.createElement(autor.href ? 'a' : 'span');
+        marcas.forEach(({ name }) => nodo.setAttribute(name, ''));
+        nodo.textContent = autor.nombre;
+        nodo.title = autor.nombre;
+        if (nodo instanceof HTMLAnchorElement && autor.href) {
+          nodo.href = autor.href;
+          nodo.rel = 'noopener';
+        }
+        return nodo;
+      }));
+      const bloqueAutores = card.querySelector<HTMLElement>('.card-authors');
+      if (bloqueAutores) bloqueAutores.style.minHeight = '';
+      card.setAttribute('aria-labelledby', titulo.id);
+      return card;
+    }
+
+    async function cargar(cantidad = LOTE) {
+      if (ocupado) return false;
+      ocupado = true;
+      boton!.disabled = true;
+      estado!.textContent = 'Cargando más coplas…';
+      try {
+        if (!tarjetas) {
+          const respuesta = await fetch(`/datos-listado/${encodeURIComponent(lista)}.json`);
+          if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
+          tarjetas = await respuesta.json() as DatosTarjeta[];
+        }
+        const nuevas = tarjetas.slice(cargadas, cargadas + cantidad);
+        const fragmento = document.createDocumentFragment();
+        nuevas.forEach((tarjeta) => fragmento.append(crearCard(tarjeta)));
+        grid!.append(fragmento);
+        cargadas += nuevas.length;
+        document.dispatchEvent(new CustomEvent('cards:actualizadas', { detail: grid }));
+        window.dispatchEvent(new Event('resize'));
+        estado!.textContent = '';
+        if (cargadas >= tarjetas.length) {
+          observador?.disconnect();
+          boton!.hidden = true;
+        }
+        return true;
+      } catch (error) {
+        console.error('No se pudieron cargar más coplas', error);
+        estado!.textContent = 'No se han podido cargar más coplas. Vuelve a intentarlo.';
+        observador?.disconnect();
+        boton!.textContent = 'Reintentar';
+        return false;
+      } finally {
+        ocupado = false;
+        boton!.disabled = false;
+      }
+    }
+
+    boton.addEventListener('click', () => { void cargar(); });
+    grid.addEventListener('click', (evento) => {
+      const enlace = (evento.target as Element).closest('a[href^="/acordes/"]');
+      if (!enlace) return;
+      try {
+        sessionStorage.setItem(clave, JSON.stringify({ cargadas, scroll: window.scrollY }));
+      } catch { /* La navegación sigue funcionando sin almacenamiento. */ }
+    });
+
+    async function preparar() {
+      try {
+        const navegacion = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+        const guardado = sessionStorage.getItem(clave);
+        if (guardado && navegacion?.type === 'back_forward') {
+          const anterior = JSON.parse(guardado);
+          if (anterior.cargadas > 0 && await cargar(anterior.cargadas)) {
+            requestAnimationFrame(() => window.scrollTo(0, anterior.scroll));
+          }
+        }
+        sessionStorage.removeItem(clave);
+      } catch { /* Sin restauración si el almacenamiento no está disponible. */ }
+      if (!boton!.hidden && 'IntersectionObserver' in window) {
+        observador = new IntersectionObserver((entradas) => {
+          if (!entradas.some((entrada) => entrada.isIntersecting) || ocupado) return;
+          void cargar().then((correcto) => {
+            if (correcto && !boton!.hidden) {
+              observador?.unobserve(control!);
+              observador?.observe(control!);
+            }
+          });
+        }, { rootMargin: '300px 0px' });
+        observador.observe(control!);
+      }
+    }
+    void preparar();
+  }
+
+  iniciar();
+  document.addEventListener('astro:page-load', iniciar);
+</script>

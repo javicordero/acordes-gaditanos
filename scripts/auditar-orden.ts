@@ -16,6 +16,7 @@ import { normalizeSlug, normalizeText } from '../src/lib/text.ts';
 import { contarCoplasAutores } from '../src/lib/autores.ts';
 import {
   ordenarAcordesYear,
+  ordenarAcordesAutor,
   prioridadDeAgrupaciones,
   prioridadDeAutores,
   prioridadPorCoplas,
@@ -122,6 +123,14 @@ comprobar(
   'misma agrupación → pieza → fecha ↓',
   ordenarAcordesYear([mismaC, mismaB, mismaA], prioridad, coplas).map((f) => f.slug),
   ['g', 'h', 'i'],
+);
+
+const anterior = ficha('anterior', 'Los Chabolis', 'Popurrí', '01/01/2025');
+anterior.data.year = '2023';
+comprobar(
+  'agrupación y autor: año ↓ → pieza → fecha ↓',
+  ordenarAcordesAutor([anterior, mismaC, mismaB, mismaA]).map((f) => f.slug),
+  ['g', 'h', 'i', 'anterior'],
 );
 
 const copia = [destacados, prolífico];

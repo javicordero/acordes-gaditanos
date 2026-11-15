@@ -8,6 +8,7 @@ import Banner320X50 from '../../../components/ads/Banner320x50.astro';
 import Banner468X60 from '../../../components/ads/Banner468x60.astro';
 import AnuncioSobrePagina from '../../../components/ads/AnuncioSobrePagina.astro';
 import { ordenarAcordesAutor } from '../../../lib/index';
+import CargaProgresiva from '../../../components/page/CargaProgresiva.astro';
 
 export async function getStaticPaths() {
   const acordes = await getCollection('acordes');
@@ -48,7 +49,7 @@ const description = `Todos los acordes con letra de ${authorName} del Carnaval d
 const itemListSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: acordesOrdenados.map((a, i) => ({
+  itemListElement: acordesOrdenados.slice(0, 24).map((a, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: `${a.data.pieza} - ${a.data.agrupacion}`,
@@ -64,9 +65,10 @@ const itemListSchema = {
     <section>
       <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
       <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
-      <CardsGroup year={`${authorName}`} acordes={acordesOrdenados} subtitle='Letra' headingAs='h1' headingTransition={`autor-${Astro.params.autorSlug}`}>
+      <CardsGroup year={`${authorName}`} acordes={acordesOrdenados.slice(0, 24)} subtitle='Letra' headingAs='h1' headingTransition={`autor-${Astro.params.autorSlug}`} progresivo={acordesOrdenados.length > 24}>
         <AnuncioSobrePagina />
       </CardsGroup>
+      {acordesOrdenados.length > 24 && <CargaProgresiva listado={`autor-letra-${Astro.params.autorSlug}`} total={acordesOrdenados.length} />}
       <Banner320X50 adKey='dfd3df20af74dd22bc5fae2ddf874fa4' />
     </section>
   </div>

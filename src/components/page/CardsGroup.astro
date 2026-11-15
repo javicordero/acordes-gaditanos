@@ -14,9 +14,10 @@ interface Props {
   subtitle?: string;
   headingAs?: any;
   headingTransition?: string | null;
+  progresivo?: boolean;
 }
 
-const { year, acordes, subtitle, headingAs = 'h2', headingTransition = null } = Astro.props;
+const { year, acordes, subtitle, headingAs = 'h2', headingTransition = null, progresivo = false } = Astro.props;
 
 // Generar ID estable para accesibilidad
 const headingId = `year-${year}`;
@@ -39,7 +40,7 @@ const Heading = headingAs;
 
     <slot />
 
-    <div class='acordes-grid' role='region' aria-labelledby={headingId}>
+    <div class:list={['acordes-grid', { 'acordes-grid--progresivo': progresivo }]} role='region' aria-labelledby={headingId}>
       {
         acordes.map((acorde, idx) => {
           const { slug, data } = acorde;
@@ -130,6 +131,13 @@ const Heading = headingAs;
   /* Solo mientras se miden los títulos: content-visibility deja sin maquetar
      las cards que están fuera del viewport y no se podrían medir. */
   .acordes-grid.midiendo-titulos :global(.card) {
+    content-visibility: visible;
+  }
+
+  /* En un listado que crece, las alturas estimadas de content-visibility
+     cambian al medir el grid y el anclaje de scroll salta. Las cards solo se
+     crean por tandas, así que aquí se usan siempre sus alturas reales. */
+  .acordes-grid--progresivo :global(.card) {
     content-visibility: visible;
   }
 
@@ -282,6 +290,11 @@ const Heading = headingAs;
   function ajustarTodosLosGrids() {
     document.querySelectorAll<HTMLElement>('.acordes-grid').forEach(ajustarGrid);
   }
+
+  document.addEventListener('cards:actualizadas', (evento) => {
+    const grid = (evento as CustomEvent<HTMLElement>).detail;
+    if (grid?.isConnected) ajustarGrid(grid);
+  });
 
   observarTodosLosGrids();
 
