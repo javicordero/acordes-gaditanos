@@ -21,7 +21,7 @@ Yo quiero que esta tribu tenga un alcalde
 Un hijo de esta tribu que la defienda
 <a>Re7</a>                          <a>Sol</a>
 Que siglas del partido de donde venga
-<a>Do</a>                <a>Lam7</a>                         <a>Si7</a>
+<a>Do</a>                         <a>Lam7</a>                <a>Si7</a>
 No le importe más que la tribu que es más importante
                                     <a>Mim</a>
 Yo quiero que esta tribu tenga un alcalde
@@ -35,7 +35,7 @@ Y que sea más valiente que cien mil cobardes
 Yo quiero que esta tribu tenga sea como sea
 
 Un alcalde que sienta su tribu como
-          <a>Re</a>
+             <a>Re</a>
 Fermín Salvochea
                                           <a>Do</a>
 Un alcalde varón o mujer tribu nunca importarle
@@ -63,7 +63,7 @@ Un alcalde que hasta el nazareno
 tenga que agarrarse más fuerte a la cruz
      <a>La</a>                      <a>Mi</a>
 Un alcalde que si tribu lo votáis
-    <a>La</a>
+        <a>La</a>
 cuando los jefes de las tribus enemigas
                   <a>Si7</a>
 abran fuego sea capaz
