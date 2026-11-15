@@ -4,16 +4,15 @@ agrupacion: Los Americanos
 year: 2003
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
-letraTitulo: Yo quiero que esta tribu tenga un alcalde
+letraTitulo: Yo quiero que esta tribu
 modalidad: Comparsa
 img: 'https://i.ytimg.com/vi/qEdKOfNiu0I/maxresdefault.jpg'
 cejilla: 2
-video: https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm
+video: 'https://www.youtube.com/embed/o9MPUfX3bCU?si=VSVfJK6xhFSNRkDm'
 cover: null
 autorCover: null
-date: "31/10/2026"
-
-fraseClave: Yo quiero que esta tribu
+date: "16/02/2027"
+fraseClave: Yo quiero que esta tribu tenga un alcalde
 ---
 <pre>
 <a>Mim</a>                <a>Si7</a>              <a>Mim</a>
@@ -34,6 +33,7 @@ Que tenga más cojones que un presidente
 Y que sea más valiente que cien mil cobardes
 <a>Mim</a>
 Yo quiero que esta tribu tenga sea como sea
+
 Un alcalde que sienta su tribu como
           <a>Re</a>
 Fermín Salvochea
@@ -51,20 +51,22 @@ Un alcalde que estreche la mano de los gaditanos
 toitos los días
      <a>Si7</a>             <a>Fa#m</a>                 <a>Si7</a>
 Un alcalde solo para tribu y que no la comparta
-    <a>Mi</a>
+             <a>Mi</a>
 con dos parlamentos
-                                    <a>Mi7</a>
-Un alcalde sin bastón de mando para que hasta
-           <a>La</a>
-los indios los llamen de tu
-                                            <a>Fa#7</a>
-Un alcalde que hasta el nazareno tenga que agarrarse
-             <a>Si7</a>
-más fuerte a la cruz
-     <a>La</a>                      <a>Mi</a>       <a>La</a>
-Un alcalde que si tribu lo votáis cuando los jefes
-                                         <a>Si7</a>
-de las tribus enemigas abran fuego sea capaz
+
+Un alcalde sin bastón de mando
+                 <a>Mi7</a>                  <a>La</a>
+pa que hasta los indios los llamen de tu
+
+Un alcalde que hasta el nazareno
+             <a>Fa#7</a>                   <a>Si7</a>
+tenga que agarrarse más fuerte a la cruz
+     <a>La</a>                      <a>Mi</a>
+Un alcalde que si tribu lo votáis
+    <a>La</a>
+cuando los jefes de las tribus enemigas
+                  <a>Si7</a>
+abran fuego sea capaz
                    <a>Mi</a>
 De dar la vida por Cádiz
 </pre>
