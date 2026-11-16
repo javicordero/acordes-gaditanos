@@ -2,12 +2,13 @@
 pieza: Pasodoble
 agrupacion: Los comparsistas se la dan de artistas
 year: 2009
+modalidad: Comparsa
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 letraTitulo: Cuando pienso en un genio
 img: 'https://static.grupojoly.com/clip/12647677-415e-4141-a63f-973fd00c9fa1_source-aspect-ratio_1600w_0.jpg'
 cejilla: 5
-date: "31/10/2026"
+date: "28/02/2027"
 video: 'https://www.youtube.com/embed/cqX97SFjeXA?si=Py5fAc0w0gQAheGQ'
 fraseClave: Cuando pienso en un genio
 ---
@@ -60,8 +61,10 @@ Ojala rodeado enfermo y cansado
 Tendré que morir
 <a>Fa#7</a>       <a>Sim</a>                        <a>La</a>
 La cama ha sido como el vientre de la tierra
-     <a>Sol</a>                                            <a>Fa#7</a>
-Allí duermen los que pierden igual que los ganan la guerra
+     <a>Sol</a>
+Allí duermen los que pierden
+                       <a>Fa#7</a>
+igual que los ganan la guerra
        <a>Sim</a>                       <a>La</a>
 Y la almohada que le pusieron un día
 <a>Sol</a>                                      <a>Fa#7</a>
@@ -70,7 +73,7 @@ Es la única que guarda todas las penitas mías
 Es la única que guarda todas las penitas mías
 <a>Mim</a>
 En la cama recorrí el cuerpo de una dama hice el amor
-                <a>Sim</a> <a>Fa#7</a> <a>Sim</a>
+    <a>Sim</a>        <a>Fa#7</a>      <a>Sim</a>
 con ganas y sin ganas también
 <a>Mim</a>              <a>Fa#7</a>
 Me cure de cosas malas
@@ -78,10 +81,10 @@ Me cure de cosas malas
 Me saque las balas del odio y la sien
 <a>Mim</a>             <a>Fa#7</a>             <a>Sim</a>
 Y en la cama no sé si soñando despierto
-                <a>Sol</a>              <a>Fa#7</a>
+                   <a>Sol</a>              <a>Fa#7</a>
 He dicho tantas mentiras y tanta verdad
-                    <a>Sol</a>                    <a>Fa#7</a>
+                     <a>Sol</a>                    <a>Fa#7</a>
 Que ya me da hasta igual porque la cama ha sido
                 <a>Sol</a>  <a>Fa#7</a>       <a>Sim</a>
-Donde se han cumplió toitos mis sueños
+Donde se han cumplío toitos mis sueños
 </pre>
