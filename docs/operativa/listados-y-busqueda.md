@@ -3,7 +3,7 @@
 Referencia de la organización de las fichas y las páginas de descubrimiento. Antes de cambiar su comportamiento, confirma en el código que los detalles siguen vigentes.
 
 ## Autores
-`AutorCardsGroup` pinta el grid de autores (2 columnas en desktop, 1 en móvil). Cada `AutorCard` enlaza a la página principal del autor según `type` y añade chips a `/autor/musica/{slug}` y `/autor/letra/{slug}` cuando tiene créditos, calculados en build con `contarCreditosAutores` (`src/lib/autores.ts`). La home muestra los 6 primeros por `order` (5 en móvil) y `/autores` los muestra todos. Toda la card (imagen y cuerpo) usa `--primary-contrast-color`; el título y la línea de los chips van en `--on-bright-color` y los chips usan fondo `--on-bright-color` con texto `--primary-contrast-color` (sin cambio al hover). La sombra es `--on-bright-color` en reposo y en hover (solo crece y la card se desplaza).
+`AutorCardsGroup` pinta el grid de autores (2 columnas también en móvil). Cada `AutorCard` es una ficha de perfil con retrato cuadrado enmarcado y un pequeño margen, nombre centrado y accesos a `/autor/musica/{slug}` y `/autor/letra/{slug}` cuando tiene créditos, calculados en build con `contarCreditosAutores` (`src/lib/autores.ts`). Algunos nombres se abrevian en las cards solo en móvil; en escritorio se muestran completos. La card enlaza además a la página principal del autor según `type`. La home muestra los 6 primeros por `order` y `/autores` los muestra todos. El fondo es `--primary-contrast-color`, con texto y borde `--on-bright-color`; los accesos usan los colores invertidos. La sombra oscura crece al pasar el cursor en escritorio.
 
 ## Orden de las cards en los listados
 Todo en `src/lib/orden.ts`, con dos comparadores que comparten las piezas (`compararTipo`, `compararPrioridad`, `compararCoplas`, `compararAgrupacion`, `compararResto`).
@@ -55,7 +55,7 @@ Sitemap: entran solas (el `filter` de `astro.config.mjs` es una lista negra); no
 | `/lista-otraweb` | `pages/lista-otraweb.astro` — listado local de `otraweb` (no versionada; `noindex`, fuera del sitemap) |
 | `/autor/musica/[autorSlug]` | `pages/autor/musica/[autorSlug].astro` |
 | `/autor/letra/[autorSlug]` | `pages/autor/letra/[autorSlug].astro` |
-| `/autores` | `pages/autores.astro` — listado de todos los autores (grid 2/1) |
+| `/autores` | `pages/autores.astro` — listado de todos los autores (grid de 2 columnas) |
 | `/agrupacion/[agrupacionSlug]` | `pages/agrupacion/[agrupacionSlug].astro` |
 | `/carnaval/[year]` | `pages/carnaval/[year].astro` |
 | `/modalidad/[modalidad]` | `pages/modalidad/[modalidad].astro` — coplas de una modalidad |

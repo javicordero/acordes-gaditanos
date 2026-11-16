@@ -3,6 +3,14 @@ import { Image } from 'astro:assets';
 
 const { autor, musicaCount = 0, letraCount = 0 } = Astro.props;
 const headingId = `autor-${autor.autorSlug}`;
+const nombresCard: Record<string, string> = {
+  'juan-carlos-aragon': 'Juan Carlos',
+  'antonio-martinez-ares': 'Martínez Ares',
+  'jesus-bienvenido': 'Bienvenido',
+  'jonathan-perez-ginel': 'El Jona',
+  'manolin-santander': 'Manolín',
+};
+const nombreCard = nombresCard[autor.autorSlug] ?? autor.nombre;
 const esImagenLocal = autor.img.startsWith('/');
 const base = `/autor`;
 
@@ -61,7 +69,10 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
   </figure>
 
   <section class='card-body'>
-    <h3 id={headingId} class='card-title' transition:name={`autor-${autor.autorSlug}`}>{autor.nombre}</h3>
+    <h3 id={headingId} class='card-title' transition:name={`autor-${autor.autorSlug}`}>
+      <span class='nombre-completo'>{autor.nombre}</span>
+      <span class='nombre-corto'>{nombreCard}</span>
+    </h3>
 
     {
       (tieneMusica || tieneLetra) && (
@@ -71,7 +82,7 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
               href={`${base}/musica/${autor.autorSlug}`}
               class='card-link'
               aria-label={`Músicas de ${autor.nombre}`}>
-              Músicas
+              <span>Músicas</span>
             </a>
           )}
           {tieneLetra && (
@@ -79,7 +90,7 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
               href={`${base}/letra/${autor.autorSlug}`}
               class='card-link'
               aria-label={`Letras de ${autor.nombre}`}>
-              Letras
+              <span>Letras</span>
             </a>
           )}
         </div>
@@ -90,26 +101,24 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
 
 <style>
   .card {
-    /* Variante editorial: fondo ámbar fijo y tinta negra en ambos temas */
     background-color: var(--primary-contrast-color);
     border: 2px solid var(--on-bright-color);
     border-radius: 0;
-    overflow: hidden;
-    box-shadow: 6px 6px 0 0 var(--on-bright-color);
+    box-shadow: 3px 3px 0 0 var(--on-bright-color);
     position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding: 12px 12px 0;
     transition:
       transform 0.15s ease,
       box-shadow 0.15s ease;
     content-visibility: auto;
-    contain-intrinsic-size: 460px 420px;
-    will-change: transform;
+    contain-intrinsic-size: 300px 320px;
 
     &:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 10px 10px 0 0 var(--on-bright-color);
+      transform: translateY(-3px);
+      box-shadow: 3px 6px 0 0 var(--on-bright-color);
       z-index: 10;
     }
   }
@@ -128,46 +137,54 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
 
   .card-media {
     position: relative;
-    margin: 0;
+    margin: 0 auto;
+    width: 90%;
+    flex: none;
+    box-shadow: 4px 4px 0 var(--on-bright-color);
   }
 
   .card-image {
     width: 100%;
     height: auto;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 1;
     object-fit: cover;
     object-position: top;
     display: block;
-    border-bottom: 2px solid var(--on-bright-color);
+    border: 2px solid var(--on-bright-color);
+    border-radius: 0;
   }
 
   .card-body {
-    padding: 10px 12px 10px;
+    padding: 14px 4px 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background-color: var(--primary-contrast-color);
-    margin-top: auto;
+    flex: 1;
   }
 
   .card-title {
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.2rem;
-    font-weight: 800;
+    font-size: 1.05rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-align: center;
     margin: 0;
     padding: 0;
     color: var(--on-bright-color);
     line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .card-title .nombre-corto {
+    display: none;
   }
 
   .card-links {
     display: flex;
     gap: 8px;
+    margin-top: auto;
     border-top: 2px solid var(--on-bright-color);
-    padding-top: 10px;
-    margin-top: 2px;
+    padding-top: 8px;
     position: relative;
     z-index: 2;
   }
@@ -177,15 +194,17 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 4px;
     min-height: 36px;
     padding: 6px 10px;
-    border: 2px solid var(--on-bright-color);
+    border: 1px solid var(--on-bright-color);
+    border-radius: 0;
     background-color: var(--on-bright-color);
     color: var(--primary-contrast-color);
     font-family: 'Roboto Mono', monospace;
     font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 0.6px;
+    letter-spacing: 0;
     text-transform: uppercase;
     text-decoration: none;
     transition:
@@ -198,26 +217,50 @@ const hrefPrincipal = `${base}/${tipoPrincipal}/${autor.autorSlug}`;
     }
   }
 
+  .card-link span {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+
   @media (max-width: 640px) {
     .card {
-      box-shadow: 4px 4px 0 0 var(--on-bright-color);
+      padding: 8px 8px 0;
 
       &:hover {
         transform: none;
-        box-shadow: 4px 4px 0 0 var(--on-bright-color);
+        box-shadow: 3px 3px 0 0 var(--on-bright-color);
       }
     }
 
-    .card-image {
-      aspect-ratio: 16 / 9;
-    }
-
     .card-body {
-      padding: 10px 10px 10px;
+      padding: 10px 0;
     }
 
     .card-title {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
     }
+
+    .card-title .nombre-completo {
+      display: none;
+    }
+
+    .card-title .nombre-corto {
+      display: inline;
+    }
+
+    .card-links {
+      gap: 4px;
+    }
+
+    .card-link {
+      min-width: 0;
+      min-height: 34px;
+      padding: 4px 2px;
+      gap: 2px;
+      font-size: clamp(0.7rem, 3.2vw, 0.85rem);
+      letter-spacing: 0;
+    }
+
   }
 </style>

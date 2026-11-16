@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/page/Breadcrumb.astro';
 import AutorCardsGroup from '../components/page/AutorCardsGroup.astro';
 import { contarCreditosAutores } from '../lib/autores';
 
@@ -48,6 +49,7 @@ const itemListSchema = {
 
 <Layout title={title} description={description}>
   <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
+  <Breadcrumb current='Autores destacados' />
   <div class='main-container'>
     <section>
       <AutorCardsGroup

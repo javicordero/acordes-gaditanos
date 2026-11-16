@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import Breadcrumb from '../components/page/Breadcrumb.astro';
 import CardsGroup from '../components/page/CardsGroup.astro';
 import AnuncioSobrePagina from '../components/ads/AnuncioSobrePagina.astro';
 import { parseSpanishDate } from '../lib/index';
@@ -36,6 +37,7 @@ const itemListSchema = {
 
 <Layout title={title} description={description}>
   <script type='application/ld+json' set:html={JSON.stringify(itemListSchema)} />
+  <Breadcrumb current='Novedades' />
   <div class='main-container'>
     <section>
       <CardsGroup year='Novedades' acordes={ultimos} headingAs='h1' progresivo={acordes.length > TAMANO_LOTE}>
