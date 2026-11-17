@@ -41,11 +41,11 @@ Tentación de mujeres y niños
 De ricos y pobres
            <a>Sim</a>
 La cama ha sido el santo sacramento
-      <a>La</a>                                  <a>Sol</a>
+      <a>La</a>                           <a>Sol</a>
 Del momento más grande que yo he vivido, amado
                            <a>Fa#7</a>
 y compartido con todos los hombres
-              <a>Sim</a>                 <a>La</a>
+              <a>Sim</a>                    <a>La</a>
 Quien la invento no dijo ni su nombre
 <a>Re</a>
 Y en una cama cualquiera estuvo a mi vera
