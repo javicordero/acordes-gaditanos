@@ -1,15 +1,14 @@
 ---
 pieza: Pasodoble
-agrupacion: La banda del capitán veneno
+agrupacion: La banda del Capitán Veneno
 year: 2008
 musica: Juan Carlos Aragón
 letra: Juan Carlos Aragón
 letraTitulo: La soledad es testigo
-img: https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg
+img: 'https://static.grupojoly.com/clip/954303f7-3add-4d72-b724-44a67944ef6d_source-aspect-ratio_1600w_0.jpg'
 cejilla: 5
-date: "31/10/2026"
-video: https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8
-
+date: "01/03/2027"
+video: 'https://www.youtube.com/embed/TF3vtXIDWUc?si=Lf-ckSk32XaQTAu8'
 fraseClave: La soledad es testigo
 ---
 <pre>
@@ -17,14 +16,14 @@ fraseClave: La soledad es testigo
 La soledad es testigo de mis castigos y glorias
                 <a>Re</a>                <a>Do</a>
 Primera de mis amigos la llevo conmigo
-      <a>Si7</a>
+             <a>Si7</a>
 Igual que una mas
                                             <a>Mim</a>
 La soledad me hace libre la soledad no me engaña
-                   <a>Si7</a>           <a>Lam</a>
-Cuando el mundo se va soledad es la última
-    <a>Si7</a>    <a>Mim</a> <a>Si7</a> <a>Mim</a>
-que me acompaña
+                   <a>Si7</a>
+Cuando el mundo se va
+              <a>Lam</a>        <a>Si7</a>    <a>Mim</a>  <a>Si7</a> <a>Mim</a>
+soledad es la última que me acompaña
                  <a>Lam7</a>
 Y es la única hermana
                                   <a>Re7</a>
@@ -37,18 +36,14 @@ Solo ante mi ventana
 La que llena mi cama de amores y niños
     <a>Lam7</a>     <a>Si7</a>
 De abuelas y padres
-<a>Mim</a>
-Ay mi soledad
-                     <a>Re</a>
-A nadie nunca como a ti le he sido fiel
+<a>Mim</a>                                <a>Re</a>
+Ay mi soledad A nadie nunca como a ti le he sido fiel
                        <a>Do</a>
 A lo mejor te llevo un día ante el altar
                              <a>Si7</a>
 Porque en verdad quiero a tu vera envejecer
-<a>Mim</a>
-Ay mi soledad
-                     <a>Re</a>
-Hemos cruzado tantas ciénagas los dos
+<a>Mim</a>                                <a>Re</a>
+Ay mi soledad Hemos cruzado tantas ciénagas los dos
                        <a>Mim</a>
 Tantos secretos que no podemos contar
 <a>Lam7</a>     <a>Do</a>           <a>Si7</a>
@@ -61,10 +56,12 @@ Subes y me das la mano
 Y así los dos caminamos juntos por la carretera
 <a>Mi7</a>           <a>Lam7</a>               <a>Re7</a>
 Ay soledad pa mi que yo soy un varón
-                      <a>Sol</a>        <a>Si7</a>       <a>Mim</a>
+                 <a>Sol</a>           <a>Si7</a>         <a>Mim</a>
 Y tu silueta de mujer tiene el deseo embriagador
-                           <a>Lam7</a>      <a>Do</a>           <a>Si7</a>
-De otras mujeres que ya no me inspiraran estas canciones
+                        <a>Lam7</a>
+De otras mujeres que ya no
+        <a>Do</a>             <a>Si7</a>
+me inspiraran estas canciones
                 <a>Lam</a>               <a>Do</a>
 Aunque muera contigo por dios soledad
              <a>Si7</a>                <a>Mim</a>
