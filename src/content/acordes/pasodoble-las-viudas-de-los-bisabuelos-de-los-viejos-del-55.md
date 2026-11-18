@@ -6,7 +6,7 @@ musica: El Noly
 letra: Paco Cárdenas, Ramón Peñalver
 modalidad: Chirigota
 cejilla: 4
-img: https://i.ytimg.com/vi/TClN-KL_d4A/sddefault.jpg
+img: 'https://i.ytimg.com/vi/TClN-KL_d4A/sddefault.jpg'
 date: "11/05/2026"
 video: 'https://www.youtube.com/embed/KHVzUL0nSqY'
 fraseClave: Vuelve ya el tres por cuatro el tres por cuatro bueno
@@ -24,10 +24,10 @@ que se entregó por Cai y le dieron por saco.
 Ayyyyyyy, vuelve el chíntataratachín
       <a>Re7</a>         <a>Sol</a>
 ay el chíntataratachín
-                       <a>Mi7</a>
+                       <a>Re7</a>
 con ritmo de tres por cuatro
-         <a>Do</a>         <a>Re7</a> <a>Sol</a>
- de chirigota pura de Cai,
+        <a>Do</a>         <a>Re7</a> <a>Sol</a>
+de chirigota pura de Cai,
                     <a>Re7</a>
 ese que pega el pellizco
              <a>Do</a>         <a>Re7</a> <a>Sol</a>
@@ -41,4 +41,5 @@ el de los platillazos y el bombazo despacito
                 <a>Re7</a>                      <a>Do</a>
 acompao entre redobles el que viene pregonando
                      <a>Re7</a>                 <a>Sol</a>
-que ha llegao el pasodoble pasodoble pasodoble. </pre>
+que ha llegao el pasodoble pasodoble pasodoble.
+</pre>
