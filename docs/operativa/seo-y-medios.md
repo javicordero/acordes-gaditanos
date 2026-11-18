@@ -52,7 +52,7 @@ Los anuncios de AdSense (y la medición de GA) **no se cargan** en los hosts de 
 ## Afiliados de Amazon (solo fichas)
 Los afiliados viven **solo en las fichas** (`/acordes/[id]/`). No se pinta Amazon en listados, hubs, herramientas ni home.
 
-- **Bloque «Carnaval y guitarra»**: 4 productos en la columna derecha, después de «Apoyar». En móvil es el primer bloque de la columna, así que cae justo debajo del `<pre>`.
+- **Bloque «Carnaval y guitarra»**: 4 productos en la columna derecha, después de «Apoyar». En móvil es el primer bloque de la columna, así que cae justo debajo del `<pre>`. El encabezado «Carnaval y guitarra» se oculta en móvil (≤640 px, prop `ocultarTituloMovil` de `RightColumnCard`) y se mantiene en escritorio, para no sumar ruido justo encima del `<pre>`.
 - **Right Column 1** (`Anuncio1`): se mantiene en escritorio, entre «Sigue tocando» y «Coplas para el recuerdo». En móvil se oculta para no sumar otro anuncio justo debajo del pre.
 - **Franja inline**: 1 producto debajo del chip de cejilla y antes del `<pre>`, en todas las fichas.
 - Catálogo único en `src/data/afiliados-amazon.ts`. Para retirar un producto del reparto, `activo: false`; para añadir uno nuevo, un objeto más. Los IDs deben ser cortos y seguros para GA4: el evento final es `click_amazon_<id>_<bloque>` y no puede pasar de 40 caracteres.

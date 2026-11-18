@@ -25,7 +25,11 @@ const {
 {
   productos.length > 0 && (
     <div class:list={['amazon-recomendados', className]} data-nosnippet>
-      <RightColumnCard title={titulo} headingId='amazon-recomendados-title'>
+      <RightColumnCard
+        title={titulo}
+        headingId='amazon-recomendados-title'
+        ocultarTituloMovil
+      >
         <ul class='amazon-lista'>
           {productos.map((producto) => (
             <li>

@@ -1,5 +1,11 @@
 ---
-const { title, headingId, class: className, flush = false } = Astro.props;
+const {
+  title,
+  headingId,
+  class: className,
+  flush = false,
+  ocultarTituloMovil = false,
+} = Astro.props;
 const hasTitle = Boolean(title);
 // Build a stable id from the explicit `headingId` prop or the title.
 const headingIdFinal =
@@ -13,7 +19,7 @@ const headingIdFinal =
 <section class:list={[className, { 'is-flush': flush }]} aria-labelledby={hasTitle ? headingIdFinal : undefined}>
   {
     hasTitle && (
-      <header>
+      <header class:list={{ 'ocultar-titulo-movil': ocultarTituloMovil }}>
         <h3 id={headingIdFinal}>{title}</h3>
       </header>
     )
@@ -84,6 +90,9 @@ const headingIdFinal =
     }
     h3 {
       font-size: var(--acorde-card-header-font-size-sm);
+    }
+    header.ocultar-titulo-movil {
+      display: none;
     }
   }
 </style>
