@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: Los Chatarra
 year: 2016
-musica: David Carapapa, Javier Carapapa,
-letra: David Carapapa, Javier Carapapa,
+musica: David Carapapa, Javier Carapapa
+letra: David Carapapa, Javier Carapapa
 letraTitulo: Tú sabes cuánto te quiero
 modalidad: Comparsa
 cejilla: 6
