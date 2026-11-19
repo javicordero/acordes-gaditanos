@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: Los Chatarra
 year: 2016
-musica: David Carapapa, Javier Carapapa,
-letra: David Carapapa, Javier Carapapa,
+musica: David Carapapa, Javier Carapapa
+letra: David Carapapa, Javier Carapapa
 modalidad: Comparsa
 cejilla: 6
 img: 'https://carnaval.lavozdigital.es/wp-content/uploads/sites/15/2017/11/1454733072-chatarra-comparsa-carapapas.jpeg'
