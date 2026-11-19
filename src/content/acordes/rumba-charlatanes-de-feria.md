@@ -2,8 +2,8 @@
 pieza: Rumba de la luna
 agrupacion: Charlatanes de Feria
 year: 1981
-musica: Antonio Martín,
-letra: Antonio Martín,
+musica: Antonio Martín
+letra: Antonio Martín
 modalidad: Comparsa
 img: 'https://static.grupojoly.com/clip/6817ebac-66be-4344-8933-ebdd384c2757_16-9-aspect-ratio_1600w_0.jpg'
 cejilla: 0
