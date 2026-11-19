@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Los Juan Palómez
 year: 2007
 musica: Tino Tovar
-letra: El Canijo,
+letra: El Canijo
 modalidad: Chirigota
 cejilla: 1
 img: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVoVfXXGDE8BTzARq-nls6tvXOEYiyoET2igsysH5XnDfecszKuTW6wOs&s=10
