@@ -15,7 +15,7 @@
 // La imagen es el campo `img` del .md (la misma que usa la ficha y el og:image),
 // validada antes de abrir el navegador.
 
-import { SITE, etiquetaPieza, sinTildes, urlAcorde } from './aviso.mjs';
+import { SITE, etiquetaPieza, listaAutores, sinTildes, urlAcorde } from './aviso.mjs';
 
 export const CABECERA = '🆕 Nuevos acordes en la web';
 export const LIMITE = 280;
@@ -45,8 +45,8 @@ export function nombreCorto(datos) {
  * con 🎵; si solo hay uno de los dos, el que haya.
  */
 export function autoresDe(datos) {
-  const musica = (datos.musica || '').trim();
-  const letra = (datos.letra || '').trim();
+  const musica = listaAutores(datos.musica).join(', ');
+  const letra = listaAutores(datos.letra).join(', ');
 
   if (musica && letra && sinTildes(musica) !== sinTildes(letra)) {
     return [

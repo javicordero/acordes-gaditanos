@@ -4748,7 +4748,9 @@ function pintarDatos(fmTexto) {
   const caja = $('f-datos');
   for (const el of caja.querySelectorAll('[name]')) {
     if (el.name === 'modalidad') continue;
-    el.value = fm[el.name] ?? '';
+    el.value = el.name === 'musica' || el.name === 'letra'
+      ? autoresLimpios(fm[el.name])
+      : (fm[el.name] ?? '');
   }
   const sel = caja.querySelector('[name="modalidad"]');
   if (sel) {
@@ -4766,10 +4768,24 @@ function pintarDatos(fmTexto) {
   actualizarDatos();
 }
 
+/**
+ * Autores de un campo: separados por coma y sin la coma que deja el
+ * autocompletado al elegir un nombre (lista para escribir el siguiente).
+ */
+function autoresLimpios(valor) {
+  return String(valor ?? '')
+    .split(',')
+    .map((nombre) => nombre.trim())
+    .filter(Boolean)
+    .join(', ');
+}
+
 /** Valores actuales del formulario de datos. */
 function datosDelEditor() {
   const d = {};
   for (const el of $('f-datos').querySelectorAll('[name]')) d[el.name] = el.value.trim();
+  d.musica = autoresLimpios(d.musica);
+  d.letra = autoresLimpios(d.letra);
   return d;
 }
 
@@ -5025,8 +5041,8 @@ async function rellenarDesdeAgrupacion() {
   if (f.base.dataset.autoSlug !== candidata.slug) return;
   f.year.value = fm.year || f.year.value;
   f.img.value = fm.img || '';
-  f.musica.value = fm.musica || '';
-  f.letra.value = fm.letra || '';
+  f.musica.value = autoresLimpios(fm.musica);
+  f.letra.value = autoresLimpios(fm.letra);
   f.video.value = fm.video || '';
   f.modalidad.value = valorModalidad(fm.modalidad);
   pintarBaseNueva();
@@ -5090,8 +5106,8 @@ async function clonar(slug) {
     f.modalidad.value = valorModalidad(fm.modalidad);
     f.agrupacion.value = fm.agrupacion || '';
     f.year.value = fm.year || '';
-    f.musica.value = fm.musica || '';
-    f.letra.value = fm.letra || '';
+    f.musica.value = autoresLimpios(fm.musica);
+    f.letra.value = autoresLimpios(fm.letra);
     f.cejilla.value = fm.cejilla || '';
     f.video.value = fm.video || '';
     f.img.value = fm.img || '';
@@ -5167,8 +5183,8 @@ async function crear(e) {
       pieza,
       agrupacion: v('agrupacion'),
       year: v('year'),
-      musica: v('musica'),
-      letra: v('letra'),
+      musica: autoresLimpios(v('musica')),
+      letra: autoresLimpios(v('letra')),
       letraTitulo: v('letraTitulo') || (clon ? null : undefined),
       modalidad: v('modalidad') || undefined,
       cejilla: v('cejilla') || undefined,
@@ -5197,8 +5213,8 @@ async function crear(e) {
       agrupacion: v('agrupacion'),
       year: v('year'),
       letraTitulo: v('letraTitulo'),
-      musica: v('musica'),
-      letra: v('letra'),
+      musica: autoresLimpios(v('musica')),
+      letra: autoresLimpios(v('letra')),
       zona: 'borradores',
       local: gd.local === true,
       enPR: gd.pr ? gd.pr.numero : null,

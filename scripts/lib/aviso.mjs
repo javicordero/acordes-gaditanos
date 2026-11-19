@@ -110,10 +110,23 @@ function normal(texto, formato) {
   return formato === 'telegram' ? escaparHtml(texto) : texto;
 }
 
+/**
+ * Nombres de una lista de autores separada por comas. El autocompletado del
+ * panel deja una coma al elegir un autor, para poder escribir el siguiente; si
+ * no se escribe nadie más, esa coma acaba guardada en el frontmatter. Quitar
+ * los trozos vacíos evita que salga en los avisos.
+ */
+export function listaAutores(valor) {
+  return String(valor || '')
+    .split(',')
+    .map((nombre) => nombre.trim())
+    .filter(Boolean);
+}
+
 /** Música y letra en líneas separadas; si son la misma persona, en una. */
 export function lineasAutores(datos) {
-  const musica = (datos.musica || '').trim();
-  const letra = (datos.letra || '').trim();
+  const musica = listaAutores(datos.musica).join(', ');
+  const letra = listaAutores(datos.letra).join(', ');
 
   if (musica && letra && sinTildes(musica) === sinTildes(letra)) {
     return [`Música y letra: ${musica}`];
