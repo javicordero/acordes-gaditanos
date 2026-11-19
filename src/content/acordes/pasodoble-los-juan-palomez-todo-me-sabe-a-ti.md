@@ -3,7 +3,7 @@ pieza: Pasodoble
 agrupacion: Los Juan Palómez
 year: 2007
 musica: Tino Tovar
-letra: El Canijo,
+letra: El Canijo
 letraTitulo: Todo me sabe a ti
 modalidad: Chirigota
 cejilla: 1
