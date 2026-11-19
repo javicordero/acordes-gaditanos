@@ -2,8 +2,8 @@
 pieza: Pasodoble
 agrupacion: La furia española
 year: 2026
-musica: Manolo Santander,
-letra: Manolo Santander,
+musica: Manolo Santander
+letra: Manolo Santander
 modalidad: Chirigota
 video: 'https://www.youtube.com/embed/7Lb_W0IqXzo'
 img: 'https://i.ytimg.com/vi/5QG-0ypeZBQ/maxresdefault.jpg'
