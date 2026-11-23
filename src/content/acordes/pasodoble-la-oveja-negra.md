@@ -5,13 +5,13 @@ year: 2024
 modalidad: Comparsa
 musica: Antonio Martínez Ares
 letra: Antonio Martínez Ares
-img: https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/10022024-la%20oveja%20negra-076.jpg
+img: 'https://contenidos.ondacadiz.es/sites/default/files/carnaval/contenido/2024/10022024-la%20oveja%20negra-076.jpg'
 cejilla: 0
 date: "25/11/2025"
 video: 'https://www.youtube.com/embed/23eSN-eBwW4?si=-woJ-sL7utajzYMV'
 fraseClave: Me llamo Pedro Romero, pluma
 destacada: 3
-
+letraTitulo: Me llamo Pedro Romero
 ---
 <pre>
 <a>Re</a>               <a>La7</a>             <a>Re</a>
@@ -52,7 +52,7 @@ Pedro el de las viejas ricas, el talento del Peñita
 
 Paco Alba enamorá de una niña hecha de espuma
             <a>Si7</a>  <a>Mim</a>
-y de escolleras
+y de escolleeeeeras
                   <a>La7</a>
 Soy el Yuyu, Bienvenido, que es mentira no se han ido
                        <a>Mim</a>         <a>La7</a>           <a>Re</a>
