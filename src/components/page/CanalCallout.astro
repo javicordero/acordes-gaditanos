@@ -1,9 +1,9 @@
 ---
 // src/components/page/CanalCallout.astro
 //
-// Invitación a seguir los canales de avisos (WhatsApp y Telegram).
-// - variante 'linea' (home): una línea discreta con dos enlaces.
-// - variante 'destacado' (/pedir-copla): texto normal y dos botones.
+// Invitación a seguir el canal de avisos (WhatsApp).
+// - variante 'linea' (home): una línea discreta con un enlace.
+// - variante 'destacado' (/pedir-copla): texto normal y un botón.
 import { Icon } from 'astro-icon/components';
 import canales from '../../data/canales.json';
 
@@ -32,11 +32,11 @@ const eventoInfo = `click_canal_info_${sufijo}`;
       {subtitulo && <h2 class='canal-callout__titulo'>{subtitulo}</h2>}
 
       <p class='canal-callout__parrafo'>
-        {titulo} Únete a nuestros canales de WhatsApp y Telegram.
+        {titulo} Únete a nuestro canal de WhatsApp.
       </p>
 
       <p class='canal-callout__info'>
-        Más información de los canales en
+        Más información del canal en
         <a
           href='/suscribirse'
           data-ga-event={eventoInfo}
@@ -56,18 +56,6 @@ const eventoInfo = `click_canal_info_${sufijo}`;
           <Icon name='whatsapp' width={18} height={18} />
           <span>WhatsApp</span>
         </a>
-
-        <a
-          class='boton'
-          href={canales.telegram}
-          target='_blank'
-          rel='noopener noreferrer'
-          aria-label='Unirse al canal de Telegram de Acordes Gaditanos'
-          data-ga-event={evento}
-          data-ga-params={JSON.stringify({ canal: 'telegram', ubicacion })}>
-          <Icon name='telegram' width={18} height={18} />
-          <span>Telegram</span>
-        </a>
       </div>
     </div>
   ) : (
@@ -75,7 +63,7 @@ const eventoInfo = `click_canal_info_${sufijo}`;
       <span class='canal-callout__pregunta'>{titulo}</span>
 
       <span class='canal-callout__sigue'>
-        Únete a nuestros canales de
+        Únete a nuestro canal de
         <a
           class='canal-callout__enlace'
           href={canales.whatsapp}
@@ -86,18 +74,6 @@ const eventoInfo = `click_canal_info_${sufijo}`;
           data-ga-params={JSON.stringify({ canal: 'whatsapp', ubicacion })}>
           <Icon name='whatsapp' width={15} height={15} />
           <span>WhatsApp</span>
-        </a>
-        y
-        <a
-          class='canal-callout__enlace'
-          href={canales.telegram}
-          target='_blank'
-          rel='noopener noreferrer'
-          aria-label='Unirse al canal de Telegram de Acordes Gaditanos'
-          data-ga-event={evento}
-          data-ga-params={JSON.stringify({ canal: 'telegram', ubicacion })}>
-          <Icon name='telegram' width={15} height={15} />
-          <span>Telegram</span>
         </a>
       </span>
     </p>
@@ -238,7 +214,7 @@ const eventoInfo = `click_canal_info_${sufijo}`;
 
   .canal-callout__botones {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
     width: 100%;
   }

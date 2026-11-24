@@ -4214,7 +4214,7 @@ async function publicar() {
     setEstado('publicando · PR #' + d.pr.numero, true);
     $('b-publicar').hidden = true;
     mostrarAviso('Publicación en la PR #' + d.pr.numero + ': ' + d.pr.url + cola +
-      '\nAl fusionar, Telegram avisa solo. WhatsApp y X, desde el PC.', 'var(--ok)');
+      '\nAl fusionar, WhatsApp y X se mandan desde el PC.', 'var(--ok)');
   } catch (e) {
     mostrarAviso(String(e.message || e), 'var(--mal)');
   }
@@ -4257,7 +4257,7 @@ async function publicarDesdeLista(slug, boton) {
       ? 'Promovida a acordes y marcada como revisada: «' + slug + '» ya está en src/content/acordes/.' + cola +
         '\nLa web no cambia hasta que hagas commit y push (`subir-acorde`).'
       : 'Publicada «' + slug + '» en la PR #' + d.pr.numero + ' y fuera de la cola.' + cola +
-        '\nAl fusionar, Telegram avisa solo; WhatsApp y X, desde el PC.\n' + d.pr.url, 'var(--ok)');
+        '\nAl fusionar, WhatsApp y X se mandan desde el PC.\n' + d.pr.url, 'var(--ok)');
   } catch (e) {
     boton.disabled = false;
     boton.textContent = antes;
@@ -4298,8 +4298,7 @@ async function pasarABorradores(slug, boton) {
 
 /**
  * «Publicar» de una ficha que está en una PR (una corrección guardada desde el móvil):
- * fusiona la PR en master. Netlify reconstruye y, si era una ficha nueva, Telegram
- * avisa solo; una corrección no manda aviso.
+ * fusiona la PR en master. Netlify reconstruye la web; una corrección no manda aviso.
  */
 async function fusionarDesdeLista(slug, boton) {
   const item = indice.find((x) => x.slug === slug);
@@ -4457,7 +4456,7 @@ function pedirPublicarLote() {
   }
   if (fusionar.length) {
     lineas.push('<b>' + fusionar.length + (fusionar.length === 1 ? ' PR se fusiona' : ' PRs se fusionan') + '</b>' +
-      ' · Telegram avisa solo si es una copla nueva');
+      ' · una copla nueva se publica al fusionar');
   }
   if (omitidos.length) {
     lineas.push(omitidos.length + (omitidos.length === 1 ? ' se queda fuera' : ' se quedan fuera') +

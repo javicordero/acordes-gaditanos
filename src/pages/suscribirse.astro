@@ -1,7 +1,7 @@
 ---
 // src/pages/suscribirse.astro
 //
-// Página de suscripción a los canales de avisos (WhatsApp y Telegram).
+// Página de suscripción al canal de avisos (WhatsApp).
 // No hay formulario ni base de datos: suscribirse es unirse al canal y darse
 // de baja es salir de él.
 import Layout from '../layouts/Layout.astro';
@@ -11,13 +11,13 @@ import canales from '../data/canales.json';
 
 <Layout
   title='Avisos de coplas nuevas - Acordes Gaditanos'
-  description='Recibe un aviso cada vez que subimos una copla nueva al cancionero. Canales gratuitos de WhatsApp y Telegram, sin spam y con baja en un toque.'>
+  description='Recibe un aviso cada vez que subimos una copla nueva al cancionero. Canal gratuito de WhatsApp, sin spam y con baja en un toque.'>
   <div class='main-container'>
     <article class='suscribirse container-layout' aria-labelledby='suscribirse-title'>
       <header class='suscribirse__cabecera'>
         <h1 id='suscribirse-title'>Avisos de coplas nuevas</h1>
         <p class='suscribirse__entradilla'>
-          Cuando subo una copla nueva al cancionero, lo aviso en dos canales y en la propia app.
+          Cuando subo una copla nueva al cancionero, lo aviso en el canal de WhatsApp y en la propia app.
           Solo eso: el aviso con el enlace directo al cifrado. Sin resúmenes semanales, sin
           publicidad y sin tener que darme tu teléfono.
         </p>
@@ -52,41 +52,6 @@ import canales from '../data/canales.json';
                 <img
                   src='/qr-whatsapp.svg'
                   alt='Código QR para seguir el canal de WhatsApp de Acordes Gaditanos'
-                  width='150'
-                  height='150'
-                  loading='lazy'
-                  decoding='async'
-                />
-                <figcaption>O escanea el QR con el móvil</figcaption>
-              </figure>
-            </div>
-          </div>
-
-          <div class='canal'>
-            <div class='canal__cabecera'>
-              <span class='canal__icono' aria-hidden='true'>
-                <Icon name='telegram' width={26} height={26} />
-              </span>
-              <h3>Telegram</h3>
-            </div>
-            <p>
-              No hace falta número de teléfono para entrar desde el ordenador y el canal tiene
-              buscador propio.
-            </p>
-            <div class='canal__pie'>
-              <a
-                class='canal__btn'
-                href={canales.telegram}
-                target='_blank'
-                rel='noopener noreferrer'
-                data-ga-event='click_canal_suscribirse'
-                data-ga-params='{"canal":"telegram","ubicacion":"suscribirse"}'>
-                Unirme al canal
-              </a>
-              <figure class='canal__qr'>
-                <img
-                  src='/qr-telegram.svg'
-                  alt='Código QR para unirse al canal de Telegram de Acordes Gaditanos'
                   width='150'
                   height='150'
                   loading='lazy'
@@ -308,8 +273,9 @@ import canales from '../data/canales.json';
 
   .canales__grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--main-container-gap-sm);
+    max-width: 640px;
   }
 
   .canal {
@@ -555,12 +521,6 @@ import canales from '../data/canales.json';
   :global(html[data-theme='dark']) .canal__btn {
     background-color: var(--card-background-color);
     color: var(--text-color);
-  }
-
-  @media (max-width: 860px) {
-    .canales__grid {
-      grid-template-columns: minmax(0, 1fr);
-    }
   }
 
   @media (max-width: 640px) {

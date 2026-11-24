@@ -1,4 +1,4 @@
-// Devuelve el texto del aviso de una ficha (el mismo que Telegram), para
+// Devuelve el texto del aviso de una ficha (el mismo que WhatsApp), para
 // copiarlo en WhatsApp o abrirlo en X desde el móvil.
 import { sesion, sinSesion, json, fichaEnRepo, BASE, CARPETAS, LOCAL } from './_lib.mjs';
 import { mensajeUna } from '../../scripts/lib/aviso.mjs';

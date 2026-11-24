@@ -1,7 +1,7 @@
 // scripts/generar-qr.mjs
 //
 // Genera una sola vez los QR de los canales de avisos a partir de
-// src/data/canales.json y los deja en public/ (qr-whatsapp.svg, qr-telegram.svg).
+// src/data/canales.json y los deja en public/ (qr-whatsapp.svg).
 // No se ejecuta en el build: los SVG van versionados.
 //
 // Uso: node scripts/generar-qr.mjs

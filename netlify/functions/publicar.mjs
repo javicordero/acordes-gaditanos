@@ -1,6 +1,6 @@
 // Publica un borrador: lo mueve de `borradores` a `acordes` en la rama de su PR
 // (o en una nueva), lo saca de la cola de revisión y deja la PR lista para
-// fusionar. Al fusionar, Netlify reconstruye y el aviso de Telegram sale solo
+// fusionar. Al fusionar, Netlify reconstruye la web con la ficha nueva
 // (un `.md` añadido en `acordes`).
 import {
   REPO, BASE, CARPETAS, LOCAL, sesion, sinSesion, json, gh,
@@ -127,7 +127,7 @@ export default async (req) => {
       `- Archivo: \`${CARPETAS.acordes}/${slug}.md\``,
       '- Sale de la cola de revisión.',
       '',
-      'Al fusionar se reconstruye la web y el aviso de Telegram sale solo.',
+      'Al fusionar se reconstruye la web con la ficha nueva.',
     ].join('\n');
 
     let pr;
