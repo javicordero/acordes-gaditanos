@@ -21,7 +21,7 @@ const [prototipo] = await getCollection('acordes');
     <Banner468X60 adKey='0a8164971e8c287ce3c84cea534f2266' />
     <Banner320X50 adKey='00168e813d28ccdbf699a41e61d3b2ab' />
     <div class='container-layout'>
-      <h1 class='search-title'>Buscar acordes</h1>
+      <h1 class='search-title titulo-pagina'>Buscar acordes</h1>
     </div>
     <!-- Mensaje de sin resultados (oculto por defecto): texto suelto, sin caja -->
     <article class='no-results' role='region' aria-labelledby='no-results-heading' style='display: none'>
@@ -67,27 +67,8 @@ const [prototipo] = await getCollection('acordes');
     margin-bottom: 0;
   }
 
-  .search-title {
-    position: relative;
-    color: var(--primary-color);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 2rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    max-width: fit-content;
+  .main-container .search-title {
     margin: 0 0 14px;
-
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 95%;
-      height: 6px;
-      background: var(--primary-contrast-color);
-    }
   }
 
   /* El título de resultados no es el de la página: va más pequeño, sin la raya
@@ -182,14 +163,8 @@ const [prototipo] = await getCollection('acordes');
       gap: calc(var(--main-container-gap-sm) - 16px);
     }
 
-    .search-title {
-      font-size: 1.6rem;
+    .main-container .search-title {
       margin-bottom: 12px;
-
-      &::after {
-        height: 4px;
-        bottom: -4px;
-      }
     }
 
     .results-container {

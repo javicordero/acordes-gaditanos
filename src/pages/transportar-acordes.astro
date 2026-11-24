@@ -97,7 +97,7 @@ const faqSchema = {
   <div class='main-container container-layout'>
     <article class='transporte-pagina'>
       <header class='transporte-pagina__header'>
-        <h1>Transportador de acordes</h1>
+        <h1 class='titulo-pagina'>Transportador de acordes</h1>
         <p class='transporte-pagina__intro'>
           Pega un cifrado, elige cuántos semitonos subir o bajar y copia el resultado. La letra se
           queda igual y los acordes se colocan en su sitio. Todo ocurre en tu navegador: no se
@@ -406,39 +406,12 @@ const faqSchema = {
 
 <style>
   .transporte-pagina {
-    padding: 18px 18px 22px;
-    background: var(--card-background-color);
-    border: 2px solid var(--primary-color);
-    box-shadow: 6px 6px 0 0 var(--primary-color);
     font-family: 'Roboto Mono', monospace;
     color: var(--text-color);
   }
 
   :global(.transporte-pagina__anuncio) {
     margin-top: 30px;
-  }
-
-  .transporte-pagina__header h1 {
-    margin: 0 0 14px;
-    font-size: 1.45rem;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 0.5px;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    max-width: fit-content;
-    position: relative;
-  }
-
-  .transporte-pagina__header h1::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 95%;
-    height: 5px;
-    background: var(--primary-contrast-color);
   }
 
   .transporte-pagina__intro {
@@ -725,14 +698,6 @@ const faqSchema = {
   }
 
   @media (max-width: 640px) {
-    .transporte-pagina {
-      padding: 14px 12px 18px;
-    }
-
-    .transporte-pagina__header h1 {
-      font-size: 1.2rem;
-    }
-
     .herramienta__barra {
       flex-direction: column;
       align-items: flex-start;

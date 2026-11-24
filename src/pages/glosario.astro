@@ -73,7 +73,7 @@ const webPageSchema = {
     <section>
       <article class='container-layout inner-content glosario'>
         <header class='glosario__header'>
-          <h1>Glosario de acordes de guitarra</h1>
+          <h1 class='titulo-pagina'>Glosario de acordes de guitarra</h1>
           <p class='glosario__intro'>
             Elige una fundamental o busca el acorde por su nombre (en notación española o inglesa) y
             entra en su página: allí tienes todas las posiciones con diagrama, la digitación de cada
@@ -205,25 +205,6 @@ const webPageSchema = {
 
     & h1 {
       margin: 0 0 16px;
-      font-size: 1.6rem;
-      font-weight: 700;
-      line-height: normal;
-      letter-spacing: 0.5px;
-      color: var(--primary-color);
-      text-transform: uppercase;
-      max-width: fit-content;
-      position: relative;
-
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: -6px;
-        width: 95%;
-        height: 6px;
-        background: var(--primary-contrast-color);
-      }
     }
   }
 
@@ -579,15 +560,6 @@ const webPageSchema = {
   }
 
   @media (max-width: 640px) {
-    .glosario__header h1 {
-      font-size: 1.25rem;
-
-      &::after {
-        height: 4px;
-        bottom: -2px;
-      }
-    }
-
     .glosario__buscador {
       grid-template-columns: 1fr;
       gap: 6px;

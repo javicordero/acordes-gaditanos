@@ -46,7 +46,7 @@ const itemListSchema = {
 
       <article class='container-layout inner-content hub'>
         <header>
-          <h1>{h1Base}{h1Sufijo && <span class='minuscula'>{h1Sufijo}</span>}</h1>
+          <h1 class='titulo-pagina'>{h1Base}{h1Sufijo && <span class='minuscula'>{h1Sufijo}</span>}</h1>
           <p class='subtitle'>
             En total, <strong class='subtitle-count'>{recuentoHub.coplas}</strong>{' '}
             {recuentoHub.coplas === 1 ? 'copla' : 'coplas'}{recuentoHub.letras > 0 && (
@@ -138,29 +138,8 @@ const itemListSchema = {
     gap: var(--card-padding);
 
     & h1 {
-      position: relative;
-      color: var(--primary-color);
-      font-size: 2rem;
-      font-family: 'Roboto Mono', monospace;
-      letter-spacing: 1px;
-      font-weight: 800;
-      text-transform: uppercase;
-      max-width: fit-content;
-      margin: 0;
-
       & .minuscula {
         text-transform: lowercase;
-      }
-
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: -6px;
-        width: 95%;
-        height: 6px;
-        background: var(--primary-contrast-color);
       }
     }
 
@@ -304,10 +283,6 @@ const itemListSchema = {
 
     header {
       gap: var(--card-padding-sm);
-
-      & h1 {
-        font-size: 1.6rem;
-      }
 
       & .subtitle {
         font-size: 1rem;

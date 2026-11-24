@@ -135,6 +135,42 @@ p {
   letter-spacing: 0.4px;
 }
 
+/* Título de página: el mismo estilo que el de las fichas de acordes.
+   Sirve para que no haya tamaños de h1 distintos según la sección. */
+.titulo-pagina {
+  position: relative;
+  color: var(--primary-color);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: normal;
+  text-transform: uppercase;
+  max-width: fit-content;
+  margin: 0;
+}
+
+.titulo-pagina::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 95%;
+  height: 6px;
+  background: var(--primary-contrast-color);
+}
+
+@media (max-width: 640px) {
+  .titulo-pagina {
+    font-size: 1.25rem;
+  }
+
+  .titulo-pagina::after {
+    height: 4px;
+    bottom: -2px;
+  }
+}
+
 h1,
 h2,
 h3,

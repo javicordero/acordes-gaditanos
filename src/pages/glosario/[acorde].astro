@@ -162,7 +162,7 @@ const textoEnarmonico = etiquetaEnarmonica
 
     <article class='acorde-pagina'>
       <header class='acorde-pagina__header'>
-        <h1>
+        <h1 class='titulo-pagina'>
           Acorde <span class='sin-mayusculas'>{etiqueta}</span> (<span class='sin-mayusculas'
             >{ingles}</span
           >) en guitarra
@@ -419,10 +419,6 @@ const textoEnarmonico = etiquetaEnarmonica
 
 <style>
   .acorde-pagina {
-    padding: 18px 18px 22px;
-    background: var(--card-background-color);
-    border: 2px solid var(--primary-color);
-    box-shadow: 6px 6px 0 0 var(--primary-color);
     font-family: 'Roboto Mono', monospace;
     color: var(--text-color);
   }
@@ -434,29 +430,6 @@ const textoEnarmonico = etiquetaEnarmonica
 
   :global(.acorde-pagina__anuncio-medio) {
     margin-top: 30px;
-  }
-
-  .acorde-pagina__header h1 {
-    margin: 0 0 14px;
-    font-size: 1.45rem;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 0.5px;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    max-width: fit-content;
-    position: relative;
-  }
-
-  .acorde-pagina__header h1::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 95%;
-    height: 5px;
-    background: var(--primary-contrast-color);
   }
 
   .acorde-pagina__intro,
@@ -765,18 +738,9 @@ const textoEnarmonico = etiquetaEnarmonica
   }
 
   @media (max-width: 640px) {
-    .acorde-pagina {
-      padding: 12px 10px 18px;
-      box-shadow: 4px 4px 0 0 var(--primary-color);
-    }
-
     .acorde-pagina__anuncio-superior :global(.anuncio-sobre-pagina) {
       margin-top: 4px;
       margin-bottom: var(--main-container-gap-sm);
-    }
-
-    .acorde-pagina__header h1 {
-      font-size: 1.1rem;
     }
 
     .posiciones {

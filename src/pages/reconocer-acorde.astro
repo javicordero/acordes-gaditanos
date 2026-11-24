@@ -186,7 +186,7 @@ const faqSchema = {
     <section>
       <article class='container-layout inner-content reconocer'>
         <header class='reconocer__header'>
-          <h1>Reconocer acordes de guitarra</h1>
+          <h1 class='titulo-pagina'>Reconocer acordes de guitarra</h1>
           <p class='reconocer__intro'>
             ¿Qué acorde estás tocando? Dibuja la postura en el mástil —qué cuerdas pisas, cuáles
             suenan al aire y cuáles no se tocan— y te decimos su nombre. No hace falta que la postura
@@ -645,11 +645,6 @@ const faqSchema = {
 
     & h1 {
       margin: 0 0 8px;
-      font-size: 1.9rem;
-      line-height: 1.15;
-      color: var(--primary-color);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
   }
 
@@ -1275,10 +1270,6 @@ const faqSchema = {
   }
 
   @media (max-width: 640px) {
-    .reconocer__header h1 {
-      font-size: 1.45rem;
-    }
-
     .reconocer__celda {
       height: 32px;
     }

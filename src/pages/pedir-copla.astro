@@ -13,7 +13,7 @@ import CanalCallout from '../components/page/CanalCallout.astro';
   <div class='main-container'>
     <article class='pedir-copla-page container-layout'>
       <header>
-        <h1>Pedir una copla</h1>
+        <h1 class='titulo-pagina'>Pedir una copla</h1>
       </header>
 
       <div class='pedir-copla-body'>
@@ -68,29 +68,6 @@ import CanalCallout from '../components/page/CanalCallout.astro';
     display: flex;
     flex-direction: column;
     gap: 24px;
-  }
-
-  header h1 {
-    margin: 0;
-    color: var(--primary-color);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.9rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    position: relative;
-    max-width: fit-content;
-
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 95%;
-      height: 6px;
-      background: var(--primary-contrast-color);
-    }
   }
 
   .pedir-copla-body {
@@ -169,10 +146,6 @@ import CanalCallout from '../components/page/CanalCallout.astro';
   }
 
   @media (max-width: 768px) {
-    header h1 {
-      font-size: 1.5rem;
-    }
-
     .pedir-copla-body {
       gap: var(--main-container-gap-sm);
     }

@@ -15,7 +15,7 @@ import canales from '../data/canales.json';
   <div class='main-container'>
     <article class='suscribirse container-layout' aria-labelledby='suscribirse-title'>
       <header class='suscribirse__cabecera'>
-        <h1 id='suscribirse-title'>Avisos de coplas nuevas</h1>
+        <h1 id='suscribirse-title' class='titulo-pagina'>Avisos de coplas nuevas</h1>
         <p class='suscribirse__entradilla'>
           Cuando subo una copla nueva al cancionero, lo aviso en el canal de WhatsApp y en la propia app.
           Solo eso: el aviso con el enlace directo al cifrado. Sin resúmenes semanales, sin
@@ -232,29 +232,6 @@ import canales from '../data/canales.json';
     display: flex;
     flex-direction: column;
     gap: 14px;
-  }
-
-  h1 {
-    margin: 0;
-    color: var(--primary-color);
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1.9rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    position: relative;
-    max-width: fit-content;
-
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 95%;
-      height: 6px;
-      background: var(--primary-contrast-color);
-    }
   }
 
   .suscribirse__entradilla {
@@ -524,10 +501,6 @@ import canales from '../data/canales.json';
   }
 
   @media (max-width: 640px) {
-    h1 {
-      font-size: 1.5rem;
-    }
-
     /* En el móvil el QR no sirve: el botón ya abre la app. */
     .canal__qr {
       display: none;
