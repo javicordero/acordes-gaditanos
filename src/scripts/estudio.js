@@ -3099,6 +3099,11 @@ function fechaCorta(iso) {
   return p(d.getDate()) + '/' + p(d.getMonth() + 1) + '/' + d.getFullYear();
 }
 
+function pintarResumenPeticiones() {
+  $('peticiones-total').textContent = String(peticiones.length);
+  $('peticiones-completadas').textContent = String(peticiones.filter((c) => c.completed).length);
+}
+
 async function cargarPeticiones() {
   const cont = $('peticiones');
   cont.innerHTML = '<p class="cargando">Cargando…</p>';
@@ -3108,8 +3113,11 @@ async function cargarPeticiones() {
     if (!r.ok) throw new Error(d.error || 'no se pudieron cargar las peticiones');
     comentariosTodos = d.comments || [];
     peticiones = comentariosTodos.filter((c) => !c.parentId);
+    pintarResumenPeticiones();
     pintarPeticiones();
   } catch (e) {
+    $('peticiones-total').textContent = '—';
+    $('peticiones-completadas').textContent = '—';
     cont.innerHTML = '<p class="error">' + esc(String(e.message || e)) + '</p>';
   }
 }
