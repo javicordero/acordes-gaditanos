@@ -17,7 +17,7 @@ fraseClave: Tú sabes cuánto te quiero
 Tú sabes cuánto te quiero, tú sabes que eres mi vida
 <a>Fa</a>             <a>Rem</a>  <a>Fa</a>                  <a>Mi7</a>
 por eso tenía miedo de que llegara este día.
-<a>Lam</a>                                  <a>Lam7/Sol</a>
+<a>Lam</a>                                  <a data-postura="2 0 0 2 1 0">Lam/Fa#</a>
 Me quedo sin tu sonrisa, tus besos con prisa
           <a>Sol</a>
 de cada mañana
