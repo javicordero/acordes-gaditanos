@@ -17,7 +17,7 @@ fraseClave: La noche del veinticuatro
 La noche del veinticuatro del mes de la primavera
 <a>Fa</a>                 <a>Rem</a>     <a>Fa</a>                <a>Mi7</a>
 llegó un alcalde cantando con la camisa por fuera
-<a>Lam</a>                                <a>Lam7/Sol</a>
+<a>Lam</a>                                <a>Lam/Fa#</a>
 el veinticuatro de mayo tuviste el respaldo
               <a>Sol</a>
 de muchos paisanos
