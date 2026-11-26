@@ -29,7 +29,7 @@ que en las puertatierra tus enemigos están esperando
 que va a ser de Cádiz sin los gaditanos,
             <a>Fa#7</a>
 sin los gaditanos.
-                                 <a>Fa#m</a>
+<a>Re</a>                               <a>Fa#m</a>
 Y si te lanzan dardos para envenenarte
              <a>Sol</a>                     <a>Fa#7</a>
 utiliza el escudo de la gracia y el arte
