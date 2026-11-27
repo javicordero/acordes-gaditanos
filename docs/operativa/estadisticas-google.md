@@ -65,6 +65,16 @@ en [`panel-admin.md`](panel-admin.md).
   (`GOOGLE_SERVICE_ACCOUNT_EMAIL` + `GOOGLE_PRIVATE_KEY`) o OAuth
   (`GOOGLE_CLIENT_ID` + `GOOGLE_CLIENT_SECRET` + `GOOGLE_REFRESH_TOKEN`). El
   token se pide y se guarda solo en el servidor, nunca llega al navegador.
+- **Refresh token caducado**: si AdSense dice «Token has been expired or
+  revoked», el `GOOGLE_REFRESH_TOKEN` de Netlify ha sido revocado y hay que
+  generar otro (no se puede revivir). `npm run google:refresh-token` abre un
+  consentimiento OAuth con los tres scopes del panel
+  (`adsense.readonly`, `analytics.readonly`, `webmasters.readonly`) e imprime el
+  token nuevo para pegarlo en Netlify. Necesita `GOOGLE_CLIENT_ID` y
+  `GOOGLE_CLIENT_SECRET` en `.env` (o en el entorno) y el redirect
+  `http://127.0.0.1:4325/oauth2callback` dado de alta en el cliente OAuth. Si la
+  pantalla de consentimiento está en modo **Testing**, el token caduca a los 7
+  días: publícala o añade la cuenta como usuaria de prueba.
 - **Sin configurar**: si faltan variables, la pestaña muestra qué falta y los
   pasos, sin errores. La respuesta se cachea 15 minutos cuando hay datos.
 - **No comparable**: Search Console, GA4, AdSense, Cloudflare y D1 miden cosas
