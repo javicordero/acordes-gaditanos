@@ -163,7 +163,19 @@ export default defineConfig({
       // se pierde el editor. Esa colección solo la usa el panel (lee el archivo
       // directamente), así que se ignora. `acordes` sí se vigila: el preview
       // del sitio tiene que actualizarse al editar una ficha publicada.
-      watch: { ignored: ['**/src/content/borradores/**'] },
+      // Los perfiles de Chrome de los avisos (`wa-profile`, `x-profile`) y sus
+      // capturas se ignoran también: Chrome los escribe mientras corre y en
+      // Windows el watcher falla con `EBUSY: resource busy or locked` (los
+      // ficheros de sesión, `Tabs_*`, se bloquean y desbloquean sin parar).
+      watch: {
+        ignored: [
+          '**/src/content/borradores/**',
+          '**/wa-profile/**',
+          '**/x-profile/**',
+          '**/wa-debug/**',
+          '**/x-debug/**',
+        ],
+      },
       allowedHosts: [],
     },
   },
