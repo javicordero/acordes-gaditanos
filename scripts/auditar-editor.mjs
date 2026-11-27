@@ -3,7 +3,7 @@
 //
 //   node --experimental-strip-types scripts/auditar-editor.mjs
 
-import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, realinearEstructura, fijarPostura } from '../src/lib/editar-lineas.js';
+import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, realinearEstructura, fijarPostura, transportarLineas } from '../src/lib/editar-lineas.js';
 import { envolver, clasificar } from '../src/lib/pre-acordes.js';
 import { parsearPostura, textoPostura } from '../src/lib/acordes.ts';
 
@@ -516,6 +516,36 @@ comprobar('postura: cambia la que había sin duplicar el atributo', reemplazo.re
 
 comprobar('textoPostura: trastes a texto', textoPostura({ trastes: [-1, 0, 2, 2, 2, 4] }), 'x 0 2 2 2 4');
 comprobar('textoPostura: ida y vuelta', parsearPostura(textoPostura({ trastes: [-1, 0, 2, 2, 2, 4] })), [-1, 0, 2, 2, 2, 4]);
+
+/* 24. Transportar desde el editor: solo acordes, sin tocar la letra ni los espacios. */
+comprobar('transportar: sube dos semitonos y conserva los espacios',
+  transportarLineas(['Do        Sol', 'Esta es la letra'], 2, conocidos),
+  ['Re        La', 'Esta es la letra']);
+comprobar('transportar: baja un semitón',
+  transportarLineas(['   Fa#7   Solm', 'Letra'], -1, conocidos),
+  ['   Fa7   Fa#m', 'Letra']);
+comprobar('transportar: las anotaciones no se mueven',
+  transportarLineas(['(Sorda)   Do7', 'Letra'], 2, conocidos),
+  ['(Sorda)   Re7', 'Letra']);
+comprobar('transportar: una letra que empieza por «La» no se toca',
+  transportarLineas(['La loncha', 'Do Sol'], 2, conocidos),
+  ['La loncha', 'Re La']);
+comprobar('transportar: también mueve la línea de acordes sucia',
+  transportarLineas(['   Do   Mi raro', 'Letra'], 2, conocidos),
+  ['   Re   Fa# raro', 'Letra']);
+comprobar('transportar: sin semitonos devuelve una copia',
+  transportarLineas(['Do', 'Letra'], 0, conocidos),
+  ['Do', 'Letra']);
+const ida = transportarLineas(base.lineas, 2, conocidos);
+const vueltaIda = transportarLineas(ida, -2, conocidos);
+comprobar('transportar: ida y vuelta al tono original', vueltaIda, base.lineas);
+comprobar('transportar: la ida y vuelta recupera la postura',
+  pre({ lineas: vueltaIda, registros: base.registros, originales: base.originales }),
+  pre(base));
+comprobar('transportar: al guardar, los acordes nuevos van sin postura',
+  pre({ lineas: ida, registros: base.registros, originales: base.originales }),
+  ['<a>Fa#</a>                    <a>Do#7</a>       <a>Fa#</a>',
+    'Si vengo, no vengo ni yo lo comprendo'].join('\n'));
 
 if (fallos) {
   console.log(`\n${fallos} caso(s) fallido(s).`);

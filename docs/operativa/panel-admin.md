@@ -88,6 +88,15 @@ El mismo `<pre>` en texto que el revisor local, con los acordes coloreados y sug
   siendo para arrastrar; si no hay glosario para ese acorde se avisa y no se abre el selector.
   La lógica está en `fijarPostura()` (`src/lib/editar-lineas.js`), probada en
   `npm run auditar:editor`.
+- Debajo de la cabecera del editor va el **transportador**: **− / 0 / +** mueve los acordes
+  de las líneas de acordes de −11 a +11 semitonos sin tocar la letra ni la alineación, y el
+  botón central vuelve a 0. Usa el mismo motor que la ficha y la página pública
+  (`src/lib/transporte.ts`), aplicado al texto por la función pura `transportarLineas()`
+  (`src/lib/editar-lineas.js`, probada en `npm run auditar:editor`). Cada paso entra en
+  **Deshacer** y deja la ficha sin guardar; el contador viaja en el snapshot, así que
+  deshacerlo lo reajusta. Los acordes que cambian de nombre pierden la `data-postura` del
+  tono anterior (se avisa); al transportar de vuelta al tono original se recupera el `<pre>`
+  tal cual estaba.
 - En la cabecera: **↶ deshacer** (`Ctrl+Z`), **✂ separar por palabras** (`Alt+Enter`) y
   **⤴ juntar por palabras** (`Alt+Retroceso`). Sobre una línea de acordes, ✂ baja el acorde
   a la siguiente línea de acordes y ⤴ lo sube a la anterior; en un verso de letra con el

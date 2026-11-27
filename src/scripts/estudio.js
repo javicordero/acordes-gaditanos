@@ -12,7 +12,8 @@
 //   - Revisado ✓ (marca; en local también promueve) y Promover (promueve y marca) hacen cosas distintas en producción.
 
 import { initPreAcordes, desenvolver, envolver, montarMd, revisar, clasificar, ANCHO_MAX, columnasLinea, cortePorAncho, esAcorde, esAnotacion } from '../lib/pre-acordes.js';
-import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura, fijarPostura } from '../lib/editar-lineas.js';
+import { separarLetra, separarVerso, juntarLetra, palabraBajoCursor, moverAcordeLinea, moverAcordeA, esLineaAcordes, realinearEstructura, fijarPostura, transportarLineas } from '../lib/editar-lineas.js';
+import { transportarEtiqueta } from '../lib/transporte.ts';
 import { puedeSubir, dividirLote, enTandas, avisa as avisaFicha } from '../lib/panel-lote.js';
 import { escaparHtml } from '../lib/escape.js';
 import { avisosPasodoblesSinTitulo } from '../lib/alertas-letra-titulo.js';
@@ -62,6 +63,9 @@ let sugSel = 0;
 let posturaAbierta = null;
 let paneActivo = 'cen';
 let zonaFicha = 'acordes';
+// Semitonos movidos con el transportador del editor. Viaja en el snapshot para
+// que deshacer/rehacer dejen el contador a juego con el texto.
+let semitonosEditor = 0;
 // Autores y agrupaciones que ya existen en el cancionero, para sugerirlos.
 let autoresConocidos = [];
 let agrupacionesConocidas = [];
@@ -83,17 +87,20 @@ function snapshot() {
     texto: ta.value,
     registros: (ficha?.d?.registros || []).map((r) => r.map((x) => ({ ...x }))),
     originales: [...(ficha?.d?.originales || [])],
+    semitonos: semitonosEditor,
   };
 }
 
 function restaurar(s) {
   if (!s) return;
   ta.value = s.texto;
+  semitonosEditor = s.semitonos || 0;
   if (ficha) {
     ficha.d.registros = s.registros.map((r) => r.map((x) => ({ ...x })));
     ficha.d.originales = [...s.originales];
   }
   anterior = snapshot();
+  pintarTono();
 }
 
 function actualizarDeshacer() {
@@ -3373,6 +3380,8 @@ async function abrirFicha(slug, empujar = true) {
   cerrarNotaLocal();
   cerrarSug();
   cerrarPosturas();
+  semitonosEditor = 0;
+  pintarTono();
   const d = desenvolver(md);
   conocidos.clear();
   d.registros.flat().forEach((x) => conocidos.add(x.etiqueta));
@@ -3612,6 +3621,78 @@ function aplicarEdicion(r, enfocar = true) {
   if (enfocar) ta.focus();
   pintar();
   verCaret();
+}
+
+/* ---------------- transportar ---------------- */
+/** Pinta el contador de semitonos y los botones del transportador del editor. */
+function pintarTono() {
+  const valor = $('b-tono-valor');
+  if (!valor) return;
+  valor.textContent = semitonosEditor > 0 ? '+' + semitonosEditor
+    : semitonosEditor < 0 ? '−' + Math.abs(semitonosEditor) : '0';
+  valor.disabled = semitonosEditor === 0;
+  const subir = $('b-tono-subir');
+  const bajar = $('b-tono-bajar');
+  if (subir) subir.disabled = semitonosEditor >= 11;
+  if (bajar) bajar.disabled = semitonosEditor <= -11;
+}
+
+/** ¿Hay acordes con postura que el transporte deja en otro tono? */
+function pierdePosturas(semitonos) {
+  return (ficha?.d?.registros || []).some((linea) => linea.some((r) =>
+    posturaDeAbre(r.abre) && transportarEtiqueta(r.etiqueta, semitonos) !== r.etiqueta));
+}
+
+/**
+ * Mueve los acordes del editor `delta` semitonos. La letra queda igual y se
+ * conserva la alineación (`transportarLineas`). Las etiquetas cambian en el
+ * texto, así que al guardar `envolver()` las envuelve de nuevo sin la postura
+ * del tono anterior; si se vuelve al tono original, se recupera el `<pre>` tal
+ * cual estaba.
+ */
+function transportar(delta) {
+  if (!ficha || !delta) return;
+  if (!estructuraOk()) return avisoEstructura();
+  const siguiente = Math.max(-11, Math.min(11, semitonosEditor + delta));
+  if (siguiente === semitonosEditor) return;
+
+  // Transportar no debe cambiar la vista: se guardan el caret y el scroll
+  // antes de tocar el texto y se devuelven a su sitio al repintar.
+  const selIni = ta.selectionStart;
+  const selFin = ta.selectionEnd;
+  const scrollTop = lienzo.scrollTop;
+  const scrollLeft = lienzo.scrollLeft;
+  const lineas = transportarLineas(ta.value.split('\n'), delta, conocidos);
+  const texto = lineas.join('\n');
+  if (texto === ta.value) {
+    mostrarAviso('No hay acordes que transportar en esta ficha.', 'var(--nuevo)');
+    return;
+  }
+  const avisoPostura = pierdePosturas(delta);
+
+  hist.push(snapshot());
+  if (hist.length > 300) hist.shift();
+  actualizarDeshacer();
+  futuro = [];
+  semitonosEditor = siguiente;
+  ta.value = texto;
+  // Los acordes nuevos se colorean como los que ya se conocían de la ficha.
+  for (const token of texto.match(/\S+/g) || []) {
+    if (esAcorde(token)) conocidos.add(token);
+  }
+  anterior = snapshot();
+  sucio = true;
+  setEstado('sin guardar', false);
+  ta.setSelectionRange(Math.min(selIni, texto.length), Math.min(selFin, texto.length));
+  cerrarSug();
+  cerrarPosturas();
+  pintarTono();
+  pintar();
+  lienzo.scrollTop = scrollTop;
+  lienzo.scrollLeft = scrollLeft;
+  if (avisoPostura) {
+    mostrarAviso('Transporte aplicado. Revisa las posturas: los acordes que cambian de nombre ya no conservan la del tono anterior.', 'var(--nuevo)');
+  }
 }
 
 /** Separa la letra en el cursor y crea la línea de acordes de la parte que baja. */
@@ -5675,10 +5756,14 @@ document.querySelectorAll('.b-zoom-pane').forEach((b) => { b.onclick = alternarZ
 $('b-separar').onclick = separar;
 $('b-juntar').onclick = juntar;
 $('b-deshacer').onclick = deshacer;
+$('b-tono-bajar').onclick = () => transportar(-1);
+$('b-tono-subir').onclick = () => transportar(1);
+$('b-tono-valor').onclick = () => transportar(-semitonosEditor);
+pintarTono();
 
 // El cursor se apunta antes de que el foco se vaya al botón: en iOS un
 // textarea sin foco devuelve la selección en 0 y el corte caería al principio.
-['b-separar', 'b-juntar'].forEach((id) => {
+['b-separar', 'b-juntar', 'b-tono-bajar', 'b-tono-subir', 'b-tono-valor'].forEach((id) => {
   const b = $(id);
   b.addEventListener('pointerdown', recordarCursor);
   b.addEventListener('mousedown', (e) => { recordarCursor(); e.preventDefault(); });

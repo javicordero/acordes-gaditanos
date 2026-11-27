@@ -192,6 +192,13 @@ export const prerender = true;
   .editor-acciones { display:flex; gap:4px; margin-left:auto; }
   .editor-acciones button { padding:4px 7px; font-size:11px; line-height:1; box-shadow:none; }
   .editor-acciones button:disabled { opacity:.35; }
+  /* Transportador del editor: debajo de la cabecera, antes del cifrado. */
+  .editor-transporte { display:flex; flex:0 0 auto; align-items:center; gap:6px; padding:5px 10px; border-bottom:1px solid var(--linea); background:var(--papel); }
+  .editor-transporte__titulo { font-size:9px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+  .editor-transporte button { min-width:24px; padding:2px 6px; font-size:12px; line-height:1.2; box-shadow:none; }
+  .editor-transporte button:disabled { opacity:.35; }
+  .editor-transporte__valor { min-width:32px; text-align:center; }
+  .editor-transporte__nota { margin-left:auto; color:var(--suave); font-size:9.5px; }
   #base-sel { flex:1; min-width:0; max-width:100%; font:400 11px var(--mono); padding:3px 4px; border:1.5px solid #000; background:var(--papel); color:var(--tinta); }
   #b-zoom, .b-zoom-pane { flex:0 0 auto; padding:5px 8px; font-size:9.5px; letter-spacing:.04em; text-transform:uppercase; box-shadow:none; }
   #b-zoom { margin-left:0; }
@@ -475,6 +482,10 @@ export const prerender = true;
     .tabs { padding:5px 6px; gap:4px; }
     .tabs button { padding:7px 3px; }
     .editor-acciones button { padding:3px 5px; font-size:10px; }
+    .editor-transporte { padding:4px 8px; gap:5px; }
+    .editor-transporte button { min-width:22px; padding:2px 5px; font-size:11px; }
+    .editor-transporte__valor { min-width:28px; }
+    .editor-transporte__nota { display:none; }
     /* En el móvil la banda de estado quita altura al editor: el estado ya se
        ve en la lista (LOCAL / EN GITHUB) y en el pie. */
     #nota-local { display:none !important; }
@@ -629,6 +640,13 @@ export const prerender = true;
     <div class="cols" id="cols">
       <section class="pane activo" data-pane="cen">
         <div class="cab"><b>Editor</b><span id="editor-meta"></span><span class="editor-acciones"><button type="button" id="b-deshacer" title="Deshacer (Ctrl+Z)" aria-label="Deshacer">↶</button><button type="button" id="b-separar" title="Separar por palabras: la palabra del cursor baja a una línea nueva (Alt+Enter)" aria-label="Separar la palabra del cursor">✂</button><button type="button" id="b-juntar" title="Juntar por palabras: la palabra del cursor sube al verso anterior (Alt+Retroceso)" aria-label="Juntar la palabra del cursor">⤴</button></span><button type="button" id="b-zoom" hidden>Ajustar</button></div>
+        <div class="editor-transporte" id="editor-transporte" role="group" aria-label="Transportar los acordes">
+          <span class="editor-transporte__titulo">Transportar</span>
+          <button type="button" id="b-tono-bajar" aria-label="Bajar un semitono" title="Bajar un semitono">−</button>
+          <button type="button" id="b-tono-valor" class="editor-transporte__valor" title="Quitar el transporte aplicado (volver a 0)">0</button>
+          <button type="button" id="b-tono-subir" aria-label="Subir un semitono" title="Subir un semitono">+</button>
+          <span class="editor-transporte__nota">Mueve solo los acordes, no la letra</span>
+        </div>
         <div class="lienzo" id="lienzo">
           <div class="hoja" id="hoja">
             <pre id="capa"></pre>

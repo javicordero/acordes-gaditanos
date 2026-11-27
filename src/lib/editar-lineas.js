@@ -1,8 +1,8 @@
 // Operaciones de estructura del editor de coplas: separar una línea de letra
 // en dos (creando su línea de acordes), separar un verso del bloque de arriba,
-// juntar la parte izquierda del cursor con el verso anterior y reajustar las
-// capas cuando se añaden o quitan líneas a mano. Trabajan sobre las tres capas
-// del editor:
+// juntar la parte izquierda del cursor con el verso anterior, transportar los
+// acordes de tono y reajustar las capas cuando se añaden o quitan líneas a mano.
+// Trabajan sobre las tres capas del editor:
 //
 //   - `lineas`:     texto plano, sin etiquetas (lo que se ve en el textarea)
 //   - `registros`:  por línea, [{ etiqueta, abre }] para conservar data-postura
@@ -12,6 +12,7 @@
 // Son puras: no tocan el DOM, así se pueden probar desde Node.
 
 import { clasificar, esAcorde, esAnotacion } from './pre-acordes.js';
+import { transportarEtiqueta } from './transporte.ts';
 
 const tokensDe = (linea) => [...String(linea).matchAll(/\S+/g)]
   .map((m) => ({ token: m[0], col: m.index }));
@@ -72,6 +73,24 @@ const registrosDe = (tokens) => tokens
   .map((t) => ({ etiqueta: t.token, abre: t.abre }));
 
 const tipoDe = (lineas, i, conocidos) => clasificar(lineas[i] || '', lineas[i + 1] || '', conocidos).tipo;
+
+/**
+ * Transporta los acordes de las líneas que el editor considera de acordes
+ * (también las «sucias»). La letra se queda igual y se conservan los espacios,
+ * así que cada acorde sigue sobre su sílaba.
+ *
+ * No toca `registros` ni `originales`: como el texto deja de coincidir con la
+ * línea original, `envolver()` vuelve a envolver esas líneas al guardar. Las
+ * etiquetas nuevas salen sin `data-postura`, porque la postura que había era
+ * del tono anterior. Al transportar de vuelta al tono original las líneas sí
+ * coinciden y se recupera el `<pre>` tal cual estaba.
+ */
+export function transportarLineas(lineas, semitonos, conocidos = new Set()) {
+  if (!semitonos) return lineas.slice();
+  return lineas.map((linea, i) => (['acordes', 'acordes-sucio'].includes(tipoDe(lineas, i, conocidos))
+    ? transportarEtiqueta(linea, semitonos)
+    : linea));
+}
 
 /**
  * Inicio y fin de la palabra que contiene la columna `col`. Devuelve null si
